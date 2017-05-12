@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class Form1 : Form
+    public partial class frmSectorEmpresarial : Form
     {
-        public Form1()
+        HPResergerCapaLogica.HPResergerCL clSectorEmpresarial = new HPResergerCapaLogica.HPResergerCL();
+        public frmSectorEmpresarial()
         {
             InitializeComponent();
+        }
+
+        private void frmSectorEmpresarial_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

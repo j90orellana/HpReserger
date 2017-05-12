@@ -1,6 +1,6 @@
 ﻿namespace HPReserger
 {
-    partial class Form1
+    partial class frmSectorEmpresarial
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmSectorEmpresarial
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(623, 431);
+            this.Name = "frmSectorEmpresarial";
+            this.Text = "  Sector Empresarial";
+            this.Load += new System.EventHandler(this.frmSectorEmpresarial_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
