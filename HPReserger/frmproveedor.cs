@@ -387,7 +387,7 @@ namespace HPReserger
 
         private void txtpersonacontacto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
+        //HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
         }
 
         private void label22_Click(object sender, EventArgs e)

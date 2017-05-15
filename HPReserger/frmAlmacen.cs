@@ -354,5 +354,19 @@ namespace HPReserger
             gridDetalle2.Columns[7].DataPropertyName = "CANTIDADFIC";
             
         }
+
+        private void txtRUC_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtRUC, 15);
+        }
+
+        private void txtGR_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtGR_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtGR, 10);
+        }
     }
 }
