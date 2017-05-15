@@ -142,6 +142,7 @@ namespace HPResergerFunciones
             if (e.Control && e.KeyCode == Keys.C)
             {
                 Clipboard.SetText(cajita.SelectedText);
+
             }
         }
         public static KeyPressEventArgs ToUpper(KeyPressEventArgs e)
