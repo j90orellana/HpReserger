@@ -184,7 +184,7 @@
             this.groupBox2.Size = new System.Drawing.Size(373, 175);
             this.groupBox2.TabIndex = 72;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            //this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // txtNumeroDocumento
             // 
