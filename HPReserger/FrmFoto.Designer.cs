@@ -42,6 +42,7 @@
             this.pbfoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbfoto.TabIndex = 0;
             this.pbfoto.TabStop = false;
+            this.pbfoto.Click += new System.EventHandler(this.pbfoto_Click);
             // 
             // FrmFoto
             // 

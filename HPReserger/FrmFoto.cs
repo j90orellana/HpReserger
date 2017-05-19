@@ -32,6 +32,13 @@ namespace HPReserger
                 this.Close();
             }
         }
+
+        private void pbfoto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         //MessageBox.Show("keyvalue:" + e.KeyValue + " keycode:" + e.KeyCode + " keydata:" + e.KeyData + " keymodificador:" + e.Modifiers);
     }
 }
