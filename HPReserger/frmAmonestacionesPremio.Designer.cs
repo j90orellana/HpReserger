@@ -76,7 +76,7 @@
             this.tab.Controls.Add(this.Memo);
             this.tab.Controls.Add(this.Premio);
             this.tab.ItemSize = new System.Drawing.Size(100, 18);
-            this.tab.Location = new System.Drawing.Point(12, 188);
+            this.tab.Location = new System.Drawing.Point(11, 231);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
             this.tab.Size = new System.Drawing.Size(373, 401);
@@ -310,6 +310,7 @@
             this.Grid.Size = new System.Drawing.Size(418, 178);
             this.Grid.TabIndex = 73;
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
+            this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
             // 
             // Registro
             // 
@@ -377,14 +378,14 @@
             // 
             this.pbFoto.Location = new System.Drawing.Point(402, 196);
             this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(418, 389);
+            this.pbFoto.Size = new System.Drawing.Size(418, 436);
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFoto.TabIndex = 74;
             this.pbFoto.TabStop = false;
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(12, 595);
+            this.btnGenerar.Location = new System.Drawing.Point(11, 638);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(94, 23);
             this.btnGenerar.TabIndex = 108;
@@ -394,21 +395,20 @@
             // 
             // btnAdjuntarSustento
             // 
-            this.btnAdjuntarSustento.Location = new System.Drawing.Point(402, 595);
+            this.btnAdjuntarSustento.Location = new System.Drawing.Point(12, 196);
             this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
-            this.btnAdjuntarSustento.Size = new System.Drawing.Size(94, 23);
+            this.btnAdjuntarSustento.Size = new System.Drawing.Size(121, 23);
             this.btnAdjuntarSustento.TabIndex = 107;
-            this.btnAdjuntarSustento.Text = "Sustento";
+            this.btnAdjuntarSustento.Text = "Adjuntar Imagen";
             this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
             this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
             // 
             // txtRuta
             // 
-            this.txtRuta.Location = new System.Drawing.Point(502, 595);
+            this.txtRuta.Location = new System.Drawing.Point(139, 196);
             this.txtRuta.Name = "txtRuta";
-            this.txtRuta.Size = new System.Drawing.Size(318, 20);
+            this.txtRuta.Size = new System.Drawing.Size(245, 20);
             this.txtRuta.TabIndex = 109;
-            this.txtRuta.Visible = false;
             // 
             // frmAmonestacionesPremio
             // 
@@ -416,7 +416,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(832, 632);
+            this.ClientSize = new System.Drawing.Size(832, 670);
             this.Controls.Add(this.txtRuta);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.btnAdjuntarSustento);

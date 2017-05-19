@@ -164,6 +164,12 @@
     <Compile Include="frmFaltas.Designer.cs">
       <DependentUpon>frmFaltas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFicModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFicModificar.Designer.cs">
+      <DependentUpon>frmFicModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGerencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,12 @@
     </Compile>
     <Compile Include="frmMemoPremio.Designer.cs">
       <DependentUpon>frmMemoPremio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMemoPremioObservaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemoPremioObservaciones.Designer.cs">
+      <DependentUpon>frmMemoPremioObservaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="frmmodelo.cs">
       <SubType>Form</SubType>
@@ -535,6 +547,9 @@
     <EmbeddedResource Include="frmFaltas.resx">
       <DependentUpon>frmFaltas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFicModificar.resx">
+      <DependentUpon>frmFicModificar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGerencia.resx">
       <DependentUpon>frmGerencia.cs</DependentUpon>
     </EmbeddedResource>
@@ -549,6 +564,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMemoPremio.resx">
       <DependentUpon>frmMemoPremio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemoPremioObservaciones.resx">
+      <DependentUpon>frmMemoPremioObservaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmmodelo.resx">
       <DependentUpon>frmmodelo.cs</DependentUpon>

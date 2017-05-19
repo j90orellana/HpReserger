@@ -45,7 +45,22 @@
             this.btnRetencionRenta = new System.Windows.Forms.Button();
             this.btnEvaluacionPracticas = new System.Windows.Forms.Button();
             this.btnEntrevistaSalida = new System.Windows.Forms.Button();
+            this.btnAdjuntarLiq = new System.Windows.Forms.Button();
+            this.btnAdjuntarCTS = new System.Windows.Forms.Button();
+            this.btnAdjuntarEntrevistaSalida = new System.Windows.Forms.Button();
+            this.btnAdjuntarEvaluacionPracticas = new System.Windows.Forms.Button();
+            this.btnAdjuntarRetencionRenta = new System.Windows.Forms.Button();
+            this.btnAdjuntarConstanciaTrabajo = new System.Windows.Forms.Button();
+            this.txtLiq = new System.Windows.Forms.TextBox();
+            this.txtRetencionRenta = new System.Windows.Forms.TextBox();
+            this.txtConstanciaTrabajo = new System.Windows.Forms.TextBox();
+            this.txtCTS = new System.Windows.Forms.TextBox();
+            this.txtEntrevistaSalida = new System.Windows.Forms.TextBox();
+            this.txtEvaluacionPracticas = new System.Windows.Forms.TextBox();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btnGrabar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -166,7 +181,7 @@
             // 
             // btnGenerarLiquidacion
             // 
-            this.btnGenerarLiquidacion.Location = new System.Drawing.Point(35, 196);
+            this.btnGenerarLiquidacion.Location = new System.Drawing.Point(12, 194);
             this.btnGenerarLiquidacion.Name = "btnGenerarLiquidacion";
             this.btnGenerarLiquidacion.Size = new System.Drawing.Size(150, 23);
             this.btnGenerarLiquidacion.TabIndex = 72;
@@ -176,7 +191,7 @@
             // 
             // btnCTS
             // 
-            this.btnCTS.Location = new System.Drawing.Point(35, 234);
+            this.btnCTS.Location = new System.Drawing.Point(12, 232);
             this.btnCTS.Name = "btnCTS";
             this.btnCTS.Size = new System.Drawing.Size(150, 23);
             this.btnCTS.TabIndex = 73;
@@ -186,7 +201,7 @@
             // 
             // btnConstanciaTrabajo
             // 
-            this.btnConstanciaTrabajo.Location = new System.Drawing.Point(35, 273);
+            this.btnConstanciaTrabajo.Location = new System.Drawing.Point(12, 271);
             this.btnConstanciaTrabajo.Name = "btnConstanciaTrabajo";
             this.btnConstanciaTrabajo.Size = new System.Drawing.Size(150, 23);
             this.btnConstanciaTrabajo.TabIndex = 74;
@@ -196,7 +211,7 @@
             // 
             // btnRetencionRenta
             // 
-            this.btnRetencionRenta.Location = new System.Drawing.Point(207, 196);
+            this.btnRetencionRenta.Location = new System.Drawing.Point(12, 310);
             this.btnRetencionRenta.Name = "btnRetencionRenta";
             this.btnRetencionRenta.Size = new System.Drawing.Size(150, 23);
             this.btnRetencionRenta.TabIndex = 75;
@@ -206,7 +221,7 @@
             // 
             // btnEvaluacionPracticas
             // 
-            this.btnEvaluacionPracticas.Location = new System.Drawing.Point(207, 234);
+            this.btnEvaluacionPracticas.Location = new System.Drawing.Point(12, 348);
             this.btnEvaluacionPracticas.Name = "btnEvaluacionPracticas";
             this.btnEvaluacionPracticas.Size = new System.Drawing.Size(150, 23);
             this.btnEvaluacionPracticas.TabIndex = 76;
@@ -216,7 +231,7 @@
             // 
             // btnEntrevistaSalida
             // 
-            this.btnEntrevistaSalida.Location = new System.Drawing.Point(207, 273);
+            this.btnEntrevistaSalida.Location = new System.Drawing.Point(12, 387);
             this.btnEntrevistaSalida.Name = "btnEntrevistaSalida";
             this.btnEntrevistaSalida.Size = new System.Drawing.Size(150, 23);
             this.btnEntrevistaSalida.TabIndex = 77;
@@ -224,13 +239,172 @@
             this.btnEntrevistaSalida.UseVisualStyleBackColor = true;
             this.btnEntrevistaSalida.Click += new System.EventHandler(this.btnEntrevistaSalida_Click);
             // 
+            // btnAdjuntarLiq
+            // 
+            this.btnAdjuntarLiq.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntarLiq.Location = new System.Drawing.Point(168, 194);
+            this.btnAdjuntarLiq.Name = "btnAdjuntarLiq";
+            this.btnAdjuntarLiq.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarLiq.TabIndex = 78;
+            this.btnAdjuntarLiq.Text = "...";
+            this.btnAdjuntarLiq.UseVisualStyleBackColor = true;
+            this.btnAdjuntarLiq.Click += new System.EventHandler(this.btnAdjuntarLiq_Click);
+            // 
+            // btnAdjuntarCTS
+            // 
+            this.btnAdjuntarCTS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntarCTS.Location = new System.Drawing.Point(168, 232);
+            this.btnAdjuntarCTS.Name = "btnAdjuntarCTS";
+            this.btnAdjuntarCTS.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarCTS.TabIndex = 79;
+            this.btnAdjuntarCTS.Text = "...";
+            this.btnAdjuntarCTS.UseVisualStyleBackColor = true;
+            this.btnAdjuntarCTS.Click += new System.EventHandler(this.btnAdjuntarCTS_Click);
+            // 
+            // btnAdjuntarEntrevistaSalida
+            // 
+            this.btnAdjuntarEntrevistaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntarEntrevistaSalida.Location = new System.Drawing.Point(168, 387);
+            this.btnAdjuntarEntrevistaSalida.Name = "btnAdjuntarEntrevistaSalida";
+            this.btnAdjuntarEntrevistaSalida.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarEntrevistaSalida.TabIndex = 81;
+            this.btnAdjuntarEntrevistaSalida.Text = "...";
+            this.btnAdjuntarEntrevistaSalida.UseVisualStyleBackColor = true;
+            this.btnAdjuntarEntrevistaSalida.Click += new System.EventHandler(this.btnAdjuntarEntrevistaSalida_Click);
+            // 
+            // btnAdjuntarEvaluacionPracticas
+            // 
+            this.btnAdjuntarEvaluacionPracticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntarEvaluacionPracticas.Location = new System.Drawing.Point(168, 348);
+            this.btnAdjuntarEvaluacionPracticas.Name = "btnAdjuntarEvaluacionPracticas";
+            this.btnAdjuntarEvaluacionPracticas.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarEvaluacionPracticas.TabIndex = 82;
+            this.btnAdjuntarEvaluacionPracticas.Text = "...";
+            this.btnAdjuntarEvaluacionPracticas.UseVisualStyleBackColor = true;
+            this.btnAdjuntarEvaluacionPracticas.Click += new System.EventHandler(this.btnAdjuntarEvaluacionPracticas_Click);
+            // 
+            // btnAdjuntarRetencionRenta
+            // 
+            this.btnAdjuntarRetencionRenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntarRetencionRenta.Location = new System.Drawing.Point(168, 310);
+            this.btnAdjuntarRetencionRenta.Name = "btnAdjuntarRetencionRenta";
+            this.btnAdjuntarRetencionRenta.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarRetencionRenta.TabIndex = 83;
+            this.btnAdjuntarRetencionRenta.Text = "...";
+            this.btnAdjuntarRetencionRenta.UseVisualStyleBackColor = true;
+            this.btnAdjuntarRetencionRenta.Click += new System.EventHandler(this.btnAdjuntarRetencionRenta_Click);
+            // 
+            // btnAdjuntarConstanciaTrabajo
+            // 
+            this.btnAdjuntarConstanciaTrabajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntarConstanciaTrabajo.Location = new System.Drawing.Point(168, 271);
+            this.btnAdjuntarConstanciaTrabajo.Name = "btnAdjuntarConstanciaTrabajo";
+            this.btnAdjuntarConstanciaTrabajo.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarConstanciaTrabajo.TabIndex = 84;
+            this.btnAdjuntarConstanciaTrabajo.Text = "...";
+            this.btnAdjuntarConstanciaTrabajo.UseVisualStyleBackColor = true;
+            this.btnAdjuntarConstanciaTrabajo.Click += new System.EventHandler(this.btnAdjuntarConstanciaTrabajo_Click);
+            // 
+            // txtLiq
+            // 
+            this.txtLiq.Location = new System.Drawing.Point(207, 194);
+            this.txtLiq.MaxLength = 14;
+            this.txtLiq.Name = "txtLiq";
+            this.txtLiq.ReadOnly = true;
+            this.txtLiq.Size = new System.Drawing.Size(178, 20);
+            this.txtLiq.TabIndex = 85;
+            this.txtLiq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtRetencionRenta
+            // 
+            this.txtRetencionRenta.Location = new System.Drawing.Point(207, 310);
+            this.txtRetencionRenta.MaxLength = 14;
+            this.txtRetencionRenta.Name = "txtRetencionRenta";
+            this.txtRetencionRenta.ReadOnly = true;
+            this.txtRetencionRenta.Size = new System.Drawing.Size(178, 20);
+            this.txtRetencionRenta.TabIndex = 86;
+            this.txtRetencionRenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtConstanciaTrabajo
+            // 
+            this.txtConstanciaTrabajo.Location = new System.Drawing.Point(207, 271);
+            this.txtConstanciaTrabajo.MaxLength = 14;
+            this.txtConstanciaTrabajo.Name = "txtConstanciaTrabajo";
+            this.txtConstanciaTrabajo.ReadOnly = true;
+            this.txtConstanciaTrabajo.Size = new System.Drawing.Size(178, 20);
+            this.txtConstanciaTrabajo.TabIndex = 87;
+            this.txtConstanciaTrabajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtCTS
+            // 
+            this.txtCTS.Location = new System.Drawing.Point(207, 232);
+            this.txtCTS.MaxLength = 14;
+            this.txtCTS.Name = "txtCTS";
+            this.txtCTS.ReadOnly = true;
+            this.txtCTS.Size = new System.Drawing.Size(178, 20);
+            this.txtCTS.TabIndex = 88;
+            this.txtCTS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtEntrevistaSalida
+            // 
+            this.txtEntrevistaSalida.Location = new System.Drawing.Point(207, 387);
+            this.txtEntrevistaSalida.MaxLength = 14;
+            this.txtEntrevistaSalida.Name = "txtEntrevistaSalida";
+            this.txtEntrevistaSalida.ReadOnly = true;
+            this.txtEntrevistaSalida.Size = new System.Drawing.Size(178, 20);
+            this.txtEntrevistaSalida.TabIndex = 89;
+            this.txtEntrevistaSalida.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtEvaluacionPracticas
+            // 
+            this.txtEvaluacionPracticas.Location = new System.Drawing.Point(207, 348);
+            this.txtEvaluacionPracticas.MaxLength = 14;
+            this.txtEvaluacionPracticas.Name = "txtEvaluacionPracticas";
+            this.txtEvaluacionPracticas.ReadOnly = true;
+            this.txtEvaluacionPracticas.Size = new System.Drawing.Size(178, 20);
+            this.txtEvaluacionPracticas.TabIndex = 90;
+            this.txtEvaluacionPracticas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.Location = new System.Drawing.Point(402, 10);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(322, 400);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFoto.TabIndex = 105;
+            this.pbFoto.TabStop = false;
+            // 
+            // btnGrabar
+            // 
+            this.btnGrabar.Location = new System.Drawing.Point(402, 416);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(123, 23);
+            this.btnGrabar.TabIndex = 107;
+            this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
             // frmDesvinculacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(398, 311);
+            this.ClientSize = new System.Drawing.Size(735, 447);
+            this.Controls.Add(this.btnGrabar);
+            this.Controls.Add(this.pbFoto);
+            this.Controls.Add(this.txtEvaluacionPracticas);
+            this.Controls.Add(this.txtEntrevistaSalida);
+            this.Controls.Add(this.txtCTS);
+            this.Controls.Add(this.txtConstanciaTrabajo);
+            this.Controls.Add(this.txtRetencionRenta);
+            this.Controls.Add(this.txtLiq);
+            this.Controls.Add(this.btnAdjuntarConstanciaTrabajo);
+            this.Controls.Add(this.btnAdjuntarRetencionRenta);
+            this.Controls.Add(this.btnAdjuntarEvaluacionPracticas);
+            this.Controls.Add(this.btnAdjuntarEntrevistaSalida);
+            this.Controls.Add(this.btnAdjuntarCTS);
+            this.Controls.Add(this.btnAdjuntarLiq);
             this.Controls.Add(this.btnEntrevistaSalida);
             this.Controls.Add(this.btnEvaluacionPracticas);
             this.Controls.Add(this.btnRetencionRenta);
@@ -245,7 +419,9 @@
             this.Load += new System.EventHandler(this.frmDesvinculacion_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -268,5 +444,19 @@
         private System.Windows.Forms.Button btnRetencionRenta;
         private System.Windows.Forms.Button btnEvaluacionPracticas;
         private System.Windows.Forms.Button btnEntrevistaSalida;
+        private System.Windows.Forms.Button btnAdjuntarLiq;
+        private System.Windows.Forms.Button btnAdjuntarCTS;
+        private System.Windows.Forms.Button btnAdjuntarEntrevistaSalida;
+        private System.Windows.Forms.Button btnAdjuntarEvaluacionPracticas;
+        private System.Windows.Forms.Button btnAdjuntarRetencionRenta;
+        private System.Windows.Forms.Button btnAdjuntarConstanciaTrabajo;
+        private System.Windows.Forms.TextBox txtLiq;
+        private System.Windows.Forms.TextBox txtRetencionRenta;
+        private System.Windows.Forms.TextBox txtConstanciaTrabajo;
+        private System.Windows.Forms.TextBox txtCTS;
+        private System.Windows.Forms.TextBox txtEntrevistaSalida;
+        private System.Windows.Forms.TextBox txtEvaluacionPracticas;
+        private System.Windows.Forms.PictureBox pbFoto;
+        private System.Windows.Forms.Button btnGrabar;
     }
 }

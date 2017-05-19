@@ -51,6 +51,7 @@ namespace HPReserger
                         txtRuta.Text = NombreFoto;
 
                         clAmonestacionesPremio.EmpleadoMemoPremioSustento(Convert.ToInt32(Grid.CurrentRow.Cells[0].Value.ToString()), Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, tab.SelectedIndex, Foto, txtRuta.Text);
+                        MessageBox.Show("Imagen asociada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -78,6 +79,18 @@ namespace HPReserger
 
         private void frmAmonestacionesPremio_Load(object sender, EventArgs e)
         {
+            txtNumeroDocumento.Text = "";
+            txtRuta.Text = "";
+            txtObservacionesMemo.Text = "";
+            txtObservacionesPremio.Text = "";
+            pbFoto.Image = null;
+
+            Grid.DataSource = null;
+            Grid.Rows.Clear();
+            Grid.Refresh();
+
+            TitulosGrillas();
+
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
             tab.SelectedIndex = 0;
         }
@@ -139,10 +152,12 @@ namespace HPReserger
             if (tab.SelectedIndex == 0)
             {
                 clAmonestacionesPremio.EmpleadoMemoPremio(out Registro, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 0, txtObservacionesMemo.Text);
+                txtObservacionesMemo.Text = "";
             }
             else
             {
                 clAmonestacionesPremio.EmpleadoMemoPremio(out Registro, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 1, txtObservacionesPremio.Text);
+                txtObservacionesPremio.Text = "";
             }
 
             MessageBox.Show("Se procesó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -170,14 +185,6 @@ namespace HPReserger
             if (Grid.Rows.Count > 0 && Grid.Rows[0].Cells[0].Value != null)
             {
                 CargarFoto(Convert.ToInt32(Grid.Rows[e.RowIndex].Cells[0].Value.ToString()), Convert.ToInt32(Grid.Rows[e.RowIndex].Cells[1].Value.ToString()), Grid.Rows[e.RowIndex].Cells[3].Value.ToString(), tab.SelectedIndex);
-                if (tab.SelectedIndex == 0)
-                {
-                    txtObservacionesMemo.Text = Grid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                }
-                else
-                {
-                    txtObservacionesPremio.Text = Grid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                }
             }
             else
             {
@@ -206,6 +213,58 @@ namespace HPReserger
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 15);
+        }
+
+        private void TitulosGrillas()
+        {
+            if (Grid.Columns.Count == 0)
+            {
+                Grid.Columns.Add("REGISTRO", "");
+                Grid.Columns.Add("CODIGOTIPO", "");
+                Grid.Columns.Add("TIPOID", "");
+                Grid.Columns.Add("NDI", "");
+                Grid.Columns.Add("APELLIDOSNOMBRES", "");
+                Grid.Columns.Add("OBSERVACIONES", "");
+            }
+
+            Grid.Columns[0].Width = 0;
+            Grid.Columns[0].Visible = false;
+            Grid.Columns[0].DataPropertyName = "REGISTRO";
+
+            Grid.Columns[1].Width = 0;
+            Grid.Columns[1].Visible = false;
+            Grid.Columns[1].DataPropertyName = "CODIGOTIPO";
+
+            Grid.Columns[2].Width = 0;
+            Grid.Columns[2].Visible = false;
+            Grid.Columns[2].DataPropertyName = "TIPOID";
+
+            Grid.Columns[3].Width = 0;
+            Grid.Columns[3].Visible = false;
+            Grid.Columns[3].DataPropertyName = "NID";
+
+            Grid.Columns[4].Width = 0;
+            Grid.Columns[4].Visible = false;
+            Grid.Columns[4].DataPropertyName = "EMPLEADO";
+
+
+            Grid.Columns[5].Width = 350;
+            Grid.Columns[5].Visible = true;
+            Grid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            Grid.Columns[5].HeaderText = "OBSERVACIONES";
+            Grid.Columns[5].DataPropertyName = "OBSERVACIONES";
+            Grid.Columns[5].ReadOnly = true;
+
+        }
+
+        private void Grid_DoubleClick(object sender, EventArgs e)
+        {
+            if (Grid.Rows.Count > 0 && Grid.CurrentRow.Cells[5].Value != null)
+            {
+                frmMemoPremioObservaciones frmMPO = new frmMemoPremioObservaciones();
+                frmMPO.Observaciones = Grid.CurrentRow.Cells[5].Value.ToString();
+                frmMPO.ShowDialog();
+            }
         }
     }
 }

@@ -892,5 +892,34 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ImagenEmpleadoMemoPremio(Registro, Tipo_ID_Emp, Nro_ID_Emp, Tipo);
         }
 
+        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision)
+        {
+            return cdOrdenPedido.OrdenCompraProveedor(Proveedor, GuiaRemision);
+        }
+
+        public DataTable ListarFicModificar(int NumeroFIC)
+        {
+            return cdOrdenPedido.ListarFicModificar(NumeroFIC);
+        }
+
+        public DataTable ListarSinOCProveedor(string Proveedor, int Tipo, int Usuario, int OC)
+        {
+            return cdOrdenPedido.ListarSinOCProveedor(Proveedor, Tipo, Usuario, OC);
+        }
+
+        public void FICModificarCabecera(int Numero, DateTime Fecha, int GuiaRemision)
+        {
+            cdOrdenPedido.FICModificarCabecera(Numero, Fecha, GuiaRemision);
+        }
+
+        public void FICEliminarItemDetalle(int Id_FIC_Detalle, int NumeroFIC, int CodigoArticulo, int CodigoMarca, int CodigoModelo)
+        {
+            cdOrdenPedido.FICEliminarItemDetalle(Id_FIC_Detalle, NumeroFIC, CodigoArticulo, CodigoMarca, CodigoModelo);
+        }
+
+        public void EmpleadoDesvinculacionInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, byte[] Foto, string Ruta, int Opcion)
+        {
+            cdOrdenPedido.EmpleadoDesvinculacionInsertar(Tipo_ID_Emp, Nro_ID_Emp, Foto, Ruta, Opcion);
+        }
     }
 }

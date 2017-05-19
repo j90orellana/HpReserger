@@ -34,13 +34,12 @@
             // 
             // cvrLiquidacion
             // 
-            this.cvrLiquidacion.ActiveViewIndex = 0;
+            this.cvrLiquidacion.ActiveViewIndex = -1;
             this.cvrLiquidacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cvrLiquidacion.Cursor = System.Windows.Forms.Cursors.Default;
             this.cvrLiquidacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cvrLiquidacion.Location = new System.Drawing.Point(0, 0);
             this.cvrLiquidacion.Name = "cvrLiquidacion";
-            this.cvrLiquidacion.ReportSource = this.rptLiquidacion1;
             this.cvrLiquidacion.Size = new System.Drawing.Size(930, 665);
             this.cvrLiquidacion.TabIndex = 0;
             this.cvrLiquidacion.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;

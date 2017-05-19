@@ -30,17 +30,17 @@
         {
             this.crvConstanciaTrabajo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.rptConstanciaTrabajo1 = new HPReserger.rptConstanciaTrabajo();
+            this.rptConstanciaTrabajo2 = new HPReserger.rptConstanciaTrabajo();
             this.SuspendLayout();
             // 
             // crvConstanciaTrabajo
             // 
-            this.crvConstanciaTrabajo.ActiveViewIndex = 0;
+            this.crvConstanciaTrabajo.ActiveViewIndex = -1;
             this.crvConstanciaTrabajo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvConstanciaTrabajo.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvConstanciaTrabajo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvConstanciaTrabajo.Location = new System.Drawing.Point(0, 0);
             this.crvConstanciaTrabajo.Name = "crvConstanciaTrabajo";
-            this.crvConstanciaTrabajo.ReportSource = this.rptConstanciaTrabajo1;
             this.crvConstanciaTrabajo.Size = new System.Drawing.Size(749, 606);
             this.crvConstanciaTrabajo.TabIndex = 0;
             this.crvConstanciaTrabajo.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
@@ -65,5 +65,6 @@
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvConstanciaTrabajo;
         private rptConstanciaTrabajo rptConstanciaTrabajo1;
+        private rptConstanciaTrabajo rptConstanciaTrabajo2;
     }
 }

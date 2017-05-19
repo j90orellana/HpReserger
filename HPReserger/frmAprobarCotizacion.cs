@@ -193,8 +193,8 @@ namespace HPReserger
                 Grid.Columns[4].Width = 80;
                 Grid.Columns[4].Visible = true;
                 Grid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                Grid.Columns[4].HeaderText = "USUARIO";
-                Grid.Columns[4].DataPropertyName = "USUARIO";
+                Grid.Columns[4].HeaderText = "AREA";
+                Grid.Columns[4].DataPropertyName = "AREA";
 
                 Grid.Columns[5].Width = 0;
                 Grid.Columns[5].Visible = false;

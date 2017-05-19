@@ -34,13 +34,12 @@
             // 
             // crvRetencionRenta
             // 
-            this.crvRetencionRenta.ActiveViewIndex = 0;
+            this.crvRetencionRenta.ActiveViewIndex = -1;
             this.crvRetencionRenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvRetencionRenta.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvRetencionRenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvRetencionRenta.Location = new System.Drawing.Point(0, 0);
             this.crvRetencionRenta.Name = "crvRetencionRenta";
-            this.crvRetencionRenta.ReportSource = this.rptRetencionRemta1;
             this.crvRetencionRenta.Size = new System.Drawing.Size(885, 740);
             this.crvRetencionRenta.TabIndex = 0;
             this.crvRetencionRenta.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;

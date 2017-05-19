@@ -1785,6 +1785,13 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_Proveedor_OC", parametros, valores, null);
         }
 
+        public DataTable ListarSinOCProveedor(string Proveedor, int Tipo, int Usuario, int OC)
+        {
+            string[] parametros = { "@Proveedor", "@Tipo", "@Usuario" , "@OC"};
+            object[] valores = { Proveedor, Tipo, Usuario, OC };
+            return bd.DataTableFromProcedure("usp_Proveedor_sin_OC", parametros, valores, null);
+        }
+
         public DataTable ListarArticulosFIC(int OC, int TIPO)
         {
             string[] parametros = { "@OC", "@TIPO" };
@@ -2761,6 +2768,90 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@Registro", "@Tipo_ID_Emp", "@Nro_ID_Emp", "@Tipo" };
             object[] valores = { Registro, Tipo_ID_Emp, Nro_ID_Emp, Tipo };
             return bd.DatarowFromProcedure("usp_Get_Imagen_MemoPremio", parametros, valores, null);
+        }
+
+        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision)
+        {
+            string[] parametros = { "@Proveedor", "@GuiaRemision" };
+            object[] valores = { Proveedor, GuiaRemision };
+            return bd.DataTableFromProcedure("usp_Get_OrdenCompra_Proveedor", parametros, valores, null);
+        }
+
+        public DataTable ListarFicModificar(int NumeroFIC)
+        {
+            string[] parametros = { "@NumeroFIC" };
+            object[] valores = { NumeroFIC };
+            return bd.DataTableFromProcedure("usp_Get_FIC_Modificar", parametros, valores, null);
+        }
+
+        public void FICModificarCabecera(int Numero, DateTime Fecha, int GuiaRemision)
+        {
+            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "usp_FIC_Cabecera_Modificar";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@Numero", SqlDbType.Int).Value = Numero;
+                    cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = Fecha;
+                    cmd.Parameters.Add("@GuiaRemision", SqlDbType.Int).Value = GuiaRemision;
+
+                    cmd.ExecuteNonQuery();
+                }
+                cn.Close();
+                cn.Dispose();
+            }
+        }
+
+        public void FICEliminarItemDetalle(int Id_FIC_Detalle, int NumeroFIC, int CodigoArticulo, int CodigoMarca, int CodigoModelo)
+        {
+            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "usp_Eliminar_FIC_Detalle_Item";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@Id_FIC_Detalle", SqlDbType.Int).Value = Id_FIC_Detalle;
+                    cmd.Parameters.Add("@NumeroFIC", SqlDbType.Int).Value = NumeroFIC;
+                    cmd.Parameters.Add("@CodigoArticulo", SqlDbType.Int).Value = CodigoArticulo;
+                    cmd.Parameters.Add("@CodigoMarca", SqlDbType.Int).Value = CodigoMarca;
+                    cmd.Parameters.Add("@CodigoModelo", SqlDbType.Int).Value = CodigoModelo;
+
+                    cmd.ExecuteNonQuery();
+                }
+                cn.Close();
+                cn.Dispose();
+            }
+        }
+
+        public void EmpleadoDesvinculacionInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, byte[] Foto, string Ruta, int Opcion)
+        {
+            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "usp_Empleado_Desvinculacion_Insertar";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@Tipo_ID_Emp", SqlDbType.Int).Value = Tipo_ID_Emp;
+                    cmd.Parameters.Add("@Nro_ID_Emp", SqlDbType.VarChar, 14).Value = Nro_ID_Emp;
+                    cmd.Parameters.Add("@Foto", SqlDbType.Image).Value = Foto;
+                    cmd.Parameters.Add("@Ruta", SqlDbType.VarChar, 256).Value = Ruta;
+                    cmd.Parameters.Add("@Opcion", SqlDbType.Int).Value = Opcion;
+
+                    cmd.ExecuteNonQuery();
+                }
+                cn.Close();
+                cn.Dispose();
+            }
         }
     }
 }
