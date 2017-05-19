@@ -27,10 +27,17 @@ namespace HPReserger
             rptLiquidacion Reporte = new rptLiquidacion();
             Reporte.Refresh();
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
-            Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
-
+            Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);            
             Reporte.SetDatabaseLogon("mmendoza", "123");
-            cvrLiquidacion.ReportSource= Reporte;
+            cvrLiquidacion.ReportSource = Reporte;
+
+            //cvrLiquidacion.ExportReport();
+        }
+
+        private void cvrLiquidacion_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
+        {
+            e.Handled = true;
+            frmLiquidacion_Load(cvrLiquidacion, e);
         }
     }
 }

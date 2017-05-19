@@ -18,8 +18,8 @@ namespace HPReserger
         public int CodigoDocumento { get; set; }
 
         public string NumeroDocumento { get; set; }
+        public int estado { get; set; }
 
-        
         MemoryStream _memoryStream = new MemoryStream();
         public byte[] FotoContrato { get; set; }
         public string nombreArchivoContrato { get; set; }
@@ -37,54 +37,126 @@ namespace HPReserger
 
         private void frmContrato_Load(object sender, EventArgs e)
         {
-            CargaCombos(cboTipoContrato, "Id_TipoContrato", "TipoContrato", "TBL_TipoContrato");
-            CargaCombos(cboCargo, "Id_Cargo", "Cargo", "TBL_Cargo");
-            CargaCombos(cboEmpresa, "Id_Empresa", "Empresa", "TBL_Empresa");
-            CargaCombos(cboGerencia, "Id_Gerencia", "Gerencia", "TBL_Gerencia");
-            CargaCombos(cboProyecto, "Id_Proyecto", "Proyecto", "TBL_Proyecto");
-            CargaCombos(cboSede, "Id_Sede", "Sede", "TBL_Sede");
+            dtpFechaFin.Value.AddDays(1);
+            estado = 0;
+            grpcontrato.Enabled = false;
+            grpcontra.Enabled = false;
+            btnModificar.Enabled = false;
+            btnaceptar.Enabled = false;
 
-            cboJefeInmediato.ValueMember = "codigo";
-            cboJefeInmediato.DisplayMember = "jefe";
-            cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato();
-
-            cboBono.SelectedIndex = 0;
-
-            DataRow ExisteContrato = clContrato.CargarCualquierImagenPostulanteEmpleado("*", "TBL_Empleado_Contrato", "Tipo_ID_Emp", CodigoDocumento, "Nro_ID_Emp", NumeroDocumento);
-            if (ExisteContrato != null)
+            dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
+            cartelito(dtgconten);
+            if (dtgconten.RowCount > 0)
             {
-                cboTipoContrato.SelectedValue = Convert.ToInt32(ExisteContrato["Tipo_Contrato"].ToString());
-                cboCargo.SelectedValue = Convert.ToInt32(ExisteContrato["Cargo"].ToString());
-                cboGerencia.SelectedValue = Convert.ToInt32(ExisteContrato["Gerencia"].ToString());
-                cboArea.SelectedValue = Convert.ToInt32(ExisteContrato["Area"].ToString());
-                cboJefeInmediato.SelectedValue = ExisteContrato["Jefe_Inmediato"].ToString();
-                cboProyecto.SelectedValue = Convert.ToInt32(ExisteContrato["Proyecto"].ToString());
-                cboEmpresa.SelectedValue = Convert.ToInt32(ExisteContrato["Empresa"].ToString());
-                cboSede.SelectedValue = Convert.ToInt32(ExisteContrato["Sede"].ToString());
-                dtpFechaInicio.Value = Convert.ToDateTime(ExisteContrato["Fec_Inicio"].ToString());
-                txtPeriodoLaboral.Text = ExisteContrato["Periodo_Laboral"].ToString();
-                dtpFechaFin.Value = Convert.ToDateTime(ExisteContrato["Fec_Fin"].ToString());
-                txtSalario.Text = ExisteContrato["Sueldo"].ToString();
-                cboBono.Text = ExisteContrato["Bono"].ToString();
-                txtImporteBono.Text = ExisteContrato["Bono_Importe"].ToString();
-                txtPeriodicidad.Text = ExisteContrato["Bono_Periodicidad"].ToString();
-                txtContrato.Text = ExisteContrato["NombreFotoContrato_Img"].ToString();
-                txtAnexoFunciones.Text = ExisteContrato["NombreFotoAnxFunc_Img"].ToString();
-                txtSolicitudPracticas.Text = ExisteContrato["NombreFotoSolPrac_Img"].ToString();
-                txtOtros.Text = ExisteContrato["NombreFotoOtros_Img"].ToString();
-
+                dtgconten.Enabled = true;
+                CargaCombos(cboTipoContrato, "Id_TipoContrato", "TipoContrato", "TBL_TipoContrato");
+                CargaCombos(cboCargo, "Id_Cargo", "Cargo", "TBL_Cargo");
+                CargaCombos(cboEmpresa, "Id_Empresa", "Empresa", "TBL_Empresa");
+                CargaCombos(cboGerencia, "Id_Gerencia", "Gerencia", "TBL_Gerencia");
+                //CargaCombos(cboProyecto, "Id_Proyecto", "Proyecto", "TBL_Proyecto");
+                CargaCombos(cboSede, "Id_Sede", "Sede", "TBL_Sede");
+                cboJefeInmediato.ValueMember = "codigo";
+                cboJefeInmediato.DisplayMember = "jefe";
+                cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento, NumeroDocumento, 0);
+            }
+            else { dtgconten.Enabled = false; }
+            txtPeriodoLaboral_TextChanged(sender, e);
+        }
+        private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int fila = e.RowIndex;
+            if (dtgconten.RowCount > 0)
+            {
                 btnModificar.Enabled = true;
-                btnRegistrar.Enabled = false;
+                cboTipoContrato.SelectedValue = Convert.ToInt32(dtgconten["TIPOC", fila].Value.ToString());
+                cboCargo.SelectedValue = Convert.ToInt32(dtgconten["IDCARGO", fila].Value.ToString());
+                cboGerencia.SelectedValue = Convert.ToInt32(dtgconten["IDG", fila].Value.ToString());
+                cboArea.SelectedValue = Convert.ToInt32(dtgconten["IDA", fila].Value.ToString());
+                cboJefeInmediato.SelectedValue = Convert.ToInt64(dtgconten["IDJ", fila].Value.ToString() + dtgconten["DOCJEFE", fila].Value.ToString());
+                cboProyecto.SelectedValue = Convert.ToInt32(dtgconten["IDP", fila].Value.ToString());
+                cboEmpresa.SelectedValue = Convert.ToInt32(dtgconten["IDE", fila].Value.ToString());
+                cboSede.SelectedValue = Convert.ToInt32(dtgconten["SEDE", fila].Value.ToString());
+                dtpFechaInicio.Value = Convert.ToDateTime(dtgconten["INICIO", fila].Value.ToString());
+                txtPeriodoLaboral.Text = dtgconten["PERIODO", fila].Value.ToString();
+                dtpFechaFin.Value = Convert.ToDateTime(dtgconten["FIN", fila].Value.ToString());
+                txtSalario.Text = dtgconten["SUELDO", fila].Value.ToString();
+                cboBono.Text = dtgconten["BONO", fila].Value.ToString();
+                txtImporteBono.Text = dtgconten["IMPORTE", fila].Value.ToString();
+                txtPeriodicidad.Text = dtgconten["PERIOCIDAD", fila].Value.ToString();
+
+                if (Convert.ToInt32(dtgconten["JEFE", fila].Value.ToString()) == 1)
+                {
+                    chkjefe.Checked = true;
+                }
+                if (dtgconten["CONTRATOIMG", fila].Value.ToString() != null && dtgconten["CONTRATOIMG", fila].Value.ToString().Length > 0)
+                {
+                    byte[] Fotito = new byte[0];
+                    FotoContrato = Fotito = (byte[])dtgconten["CONTRATOIMG", fila].Value;
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbFotoContrato.Image = Bitmap.FromStream(ms);
+                    txtContrato.Text = dtgconten["NOMBRECONTRATOIMG", fila].Value.ToString();
+                }
+                else
+                {
+                    txtContrato.Text = "";
+                    pbFotoContrato.Image = null;
+                }
+                if (dtgconten["ANEXOIMG", fila].Value.ToString() != null && dtgconten["ANEXOIMG", fila].Value.ToString().Length > 0)
+                {
+                    byte[] Fotito = new byte[0];
+                    FotoAnexoFunciones = Fotito = (byte[])dtgconten["ANEXOIMG", fila].Value;
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbFotoAnexoFunciones.Image = Bitmap.FromStream(ms);
+                    txtAnexoFunciones.Text = dtgconten["NOMBREANEXOIMG", fila].Value.ToString();
+                }
+                else
+                {
+                    txtAnexoFunciones.Text = "";
+                    pbFotoAnexoFunciones.Image = null;
+                }
+                if (dtgconten["PRACTICAIMG", fila].Value.ToString() != null && dtgconten["PRACTICAIMG", fila].Value.ToString().Length > 0)
+                {
+                    byte[] Fotito = new byte[0];
+                    FotoSolicitudPracticas = Fotito = (byte[])dtgconten["PRACTICAIMG", fila].Value;
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbFotoSolicitudPracticas.Image = Bitmap.FromStream(ms);
+                    txtSolicitudPracticas.Text = dtgconten["NOMBREPRACTICAIMG", fila].Value.ToString();
+                }
+                else
+                {
+                    txtSolicitudPracticas.Text = "";
+                    pbFotoSolicitudPracticas.Image = null;
+                }
+                if (dtgconten["OTROSIMG", fila].Value.ToString() != null && dtgconten["OTROSIMG", fila].Value.ToString().Length > 0)
+                {
+                    byte[] Fotito = new byte[0];
+                    FotoOtros = Fotito = (byte[])dtgconten["OTROSIMG", fila].Value;
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbFotoOtros.Image = Bitmap.FromStream(ms);
+                    txtOtros.Text = dtgconten["NOMBREOTROSIMG", fila].Value.ToString();
+                }
+                else
+                {
+                    txtOtros.Text = "";
+                    pbFotoOtros.Image = null;
+                }
+                if (!string.IsNullOrWhiteSpace(dtgconten["CESE", fila].Value.ToString()))
+                {
+                    dtpfechacese.Visible = lblfechacese.Visible = true;
+                    dtpfechacese.Value = Convert.ToDateTime(dtgconten["CESE", fila].Value.ToString());
+                }
+                else
+                {
+                    dtpfechacese.Visible = lblfechacese.Visible = false;
+                }
+
             }
             else
             {
                 btnModificar.Enabled = false;
-                btnRegistrar.Enabled = true;
             }
 
-            txtPeriodoLaboral_TextChanged(sender, e);
         }
-
         private void CargaCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
         {
             cbo.ValueMember = "codigo";
@@ -195,15 +267,36 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txtSalario.Text);
         }
-
+        int fila;
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            fila = dtgconten.CurrentCell.RowIndex;
+            Limpiar(); dtpFechaInicio.Value = DateTime.Now;
+            dtpFechaFin.Value = DateTime.Now.AddMonths(3);
+            txtPeriodoLaboral.Text = "3";
+            cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento, NumeroDocumento, 1);
+            if (dtgconten.RowCount == 0)
             {
-                GrabarEditar(1);
-                MessageBox.Show("Contrato generado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //Limpiar();
+
+                dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
+                cboBono.SelectedIndex = 1;
+                dtgconten.Enabled = true;
+                CargaCombos(cboTipoContrato, "Id_TipoContrato", "TipoContrato", "TBL_TipoContrato");
+                CargaCombos(cboCargo, "Id_Cargo", "Cargo", "TBL_Cargo");
+                CargaCombos(cboEmpresa, "Id_Empresa", "Empresa", "TBL_Empresa");
+                CargaCombos(cboGerencia, "Id_Gerencia", "Gerencia", "TBL_Gerencia");
+                CargaCombos(cboSede, "Id_Sede", "Sede", "TBL_Sede");
+                cboJefeInmediato.ValueMember = "codigo";
+                cboJefeInmediato.DisplayMember = "jefe";
+                //cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento,NumeroDocumento,1);
             }
+            estado = 1;
+            dtgconten.Enabled = false;
+            btnRegistrar.Enabled = false;
+            btnModificar.Enabled = false;
+            btnaceptar.Enabled = true;
+            grpcontra.Enabled = grpcontrato.Enabled = true;
+            FotoContrato = FotoAnexoFunciones = FotoSolicitudPracticas = FotoOtros = null;
         }
 
 
@@ -239,6 +332,67 @@ namespace HPReserger
                 btnBuscarImagenContrato.Focus();
                 return false;
             }
+            if (dtgconten.RowCount > 0 && estado == 1)
+            {
+                if (!string.IsNullOrWhiteSpace(dtgconten["CESE", 0].Value.ToString()))
+                {
+                    if (dtpFechaInicio.Value <= Convert.ToDateTime(dtgconten["CESE", 0].Value.ToString()))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser menor que la de CESE del contrato anterior");
+                        dtpFechaInicio.Focus();
+                        return false;
+                    }
+                }
+                else if (!string.IsNullOrWhiteSpace(dtgconten["FIN", 0].Value.ToString()))
+                {
+                    if (!(dtpFechaInicio.Value > Convert.ToDateTime(dtgconten["FIN", 0].Value.ToString())))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser menor que la de FIN del contrato anterior");
+                        dtpFechaInicio.Focus();
+                        return false;
+                    }
+                    if ((dtpFechaInicio.Value.Date == Convert.ToDateTime(dtgconten["FIN", 0].Value.ToString())))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser igual que la de FIN del contrato anterior");
+                        dtpFechaInicio.Focus();
+                        return false;
+                    }
+                }
+
+            }
+            if (dtgconten.RowCount > 1 && estado == 2)
+            {
+                if (!string.IsNullOrWhiteSpace(dtgconten["CESE", 1].Value.ToString()))
+                {
+                    if (dtpFechaInicio.Value <= Convert.ToDateTime(dtgconten["CESE", 1].Value.ToString()))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser menor que la de CESE del contrato anterior");
+                        return false;
+                    }
+                }
+                else if (!string.IsNullOrWhiteSpace(dtgconten["FIN", 1].Value.ToString()))
+                {
+                    //MensajeAlerta(dtgconten["FIN", 0].Value.ToString());
+                    if (!(dtpFechaInicio.Value > Convert.ToDateTime(dtgconten["FIN", 1].Value.ToString())))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser menor que la de FIN del contrato anterior");
+                        return false;
+                    }
+                    if ((dtpFechaInicio.Value.Date == Convert.ToDateTime(dtgconten["FIN", 1].Value.ToString())))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser igual que la de FIN del contrato anterior");
+                        return false;
+                    }
+                }
+            }
+            if (dtpFechaFin.Value.Date <= dtpFechaInicio.Value.Date)
+            {
+                MensajeAlerta("FECHA FIN Debe ser mayor a la FECHA DE INICIO");
+                dtpFechaFin.Focus();
+                return false;
+            }
+            txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
+            //txtPeriodoLaboral.Text = Convert.ToDateTime(dtpFechaFin.Value - dtpFechaInicio.Value).Month.ToString();
             /*
             if (txtAnexoFunciones.Text.Length == 0)
             {
@@ -263,6 +417,7 @@ namespace HPReserger
 
         private void Limpiar()
         {
+            pbFotoContrato.Image = pbFotoAnexoFunciones.Image = pbFotoSolicitudPracticas.Image = pbFotoOtros.Image = null;
             txtPeriodoLaboral.Text = "";
             txtSalario.Text = "";
             txtImporteBono.Text = "";
@@ -275,24 +430,44 @@ namespace HPReserger
 
         private void GrabarEditar(int Opcion)
         {
+            int jefe; int numero;
             decimal ImporteBono = 0;
             int PeriodicidadBono = 0;
+            if (chkjefe.Checked) { jefe = 1; } else { jefe = 0; }
             if (cboBono.SelectedIndex == 0)
             {
                 ImporteBono = Convert.ToDecimal(txtImporteBono.Text);
                 PeriodicidadBono = Convert.ToInt32(txtPeriodicidad.Text);
             }
-
-            clContrato.EmpleadoContrato(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()), Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), cboJefeInmediato.SelectedValue.ToString(), Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value, Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), cboBono.SelectedItem.ToString(), ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones, txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
+            string docjefe;
+            int tipojefe;
+            tipojefe = Convert.ToInt32(cboJefeInmediato.SelectedValue.ToString().Substring(0, 1));
+            docjefe = cboJefeInmediato.SelectedValue.ToString().Substring(1);
+            //MessageBox.Show(tipojefe + " " + docjefe);
+            if (dtgconten.RowCount > 0)
+            {
+                numero = Convert.ToInt32(dtgconten["NRO", dtgconten.CurrentCell.RowIndex].Value.ToString());
+            }
+            else { numero = 0; }
+            clContrato.EmpleadoContrato(numero, CodigoDocumento, NumeroDocumento, jefe, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()), Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), tipojefe, docjefe, Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value, Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), cboBono.SelectedItem.ToString(), ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones, txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
+            //MessageBox.Show(numero+" "+CodigoDocumento +" "+ NumeroDocumento);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            if (dtgconten.CurrentCell.RowIndex == 0)
             {
-                GrabarEditar(0);
-                MessageBox.Show("Contrato modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //Limpiar();
+                estado = 2;
+                cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento, NumeroDocumento, 1);
+                btnRegistrar.Enabled = false;
+                grpcontrato.Enabled = true; grpcontra.Enabled = true;
+                btnaceptar.Enabled = true;
+                dtgconten.Enabled = false;
+                btnModificar.Enabled = true; btnModificar.Visible = false; btnModificar.Enabled = false; btnModificar.Visible = true;
+            }
+            else
+            {
+                MensajeAlerta("SOLO se Puede Modificar el CONTRATO ACTUAL");
             }
         }
 
@@ -332,7 +507,7 @@ namespace HPReserger
         {
             if (!string.IsNullOrWhiteSpace(txtPeriodoLaboral.Text))
             {
-                dtpFechaFin.Value = dtpFechaInicio.Value.AddMonths(Convert.ToInt32(txtPeriodoLaboral.Text));
+                dtpFechaFin.Value = (dtpFechaInicio.Value.AddMonths(Convert.ToInt32(txtPeriodoLaboral.Text)));
             }
         }
 
@@ -344,6 +519,184 @@ namespace HPReserger
         private void txtSalario_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ValidarDinero(e, txtSalario);
+        }
+
+        private void cboArea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboProyecto.DataSource = clContrato.getCargoTipoContratacion3("Id_Proyecto", "Id_Empresa", "Proyecto", "TBL_Proyecto", cboEmpresa.SelectedValue.ToString());
+            cboProyecto.DisplayMember = "DESCRIPCION";
+            cboProyecto.ValueMember = "CODIGO";
+        }
+
+        private void txtContrato_DoubleClick(object sender, EventArgs e)
+        {
+            MostrarFoto(pbFotoContrato);
+        }
+
+        private void txtAnexoFunciones_DoubleClick(object sender, EventArgs e)
+        {
+            MostrarFoto(pbFotoAnexoFunciones);
+        }
+
+        private void txtSolicitudPracticas_DoubleClick(object sender, EventArgs e)
+        {
+            MostrarFoto(pbFotoSolicitudPracticas);
+        }
+
+        private void txtOtros_DoubleClick(object sender, EventArgs e)
+        {
+            MostrarFoto(pbFotoOtros);
+        }
+        public void MostrarFoto(PictureBox fotito)
+        {
+            if (fotito.Image != null)
+            {
+                FrmFoto foto = new FrmFoto();
+                foto.fotito = fotito.Image;
+                foto.ShowDialog();
+            }
+        }
+
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            if (estado != 0)
+            {
+                grpcontrato.Enabled = false; grpcontra.Enabled = false;
+                btnaceptar.Enabled = false;
+                btnRegistrar.Enabled = true;
+                btnModificar.Enabled = false;
+                dtgconten.Enabled = true;
+                if (estado == 1)
+                {
+                    dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
+                    dtgconten.CurrentCell = dtgconten[0, fila];
+                }
+                estado = 0;
+                if (dtgconten.RowCount > 0)
+                {
+                    btnModificar.Enabled = true;
+                }
+            }
+            else { this.Close(); }
+        }
+
+        private void cboTipoContrato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnaceptar_Click(object sender, EventArgs e)
+        {
+            if (estado == 1)
+            {
+                if (Validar())
+                {
+                    GrabarEditar(1);
+                    MessageBox.Show("Contrato generado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnRegistrar.Enabled = false;
+                    btnModificar.Enabled = true;
+                    btncancelar_Click(sender, e);
+                    dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
+                    cartelito(dtgconten);
+                    //Limpiar();
+                }
+            }
+            if (estado == 2)
+            {
+                if (Validar())
+                {
+                    GrabarEditar(0);
+                    MessageBox.Show("Contrato modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Limpiar();
+                    btncancelar_Click(sender, e);
+                    dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
+                    cartelito(dtgconten);
+                }
+            }
+        }
+        public void cartelito(DataGridView medir)
+        {
+            lblmsg.Text = "Total de Registros: " + medir.RowCount;
+        }
+        public void MensajeAlerta(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dtpFechaInicio_CloseUp(object sender, EventArgs e)
+        {
+            if (dtgconten.RowCount > 0 && estado == 1)
+            {
+                if (!string.IsNullOrWhiteSpace(dtgconten["CESE", 0].Value.ToString()))
+                {
+                    if (dtpFechaInicio.Value <= Convert.ToDateTime(dtgconten["CESE", 0].Value.ToString()))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser menor que la de CESE del contrato anterior");
+                    }
+                }
+                else if (!string.IsNullOrWhiteSpace(dtgconten["FIN", 0].Value.ToString()))
+                {
+                    //MensajeAlerta(dtgconten["FIN", 0].Value.ToString());
+                    if (!(dtpFechaInicio.Value > Convert.ToDateTime(dtgconten["FIN", 0].Value.ToString())))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser menor que la de FIN del contrato anterior");
+                    }
+                    if ((dtpFechaInicio.Value.Date == Convert.ToDateTime(dtgconten["FIN", 0].Value.ToString())))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser igual que la de FIN del contrato anterior");
+                    }
+                }
+            }
+            if (dtgconten.RowCount > 1 && estado == 2)
+            {
+                if (!string.IsNullOrWhiteSpace(dtgconten["CESE", 1].Value.ToString()))
+                {
+                    if (dtpFechaInicio.Value <= Convert.ToDateTime(dtgconten["CESE", 1].Value.ToString()))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser menor que la de CESE del contrato anterior");
+                    }
+                }
+                else if (!string.IsNullOrWhiteSpace(dtgconten["FIN", 1].Value.ToString()))
+                {
+                    //MensajeAlerta(dtgconten["FIN", 0].Value.ToString());
+                    if (!(dtpFechaInicio.Value >= Convert.ToDateTime(dtgconten["FIN", 1].Value.ToString())))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser menor que la de FIN del contrato anterior");
+                    }
+                    if ((dtpFechaInicio.Value.Date == Convert.ToDateTime(dtgconten["FIN", 1].Value.ToString())))
+                    {
+                        MensajeAlerta("FECHA DE INICIO No puede ser igual que la de FIN del contrato anterior");
+                    }
+                }
+            }
+            txtPeriodoLaboral_TextChanged(sender, e);
+        }
+
+        private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
+        {
+            txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
+        }
+
+        private void dtpFechaFin_CloseUp(object sender, EventArgs e)
+        {
+            if (dtpFechaFin.Value <= dtpFechaInicio.Value)
+            {
+                MensajeAlerta("FECHA FIN Debe ser mayor a la FECHA DE INICIO");
+            }
+            else
+            {
+                txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
+            }
         }
     }
 }

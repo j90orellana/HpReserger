@@ -32,5 +32,11 @@ namespace HPReserger
             Reporte.SetDatabaseLogon("mmendoza", "123");
             crvEvaluacionPracticas.ReportSource = Reporte;
         }
+
+        private void crvEvaluacionPracticas_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
+        {
+            e.Handled = true;
+            frmEvaluacionPracticas_Load(crvEvaluacionPracticas, e);
+        }
     }
 }

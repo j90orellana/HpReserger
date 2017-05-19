@@ -35,5 +35,11 @@ namespace HPReserger
             Reporte.SetDatabaseLogon("mmendoza", "123");
             crvBoletaVacaciones.ReportSource = Reporte;
         }
+
+        private void crvBoletaVacaciones_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
+        {
+            e.Handled = true;
+            frmBoletaVacaciones_Load(crvBoletaVacaciones, e);
+        }
     }
 }

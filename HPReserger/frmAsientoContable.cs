@@ -742,7 +742,8 @@ namespace HPReserger
                 {
                     string cadena = "";
                     CArgarValoresIngreso();
-                    MostrarValores(cadena + Detalle(), codigo);
+                    // MostrarValores(cadena + Detalle(), codigo);
+                    Mensajes("Se Insertó con exito");
                     for (int i = 0; i < Dtgconten.RowCount; i++)
                     {
                         Casiento.InsertarAsiento(codigo, FECHA, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Convert.ToDouble(Dtgconten[2, i].Value.ToString()), Convert.ToDouble(Dtgconten[3, i].Value.ToString()), DINAMICA, ESTADO);
@@ -760,14 +761,18 @@ namespace HPReserger
                         string cadena = "";
                         codigo = Convert.ToInt32(txtcodigo.Text.ToString());
                         CArgarValoresIngreso();
-                        MostrarValores(cadena + Detalle(), codigo);
+                        //MostrarValores(cadena + Detalle(), codigo);
+                        Mensajes("Se Modificó con exito");
                         Casiento.Modificar2asiento(codigo);
                         //Mensajes("Codigo:" + codigo + " Filas;" + Dtgconten.RowCount);
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
-                            if (modifico) { 
-                            Casiento.InsertarAsiento(codigo, FECHA, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Convert.ToDouble(Dtgconten[2, i].Value.ToString()), Convert.ToDouble(Dtgconten[3, i].Value.ToString()), DINAMICA, ESTADO);
-                            }else {
+                            if (modifico)
+                            {
+                                Casiento.InsertarAsiento(codigo, FECHA, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Convert.ToDouble(Dtgconten[2, i].Value.ToString()), Convert.ToDouble(Dtgconten[3, i].Value.ToString()), DINAMICA, ESTADO);
+                            }
+                            else
+                            {
                                 Casiento.InsertarAsiento(codigo, FECHA, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Convert.ToDouble(Dtgconten[2, i].Value.ToString()), Convert.ToDouble(Dtgconten[3, i].Value.ToString()), dinamimodi, ESTADO);
                             }
                         }

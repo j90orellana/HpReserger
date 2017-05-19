@@ -28,9 +28,16 @@ namespace HPReserger
             Reporte.Refresh();
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
             Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
-
+            
             Reporte.SetDatabaseLogon("mmendoza", "123");
             crvConstanciaTrabajo.ReportSource = Reporte;
+            
+        }
+
+        private void crvConstanciaTrabajo_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
+        {
+            e.Handled = true;
+            frmConstanciaTrabajo_Load(crvConstanciaTrabajo, e);
         }
     }
 }

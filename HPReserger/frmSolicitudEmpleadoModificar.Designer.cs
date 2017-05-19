@@ -289,6 +289,7 @@
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFoto.TabIndex = 14;
             this.pbFoto.TabStop = false;
+            this.pbFoto.DoubleClick += new System.EventHandler(this.pbFoto_DoubleClick);
             // 
             // frmSolicitudEmpleadoModificar
             // 

@@ -20,6 +20,14 @@ namespace HPResergerCapaDatos
         {
             bd = new abcBaseDatos.Database("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123");
         }
+
+
+        public DataTable ListarContratoEmpleado(int tipo, string numero)
+        {
+            string[] parametros = { "@tipo", "@numero" };
+            object[] valores = { tipo, numero };
+            return bd.DataTableFromProcedure("usp_get_Empleado_Contrato", parametros, valores, null);
+        }
         /// <summary>
         /// //////////////////////
         /// </summary>
@@ -2148,12 +2156,14 @@ namespace HPResergerCapaDatos
             return bd.DatarowFromProcedure("usp_get_datos_postulante", parametros, valores, null);
         }
 
-        public DataTable ListarJefeInmediato()
+        public DataTable ListarJefeInmediato(int tipo, string documento, int opcion)
         {
-            return bd.DataTableFromProcedure("usp_get_JefeInmediato", null, null, null);
+            string[] parametros = { "@tipo", "@documento", "@opcion" };
+            object[] valores = { tipo, documento, opcion };
+            return bd.DataTableFromProcedure("usp_get_JefeInmediato", parametros, valores, null);
         }
 
-        public void EmpleadoContrato(int Tipo_ID_Emp, string Nro_ID_Emp, int Tipo_Contrato, int Cargo, int Gerencia, int Area, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
+        public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
         {
             using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
             {
@@ -2163,13 +2173,15 @@ namespace HPResergerCapaDatos
                     cmd.Connection = cn;
                     cmd.CommandText = "usp_EmpleadoContrato";
                     cmd.CommandType = CommandType.StoredProcedure;
-
+                    cmd.Parameters.Add("@numero", SqlDbType.Int).Value = numero;
                     cmd.Parameters.Add("@Tipo_ID_Emp", SqlDbType.Int).Value = Tipo_ID_Emp;
                     cmd.Parameters.Add("@Nro_ID_Emp", SqlDbType.VarChar, 14).Value = Nro_ID_Emp;
+                    cmd.Parameters.Add("@jefe", SqlDbType.Int).Value = jefe;
                     cmd.Parameters.Add("@Tipo_Contrato", SqlDbType.Int).Value = Tipo_Contrato;
                     cmd.Parameters.Add("@Cargo", SqlDbType.Int).Value = Cargo;
                     cmd.Parameters.Add("@Gerencia", SqlDbType.Int).Value = Gerencia;
                     cmd.Parameters.Add("@Area", SqlDbType.Int).Value = Area;
+                    cmd.Parameters.Add("@tipojefe", SqlDbType.Int).Value = tipojefe;
                     cmd.Parameters.Add("@Jefe_Inmediato", SqlDbType.VarChar, 14).Value = Jefe_Inmediato;
                     cmd.Parameters.Add("@Empresa", SqlDbType.Int).Value = Empresa;
                     cmd.Parameters.Add("@Proyecto", SqlDbType.Int).Value = Proyecto;

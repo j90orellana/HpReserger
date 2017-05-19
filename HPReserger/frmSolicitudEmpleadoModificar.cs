@@ -204,5 +204,12 @@ namespace HPReserger
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
+
+        private void pbFoto_DoubleClick(object sender, EventArgs e)
+        {
+            FrmFoto foto = new FrmFoto();
+            foto.fotito = pbFoto.Image;
+            foto.ShowDialog();
+        }
     }
 }

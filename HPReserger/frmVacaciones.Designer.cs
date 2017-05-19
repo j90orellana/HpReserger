@@ -82,6 +82,8 @@
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.txtRuta = new System.Windows.Forms.TextBox();
             this.btnCompraVacaciones = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txttipo = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
@@ -90,10 +92,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.txtNumeroDocumento);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtApellidoPaterno);
             this.groupBox2.Controls.Add(this.txtApellidoMaterno);
+            this.groupBox2.Controls.Add(this.txttipo);
             this.groupBox2.Controls.Add(this.txtNombres);
             this.groupBox2.Controls.Add(this.cboTipoDocumento);
             this.groupBox2.Controls.Add(this.label4);
@@ -108,10 +112,10 @@
             // 
             // txtNumeroDocumento
             // 
-            this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 51);
+            this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 46);
             this.txtNumeroDocumento.MaxLength = 14;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(118, 20);
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(159, 20);
             this.txtNumeroDocumento.TabIndex = 78;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
@@ -121,7 +125,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 51);
+            this.label5.Location = new System.Drawing.Point(10, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(179, 13);
             this.label5.TabIndex = 77;
@@ -130,32 +134,32 @@
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 82);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(119, 75);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.ReadOnly = true;
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(161, 20);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(237, 20);
             this.txtApellidoPaterno.TabIndex = 76;
             // 
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(195, 113);
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(119, 101);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.ReadOnly = true;
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(161, 20);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(237, 20);
             this.txtApellidoMaterno.TabIndex = 75;
             // 
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombres.Location = new System.Drawing.Point(195, 144);
+            this.txtNombres.Location = new System.Drawing.Point(119, 127);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.ReadOnly = true;
             this.txtNombres.ShortcutsEnabled = false;
-            this.txtNombres.Size = new System.Drawing.Size(161, 20);
+            this.txtNombres.Size = new System.Drawing.Size(237, 20);
             this.txtNombres.TabIndex = 74;
             // 
             // cboTipoDocumento
@@ -171,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 144);
+            this.label4.Location = new System.Drawing.Point(10, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 72;
@@ -180,7 +184,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 113);
+            this.label3.Location = new System.Drawing.Point(10, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 71;
@@ -189,7 +193,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 82);
+            this.label2.Location = new System.Drawing.Point(10, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 70;
@@ -592,6 +596,26 @@
             this.btnCompraVacaciones.UseVisualStyleBackColor = true;
             this.btnCompraVacaciones.Click += new System.EventHandler(this.btnCompraVacaciones_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(10, 152);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(91, 13);
+            this.label15.TabIndex = 79;
+            this.label15.Text = "Tipo Contratación";
+            // 
+            // txttipo
+            // 
+            this.txttipo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txttipo.Location = new System.Drawing.Point(119, 149);
+            this.txttipo.MaxLength = 30;
+            this.txttipo.Name = "txttipo";
+            this.txttipo.ReadOnly = true;
+            this.txttipo.ShortcutsEnabled = false;
+            this.txttipo.Size = new System.Drawing.Size(237, 20);
+            this.txttipo.TabIndex = 74;
+            // 
             // frmVacaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -670,5 +694,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DIASVACACIONES;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
         private System.Windows.Forms.Button btnCompraVacaciones;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txttipo;
     }
 }
