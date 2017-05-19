@@ -258,10 +258,13 @@ namespace HPReserger
                 if (Convert.ToInt32(G.Rows[FilaColor].Cells[7].Value.ToString()) == 2)
                 {
                     G.Rows[FilaColor].DefaultCellStyle.ForeColor = Color.Red;
+                    G.Rows[FilaColor].DefaultCellStyle.SelectionForeColor = Color.Red;
+
                 }
                 else
                 {
                     G.Rows[FilaColor].DefaultCellStyle.ForeColor = Color.Black;
+                    G.Rows[FilaColor].DefaultCellStyle.SelectionForeColor = Color.White;
                 }
             }
         }
@@ -288,6 +291,10 @@ namespace HPReserger
                 pbFoto.Image = null;
                 PostulanteExiste = false;
                 btnRegistrar.Enabled = true;
+            }
+            if (string.IsNullOrWhiteSpace(txtAdjuntarCV.Text))
+            {
+                pbFoto.Image = null;
             }
         }
 
@@ -418,6 +425,16 @@ namespace HPReserger
         private void txtDocumento_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtDocumento, 15);
+        }
+
+        private void pbFoto_DoubleClick(object sender, EventArgs e)
+        {
+            if (pbFoto.Image != null)
+            {
+                FrmFoto foto = new FrmFoto();
+                foto.fotito = pbFoto.Image;
+                foto.ShowDialog();
+            }
         }
     }
 }

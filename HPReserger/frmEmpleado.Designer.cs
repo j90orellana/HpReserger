@@ -85,6 +85,8 @@
             this.btnPensionSeguro = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txttipo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPoliciales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPenales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoReciboServicios)).BeginInit();
@@ -103,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 47);
+            this.label2.Location = new System.Drawing.Point(12, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 1;
@@ -112,7 +114,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 78);
+            this.label3.Location = new System.Drawing.Point(13, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 2;
@@ -121,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 110);
+            this.label4.Location = new System.Drawing.Point(13, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 3;
@@ -140,7 +142,7 @@
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombres.Location = new System.Drawing.Point(181, 110);
+            this.txtNombres.Location = new System.Drawing.Point(182, 99);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(202, 20);
@@ -149,7 +151,7 @@
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(181, 78);
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(181, 73);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.Size = new System.Drawing.Size(202, 20);
@@ -328,6 +330,7 @@
             this.txtNHijos.Name = "txtNHijos";
             this.txtNHijos.Size = new System.Drawing.Size(40, 20);
             this.txtNHijos.TabIndex = 25;
+            this.txtNHijos.Text = "0";
             this.txtNHijos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNHijos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNHijos_KeyPress);
             // 
@@ -347,6 +350,7 @@
             this.txtReciboServicio.ReadOnly = true;
             this.txtReciboServicio.Size = new System.Drawing.Size(441, 20);
             this.txtReciboServicio.TabIndex = 28;
+            this.txtReciboServicio.DoubleClick += new System.EventHandler(this.pbFotoReciboServicios_DoubleClick);
             // 
             // txtAntecedentesPenales
             // 
@@ -355,6 +359,7 @@
             this.txtAntecedentesPenales.ReadOnly = true;
             this.txtAntecedentesPenales.Size = new System.Drawing.Size(441, 20);
             this.txtAntecedentesPenales.TabIndex = 29;
+            this.txtAntecedentesPenales.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPenales_DoubleClick);
             // 
             // txtAntecedentesPoliciales
             // 
@@ -363,6 +368,7 @@
             this.txtAntecedentesPoliciales.ReadOnly = true;
             this.txtAntecedentesPoliciales.Size = new System.Drawing.Size(441, 20);
             this.txtAntecedentesPoliciales.TabIndex = 30;
+            this.txtAntecedentesPoliciales.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPoliciales_DoubleClick);
             // 
             // cboEstadoCivil
             // 
@@ -574,6 +580,8 @@
             this.pbFotoAntecedentesPoliciales.Size = new System.Drawing.Size(23, 28);
             this.pbFotoAntecedentesPoliciales.TabIndex = 53;
             this.pbFotoAntecedentesPoliciales.TabStop = false;
+            this.pbFotoAntecedentesPoliciales.Click += new System.EventHandler(this.pbFotoAntecedentesPoliciales_Click);
+            this.pbFotoAntecedentesPoliciales.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPoliciales_DoubleClick);
             // 
             // pbFotoAntecedentesPenales
             // 
@@ -582,6 +590,7 @@
             this.pbFotoAntecedentesPenales.Size = new System.Drawing.Size(23, 28);
             this.pbFotoAntecedentesPenales.TabIndex = 54;
             this.pbFotoAntecedentesPenales.TabStop = false;
+            this.pbFotoAntecedentesPenales.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPenales_DoubleClick);
             // 
             // pbFotoReciboServicios
             // 
@@ -590,6 +599,7 @@
             this.pbFotoReciboServicios.Size = new System.Drawing.Size(23, 28);
             this.pbFotoReciboServicios.TabIndex = 55;
             this.pbFotoReciboServicios.TabStop = false;
+            this.pbFotoReciboServicios.DoubleClick += new System.EventHandler(this.pbFotoReciboServicios_DoubleClick);
             // 
             // btnPensionSeguro
             // 
@@ -620,6 +630,25 @@
             this.groupBox1.Size = new System.Drawing.Size(197, 56);
             this.groupBox1.TabIndex = 58;
             this.groupBox1.TabStop = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(13, 128);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(91, 13);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "Tipo Contratación";
+            // 
+            // txttipo
+            // 
+            this.txttipo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txttipo.Enabled = false;
+            this.txttipo.Location = new System.Drawing.Point(181, 125);
+            this.txttipo.MaxLength = 30;
+            this.txttipo.Name = "txttipo";
+            this.txttipo.Size = new System.Drawing.Size(202, 20);
+            this.txttipo.TabIndex = 5;
             // 
             // frmEmpleado
             // 
@@ -677,8 +706,10 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtApellidoPaterno);
             this.Controls.Add(this.txtApellidoMaterno);
+            this.Controls.Add(this.txttipo);
             this.Controls.Add(this.txtNombres);
             this.Controls.Add(this.cboTipoDocumento);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -756,5 +787,7 @@
         private System.Windows.Forms.Button btnPensionSeguro;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txttipo;
     }
 }

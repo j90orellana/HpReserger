@@ -339,7 +339,8 @@ namespace HPReserger
             if (estado == 1 && VerificarDatos(Documentoid, nombrerazon))
             {
                 CargarValoresDeIngreso();
-                MensajedeDatos();
+                //MensajedeDatos();
+                MessageBox.Show("Se Insertó con Exito","HpReserger",MessageBoxButtons.OK,MessageBoxIcon.Information); 
                 CProveedor.InsertarProveedor(numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                 persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen);
                 PresentarValor(nombrerazon);
@@ -349,7 +350,8 @@ namespace HPReserger
                 if (estado == 2)
                 {
                     CargarValoresDeIngreso();
-                    MensajedeDatos();
+                    //MensajedeDatos();
+                    MessageBox.Show("Se Modificó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CProveedor.ActualizarProveedor(numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                     persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen);
                     PresentarValor(nombrerazon);

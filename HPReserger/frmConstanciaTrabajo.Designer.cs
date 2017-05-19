@@ -30,26 +30,32 @@
         {
             this.crvConstanciaTrabajo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.rptConstanciaTrabajo1 = new HPReserger.rptConstanciaTrabajo();
+            this.rptConstanciaTrabajo2 = new HPReserger.rptConstanciaTrabajo();
+            this.rptConstanciaTrabajo3 = new HPReserger.rptConstanciaTrabajo();
+            this.rptConstanciaTrabajo4 = new HPReserger.rptConstanciaTrabajo();
             this.SuspendLayout();
             // 
             // crvConstanciaTrabajo
             // 
-            this.crvConstanciaTrabajo.ActiveViewIndex = 0;
+            this.crvConstanciaTrabajo.ActiveViewIndex = -1;
             this.crvConstanciaTrabajo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvConstanciaTrabajo.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvConstanciaTrabajo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvConstanciaTrabajo.Location = new System.Drawing.Point(0, 0);
             this.crvConstanciaTrabajo.Name = "crvConstanciaTrabajo";
-            this.crvConstanciaTrabajo.ReportSource = this.rptConstanciaTrabajo1;
-            this.crvConstanciaTrabajo.Size = new System.Drawing.Size(749, 606);
+            this.crvConstanciaTrabajo.PrintMode = CrystalDecisions.Windows.Forms.PrintMode.PrintOutputController;
+            this.crvConstanciaTrabajo.ShowLogo = false;
+            this.crvConstanciaTrabajo.ShowParameterPanelButton = false;
+            this.crvConstanciaTrabajo.Size = new System.Drawing.Size(868, 626);
             this.crvConstanciaTrabajo.TabIndex = 0;
             this.crvConstanciaTrabajo.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvConstanciaTrabajo.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvConstanciaTrabajo_ReportRefresh);
             // 
             // frmConstanciaTrabajo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 606);
+            this.ClientSize = new System.Drawing.Size(868, 626);
             this.Controls.Add(this.crvConstanciaTrabajo);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -65,5 +71,8 @@
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvConstanciaTrabajo;
         private rptConstanciaTrabajo rptConstanciaTrabajo1;
+        private rptConstanciaTrabajo rptConstanciaTrabajo2;
+        private rptConstanciaTrabajo rptConstanciaTrabajo3;
+        private rptConstanciaTrabajo rptConstanciaTrabajo4;
     }
 }

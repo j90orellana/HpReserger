@@ -269,5 +269,12 @@ namespace HPReserger
             cboTipoContratacion.SelectedIndex = -1;
             txtAdjunto.Text = "";
         }
+
+        private void pbFoto_DoubleClick(object sender, EventArgs e)
+        {
+            FrmFoto foto = new FrmFoto();
+            foto.fotito = pbFoto.Image;
+            foto.ShowDialog();
+        }
     }
 }

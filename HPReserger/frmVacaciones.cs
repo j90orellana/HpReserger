@@ -38,6 +38,7 @@ namespace HPReserger
                 Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                 txtDiasUtilizados.Text = EmpleadoVacaciones["DIASUTILIZADOS"].ToString();
                 txtDiasPendientes.Text = EmpleadoVacaciones["DIASPENDIENTES"].ToString();
+                txttipo.Text = EmpleadoVacaciones["TIPOCONTRATACION"].ToString();
 
                 if (Convert.ToInt32(EmpleadoVacaciones["DIASPENDIENTES"].ToString()) <= 0)
                 {
@@ -52,6 +53,20 @@ namespace HPReserger
                     btnCompraVacaciones.Enabled = true;
                     groupBox1.Visible = true;
                     btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
+                }
+                if (EmpleadoVacaciones["IDTIPO"].ToString() == "2" || EmpleadoVacaciones["IDTIPO"].ToString() == "3")
+                {
+                    btnBoletaVacaciones.Enabled = true;
+                    btnCompraVacaciones.Enabled = true;
+                    groupBox1.Visible = true;
+                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
+                }
+                else
+                {
+                    btnBoletaVacaciones.Enabled = false;
+                    btnCompraVacaciones.Enabled = false;
+                    groupBox1.Visible = false;
+                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
                 }
             }
             else
@@ -68,6 +83,7 @@ namespace HPReserger
                 txtDiasPendientes.Text = "";
                 txtDiasUtilizados.Text = "";
                 txtObservaciones.Text = "";
+                txttipo.Text = "";
                 LimpiarGrillas();
                 TitulosGrillas();
                 pbFoto.Image = null;

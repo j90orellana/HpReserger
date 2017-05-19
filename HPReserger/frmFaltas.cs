@@ -27,6 +27,8 @@ namespace HPReserger
 
         private void frmFaltas_Load(object sender, EventArgs e)
         {
+            LimpiarGrillas();
+            txtNumeroDocumento.Text = "";
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
             dtpInicio.Value = DateTime.Today.Date;
             dtpFin.Value = DateTime.Today.Date;

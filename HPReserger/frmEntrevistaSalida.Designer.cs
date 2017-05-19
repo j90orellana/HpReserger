@@ -39,9 +39,14 @@
             this.crvEntrevistaSalida.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvEntrevistaSalida.Location = new System.Drawing.Point(0, 0);
             this.crvEntrevistaSalida.Name = "crvEntrevistaSalida";
+            this.crvEntrevistaSalida.ShowCloseButton = false;
+            this.crvEntrevistaSalida.ShowGroupTreeButton = false;
+            this.crvEntrevistaSalida.ShowLogo = false;
+            this.crvEntrevistaSalida.ShowParameterPanelButton = false;
             this.crvEntrevistaSalida.Size = new System.Drawing.Size(791, 684);
             this.crvEntrevistaSalida.TabIndex = 0;
             this.crvEntrevistaSalida.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvEntrevistaSalida.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvEntrevistaSalida_ReportRefresh);
             // 
             // frmEntrevistaSalida
             // 

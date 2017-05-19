@@ -207,5 +207,10 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 15);
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -39,9 +39,14 @@
             this.crvMemoPremio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvMemoPremio.Location = new System.Drawing.Point(0, 0);
             this.crvMemoPremio.Name = "crvMemoPremio";
+            this.crvMemoPremio.ShowCloseButton = false;
+            this.crvMemoPremio.ShowGroupTreeButton = false;
+            this.crvMemoPremio.ShowLogo = false;
+            this.crvMemoPremio.ShowParameterPanelButton = false;
             this.crvMemoPremio.Size = new System.Drawing.Size(798, 612);
             this.crvMemoPremio.TabIndex = 0;
             this.crvMemoPremio.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvMemoPremio.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvMemoPremio_ReportRefresh);
             // 
             // frmMemoPremio
             // 

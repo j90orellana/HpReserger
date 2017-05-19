@@ -34,16 +34,20 @@
             // 
             // crvBoletaVacaciones
             // 
-            this.crvBoletaVacaciones.ActiveViewIndex = 0;
+            this.crvBoletaVacaciones.ActiveViewIndex = -1;
             this.crvBoletaVacaciones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvBoletaVacaciones.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvBoletaVacaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvBoletaVacaciones.Location = new System.Drawing.Point(0, 0);
             this.crvBoletaVacaciones.Name = "crvBoletaVacaciones";
-            this.crvBoletaVacaciones.ReportSource = this.rptVacaciones1;
+            this.crvBoletaVacaciones.ShowCloseButton = false;
+            this.crvBoletaVacaciones.ShowGroupTreeButton = false;
+            this.crvBoletaVacaciones.ShowLogo = false;
+            this.crvBoletaVacaciones.ShowParameterPanelButton = false;
             this.crvBoletaVacaciones.Size = new System.Drawing.Size(860, 642);
             this.crvBoletaVacaciones.TabIndex = 0;
             this.crvBoletaVacaciones.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvBoletaVacaciones.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvBoletaVacaciones_ReportRefresh);
             // 
             // frmBoletaVacaciones
             // 

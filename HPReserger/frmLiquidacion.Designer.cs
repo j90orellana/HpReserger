@@ -34,24 +34,27 @@
             // 
             // cvrLiquidacion
             // 
-            this.cvrLiquidacion.ActiveViewIndex = 0;
+            this.cvrLiquidacion.ActiveViewIndex = -1;
             this.cvrLiquidacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cvrLiquidacion.Cursor = System.Windows.Forms.Cursors.Default;
             this.cvrLiquidacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cvrLiquidacion.Location = new System.Drawing.Point(0, 0);
             this.cvrLiquidacion.Name = "cvrLiquidacion";
-            this.cvrLiquidacion.ReportSource = this.rptLiquidacion1;
-            this.cvrLiquidacion.Size = new System.Drawing.Size(930, 665);
+            this.cvrLiquidacion.ShowCloseButton = false;
+            this.cvrLiquidacion.ShowGroupTreeButton = false;
+            this.cvrLiquidacion.ShowLogo = false;
+            this.cvrLiquidacion.ShowParameterPanelButton = false;
+            this.cvrLiquidacion.Size = new System.Drawing.Size(1092, 511);
             this.cvrLiquidacion.TabIndex = 0;
             this.cvrLiquidacion.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.cvrLiquidacion.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.cvrLiquidacion_ReportRefresh);
             // 
             // frmLiquidacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(930, 665);
+            this.ClientSize = new System.Drawing.Size(1092, 511);
             this.Controls.Add(this.cvrLiquidacion);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

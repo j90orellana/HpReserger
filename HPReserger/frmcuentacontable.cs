@@ -295,7 +295,8 @@ namespace HPReserger
             if (estado == 1 && VerificarDatos(codigo, nombrecuenta))
             {
                 CargarValoresDeIngreso();
-                MensajedeDatos();
+                //MensajedeDatos();
+                MessageBox.Show("Se Insertó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CcuentaContable.InsertarCuentasContables(CuentaN1, CodCuenta, DesCuentea, TipoCuenta, NatuCuenta, CuentaGene, GrupoCuenta,
                 Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC);
                 PresentarValor(codigo.ToString());
@@ -305,7 +306,8 @@ namespace HPReserger
                 if (estado == 2)
                 {
                     CargarValoresDeIngreso();
-                    MensajedeDatos();
+                    //MensajedeDatos();
+                    MessageBox.Show("Se Modificó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CcuentaContable.ActualizarCuentasContables(CodCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
                         Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC);
                     PresentarValor(codigo.ToString());

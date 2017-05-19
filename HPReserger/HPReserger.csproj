@@ -164,6 +164,12 @@
     <Compile Include="frmFaltas.Designer.cs">
       <DependentUpon>frmFaltas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFoto.Designer.cs">
+      <DependentUpon>FrmFoto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGerencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -534,6 +540,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFaltas.resx">
       <DependentUpon>frmFaltas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFoto.resx">
+      <DependentUpon>FrmFoto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGerencia.resx">
       <DependentUpon>frmGerencia.cs</DependentUpon>

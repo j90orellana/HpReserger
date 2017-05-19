@@ -34,16 +34,20 @@
             // 
             // crvEvaluacionPracticas
             // 
-            this.crvEvaluacionPracticas.ActiveViewIndex = 0;
+            this.crvEvaluacionPracticas.ActiveViewIndex = -1;
             this.crvEvaluacionPracticas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvEvaluacionPracticas.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvEvaluacionPracticas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvEvaluacionPracticas.Location = new System.Drawing.Point(0, 0);
             this.crvEvaluacionPracticas.Name = "crvEvaluacionPracticas";
-            this.crvEvaluacionPracticas.ReportSource = this.rptEvaluacionPracticas1;
+            this.crvEvaluacionPracticas.ShowCloseButton = false;
+            this.crvEvaluacionPracticas.ShowGroupTreeButton = false;
+            this.crvEvaluacionPracticas.ShowLogo = false;
+            this.crvEvaluacionPracticas.ShowParameterPanelButton = false;
             this.crvEvaluacionPracticas.Size = new System.Drawing.Size(954, 725);
             this.crvEvaluacionPracticas.TabIndex = 0;
             this.crvEvaluacionPracticas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvEvaluacionPracticas.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvEvaluacionPracticas_ReportRefresh);
             // 
             // frmEvaludacionPracticas
             // 

@@ -190,7 +190,6 @@ namespace HPReserger
                 btnAdjuntarCV.Focus();
                 return;
             }
-
             if (Foto == null)
             {
                 Foto = File.ReadAllBytes(txtAdjuntarCV.Text);
@@ -237,6 +236,16 @@ namespace HPReserger
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void pbFoto_DoubleClick(object sender, EventArgs e)
+        {
+            if (pbFoto.Image != null)
+            {
+                FrmFoto fotito = new FrmFoto();
+                fotito.fotito = pbFoto.Image;
+                fotito.Show();
+            }
         }
     }
 }

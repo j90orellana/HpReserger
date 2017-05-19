@@ -521,9 +521,10 @@ namespace HPReserger
                 //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones  
                 if (estado == 1 && fila > 0 && aux)
                 {
-                    string cadena = "";
+                    //string cadena = "";
                     CargarValoresIngreso();
-                    MostrarValores(cadena + Detalle(), codigo + 1);
+                    //MostrarValores(cadena + Detalle(), codigo + 1);
+                    Mensajes("Se Insertó con Exito");
                     estado = 0;
                     for (int i = 0; i < fila; i++)
                     {
@@ -539,9 +540,10 @@ namespace HPReserger
                 {
                     if (estado == 2 && aux)
                     {
-                        string cadena = "";
+                        //string cadena = "";
                         CargarValoresIngreso();
-                        MostrarValores(cadena + Detalle2(), codigo);
+                        //MostrarValores(cadena + Detalle2(), codigo);
+                        Mensajes("Se Modificó con Exito");
                         estado = 0;
                         CDinamica.Modificar2Dinamica(codigo);
                         for (int i = 0; i < Dtgconten.RowCount; i++)

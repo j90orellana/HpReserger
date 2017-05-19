@@ -412,6 +412,7 @@
             this.ARCHIVOCV,
             this.Estado});
             this.grid3.Location = new System.Drawing.Point(12, 311);
+            this.grid3.MultiSelect = false;
             this.grid3.Name = "grid3";
             this.grid3.ReadOnly = true;
             this.grid3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -537,6 +538,7 @@
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFoto.TabIndex = 38;
             this.pbFoto.TabStop = false;
+            this.pbFoto.DoubleClick += new System.EventHandler(this.pbFoto_DoubleClick);
             // 
             // frmPostulante
             // 

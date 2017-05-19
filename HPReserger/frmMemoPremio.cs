@@ -39,5 +39,11 @@ namespace HPReserger
             Reporte.SetDatabaseLogon("mmendoza", "123");
             crvMemoPremio.ReportSource = Reporte;
         }
+
+        private void crvMemoPremio_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
+        {
+            e.Handled = true;
+            frmMemoPremio_Load(crvMemoPremio, e);
+        }
     }
 }

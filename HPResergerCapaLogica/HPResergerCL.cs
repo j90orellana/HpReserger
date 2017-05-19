@@ -14,6 +14,11 @@ namespace HPResergerCapaLogica
     {
         HPResergerCapaDatos.HPResergerCD cdOrdenPedido = new HPResergerCapaDatos.HPResergerCD();
         /// <summary>
+        /// 
+        public DataTable ListarEmpleadoContrato(int tipo, string numero)
+        {
+            return cdOrdenPedido.ListarContratoEmpleado(tipo, numero);
+        }
         public void AgregarPerfil(string descripcion)
         {
             cdOrdenPedido.AgregarPerfil(descripcion);
@@ -53,7 +58,7 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarAreas(busca);
         }
-       
+
         public void InsertarArea(string valor, int costo, int gerencia)
         {
             cdOrdenPedido.InsertarArea(valor, costo, gerencia);
@@ -178,7 +183,7 @@ namespace HPResergerCapaLogica
         public void InsertarMarcaModelo(int marca, int modelo)
         {
             cdOrdenPedido.InsertarMarcaModelo(marca, modelo);
-        }        
+        }
         public void EliminarMarcaModelo(int marca, int modelo)
         {
             cdOrdenPedido.EliminarMarcaModelo(marca, modelo);
@@ -668,14 +673,14 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.EmpleadoSeguroPension(Tipo_ID_Emp, Nro_ID_Emp, Eps, Eps_Adicional, Sctr, Onp, Afp, Afp_Empresa, Nro_Cupss, Usuario, Opcion);
         }
 
-        public DataTable ListarJefeInmediato()
+        public DataTable ListarJefeInmediato(int tipo, string documento, int opcion)
         {
-            return cdOrdenPedido.ListarJefeInmediato();
+            return cdOrdenPedido.ListarJefeInmediato(tipo, documento, opcion);
         }
 
-        public void EmpleadoContrato(int Tipo_ID_Emp, string Nro_ID_Emp, int Tipo_Contrato, int Cargo, int Gerencia, int Area, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
+        public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
         {
-            cdOrdenPedido.EmpleadoContrato(Tipo_ID_Emp, Nro_ID_Emp, Tipo_Contrato, Cargo, Gerencia, Area, Jefe_Inmediato, Empresa, Proyecto, Sede, Fec_Inicio, Periodo_Laboral, Fec_Fin, Sueldo, Bono, Bono_Importe, Bono_Periodicidad, Contrato_Img, Contrato, AnxFunc_Img, AnxFunc, SolPrac_Img, SolPrac, Otros_Img, Otros, Usuario, Opcion);
+            cdOrdenPedido.EmpleadoContrato(numero, Tipo_ID_Emp, Nro_ID_Emp, jefe, Tipo_Contrato, Cargo, Gerencia, Area, tipojefe, Jefe_Inmediato, Empresa, Proyecto, Sede, Fec_Inicio, Periodo_Laboral, Fec_Fin, Sueldo, Bono, Bono_Importe, Bono_Periodicidad, Contrato_Img, Contrato, AnxFunc_Img, AnxFunc, SolPrac_Img, SolPrac, Otros_Img, Otros, Usuario, Opcion);
         }
 
         public void EmpleadoFamilia(int Tipo_ID_Emp, string Nro_ID_Emp, int Vinculo_Familiar, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old, int Tipo_ID_Fam_New, string Nro_ID_Fam_New, string Apepat_Fam, string Apemat_Fam, string Nombres_Fam, DateTime Fec_Nacimiento_Fam, string Ocupacion, int Usuario, int Opcion)
