@@ -293,6 +293,7 @@
             resources.ApplyResources(this.txtRUC, "txtRUC");
             this.txtRUC.Name = "txtRUC";
             this.txtRUC.TextChanged += new System.EventHandler(this.txtRUC_TextChanged);
+            this.txtRUC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRUC_KeyDown);
             this.txtRUC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRUC_KeyPress);
             // 
             // label3

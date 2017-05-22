@@ -48,7 +48,7 @@ namespace HPReserger
             txtApellidoPaterno.Text = string.Empty;
             txtApellidoMaterno.Text = string.Empty;
             txtNombres.Text = string.Empty;
-            txtNHijos.Text = string.Empty;
+            txtNHijos.Text = "0";
             txtDireccion.Text = string.Empty;
             txtTelefonoFijo.Text = string.Empty;
             txtTelefonoCelular.Text = string.Empty;
@@ -470,7 +470,7 @@ namespace HPReserger
                     DataRow DatosP = clEmpleado.DatosPostulante(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                     if (DatosP != null)
                     {
-                        MessageBox.Show(DatosP["CONTRATACION"].ToString()+" "+ DatosP["TIPO"].ToString());
+                        //MessageBox.Show(DatosP["CONTRATACION"].ToString()+" "+ DatosP["TIPO"].ToString());
                         txtApellidoPaterno.Text = DatosP["APELLIDOPATERNO"].ToString();
                         txtApellidoMaterno.Text = DatosP["APELLIDOMATERNO"].ToString();
                         txtNombres.Text = DatosP["NOMBRES"].ToString();
@@ -510,6 +510,7 @@ namespace HPReserger
             DataRow DatosE = clEmpleado.DatosEmpleado(TipoDocumento, NumeroDocumento);
             if (DatosE != null)
             {
+                lklpenales.Enabled = lklpoliciales.Enabled = lklservicios.Enabled = true;
                 txtApellidoPaterno.Text = DatosE["APELLIDOPATERNO"].ToString();
                 txtApellidoMaterno.Text = DatosE["APELLIDOMATERNO"].ToString();
                 txtNombres.Text = DatosE["NOMBRES"].ToString();
@@ -585,8 +586,7 @@ namespace HPReserger
             }
             else
             {
-                cboSexo.Text = txtNHijos.Text =
-                  txtDireccion.Text = txtTelefonoFijo.Text = txtTelefonoCelular.Text =
+                cboSexo.Text = txtDireccion.Text = txtTelefonoFijo.Text = txtTelefonoCelular.Text =
                   txtAntecedentesPoliciales.Text = txtAntecedentesPenales.Text = txtReciboServicio.Text = "";// txttipo.Text = "";
                 dtpFecha.Value = DateTime.Now;
                 EmpleadoExiste = false;
@@ -594,6 +594,10 @@ namespace HPReserger
                 cboDistrito.SelectedIndex = cboSexo.SelectedIndex = -1;
                 cboEstadoCivil.SelectedIndex = cboLugarNacimiento.SelectedIndex = -1;
                 cboProfesion.SelectedIndex = cboGradoInstruccion.SelectedIndex = -1;
+                pbFotoAntecedentesPenales.Image = pbFotoAntecedentesPoliciales.Image = pbFotoReciboServicios.Image = null;
+                FotoAntecedentesPenales = FotoAntecedentesPoliciales = FotoReciboServicios = null;
+                lklpenales.Enabled = lklpoliciales.Enabled = lklservicios.Enabled = false;
+                txtNHijos.Text = "0";
             }
         }
 
@@ -726,6 +730,21 @@ namespace HPReserger
                 foto.fotito = fotito.Image;
                 foto.ShowDialog();
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbFotoAntecedentesPoliciales);
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbFotoAntecedentesPenales);
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbFotoReciboServicios);
         }
     }
 }

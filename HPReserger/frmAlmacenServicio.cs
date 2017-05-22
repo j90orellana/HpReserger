@@ -346,5 +346,10 @@ namespace HPReserger
                 TitulosGrillas();
             }
         }
+
+        private void txtRUC_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtRUC, 15);
+        }
     }
 }

@@ -70,7 +70,7 @@ namespace HPResergerFunciones
                 }
                 cajita.Text = pegado;
             }
-            if(e.Control&& e.KeyCode == Keys.C)
+            if(e.Control&& e.KeyCode == Keys.C &&!string.IsNullOrWhiteSpace(cajita.Text))
             {
                 Clipboard.SetText(cajita.SelectedText);
             }
@@ -98,7 +98,7 @@ namespace HPResergerFunciones
                 }
                 cajita.Text = pegado;
             }
-            if (e.Control && e.KeyCode == Keys.C)
+            if (e.Control && e.KeyCode == Keys.C && !string.IsNullOrWhiteSpace(cajita.Text))
             {
                 Clipboard.SetText(cajita.SelectedText);
             }
@@ -139,7 +139,7 @@ namespace HPResergerFunciones
                 }
                 cajita.Text = pegado;
             }
-            if (e.Control && e.KeyCode == Keys.C)
+            if (e.Control && e.KeyCode == Keys.C && !string.IsNullOrWhiteSpace(cajita.Text))
             {
                 Clipboard.SetText(cajita.SelectedText);
 

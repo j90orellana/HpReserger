@@ -425,5 +425,15 @@ namespace HPReserger
                 Grid.Columns[6].DataPropertyName = "ADJUNTO";
             }
         }
+
+        private void txtRUC_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtRUC, 15);
+        }
+
+        private void txtImporte_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.ValidarDinero(e, txtImporte);
+        }
     }
 }

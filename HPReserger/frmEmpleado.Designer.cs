@@ -87,6 +87,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txttipo = new System.Windows.Forms.TextBox();
+            this.lklpoliciales = new System.Windows.Forms.LinkLabel();
+            this.lklpenales = new System.Windows.Forms.LinkLabel();
+            this.lklservicios = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPoliciales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPenales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoReciboServicios)).BeginInit();
@@ -575,7 +578,7 @@
             // 
             // pbFotoAntecedentesPoliciales
             // 
-            this.pbFotoAntecedentesPoliciales.Location = new System.Drawing.Point(670, 358);
+            this.pbFotoAntecedentesPoliciales.Location = new System.Drawing.Point(728, 358);
             this.pbFotoAntecedentesPoliciales.Name = "pbFotoAntecedentesPoliciales";
             this.pbFotoAntecedentesPoliciales.Size = new System.Drawing.Size(23, 28);
             this.pbFotoAntecedentesPoliciales.TabIndex = 53;
@@ -585,7 +588,7 @@
             // 
             // pbFotoAntecedentesPenales
             // 
-            this.pbFotoAntecedentesPenales.Location = new System.Drawing.Point(670, 392);
+            this.pbFotoAntecedentesPenales.Location = new System.Drawing.Point(728, 389);
             this.pbFotoAntecedentesPenales.Name = "pbFotoAntecedentesPenales";
             this.pbFotoAntecedentesPenales.Size = new System.Drawing.Size(23, 28);
             this.pbFotoAntecedentesPenales.TabIndex = 54;
@@ -594,7 +597,7 @@
             // 
             // pbFotoReciboServicios
             // 
-            this.pbFotoReciboServicios.Location = new System.Drawing.Point(670, 426);
+            this.pbFotoReciboServicios.Location = new System.Drawing.Point(728, 424);
             this.pbFotoReciboServicios.Name = "pbFotoReciboServicios";
             this.pbFotoReciboServicios.Size = new System.Drawing.Size(23, 28);
             this.pbFotoReciboServicios.TabIndex = 55;
@@ -650,13 +653,49 @@
             this.txttipo.Size = new System.Drawing.Size(202, 20);
             this.txttipo.TabIndex = 5;
             // 
+            // lklpoliciales
+            // 
+            this.lklpoliciales.AutoSize = true;
+            this.lklpoliciales.Location = new System.Drawing.Point(661, 368);
+            this.lklpoliciales.Name = "lklpoliciales";
+            this.lklpoliciales.Size = new System.Drawing.Size(61, 13);
+            this.lklpoliciales.TabIndex = 59;
+            this.lklpoliciales.TabStop = true;
+            this.lklpoliciales.Text = "Ver Imagen";
+            this.lklpoliciales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // lklpenales
+            // 
+            this.lklpenales.AutoSize = true;
+            this.lklpenales.Location = new System.Drawing.Point(661, 402);
+            this.lklpenales.Name = "lklpenales";
+            this.lklpenales.Size = new System.Drawing.Size(61, 13);
+            this.lklpenales.TabIndex = 59;
+            this.lklpenales.TabStop = true;
+            this.lklpenales.Text = "Ver Imagen";
+            this.lklpenales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // lklservicios
+            // 
+            this.lklservicios.AutoSize = true;
+            this.lklservicios.Location = new System.Drawing.Point(661, 434);
+            this.lklservicios.Name = "lklservicios";
+            this.lklservicios.Size = new System.Drawing.Size(61, 13);
+            this.lklservicios.TabIndex = 59;
+            this.lklservicios.TabStop = true;
+            this.lklservicios.Text = "Ver Imagen";
+            this.lklservicios.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(737, 514);
+            this.ClientSize = new System.Drawing.Size(756, 514);
+            this.Controls.Add(this.lklservicios);
+            this.Controls.Add(this.lklpenales);
+            this.Controls.Add(this.lklpoliciales);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnPensionSeguro);
             this.Controls.Add(this.pbFotoReciboServicios);
@@ -789,5 +828,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txttipo;
+        private System.Windows.Forms.LinkLabel lklpoliciales;
+        private System.Windows.Forms.LinkLabel lklpenales;
+        private System.Windows.Forms.LinkLabel lklservicios;
     }
 }
