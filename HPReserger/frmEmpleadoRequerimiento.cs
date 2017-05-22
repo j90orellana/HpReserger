@@ -47,6 +47,8 @@ namespace HPReserger
                 btnModificar.Enabled = false;
                 btnRegistrar.Enabled = true;
             }
+            btnaceptar.Enabled = false;
+            pnlconten.Enabled = false;
         }
 
         private void cboCelular_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,15 +113,11 @@ namespace HPReserger
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            DataRow Existe = clEmpleadoRequerimiento.ExisteBeneficioEmpleado(CodigoDocumento, NumeroDocumento, "usp_ExisteRequerimientoEmpleado");
-            if (Existe != null)
-            {
-                MessageBox.Show("Empleado ya cuenta el presente Benefico, NO se puede registrar", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-            GrabarEditar(1);
-            MessageBox.Show("Requerimiento ingresado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            estado = 1;
+            btnModificar.Enabled = false;
+            btnRegistrar.Enabled = false;
+            btnaceptar.Enabled = true;
+            pnlconten.Enabled = true;
         }
 
         private void GrabarEditar(int Opcion)
@@ -129,9 +127,62 @@ namespace HPReserger
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            GrabarEditar(0);
-            MessageBox.Show("Requerimiento actualizado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            estado = 2;
+            btnModificar.Enabled = false;
+            btnRegistrar.Enabled = false;
+            btnaceptar.Enabled = true;
+            pnlconten.Enabled = true;
+        }
+        int estado = 0;
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            if (estado != 0)
+            {
+
+                btnaceptar.Enabled = false;
+                pnlconten.Enabled = false;
+                if (estado == 1)
+                {
+                    btnRegistrar.Enabled = true;
+                    btnModificar.Enabled = false;
+                }
+                if (estado == 2)
+                {
+                    btnRegistrar.Enabled = false;
+                    btnModificar.Enabled = true;
+                }
+            }
+            if (estado == 0)
+            {
+                this.Close();
+            }
+            estado = 0;
+        }
+
+        private void btnaceptar_Click(object sender, EventArgs e)
+        {
+            if (estado == 1)
+            {
+                DataRow Existe = clEmpleadoRequerimiento.ExisteBeneficioEmpleado(CodigoDocumento, NumeroDocumento, "usp_ExisteRequerimientoEmpleado");
+                if (Existe != null)
+                {
+                    MessageBox.Show("Empleado ya cuenta el presente Benefico, NO se puede registrar", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
+                GrabarEditar(1);
+                MessageBox.Show("Requerimiento ingresado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                btnaceptar.Enabled = false;
+                pnlconten.Enabled = false;
+            }
+            if (estado == 2)
+            {
+                GrabarEditar(0);
+                MessageBox.Show("Requerimiento actualizado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                btnaceptar.Enabled = false;
+                pnlconten.Enabled = false;
+            }
         }
     }
 }

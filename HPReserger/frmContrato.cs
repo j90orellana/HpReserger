@@ -296,6 +296,7 @@ namespace HPReserger
             btnModificar.Enabled = false;
             btnaceptar.Enabled = true;
             grpcontra.Enabled = grpcontrato.Enabled = true;
+            pbFotoAnexoFunciones.Image = pbFotoContrato.Image = pbFotoOtros.Image = pbFotoSolicitudPracticas.Image = null;
             FotoContrato = FotoAnexoFunciones = FotoSolicitudPracticas = FotoOtros = null;
         }
 

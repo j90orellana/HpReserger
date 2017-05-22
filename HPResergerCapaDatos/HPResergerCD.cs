@@ -2782,10 +2782,10 @@ namespace HPResergerCapaDatos
             return bd.DatarowFromProcedure("usp_Get_Imagen_MemoPremio", parametros, valores, null);
         }
 
-        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision)
+        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision, int OrdenCompra)
         {
-            string[] parametros = { "@Proveedor", "@GuiaRemision" };
-            object[] valores = { Proveedor, GuiaRemision };
+            string[] parametros = { "@Proveedor", "@GuiaRemision","@OrdenCompra" };
+            object[] valores = { Proveedor, GuiaRemision,OrdenCompra };
             return bd.DataTableFromProcedure("usp_Get_OrdenCompra_Proveedor", parametros, valores, null);
         }
 

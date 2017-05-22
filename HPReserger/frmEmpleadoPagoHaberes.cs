@@ -32,14 +32,14 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
         }
-
+        int estado = 0;
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            GrabarEditar(1);
-            MessageBox.Show("Paho de Haberes registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            txtCuenta.Text = "";
-            txtCuentaCCI.Text = "";
-            this.Close();
+            estado = 1;
+            btnModificar.Enabled = false;
+            btnRegistrar.Enabled = false;
+            btnaceptar.Enabled = true;
+            pnlconten.Enabled = true; 
         }
 
         private void GrabarEditar(int Opcion)
@@ -79,6 +79,8 @@ namespace HPReserger
                 btnModificar.Enabled = false;
                 btnRegistrar.Enabled = true;
             }
+            btnaceptar.Enabled = false;
+            pnlconten.Enabled = false;
         }
 
         private void CargaCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
@@ -90,11 +92,11 @@ namespace HPReserger
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            GrabarEditar(0);
-            MessageBox.Show("Pago de Haberes actualizo con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            txtCuenta.Text = "";
-            txtCuentaCCI.Text = "";
-            this.Close();
+            estado = 2;
+            btnModificar.Enabled = false;
+            btnRegistrar.Enabled = false;
+            btnaceptar.Enabled = true;
+            pnlconten.Enabled = true;
         }
 
         private void txtCuenta_KeyDown(object sender, KeyEventArgs e)
@@ -105,6 +107,55 @@ namespace HPReserger
         private void txtCuentaCCI_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtCuentaCCI, 20);
+        }
+
+        private void btnaceptar_Click(object sender, EventArgs e)
+        {
+            if (estado == 1)
+            {
+                GrabarEditar(1);
+                MessageBox.Show("Pago de Haberes registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtCuenta.Text = "";
+                txtCuentaCCI.Text = "";
+                this.Close();
+                btnaceptar.Enabled = false;
+                pnlconten.Enabled = false;
+            }
+            if (estado == 2)
+            {
+                GrabarEditar(0);
+                MessageBox.Show("Pago de Haberes actualizo con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtCuenta.Text = "";
+                txtCuentaCCI.Text = "";
+                this.Close();
+                btnaceptar.Enabled = false;
+                pnlconten.Enabled = false;
+            }
+        }
+
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            if (estado != 0)
+            {
+
+                btnaceptar.Enabled = false;
+                pnlconten.Enabled = false;
+                if (estado == 1)
+                {
+                    btnRegistrar.Enabled = true;
+                    btnModificar.Enabled = false;
+                }
+                if (estado == 2)
+                {
+                    btnRegistrar.Enabled = false;
+                    btnModificar.Enabled = true;
+                }
+            }
+            if (estado == 0)
+            {
+                this.Close();
+            }
+            estado = 0;
         }
     }
 }

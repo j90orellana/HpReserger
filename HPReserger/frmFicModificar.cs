@@ -16,7 +16,7 @@ namespace HPReserger
         public int FIC { get; set; }
         public DateTime Fecha { get; set; }
         public string GuiaRemision { get; set; }
-
+        public int ordencompra { get; set; }
         public string Proveedor { get; set; }
         public int CodigoArticulo { get; set; }
         public string Articulo { get; set; }
@@ -70,7 +70,7 @@ namespace HPReserger
 
             if (Convert.ToInt32(txtGuia.Text) != Convert.ToInt32(GuiaRemision))
             {
-                DataTable dtGuiaRemisionProveedorM = clModificarFIC.OrdenCompraProveedor(Proveedor, Convert.ToInt32(txtGuia.Text));
+                DataTable dtGuiaRemisionProveedorM = clModificarFIC.OrdenCompraProveedor(Proveedor, Convert.ToInt32(txtGuia.Text), ordencompra);
                 if (dtGuiaRemisionProveedorM.Rows.Count > 0)
                 {
                     MessageBox.Show("Guía de Remisión ya existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);

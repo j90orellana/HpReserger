@@ -22,7 +22,11 @@ namespace HPReserger
             if (fotito != null)
             {
                 pbfoto.Image = fotito;
+                this.Size = pbfoto.Image.Size;
+                
             }
+
+
         }
 
         private void FrmFoto_KeyDown(object sender, KeyEventArgs e)
@@ -36,6 +40,13 @@ namespace HPReserger
         private void pbfoto_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pbfoto_LoadCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+
+            //this.WindowState = FormWindowState.Normal;
+            //this.StartPosition = FormStartPosition.CenterScreen;
         }
 
 

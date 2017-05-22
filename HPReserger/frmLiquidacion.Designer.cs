@@ -40,6 +40,10 @@
             this.cvrLiquidacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cvrLiquidacion.Location = new System.Drawing.Point(0, 0);
             this.cvrLiquidacion.Name = "cvrLiquidacion";
+            this.cvrLiquidacion.ShowCloseButton = false;
+            this.cvrLiquidacion.ShowGroupTreeButton = false;
+            this.cvrLiquidacion.ShowLogo = false;
+            this.cvrLiquidacion.ShowParameterPanelButton = false;
             this.cvrLiquidacion.Size = new System.Drawing.Size(930, 665);
             this.cvrLiquidacion.TabIndex = 0;
             this.cvrLiquidacion.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;

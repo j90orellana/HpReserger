@@ -38,13 +38,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.pnlconten = new System.Windows.Forms.Panel();
+            this.pnlconten.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboBanco
             // 
             this.cboBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBanco.FormattingEnabled = true;
-            this.cboBanco.Location = new System.Drawing.Point(143, 19);
+            this.cboBanco.Location = new System.Drawing.Point(3, 3);
             this.cboBanco.Name = "cboBanco";
             this.cboBanco.Size = new System.Drawing.Size(210, 21);
             this.cboBanco.TabIndex = 0;
@@ -53,14 +57,14 @@
             // 
             this.cboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMoneda.FormattingEnabled = true;
-            this.cboMoneda.Location = new System.Drawing.Point(143, 51);
+            this.cboMoneda.Location = new System.Drawing.Point(3, 35);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Size = new System.Drawing.Size(121, 21);
             this.cboMoneda.TabIndex = 1;
             // 
             // txtCuenta
             // 
-            this.txtCuenta.Location = new System.Drawing.Point(143, 84);
+            this.txtCuenta.Location = new System.Drawing.Point(3, 68);
             this.txtCuenta.MaxLength = 20;
             this.txtCuenta.Name = "txtCuenta";
             this.txtCuenta.Size = new System.Drawing.Size(168, 20);
@@ -70,7 +74,7 @@
             // 
             // txtCuentaCCI
             // 
-            this.txtCuentaCCI.Location = new System.Drawing.Point(143, 116);
+            this.txtCuentaCCI.Location = new System.Drawing.Point(3, 100);
             this.txtCuentaCCI.MaxLength = 30;
             this.txtCuentaCCI.Name = "txtCuentaCCI";
             this.txtCuentaCCI.Size = new System.Drawing.Size(210, 20);
@@ -116,17 +120,17 @@
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(82, 161);
+            this.btnRegistrar.Location = new System.Drawing.Point(376, 19);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
             this.btnRegistrar.TabIndex = 8;
-            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.Text = "Agregar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(189, 161);
+            this.btnModificar.Location = new System.Drawing.Point(376, 49);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 9;
@@ -134,28 +138,60 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // btncancelar
+            // 
+            this.btncancelar.Location = new System.Drawing.Point(376, 149);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 21;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Location = new System.Drawing.Point(295, 149);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.TabIndex = 20;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // pnlconten
+            // 
+            this.pnlconten.Controls.Add(this.cboBanco);
+            this.pnlconten.Controls.Add(this.cboMoneda);
+            this.pnlconten.Controls.Add(this.txtCuenta);
+            this.pnlconten.Controls.Add(this.txtCuentaCCI);
+            this.pnlconten.Location = new System.Drawing.Point(134, 12);
+            this.pnlconten.Name = "pnlconten";
+            this.pnlconten.Size = new System.Drawing.Size(226, 127);
+            this.pnlconten.TabIndex = 22;
+            // 
             // frmEmpleadoCTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(370, 196);
+            this.ClientSize = new System.Drawing.Size(458, 179);
+            this.Controls.Add(this.pnlconten);
+            this.Controls.Add(this.btncancelar);
+            this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCuentaCCI);
-            this.Controls.Add(this.txtCuenta);
-            this.Controls.Add(this.cboMoneda);
-            this.Controls.Add(this.cboBanco);
             this.MaximizeBox = false;
             this.Name = "frmEmpleadoCTS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Empleado Pago CTS";
             this.Load += new System.EventHandler(this.frmEmpleadoCTS_Load);
+            this.pnlconten.ResumeLayout(false);
+            this.pnlconten.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +209,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btncancelar;
+        private System.Windows.Forms.Button btnaceptar;
+        private System.Windows.Forms.Panel pnlconten;
     }
 }

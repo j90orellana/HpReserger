@@ -897,9 +897,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ImagenEmpleadoMemoPremio(Registro, Tipo_ID_Emp, Nro_ID_Emp, Tipo);
         }
 
-        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision)
+        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision, int ordencompra)
         {
-            return cdOrdenPedido.OrdenCompraProveedor(Proveedor, GuiaRemision);
+            return cdOrdenPedido.OrdenCompraProveedor(Proveedor, GuiaRemision, ordencompra);
         }
 
         public DataTable ListarFicModificar(int NumeroFIC)

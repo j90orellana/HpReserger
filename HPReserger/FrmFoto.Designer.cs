@@ -38,24 +38,25 @@
             this.pbfoto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbfoto.Location = new System.Drawing.Point(0, 0);
             this.pbfoto.Name = "pbfoto";
-            this.pbfoto.Size = new System.Drawing.Size(861, 816);
+            this.pbfoto.Size = new System.Drawing.Size(729, 830);
             this.pbfoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbfoto.TabIndex = 0;
             this.pbfoto.TabStop = false;
+            this.pbfoto.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.pbfoto_LoadCompleted);
             this.pbfoto.Click += new System.EventHandler(this.pbfoto_Click);
             // 
             // FrmFoto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(861, 816);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(729, 830);
             this.Controls.Add(this.pbfoto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmFoto";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmFoto_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmFoto_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pbfoto)).EndInit();

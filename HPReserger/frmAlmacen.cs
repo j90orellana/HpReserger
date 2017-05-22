@@ -43,9 +43,9 @@ namespace HPReserger
             }
         }
 
-        private void Actualiza (int OC)
+        private void Actualiza(int OC)
         {
-            gridDetalle.DataSource = clFIG.ListarArticulosFIC(OC,0);
+            gridDetalle.DataSource = clFIG.ListarArticulosFIC(OC, 0);
             if (gridDetalle.Rows.Count > 0 && cboOC.SelectedValue != null)
             {
                 gridDetalle1.DataSource = clFIG.ListarFIC(OC, 0);
@@ -72,7 +72,7 @@ namespace HPReserger
         private void gridDetalle1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             ItemFIC = e.RowIndex;
-            if (gridDetalle1.Rows.Count > 0 && e.RowIndex >-1 && cboOC.SelectedValue != null)
+            if (gridDetalle1.Rows.Count > 0 && e.RowIndex > -1 && cboOC.SelectedValue != null)
             {
                 Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(3, 4)));
             }
@@ -96,7 +96,7 @@ namespace HPReserger
                 return;
             }
 
-            DataTable dtGuiaRemisionProveedor = clFIG.OrdenCompraProveedor(txtRUC.Text, Convert.ToInt32(txtGR.Text));
+            DataTable dtGuiaRemisionProveedor = clFIG.OrdenCompraProveedor(txtRUC.Text, Convert.ToInt32(txtGR.Text), Convert.ToInt32(cboOC.Text.Substring(2)));
             if (dtGuiaRemisionProveedor.Rows.Count > 0)
             {
                 MessageBox.Show("Guía de Remisión ya existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -127,7 +127,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    FilaContarArticulo ++;
+                    FilaContarArticulo++;
                 }
             }
 
@@ -316,7 +316,7 @@ namespace HPReserger
             gridDetalle1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             gridDetalle1.Columns[4].HeaderText = "ART FIC";
             gridDetalle1.Columns[4].DataPropertyName = "ARTFIC";
-            
+
 
             if (gridDetalle2.Columns.Count == 0)
             {
@@ -376,7 +376,7 @@ namespace HPReserger
             gridDetalle2.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             gridDetalle2.Columns[8].HeaderText = "CANT ING";
             gridDetalle2.Columns[8].DataPropertyName = "CANTIDADFIC";
-            
+
         }
 
         private void txtRUC_KeyDown(object sender, KeyEventArgs e)
@@ -417,6 +417,7 @@ namespace HPReserger
                 FICM.Fecha = Convert.ToDateTime(gridDetalle1.CurrentRow.Cells[1].Value.ToString());
                 FICM.GuiaRemision = gridDetalle1.CurrentRow.Cells[2].Value.ToString().Substring(2, 6);
                 FICM.Proveedor = txtRUC.Text;
+                FICM.ordencompra = Convert.ToInt32(cboOC.Text.Substring(2));
                 FICM.ItemDetalle = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[0].Value.ToString());
                 FICM.CodigoArticulo = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[1].Value.ToString());
                 FICM.Articulo = gridDetalle2.CurrentRow.Cells[2].Value.ToString();
