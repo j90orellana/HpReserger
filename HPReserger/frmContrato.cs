@@ -95,11 +95,12 @@ namespace HPReserger
                     MemoryStream ms = new MemoryStream(Fotito);
                     pbFotoContrato.Image = Bitmap.FromStream(ms);
                     txtContrato.Text = dtgconten["NOMBRECONTRATOIMG", fila].Value.ToString();
+                    lklcontrato.Enabled = true;
                 }
                 else
                 {
-                    txtContrato.Text = "";
-                    pbFotoContrato.Image = null;
+                    txtContrato.Text = "";FotoContrato = null;
+                    pbFotoContrato.Image = null; lklcontrato.Enabled = false;
                 }
                 if (dtgconten["ANEXOIMG", fila].Value.ToString() != null && dtgconten["ANEXOIMG", fila].Value.ToString().Length > 0)
                 {
@@ -108,11 +109,12 @@ namespace HPReserger
                     MemoryStream ms = new MemoryStream(Fotito);
                     pbFotoAnexoFunciones.Image = Bitmap.FromStream(ms);
                     txtAnexoFunciones.Text = dtgconten["NOMBREANEXOIMG", fila].Value.ToString();
+                    lklanexo.Enabled = true;
                 }
                 else
                 {
-                    txtAnexoFunciones.Text = "";
-                    pbFotoAnexoFunciones.Image = null;
+                    txtAnexoFunciones.Text = "";FotoAnexoFunciones = null;
+                    pbFotoAnexoFunciones.Image = null; lklanexo.Enabled = false;
                 }
                 if (dtgconten["PRACTICAIMG", fila].Value.ToString() != null && dtgconten["PRACTICAIMG", fila].Value.ToString().Length > 0)
                 {
@@ -121,11 +123,12 @@ namespace HPReserger
                     MemoryStream ms = new MemoryStream(Fotito);
                     pbFotoSolicitudPracticas.Image = Bitmap.FromStream(ms);
                     txtSolicitudPracticas.Text = dtgconten["NOMBREPRACTICAIMG", fila].Value.ToString();
+                    lklpracticas.Enabled = true;
                 }
                 else
                 {
-                    txtSolicitudPracticas.Text = "";
-                    pbFotoSolicitudPracticas.Image = null;
+                    txtSolicitudPracticas.Text = "";FotoSolicitudPracticas = null;
+                    pbFotoSolicitudPracticas.Image = null; lklpracticas.Enabled = false;
                 }
                 if (dtgconten["OTROSIMG", fila].Value.ToString() != null && dtgconten["OTROSIMG", fila].Value.ToString().Length > 0)
                 {
@@ -134,10 +137,12 @@ namespace HPReserger
                     MemoryStream ms = new MemoryStream(Fotito);
                     pbFotoOtros.Image = Bitmap.FromStream(ms);
                     txtOtros.Text = dtgconten["NOMBREOTROSIMG", fila].Value.ToString();
+                    lklotros.Enabled = true;
                 }
                 else
                 {
-                    txtOtros.Text = "";
+                    txtOtros.Text = "";FotoOtros = null;
+                    lklotros.Enabled = false;
                     pbFotoOtros.Image = null;
                 }
                 if (!string.IsNullOrWhiteSpace(dtgconten["CESE", fila].Value.ToString()))
@@ -698,6 +703,26 @@ namespace HPReserger
             {
                 txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
             }
+        }
+
+        private void lklcontrato_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbFotoContrato);
+        }
+
+        private void lklanexo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbFotoAnexoFunciones);
+        }
+
+        private void lklpracticas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbFotoSolicitudPracticas);
+        }
+
+        private void lklotros_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbFotoOtros);
         }
     }
 }

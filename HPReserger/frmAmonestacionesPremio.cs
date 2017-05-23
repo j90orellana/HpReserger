@@ -116,6 +116,18 @@ namespace HPReserger
                 txtApellidoMaterno.Text = EmpleadoVacaciones["APELLIDOMATERNO"].ToString();
                 txtNombres.Text = EmpleadoVacaciones["NOMBRES"].ToString();
                 MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 0);
+
+                DataRow Contratoactivo = clAmonestacionesPremio.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
+                if (Contratoactivo != null)
+                {
+                    tab.Enabled = btnGenerar.Enabled =  true;
+                    lblmensajito.Text = "EMPLEADO ACTIVO CONTRATO Nº" + Contratoactivo["Nro_Contrato"].ToString();
+                }
+                else
+                {
+                    tab.Enabled = btnGenerar.Enabled =  false;
+                    lblmensajito.Text = "EMPLEADO INACTIVO";
+                }
             }
             else
             {

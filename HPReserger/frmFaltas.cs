@@ -45,6 +45,7 @@ namespace HPReserger
         {
             DiasInicio(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_DatosEmpleado");
             Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
+            
         }
 
         private void txtNumeroDocumento_KeyPress(object sender, KeyPressEventArgs e)
@@ -66,6 +67,17 @@ namespace HPReserger
                 txtApellidoMaterno.Text = EmpleadoVacaciones["APELLIDOMATERNO"].ToString();
                 txtNombres.Text = EmpleadoVacaciones["NOMBRES"].ToString();
                 MostrarGrid(TipoDocumento, NumeroDocumento);
+                DataRow Contratoactivo = clEmpleadoFaltas.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
+                if (Contratoactivo != null)
+                {
+                    groupBox1.Enabled = btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = true;
+                    lblmensajito.Text = "EMPLEADO ACTIVO CONTRATO Nº" + Contratoactivo["Nro_Contrato"].ToString();
+                }
+                else
+                {
+                    groupBox1.Enabled = btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
+                    lblmensajito.Text = "EMPLEADO INACTIVO";
+                }
             }
             else
             {

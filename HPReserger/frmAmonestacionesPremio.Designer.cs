@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab = new System.Windows.Forms.TabControl();
             this.Memo = new System.Windows.Forms.TabPage();
             this.lblMemo = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnAdjuntarSustento = new System.Windows.Forms.Button();
             this.txtRuta = new System.Windows.Forms.TextBox();
+            this.lblmensajito = new System.Windows.Forms.TextBox();
             this.tab.SuspendLayout();
             this.Memo.SuspendLayout();
             this.Premio.SuspendLayout();
@@ -169,6 +170,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblmensajito);
             this.groupBox2.Controls.Add(this.txtNumeroDocumento);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtApellidoPaterno);
@@ -184,14 +186,13 @@
             this.groupBox2.Size = new System.Drawing.Size(373, 175);
             this.groupBox2.TabIndex = 72;
             this.groupBox2.TabStop = false;
-            //this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // txtNumeroDocumento
             // 
-            this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 51);
+            this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 46);
             this.txtNumeroDocumento.MaxLength = 14;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(118, 20);
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(161, 20);
             this.txtNumeroDocumento.TabIndex = 78;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
@@ -201,7 +202,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 51);
+            this.label5.Location = new System.Drawing.Point(10, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(179, 13);
             this.label5.TabIndex = 77;
@@ -210,7 +211,7 @@
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 82);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 72);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.ReadOnly = true;
@@ -220,7 +221,7 @@
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(195, 113);
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(194, 98);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.ReadOnly = true;
@@ -230,7 +231,7 @@
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombres.Location = new System.Drawing.Point(195, 144);
+            this.txtNombres.Location = new System.Drawing.Point(195, 124);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.ReadOnly = true;
@@ -250,7 +251,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 144);
+            this.label4.Location = new System.Drawing.Point(15, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 72;
@@ -259,7 +260,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 113);
+            this.label3.Location = new System.Drawing.Point(10, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 71;
@@ -268,7 +269,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 82);
+            this.label2.Location = new System.Drawing.Point(10, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 70;
@@ -287,14 +288,14 @@
             // 
             this.Grid.AllowUserToAddRows = false;
             this.Grid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Registro,
@@ -324,8 +325,8 @@
             // CODIGOTIPO
             // 
             this.CODIGOTIPO.DataPropertyName = "CODIGOTIPO";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle10;
             this.CODIGOTIPO.HeaderText = "CODIGOTIPO";
             this.CODIGOTIPO.Name = "CODIGOTIPO";
             this.CODIGOTIPO.ReadOnly = true;
@@ -334,9 +335,9 @@
             // TIPOID
             // 
             this.TIPOID.DataPropertyName = "TIPOID";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle11;
             this.TIPOID.HeaderText = "TIPO ID";
             this.TIPOID.Name = "TIPOID";
             this.TIPOID.ReadOnly = true;
@@ -348,8 +349,8 @@
             // NDI
             // 
             this.NDI.DataPropertyName = "NID";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.NDI.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NDI.DefaultCellStyle = dataGridViewCellStyle12;
             this.NDI.HeaderText = "Nº ID";
             this.NDI.Name = "NDI";
             this.NDI.ReadOnly = true;
@@ -410,6 +411,19 @@
             this.txtRuta.Name = "txtRuta";
             this.txtRuta.Size = new System.Drawing.Size(245, 20);
             this.txtRuta.TabIndex = 109;
+            // 
+            // lblmensajito
+            // 
+            this.lblmensajito.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.lblmensajito.Enabled = false;
+            this.lblmensajito.Location = new System.Drawing.Point(13, 149);
+            this.lblmensajito.MaxLength = 30;
+            this.lblmensajito.Name = "lblmensajito";
+            this.lblmensajito.ReadOnly = true;
+            this.lblmensajito.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblmensajito.ShortcutsEnabled = false;
+            this.lblmensajito.Size = new System.Drawing.Size(343, 20);
+            this.lblmensajito.TabIndex = 79;
             // 
             // frmAmonestacionesPremio
             // 
@@ -477,5 +491,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NDI;
         private System.Windows.Forms.DataGridViewTextBoxColumn APELLIDOSNOMBRES;
         private System.Windows.Forms.DataGridViewTextBoxColumn OBSERVACIONES;
+        private System.Windows.Forms.TextBox lblmensajito;
     }
 }

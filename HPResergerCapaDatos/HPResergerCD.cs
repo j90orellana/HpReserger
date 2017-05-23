@@ -1795,7 +1795,7 @@ namespace HPResergerCapaDatos
 
         public DataTable ListarSinOCProveedor(string Proveedor, int Tipo, int Usuario, int OC)
         {
-            string[] parametros = { "@Proveedor", "@Tipo", "@Usuario" , "@OC"};
+            string[] parametros = { "@Proveedor", "@Tipo", "@Usuario", "@OC" };
             object[] valores = { Proveedor, Tipo, Usuario, OC };
             return bd.DataTableFromProcedure("usp_Proveedor_sin_OC", parametros, valores, null);
         }
@@ -2784,8 +2784,8 @@ namespace HPResergerCapaDatos
 
         public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision, int OrdenCompra)
         {
-            string[] parametros = { "@Proveedor", "@GuiaRemision","@OrdenCompra" };
-            object[] valores = { Proveedor, GuiaRemision,OrdenCompra };
+            string[] parametros = { "@Proveedor", "@GuiaRemision", "@OrdenCompra" };
+            object[] valores = { Proveedor, GuiaRemision, OrdenCompra };
             return bd.DataTableFromProcedure("usp_Get_OrdenCompra_Proveedor", parametros, valores, null);
         }
 
@@ -2842,7 +2842,7 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public void EmpleadoDesvinculacionInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, byte[] Foto, string Ruta, int Opcion)
+        public void EmpleadoDesvinculacionInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, byte[] Foto, string Ruta, int Opcion, DateTime fechacese, int usuario, out int respuesta)
         {
             using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
             {
@@ -2858,12 +2858,41 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@Foto", SqlDbType.Image).Value = Foto;
                     cmd.Parameters.Add("@Ruta", SqlDbType.VarChar, 256).Value = Ruta;
                     cmd.Parameters.Add("@Opcion", SqlDbType.Int).Value = Opcion;
+                    cmd.Parameters.Add("@fechacese", SqlDbType.DateTime).Value = fechacese;
+                    cmd.Parameters.Add("@usuario", SqlDbType.Int).Value = usuario;
+                    cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                     cmd.ExecuteNonQuery();
+                    respuesta = int.Parse(cmd.Parameters["@respuesta"].Value.ToString().Trim());
                 }
                 cn.Close();
                 cn.Dispose();
             }
         }
+        public DataRow ListarContrato(int tipo, string documento, DateTime fecha)
+        {
+            string[] parametros = { "@tipo", "@documento", "@fecha" };
+            object[] valores = { tipo, documento, fecha };
+            return bd.DatarowFromProcedure("usp_Listar_Contrato", parametros, valores, null);
+        }
+        public DataRow ListarDesvinculaciones(int tipo, string documento, int contrato)
+        {
+            string[] parametros = { "@tipo", "@documento", "@contrato" };
+            object[] valores = { tipo, documento, contrato };
+            return bd.DatarowFromProcedure("usp_Listar_Desvinculaciones", parametros, valores, null);
+        }
+        public DataTable ListarDesvinculacionContrato(int tipo, string documento)
+        {
+            string[] parametros = { "@tipo", "@documento" };
+            object[] valores = { tipo, documento };
+            return bd.DataTableFromProcedure("dbo.usp_listar_desvinculacion_contrato", parametros, valores, null);
+        }
+        public DataRow ContratoActivo(int tipo, string documento, DateTime fecha)
+        {
+            string[] parametros = { "@tipo", "@documento", "@fecha" };
+            object[] valores = { tipo, documento, fecha };
+            return bd.DatarowFromProcedure("usp_contrato_activo", parametros, valores, null);
+        }
+        
     }
 }

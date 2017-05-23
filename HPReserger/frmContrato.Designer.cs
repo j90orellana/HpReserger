@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -93,6 +93,10 @@
             this.txtOtros = new System.Windows.Forms.TextBox();
             this.grpcontra = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
+            this.lklcontrato = new System.Windows.Forms.LinkLabel();
+            this.lklanexo = new System.Windows.Forms.LinkLabel();
+            this.lklpracticas = new System.Windows.Forms.LinkLabel();
+            this.lklotros = new System.Windows.Forms.LinkLabel();
             this.NRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DOCUMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -127,7 +131,7 @@
             this.OTROSIMG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBREOTROSIMG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAMODI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoContrato)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoOtros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAnexoFunciones)).BeginInit();
@@ -310,14 +314,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NRO,
@@ -354,32 +358,32 @@
             this.OTROSIMG,
             this.NOMBREOTROSIMG,
             this.USUARIO,
-            this.FECHAMODI});
+            this.FECHA});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Location = new System.Drawing.Point(17, 375);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(711, 217);
             this.dtgconten.TabIndex = 149;
@@ -799,7 +803,7 @@
             this.grpcontra.Controls.Add(this.btnBuscarImagenOtros);
             this.grpcontra.Location = new System.Drawing.Point(600, 233);
             this.grpcontra.Name = "grpcontra";
-            this.grpcontra.Size = new System.Drawing.Size(41, 138);
+            this.grpcontra.Size = new System.Drawing.Size(33, 138);
             this.grpcontra.TabIndex = 153;
             // 
             // label21
@@ -810,6 +814,50 @@
             this.label21.Size = new System.Drawing.Size(109, 13);
             this.label21.TabIndex = 154;
             this.label21.Text = "Tiene Cargo de Jefe?";
+            // 
+            // lklcontrato
+            // 
+            this.lklcontrato.AutoSize = true;
+            this.lklcontrato.Location = new System.Drawing.Point(639, 246);
+            this.lklcontrato.Name = "lklcontrato";
+            this.lklcontrato.Size = new System.Drawing.Size(61, 13);
+            this.lklcontrato.TabIndex = 91;
+            this.lklcontrato.TabStop = true;
+            this.lklcontrato.Text = "Ver Imagen";
+            this.lklcontrato.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklcontrato_LinkClicked);
+            // 
+            // lklanexo
+            // 
+            this.lklanexo.AutoSize = true;
+            this.lklanexo.Location = new System.Drawing.Point(639, 277);
+            this.lklanexo.Name = "lklanexo";
+            this.lklanexo.Size = new System.Drawing.Size(61, 13);
+            this.lklanexo.TabIndex = 91;
+            this.lklanexo.TabStop = true;
+            this.lklanexo.Text = "Ver Imagen";
+            this.lklanexo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklanexo_LinkClicked);
+            // 
+            // lklpracticas
+            // 
+            this.lklpracticas.AutoSize = true;
+            this.lklpracticas.Location = new System.Drawing.Point(639, 306);
+            this.lklpracticas.Name = "lklpracticas";
+            this.lklpracticas.Size = new System.Drawing.Size(61, 13);
+            this.lklpracticas.TabIndex = 91;
+            this.lklpracticas.TabStop = true;
+            this.lklpracticas.Text = "Ver Imagen";
+            this.lklpracticas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklpracticas_LinkClicked);
+            // 
+            // lklotros
+            // 
+            this.lklotros.AutoSize = true;
+            this.lklotros.Location = new System.Drawing.Point(639, 339);
+            this.lklotros.Name = "lklotros";
+            this.lklotros.Size = new System.Drawing.Size(61, 13);
+            this.lklotros.TabIndex = 91;
+            this.lklotros.TabStop = true;
+            this.lklotros.Text = "Ver Imagen";
+            this.lklotros.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklotros_LinkClicked);
             // 
             // NRO
             // 
@@ -1102,13 +1150,13 @@
             this.USUARIO.Visible = false;
             this.USUARIO.Width = 74;
             // 
-            // FECHAMODI
+            // FECHA
             // 
-            this.FECHAMODI.DataPropertyName = "FECHAMODI";
-            this.FECHAMODI.HeaderText = "FECHAMODI";
-            this.FECHAMODI.Name = "FECHAMODI";
-            this.FECHAMODI.Visible = false;
-            this.FECHAMODI.Width = 86;
+            this.FECHA.DataPropertyName = "FECHAMODI";
+            this.FECHA.HeaderText = "FECHA";
+            this.FECHA.Name = "FECHA";
+            this.FECHA.Visible = false;
+            this.FECHA.Width = 63;
             // 
             // frmContrato
             // 
@@ -1117,9 +1165,13 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(731, 631);
+            this.Controls.Add(this.lklotros);
             this.Controls.Add(this.label21);
+            this.Controls.Add(this.lklpracticas);
             this.Controls.Add(this.txtContrato);
+            this.Controls.Add(this.lklanexo);
             this.Controls.Add(this.txtAnexoFunciones);
+            this.Controls.Add(this.lklcontrato);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.txtSolicitudPracticas);
             this.Controls.Add(this.dtgconten);
@@ -1224,6 +1276,10 @@
         private System.Windows.Forms.TextBox txtOtros;
         private System.Windows.Forms.Panel grpcontra;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.LinkLabel lklotros;
+        private System.Windows.Forms.LinkLabel lklpracticas;
+        private System.Windows.Forms.LinkLabel lklanexo;
+        private System.Windows.Forms.LinkLabel lklcontrato;
         private System.Windows.Forms.DataGridViewTextBoxColumn NRO;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn DOCUMENTO;
@@ -1258,6 +1314,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OTROSIMG;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBREOTROSIMG;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAMODI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
     }
 }

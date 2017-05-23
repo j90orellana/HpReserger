@@ -922,9 +922,26 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.FICEliminarItemDetalle(Id_FIC_Detalle, NumeroFIC, CodigoArticulo, CodigoMarca, CodigoModelo);
         }
 
-        public void EmpleadoDesvinculacionInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, byte[] Foto, string Ruta, int Opcion)
+        public void EmpleadoDesvinculacionInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, byte[] Foto, string Ruta, int Opcion, DateTime fechacese, int usuario, out int respuesta)
         {
-            cdOrdenPedido.EmpleadoDesvinculacionInsertar(Tipo_ID_Emp, Nro_ID_Emp, Foto, Ruta, Opcion);
+            cdOrdenPedido.EmpleadoDesvinculacionInsertar(Tipo_ID_Emp, Nro_ID_Emp, Foto, Ruta, Opcion, fechacese, usuario, out respuesta);
+        }
+        public DataRow ListarContrato(int tipo, string documento, DateTime fecha)
+        {
+            return cdOrdenPedido.ListarContrato(tipo, documento, fecha);
+
+        }
+        public DataRow ListarDesvinculaciones(int tipo, string documento, int contrato)
+        {
+            return cdOrdenPedido.ListarDesvinculaciones(tipo, documento, contrato);
+        }
+        public DataTable ListarDesvinculacionContrato(int tipo, string documento)
+        {
+            return cdOrdenPedido.ListarDesvinculacionContrato(tipo, documento);
+        }
+        public DataRow ContratoActivo(int tipo, string documento, DateTime fecha)
+        {
+            return cdOrdenPedido.ContratoActivo(tipo, documento, fecha);
         }
     }
 }
