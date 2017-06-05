@@ -76,6 +76,9 @@
             // 
             this.gridOC.AllowUserToAddRows = false;
             this.gridOC.AllowUserToOrderColumns = true;
+            this.gridOC.AllowUserToResizeRows = false;
+            this.gridOC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridOC.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,6 +107,7 @@
             this.gridOC.Location = new System.Drawing.Point(12, 25);
             this.gridOC.Name = "gridOC";
             this.gridOC.ReadOnly = true;
+            this.gridOC.RowHeadersVisible = false;
             this.gridOC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridOC.Size = new System.Drawing.Size(858, 261);
             this.gridOC.TabIndex = 29;
@@ -117,7 +121,6 @@
             this.ORDENCOMPRA.HeaderText = "Nº OC";
             this.ORDENCOMPRA.Name = "ORDENCOMPRA";
             this.ORDENCOMPRA.ReadOnly = true;
-            this.ORDENCOMPRA.Width = 60;
             // 
             // COTIZACION
             // 
@@ -127,7 +130,6 @@
             this.COTIZACION.HeaderText = "Nº COT";
             this.COTIZACION.Name = "COTIZACION";
             this.COTIZACION.ReadOnly = true;
-            this.COTIZACION.Width = 60;
             // 
             // ORDENPEDIDO
             // 
@@ -140,7 +142,6 @@
             this.ORDENPEDIDO.ReadOnly = true;
             this.ORDENPEDIDO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ORDENPEDIDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ORDENPEDIDO.Width = 60;
             // 
             // CODIGOCC
             // 
@@ -149,7 +150,6 @@
             this.CODIGOCC.Name = "CODIGOCC";
             this.CODIGOCC.ReadOnly = true;
             this.CODIGOCC.Visible = false;
-            this.CODIGOCC.Width = 5;
             // 
             // CENTROCOSTO
             // 
@@ -157,7 +157,6 @@
             this.CENTROCOSTO.HeaderText = "CENTRO DE COSTO";
             this.CENTROCOSTO.Name = "CENTROCOSTO";
             this.CENTROCOSTO.ReadOnly = true;
-            this.CENTROCOSTO.Width = 120;
             // 
             // CODIGOPP
             // 
@@ -166,7 +165,6 @@
             this.CODIGOPP.Name = "CODIGOPP";
             this.CODIGOPP.ReadOnly = true;
             this.CODIGOPP.Visible = false;
-            this.CODIGOPP.Width = 5;
             // 
             // PARTIDAPRESUPUESTO
             // 
@@ -174,7 +172,6 @@
             this.PARTIDAPRESUPUESTO.HeaderText = "P. PTO";
             this.PARTIDAPRESUPUESTO.Name = "PARTIDAPRESUPUESTO";
             this.PARTIDAPRESUPUESTO.ReadOnly = true;
-            this.PARTIDAPRESUPUESTO.Width = 120;
             // 
             // CODIGOUSUARIO
             // 
@@ -183,7 +180,6 @@
             this.CODIGOUSUARIO.Name = "CODIGOUSUARIO";
             this.CODIGOUSUARIO.ReadOnly = true;
             this.CODIGOUSUARIO.Visible = false;
-            this.CODIGOUSUARIO.Width = 5;
             // 
             // USUARIO
             // 
@@ -191,7 +187,6 @@
             this.USUARIO.HeaderText = "USUARIO";
             this.USUARIO.Name = "USUARIO";
             this.USUARIO.ReadOnly = true;
-            this.USUARIO.Width = 120;
             // 
             // CODIGOAREA
             // 
@@ -200,7 +195,6 @@
             this.CODIGOAREA.Name = "CODIGOAREA";
             this.CODIGOAREA.ReadOnly = true;
             this.CODIGOAREA.Visible = false;
-            this.CODIGOAREA.Width = 5;
             // 
             // AREA
             // 
@@ -213,7 +207,6 @@
             this.AREA.ReadOnly = true;
             this.AREA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.AREA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.AREA.Width = 120;
             // 
             // CODIGOGERENCIA
             // 
@@ -222,7 +215,6 @@
             this.CODIGOGERENCIA.Name = "CODIGOGERENCIA";
             this.CODIGOGERENCIA.ReadOnly = true;
             this.CODIGOGERENCIA.Visible = false;
-            this.CODIGOGERENCIA.Width = 5;
             // 
             // GERENCIA
             // 
@@ -234,7 +226,6 @@
             this.GERENCIA.ReadOnly = true;
             this.GERENCIA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.GERENCIA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GERENCIA.Width = 120;
             // 
             // TIPO
             // 
@@ -243,7 +234,6 @@
             this.TIPO.Name = "TIPO";
             this.TIPO.ReadOnly = true;
             this.TIPO.Visible = false;
-            this.TIPO.Width = 5;
             // 
             // label1
             // 
@@ -311,6 +301,9 @@
             // 
             this.gridDetalle.AllowUserToAddRows = false;
             this.gridDetalle.AllowUserToOrderColumns = true;
+            this.gridDetalle.AllowUserToResizeRows = false;
+            this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -332,6 +325,7 @@
             this.gridDetalle.Location = new System.Drawing.Point(12, 353);
             this.gridDetalle.Name = "gridDetalle";
             this.gridDetalle.ReadOnly = true;
+            this.gridDetalle.RowHeadersVisible = false;
             this.gridDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle.Size = new System.Drawing.Size(764, 261);
             this.gridDetalle.TabIndex = 37;

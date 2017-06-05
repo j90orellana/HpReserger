@@ -30,7 +30,7 @@ namespace HPReserger
         private void gridCotizacion_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             Item = e.RowIndex;
-            dtCotizacionesAsociadas = clAprobarCotizacion.ListarCotizacionesAsociadas(Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2, 4)));
+            dtCotizacionesAsociadas = clAprobarCotizacion.ListarCotizacionesAsociadas(Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)));
 
             if (dtCotizacionesAsociadas.Rows.Count > 0)
             {
@@ -51,6 +51,7 @@ namespace HPReserger
             Mostrar(frmLogin.CodigoUsuario);
             System.Globalization.CultureInfo CT = new System.Globalization.CultureInfo("EN-US");
             Application.CurrentCulture = CT;
+            pbFoto.Image = null;
         }
 
         private void Mostrar(int Usuario)
@@ -97,14 +98,14 @@ namespace HPReserger
             
             if (MessageBox.Show("¿ Desea Aprobar Cotización Nº " + gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString() + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                clAprobarCotizacion.AprobacionNOCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2, 4)), "usp_Set_Aprobacion_Cotizacion");
+                clAprobarCotizacion.AprobacionNOCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2)), "usp_Set_Aprobacion_Cotizacion");
 
                 int fila = 0;
                 for (fila = 0; fila < gridCotizacionesAsociadas.Rows.Count; fila++)
                 {
                     if(fila != ItemAprob)
                     {
-                        clAprobarCotizacion.AprobacionNOCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.Rows[fila].Cells[0].Value.ToString().Substring(2, 4)), "usp_Set_NOAprobacion_Cotizacion");
+                        clAprobarCotizacion.AprobacionNOCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.Rows[fila].Cells[0].Value.ToString().Substring(2)), "usp_Set_NOAprobacion_Cotizacion");
                     }
                 }
                 int NumeroCotizacion = 0;
@@ -113,18 +114,19 @@ namespace HPReserger
                 {
                     TipoArticulo = 1;
                 }
-                clAprobarCotizacion.OrdenCompraInsertar(out NumeroCotizacion, Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2, 4)),  Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2, 4)), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[8].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[10].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[1].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[3].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[5].Value.ToString()), gridCotizacionesAsociadas.Rows[ItemAprob].Cells[2].Value.ToString(), Convert.ToDecimal(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[4].Value.ToString()), TipoArticulo);
+                clAprobarCotizacion.OrdenCompraInsertar(out NumeroCotizacion, Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2)),  Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[8].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[10].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[1].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[3].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[5].Value.ToString()), gridCotizacionesAsociadas.Rows[ItemAprob].Cells[2].Value.ToString(), Convert.ToDecimal(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[4].Value.ToString()), TipoArticulo);
 
-                string Cot = gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2,4);
+                string Cot = gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2);
                 Mostrar(frmLogin.CodigoUsuario);
                 MessageBox.Show("Se aprobó la Cotización Nº " + Cot + " y se generó la OC Nº " + Convert.ToString(NumeroCotizacion) + "" , "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                pbFoto.Image = null;
             }
         }
 
         private void gridCotizacionesAsociadas_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             ItemAprob = e.RowIndex;
-            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2, 4)), e.RowIndex);
+            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2)), e.RowIndex);
         }
         private void CargarFoto(int Cotizacion, int Item)
         {

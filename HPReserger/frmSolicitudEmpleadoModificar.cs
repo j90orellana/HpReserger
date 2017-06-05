@@ -53,7 +53,7 @@ namespace HPReserger
             cboCargoPuesto.Text = Cargo;
             cboTipoContratacion.Text = Tipo;
             txtAdjunto.Text = Adjuntar;
-            CargarFoto(Convert.ToInt32(Solicitud.Substring(2, 4)));
+            CargarFoto(Convert.ToInt32(Solicitud.Substring(2)));
 
         }
 
@@ -182,7 +182,7 @@ namespace HPReserger
             int OC = 0;
             if (cboBusqueda.SelectedIndex == 0 && chkCambiar.Checked == false)
             {
-                OC = Convert.ToInt32(txtOS.Text.Substring(2, 4));
+                OC = Convert.ToInt32(txtOS.Text.Substring(2));
             }
 
             if (cboBusqueda.SelectedIndex == 0 && chkCambiar.Checked == true)
@@ -195,11 +195,11 @@ namespace HPReserger
                 }
                 else
                 {
-                    OC = Convert.ToInt32(cboOS.Text.Substring(2, 4));
+                    OC = Convert.ToInt32(cboOS.Text.Substring(2));
                 }
             }
 
-            clModificarSE.SolicitudEmpleadoModificar(Convert.ToInt32(txtSolicitud.Text.Substring(2, 4)), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text);
+            clModificarSE.SolicitudEmpleadoModificar(Convert.ToInt32(txtSolicitud.Text.Substring(2)), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text);
             MessageBox.Show("Solicitud modificada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
@@ -210,6 +210,11 @@ namespace HPReserger
             FrmFoto foto = new FrmFoto();
             foto.fotito = pbFoto.Image;
             foto.ShowDialog();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

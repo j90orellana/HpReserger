@@ -33,7 +33,7 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        public int tipo = 0;
         private void txtGuia_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
@@ -50,6 +50,7 @@ namespace HPReserger
             txtModelo.Text = Modelo;
             txtCantOC.Text = Convert.ToString(Convert.ToInt32(CantOC) + Convert.ToInt32(CantFIC));
             txtCantFIC.Text = CantFIC;
+            txtCantFIC.Focus();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -70,10 +71,10 @@ namespace HPReserger
 
             if (Convert.ToInt32(txtGuia.Text) != Convert.ToInt32(GuiaRemision))
             {
-                DataTable dtGuiaRemisionProveedorM = clModificarFIC.OrdenCompraProveedor(Proveedor, Convert.ToInt32(txtGuia.Text), ordencompra);
+                DataTable dtGuiaRemisionProveedorM = clModificarFIC.OrdenCompraProveedor(Proveedor, Convert.ToInt32(txtGuia.Text), ordencompra,tipo);
                 if (dtGuiaRemisionProveedorM.Rows.Count > 0)
                 {
-                    MessageBox.Show("Guía de Remisión ya existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show(lblguia.Text + " ya existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtGuia.Focus();
                     return;
                 }
@@ -88,7 +89,7 @@ namespace HPReserger
 
             clModificarFIC.FICModificarCabecera(Convert.ToInt32(txtFIC.Text), dtpFecha.Value, Convert.ToInt32(txtGuia.Text));
             clModificarFIC.FICEliminarItemDetalle(ItemDetalle, FIC, CodigoArticulo, CodigoMarca, CodigoModelo);
-            clModificarFIC.FICDetalleInsertar(FIC, CodigoArticulo, CodigoMarca, CodigoModelo, Convert.ToInt32(txtCantFIC.Text), "", 0);
+            clModificarFIC.FICDetalleInsertar(FIC, CodigoArticulo, CodigoMarca, CodigoModelo, Convert.ToInt32(txtCantFIC.Text), "", tipo);
 
             MessageBox.Show("FIC modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -98,6 +99,11 @@ namespace HPReserger
         private void txtCantFIC_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
+        }
+
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -43,7 +43,6 @@ namespace HPReserger
             grpcontra.Enabled = false;
             btnModificar.Enabled = false;
             btnaceptar.Enabled = false;
-
             dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
             cartelito(dtgconten);
             if (dtgconten.RowCount > 0)
@@ -59,7 +58,12 @@ namespace HPReserger
                 cboJefeInmediato.DisplayMember = "jefe";
                 cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento, NumeroDocumento, 0);
             }
-            else { dtgconten.Enabled = false; }
+            else
+            {
+                dtgconten.Enabled = false;
+                txtAnexoFunciones.Enabled = txtContrato.Enabled = txtOtros.Enabled = txtSolicitudPracticas.Enabled = false;
+                lklanexo.Enabled = lklcontrato.Enabled = lklotros.Enabled = lklpracticas.Enabled = false;
+            }
             txtPeriodoLaboral_TextChanged(sender, e);
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -99,7 +103,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    txtContrato.Text = "";FotoContrato = null;
+                    txtContrato.Text = ""; FotoContrato = null;
                     pbFotoContrato.Image = null; lklcontrato.Enabled = false;
                 }
                 if (dtgconten["ANEXOIMG", fila].Value.ToString() != null && dtgconten["ANEXOIMG", fila].Value.ToString().Length > 0)
@@ -113,7 +117,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    txtAnexoFunciones.Text = "";FotoAnexoFunciones = null;
+                    txtAnexoFunciones.Text = ""; FotoAnexoFunciones = null;
                     pbFotoAnexoFunciones.Image = null; lklanexo.Enabled = false;
                 }
                 if (dtgconten["PRACTICAIMG", fila].Value.ToString() != null && dtgconten["PRACTICAIMG", fila].Value.ToString().Length > 0)
@@ -127,7 +131,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    txtSolicitudPracticas.Text = "";FotoSolicitudPracticas = null;
+                    txtSolicitudPracticas.Text = ""; FotoSolicitudPracticas = null;
                     pbFotoSolicitudPracticas.Image = null; lklpracticas.Enabled = false;
                 }
                 if (dtgconten["OTROSIMG", fila].Value.ToString() != null && dtgconten["OTROSIMG", fila].Value.ToString().Length > 0)
@@ -141,7 +145,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    txtOtros.Text = "";FotoOtros = null;
+                    txtOtros.Text = ""; FotoOtros = null;
                     lklotros.Enabled = false;
                     pbFotoOtros.Image = null;
                 }
@@ -190,7 +194,7 @@ namespace HPReserger
             dialogoAbrirArchivoContrato.Filter = "Jpg Files|*.jpg";
             dialogoAbrirArchivoContrato.DefaultExt = ".jpg";
             dialogoAbrirArchivoContrato.ShowDialog(this);
-
+            txtContrato.Enabled = lklcontrato.Enabled = false;
             nombreArchivoContrato = dialogoAbrirArchivoContrato.FileName.ToString();
             if (nombreArchivoContrato != string.Empty)
             {
@@ -202,6 +206,7 @@ namespace HPReserger
                 pbFotoContrato.Image.Save(_memoryStream, ImageFormat.Jpeg);
                 FotoContrato = File.ReadAllBytes(dialogoAbrirArchivoContrato.FileName);
                 txtContrato.Text = nombreArchivoContrato;
+                txtContrato.Enabled = lklcontrato.Enabled = true;
             }
         }
 
@@ -211,7 +216,7 @@ namespace HPReserger
             dialogoAbrirArchivoAnexoFunciones.Filter = "Jpg Files|*.jpg";
             dialogoAbrirArchivoAnexoFunciones.DefaultExt = ".jpg";
             dialogoAbrirArchivoAnexoFunciones.ShowDialog(this);
-
+            txtAnexoFunciones.Enabled = lklanexo.Enabled = false;
             nombreArchivoAnexoFunciones = dialogoAbrirArchivoAnexoFunciones.FileName.ToString();
             if (nombreArchivoAnexoFunciones != string.Empty)
             {
@@ -223,6 +228,7 @@ namespace HPReserger
                 pbFotoAnexoFunciones.Image.Save(_memoryStream, ImageFormat.Jpeg);
                 FotoAnexoFunciones = File.ReadAllBytes(dialogoAbrirArchivoAnexoFunciones.FileName);
                 txtAnexoFunciones.Text = nombreArchivoAnexoFunciones;
+                txtAnexoFunciones.Enabled = lklanexo.Enabled = true;
             }
         }
 
@@ -232,7 +238,7 @@ namespace HPReserger
             dialogoAbrirArchivoSolicitudPracticas.Filter = "Jpg Files|*.jpg";
             dialogoAbrirArchivoSolicitudPracticas.DefaultExt = ".jpg";
             dialogoAbrirArchivoSolicitudPracticas.ShowDialog(this);
-
+            txtSolicitudPracticas.Enabled = lklpracticas.Enabled = false;
             nombreArchivoSolicitudPracticas = dialogoAbrirArchivoSolicitudPracticas.FileName.ToString();
             if (nombreArchivoSolicitudPracticas != string.Empty)
             {
@@ -244,6 +250,7 @@ namespace HPReserger
                 pbFotoSolicitudPracticas.Image.Save(_memoryStream, ImageFormat.Jpeg);
                 FotoSolicitudPracticas = File.ReadAllBytes(dialogoAbrirArchivoSolicitudPracticas.FileName);
                 txtSolicitudPracticas.Text = nombreArchivoSolicitudPracticas;
+                txtSolicitudPracticas.Enabled = lklpracticas.Enabled = true;
             }
         }
 
@@ -253,7 +260,7 @@ namespace HPReserger
             dialogoAbrirArchivoOtros.Filter = "Jpg Files|*.jpg";
             dialogoAbrirArchivoOtros.DefaultExt = ".jpg";
             dialogoAbrirArchivoOtros.ShowDialog(this);
-
+            txtOtros.Enabled = lklotros.Enabled = false;
             nombreArchivoOtros = dialogoAbrirArchivoOtros.FileName.ToString();
             if (nombreArchivoOtros != string.Empty)
             {
@@ -265,6 +272,7 @@ namespace HPReserger
                 pbFotoOtros.Image.Save(_memoryStream, ImageFormat.Jpeg);
                 FotoOtros = File.ReadAllBytes(dialogoAbrirArchivoOtros.FileName);
                 txtOtros.Text = nombreArchivoOtros;
+                txtOtros.Enabled = lklotros.Enabled = true;
             }
         }
 
@@ -275,7 +283,14 @@ namespace HPReserger
         int fila;
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            fila = dtgconten.CurrentCell.RowIndex;
+            if (dtgconten.RowCount > 0)
+            {
+                fila = dtgconten.CurrentCell.RowIndex;
+            }
+            else
+            {
+                fila = 0;
+            }
             Limpiar(); dtpFechaInicio.Value = DateTime.Now;
             dtpFechaFin.Value = DateTime.Now.AddMonths(3);
             txtPeriodoLaboral.Text = "3";
@@ -304,7 +319,6 @@ namespace HPReserger
             pbFotoAnexoFunciones.Image = pbFotoContrato.Image = pbFotoOtros.Image = pbFotoSolicitudPracticas.Image = null;
             FotoContrato = FotoAnexoFunciones = FotoSolicitudPracticas = FotoOtros = null;
         }
-
 
         private bool Validar()
         {
@@ -580,7 +594,22 @@ namespace HPReserger
                 if (estado == 1)
                 {
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
-                    dtgconten.CurrentCell = dtgconten[0, fila];
+                    if (dtgconten.RowCount > 0)
+                    {
+                        dtgconten.CurrentCell = dtgconten[0, fila];
+                    }
+                    else
+                    {
+                        txtContrato.Text = txtAnexoFunciones.Text = txtSolicitudPracticas.Text = txtOtros.Text = "";
+
+                        txtAnexoFunciones.Enabled = txtContrato.Enabled = txtOtros.Enabled = txtSolicitudPracticas.Enabled = false;
+                        lklanexo.Enabled = lklcontrato.Enabled = lklotros.Enabled = lklpracticas.Enabled = false;
+
+                    }
+                }
+                if (estado == 2)
+                {
+                    dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
                 }
                 estado = 0;
                 if (dtgconten.RowCount > 0)
@@ -723,6 +752,26 @@ namespace HPReserger
         private void lklotros_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MostrarFoto(pbFotoOtros);
+        }
+
+        private void txtAnexoFunciones_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSolicitudPracticas_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOtros_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtContrato_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

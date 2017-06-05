@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridCotizacion = new System.Windows.Forms.DataGridView();
             this.OP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,13 +51,6 @@
             this.cboArea = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.gridCotizacionesAsociadas = new System.Windows.Forms.DataGridView();
-            this.COT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IMPORTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAENTREGA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ADJUNTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtProveedor = new System.Windows.Forms.TextBox();
@@ -73,6 +66,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.COT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IMPORTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAENTREGA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ADJUNTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridCotizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridCotizacionesAsociadas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -83,15 +83,16 @@
             // 
             this.gridCotizacion.AllowUserToAddRows = false;
             this.gridCotizacion.AllowUserToDeleteRows = false;
-            this.gridCotizacion.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.gridCotizacion.AllowUserToResizeRows = false;
+            this.gridCotizacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridCotizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridCotizacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCotizacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OP,
@@ -104,6 +105,7 @@
             this.gridCotizacion.Location = new System.Drawing.Point(15, 39);
             this.gridCotizacion.Name = "gridCotizacion";
             this.gridCotizacion.ReadOnly = true;
+            this.gridCotizacion.RowHeadersVisible = false;
             this.gridCotizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacion.Size = new System.Drawing.Size(616, 278);
             this.gridCotizacion.TabIndex = 2;
@@ -113,12 +115,11 @@
             // OP
             // 
             this.OP.DataPropertyName = "OP";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.OP.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.OP.DefaultCellStyle = dataGridViewCellStyle2;
             this.OP.HeaderText = "Nº OP";
             this.OP.Name = "OP";
             this.OP.ReadOnly = true;
-            this.OP.Width = 70;
             // 
             // c
             // 
@@ -127,39 +128,36 @@
             this.c.Name = "c";
             this.c.ReadOnly = true;
             this.c.Visible = false;
-            this.c.Width = 50;
             // 
             // USUARIO
             // 
             this.USUARIO.DataPropertyName = "USUARIO";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.USUARIO.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.USUARIO.DefaultCellStyle = dataGridViewCellStyle3;
             this.USUARIO.HeaderText = "USUARIO";
             this.USUARIO.Name = "USUARIO";
             this.USUARIO.ReadOnly = true;
             this.USUARIO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.USUARIO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.USUARIO.Width = 80;
             // 
             // AREA
             // 
             this.AREA.DataPropertyName = "AREA";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AREA.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AREA.DefaultCellStyle = dataGridViewCellStyle4;
             this.AREA.HeaderText = "AREA";
             this.AREA.Name = "AREA";
             this.AREA.ReadOnly = true;
             this.AREA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.AREA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.AREA.Width = 200;
             // 
             // GERENCIA
             // 
             this.GERENCIA.DataPropertyName = "GERENCIA";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.GERENCIA.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.GERENCIA.DefaultCellStyle = dataGridViewCellStyle5;
             this.GERENCIA.HeaderText = "GERENCIA";
             this.GERENCIA.Name = "GERENCIA";
             this.GERENCIA.ReadOnly = true;
@@ -169,13 +167,12 @@
             // TIPO_PEDIDO
             // 
             this.TIPO_PEDIDO.DataPropertyName = "TIPO_PEDIDO";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TIPO_PEDIDO.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIPO_PEDIDO.DefaultCellStyle = dataGridViewCellStyle6;
             this.TIPO_PEDIDO.HeaderText = "TIPO PEDIDO";
             this.TIPO_PEDIDO.Name = "TIPO_PEDIDO";
             this.TIPO_PEDIDO.ReadOnly = true;
-            this.TIPO_PEDIDO.Width = 90;
             // 
             // label1
             // 
@@ -211,14 +208,16 @@
             // 
             this.gridCotizacionesAsociadas.AllowUserToAddRows = false;
             this.gridCotizacionesAsociadas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacionesAsociadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.gridCotizacionesAsociadas.AllowUserToResizeRows = false;
+            this.gridCotizacionesAsociadas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridCotizacionesAsociadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridCotizacionesAsociadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCotizacionesAsociadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.COT,
@@ -232,90 +231,13 @@
             this.gridCotizacionesAsociadas.Location = new System.Drawing.Point(12, 472);
             this.gridCotizacionesAsociadas.Name = "gridCotizacionesAsociadas";
             this.gridCotizacionesAsociadas.ReadOnly = true;
+            this.gridCotizacionesAsociadas.RowHeadersVisible = false;
             this.gridCotizacionesAsociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacionesAsociadas.Size = new System.Drawing.Size(619, 136);
             this.gridCotizacionesAsociadas.TabIndex = 17;
             this.gridCotizacionesAsociadas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCotizacionesAsociadas_RowEnter);
             this.gridCotizacionesAsociadas.DoubleClick += new System.EventHandler(this.gridCotizacionesAsociadas_DoubleClick);
             this.gridCotizacionesAsociadas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridCotizacionesAsociadas_KeyDown);
-            // 
-            // COT
-            // 
-            this.COT.DataPropertyName = "COTIZACION";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.COT.DefaultCellStyle = dataGridViewCellStyle20;
-            this.COT.HeaderText = "Nº COT";
-            this.COT.Name = "COT";
-            this.COT.ReadOnly = true;
-            this.COT.Width = 50;
-            // 
-            // NOP
-            // 
-            this.NOP.DataPropertyName = "PEDIDO";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NOP.DefaultCellStyle = dataGridViewCellStyle21;
-            this.NOP.HeaderText = "Nº OP";
-            this.NOP.Name = "NOP";
-            this.NOP.ReadOnly = true;
-            this.NOP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NOP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NOP.Width = 50;
-            // 
-            // CODIGOPROVEEDOR
-            // 
-            this.CODIGOPROVEEDOR.DataPropertyName = "CODIGOPROVEEDOR";
-            this.CODIGOPROVEEDOR.HeaderText = "CODIGOPROVEEDOR";
-            this.CODIGOPROVEEDOR.Name = "CODIGOPROVEEDOR";
-            this.CODIGOPROVEEDOR.ReadOnly = true;
-            this.CODIGOPROVEEDOR.Visible = false;
-            // 
-            // PROVEEDOR
-            // 
-            this.PROVEEDOR.DataPropertyName = "PROVEEDOR";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PROVEEDOR.DefaultCellStyle = dataGridViewCellStyle22;
-            this.PROVEEDOR.HeaderText = "PROVEEDOR";
-            this.PROVEEDOR.Name = "PROVEEDOR";
-            this.PROVEEDOR.ReadOnly = true;
-            this.PROVEEDOR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PROVEEDOR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PROVEEDOR.Width = 200;
-            // 
-            // IMPORTE
-            // 
-            this.IMPORTE.DataPropertyName = "IMPORTE";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle23.Format = "N2";
-            dataGridViewCellStyle23.NullValue = null;
-            this.IMPORTE.DefaultCellStyle = dataGridViewCellStyle23;
-            this.IMPORTE.HeaderText = "IMPORTE";
-            this.IMPORTE.Name = "IMPORTE";
-            this.IMPORTE.ReadOnly = true;
-            this.IMPORTE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IMPORTE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.IMPORTE.Width = 70;
-            // 
-            // FECHAENTREGA
-            // 
-            this.FECHAENTREGA.DataPropertyName = "FECHAENTREGA";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.Format = "d";
-            dataGridViewCellStyle24.NullValue = null;
-            this.FECHAENTREGA.DefaultCellStyle = dataGridViewCellStyle24;
-            this.FECHAENTREGA.HeaderText = "FECHA ENTREGA";
-            this.FECHAENTREGA.Name = "FECHAENTREGA";
-            this.FECHAENTREGA.ReadOnly = true;
-            this.FECHAENTREGA.Width = 70;
-            // 
-            // ADJUNTO
-            // 
-            this.ADJUNTO.DataPropertyName = "ADJUNTO";
-            this.ADJUNTO.HeaderText = "ADJUNTO";
-            this.ADJUNTO.Name = "ADJUNTO";
-            this.ADJUNTO.ReadOnly = true;
             // 
             // label7
             // 
@@ -467,6 +389,95 @@
             this.pbFoto.TabIndex = 20;
             this.pbFoto.TabStop = false;
             // 
+            // COT
+            // 
+            this.COT.DataPropertyName = "COTIZACION";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.COT.DefaultCellStyle = dataGridViewCellStyle8;
+            this.COT.Frozen = true;
+            this.COT.HeaderText = "Nº COT";
+            this.COT.Name = "COT";
+            this.COT.ReadOnly = true;
+            this.COT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.COT.Width = 56;
+            // 
+            // NOP
+            // 
+            this.NOP.DataPropertyName = "PEDIDO";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NOP.DefaultCellStyle = dataGridViewCellStyle9;
+            this.NOP.Frozen = true;
+            this.NOP.HeaderText = "Nº OP";
+            this.NOP.Name = "NOP";
+            this.NOP.ReadOnly = true;
+            this.NOP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NOP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NOP.Width = 48;
+            // 
+            // CODIGOPROVEEDOR
+            // 
+            this.CODIGOPROVEEDOR.DataPropertyName = "CODIGOPROVEEDOR";
+            this.CODIGOPROVEEDOR.HeaderText = "CODIGOPROVEEDOR";
+            this.CODIGOPROVEEDOR.Name = "CODIGOPROVEEDOR";
+            this.CODIGOPROVEEDOR.ReadOnly = true;
+            this.CODIGOPROVEEDOR.Visible = false;
+            this.CODIGOPROVEEDOR.Width = 157;
+            // 
+            // PROVEEDOR
+            // 
+            this.PROVEEDOR.DataPropertyName = "PROVEEDOR";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PROVEEDOR.DefaultCellStyle = dataGridViewCellStyle10;
+            this.PROVEEDOR.Frozen = true;
+            this.PROVEEDOR.HeaderText = "PROVEEDOR";
+            this.PROVEEDOR.Name = "PROVEEDOR";
+            this.PROVEEDOR.ReadOnly = true;
+            this.PROVEEDOR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PROVEEDOR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PROVEEDOR.Width = 90;
+            // 
+            // IMPORTE
+            // 
+            this.IMPORTE.DataPropertyName = "IMPORTE";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.IMPORTE.DefaultCellStyle = dataGridViewCellStyle11;
+            this.IMPORTE.Frozen = true;
+            this.IMPORTE.HeaderText = "IMPORTE";
+            this.IMPORTE.Name = "IMPORTE";
+            this.IMPORTE.ReadOnly = true;
+            this.IMPORTE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IMPORTE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.IMPORTE.Width = 69;
+            // 
+            // FECHAENTREGA
+            // 
+            this.FECHAENTREGA.DataPropertyName = "FECHAENTREGA";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.Format = "d";
+            dataGridViewCellStyle12.NullValue = null;
+            this.FECHAENTREGA.DefaultCellStyle = dataGridViewCellStyle12;
+            this.FECHAENTREGA.Frozen = true;
+            this.FECHAENTREGA.HeaderText = "FECHA ENTREGA";
+            this.FECHAENTREGA.Name = "FECHAENTREGA";
+            this.FECHAENTREGA.ReadOnly = true;
+            this.FECHAENTREGA.Width = 123;
+            // 
+            // ADJUNTO
+            // 
+            this.ADJUNTO.DataPropertyName = "ADJUNTO";
+            this.ADJUNTO.Frozen = true;
+            this.ADJUNTO.HeaderText = "ADJUNTO";
+            this.ADJUNTO.Name = "ADJUNTO";
+            this.ADJUNTO.ReadOnly = true;
+            this.ADJUNTO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ADJUNTO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ADJUNTO.Width = 71;
+            // 
             // frmCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -516,6 +527,9 @@
         private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtRUC;
+        private System.Windows.Forms.TextBox txtProveedor;
+        private System.Windows.Forms.PictureBox pbFoto;
         private System.Windows.Forms.DataGridViewTextBoxColumn OP;
         private System.Windows.Forms.DataGridViewTextBoxColumn c;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
@@ -529,8 +543,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IMPORTE;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAENTREGA;
         private System.Windows.Forms.DataGridViewTextBoxColumn ADJUNTO;
-        private System.Windows.Forms.TextBox txtRUC;
-        private System.Windows.Forms.TextBox txtProveedor;
-        private System.Windows.Forms.PictureBox pbFoto;
     }
 }

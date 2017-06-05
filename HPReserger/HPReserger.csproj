@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publicar\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -69,8 +69,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\HPResergerFunciones\obj\Debug\HPResergerFunciones.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
@@ -156,6 +162,12 @@
     <Compile Include="frmEntrevistaSalida.Designer.cs">
       <DependentUpon>frmEntrevistaSalida.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFactura.Designer.cs">
+      <DependentUpon>FrmFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFaltas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,11 +192,29 @@
     <Compile Include="frmGerencia.designer.cs">
       <DependentUpon>frmGerencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListarAlmacenServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListarAlmacenServicios.Designer.cs">
+      <DependentUpon>frmListarAlmacenServicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListarAlmacenArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListarAlmacenArticulos.Designer.cs">
+      <DependentUpon>frmListarAlmacenArticulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmlistarcuentas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmlistarcuentas.designer.cs">
       <DependentUpon>frmlistarcuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListarOCFaltantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListarOCFaltantes.Designer.cs">
+      <DependentUpon>frmListarOCFaltantes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmmarca.cs">
       <SubType>Form</SubType>
@@ -548,6 +578,9 @@
     <EmbeddedResource Include="frmEntrevistaSalida.resx">
       <DependentUpon>frmEntrevistaSalida.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFactura.resx">
+      <DependentUpon>FrmFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFaltas.resx">
       <DependentUpon>frmFaltas.cs</DependentUpon>
     </EmbeddedResource>
@@ -560,8 +593,17 @@
     <EmbeddedResource Include="frmGerencia.resx">
       <DependentUpon>frmGerencia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmListarAlmacenServicios.resx">
+      <DependentUpon>frmListarAlmacenServicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListarAlmacenArticulos.resx">
+      <DependentUpon>frmListarAlmacenArticulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmlistarcuentas.resx">
       <DependentUpon>frmlistarcuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListarOCFaltantes.resx">
+      <DependentUpon>frmListarOCFaltantes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmmarca.resx">
       <DependentUpon>frmmarca.cs</DependentUpon>

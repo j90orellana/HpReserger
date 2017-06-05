@@ -51,7 +51,7 @@ namespace HPReserger
         private void gridOC_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             Item = e.RowIndex;
-            DataRow drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(2, 4)));
+            DataRow drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(2)));
 
             if (drCOT != null)
             {
@@ -59,7 +59,7 @@ namespace HPReserger
                 txtImporte.Text = drCOT["IMPORTE"].ToString();
                 txtFechaEntrega.Text = drCOT["FECHAENTREGA"].ToString();
 
-                dtDetalle = clOC.ListarOCDetalle(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[2].Value.ToString().Substring(2, 4)));
+                dtDetalle = clOC.ListarOCDetalle(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[2].Value.ToString().Substring(2)));
 
                 if (dtDetalle.Rows.Count > 0)
                 {
@@ -85,10 +85,10 @@ namespace HPReserger
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2,4) + " como Enviado ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2, 4)), 4);
-                string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2, 4);
+                clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 4);
+                string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
                 Listar(frmLogin.CodigoUsuario);
                 MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -96,10 +96,10 @@ namespace HPReserger
 
         private void btnAnular_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿ Seguro de Anular la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2,4) + "  ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("¿ Seguro de Anular la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + "  ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2, 4)), 0);
-                string OC2 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2, 4);
+                clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 0);
+                string OC2 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
                 Listar(frmLogin.CodigoUsuario);
                 MessageBox.Show("La OC Nº " + OC2 + " se Anuló como éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

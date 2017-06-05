@@ -45,7 +45,7 @@ namespace HPReserger
 
             if (txtCotizacion.Text.Length >0)
             {
-                DataRow drFoto = clModificarCotizacion.CargarImagenCotizacion(Convert.ToInt32(txtCotizacion.Text.Substring(2, 4)));
+                DataRow drFoto = clModificarCotizacion.CargarImagenCotizacion(Convert.ToInt32(txtCotizacion.Text.Substring(2)));
                 if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
                 {
                     byte[] Fotito = new byte[0];
@@ -130,9 +130,9 @@ namespace HPReserger
                 {
                     nombreArchivo = txtAdjunto.Text.Trim();
                 }
-                clModificarCotizacion.CotizacionModificar(Convert.ToInt32(txtCotizacion.Text.Substring(2, 4)), dtpFecha.Value, Convert.ToDecimal(txtImporte.Text), txtRUC.Text, Foto, nombreArchivo);
+                clModificarCotizacion.CotizacionModificar(Convert.ToInt32(txtCotizacion.Text.Substring(2)), dtpFecha.Value, Convert.ToDecimal(txtImporte.Text), txtRUC.Text, Foto, nombreArchivo);
 
-                this.Cotizacion = txtCotizacion.Text.Substring(2, 4);
+                this.Cotizacion = txtCotizacion.Text.Substring(2);
                 this.RUC = txtRUC.Text.Trim();
                 this.Proveedor = txtProveedor.Text.Trim();
                 this.Importe = txtImporte.Text.Trim();

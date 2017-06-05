@@ -30,18 +30,118 @@ namespace HPReserger
             if (cboOC.SelectedValue != null)
             {
                 Actualiza(Convert.ToInt32(cboOC.SelectedValue.ToString()));
+                NextValorizacion(Convert.ToInt32(cboOC.SelectedValue.ToString()));
             }
             else
             {
                 LimpiarGrillas();
                 TitulosGrillas();
             }
+            if (gridDetalle1.RowCount == 0)
+            {
+                limpiarGRilladetallefin();
+            }
         }
+        public void limpiarGRilladetallefin()
+        {
+            gridDetalle2.DataSource = null;
+            gridDetalle2.Rows.Clear();
+            gridDetalle2.Columns.Clear();
+            gridDetalle2.Refresh();
 
+            gridDetalle1.DataSource = null;
+            gridDetalle1.Rows.Clear();
+            gridDetalle1.Columns.Clear();
+            gridDetalle1.Refresh();
+
+            if (gridDetalle1.Columns.Count == 0)
+            {
+                gridDetalle1.Columns.Add("FIC", "Nº FIC");
+                gridDetalle1.Columns.Add("VALORIZACION", "VALORIZACION");
+                gridDetalle1.Columns.Add("ARTOC", "ARTOC");
+                gridDetalle1.Columns.Add("SSS", "ARTFIC");
+            }
+
+            gridDetalle1.Columns[0].Width = 130;
+            gridDetalle1.Columns[0].Visible = true;
+            gridDetalle1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            gridDetalle1.Columns[0].HeaderText = "Nº FIC";
+            gridDetalle1.Columns[0].DataPropertyName = "FIC";
+
+            gridDetalle1.Columns[1].Width = 130;
+            gridDetalle1.Columns[1].Visible = true;
+            gridDetalle1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            gridDetalle1.Columns[1].HeaderText = "VALORIZACION";
+            gridDetalle1.Columns[1].DataPropertyName = "GUIA";
+
+            gridDetalle1.Columns[2].Width = 0;
+            gridDetalle1.Columns[2].Visible = false;
+            gridDetalle1.Columns[2].DataPropertyName = "ARTOC";
+
+            gridDetalle1.Columns[3].Width = 110;
+            gridDetalle1.Columns[3].Visible = false;
+            gridDetalle1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gridDetalle1.Columns[3].HeaderText = "ART FIC";
+            gridDetalle1.Columns[3].DataPropertyName = "ARTFIC";
+
+            if (gridDetalle2.Columns.Count == 0)
+            {
+                gridDetalle2.Columns.Add("G2CODIGOARTICULO", "");
+                gridDetalle2.Columns.Add("G2ITEM", "SERVICIOS");
+                gridDetalle2.Columns.Add("G2CODIGOMARCA", "");
+                gridDetalle2.Columns.Add("G2MARCA", "MARCA");
+                gridDetalle2.Columns.Add("G2CODIGOMODELO", "");
+                gridDetalle2.Columns.Add("G2MODELO", "OBSERVACIONES");
+                gridDetalle2.Columns.Add("CANTOC", "CANT OC");
+                gridDetalle2.Columns.Add("CANTING", "AVANCE");
+                gridDetalle2.Columns.Add("ItemDetalle", "detalle");
+            }
+
+            gridDetalle2.Columns[0].Width = 0;
+            gridDetalle2.Columns[0].Visible = false;
+            gridDetalle2.Columns[0].DataPropertyName = "CODIGOARTICULO";
+
+            gridDetalle2.Columns[1].Width = 110;
+            gridDetalle2.Columns[1].Visible = true;
+            gridDetalle2.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            gridDetalle2.Columns[1].HeaderText = "SERVICIOS";
+            gridDetalle2.Columns[1].DataPropertyName = "ITEM";
+
+            gridDetalle2.Columns[2].Width = 0;
+            gridDetalle2.Columns[2].Visible = false;
+            gridDetalle2.Columns[2].DataPropertyName = "CODIGOMARCA";
+
+            gridDetalle2.Columns[3].Width = 0;
+            gridDetalle2.Columns[3].Visible = false;
+            gridDetalle2.Columns[3].DataPropertyName = "MARCA";
+
+            gridDetalle2.Columns[4].Width = 0;
+            gridDetalle2.Columns[4].Visible = false;
+            gridDetalle2.Columns[4].DataPropertyName = "CODIGOMODELO";
+
+            gridDetalle2.Columns[5].Width = 0;
+            gridDetalle2.Columns[5].Visible = false;
+            gridDetalle2.Columns[5].DataPropertyName = "MODELO";
+
+            gridDetalle2.Columns[6].Width = 0;
+            gridDetalle2.Columns[6].Visible = false;
+            gridDetalle2.Columns[6].DataPropertyName = "CANTIDAD";
+
+            gridDetalle2.Columns[7].Width = 120;
+            gridDetalle2.Columns[7].Visible = true;
+            gridDetalle2.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gridDetalle2.Columns[7].HeaderText = "AVANCE";
+            gridDetalle2.Columns[7].DataPropertyName = "CANTIDADFIC";
+            gridDetalle2.Columns[7].Resizable = DataGridViewTriState.True;
+
+            gridDetalle2.Columns[8].Width = 0;
+            gridDetalle2.Columns[8].Visible = false;
+            gridDetalle2.Columns[8].DataPropertyName = "ItemDetalle";
+        }
         private void Actualiza(int OC)
         {
             gridDetalle.DataSource = clFIGS.ListarArticulosFIC(OC, 1);
-            gridDetalle1.DataSource = clFIGS.ListarFIC(OC,1);
+            gridDetalle1.DataSource = clFIGS.ListarFIC(OC, 1);
         }
 
         private void btnAcepatr_Click(object sender, EventArgs e)
@@ -98,9 +198,10 @@ namespace HPReserger
                     clFIGS.FICDetalleInsertar(FIG, Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[0].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[2].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[4].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[7].Value.ToString()), gridDetalle.Rows[filaDetalle].Cells[5].Value.ToString(), 1);
                 }
             }
-            gridDetalle1.DataSource = clFIGS.ListarFIC(Convert.ToInt32(cboOC.SelectedValue.ToString()),1);
-            Actualiza(Convert.ToInt32(cboOC.SelectedValue.ToString()));
-            NextValorizacion();
+            ordenCompra = Convert.ToInt32(cboOC.SelectedValue.ToString());
+            //gridDetalle1.DataSource = clFIGS.ListarFIC(Convert.ToInt32(cboOC.SelectedValue.ToString()), 1);
+            //Actualiza(Convert.ToInt32(cboOC.SelectedValue.ToString()));
+            //NextValorizacion(Convert.ToInt32(cboOC.SelectedValue.ToString()));
 
             if (txtRUC.Text.Length > 0)
             {
@@ -109,16 +210,20 @@ namespace HPReserger
 
             if (FIG != 0)
             {
-                MessageBox.Show("EL FIG Nº " + Convert.ToString(FIG) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("EL FIC Nº " + Convert.ToString(FIG) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            string cadenita = txtRUC.Text;
+            txtRUC.Text = "";
+            txtRUC.Text = cadenita;
+            txtRUC_TextChanged(sender, e);
         }
-
+        int ordenCompra = 0;
         private void gridDetalle1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             ItemFICS = e.RowIndex;
             if (gridDetalle1.Rows.Count > 0 && e.RowIndex > -1 && cboOC.SelectedValue != null)
             {
-                Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(3, 4)));
+                Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(3)));
             }
             else
             {
@@ -133,6 +238,10 @@ namespace HPReserger
             {
                 gridDetalle2.DataSource = clFIGS.ListarFIC2(OC, FIC, 1);
             }
+            else
+            {
+                gridDetalle2.DataSource = null;
+            }
         }
 
         private void frmAlmacenServicio_Load(object sender, EventArgs e)
@@ -141,16 +250,15 @@ namespace HPReserger
             Application.CurrentCulture = C;
 
             txtRUC.Text = "";
-            NextValorizacion();
-
+            txtValor.Text = "";
             LimpiarGrillas();
             TitulosGrillas();
         }
 
 
-        private void NextValorizacion()
-        {   
-            DataRow NextValor = clFIGS.NextValorizacion();
+        private void NextValorizacion(int nrorden)
+        {
+            DataRow NextValor = clFIGS.NextValorizacion(nrorden);
             if (NextValor["VALOR"] != null)
             {
                 txtValor.Text = NextValor["VALOR"].ToString();
@@ -167,21 +275,31 @@ namespace HPReserger
         private void LimpiarGrillas()
         {
             gridDetalle.DataSource = null;
-            gridDetalle.Rows.Clear();
-            gridDetalle.Columns.Clear();
-            gridDetalle.Refresh();
+            if (gridDetalle.RowCount > 0)
+            {
 
+                gridDetalle.Rows.Clear();
+                gridDetalle.Columns.Clear();
+                gridDetalle.Refresh();
+            }
             gridDetalle1.DataSource = null;
-            gridDetalle1.Rows.Clear();
-            gridDetalle1.Columns.Clear();
-            gridDetalle1.Refresh();
+            if (gridDetalle1.RowCount > 0)
+            {
 
+                gridDetalle1.Rows.Clear();
+                gridDetalle1.Columns.Clear();
+                gridDetalle1.Refresh();
+            }
             gridDetalle2.DataSource = null;
-            gridDetalle2.Rows.Clear();
-            gridDetalle2.Columns.Clear();
-            gridDetalle2.Refresh();
-        }
+            if (gridDetalle2.RowCount > 0)
+            {
 
+                gridDetalle2.Rows.Clear();
+                gridDetalle2.Columns.Clear();
+                gridDetalle2.Refresh();
+            }
+
+        }
         private void TitulosGrillas()
         {
             if (gridDetalle.Columns.Count == 0)
@@ -227,13 +345,13 @@ namespace HPReserger
             gridDetalle.Columns[6].Width = 53;
             gridDetalle.Columns[6].Visible = true;
             gridDetalle.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gridDetalle.Columns[6].HeaderText = "SALDO";
+            gridDetalle.Columns[6].HeaderText = "SALDO (%)";
             gridDetalle.Columns[6].DataPropertyName = "SALDO";
 
             gridDetalle.Columns[7].Width = 53;
             gridDetalle.Columns[7].Visible = true;
             gridDetalle.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gridDetalle.Columns[7].HeaderText = "CANT";
+            gridDetalle.Columns[7].HeaderText = "CANT (%)";
             gridDetalle.Columns[7].DataPropertyName = "CANT";
 
             if (gridDetalle1.Columns.Count == 0)
@@ -261,7 +379,7 @@ namespace HPReserger
             gridDetalle1.Columns[2].DataPropertyName = "ARTOC";
 
             gridDetalle1.Columns[3].Width = 110;
-            gridDetalle1.Columns[3].Visible = true;
+            gridDetalle1.Columns[3].Visible = false;
             gridDetalle1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             gridDetalle1.Columns[3].HeaderText = "ART FIC";
             gridDetalle1.Columns[3].DataPropertyName = "ARTFIC";
@@ -276,7 +394,8 @@ namespace HPReserger
                 gridDetalle2.Columns.Add("G2CODIGOMODELO", "");
                 gridDetalle2.Columns.Add("G2MODELO", "OBSERVACIONES");
                 gridDetalle2.Columns.Add("CANTOC", "CANT OC");
-                gridDetalle2.Columns.Add("CANTING", "AVANCE (%)");
+                gridDetalle2.Columns.Add("CANTING", "AVANCE");
+                gridDetalle2.Columns.Add("ItemDetalle", "detalle");
             }
 
             gridDetalle2.Columns[0].Width = 0;
@@ -312,15 +431,20 @@ namespace HPReserger
             gridDetalle2.Columns[7].Width = 120;
             gridDetalle2.Columns[7].Visible = true;
             gridDetalle2.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gridDetalle2.Columns[7].HeaderText = "AVANCE (%)";
+            gridDetalle2.Columns[7].HeaderText = "AVANCE";
             gridDetalle2.Columns[7].DataPropertyName = "CANTIDADFIC";
+            gridDetalle2.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            gridDetalle2.Columns[8].Width = 0;
+            gridDetalle2.Columns[8].Visible = false;
+            gridDetalle2.Columns[8].DataPropertyName = "ItemDetalle";
 
         }
 
         private void frmAlmacenServicio_FormClosing(object sender, FormClosingEventArgs e)
         {
-            LimpiarCombos();
-            LimpiarGrillas();
+            // LimpiarCombos();
+            //LimpiarGrillas();
         }
 
         private void txtRUC_TextChanged(object sender, EventArgs e)
@@ -336,8 +460,20 @@ namespace HPReserger
             DataTable ListaOCProveedor = clFIGS.ListarOCProveedor(txtRUC.Text, 1, frmLogin.CodigoUsuario);
             if (ListaOCProveedor.Rows.Count > 0)
             {
+                //ordenCompra = 7036;
                 cboOC.DataSource = ListaOCProveedor;
-                TitulosGrillas();
+                if (ordenCompra != 0)
+                {
+                    for (int i = 0; i < cboOC.Items.Count; i++)
+                    {
+                        cboOC.SelectedIndex = i;
+                        if (ordenCompra.ToString() == cboOC.SelectedValue.ToString())
+                        {
+                            break;
+                        }
+                    }
+                }
+                //TitulosGrillas();
             }
             else
             {
@@ -350,6 +486,62 @@ namespace HPReserger
         private void txtRUC_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtRUC, 15);
+        }
+
+        private void txtValor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnlistar_Click(object sender, EventArgs e)
+        {
+            frmListarAlmacenServicios frmservis = new frmListarAlmacenServicios();
+            frmservis.txtRUC.Text = txtRUC.Text;
+            frmservis.ShowDialog();
+        }
+
+        private void gridDetalle2_DoubleClick(object sender, EventArgs e)
+        {
+            if (gridDetalle1.Rows.Count > 0 && gridDetalle1.CurrentRow.Cells[0].Value != null)
+            {
+                frmFicModificar FICM = new frmFicModificar();
+                FICM.FIC = Convert.ToInt32(gridDetalle1.CurrentRow.Cells[0].Value.ToString().Substring(3));
+                FICM.Fecha = Convert.ToDateTime(gridDetalle1.CurrentRow.Cells[1].Value.ToString());
+                FICM.GuiaRemision = gridDetalle1.CurrentRow.Cells[2].Value.ToString().Substring(2);
+                FICM.Proveedor = txtRUC.Text;
+                FICM.tipo = 1;
+                FICM.lblguia.Text = "Valorizacion";
+                FICM.lblmodelo.Text = "Observacion";
+                FICM.txtGuia.ReadOnly = true;
+                FICM.ordencompra = Convert.ToInt32(cboOC.Text.Substring(2));
+                FICM.ItemDetalle = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[0].Value.ToString());
+                FICM.CodigoArticulo = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[1].Value.ToString());
+                FICM.Articulo = gridDetalle2.CurrentRow.Cells[2].Value.ToString();
+                FICM.CodigoMarca = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[3].Value.ToString());
+                FICM.Marca = gridDetalle2.CurrentRow.Cells[4].Value.ToString();
+                FICM.CodigoModelo = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[5].Value.ToString());
+                FICM.Modelo = gridDetalle2.CurrentRow.Cells[6].Value.ToString();
+                FICM.CantOC = Convert.ToString(BuscarSaldo(Convert.ToInt32(gridDetalle2.CurrentRow.Cells[1].Value.ToString())));
+                FICM.CantFIC = gridDetalle2.CurrentRow.Cells[8].Value.ToString();
+
+                if (FICM.ShowDialog() == DialogResult.OK)
+                {
+                    Actualiza(Convert.ToInt32(cboOC.SelectedValue.ToString()));
+                }
+
+            }
+        }
+        private int BuscarSaldo(int CodigoArticulo)
+        {
+            int FilaCodigo = 0;
+            for (FilaCodigo = 0; FilaCodigo < gridDetalle.Rows.Count; FilaCodigo++)
+            {
+                if (CodigoArticulo == Convert.ToInt32(gridDetalle.Rows[FilaCodigo].Cells[0].Value.ToString()))
+                {
+                    return Convert.ToInt32(gridDetalle.Rows[FilaCodigo].Cells[6].Value.ToString());
+                }
+            }
+            return 0;
         }
     }
 }

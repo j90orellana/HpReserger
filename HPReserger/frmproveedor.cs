@@ -77,6 +77,8 @@ namespace HPReserger
             cboregimen.ValueMember = "CODIGO";
             cboregimen.SelectedIndex = 1;
         }
+        public string rucito;
+
         private void frmproveedor_Load(object sender, EventArgs e)
         {
             estado = 0;
@@ -211,7 +213,7 @@ namespace HPReserger
         {
             btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
         }
-        private void btnnuevo_Click(object sender, EventArgs e)
+        public void btnnuevo_Click(object sender, EventArgs e)
         {
             CargarDocumentoIdentidad(); CargarBanco();
             CargarRegimen(); CargarSEctorComercial();
@@ -240,8 +242,10 @@ namespace HPReserger
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
+            rucito = txtnumeroidentidad.Text;
             if (estado == 0)
             {
+
                 this.Close();
             }
             else
@@ -332,6 +336,7 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            rucito = txtnumeroidentidad.Text;
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones    
             string Documentoid, nombrerazon;
             Documentoid = txtnumeroidentidad.Text;
@@ -340,7 +345,7 @@ namespace HPReserger
             {
                 CargarValoresDeIngreso();
                 //MensajedeDatos();
-                MessageBox.Show("Se Insertó con Exito","HpReserger",MessageBoxButtons.OK,MessageBoxIcon.Information); 
+                MessageBox.Show("Se Insertó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CProveedor.InsertarProveedor(numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                 persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen);
                 PresentarValor(nombrerazon);
@@ -389,7 +394,7 @@ namespace HPReserger
 
         private void txtpersonacontacto_KeyPress(object sender, KeyPressEventArgs e)
         {
-        //HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
+            //HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
         }
 
         private void label22_Click(object sender, EventArgs e)
@@ -452,6 +457,14 @@ namespace HPReserger
         private void txtcuentadetracciones_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtcuentadetracciones, 20);
+        }
+
+        private void frmproveedor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(rucito))
+            {
+                rucito = txtnumeroidentidad.Text;
+            }
         }
     }
 }

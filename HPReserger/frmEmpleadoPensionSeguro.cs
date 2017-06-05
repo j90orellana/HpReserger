@@ -188,7 +188,7 @@ namespace HPReserger
             {
                 GrabarEditar(1);
                 MessageBox.Show("Seguro Pensión generado con éxito", "HP Reserger ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
             }
@@ -196,7 +196,7 @@ namespace HPReserger
             {
                 GrabarEditar(0);
                 MessageBox.Show("Seguro Pensión actualizado con éxito", "HP Reserger ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
             }

@@ -231,5 +231,18 @@ namespace HPReserger
         {
             Application.Exit();
         }
+
+        private void listarOCFaltantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListarOCFaltantes frmlisoc = new frmListarOCFaltantes();
+            frmlisoc.ShowDialog();
+
+        }
+
+        private void facturaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmFactura frmfac = new FrmFactura();
+            frmfac.ShowDialog();
+        }
     }
 }

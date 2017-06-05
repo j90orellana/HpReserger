@@ -117,7 +117,7 @@ namespace HPReserger
                 MessageBox.Show("Pago de Haberes registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtCuenta.Text = "";
                 txtCuentaCCI.Text = "";
-                this.Close();
+                estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
             }
@@ -127,7 +127,7 @@ namespace HPReserger
                 MessageBox.Show("Pago de Haberes actualizo con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtCuenta.Text = "";
                 txtCuentaCCI.Text = "";
-                this.Close();
+                estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
             }

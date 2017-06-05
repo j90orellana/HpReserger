@@ -66,15 +66,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.gridDetalle2 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboOC = new System.Windows.Forms.ComboBox();
-            this.txtGR = new System.Windows.Forms.TextBox();
-            this.txtRUC = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtNumeros = new System.Windows.Forms.TextBox();
             this.ItemDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +75,16 @@
             this.G2MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTING = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboOC = new System.Windows.Forms.ComboBox();
+            this.txtGR = new System.Windows.Forms.TextBox();
+            this.txtRUC = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.txtNumeros = new System.Windows.Forms.TextBox();
+            this.btnlistar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle2)).BeginInit();
@@ -93,7 +94,10 @@
             // gridDetalle
             // 
             this.gridDetalle.AllowUserToAddRows = false;
-            this.gridDetalle.AllowUserToOrderColumns = true;
+            this.gridDetalle.AllowUserToDeleteRows = false;
+            this.gridDetalle.AllowUserToResizeColumns = false;
+            this.gridDetalle.AllowUserToResizeRows = false;
+            this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,6 +118,7 @@
             this.CANT});
             resources.ApplyResources(this.gridDetalle, "gridDetalle");
             this.gridDetalle.Name = "gridDetalle";
+            this.gridDetalle.RowHeadersVisible = false;
             this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridDetalle_EditingControlShowing);
             // 
@@ -182,6 +187,10 @@
             // gridDetalle1
             // 
             this.gridDetalle1.AllowUserToAddRows = false;
+            this.gridDetalle1.AllowUserToDeleteRows = false;
+            this.gridDetalle1.AllowUserToResizeColumns = false;
+            this.gridDetalle1.AllowUserToResizeRows = false;
+            this.gridDetalle1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,6 +209,7 @@
             resources.ApplyResources(this.gridDetalle1, "gridDetalle1");
             this.gridDetalle1.Name = "gridDetalle1";
             this.gridDetalle1.ReadOnly = true;
+            this.gridDetalle1.RowHeadersVisible = false;
             this.gridDetalle1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle1_RowEnter);
@@ -270,6 +280,10 @@
             // gridDetalle2
             // 
             this.gridDetalle2.AllowUserToAddRows = false;
+            this.gridDetalle2.AllowUserToDeleteRows = false;
+            this.gridDetalle2.AllowUserToResizeColumns = false;
+            this.gridDetalle2.AllowUserToResizeRows = false;
+            this.gridDetalle2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -292,73 +306,10 @@
             resources.ApplyResources(this.gridDetalle2, "gridDetalle2");
             this.gridDetalle2.Name = "gridDetalle2";
             this.gridDetalle2.ReadOnly = true;
+            this.gridDetalle2.RowHeadersVisible = false;
             this.gridDetalle2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle2.DoubleClick += new System.EventHandler(this.gridDetalle2_DoubleClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cboOC);
-            this.groupBox1.Controls.Add(this.txtGR);
-            this.groupBox1.Controls.Add(this.txtRUC);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // cboOC
-            // 
-            this.cboOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOC.FormattingEnabled = true;
-            resources.ApplyResources(this.cboOC, "cboOC");
-            this.cboOC.Name = "cboOC";
-            this.cboOC.SelectedIndexChanged += new System.EventHandler(this.cboOC_SelectedIndexChanged);
-            // 
-            // txtGR
-            // 
-            resources.ApplyResources(this.txtGR, "txtGR");
-            this.txtGR.Name = "txtGR";
-            this.txtGR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGR_KeyDown);
-            this.txtGR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGR_KeyPress);
-            // 
-            // txtRUC
-            // 
-            resources.ApplyResources(this.txtRUC, "txtRUC");
-            this.txtRUC.Name = "txtRUC";
-            this.txtRUC.TextChanged += new System.EventHandler(this.txtRUC_TextChanged);
-            this.txtRUC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRUC_KeyDown);
-            this.txtRUC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRUC_KeyPress);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // btnAceptar
-            // 
-            resources.ApplyResources(this.btnAceptar, "btnAceptar");
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            // 
-            // txtNumeros
-            // 
-            this.txtNumeros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            resources.ApplyResources(this.txtNumeros, "txtNumeros");
-            this.txtNumeros.Name = "txtNumeros";
-            this.txtNumeros.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
             // 
             // ItemDetalle
             // 
@@ -444,12 +395,84 @@
             this.CANTING.Name = "CANTING";
             this.CANTING.ReadOnly = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cboOC);
+            this.groupBox1.Controls.Add(this.txtGR);
+            this.groupBox1.Controls.Add(this.txtRUC);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // cboOC
+            // 
+            this.cboOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOC.FormattingEnabled = true;
+            resources.ApplyResources(this.cboOC, "cboOC");
+            this.cboOC.Name = "cboOC";
+            this.cboOC.SelectedIndexChanged += new System.EventHandler(this.cboOC_SelectedIndexChanged);
+            // 
+            // txtGR
+            // 
+            resources.ApplyResources(this.txtGR, "txtGR");
+            this.txtGR.Name = "txtGR";
+            this.txtGR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGR_KeyDown);
+            this.txtGR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGR_KeyPress);
+            // 
+            // txtRUC
+            // 
+            resources.ApplyResources(this.txtRUC, "txtRUC");
+            this.txtRUC.Name = "txtRUC";
+            this.txtRUC.TextChanged += new System.EventHandler(this.txtRUC_TextChanged);
+            this.txtRUC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRUC_KeyDown);
+            this.txtRUC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRUC_KeyPress);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // btnAceptar
+            // 
+            resources.ApplyResources(this.btnAceptar, "btnAceptar");
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // txtNumeros
+            // 
+            this.txtNumeros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            resources.ApplyResources(this.txtNumeros, "txtNumeros");
+            this.txtNumeros.Name = "txtNumeros";
+            this.txtNumeros.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
+            // 
+            // btnlistar
+            // 
+            resources.ApplyResources(this.btnlistar, "btnlistar");
+            this.btnlistar.Name = "btnlistar";
+            this.btnlistar.UseVisualStyleBackColor = true;
+            this.btnlistar.Click += new System.EventHandler(this.btnlistar_Click);
+            // 
             // frmAlmacen
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.Controls.Add(this.txtNumeros);
+            this.Controls.Add(this.btnlistar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gridDetalle2);
@@ -482,7 +505,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cboOC;
         private System.Windows.Forms.TextBox txtGR;
-        private System.Windows.Forms.TextBox txtRUC;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -510,5 +532,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn G2MODELO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTOC;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTING;
+        private System.Windows.Forms.Button btnlistar;
+        private System.Windows.Forms.TextBox txtRUC;
     }
 }

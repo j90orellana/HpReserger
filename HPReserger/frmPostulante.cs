@@ -34,7 +34,7 @@ namespace HPReserger
 
             if (Grid2.Rows.Count > 0)
             {
-                CargarGrid(Convert.ToInt32(Grid2.Rows[0].Cells[0].Value.ToString().Substring(2, 4)));
+                CargarGrid(Convert.ToInt32(Grid2.Rows[0].Cells[0].Value.ToString().Substring(2)));
             }
             Grid2.TabStop = grid3.TabStop = false;
         }
@@ -135,19 +135,28 @@ namespace HPReserger
             int fila = 0;
             fila = Grid2.CurrentCell.RowIndex;
 
-            clPostulante.PostulanteInsertar(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(Grid2.CurrentRow.Cells[3].Value.ToString()), Foto, txtAdjuntarCV.Text, OC, Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2, 4)), frmLogin.CodigoUsuario);
+            clPostulante.PostulanteInsertar(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(Grid2.CurrentRow.Cells[3].Value.ToString()), Foto, txtAdjuntarCV.Text, OC, Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)), frmLogin.CodigoUsuario);
             MessageBox.Show("El postulante con DNI Nº " + txtDocumento.Text + " se registró con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Limpiar();
-            Grid2.DataSource = clPostulante.ListarSEPostulantes(frmLogin.CodigoUsuario);
-            Grid2.CurrentCell = Grid2[0, fila];
-            if (Grid2.Rows.Count > 0)
+            if (Grid2["Terna", Grid2.CurrentCell.RowIndex].Value.ToString() == "NO")
             {
-                CargarGrid(Convert.ToInt32(Grid2.Rows[fila].Cells[0].Value.ToString().Substring(2, 4)));
+                clPostulante.AprobarPostulante(Convert.ToInt32(cboTipoDocumento.SelectedValue), txtDocumento.Text, Convert.ToInt32(Grid2["SOLICITUD", Grid2.CurrentCell.RowIndex].Value.ToString().Substring(2)));
+                MessageBox.Show("El postulante con DNI Nº " + txtDocumento.Text + " se Aprobó con éxito, No Aplicó Terna", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Limpiar(); Grid2.DataSource = clPostulante.ListarSEPostulantes(frmLogin.CodigoUsuario);
             }
             else
             {
-                LimpiarGrid();
-                Titulos();
+                Limpiar();
+                Grid2.DataSource = clPostulante.ListarSEPostulantes(frmLogin.CodigoUsuario);
+                Grid2.CurrentCell = Grid2[0, fila];
+                if (Grid2.Rows.Count > 0)
+                {
+                    CargarGrid(Convert.ToInt32(Grid2.Rows[fila].Cells[0].Value.ToString().Substring(2)));
+                }
+                else
+                {
+                    LimpiarGrid();
+                    Titulos();
+                }
             }
         }
 
@@ -177,7 +186,7 @@ namespace HPReserger
 
         private void Grid2_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            CargarGrid(Convert.ToInt32(Grid2.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2, 4)));
+            CargarGrid(Convert.ToInt32(Grid2.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2)));
             txtDocumento.Text = "";
             txtApellidoPaterno.Text = "";
             txtApellidoMaterno.Text = "";
@@ -228,7 +237,7 @@ namespace HPReserger
 
                 if (MessageBox.Show("¿ Seguro de Aprobar ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    clPostulante.AprobarPostulante(Convert.ToInt32(grid3.CurrentRow.Cells[0].Value.ToString()), grid3.CurrentRow.Cells[2].Value.ToString(), Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2, 4)));
+                    clPostulante.AprobarPostulante(Convert.ToInt32(grid3.CurrentRow.Cells[0].Value.ToString()), grid3.CurrentRow.Cells[2].Value.ToString(), Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)));
                     txtDocumento.Text = "";
                     txtApellidoPaterno.Text = "";
                     txtApellidoMaterno.Text = "";
@@ -309,7 +318,7 @@ namespace HPReserger
                 }
 
                 frmPostulanteModificar frmPM = new frmPostulanteModificar();
-                frmPM.Solicitud = Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2, 4));
+                frmPM.Solicitud = Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2));
                 frmPM.CodigoTipoDocumento = Convert.ToInt32(grid3.CurrentRow.Cells[0].Value.ToString());
                 frmPM.TipoDocumento = grid3.CurrentRow.Cells[1].Value.ToString();
                 frmPM.NumeroDocumento = grid3.CurrentRow.Cells[2].Value.ToString();

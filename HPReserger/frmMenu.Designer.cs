@@ -44,6 +44,9 @@
             this.almacenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listarOCFaltantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.subcontrataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.valorizacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -151,6 +154,7 @@
             this.cotizacionesToolStripMenuItem,
             this.ordenDeCompraToolStripMenuItem,
             this.almacenesToolStripMenuItem,
+            this.facturaToolStripMenuItem,
             this.subcontrataToolStripMenuItem,
             this.seguimientoToolStripMenuItem,
             this.valorizacionesToolStripMenuItem});
@@ -199,7 +203,8 @@
             // 
             this.almacenesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.artículosToolStripMenuItem,
-            this.serviciosToolStripMenuItem});
+            this.serviciosToolStripMenuItem,
+            this.listarOCFaltantesToolStripMenuItem});
             this.almacenesToolStripMenuItem.Name = "almacenesToolStripMenuItem";
             this.almacenesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.almacenesToolStripMenuItem.Text = "Almacenes";
@@ -207,16 +212,38 @@
             // artículosToolStripMenuItem
             // 
             this.artículosToolStripMenuItem.Name = "artículosToolStripMenuItem";
-            this.artículosToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.artículosToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.artículosToolStripMenuItem.Text = "Artículos";
             this.artículosToolStripMenuItem.Click += new System.EventHandler(this.artículosToolStripMenuItem_Click);
             // 
             // serviciosToolStripMenuItem
             // 
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.serviciosToolStripMenuItem.Text = "Servicios";
             this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
+            // 
+            // listarOCFaltantesToolStripMenuItem
+            // 
+            this.listarOCFaltantesToolStripMenuItem.Name = "listarOCFaltantesToolStripMenuItem";
+            this.listarOCFaltantesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.listarOCFaltantesToolStripMenuItem.Text = "Listar OC Faltantes";
+            this.listarOCFaltantesToolStripMenuItem.Click += new System.EventHandler(this.listarOCFaltantesToolStripMenuItem_Click);
+            // 
+            // facturaToolStripMenuItem
+            // 
+            this.facturaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.facturaToolStripMenuItem1});
+            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
+            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.facturaToolStripMenuItem.Text = "Facturas";
+            // 
+            // facturaToolStripMenuItem1
+            // 
+            this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
+            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.facturaToolStripMenuItem1.Text = "Factura";
+            this.facturaToolStripMenuItem1.Click += new System.EventHandler(this.facturaToolStripMenuItem1_Click);
             // 
             // subcontrataToolStripMenuItem
             // 
@@ -589,5 +616,8 @@
         private System.Windows.Forms.ToolStripMenuItem dinamicaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asientoContableToolStripMenuItem;
         private System.Windows.Forms.Label lblwelcome;
+        private System.Windows.Forms.ToolStripMenuItem listarOCFaltantesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem1;
     }
 }

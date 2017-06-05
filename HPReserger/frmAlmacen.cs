@@ -51,7 +51,7 @@ namespace HPReserger
                 gridDetalle1.DataSource = clFIG.ListarFIC(OC, 0);
                 if (gridDetalle1.Rows.Count > 0 && cboOC.SelectedValue != null)
                 {
-                    Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[ItemFIC].Cells[0].Value.ToString().Substring(3, 4)));
+                    Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[ItemFIC].Cells[0].Value.ToString().Substring(3)));
                 }
             }
             else
@@ -74,7 +74,7 @@ namespace HPReserger
             ItemFIC = e.RowIndex;
             if (gridDetalle1.Rows.Count > 0 && e.RowIndex > -1 && cboOC.SelectedValue != null)
             {
-                Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(3, 4)));
+                Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(3)));
             }
         }
 
@@ -96,7 +96,7 @@ namespace HPReserger
                 return;
             }
 
-            DataTable dtGuiaRemisionProveedor = clFIG.OrdenCompraProveedor(txtRUC.Text, Convert.ToInt32(txtGR.Text), Convert.ToInt32(cboOC.Text.Substring(2)));
+            DataTable dtGuiaRemisionProveedor = clFIG.OrdenCompraProveedor(txtRUC.Text, Convert.ToInt32(txtGR.Text), Convert.ToInt32(cboOC.Text.Substring(2)),0);
             if (dtGuiaRemisionProveedor.Rows.Count > 0)
             {
                 MessageBox.Show("Guía de Remisión ya existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -413,9 +413,9 @@ namespace HPReserger
             if (gridDetalle1.Rows.Count > 0 && gridDetalle1.CurrentRow.Cells[0].Value != null)
             {
                 frmFicModificar FICM = new frmFicModificar();
-                FICM.FIC = Convert.ToInt32(gridDetalle1.CurrentRow.Cells[0].Value.ToString().Substring(3, 4));
+                FICM.FIC = Convert.ToInt32(gridDetalle1.CurrentRow.Cells[0].Value.ToString().Substring(3));
                 FICM.Fecha = Convert.ToDateTime(gridDetalle1.CurrentRow.Cells[1].Value.ToString());
-                FICM.GuiaRemision = gridDetalle1.CurrentRow.Cells[2].Value.ToString().Substring(2, 6);
+                FICM.GuiaRemision = gridDetalle1.CurrentRow.Cells[2].Value.ToString().Substring(2);
                 FICM.Proveedor = txtRUC.Text;
                 FICM.ordencompra = Convert.ToInt32(cboOC.Text.Substring(2));
                 FICM.ItemDetalle = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[0].Value.ToString());
@@ -438,7 +438,7 @@ namespace HPReserger
 
         private void gridDetalle1_DoubleClick(object sender, EventArgs e)
         {
-            PasarModificar();
+            //PasarModificar();
         }
 
         private void gridDetalle2_DoubleClick(object sender, EventArgs e)
@@ -457,6 +457,13 @@ namespace HPReserger
                 }
             }
             return 0;
+        }
+
+        private void btnlistar_Click(object sender, EventArgs e)
+        {
+            frmListarAlmacenArticulos frmlistar = new frmListarAlmacenArticulos();
+            frmlistar.txtRUC.Text = txtRUC.Text;
+            frmlistar.ShowDialog();
         }
     }
 }

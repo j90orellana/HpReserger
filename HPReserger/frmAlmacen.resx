@@ -133,9 +133,6 @@
   <data name="ITEM.HeaderText" xml:space="preserve">
     <value>ITEM</value>
   </data>
-  <data name="ITEM.Width" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
   <metadata name="CODIGOMARCA.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -150,9 +147,6 @@
   </metadata>
   <data name="MARCA.HeaderText" xml:space="preserve">
     <value>MARCA</value>
-  </data>
-  <data name="MARCA.Width" type="System.Int32, mscorlib">
-    <value>85</value>
   </data>
   <metadata name="CODIGOMODELO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -169,26 +163,17 @@
   <data name="MODELO.HeaderText" xml:space="preserve">
     <value>MODELO</value>
   </data>
-  <data name="MODELO.Width" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
   <metadata name="SALDO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="SALDO.HeaderText" xml:space="preserve">
     <value>SALDO</value>
   </data>
-  <data name="SALDO.Width" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
   <metadata name="CANT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="CANT.HeaderText" xml:space="preserve">
     <value>CANT</value>
-  </data>
-  <data name="CANT.Width" type="System.Int32, mscorlib">
-    <value>90</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="gridDetalle.Location" type="System.Drawing.Point, System.Drawing">
@@ -210,7 +195,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gridDetalle.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <metadata name="FIC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -218,17 +203,11 @@
   <data name="FIC.HeaderText" xml:space="preserve">
     <value> Nº FIC</value>
   </data>
-  <data name="FIC.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
   <metadata name="FECHA.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="FECHA.HeaderText" xml:space="preserve">
     <value>FECHA</value>
-  </data>
-  <data name="FECHA.Width" type="System.Int32, mscorlib">
-    <value>70</value>
   </data>
   <metadata name="NGR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -236,26 +215,17 @@
   <data name="NGR.HeaderText" xml:space="preserve">
     <value>GUIA REMISION</value>
   </data>
-  <data name="NGR.Width" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
   <metadata name="ARTOC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="ARTOC.HeaderText" xml:space="preserve">
     <value>ART OC</value>
   </data>
-  <data name="ARTOC.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
   <metadata name="ARTFIC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="ARTFIC.HeaderText" xml:space="preserve">
     <value>ART FIC</value>
-  </data>
-  <data name="ARTFIC.Width" type="System.Int32, mscorlib">
-    <value>80</value>
   </data>
   <data name="gridDetalle1.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 267</value>
@@ -276,7 +246,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gridDetalle1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -303,7 +273,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -327,7 +297,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -354,7 +324,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <metadata name="ItemDetalle.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -374,17 +344,11 @@
   <data name="G2CODIGOARTICULO.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="G2CODIGOARTICULO.Width" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <metadata name="G2ITEM.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="G2ITEM.HeaderText" xml:space="preserve">
     <value>ITEM</value>
-  </data>
-  <data name="G2ITEM.Width" type="System.Int32, mscorlib">
-    <value>85</value>
   </data>
   <metadata name="G2CODIGOMARCA.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -395,17 +359,11 @@
   <data name="G2CODIGOMARCA.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="G2CODIGOMARCA.Width" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <metadata name="G2MARCA.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="G2MARCA.HeaderText" xml:space="preserve">
     <value>MARCA</value>
-  </data>
-  <data name="G2MARCA.Width" type="System.Int32, mscorlib">
-    <value>85</value>
   </data>
   <metadata name="G2CODIGOMODELO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -416,17 +374,11 @@
   <data name="G2CODIGOMODELO.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="G2CODIGOMODELO.Width" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <metadata name="G2MODELO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="G2MODELO.HeaderText" xml:space="preserve">
     <value>MODELO</value>
-  </data>
-  <data name="G2MODELO.Width" type="System.Int32, mscorlib">
-    <value>85</value>
   </data>
   <metadata name="CANTOC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -434,17 +386,11 @@
   <data name="CANTOC.HeaderText" xml:space="preserve">
     <value>CANT OC</value>
   </data>
-  <data name="CANTOC.Width" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
   <metadata name="CANTING.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="CANTING.HeaderText" xml:space="preserve">
     <value>CANT ING</value>
-  </data>
-  <data name="CANTING.Width" type="System.Int32, mscorlib">
-    <value>90</value>
   </data>
   <data name="gridDetalle2.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 473</value>
@@ -465,7 +411,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gridDetalle2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="cboOC.Location" type="System.Drawing.Point, System.Drawing">
     <value>234, 16</value>
@@ -640,7 +586,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnAceptar.Location" type="System.Drawing.Point, System.Drawing">
     <value>439, 68</value>
@@ -664,7 +610,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAceptar.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="txtNumeros.Location" type="System.Drawing.Point, System.Drawing">
     <value>346, 68</value>
@@ -689,6 +635,33 @@
   </data>
   <data name="&gt;&gt;txtNumeros.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="btnlistar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnlistar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 65</value>
+  </data>
+  <data name="btnlistar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 23</value>
+  </data>
+  <data name="btnlistar.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="btnlistar.Text" xml:space="preserve">
+    <value>Ver OC Atendidas</value>
+  </data>
+  <data name="&gt;&gt;btnlistar.Name" xml:space="preserve">
+    <value>btnlistar</value>
+  </data>
+  <data name="&gt;&gt;btnlistar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnlistar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnlistar.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

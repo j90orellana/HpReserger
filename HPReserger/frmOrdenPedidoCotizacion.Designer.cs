@@ -183,6 +183,7 @@
             this.groupBox2.Size = new System.Drawing.Size(777, 258);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // gridCotizacionPedido
             // 
@@ -204,6 +205,7 @@
             this.CODIGOMODELO,
             this.Modelo,
             this.Cantidad});
+            this.gridCotizacionPedido.Enabled = false;
             this.gridCotizacionPedido.Location = new System.Drawing.Point(10, 19);
             this.gridCotizacionPedido.Name = "gridCotizacionPedido";
             this.gridCotizacionPedido.ReadOnly = true;

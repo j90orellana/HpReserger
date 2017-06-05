@@ -54,7 +54,7 @@ namespace HPReserger
 
             if (cboArea.Items.Count > 0)
             {
-                gridCotizacion.DataSource = clCotizacion.ListarPedidosCotizacion(Convert.ToInt32(cboArea.SelectedValue.ToString()),frmLogin.CodigoUsuario);
+                gridCotizacion.DataSource = clCotizacion.ListarPedidosCotizacion(Convert.ToInt32(cboArea.SelectedValue.ToString()), frmLogin.CodigoUsuario);
             }
 
             System.Globalization.CultureInfo C = new System.Globalization.CultureInfo("EN-US");
@@ -88,7 +88,7 @@ namespace HPReserger
             if (gridCotizacion.Rows.Count > 0 && gridCotizacion.Rows[Item].Cells[0].Value != null)
             {
                 frmOrdenPedidoCotizacion frmOPC = new frmOrdenPedidoCotizacion();
-                frmOPC.Numero = Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2, 4));
+                frmOPC.Numero = Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2));
                 frmOPC.Tipo = gridCotizacion.Rows[Item].Cells[5].Value.ToString().Substring(0, 1);
 
                 frmOPC.ShowDialog();
@@ -103,7 +103,7 @@ namespace HPReserger
 
         private void MostrarPedidosAsociados(int Itemsito)
         {
-            dtCotizacionesAsociadas = clCotizacion.ListarCotizacionesAsociadas(Convert.ToInt32(gridCotizacion.Rows[Itemsito].Cells[0].Value.ToString().Substring(2, 4)));
+            dtCotizacionesAsociadas = clCotizacion.ListarCotizacionesAsociadas(Convert.ToInt32(gridCotizacion.Rows[Itemsito].Cells[0].Value.ToString().Substring(2)));
             if (dtCotizacionesAsociadas.Rows.Count > 0)
             {
                 gridCotizacionesAsociadas.DataSource = dtCotizacionesAsociadas;
@@ -117,6 +117,8 @@ namespace HPReserger
 
                 pbFoto.Image = null;
             }
+            txtRUC.Text = txtAdjunto.Text = txtImporte.Text = txtProveedor.Text = "";
+            Foto = null; 
         }
 
         private void btnAsociar_Click(object sender, EventArgs e)
@@ -125,7 +127,7 @@ namespace HPReserger
             {
                 MessageBox.Show("Ingrese Importe de la Cotización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtImporte.Focus();
-                return; 
+                return;
             }
             if (txtProveedor.Text.Length == 0)
             {
@@ -163,7 +165,7 @@ namespace HPReserger
                 MessageBox.Show("Seleccione Imagen de Cotización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarPDF.Focus();
                 return;
-            }            
+            }
             else
             {
                 int NumeroCotizacion = 0;
@@ -173,18 +175,18 @@ namespace HPReserger
                 {
                     TipoCotizacion = 1;
                 }
-                clCotizacion.CotizacionCabeceraInsertar(out NumeroCotizacion, dtpFecha.Value, TipoCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[1].Value.ToString()), Convert.ToDecimal(txtImporte.Text.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2, 4)), txtRUC.Text, Foto, nombreArchivo);
-                clCotizacion.CotizacionDetalleInsertar(NumeroCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2, 4)));
+                clCotizacion.CotizacionCabeceraInsertar(out NumeroCotizacion, dtpFecha.Value, TipoCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[1].Value.ToString()), Convert.ToDecimal(txtImporte.Text.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), txtRUC.Text, Foto, nombreArchivo);
+                clCotizacion.CotizacionDetalleInsertar(NumeroCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)));
                 txtRUC.Text = "";
                 txtProveedor.Text = "";
                 txtImporte.Text = "";
                 txtAdjunto.Text = "";
                 pbFoto.Image = null;
-
+                dtpFecha.Value = DateTime.Now;
                 if (NumeroCotizacion != 0)
                 {
                     MostrarPedidosAsociados(Item);
-                    MessageBox.Show("Cotización Nº " + Convert.ToString(NumeroCotizacion) + " asociado al Pedido Nº " + gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2, 4) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cotización Nº " + Convert.ToString(NumeroCotizacion) + " asociado al Pedido Nº " + gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -241,7 +243,7 @@ namespace HPReserger
         private void gridCotizacionesAsociadas_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             Item2 = e.RowIndex;
-            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2, 4)), e.RowIndex);
+            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2)), e.RowIndex);
         }
 
         private void txtRUC_TextChanged(object sender, EventArgs e)
@@ -285,13 +287,13 @@ namespace HPReserger
                     MostrarPedidosAsociados(frmCot.Itemsito);
                     if (gridCotizacionesAsociadas.Rows[Item2].Cells[0].Value != null && gridCotizacionesAsociadas.Rows.Count > 0)
                     {
-                        if (Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2, 4)) == Convert.ToInt32(frmCot.Cotizacion))
+                        if (Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2)) == Convert.ToInt32(frmCot.Cotizacion))
                         {
-                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[frmCot.Itemsito2].Cells[0].Value.ToString().Substring(2, 4)), frmCot.Itemsito2);
+                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[frmCot.Itemsito2].Cells[0].Value.ToString().Substring(2)), frmCot.Itemsito2);
                         }
                         else
                         {
-                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2, 4)), Item2);
+                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2)), Item2);
                         }
                     }
                 }
@@ -302,9 +304,9 @@ namespace HPReserger
         {
             if (gridCotizacionesAsociadas.Rows.Count > 0 && gridCotizacionesAsociadas.CurrentRow.Cells[0].Value != null)
             {
-                if(e.KeyValue == (char)(Keys.Delete))
+                if (e.KeyValue == (char)(Keys.Delete))
                 {
-                    DataRow TieneOC = clCotizacion.CotTieneOC(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2, 4)));
+                    DataRow TieneOC = clCotizacion.CotTieneOC(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2)));
                     if (TieneOC != null)
                     {
                         MessageBox.Show("NO se puede eliminar Cotización, está anexada a una OC", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -312,9 +314,9 @@ namespace HPReserger
                     }
                     else
                     {
-                        if (MessageBox.Show("¿ Seguro de eliminar la Cotización Nº " + gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2, 4) + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        if (MessageBox.Show("¿ Seguro de eliminar la Cotización Nº " + gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2) + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                         {
-                            clCotizacion.AnularCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2, 4)));
+                            clCotizacion.AnularCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2)));
                             MostrarPedidosAsociados(Item);
                         }
                     }

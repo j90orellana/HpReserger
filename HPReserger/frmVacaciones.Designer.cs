@@ -38,10 +38,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
+            this.txttipo = new System.Windows.Forms.TextBox();
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -82,8 +84,7 @@
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.txtRuta = new System.Windows.Forms.TextBox();
             this.btnCompraVacaciones = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txttipo = new System.Windows.Forms.TextBox();
+            this.lblmensajito = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
@@ -92,6 +93,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblmensajito);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.txtNumeroDocumento);
             this.groupBox2.Controls.Add(this.label5);
@@ -106,16 +108,25 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(12, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(373, 175);
+            this.groupBox2.Size = new System.Drawing.Size(383, 207);
             this.groupBox2.TabIndex = 70;
             this.groupBox2.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(10, 152);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(91, 13);
+            this.label15.TabIndex = 79;
+            this.label15.Text = "Tipo Contratación";
             // 
             // txtNumeroDocumento
             // 
             this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 46);
             this.txtNumeroDocumento.MaxLength = 14;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(159, 20);
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(180, 20);
             this.txtNumeroDocumento.TabIndex = 78;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
@@ -138,7 +149,7 @@
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.ReadOnly = true;
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(237, 20);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(258, 20);
             this.txtApellidoPaterno.TabIndex = 76;
             // 
             // txtApellidoMaterno
@@ -148,8 +159,19 @@
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.ReadOnly = true;
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(237, 20);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(258, 20);
             this.txtApellidoMaterno.TabIndex = 75;
+            // 
+            // txttipo
+            // 
+            this.txttipo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txttipo.Location = new System.Drawing.Point(119, 149);
+            this.txttipo.MaxLength = 30;
+            this.txttipo.Name = "txttipo";
+            this.txttipo.ReadOnly = true;
+            this.txttipo.ShortcutsEnabled = false;
+            this.txttipo.Size = new System.Drawing.Size(258, 20);
+            this.txttipo.TabIndex = 74;
             // 
             // txtNombres
             // 
@@ -159,7 +181,7 @@
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.ReadOnly = true;
             this.txtNombres.ShortcutsEnabled = false;
-            this.txtNombres.Size = new System.Drawing.Size(237, 20);
+            this.txtNombres.Size = new System.Drawing.Size(258, 20);
             this.txtNombres.TabIndex = 74;
             // 
             // cboTipoDocumento
@@ -168,7 +190,7 @@
             this.cboTipoDocumento.FormattingEnabled = true;
             this.cboTipoDocumento.Location = new System.Drawing.Point(195, 19);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
-            this.cboTipoDocumento.Size = new System.Drawing.Size(161, 21);
+            this.cboTipoDocumento.Size = new System.Drawing.Size(182, 21);
             this.cboTipoDocumento.TabIndex = 73;
             this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
             // 
@@ -227,9 +249,9 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtVacaciones);
-            this.groupBox1.Location = new System.Drawing.Point(12, 177);
+            this.groupBox1.Location = new System.Drawing.Point(12, 215);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(373, 343);
+            this.groupBox1.Size = new System.Drawing.Size(383, 305);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             // 
@@ -282,7 +304,7 @@
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtObservaciones.Size = new System.Drawing.Size(261, 180);
+            this.txtObservaciones.Size = new System.Drawing.Size(282, 151);
             this.txtObservaciones.TabIndex = 103;
             // 
             // label12
@@ -588,7 +610,7 @@
             // 
             // btnCompraVacaciones
             // 
-            this.btnCompraVacaciones.Location = new System.Drawing.Point(12, 527);
+            this.btnCompraVacaciones.Location = new System.Drawing.Point(12, 530);
             this.btnCompraVacaciones.Name = "btnCompraVacaciones";
             this.btnCompraVacaciones.Size = new System.Drawing.Size(172, 23);
             this.btnCompraVacaciones.TabIndex = 106;
@@ -596,25 +618,18 @@
             this.btnCompraVacaciones.UseVisualStyleBackColor = true;
             this.btnCompraVacaciones.Click += new System.EventHandler(this.btnCompraVacaciones_Click);
             // 
-            // label15
+            // lblmensajito
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 152);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(91, 13);
-            this.label15.TabIndex = 79;
-            this.label15.Text = "Tipo Contratación";
-            // 
-            // txttipo
-            // 
-            this.txttipo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txttipo.Location = new System.Drawing.Point(119, 149);
-            this.txttipo.MaxLength = 30;
-            this.txttipo.Name = "txttipo";
-            this.txttipo.ReadOnly = true;
-            this.txttipo.ShortcutsEnabled = false;
-            this.txttipo.Size = new System.Drawing.Size(237, 20);
-            this.txttipo.TabIndex = 74;
+            this.lblmensajito.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.lblmensajito.Enabled = false;
+            this.lblmensajito.Location = new System.Drawing.Point(13, 175);
+            this.lblmensajito.MaxLength = 30;
+            this.lblmensajito.Name = "lblmensajito";
+            this.lblmensajito.ReadOnly = true;
+            this.lblmensajito.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblmensajito.ShortcutsEnabled = false;
+            this.lblmensajito.Size = new System.Drawing.Size(364, 20);
+            this.lblmensajito.TabIndex = 80;
             // 
             // frmVacaciones
             // 
@@ -622,7 +637,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1552, 563);
+            this.ClientSize = new System.Drawing.Size(1552, 561);
             this.Controls.Add(this.btnCompraVacaciones);
             this.Controls.Add(this.txtRuta);
             this.Controls.Add(this.pbFoto);
@@ -696,5 +711,6 @@
         private System.Windows.Forms.Button btnCompraVacaciones;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txttipo;
+        private System.Windows.Forms.TextBox lblmensajito;
     }
 }

@@ -103,6 +103,8 @@
             // 
             this.gridCotizacion.AllowUserToAddRows = false;
             this.gridCotizacion.AllowUserToOrderColumns = true;
+            this.gridCotizacion.AllowUserToResizeRows = false;
+            this.gridCotizacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -129,6 +131,7 @@
             this.gridCotizacion.Location = new System.Drawing.Point(12, 29);
             this.gridCotizacion.Name = "gridCotizacion";
             this.gridCotizacion.ReadOnly = true;
+            this.gridCotizacion.RowHeadersVisible = false;
             this.gridCotizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacion.Size = new System.Drawing.Size(616, 278);
             this.gridCotizacion.TabIndex = 28;
@@ -142,7 +145,6 @@
             this.OP.HeaderText = "Nº OP";
             this.OP.Name = "OP";
             this.OP.ReadOnly = true;
-            this.OP.Width = 70;
             // 
             // c
             // 
@@ -151,7 +153,6 @@
             this.c.Name = "c";
             this.c.ReadOnly = true;
             this.c.Visible = false;
-            this.c.Width = 50;
             // 
             // USUARIO
             // 
@@ -164,7 +165,6 @@
             this.USUARIO.ReadOnly = true;
             this.USUARIO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.USUARIO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.USUARIO.Width = 80;
             // 
             // CODIGOAREA
             // 
@@ -173,7 +173,6 @@
             this.CODIGOAREA.Name = "CODIGOAREA";
             this.CODIGOAREA.ReadOnly = true;
             this.CODIGOAREA.Visible = false;
-            this.CODIGOAREA.Width = 5;
             // 
             // AREA
             // 
@@ -186,7 +185,6 @@
             this.AREA.ReadOnly = true;
             this.AREA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.AREA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.AREA.Width = 200;
             // 
             // CODIGOGERENCIA
             // 
@@ -195,7 +193,6 @@
             this.CODIGOGERENCIA.Name = "CODIGOGERENCIA";
             this.CODIGOGERENCIA.ReadOnly = true;
             this.CODIGOGERENCIA.Visible = false;
-            this.CODIGOGERENCIA.Width = 5;
             // 
             // GERENCIA
             // 
@@ -217,7 +214,6 @@
             this.TIPO_PEDIDO.HeaderText = "TIPO PEDIDO";
             this.TIPO_PEDIDO.Name = "TIPO_PEDIDO";
             this.TIPO_PEDIDO.ReadOnly = true;
-            this.TIPO_PEDIDO.Width = 90;
             // 
             // CODIGOCC
             // 
@@ -226,7 +222,6 @@
             this.CODIGOCC.Name = "CODIGOCC";
             this.CODIGOCC.ReadOnly = true;
             this.CODIGOCC.Visible = false;
-            this.CODIGOCC.Width = 5;
             // 
             // CENTROCOSTO
             // 
@@ -243,7 +238,6 @@
             this.CODIGOPP.Name = "CODIGOPP";
             this.CODIGOPP.ReadOnly = true;
             this.CODIGOPP.Visible = false;
-            this.CODIGOPP.Width = 5;
             // 
             // PARTIDAPRESUPUESTO
             // 
@@ -256,6 +250,8 @@
             // gridCotizacionesAsociadas
             // 
             this.gridCotizacionesAsociadas.AllowUserToAddRows = false;
+            this.gridCotizacionesAsociadas.AllowUserToResizeRows = false;
+            this.gridCotizacionesAsociadas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,6 +280,7 @@
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridCotizacionesAsociadas.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.gridCotizacionesAsociadas.RowHeadersVisible = false;
             this.gridCotizacionesAsociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacionesAsociadas.Size = new System.Drawing.Size(616, 176);
             this.gridCotizacionesAsociadas.TabIndex = 37;
@@ -297,7 +294,6 @@
             this.COTIZACION.HeaderText = "Nº COT";
             this.COTIZACION.Name = "COTIZACION";
             this.COTIZACION.ReadOnly = true;
-            this.COTIZACION.Width = 60;
             // 
             // PEDIDO
             // 
@@ -309,7 +305,6 @@
             this.PEDIDO.ReadOnly = true;
             this.PEDIDO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.PEDIDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PEDIDO.Width = 60;
             // 
             // CODIGOPROVEEDOR
             // 
@@ -325,7 +320,6 @@
             this.PROVEEDOR.HeaderText = "PROVEEDOR";
             this.PROVEEDOR.Name = "PROVEEDOR";
             this.PROVEEDOR.ReadOnly = true;
-            this.PROVEEDOR.Width = 280;
             // 
             // IMPORTE
             // 
@@ -335,7 +329,6 @@
             this.IMPORTE.HeaderText = "IMPORTE";
             this.IMPORTE.Name = "IMPORTE";
             this.IMPORTE.ReadOnly = true;
-            this.IMPORTE.Width = 65;
             // 
             // FECHAENTREGA
             // 
@@ -345,7 +338,6 @@
             this.FECHAENTREGA.HeaderText = "FECHA ENTREGA";
             this.FECHAENTREGA.Name = "FECHAENTREGA";
             this.FECHAENTREGA.ReadOnly = true;
-            this.FECHAENTREGA.Width = 80;
             // 
             // ADJUNTO
             // 
@@ -354,7 +346,6 @@
             this.ADJUNTO.Name = "ADJUNTO";
             this.ADJUNTO.ReadOnly = true;
             this.ADJUNTO.Visible = false;
-            this.ADJUNTO.Width = 5;
             // 
             // pbFoto
             // 

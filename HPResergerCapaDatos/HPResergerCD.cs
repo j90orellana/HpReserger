@@ -15,12 +15,14 @@ namespace HPResergerCapaDatos
     public class HPResergerCD
     {
         abcBaseDatos.Database bd;
-
+        public string DATASOURCE = "192.168.0.102";
+        public string BASEDEDATOS = " HpReserger";
+        public string USERID = "mmendoza";
+        public string USERPASS = "123";
         public HPResergerCD()
         {
-            bd = new abcBaseDatos.Database("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123");
+            bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
         }
-
 
         public DataTable ListarContratoEmpleado(int tipo, string numero)
         {
@@ -35,7 +37,7 @@ namespace HPResergerCapaDatos
         /// 
         public void AgregarPerfil(string descripcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -52,7 +54,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarPerfil(int codigo, string descripcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -71,7 +73,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarPerfil(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -90,7 +92,7 @@ namespace HPResergerCapaDatos
 
         public void InsertarActualizarUsuario(int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, out int respuesta)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -123,7 +125,7 @@ namespace HPResergerCapaDatos
         }
         public void CambiarContraseña(out int resultado, string usuario, string contrasena, string nueva)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -158,7 +160,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarArea(string valor, int costo, int gerencia)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -178,7 +180,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarArea(string valor, int costo, int gerencia, int area)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -198,7 +200,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarArea(int costo, int gerencia, int area)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -217,7 +219,7 @@ namespace HPResergerCapaDatos
         }
         public void AgregarGerencia(string gerencia)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -234,7 +236,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarGerencia(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -251,7 +253,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarGerencia(int codigo, string gerencia)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -270,7 +272,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarCentroCosto(string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -288,7 +290,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarCentroCosto(string valor, int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -319,7 +321,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarArticulo(string descripcion, int stock, int tipo, string observa)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -340,7 +342,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarArticuloMarca(int marca, int articulo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -359,7 +361,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarArticuloMarca(int art, string desc, int stock, int tipo, string observa, int marca, int marcamod)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -384,7 +386,7 @@ namespace HPResergerCapaDatos
         }
         public void ElimimarArticuloMarca(int marca, int articulo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -403,7 +405,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarMarca(int codigo, string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -422,7 +424,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarMarca(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -440,7 +442,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarModelo(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -458,7 +460,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarMarca(string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -477,7 +479,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarMarcaModelo(int marca, int modelo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -496,7 +498,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarMarcaModelo(int marca, int modelo, int modmar, int modmode)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -518,7 +520,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarMarcaModelo(int marca, int modelo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -538,7 +540,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarModelo(string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -557,7 +559,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarModelo(int codigo, string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -646,7 +648,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarDepartamento(int valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -664,7 +666,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarDepartamento(string valor, int dep)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -683,7 +685,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarDepartamento(int dep)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -701,7 +703,7 @@ namespace HPResergerCapaDatos
         }
         public void ModificarDistrito(int dep, int pro, int dis, string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -722,7 +724,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarDistrito(int dep, int pro, int dis)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -760,7 +762,7 @@ namespace HPResergerCapaDatos
         }
         public void insertarprovincia(int dep, int pro, string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -780,7 +782,7 @@ namespace HPResergerCapaDatos
         }
         public void actualizarprovincia(int dep, int pro, string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -800,7 +802,7 @@ namespace HPResergerCapaDatos
         }
         public void eliminarprovincia(int dep, int pro)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -831,7 +833,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarDistrito(int dep, int pro, int dis, string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -858,7 +860,7 @@ namespace HPResergerCapaDatos
         }
         public void AgregarEntiFinanciera(string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -875,7 +877,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarEntiFinanciera(int codigo, string descripcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -894,7 +896,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarEntiFinanciera(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -911,7 +913,7 @@ namespace HPResergerCapaDatos
         }
         public void AgregarParPresupuesto(string presupuesto)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -928,7 +930,7 @@ namespace HPResergerCapaDatos
         }
         public void AgregarTipoId(string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -945,7 +947,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarTipoId(int codigo, string valor)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -963,7 +965,7 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarParPresupuesto(int codigo, string presupuesto)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -982,7 +984,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarTipoId(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -999,7 +1001,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarParPResupuesto(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog =HPReserger ; user id =mmendoza; password =123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1049,7 +1051,7 @@ namespace HPResergerCapaDatos
 
         public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, int cuenta, string debe, int estado)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1074,7 +1076,7 @@ namespace HPResergerCapaDatos
         }
         public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, int cuenta, string debe, int estado)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1099,7 +1101,7 @@ namespace HPResergerCapaDatos
         }
         public void Modificar2Dinamica(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1118,7 +1120,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarDinamica(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1153,7 +1155,7 @@ namespace HPResergerCapaDatos
 
         public void InsertarAsiento(int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1178,7 +1180,7 @@ namespace HPResergerCapaDatos
         }
         public void Modificar2asiento(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1195,7 +1197,7 @@ namespace HPResergerCapaDatos
         }
         public void EliminarASiento(int codigo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1232,7 +1234,7 @@ namespace HPResergerCapaDatos
         string refleja, string reflejacc, int reflejadebe, int reflejahaber, int cuentacierre, string analitica, int mensual, int cierre,
         int traslacion, string bc)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1271,7 +1273,7 @@ namespace HPResergerCapaDatos
        string refleja, string reflejacc, int reflejadebe, int reflejahaber, int cuentacierre, string analitica, int mensual, int cierre,
        int traslacion, string bc)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1304,7 +1306,7 @@ namespace HPResergerCapaDatos
         public void InsertarProveedor(string ruc, string razon, string nombre, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
             string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1346,7 +1348,7 @@ namespace HPResergerCapaDatos
         public void ActualizarProveedor(string ruc, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
            string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1424,7 +1426,7 @@ namespace HPResergerCapaDatos
 
         public void OrdenPedidoCabeceraInsertar(out int Numero, int Usuario, int Tipo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1447,7 +1449,7 @@ namespace HPResergerCapaDatos
 
         public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1486,7 +1488,7 @@ namespace HPResergerCapaDatos
 
         public void OrdenPedidoDetalleActualizar(int Tipo, int Numero, int Cantidad, int ArticuloOld, int ArticuloNew, int MarcaOld, int MarcaNew, int ModeloOld, int ModeloNew, string Observaciones)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1515,7 +1517,7 @@ namespace HPResergerCapaDatos
 
         public void AnularOrdenPedido(int Numero)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1573,7 +1575,7 @@ namespace HPResergerCapaDatos
 
         public void CotizacionCabeceraInsertar(out int Numero, DateTime FechaEntrega, int Tipo, int Usuario, decimal Importe, int Pedido, string Proveedor, byte[] Foto, string NombreArchivo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1602,7 +1604,7 @@ namespace HPResergerCapaDatos
 
         public void CotizacionDetalleInsertar(int Cotizacion, int Pedido)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1644,7 +1646,7 @@ namespace HPResergerCapaDatos
 
         public void AprobacionNOCotizacion(int Cotizacion, string sStoredProcedure)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1664,7 +1666,7 @@ namespace HPResergerCapaDatos
 
         public void OrdenCompraInsertar(out int Numero, int Cotizacion, int Pedido, int CentroCosto, int PPto, int Usuario, int Area, int Gerencia, string Proveedor, decimal Importe, int Tipo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1716,7 +1718,7 @@ namespace HPResergerCapaDatos
 
         public void UpdateEstadoOC(int Numero, int Estado)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1737,7 +1739,7 @@ namespace HPResergerCapaDatos
 
         public void FICCabeceraInsertar(out int Numero, int GuiaRemision, int OrdenCompra, int Tipo, int Usuario)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1762,7 +1764,7 @@ namespace HPResergerCapaDatos
 
         public void FICDetalleInsertar(int NumeroFIC, int CodigoArticulo, int CodigoMarca, int CodigoModelo, int Cantidad, string Observaciones, int Tipo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1792,6 +1794,12 @@ namespace HPResergerCapaDatos
             object[] valores = { Proveedor, Tipo, Usuario };
             return bd.DataTableFromProcedure("usp_Proveedor_OC", parametros, valores, null);
         }
+        public DataTable ListarOCProveedorAprobadas(string Proveedor, int Tipo, int Usuario)
+        {
+            string[] parametros = { "@Proveedor", "@Tipo", "@Usuario" };
+            object[] valores = { Proveedor, Tipo, Usuario };
+            return bd.DataTableFromProcedure("usp_listar_Proveedor_OC", parametros, valores, null);
+        }
 
         public DataTable ListarSinOCProveedor(string Proveedor, int Tipo, int Usuario, int OC)
         {
@@ -1813,14 +1821,66 @@ namespace HPResergerCapaDatos
             object[] valores = { OC, Tipo };
             return bd.DataTableFromProcedure("usp_get_FIC", parametros, valores, null);
         }
-
+        public DataTable ListarOCFaltantes(string cadena, DateTime fechaini, DateTime fechafin, int articulo, int servicio, int opcion, int fecha)
+        {
+            string[] parametros = { "@cadena", "@fechaini", "@fechafin", "@articulo", "@servicio", "@opcion", "@fecha" };
+            object[] valores = { cadena, fechaini, fechafin, articulo, servicio, opcion, fecha };
+            return bd.DataTableFromProcedure("dbo.usp_listar_oc_Faltantes", parametros, valores, null);
+        }
+        public DataTable ListarFIClistar(int OC, int Tipo)
+        {
+            string[] parametros = { "@OC", "@Tipo" };
+            object[] valores = { OC, Tipo };
+            return bd.DataTableFromProcedure("usp_get_FIC_listar", parametros, valores, null);
+        }
+        public DataTable ListarFics(int opcion, string proveedor, int guia, int tipo)
+        {
+            string[] parametros = { "@opcion", "@proveedor", "@guia", "@tipo" };
+            object[] valores = { opcion, proveedor, guia, tipo };
+            return bd.DataTableFromProcedure("usp_ListarFic", parametros, valores, null);
+        }
+        public DataTable ListarFicsFila(int opcion, string proveedor, string guia, int tipo)
+        {
+            string[] parametros = { "@opcion", "@proveedor", "@guia", "@tipo" };
+            object[] valores = { opcion, proveedor, guia, tipo };
+            return bd.DataTableFromProcedure("usp_ListarFic", parametros, valores, null);
+        }
+        public DataRow BuscarMontodelasGuias(int opcion, string proveedor, string guia, int tipo)
+        {
+            string[] parametros = { "@opcion", "@proveedor", "@guia", "@tipo" };
+            object[] valores = { opcion, proveedor, guia, tipo };
+            return bd.DatarowFromProcedure("usp_ListarFic", parametros, valores, null);
+        }
+        public DataRow BuscarFacturas(string ruc, string nrofac)
+        {
+            string[] parametros = { "@ruc", "@nrofac" };
+            object[] valores = { ruc, nrofac };
+            return bd.DatarowFromProcedure("dbo.usp_Facturas", parametros, valores, null);
+        }
+        public DataTable ListarFicsDetalle(string fic)
+        {
+            string[] parametros = { "@fic" };
+            object[] valores = { fic };
+            return bd.DataTableFromProcedure("usp_ListarFic_detalle", parametros, valores, null);
+        }
         public DataTable ListarFIC2(int OC, int FIC, int Tipo)
         {
             string[] parametros = { "@OC", "@FIC", "@Tipo" };
             object[] valores = { OC, FIC, Tipo };
             return bd.DataTableFromProcedure("usp_get_Articulos_FIC2", parametros, valores, null);
         }
-
+        public DataTable ListarGuias(string ruc, int tipo, int opcion, int guia)
+        {
+            string[] parametros = { "@ruc", "@tipo", "@opcion", "@guia" };
+            object[] valores = { ruc, tipo, opcion, guia };
+            return bd.DataTableFromProcedure("dbo.usp_listar_guias ", parametros, valores, null);
+        }
+        public DataTable ListarFIC2listar(int OC, int FIC, int Tipo)
+        {
+            string[] parametros = { "@OC", "@FIC", "@Tipo" };
+            object[] valores = { OC, FIC, Tipo };
+            return bd.DataTableFromProcedure("usp_get_Articulos_FIC2_listar", parametros, valores, null);
+        }
         public DataRow RUCProveedor(string RUC)
         {
             string[] parametros = { "@RUC" };
@@ -1834,10 +1894,42 @@ namespace HPResergerCapaDatos
             object[] valores = { Numero };
             return bd.DatarowFromProcedure("usp_Get_Imagen_Cotizacion", parametros, valores, null);
         }
+        public void InsertarFactura(string nrofactura,string proveedor,int fic,int oc,int tipo,decimal subtotal,decimal igv,decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado,int estado, int moneda, byte[] imgfactura, int usuario)
+        {
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
+            {
+                cn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "usp_insertar_factura";
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.Add("@nrofactura", SqlDbType.VarChar,40).Value = nrofactura;
+                    cmd.Parameters.Add("@proveedor", SqlDbType.Char, 40).Value = proveedor;
+                    cmd.Parameters.Add("@fic", SqlDbType.Int).Value = fic;
+                    cmd.Parameters.Add("@oc", SqlDbType.Int).Value = oc;
+                    cmd.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
+                    cmd.Parameters.Add("@subtotal", SqlDbType.Decimal).Value = subtotal;
+                    cmd.Parameters.Add("@igv", SqlDbType.Decimal).Value = igv;
+                    cmd.Parameters.Add("@total", SqlDbType.Decimal).Value = total;
+                    cmd.Parameters.Add("@gravaigv", SqlDbType.Int).Value = gravaivg;
+                    cmd.Parameters.Add("@fechaemision", SqlDbType.DateTime).Value = fechaemision;
+                    cmd.Parameters.Add("@fechaentrega", SqlDbType.DateTime).Value = fechaentregado;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
+                    cmd.Parameters.Add("@moneda", SqlDbType.Int).Value = moneda;                    
+                    cmd.Parameters.Add("@imgfactura", SqlDbType.Image).Value = imgfactura;
+                    cmd.Parameters.Add("@usuario", SqlDbType.Int).Value = usuario;
+                    
+                    cmd.ExecuteNonQuery();
+                }
+                cn.Close();
+                cn.Dispose();
+            }
+        }
         public void CotizacionModificar(int Numero, DateTime FechaEntrega, decimal Importe, string Proveedor, byte[] Foto, string NombreArchivo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1883,7 +1975,7 @@ namespace HPResergerCapaDatos
 
         public void SolicitudEmpleadoInsertar(int Numero, int Cargo, int TipoContratacion, string Busqueda, string AplicaTerna, int Area, int CantPuestos, int NroOrdenCompra, byte[] Foto, string NombreFoto, int Usuario)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1941,7 +2033,7 @@ namespace HPResergerCapaDatos
 
         public void PostulanteInsertar(int Tipo_ID_Postulante, string Nro_ID_Postulante, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, int ID_Puesto_Postulante, byte[] Foto, string NombreFoto, int OC, int SE, int Usuario)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -1971,7 +2063,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoRequerimiento(int Tipo_ID_Emp, string Nro_ID_Emp, string Correo, string Correo_Obs, string Celular, string Celular_Obs, string Pc, string Pc_Obs, string Otros, string Otros_Obs, int Usuario, int Opcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2002,7 +2094,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoSeguroPension(int Tipo_ID_Emp, string Nro_ID_Emp, string Eps, int Eps_Adicional, string Sctr, string Onp, string Afp, int Afp_Empresa, string Nro_Cupss, int Usuario, int Opcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2032,7 +2124,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoCTS(int Tipo_ID_Emp, string Nro_ID_Emp, int Banco, int Moneda, string Nro_Cta, string Nro_Cci, int Usuario, int Opcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2059,7 +2151,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoPagoHaberes(int Tipo_ID_Emp, string Nro_ID_Emp, int Banco, int Moneda, string Nro_Cta, string Nro_Cci, int Usuario, int Opcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2107,7 +2199,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp, int Sexo, DateTime Fec_Nacimiento, int Lugar_Nacimiento, int Estado_Civil, int Hijos, string Direccion, int Distrito, int Provincia, int Departamento, string Telf_Fijo, string Telf_Celular, int Profesion, int Grado_Instruccion, byte[] AntecedentesPoliciales, string NombreFotoAntecedentesPoliciales, byte[] AntecedentesPenales, string NombreFotoAntecedentesPenales, byte[] ReciboServicios, string NombreFotoReciboServicios, int Usuario)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2165,7 +2257,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2213,7 +2305,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoFamilia(int Tipo_ID_Emp, string Nro_ID_Emp, int Vinculo_Familiar, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old, int Tipo_ID_Fam_New, string Nro_ID_Fam_New, string Apepat_Fam, string Apemat_Fam, string Nombres_Fam, DateTime Fec_Nacimiento_Fam, string Ocupacion, int Usuario, int Opcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2260,7 +2352,7 @@ namespace HPResergerCapaDatos
 
         public void AprobarPostulante(int Tipo_ID_Postulante, string Nro_ID_Postulante, int Id_SolicitaEmpleado)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2308,7 +2400,7 @@ namespace HPResergerCapaDatos
 
         public void SolicitudEmpleadoModificar(int ID_SolicitaEmpleado, int Cargo, int Tipo_Contratacion, string Busqueda, string AplicaTerna, int CantPuestos, int NroOrdenCompra, byte[] Foto, string NombreFoto)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2350,7 +2442,7 @@ namespace HPResergerCapaDatos
 
         public void PostulanteModificar(int Tipo_ID_Postulante_Old, string Nro_ID_Postulante_Old, int Tipo_ID_Postulante_New, string Nro_ID_Postulante_New, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, byte[] Foto, string NombreFoto, int Id_SolicitaEmpleado)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2387,7 +2479,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoModificar(int Tipo_ID_Emp_New, string Nro_ID_Emp_New, int Tipo_ID_Emp_Old, string Nro_ID_Emp_Old, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp, int Sexo, DateTime Fec_Nacimiento, int Lugar_Nacimiento, int Estado_Civil, int Hijos, string Direccion, int Distrito, int Provincia, int Departamento, string Telf_Fijo, string Telf_Celular, int Profesion, int Grado_Instruccion, byte[] AntecedentesPoliciales, string NombreFotoAntecedentesPoliciales, byte[] AntecedentesPenales, string NombreFotoAntecedentesPenales, byte[] ReciboServicios, string NombreFotoReciboServicios)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2432,7 +2524,7 @@ namespace HPResergerCapaDatos
 
         public void ActualizarLogin(string sStoredProcedureName, string Login_User, int Opcion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2474,7 +2566,7 @@ namespace HPResergerCapaDatos
 
         public void AnularCotizacion(int Cotizacion)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2497,14 +2589,16 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_LimpiarCombosGrillas", null, null, null);
         }
 
-        public DataRow NextValorizacion()
+        public DataRow NextValorizacion(int numero)
         {
-            return bd.DatarowFromProcedure("usp_NextValorizacion", null, null, null);
+            string[] parametros = { "@numero" };
+            object[] valores = { numero };
+            return bd.DatarowFromProcedure("usp_NextValorizacion", parametros, valores, null);
         }
 
         public void EliminarSolicitudEmpleado(int Solicitud)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2545,7 +2639,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoVacacionesInsertar(out int Numero, int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias_Vacaciones, string Observaciones)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2593,7 +2687,7 @@ namespace HPResergerCapaDatos
 
         public void AprobarVacaciones(int Registro, int Tipo_ID_Emp, string Nro_ID_Emp, byte[] Foto, string NombreFoto)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2666,7 +2760,7 @@ namespace HPResergerCapaDatos
 
         public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2692,7 +2786,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, string Observaciones, byte[] Foto, string NombreFoto)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2719,7 +2813,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoMemoPremio(out int Numero, int Tipo_ID_Emp, string Nro_ID_Emp, int Tipo, string Observaciones)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2752,7 +2846,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoMemoPremioSustento(int Registro, int Tipo_ID_Emp, string Nro_ID_Emp, int Tipo, byte[] Foto, string NombreFoto)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2782,10 +2876,10 @@ namespace HPResergerCapaDatos
             return bd.DatarowFromProcedure("usp_Get_Imagen_MemoPremio", parametros, valores, null);
         }
 
-        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision, int OrdenCompra)
+        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision, int OrdenCompra, int tipo)
         {
-            string[] parametros = { "@Proveedor", "@GuiaRemision", "@OrdenCompra" };
-            object[] valores = { Proveedor, GuiaRemision, OrdenCompra };
+            string[] parametros = { "@Proveedor", "@GuiaRemision", "@OrdenCompra", "@tipo" };
+            object[] valores = { Proveedor, GuiaRemision, OrdenCompra, tipo };
             return bd.DataTableFromProcedure("usp_Get_OrdenCompra_Proveedor", parametros, valores, null);
         }
 
@@ -2798,7 +2892,7 @@ namespace HPResergerCapaDatos
 
         public void FICModificarCabecera(int Numero, DateTime Fecha, int GuiaRemision)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2820,7 +2914,7 @@ namespace HPResergerCapaDatos
 
         public void FICEliminarItemDetalle(int Id_FIC_Detalle, int NumeroFIC, int CodigoArticulo, int CodigoMarca, int CodigoModelo)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2844,7 +2938,7 @@ namespace HPResergerCapaDatos
 
         public void EmpleadoDesvinculacionInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, byte[] Foto, string Ruta, int Opcion, DateTime fechacese, int usuario, out int respuesta)
         {
-            using (SqlConnection cn = new SqlConnection("data source = 192.168.0.102; initial catalog = HPReserger; user id = mmendoza; password = 123"))
+            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
                 cn.Open();
                 using (SqlCommand cmd = new SqlCommand())
@@ -2893,6 +2987,6 @@ namespace HPResergerCapaDatos
             object[] valores = { tipo, documento, fecha };
             return bd.DatarowFromProcedure("usp_contrato_activo", parametros, valores, null);
         }
-        
+
     }
 }

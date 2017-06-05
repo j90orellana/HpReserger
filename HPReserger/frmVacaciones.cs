@@ -44,29 +44,46 @@ namespace HPReserger
                 {
                     btnBoletaVacaciones.Enabled = false;
                     btnCompraVacaciones.Enabled = false;
-                    groupBox1.Visible = false;
+                    groupBox1.Enabled = false;
                     btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
                 }
                 else
                 {
                     btnBoletaVacaciones.Enabled = true;
                     btnCompraVacaciones.Enabled = true;
-                    groupBox1.Visible = true;
+                    groupBox1.Enabled = true;
                     btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
                 }
                 if (EmpleadoVacaciones["IDTIPO"].ToString() == "2" || EmpleadoVacaciones["IDTIPO"].ToString() == "3")
                 {
                     btnBoletaVacaciones.Enabled = true;
                     btnCompraVacaciones.Enabled = true;
-                    groupBox1.Visible = true;
+                    groupBox1.Enabled = true;
                     btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
                 }
                 else
                 {
                     btnBoletaVacaciones.Enabled = false;
                     btnCompraVacaciones.Enabled = false;
-                    groupBox1.Visible = false;
+                    groupBox1.Enabled = false;
                     btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
+                }
+                DataRow Contratoactivo = clEmpleadoVacaciones.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
+                if (Contratoactivo != null)
+                {
+                    btnBoletaVacaciones.Enabled = true;
+                    btnCompraVacaciones.Enabled = true;
+                    groupBox1.Enabled = true;
+                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
+                    lblmensajito.Text = "EMPLEADO ACTIVO CONTRATO Nº" + Contratoactivo["Nro_Contrato"].ToString();
+                }
+                else
+                {
+                    btnBoletaVacaciones.Enabled = false;
+                    btnCompraVacaciones.Enabled = false;
+                    groupBox1.Enabled = false;
+                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
+                    lblmensajito.Text = "EMPLEADO INACTIVO";
                 }
             }
             else
@@ -133,7 +150,6 @@ namespace HPReserger
             {
                 txtDias.Text = DiasVaca["DIAS"].ToString();
             }
-
             DataRow DiasGenerado = clEmpleadoVacaciones.DiasGenerado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value);
             if (DiasGenerado != null)
             {

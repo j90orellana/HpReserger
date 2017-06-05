@@ -34,11 +34,12 @@ namespace HPReserger
             CargarCombos(cboTipoContratacion, "Id_TipoContratacion", "TipoContratacion", "TBL_TipoContratacion");
             cboTipoContratacion.SelectedIndex = -1;
 
-            //cboBusqueda.SelectedIndex = 0;
-            //cboTerna.SelectedIndex = 0;
+            cboBusqueda.SelectedIndex =-1;
+            cboTerna.SelectedIndex = -1;
 
             MostrarGrid(frmLogin.CodigoUsuario);
             Correlativo();
+            Grid1.Visible = false;
         }
 
         private void Correlativo()
@@ -136,7 +137,7 @@ namespace HPReserger
             int OC = 0;
             if (cboBusqueda.SelectedIndex == 0)
             {
-                OC = Convert.ToInt32(Grid1.Rows[Item].Cells[0].Value.ToString().Substring(2, 4));
+                OC = Convert.ToInt32(Grid1.Rows[Item].Cells[0].Value.ToString().Substring(2));
                 clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), Convert.ToInt32(Grid1.Rows[Item].Cells[1].Value.ToString()), Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
             }
             else
@@ -182,7 +183,7 @@ namespace HPReserger
         {
             if (Grid2.Rows[e.RowIndex].Cells[0].Value != null)
             {
-                CargarFoto(Convert.ToInt32(Grid2.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2, 4)), e.RowIndex);
+                CargarFoto(Convert.ToInt32(Grid2.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2)), e.RowIndex);
             }
         }
         
@@ -201,7 +202,7 @@ namespace HPReserger
         {
             if (Grid2.Rows.Count > 0 && Grid2.CurrentRow.Cells[0].Value != null)
             {
-                if (SolicitudTienePostulantes(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2, 4))) == false)
+                if (SolicitudTienePostulantes(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2))) == false)
                 {
                     frmSolicitudEmpleadoModificar frmSE = new frmSolicitudEmpleadoModificar();
                     frmSE.Solicitud = Grid2.CurrentRow.Cells[0].Value.ToString();
@@ -232,13 +233,13 @@ namespace HPReserger
 
         private void cboBusqueda_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboBusqueda.SelectedIndex == 1)
+            if (cboBusqueda.SelectedIndex ==0)
             {
-                Grid1.Visible = false;
+                Grid1.Visible = true;
             }
             else
             {
-                Grid1.Visible = true;
+                Grid1.Visible = false;
             }
         }
 
@@ -248,11 +249,11 @@ namespace HPReserger
             {
                 if (e.KeyValue == (char)(Keys.Delete))
                 {
-                    if (SolicitudTienePostulantes(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2, 4))) == false)
+                    if (SolicitudTienePostulantes(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2))) == false)
                     {
-                        if (MessageBox.Show("¿ Seguro de eliminar la Solicitud Nº " + Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2, 4) + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        if (MessageBox.Show("¿ Seguro de eliminar la Solicitud Nº " + Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2) + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                         {
-                            clSolicitudEmpleado.EliminarSolicitudEmpleado(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2, 4)));
+                            clSolicitudEmpleado.EliminarSolicitudEmpleado(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)));
                             MostrarGrid(frmLogin.CodigoUsuario);
                         }
                     }

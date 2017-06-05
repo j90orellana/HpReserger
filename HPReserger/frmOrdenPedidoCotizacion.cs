@@ -89,5 +89,10 @@ namespace HPReserger
 
 
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

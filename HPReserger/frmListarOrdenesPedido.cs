@@ -119,7 +119,7 @@ namespace HPReserger
             DataTable ListarPedidos = new DataTable();
             if (rbtArticulo.Checked == true && rbtServicios.Checked == false && rbtFechas.Checked == false)
             {
-                ListarPedidos = clListarPedido.ListarPedidos(0, txtArticulos.Text.Trim(), dtpDesde.Value, dtpHasta.Value, Usuario);
+                ListarPedidos = clListarPedido.ListarPedidos(0, txtArticulos.Text.Trim(), dtpDesde.Value, dtpHasta.Value.AddDays(1), Usuario);
                 if (ListarPedidos != null && ListarPedidos.Rows.Count > 0)
                 {
                     TitulosGrid(gridListar, "L");

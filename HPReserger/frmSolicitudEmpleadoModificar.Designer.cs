@@ -81,6 +81,7 @@
             this.groupBox1.Size = new System.Drawing.Size(414, 243);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // chkCambiar
             // 

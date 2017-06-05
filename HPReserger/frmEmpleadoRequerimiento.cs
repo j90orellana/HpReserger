@@ -23,10 +23,7 @@ namespace HPReserger
 
         private void frmEmpleadoRequerimiento_Load(object sender, EventArgs e)
         {
-            cboCelular.SelectedIndex = 0;
-            cboCorreo.SelectedIndex = 0;
-            cboMaquina.SelectedIndex = 0;
-            cboOtros.SelectedIndex = 0;
+            cboCelular.SelectedIndex = cboCorreo.SelectedIndex = cboMaquina.SelectedIndex = cboOtros.SelectedIndex = 1;
 
             DataRow ExisteRequerimiento = clEmpleadoRequerimiento.CargarCualquierImagenPostulanteEmpleado("*", "TBL_Empleado_Requerimiento", "Tipo_ID_Emp", CodigoDocumento, "Nro_ID_Emp", NumeroDocumento);
             if (ExisteRequerimiento != null)
@@ -171,7 +168,7 @@ namespace HPReserger
                 }
                 GrabarEditar(1);
                 MessageBox.Show("Requerimiento ingresado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
             }
@@ -179,7 +176,7 @@ namespace HPReserger
             {
                 GrabarEditar(0);
                 MessageBox.Show("Requerimiento actualizado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
             }

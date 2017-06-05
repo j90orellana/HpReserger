@@ -544,6 +544,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarOCProveedor(Proveedor, Tipo, Usuario);
         }
+        public DataTable ListarOCProveedorAprobadas(string Proveedor, int Tipo, int Usuario)
+        {
+            return cdOrdenPedido.ListarOCProveedorAprobadas(Proveedor, Tipo, Usuario);
+        }
 
         public DataTable ListarArticulosFIC(int OC, int TIPO)
         {
@@ -564,12 +568,51 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarFIC(OC, Tipo);
         }
-
+        public DataTable ListarFIClistar(int OC, int Tipo)
+        {
+            return cdOrdenPedido.ListarFIClistar(OC, Tipo);
+        }
+        public DataTable ListarOCFaltantes(string cadena, DateTime fechaini, DateTime fechafin, int articulo, int servicio, int opcion, int fecha)
+        {
+            return cdOrdenPedido.ListarOCFaltantes(cadena, fechaini, fechafin, articulo, servicio, opcion, fecha);
+        }
         public DataTable ListarFIC2(int OC, int FIC, int Tipo)
         {
             return cdOrdenPedido.ListarFIC2(OC, FIC, Tipo);
         }
+        public DataTable ListarFIC2listar(int OC, int FIC, int Tipo)
+        {
+            return cdOrdenPedido.ListarFIC2listar(OC, FIC, Tipo);
+        }
 
+        public DataTable ListarFics(int opcion, string proveedor, int guia, int tipo)
+        {
+            return cdOrdenPedido.ListarFics(opcion, proveedor, guia, tipo);
+        }
+        public DataTable ListarFicsFila(int opcion, string proveedor, string guia, int tipo)
+        {
+            return cdOrdenPedido.ListarFicsFila(opcion, proveedor, guia, tipo);
+        }
+        public DataRow BuscarMontoDelasGuias(int opcion, string proveedor, string guia, int tipo)
+        {
+            return cdOrdenPedido.BuscarMontodelasGuias(opcion, proveedor, guia, tipo);
+        }
+        public DataRow BuscarFacturas(string ruc, string nrofac)
+        {
+            return cdOrdenPedido.BuscarFacturas(ruc, nrofac);
+        }
+        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, int estado, int moneda, byte[] imgfactura, int usuario)
+        {
+            cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, estado, moneda, imgfactura, usuario);
+        }
+        public DataTable ListarFicsDetalle(string fic)
+        {
+            return cdOrdenPedido.ListarFicsDetalle(fic);
+        }
+        public DataTable ListarGuias(string ruc, int tipo, int opcion, int guia)
+        {
+            return cdOrdenPedido.ListarGuias(ruc, tipo, opcion, guia);
+        }
         public DataRow RUCProveedor(string RUC)
         {
             return cdOrdenPedido.RUCProveedor(RUC);
@@ -782,9 +825,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.LimpiarCombosGrillas();
         }
 
-        public DataRow NextValorizacion()
+        public DataRow NextValorizacion(int numero)
         {
-            return cdOrdenPedido.NextValorizacion();
+            return cdOrdenPedido.NextValorizacion(numero);
         }
 
         public void EliminarSolicitudEmpleado(int Solicitud)
@@ -897,9 +940,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ImagenEmpleadoMemoPremio(Registro, Tipo_ID_Emp, Nro_ID_Emp, Tipo);
         }
 
-        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision, int ordencompra)
+        public DataTable OrdenCompraProveedor(string Proveedor, int GuiaRemision, int ordencompra, int tipo)
         {
-            return cdOrdenPedido.OrdenCompraProveedor(Proveedor, GuiaRemision, ordencompra);
+            return cdOrdenPedido.OrdenCompraProveedor(Proveedor, GuiaRemision, ordencompra, tipo);
         }
 
         public DataTable ListarFicModificar(int NumeroFIC)
