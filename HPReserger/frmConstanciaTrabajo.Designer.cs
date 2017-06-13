@@ -44,6 +44,7 @@
             this.crvConstanciaTrabajo.Size = new System.Drawing.Size(749, 606);
             this.crvConstanciaTrabajo.TabIndex = 0;
             this.crvConstanciaTrabajo.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvConstanciaTrabajo.Load += new System.EventHandler(this.crvConstanciaTrabajo_Load);
             // 
             // frmConstanciaTrabajo
             // 

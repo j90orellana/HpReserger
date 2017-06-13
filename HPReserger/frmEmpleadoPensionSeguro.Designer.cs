@@ -170,6 +170,7 @@
             this.cboONP.Name = "cboONP";
             this.cboONP.Size = new System.Drawing.Size(140, 21);
             this.cboONP.TabIndex = 16;
+            this.cboONP.SelectedIndexChanged += new System.EventHandler(this.cboONP_SelectedIndexChanged);
             // 
             // cboAFP
             // 

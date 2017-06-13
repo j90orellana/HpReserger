@@ -19,17 +19,18 @@ namespace HPReserger
         }
         public double totaldebe { get; set; }
         public double totalhaber { get; set; }
+        int fechacheck = 0;
         HPResergerCapaLogica.HPResergerCL Casiento = new HPResergerCapaLogica.HPResergerCL();
 
         private void frmAsientoContable_Load(object sender, EventArgs e)
         {
-            estado = 0;
+            estado = 0; fechacheck = 0;
             tipobusca = 1;
             RellenarEstado(cboestado);
             System.Globalization.CultureInfo.CreateSpecificCulture("es-ES");
             fechaini.Value = fecha.Value = DateTime.Today;
             fechafin.Value = DateTime.Today.AddDays(1);
-            dtgbusca.DataSource = Casiento.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today);
+            dtgbusca.DataSource = Casiento.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today,0);
             if (dtgbusca.RowCount > 0) { activar(); }
 
             fecha.Value = DateTime.Now;
@@ -483,9 +484,9 @@ namespace HPReserger
         {
             if (fechaini.Value < fechafin.Value)
             {
-                dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechaini.Value, fechafin.Value.AddDays(1));
+                dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechaini.Value, fechafin.Value.AddDays(1),fechacheck);
             }
-            else { dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechafin.Value, fechaini.Value.AddDays(1)); }
+            else { dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechafin.Value, fechaini.Value.AddDays(1),fechacheck); }
             msg2(dtgbusca);
 
             if (dtgbusca.RowCount < 1)
@@ -871,6 +872,14 @@ namespace HPReserger
         private void txtdinamica_Click(object sender, EventArgs e)
         {
             txtdinamica.SelectAll();
+        }
+
+        private void chkfecha_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkfecha.Checked) fechacheck = 1;
+            else fechacheck = 0;
+
+            Txtbusca_TextChanged(sender, e);
         }
 
         private void dtgayuda3_RowEnter(object sender, DataGridViewCellEventArgs e)

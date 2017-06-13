@@ -278,6 +278,7 @@
             this.pnlconten.Name = "pnlconten";
             this.pnlconten.Size = new System.Drawing.Size(475, 167);
             this.pnlconten.TabIndex = 25;
+            this.pnlconten.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlconten_Paint);
             // 
             // frmEmpleadoRequerimiento
             // 

@@ -43,9 +43,15 @@ namespace HPReserger
                 cboONP.Enabled = false;
                 cboAFPEmpresa.Enabled = true;
                 txtCUPSS.Enabled = true;
+                cboONP.Items.Clear();
+                cboONP.Items.Add("NO");
+                cboONP.Text = "NO";
             }
             else
             {
+                cboONP.Items.Clear();
+                cboONP.Items.Add("SI");
+                cboONP.Text = "SI";
                 cboONP.Enabled = true;
                 cboAFPEmpresa.Enabled = false;
                 txtCUPSS.Enabled = false;
@@ -140,7 +146,7 @@ namespace HPReserger
                 ONP = "NO";
             }
             clPensionSeguro.EmpleadoSeguroPension(CodigoDocumento, NumeroDocumento, cboEPS.SelectedItem.ToString(), EPSAdiconal, cboSCTR.SelectedItem.ToString(), ONP, cboAFP.SelectedItem.ToString(), AFP, txtCUPSS.Text, frmLogin.CodigoUsuario, Opcion);
-            txtCUPSS.Text = "";
+     
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -191,6 +197,7 @@ namespace HPReserger
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
+                btnModificar.Enabled = true;
             }
             if (estado == 2)
             {
@@ -199,7 +206,13 @@ namespace HPReserger
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
+                btnModificar.Enabled = true;
             }
+        }
+
+        private void cboONP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,7 +38,7 @@
             this.pbfoto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbfoto.Location = new System.Drawing.Point(0, 0);
             this.pbfoto.Name = "pbfoto";
-            this.pbfoto.Size = new System.Drawing.Size(729, 830);
+            this.pbfoto.Size = new System.Drawing.Size(729, 752);
             this.pbfoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbfoto.TabIndex = 0;
             this.pbfoto.TabStop = false;
@@ -50,7 +50,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(729, 830);
+            this.ClientSize = new System.Drawing.Size(729, 752);
             this.Controls.Add(this.pbfoto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmFoto";

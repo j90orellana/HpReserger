@@ -91,6 +91,7 @@ namespace HPReserger
                 string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
                 Listar(frmLogin.CodigoUsuario);
                 MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtProveedor.Text = txtImporte.Text = txtFechaEntrega.Text = "";
             }
         }
 
@@ -102,6 +103,7 @@ namespace HPReserger
                 string OC2 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
                 Listar(frmLogin.CodigoUsuario);
                 MessageBox.Show("La OC Nº " + OC2 + " se Anuló como éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtProveedor.Text = txtImporte.Text = txtFechaEntrega.Text = "";
             }
         }
 

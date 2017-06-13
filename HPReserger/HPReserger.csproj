@@ -270,6 +270,24 @@
     <Compile Include="frmprovincias.designer.cs">
       <DependentUpon>frmprovincias.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmreporteempleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmreporteempleado.Designer.cs">
+      <DependentUpon>frmreporteempleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frmreporteop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmreporteop.Designer.cs">
+      <DependentUpon>Frmreporteop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmreporteordencompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmreporteordencompra.Designer.cs">
+      <DependentUpon>frmreporteordencompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRetencionRenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -632,6 +650,15 @@
     <EmbeddedResource Include="frmprovincias.resx">
       <DependentUpon>frmprovincias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmreporteempleado.resx">
+      <DependentUpon>frmreporteempleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmreporteop.resx">
+      <DependentUpon>Frmreporteop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmreporteordencompra.resx">
+      <DependentUpon>frmreporteordencompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRetencionRenta.resx">
       <DependentUpon>frmRetencionRenta.cs</DependentUpon>
     </EmbeddedResource>
@@ -765,6 +792,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="rptCTS.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -818,6 +846,41 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sshot-2017-06-13-[17-57-02].jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sshot-2017-06-13-[17-59-46].jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

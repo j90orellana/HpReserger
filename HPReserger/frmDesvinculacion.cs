@@ -169,11 +169,13 @@ namespace HPReserger
                     pbPracticas.Image = null;
                     txtEntrevistaSalida.Text = ""; FotoEntrevistaSalida = null; lklsalida.Enabled = false;
                     pbSalida.Image = null;
+                   
                 }
             }
             else
             {
                 txtApellidoPaterno.Text = txtApellidoMaterno.Text = txtNombres.Text = "";
+                dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(1,"");
             }
         }
 
@@ -183,7 +185,7 @@ namespace HPReserger
             dtpfechacese.Value = DateTime.Now;
             txtNumeroDocumento.Text = "";
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
-            dtpfechacese.MaxDate = DateTime.Now;
+            dtpfechacese.MaxDate = DateTime.Now.AddDays(1);
         }
 
         private void CargaCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
@@ -620,7 +622,6 @@ namespace HPReserger
                 button1.Text = "Ver Desvinculaciones";
                 dtgconten.Enabled = !dtgconten.Enabled;
                 dtpfechacese.Value = fechita;
-
             }
 
         }
@@ -629,7 +630,10 @@ namespace HPReserger
         {
             if (dtgconten.RowCount > 0)
             {
-                dtpfechacese.Value = Convert.ToDateTime(dtgconten["FECHACESE", e.RowIndex].Value.ToString());
+                if (dtgconten["FECHACESE", e.RowIndex].Value.ToString() != string.Empty)
+                {
+                    dtpfechacese.Value = Convert.ToDateTime(dtgconten["FECHACESE", e.RowIndex].Value.ToString());
+                }
             }
         }
     }

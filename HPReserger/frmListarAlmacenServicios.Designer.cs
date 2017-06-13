@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNumeros = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -50,10 +50,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gridDetalle2 = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.gridDetalle1 = new System.Windows.Forms.DataGridView();
             this.ItemDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +59,10 @@
             this.G2MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTING = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.gridDetalle1 = new System.Windows.Forms.DataGridView();
             this.FIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NGR = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -176,14 +176,14 @@
             this.gridDetalle2.AllowUserToResizeColumns = false;
             this.gridDetalle2.AllowUserToResizeRows = false;
             this.gridDetalle2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDetalle2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridDetalle2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridDetalle2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemDetalle,
@@ -203,6 +203,95 @@
             this.gridDetalle2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle2.Size = new System.Drawing.Size(587, 182);
             this.gridDetalle2.TabIndex = 33;
+            // 
+            // ItemDetalle
+            // 
+            this.ItemDetalle.DataPropertyName = "ItemDetalle";
+            this.ItemDetalle.HeaderText = "ItemDetalle";
+            this.ItemDetalle.Name = "ItemDetalle";
+            this.ItemDetalle.ReadOnly = true;
+            this.ItemDetalle.Visible = false;
+            // 
+            // G2CODIGOARTICULO
+            // 
+            this.G2CODIGOARTICULO.DataPropertyName = "CODIGOARTICULO";
+            this.G2CODIGOARTICULO.HeaderText = "CODIGOARTICULO";
+            this.G2CODIGOARTICULO.Name = "G2CODIGOARTICULO";
+            this.G2CODIGOARTICULO.ReadOnly = true;
+            this.G2CODIGOARTICULO.Visible = false;
+            // 
+            // G2ITEM
+            // 
+            this.G2ITEM.DataPropertyName = "ITEM";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.G2ITEM.DefaultCellStyle = dataGridViewCellStyle2;
+            this.G2ITEM.HeaderText = "ITEM";
+            this.G2ITEM.Name = "G2ITEM";
+            this.G2ITEM.ReadOnly = true;
+            this.G2ITEM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // G2CODIGOMARCA
+            // 
+            this.G2CODIGOMARCA.DataPropertyName = "CODIGOMARCA";
+            this.G2CODIGOMARCA.HeaderText = "CODIGOMARCA";
+            this.G2CODIGOMARCA.Name = "G2CODIGOMARCA";
+            this.G2CODIGOMARCA.ReadOnly = true;
+            this.G2CODIGOMARCA.Visible = false;
+            // 
+            // G2MARCA
+            // 
+            this.G2MARCA.DataPropertyName = "MARCA";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.G2MARCA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.G2MARCA.HeaderText = "MARCA";
+            this.G2MARCA.Name = "G2MARCA";
+            this.G2MARCA.ReadOnly = true;
+            this.G2MARCA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.G2MARCA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // G2CODIGOMODELO
+            // 
+            this.G2CODIGOMODELO.DataPropertyName = "CODIGOMODELO";
+            this.G2CODIGOMODELO.HeaderText = "CODIGOMODELO";
+            this.G2CODIGOMODELO.Name = "G2CODIGOMODELO";
+            this.G2CODIGOMODELO.ReadOnly = true;
+            this.G2CODIGOMODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.G2CODIGOMODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.G2CODIGOMODELO.Visible = false;
+            // 
+            // G2MODELO
+            // 
+            this.G2MODELO.DataPropertyName = "MODELO";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.G2MODELO.DefaultCellStyle = dataGridViewCellStyle4;
+            this.G2MODELO.HeaderText = "MODELO";
+            this.G2MODELO.Name = "G2MODELO";
+            this.G2MODELO.ReadOnly = true;
+            this.G2MODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.G2MODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CANTOC
+            // 
+            this.CANTOC.DataPropertyName = "CANTIDAD";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.CANTOC.DefaultCellStyle = dataGridViewCellStyle5;
+            this.CANTOC.HeaderText = "CANT OC";
+            this.CANTOC.Name = "CANTOC";
+            this.CANTOC.ReadOnly = true;
+            this.CANTOC.Visible = false;
+            // 
+            // CANTING
+            // 
+            this.CANTING.DataPropertyName = "CANTIDADFIC";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTING.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CANTING.HeaderText = "CANT ING";
+            this.CANTING.Name = "CANTING";
+            this.CANTING.ReadOnly = true;
             // 
             // label6
             // 
@@ -240,14 +329,14 @@
             this.gridDetalle1.AllowUserToResizeColumns = false;
             this.gridDetalle1.AllowUserToResizeRows = false;
             this.gridDetalle1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDetalle1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridDetalle1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridDetalle1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FIC,
@@ -267,102 +356,13 @@
             this.gridDetalle1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle1_CellValueChanged);
             this.gridDetalle1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle1_RowEnter);
             // 
-            // ItemDetalle
-            // 
-            this.ItemDetalle.DataPropertyName = "ItemDetalle";
-            this.ItemDetalle.HeaderText = "ItemDetalle";
-            this.ItemDetalle.Name = "ItemDetalle";
-            this.ItemDetalle.ReadOnly = true;
-            this.ItemDetalle.Visible = false;
-            // 
-            // G2CODIGOARTICULO
-            // 
-            this.G2CODIGOARTICULO.DataPropertyName = "CODIGOARTICULO";
-            this.G2CODIGOARTICULO.HeaderText = "CODIGOARTICULO";
-            this.G2CODIGOARTICULO.Name = "G2CODIGOARTICULO";
-            this.G2CODIGOARTICULO.ReadOnly = true;
-            this.G2CODIGOARTICULO.Visible = false;
-            // 
-            // G2ITEM
-            // 
-            this.G2ITEM.DataPropertyName = "ITEM";
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.G2ITEM.DefaultCellStyle = dataGridViewCellStyle38;
-            this.G2ITEM.HeaderText = "ITEM";
-            this.G2ITEM.Name = "G2ITEM";
-            this.G2ITEM.ReadOnly = true;
-            this.G2ITEM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // G2CODIGOMARCA
-            // 
-            this.G2CODIGOMARCA.DataPropertyName = "CODIGOMARCA";
-            this.G2CODIGOMARCA.HeaderText = "CODIGOMARCA";
-            this.G2CODIGOMARCA.Name = "G2CODIGOMARCA";
-            this.G2CODIGOMARCA.ReadOnly = true;
-            this.G2CODIGOMARCA.Visible = false;
-            // 
-            // G2MARCA
-            // 
-            this.G2MARCA.DataPropertyName = "MARCA";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.G2MARCA.DefaultCellStyle = dataGridViewCellStyle39;
-            this.G2MARCA.HeaderText = "MARCA";
-            this.G2MARCA.Name = "G2MARCA";
-            this.G2MARCA.ReadOnly = true;
-            this.G2MARCA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.G2MARCA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // G2CODIGOMODELO
-            // 
-            this.G2CODIGOMODELO.DataPropertyName = "CODIGOMODELO";
-            this.G2CODIGOMODELO.HeaderText = "CODIGOMODELO";
-            this.G2CODIGOMODELO.Name = "G2CODIGOMODELO";
-            this.G2CODIGOMODELO.ReadOnly = true;
-            this.G2CODIGOMODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.G2CODIGOMODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.G2CODIGOMODELO.Visible = false;
-            // 
-            // G2MODELO
-            // 
-            this.G2MODELO.DataPropertyName = "MODELO";
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.G2MODELO.DefaultCellStyle = dataGridViewCellStyle40;
-            this.G2MODELO.HeaderText = "MODELO";
-            this.G2MODELO.Name = "G2MODELO";
-            this.G2MODELO.ReadOnly = true;
-            this.G2MODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.G2MODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CANTOC
-            // 
-            this.CANTOC.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle41.Format = "N0";
-            dataGridViewCellStyle41.NullValue = null;
-            this.CANTOC.DefaultCellStyle = dataGridViewCellStyle41;
-            this.CANTOC.HeaderText = "CANT OC";
-            this.CANTOC.Name = "CANTOC";
-            this.CANTOC.ReadOnly = true;
-            this.CANTOC.Visible = false;
-            // 
-            // CANTING
-            // 
-            this.CANTING.DataPropertyName = "CANTIDADFIC";
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTING.DefaultCellStyle = dataGridViewCellStyle42;
-            this.CANTING.HeaderText = "CANT ING";
-            this.CANTING.Name = "CANTING";
-            this.CANTING.ReadOnly = true;
-            // 
             // FIC
             // 
             this.FIC.DataPropertyName = "FIC";
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle44.Format = "N0";
-            dataGridViewCellStyle44.NullValue = null;
-            this.FIC.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = null;
+            this.FIC.DefaultCellStyle = dataGridViewCellStyle8;
             this.FIC.HeaderText = " Nº FIC";
             this.FIC.Name = "FIC";
             this.FIC.ReadOnly = true;
@@ -370,8 +370,8 @@
             // FECHA
             // 
             this.FECHA.DataPropertyName = "FECHA";
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FECHA.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FECHA.DefaultCellStyle = dataGridViewCellStyle9;
             this.FECHA.HeaderText = "FECHA";
             this.FECHA.Name = "FECHA";
             this.FECHA.ReadOnly = true;
@@ -379,8 +379,8 @@
             // NGR
             // 
             this.NGR.DataPropertyName = "GUIA";
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NGR.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NGR.DefaultCellStyle = dataGridViewCellStyle10;
             this.NGR.HeaderText = "VALORIZACION";
             this.NGR.Name = "NGR";
             this.NGR.ReadOnly = true;
@@ -388,8 +388,8 @@
             // ARTOC
             // 
             this.ARTOC.DataPropertyName = "ARTOC";
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ARTOC.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ARTOC.DefaultCellStyle = dataGridViewCellStyle11;
             this.ARTOC.HeaderText = "ART OC";
             this.ARTOC.Name = "ARTOC";
             this.ARTOC.ReadOnly = true;
@@ -398,10 +398,10 @@
             // ARTFIC
             // 
             this.ARTFIC.DataPropertyName = "ARTFIC";
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle48.Format = "0\'%\'";
-            dataGridViewCellStyle48.NullValue = null;
-            this.ARTFIC.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "0\'%\'";
+            dataGridViewCellStyle12.NullValue = null;
+            this.ARTFIC.DefaultCellStyle = dataGridViewCellStyle12;
             this.ARTFIC.HeaderText = "ART FIC";
             this.ARTFIC.Name = "ARTFIC";
             this.ARTFIC.ReadOnly = true;
@@ -442,6 +442,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.gridDetalle1);
             this.Name = "frmListarAlmacenServicios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listar Articulos Almacen";
             this.Load += new System.EventHandler(this.frmListarAlmacenArticulos_Load);
             this.groupBox1.ResumeLayout(false);

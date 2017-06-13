@@ -52,7 +52,7 @@ namespace HPReserger
         {
             if (cboCelular.SelectedIndex == 0)
             {
-                txtObservacionesCelular.Text = "";
+              //  txtObservacionesCelular.Text = "";
                 txtObservacionesCelular.ReadOnly = false;
                 txtObservacionesCelular.Focus();
             }
@@ -67,7 +67,7 @@ namespace HPReserger
         {
             if (cboMaquina.SelectedIndex == 0)
             {
-                txtObservacionesMaquina.Text = "";
+               // txtObservacionesMaquina.Text = "";
                 txtObservacionesMaquina.ReadOnly = false;
                 txtObservacionesMaquina.Focus();
             }
@@ -82,7 +82,7 @@ namespace HPReserger
         {
             if (cboCorreo.SelectedIndex == 0)
             {
-                txtObservacionesCorreo.Text = "";
+               // txtObservacionesCorreo.Text = "";
                 txtObservacionesCorreo.ReadOnly = false;
                 txtObservacionesCorreo.Focus();
             }
@@ -97,7 +97,7 @@ namespace HPReserger
         {
             if (cboOtros.SelectedIndex == 0)
             {
-                txtObservacionesOtros.Text = "";
+              //  txtObservacionesOtros.Text = "";
                 txtObservacionesOtros.ReadOnly = false;
                 txtObservacionesOtros.Focus();
             }
@@ -170,7 +170,7 @@ namespace HPReserger
                 MessageBox.Show("Requerimiento ingresado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 estado = 0;
                 btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;
+                pnlconten.Enabled = false;btnModificar.Enabled = true;
             }
             if (estado == 2)
             {
@@ -178,8 +178,13 @@ namespace HPReserger
                 MessageBox.Show("Requerimiento actualizado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 estado = 0;
                 btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;
+                pnlconten.Enabled = false; btnModificar.Enabled = true;
             }
+        }
+
+        private void pnlconten_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

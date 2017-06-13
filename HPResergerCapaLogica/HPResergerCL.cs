@@ -341,9 +341,9 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.EliminarDinamica(codigo);
         }
-        public DataTable ListarAsientosContables(string busca, int opcion, DateTime fechaini, DateTime fechafin)
+        public DataTable ListarAsientosContables(string busca, int opcion, DateTime fechaini, DateTime fechafin, int fecha)
         {
-            return cdOrdenPedido.ListarAsientosContables(busca, opcion, fechaini, fechafin);
+            return cdOrdenPedido.ListarAsientosContables(busca, opcion, fechaini, fechafin, fecha);
         }
         public void Modificar2asiento(int codigo)
         {
@@ -601,9 +601,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.BuscarFacturas(ruc, nrofac);
         }
-        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, int estado, int moneda, byte[] imgfactura, int usuario)
+        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario)
         {
-            cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, estado, moneda, imgfactura, usuario);
+            cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, fecharecepcion, estado, moneda, imgfactura, usuario);
         }
         public DataTable ListarFicsDetalle(string fic)
         {
@@ -985,6 +985,30 @@ namespace HPResergerCapaLogica
         public DataRow ContratoActivo(int tipo, string documento, DateTime fecha)
         {
             return cdOrdenPedido.ContratoActivo(tipo, documento, fecha);
+        }
+        public DataTable ReportedeOp(int opcion, int articulo, int servicio, int fecha, DateTime fechaini, DateTime fechafin, int anulado, int registrado, int cotizado, int cotizadocompleto, int cotizacooc, string busca)
+        {
+            return cdOrdenPedido.ReportedeOp(opcion, articulo, servicio, fecha, fechaini, fechafin, anulado, registrado, cotizado, cotizadocompleto, cotizacooc, busca);
+        }
+        public DataTable reportepedidodetalle(int opcion, int orden)
+        {
+            return cdOrdenPedido.reportepedidodetalle(opcion, orden);
+        }
+        public DataTable ReportedeOC(int opcion, int articulo, int servicio, int fecha, DateTime fechaini, DateTime fechafin, int anulado, int registrado, int entregadoincompleto, int cotizado, int cotizadocompleto, int cotizacooc, string busca, int importe, decimal minimo, decimal maximo)
+        {
+            return cdOrdenPedido.ReportedeOC(opcion, articulo, servicio, fecha, fechaini, fechafin, anulado, registrado, entregadoincompleto, cotizado, cotizadocompleto, cotizacooc, busca, importe, minimo, maximo);
+
+        }
+        public DataTable Reporteempleados(int opcion, int opciones, string buscar, int dni, int carnet, int pasa, int cedula, int ruc, int practicas, int planillaempleado,
+           int planillaobrero, int recibo, int sueldo, decimal minimo, decimal maximo, int fecha, DateTime fechaini, DateTime fechafinal, int banco, string codbanco)
+        {
+            return cdOrdenPedido.Reporteempleados(opcion, opciones, buscar, dni, carnet, pasa, cedula, ruc, practicas, planillaempleado, planillaobrero, recibo, sueldo, minimo, maximo, fecha, fechaini, fechafinal, banco, codbanco);
+
+        }
+        public DataTable ListarBancosCts()
+        {
+            return cdOrdenPedido.ListarBancosCts();
+
         }
     }
 }

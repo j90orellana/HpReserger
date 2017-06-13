@@ -100,7 +100,7 @@ namespace HPReserger
                 txtDiasPendientes.Text = "";
                 txtDiasUtilizados.Text = "";
                 txtObservaciones.Text = "";
-                txttipo.Text = "";
+                txttipo.Text = ""; lblmensajito.Text = "";
                 LimpiarGrillas();
                 TitulosGrillas();
                 pbFoto.Image = null;

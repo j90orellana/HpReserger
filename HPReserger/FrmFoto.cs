@@ -22,13 +22,11 @@ namespace HPReserger
             if (fotito != null)
             {
                 pbfoto.Image = fotito;
-                this.Size = pbfoto.Image.Size;
-                
+                // this.Size = pbfoto.Image.Size;
+                this.Size = new Size(pbfoto.Image.Size.Width+25, pbfoto.Image.Size.Height+50);
+
             }
-
-
         }
-
         private void FrmFoto_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 27)

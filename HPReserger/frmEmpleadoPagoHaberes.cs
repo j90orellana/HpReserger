@@ -115,21 +115,20 @@ namespace HPReserger
             {
                 GrabarEditar(1);
                 MessageBox.Show("Pago de Haberes registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCuenta.Text = "";
-                txtCuentaCCI.Text = "";
+               
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
+                btnModificar.Enabled = true;
             }
             if (estado == 2)
             {
                 GrabarEditar(0);
                 MessageBox.Show("Pago de Haberes actualizo con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCuenta.Text = "";
-                txtCuentaCCI.Text = "";
+                
                 estado = 0;
                 btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;
+                pnlconten.Enabled = false; btnModificar.Enabled = true;
             }
         }
 

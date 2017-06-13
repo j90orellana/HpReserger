@@ -35,9 +35,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkfecha = new System.Windows.Forms.CheckBox();
             this.fechafin = new System.Windows.Forms.DateTimePicker();
             this.fechaini = new System.Windows.Forms.DateTimePicker();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnlimpiar = new System.Windows.Forms.Button();
@@ -88,9 +88,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkfecha);
             this.groupBox1.Controls.Add(this.fechafin);
             this.groupBox1.Controls.Add(this.fechaini);
-            this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(26, 415);
@@ -98,6 +98,17 @@
             this.groupBox1.Size = new System.Drawing.Size(649, 28);
             this.groupBox1.TabIndex = 152;
             this.groupBox1.TabStop = false;
+            // 
+            // chkfecha
+            // 
+            this.chkfecha.AutoSize = true;
+            this.chkfecha.Location = new System.Drawing.Point(159, 10);
+            this.chkfecha.Name = "chkfecha";
+            this.chkfecha.Size = new System.Drawing.Size(56, 17);
+            this.chkfecha.TabIndex = 169;
+            this.chkfecha.Text = "Fecha";
+            this.chkfecha.UseVisualStyleBackColor = true;
+            this.chkfecha.CheckedChanged += new System.EventHandler(this.chkfecha_CheckedChanged);
             // 
             // fechafin
             // 
@@ -122,18 +133,6 @@
             this.fechaini.TabIndex = 167;
             this.fechaini.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.fechaini.ValueChanged += new System.EventHandler(this.fechaini_ValueChanged);
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton4.Location = new System.Drawing.Point(169, 10);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(61, 18);
-            this.radioButton4.TabIndex = 130;
-            this.radioButton4.Text = "Fecha";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -659,7 +658,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 767);
+            this.ClientSize = new System.Drawing.Size(687, 767);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cboestado);
@@ -717,7 +716,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button btnlimpiar;
@@ -760,5 +758,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboestado;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox chkfecha;
     }
 }

@@ -49,6 +49,8 @@
             this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.subcontrataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordenesPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordenesDeCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.valorizacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contabilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consolidaciónDeEEFFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +87,8 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tipoIdentidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblwelcome = new System.Windows.Forms.Label();
+            this.seguimientoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -241,7 +245,7 @@
             // facturaToolStripMenuItem1
             // 
             this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
-            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
             this.facturaToolStripMenuItem1.Text = "Factura";
             this.facturaToolStripMenuItem1.Click += new System.EventHandler(this.facturaToolStripMenuItem1_Click);
             // 
@@ -253,9 +257,27 @@
             // 
             // seguimientoToolStripMenuItem
             // 
+            this.seguimientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ordenesPedidoToolStripMenuItem,
+            this.ordenesDeCompraToolStripMenuItem});
             this.seguimientoToolStripMenuItem.Name = "seguimientoToolStripMenuItem";
             this.seguimientoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.seguimientoToolStripMenuItem.Text = "Seguimiento";
+            this.seguimientoToolStripMenuItem.Click += new System.EventHandler(this.seguimientoToolStripMenuItem_Click);
+            // 
+            // ordenesPedidoToolStripMenuItem
+            // 
+            this.ordenesPedidoToolStripMenuItem.Name = "ordenesPedidoToolStripMenuItem";
+            this.ordenesPedidoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordenesPedidoToolStripMenuItem.Text = "Ordenes de Pedido";
+            this.ordenesPedidoToolStripMenuItem.Click += new System.EventHandler(this.ordenesPedidoToolStripMenuItem_Click);
+            // 
+            // ordenesDeCompraToolStripMenuItem
+            // 
+            this.ordenesDeCompraToolStripMenuItem.Name = "ordenesDeCompraToolStripMenuItem";
+            this.ordenesDeCompraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordenesDeCompraToolStripMenuItem.Text = "Ordenes de Compra";
+            this.ordenesDeCompraToolStripMenuItem.Click += new System.EventHandler(this.ordenesDeCompraToolStripMenuItem_Click);
             // 
             // valorizacionesToolStripMenuItem
             // 
@@ -324,7 +346,8 @@
             this.vacacionesToolStripMenuItem,
             this.desvinculaciónToolStripMenuItem,
             this.faltasToolStripMenuItem,
-            this.amonestacionesPremiosToolStripMenuItem});
+            this.amonestacionesPremiosToolStripMenuItem,
+            this.seguimientoToolStripMenuItem1});
             this.planillaToolStripMenuItem.Name = "planillaToolStripMenuItem";
             this.planillaToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.planillaToolStripMenuItem.Text = "Planilla";
@@ -538,6 +561,21 @@
             this.lblwelcome.Size = new System.Drawing.Size(0, 42);
             this.lblwelcome.TabIndex = 2;
             // 
+            // seguimientoToolStripMenuItem1
+            // 
+            this.seguimientoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.empleadoToolStripMenuItem1});
+            this.seguimientoToolStripMenuItem1.Name = "seguimientoToolStripMenuItem1";
+            this.seguimientoToolStripMenuItem1.Size = new System.Drawing.Size(216, 22);
+            this.seguimientoToolStripMenuItem1.Text = "Seguimiento";
+            // 
+            // empleadoToolStripMenuItem1
+            // 
+            this.empleadoToolStripMenuItem1.Name = "empleadoToolStripMenuItem1";
+            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.empleadoToolStripMenuItem1.Text = "Empleado";
+            this.empleadoToolStripMenuItem1.Click += new System.EventHandler(this.empleadoToolStripMenuItem1_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -619,5 +657,9 @@
         private System.Windows.Forms.ToolStripMenuItem listarOCFaltantesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ordenesPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordenesDeCompraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seguimientoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem empleadoToolStripMenuItem1;
     }
 }

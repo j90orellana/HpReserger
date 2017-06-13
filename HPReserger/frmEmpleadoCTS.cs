@@ -141,21 +141,19 @@ namespace HPReserger
             {
                 GrabarEditar(1);
                 MessageBox.Show("CTS registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCuenta.Text = "";
-                txtCuentaCCI.Text = "";
+               
                 estado = 0;
                 btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;
+                pnlconten.Enabled = false; btnModificar.Enabled = true;
             }
             if (estado == 2)
             {
                 GrabarEditar(0);
                 MessageBox.Show("CTS Modificada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtCuenta.Text = "";
-                txtCuentaCCI.Text = "";
+               
                 estado = 0;
                 btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;
+                pnlconten.Enabled = false; btnModificar.Enabled = true;
             }
         }
     }

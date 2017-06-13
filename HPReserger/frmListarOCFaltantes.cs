@@ -17,8 +17,8 @@ namespace HPReserger
             InitializeComponent();
         }
         int opcion = 0;
-        int articulo = 0;
-        int servicio = 3;
+        int articulo = 2;
+        int servicio = 6;
         int fecha = 0;
         HPResergerCapaLogica.HPResergerCL cllistarfaltantes = new HPResergerCapaLogica.HPResergerCL();
         private void frmListarOCFaltantes_Load(object sender, EventArgs e)
@@ -154,13 +154,13 @@ namespace HPReserger
 
         private void radioButton8_CheckedChanged_1(object sender, EventArgs e)
         {
-            opcion = 9;
+            opcion = 10;
             txtbuscar_TextChanged(sender, e);
         }
 
         private void radioButton9_CheckedChanged(object sender, EventArgs e)
         {
-            opcion = 10;
+            opcion = 9;
             txtbuscar_TextChanged(sender, e);
         }
 
@@ -168,9 +168,9 @@ namespace HPReserger
         {
             if (checkBox1.Checked)
             {
-                articulo = 1;
+                articulo = 2;
             }
-            else { articulo = 0; }
+            else { articulo = 1; }
             txtbuscar_TextChanged(sender, e);
         }
 

@@ -244,5 +244,28 @@ namespace HPReserger
             FrmFactura frmfac = new FrmFactura();
             frmfac.ShowDialog();
         }
+
+        private void ordenesPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frmreporteop orde = new Frmreporteop();
+            orde.ShowDialog();
+        }
+
+        private void seguimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ordenesDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmreporteordencompra frmreporteoc = new frmreporteordencompra();
+            frmreporteoc.ShowDialog();
+        }
+
+        private void empleadoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmreporteempleado reporemple = new frmreporteempleado();
+            reporemple.ShowDialog();
+        }
     }
 }

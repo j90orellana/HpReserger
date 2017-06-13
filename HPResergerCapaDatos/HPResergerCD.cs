@@ -1136,10 +1136,10 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public DataTable ListarAsientosContables(string busca, int opcion, DateTime fechaini, DateTime fechafin)
+        public DataTable ListarAsientosContables(string busca, int opcion, DateTime fechaini, DateTime fechafin, int fecha)
         {
-            string[] parametros = { "@buscar", "@opcion", "@fechaini", "@fechafin" };
-            object[] valor = { busca, opcion, fechaini, fechafin };
+            string[] parametros = { "@buscar", "@opcion", "@fechaini", "@fechafin", "@fecha" };
+            object[] valor = { busca, opcion, fechaini, fechafin, fecha };
             return bd.DataTableFromProcedure("usp_listar_asientos", parametros, valor, null);
         }
         public DataTable UltimoAsiento()
@@ -1825,7 +1825,7 @@ namespace HPResergerCapaDatos
         {
             string[] parametros = { "@cadena", "@fechaini", "@fechafin", "@articulo", "@servicio", "@opcion", "@fecha" };
             object[] valores = { cadena, fechaini, fechafin, articulo, servicio, opcion, fecha };
-            return bd.DataTableFromProcedure("dbo.usp_listar_oc_Faltantes", parametros, valores, null);
+            return bd.DataTableFromProcedure("dbo.usp_listar_oc_Faltante", parametros, valores, null);
         }
         public DataTable ListarFIClistar(int OC, int Tipo)
         {
@@ -1894,7 +1894,7 @@ namespace HPResergerCapaDatos
             object[] valores = { Numero };
             return bd.DatarowFromProcedure("usp_Get_Imagen_Cotizacion", parametros, valores, null);
         }
-        public void InsertarFactura(string nrofactura,string proveedor,int fic,int oc,int tipo,decimal subtotal,decimal igv,decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado,int estado, int moneda, byte[] imgfactura, int usuario)
+        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1905,7 +1905,7 @@ namespace HPResergerCapaDatos
                     cmd.CommandText = "usp_insertar_factura";
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@nrofactura", SqlDbType.VarChar,40).Value = nrofactura;
+                    cmd.Parameters.Add("@nrofactura", SqlDbType.VarChar, 40).Value = nrofactura;
                     cmd.Parameters.Add("@proveedor", SqlDbType.Char, 40).Value = proveedor;
                     cmd.Parameters.Add("@fic", SqlDbType.Int).Value = fic;
                     cmd.Parameters.Add("@oc", SqlDbType.Int).Value = oc;
@@ -1916,11 +1916,12 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@gravaigv", SqlDbType.Int).Value = gravaivg;
                     cmd.Parameters.Add("@fechaemision", SqlDbType.DateTime).Value = fechaemision;
                     cmd.Parameters.Add("@fechaentrega", SqlDbType.DateTime).Value = fechaentregado;
+                    cmd.Parameters.Add("@fecharecepcion", SqlDbType.DateTime).Value = fecharecepcion;
                     cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
-                    cmd.Parameters.Add("@moneda", SqlDbType.Int).Value = moneda;                    
+                    cmd.Parameters.Add("@moneda", SqlDbType.Int).Value = moneda;
                     cmd.Parameters.Add("@imgfactura", SqlDbType.Image).Value = imgfactura;
                     cmd.Parameters.Add("@usuario", SqlDbType.Int).Value = usuario;
-                    
+
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
@@ -2987,6 +2988,35 @@ namespace HPResergerCapaDatos
             object[] valores = { tipo, documento, fecha };
             return bd.DatarowFromProcedure("usp_contrato_activo", parametros, valores, null);
         }
-
+        public DataTable ReportedeOp(int opcion, int articulo, int servicio, int fecha, DateTime fechaini, DateTime fechafin, int anulado, int registrado, int cotizado, int cotizadocompleto, int cotizacooc, string busca)
+        {
+            string[] parametros = { "@opcion", "@articulo", "@servicio", "@fecha", "@fechaini", "@fechafin", "@anulado", "@registrado", "@cotizado", "@cotizacocompleto", "@cotizacooc", "@busca" };
+            object[] valores = { opcion, articulo, servicio, fecha, fechaini, fechafin, anulado, registrado, cotizado, cotizadocompleto, cotizacooc, busca };
+            return bd.DataTableFromProcedure("usp_Listar_Ordenesdepedido", parametros, valores, null);
+        }
+        public DataTable reportepedidodetalle(int opcion, int orden)
+        {
+            string[] parametros = { "@opcion", "op" };
+            object[] valores = { opcion, orden };
+            return bd.DataTableFromProcedure("usp_listar_ordenespedidodetalle", parametros, valores, null);
+        }
+        public DataTable ReportedeOC(int opcion, int articulo, int servicio, int fecha, DateTime fechaini, DateTime fechafin, int anulado, int registrado, int entregadoimcompleto, int cotizado, int cotizadocompleto, int cotizacooc, string busca, int importe, decimal minimo, decimal maximo)
+        {
+            string[] parametros = { "@opcion", "@articulo", "@servicio", "@fecha", "@fechaini", "@fechafin", "@anulado", "@registrado", "@entregadoimcompleto", "@cotizado", "@cotizacocompleto", "@cotizacooc", "@busca", "@importe", "@minimo", "@maximo" };
+            object[] valores = { opcion, articulo, servicio, fecha, fechaini, fechafin, anulado, registrado, entregadoimcompleto, cotizado, cotizadocompleto, cotizacooc, busca, importe, minimo, maximo };
+            return bd.DataTableFromProcedure("usp_Listar_OrdenesdeCompra", parametros, valores, null);
+        }
+        public DataTable Reporteempleados(int opcion, int opciones, string buscar, int dni, int carnet, int pasa, int cedula, int ruc, int practicas, int planillaempleado,
+            int planillaobrero, int recibo, int sueldo, decimal minimo, decimal maximo, int fecha, DateTime fechaini, DateTime fechafinal, int banco, string codbanco)
+        {
+            string[] parametros = { "@opcion","@opciones","@buscar","@dni","@carnet","@pasa","@cedula","@ruc","@practicas","@planillaempleado","@planillaobrero",
+                "@recibo","@sueldo","@minimo","@maximo","@fecha","@fechaini","@fechafinal","@banco","@codbanco"};
+            object[] valores = { opcion, opciones, buscar, dni, carnet, pasa, cedula, ruc, practicas, planillaempleado, planillaobrero, recibo, sueldo, minimo, maximo, fecha, fechaini, fechafinal, banco, codbanco };
+            return bd.DataTableFromProcedure("usp_ListarReporteEmpleados", parametros, valores, null);
+        }
+        public DataTable ListarBancosCts()
+        {
+            return bd.DataTableFromProcedure("usp_ListarBancosCts", null, null, null);
+        }
     }
 }

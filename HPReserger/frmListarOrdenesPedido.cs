@@ -33,7 +33,7 @@ namespace HPReserger
                 rbtFechas.Checked = false;
                 dtpDesde.Enabled = false;
                 dtpHasta.Enabled = false;
-                dtpDesde.Value = DateTime.Today.Date;
+                //dtpDesde.Value = DateTime.Today.Date;
                 dtpHasta.Value = DateTime.Today.Date;
 
                 txtArticulos.Focus();
@@ -56,7 +56,7 @@ namespace HPReserger
                 rbtFechas.Checked = false;
                 dtpDesde.Enabled = false;
                 dtpHasta.Enabled = false;
-                dtpDesde.Value = DateTime.Today.Date;
+               // dtpDesde.Value = DateTime.Today.Date;
                 dtpHasta.Value = DateTime.Today.Date;
 
                 txtServicios.Focus();
@@ -81,7 +81,7 @@ namespace HPReserger
                 rbtFechas.Checked = true;
                 dtpDesde.Enabled = true;
                 dtpHasta.Enabled = true;
-                dtpDesde.Value = DateTime.Today.Date;
+               // dtpDesde.Value = DateTime.Today.Date;
                 dtpHasta.Value = DateTime.Today.Date;
 
                 dtpDesde.Focus();
@@ -419,7 +419,7 @@ namespace HPReserger
         {
             if (gridListar.Rows.Count > 0 && gridListar.CurrentRow.Cells[3].Value != null)
             {
-                if (gridListar.CurrentRow.Cells[3].Value.ToString() == "COTIZADO" || gridListar.CurrentRow.Cells[3].Value.ToString() == "ANULADO" || gridListar.CurrentRow.Cells[3].Value.ToString().Trim() == "OC")
+                if (gridListar.CurrentRow.Cells[3].Value.ToString() == "" || gridListar.CurrentRow.Cells[3].Value.ToString() == "Cotizado Completo" || gridListar.CurrentRow.Cells[3].Value.ToString().Trim() == "" || gridListar.CurrentRow.Cells[3].Value.ToString() == "Cotizado OC")
                 {
                     MessageBox.Show("NO se puede Editar o Anular el Pedido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
@@ -432,6 +432,47 @@ namespace HPReserger
                     MessageBox.Show("Pedido anulado","HP Reserger",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void frmListarOrdenesPedido_Load(object sender, EventArgs e)
+        {
+            dtpDesde.Value = DateTime.Today.Date;
+            rbtFechas.Checked = true;
+        }
+
+        private void rbtFechas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtFechas.Checked == true)
+            {
+                txtServicios.Text = "";
+                rbtServicios.Checked = false;
+                txtServicios.Enabled = false;
+
+                txtArticulos.Text = "";
+                rbtArticulo.Checked = false;
+                txtArticulos.Enabled = false;
+
+                rbtFechas.Checked = true;
+                dtpDesde.Enabled = true;
+                dtpHasta.Enabled = true;
+               // dtpDesde.Value = DateTime.Today.Date;
+                dtpHasta.Value = DateTime.Today.Date;
+
+                dtpDesde.Focus();
+                Limpiar();
+                TitulosGrid(gridListar, "L");
+                TitulosGrid(gridDetalle, "A");
+            }
+        }
+
+        private void rbtArticulo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
