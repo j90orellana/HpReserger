@@ -22,19 +22,19 @@ namespace HPReserger
         public string CuentaN1 { get; set; }
         public int CodCuenta { get; set; }
         public string DesCuentea { get; set; }
-        public int TipoCuenta { get; set; }
+        public string TipoCuenta { get; set; }
         public string NatuCuenta { get; set; }
-        public int CuentaGene { get; set; }
-        public int GrupoCuenta { get; set; }
+        public string CuentaGene { get; set; }
+        public string GrupoCuenta { get; set; }
         public string Refleja { get; set; }
         public string Reflejacc { get; set; }
-        public int ReflejaD { get; set; }
-        public int ReflejaH { get; set; }
-        public int CuentaCierre { get; set; }
+        public string ReflejaD { get; set; }
+        public string ReflejaH { get; set; }
+        public string CuentaCierre { get; set; }
         public string Analitica { get; set; }
-        public int AjusteCambioMensual { get; set; }
-        public int Cierre { get; set; }
-        public int AjusteTraslacion { get; set; }
+        public string AjusteCambioMensual { get; set; }
+        public string Cierre { get; set; }
+        public string AjusteTraslacion { get; set; }
         public string CuentaBC { get; set; }
         public void RellenarCombosSiNo(ComboBox combito)
         {
@@ -99,7 +99,7 @@ namespace HPReserger
         private void frmcuentacontable_Load(object sender, EventArgs e)
         {
             estado = 0;
-            tipobusca = 1;
+            tipobusca = 4;
             RellenarCombosSiNo(cborefleja);
             RellenarCombosSiNo(cboreflejacc);
             RellenarCombosSiNo(cboanalitica);
@@ -112,7 +112,8 @@ namespace HPReserger
             CargarPorPalabra(cboajustetraslacion, "Traslacion");
             CargarPorPalabra(cboajustemensual, "Cambio Mensual");
             CargarPorDebeHaber(cboreflejadebe, "D");
-            CargarPorDebeHaber(cboreflejahaber, "H");            Txtbusca_TextChanged(sender,e);
+            CargarPorDebeHaber(cboreflejahaber, "H");
+            Txtbusca_TextChanged(sender, e);
             ListarCuentasContables(Txtbusca.Text, tipobusca);
             msg(dtgconten);
         }
@@ -131,7 +132,7 @@ namespace HPReserger
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            tipobusca = 1;
+            tipobusca = 4;
             Txtbusca_TextChanged(sender, e);
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -256,24 +257,51 @@ namespace HPReserger
             CuentaN1 = txtcuentan1.Text;
             CodCuenta = Convert.ToInt32(txtcodcuenta.Text);
             DesCuentea = txtnombrecuenta.Text;
-            TipoCuenta = Convert.ToInt32(cbotipo.SelectedValue);
-            NatuCuenta = cbonaturaleza.SelectedValue.ToString();
-            CuentaGene = Convert.ToInt32(cbogenerica.SelectedValue);
-            GrupoCuenta = Convert.ToInt32(cbogrupo.SelectedValue);
-            Refleja = cborefleja.SelectedValue.ToString();
-            Reflejacc = cboreflejacc.SelectedValue.ToString();
-            ReflejaD = Convert.ToInt32(Convert.ToInt32(cboreflejadebe.SelectedValue));
-            ReflejaH = Convert.ToInt32(cboreflejahaber.SelectedValue);
-            try
-            {
-                CuentaCierre = Convert.ToInt32(txtcuentacierre.Text);
-            }
-            catch { }
-            Analitica = cboanalitica.SelectedValue.ToString();
-            AjusteCambioMensual = Convert.ToInt32(cboajustemensual.SelectedValue);
-            Cierre = Convert.ToInt32(Convert.ToInt32(cbocierre.SelectedValue));
-            AjusteTraslacion = Convert.ToInt32(cboajustetraslacion.SelectedValue);
-            CuentaBC = cbocuentabc.SelectedValue.ToString();
+            if (cbotipo.Text != "")
+                TipoCuenta = cbotipo.SelectedValue.ToString();
+            else TipoCuenta = null;
+            if (cbonaturaleza.Text != "")
+                NatuCuenta = (cbonaturaleza.SelectedValue).ToString();
+            else
+                NatuCuenta = null;
+            if (cbogenerica.Text != "")
+                CuentaGene = cbogenerica.SelectedValue.ToString();
+            else CuentaGene = "";
+            if (cbogrupo.Text != "")
+                GrupoCuenta = cbogrupo.SelectedValue.ToString();
+            else GrupoCuenta = "";
+            if (cborefleja.Text != "")
+                Refleja = cborefleja.SelectedValue.ToString();
+            else Refleja = ""; ;
+            if (cboreflejacc.Text != "")
+                Reflejacc = cboreflejacc.SelectedValue.ToString();
+            else Reflejacc = "";
+            if (cboreflejadebe.Text != "")
+                ReflejaD = cboreflejadebe.SelectedValue.ToString();
+            else ReflejaD = "";
+            if (cboreflejahaber.Text != "")
+                ReflejaH = cboreflejahaber.SelectedValue.ToString();
+            else ReflejaH = "";
+
+            if (string.IsNullOrWhiteSpace(txtcuentacierre.Text))
+                CuentaCierre = "";
+            else CuentaCierre = txtcuentacierre.Text;
+
+            if (cboanalitica.Text != "")
+                Analitica = cboanalitica.SelectedValue.ToString();
+            else Analitica = "";
+            if (cboajustemensual.Text != "")
+                AjusteCambioMensual = cboajustemensual.SelectedValue.ToString();
+            else AjusteCambioMensual = "";
+            if (cbocierre.Text != "")
+                Cierre = cbocierre.SelectedValue.ToString();
+            else Cierre = "";
+            if (cboajustetraslacion.Text != "")
+                AjusteTraslacion = cboajustetraslacion.SelectedValue.ToString();
+            else AjusteTraslacion = "";
+            if (cbocuentabc.Text != "")
+                CuentaBC = cbocuentabc.SelectedValue.ToString();
+            else CuentaBC = "";
         }
         public void MensajedeDatos()
         {

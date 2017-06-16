@@ -22,11 +22,12 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CcuentaContable = new HPResergerCapaLogica.HPResergerCL();
         private void frmlistarcuentas_Load(object sender, EventArgs e)
         {
-
+            tipobusca = 4;
             aceptar = false;
-            if (radioButton1.Checked) {
-                tipobusca = 1;
-            ListarCuentasContables(Txtbusca.Text, tipobusca);
+            if (radioButton1.Checked)
+            {
+                tipobusca = 4;
+                ListarCuentasContables(Txtbusca.Text, tipobusca);
             }
             if (radioButton2.Checked)
             {
@@ -97,10 +98,12 @@ namespace HPReserger
         }
 
         private void dtgconten_DoubleClick(object sender, EventArgs e)
-        {try { 
-            codigo = dtgconten[0, dtgconten.CurrentCell.RowIndex].Value.ToString();
-            aceptar = true;
-            this.Close();
+        {
+            try
+            {
+                codigo = dtgconten[0, dtgconten.CurrentCell.RowIndex].Value.ToString();
+                aceptar = true;
+                this.Close();
             }
             catch { }
         }

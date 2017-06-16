@@ -38,6 +38,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblmensajito = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -70,6 +71,11 @@
             this.txtVacaciones = new System.Windows.Forms.TextBox();
             this.btnBoletaVacaciones = new System.Windows.Forms.Button();
             this.Grid = new System.Windows.Forms.DataGridView();
+            this.btnAprobarVacaciones = new System.Windows.Forms.Button();
+            this.btnSeleccionarImagen = new System.Windows.Forms.Button();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.txtRuta = new System.Windows.Forms.TextBox();
+            this.btnCompraVacaciones = new System.Windows.Forms.Button();
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,12 +85,6 @@
             this.FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DIASVACACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAprobarVacaciones = new System.Windows.Forms.Button();
-            this.btnSeleccionarImagen = new System.Windows.Forms.Button();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
-            this.txtRuta = new System.Windows.Forms.TextBox();
-            this.btnCompraVacaciones = new System.Windows.Forms.Button();
-            this.lblmensajito = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
@@ -112,6 +112,19 @@
             this.groupBox2.TabIndex = 70;
             this.groupBox2.TabStop = false;
             // 
+            // lblmensajito
+            // 
+            this.lblmensajito.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.lblmensajito.Enabled = false;
+            this.lblmensajito.Location = new System.Drawing.Point(13, 175);
+            this.lblmensajito.MaxLength = 30;
+            this.lblmensajito.Name = "lblmensajito";
+            this.lblmensajito.ReadOnly = true;
+            this.lblmensajito.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblmensajito.ShortcutsEnabled = false;
+            this.lblmensajito.Size = new System.Drawing.Size(364, 20);
+            this.lblmensajito.TabIndex = 80;
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -127,7 +140,7 @@
             this.txtNumeroDocumento.MaxLength = 14;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(180, 20);
-            this.txtNumeroDocumento.TabIndex = 78;
+            this.txtNumeroDocumento.TabIndex = 0;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
             this.txtNumeroDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumeroDocumento_KeyDown);
@@ -438,6 +451,13 @@
             // 
             this.Grid.AllowUserToAddRows = false;
             this.Grid.AllowUserToDeleteRows = false;
+            this.Grid.AllowUserToResizeColumns = false;
+            this.Grid.AllowUserToResizeRows = false;
+            this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -457,119 +477,17 @@
             this.FECHAFIN,
             this.DIASVACACIONES,
             this.ESTADO});
+            this.Grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.Grid.Location = new System.Drawing.Point(401, 8);
+            this.Grid.MultiSelect = false;
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
+            this.Grid.RowHeadersVisible = false;
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(662, 512);
             this.Grid.TabIndex = 72;
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
-            // 
-            // Registro
-            // 
-            this.Registro.DataPropertyName = "REGISTRO";
-            this.Registro.HeaderText = "REGISTRO";
-            this.Registro.Name = "Registro";
-            this.Registro.ReadOnly = true;
-            this.Registro.Visible = false;
-            // 
-            // CODIGOTIPO
-            // 
-            this.CODIGOTIPO.DataPropertyName = "CODIGOTIPO";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CODIGOTIPO.HeaderText = "CODIGOTIPO";
-            this.CODIGOTIPO.Name = "CODIGOTIPO";
-            this.CODIGOTIPO.ReadOnly = true;
-            this.CODIGOTIPO.Visible = false;
-            // 
-            // TIPOID
-            // 
-            this.TIPOID.DataPropertyName = "TIPOID";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle3;
-            this.TIPOID.HeaderText = "TIPO ID";
-            this.TIPOID.Name = "TIPOID";
-            this.TIPOID.ReadOnly = true;
-            this.TIPOID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TIPOID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TIPOID.Width = 150;
-            // 
-            // NDI
-            // 
-            this.NDI.DataPropertyName = "NID";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.NDI.DefaultCellStyle = dataGridViewCellStyle4;
-            this.NDI.HeaderText = "Nº ID";
-            this.NDI.Name = "NDI";
-            this.NDI.ReadOnly = true;
-            this.NDI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.NDI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NDI.Width = 80;
-            // 
-            // DIASTRABAJADOS
-            // 
-            this.DIASTRABAJADOS.DataPropertyName = "DIASTRABAJADOS";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DIASTRABAJADOS.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DIASTRABAJADOS.HeaderText = "DIAS TRAB.";
-            this.DIASTRABAJADOS.Name = "DIASTRABAJADOS";
-            this.DIASTRABAJADOS.ReadOnly = true;
-            this.DIASTRABAJADOS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.DIASTRABAJADOS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DIASTRABAJADOS.Width = 60;
-            // 
-            // FECHAINICIO
-            // 
-            this.FECHAINICIO.DataPropertyName = "FECHAINICIO";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FECHAINICIO.DefaultCellStyle = dataGridViewCellStyle6;
-            this.FECHAINICIO.HeaderText = "FECHA INI";
-            this.FECHAINICIO.Name = "FECHAINICIO";
-            this.FECHAINICIO.ReadOnly = true;
-            this.FECHAINICIO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.FECHAINICIO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.FECHAINICIO.Width = 80;
-            // 
-            // FECHAFIN
-            // 
-            this.FECHAFIN.DataPropertyName = "FECHAFIN";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            this.FECHAFIN.DefaultCellStyle = dataGridViewCellStyle7;
-            this.FECHAFIN.HeaderText = "FECHA FIN";
-            this.FECHAFIN.Name = "FECHAFIN";
-            this.FECHAFIN.ReadOnly = true;
-            this.FECHAFIN.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.FECHAFIN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.FECHAFIN.Width = 80;
-            // 
-            // DIASVACACIONES
-            // 
-            this.DIASVACACIONES.DataPropertyName = "DIASVACACIONES";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.DIASVACACIONES.DefaultCellStyle = dataGridViewCellStyle8;
-            this.DIASVACACIONES.HeaderText = "DIAS VAC.";
-            this.DIASVACACIONES.Name = "DIASVACACIONES";
-            this.DIASVACACIONES.ReadOnly = true;
-            this.DIASVACACIONES.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.DIASVACACIONES.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DIASVACACIONES.Width = 60;
-            // 
-            // ESTADO
-            // 
-            this.ESTADO.DataPropertyName = "ESTADO";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ESTADO.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ESTADO.HeaderText = "ESTADO";
-            this.ESTADO.Name = "ESTADO";
-            this.ESTADO.ReadOnly = true;
-            this.ESTADO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ESTADO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ESTADO.Width = 80;
             // 
             // btnAprobarVacaciones
             // 
@@ -599,6 +517,7 @@
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFoto.TabIndex = 104;
             this.pbFoto.TabStop = false;
+            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
             // 
             // txtRuta
             // 
@@ -618,18 +537,105 @@
             this.btnCompraVacaciones.UseVisualStyleBackColor = true;
             this.btnCompraVacaciones.Click += new System.EventHandler(this.btnCompraVacaciones_Click);
             // 
-            // lblmensajito
+            // Registro
             // 
-            this.lblmensajito.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.lblmensajito.Enabled = false;
-            this.lblmensajito.Location = new System.Drawing.Point(13, 175);
-            this.lblmensajito.MaxLength = 30;
-            this.lblmensajito.Name = "lblmensajito";
-            this.lblmensajito.ReadOnly = true;
-            this.lblmensajito.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblmensajito.ShortcutsEnabled = false;
-            this.lblmensajito.Size = new System.Drawing.Size(364, 20);
-            this.lblmensajito.TabIndex = 80;
+            this.Registro.DataPropertyName = "REGISTRO";
+            this.Registro.HeaderText = "REGISTRO";
+            this.Registro.Name = "Registro";
+            this.Registro.ReadOnly = true;
+            this.Registro.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Registro.Visible = false;
+            // 
+            // CODIGOTIPO
+            // 
+            this.CODIGOTIPO.DataPropertyName = "CODIGOTIPO";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CODIGOTIPO.HeaderText = "CODIGOTIPO";
+            this.CODIGOTIPO.Name = "CODIGOTIPO";
+            this.CODIGOTIPO.ReadOnly = true;
+            this.CODIGOTIPO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.CODIGOTIPO.Visible = false;
+            // 
+            // TIPOID
+            // 
+            this.TIPOID.DataPropertyName = "TIPOID";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle3;
+            this.TIPOID.HeaderText = "TIPO ID";
+            this.TIPOID.Name = "TIPOID";
+            this.TIPOID.ReadOnly = true;
+            this.TIPOID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TIPOID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // NDI
+            // 
+            this.NDI.DataPropertyName = "NID";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NDI.DefaultCellStyle = dataGridViewCellStyle4;
+            this.NDI.HeaderText = "Nº ID";
+            this.NDI.Name = "NDI";
+            this.NDI.ReadOnly = true;
+            this.NDI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NDI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DIASTRABAJADOS
+            // 
+            this.DIASTRABAJADOS.DataPropertyName = "DIASTRABAJADOS";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DIASTRABAJADOS.DefaultCellStyle = dataGridViewCellStyle5;
+            this.DIASTRABAJADOS.HeaderText = "DIAS TRAB.";
+            this.DIASTRABAJADOS.Name = "DIASTRABAJADOS";
+            this.DIASTRABAJADOS.ReadOnly = true;
+            this.DIASTRABAJADOS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.DIASTRABAJADOS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // FECHAINICIO
+            // 
+            this.FECHAINICIO.DataPropertyName = "FECHAINICIO";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FECHAINICIO.DefaultCellStyle = dataGridViewCellStyle6;
+            this.FECHAINICIO.HeaderText = "FECHA INI";
+            this.FECHAINICIO.Name = "FECHAINICIO";
+            this.FECHAINICIO.ReadOnly = true;
+            this.FECHAINICIO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FECHAINICIO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // FECHAFIN
+            // 
+            this.FECHAFIN.DataPropertyName = "FECHAFIN";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            this.FECHAFIN.DefaultCellStyle = dataGridViewCellStyle7;
+            this.FECHAFIN.HeaderText = "FECHA FIN";
+            this.FECHAFIN.Name = "FECHAFIN";
+            this.FECHAFIN.ReadOnly = true;
+            this.FECHAFIN.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FECHAFIN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DIASVACACIONES
+            // 
+            this.DIASVACACIONES.DataPropertyName = "DIASVACACIONES";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.DIASVACACIONES.DefaultCellStyle = dataGridViewCellStyle8;
+            this.DIASVACACIONES.HeaderText = "DIAS VAC.";
+            this.DIASVACACIONES.Name = "DIASVACACIONES";
+            this.DIASVACACIONES.ReadOnly = true;
+            this.DIASVACACIONES.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.DIASVACACIONES.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ESTADO
+            // 
+            this.ESTADO.DataPropertyName = "ESTADO";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ESTADO.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ESTADO.HeaderText = "ESTADO";
+            this.ESTADO.Name = "ESTADO";
+            this.ESTADO.ReadOnly = true;
+            this.ESTADO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ESTADO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // frmVacaciones
             // 
@@ -699,6 +705,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDiasUtilizados;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnCompraVacaciones;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txttipo;
+        private System.Windows.Forms.TextBox lblmensajito;
         private System.Windows.Forms.DataGridViewTextBoxColumn Registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOTIPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPOID;
@@ -708,9 +718,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAFIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DIASVACACIONES;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
-        private System.Windows.Forms.Button btnCompraVacaciones;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txttipo;
-        private System.Windows.Forms.TextBox lblmensajito;
     }
 }

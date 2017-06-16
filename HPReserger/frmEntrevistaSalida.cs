@@ -21,14 +21,14 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void frmEntrevistaSalida_Load(object sender, EventArgs e)
         {
             rptEntrevistaSalida Reporte = new rptEntrevistaSalida();
             Reporte.Refresh();
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
             Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
-
+            //  Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS, datos.DATASOURCE, datos.BASEDEDATOS);
             Reporte.SetDatabaseLogon("mmendoza", "123");
             crvEntrevistaSalida.ReportSource = Reporte;
         }

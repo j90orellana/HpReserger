@@ -27,6 +27,8 @@ namespace HPReserger
 
         private void frmFaltas_Load(object sender, EventArgs e)
         {
+            estado = 1; txtRuta.Text = "";
+            groupBox1.Enabled = false;
             LimpiarGrillas();
             txtNumeroDocumento.Text = "";
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
@@ -45,7 +47,7 @@ namespace HPReserger
         {
             DiasInicio(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_DatosEmpleado");
             Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
-            
+
         }
 
         private void txtNumeroDocumento_KeyPress(object sender, KeyPressEventArgs e)
@@ -77,17 +79,18 @@ namespace HPReserger
                 {
                     groupBox1.Enabled = btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
                     lblmensajito.Text = "EMPLEADO INACTIVO";
+                    btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
                 }
             }
             else
             {
-                txtApellidoPaterno.Text = "";
+                txtApellidoPaterno.Text = ""; groupBox1.Enabled = false; btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
                 txtApellidoMaterno.Text = "";
                 txtNombres.Text = "";
                 txtDias.Text = "";
                 txtObservaciones.Text = "";
                 LimpiarGrillas();
-                TitulosGrillas();
+                TitulosGrillas(); lblmensajito.Text = "";
                 pbFoto.Image = null;
             }
         }
@@ -136,36 +139,42 @@ namespace HPReserger
             Grid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             Grid.Columns[2].HeaderText = "TIPO ID";
             Grid.Columns[2].DataPropertyName = "TIPOID";
+            Grid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             Grid.Columns[3].Width = 80;
             Grid.Columns[3].Visible = true;
             Grid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Grid.Columns[3].HeaderText = "Nº ID";
             Grid.Columns[3].DataPropertyName = "NID";
+            Grid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             Grid.Columns[4].Width = 80;
             Grid.Columns[4].Visible = true;
             Grid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Grid.Columns[4].HeaderText = "FECHA INI.";
             Grid.Columns[4].DataPropertyName = "FECHAINICIO";
+            Grid.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             Grid.Columns[5].Width = 80;
             Grid.Columns[5].Visible = true;
             Grid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Grid.Columns[5].HeaderText = "FECHA FIN";
             Grid.Columns[5].DataPropertyName = "FECHAFIN";
+            Grid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             Grid.Columns[6].Width = 80;
             Grid.Columns[6].Visible = true;
             Grid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Grid.Columns[6].HeaderText = "DIAS FALT.";
             Grid.Columns[6].DataPropertyName = "DIASFALTAS";
+            Grid.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             Grid.Columns[7].Width = 200;
             Grid.Columns[7].Visible = true;
             Grid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             Grid.Columns[7].HeaderText = "OBSERVACIONES";
             Grid.Columns[7].DataPropertyName = "OBSERVACIONES";
+            Grid.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void dtpInicio_ValueChanged(object sender, EventArgs e)
@@ -177,7 +186,7 @@ namespace HPReserger
         {
             Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
         }
-
+        int estado = 0; string ruta;
         private void btnRegistrarFalta_Click(object sender, EventArgs e)
         {
             if (txtNumeroDocumento.Text.Length == 0)
@@ -201,13 +210,16 @@ namespace HPReserger
                 return;
             }
 
-            if (pbFoto.Image == null)
+            if (Foto == null && chkfaltas.Checked == false)
             {
                 MessageBox.Show("Seleccione Imagen de Sustento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnAdjuntarSustento.Focus();
                 return;
             }
-
+            if (Foto == null)
+                ruta = "";
+            else
+                ruta = txtRuta.Text;
             DateTime FechaMaximaFalta;
             DataRow MaximaFecha = clEmpleadoFaltas.MaximaFechaATomarFalta(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
             if (!MaximaFecha.IsNull("FECHA"))
@@ -221,12 +233,13 @@ namespace HPReserger
                     return;
                 }
             }
-
-            clEmpleadoFaltas.EmpleadoFaltas(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, dtpFin.Value, Convert.ToInt32(txtDias.Text), txtObservaciones.Text, Foto, txtRuta.Text);
+            clEmpleadoFaltas.EmpleadoFaltas(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, dtpFin.Value, Convert.ToInt32(txtDias.Text), txtObservaciones.Text, Foto, ruta, estado);
             MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
             MessageBox.Show("Falta registrada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             dtpInicio.Value = DateTime.Today.Date;
             dtpFin.Value = DateTime.Today.Date;
+            txtObservaciones.Text = "";
+            chkfaltas.Checked = false;
         }
 
         private void btnAdjuntarSustento_Click(object sender, EventArgs e)
@@ -293,6 +306,31 @@ namespace HPReserger
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 15);
+        }
+        public void MostrarFoto(PictureBox fotito)
+        {
+            if (fotito.Image != null)
+            {
+                FrmFoto foto = new FrmFoto();
+                foto.fotito = fotito.Image;
+                foto.ShowDialog();
+            }
+        }
+        private void pbFoto_Click(object sender, EventArgs e)
+        {
+            MostrarFoto(pbFoto);
+        }
+
+        private void chkfaltas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkfaltas.Checked)
+            {
+                estado = 0; btnAdjuntarSustento.Enabled = false;
+            }
+            else
+            {
+                estado = 1; btnAdjuntarSustento.Enabled = true;
+            }
         }
     }
 }

@@ -16,14 +16,14 @@ namespace HPReserger {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptCTS : ReportClass {
+    public class rptReporteRequerimientos : ReportClass {
         
-        public rptCTS() {
+        public rptReporteRequerimientos() {
         }
         
         public override string ResourceName {
             get {
-                return "rptCTS.rpt";
+                return "rptReporteRequerimientos.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace HPReserger {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.rptCTS.rpt";
+                return "HPReserger.rptReporteRequerimientos.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace HPReserger {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Tipo_ID_Emp {
+        public CrystalDecisions.Shared.IParameterField Parameter_documento {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,25 +98,17 @@ namespace HPReserger {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Nro_ID_Emp {
+        public CrystalDecisions.Shared.IParameterField Parameter_tipo {
             get {
                 return this.DataDefinition.ParameterFields[1];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_fecha {
-            get {
-                return this.DataDefinition.ParameterFields[2];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptCTS : Component, ICachedReport {
+    public class CachedrptReporteRequerimientos : Component, ICachedReport {
         
-        public CachedrptCTS() {
+        public CachedrptReporteRequerimientos() {
         }
         
         [Browsable(false)]
@@ -153,7 +145,7 @@ namespace HPReserger {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptCTS rpt = new rptCTS();
+            rptReporteRequerimientos rpt = new rptReporteRequerimientos();
             rpt.Site = this.Site;
             return rpt;
         }

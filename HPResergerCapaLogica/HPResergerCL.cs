@@ -373,16 +373,16 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerificarCuentas(codigo, nombre);
         }
-        public void InsertarCuentasContables(string cuentan1, int codcuenta, string nombre, int tipo, string natu, int generica, int grupo,
-           string refleja, string reflejacc, int reflejadebe, int reflejahaber, int cuentacierre, string analitica, int mensual, int cierre,
-           int traslacion, string bc)
+        public void InsertarCuentasContables(string cuentan1, int codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
+           string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
+           string traslacion, string bc)
         {
             cdOrdenPedido.InsertarCuentasContables(cuentan1, codcuenta, nombre, tipo, natu, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
                 cuentacierre, analitica, mensual, cierre, traslacion, bc);
         }
-        public void ActualizarCuentasContables(int codcuenta, int generica, int grupo,
-          string refleja, string reflejacc, int reflejadebe, int reflejahaber, int cuentacierre, string analitica, int mensual, int cierre,
-          int traslacion, string bc)
+        public void ActualizarCuentasContables(int codcuenta, string generica, string grupo,
+          string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
+          string traslacion, string bc)
         {
             cdOrdenPedido.ActualizarCuentasContables(codcuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
                 cuentacierre, analitica, mensual, cierre, traslacion, bc);
@@ -900,14 +900,14 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.Sueldo(Tipo_ID_Emp, Nro_ID_Emp);
         }
 
-        public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado)
+        public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado, int usuario)
         {
-            cdOrdenPedido.ComprarVacaciones(Tipo_ID_Emp, Nro_ID_Emp, Desde, Hasta, Dias_Pendiente, Monto_Propuesto, Monto_Pactado);
+            cdOrdenPedido.ComprarVacaciones(Tipo_ID_Emp, Nro_ID_Emp, Desde, Hasta, Dias_Pendiente, Monto_Propuesto, Monto_Pactado, usuario);
         }
 
-        public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, string Observaciones, byte[] Foto, string NombreFoto)
+        public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, string Observaciones, byte[] Foto, string NombreFoto, int estado)
         {
-            cdOrdenPedido.EmpleadoFaltas(Tipo_ID_Emp, Nro_ID_Emp, Fec_Inicio, Fec_Fin, Dias, Observaciones, Foto, NombreFoto);
+            cdOrdenPedido.EmpleadoFaltas(Tipo_ID_Emp, Nro_ID_Emp, Fec_Inicio, Fec_Fin, Dias, Observaciones, Foto, NombreFoto, estado);
         }
 
         public DataTable ListarFaltas(int Tipo_ID_Emp, string Nro_ID_Emp)
@@ -1009,6 +1009,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarBancosCts();
 
+        }
+        public DataTable ExportarRequerimientos(string documento, string tipo)
+        {
+            return cdOrdenPedido.ExportarRequerimientos(documento, tipo);
         }
     }
 }

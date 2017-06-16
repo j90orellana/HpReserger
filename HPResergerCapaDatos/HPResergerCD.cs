@@ -15,6 +15,7 @@ namespace HPResergerCapaDatos
     public class HPResergerCD
     {
         abcBaseDatos.Database bd;
+        // public string DATASOURCE = "HPLAPTOP";
         public string DATASOURCE = "192.168.0.102";
         public string BASEDEDATOS = " HpReserger";
         public string USERID = "mmendoza";
@@ -1230,9 +1231,9 @@ namespace HPResergerCapaDatos
             object[] valor = { codigo, nombre };
             return bd.DataTableFromProcedure("usp_verificar_cuentas_contables", parametros, valor, null);
         }
-        public void InsertarCuentasContables(string cuentan1, int codcuenta, string nombre, int tipo, string natu, int generica, int grupo,
-        string refleja, string reflejacc, int reflejadebe, int reflejahaber, int cuentacierre, string analitica, int mensual, int cierre,
-        int traslacion, string bc)
+        public void InsertarCuentasContables(string cuentan1, int codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
+       string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
+       string traslacion, string bc)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1246,22 +1247,22 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@cuentan1", SqlDbType.VarChar, 150).Value = cuentan1;
                     cmd.Parameters.Add("@codcuenta", SqlDbType.Int).Value = codcuenta;
                     cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 150).Value = nombre;
-                    cmd.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
+                    cmd.Parameters.Add("@tipo", SqlDbType.VarChar, 150).Value = tipo;
                     cmd.Parameters.Add("@natu", SqlDbType.VarChar, 150).Value = natu;
 
-                    cmd.Parameters.Add("@generica", SqlDbType.Int).Value = generica;
-                    cmd.Parameters.Add("@grupo", SqlDbType.Int).Value = grupo;
+                    cmd.Parameters.Add("@generica", SqlDbType.VarChar, 150).Value = generica;
+                    cmd.Parameters.Add("@grupo", SqlDbType.VarChar, 150).Value = grupo;
                     cmd.Parameters.Add("@refleja", SqlDbType.VarChar, 150).Value = refleja;
                     cmd.Parameters.Add("@reflejacc", SqlDbType.VarChar, 150).Value = reflejacc;
-                    cmd.Parameters.Add("@reflejadebe", SqlDbType.Int).Value = reflejadebe;
+                    cmd.Parameters.Add("@reflejadebe", SqlDbType.VarChar, 150).Value = reflejadebe;
 
-                    cmd.Parameters.Add("@reflejahaber", SqlDbType.Int).Value = reflejahaber;
-                    cmd.Parameters.Add("@cuentacierre", SqlDbType.Int).Value = cuentacierre;
+                    cmd.Parameters.Add("@reflejahaber", SqlDbType.VarChar, 150).Value = reflejahaber;
+                    cmd.Parameters.Add("@cuentacierre", SqlDbType.VarChar, 150).Value = cuentacierre;
                     cmd.Parameters.Add("@analitica", SqlDbType.VarChar, 150).Value = analitica;
-                    cmd.Parameters.Add("@mensual", SqlDbType.Int).Value = mensual;
-                    cmd.Parameters.Add("@cierre", SqlDbType.Int).Value = cierre;
+                    cmd.Parameters.Add("@mensual", SqlDbType.VarChar, 150).Value = mensual;
+                    cmd.Parameters.Add("@cierre", SqlDbType.VarChar, 150).Value = cierre;
 
-                    cmd.Parameters.Add("@traslacion", SqlDbType.Int).Value = traslacion;
+                    cmd.Parameters.Add("@traslacion", SqlDbType.VarChar, 150).Value = traslacion;
                     cmd.Parameters.Add("@bc", SqlDbType.VarChar, 150).Value = bc;
                     cmd.ExecuteNonQuery();
                 }
@@ -1269,9 +1270,9 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-        public void ActualizarCuentasContables(int codcuenta, int generica, int grupo,
-       string refleja, string reflejacc, int reflejadebe, int reflejahaber, int cuentacierre, string analitica, int mensual, int cierre,
-       int traslacion, string bc)
+        public void ActualizarCuentasContables(int codcuenta, string generica, string grupo,
+     string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
+     string traslacion, string bc)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1283,19 +1284,19 @@ namespace HPResergerCapaDatos
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@codcuenta", SqlDbType.Int).Value = codcuenta;
-                    cmd.Parameters.Add("@generica", SqlDbType.Int).Value = generica;
-                    cmd.Parameters.Add("@grupo", SqlDbType.Int).Value = grupo;
+                    cmd.Parameters.Add("@generica", SqlDbType.VarChar, 150).Value = generica;
+                    cmd.Parameters.Add("@grupo", SqlDbType.VarChar, 150).Value = grupo;
                     cmd.Parameters.Add("@refleja", SqlDbType.VarChar, 150).Value = refleja;
                     cmd.Parameters.Add("@reflejacc", SqlDbType.VarChar, 150).Value = reflejacc;
 
-                    cmd.Parameters.Add("@reflejadebe", SqlDbType.Int).Value = reflejadebe;
-                    cmd.Parameters.Add("@reflejahaber", SqlDbType.Int).Value = reflejahaber;
-                    cmd.Parameters.Add("@cuentacierre", SqlDbType.Int).Value = cuentacierre;
+                    cmd.Parameters.Add("@reflejadebe", SqlDbType.VarChar, 150).Value = reflejadebe;
+                    cmd.Parameters.Add("@reflejahaber", SqlDbType.VarChar, 150).Value = reflejahaber;
+                    cmd.Parameters.Add("@cuentacierre", SqlDbType.VarChar, 150).Value = cuentacierre;
                     cmd.Parameters.Add("@analitica", SqlDbType.VarChar, 150).Value = analitica;
 
-                    cmd.Parameters.Add("@mensual", SqlDbType.Int).Value = mensual;
-                    cmd.Parameters.Add("@cierre", SqlDbType.Int).Value = cierre;
-                    cmd.Parameters.Add("@traslacion", SqlDbType.Int).Value = traslacion;
+                    cmd.Parameters.Add("@mensual", SqlDbType.VarChar, 150).Value = mensual;
+                    cmd.Parameters.Add("@cierre", SqlDbType.VarChar, 150).Value = cierre;
+                    cmd.Parameters.Add("@traslacion", SqlDbType.VarChar, 150).Value = traslacion;
                     cmd.Parameters.Add("@bc", SqlDbType.VarChar, 150).Value = bc;
                     cmd.ExecuteNonQuery();
                 }
@@ -2759,7 +2760,7 @@ namespace HPResergerCapaDatos
             return bd.DatarowFromProcedure("usp_GetEmpleadoSueldo", parametros, valores, null);
         }
 
-        public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado)
+        public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado, int usuario)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -2777,6 +2778,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@Dias_Pendientes", SqlDbType.Int).Value = Dias_Pendiente;
                     cmd.Parameters.Add("@Monto_Propuesto", SqlDbType.Decimal).Value = Monto_Propuesto;
                     cmd.Parameters.Add("@Monto_Pactado", SqlDbType.Decimal).Value = Monto_Pactado;
+                    cmd.Parameters.Add("@usuario", SqlDbType.Decimal).Value = usuario;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -2785,7 +2787,7 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, string Observaciones, byte[] Foto, string NombreFoto)
+        public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, string Observaciones, byte[] Foto, string NombreFoto, int estado)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -2804,6 +2806,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@Observaciones", SqlDbType.VarChar, 256).Value = Observaciones;
                     cmd.Parameters.Add("@Foto", SqlDbType.Image).Value = Foto;
                     cmd.Parameters.Add("@NombreFoto", SqlDbType.VarChar, 256).Value = NombreFoto;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -3018,5 +3021,12 @@ namespace HPResergerCapaDatos
         {
             return bd.DataTableFromProcedure("usp_ListarBancosCts", null, null, null);
         }
+        public DataTable ExportarRequerimientos(string documento, string tipo)
+        {
+            string[] parametros = { "@documento", "@tipo" };
+            object[] valores = { documento, tipo };
+            return bd.DataTableFromProcedure("usp_ExportarRequerimientos", parametros, valores, null);
+        }
+
     }
 }

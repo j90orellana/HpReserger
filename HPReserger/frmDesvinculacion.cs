@@ -43,16 +43,18 @@ namespace HPReserger
         }
 
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
-        {
+        {//Verifico si el empleado existe
             DataRow EmpleadoVacaciones = clDesvinculacion.ExisteBeneficioEmpleado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_DatosEmpleado");
             if (EmpleadoVacaciones != null)
             {
                 txtApellidoPaterno.Text = EmpleadoVacaciones["APELLIDOPATERNO"].ToString();
                 txtApellidoMaterno.Text = EmpleadoVacaciones["APELLIDOMATERNO"].ToString();
                 txtNombres.Text = EmpleadoVacaciones["NOMBRES"].ToString();
+                //Verifico si tiene un contrato activo en la fecha ingresada
                 DataRow Listarcontrato = clDesvinculacion.ListarContrato(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpfechacese.Value);
                 if (Listarcontrato != null)
                 {
+                    panelliquidacion.Enabled = true; panelverimagen.Enabled = true;
                     dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
 
                     lblcontrato.Text = "Contrato Nº: " + Listarcontrato["Nro_Contrato"].ToString() + " Inicio: " + Convert.ToDateTime(Listarcontrato["Fec_Inicio"]).ToShortDateString() +
@@ -66,6 +68,7 @@ namespace HPReserger
                     DataRow ListarDesvinculaciones = clDesvinculacion.ListarDesvinculaciones(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, Convert.ToInt32(Listarcontrato["Nro_Contrato"].ToString()));
                     if (ListarDesvinculaciones != null)
                     {
+                        panelverimagen.Enabled = true;
                         if (ListarDesvinculaciones["Liquidacion"].ToString() != null && ListarDesvinculaciones["Liquidacion"].ToString().Length > 0)
                         {
                             byte[] Fotito = new byte[0];
@@ -151,6 +154,11 @@ namespace HPReserger
                             pbSalida.Image = null;
                         }
                     }
+                    else
+                    {
+                        panelverimagen.Enabled = false;
+                        txtLiq.Text = txtConstanciaTrabajo.Text = txtCTS.Text = txtEntrevistaSalida.Text = txtEvaluacionPracticas.Text = txtRetencionRenta.Text = "";
+                    }
 
                 }
                 else
@@ -158,24 +166,26 @@ namespace HPReserger
                     lblcontrato.Text = "No Tiene Contrato ";
                     panelliquidacion.Enabled = false;
                     txtLiq.Text = ""; FotoLiq = null;
-                    pbLiquidacion.Image = null; lklliquidacion.Enabled = false;
-                    txtCTS.Text = ""; FotoCTS = null; lklcts.Enabled = false;
+                    pbLiquidacion.Image = null;
+                    txtCTS.Text = ""; FotoCTS = null;
                     pbCts.Image = null;
-                    txtRetencionRenta.Text = ""; FotoRetencionRenta = null; lklrenta.Enabled = false;
+                    txtRetencionRenta.Text = ""; FotoRetencionRenta = null;
                     pbRenta.Image = null;
                     txtConstanciaTrabajo.Text = ""; FotoConstanciaTrabajo = null;
-                    pbConstancia.Image = null; lkltrabajo.Enabled = false;
-                    txtEvaluacionPracticas.Text = ""; FotoEvaluacionPracticas = null; lklpracticas.Enabled = false;
+                    pbConstancia.Image = null;
+                    txtEvaluacionPracticas.Text = ""; FotoEvaluacionPracticas = null;
                     pbPracticas.Image = null;
-                    txtEntrevistaSalida.Text = ""; FotoEntrevistaSalida = null; lklsalida.Enabled = false;
+                    txtEntrevistaSalida.Text = ""; FotoEntrevistaSalida = null;
                     pbSalida.Image = null;
-                   
+                    lklliquidacion.Enabled = lklcts.Enabled = lklrenta.Enabled = lkltrabajo.Enabled = lklpracticas.Enabled = lklsalida.Enabled = false;
+                    panelliquidacion.Enabled = false; panelverimagen.Enabled = false;
                 }
             }
             else
             {
                 txtApellidoPaterno.Text = txtApellidoMaterno.Text = txtNombres.Text = "";
-                dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(1,"");
+                dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(1, "");
+                lklliquidacion.Enabled = lklcts.Enabled = lklrenta.Enabled = lkltrabajo.Enabled = lklpracticas.Enabled = lklsalida.Enabled = false;
             }
         }
 
@@ -228,7 +238,7 @@ namespace HPReserger
             frmCTS frmCTS = new frmCTS();
             frmCTS.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmCTS.NumeroDocumento = txtNumeroDocumento.Text;
-
+            frmCTS.fechacese = dtpfechacese.Value;
             frmCTS.ShowDialog();
         }
 
@@ -330,8 +340,10 @@ namespace HPReserger
 
                 pbFoto.Image = Image.FromFile(nombreArchivoLiq);
                 pbFoto.Image.Save(_memoryStreamLiq, ImageFormat.Jpeg);
+                pbLiquidacion = pbFoto;
                 FotoLiq = File.ReadAllBytes(dialogoAbrirArchivoLiq.FileName);
-                txtLiq.Text = nombreArchivoLiq;
+                txtLiq.Text = nombreArchivoLiq; lklliquidacion.Enabled = true;
+                panelverimagen.Enabled = true;
             }
         }
 
@@ -361,7 +373,8 @@ namespace HPReserger
                 pbFoto.Image = Image.FromFile(nombreArchivoCTS);
                 pbFoto.Image.Save(_memoryStreamCTS, ImageFormat.Jpeg);
                 FotoCTS = File.ReadAllBytes(dialogoAbrirArchivoCTS.FileName);
-                txtCTS.Text = nombreArchivoCTS;
+                txtCTS.Text = nombreArchivoCTS; panelverimagen.Enabled = true; lklcts.Enabled = true;
+                pbCts = pbFoto;
             }
         }
 
@@ -390,7 +403,8 @@ namespace HPReserger
                 pbFoto.Image = Image.FromFile(nombreArchivoConstanciaTrabajo);
                 pbFoto.Image.Save(_memoryStreamConstanciaTrabajo, ImageFormat.Jpeg);
                 FotoConstanciaTrabajo = File.ReadAllBytes(dialogoAbrirArchivoConstanciaTrabajo.FileName);
-                txtConstanciaTrabajo.Text = nombreArchivoConstanciaTrabajo;
+                txtConstanciaTrabajo.Text = nombreArchivoConstanciaTrabajo; panelverimagen.Enabled = true; lkltrabajo.Enabled = true;
+                pbConstancia = pbFoto;
             }
         }
 
@@ -420,7 +434,9 @@ namespace HPReserger
                 pbFoto.Image = Image.FromFile(nombreArchivoRetencionRenta);
                 pbFoto.Image.Save(_memoryStreamRetencionRenta, ImageFormat.Jpeg);
                 FotoRetencionRenta = File.ReadAllBytes(dialogoAbrirArchivoRetencionRenta.FileName);
-                txtRetencionRenta.Text = nombreArchivoRetencionRenta;
+                txtRetencionRenta.Text = nombreArchivoRetencionRenta; panelverimagen.Enabled = true;
+                lklrenta.Enabled = true;
+                pbRenta = pbFoto;
             }
         }
 
@@ -450,7 +466,9 @@ namespace HPReserger
                 pbFoto.Image = Image.FromFile(nombreArchivoEvaluacionPracticas);
                 pbFoto.Image.Save(_memoryStreamEvaluacionPracticas, ImageFormat.Jpeg);
                 FotoEvaluacionPracticas = File.ReadAllBytes(dialogoAbrirArchivoEvaluacionPracticas.FileName);
-                txtEvaluacionPracticas.Text = nombreArchivoEvaluacionPracticas;
+                txtEvaluacionPracticas.Text = nombreArchivoEvaluacionPracticas; panelverimagen.Enabled = true;
+                lklpracticas.Enabled = true;
+                pbPracticas = pbFoto;
             }
         }
 
@@ -481,12 +499,39 @@ namespace HPReserger
                 pbFoto.Image = Image.FromFile(nombreArchivoEntrevistaSalida);
                 pbFoto.Image.Save(_memoryStreamEntrevistaSalida, ImageFormat.Jpeg);
                 FotoEntrevistaSalida = File.ReadAllBytes(dialogoAbrirArchivoEntrevistaSalida.FileName);
-                txtEntrevistaSalida.Text = nombreArchivoEntrevistaSalida;
+                txtEntrevistaSalida.Text = nombreArchivoEntrevistaSalida; panelverimagen.Enabled = true;
+                lklsalida.Enabled = true;
+                pbSalida = pbFoto;
             }
         }
         int respuesta;
+        public void MSG(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void btnGrabar_Click(object sender, EventArgs e)
         {
+            if (lklliquidacion.Enabled == false)
+            {
+                MSG("Falta Imagen de la Liquidación"); btnAdjuntarLiq.Focus();
+                return;
+            }
+            if (lklcts.Enabled == false)
+            {
+                MSG("Falta Imagen de la Constancia de Cts"); btnCTS.Focus();
+                return;
+            }
+            if (lkltrabajo.Enabled == false)
+            {
+                MSG("Falta Imagen de la Constancia de Trabajo"); btnAdjuntarConstanciaTrabajo.Focus();
+                return;
+            }
+
+            if (lklrenta.Enabled == false)
+            {
+                MSG("Falta Imagen de la Retención de Renta"); btnRetencionRenta.Focus();
+                return;
+            }
             if (txtApellidoPaterno.Text.Length == 0)
             {
                 MessageBox.Show("Seleccione Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -553,11 +598,7 @@ namespace HPReserger
 
         private void dtpfechacese_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                txtNumeroDocumento_TextChanged(sender, e);
-            }
-            catch { }
+
         }
         public void MostrarFoto(PictureBox fotito)
         {
@@ -616,12 +657,14 @@ namespace HPReserger
                 dtgconten.Enabled = !dtgconten.Enabled;
                 fechita = dtpfechacese.Value;
                 button1.Text = "Ocultar Desvinculaciones";
+
             }
             else
             {
                 button1.Text = "Ver Desvinculaciones";
                 dtgconten.Enabled = !dtgconten.Enabled;
-                dtpfechacese.Value = fechita;
+                dtpfechacese.Value = fechita; dtgconten.CurrentCell = dtgconten[0, 0];
+                txtNumeroDocumento_TextChanged(sender, e);
             }
 
         }
@@ -633,8 +676,29 @@ namespace HPReserger
                 if (dtgconten["FECHACESE", e.RowIndex].Value.ToString() != string.Empty)
                 {
                     dtpfechacese.Value = Convert.ToDateTime(dtgconten["FECHACESE", e.RowIndex].Value.ToString());
+                    dtpfechacese_CloseUp(sender, e);
+                    dtgconten.CurrentCell = dtgconten[e.ColumnIndex, e.RowIndex];
                 }
             }
+        }
+
+        private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            /*    if (dtgconten.RowCount > 0&&dtpfechacese!=null)
+                {
+                    dtpfechacese.Value = DateTime.Parse(dtgconten["fechacese", e.RowIndex].Value.ToString());
+                    dtpfechacese_CloseUp(sender, e);
+                }*/
+        }
+
+        private void dtpfechacese_CloseUp(object sender, EventArgs e)
+        {
+            try
+            {
+                txtNumeroDocumento_TextChanged(sender, e);
+                txtNumeroDocumento_TextChanged(sender, e);
+            }
+            catch { }
         }
     }
 }

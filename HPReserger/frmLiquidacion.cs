@@ -16,7 +16,7 @@ namespace HPReserger
     {
         public int TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
-
+        HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         public frmLiquidacion()
         {
             InitializeComponent();
@@ -27,7 +27,8 @@ namespace HPReserger
             rptLiquidacion Reporte = new rptLiquidacion();
             Reporte.Refresh();
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
-            Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);            
+            Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
+            // Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS,datos.DATASOURCE,datos.BASEDEDATOS);
             Reporte.SetDatabaseLogon("mmendoza", "123");
             cvrLiquidacion.ReportSource = Reporte;
 

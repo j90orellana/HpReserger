@@ -49,6 +49,8 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.pnlconten = new System.Windows.Forms.Panel();
+            this.btnexportar = new System.Windows.Forms.Button();
+            this.savefile = new System.Windows.Forms.SaveFileDialog();
             this.pnlconten.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -280,12 +282,29 @@
             this.pnlconten.TabIndex = 25;
             this.pnlconten.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlconten_Paint);
             // 
+            // btnexportar
+            // 
+            this.btnexportar.Location = new System.Drawing.Point(493, 137);
+            this.btnexportar.Name = "btnexportar";
+            this.btnexportar.Size = new System.Drawing.Size(75, 23);
+            this.btnexportar.TabIndex = 26;
+            this.btnexportar.Text = "Exp. Pdf";
+            this.btnexportar.UseVisualStyleBackColor = true;
+            this.btnexportar.Click += new System.EventHandler(this.btnexportar_Click);
+            // 
+            // savefile
+            // 
+            this.savefile.DefaultExt = "pdf";
+            this.savefile.Filter = "|*.pdf";
+            // 
             // frmEmpleadoRequerimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(574, 212);
+            this.ClientSize = new System.Drawing.Size(763, 212);
+            this.Controls.Add(this.btnexportar);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btnModificar);
@@ -325,5 +344,7 @@
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnaceptar;
         private System.Windows.Forms.Panel pnlconten;
+        private System.Windows.Forms.Button btnexportar;
+        private System.Windows.Forms.SaveFileDialog savefile;
     }
 }

@@ -1,8 +1,12 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +17,7 @@ namespace HPReserger
     public partial class frmEmpleadoRequerimiento : Form
     {
         HPResergerCapaLogica.HPResergerCL clEmpleadoRequerimiento = new HPResergerCapaLogica.HPResergerCL();
+
         public int CodigoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
 
@@ -23,6 +28,9 @@ namespace HPReserger
 
         private void frmEmpleadoRequerimiento_Load(object sender, EventArgs e)
         {
+            CodigoDocumento = 1;
+            NumeroDocumento = "0701046971";
+
             cboCelular.SelectedIndex = cboCorreo.SelectedIndex = cboMaquina.SelectedIndex = cboOtros.SelectedIndex = 1;
 
             DataRow ExisteRequerimiento = clEmpleadoRequerimiento.CargarCualquierImagenPostulanteEmpleado("*", "TBL_Empleado_Requerimiento", "Tipo_ID_Emp", CodigoDocumento, "Nro_ID_Emp", NumeroDocumento);
@@ -38,9 +46,13 @@ namespace HPReserger
                 txtObservacionesOtros.Text = ExisteRequerimiento["OTROS_OBS"].ToString();
                 btnModificar.Enabled = true;
                 btnRegistrar.Enabled = false;
+                btnexportar.Enabled = true;
+
+
             }
             else
             {
+                btnexportar.Enabled = false;
                 btnModificar.Enabled = false;
                 btnRegistrar.Enabled = true;
             }
@@ -52,7 +64,7 @@ namespace HPReserger
         {
             if (cboCelular.SelectedIndex == 0)
             {
-              //  txtObservacionesCelular.Text = "";
+                //  txtObservacionesCelular.Text = "";
                 txtObservacionesCelular.ReadOnly = false;
                 txtObservacionesCelular.Focus();
             }
@@ -67,7 +79,7 @@ namespace HPReserger
         {
             if (cboMaquina.SelectedIndex == 0)
             {
-               // txtObservacionesMaquina.Text = "";
+                // txtObservacionesMaquina.Text = "";
                 txtObservacionesMaquina.ReadOnly = false;
                 txtObservacionesMaquina.Focus();
             }
@@ -82,7 +94,7 @@ namespace HPReserger
         {
             if (cboCorreo.SelectedIndex == 0)
             {
-               // txtObservacionesCorreo.Text = "";
+                // txtObservacionesCorreo.Text = "";
                 txtObservacionesCorreo.ReadOnly = false;
                 txtObservacionesCorreo.Focus();
             }
@@ -97,7 +109,7 @@ namespace HPReserger
         {
             if (cboOtros.SelectedIndex == 0)
             {
-              //  txtObservacionesOtros.Text = "";
+                //  txtObservacionesOtros.Text = "";
                 txtObservacionesOtros.ReadOnly = false;
                 txtObservacionesOtros.Focus();
             }
@@ -115,6 +127,7 @@ namespace HPReserger
             btnRegistrar.Enabled = false;
             btnaceptar.Enabled = true;
             pnlconten.Enabled = true;
+            btnexportar.Enabled = false;
         }
 
         private void GrabarEditar(int Opcion)
@@ -129,6 +142,7 @@ namespace HPReserger
             btnRegistrar.Enabled = false;
             btnaceptar.Enabled = true;
             pnlconten.Enabled = true;
+            btnexportar.Enabled = false;
         }
         int estado = 0;
         private void btncancelar_Click(object sender, EventArgs e)
@@ -141,12 +155,12 @@ namespace HPReserger
                 if (estado == 1)
                 {
                     btnRegistrar.Enabled = true;
-                    btnModificar.Enabled = false;
+                    btnModificar.Enabled = false; btnexportar.Enabled = true;
                 }
                 if (estado == 2)
                 {
                     btnRegistrar.Enabled = false;
-                    btnModificar.Enabled = true;
+                    btnModificar.Enabled = true; btnexportar.Enabled = true;
                 }
             }
             if (estado == 0)
@@ -170,7 +184,7 @@ namespace HPReserger
                 MessageBox.Show("Requerimiento ingresado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 estado = 0;
                 btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;btnModificar.Enabled = true;
+                pnlconten.Enabled = false; btnModificar.Enabled = true; btnexportar.Enabled = true;
             }
             if (estado == 2)
             {
@@ -178,13 +192,95 @@ namespace HPReserger
                 MessageBox.Show("Requerimiento actualizado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 estado = 0;
                 btnaceptar.Enabled = false;
-                pnlconten.Enabled = false; btnModificar.Enabled = true;
+                pnlconten.Enabled = false; btnModificar.Enabled = true; btnexportar.Enabled = true;
             }
         }
 
         private void pnlconten_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        /*     private void PBExportarPDF_Click(object sender, EventArgs e, string path)
+             {
+                 //  try
+                 //    {
+                 Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+                 string ReportePDF = path;
+                 FileStream file = new FileStream(ReportePDF, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+
+                 PdfWriter.GetInstance(doc, file);
+                 doc.Open();
+                 GenerarDocumento(doc);
+                 doc.Close();
+                 Process.Start(ReportePDF);
+                 //       }
+                 //    catch (Exception ex)
+                 //   {
+                 //     MessageBox.Show(ex.Message + " --" + ex.StackTrace.ToString());
+                 //   }
+
+             }*/
+
+
+        public float[] GetTamanioColumnas(DataGridView dg)
+        {
+            float[] values = new float[dg.ColumnCount];
+            for (int i = 0; i < dg.ColumnCount; i++)
+            {
+                values[i] = (float)dg.Columns[i].Width;
+            }
+            return values;
+        }
+
+        /*     public void GenerarDocumento(Document document)
+             {
+                 //se crea un objeto PdfTable con el numero de columnas del dataGridView 
+                 PdfPTable datatable = new PdfPTable(DtgConten.ColumnCount);//asignamos algunas propiedades para el diseño del pdf 
+                 datatable.DefaultCell.Padding = 3;
+                 float[] headerwidths = GetTamanioColumnas(DtgConten);
+                 datatable.SetWidths(headerwidths); datatable.WidthPercentage = 100;
+                 datatable.DefaultCell.BorderWidth = 2;
+                 datatable.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
+
+                 //SE GENERA EL ENCABEZADO DE LA TABLA EN EL PDF 
+
+                 for (int i = 0; i < DtgConten.ColumnCount; i++)
+                 {
+                     datatable.AddCell(DtgConten.Columns[i].HeaderText);
+                 }
+
+                 datatable.HeaderRows = 1; datatable.DefaultCell.BorderWidth = 1;
+                 //SE GENERA EL CUERPO DEL PDF
+                 for (int i = 0; i < DtgConten.RowCount; i++)
+                 {
+                     for (int j = 0; j < DtgConten.ColumnCount; j++)
+                     {
+                         if (DtgConten[j, i].Value.ToString()==string.Empty)
+                             datatable.AddCell("");
+                         else
+                             datatable.AddCell(DtgConten[j, i].Value.ToString());
+                     }
+                     datatable.CompleteRow();
+                 }
+
+                 //SE AGREGAR LA PDFPTABLE AL DOCUMENTO
+                 document.Add(datatable);
+             }*/
+
+        private void btnexportar_Click(object sender, EventArgs e)
+        {
+            //  savefile.FileName = NumeroDocumento + "_" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year;
+
+            //    if (!string.IsNullOrWhiteSpace(savefile.FileName) && savefile.ShowDialog() == DialogResult.OK)
+            //    {
+            //DtgConten.DataSource = clEmpleadoRequerimiento.ExportarRequerimientos(NumeroDocumento, CodigoDocumento + "");
+            //PBExportarPDF_Click(sender, e, savefile.FileName);
+            frmRPTExportarRequerimiento reporterequerimientos = new frmRPTExportarRequerimiento();
+            reporterequerimientos.numerodocumento = NumeroDocumento;
+            reporterequerimientos.codigodocumento = CodigoDocumento + "";
+            reporterequerimientos.ShowDialog();
+            //requeri.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, savefile.FileName);
+            //   }
         }
     }
 }

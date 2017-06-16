@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtpfechacese = new System.Windows.Forms.DateTimePicker();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
@@ -80,6 +80,9 @@
             this.pbPracticas = new System.Windows.Forms.PictureBox();
             this.pbSalida = new System.Windows.Forms.PictureBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.panelverimagen = new System.Windows.Forms.Panel();
             this.NRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,8 +99,6 @@
             this.NOMBREPRACTICAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALIDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRESALIDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.panelliquidacion.SuspendLayout();
@@ -108,6 +109,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbPracticas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSalida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
+            this.panelverimagen.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -138,6 +140,7 @@
             this.dtpfechacese.Name = "dtpfechacese";
             this.dtpfechacese.Size = new System.Drawing.Size(220, 20);
             this.dtpfechacese.TabIndex = 79;
+            this.dtpfechacese.CloseUp += new System.EventHandler(this.dtpfechacese_CloseUp);
             this.dtpfechacese.ValueChanged += new System.EventHandler(this.dtpfechacese_ValueChanged);
             // 
             // txtNumeroDocumento
@@ -453,7 +456,7 @@
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(338, 173);
+            this.btnGrabar.Location = new System.Drawing.Point(273, 173);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(77, 23);
             this.btnGrabar.TabIndex = 107;
@@ -464,7 +467,7 @@
             // lklliquidacion
             // 
             this.lklliquidacion.AutoSize = true;
-            this.lklliquidacion.Location = new System.Drawing.Point(356, 6);
+            this.lklliquidacion.Location = new System.Drawing.Point(1, 8);
             this.lklliquidacion.Name = "lklliquidacion";
             this.lklliquidacion.Size = new System.Drawing.Size(61, 13);
             this.lklliquidacion.TabIndex = 108;
@@ -475,7 +478,7 @@
             // lklcts
             // 
             this.lklcts.AutoSize = true;
-            this.lklcts.Location = new System.Drawing.Point(357, 35);
+            this.lklcts.Location = new System.Drawing.Point(2, 37);
             this.lklcts.Name = "lklcts";
             this.lklcts.Size = new System.Drawing.Size(61, 13);
             this.lklcts.TabIndex = 108;
@@ -486,7 +489,7 @@
             // lkltrabajo
             // 
             this.lkltrabajo.AutoSize = true;
-            this.lkltrabajo.Location = new System.Drawing.Point(356, 66);
+            this.lkltrabajo.Location = new System.Drawing.Point(1, 68);
             this.lkltrabajo.Name = "lkltrabajo";
             this.lkltrabajo.Size = new System.Drawing.Size(61, 13);
             this.lkltrabajo.TabIndex = 108;
@@ -497,7 +500,7 @@
             // lklrenta
             // 
             this.lklrenta.AutoSize = true;
-            this.lklrenta.Location = new System.Drawing.Point(356, 95);
+            this.lklrenta.Location = new System.Drawing.Point(1, 97);
             this.lklrenta.Name = "lklrenta";
             this.lklrenta.Size = new System.Drawing.Size(61, 13);
             this.lklrenta.TabIndex = 108;
@@ -508,7 +511,7 @@
             // lklpracticas
             // 
             this.lklpracticas.AutoSize = true;
-            this.lklpracticas.Location = new System.Drawing.Point(356, 124);
+            this.lklpracticas.Location = new System.Drawing.Point(1, 126);
             this.lklpracticas.Name = "lklpracticas";
             this.lklpracticas.Size = new System.Drawing.Size(61, 13);
             this.lklpracticas.TabIndex = 108;
@@ -519,7 +522,7 @@
             // lklsalida
             // 
             this.lklsalida.AutoSize = true;
-            this.lklsalida.Location = new System.Drawing.Point(356, 150);
+            this.lklsalida.Location = new System.Drawing.Point(1, 152);
             this.lklsalida.Name = "lklsalida";
             this.lklsalida.Size = new System.Drawing.Size(61, 13);
             this.lklsalida.TabIndex = 108;
@@ -530,17 +533,11 @@
             // panelliquidacion
             // 
             this.panelliquidacion.Controls.Add(this.btnGenerarLiquidacion);
-            this.panelliquidacion.Controls.Add(this.lklsalida);
             this.panelliquidacion.Controls.Add(this.btnCTS);
-            this.panelliquidacion.Controls.Add(this.lklpracticas);
             this.panelliquidacion.Controls.Add(this.btnConstanciaTrabajo);
-            this.panelliquidacion.Controls.Add(this.lklrenta);
             this.panelliquidacion.Controls.Add(this.btnRetencionRenta);
-            this.panelliquidacion.Controls.Add(this.lkltrabajo);
             this.panelliquidacion.Controls.Add(this.btnEvaluacionPracticas);
-            this.panelliquidacion.Controls.Add(this.lklcts);
             this.panelliquidacion.Controls.Add(this.btnEntrevistaSalida);
-            this.panelliquidacion.Controls.Add(this.lklliquidacion);
             this.panelliquidacion.Controls.Add(this.btnAdjuntarLiq);
             this.panelliquidacion.Controls.Add(this.btnGrabar);
             this.panelliquidacion.Controls.Add(this.btnAdjuntarCTS);
@@ -557,7 +554,7 @@
             this.panelliquidacion.Enabled = false;
             this.panelliquidacion.Location = new System.Drawing.Point(12, 209);
             this.panelliquidacion.Name = "panelliquidacion";
-            this.panelliquidacion.Size = new System.Drawing.Size(425, 205);
+            this.panelliquidacion.Size = new System.Drawing.Size(354, 205);
             this.panelliquidacion.TabIndex = 109;
             // 
             // pbLiquidacion
@@ -626,20 +623,20 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dtgconten.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgconten.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NRO,
@@ -659,154 +656,37 @@
             this.SALIDA,
             this.NOMBRESALIDA});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Enabled = false;
             this.dtgconten.Location = new System.Drawing.Point(8, 420);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(784, 189);
             this.dtgconten.TabIndex = 150;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
-            // 
-            // NRO
-            // 
-            this.NRO.DataPropertyName = "NRO";
-            this.NRO.HeaderText = "NRO";
-            this.NRO.Name = "NRO";
-            this.NRO.Width = 53;
-            // 
-            // FECHAINICIO
-            // 
-            this.FECHAINICIO.DataPropertyName = "FECHAINICIO";
-            this.FECHAINICIO.HeaderText = "FECHAINICIO";
-            this.FECHAINICIO.Name = "FECHAINICIO";
-            this.FECHAINICIO.Width = 90;
-            // 
-            // FECHAFIN
-            // 
-            this.FECHAFIN.DataPropertyName = "FECHAFIN";
-            this.FECHAFIN.HeaderText = "FECHAFIN";
-            this.FECHAFIN.Name = "FECHAFIN";
-            this.FECHAFIN.Width = 78;
-            // 
-            // FECHACESE
-            // 
-            this.FECHACESE.DataPropertyName = "FECHACESE";
-            this.FECHACESE.HeaderText = "FECHACESE";
-            this.FECHACESE.Name = "FECHACESE";
-            this.FECHACESE.Width = 88;
-            // 
-            // LIQUIDACION
-            // 
-            this.LIQUIDACION.DataPropertyName = "LIQUIDACION";
-            this.LIQUIDACION.HeaderText = "LIQUIDACION";
-            this.LIQUIDACION.Name = "LIQUIDACION";
-            this.LIQUIDACION.Visible = false;
-            this.LIQUIDACION.Width = 90;
-            // 
-            // NOMBRELIQUIDACION
-            // 
-            this.NOMBRELIQUIDACION.DataPropertyName = "NOMBRELIQUIDACION";
-            this.NOMBRELIQUIDACION.HeaderText = "NOMBRELIQUIDACION";
-            this.NOMBRELIQUIDACION.Name = "NOMBRELIQUIDACION";
-            this.NOMBRELIQUIDACION.Width = 131;
-            // 
-            // CTS
-            // 
-            this.CTS.DataPropertyName = "CTS";
-            this.CTS.HeaderText = "CTS";
-            this.CTS.Name = "CTS";
-            this.CTS.Visible = false;
-            this.CTS.Width = 51;
-            // 
-            // NOMBRECTS
-            // 
-            this.NOMBRECTS.DataPropertyName = "NOMBRECTS";
-            this.NOMBRECTS.HeaderText = "NOMBRECTS";
-            this.NOMBRECTS.Name = "NOMBRECTS";
-            this.NOMBRECTS.Width = 92;
-            // 
-            // CONSTANCIA
-            // 
-            this.CONSTANCIA.DataPropertyName = "CONSTANCIA";
-            this.CONSTANCIA.HeaderText = "CONSTANCIA";
-            this.CONSTANCIA.Name = "CONSTANCIA";
-            this.CONSTANCIA.Visible = false;
-            this.CONSTANCIA.Width = 93;
-            // 
-            // NOMBRECONSTANCIA
-            // 
-            this.NOMBRECONSTANCIA.DataPropertyName = "NOMBRECONSTANCIA";
-            this.NOMBRECONSTANCIA.HeaderText = "NOMBRECONSTANCIA";
-            this.NOMBRECONSTANCIA.Name = "NOMBRECONSTANCIA";
-            this.NOMBRECONSTANCIA.Width = 134;
-            // 
-            // RENTA
-            // 
-            this.RENTA.DataPropertyName = "RENTA";
-            this.RENTA.HeaderText = "RENTA";
-            this.RENTA.Name = "RENTA";
-            this.RENTA.Visible = false;
-            this.RENTA.Width = 64;
-            // 
-            // NOMBRERENTA
-            // 
-            this.NOMBRERENTA.DataPropertyName = "NOMBRERENTA";
-            this.NOMBRERENTA.HeaderText = "NOMBRERENTA";
-            this.NOMBRERENTA.Name = "NOMBRERENTA";
-            this.NOMBRERENTA.Width = 105;
-            // 
-            // PRACTICAS
-            // 
-            this.PRACTICAS.DataPropertyName = "PRACTICAS";
-            this.PRACTICAS.HeaderText = "PRACTICAS";
-            this.PRACTICAS.Name = "PRACTICAS";
-            this.PRACTICAS.Visible = false;
-            this.PRACTICAS.Width = 85;
-            // 
-            // NOMBREPRACTICAS
-            // 
-            this.NOMBREPRACTICAS.DataPropertyName = "NOMBREPRACTICAS";
-            this.NOMBREPRACTICAS.HeaderText = "NOMBREPRACTICAS";
-            this.NOMBREPRACTICAS.Name = "NOMBREPRACTICAS";
-            this.NOMBREPRACTICAS.Width = 126;
-            // 
-            // SALIDA
-            // 
-            this.SALIDA.DataPropertyName = "SALIDA";
-            this.SALIDA.HeaderText = "SALIDA";
-            this.SALIDA.Name = "SALIDA";
-            this.SALIDA.Visible = false;
-            this.SALIDA.Width = 63;
-            // 
-            // NOMBRESALIDA
-            // 
-            this.NOMBRESALIDA.DataPropertyName = "NOMBRESALIDA";
-            this.NOMBRESALIDA.HeaderText = "NOMBRESALIDA";
-            this.NOMBRESALIDA.Name = "NOMBRESALIDA";
-            this.NOMBRESALIDA.Width = 104;
+            this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
             // button1
             // 
@@ -828,13 +708,139 @@
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
+            // panelverimagen
+            // 
+            this.panelverimagen.Controls.Add(this.lklliquidacion);
+            this.panelverimagen.Controls.Add(this.lklcts);
+            this.panelverimagen.Controls.Add(this.lklsalida);
+            this.panelverimagen.Controls.Add(this.lkltrabajo);
+            this.panelverimagen.Controls.Add(this.lklrenta);
+            this.panelverimagen.Controls.Add(this.lklpracticas);
+            this.panelverimagen.Location = new System.Drawing.Point(372, 209);
+            this.panelverimagen.Name = "panelverimagen";
+            this.panelverimagen.Size = new System.Drawing.Size(65, 198);
+            this.panelverimagen.TabIndex = 152;
+            // 
+            // NRO
+            // 
+            this.NRO.DataPropertyName = "NRO";
+            this.NRO.HeaderText = "NRO";
+            this.NRO.Name = "NRO";
+            this.NRO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // FECHAINICIO
+            // 
+            this.FECHAINICIO.DataPropertyName = "FECHAINICIO";
+            this.FECHAINICIO.HeaderText = "FECHAINICIO";
+            this.FECHAINICIO.Name = "FECHAINICIO";
+            this.FECHAINICIO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // FECHAFIN
+            // 
+            this.FECHAFIN.DataPropertyName = "FECHAFIN";
+            this.FECHAFIN.HeaderText = "FECHAFIN";
+            this.FECHAFIN.Name = "FECHAFIN";
+            this.FECHAFIN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // FECHACESE
+            // 
+            this.FECHACESE.DataPropertyName = "FECHACESE";
+            this.FECHACESE.HeaderText = "FECHACESE";
+            this.FECHACESE.Name = "FECHACESE";
+            this.FECHACESE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // LIQUIDACION
+            // 
+            this.LIQUIDACION.DataPropertyName = "LIQUIDACION";
+            this.LIQUIDACION.HeaderText = "LIQUIDACION";
+            this.LIQUIDACION.Name = "LIQUIDACION";
+            this.LIQUIDACION.Visible = false;
+            // 
+            // NOMBRELIQUIDACION
+            // 
+            this.NOMBRELIQUIDACION.DataPropertyName = "NOMBRELIQUIDACION";
+            this.NOMBRELIQUIDACION.HeaderText = "NOMBRELIQUIDACION";
+            this.NOMBRELIQUIDACION.Name = "NOMBRELIQUIDACION";
+            this.NOMBRELIQUIDACION.Visible = false;
+            // 
+            // CTS
+            // 
+            this.CTS.DataPropertyName = "CTS";
+            this.CTS.HeaderText = "CTS";
+            this.CTS.Name = "CTS";
+            this.CTS.Visible = false;
+            // 
+            // NOMBRECTS
+            // 
+            this.NOMBRECTS.DataPropertyName = "NOMBRECTS";
+            this.NOMBRECTS.HeaderText = "NOMBRECTS";
+            this.NOMBRECTS.Name = "NOMBRECTS";
+            this.NOMBRECTS.Visible = false;
+            // 
+            // CONSTANCIA
+            // 
+            this.CONSTANCIA.DataPropertyName = "CONSTANCIA";
+            this.CONSTANCIA.HeaderText = "CONSTANCIA";
+            this.CONSTANCIA.Name = "CONSTANCIA";
+            this.CONSTANCIA.Visible = false;
+            // 
+            // NOMBRECONSTANCIA
+            // 
+            this.NOMBRECONSTANCIA.DataPropertyName = "NOMBRECONSTANCIA";
+            this.NOMBRECONSTANCIA.HeaderText = "NOMBRECONSTANCIA";
+            this.NOMBRECONSTANCIA.Name = "NOMBRECONSTANCIA";
+            this.NOMBRECONSTANCIA.Visible = false;
+            // 
+            // RENTA
+            // 
+            this.RENTA.DataPropertyName = "RENTA";
+            this.RENTA.HeaderText = "RENTA";
+            this.RENTA.Name = "RENTA";
+            this.RENTA.Visible = false;
+            // 
+            // NOMBRERENTA
+            // 
+            this.NOMBRERENTA.DataPropertyName = "NOMBRERENTA";
+            this.NOMBRERENTA.HeaderText = "NOMBRERENTA";
+            this.NOMBRERENTA.Name = "NOMBRERENTA";
+            this.NOMBRERENTA.Visible = false;
+            // 
+            // PRACTICAS
+            // 
+            this.PRACTICAS.DataPropertyName = "PRACTICAS";
+            this.PRACTICAS.HeaderText = "PRACTICAS";
+            this.PRACTICAS.Name = "PRACTICAS";
+            this.PRACTICAS.Visible = false;
+            // 
+            // NOMBREPRACTICAS
+            // 
+            this.NOMBREPRACTICAS.DataPropertyName = "NOMBREPRACTICAS";
+            this.NOMBREPRACTICAS.HeaderText = "NOMBREPRACTICAS";
+            this.NOMBREPRACTICAS.Name = "NOMBREPRACTICAS";
+            this.NOMBREPRACTICAS.Visible = false;
+            // 
+            // SALIDA
+            // 
+            this.SALIDA.DataPropertyName = "SALIDA";
+            this.SALIDA.HeaderText = "SALIDA";
+            this.SALIDA.Name = "SALIDA";
+            this.SALIDA.Visible = false;
+            // 
+            // NOMBRESALIDA
+            // 
+            this.NOMBRESALIDA.DataPropertyName = "NOMBRESALIDA";
+            this.NOMBRESALIDA.HeaderText = "NOMBRESALIDA";
+            this.NOMBRESALIDA.Name = "NOMBRESALIDA";
+            this.NOMBRESALIDA.Visible = false;
+            // 
             // frmDesvinculacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(803, 645);
+            this.ClientSize = new System.Drawing.Size(923, 645);
+            this.Controls.Add(this.panelverimagen);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dtgconten);
@@ -864,6 +870,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbPracticas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSalida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
+            this.panelverimagen.ResumeLayout(false);
+            this.panelverimagen.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -918,6 +926,9 @@
         private System.Windows.Forms.PictureBox pbPracticas;
         private System.Windows.Forms.PictureBox pbSalida;
         private System.Windows.Forms.DataGridView dtgconten;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btncancelar;
+        private System.Windows.Forms.Panel panelverimagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn NRO;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAINICIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAFIN;
@@ -934,7 +945,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBREPRACTICAS;
         private System.Windows.Forms.DataGridViewTextBoxColumn SALIDA;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRESALIDA;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btncancelar;
     }
 }

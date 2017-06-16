@@ -68,6 +68,7 @@ namespace HPReserger
 
         private void btnmas_Click(object sender, EventArgs e)
         {
+            txttotalhaber.Text = txttotaldebe.Text = "0.00";
             Sumatoria();
             if (Dtgconten.RowCount > 0)
             {

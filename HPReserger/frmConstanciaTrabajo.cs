@@ -22,18 +22,43 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        HPResergerCapaDatos.HPResergerCD repor = new HPResergerCapaDatos.HPResergerCD();
+        HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
+
         private void frmConstanciaTrabajo_Load(object sender, EventArgs e)
         {
             rptConstanciaTrabajo Reporte = new rptConstanciaTrabajo();
             Reporte.Refresh();
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
-            Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);         
-            Reporte.SetDatabaseLogon(repor.USERID,repor.USERPASS);
-            Reporte.SetDatabaseLogon(repor.USERID, repor.USERPASS, repor.DATASOURCE,repor.BASEDEDATOS, false);
+            Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
+            Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+
+            
+            /*
+            ConnectionInfo iConnectionInfo = new ConnectionInfo();
+            iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
+            iConnectionInfo.UserID = datos.USERID;
+            iConnectionInfo.Password = datos.USERPASS;
+            iConnectionInfo.ServerName = datos.DATASOURCE;
+            iConnectionInfo.AllowCustomConnection = true;
+            iConnectionInfo.Type = ConnectionInfoType.SQL;
+
+            SetDBLogonForReport(iConnectionInfo, Reporte);*/
+
             crvConstanciaTrabajo.ReportSource = Reporte;
+        }
+        public void SetDBLogonForReport(ConnectionInfo myConnectionInfo, rptConstanciaTrabajo myReportDocument)
+        {
+
+            Tables myTabless = myReportDocument.Database.Tables;
+            foreach (CrystalDecisions.CrystalReports.Engine.Table myTables in myTabless)
+            {
+                TableLogOnInfo myTableLogonInfo = myTables.LogOnInfo;
+                myTableLogonInfo.ConnectionInfo = myConnectionInfo;
+                myTables.ApplyLogOnInfo(myTableLogonInfo);
+            }
 
         }
+
         public void MSG(string cadena)
         {
             MessageBox.Show(cadena, "HPRESERGER");

@@ -23,7 +23,7 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void frmBoletaVacaciones_Load(object sender, EventArgs e)
         {
             rptVacaciones Reporte = new rptVacaciones();
@@ -31,7 +31,7 @@ namespace HPReserger
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
             Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
             Reporte.SetParameterValue("@Registro", Registro);
-
+           // Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS, datos.DATASOURCE, datos.BASEDEDATOS);
             Reporte.SetDatabaseLogon("mmendoza", "123");
             crvBoletaVacaciones.ReportSource = Reporte;
         }
