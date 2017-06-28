@@ -17,7 +17,7 @@ namespace HPReserger
     {
         public int TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
-
+        public DateTime fechacese;
         public frmConstanciaTrabajo()
         {
             InitializeComponent();
@@ -30,6 +30,7 @@ namespace HPReserger
             Reporte.Refresh();
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
             Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
+            Reporte.SetParameterValue("@fecha", fechacese);
             Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
 
             

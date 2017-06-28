@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -49,6 +51,7 @@ namespace HPReserger
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
+           
             Intentos = 0;
         }
 

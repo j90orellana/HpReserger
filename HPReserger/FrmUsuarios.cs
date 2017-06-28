@@ -311,7 +311,7 @@ namespace HPReserger
                     {
                         if (txtcontra.Text.Length < 4)
                         {
-                            Mensajes("Contraseña muy pequeña");
+                            Mensajes("Contraseña muy pequeña: 4 caracteres minimo");
                         }
                         else
                         {

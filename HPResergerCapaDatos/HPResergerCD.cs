@@ -1411,10 +1411,10 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_get_MarcaArticulo", parametros, valores, null);
         }
 
-        public DataTable ModeloArticulo(int IdMarca)
+        public DataTable ModeloArticulo(int IdMarca, int articulo)
         {
-            string[] parametros = { "@IdMarca" };
-            object[] valores = { IdMarca };
+            string[] parametros = { "@IdMarca", "@idart" };
+            object[] valores = { IdMarca, articulo };
             return bd.DataTableFromProcedure("usp_get_MarcaModelo", parametros, valores, null);
         }
 
@@ -1603,7 +1603,7 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public void CotizacionDetalleInsertar(int Cotizacion, int Pedido)
+        public void CotizacionDetalleInsertar(int Cotizacion, int Pedido, int tipo, int cantidad, decimal preciounit, decimal total, string articulo, string marca, string modelo, string obsevarciones)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1615,7 +1615,15 @@ namespace HPResergerCapaDatos
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@NumeroCotizacion", SqlDbType.Int).Value = Cotizacion;
-                    cmd.Parameters.Add("@NumeroPedido", SqlDbType.Int).Value = Pedido;
+                    cmd.Parameters.Add("@Pedido", SqlDbType.Int).Value = Pedido;
+                    cmd.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
+                    cmd.Parameters.Add("@cantidad", SqlDbType.Int).Value = cantidad;
+                    cmd.Parameters.Add("@preciounit", SqlDbType.Decimal).Value = preciounit;
+                    cmd.Parameters.Add("@total", SqlDbType.Decimal).Value = total;
+                    cmd.Parameters.Add("@articulo", SqlDbType.VarChar, 100).Value = articulo;
+                    cmd.Parameters.Add("@marca", SqlDbType.VarChar, 100).Value = marca;
+                    cmd.Parameters.Add("@modelo", SqlDbType.VarChar, 100).Value = modelo;
+                    cmd.Parameters.Add("@observacion", SqlDbType.VarChar, 100).Value = obsevarciones;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -2257,7 +2265,7 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_get_JefeInmediato", parametros, valores, null);
         }
 
-        public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
+        public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int tipocontra, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -2270,6 +2278,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@numero", SqlDbType.Int).Value = numero;
                     cmd.Parameters.Add("@Tipo_ID_Emp", SqlDbType.Int).Value = Tipo_ID_Emp;
                     cmd.Parameters.Add("@Nro_ID_Emp", SqlDbType.VarChar, 14).Value = Nro_ID_Emp;
+                    cmd.Parameters.Add("@tipocontra", SqlDbType.Int).Value = tipocontra;
                     cmd.Parameters.Add("@jefe", SqlDbType.Int).Value = jefe;
                     cmd.Parameters.Add("@Tipo_Contrato", SqlDbType.Int).Value = Tipo_Contrato;
                     cmd.Parameters.Add("@Cargo", SqlDbType.Int).Value = Cargo;
@@ -3026,6 +3035,18 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@documento", "@tipo" };
             object[] valores = { documento, tipo };
             return bd.DataTableFromProcedure("usp_ExportarRequerimientos", parametros, valores, null);
+        }
+        public DataTable ListarPedidoProveedor(int pedido, string proveedor)
+        {
+            string[] parametros = { "@pedido", "@proveedor" };
+            object[] valores = { pedido, proveedor };
+            return bd.DataTableFromProcedure("usp_listar_pedido_proveedor", parametros, valores, null);
+        }
+        public DataRow LocacionServicios(string contrato, string tipoid, string numero, int opcion, string ocupacion, string detalle)
+        {
+            string[] parametros = { "@contrato", "@tipoid", "@numero", "@opcion", "@ocupacion", "@detalle" };
+            object[] valor = { contrato, tipoid, numero, opcion, ocupacion, detalle };
+            return bd.DatarowFromProcedure("usp_Contrato_Locacion_Servicios", parametros, valor, null);
         }
 
     }

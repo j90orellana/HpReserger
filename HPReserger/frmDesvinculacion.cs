@@ -254,7 +254,7 @@ namespace HPReserger
             frmConstanciaTrabajo frmCT = new frmConstanciaTrabajo();
             frmCT.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmCT.NumeroDocumento = txtNumeroDocumento.Text;
-
+            frmCT.fechacese = dtpfechacese.Value;
             frmCT.ShowDialog();
         }
 

@@ -209,6 +209,7 @@ namespace HPReserger
         public string Nombres;
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            cerrado = 0;
             //MessageBox.Show("usuario:"+usuario+"nick:"+nick);
             lblwelcome.Text = "Bienvenido " + Nombres;
         }
@@ -229,7 +230,10 @@ namespace HPReserger
 
         private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (cerrado == 0)
+            {
+                Application.Exit();
+            }
         }
 
         private void listarOCFaltantesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -266,6 +270,20 @@ namespace HPReserger
         {
             frmreporteempleado reporemple = new frmreporteempleado();
             reporemple.ShowDialog();
+        }
+        int cerrado = 0;
+        private void cerrarSesionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            cerrado = 1;
+            this.Close();
+            frmLogin logeo = new frmLogin();
+            logeo.Show();
+        }
+
+        private void generarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGenerarBoletas genbole = new frmGenerarBoletas();
+            genbole.ShowDialog();
         }
     }
 }

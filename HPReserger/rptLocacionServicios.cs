@@ -16,14 +16,14 @@ namespace HPReserger {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptConstanciaTrabajo : ReportClass {
+    public class rptLocacionServicios : ReportClass {
         
-        public rptConstanciaTrabajo() {
+        public rptLocacionServicios() {
         }
         
         public override string ResourceName {
             get {
-                return "rptConstanciaTrabajo.rpt";
+                return "rptLocacionServicios.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace HPReserger {
         
         public override string FullResourceName {
             get {
-                return "HPReserger.rptConstanciaTrabajo.rpt";
+                return "HPReserger.rptLocacionServicios.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace HPReserger {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace HPReserger {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection3 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,31 @@ namespace HPReserger {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Tipo_ID_Emp {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[7];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_contrato {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +122,7 @@ namespace HPReserger {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Nro_ID_Emp {
+        public CrystalDecisions.Shared.IParameterField Parameter_tipoid {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,7 +130,7 @@ namespace HPReserger {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_fecha {
+        public CrystalDecisions.Shared.IParameterField Parameter_numerodoc {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -114,9 +138,9 @@ namespace HPReserger {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptConstanciaTrabajo : Component, ICachedReport {
+    public class CachedrptLocacionServicios : Component, ICachedReport {
         
-        public CachedrptConstanciaTrabajo() {
+        public CachedrptLocacionServicios() {
         }
         
         [Browsable(false)]
@@ -153,7 +177,7 @@ namespace HPReserger {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptConstanciaTrabajo rpt = new rptConstanciaTrabajo();
+            rptLocacionServicios rpt = new rptLocacionServicios();
             rpt.Site = this.Site;
             return rpt;
         }

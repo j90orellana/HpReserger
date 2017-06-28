@@ -96,9 +96,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.MarcaArticulo(IdArticulo);
         }
 
-        public DataTable ModeloArticulo(int IdMarca)
+        public DataTable ModeloArticulo(int IdMarca, int articulo)
         {
-            return cdOrdenPedido.ModeloArticulo(IdMarca);
+            return cdOrdenPedido.ModeloArticulo(IdMarca, articulo);
         }
         public void InsertarMarca(string valor)
         {
@@ -491,9 +491,10 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.CotizacionCabeceraInsertar(out Numero, FechaEntrega, Tipo, Usuario, Importe, Pedido, Proveedor, Foto, NombreArchivo);
         }
 
-        public void CotizacionDetalleInsertar(int Cotizacion, int Pedido)
+        public void CotizacionDetalleInsertar(int Cotizacion, int Pedido, int tipo, int cantidad, decimal preciounit, decimal total, string articulo, string marca, string modelo, string observaciones)
         {
-            cdOrdenPedido.CotizacionDetalleInsertar(Cotizacion, Pedido);
+
+            cdOrdenPedido.CotizacionDetalleInsertar(Cotizacion, Pedido, tipo, cantidad, preciounit, total, articulo, marca, modelo, observaciones);
         }
 
         public DataTable ListarCotizacionesAsociadas(int Pedido)
@@ -721,9 +722,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarJefeInmediato(tipo, documento, opcion);
         }
 
-        public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
+        public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int tipocontra, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
         {
-            cdOrdenPedido.EmpleadoContrato(numero, Tipo_ID_Emp, Nro_ID_Emp, jefe, Tipo_Contrato, Cargo, Gerencia, Area, tipojefe, Jefe_Inmediato, Empresa, Proyecto, Sede, Fec_Inicio, Periodo_Laboral, Fec_Fin, Sueldo, Bono, Bono_Importe, Bono_Periodicidad, Contrato_Img, Contrato, AnxFunc_Img, AnxFunc, SolPrac_Img, SolPrac, Otros_Img, Otros, Usuario, Opcion);
+            cdOrdenPedido.EmpleadoContrato(numero, Tipo_ID_Emp, Nro_ID_Emp, tipocontra, jefe, Tipo_Contrato, Cargo, Gerencia, Area, tipojefe, Jefe_Inmediato, Empresa, Proyecto, Sede, Fec_Inicio, Periodo_Laboral, Fec_Fin, Sueldo, Bono, Bono_Importe, Bono_Periodicidad, Contrato_Img, Contrato, AnxFunc_Img, AnxFunc, SolPrac_Img, SolPrac, Otros_Img, Otros, Usuario, Opcion);
         }
 
         public void EmpleadoFamilia(int Tipo_ID_Emp, string Nro_ID_Emp, int Vinculo_Familiar, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old, int Tipo_ID_Fam_New, string Nro_ID_Fam_New, string Apepat_Fam, string Apemat_Fam, string Nombres_Fam, DateTime Fec_Nacimiento_Fam, string Ocupacion, int Usuario, int Opcion)
@@ -1003,16 +1004,22 @@ namespace HPResergerCapaLogica
            int planillaobrero, int recibo, int sueldo, decimal minimo, decimal maximo, int fecha, DateTime fechaini, DateTime fechafinal, int banco, string codbanco)
         {
             return cdOrdenPedido.Reporteempleados(opcion, opciones, buscar, dni, carnet, pasa, cedula, ruc, practicas, planillaempleado, planillaobrero, recibo, sueldo, minimo, maximo, fecha, fechaini, fechafinal, banco, codbanco);
-
         }
         public DataTable ListarBancosCts()
         {
             return cdOrdenPedido.ListarBancosCts();
-
         }
         public DataTable ExportarRequerimientos(string documento, string tipo)
         {
             return cdOrdenPedido.ExportarRequerimientos(documento, tipo);
+        }
+        public DataTable ListarPedidoProveedor(int pedido, string proveedor)
+        {
+            return cdOrdenPedido.ListarPedidoProveedor(pedido, proveedor);
+        }
+        public DataRow LocacionServicios(string contrato, string tipoid, string numero, int opcion, string ocupacion, string detalle)
+        {
+            return cdOrdenPedido.LocacionServicios(contrato, tipoid, numero, opcion, ocupacion, detalle);
         }
     }
 }

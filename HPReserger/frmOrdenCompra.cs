@@ -4,8 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace HPReserger
@@ -47,11 +50,11 @@ namespace HPReserger
                 TitulosGrid(gridDetalle, 1);
             }
         }
-
+        DataRow drCOT;
         private void gridOC_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             Item = e.RowIndex;
-            DataRow drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(2)));
+            drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(2)));
 
             if (drCOT != null)
             {
@@ -82,7 +85,10 @@ namespace HPReserger
                 }
             }
         }
-
+        public void MSG(string cadena)
+        {
+            MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -91,7 +97,32 @@ namespace HPReserger
                 string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
                 Listar(frmLogin.CodigoUsuario);
                 MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtProveedor.Text = txtImporte.Text = txtFechaEntrega.Text = "";
+
+                try
+                {
+                    MailMessage email = new MailMessage();
+                    //CORREO DE PROVEEDOR
+                    email.To.Add(new MailAddress(drCOT["correo"].ToString()));
+                    email.From = new MailAddress("j90orellana@hotmail.com");
+                    email.Subject = "Cotización Aprobada";
+                    email.Priority = MailPriority.High;
+                    email.Body = "Hp Reserger S.A.C. \nEs para nosotros un placer aceptar su cotizacion ";
+                    email.IsBodyHtml = false;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.live.com";
+                    smtp.Port = 25;
+                    smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
+                    smtp.Send(email);
+                    email.Dispose();
+                    MSG("Corre electrónico fue enviado satisfactoriamente.");
+
+                }
+                catch (Exception ex)
+                {
+                    MSG("Error enviando correo electrónico: " + ex.Message);
+                }
             }
         }
 

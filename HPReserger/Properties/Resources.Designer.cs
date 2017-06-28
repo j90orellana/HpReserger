@@ -79,5 +79,15 @@ namespace HPReserger.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sshot_2017_06_23__15_15_56_ {
+            get {
+                object obj = ResourceManager.GetObject("sshot-2017-06-23-[15-15-56]", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

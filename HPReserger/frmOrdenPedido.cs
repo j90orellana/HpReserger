@@ -56,7 +56,7 @@ namespace HPReserger
                 {
                     ModeloColumn.ValueMember = "IdModelos";
                     ModeloColumn.DisplayMember = "Modelos";
-                    ModeloColumn.DataSource = clOrdenPedido.ModeloArticulo(Convert.ToInt32(gridItem.CurrentRow.Cells["Marca"].Value.ToString()));
+                    ModeloColumn.DataSource = clOrdenPedido.ModeloArticulo(Convert.ToInt32(gridItem.CurrentRow.Cells["Marca"].Value.ToString()), Convert.ToInt32(gridItem.CurrentRow.Cells["item"].Value.ToString()));
                 }
             }
         }
@@ -220,8 +220,38 @@ namespace HPReserger
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+
+            /*    int fila; int tipos;
+                if (gridItem.RowCount > 0)
+                {
+                    fila = gridItem.RowCount - 1;
+                    tipos = Int32.Parse(cboTipoPedido.SelectedValue.ToString());
+                    if (tipos == 1)
+                    {
+                        if (!string.IsNullOrWhiteSpace(gridItem["Item", fila].Value.ToString()))
+                        {
+                            gridItem.Rows.Add();
+                            gridItem[3, gridItem.RowCount - 1].Value = "";
+                        }
+                    }
+                    else
+                    {
+                        if (gridItem[0, fila].Value.ToString() != "" && gridItem[3, fila].Value.ToString() != "")
+                        {
+                            gridItem.Rows.Add();
+                            gridItem[3, gridItem.RowCount - 1].Value = "";
+                        }
+                    }
+
+                }
+                else
+                {*/
             gridItem.Rows.Add();
-            gridItem[3, gridItem.RowCount-1].Value = "";
+            gridItem[3, gridItem.RowCount - 1].Value = "";
+            /*   }
+            */
+
+
 
         }
 
@@ -256,7 +286,7 @@ namespace HPReserger
                 if (txt != null)
                 {
                     txt.KeyPress -= new KeyPressEventHandler(txtmayusculas_keypress);
-                    txt.KeyPress += new KeyPressEventHandler(txtmayusculas_keypress);                    
+                    txt.KeyPress += new KeyPressEventHandler(txtmayusculas_keypress);
                 }
             }
         }
@@ -296,19 +326,19 @@ namespace HPReserger
                         gridItem.Columns.Add("Cantidad", "");
                     }
 
-                    gridItem.Columns[0].Width = 180;
+                //    gridItem.Columns[0].Width = 180;
                     gridItem.Columns[0].Visible = true;
                     gridItem.Columns[0].HeaderText = "Item";
 
-                    gridItem.Columns[1].Width = 180;
+                 //   gridItem.Columns[1].Width = 180;
                     gridItem.Columns[1].Visible = true;
                     gridItem.Columns[1].HeaderText = "Marca";
 
-                    gridItem.Columns[2].Width = 180;
+                 //   gridItem.Columns[2].Width = 180;
                     gridItem.Columns[2].Visible = true;
                     gridItem.Columns[2].HeaderText = "Modelo";
 
-                    gridItem.Columns[3].Width = 100;
+                  //  gridItem.Columns[3].Width = 100;
                     gridItem.Columns[3].Visible = true;
                     gridItem.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     gridItem.Columns[3].HeaderText = "Cantidad";
@@ -324,17 +354,17 @@ namespace HPReserger
                         gridItem.Columns.Add("Cantidad", "");
                     }
 
-                    gridItem.Columns[0].Width = 340;
+               //     gridItem.Columns[0].Width = 340;
                     gridItem.Columns[0].Visible = true;
                     gridItem.Columns[0].HeaderText = "Item";
 
-                    gridItem.Columns[1].Width = 0;
+                 //   gridItem.Columns[1].Width = 0;
                     gridItem.Columns[1].Visible = false;
 
-                    gridItem.Columns[2].Width = 0;
+                 //   gridItem.Columns[2].Width = 0;
                     gridItem.Columns[2].Visible = false;
 
-                    gridItem.Columns[3].Width = 340;
+              //      gridItem.Columns[3].Width = 340;
                     gridItem.Columns[3].Visible = true;
                     gridItem.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     gridItem.Columns[3].HeaderText = "Observaciones";

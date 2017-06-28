@@ -45,7 +45,7 @@ namespace HPReserger
 
             cboModelo.ValueMember = "IdModelos";
             cboModelo.DisplayMember = "Modelos";
-            cboModelo.DataSource = clModificarArticuloServicio.ModeloArticulo(CodigoMarcaModificar);
+            cboModelo.DataSource = clModificarArticuloServicio.ModeloArticulo(CodigoMarcaModificar, CodigoArticuloModificar);
             cboModelo.Text = ModeloModificar;
 
             if (TipoArticuloModificar == 0)
@@ -61,14 +61,14 @@ namespace HPReserger
                 cboMarca.Enabled = false;
                 cboModelo.Enabled = false;
                 txtCantidad.Enabled = false;
-                txtObservaciones.Text= ObservacionesModificar;
+                txtObservaciones.Text = ObservacionesModificar;
                 txtObservaciones.Enabled = true;
             }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (TipoArticuloModificar==0)
+            if (TipoArticuloModificar == 0)
             {
                 clModificarArticuloServicio.OrdenPedidoDetalleModificar(0, this.numero, Convert.ToInt32(txtCantidad.Text), this.CodigoArticuloModificar, Convert.ToInt32(cboArticuloServicio.SelectedValue.ToString()), this.CodigoMarcaModificar, Convert.ToInt32(cboMarca.SelectedValue.ToString()), this.CodigoModeloModificar, Convert.ToInt32(cboModelo.SelectedValue.ToString()), "");
             }
@@ -76,7 +76,7 @@ namespace HPReserger
             {
                 clModificarArticuloServicio.OrdenPedidoDetalleModificar(1, this.numero, 0, this.CodigoArticuloModificar, Convert.ToInt32(cboArticuloServicio.SelectedValue.ToString()), 1, 1, 1, 1, txtObservaciones.Text.ToString().Trim());
             }
-            
+
             this.CodigoArticuloModificar = Convert.ToInt32(cboArticuloServicio.SelectedValue.ToString());
             this.ArticuloModificar = cboArticuloServicio.Text.ToString().Trim();
             this.CodigoMarcaModificar = Convert.ToInt32(cboMarca.SelectedValue.ToString());
@@ -93,7 +93,7 @@ namespace HPReserger
             {
                 this.ObservacionesModificar = txtObservaciones.Text.ToString().Trim();
             }
-            
+
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
@@ -114,7 +114,7 @@ namespace HPReserger
             {
                 cboModelo.ValueMember = "IdModelos";
                 cboModelo.DisplayMember = "Modelos";
-                cboModelo.DataSource = clModificarArticuloServicio.ModeloArticulo(Convert.ToInt32(cboMarca.SelectedValue.ToString()));
+                cboModelo.DataSource = clModificarArticuloServicio.ModeloArticulo(Convert.ToInt32(cboMarca.SelectedValue.ToString()), Convert.ToInt32(cboArticuloServicio.SelectedValue.ToString()));
             }
         }
 
