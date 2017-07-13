@@ -394,7 +394,7 @@ namespace HPReserger
 
         private void txtpersonacontacto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
+            HPResergerFunciones.Utilitarios.Sololetras(e);
         }
 
         private void label22_Click(object sender, EventArgs e)
@@ -411,7 +411,7 @@ namespace HPReserger
 
         private void txtnumeroidentidad_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtnumeroidentidad, 15);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtnumeroidentidad, 10);
         }
 
         private void txttelefonooficina_KeyDown(object sender, KeyEventArgs e)
@@ -465,6 +465,11 @@ namespace HPReserger
             {
                 rucito = txtnumeroidentidad.Text;
             }
+        }
+
+        private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.ValidarPegarSoloLetras(e, txtpersonacontacto, 40);
         }
     }
 }

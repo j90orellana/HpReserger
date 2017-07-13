@@ -99,6 +99,18 @@
     <Compile Include="fmReporteRemuneracionRenta.Designer.cs">
       <DependentUpon>fmReporteRemuneracionRenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmrProyectodatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrProyectodatos.Designer.cs">
+      <DependentUpon>fmrProyectodatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmetapas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmetapas.Designer.cs">
+      <DependentUpon>frmetapas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGenerarRemuneracionRenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +303,18 @@
     <Compile Include="FrmPracticasPreProfesionales.Designer.cs">
       <DependentUpon>FrmPracticasPreProfesionales.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmpresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmpresupuesto.Designer.cs">
+      <DependentUpon>frmpresupuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPresupuestodetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPresupuestodetalle.Designer.cs">
+      <DependentUpon>frmPresupuestodetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmproveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,11 +327,29 @@
     <Compile Include="frmprovincias.designer.cs">
       <DependentUpon>frmprovincias.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProyectos.Designer.cs">
+      <DependentUpon>frmProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteAdendaNecesidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteAdendaNecesidad.Designer.cs">
+      <DependentUpon>frmReporteAdendaNecesidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmreporteboletasfin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmreporteboletasfin.Designer.cs">
       <DependentUpon>frmreporteboletasfin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteconvenioPracticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteconvenioPracticas.Designer.cs">
+      <DependentUpon>frmReporteconvenioPracticas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmreporteempleado.cs">
       <SubType>Form</SubType>
@@ -321,6 +363,12 @@
     <Compile Include="frmReporteLocacionServicios.Designer.cs">
       <DependentUpon>frmReporteLocacionServicios.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteNecesidadMercado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteNecesidadMercado.Designer.cs">
+      <DependentUpon>frmReporteNecesidadMercado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frmreporteop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,6 +380,18 @@
     </Compile>
     <Compile Include="frmreporteordencompra.Designer.cs">
       <DependentUpon>frmreporteordencompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportePresupuestoCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportePresupuestoCuenta.Designer.cs">
+      <DependentUpon>frmReportePresupuestoCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportePresupuestoOperaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportePresupuestoOperaciones.Designer.cs">
+      <DependentUpon>frmReportePresupuestoOperaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRetencionRenta.cs">
       <SubType>Form</SubType>
@@ -357,10 +417,22 @@
     <Compile Include="FrmUsuarios.designer.cs">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="rptAdendaNecesidad.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAdendaNecesidad.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptboletas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptboletas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptConvenioPracticasPreprofesional.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptConvenioPracticasPreprofesional.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RptGenerarRenta.cs">
@@ -373,6 +445,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptLocacionServicios.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptNecesidadMercado.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptNecesidadMercado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="rptReporteRequerimientos.cs">
@@ -637,6 +715,11 @@
     </Compile>
     <EmbeddedResource Include="fmReporteRemuneracionRenta.resx">
       <DependentUpon>fmReporteRemuneracionRenta.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrProyectodatos.resx">
+      <DependentUpon>fmrProyectodatos.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAmonestacionesPremio.resx">
       <DependentUpon>frmAmonestacionesPremio.cs</DependentUpon>
@@ -673,6 +756,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEntrevistaSalida.resx">
       <DependentUpon>frmEntrevistaSalida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmetapas.resx">
+      <DependentUpon>frmetapas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFactura.resx">
       <DependentUpon>FrmFactura.cs</DependentUpon>
@@ -734,14 +820,29 @@
     <EmbeddedResource Include="FrmPracticasPreProfesionales.resx">
       <DependentUpon>FrmPracticasPreProfesionales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmpresupuesto.resx">
+      <DependentUpon>frmpresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPresupuestodetalle.resx">
+      <DependentUpon>frmPresupuestodetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmproveedor.resx">
       <DependentUpon>frmproveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmprovincias.resx">
       <DependentUpon>frmprovincias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProyectos.resx">
+      <DependentUpon>frmProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteAdendaNecesidad.resx">
+      <DependentUpon>frmReporteAdendaNecesidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmreporteboletasfin.resx">
       <DependentUpon>frmreporteboletasfin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteconvenioPracticas.resx">
+      <DependentUpon>frmReporteconvenioPracticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmreporteempleado.resx">
       <DependentUpon>frmreporteempleado.cs</DependentUpon>
@@ -749,11 +850,20 @@
     <EmbeddedResource Include="frmReporteLocacionServicios.resx">
       <DependentUpon>frmReporteLocacionServicios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteNecesidadMercado.resx">
+      <DependentUpon>frmReporteNecesidadMercado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frmreporteop.resx">
       <DependentUpon>Frmreporteop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmreporteordencompra.resx">
       <DependentUpon>frmreporteordencompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportePresupuestoCuenta.resx">
+      <DependentUpon>frmReportePresupuestoCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportePresupuestoOperaciones.resx">
+      <DependentUpon>frmReportePresupuestoOperaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRetencionRenta.resx">
       <DependentUpon>frmRetencionRenta.cs</DependentUpon>
@@ -767,9 +877,17 @@
     <EmbeddedResource Include="FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rptAdendaNecesidad.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAdendaNecesidad.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptboletas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptboletas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptConvenioPracticasPreprofesional.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptConvenioPracticasPreprofesional.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RptGenerarRenta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -778,6 +896,10 @@
     <EmbeddedResource Include="rptLocacionServicios.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLocacionServicios.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptNecesidadMercado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptNecesidadMercado.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptReporteRequerimientos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -799,6 +921,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAlmacen.resx">
       <DependentUpon>frmAlmacen.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAlmacenServicio.en-US.resx">
       <DependentUpon>frmAlmacenServicio.cs</DependentUpon>
@@ -963,6 +1086,23 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -999,6 +1139,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sshot-2017-06-23-[15-15-56].jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sshot-2017-07-03-[11-20-28].jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sshot-2017-07-04-[18-02s-16].jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

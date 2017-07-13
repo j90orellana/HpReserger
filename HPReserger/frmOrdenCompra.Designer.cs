@@ -29,27 +29,13 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridOC = new System.Windows.Forms.DataGridView();
-            this.ORDENCOMPRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COTIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORDENPEDIDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CENTROCOSTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PARTIDAPRESUPUESTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOUSUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOAREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOGERENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GERENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,6 +54,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnEnviar = new System.Windows.Forms.Button();
             this.btnAnular = new System.Windows.Forms.Button();
+            this.ORDENCOMPRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COTIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDENPEDIDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CENTROCOSTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PARTIDAPRESUPUESTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOUSUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOAREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOGERENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GERENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridOC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle)).BeginInit();
             this.SuspendLayout();
@@ -79,6 +79,8 @@
             this.gridOC.AllowUserToResizeRows = false;
             this.gridOC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridOC.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.gridOC.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridOC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,128 +114,6 @@
             this.gridOC.Size = new System.Drawing.Size(858, 261);
             this.gridOC.TabIndex = 29;
             this.gridOC.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridOC_RowEnter);
-            // 
-            // ORDENCOMPRA
-            // 
-            this.ORDENCOMPRA.DataPropertyName = "ORDENCOMPRA";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ORDENCOMPRA.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ORDENCOMPRA.HeaderText = "Nº OC";
-            this.ORDENCOMPRA.Name = "ORDENCOMPRA";
-            this.ORDENCOMPRA.ReadOnly = true;
-            // 
-            // COTIZACION
-            // 
-            this.COTIZACION.DataPropertyName = "COTIZACION";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.COTIZACION.DefaultCellStyle = dataGridViewCellStyle3;
-            this.COTIZACION.HeaderText = "Nº COT";
-            this.COTIZACION.Name = "COTIZACION";
-            this.COTIZACION.ReadOnly = true;
-            // 
-            // ORDENPEDIDO
-            // 
-            this.ORDENPEDIDO.DataPropertyName = "ORDENPEDIDO";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ORDENPEDIDO.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ORDENPEDIDO.HeaderText = "Nº OP";
-            this.ORDENPEDIDO.Name = "ORDENPEDIDO";
-            this.ORDENPEDIDO.ReadOnly = true;
-            this.ORDENPEDIDO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ORDENPEDIDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CODIGOCC
-            // 
-            this.CODIGOCC.DataPropertyName = "CODIGOCC";
-            this.CODIGOCC.HeaderText = "CODIGOCC";
-            this.CODIGOCC.Name = "CODIGOCC";
-            this.CODIGOCC.ReadOnly = true;
-            this.CODIGOCC.Visible = false;
-            // 
-            // CENTROCOSTO
-            // 
-            this.CENTROCOSTO.DataPropertyName = "CENTROCOSTO";
-            this.CENTROCOSTO.HeaderText = "CENTRO DE COSTO";
-            this.CENTROCOSTO.Name = "CENTROCOSTO";
-            this.CENTROCOSTO.ReadOnly = true;
-            // 
-            // CODIGOPP
-            // 
-            this.CODIGOPP.DataPropertyName = "CODIGOPP";
-            this.CODIGOPP.HeaderText = "CODIGOPP";
-            this.CODIGOPP.Name = "CODIGOPP";
-            this.CODIGOPP.ReadOnly = true;
-            this.CODIGOPP.Visible = false;
-            // 
-            // PARTIDAPRESUPUESTO
-            // 
-            this.PARTIDAPRESUPUESTO.DataPropertyName = "PARTIDAPRESUPUESTO";
-            this.PARTIDAPRESUPUESTO.HeaderText = "P. PTO";
-            this.PARTIDAPRESUPUESTO.Name = "PARTIDAPRESUPUESTO";
-            this.PARTIDAPRESUPUESTO.ReadOnly = true;
-            // 
-            // CODIGOUSUARIO
-            // 
-            this.CODIGOUSUARIO.DataPropertyName = "CODIGOUSUARIO";
-            this.CODIGOUSUARIO.HeaderText = "CODIGOUSUARIO";
-            this.CODIGOUSUARIO.Name = "CODIGOUSUARIO";
-            this.CODIGOUSUARIO.ReadOnly = true;
-            this.CODIGOUSUARIO.Visible = false;
-            // 
-            // USUARIO
-            // 
-            this.USUARIO.DataPropertyName = "USUARIO";
-            this.USUARIO.HeaderText = "USUARIO";
-            this.USUARIO.Name = "USUARIO";
-            this.USUARIO.ReadOnly = true;
-            // 
-            // CODIGOAREA
-            // 
-            this.CODIGOAREA.DataPropertyName = "CODIGOAREA";
-            this.CODIGOAREA.HeaderText = "CODIGOAREA";
-            this.CODIGOAREA.Name = "CODIGOAREA";
-            this.CODIGOAREA.ReadOnly = true;
-            this.CODIGOAREA.Visible = false;
-            // 
-            // AREA
-            // 
-            this.AREA.DataPropertyName = "AREA";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AREA.DefaultCellStyle = dataGridViewCellStyle5;
-            this.AREA.HeaderText = "AREA";
-            this.AREA.Name = "AREA";
-            this.AREA.ReadOnly = true;
-            this.AREA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.AREA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CODIGOGERENCIA
-            // 
-            this.CODIGOGERENCIA.DataPropertyName = "CODIGOGERENCIA";
-            this.CODIGOGERENCIA.HeaderText = "CODIGOGERENCIA";
-            this.CODIGOGERENCIA.Name = "CODIGOGERENCIA";
-            this.CODIGOGERENCIA.ReadOnly = true;
-            this.CODIGOGERENCIA.Visible = false;
-            // 
-            // GERENCIA
-            // 
-            this.GERENCIA.DataPropertyName = "GERENCIA";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.GERENCIA.DefaultCellStyle = dataGridViewCellStyle6;
-            this.GERENCIA.HeaderText = "GERENCIA";
-            this.GERENCIA.Name = "GERENCIA";
-            this.GERENCIA.ReadOnly = true;
-            this.GERENCIA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.GERENCIA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TIPO
-            // 
-            this.TIPO.DataPropertyName = "TIPO";
-            this.TIPO.HeaderText = "TIPO";
-            this.TIPO.Name = "TIPO";
-            this.TIPO.ReadOnly = true;
-            this.TIPO.Visible = false;
             // 
             // label1
             // 
@@ -304,6 +184,8 @@
             this.gridDetalle.AllowUserToResizeRows = false;
             this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -411,6 +293,129 @@
             this.btnAnular.UseVisualStyleBackColor = true;
             this.btnAnular.Click += new System.EventHandler(this.btnAnular_Click);
             // 
+            // ORDENCOMPRA
+            // 
+            this.ORDENCOMPRA.DataPropertyName = "ORDENCOMPRA";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ORDENCOMPRA.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ORDENCOMPRA.HeaderText = "Nº OC";
+            this.ORDENCOMPRA.Name = "ORDENCOMPRA";
+            this.ORDENCOMPRA.ReadOnly = true;
+            // 
+            // COTIZACION
+            // 
+            this.COTIZACION.DataPropertyName = "COTIZACION";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.COTIZACION.DefaultCellStyle = dataGridViewCellStyle3;
+            this.COTIZACION.HeaderText = "Nº COT";
+            this.COTIZACION.Name = "COTIZACION";
+            this.COTIZACION.ReadOnly = true;
+            // 
+            // ORDENPEDIDO
+            // 
+            this.ORDENPEDIDO.DataPropertyName = "ORDENPEDIDO";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ORDENPEDIDO.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ORDENPEDIDO.HeaderText = "Nº OP";
+            this.ORDENPEDIDO.Name = "ORDENPEDIDO";
+            this.ORDENPEDIDO.ReadOnly = true;
+            this.ORDENPEDIDO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ORDENPEDIDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CODIGOCC
+            // 
+            this.CODIGOCC.DataPropertyName = "CODIGOCC";
+            this.CODIGOCC.HeaderText = "CODIGOCC";
+            this.CODIGOCC.Name = "CODIGOCC";
+            this.CODIGOCC.ReadOnly = true;
+            this.CODIGOCC.Visible = false;
+            // 
+            // CENTROCOSTO
+            // 
+            this.CENTROCOSTO.DataPropertyName = "CENTROCOSTO";
+            this.CENTROCOSTO.HeaderText = "CENTRO DE COSTO";
+            this.CENTROCOSTO.Name = "CENTROCOSTO";
+            this.CENTROCOSTO.ReadOnly = true;
+            this.CENTROCOSTO.Visible = false;
+            // 
+            // CODIGOPP
+            // 
+            this.CODIGOPP.DataPropertyName = "CODIGOPP";
+            this.CODIGOPP.HeaderText = "CODIGOPP";
+            this.CODIGOPP.Name = "CODIGOPP";
+            this.CODIGOPP.ReadOnly = true;
+            this.CODIGOPP.Visible = false;
+            // 
+            // PARTIDAPRESUPUESTO
+            // 
+            this.PARTIDAPRESUPUESTO.DataPropertyName = "PARTIDAPRESUPUESTO";
+            this.PARTIDAPRESUPUESTO.HeaderText = "P. PTO";
+            this.PARTIDAPRESUPUESTO.Name = "PARTIDAPRESUPUESTO";
+            this.PARTIDAPRESUPUESTO.ReadOnly = true;
+            // 
+            // CODIGOUSUARIO
+            // 
+            this.CODIGOUSUARIO.DataPropertyName = "CODIGOUSUARIO";
+            this.CODIGOUSUARIO.HeaderText = "CODIGOUSUARIO";
+            this.CODIGOUSUARIO.Name = "CODIGOUSUARIO";
+            this.CODIGOUSUARIO.ReadOnly = true;
+            this.CODIGOUSUARIO.Visible = false;
+            // 
+            // USUARIO
+            // 
+            this.USUARIO.DataPropertyName = "USUARIO";
+            this.USUARIO.HeaderText = "USUARIO";
+            this.USUARIO.Name = "USUARIO";
+            this.USUARIO.ReadOnly = true;
+            // 
+            // CODIGOAREA
+            // 
+            this.CODIGOAREA.DataPropertyName = "CODIGOAREA";
+            this.CODIGOAREA.HeaderText = "CODIGOAREA";
+            this.CODIGOAREA.Name = "CODIGOAREA";
+            this.CODIGOAREA.ReadOnly = true;
+            this.CODIGOAREA.Visible = false;
+            // 
+            // AREA
+            // 
+            this.AREA.DataPropertyName = "AREA";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AREA.DefaultCellStyle = dataGridViewCellStyle5;
+            this.AREA.HeaderText = "AREA";
+            this.AREA.Name = "AREA";
+            this.AREA.ReadOnly = true;
+            this.AREA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AREA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CODIGOGERENCIA
+            // 
+            this.CODIGOGERENCIA.DataPropertyName = "CODIGOGERENCIA";
+            this.CODIGOGERENCIA.HeaderText = "CODIGOGERENCIA";
+            this.CODIGOGERENCIA.Name = "CODIGOGERENCIA";
+            this.CODIGOGERENCIA.ReadOnly = true;
+            this.CODIGOGERENCIA.Visible = false;
+            // 
+            // GERENCIA
+            // 
+            this.GERENCIA.DataPropertyName = "GERENCIA";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.GERENCIA.DefaultCellStyle = dataGridViewCellStyle6;
+            this.GERENCIA.HeaderText = "GERENCIA";
+            this.GERENCIA.Name = "GERENCIA";
+            this.GERENCIA.ReadOnly = true;
+            this.GERENCIA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GERENCIA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TIPO
+            // 
+            this.TIPO.DataPropertyName = "TIPO";
+            this.TIPO.HeaderText = "TIPO";
+            this.TIPO.Name = "TIPO";
+            this.TIPO.ReadOnly = true;
+            this.TIPO.Visible = false;
+            // 
             // frmOrdenCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,20 +451,6 @@
 
         private System.Windows.Forms.DataGridView gridOC;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORDENCOMPRA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn COTIZACION;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORDENPEDIDO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOCC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CENTROCOSTO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOPP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PARTIDAPRESUPUESTO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOUSUARIO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOAREA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AREA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOGERENCIA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GERENCIA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIPO;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -477,5 +468,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDAD;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Button btnAnular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDENCOMPRA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COTIZACION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORDENPEDIDO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOCC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CENTROCOSTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOPP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PARTIDAPRESUPUESTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOUSUARIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOAREA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AREA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOGERENCIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GERENCIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIPO;
     }
 }

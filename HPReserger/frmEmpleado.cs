@@ -16,6 +16,8 @@ namespace HPReserger
     {
         HPResergerCapaLogica.HPResergerCL clEmpleado = new HPResergerCapaLogica.HPResergerCL();
         public byte[] FotoAntecedentesPoliciales { get; set; }
+        public byte[] Foto { get; set; }
+        public string NombreFoto { get; set; }
         public byte[] FotoAntecedentesPenales { get; set; }
         public byte[] FotoReciboServicios { get; set; }
         MemoryStream _memoryStream = new MemoryStream();
@@ -43,6 +45,7 @@ namespace HPReserger
             cboEstadoCivil.SelectedIndex = -1;
             cboLugarNacimiento.SelectedIndex = -1;
             cboProfesion.SelectedIndex = -1;
+            cbopais.SelectedItem = -1;
             cboGradoInstruccion.SelectedIndex = -1;
             txtNumeroDocumento.Text = string.Empty;
             txtApellidoPaterno.Text = string.Empty;
@@ -69,8 +72,13 @@ namespace HPReserger
             CargaCombos(cboGradoInstruccion, "Id_GrdInstruccion", "GradoInstruccion", "TBL_GradoInstruccion");
             CargaCombos(cboDepartamento, "Cod_Dept", "Departamento", "TBL_Departamento");
             CargaCombos(cboLugarNacimiento, "Cod_Dept", "Departamento", "TBL_Departamento");
+            cbopais.DataSource = clEmpleado.ListarPaises();
+            cbopais.DisplayMember = "pais";
+            cbopais.ValueMember = "id_pais";
             NewEmpleado = true;
             Limpiar();
+            cbopais.SelectedIndex = -1;
+            btnfoto.Visible = false;
             cboTipoDocumento.SelectedIndex = 0;
             txtNumeroDocumento_TextChanged(sender, e);
         }
@@ -260,6 +268,15 @@ namespace HPReserger
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            if (cboEstadoCivil.Text == "CONVIVIENTE")
+            {
+                if (string.IsNullOrWhiteSpace(txtconviviente.Text))
+                {
+                    MessageBox.Show("Falta La foto del Certificad de Convivencia", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    btnconviviente.Focus();
+                    return;
+                }
+            }
             if (txtNumeroDocumento.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -298,7 +315,7 @@ namespace HPReserger
             }
             if (txtAntecedentesPenales.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen Antecedentes ^Penales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen Antecedentes Penales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnAntecedentesPenales.Focus();
                 return;
             }
@@ -351,10 +368,16 @@ namespace HPReserger
                 return;
             }
 
-            if (cboLugarNacimiento.SelectedIndex == -1)
+            if (cboLugarNacimiento.SelectedIndex == -1 && cbopais.SelectedValue.ToString() == "80")
             {
                 MessageBox.Show("Seleccione Lugar de Nacimiento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboLugarNacimiento.Focus();
+                return;
+            }
+            if (cbopais.SelectedValue.ToString() != "80" && string.IsNullOrWhiteSpace(txtlugarnacimiento.Text))
+            {
+                MessageBox.Show("Ingresé El lugar de Nacimiento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtlugarnacimiento.Focus();
                 return;
             }
 
@@ -387,14 +410,17 @@ namespace HPReserger
 
             if (NewEmpleado == true)
             {
-                clEmpleado.EmpleadoInsertar(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, frmLogin.CodigoUsuario);
+                clEmpleado.EmpleadoInsertar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, frmLogin.CodigoUsuario, Foto, NombreFoto);
                 MessageBox.Show("El Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se registró con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                clEmpleado.EmpleadoModificar(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, CodigoTipoDocumento, NumeroDocumento, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text);
+                clEmpleado.EmpleadoModificar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, CodigoTipoDocumento, NumeroDocumento, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, Foto, NombreFoto);
                 MessageBox.Show("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NewEmpleado = true;
+
+                DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);
+
             }
         }
 
@@ -403,19 +429,21 @@ namespace HPReserger
             var dialogoAbrirArchivoAntecedentesPoliciales = new OpenFileDialog();
             dialogoAbrirArchivoAntecedentesPoliciales.Filter = "Jpg Files|*.jpg";
             dialogoAbrirArchivoAntecedentesPoliciales.DefaultExt = ".jpg";
-            dialogoAbrirArchivoAntecedentesPoliciales.ShowDialog(this);
-
-            nombreArchivoAntecedentesPoliciales = dialogoAbrirArchivoAntecedentesPoliciales.FileName.ToString();
-            if (nombreArchivoAntecedentesPoliciales != string.Empty)
+            if (dialogoAbrirArchivoAntecedentesPoliciales.ShowDialog(this) != DialogResult.Cancel)
             {
-                _memoryStream.Position = 0;
-                _memoryStream.SetLength(0);
-                _memoryStream.Capacity = 0;
 
-                pbFotoAntecedentesPoliciales.Image = Image.FromFile(nombreArchivoAntecedentesPoliciales);
-                pbFotoAntecedentesPoliciales.Image.Save(_memoryStream, ImageFormat.Jpeg);
-                FotoAntecedentesPoliciales = File.ReadAllBytes(dialogoAbrirArchivoAntecedentesPoliciales.FileName);
-                txtAntecedentesPoliciales.Text = nombreArchivoAntecedentesPoliciales;
+                nombreArchivoAntecedentesPoliciales = dialogoAbrirArchivoAntecedentesPoliciales.FileName.ToString();
+                if (nombreArchivoAntecedentesPoliciales != string.Empty)
+                {
+                    _memoryStream.Position = 0;
+                    _memoryStream.SetLength(0);
+                    _memoryStream.Capacity = 0;
+
+                    pbFotoAntecedentesPoliciales.Image = Image.FromFile(nombreArchivoAntecedentesPoliciales);
+                    pbFotoAntecedentesPoliciales.Image.Save(_memoryStream, ImageFormat.Jpeg);
+                    FotoAntecedentesPoliciales = File.ReadAllBytes(dialogoAbrirArchivoAntecedentesPoliciales.FileName);
+                    txtAntecedentesPoliciales.Text = nombreArchivoAntecedentesPoliciales;
+                }
             }
         }
 
@@ -424,19 +452,21 @@ namespace HPReserger
             var dialogoAbrirArchivoAntecedentesPenales = new OpenFileDialog();
             dialogoAbrirArchivoAntecedentesPenales.Filter = "Jpg Files|*.jpg";
             dialogoAbrirArchivoAntecedentesPenales.DefaultExt = ".jpg";
-            dialogoAbrirArchivoAntecedentesPenales.ShowDialog(this);
-
-            nombreArchivoAntecedentesPenales = dialogoAbrirArchivoAntecedentesPenales.FileName.ToString();
-            if (nombreArchivoAntecedentesPenales != string.Empty)
+            if (dialogoAbrirArchivoAntecedentesPenales.ShowDialog(this) != DialogResult.Cancel)
             {
-                _memoryStream.Position = 0;
-                _memoryStream.SetLength(0);
-                _memoryStream.Capacity = 0;
 
-                pbFotoAntecedentesPenales.Image = Image.FromFile(nombreArchivoAntecedentesPenales);
-                pbFotoAntecedentesPenales.Image.Save(_memoryStream, ImageFormat.Jpeg);
-                FotoAntecedentesPenales = File.ReadAllBytes(dialogoAbrirArchivoAntecedentesPenales.FileName);
-                txtAntecedentesPenales.Text = nombreArchivoAntecedentesPenales;
+                nombreArchivoAntecedentesPenales = dialogoAbrirArchivoAntecedentesPenales.FileName.ToString();
+                if (nombreArchivoAntecedentesPenales != string.Empty)
+                {
+                    _memoryStream.Position = 0;
+                    _memoryStream.SetLength(0);
+                    _memoryStream.Capacity = 0;
+
+                    pbFotoAntecedentesPenales.Image = Image.FromFile(nombreArchivoAntecedentesPenales);
+                    pbFotoAntecedentesPenales.Image.Save(_memoryStream, ImageFormat.Jpeg);
+                    FotoAntecedentesPenales = File.ReadAllBytes(dialogoAbrirArchivoAntecedentesPenales.FileName);
+                    txtAntecedentesPenales.Text = nombreArchivoAntecedentesPenales;
+                }
             }
         }
 
@@ -445,24 +475,27 @@ namespace HPReserger
             var dialogoAbrirArchivoReciboServicios = new OpenFileDialog();
             dialogoAbrirArchivoReciboServicios.Filter = "Jpg Files|*.jpg";
             dialogoAbrirArchivoReciboServicios.DefaultExt = ".jpg";
-            dialogoAbrirArchivoReciboServicios.ShowDialog(this);
-
-            nombreArchivoReciboServicios = dialogoAbrirArchivoReciboServicios.FileName.ToString();
-            if (nombreArchivoAntecedentesPenales != string.Empty)
+            if (dialogoAbrirArchivoReciboServicios.ShowDialog(this) != DialogResult.Cancel)
             {
-                _memoryStream.Position = 0;
-                _memoryStream.SetLength(0);
-                _memoryStream.Capacity = 0;
 
-                pbFotoReciboServicios.Image = Image.FromFile(nombreArchivoReciboServicios);
-                pbFotoReciboServicios.Image.Save(_memoryStream, ImageFormat.Jpeg);
-                FotoReciboServicios = File.ReadAllBytes(dialogoAbrirArchivoReciboServicios.FileName);
-                txtReciboServicio.Text = nombreArchivoReciboServicios;
+                nombreArchivoReciboServicios = dialogoAbrirArchivoReciboServicios.FileName.ToString();
+                if (nombreArchivoAntecedentesPenales != string.Empty)
+                {
+                    _memoryStream.Position = 0;
+                    _memoryStream.SetLength(0);
+                    _memoryStream.Capacity = 0;
+
+                    pbFotoReciboServicios.Image = Image.FromFile(nombreArchivoReciboServicios);
+                    pbFotoReciboServicios.Image.Save(_memoryStream, ImageFormat.Jpeg);
+                    FotoReciboServicios = File.ReadAllBytes(dialogoAbrirArchivoReciboServicios.FileName);
+                    txtReciboServicio.Text = nombreArchivoReciboServicios;
+                }
             }
         }
 
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
+            NewEmpleado = true;
             if (NewEmpleado == true)
             {
                 if (cboTipoDocumento.SelectedIndex > -1)
@@ -526,6 +559,9 @@ namespace HPReserger
                 txtTelefonoFijo.Text = DatosE["TELEFONOFIJO"].ToString();
                 txtTelefonoCelular.Text = DatosE["TELEFONOCELULAR"].ToString();
                 cboProfesion.Text = DatosE["PROFESION"].ToString();
+                cbopais.Text = DatosE["PAIS"].ToString();
+                if (DatosE["PAIS"].ToString() != "PERÚ")
+                    txtlugarnacimiento.Text = DatosE["LUGAR"].ToString();
                 cboGradoInstruccion.Text = DatosE["GRADOINSTRUCCION"].ToString();
                 cboTipoDocumento.Text = DatosE["TIPODOCUMENTO"].ToString();
                 txtNumeroDocumento.Text = DatosE["NUMERODOCUMENTO"].ToString();
@@ -541,7 +577,13 @@ namespace HPReserger
                     btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
 
                 }
-
+                if (DatosE["FOTOEMPLEADO"] != null && DatosE["NOMBREFOTOEMPLEADO"].ToString().Length > 0)
+                {
+                    byte[] Fotito = new byte[0];
+                    Foto = Fotito = (byte[])DatosE["FOTOEMPLEADO"];
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbfotoempleado.Image = Bitmap.FromStream(ms);
+                }
                 if (DatosE["FOTOPOLICIALES"] != null && DatosE["FOTOPOLICIALES"].ToString().Length > 0)
                 {
                     byte[] Fotito = new byte[0];
@@ -581,11 +623,12 @@ namespace HPReserger
                     txtReciboServicio.Text = "";
                     pbFotoReciboServicios.Image = null;
                 }
-
+                btnfoto.Visible = true;
                 EmpleadoExiste = true;
             }
             else
             {
+                btnfoto.Visible = false;
                 cboSexo.Text = txtDireccion.Text = txtTelefonoFijo.Text = txtTelefonoCelular.Text =
                   txtAntecedentesPoliciales.Text = txtAntecedentesPenales.Text = txtReciboServicio.Text = "";// txttipo.Text = "";
                 dtpFecha.Value = DateTime.Now;
@@ -597,6 +640,7 @@ namespace HPReserger
                 pbFotoAntecedentesPenales.Image = pbFotoAntecedentesPoliciales.Image = pbFotoReciboServicios.Image = null;
                 FotoAntecedentesPenales = FotoAntecedentesPoliciales = FotoReciboServicios = null;
                 lklpenales.Enabled = lklpoliciales.Enabled = lklservicios.Enabled = false;
+                pbfotoempleado.Image = HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_; Foto = null; cbopais.SelectedItem = -1; txtlugarnacimiento.Text = "";
                 txtNHijos.Text = "0";
             }
         }
@@ -690,7 +734,7 @@ namespace HPReserger
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 15);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 10);
         }
 
         private void txtTelefonoFijo_KeyDown(object sender, KeyEventArgs e)
@@ -745,6 +789,111 @@ namespace HPReserger
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MostrarFoto(pbFotoReciboServicios);
+        }
+
+        private void cbopais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbopais.SelectedValue != null)
+            {
+                if (cbopais.SelectedValue.ToString() == "80")
+                {
+                    cboLugarNacimiento.Visible = true;
+                    txtlugarnacimiento.Visible = false;
+                }
+                else
+                {
+                    txtlugarnacimiento.Visible = true;
+                    cboLugarNacimiento.Visible = false;
+                }
+            }
+        }
+        public void MSG(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        }
+
+        private void pbfotoempleado_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void btnfoto_Click(object sender, EventArgs e)
+        {
+            var dialogoAbrirArchivoFoto = new OpenFileDialog();
+            dialogoAbrirArchivoFoto.Filter = "Jpg Files|*.jpg";
+            dialogoAbrirArchivoFoto.DefaultExt = ".jpg";
+            dialogoAbrirArchivoFoto.ShowDialog(this);
+
+            NombreFoto = dialogoAbrirArchivoFoto.FileName.ToString();
+            if (NombreFoto != string.Empty)
+            {
+                _memoryStream.Position = 0;
+                _memoryStream.SetLength(0);
+                _memoryStream.Capacity = 0;
+                pbfotoempleado.Image = Image.FromFile(NombreFoto);
+                pbfotoempleado.Image.Save(_memoryStream, ImageFormat.Jpeg);
+                Foto = File.ReadAllBytes(dialogoAbrirArchivoFoto.FileName);
+
+            }
+        }
+        byte[] conviviente; string nombreconviviente;
+        int encontrado = 0;
+        private void cboEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboEstadoCivil.Text == "CONVIVIENTE")
+            {
+                lblconviviente.Visible = true;
+                txtconviviente.Visible = true;
+                btnconviviente.Visible = true;
+                pbconviviente.Visible = true;
+                lklconviviente.Visible = true;
+                DataRow convivientes = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), null, null, 0);
+                if (convivientes != null && convivientes["nombreconviviente"].ToString().Length > 0)
+                {
+                    txtconviviente.Text = nombreconviviente = convivientes["nombreconviviente"].ToString();
+                    byte[] Fotito = new byte[0];
+                    conviviente = Fotito = (byte[])convivientes["conviviente"];
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbconviviente.Image = Bitmap.FromStream(ms);
+                    encontrado = 1;
+                }
+                else encontrado = 2;
+
+            }
+            else
+            {
+                lblconviviente.Visible = false;
+                txtconviviente.Visible = false;
+                btnconviviente.Visible = false;
+                pbconviviente.Visible = false;
+                lklconviviente.Visible = false;
+            }
+        }
+
+        private void btnconviviente_Click(object sender, EventArgs e)
+        {
+            var dialogoAbriArchivoConviviente = new OpenFileDialog();
+            dialogoAbriArchivoConviviente.Filter = "Jpg Files|*.jpg";
+            dialogoAbriArchivoConviviente.DefaultExt = ".jpg";
+            if (dialogoAbriArchivoConviviente.ShowDialog(this) != DialogResult.Cancel)
+            {
+
+                txtconviviente.Text = nombreconviviente = dialogoAbriArchivoConviviente.FileName;
+                conviviente = File.ReadAllBytes(dialogoAbriArchivoConviviente.FileName);
+                _memoryStream.Position = 0;
+                _memoryStream.SetLength(0);
+                _memoryStream.Capacity = 0;
+
+                pbconviviente.Image = Image.FromFile(dialogoAbriArchivoConviviente.FileName);
+                pbconviviente.Image.Save(_memoryStream, ImageFormat.Jpeg);
+
+            }
+        }
+
+        private void lklconviviente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbconviviente);
         }
     }
 }

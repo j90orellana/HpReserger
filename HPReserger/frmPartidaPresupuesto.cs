@@ -21,7 +21,7 @@ namespace HPReserger
         private void frmPartidaPresupuesto_Load(object sender, EventArgs e)
         {
             estado = 0;
-            dtgconten.DataSource = cpresupuesto.getCargoTipoContratacion("Id_PPresupuesto", "PartidaPpto", "TBL_Partida_Ppto");
+            dtgconten.DataSource = cpresupuesto.getCargoTipoContratacion("Id_PPresupuesto", "PartidaPpto", "TBL_Partida_Ppto_Cab");
             dtgconten.Focus();
         }
 

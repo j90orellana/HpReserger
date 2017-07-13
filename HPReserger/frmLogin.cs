@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -51,7 +52,7 @@ namespace HPReserger
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-           
+
             Intentos = 0;
         }
 
@@ -113,6 +114,13 @@ namespace HPReserger
                         frmM.usuario = CodigoUsuario;
                         frmM.Nombres = Usuario;
                         frmM.nick = txtUsuario.Text;
+                        if (drAcceso["FOTO"] != null&&drAcceso["NOMBREFOTO"].ToString().Length>0)
+                        {
+                            byte[] Fotito = new byte[0];
+                            Fotito = (byte[])drAcceso["FOTO"];
+                            MemoryStream ms = new MemoryStream(Fotito);
+                            frmM.pbfotoempleado.Image = Bitmap.FromStream(ms);
+                        }
                         frmM.ShowDialog();
                     }
                     else
@@ -128,7 +136,7 @@ namespace HPReserger
                         {
                             clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 0);
                             drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
-                            MessageBox.Show("Intento fallido Nº " + drAcceso["intentos"].ToString()  + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             txtUsuario.Text = "";
                             txtContraseña.Text = "";
                         }

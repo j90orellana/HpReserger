@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +17,8 @@ namespace HPReserger
 
         HPResergerCapaLogica.HPResergerCL clFamilia = new HPResergerCapaLogica.HPResergerCL();
         public int CodigoDocumento { get; set; }
-   
         public string NumeroDocumento { get; set; }
-
+        MemoryStream _memoryStream = new MemoryStream();
         public int Item { get; set; }
 
         public frmFamiliares()
@@ -77,7 +78,7 @@ namespace HPReserger
                 return;
             }
 
-            clFamilia.EmpleadoFamilia(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboVinculoFamiliar.SelectedValue.ToString()), Convert.ToInt32(cboTipoDocumentoIdentidad.SelectedValue.ToString()), txtNumeroDocumento.Text, 0, "", txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, dtpFecha.Value, txtOcupacion.Text, frmLogin.CodigoUsuario, 1);
+            clFamilia.EmpleadoFamilia(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboVinculoFamiliar.SelectedValue.ToString()), Convert.ToInt32(cboTipoDocumentoIdentidad.SelectedValue.ToString()), txtNumeroDocumento.Text, 0, "", txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, dtpFecha.Value, txtOcupacion.Text, frmLogin.CodigoUsuario, 1, conviviente, nombreconviviente);
             MessageBox.Show("Vínculo Familiar registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Limpiar();
             MostrarGrilla();
@@ -112,7 +113,17 @@ namespace HPReserger
                 frmEFM.Nombres = Grid.Rows[Item].Cells[7].Value.ToString();
                 frmEFM.FechaNacimiento = Convert.ToDateTime(Grid.Rows[Item].Cells[8].Value.ToString());
                 frmEFM.Ocupacion = Grid.Rows[Item].Cells[9].Value.ToString();
-
+                if (Grid["nombreimagen", Item].Value.ToString().Length > 0)
+                {
+                    frmEFM.txtconviviente.Text = nombreconviviente = Grid["nombreimagen", Item].Value.ToString();
+                    byte[] Fotito = new byte[0];
+                    Fotito = (byte[])Grid["imagen", Item].Value;
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    frmEFM.pbconviviente.Image = Bitmap.FromStream(ms);
+                    frmEFM.lklconviviente.Enabled = true;
+                }
+                else
+                { frmEFM.lklconviviente.Enabled = false; frmEFM.txtconviviente.Text = ""; frmEFM.pbconviviente.Image = null; }
                 if (frmEFM.ShowDialog() == DialogResult.OK)
                 {
                     MostrarGrilla();
@@ -127,7 +138,71 @@ namespace HPReserger
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e,txtNumeroDocumento , 15);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 10);
+        }
+        byte[] conviviente;
+        string nombreconviviente;
+        private void btnconviviente_Click(object sender, EventArgs e)
+        {
+            var dialogoAbriArchivoConviviente = new OpenFileDialog();
+            dialogoAbriArchivoConviviente.Filter = "Jpg Files|*.jpg";
+            dialogoAbriArchivoConviviente.DefaultExt = ".jpg";
+            if (dialogoAbriArchivoConviviente.ShowDialog(this) != DialogResult.Cancel)
+            {
+                txtconviviente.Text = nombreconviviente = dialogoAbriArchivoConviviente.FileName;
+                conviviente = File.ReadAllBytes(dialogoAbriArchivoConviviente.FileName);
+                _memoryStream.Position = 0;
+                _memoryStream.SetLength(0);
+                _memoryStream.Capacity = 0;
+                pbconviviente.Image = Image.FromFile(dialogoAbriArchivoConviviente.FileName);
+                pbconviviente.Image.Save(_memoryStream, ImageFormat.Jpeg);
+                lklconviviente.Enabled = true;
+            }
+            else
+                lklconviviente.Enabled = false;
+        }
+        public void MostrarFoto(PictureBox fotito)
+        {
+            if (fotito.Image != null)
+            {
+                FrmFoto foto = new FrmFoto();
+                foto.fotito = fotito.Image;
+                foto.ShowDialog();
+            }
+        }
+        private void lklconviviente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbconviviente);
+        }
+
+        private void Grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtApellidoPaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Sololetras(e);
+        }
+
+        private void txtApellidoMaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Sololetras(e);
+        }
+
+        private void txtNombres_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombres_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtNombres_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Sololetras(e);
         }
     }
 }

@@ -80,9 +80,6 @@
             this.pbPracticas = new System.Windows.Forms.PictureBox();
             this.pbSalida = new System.Windows.Forms.PictureBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.panelverimagen = new System.Windows.Forms.Panel();
             this.NRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +96,9 @@
             this.NOMBREPRACTICAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALIDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRESALIDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.panelverimagen = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.panelliquidacion.SuspendLayout();
@@ -146,7 +146,7 @@
             // txtNumeroDocumento
             // 
             this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 46);
-            this.txtNumeroDocumento.MaxLength = 14;
+            this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(219, 20);
             this.txtNumeroDocumento.TabIndex = 78;
@@ -688,39 +688,6 @@
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(560, 615);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 23);
-            this.button1.TabIndex = 109;
-            this.button1.Text = "Ver Desvinculaciones";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Location = new System.Drawing.Point(715, 615);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(77, 23);
-            this.btncancelar.TabIndex = 151;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // panelverimagen
-            // 
-            this.panelverimagen.Controls.Add(this.lklliquidacion);
-            this.panelverimagen.Controls.Add(this.lklcts);
-            this.panelverimagen.Controls.Add(this.lklsalida);
-            this.panelverimagen.Controls.Add(this.lkltrabajo);
-            this.panelverimagen.Controls.Add(this.lklrenta);
-            this.panelverimagen.Controls.Add(this.lklpracticas);
-            this.panelverimagen.Location = new System.Drawing.Point(372, 209);
-            this.panelverimagen.Name = "panelverimagen";
-            this.panelverimagen.Size = new System.Drawing.Size(65, 198);
-            this.panelverimagen.TabIndex = 152;
-            // 
             // NRO
             // 
             this.NRO.DataPropertyName = "NRO";
@@ -832,6 +799,39 @@
             this.NOMBRESALIDA.HeaderText = "NOMBRESALIDA";
             this.NOMBRESALIDA.Name = "NOMBRESALIDA";
             this.NOMBRESALIDA.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(560, 615);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(142, 23);
+            this.button1.TabIndex = 109;
+            this.button1.Text = "Ver Desvinculaciones";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Location = new System.Drawing.Point(715, 615);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(77, 23);
+            this.btncancelar.TabIndex = 151;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // panelverimagen
+            // 
+            this.panelverimagen.Controls.Add(this.lklliquidacion);
+            this.panelverimagen.Controls.Add(this.lklcts);
+            this.panelverimagen.Controls.Add(this.lklsalida);
+            this.panelverimagen.Controls.Add(this.lkltrabajo);
+            this.panelverimagen.Controls.Add(this.lklrenta);
+            this.panelverimagen.Controls.Add(this.lklpracticas);
+            this.panelverimagen.Location = new System.Drawing.Point(372, 209);
+            this.panelverimagen.Name = "panelverimagen";
+            this.panelverimagen.Size = new System.Drawing.Size(65, 198);
+            this.panelverimagen.TabIndex = 152;
             // 
             // frmDesvinculacion
             // 

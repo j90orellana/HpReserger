@@ -21,7 +21,8 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL cfactura = new HPResergerCapaLogica.HPResergerCL();
         private void FrmFactura_Load(object sender, EventArgs e)
         {
-           // txtruc.Text = "0701046971";
+            Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("es-ES");
+            // txtruc.Text = "0701046971";
             radioButton1.Checked = true;
             Dtguias.DataSource = cfactura.ListarFics(10, "", 0, 0);
             cbotipo.DisplayMember = "Desc_Tipo_compra";
@@ -29,6 +30,11 @@ namespace HPReserger
             cbotipo.DataSource = cfactura.ListarTipoPedido();
             imgfactura = null;
             dtfechaemision.Value = Dtfechaentregado.Value = DateTime.Now;
+            DataRow BuscarIgv = cfactura.BuscarParametros("igv", DateTime.Now);
+            if (BuscarIgv != null)
+            {
+                numigv.Value = (decimal.Parse(BuscarIgv["valor"].ToString()) * 100);
+            }
         }
         Decimal monto = 0.2m;
         public string nrofactura;
@@ -121,7 +127,7 @@ namespace HPReserger
         }
         private void txtruc_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtruc, 18);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtruc, 11);
         }
 
         private void txtguia_KeyPress(object sender, KeyPressEventArgs e)
@@ -179,54 +185,55 @@ namespace HPReserger
         Decimal total = 0.2m;
         private void cboigv_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtmonto.Text))
-            {
-                monto = Convert.ToDecimal(txtmonto.Text);
-                porcentaje = numigv.Value;
-                if (cboigv.SelectedIndex == 0)//si (incluido) valor index+1= 1
-                {
-                    numigv.Visible = true;
-                    lblporcentaje.Visible = true;
-                    txtsubtotal.Enabled = false;
-                    txtmonto.Enabled = txtigv.Enabled = true;
-                    subtotal = Decimal.Round(monto / ((100 + porcentaje) / 100), 2);
-                    total = monto;
-                    igv = total - subtotal;
-                    txttotal.Text = total.ToString("N2");
-                    txtsubtotal.Text = subtotal.ToString("N2");
-                    txtigv.Text = igv.ToString("N2");
+            Calculando();
+            /*   if (!string.IsNullOrEmpty(txtmonto.Text))
+               {
+                   monto = Convert.ToDecimal(txtmonto.Text);
+                   porcentaje = numigv.Value;
+                   if (cboigv.SelectedIndex == 0)//si (incluido) valor index+1= 1
+                   {
+                       numigv.Visible = true;
+                       lblporcentaje.Visible = true;
+                       txtsubtotal.Enabled = false;
+                       txtmonto.Enabled = txtigv.Enabled = true;
+                       subtotal = Decimal.Round(monto / ((100 + porcentaje) / 100), 2);
+                       total = monto;
+                       igv = total - subtotal;
+                       txttotal.Text = total.ToString("N2");
+                       txtsubtotal.Text = subtotal.ToString("N2");
+                       txtigv.Text = igv.ToString("N2");
 
-                    txttotal.Enabled = false;
-                }
-                if (cboigv.SelectedIndex == 1)//si (no incluido) valor index+1= 2
-                {
-                    numigv.Visible = true;
-                    lblporcentaje.Visible = true;
-                    txtsubtotal.Enabled = false;
-                    txtmonto.Enabled = txtigv.Enabled = true;
-                    igv = Decimal.Round(((monto * (porcentaje)) / 100), 2);
-                    total = monto + igv;
-                    txttotal.Text = total.ToString("N2");
-                    txtigv.Text = igv.ToString("N2");
-                    txtsubtotal.Text = monto.ToString("N2");
+                       txttotal.Enabled = false;
+                   }
+                   if (cboigv.SelectedIndex == 1)//si (no incluido) valor index+1= 2
+                   {
+                       numigv.Visible = true;
+                       lblporcentaje.Visible = true;
+                       txtsubtotal.Enabled = false;
+                       txtmonto.Enabled = txtigv.Enabled = true;
+                       igv = Decimal.Round(((monto * (porcentaje)) / 100), 2);
+                       total = monto + igv;
+                       txttotal.Text = total.ToString("N2");
+                       txtigv.Text = igv.ToString("N2");
+                       txtsubtotal.Text = monto.ToString("N2");
 
-                    txttotal.Enabled = false;
+                       txttotal.Enabled = false;
 
-                }
-                if (cboigv.SelectedIndex == 2)//no valor index+1= 3
-                {
-                    numigv.Visible = false;
-                    lblporcentaje.Visible = false;
-                    txtsubtotal.Enabled = txtigv.Enabled = txttotal.Enabled = false;
-                    total = monto;
-                    txttotal.Text = total.ToString("N2");
-                    porcentaje = igv = 0.2m;
-                    txtsubtotal.Text = txtmonto.Text;
-                    txtigv.Text = "0.00";
+                   }
+                   if (cboigv.SelectedIndex == 2)//no valor index+1= 3
+                   {
+                       numigv.Visible = false;
+                       lblporcentaje.Visible = false;
+                       txtsubtotal.Enabled = txtigv.Enabled = txttotal.Enabled = false;
+                       total = monto;
+                       txttotal.Text = total.ToString("N2");
+                       porcentaje = igv = 0.2m;
+                       txtsubtotal.Text = txtmonto.Text;
+                       txtigv.Text = "0.00";
 
-                    // txttotal.Enabled = true;
-                }
-            }
+                       // txttotal.Enabled = true;
+                   }
+               }*/
         }
         private void numigv_ValueChanged(object sender, EventArgs e)
         {
@@ -270,19 +277,35 @@ namespace HPReserger
         {
             if (estado == 1 && validar())
             {
-                for (int i = 0; i < Dtguias.RowCount; i++)
+                int next;
+                DataRow siguiente = cfactura.Siguiente("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                next = int.Parse(siguiente["valor"].ToString());
+                for (int i = 0; i < DtgConten.RowCount; i++)
                 {
-                    if ((Boolean)Dtguias["OK", i].Value == true)
+                    decimal valorigv = 0, valorsubtotal = 0, valortotal = 0;
+                    valorsubtotal = (Convert.ToDecimal(DtgConten["subtotale", i].Value));
+                    valorigv = (Convert.ToDecimal(DtgConten["valueigv", i].Value));
+                    valortotal = (Convert.ToDecimal(DtgConten["totalfac", i].Value));
+                    //grabando
+                    cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 0,
+                       valorsubtotal, valorigv, valortotal,
+                        cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario));
+                    cfactura.InsertarAsientoFactura(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cc", i].Value.ToString());
+                    cfactura.InsertarAsientoFactura(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString());
+                    /*if ((Boolean)Dtguias["OK", i].Value == true)
+                    {
                         cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(Dtguias["FIC", i].Value), Convert.ToInt32(Dtguias["OC", i].Value), 0,
                         Convert.ToDecimal(txtsubtotal.Text), Convert.ToDecimal(txtigv.Text), Convert.ToDecimal(txttotal.Text),
                         cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario));
+                        cfactura.InsertarAsientoFactura(Convert.ToInt32(Dtguias["OC", i].Value.ToString()), Convert.ToDecimal(txttotal.Text));
+                    }*/
+
                 }
                 MSG("Factura Ingresada Exitosamente");
                 button1_Click(sender, e);
                 txtnrofactura.Text = ""; txtmonto.Text = ""; txtsubtotal.Text = txtigv.Text = txttotal.Text = ""; pbfactura.Image = null; imgfactura = null;
                 txtruc.Text = ""; busqueda = 0;
                 Dtguias.Enabled = true;
-
             }
         }
         private void pbfactura_DoubleClick(object sender, EventArgs e)
@@ -355,6 +378,16 @@ namespace HPReserger
                 MSG("El TOTAL No debe ser mayor que el TOTAL de la Orden");
                 return false;
             }
+            for (int i = 0; i < DtgConten.RowCount; i++)
+            {
+                if (decimal.Parse(DtgConten["preciounit", i].Value.ToString()) <= 0)
+                {
+                    MSG("Ingresé Precio Unitario de la fila " + (i + 1));
+                    DtgConten.CurrentCell = DtgConten["preciounit", i];
+                    return false;
+                }
+            }
+
             return true;
         }
         private void chlbx_Click(object sender, EventArgs e)
@@ -483,6 +516,8 @@ namespace HPReserger
         }
         private void txtmonto_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtmonto.Text))
+                txttotal.Text = txtsubtotal.Text = txtigv.Text = "0.00";
             if (!string.IsNullOrWhiteSpace(txtmonto.Text))
             {
                 cboigv_SelectedIndexChanged(sender, e);
@@ -617,6 +652,79 @@ namespace HPReserger
 
         private void Dtguias_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+        }
+        public void Calculando()
+        {
+            if (DtgConten.RowCount > 0)
+            {
+                decimal X = 0, sumatoria = 0, igvigv = 0, subtotales = 0; ;
+                if (cboigv.SelectedIndex == 1)
+                {
+                    for (int i = 0; i < DtgConten.RowCount; i++)
+                    {
+                        X = decimal.Parse(DtgConten["cantidad", i].Value.ToString()) * decimal.Parse(DtgConten["PRECIOUNIT", i].Value.ToString());
+                        DtgConten["SUBTOTALE", i].Value = decimal.Round(X, 2);
+                        if (int.Parse(DtgConten["siigv", i].Value.ToString()) == 1)
+                            igvigv = (X * numigv.Value) / 100;
+                        else igvigv = 0;
+                        DtgConten["valueigv", i].Value = decimal.Round(igvigv, 2);
+                        X += igvigv;
+                        sumatoria += (X);
+                        DtgConten["totalfac", i].Value = decimal.Round(X, 2);
+                    }
+
+                }
+                if (cboigv.SelectedIndex == 0)
+                {
+                    for (int i = 0; i < DtgConten.RowCount; i++)
+                    {
+                        X = decimal.Parse(DtgConten["cantidad", i].Value.ToString()) * decimal.Parse(DtgConten["PRECIOUNIT", i].Value.ToString());
+                        DtgConten["totalfac", i].Value = decimal.Round(X, 2);
+                        if (int.Parse(DtgConten["siigv", i].Value.ToString()) == 1)
+                            igvigv = (X / (1 + (numigv.Value / 100)));
+                        else igvigv = 0;
+                        subtotales = X - igvigv;
+                        DtgConten["valueigv", i].Value = decimal.Round(igvigv, 2);
+                        sumatoria += (X);
+                        DtgConten["subtotale", i].Value = decimal.Round(subtotales, 2);
+                    }
+                }
+                txtmonto.Text = sumatoria.ToString("n2");
+            }
+        }
+        private void DtgConten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(DtgConten[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";
+            Calculando();
+        }
+
+        private void DtgConten_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                DtgConten.EndEdit();
+            }
+            else { e.Handled = true; }
+        }
+        TextBox txt;
+        private void DtgConten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            txt = e.Control as TextBox;
+            if (txt != null)
+            {
+                txt.KeyPress -= new KeyPressEventHandler(dataGridview_KeyPressCajita);
+                txt.KeyPress += new KeyPressEventHandler(dataGridview_KeyPressCajita);
+            }
+        }
+        private void dataGridview_KeyPressCajita(object sender, KeyPressEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txt.Text);
+        }
+
+        private void DtgConten_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";
         }
     }
 }

@@ -73,6 +73,7 @@ namespace HPReserger
             int fila = e.RowIndex;
             if (dtgconten.RowCount > 0)
             {
+                btnadenda.Enabled = true;
                 btnExportapdf.Enabled = true;
                 btnModificar.Enabled = true;
                 cboTipoContrato.SelectedValue = Convert.ToInt32(dtgconten["TIPOC", fila].Value.ToString());
@@ -84,12 +85,29 @@ namespace HPReserger
                 cboEmpresa.SelectedValue = Convert.ToInt32(dtgconten["IDE", fila].Value.ToString());
                 cboSede.SelectedValue = Convert.ToInt32(dtgconten["SEDE", fila].Value.ToString());
                 dtpFechaInicio.Value = Convert.ToDateTime(dtgconten["INICIO", fila].Value.ToString());
-                txtPeriodoLaboral.Text = dtgconten["PERIODO", fila].Value.ToString();
+                //txtPeriodoLaboral.Text = dtgconten["PERIODO", fila].Value.ToString();
                 dtpFechaFin.Value = Convert.ToDateTime(dtgconten["FIN", fila].Value.ToString());
                 txtSalario.Text = dtgconten["SUELDO", fila].Value.ToString();
                 cboBono.Text = dtgconten["BONO", fila].Value.ToString();
                 txtImporteBono.Text = dtgconten["IMPORTE", fila].Value.ToString();
                 txtPeriodicidad.Text = dtgconten["PERIOCIDAD", fila].Value.ToString();
+                if (dtgconten["adenda", fila].Value.ToString() != "0")
+
+                    lbladenda.Text = "Adenda Del Contrato Nº " + dtgconten["adenda", fila].Value.ToString();
+                else lbladenda.Text = "";
+
+
+                if (int.Parse(dtgconten["MercadoObra", fila].Value.ToString()) == 1)
+                {
+                    btnmercado.ForeColor = Color.Blue; btnobradeterminada.Visible = false;
+                    btnobradeterminada.ForeColor = Color.Black;
+                }
+                else
+                {
+                    btnmercado.ForeColor = Color.Black; btnmercado.Visible = false;
+                    btnobradeterminada.ForeColor = Color.Blue;
+                }
+
                 cbotipocontratacion.SelectedValue = Int32.Parse(dtgconten["tc", fila].Value.ToString());
 
                 if (Convert.ToInt32(dtgconten["JEFE", fila].Value.ToString()) == 1)
@@ -162,11 +180,10 @@ namespace HPReserger
                 {
                     dtpfechacese.Visible = lblfechacese.Visible = false;
                 }
-
             }
             else
             {
-                btnModificar.Enabled = false;btnExportapdf.Enabled = false;
+                btnModificar.Enabled = false; btnExportapdf.Enabled = false; btnadenda.Enabled = false;
             }
 
         }
@@ -287,6 +304,7 @@ namespace HPReserger
         int fila;
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            PasosAdenda(false);
             if (dtgconten.RowCount > 0)
             {
                 fila = dtgconten.CurrentCell.RowIndex;
@@ -314,18 +332,32 @@ namespace HPReserger
                 cboJefeInmediato.DisplayMember = "jefe";
                 //cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento,NumeroDocumento,1);
             }
+            // btnobradeterminada.Visible = btnmercado.Visible = true;
             estado = 1;
             dtgconten.Enabled = false;
-            btnRegistrar.Enabled = false;
+            btnRegistrar.Enabled = false; btnadenda.Enabled = false; btnExportapdf.Enabled = false;
             btnModificar.Enabled = false;
             btnaceptar.Enabled = true;
             grpcontra.Enabled = grpcontrato.Enabled = true;
             pbFotoAnexoFunciones.Image = pbFotoContrato.Image = pbFotoOtros.Image = pbFotoSolicitudPracticas.Image = null;
             FotoContrato = FotoAnexoFunciones = FotoSolicitudPracticas = FotoOtros = null;
+            dtpFechaInicio.Value = (DateTime.Parse(dtgconten["fin", 0].Value.ToString())).AddDays(1);
         }
 
         private bool Validar()
         {
+            if (cboProyecto.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccioné Proyecto", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cboProyecto.Focus();
+                return false;
+            }
+            if (cboEmpresa.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccioné Empresa", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                cboEmpresa.Focus();
+                return false;
+            }
             if (txtPeriodoLaboral.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Período Laboral", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -356,7 +388,7 @@ namespace HPReserger
                 btnBuscarImagenContrato.Focus();
                 return false;
             }
-            if (dtgconten.RowCount > 0 && estado == 1)
+            if (dtgconten.RowCount > 0 && (estado == 1 || estado == 3))
             {
                 if (!string.IsNullOrWhiteSpace(dtgconten["CESE", 0].Value.ToString()))
                 {
@@ -442,6 +474,21 @@ namespace HPReserger
                 btnlocacion.Focus();
                 return false;
             }
+            if (pracprepro.acepta == false && int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1)
+            {
+                MensajeAlerta("No Ha Ingresado los datos del convenio de Practicas PreProfesionales");
+                btnpracticas.Focus();
+                return false;
+            }
+            if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3)
+            {
+                if (btnobradeterminada.ForeColor == btnmercado.ForeColor)
+                {
+                    MensajeAlerta("Seleccioné Contrato por Necesidad de Mercado u Obra determinada");
+                    btnmercado.Focus();
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -457,7 +504,7 @@ namespace HPReserger
             txtSolicitudPracticas.Text = "";
             txtOtros.Text = "";
         }
-
+        int mercadoobras;
         private void GrabarEditar(int Opcion)
         {
             int jefe; int numero; int tipocontra;
@@ -469,6 +516,11 @@ namespace HPReserger
                 ImporteBono = Convert.ToDecimal(txtImporteBono.Text);
                 PeriodicidadBono = Convert.ToInt32(txtPeriodicidad.Text);
             }
+            if (btnmercado.ForeColor == Color.Blue)
+                mercadoobras = 1;
+            if (btnobradeterminada.ForeColor == Color.Blue)
+                mercadoobras = 2;
+
             string docjefe;
             int tipojefe;
             tipojefe = Convert.ToInt32(cboJefeInmediato.SelectedValue.ToString().Substring(0, 1));
@@ -480,21 +532,30 @@ namespace HPReserger
                 numero = Convert.ToInt32(dtgconten["NRO", dtgconten.CurrentCell.RowIndex].Value.ToString());
             }
             else { numero = 0; }
-            clContrato.EmpleadoContrato(numero, CodigoDocumento, NumeroDocumento, tipocontra, jefe, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()), Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), tipojefe, docjefe, Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value, Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), cboBono.SelectedItem.ToString(), ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones, txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
+            clContrato.EmpleadoContrato(numero, CodigoDocumento, NumeroDocumento, tipocontra, adendas, mercadoobras, jefe, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()), Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), tipojefe, docjefe, Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value, Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), cboBono.SelectedItem.ToString(), ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones, txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
             //MessageBox.Show(numero+" "+CodigoDocumento +" "+ NumeroDocumento);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            PasosAdenda(false);
             if (dtgconten.CurrentCell.RowIndex == 0)
             {
                 estado = 2;
                 cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento, NumeroDocumento, 1);
                 btnRegistrar.Enabled = false;
                 grpcontrato.Enabled = true; grpcontra.Enabled = true;
-                btnaceptar.Enabled = true;
+                btnaceptar.Enabled = true; btnadenda.Enabled = false; btnExportapdf.Enabled = false;
                 dtgconten.Enabled = false;
                 btnModificar.Enabled = true; btnModificar.Visible = false; btnModificar.Enabled = false; btnModificar.Visible = true;
+                if ((cbotipocontratacion.SelectedValue.ToString() == "2" || cbotipocontratacion.SelectedValue.ToString() == "3") && lbladenda.Text == "")
+                {
+                    btnmercado.Visible = btnobradeterminada.Visible = true;
+                }
+                if (lbladenda.Text != "")
+                {
+                    PasosAdenda(true);
+                }
             }
             else
             {
@@ -536,10 +597,10 @@ namespace HPReserger
 
         private void txtPeriodoLaboral_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtPeriodoLaboral.Text))
-            {
-                dtpFechaFin.Value = (dtpFechaInicio.Value.AddMonths(Convert.ToInt32(txtPeriodoLaboral.Text)));
-            }
+            ///if (!string.IsNullOrWhiteSpace(txtPeriodoLaboral.Text))
+            ///   {
+            //       dtpFechaFin.Value = (dtpFechaInicio.Value.AddMonths(Convert.ToInt32(txtPeriodoLaboral.Text)));
+            ////   }
         }
 
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
@@ -599,7 +660,7 @@ namespace HPReserger
             {
                 grpcontrato.Enabled = false; grpcontra.Enabled = false;
                 btnaceptar.Enabled = false;
-                btnRegistrar.Enabled = true;
+                btnRegistrar.Enabled = true; btnadenda.Enabled = true; btnExportapdf.Enabled = true;
                 btnModificar.Enabled = false;
                 dtgconten.Enabled = true;
                 if (estado == 1)
@@ -622,11 +683,17 @@ namespace HPReserger
                 {
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
                 }
+                if (estado == 3)
+                {
+                    PasosAdenda(false);
+                    dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
+                }
                 estado = 0;
                 if (dtgconten.RowCount > 0)
                 {
                     btnModificar.Enabled = true;
                 }
+
             }
             else { this.Close(); }
         }
@@ -640,7 +707,10 @@ namespace HPReserger
         {
 
         }
-
+        frmReporteLocacionServicios locacionservis = new frmReporteLocacionServicios();
+        frmReporteconvenioPracticas reporpracticas = new frmReporteconvenioPracticas();
+        frmReporteNecesidadMercado repormercado = new frmReporteNecesidadMercado();
+        frmReporteAdendaNecesidad reporteadenda = new frmReporteAdendaNecesidad();
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (estado == 1)
@@ -656,6 +726,24 @@ namespace HPReserger
                     if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4)
                     {
                         clContrato.LocacionServicios(dtgconten["nro", 0].Value.ToString(), CodigoDocumento.ToString(), NumeroDocumento, 1, locacion.ocupacion, locacion.detalle);
+                        locacionservis.contrato = dtgconten["nro", 0].Value.ToString();
+                        locacionservis.tipo = CodigoDocumento.ToString();
+                        locacionservis.numero = NumeroDocumento;
+                        locacionservis.ShowDialog();
+                    }
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1)
+                    {
+                        clContrato.PracticasPreProfesionales(dtgconten["nro", 0].Value.ToString(), CodigoDocumento.ToString(), NumeroDocumento, 1, pracprepro.ruc, pracprepro.representante, pracprepro.tipoidrepre, pracprepro.docrepre, pracprepro.situacion, pracprepro.especialidad, pracprepro.ocupacion, pracprepro.dias, pracprepro.horario);
+                    }
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3)
+                    {
+                        if (btnmercado.ForeColor == Color.Blue)
+                        {
+                            repormercado.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
+                            repormercado.tipo = CodigoDocumento.ToString();
+                            repormercado.numero = NumeroDocumento;
+                            repormercado.ShowDialog();
+                        }
                     }
                     cartelito(dtgconten);
                     //Limpiar();
@@ -671,16 +759,56 @@ namespace HPReserger
                     btncancelar_Click(sender, e);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
                     cartelito(dtgconten);
-                    if (locacion.acepta == true)
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4)
                     {
-                        frmReporteLocacionServicios locacionservis = new frmReporteLocacionServicios();
                         locacionservis.contrato = dtgconten["nro", 0].Value.ToString();
                         locacionservis.tipo = CodigoDocumento.ToString();
                         locacionservis.numero = NumeroDocumento;
                         locacionservis.ShowDialog();
                     }
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1)
+                    {
+                        reporpracticas.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
+                        reporpracticas.tipo = CodigoDocumento;
+                        reporpracticas.numero = NumeroDocumento;
+                        reporpracticas.ShowDialog();
+                    }
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3)
+                    {
+                        if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() == "0")
+                        {
+                            repormercado.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
+                            repormercado.tipo = CodigoDocumento.ToString();
+                            repormercado.numero = NumeroDocumento;
+                            repormercado.ShowDialog();
+                        }
+                        if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() != "0")
+                        {
+                            reporteadenda.contrato = (dtgconten["nro", 0].Value.ToString());
+                            reporteadenda.tipo = CodigoDocumento.ToString();
+                            reporteadenda.numero = NumeroDocumento;
+                            reporteadenda.ShowDialog();
+                        }
+                    }
                 }
             }
+            if (estado == 3)
+            {
+                if (Validar())
+                {
+                    GrabarEditar(3);
+                    MessageBox.Show("Adenda Agregada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btncancelar_Click(sender, e);
+                    PasosAdenda(false);
+                    dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
+                    cartelito(dtgconten); btnExportapdf.Enabled = true;
+                    reporteadenda.contrato = dtgconten["nro", 0].Value.ToString();
+                    reporteadenda.tipo = CodigoDocumento.ToString();
+                    reporteadenda.numero = NumeroDocumento;
+                    reporteadenda.ShowDialog();
+                }
+            }
+
         }
         public void cartelito(DataGridView medir)
         {
@@ -753,7 +881,7 @@ namespace HPReserger
             }
             else
             {
-                txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
+                txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month + 1).ToString();
             }
         }
 
@@ -816,11 +944,12 @@ namespace HPReserger
                 btnobradeterminada.Visible = true; btnmercado.Visible = true;
             }
         }
+        FrmPracticasPreProfesionales pracprepro = new FrmPracticasPreProfesionales();
         private void btnpracticas_Click(object sender, EventArgs e)
         {
-            FrmPracticasPreProfesionales pracprepro = new FrmPracticasPreProfesionales();
             pracprepro.numero = NumeroDocumento;
             pracprepro.tipo = CodigoDocumento.ToString();
+            pracprepro.estado = estado;
             if (dtgconten.RowCount > 0)
                 pracprepro.contrato = dtgconten["nro", 0].Value.ToString();
             else pracprepro.contrato = "0";
@@ -839,8 +968,9 @@ namespace HPReserger
         }
         frmReporteLocacionServicios reportelocacion = new frmReporteLocacionServicios();
         private void btnExportapdf_Click(object sender, EventArgs e)
-        { string caden = dtgconten["tc", dtgconten.CurrentCell.RowIndex].Value.ToString();
-            if (caden=="4")
+        {
+            string caden = dtgconten["tc", dtgconten.CurrentCell.RowIndex].Value.ToString();
+            if (caden == "4")
             {
                 reportelocacion.contrato = dtgconten["nro", dtgconten.CurrentCell.RowIndex].Value.ToString();
                 reportelocacion.tipo = CodigoDocumento.ToString();
@@ -849,12 +979,92 @@ namespace HPReserger
             }
             if (caden == "1")
             {
-                MensajeAlerta("Contrato de Practias Pre Profesionales Programando");
+                reporpracticas.contrato = int.Parse(dtgconten["nro", dtgconten.CurrentCell.RowIndex].Value.ToString());
+                reporpracticas.tipo = CodigoDocumento;
+                reporpracticas.numero = NumeroDocumento;
+                reporpracticas.ShowDialog();
             }
-            if (caden == "2"||caden=="3")
+            if (caden == "2" || caden == "3")
             {
-                MensajeAlerta("Contrato de Planillas Programando");
+                if (dtgconten["mercadoobra", dtgconten.CurrentCell.RowIndex].Value.ToString() == "1" && dtgconten["adenda", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
+                {
+                    repormercado.contrato = int.Parse(dtgconten["nro", dtgconten.CurrentCell.RowIndex].Value.ToString());
+                    repormercado.tipo = CodigoDocumento.ToString();
+                    repormercado.numero = NumeroDocumento;
+                    repormercado.ShowDialog();
+                }
+                if (dtgconten["mercadoobra", dtgconten.CurrentCell.RowIndex].Value.ToString() == "1" && dtgconten["adenda", dtgconten.CurrentCell.RowIndex].Value.ToString() != "0")
+                {
+                    reporteadenda.contrato = (dtgconten["nro", dtgconten.CurrentCell.RowIndex].Value.ToString());
+                    reporteadenda.tipo = CodigoDocumento.ToString();
+                    reporteadenda.numero = NumeroDocumento;
+                    reporteadenda.ShowDialog();
+                }
+                if (dtgconten["mercadoobra", dtgconten.CurrentCell.RowIndex].Value.ToString() == "2")//&& dtgconten["adenda", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
+                {
+                    MensajeAlerta("Contrato de Planillas Programando");
+                }
             }
+
+        }
+
+        private void btnmercado_Click(object sender, EventArgs e)
+        {
+            btnobradeterminada.ForeColor = Color.Black;
+            btnmercado.ForeColor = Color.Blue;
+        }
+
+        private void btnobradeterminada_Click(object sender, EventArgs e)
+        {
+            btnobradeterminada.ForeColor = Color.Blue;
+            btnmercado.ForeColor = Color.Black;
+        }
+        int adendas = 0; int tipoadendas = 0;
+        private void btnadenda_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.RowCount > 0)
+            {
+                for (int i = 0; i < dtgconten.RowCount; i++)
+                {
+                    if (dtgconten["adenda", i].Value.ToString() == "0")
+                    {
+                        adendas = int.Parse(dtgconten["nro", i].Value.ToString());
+                        tipoadendas = int.Parse(dtgconten["tc", i].Value.ToString());
+                        dtgconten.CurrentCell = dtgconten[0, i];
+                        PasosAdenda(true);
+                        estado = 3;
+                        pbFotoAnexoFunciones.Image = pbFotoContrato.Image = pbFotoOtros.Image = pbFotoSolicitudPracticas.Image = null;
+                        FotoContrato = FotoAnexoFunciones = FotoSolicitudPracticas = FotoOtros = null;
+                        txtAnexoFunciones.Text = txtContrato.Text = txtSolicitudPracticas.Text = "";
+                        dtpFechaInicio.Value = (DateTime.Parse(dtgconten["fin", 0].Value.ToString())).AddDays(1);
+                        cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento, NumeroDocumento, 1);
+                        if (dtgconten["mercadoobra", i].Value.ToString() == "1")
+                        {
+                            btnobradeterminada.Visible = false; MensajeAlerta("Generando Adenda de Contrato de Necesidad de Mercado");
+                        }
+                        else
+                        {
+                            btnmercado.Visible = false;
+                        }
+                        break;
+                    }
+                }
+            }
+            if (adendas == 0)
+            {
+                MensajeAlerta("No se encontró contrato para hacer Adenda");
+            }
+        }
+        public void PasosAdenda(Boolean accion)//accion=true;
+        {
+            btnRegistrar.Enabled = btnModificar.Enabled = btnExportapdf.Enabled = btnadenda.Enabled = !accion;
+            btnaceptar.Enabled = accion;
+            dtgconten.Enabled = !accion;
+            cbotipocontratacion.Enabled = !accion;
+            cboTipoContrato.Enabled = !accion;
+            btnobradeterminada.Enabled = btnlocacion.Enabled = btnpracticas.Enabled = btnmercado.Enabled = !accion;
+            cboGerencia.Enabled = cboArea.Enabled = !accion;
+            grpcontra.Enabled = grpcontrato.Enabled = accion;
 
         }
     }

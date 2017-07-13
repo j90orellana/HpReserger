@@ -125,7 +125,7 @@
             // 
             this.txtnumeroidentidad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtnumeroidentidad.Location = new System.Drawing.Point(489, 13);
-            this.txtnumeroidentidad.MaxLength = 15;
+            this.txtnumeroidentidad.MaxLength = 10;
             this.txtnumeroidentidad.Name = "txtnumeroidentidad";
             this.txtnumeroidentidad.Size = new System.Drawing.Size(154, 20);
             this.txtnumeroidentidad.TabIndex = 2;
@@ -297,9 +297,11 @@
             this.txtpersonacontacto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtpersonacontacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpersonacontacto.Location = new System.Drawing.Point(114, 177);
+            this.txtpersonacontacto.MaxLength = 40;
             this.txtpersonacontacto.Name = "txtpersonacontacto";
             this.txtpersonacontacto.Size = new System.Drawing.Size(308, 20);
             this.txtpersonacontacto.TabIndex = 11;
+            this.txtpersonacontacto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpersonacontacto_KeyDown);
             this.txtpersonacontacto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpersonacontacto_KeyPress);
             // 
             // label11

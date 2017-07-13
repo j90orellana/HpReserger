@@ -211,7 +211,8 @@ namespace HPReserger
         {
             cerrado = 0;
             //MessageBox.Show("usuario:"+usuario+"nick:"+nick);
-            lblwelcome.Text = "Bienvenido " + Nombres;
+            lblwelcome.Text = "Bienvenido: " + Nombres;
+
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -284,6 +285,39 @@ namespace HPReserger
         {
             frmGenerarBoletas genbole = new frmGenerarBoletas();
             genbole.ShowDialog();
+        }
+
+        private void generarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmGenerarRemuneracionRenta remunrenta = new FrmGenerarRemuneracionRenta();
+            remunrenta.ShowDialog();
+        }
+
+        private void proyectosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProyectos proyectos = new frmProyectos();
+            proyectos.ShowDialog();
+        }
+        private void axAcroPDF1_Enter(object sender, EventArgs e)
+        {
+        }
+        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmpresupuesto presus = new frmpresupuesto();
+            presus.ShowDialog();
+        }
+        private void seguimientoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+        }
+        private void presupuestoOperacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReportePresupuestoOperaciones presuope = new frmReportePresupuestoOperaciones();
+            presuope.ShowDialog();
+        }
+        private void presupuestoOperacionesCuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReportePresupuestoCuenta presuscuenta = new frmReportePresupuestoCuenta();
+            presuscuenta.ShowDialog();            
         }
     }
 }

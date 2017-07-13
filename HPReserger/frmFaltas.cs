@@ -305,7 +305,7 @@ namespace HPReserger
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 15);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 10);
         }
         public void MostrarFoto(PictureBox fotito)
         {

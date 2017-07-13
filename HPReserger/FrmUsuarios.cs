@@ -444,7 +444,7 @@ namespace HPReserger
 
         private void txtid_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtid, 15);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtid, 10);
         }
     }
 }

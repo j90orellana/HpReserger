@@ -49,23 +49,30 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtnrodocrepre = new System.Windows.Forms.TextBox();
             this.gp1 = new System.Windows.Forms.GroupBox();
+            this.lsbrazon = new System.Windows.Forms.ListBox();
+            this.lsbruc = new System.Windows.Forms.ListBox();
+            this.cbotipoid = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txthorarioprac = new System.Windows.Forms.TextBox();
             this.msg = new System.Windows.Forms.ToolTip(this.components);
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
-            this.cbotipoid = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txthorarioprac = new System.Windows.Forms.TextBox();
             this.gp1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtrazonsocialuni
             // 
+            this.txtrazonsocialuni.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtrazonsocialuni.Location = new System.Drawing.Point(92, 45);
             this.txtrazonsocialuni.Name = "txtrazonsocialuni";
             this.txtrazonsocialuni.Size = new System.Drawing.Size(306, 20);
             this.txtrazonsocialuni.TabIndex = 1;
+            this.msg.SetToolTip(this.txtrazonsocialuni, "UNI");
+            this.txtrazonsocialuni.Click += new System.EventHandler(this.txtrazonsocialuni_Click);
+            this.txtrazonsocialuni.TextChanged += new System.EventHandler(this.txtrazonsocialuni_TextChanged);
+            this.txtrazonsocialuni.Enter += new System.EventHandler(this.txtrazonsocialuni_Enter);
             // 
             // label1
             // 
@@ -88,10 +95,16 @@
             // txtrucuni
             // 
             this.txtrucuni.Location = new System.Drawing.Point(92, 19);
-            this.txtrucuni.MaxLength = 15;
+            this.txtrucuni.MaxLength = 10;
             this.txtrucuni.Name = "txtrucuni";
             this.txtrucuni.Size = new System.Drawing.Size(140, 20);
             this.txtrucuni.TabIndex = 0;
+            this.msg.SetToolTip(this.txtrucuni, "0701046971");
+            this.txtrucuni.Click += new System.EventHandler(this.txtrucuni_Click);
+            this.txtrucuni.TextChanged += new System.EventHandler(this.txtrucuni_TextChanged);
+            this.txtrucuni.Enter += new System.EventHandler(this.txtrucuni_Enter);
+            this.txtrucuni.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtrucuni_KeyDown);
+            this.txtrucuni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtrucuni_KeyPress);
             // 
             // label3
             // 
@@ -120,6 +133,7 @@
             // 
             // txtrepre
             // 
+            this.txtrepre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtrepre.Location = new System.Drawing.Point(92, 123);
             this.txtrepre.Name = "txtrepre";
             this.txtrepre.Size = new System.Drawing.Size(306, 20);
@@ -215,13 +229,17 @@
             // txtnrodocrepre
             // 
             this.txtnrodocrepre.Location = new System.Drawing.Point(320, 97);
-            this.txtnrodocrepre.MaxLength = 15;
+            this.txtnrodocrepre.MaxLength = 10;
             this.txtnrodocrepre.Name = "txtnrodocrepre";
             this.txtnrodocrepre.Size = new System.Drawing.Size(78, 20);
             this.txtnrodocrepre.TabIndex = 4;
+            this.txtnrodocrepre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtnrodocrepre_KeyDown);
+            this.txtnrodocrepre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnrodocrepre_KeyPress);
             // 
             // gp1
             // 
+            this.gp1.Controls.Add(this.lsbrazon);
+            this.gp1.Controls.Add(this.lsbruc);
             this.gp1.Controls.Add(this.cbotipoid);
             this.gp1.Controls.Add(this.label2);
             this.gp1.Controls.Add(this.txtrucuni);
@@ -240,6 +258,37 @@
             this.gp1.TabIndex = 20;
             this.gp1.TabStop = false;
             this.gp1.Text = "Centro de Formación Profesional:";
+            this.gp1.MouseHover += new System.EventHandler(this.gp1_MouseHover);
+            // 
+            // lsbrazon
+            // 
+            this.lsbrazon.FormattingEnabled = true;
+            this.lsbrazon.Location = new System.Drawing.Point(92, 61);
+            this.lsbrazon.Name = "lsbrazon";
+            this.lsbrazon.Size = new System.Drawing.Size(306, 4);
+            this.lsbrazon.TabIndex = 21;
+            this.lsbrazon.Visible = false;
+            this.lsbrazon.Click += new System.EventHandler(this.lsbrazon_Click);
+            this.lsbrazon.MouseLeave += new System.EventHandler(this.lsbrazon_MouseLeave);
+            // 
+            // lsbruc
+            // 
+            this.lsbruc.FormattingEnabled = true;
+            this.lsbruc.Location = new System.Drawing.Point(92, 38);
+            this.lsbruc.Name = "lsbruc";
+            this.lsbruc.Size = new System.Drawing.Size(140, 4);
+            this.lsbruc.TabIndex = 20;
+            this.lsbruc.Visible = false;
+            this.lsbruc.Click += new System.EventHandler(this.lsbruc_Click);
+            this.lsbruc.MouseLeave += new System.EventHandler(this.lsbruc_MouseLeave);
+            // 
+            // cbotipoid
+            // 
+            this.cbotipoid.FormattingEnabled = true;
+            this.cbotipoid.Location = new System.Drawing.Point(128, 97);
+            this.cbotipoid.Name = "cbotipoid";
+            this.cbotipoid.Size = new System.Drawing.Size(100, 21);
+            this.cbotipoid.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -260,41 +309,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "El Practicante:";
             // 
-            // msg
-            // 
-            this.msg.AutoPopDelay = 10000;
-            this.msg.InitialDelay = 500;
-            this.msg.IsBalloon = true;
-            this.msg.ReshowDelay = 100;
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Location = new System.Drawing.Point(852, 169);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 11;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Location = new System.Drawing.Point(770, 169);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 10;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // cbotipoid
-            // 
-            this.cbotipoid.FormattingEnabled = true;
-            this.cbotipoid.Location = new System.Drawing.Point(128, 97);
-            this.cbotipoid.Name = "cbotipoid";
-            this.cbotipoid.Size = new System.Drawing.Size(100, 21);
-            this.cbotipoid.TabIndex = 3;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -309,8 +323,37 @@
             this.txthorarioprac.Location = new System.Drawing.Point(143, 123);
             this.txthorarioprac.Name = "txthorarioprac";
             this.txthorarioprac.Size = new System.Drawing.Size(337, 20);
-            this.txthorarioprac.TabIndex = 18;
-            this.msg.SetToolTip(this.txthorarioprac, "De lunes a viernes");
+            this.txthorarioprac.TabIndex = 10;
+            this.msg.SetToolTip(this.txthorarioprac, "De lunes a viernes de 9:00 am a 16:00 pm, con una hora de refrigerio, desde las 1" +
+        "3:00 pm hasta las 14:00 pm");
+            // 
+            // msg
+            // 
+            this.msg.AutoPopDelay = 10000;
+            this.msg.InitialDelay = 500;
+            this.msg.IsBalloon = true;
+            this.msg.ReshowDelay = 100;
+            this.msg.ShowAlways = true;
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Location = new System.Drawing.Point(852, 169);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 12;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Location = new System.Drawing.Point(770, 169);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.TabIndex = 11;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // FrmPracticasPreProfesionales
             // 
@@ -362,5 +405,7 @@
         private System.Windows.Forms.ComboBox cbotipoid;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txthorarioprac;
+        private System.Windows.Forms.ListBox lsbruc;
+        private System.Windows.Forms.ListBox lsbrazon;
     }
 }

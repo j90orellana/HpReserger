@@ -108,15 +108,20 @@
             // Grid
             // 
             this.Grid.AllowUserToAddRows = false;
+            this.Grid.AllowUserToDeleteRows = false;
+            this.Grid.AllowUserToResizeColumns = false;
+            this.Grid.AllowUserToResizeRows = false;
+            this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGOTIPO,
             this.TIPO,
@@ -127,6 +132,7 @@
             this.Grid.Location = new System.Drawing.Point(12, 70);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
+            this.Grid.RowHeadersVisible = false;
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(694, 237);
@@ -145,6 +151,7 @@
             // 
             // TIPO
             // 
+            this.TIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TIPO.DataPropertyName = "TIPO";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -153,19 +160,22 @@
             this.TIPO.Name = "TIPO";
             this.TIPO.ReadOnly = true;
             this.TIPO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TIPO.Width = 67;
             // 
             // NDI
             // 
+            this.NDI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NDI.DataPropertyName = "NID";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.NDI.DefaultCellStyle = dataGridViewCellStyle4;
             this.NDI.HeaderText = "Nº ID";
             this.NDI.Name = "NDI";
             this.NDI.ReadOnly = true;
-            this.NDI.Width = 70;
+            this.NDI.Width = 58;
             // 
             // APELLIDOPATERNO
             // 
+            this.APELLIDOPATERNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.APELLIDOPATERNO.DataPropertyName = "APELLIDOPATERNO";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -175,10 +185,11 @@
             this.APELLIDOPATERNO.ReadOnly = true;
             this.APELLIDOPATERNO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.APELLIDOPATERNO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.APELLIDOPATERNO.Width = 150;
+            this.APELLIDOPATERNO.Width = 90;
             // 
             // APELLIDOMATERNO
             // 
+            this.APELLIDOMATERNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.APELLIDOMATERNO.DataPropertyName = "APELLIDOMATERNO";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.APELLIDOMATERNO.DefaultCellStyle = dataGridViewCellStyle6;
@@ -187,10 +198,11 @@
             this.APELLIDOMATERNO.ReadOnly = true;
             this.APELLIDOMATERNO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.APELLIDOMATERNO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.APELLIDOMATERNO.Width = 150;
+            this.APELLIDOMATERNO.Width = 92;
             // 
             // NOMBRES
             // 
+            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.NOMBRES.DataPropertyName = "NOMBRES";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.NOMBRES.DefaultCellStyle = dataGridViewCellStyle7;
@@ -199,7 +211,6 @@
             this.NOMBRES.ReadOnly = true;
             this.NOMBRES.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.NOMBRES.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NOMBRES.Width = 150;
             // 
             // frmListarEmpleados
             // 

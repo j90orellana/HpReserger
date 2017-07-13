@@ -52,6 +52,12 @@
             this.txtOcupacion = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.Grid = new System.Windows.Forms.DataGridView();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.pbconviviente = new System.Windows.Forms.PictureBox();
+            this.lklconviviente = new System.Windows.Forms.LinkLabel();
+            this.btnconviviente = new System.Windows.Forms.Button();
+            this.txtconviviente = new System.Windows.Forms.TextBox();
+            this.lblconviviente = new System.Windows.Forms.Label();
             this.CODIGOTIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NROID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,8 +68,10 @@
             this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHANACIMIENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OCUPACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.imagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreimagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -108,14 +116,12 @@
             // 
             // cboTipoDocumentoIdentidad
             // 
-            this.cboTipoDocumentoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumentoIdentidad.FormattingEnabled = true;
             resources.ApplyResources(this.cboTipoDocumentoIdentidad, "cboTipoDocumentoIdentidad");
             this.cboTipoDocumentoIdentidad.Name = "cboTipoDocumentoIdentidad";
             // 
             // cboVinculoFamiliar
             // 
-            this.cboVinculoFamiliar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVinculoFamiliar.FormattingEnabled = true;
             resources.ApplyResources(this.cboVinculoFamiliar, "cboVinculoFamiliar");
             this.cboVinculoFamiliar.Name = "cboVinculoFamiliar";
@@ -132,18 +138,23 @@
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             resources.ApplyResources(this.txtApellidoMaterno, "txtApellidoMaterno");
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
+            this.txtApellidoMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoMaterno_KeyPress);
             // 
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             resources.ApplyResources(this.txtNombres, "txtNombres");
             this.txtNombres.Name = "txtNombres";
+            this.txtNombres.TextChanged += new System.EventHandler(this.txtNombres_TextChanged);
+            this.txtNombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombres_KeyPress);
+            this.txtNombres.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNombres_KeyUp);
             // 
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             resources.ApplyResources(this.txtApellidoPaterno, "txtApellidoPaterno");
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
+            this.txtApellidoPaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoPaterno_KeyPress);
             // 
             // txtOcupacion
             // 
@@ -160,16 +171,19 @@
             // Grid
             // 
             this.Grid.AllowUserToAddRows = false;
-            this.Grid.AllowUserToOrderColumns = true;
+            this.Grid.AllowUserToDeleteRows = false;
+            this.Grid.AllowUserToResizeColumns = false;
+            this.Grid.AllowUserToResizeRows = false;
+            this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGOTIPOID,
             this.TIPOID,
@@ -180,14 +194,56 @@
             this.APEMAT,
             this.NOMBRES,
             this.FECHANACIMIENTO,
-            this.OCUPACION});
+            this.OCUPACION,
+            this.imagen,
+            this.nombreimagen});
             this.Grid.GridColor = System.Drawing.Color.White;
             resources.ApplyResources(this.Grid, "Grid");
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
+            this.Grid.RowHeadersVisible = false;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellContentClick);
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
+            // 
+            // btnRegistrar
+            // 
+            resources.ApplyResources(this.btnRegistrar, "btnRegistrar");
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            // 
+            // pbconviviente
+            // 
+            resources.ApplyResources(this.pbconviviente, "pbconviviente");
+            this.pbconviviente.Name = "pbconviviente";
+            this.pbconviviente.TabStop = false;
+            // 
+            // lklconviviente
+            // 
+            resources.ApplyResources(this.lklconviviente, "lklconviviente");
+            this.lklconviviente.Name = "lklconviviente";
+            this.lklconviviente.TabStop = true;
+            this.lklconviviente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklconviviente_LinkClicked);
+            // 
+            // btnconviviente
+            // 
+            resources.ApplyResources(this.btnconviviente, "btnconviviente");
+            this.btnconviviente.Name = "btnconviviente";
+            this.btnconviviente.UseVisualStyleBackColor = true;
+            this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
+            // 
+            // txtconviviente
+            // 
+            resources.ApplyResources(this.txtconviviente, "txtconviviente");
+            this.txtconviviente.Name = "txtconviviente";
+            this.txtconviviente.ReadOnly = true;
+            // 
+            // lblconviviente
+            // 
+            resources.ApplyResources(this.lblconviviente, "lblconviviente");
+            this.lblconviviente.Name = "lblconviviente";
             // 
             // CODIGOTIPOID
             // 
@@ -198,6 +254,7 @@
             // 
             // TIPOID
             // 
+            this.TIPOID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TIPOID.DataPropertyName = "TIPODOCUMENTO";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.TIPOID.DefaultCellStyle = dataGridViewCellStyle2;
@@ -207,6 +264,7 @@
             // 
             // NROID
             // 
+            this.NROID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NROID.DataPropertyName = "NUMERODOCUMENTO";
             resources.ApplyResources(this.NROID, "NROID");
             this.NROID.Name = "NROID";
@@ -214,6 +272,7 @@
             // 
             // CODIGOVINCULOFAMILIAR
             // 
+            this.CODIGOVINCULOFAMILIAR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CODIGOVINCULOFAMILIAR.DataPropertyName = "CODIGOVINCULOFAMILIAR";
             resources.ApplyResources(this.CODIGOVINCULOFAMILIAR, "CODIGOVINCULOFAMILIAR");
             this.CODIGOVINCULOFAMILIAR.Name = "CODIGOVINCULOFAMILIAR";
@@ -221,6 +280,7 @@
             // 
             // VINCULOFAMILIAR
             // 
+            this.VINCULOFAMILIAR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.VINCULOFAMILIAR.DataPropertyName = "VINCULOFAMILIAR";
             resources.ApplyResources(this.VINCULOFAMILIAR, "VINCULOFAMILIAR");
             this.VINCULOFAMILIAR.Name = "VINCULOFAMILIAR";
@@ -228,6 +288,7 @@
             // 
             // APEPAT
             // 
+            this.APEPAT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.APEPAT.DataPropertyName = "APELLIDOPATERNO";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,6 +301,7 @@
             // 
             // APEMAT
             // 
+            this.APEMAT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.APEMAT.DataPropertyName = "APELLIDOMATERNO";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -252,6 +314,7 @@
             // 
             // NOMBRES
             // 
+            this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.NOMBRES.DataPropertyName = "NOMBRES";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.NOMBRES.DefaultCellStyle = dataGridViewCellStyle5;
@@ -263,6 +326,7 @@
             // 
             // FECHANACIMIENTO
             // 
+            this.FECHANACIMIENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FECHANACIMIENTO.DataPropertyName = "FECHA";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -273,22 +337,35 @@
             // 
             // OCUPACION
             // 
+            this.OCUPACION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.OCUPACION.DataPropertyName = "OCUPACION";
             resources.ApplyResources(this.OCUPACION, "OCUPACION");
             this.OCUPACION.Name = "OCUPACION";
             this.OCUPACION.ReadOnly = true;
             // 
-            // btnRegistrar
+            // imagen
             // 
-            resources.ApplyResources(this.btnRegistrar, "btnRegistrar");
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            this.imagen.DataPropertyName = "foto";
+            resources.ApplyResources(this.imagen, "imagen");
+            this.imagen.Name = "imagen";
+            this.imagen.ReadOnly = true;
+            // 
+            // nombreimagen
+            // 
+            this.nombreimagen.DataPropertyName = "nombrefoto";
+            resources.ApplyResources(this.nombreimagen, "nombreimagen");
+            this.nombreimagen.Name = "nombreimagen";
+            this.nombreimagen.ReadOnly = true;
             // 
             // frmFamiliares
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pbconviviente);
+            this.Controls.Add(this.lklconviviente);
+            this.Controls.Add(this.btnconviviente);
+            this.Controls.Add(this.txtconviviente);
+            this.Controls.Add(this.lblconviviente);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.Grid);
             this.Controls.Add(this.dtpFecha);
@@ -311,6 +388,7 @@
             this.Name = "frmFamiliares";
             this.Load += new System.EventHandler(this.frmFamiliares_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,6 +414,11 @@
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.DataGridView Grid;
         private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.PictureBox pbconviviente;
+        private System.Windows.Forms.LinkLabel lklconviviente;
+        private System.Windows.Forms.Button btnconviviente;
+        private System.Windows.Forms.TextBox txtconviviente;
+        private System.Windows.Forms.Label lblconviviente;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOTIPOID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPOID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NROID;
@@ -346,5 +429,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRES;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHANACIMIENTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn OCUPACION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imagen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreimagen;
     }
 }

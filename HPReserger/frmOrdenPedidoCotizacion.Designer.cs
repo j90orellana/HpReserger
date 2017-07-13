@@ -188,7 +188,9 @@
             // gridCotizacionPedido
             // 
             this.gridCotizacionPedido.AllowUserToAddRows = false;
+            this.gridCotizacionPedido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridCotizacionPedido.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridCotizacionPedido.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -210,6 +212,7 @@
             this.gridCotizacionPedido.Location = new System.Drawing.Point(10, 19);
             this.gridCotizacionPedido.Name = "gridCotizacionPedido";
             this.gridCotizacionPedido.ReadOnly = true;
+            this.gridCotizacionPedido.RowHeadersVisible = false;
             this.gridCotizacionPedido.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridCotizacionPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacionPedido.Size = new System.Drawing.Size(755, 227);
@@ -233,7 +236,6 @@
             this.Item.Name = "Item";
             this.Item.ReadOnly = true;
             this.Item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Item.Width = 180;
             // 
             // CODIGOMARCA
             // 
@@ -254,7 +256,6 @@
             this.Marca.ReadOnly = true;
             this.Marca.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Marca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Marca.Width = 180;
             // 
             // CODIGOMODELO
             // 
@@ -276,7 +277,6 @@
             this.Modelo.ReadOnly = true;
             this.Modelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Modelo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Modelo.Width = 180;
             // 
             // Cantidad
             // 

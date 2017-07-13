@@ -57,12 +57,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Grid = new System.Windows.Forms.DataGridView();
-            this.btnRegistrarFalta = new System.Windows.Forms.Button();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
-            this.btnAdjuntarSustento = new System.Windows.Forms.Button();
-            this.txtRuta = new System.Windows.Forms.TextBox();
             this.chkfaltas = new System.Windows.Forms.CheckBox();
+            this.Grid = new System.Windows.Forms.DataGridView();
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +67,10 @@
             this.FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DIASFALTAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OBSERVACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRegistrarFalta = new System.Windows.Forms.Button();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btnAdjuntarSustento = new System.Windows.Forms.Button();
+            this.txtRuta = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
@@ -99,7 +99,7 @@
             // txtNumeroDocumento
             // 
             this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 44);
-            this.txtNumeroDocumento.MaxLength = 14;
+            this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(161, 20);
             this.txtNumeroDocumento.TabIndex = 0;
@@ -302,6 +302,17 @@
             this.groupBox1.TabIndex = 74;
             this.groupBox1.TabStop = false;
             // 
+            // chkfaltas
+            // 
+            this.chkfaltas.AutoSize = true;
+            this.chkfaltas.Location = new System.Drawing.Point(195, 38);
+            this.chkfaltas.Name = "chkfaltas";
+            this.chkfaltas.Size = new System.Drawing.Size(113, 17);
+            this.chkfaltas.TabIndex = 3;
+            this.chkfaltas.Text = "Aplicar Descuento";
+            this.chkfaltas.UseVisualStyleBackColor = true;
+            this.chkfaltas.CheckedChanged += new System.EventHandler(this.chkfaltas_CheckedChanged);
+            // 
             // Grid
             // 
             this.Grid.AllowUserToAddRows = false;
@@ -315,7 +326,7 @@
             this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -340,57 +351,6 @@
             this.Grid.Size = new System.Drawing.Size(746, 412);
             this.Grid.TabIndex = 75;
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
-            // 
-            // btnRegistrarFalta
-            // 
-            this.btnRegistrarFalta.Location = new System.Drawing.Point(401, 433);
-            this.btnRegistrarFalta.Name = "btnRegistrarFalta";
-            this.btnRegistrarFalta.Size = new System.Drawing.Size(119, 23);
-            this.btnRegistrarFalta.TabIndex = 5;
-            this.btnRegistrarFalta.Text = "Registrar Falta";
-            this.btnRegistrarFalta.UseVisualStyleBackColor = true;
-            this.btnRegistrarFalta.Click += new System.EventHandler(this.btnRegistrarFalta_Click);
-            // 
-            // pbFoto
-            // 
-            this.pbFoto.Location = new System.Drawing.Point(1159, 12);
-            this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(376, 412);
-            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFoto.TabIndex = 103;
-            this.pbFoto.TabStop = false;
-            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
-            // 
-            // btnAdjuntarSustento
-            // 
-            this.btnAdjuntarSustento.Location = new System.Drawing.Point(1159, 433);
-            this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
-            this.btnAdjuntarSustento.Size = new System.Drawing.Size(119, 23);
-            this.btnAdjuntarSustento.TabIndex = 6;
-            this.btnAdjuntarSustento.Text = "Adjuntar Sustento";
-            this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
-            this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
-            // 
-            // txtRuta
-            // 
-            this.txtRuta.Location = new System.Drawing.Point(1417, 436);
-            this.txtRuta.MaxLength = 14;
-            this.txtRuta.Name = "txtRuta";
-            this.txtRuta.Size = new System.Drawing.Size(118, 20);
-            this.txtRuta.TabIndex = 79;
-            this.txtRuta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtRuta.Visible = false;
-            // 
-            // chkfaltas
-            // 
-            this.chkfaltas.AutoSize = true;
-            this.chkfaltas.Location = new System.Drawing.Point(195, 38);
-            this.chkfaltas.Name = "chkfaltas";
-            this.chkfaltas.Size = new System.Drawing.Size(113, 17);
-            this.chkfaltas.TabIndex = 3;
-            this.chkfaltas.Text = "Aplicar Descuento";
-            this.chkfaltas.UseVisualStyleBackColor = true;
-            this.chkfaltas.CheckedChanged += new System.EventHandler(this.chkfaltas_CheckedChanged);
             // 
             // Registro
             // 
@@ -474,7 +434,7 @@
             this.DIASFALTAS.ReadOnly = true;
             this.DIASFALTAS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.DIASFALTAS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DIASFALTAS.Width = 80;
+            this.DIASFALTAS.Width = 70;
             // 
             // OBSERVACIONES
             // 
@@ -488,7 +448,47 @@
             this.OBSERVACIONES.ReadOnly = true;
             this.OBSERVACIONES.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.OBSERVACIONES.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.OBSERVACIONES.Width = 117;
+            this.OBSERVACIONES.Width = 104;
+            // 
+            // btnRegistrarFalta
+            // 
+            this.btnRegistrarFalta.Location = new System.Drawing.Point(401, 433);
+            this.btnRegistrarFalta.Name = "btnRegistrarFalta";
+            this.btnRegistrarFalta.Size = new System.Drawing.Size(119, 23);
+            this.btnRegistrarFalta.TabIndex = 5;
+            this.btnRegistrarFalta.Text = "Registrar Falta";
+            this.btnRegistrarFalta.UseVisualStyleBackColor = true;
+            this.btnRegistrarFalta.Click += new System.EventHandler(this.btnRegistrarFalta_Click);
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.Location = new System.Drawing.Point(1159, 12);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(376, 412);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFoto.TabIndex = 103;
+            this.pbFoto.TabStop = false;
+            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
+            // 
+            // btnAdjuntarSustento
+            // 
+            this.btnAdjuntarSustento.Location = new System.Drawing.Point(1159, 433);
+            this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
+            this.btnAdjuntarSustento.Size = new System.Drawing.Size(119, 23);
+            this.btnAdjuntarSustento.TabIndex = 6;
+            this.btnAdjuntarSustento.Text = "Adjuntar Sustento";
+            this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
+            this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
+            // 
+            // txtRuta
+            // 
+            this.txtRuta.Location = new System.Drawing.Point(1417, 436);
+            this.txtRuta.MaxLength = 14;
+            this.txtRuta.Name = "txtRuta";
+            this.txtRuta.Size = new System.Drawing.Size(118, 20);
+            this.txtRuta.TabIndex = 79;
+            this.txtRuta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtRuta.Visible = false;
             // 
             // frmFaltas
             // 

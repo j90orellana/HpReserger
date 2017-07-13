@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 16</value>
+    <value>12, 19</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 13</value>
@@ -144,13 +144,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>22</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 49</value>
+    <value>15, 46</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 13</value>
@@ -159,7 +159,7 @@
     <value>1</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Ndmero de Documento de Identidad</value>
+    <value>Número de Documento de Identidad</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -171,22 +171,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>21</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 81</value>
+    <value>12, 72</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 13</value>
+    <value>85, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Vínculo familiar</value>
+    <value>Vínculo Familiar:</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -198,13 +198,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>20</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>343, 49</value>
+    <value>334, 48</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 13</value>
@@ -225,13 +225,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>19</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>343, 16</value>
+    <value>334, 22</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
@@ -252,13 +252,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>18</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>343, 81</value>
+    <value>336, 72</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 13</value>
@@ -279,13 +279,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>17</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>683, 49</value>
+    <value>669, 50</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 13</value>
@@ -306,13 +306,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>16</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>683, 16</value>
+    <value>669, 24</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 13</value>
@@ -333,7 +333,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>15</value>
   </data>
   <data name="cboTipoDocumentoIdentidad.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 16</value>
@@ -354,10 +354,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboTipoDocumentoIdentidad.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>14</value>
   </data>
   <data name="cboVinculoFamiliar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 81</value>
+    <value>200, 69</value>
   </data>
   <data name="cboVinculoFamiliar.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 21</value>
@@ -375,13 +375,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboVinculoFamiliar.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>13</value>
   </data>
   <data name="txtNumeroDocumento.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 49</value>
+    <value>200, 43</value>
   </data>
   <data name="txtNumeroDocumento.MaxLength" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>10</value>
   </data>
   <data name="txtNumeroDocumento.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 20</value>
@@ -403,10 +403,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtNumeroDocumento.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>12</value>
   </data>
   <data name="txtApellidoMaterno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>434, 49</value>
+    <value>426, 45</value>
   </data>
   <data name="txtApellidoMaterno.MaxLength" type="System.Int32, mscorlib">
     <value>30</value>
@@ -427,10 +427,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtApellidoMaterno.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>11</value>
   </data>
   <data name="txtNombres.Location" type="System.Drawing.Point, System.Drawing">
-    <value>434, 81</value>
+    <value>426, 69</value>
   </data>
   <data name="txtNombres.MaxLength" type="System.Int32, mscorlib">
     <value>30</value>
@@ -451,10 +451,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtNombres.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>10</value>
   </data>
   <data name="txtApellidoPaterno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>434, 16</value>
+    <value>426, 19</value>
   </data>
   <data name="txtApellidoPaterno.MaxLength" type="System.Int32, mscorlib">
     <value>30</value>
@@ -475,10 +475,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtApellidoPaterno.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="txtOcupacion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>800, 49</value>
+    <value>783, 45</value>
   </data>
   <data name="txtOcupacion.MaxLength" type="System.Int32, mscorlib">
     <value>30</value>
@@ -499,10 +499,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtOcupacion.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="dtpFecha.Location" type="System.Drawing.Point, System.Drawing">
-    <value>797, 16</value>
+    <value>783, 19</value>
   </data>
   <data name="dtpFecha.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 20</value>
@@ -520,7 +520,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dtpFecha.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <metadata name="CODIGOTIPOID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -538,7 +538,7 @@
     <value>Tipo ID</value>
   </data>
   <data name="TIPOID.Width" type="System.Int32, mscorlib">
-    <value>80</value>
+    <value>67</value>
   </data>
   <metadata name="NROID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -547,7 +547,7 @@
     <value>Nro ID</value>
   </data>
   <data name="NROID.Width" type="System.Int32, mscorlib">
-    <value>70</value>
+    <value>63</value>
   </data>
   <metadata name="CODIGOVINCULOFAMILIAR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -558,6 +558,9 @@
   <data name="CODIGOVINCULOFAMILIAR.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="CODIGOVINCULOFAMILIAR.Width" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
   <metadata name="VINCULOFAMILIAR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -565,25 +568,25 @@
     <value>Vínculo Familiar</value>
   </data>
   <data name="VINCULOFAMILIAR.Width" type="System.Int32, mscorlib">
-    <value>80</value>
+    <value>107</value>
   </data>
   <metadata name="APEPAT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="APEPAT.HeaderText" xml:space="preserve">
-    <value>ApePat</value>
+    <value>Apellido Paterno</value>
   </data>
   <data name="APEPAT.Width" type="System.Int32, mscorlib">
-    <value>135</value>
+    <value>90</value>
   </data>
   <metadata name="APEMAT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="APEMAT.HeaderText" xml:space="preserve">
-    <value>ApeMat</value>
+    <value>Apellido Materno</value>
   </data>
   <data name="APEMAT.Width" type="System.Int32, mscorlib">
-    <value>135</value>
+    <value>92</value>
   </data>
   <metadata name="NOMBRES.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -591,17 +594,14 @@
   <data name="NOMBRES.HeaderText" xml:space="preserve">
     <value>Nombres</value>
   </data>
-  <data name="NOMBRES.Width" type="System.Int32, mscorlib">
-    <value>135</value>
-  </data>
   <metadata name="FECHANACIMIENTO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="FECHANACIMIENTO.HeaderText" xml:space="preserve">
-    <value>Fec Nac</value>
+    <value>Fecha Nacimiento</value>
   </data>
   <data name="FECHANACIMIENTO.Width" type="System.Int32, mscorlib">
-    <value>80</value>
+    <value>118</value>
   </data>
   <metadata name="OCUPACION.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -609,11 +609,32 @@
   <data name="OCUPACION.HeaderText" xml:space="preserve">
     <value>Ocupación</value>
   </data>
+  <data name="OCUPACION.Width" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <metadata name="imagen.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="imagen.HeaderText" xml:space="preserve">
+    <value>imagen</value>
+  </data>
+  <data name="imagen.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="nombreimagen.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="nombreimagen.HeaderText" xml:space="preserve">
+    <value>nombreimagen</value>
+  </data>
+  <data name="nombreimagen.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Grid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 119</value>
+    <value>11, 124</value>
   </data>
   <data name="Grid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>888, 120</value>
+    <value>872, 180</value>
   </data>
   <data name="Grid.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -628,13 +649,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Grid.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="btnRegistrar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>825, 90</value>
+    <value>808, 94</value>
   </data>
   <data name="btnRegistrar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>75, 20</value>
   </data>
   <data name="btnRegistrar.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -652,7 +673,136 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnRegistrar.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pbconviviente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>709, 69</value>
+  </data>
+  <data name="pbconviviente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 26</value>
+  </data>
+  <data name="pbconviviente.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="pbconviviente.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pbconviviente.Name" xml:space="preserve">
+    <value>pbconviviente</value>
+  </data>
+  <data name="&gt;&gt;pbconviviente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbconviviente.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pbconviviente.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="lklconviviente.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lklconviviente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>700, 98</value>
+  </data>
+  <data name="lklconviviente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 13</value>
+  </data>
+  <data name="lklconviviente.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="lklconviviente.Text" xml:space="preserve">
+    <value>Ver Imagen</value>
+  </data>
+  <data name="lklconviviente.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lklconviviente.Name" xml:space="preserve">
+    <value>lklconviviente</value>
+  </data>
+  <data name="&gt;&gt;lklconviviente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lklconviviente.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lklconviviente.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnconviviente.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="btnconviviente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>669, 94</value>
+  </data>
+  <data name="btnconviviente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 20</value>
+  </data>
+  <data name="btnconviviente.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="btnconviviente.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;btnconviviente.Name" xml:space="preserve">
+    <value>btnconviviente</value>
+  </data>
+  <data name="&gt;&gt;btnconviviente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnconviviente.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnconviviente.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtconviviente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 95</value>
+  </data>
+  <data name="txtconviviente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>463, 20</value>
+  </data>
+  <data name="txtconviviente.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="&gt;&gt;txtconviviente.Name" xml:space="preserve">
+    <value>txtconviviente</value>
+  </data>
+  <data name="&gt;&gt;txtconviviente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtconviviente.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtconviviente.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblconviviente.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblconviviente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 98</value>
+  </data>
+  <data name="lblconviviente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="lblconviviente.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="lblconviviente.Text" xml:space="preserve">
+    <value>Imagen:</value>
+  </data>
+  <data name="&gt;&gt;lblconviviente.Name" xml:space="preserve">
+    <value>lblconviviente</value>
+  </data>
+  <data name="&gt;&gt;lblconviviente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblconviviente.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblconviviente.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -667,7 +817,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>911, 253</value>
+    <value>911, 325</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -733,6 +883,18 @@
     <value>OCUPACION</value>
   </data>
   <data name="&gt;&gt;OCUPACION.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;imagen.Name" xml:space="preserve">
+    <value>imagen</value>
+  </data>
+  <data name="&gt;&gt;imagen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nombreimagen.Name" xml:space="preserve">
+    <value>nombreimagen</value>
+  </data>
+  <data name="&gt;&gt;nombreimagen.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

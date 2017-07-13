@@ -323,6 +323,12 @@ namespace HPReserger
         {
             Cargarentidad(cbobanco);
         }
+       
+        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Clipboard.SetText(dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString());
+            MSG("Celda Copiada");
+        }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {

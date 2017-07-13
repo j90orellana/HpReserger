@@ -183,7 +183,7 @@ namespace HPReserger
                 Grid.Columns[3].DataPropertyName = "CODIGOCC";
 
                 Grid.Columns[4].Width = 120;
-                Grid.Columns[4].Visible = true;
+                Grid.Columns[4].Visible = false;
                 Grid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 Grid.Columns[4].HeaderText = "CENTRO DE COSTO";
                 Grid.Columns[4].DataPropertyName = "CENTROCOSTO";

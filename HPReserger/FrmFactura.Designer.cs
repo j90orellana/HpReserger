@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtnrofactura = new System.Windows.Forms.TextBox();
             this.txtruc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +53,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dtfechaemision = new System.Windows.Forms.DateTimePicker();
             this.gp1 = new System.Windows.Forms.GroupBox();
+            this.DtFechaRecepcion = new System.Windows.Forms.DateTimePicker();
             this.txtmonto = new System.Windows.Forms.TextBox();
             this.pbfactura = new System.Windows.Forms.PictureBox();
             this.DtgConten = new System.Windows.Forms.DataGridView();
@@ -56,6 +62,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.Dtfechaentregado = new System.Windows.Forms.DateTimePicker();
             this.lblporcentaje = new System.Windows.Forms.Label();
@@ -80,8 +87,18 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.DtFechaRecepcion = new System.Windows.Forms.DateTimePicker();
+            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CANTIDAD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECIOUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotale = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTALFAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numfic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.siigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgConten)).BeginInit();
@@ -102,6 +119,7 @@
             // txtruc
             // 
             this.txtruc.Location = new System.Drawing.Point(106, 12);
+            this.txtruc.MaxLength = 11;
             this.txtruc.Name = "txtruc";
             this.txtruc.Size = new System.Drawing.Size(100, 20);
             this.txtruc.TabIndex = 0;
@@ -293,6 +311,14 @@
             this.gp1.TabIndex = 13;
             this.gp1.TabStop = false;
             // 
+            // DtFechaRecepcion
+            // 
+            this.DtFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtFechaRecepcion.Location = new System.Drawing.Point(487, 40);
+            this.DtFechaRecepcion.Name = "DtFechaRecepcion";
+            this.DtFechaRecepcion.Size = new System.Drawing.Size(100, 20);
+            this.DtFechaRecepcion.TabIndex = 19;
+            // 
             // txtmonto
             // 
             this.txtmonto.Location = new System.Drawing.Point(260, 67);
@@ -319,20 +345,38 @@
             // 
             this.DtgConten.AllowUserToAddRows = false;
             this.DtgConten.AllowUserToDeleteRows = false;
-            this.DtgConten.AllowUserToOrderColumns = true;
             this.DtgConten.AllowUserToResizeColumns = false;
             this.DtgConten.AllowUserToResizeRows = false;
             this.DtgConten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DtgConten.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DtgConten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgConten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DtgConten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DESCRIPCION,
+            this.cc,
+            this.MARCA,
+            this.MODELO,
+            this.CANTIDAD,
+            this.PRECIOUNIT,
+            this.subtotale,
+            this.valueigv,
+            this.TOTALFAC,
+            this.numfic,
+            this.numoc,
+            this.siigv});
+            this.DtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgConten.Enabled = false;
             this.DtgConten.Location = new System.Drawing.Point(6, 93);
+            this.DtgConten.MultiSelect = false;
             this.DtgConten.Name = "DtgConten";
             this.DtgConten.RowHeadersVisible = false;
             this.DtgConten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DtgConten.Size = new System.Drawing.Size(699, 196);
             this.DtgConten.TabIndex = 16;
             this.DtgConten.TabStop = false;
+            this.DtgConten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgConten_CellEndEdit);
+            this.DtgConten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DtgConten_DataError);
+            this.DtgConten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DtgConten_EditingControlShowing);
+            this.DtgConten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DtgConten_KeyPress);
             // 
             // numigv
             // 
@@ -353,8 +397,7 @@
             this.cboigv.FormattingEnabled = true;
             this.cboigv.Items.AddRange(new object[] {
             "SI (IGV Incluido)",
-            "SI (IGV No Incluido)",
-            "NO"});
+            "SI (IGV No Incluido)"});
             this.cboigv.Location = new System.Drawing.Point(72, 66);
             this.cboigv.Name = "cboigv";
             this.cboigv.Size = new System.Drawing.Size(123, 21);
@@ -387,6 +430,15 @@
             this.label13.Size = new System.Drawing.Size(53, 13);
             this.label13.TabIndex = 3;
             this.label13.Text = "SubTotal:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(393, 43);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(95, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Fecha Recepción:";
             // 
             // label17
             // 
@@ -534,6 +586,7 @@
             this.Dtguias.AllowUserToResizeRows = false;
             this.Dtguias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dtguias.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Dtguias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtguias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtguias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FIC1,
@@ -633,22 +686,126 @@
             // 
             this.tooltip.IsBalloon = true;
             // 
-            // label9
+            // DESCRIPCION
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(393, 43);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Fecha Recepción:";
+            this.DESCRIPCION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
+            this.DESCRIPCION.HeaderText = "DESCRIPCION";
+            this.DESCRIPCION.Name = "DESCRIPCION";
+            this.DESCRIPCION.ReadOnly = true;
             // 
-            // DtFechaRecepcion
+            // cc
             // 
-            this.DtFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtFechaRecepcion.Location = new System.Drawing.Point(487, 40);
-            this.DtFechaRecepcion.Name = "DtFechaRecepcion";
-            this.DtFechaRecepcion.Size = new System.Drawing.Size(100, 20);
-            this.DtFechaRecepcion.TabIndex = 19;
+            this.cc.DataPropertyName = "cc";
+            this.cc.HeaderText = "cc";
+            this.cc.Name = "cc";
+            this.cc.Visible = false;
+            // 
+            // MARCA
+            // 
+            this.MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MARCA.DataPropertyName = "MARCA";
+            this.MARCA.HeaderText = "MARCA";
+            this.MARCA.Name = "MARCA";
+            this.MARCA.ReadOnly = true;
+            this.MARCA.Width = 70;
+            // 
+            // MODELO
+            // 
+            this.MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MODELO.DataPropertyName = "MODELO";
+            this.MODELO.HeaderText = "MODELO";
+            this.MODELO.Name = "MODELO";
+            this.MODELO.ReadOnly = true;
+            this.MODELO.Width = 78;
+            // 
+            // CANTIDAD
+            // 
+            this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CANTIDAD.DataPropertyName = "CANTIDAD";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CANTIDAD.HeaderText = "CANTIDAD";
+            this.CANTIDAD.Name = "CANTIDAD";
+            this.CANTIDAD.ReadOnly = true;
+            this.CANTIDAD.Width = 87;
+            // 
+            // PRECIOUNIT
+            // 
+            this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PRECIOUNIT.DataPropertyName = "preciounit";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = "0.00";
+            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle7;
+            this.PRECIOUNIT.HeaderText = "PRECIO UNIT.";
+            this.PRECIOUNIT.Name = "PRECIOUNIT";
+            this.PRECIOUNIT.Width = 104;
+            // 
+            // subtotale
+            // 
+            this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.subtotale.DataPropertyName = "subtotal";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n2";
+            dataGridViewCellStyle8.NullValue = "0.00";
+            this.subtotale.DefaultCellStyle = dataGridViewCellStyle8;
+            this.subtotale.HeaderText = "SUBTOTAL";
+            this.subtotale.Name = "subtotale";
+            this.subtotale.ReadOnly = true;
+            this.subtotale.Width = 89;
+            // 
+            // valueigv
+            // 
+            this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valueigv.DataPropertyName = "valueigv";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "n2";
+            dataGridViewCellStyle9.NullValue = "0.00";
+            this.valueigv.DefaultCellStyle = dataGridViewCellStyle9;
+            this.valueigv.HeaderText = "IGV";
+            this.valueigv.Name = "valueigv";
+            this.valueigv.ReadOnly = true;
+            this.valueigv.Width = 50;
+            // 
+            // TOTALFAC
+            // 
+            this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TOTALFAC.DataPropertyName = "total";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0.00";
+            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle10;
+            this.TOTALFAC.HeaderText = "TOTAL";
+            this.TOTALFAC.Name = "TOTALFAC";
+            this.TOTALFAC.ReadOnly = true;
+            this.TOTALFAC.Width = 67;
+            // 
+            // numfic
+            // 
+            this.numfic.DataPropertyName = "fic";
+            this.numfic.HeaderText = "fic";
+            this.numfic.Name = "numfic";
+            this.numfic.ReadOnly = true;
+            this.numfic.Visible = false;
+            // 
+            // numoc
+            // 
+            this.numoc.DataPropertyName = "oc";
+            this.numoc.HeaderText = "oc";
+            this.numoc.Name = "numoc";
+            this.numoc.ReadOnly = true;
+            this.numoc.Visible = false;
+            // 
+            // siigv
+            // 
+            this.siigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.siigv.DataPropertyName = "igv";
+            this.siigv.HeaderText = "siigv";
+            this.siigv.Name = "siigv";
+            this.siigv.ReadOnly = true;
+            this.siigv.Visible = false;
+            this.siigv.Width = 53;
             // 
             // FrmFactura
             // 
@@ -747,5 +904,17 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
         private System.Windows.Forms.DateTimePicker DtFechaRecepcion;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MARCA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MODELO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CANTIDAD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRECIOUNIT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotale;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valueigv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TOTALFAC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numfic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn siigv;
     }
 }

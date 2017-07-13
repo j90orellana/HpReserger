@@ -488,7 +488,7 @@ namespace HPReserger
 
         private void txtRUC_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtRUC, 15);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtRUC, 11);
         }
 
         private void txtImporte_KeyDown(object sender, KeyEventArgs e)
@@ -546,7 +546,6 @@ namespace HPReserger
         private void dataGridview_KeyPressCajita(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txt.Text);
-
         }
         public void MSG(string cadena)
         {
@@ -567,7 +566,7 @@ namespace HPReserger
                     valor = Convert.ToDecimal(dtgpedido["PrecioUnit", i].Value.ToString());
                     total = valor * Convert.ToDecimal(dtgpedido["Cant", i].Value.ToString());
                     dtgpedido["PrecioUnit", i].Value = decimal.Round(valor, 2);
-                    dtgpedido["Total", 0].Value = decimal.Round(total, 2);
+                    dtgpedido["Total", i].Value = decimal.Round(total, 2);
                     sumatoria += total;
                 }
                 txtImporte.Text = string.Format("{0:N2}", sumatoria);

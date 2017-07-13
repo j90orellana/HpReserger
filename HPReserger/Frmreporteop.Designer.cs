@@ -51,6 +51,12 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.dtgconten1 = new System.Windows.Forms.DataGridView();
             this.lblmsg = new System.Windows.Forms.Label();
+            this.numeropedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
@@ -281,6 +287,13 @@
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numeropedido,
+            this.fechaX,
+            this.Nombre,
+            this.Apellidos,
+            this.tipo,
+            this.Estado});
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Location = new System.Drawing.Point(12, 143);
             this.dtgconten.MultiSelect = false;
@@ -330,6 +343,53 @@
             this.lblmsg.Size = new System.Drawing.Size(81, 13);
             this.lblmsg.TabIndex = 11;
             this.lblmsg.Text = "Total Registros:";
+            // 
+            // numeropedido
+            // 
+            this.numeropedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.numeropedido.DataPropertyName = "NumeroPedido";
+            this.numeropedido.HeaderText = "NumeroPedido";
+            this.numeropedido.Name = "numeropedido";
+            this.numeropedido.Width = 102;
+            // 
+            // fechaX
+            // 
+            this.fechaX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fechaX.DataPropertyName = "Fecha";
+            this.fechaX.HeaderText = "Fecha";
+            this.fechaX.Name = "fechaX";
+            this.fechaX.Width = 62;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Apellidos
+            // 
+            this.Apellidos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Apellidos.DataPropertyName = "Apellidos";
+            this.Apellidos.HeaderText = "Apellidos";
+            this.Apellidos.Name = "Apellidos";
+            this.Apellidos.Width = 74;
+            // 
+            // tipo
+            // 
+            this.tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tipo.DataPropertyName = "Tipo";
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.Name = "tipo";
+            this.tipo.Width = 53;
+            // 
+            // Estado
+            // 
+            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Estado.DataPropertyName = "Estado";
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.Width = 65;
             // 
             // Frmreporteop
             // 
@@ -381,5 +441,11 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.DataGridView dtgconten1;
         private System.Windows.Forms.Label lblmsg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeropedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
     }
 }

@@ -485,7 +485,7 @@ namespace HPReserger
 
         private void txtRUC_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtRUC, 15);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtRUC, 11);
         }
 
         private void txtValor_TextChanged(object sender, EventArgs e)

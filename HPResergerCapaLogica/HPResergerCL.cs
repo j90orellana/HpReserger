@@ -83,13 +83,13 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.EliminarGerencia(codigo);
         }
-        public void InsertarCentroCostros(string valor)
+        public void InsertarCentroCostros(string codigo, string valor, string tiene, string cuenta)
         {
-            cdOrdenPedido.InsertarCentroCosto(valor);
+            cdOrdenPedido.InsertarCentroCosto(codigo, valor, tiene, cuenta);
         }
-        public void ActualizarCentroCostos(string valor, int codigo)
+        public void ActualizarCentroCostos(string valor, string codigos, int codigo, string tiene, string cuenta)
         {
-            cdOrdenPedido.ActualizarCentroCosto(valor, codigo);
+            cdOrdenPedido.ActualizarCentroCosto(valor, codigos, codigo, tiene, cuenta);
         }
         public DataTable MarcaArticulo(int IdArticulo)
         {
@@ -136,9 +136,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerificarArticuloServicio(articulo, marca);
         }
-        public void InsertarArticulo(string descripcion, int stock, int tipo, string observa)
+        public void InsertarArticulo(string descripcion, int stock, int tipo, string observa, int igv, int centro, string cuenta, string cc)
         {
-            cdOrdenPedido.InsertarArticulo(descripcion, stock, tipo, observa);
+            cdOrdenPedido.InsertarArticulo(descripcion, stock, tipo, observa, igv, centro, cuenta, cc);
         }
         public void InsertarArticuloMarca(int marca, int articulo)
         {
@@ -160,9 +160,9 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.ActualizarMarcaModelo(marca, modelo, modmar, modmode);
         }
-        public void ActualizarArticuloMarca(int arti, string descr, int stock, int tipo, string obser, int marca, int modmarca)
+        public void ActualizarArticuloMarca(int arti, string descr, int stock, int tipo, string obser, int marca, int modmarca, int igv, int centro, string cuenta, string cc)
         {
-            cdOrdenPedido.ActualizarArticuloMarca(arti, descr, stock, tipo, obser, marca, modmarca);
+            cdOrdenPedido.ActualizarArticuloMarca(arti, descr, stock, tipo, obser, marca, modmarca, igv, centro, cuenta, cc);
         }
         public DataTable VerificarArticulo(string articulo)
         {
@@ -426,9 +426,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.PerfilOrdenPedido(IdUsuario);
         }
-        public void OrdenPedidoCabeceraInsertar(out int Numero, int Usuario, int Tipo)
+        public void OrdenPedidoCabeceraInsertar(out int Numero, int Usuario, int Tipo, string proyecto, string etapa)
         {
-            cdOrdenPedido.OrdenPedidoCabeceraInsertar(out Numero, Usuario, Tipo);
+            cdOrdenPedido.OrdenPedidoCabeceraInsertar(out Numero, Usuario, Tipo, proyecto, etapa);
         }
 
         public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones)
@@ -687,9 +687,9 @@ namespace HPResergerCapaLogica
         //    return cdOrdenPedido.ListarDistrito(Departamento, Provincia);
         //}
 
-        public void EmpleadoInsertar(int Tipo_ID_Emp, string Nro_ID_Emp, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp, int Sexo, DateTime Fec_Nacimiento, int Lugar_Nacimiento, int Estado_Civil, int Hijos, string Direccion, int Distrito, int Provincia, int Departamento, string Telf_Fijo, string Telf_Celular, int Profesion, int Grado_Instruccion, byte[] AntecedentesPoliciales, string NombreFotoAntecedentesPoliciales, byte[] AntecedentesPenales, string NombreFotoAntecedentesPenales, byte[] ReciboServicios, string NombreFotoReciboServicios, int Usuario)
+        public void EmpleadoInsertar(int pais, string lugar, int Tipo_ID_Emp, string Nro_ID_Emp, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp, int Sexo, DateTime Fec_Nacimiento, int Lugar_Nacimiento, int Estado_Civil, int Hijos, string Direccion, int Distrito, int Provincia, int Departamento, string Telf_Fijo, string Telf_Celular, int Profesion, int Grado_Instruccion, byte[] AntecedentesPoliciales, string NombreFotoAntecedentesPoliciales, byte[] AntecedentesPenales, string NombreFotoAntecedentesPenales, byte[] ReciboServicios, string NombreFotoReciboServicios, int Usuario, Byte[] foto, string nombrefoto)
         {
-            cdOrdenPedido.EmpleadoInsertar(Tipo_ID_Emp, Nro_ID_Emp, Apepat_Emp, Apemat_Emp, Nombres_Emp, Sexo, Fec_Nacimiento, Lugar_Nacimiento, Estado_Civil, Hijos, Direccion, Distrito, Provincia, Departamento, Telf_Fijo, Telf_Celular, Profesion, Grado_Instruccion, AntecedentesPoliciales, NombreFotoAntecedentesPoliciales, AntecedentesPenales, NombreFotoAntecedentesPenales, ReciboServicios, NombreFotoReciboServicios, Usuario);
+            cdOrdenPedido.EmpleadoInsertar(pais, lugar, Tipo_ID_Emp, Nro_ID_Emp, Apepat_Emp, Apemat_Emp, Nombres_Emp, Sexo, Fec_Nacimiento, Lugar_Nacimiento, Estado_Civil, Hijos, Direccion, Distrito, Provincia, Departamento, Telf_Fijo, Telf_Celular, Profesion, Grado_Instruccion, AntecedentesPoliciales, NombreFotoAntecedentesPoliciales, AntecedentesPenales, NombreFotoAntecedentesPenales, ReciboServicios, NombreFotoReciboServicios, Usuario, foto, nombrefoto);
         }
 
         public DataRow DatosPostulante(int Tipo, string Numero)
@@ -722,14 +722,14 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarJefeInmediato(tipo, documento, opcion);
         }
 
-        public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int tipocontra, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
+        public void EmpleadoContrato(int numero, int Tipo_ID_Emp, string Nro_ID_Emp, int tipocontra, int adendas, int mercadoobra, int jefe, int Tipo_Contrato, int Cargo, int Gerencia, int Area, int tipojefe, string Jefe_Inmediato, int Empresa, int Proyecto, int Sede, DateTime Fec_Inicio, int Periodo_Laboral, DateTime Fec_Fin, Decimal Sueldo, string Bono, Decimal Bono_Importe, int Bono_Periodicidad, byte[] Contrato_Img, string Contrato, byte[] AnxFunc_Img, string AnxFunc, byte[] SolPrac_Img, string SolPrac, byte[] Otros_Img, string Otros, int Usuario, int Opcion)
         {
-            cdOrdenPedido.EmpleadoContrato(numero, Tipo_ID_Emp, Nro_ID_Emp, tipocontra, jefe, Tipo_Contrato, Cargo, Gerencia, Area, tipojefe, Jefe_Inmediato, Empresa, Proyecto, Sede, Fec_Inicio, Periodo_Laboral, Fec_Fin, Sueldo, Bono, Bono_Importe, Bono_Periodicidad, Contrato_Img, Contrato, AnxFunc_Img, AnxFunc, SolPrac_Img, SolPrac, Otros_Img, Otros, Usuario, Opcion);
+            cdOrdenPedido.EmpleadoContrato(numero, Tipo_ID_Emp, Nro_ID_Emp, tipocontra, adendas, mercadoobra, jefe, Tipo_Contrato, Cargo, Gerencia, Area, tipojefe, Jefe_Inmediato, Empresa, Proyecto, Sede, Fec_Inicio, Periodo_Laboral, Fec_Fin, Sueldo, Bono, Bono_Importe, Bono_Periodicidad, Contrato_Img, Contrato, AnxFunc_Img, AnxFunc, SolPrac_Img, SolPrac, Otros_Img, Otros, Usuario, Opcion);
         }
 
-        public void EmpleadoFamilia(int Tipo_ID_Emp, string Nro_ID_Emp, int Vinculo_Familiar, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old, int Tipo_ID_Fam_New, string Nro_ID_Fam_New, string Apepat_Fam, string Apemat_Fam, string Nombres_Fam, DateTime Fec_Nacimiento_Fam, string Ocupacion, int Usuario, int Opcion)
+        public void EmpleadoFamilia(int Tipo_ID_Emp, string Nro_ID_Emp, int Vinculo_Familiar, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old, int Tipo_ID_Fam_New, string Nro_ID_Fam_New, string Apepat_Fam, string Apemat_Fam, string Nombres_Fam, DateTime Fec_Nacimiento_Fam, string Ocupacion, int Usuario, int Opcion, byte[] foto, string nombrefoto)
         {
-            cdOrdenPedido.EmpleadoFamilia(Tipo_ID_Emp, Nro_ID_Emp, Vinculo_Familiar, Tipo_ID_Fam_Old, Nro_ID_Fam_Old, Tipo_ID_Fam_New, Nro_ID_Fam_New, Apepat_Fam, Apemat_Fam, Nombres_Fam, Fec_Nacimiento_Fam, Ocupacion, Usuario, Opcion);
+            cdOrdenPedido.EmpleadoFamilia(Tipo_ID_Emp, Nro_ID_Emp, Vinculo_Familiar, Tipo_ID_Fam_Old, Nro_ID_Fam_Old, Tipo_ID_Fam_New, Nro_ID_Fam_New, Apepat_Fam, Apemat_Fam, Nombres_Fam, Fec_Nacimiento_Fam, Ocupacion, Usuario, Opcion, foto, nombrefoto);
         }
 
         public DataTable ListarEmpleadoFamilia(int CodugoDocumento, string NumeroDocumento)
@@ -792,9 +792,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarEmpleado(Opcion, Apepat_Emp, Apemat_Emp, Nombres_Emp);
         }
 
-        public void EmpleadoModificar(int Tipo_ID_Emp_New, string Nro_ID_Emp_New, int Tipo_ID_Emp_Old, string Nro_ID_Emp_Old, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp, int Sexo, DateTime Fec_Nacimiento, int Lugar_Nacimiento, int Estado_Civil, int Hijos, string Direccion, int Distrito, int Provincia, int Departamento, string Telf_Fijo, string Telf_Celular, int Profesion, int Grado_Instruccion, byte[] AntecedentesPoliciales, string NombreFotoAntecedentesPoliciales, byte[] AntecedentesPenales, string NombreFotoAntecedentesPenales, byte[] ReciboServicios, string NombreFotoReciboServicios)
+        public void EmpleadoModificar(int pais, string lugar, int Tipo_ID_Emp_New, string Nro_ID_Emp_New, int Tipo_ID_Emp_Old, string Nro_ID_Emp_Old, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp, int Sexo, DateTime Fec_Nacimiento, int Lugar_Nacimiento, int Estado_Civil, int Hijos, string Direccion, int Distrito, int Provincia, int Departamento, string Telf_Fijo, string Telf_Celular, int Profesion, int Grado_Instruccion, byte[] AntecedentesPoliciales, string NombreFotoAntecedentesPoliciales, byte[] AntecedentesPenales, string NombreFotoAntecedentesPenales, byte[] ReciboServicios, string NombreFotoReciboServicios, byte[] foto, string nombrefoto)
         {
-            cdOrdenPedido.EmpleadoModificar(Tipo_ID_Emp_New, Nro_ID_Emp_New, Tipo_ID_Emp_Old, Nro_ID_Emp_Old, Apepat_Emp, Apemat_Emp, Nombres_Emp, Sexo, Fec_Nacimiento, Lugar_Nacimiento, Estado_Civil, Hijos, Direccion, Distrito, Provincia, Departamento, Telf_Fijo, Telf_Celular, Profesion, Grado_Instruccion, AntecedentesPoliciales, NombreFotoAntecedentesPoliciales, AntecedentesPenales, NombreFotoAntecedentesPenales, ReciboServicios, NombreFotoReciboServicios);
+            cdOrdenPedido.EmpleadoModificar(pais, lugar, Tipo_ID_Emp_New, Nro_ID_Emp_New, Tipo_ID_Emp_Old, Nro_ID_Emp_Old, Apepat_Emp, Apemat_Emp, Nombres_Emp, Sexo, Fec_Nacimiento, Lugar_Nacimiento, Estado_Civil, Hijos, Direccion, Distrito, Provincia, Departamento, Telf_Fijo, Telf_Celular, Profesion, Grado_Instruccion, AntecedentesPoliciales, NombreFotoAntecedentesPoliciales, AntecedentesPenales, NombreFotoAntecedentesPenales, ReciboServicios, NombreFotoReciboServicios, foto, nombrefoto);
         }
 
         public void ActualizarLogin(string sStoredProcedureName, string Login_User, int Opcion)
@@ -1020,6 +1020,105 @@ namespace HPResergerCapaLogica
         public DataRow LocacionServicios(string contrato, string tipoid, string numero, int opcion, string ocupacion, string detalle)
         {
             return cdOrdenPedido.LocacionServicios(contrato, tipoid, numero, opcion, ocupacion, detalle);
+        }
+        public DataTable InstitucionEducativa(string ruc, string razon, string direccion, int opcion, int busca)
+        {
+            return cdOrdenPedido.InstitucionEducativa(ruc, razon, direccion, opcion, busca);
+        }
+        public DataTable PracticasPreProfesionales(string contrato, string tipoid, string numero, int opcion, string ruc, string representante, string tipoidrepre, string docrepre, string situacion,
+            string especialidad, string ocupacion, string dias, string horario)
+        {
+            return cdOrdenPedido.PracticasPreProfesionales(contrato, tipoid, numero, opcion, ruc, representante, tipoidrepre, docrepre, situacion, especialidad, ocupacion, dias, horario);
+        }
+        public DataTable ListarPaises()
+        {
+            return cdOrdenPedido.ListarPaises();
+        }
+        public DataTable ListarCentrosdeCosto(int codigo, int centro, string busca)
+        {
+            return cdOrdenPedido.ListarCentrosdeCosto(codigo, centro, busca);
+        }
+        public DataTable ListarCuentasArticulos()
+        {
+            return cdOrdenPedido.ListarCuentasArticulos();
+        }
+        public DataTable ListarCentroCostos()
+        {
+            return cdOrdenPedido.ListarCentroCostos();
+        }
+        public DataTable ListarProyectosUsuario(int usuario)
+        {
+            return cdOrdenPedido.ListarProyectosUsuario(usuario);
+        }
+        public DataTable ListarEtapasProyecto(string proyecto)
+        {
+            return cdOrdenPedido.ListarEtapasProyecto(proyecto);
+        }
+        public DataRow ListarEmpresasdelUsuario(int usuario)
+        {
+            return cdOrdenPedido.ListarEmpresasdelUsuario(usuario);
+        }
+        public DataTable ListarProyectosEmpresa(string empresa)
+        {
+            return cdOrdenPedido.ListarProyectosEmpresa(empresa);
+        }
+        public DataTable Proyectos(string proyectos, int empresa, int idproyecto, int opcion)
+        {
+            return cdOrdenPedido.Proyectos(proyectos, empresa, idproyecto, opcion);
+        }
+        public DataRow EmpleadoConviviente(string numero, int tipo, byte[] imagen, string nombre, int opcion)
+        {
+            return cdOrdenPedido.EmpleadoConviviente(numero, tipo, imagen, nombre, opcion);
+        }
+        public DataTable Proyectodatos(int proyecto, string @ubicacion, int @moneda, string @areabruta, string @precioxmetro, string @preciototal, string @autoavaluo, string @revaluacuion, string @vigilancia, string @marketing, string @ventas, string @administracion, string @gerenciamiento, string @cdap, string @finder, string @costosuper, string @comision, string @comisionext, string @ceremonia, string @regaloxdpto, string @manteminion, string @atencion, string @costoprevio, string @gestioncomuni, string @porcentajecredito, string @costofianza, string @imprevisto)
+        {
+            return cdOrdenPedido.Proyectodatos(proyecto, @ubicacion, @moneda, @areabruta, @precioxmetro, @preciototal, @autoavaluo, @revaluacuion, @vigilancia, @marketing, @ventas, @administracion, @gerenciamiento, @cdap, @finder, @costosuper, @comision, @comisionext, @ceremonia, @regaloxdpto, @manteminion, @atencion, @costoprevio, @gestioncomuni, @porcentajecredito, @costofianza, @imprevisto);
+        }
+        public DataRow ProyectodatosListar(int proyecto)
+        {
+            return cdOrdenPedido.ProyectodatosListar(proyecto);
+        }
+        public DataTable ListarPresupuestosCabecera()
+        {
+            return cdOrdenPedido.ListarPresupuestosCabecera();
+        }
+        public DataTable PresupuestoCabecera(int opcion, int @numero, string @presupuesto, int @ejercicio, int @empresa, int @tipo, int @moneda, decimal @importe, int @usuario)
+        {
+            return cdOrdenPedido.PresupuestoCabecera(opcion, @numero, @presupuesto, @ejercicio, @empresa, @tipo, @moneda, @importe, @usuario);
+        }
+        public DataTable ListarPresupuestoCentrodeCosto(int cabecera, int proyecto)
+        {
+            return cdOrdenPedido.ListarPresupuestoCentrodeCosto(cabecera, proyecto);
+        }
+        public DataTable ProyectoCentrodecostodetalle(int @opcion, int @iddep, int @presupuesto, int @proyecto, int etapa, decimal @importe, string @ceco, decimal @importececo, int @usuario)
+        {
+            return cdOrdenPedido.ProyectoCentrodecostodetalle(@opcion, @iddep, @presupuesto, @proyecto, etapa, @importe, @ceco, @importececo, @usuario);
+        }
+        public DataTable InsertarAsientoFactura(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc)
+        {
+            return cdOrdenPedido.InsertarAsientoFactura(num, opcion, oc, monto, igv, total, cc);
+        }
+        public DataRow Siguiente(string tabla, string campo)
+        {
+            return cdOrdenPedido.Siguiente(tabla, campo);
+        }
+        public DataTable ListarPresupuestoCentrodeCostoReporte(int proyecto)
+        {
+            return cdOrdenPedido.ListarPresupuestoCentrodeCostoReporte(proyecto);
+        }
+        public DataTable ListarPresupuestoCentrodeCostoReporteCuentas(int proyecto, string cuentas)
+        {
+            return cdOrdenPedido.ListarPresupuestoCentrodeCostoReporteCuentas(proyecto, cuentas);
+        }
+        public DataTable ListarEtapasdelProyecto(int opcion, int proyecto, int etapa, string descripcion, int estado, DateTime fechainicio, DateTime fechafin, int meses, string observa, int usuario)
+        {
+            return cdOrdenPedido.ListarEtapasdelProyecto(opcion, proyecto, etapa, descripcion, estado, fechainicio, fechafin, meses, observa, usuario);
+        }
+        public DataRow BuscarParametros(string valor, DateTime fecha)
+        {
+            return cdOrdenPedido.BuscarParametros(valor, fecha);
+
+
         }
     }
 }

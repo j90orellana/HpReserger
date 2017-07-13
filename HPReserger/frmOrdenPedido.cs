@@ -32,6 +32,9 @@ namespace HPReserger
             cboTipoPedido.ValueMember = "Codigo_Tipo_Compra";
             cboTipoPedido.DataSource = clOrdenPedido.ListarTipoPedido();
             cboTipoPedido.SelectedIndex = 0;
+            cboproyecto.DataSource = clOrdenPedido.ListarProyectosUsuario(frmLogin.CodigoUsuario);
+            cboproyecto.DisplayMember = "proyecto";
+            cboproyecto.ValueMember = "id_proyecto";
         }
 
         private void gridItem_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -74,10 +77,23 @@ namespace HPReserger
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (cboproyecto.SelectedIndex < 0)
+            {
+                MSG("Seleccioné Proyecto");
+                cboproyecto.Focus();
+                return;
+            }
+            if (cboetapa.SelectedIndex < 0)
+            {
+                MSG("Seleccioné Etapa");
+                cboetapa.Focus();
+                return;
+            }
+
             if (Validar(gridItem, cboTipoPedido.SelectedIndex))
             {
                 int IdNumero = 0;
-                clOrdenPedido.OrdenPedidoCabeceraInsertar(out IdNumero, frmLogin.CodigoUsuario, cboTipoPedido.SelectedIndex);
+                clOrdenPedido.OrdenPedidoCabeceraInsertar(out IdNumero, frmLogin.CodigoUsuario, cboTipoPedido.SelectedIndex,cboproyecto.SelectedValue.ToString(),cboetapa.SelectedValue.ToString());
 
                 if (cboTipoPedido.SelectedIndex == 0)
                 {
@@ -326,19 +342,19 @@ namespace HPReserger
                         gridItem.Columns.Add("Cantidad", "");
                     }
 
-                //    gridItem.Columns[0].Width = 180;
+                    //    gridItem.Columns[0].Width = 180;
                     gridItem.Columns[0].Visible = true;
                     gridItem.Columns[0].HeaderText = "Item";
 
-                 //   gridItem.Columns[1].Width = 180;
+                    //   gridItem.Columns[1].Width = 180;
                     gridItem.Columns[1].Visible = true;
                     gridItem.Columns[1].HeaderText = "Marca";
 
-                 //   gridItem.Columns[2].Width = 180;
+                    //   gridItem.Columns[2].Width = 180;
                     gridItem.Columns[2].Visible = true;
                     gridItem.Columns[2].HeaderText = "Modelo";
 
-                  //  gridItem.Columns[3].Width = 100;
+                    //  gridItem.Columns[3].Width = 100;
                     gridItem.Columns[3].Visible = true;
                     gridItem.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     gridItem.Columns[3].HeaderText = "Cantidad";
@@ -354,17 +370,17 @@ namespace HPReserger
                         gridItem.Columns.Add("Cantidad", "");
                     }
 
-               //     gridItem.Columns[0].Width = 340;
+                    //     gridItem.Columns[0].Width = 340;
                     gridItem.Columns[0].Visible = true;
                     gridItem.Columns[0].HeaderText = "Item";
 
-                 //   gridItem.Columns[1].Width = 0;
+                    //   gridItem.Columns[1].Width = 0;
                     gridItem.Columns[1].Visible = false;
 
-                 //   gridItem.Columns[2].Width = 0;
+                    //   gridItem.Columns[2].Width = 0;
                     gridItem.Columns[2].Visible = false;
 
-              //      gridItem.Columns[3].Width = 340;
+                    //      gridItem.Columns[3].Width = 340;
                     gridItem.Columns[3].Visible = true;
                     gridItem.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     gridItem.Columns[3].HeaderText = "Observaciones";
@@ -372,6 +388,26 @@ namespace HPReserger
                 }
 
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboproyecto.SelectedIndex >= 0)
+            {
+                DataRowView itemsito = (DataRowView)cboproyecto.Items[cboproyecto.SelectedIndex];      
+                cboetapa.DataSource = clOrdenPedido.ListarEtapasProyecto((itemsito["id_proyecto"].ToString()));
+                cboetapa.ValueMember = "id_etapa";
+                cboetapa.DisplayMember = "descripcion";
+            }
+        }
+        public void MSG(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
     }
 }

@@ -388,30 +388,35 @@ namespace HPReserger
             grid3.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             grid3.Columns[1].HeaderText = "TIPO ID";
             grid3.Columns[1].DataPropertyName = "TIPOID";
+            grid3.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             grid3.Columns[2].Width = 80;
             grid3.Columns[2].Visible = true;
             grid3.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid3.Columns[2].HeaderText = "Nº ID";
             grid3.Columns[2].DataPropertyName = "NID";
+            grid3.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             grid3.Columns[3].Width = 170;
             grid3.Columns[3].Visible = true;
             grid3.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             grid3.Columns[3].HeaderText = "APELLIDO PATERNO";
             grid3.Columns[3].DataPropertyName = "APELLIDOPATERNO";
+            grid3.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             grid3.Columns[4].Width = 170;
             grid3.Columns[4].Visible = true;
             grid3.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             grid3.Columns[4].HeaderText = "APELLIDO MATERNO";
             grid3.Columns[4].DataPropertyName = "APELLIDOMATERNO";
+            grid3.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             grid3.Columns[5].Width = 170;
             grid3.Columns[5].Visible = true;
             grid3.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             grid3.Columns[5].HeaderText = "NOMBRES";
             grid3.Columns[5].DataPropertyName = "NOMBRES";
+            grid3.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             grid3.Columns[6].Width = 203;
             grid3.Columns[6].Visible = true;
@@ -433,7 +438,7 @@ namespace HPReserger
 
         private void txtDocumento_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtDocumento, 15);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtDocumento, 10);
         }
 
         private void pbFoto_DoubleClick(object sender, EventArgs e)
