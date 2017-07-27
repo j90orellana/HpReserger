@@ -270,9 +270,13 @@
             // Grid1
             // 
             this.Grid1.AllowUserToAddRows = false;
+            this.Grid1.AllowUserToDeleteRows = false;
+            this.Grid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Grid1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -289,6 +293,7 @@
             this.Grid1.Location = new System.Drawing.Point(468, 12);
             this.Grid1.Name = "Grid1";
             this.Grid1.ReadOnly = true;
+            this.Grid1.RowHeadersVisible = false;
             this.Grid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid1.Size = new System.Drawing.Size(814, 235);
@@ -304,7 +309,6 @@
             this.NOS.HeaderText = "Nº Orden Servicio";
             this.NOS.Name = "NOS";
             this.NOS.ReadOnly = true;
-            this.NOS.Width = 140;
             // 
             // CODIGOAREAS
             // 
@@ -313,7 +317,6 @@
             this.CODIGOAREAS.Name = "CODIGOAREAS";
             this.CODIGOAREAS.ReadOnly = true;
             this.CODIGOAREAS.Visible = false;
-            this.CODIGOAREAS.Width = 5;
             // 
             // Areas
             // 
@@ -323,7 +326,6 @@
             this.Areas.HeaderText = "Area Solicitante";
             this.Areas.Name = "Areas";
             this.Areas.ReadOnly = true;
-            this.Areas.Width = 200;
             // 
             // CODIGOARTICULO
             // 
@@ -341,7 +343,6 @@
             this.Servicios.HeaderText = "Servicios";
             this.Servicios.Name = "Servicios";
             this.Servicios.ReadOnly = true;
-            this.Servicios.Width = 200;
             // 
             // Observaciones
             // 
@@ -351,21 +352,24 @@
             this.Observaciones.HeaderText = "Observaciones";
             this.Observaciones.Name = "Observaciones";
             this.Observaciones.ReadOnly = true;
-            this.Observaciones.Width = 200;
             // 
             // Grid2
             // 
             this.Grid2.AllowUserToAddRows = false;
             this.Grid2.AllowUserToDeleteRows = false;
+            this.Grid2.AllowUserToResizeColumns = false;
+            this.Grid2.AllowUserToResizeRows = false;
+            this.Grid2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid2.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Grid2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Grid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.Grid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SOLICITUD,
             this.dataGridViewTextBoxColumn2,
@@ -382,6 +386,7 @@
             this.Grid2.Location = new System.Drawing.Point(12, 253);
             this.Grid2.Name = "Grid2";
             this.Grid2.ReadOnly = true;
+            this.Grid2.RowHeadersVisible = false;
             this.Grid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid2.Size = new System.Drawing.Size(966, 211);
@@ -409,7 +414,6 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn2.Width = 70;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -419,7 +423,6 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Nº OS";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 70;
             // 
             // CODIGOCARGO
             // 
@@ -433,7 +436,6 @@
             this.CODIGOCARGO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.CODIGOCARGO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.CODIGOCARGO.Visible = false;
-            this.CODIGOCARGO.Width = 180;
             // 
             // Cargo
             // 
@@ -445,7 +447,6 @@
             this.Cargo.ReadOnly = true;
             this.Cargo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Cargo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Cargo.Width = 200;
             // 
             // CODIGOTIPOCONTRATACION
             // 
@@ -458,7 +459,6 @@
             this.CODIGOTIPOCONTRATACION.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.CODIGOTIPOCONTRATACION.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.CODIGOTIPOCONTRATACION.Visible = false;
-            this.CODIGOTIPOCONTRATACION.Width = 300;
             // 
             // TIPOCONTRATACION
             // 
@@ -470,7 +470,6 @@
             this.TIPOCONTRATACION.HeaderText = "Tipo de Contratación";
             this.TIPOCONTRATACION.Name = "TIPOCONTRATACION";
             this.TIPOCONTRATACION.ReadOnly = true;
-            this.TIPOCONTRATACION.Width = 200;
             // 
             // terna
             // 
@@ -480,7 +479,6 @@
             this.terna.HeaderText = "Terna";
             this.terna.Name = "terna";
             this.terna.ReadOnly = true;
-            this.terna.Width = 50;
             // 
             // CODIGOAREA
             // 
@@ -498,7 +496,6 @@
             this.AREA.HeaderText = "Area Solicitante";
             this.AREA.Name = "AREA";
             this.AREA.ReadOnly = true;
-            this.AREA.Width = 200;
             // 
             // Adjunto
             // 

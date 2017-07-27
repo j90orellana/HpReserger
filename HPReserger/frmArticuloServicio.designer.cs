@@ -37,6 +37,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Txtbusca = new System.Windows.Forms.TextBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.ida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centrodecosto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.cbotipo = new System.Windows.Forms.ComboBox();
@@ -64,17 +75,6 @@
             this.gp1 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cbocentrocosto = new System.Windows.Forms.ComboBox();
-            this.ida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.centrodecosto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.veri)).BeginInit();
             this.gp1.SuspendLayout();
@@ -185,6 +185,102 @@
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
+            // ida
+            // 
+            this.ida.DataPropertyName = "ida";
+            this.ida.HeaderText = "ida";
+            this.ida.Name = "ida";
+            this.ida.ReadOnly = true;
+            this.ida.Visible = false;
+            this.ida.Width = 27;
+            // 
+            // GV
+            // 
+            this.GV.DataPropertyName = "IGV";
+            this.GV.HeaderText = "GV";
+            this.GV.Name = "GV";
+            this.GV.ReadOnly = true;
+            this.GV.Visible = false;
+            this.GV.Width = 28;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.DataPropertyName = "descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // idm
+            // 
+            this.idm.DataPropertyName = "idm";
+            this.idm.HeaderText = "idm";
+            this.idm.Name = "idm";
+            this.idm.ReadOnly = true;
+            this.idm.Visible = false;
+            this.idm.Width = 48;
+            // 
+            // Marca
+            // 
+            this.Marca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Marca.DataPropertyName = "marca";
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            this.Marca.ReadOnly = true;
+            this.Marca.Width = 62;
+            // 
+            // idc
+            // 
+            this.idc.DataPropertyName = "idc";
+            this.idc.HeaderText = "idc";
+            this.idc.Name = "idc";
+            this.idc.ReadOnly = true;
+            this.idc.Visible = false;
+            this.idc.Width = 46;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            this.Tipo.Width = 53;
+            // 
+            // Obs
+            // 
+            this.Obs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Obs.DataPropertyName = "ob";
+            this.Obs.HeaderText = "obs.";
+            this.Obs.Name = "Obs";
+            this.Obs.ReadOnly = true;
+            this.Obs.Width = 52;
+            // 
+            // cc
+            // 
+            this.cc.DataPropertyName = "cc";
+            this.cc.HeaderText = "cc";
+            this.cc.Name = "cc";
+            this.cc.ReadOnly = true;
+            this.cc.Visible = false;
+            this.cc.Width = 44;
+            // 
+            // cuenta
+            // 
+            this.cuenta.DataPropertyName = "cuenta";
+            this.cuenta.HeaderText = "cuenta";
+            this.cuenta.Name = "cuenta";
+            this.cuenta.ReadOnly = true;
+            this.cuenta.Visible = false;
+            this.cuenta.Width = 65;
+            // 
+            // centrodecosto
+            // 
+            this.centrodecosto.DataPropertyName = "centrodecosto";
+            this.centrodecosto.HeaderText = "centrodecosto";
+            this.centrodecosto.Name = "centrodecosto";
+            this.centrodecosto.ReadOnly = true;
+            this.centrodecosto.Visible = false;
+            // 
             // btncancelar
             // 
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -265,6 +361,7 @@
             // 
             this.cbomarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbomarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbomarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbomarca.FormattingEnabled = true;
             this.cbomarca.Location = new System.Drawing.Point(90, 68);
             this.cbomarca.Name = "cbomarca";
@@ -296,6 +393,7 @@
             // 
             this.cbomodelo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbomodelo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbomodelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbomodelo.FormattingEnabled = true;
             this.cbomodelo.Location = new System.Drawing.Point(90, 95);
             this.cbomodelo.Name = "cbomodelo";
@@ -412,6 +510,7 @@
             // 
             this.cbocuenta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbocuenta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbocuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuenta.FormattingEnabled = true;
             this.cbocuenta.Location = new System.Drawing.Point(317, 175);
             this.cbocuenta.Name = "cbocuenta";
@@ -462,107 +561,12 @@
             // 
             this.cbocentrocosto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbocentrocosto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbocentrocosto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocentrocosto.FormattingEnabled = true;
             this.cbocentrocosto.Location = new System.Drawing.Point(90, 202);
             this.cbocentrocosto.Name = "cbocentrocosto";
             this.cbocentrocosto.Size = new System.Drawing.Size(374, 21);
             this.cbocentrocosto.TabIndex = 118;
-            // 
-            // ida
-            // 
-            this.ida.DataPropertyName = "ida";
-            this.ida.HeaderText = "ida";
-            this.ida.Name = "ida";
-            this.ida.ReadOnly = true;
-            this.ida.Visible = false;
-            this.ida.Width = 27;
-            // 
-            // GV
-            // 
-            this.GV.DataPropertyName = "IGV";
-            this.GV.HeaderText = "GV";
-            this.GV.Name = "GV";
-            this.GV.ReadOnly = true;
-            this.GV.Visible = false;
-            this.GV.Width = 28;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.DataPropertyName = "descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // idm
-            // 
-            this.idm.DataPropertyName = "idm";
-            this.idm.HeaderText = "idm";
-            this.idm.Name = "idm";
-            this.idm.ReadOnly = true;
-            this.idm.Visible = false;
-            this.idm.Width = 48;
-            // 
-            // Marca
-            // 
-            this.Marca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Marca.DataPropertyName = "marca";
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            this.Marca.ReadOnly = true;
-            this.Marca.Width = 62;
-            // 
-            // idc
-            // 
-            this.idc.DataPropertyName = "idc";
-            this.idc.HeaderText = "idc";
-            this.idc.Name = "idc";
-            this.idc.ReadOnly = true;
-            this.idc.Visible = false;
-            this.idc.Width = 46;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            this.Tipo.Width = 53;
-            // 
-            // Obs
-            // 
-            this.Obs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Obs.DataPropertyName = "ob";
-            this.Obs.HeaderText = "obs.";
-            this.Obs.Name = "Obs";
-            this.Obs.ReadOnly = true;
-            this.Obs.Width = 52;
-            // 
-            // cc
-            // 
-            this.cc.DataPropertyName = "cc";
-            this.cc.HeaderText = "cc";
-            this.cc.Name = "cc";
-            this.cc.ReadOnly = true;
-            this.cc.Visible = false;
-            this.cc.Width = 44;
-            // 
-            // cuenta
-            // 
-            this.cuenta.DataPropertyName = "cuenta";
-            this.cuenta.HeaderText = "cuenta";
-            this.cuenta.Name = "cuenta";
-            this.cuenta.ReadOnly = true;
-            this.cuenta.Visible = false;
-            this.cuenta.Width = 65;
-            // 
-            // centrodecosto
-            // 
-            this.centrodecosto.DataPropertyName = "centrodecosto";
-            this.centrodecosto.HeaderText = "centrodecosto";
-            this.centrodecosto.Name = "centrodecosto";
-            this.centrodecosto.ReadOnly = true;
-            this.centrodecosto.Visible = false;
             // 
             // frmArticuloServicio
             // 

@@ -68,7 +68,7 @@ namespace HPReserger
         {
             btneditar.Enabled = !a;
             btnaceptar.Enabled = a;
-            gp1.Enabled = !a;           
+            gp1.Enabled = !a;
             txtimporte.Enabled = a;
             dtgconten.Enabled = a;
         }
@@ -104,12 +104,12 @@ namespace HPReserger
                 cboproyecto.Focus();
                 return;
             }
-            CLDetalle.ProyectoCentrodecostodetalle(10, 0, cabecera,int.Parse(cboproyecto.SelectedValue.ToString()),0, 0, "0", 0, 0);
+            CLDetalle.ProyectoCentrodecostodetalle(10, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), 0, 0, "0", 0, 0);
             for (int i = 0; i < dtgconten.RowCount; i++)
             {
                 if (decimal.Parse(dtgconten["importe", i].Value.ToString()) > 0)
                 {
-                    CLDetalle.ProyectoCentrodecostodetalle(0, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), int.Parse(dtgconten["id_etapas",i].Value.ToString()), decimal.Parse(txtimporte.Text), dtgconten["CodCentroC", i].Value.ToString(), decimal.Parse(dtgconten["importe", i].Value.ToString()), frmLogin.CodigoUsuario);
+                    CLDetalle.ProyectoCentrodecostodetalle(0, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), int.Parse(dtgconten["id_etapas", i].Value.ToString()), decimal.Parse(txtimporte.Text), dtgconten["CodCentroC", i].Value.ToString(), decimal.Parse(dtgconten["importe", i].Value.ToString()), frmLogin.CodigoUsuario);
                 }
             }
             MSG("Modificación Exitosa");
@@ -149,6 +149,50 @@ namespace HPReserger
         {
             txtimporte.Text = decimal.Parse(txtimporte.Text.ToString()).ToString("n2");
         }
+        private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.ColumnIndex, y = e.RowIndex;
+            if (y >= 0)
+            {
+                if (dtgconten["btnmas", y].ColumnIndex == x)
+                {
+                    frmpresupuestoetapa etapitas = new frmpresupuestoetapa();
+                    etapitas.Text = "PRESUPUESTO POR ETAPAS DE " + cboproyecto.Text;
+                    etapitas.etapa = (int)dtgconten["id_Etapas", y].Value;
+                    etapitas.txtetapa.Text = dtgconten["etapa_des", y].Value.ToString();
+                    etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
+                    etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
+                    etapitas.ShowDialog();
+                    if (etapitas.ok)
+                    {
+                        dtgconten["importe", y].Value = etapitas.valor;
+                        calcularsumatoria();
+                    }
+                }
+            }
+        }
+        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.ColumnIndex, y = e.RowIndex;
+            if (y >= 0)
+            {
+                if (dtgconten.RowCount > 0)
+                {
+                    frmpresupuestoetapa etapitas = new frmpresupuestoetapa();
+                    etapitas.Text = "PRESUPUESTO POR ETAPAS DE " + cboproyecto.Text;
+                    etapitas.etapa = (int)dtgconten["id_Etapas", y].Value;
+                    etapitas.txtetapa.Text = dtgconten["etapa_des", y].Value.ToString();
+                    etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
+                    etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
+                    etapitas.ShowDialog();
+                    if (etapitas.ok)
+                    {
+                        dtgconten["importe", y].Value = etapitas.valor;
+                        calcularsumatoria();
+                    }
+                }
+            }
+        }
 
         private void Dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -160,6 +204,9 @@ namespace HPReserger
                 txt.KeyPress += new KeyPressEventHandler(dataGridview_KeyPressCajita);
             }
 
+        }
+        private void dtgconten_DoubleClick(object sender, EventArgs e)
+        {
         }
     }
 }

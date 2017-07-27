@@ -558,9 +558,6 @@
   <data name="CODIGOVINCULOFAMILIAR.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="CODIGOVINCULOFAMILIAR.Width" type="System.Int32, mscorlib">
-    <value>170</value>
-  </data>
   <metadata name="VINCULOFAMILIAR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

@@ -17,8 +17,8 @@ namespace HPReserger
             InitializeComponent();
 
         }
-        public double totaldebe { get; set; }
-        public double totalhaber { get; set; }
+        public decimal totaldebe { get; set; }
+        public decimal totalhaber { get; set; }
         int fechacheck = 0;
         HPResergerCapaLogica.HPResergerCL Casiento = new HPResergerCapaLogica.HPResergerCL();
 
@@ -319,16 +319,16 @@ namespace HPReserger
                     {
                         if (Dtgconten[2, 0].Value.ToString() == "")
                         {
-                            totaldebe = 0.00; Dtgconten[2, 0].Value = "0.00";
+                            totaldebe = 0; Dtgconten[2, 0].Value = "0.00";
                         }
-                        else { totaldebe = Convert.ToDouble(Dtgconten[2, 0].Value.ToString()); }
+                        else { totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString()); }
                         if (Dtgconten[3, 0].Value.ToString() == "")
                         {
-                            totalhaber = 0.00; Dtgconten[3, 0].Value = "0.00";
+                            totalhaber = 0; Dtgconten[3, 0].Value = "0.00";
                         }
                         else
                         {
-                            totaldebe = Convert.ToDouble(Dtgconten[2, 0].Value.ToString());
+                            totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString());
                         }
 
                         txttotaldebe.Text = string.Format("{0:N2}", totaldebe);
@@ -336,22 +336,22 @@ namespace HPReserger
                     }
                     if (Dtgconten.RowCount > 1)
                     {
-                        double aux1, aux2 = 0;
+                        decimal aux1, aux2 = 0;
                         totaldebe = totalhaber = 0;
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
                             if (Dtgconten[2, i].Value.ToString() == "" || Dtgconten[2, i].Value.ToString() == null)
                             {
-                                aux1 = 0.00; Dtgconten[2, i].Value = "0.00";
+                                aux1 = 0; Dtgconten[2, i].Value = "0.00";
                             }
-                            else { aux1 = Convert.ToDouble(Dtgconten[2, i].Value.ToString()); }
+                            else { aux1 = Convert.ToDecimal(Dtgconten[2, i].Value.ToString()); }
                             if (Dtgconten[3, i].Value.ToString() == "" || Dtgconten[3, i].Value.ToString() == null)
                             {
-                                aux2 = 0.00; Dtgconten[3, i].Value = "0.00";
+                                aux2 = 0; Dtgconten[3, i].Value = "0.00";
                             }
                             else
                             {
-                                aux2 = Convert.ToDouble(Dtgconten[3, i].Value.ToString());
+                                aux2 = Convert.ToDecimal(Dtgconten[3, i].Value.ToString());
                             }
                             totaldebe += aux1;
                             totalhaber += aux2;
@@ -407,16 +407,16 @@ namespace HPReserger
                     {
                         if (Dtgconten[2, 0].Value.ToString() == "")
                         {
-                            totaldebe = 0.00; Dtgconten[2, 0].Value = "0.00";
+                            totaldebe = 0; Dtgconten[2, 0].Value = "0.00";
                         }
-                        else { totaldebe = Convert.ToDouble(Dtgconten[2, 0].Value.ToString()); }
+                        else { totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString()); }
                         if (Dtgconten[3, 0].Value.ToString() == "")
                         {
-                            totalhaber = 0.00; Dtgconten[3, 0].Value = "0.00";
+                            totalhaber = 0; Dtgconten[3, 0].Value = "0.00";
                         }
                         else
                         {
-                            totaldebe = Convert.ToDouble(Dtgconten[2, 0].Value.ToString());
+                            totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString());
                         }
 
                         txttotaldebe.Text = string.Format("{0:N2}", totaldebe);
@@ -424,22 +424,22 @@ namespace HPReserger
                     }
                     if (Dtgconten.RowCount > 1)
                     {
-                        double aux1, aux2 = 0;
+                        decimal aux1, aux2 = 0;
                         totaldebe = totalhaber = 0;
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
                             if (Dtgconten[2, i].Value.ToString() == "" || Dtgconten[2, i].Value.ToString() == null)
                             {
-                                aux1 = 0.00; Dtgconten[2, i].Value = "0.00";
+                                aux1 = 0; Dtgconten[2, i].Value = "0.00";
                             }
-                            else { aux1 = Convert.ToDouble(Dtgconten[2, i].Value.ToString()); }
+                            else { aux1 = Convert.ToDecimal(Dtgconten[2, i].Value.ToString()); }
                             if (Dtgconten[3, i].Value.ToString() == "" || Dtgconten[3, i].Value.ToString() == null)
                             {
-                                aux2 = 0.00; Dtgconten[3, i].Value = "0.00";
+                                aux2 = 0; Dtgconten[3, i].Value = "0.00";
                             }
                             else
                             {
-                                aux2 = Convert.ToDouble(Dtgconten[3, i].Value.ToString());
+                                aux2 = Convert.ToDecimal(Dtgconten[3, i].Value.ToString());
                             }
                             totaldebe += aux1;
                             totalhaber += aux2;
@@ -531,7 +531,7 @@ namespace HPReserger
             Txtbusca_TextChanged(sender, e);
         }
         public int dinamica { get; set; }
-        public double activo, pasivo;
+        public decimal activo, pasivo;
         private void dtgbusca_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -553,8 +553,8 @@ namespace HPReserger
                         Dtgconten[2, i].Value = dtgayuda3[5, i].Value;
                         Dtgconten[3, i].Value = dtgayuda3[6, i].Value;
                         //sumas
-                        activo += Convert.ToDouble(Dtgconten[2, i].Value);
-                        pasivo += Convert.ToDouble(Dtgconten[3, i].Value);
+                        activo += Convert.ToDecimal(Dtgconten[2, i].Value);
+                        pasivo += Convert.ToDecimal(Dtgconten[3, i].Value);
                     }
                     txtdiferencia.Text = string.Format("{0:N2}", activo - pasivo);
                     txttotaldebe.Text = string.Format("{0:N2}", activo);

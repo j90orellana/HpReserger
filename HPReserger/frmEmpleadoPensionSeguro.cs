@@ -102,7 +102,7 @@ namespace HPReserger
 
         private void txtCUPSS_KeyPress(object sender, KeyPressEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
+            //            HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -146,7 +146,7 @@ namespace HPReserger
                 ONP = "NO";
             }
             clPensionSeguro.EmpleadoSeguroPension(CodigoDocumento, NumeroDocumento, cboEPS.SelectedItem.ToString(), EPSAdiconal, cboSCTR.SelectedItem.ToString(), ONP, cboAFP.SelectedItem.ToString(), AFP, txtCUPSS.Text, frmLogin.CodigoUsuario, Opcion);
-     
+
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace HPReserger
 
         private void txtCUPSS_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtCUPSS, 20);
+            //HPResergerFunciones.Utilitarios.Validardocumentos(e, txtCUPSS, 20);
         }
 
         private void btncancelar_Click(object sender, EventArgs e)

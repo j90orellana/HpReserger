@@ -148,7 +148,7 @@ namespace HPReserger
             {
                 if (decimal.Parse(dtgpedido["total", i].Value.ToString()) == 0)
                 {
-                    MSG("El total del la línea " + i + 1 + " esta en cero");
+                    MSG("El total del la línea " + (i + 1) + " esta en cero");
                     señal = 1;
                     break;
                 }
@@ -556,11 +556,9 @@ namespace HPReserger
         {
             dtgpedido.Columns["PrecioUnit"].DefaultCellStyle.Format = "N2";
             dtgpedido.Columns["Total"].DefaultCellStyle.Format = "N2";
-
+            sumatoria = valor = total = 0;
             if (dtgpedido["tipo", 0].Value.ToString() == "ARTICULO")
             {
-                sumatoria = 0;
-
                 for (int i = 0; i < dtgpedido.RowCount; i++)
                 {
                     valor = Convert.ToDecimal(dtgpedido["PrecioUnit", i].Value.ToString());
@@ -573,12 +571,11 @@ namespace HPReserger
             }
             else
             {
-                sumatoria = 0;
                 for (int i = 0; i < dtgpedido.RowCount; i++)
                 {
                     valor = Convert.ToDecimal(dtgpedido["PrecioUnit", i].Value.ToString());
                     dtgpedido["PrecioUnit", i].Value = decimal.Round(valor, 2);
-                    dtgpedido["Total", 0].Value = decimal.Round(valor, 2);
+                    dtgpedido["Total", i].Value = decimal.Round(valor, 2);
                     sumatoria += valor;
                 }
                 txtImporte.Text = string.Format("{0:N2}", sumatoria);

@@ -145,7 +145,7 @@ namespace HPReserger
                 nume = 0;
                 for (int j = 0; j < grd.Columns.Count; j++)
                 {
-                    if (j != 0 && j != 4 && j != 6)
+                    if (j != 0 && j != 4 && j != 6 && j != 10)
                     {
                         hoja_trabajo.Cells[i + 2, nume + 1] = grd.Rows[i].Cells[j].Value.ToString();
                         nume++;
@@ -156,7 +156,7 @@ namespace HPReserger
             for (int contador = 0; contador < grd.ColumnCount; contador++)
             {
 
-                if (contador != 0 && contador != 4 && contador != 6)
+                if (contador != 0 && contador != 4 && contador != 6 && contador != 10)
                 {
                     hoja_trabajo.Cells[1, numer + 1] = grd.Columns[contador].HeaderText.ToString();
                     hoja_trabajo.Columns[numer + 1].AutoFit();
@@ -172,8 +172,16 @@ namespace HPReserger
         private void btnexportarexcel_Click(object sender, EventArgs e)
         {
             //ExportarExcel(dtgconten, "");
-            ExportarDataGridViewExcel(dtgconten);
-            MSG("Exportado con Exito");
+            if (dtgconten.RowCount > 0)
+            {
+                ExportarDataGridViewExcel(dtgconten);
+                MSG("Exportado con Exito");
+            }
+            else
+            {
+                MSG("Debe Primero Generar un reporte");
+                btnGenerar.Focus();
+            }
         }
         public void ExportarExcel(DataGridView grilla, string path)
         {
@@ -236,6 +244,20 @@ namespace HPReserger
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.ColumnIndex, y = e.RowIndex;
+            if (e.RowIndex >= 0)
+            {
+                frmreportepresupuestoetapas etapitas = new frmreportepresupuestoetapas();
+                etapitas.etapa = (int)dtgconten["Id_etapas", y].Value;
+                etapitas.txtetapa.Text = dtgconten["descripcionetapa", y].Value.ToString();
+                etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
+                etapitas.txtcentro.Text = dtgconten["Descripción", y].Value.ToString();
+                etapitas.ShowDialog();
+            }
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)

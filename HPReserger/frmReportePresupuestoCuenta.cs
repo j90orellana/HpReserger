@@ -72,6 +72,11 @@ namespace HPReserger
             else btnGenerar.Enabled = false;
         }
 
+        private void btnexportarexcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             CLPresuOpera.ListarPresupuestosCabecera();

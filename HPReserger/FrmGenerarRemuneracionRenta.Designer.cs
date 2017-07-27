@@ -128,6 +128,7 @@
             // 
             // cbotipoid
             // 
+            this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipoid.Enabled = false;
             this.cbotipoid.FormattingEnabled = true;
             this.cbotipoid.Location = new System.Drawing.Point(84, 92);
@@ -149,6 +150,7 @@
             // 
             // cboempresa
             // 
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
             this.cboempresa.Location = new System.Drawing.Point(84, 42);
             this.cboempresa.Name = "cboempresa";

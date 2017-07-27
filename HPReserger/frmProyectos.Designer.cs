@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtempresa = new System.Windows.Forms.TextBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.idproyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +40,7 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.gp1 = new System.Windows.Forms.GroupBox();
+            this.cboempresa = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.gp1.SuspendLayout();
             this.SuspendLayout();
@@ -62,14 +62,6 @@
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Proyecto:";
-            // 
-            // txtempresa
-            // 
-            this.txtempresa.Enabled = false;
-            this.txtempresa.Location = new System.Drawing.Point(58, 19);
-            this.txtempresa.Name = "txtempresa";
-            this.txtempresa.Size = new System.Drawing.Size(221, 20);
-            this.txtempresa.TabIndex = 1;
             // 
             // dtgconten
             // 
@@ -168,11 +160,10 @@
             // 
             // gp1
             // 
-            this.gp1.Controls.Add(this.txtempresa);
+            this.gp1.Controls.Add(this.cboempresa);
             this.gp1.Controls.Add(this.label1);
             this.gp1.Controls.Add(this.label2);
             this.gp1.Controls.Add(this.txtproyecto);
-            this.gp1.Enabled = false;
             this.gp1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gp1.Location = new System.Drawing.Point(12, 12);
             this.gp1.Name = "gp1";
@@ -180,6 +171,16 @@
             this.gp1.TabIndex = 9;
             this.gp1.TabStop = false;
             this.gp1.Enter += new System.EventHandler(this.gp1_Enter);
+            // 
+            // cboempresa
+            // 
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(58, 18);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(221, 21);
+            this.cboempresa.TabIndex = 5;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
             // frmProyectos
             // 
@@ -207,7 +208,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtempresa;
         private System.Windows.Forms.DataGridView dtgconten;
         private System.Windows.Forms.TextBox txtproyecto;
         private System.Windows.Forms.Button btnnuevo;
@@ -218,5 +218,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Proyecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn idempresa;
         private System.Windows.Forms.GroupBox gp1;
+        private System.Windows.Forms.ComboBox cboempresa;
     }
 }

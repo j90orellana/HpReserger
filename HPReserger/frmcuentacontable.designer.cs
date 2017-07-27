@@ -141,6 +141,7 @@
             // 
             this.cbotipo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbotipo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipo.FormattingEnabled = true;
             this.cbotipo.Location = new System.Drawing.Point(106, 64);
             this.cbotipo.Name = "cbotipo";
@@ -172,6 +173,7 @@
             // 
             this.cbonaturaleza.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbonaturaleza.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbonaturaleza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbonaturaleza.FormattingEnabled = true;
             this.cbonaturaleza.Location = new System.Drawing.Point(507, 64);
             this.cbonaturaleza.Name = "cbonaturaleza";
@@ -182,6 +184,7 @@
             // 
             this.cbogenerica.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbogenerica.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbogenerica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbogenerica.FormattingEnabled = true;
             this.cbogenerica.Location = new System.Drawing.Point(105, 91);
             this.cbogenerica.Name = "cbogenerica";
@@ -202,6 +205,7 @@
             // 
             this.cbogrupo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbogrupo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbogrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbogrupo.FormattingEnabled = true;
             this.cbogrupo.Location = new System.Drawing.Point(458, 91);
             this.cbogrupo.Name = "cbogrupo";
@@ -230,6 +234,7 @@
             // 
             // cborefleja
             // 
+            this.cborefleja.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cborefleja.FormattingEnabled = true;
             this.cborefleja.Location = new System.Drawing.Point(263, 118);
             this.cborefleja.Name = "cborefleja";
@@ -238,6 +243,7 @@
             // 
             // cboreflejacc
             // 
+            this.cboreflejacc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboreflejacc.FormattingEnabled = true;
             this.cboreflejacc.Location = new System.Drawing.Point(123, 118);
             this.cboreflejacc.Name = "cboreflejacc";
@@ -258,6 +264,7 @@
             // 
             this.cboreflejadebe.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboreflejadebe.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboreflejadebe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboreflejadebe.FormattingEnabled = true;
             this.cboreflejadebe.Location = new System.Drawing.Point(106, 145);
             this.cboreflejadebe.Name = "cboreflejadebe";
@@ -278,6 +285,7 @@
             // 
             this.cboreflejahaber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboreflejahaber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboreflejahaber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboreflejahaber.FormattingEnabled = true;
             this.cboreflejahaber.Location = new System.Drawing.Point(106, 172);
             this.cboreflejahaber.Name = "cboreflejahaber";
@@ -296,6 +304,7 @@
             // 
             // cboanalitica
             // 
+            this.cboanalitica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboanalitica.FormattingEnabled = true;
             this.cboanalitica.Location = new System.Drawing.Point(78, 225);
             this.cboanalitica.Name = "cboanalitica";
@@ -314,6 +323,7 @@
             // 
             // cboajustemensual
             // 
+            this.cboajustemensual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboajustemensual.FormattingEnabled = true;
             this.cboajustemensual.Location = new System.Drawing.Point(334, 225);
             this.cboajustemensual.Name = "cboajustemensual";
@@ -332,6 +342,7 @@
             // 
             // cbocierre
             // 
+            this.cbocierre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocierre.FormattingEnabled = true;
             this.cbocierre.Location = new System.Drawing.Point(610, 225);
             this.cbocierre.Name = "cbocierre";
@@ -350,6 +361,7 @@
             // 
             // cboajustetraslacion
             // 
+            this.cboajustetraslacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboajustetraslacion.FormattingEnabled = true;
             this.cboajustetraslacion.Location = new System.Drawing.Point(125, 252);
             this.cboajustetraslacion.Name = "cboajustetraslacion";
@@ -368,6 +380,7 @@
             // 
             // cbocuentabc
             // 
+            this.cbocuentabc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuentabc.FormattingEnabled = true;
             this.cbocuentabc.Location = new System.Drawing.Point(458, 252);
             this.cbocuentabc.Name = "cbocuentabc";

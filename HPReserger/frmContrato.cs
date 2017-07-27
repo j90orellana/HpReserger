@@ -34,8 +34,27 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+
+        public void CargarBonos()
+        {
+            DataTable Tablita = new DataTable();
+            Tablita.Columns.Add("Valor");
+            Tablita.Columns.Add("descripcion");
+            Tablita.Rows.Add(new object[] { "NO", "NO" });
+            Tablita.Rows.Add(new object[] { "ME", "MENSUAL" });
+            Tablita.Rows.Add(new object[] { "BI", "BI-MESTRAL" });
+            Tablita.Rows.Add(new object[] { "TR", "TRI--MESTRAL" });
+            Tablita.Rows.Add(new object[] { "CU", "CUATRI-MESTRAL" });
+            Tablita.Rows.Add(new object[] { "QU", "QUI-MESTRAL" });
+            Tablita.Rows.Add(new object[] { "SE", "SEMESTRAL" });
+            Tablita.Rows.Add(new object[] { "EX", "EXTRAORDINARIO" });
+            cboBono.ValueMember = "Valor";
+            cboBono.DisplayMember = "descripcion";
+            cboBono.DataSource = Tablita;
+        }
         private void frmContrato_Load(object sender, EventArgs e)
         {
+            CargarBonos();
             dtpFechaFin.Value.AddDays(1);
             estado = 0;
             grpcontrato.Enabled = false;
@@ -370,13 +389,13 @@ namespace HPReserger
                 txtSalario.Focus();
                 return false;
             }
-            if (cboBono.SelectedIndex == 0 && txtImporteBono.Text.Length == 0)
+            if (cboBono.SelectedIndex != 0 && txtImporteBono.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Importe Bono", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtImporteBono.Focus();
                 return false;
             }
-            if (txtPeriodicidad.Text.Length == 0 && cboBono.SelectedIndex == 0)
+            if (txtPeriodicidad.Text.Length == 0 && cboBono.SelectedIndex != 0)
             {
                 MessageBox.Show("Ingrese Periodicidad", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPeriodicidad.Focus();
@@ -414,7 +433,6 @@ namespace HPReserger
                         return false;
                     }
                 }
-
             }
             if (dtgconten.RowCount > 1 && estado == 2)
             {
@@ -565,7 +583,7 @@ namespace HPReserger
 
         private void cboBono_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboBono.SelectedIndex == 0)
+            if (cboBono.SelectedIndex != 0)
             {
                 txtImporteBono.Text = string.Empty;
                 txtImporteBono.Visible = true;

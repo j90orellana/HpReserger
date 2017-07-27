@@ -56,6 +56,7 @@
             // 
             // cboarea
             // 
+            this.cboarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboarea.FormattingEnabled = true;
             this.cboarea.Location = new System.Drawing.Point(88, 22);
             this.cboarea.Name = "cboarea";
@@ -242,6 +243,7 @@
             // 
             // cboccosto
             // 
+            this.cboccosto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboccosto.FormattingEnabled = true;
             this.cboccosto.Location = new System.Drawing.Point(113, 74);
             this.cboccosto.Name = "cboccosto";

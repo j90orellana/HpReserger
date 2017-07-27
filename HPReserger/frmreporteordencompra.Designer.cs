@@ -32,46 +32,48 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.txthasta = new System.Windows.Forms.TextBox();
+            this.txtdesde = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtbusca = new System.Windows.Forms.TextBox();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.btnlimpiar = new System.Windows.Forms.Button();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dtfin = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtinicio = new System.Windows.Forms.DateTimePicker();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnlimpiar = new System.Windows.Forms.Button();
-            this.txtbusca = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtfin = new System.Windows.Forms.DateTimePicker();
-            this.dtinicio = new System.Windows.Forms.DateTimePicker();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtdesde = new System.Windows.Forms.TextBox();
-            this.txthasta = new System.Windows.Forms.TextBox();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtsumatoria = new System.Windows.Forms.TextBox();
             this.lblmsg = new System.Windows.Forms.Label();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.btnexcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtgconten1
@@ -89,18 +91,18 @@
             this.dtgconten1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten1.Location = new System.Drawing.Point(12, 418);
+            this.dtgconten1.Location = new System.Drawing.Point(12, 454);
             this.dtgconten1.MultiSelect = false;
             this.dtgconten1.Name = "dtgconten1";
             this.dtgconten1.RowHeadersVisible = false;
             this.dtgconten1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten1.Size = new System.Drawing.Size(765, 158);
+            this.dtgconten1.Size = new System.Drawing.Size(765, 148);
             this.dtgconten1.TabIndex = 7;
             // 
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(950, 399);
+            this.btncancelar.Location = new System.Drawing.Point(950, 425);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 6;
@@ -129,7 +131,7 @@
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(1013, 248);
+            this.dtgconten.Size = new System.Drawing.Size(1013, 274);
             this.dtgconten.TabIndex = 5;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
@@ -137,6 +139,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButton10);
             this.groupBox1.Controls.Add(this.radioButton9);
             this.groupBox1.Controls.Add(this.txthasta);
             this.groupBox1.Controls.Add(this.txtdesde);
@@ -164,6 +167,249 @@
             this.groupBox1.Text = "Opciones";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(614, 19);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(61, 17);
+            this.radioButton9.TabIndex = 21;
+            this.radioButton9.Text = "Usuario";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
+            // 
+            // txthasta
+            // 
+            this.txthasta.Location = new System.Drawing.Point(883, 19);
+            this.txthasta.Name = "txthasta";
+            this.txthasta.Size = new System.Drawing.Size(64, 20);
+            this.txthasta.TabIndex = 20;
+            this.txthasta.Text = "1000.00";
+            this.txthasta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txthasta.TextChanged += new System.EventHandler(this.txthasta_TextChanged);
+            this.txthasta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txthasta_KeyDown);
+            this.txthasta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txthasta_KeyPress);
+            // 
+            // txtdesde
+            // 
+            this.txtdesde.Location = new System.Drawing.Point(769, 19);
+            this.txtdesde.Name = "txtdesde";
+            this.txtdesde.Size = new System.Drawing.Size(64, 20);
+            this.txtdesde.TabIndex = 9;
+            this.txtdesde.Text = "0.00";
+            this.txtdesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtdesde.TextChanged += new System.EventHandler(this.txtdesde_TextChanged);
+            this.txtdesde.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtdesde_KeyDown);
+            this.txtdesde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtdesde_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(839, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Hasta:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(745, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "De:";
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(681, 20);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(61, 17);
+            this.checkBox9.TabIndex = 12;
+            this.checkBox9.Text = "Importe";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(78, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Buscar";
+            // 
+            // txtbusca
+            // 
+            this.txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtbusca.Location = new System.Drawing.Point(124, 43);
+            this.txtbusca.Name = "txtbusca";
+            this.txtbusca.Size = new System.Drawing.Size(277, 20);
+            this.txtbusca.TabIndex = 8;
+            this.txtbusca.TextChanged += new System.EventHandler(this.txtbusca_TextChanged);
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(534, 19);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(74, 17);
+            this.radioButton8.TabIndex = 8;
+            this.radioButton8.Text = "Proveedor";
+            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton8_CheckedChanged);
+            // 
+            // btnlimpiar
+            // 
+            this.btnlimpiar.Location = new System.Drawing.Point(407, 43);
+            this.btnlimpiar.Name = "btnlimpiar";
+            this.btnlimpiar.Size = new System.Drawing.Size(75, 20);
+            this.btnlimpiar.TabIndex = 9;
+            this.btnlimpiar.Text = "Limpiar";
+            this.btnlimpiar.UseVisualStyleBackColor = true;
+            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Location = new System.Drawing.Point(460, 19);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(68, 17);
+            this.radioButton7.TabIndex = 18;
+            this.radioButton7.Text = "Gerencia";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(407, 19);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(47, 17);
+            this.radioButton6.TabIndex = 17;
+            this.radioButton6.Text = "Area";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(308, 19);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(93, 17);
+            this.radioButton5.TabIndex = 16;
+            this.radioButton5.Text = "PartidaPresus.";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(219, 19);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(83, 17);
+            this.radioButton4.TabIndex = 15;
+            this.radioButton4.Text = "CentroCosto";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(155, 19);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(58, 17);
+            this.radioButton3.TabIndex = 14;
+            this.radioButton3.Text = "Pedido";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dtfin);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.dtinicio);
+            this.groupBox3.Controls.Add(this.checkBox3);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.checkBox2);
+            this.groupBox3.Location = new System.Drawing.Point(523, 69);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(473, 44);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            // 
+            // dtfin
+            // 
+            this.dtfin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtfin.Location = new System.Drawing.Point(359, 16);
+            this.dtfin.Name = "dtfin";
+            this.dtfin.Size = new System.Drawing.Size(79, 20);
+            this.dtfin.TabIndex = 6;
+            this.dtfin.ValueChanged += new System.EventHandler(this.dtfin_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(315, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Hasta:";
+            // 
+            // dtinicio
+            // 
+            this.dtinicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtinicio.Location = new System.Drawing.Point(230, 16);
+            this.dtinicio.Name = "dtinicio";
+            this.dtinicio.Size = new System.Drawing.Size(79, 20);
+            this.dtinicio.TabIndex = 5;
+            this.dtinicio.ValueChanged += new System.EventHandler(this.dtinicio_ValueChanged);
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(144, 19);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(56, 17);
+            this.checkBox3.TabIndex = 4;
+            this.checkBox3.Text = "Fecha";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(206, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "De:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(61, 17);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Articulo";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(73, 19);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(64, 17);
+            this.checkBox2.TabIndex = 3;
+            this.checkBox2.Text = "Servicio";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.checkBox10);
@@ -179,6 +425,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Estado";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(148, 19);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(129, 17);
+            this.checkBox10.TabIndex = 8;
+            this.checkBox10.Text = "EntregadoImcompleto";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
             // 
             // checkBox8
             // 
@@ -235,104 +492,6 @@
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Hasta:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(206, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "De:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // btnlimpiar
-            // 
-            this.btnlimpiar.Location = new System.Drawing.Point(339, 43);
-            this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(75, 20);
-            this.btnlimpiar.TabIndex = 9;
-            this.btnlimpiar.Text = "Limpiar";
-            this.btnlimpiar.UseVisualStyleBackColor = true;
-            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
-            // 
-            // txtbusca
-            // 
-            this.txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtbusca.Location = new System.Drawing.Point(56, 43);
-            this.txtbusca.Name = "txtbusca";
-            this.txtbusca.Size = new System.Drawing.Size(277, 20);
-            this.txtbusca.TabIndex = 8;
-            this.txtbusca.TextChanged += new System.EventHandler(this.txtbusca_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Buscar";
-            // 
-            // dtfin
-            // 
-            this.dtfin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtfin.Location = new System.Drawing.Point(359, 16);
-            this.dtfin.Name = "dtfin";
-            this.dtfin.Size = new System.Drawing.Size(79, 20);
-            this.dtfin.TabIndex = 6;
-            this.dtfin.ValueChanged += new System.EventHandler(this.dtfin_ValueChanged);
-            // 
-            // dtinicio
-            // 
-            this.dtinicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtinicio.Location = new System.Drawing.Point(230, 16);
-            this.dtinicio.Name = "dtinicio";
-            this.dtinicio.Size = new System.Drawing.Size(79, 20);
-            this.dtinicio.TabIndex = 5;
-            this.dtinicio.ValueChanged += new System.EventHandler(this.dtinicio_ValueChanged);
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(144, 19);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(56, 17);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Fecha";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(73, 19);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(64, 17);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "Servicio";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(61, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Articulo";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
@@ -355,167 +514,11 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dtfin);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.dtinicio);
-            this.groupBox3.Controls.Add(this.checkBox3);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Location = new System.Drawing.Point(523, 69);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(473, 44);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(155, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(58, 17);
-            this.radioButton3.TabIndex = 14;
-            this.radioButton3.Text = "Pedido";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(219, 19);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(83, 17);
-            this.radioButton4.TabIndex = 15;
-            this.radioButton4.Text = "CentroCosto";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(308, 19);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(93, 17);
-            this.radioButton5.TabIndex = 16;
-            this.radioButton5.Text = "PartidaPresus.";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(407, 19);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(47, 17);
-            this.radioButton6.TabIndex = 17;
-            this.radioButton6.Text = "Area";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(460, 19);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(68, 17);
-            this.radioButton7.TabIndex = 18;
-            this.radioButton7.Text = "Gerencia";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(534, 19);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(74, 17);
-            this.radioButton8.TabIndex = 8;
-            this.radioButton8.Text = "Proveedor";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton8_CheckedChanged);
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(681, 20);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(61, 17);
-            this.checkBox9.TabIndex = 12;
-            this.checkBox9.Text = "Importe";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(745, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "De:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(839, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Hasta:";
-            // 
-            // txtdesde
-            // 
-            this.txtdesde.Location = new System.Drawing.Point(769, 19);
-            this.txtdesde.Name = "txtdesde";
-            this.txtdesde.Size = new System.Drawing.Size(64, 20);
-            this.txtdesde.TabIndex = 9;
-            this.txtdesde.Text = "0.00";
-            this.txtdesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtdesde.TextChanged += new System.EventHandler(this.txtdesde_TextChanged);
-            this.txtdesde.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtdesde_KeyDown);
-            this.txtdesde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtdesde_KeyPress);
-            // 
-            // txthasta
-            // 
-            this.txthasta.Location = new System.Drawing.Point(883, 19);
-            this.txthasta.Name = "txthasta";
-            this.txthasta.Size = new System.Drawing.Size(64, 20);
-            this.txthasta.TabIndex = 20;
-            this.txthasta.Text = "1000.00";
-            this.txthasta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txthasta.TextChanged += new System.EventHandler(this.txthasta_TextChanged);
-            this.txthasta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txthasta_KeyDown);
-            this.txthasta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txthasta_KeyPress);
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(614, 19);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(61, 17);
-            this.radioButton9.TabIndex = 21;
-            this.radioButton9.Text = "Usuario";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(148, 19);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(129, 17);
-            this.checkBox10.TabIndex = 8;
-            this.checkBox10.Text = "EntregadoImcompleto";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
-            // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(781, 404);
+            this.label6.Location = new System.Drawing.Point(781, 430);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 8;
@@ -525,7 +528,7 @@
             // 
             this.txtsumatoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtsumatoria.Enabled = false;
-            this.txtsumatoria.Location = new System.Drawing.Point(846, 401);
+            this.txtsumatoria.Location = new System.Drawing.Point(846, 427);
             this.txtsumatoria.Name = "txtsumatoria";
             this.txtsumatoria.Size = new System.Drawing.Size(96, 20);
             this.txtsumatoria.TabIndex = 9;
@@ -535,17 +538,42 @@
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(11, 399);
+            this.lblmsg.Location = new System.Drawing.Point(9, 430);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(81, 13);
             this.lblmsg.TabIndex = 10;
             this.lblmsg.Text = "Total Registros:";
             // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Checked = true;
+            this.radioButton10.Location = new System.Drawing.Point(7, 42);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(50, 17);
+            this.radioButton10.TabIndex = 22;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.Text = "Todo";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
+            // 
+            // btnexcel
+            // 
+            this.btnexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnexcel.Location = new System.Drawing.Point(690, 425);
+            this.btnexcel.Name = "btnexcel";
+            this.btnexcel.Size = new System.Drawing.Size(75, 23);
+            this.btnexcel.TabIndex = 11;
+            this.btnexcel.Text = "Excel";
+            this.btnexcel.UseVisualStyleBackColor = true;
+            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
+            // 
             // frmreporteordencompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 588);
+            this.ClientSize = new System.Drawing.Size(1034, 614);
+            this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.txtsumatoria);
             this.Controls.Add(this.label6);
@@ -561,10 +589,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -611,5 +639,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtsumatoria;
         private System.Windows.Forms.Label lblmsg;
+        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.Button btnexcel;
     }
 }

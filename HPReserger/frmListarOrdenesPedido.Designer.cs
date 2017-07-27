@@ -61,6 +61,7 @@
             this.gridDetalle = new System.Windows.Forms.DataGridView();
             this.btnAnular = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.Acción = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -307,6 +308,7 @@
             this.gridDetalle.AllowUserToResizeColumns = false;
             this.gridDetalle.AllowUserToResizeRows = false;
             this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -319,6 +321,7 @@
             this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Acción,
             this.CODIGOARTICULO,
             this.Item,
             this.CODIGOMARCA,
@@ -350,6 +353,7 @@
             this.gridDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle.Size = new System.Drawing.Size(752, 270);
             this.gridDetalle.TabIndex = 15;
+            this.gridDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle_CellContentClick);
             this.gridDetalle.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle_RowEnter);
             // 
             // btnAnular
@@ -373,6 +377,17 @@
             this.btnModificar.Text = "Editar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // Acción
+            // 
+            this.Acción.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Acción.HeaderText = "ACCIÓN";
+            this.Acción.Name = "Acción";
+            this.Acción.ReadOnly = true;
+            this.Acción.Text = "Borrar";
+            this.Acción.ToolTipText = "Borrar toda la Fila";
+            this.Acción.UseColumnTextForButtonValue = true;
+            this.Acción.Width = 53;
             // 
             // CODIGOARTICULO
             // 
@@ -491,6 +506,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewButtonColumn Acción;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOARTICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMARCA;

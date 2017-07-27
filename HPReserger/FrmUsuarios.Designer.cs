@@ -235,6 +235,9 @@
             // 
             // cbotipoid
             // 
+            this.cbotipoid.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbotipoid.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipoid.FormattingEnabled = true;
             this.cbotipoid.Location = new System.Drawing.Point(154, 6);
             this.cbotipoid.Name = "cbotipoid";
@@ -245,6 +248,9 @@
             // 
             // cboperfil
             // 
+            this.cboperfil.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboperfil.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboperfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboperfil.FormattingEnabled = true;
             this.cboperfil.Location = new System.Drawing.Point(515, 32);
             this.cboperfil.Name = "cboperfil";
@@ -278,6 +284,9 @@
             // 
             // cboestado
             // 
+            this.cboestado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboestado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboestado.FormattingEnabled = true;
             this.cboestado.Location = new System.Drawing.Point(499, 105);
             this.cboestado.Name = "cboestado";
@@ -299,6 +308,9 @@
             // 
             // cboarea
             // 
+            this.cboarea.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboarea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboarea.FormattingEnabled = true;
             this.cboarea.Location = new System.Drawing.Point(105, 108);
             this.cboarea.Name = "cboarea";

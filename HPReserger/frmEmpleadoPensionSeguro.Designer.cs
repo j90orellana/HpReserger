@@ -52,6 +52,7 @@
             // 
             // cboEPS
             // 
+            this.cboEPS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEPS.FormattingEnabled = true;
             this.cboEPS.Items.AddRange(new object[] {
             "SI",
@@ -65,7 +66,7 @@
             // txtCUPSS
             // 
             this.txtCUPSS.Location = new System.Drawing.Point(96, 115);
-            this.txtCUPSS.MaxLength = 20;
+            this.txtCUPSS.MaxLength = 12;
             this.txtCUPSS.Name = "txtCUPSS";
             this.txtCUPSS.Size = new System.Drawing.Size(241, 20);
             this.txtCUPSS.TabIndex = 6;
@@ -133,10 +134,11 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Número CUPSS";
+            this.label7.Text = "Número CUSPP";
             // 
             // cboEPSAdicional
             // 
+            this.cboEPSAdicional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEPSAdicional.FormattingEnabled = true;
             this.cboEPSAdicional.Items.AddRange(new object[] {
             "SI",
@@ -148,6 +150,7 @@
             // 
             // cboAFPEmpresa
             // 
+            this.cboAFPEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAFPEmpresa.FormattingEnabled = true;
             this.cboAFPEmpresa.Items.AddRange(new object[] {
             "SI",
@@ -159,6 +162,7 @@
             // 
             // cboONP
             // 
+            this.cboONP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboONP.FormattingEnabled = true;
             this.cboONP.Items.AddRange(new object[] {
             "SI"});
@@ -170,6 +174,7 @@
             // 
             // cboAFP
             // 
+            this.cboAFP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAFP.FormattingEnabled = true;
             this.cboAFP.Items.AddRange(new object[] {
             "SI",
@@ -182,6 +187,7 @@
             // 
             // cboSCTR
             // 
+            this.cboSCTR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSCTR.FormattingEnabled = true;
             this.cboSCTR.Items.AddRange(new object[] {
             "SI",

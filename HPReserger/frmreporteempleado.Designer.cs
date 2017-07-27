@@ -619,6 +619,9 @@
             // 
             // cbobanco
             // 
+            this.cbobanco.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbobanco.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobanco.FormattingEnabled = true;
             this.cbobanco.Location = new System.Drawing.Point(84, 14);
             this.cbobanco.Name = "cbobanco";

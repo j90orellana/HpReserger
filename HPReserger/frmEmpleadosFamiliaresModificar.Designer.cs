@@ -124,6 +124,9 @@
             // 
             // cboVinculoFamiliar
             // 
+            this.cboVinculoFamiliar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboVinculoFamiliar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboVinculoFamiliar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVinculoFamiliar.FormattingEnabled = true;
             this.cboVinculoFamiliar.Location = new System.Drawing.Point(195, 72);
             this.cboVinculoFamiliar.Name = "cboVinculoFamiliar";
@@ -132,6 +135,9 @@
             // 
             // cboTipoDocumentoIdentidad
             // 
+            this.cboTipoDocumentoIdentidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboTipoDocumentoIdentidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboTipoDocumentoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumentoIdentidad.FormattingEnabled = true;
             this.cboTipoDocumentoIdentidad.Location = new System.Drawing.Point(195, 19);
             this.cboTipoDocumentoIdentidad.Name = "cboTipoDocumentoIdentidad";

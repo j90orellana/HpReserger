@@ -47,7 +47,7 @@ namespace HPReserger
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             int y = e.RowIndex;
-            if (Dtgconten.RowCount > 0)
+            if (Dtgconten.RowCount > 0 && y >= 0)
             {
                 txtdescripcion.Text = Dtgconten["descripcion", y].Value.ToString();
                 cboestado.SelectedValue = Dtgconten["estado", y].Value.ToString();
@@ -55,6 +55,9 @@ namespace HPReserger
                 dtpfechafin.Value = DateTime.Parse(Dtgconten["fechafin", y].Value.ToString());
                 txtmeses.Text = Dtgconten["mesesconstruccion", y].Value.ToString();
                 txtobserva.Text = Dtgconten["observacion", y].Value.ToString();
+                //int dias = dtpfechafin.Value.Year - dtpfechainicio.Value.Year;
+                // int meses = (dtpfechafin.Value.Month + (dias * 12)) - dtpfechainicio.Value.Month;
+                //  msg((meses + 1).ToString());
             }
         }
         int estados = 0;
@@ -118,15 +121,33 @@ namespace HPReserger
                 CLEtapas.ListarEtapasdelProyecto(1, proyecto, 1, txtdescripcion.Text, int.Parse(cboestado.SelectedValue.ToString()), dtpfechainicio.Value, dtpfechafin.Value, int.Parse(txtmeses.Text), txtobserva.Text, frmLogin.CodigoUsuario);
                 msg("Etapa Ingresadá con exito");
                 Iniciar(false);
-                estados = 0; cargarlista();
+                estados = 0;
+                int dias = dtpfechafin.Value.Year - dtpfechainicio.Value.Year;
+                int meses = ((dtpfechafin.Value.Month + (dias * 12)) - dtpfechainicio.Value.Month) + 1;
+                cargarlista();
+                CLEtapas.MesEtapa(10, 0, (int)Dtgconten["id_etapa", Dtgconten.RowCount - 1].Value, 0, 0, 0);
+                for (int i = 0; i < meses; i++)
+                {
+                    CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.RowCount - 1].Value, (int)(dtpfechainicio.Value.Year + (i / 12)), dtpfechainicio.Value.Month + i, frmLogin.CodigoUsuario);
+                }
+
             }
             if (estados == 2)
             {
                 CLEtapas.ListarEtapasdelProyecto(2, proyecto, int.Parse(Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value.ToString()), txtdescripcion.Text, int.Parse(cboestado.SelectedValue.ToString()), dtpfechainicio.Value, dtpfechafin.Value, int.Parse(txtmeses.Text), txtobserva.Text, frmLogin.CodigoUsuario);
                 msg("Etapa Modificada con exito");
                 Iniciar(false);
+                int dias = dtpfechafin.Value.Year - dtpfechainicio.Value.Year;
+                int meses = ((dtpfechafin.Value.Month + (dias * 12)) - dtpfechainicio.Value.Month) + 1;
+                CLEtapas.MesEtapa(10, 0, (int)Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value, 0, 0, 0);
+                for (int i = 0; i < meses; i++)
+                {
+                    CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value, (int)(dtpfechainicio.Value.Year + (i / 12)), dtpfechainicio.Value.Month + i, frmLogin.CodigoUsuario);
+                }
                 estados = 0; cargarlista();
             }
+
+
         }
         private void txtmeses_KeyPress(object sender, KeyPressEventArgs e)
         {

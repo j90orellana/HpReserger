@@ -133,6 +133,7 @@
             // 
             // cboBanco
             // 
+            this.cboBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBanco.FormattingEnabled = true;
             this.cboBanco.Location = new System.Drawing.Point(3, 3);
             this.cboBanco.Name = "cboBanco";
@@ -141,6 +142,7 @@
             // 
             // cboMoneda
             // 
+            this.cboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMoneda.FormattingEnabled = true;
             this.cboMoneda.Location = new System.Drawing.Point(3, 38);
             this.cboMoneda.Name = "cboMoneda";

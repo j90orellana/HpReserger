@@ -62,7 +62,8 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(807, 323);
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Location = new System.Drawing.Point(728, 570);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 42;
@@ -71,8 +72,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(567, 65);
+            this.label3.Location = new System.Drawing.Point(486, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 41;
@@ -80,8 +82,9 @@
             // 
             // txtimporte
             // 
+            this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtimporte.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtimporte.Location = new System.Drawing.Point(618, 63);
+            this.txtimporte.Location = new System.Drawing.Point(537, 63);
             this.txtimporte.Name = "txtimporte";
             this.txtimporte.ReadOnly = true;
             this.txtimporte.Size = new System.Drawing.Size(84, 20);
@@ -90,8 +93,9 @@
             // 
             // txtoperaciones
             // 
+            this.txtoperaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtoperaciones.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtoperaciones.Location = new System.Drawing.Point(708, 63);
+            this.txtoperaciones.Location = new System.Drawing.Point(627, 63);
             this.txtoperaciones.Name = "txtoperaciones";
             this.txtoperaciones.ReadOnly = true;
             this.txtoperaciones.Size = new System.Drawing.Size(84, 20);
@@ -100,8 +104,9 @@
             // 
             // txtdiferencia
             // 
+            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdiferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdiferencia.Location = new System.Drawing.Point(798, 63);
+            this.txtdiferencia.Location = new System.Drawing.Point(717, 63);
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
             this.txtdiferencia.Size = new System.Drawing.Size(84, 20);
@@ -110,21 +115,26 @@
             // 
             // lblmsg
             // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(12, 575);
+            this.lblmsg.Location = new System.Drawing.Point(9, 575);
             this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(0, 13);
+            this.lblmsg.Size = new System.Drawing.Size(54, 13);
             this.lblmsg.TabIndex = 37;
+            this.lblmsg.Text = "Registros:";
             // 
             // btnexportarexcel
             // 
-            this.btnexportarexcel.Location = new System.Drawing.Point(807, 35);
+            this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnexportarexcel.Enabled = false;
+            this.btnexportarexcel.Location = new System.Drawing.Point(726, 35);
             this.btnexportarexcel.Name = "btnexportarexcel";
             this.btnexportarexcel.Size = new System.Drawing.Size(75, 23);
             this.btnexportarexcel.TabIndex = 36;
             this.btnexportarexcel.Text = "Excel";
             this.btnexportarexcel.UseVisualStyleBackColor = true;
             this.btnexportarexcel.Visible = false;
+            this.btnexportarexcel.Click += new System.EventHandler(this.btnexportarexcel_Click);
             // 
             // btnGenerar
             // 
@@ -138,6 +148,9 @@
             // 
             // cboproyecto
             // 
+            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboproyecto.FormattingEnabled = true;
             this.cboproyecto.Location = new System.Drawing.Point(69, 33);
             this.cboproyecto.Name = "cboproyecto";
@@ -147,6 +160,9 @@
             // 
             // cboempresa
             // 
+            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
             this.cboempresa.Location = new System.Drawing.Point(69, 6);
             this.cboempresa.Name = "cboempresa";
@@ -179,6 +195,9 @@
             this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -208,7 +227,7 @@
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(870, 230);
+            this.dtgconten.Size = new System.Drawing.Size(789, 478);
             this.dtgconten.TabIndex = 34;
             this.dtgconten.TabStop = false;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
@@ -314,6 +333,7 @@
             // 
             this.cbocuenta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbocuenta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbocuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuenta.FormattingEnabled = true;
             this.cbocuenta.Location = new System.Drawing.Point(69, 60);
             this.cbocuenta.Name = "cbocuenta";
@@ -325,7 +345,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 356);
+            this.ClientSize = new System.Drawing.Size(815, 603);
             this.Controls.Add(this.cbocuenta);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btncancelar);

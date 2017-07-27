@@ -48,15 +48,16 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.dtgconten1 = new System.Windows.Forms.DataGridView();
-            this.lblmsg = new System.Windows.Forms.Label();
             this.numeropedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.dtgconten1 = new System.Windows.Forms.DataGridView();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.btnexcel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
@@ -84,6 +85,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opciones";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
             // 
@@ -92,7 +94,7 @@
             this.groupBox2.Controls.Add(this.checkBox6);
             this.groupBox2.Controls.Add(this.checkBox5);
             this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Location = new System.Drawing.Point(7, 44);
+            this.groupBox2.Location = new System.Drawing.Point(7, 70);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(482, 44);
             this.groupBox2.TabIndex = 12;
@@ -174,7 +176,7 @@
             // 
             // btnlimpiar
             // 
-            this.btnlimpiar.Location = new System.Drawing.Point(335, 94);
+            this.btnlimpiar.Location = new System.Drawing.Point(342, 44);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(75, 20);
             this.btnlimpiar.TabIndex = 9;
@@ -185,7 +187,7 @@
             // txtbusca
             // 
             this.txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtbusca.Location = new System.Drawing.Point(52, 94);
+            this.txtbusca.Location = new System.Drawing.Point(59, 44);
             this.txtbusca.Name = "txtbusca";
             this.txtbusca.Size = new System.Drawing.Size(277, 20);
             this.txtbusca.TabIndex = 8;
@@ -194,7 +196,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 97);
+            this.label1.Location = new System.Drawing.Point(13, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 7;
@@ -282,6 +284,9 @@
             this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -300,49 +305,9 @@
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(815, 281);
+            this.dtgconten.Size = new System.Drawing.Size(702, 364);
             this.dtgconten.TabIndex = 1;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Location = new System.Drawing.Point(749, 430);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 2;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // dtgconten1
-            // 
-            this.dtgconten1.AllowUserToAddRows = false;
-            this.dtgconten1.AllowUserToDeleteRows = false;
-            this.dtgconten1.AllowUserToOrderColumns = true;
-            this.dtgconten1.AllowUserToResizeColumns = false;
-            this.dtgconten1.AllowUserToResizeRows = false;
-            this.dtgconten1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgconten1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dtgconten1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dtgconten1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgconten1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten1.Location = new System.Drawing.Point(12, 446);
-            this.dtgconten1.MultiSelect = false;
-            this.dtgconten1.Name = "dtgconten1";
-            this.dtgconten1.RowHeadersVisible = false;
-            this.dtgconten1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten1.Size = new System.Drawing.Size(595, 171);
-            this.dtgconten1.TabIndex = 3;
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(9, 427);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(81, 13);
-            this.lblmsg.TabIndex = 11;
-            this.lblmsg.Text = "Total Registros:";
             // 
             // numeropedido
             // 
@@ -391,11 +356,66 @@
             this.Estado.Name = "Estado";
             this.Estado.Width = 65;
             // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Location = new System.Drawing.Point(633, 513);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(78, 23);
+            this.btncancelar.TabIndex = 2;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // dtgconten1
+            // 
+            this.dtgconten1.AllowUserToAddRows = false;
+            this.dtgconten1.AllowUserToDeleteRows = false;
+            this.dtgconten1.AllowUserToOrderColumns = true;
+            this.dtgconten1.AllowUserToResizeColumns = false;
+            this.dtgconten1.AllowUserToResizeRows = false;
+            this.dtgconten1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtgconten1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgconten1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dtgconten1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtgconten1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dtgconten1.Location = new System.Drawing.Point(12, 546);
+            this.dtgconten1.MultiSelect = false;
+            this.dtgconten1.Name = "dtgconten1";
+            this.dtgconten1.RowHeadersVisible = false;
+            this.dtgconten1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgconten1.Size = new System.Drawing.Size(595, 155);
+            this.dtgconten1.TabIndex = 3;
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.Location = new System.Drawing.Point(9, 520);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(81, 13);
+            this.lblmsg.TabIndex = 11;
+            this.lblmsg.Text = "Total Registros:";
+            // 
+            // btnexcel
+            // 
+            this.btnexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnexcel.Location = new System.Drawing.Point(549, 513);
+            this.btnexcel.Name = "btnexcel";
+            this.btnexcel.Size = new System.Drawing.Size(78, 23);
+            this.btnexcel.TabIndex = 12;
+            this.btnexcel.Text = "Excel";
+            this.btnexcel.UseVisualStyleBackColor = true;
+            this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
+            // 
             // Frmreporteop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 633);
+            this.ClientSize = new System.Drawing.Size(734, 713);
+            this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.dtgconten1);
             this.Controls.Add(this.btncancelar);
@@ -447,5 +467,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.Button btnexcel;
     }
 }

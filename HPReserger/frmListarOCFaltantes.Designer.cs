@@ -47,6 +47,7 @@
             this.btnrefres = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tip = new System.Windows.Forms.ToolTip(this.components);
+            this.btncorreo = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblmsg = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnopciones = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -87,6 +88,9 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -115,7 +119,7 @@
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
-            this.dtgconten.Size = new System.Drawing.Size(1072, 337);
+            this.dtgconten.Size = new System.Drawing.Size(1206, 329);
             this.dtgconten.TabIndex = 0;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
@@ -240,7 +244,8 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(1007, 481);
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Location = new System.Drawing.Point(1141, 473);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 1;
@@ -251,7 +256,8 @@
             // 
             // btnrefres
             // 
-            this.btnrefres.Location = new System.Drawing.Point(926, 481);
+            this.btnrefres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnrefres.Location = new System.Drawing.Point(1060, 473);
             this.btnrefres.Name = "btnrefres";
             this.btnrefres.Size = new System.Drawing.Size(75, 23);
             this.btnrefres.TabIndex = 1;
@@ -273,13 +279,25 @@
             // 
             this.tip.IsBalloon = true;
             // 
+            // btncorreo
+            // 
+            this.btncorreo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncorreo.Location = new System.Drawing.Point(804, 473);
+            this.btncorreo.Name = "btncorreo";
+            this.btncorreo.Size = new System.Drawing.Size(75, 23);
+            this.btncorreo.TabIndex = 8;
+            this.btncorreo.Text = "Correo";
+            this.tip.SetToolTip(this.btncorreo, "Envia un Correo al Proveedor");
+            this.btncorreo.UseVisualStyleBackColor = true;
+            this.btncorreo.Click += new System.EventHandler(this.btncorreo_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblmsg});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 511);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 503);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1094, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1228, 22);
             this.statusStrip1.TabIndex = 3;
             // 
             // lblmsg
@@ -568,7 +586,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1094, 533);
+            this.ClientSize = new System.Drawing.Size(1228, 525);
+            this.Controls.Add(this.btncorreo);
             this.Controls.Add(this.gb2);
             this.Controls.Add(this.gb1);
             this.Controls.Add(this.statusStrip1);
@@ -576,10 +595,9 @@
             this.Controls.Add(this.btnrefres);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.dtgconten);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmListarOCFaltantes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ordenes de Compra Faltantes de Recibir";
+            this.Text = "Orden de Compra - Atención Incompleta.";
             this.Load += new System.EventHandler(this.frmListarOCFaltantes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -640,5 +658,6 @@
         private System.Windows.Forms.DateTimePicker DTINICIO;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btncorreo;
     }
 }

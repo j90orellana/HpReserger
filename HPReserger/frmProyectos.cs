@@ -20,13 +20,15 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CLProyectos = new HPResergerCapaLogica.HPResergerCL();
         private void frmProyectos_Load(object sender, EventArgs e)
         {
+            cboempresa.ValueMember = "codigo";
+            cboempresa.DisplayMember = "descripcion";
+            cboempresa.DataSource = CLProyectos.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
             // DataRow Empresas = CLProyectos.ListarEmpresasdelUsuario(frmLogin.CodigoUsuario);
-            DataRow Empresas = CLProyectos.ListarEmpresasdelUsuario(2);
+           /* DataRow Empresas = CLProyectos.ListarEmpresasdelUsuario(2);
             txtempresa.Text = Empresas["empresa"].ToString();
-            empresa = (Empresas["id_empresa"].ToString());
-            cargarproyectos();
+            empresa = (Empresas["id_empresa"].ToString());*/            
         }
-       
+
         public void cargarproyectos()
         {
             dtgconten.DataSource = CLProyectos.ListarProyectosEmpresa(empresa);
@@ -101,10 +103,22 @@ namespace HPReserger
 
         private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            fmrProyectodatos proyec = new fmrProyectodatos();
-            proyec.Proyecto = int.Parse(dtgconten["idproyecto", e.RowIndex].Value.ToString());
-            proyec.txtnombre.Text = (dtgconten["proyecto", e.RowIndex].Value.ToString());
-            proyec.ShowDialog();
+            if (e.RowIndex >= 0)
+            {
+                fmrProyectodatos proyec = new fmrProyectodatos();
+                proyec.Proyecto = int.Parse(dtgconten["idproyecto", e.RowIndex].Value.ToString());
+                proyec.txtnombre.Text = (dtgconten["proyecto", e.RowIndex].Value.ToString());
+                proyec.ShowDialog();
+            }
+        }
+
+        private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboempresa.Items.Count > 0)
+            {
+                empresa = cboempresa.SelectedValue.ToString();
+                cargarproyectos();
+            }
         }
     }
 }

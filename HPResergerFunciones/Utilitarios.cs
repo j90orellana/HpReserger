@@ -55,7 +55,7 @@ namespace HPResergerFunciones
         }
         public static Boolean Sololetras(KeyPressEventArgs P)
         {
-            string cadena = "abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVWXYZÑñ" + (char)8;
+            string cadena = "abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVWXYZÑñ " + (char)8;
             if (!cadena.Contains(P.KeyChar))
             {
                 P.Handled = true;

@@ -52,12 +52,6 @@
             this.txtOcupacion = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.Grid = new System.Windows.Forms.DataGridView();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.pbconviviente = new System.Windows.Forms.PictureBox();
-            this.lklconviviente = new System.Windows.Forms.LinkLabel();
-            this.btnconviviente = new System.Windows.Forms.Button();
-            this.txtconviviente = new System.Windows.Forms.TextBox();
-            this.lblconviviente = new System.Windows.Forms.Label();
             this.CODIGOTIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NROID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +64,12 @@
             this.OCUPACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreimagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.pbconviviente = new System.Windows.Forms.PictureBox();
+            this.lklconviviente = new System.Windows.Forms.LinkLabel();
+            this.btnconviviente = new System.Windows.Forms.Button();
+            this.txtconviviente = new System.Windows.Forms.TextBox();
+            this.lblconviviente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).BeginInit();
             this.SuspendLayout();
@@ -116,12 +116,14 @@
             // 
             // cboTipoDocumentoIdentidad
             // 
+            this.cboTipoDocumentoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumentoIdentidad.FormattingEnabled = true;
             resources.ApplyResources(this.cboTipoDocumentoIdentidad, "cboTipoDocumentoIdentidad");
             this.cboTipoDocumentoIdentidad.Name = "cboTipoDocumentoIdentidad";
             // 
             // cboVinculoFamiliar
             // 
+            this.cboVinculoFamiliar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVinculoFamiliar.FormattingEnabled = true;
             resources.ApplyResources(this.cboVinculoFamiliar, "cboVinculoFamiliar");
             this.cboVinculoFamiliar.Name = "cboVinculoFamiliar";
@@ -206,44 +208,6 @@
             this.Grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellContentClick);
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
-            // 
-            // btnRegistrar
-            // 
-            resources.ApplyResources(this.btnRegistrar, "btnRegistrar");
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
-            // 
-            // pbconviviente
-            // 
-            resources.ApplyResources(this.pbconviviente, "pbconviviente");
-            this.pbconviviente.Name = "pbconviviente";
-            this.pbconviviente.TabStop = false;
-            // 
-            // lklconviviente
-            // 
-            resources.ApplyResources(this.lklconviviente, "lklconviviente");
-            this.lklconviviente.Name = "lklconviviente";
-            this.lklconviviente.TabStop = true;
-            this.lklconviviente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklconviviente_LinkClicked);
-            // 
-            // btnconviviente
-            // 
-            resources.ApplyResources(this.btnconviviente, "btnconviviente");
-            this.btnconviviente.Name = "btnconviviente";
-            this.btnconviviente.UseVisualStyleBackColor = true;
-            this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
-            // 
-            // txtconviviente
-            // 
-            resources.ApplyResources(this.txtconviviente, "txtconviviente");
-            this.txtconviviente.Name = "txtconviviente";
-            this.txtconviviente.ReadOnly = true;
-            // 
-            // lblconviviente
-            // 
-            resources.ApplyResources(this.lblconviviente, "lblconviviente");
-            this.lblconviviente.Name = "lblconviviente";
             // 
             // CODIGOTIPOID
             // 
@@ -356,6 +320,44 @@
             resources.ApplyResources(this.nombreimagen, "nombreimagen");
             this.nombreimagen.Name = "nombreimagen";
             this.nombreimagen.ReadOnly = true;
+            // 
+            // btnRegistrar
+            // 
+            resources.ApplyResources(this.btnRegistrar, "btnRegistrar");
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            // 
+            // pbconviviente
+            // 
+            resources.ApplyResources(this.pbconviviente, "pbconviviente");
+            this.pbconviviente.Name = "pbconviviente";
+            this.pbconviviente.TabStop = false;
+            // 
+            // lklconviviente
+            // 
+            resources.ApplyResources(this.lklconviviente, "lklconviviente");
+            this.lklconviviente.Name = "lklconviviente";
+            this.lklconviviente.TabStop = true;
+            this.lklconviviente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklconviviente_LinkClicked);
+            // 
+            // btnconviviente
+            // 
+            resources.ApplyResources(this.btnconviviente, "btnconviviente");
+            this.btnconviviente.Name = "btnconviviente";
+            this.btnconviviente.UseVisualStyleBackColor = true;
+            this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
+            // 
+            // txtconviviente
+            // 
+            resources.ApplyResources(this.txtconviviente, "txtconviviente");
+            this.txtconviviente.Name = "txtconviviente";
+            this.txtconviviente.ReadOnly = true;
+            // 
+            // lblconviviente
+            // 
+            resources.ApplyResources(this.lblconviviente, "lblconviviente");
+            this.lblconviviente.Name = "lblconviviente";
             // 
             // frmFamiliares
             // 

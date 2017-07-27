@@ -138,7 +138,7 @@
             this.txtcodigo.Enabled = false;
             this.txtcodigo.Location = new System.Drawing.Point(165, 20);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(146, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(197, 20);
             this.txtcodigo.TabIndex = 51;
             // 
             // label2
@@ -206,6 +206,7 @@
             // 
             this.cbodepartamento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbodepartamento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbodepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodepartamento.FormattingEnabled = true;
             this.cbodepartamento.Location = new System.Drawing.Point(165, 45);
             this.cbodepartamento.Name = "cbodepartamento";
@@ -218,6 +219,7 @@
             // 
             this.cboprovincia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboprovincia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboprovincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboprovincia.FormattingEnabled = true;
             this.cboprovincia.Location = new System.Drawing.Point(165, 68);
             this.cboprovincia.Name = "cboprovincia";
@@ -231,6 +233,7 @@
             // 
             this.cbodistrito.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbodistrito.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbodistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodistrito.FormattingEnabled = true;
             this.cbodistrito.Location = new System.Drawing.Point(165, 94);
             this.cbodistrito.Name = "cbodistrito";

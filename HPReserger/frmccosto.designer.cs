@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.idcodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tienecuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -51,11 +56,6 @@
             this.Limpiar = new System.Windows.Forms.Button();
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.idcodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tienecuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.pnl1.SuspendLayout();
             this.gp1.SuspendLayout();
@@ -93,6 +93,47 @@
             this.dtgconten.TabIndex = 16;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // idcodigo
+            // 
+            this.idcodigo.DataPropertyName = "Id_CCosto";
+            this.idcodigo.HeaderText = "idcodigo";
+            this.idcodigo.Name = "idcodigo";
+            this.idcodigo.ReadOnly = true;
+            this.idcodigo.Visible = false;
+            // 
+            // codigos
+            // 
+            this.codigos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.codigos.DataPropertyName = "Cod_CCosto";
+            this.codigos.HeaderText = "Código";
+            this.codigos.Name = "codigos";
+            this.codigos.ReadOnly = true;
+            this.codigos.Width = 65;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.DataPropertyName = "CentroCosto";
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // idcuenta
+            // 
+            this.idcuenta.DataPropertyName = "Id_CtaCtble";
+            this.idcuenta.HeaderText = "idcuenta";
+            this.idcuenta.Name = "idcuenta";
+            this.idcuenta.ReadOnly = true;
+            this.idcuenta.Visible = false;
+            // 
+            // tienecuenta
+            // 
+            this.tienecuenta.DataPropertyName = "TieneCtaCtble";
+            this.tienecuenta.HeaderText = "tienecuenta";
+            this.tienecuenta.Name = "tienecuenta";
+            this.tienecuenta.ReadOnly = true;
+            this.tienecuenta.Visible = false;
             // 
             // btneliminar
             // 
@@ -187,6 +228,7 @@
             // 
             this.cbocuentas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbocuentas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbocuentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuentas.FormattingEnabled = true;
             this.cbocuentas.Location = new System.Drawing.Point(96, 81);
             this.cbocuentas.Name = "cbocuentas";
@@ -195,6 +237,7 @@
             // 
             // cbotiene
             // 
+            this.cbotiene.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotiene.FormattingEnabled = true;
             this.cbotiene.Location = new System.Drawing.Point(96, 54);
             this.cbotiene.Name = "cbotiene";
@@ -302,47 +345,6 @@
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 28;
             this.label4.Text = "Buscar:";
-            // 
-            // idcodigo
-            // 
-            this.idcodigo.DataPropertyName = "Id_CCosto";
-            this.idcodigo.HeaderText = "idcodigo";
-            this.idcodigo.Name = "idcodigo";
-            this.idcodigo.ReadOnly = true;
-            this.idcodigo.Visible = false;
-            // 
-            // codigos
-            // 
-            this.codigos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.codigos.DataPropertyName = "Cod_CCosto";
-            this.codigos.HeaderText = "Código";
-            this.codigos.Name = "codigos";
-            this.codigos.ReadOnly = true;
-            this.codigos.Width = 65;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.DataPropertyName = "CentroCosto";
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // idcuenta
-            // 
-            this.idcuenta.DataPropertyName = "Id_CtaCtble";
-            this.idcuenta.HeaderText = "idcuenta";
-            this.idcuenta.Name = "idcuenta";
-            this.idcuenta.ReadOnly = true;
-            this.idcuenta.Visible = false;
-            // 
-            // tienecuenta
-            // 
-            this.tienecuenta.DataPropertyName = "TieneCtaCtble";
-            this.tienecuenta.HeaderText = "tienecuenta";
-            this.tienecuenta.Name = "tienecuenta";
-            this.tienecuenta.ReadOnly = true;
-            this.tienecuenta.Visible = false;
             // 
             // frmccosto
             // 

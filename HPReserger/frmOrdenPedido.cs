@@ -32,14 +32,14 @@ namespace HPReserger
             cboTipoPedido.ValueMember = "Codigo_Tipo_Compra";
             cboTipoPedido.DataSource = clOrdenPedido.ListarTipoPedido();
             cboTipoPedido.SelectedIndex = 0;
-            cboproyecto.DataSource = clOrdenPedido.ListarProyectosUsuario(frmLogin.CodigoUsuario);
-            cboproyecto.DisplayMember = "proyecto";
-            cboproyecto.ValueMember = "id_proyecto";
-        }
 
+            cboempresa.DisplayMember = "descripcion";
+            cboempresa.ValueMember = "codigo";
+            cboempresa.DataSource = clOrdenPedido.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
+        }
         private void gridItem_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0 && e.RowIndex > -1)
+            if (e.ColumnIndex == 1 && e.RowIndex > -1)
             {
                 DataGridViewComboBoxCell MarcaColumn = gridItem.Rows[e.RowIndex].Cells["Marca"] as DataGridViewComboBoxCell;
                 MarcaColumn.Value = null;
@@ -49,8 +49,7 @@ namespace HPReserger
                 MarcaColumn.DisplayMember = "Marcas";
                 MarcaColumn.DataSource = clOrdenPedido.MarcaArticulo(idItem);
             }
-
-            if (e.ColumnIndex == 1 && e.RowIndex > -1)
+            if (e.ColumnIndex == 2 && e.RowIndex > -1)
             {
                 DataGridViewComboBoxCell ModeloColumn = gridItem.Rows[e.RowIndex].Cells["Modelo"] as DataGridViewComboBoxCell;
                 ModeloColumn.Value = null;
@@ -62,8 +61,19 @@ namespace HPReserger
                     ModeloColumn.DataSource = clOrdenPedido.ModeloArticulo(Convert.ToInt32(gridItem.CurrentRow.Cells["Marca"].Value.ToString()), Convert.ToInt32(gridItem.CurrentRow.Cells["item"].Value.ToString()));
                 }
             }
-        }
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                if (MessageBox.Show("Seguro Desea Eliminar esta fila", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    gridItem.Rows.RemoveAt(e.RowIndex);
+                }
+            }
 
+        }
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void gridItem_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -93,14 +103,14 @@ namespace HPReserger
             if (Validar(gridItem, cboTipoPedido.SelectedIndex))
             {
                 int IdNumero = 0;
-                clOrdenPedido.OrdenPedidoCabeceraInsertar(out IdNumero, frmLogin.CodigoUsuario, cboTipoPedido.SelectedIndex,cboproyecto.SelectedValue.ToString(),cboetapa.SelectedValue.ToString());
+                clOrdenPedido.OrdenPedidoCabeceraInsertar(out IdNumero, frmLogin.CodigoUsuario, cboTipoPedido.SelectedIndex, cboproyecto.SelectedValue.ToString(), cboetapa.SelectedValue.ToString());
 
                 if (cboTipoPedido.SelectedIndex == 0)
                 {
                     int FilaGrabarArticulo = 0;
                     for (FilaGrabarArticulo = 0; FilaGrabarArticulo < gridItem.Rows.Count; FilaGrabarArticulo++)
                     {
-                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[3].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[0].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[1].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[2].Value), "ARTICULO");
+                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[4].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[1].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[2].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[3].Value), "ARTICULO");
                     }
                 }
                 else
@@ -109,11 +119,11 @@ namespace HPReserger
                     for (FilaGrabarServicio = 0; FilaGrabarServicio < gridItem.Rows.Count; FilaGrabarServicio++)
                     {
                         string cadenita = "";
-                        foreach (char c in gridItem.Rows[FilaGrabarServicio].Cells[3].Value.ToString())
+                        foreach (char c in gridItem.Rows[FilaGrabarServicio].Cells[4].Value.ToString())
                         {
                             cadenita += char.ToUpper(c);
                         }
-                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, 0, Convert.ToInt32(gridItem.Rows[FilaGrabarServicio].Cells[0].Value), 1, 1, cadenita);
+                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, 0, Convert.ToInt32(gridItem.Rows[FilaGrabarServicio].Cells[1].Value), 1, 1, cadenita);
                     }
                 }
                 if (IdNumero != 0)
@@ -143,36 +153,35 @@ namespace HPReserger
             {
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
                 {
-                    if (Grid.Rows[fila].Cells[0].Value == null)
+                    if (Grid.Rows[fila].Cells[1].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Artículo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
-                    if (Grid.Rows[fila].Cells[1].Value == null)
+                    if (Grid.Rows[fila].Cells[2].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar una Marca", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
-                    if (Grid.Rows[fila].Cells[2].Value == null)
+                    if (Grid.Rows[fila].Cells[3].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Modelo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
-                    if (string.IsNullOrWhiteSpace(Grid.Rows[fila].Cells[3].Value.ToString()))
+                    if (string.IsNullOrWhiteSpace(Grid.Rows[fila].Cells[4].Value.ToString()))
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     else
-                        if (Convert.ToInt32(Grid.Rows[fila].Cells[3].Value.ToString()) <= 0)
+                        if (Convert.ToInt32(Grid.Rows[fila].Cells[4].Value.ToString()) <= 0)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     else
                     {
-
-                        string Cant1 = Grid.Rows[fila].Cells[3].Value.ToString();
+                        string Cant1 = Grid.Rows[fila].Cells[4].Value.ToString();
                         decimal Cant2 = 0;
                         bool Res = decimal.TryParse(Cant1, out Cant2);
                         if (Res == false)
@@ -187,14 +196,14 @@ namespace HPReserger
                 filaBuscar = 0;
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
                 {
-                    CodigoArticulo = Convert.ToInt32(Grid.Rows[fila].Cells[0].Value.ToString());
-                    CodigoMarca = Convert.ToInt32(Grid.Rows[fila].Cells[1].Value.ToString());
-                    CodigoModelo = Convert.ToInt32(Grid.Rows[fila].Cells[2].Value.ToString());
+                    CodigoArticulo = Convert.ToInt32(Grid.Rows[fila].Cells[1].Value.ToString());
+                    CodigoMarca = Convert.ToInt32(Grid.Rows[fila].Cells[2].Value.ToString());
+                    CodigoModelo = Convert.ToInt32(Grid.Rows[fila].Cells[3].Value.ToString());
                     for (filaBuscar = 0; filaBuscar < Grid.Rows.Count; filaBuscar++)
                     {
-                        if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[0].Value.ToString()) && CodigoMarca == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[1].Value.ToString()) && CodigoModelo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[2].Value.ToString()) && fila != filaBuscar)
+                        if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[1].Value.ToString()) && CodigoMarca == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[2].Value.ToString()) && CodigoModelo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[3].Value.ToString()) && fila != filaBuscar)
                         {
-                            MessageBox.Show("El Artículo " + Grid.Rows[filaBuscar].Cells[0].FormattedValue.ToString() + " de Marca " + Grid.Rows[filaBuscar].Cells[1].FormattedValue.ToString() + " de Modelo " + Grid.Rows[filaBuscar].Cells[2].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("El Artículo " + Grid.Rows[filaBuscar].Cells[1].FormattedValue.ToString() + " de Marca " + Grid.Rows[filaBuscar].Cells[2].FormattedValue.ToString() + " de Modelo " + Grid.Rows[filaBuscar].Cells[3].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return false;
                         }
                     }
@@ -204,12 +213,12 @@ namespace HPReserger
             {
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
                 {
-                    if (Grid.Rows[fila].Cells[0].Value == null)
+                    if (Grid.Rows[fila].Cells[1].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Servicio", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
-                    if (Grid.Rows[fila].Cells[3].Value == null)
+                    if (Grid.Rows[fila].Cells[4].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe ingresar Observaciones", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
@@ -220,12 +229,12 @@ namespace HPReserger
                 filaBuscar = 0;
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
                 {
-                    CodigoArticulo = Convert.ToInt32(Grid.Rows[fila].Cells[0].Value.ToString());
+                    CodigoArticulo = Convert.ToInt32(Grid.Rows[fila].Cells[1].Value.ToString());
                     for (filaBuscar = 0; filaBuscar < Grid.Rows.Count; filaBuscar++)
                     {
-                        if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[0].Value.ToString()) && fila != filaBuscar)
+                        if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[1].Value.ToString()) && fila != filaBuscar)
                         {
-                            MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[0].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[1].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return false;
                         }
                     }
@@ -305,6 +314,7 @@ namespace HPReserger
                     txt.KeyPress += new KeyPressEventHandler(txtmayusculas_keypress);
                 }
             }
+
         }
         private void txtmayusculas_keypress(object sender, KeyPressEventArgs e)
         {
@@ -336,34 +346,37 @@ namespace HPReserger
                 {
                     if (gridItem.Columns.Count == 0)
                     {
+                        gridItem.Columns.Add("accion", "");
                         gridItem.Columns.Add("Item", "");
                         gridItem.Columns.Add("Marca", "");
                         gridItem.Columns.Add("Modelo", "");
                         gridItem.Columns.Add("Cantidad", "");
                     }
-
-                    //    gridItem.Columns[0].Width = 180;
                     gridItem.Columns[0].Visible = true;
-                    gridItem.Columns[0].HeaderText = "Item";
+                    gridItem.Columns[0].HeaderText = "Acción";
+                    //    gridItem.Columns[0].Width = 180;
+                    gridItem.Columns[1].Visible = true;
+                    gridItem.Columns[1].HeaderText = "Item";
 
                     //   gridItem.Columns[1].Width = 180;
-                    gridItem.Columns[1].Visible = true;
-                    gridItem.Columns[1].HeaderText = "Marca";
+                    gridItem.Columns[2].Visible = true;
+                    gridItem.Columns[2].HeaderText = "Marca";
 
                     //   gridItem.Columns[2].Width = 180;
-                    gridItem.Columns[2].Visible = true;
-                    gridItem.Columns[2].HeaderText = "Modelo";
+                    gridItem.Columns[3].Visible = true;
+                    gridItem.Columns[3].HeaderText = "Modelo";
 
                     //  gridItem.Columns[3].Width = 100;
-                    gridItem.Columns[3].Visible = true;
-                    gridItem.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    gridItem.Columns[3].HeaderText = "Cantidad";
+                    gridItem.Columns[4].Visible = true;
+                    gridItem.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    gridItem.Columns[4].HeaderText = "Cantidad";
 
                 }
                 else
                 {
                     if (gridItem.Columns.Count == 0)
                     {
+                        gridItem.Columns.Add("Accion", "");
                         gridItem.Columns.Add("Item", "");
                         gridItem.Columns.Add("Marca", "");
                         gridItem.Columns.Add("Modelo", "");
@@ -371,19 +384,23 @@ namespace HPReserger
                     }
 
                     //     gridItem.Columns[0].Width = 340;
+
                     gridItem.Columns[0].Visible = true;
-                    gridItem.Columns[0].HeaderText = "Item";
+                    gridItem.Columns[0].HeaderText = "Acción";
+
+                    gridItem.Columns[1].Visible = true;
+                    gridItem.Columns[1].HeaderText = "Item";
 
                     //   gridItem.Columns[1].Width = 0;
-                    gridItem.Columns[1].Visible = false;
-
-                    //   gridItem.Columns[2].Width = 0;
                     gridItem.Columns[2].Visible = false;
 
+                    //   gridItem.Columns[2].Width = 0;
+                    gridItem.Columns[3].Visible = false;
+
                     //      gridItem.Columns[3].Width = 340;
-                    gridItem.Columns[3].Visible = true;
-                    gridItem.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    gridItem.Columns[3].HeaderText = "Observaciones";
+                    gridItem.Columns[4].Visible = true;
+                    gridItem.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    gridItem.Columns[4].HeaderText = "Observaciones";
 
                 }
 
@@ -399,7 +416,7 @@ namespace HPReserger
         {
             if (cboproyecto.SelectedIndex >= 0)
             {
-                DataRowView itemsito = (DataRowView)cboproyecto.Items[cboproyecto.SelectedIndex];      
+                DataRowView itemsito = (DataRowView)cboproyecto.Items[cboproyecto.SelectedIndex];
                 cboetapa.DataSource = clOrdenPedido.ListarEtapasProyecto((itemsito["id_proyecto"].ToString()));
                 cboetapa.ValueMember = "id_etapa";
                 cboetapa.DisplayMember = "descripcion";
@@ -408,6 +425,17 @@ namespace HPReserger
         public void MSG(string cadena)
         {
             MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboempresa.Items.Count > 0)
+            {
+                cboproyecto.DataSource = clOrdenPedido.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
+                cboproyecto.DisplayMember = "proyecto";
+                cboproyecto.ValueMember = "id_proyecto";
+            }
+            else MSG("No hay empresas");
         }
     }
 }

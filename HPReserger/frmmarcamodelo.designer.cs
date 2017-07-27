@@ -155,6 +155,7 @@
             // 
             // cbomodelo
             // 
+            this.cbomodelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbomodelo.FormattingEnabled = true;
             this.cbomodelo.Location = new System.Drawing.Point(83, 39);
             this.cbomodelo.Name = "cbomodelo";
@@ -164,6 +165,7 @@
             // 
             // cbomarca
             // 
+            this.cbomarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbomarca.FormattingEnabled = true;
             this.cbomarca.Location = new System.Drawing.Point(83, 12);
             this.cbomarca.Name = "cbomarca";

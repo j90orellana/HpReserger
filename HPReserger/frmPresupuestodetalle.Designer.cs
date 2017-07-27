@@ -44,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txttotal = new System.Windows.Forms.TextBox();
             this.lblmsg = new System.Windows.Forms.Label();
+            this.btnmas = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CodCentroC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iddep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.conta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,6 +74,9 @@
             this.cboproyecto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboproyecto.FormattingEnabled = true;
             this.cboproyecto.Location = new System.Drawing.Point(64, 19);
             this.cboproyecto.Name = "cboproyecto";
@@ -128,6 +132,7 @@
             this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.btnmas,
             this.CodCentroC,
             this.iddep,
             this.conta,
@@ -148,8 +153,11 @@
             this.dtgconten.Size = new System.Drawing.Size(718, 571);
             this.dtgconten.TabIndex = 16;
             this.dtgconten.TabStop = false;
+            this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
+            this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellEndEdit);
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.Dtgconten_EditingControlShowing);
+            this.dtgconten.DoubleClick += new System.EventHandler(this.dtgconten_DoubleClick);
             // 
             // btnaceptar
             // 
@@ -216,6 +224,15 @@
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(0, 13);
             this.lblmsg.TabIndex = 23;
+            // 
+            // btnmas
+            // 
+            this.btnmas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.btnmas.HeaderText = "";
+            this.btnmas.Name = "btnmas";
+            this.btnmas.Text = "+";
+            this.btnmas.UseColumnTextForButtonValue = true;
+            this.btnmas.Width = 5;
             // 
             // CodCentroC
             // 
@@ -285,6 +302,7 @@
             this.Importe.DefaultCellStyle = dataGridViewCellStyle3;
             this.Importe.HeaderText = "Importe";
             this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
             this.Importe.Width = 67;
             // 
             // fk_id_proyecto
@@ -306,6 +324,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 699);
+            this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.txttotal);
             this.Controls.Add(this.label4);
@@ -313,7 +332,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnaceptar);
-            this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.gp1);
             this.Controls.Add(this.btneditar);
@@ -345,6 +363,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txttotal;
         private System.Windows.Forms.Label lblmsg;
+        private System.Windows.Forms.DataGridViewButtonColumn btnmas;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodCentroC;
         private System.Windows.Forms.DataGridViewTextBoxColumn iddep;
         private System.Windows.Forms.DataGridViewTextBoxColumn conta;

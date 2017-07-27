@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,10 +63,13 @@ namespace HPReserger
 
         private void dtgconten_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            dtgconten.CurrentCell = dtgconten[e.ColumnIndex, e.RowIndex];
-            if (e.Button == MouseButtons.Right)
+            if (e.RowIndex >= 0)
             {
-                // mnopciones.Show(frmListarOCFaltantes.ActiveForm.);
+                dtgconten.CurrentCell = dtgconten[e.ColumnIndex, e.RowIndex];
+                if (e.Button == MouseButtons.Right)
+                {
+                    // mnopciones.Show(frmListarOCFaltantes.ActiveForm.);
+                }
             }
         }
 
@@ -76,8 +81,15 @@ namespace HPReserger
 
         private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Clipboard.SetText(dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString());
-            lblmsg.Text = "Copiado";
+            if (e.RowIndex >= 0)
+            {
+                Clipboard.SetText(dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString());
+                lblmsg.Text = "Copiado";
+            }
+            frmlistarOrdenesfaltantes ordenes = new frmlistarOrdenesfaltantes();
+            ordenes.txtcotizacion.Text = dtgconten["cot", dtgconten.CurrentCell.RowIndex].Value.ToString();
+            ordenes.txtorden.Text= dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString();
+            ordenes.ShowDialog();
         }
 
         private void gb3_Enter(object sender, EventArgs e)
@@ -86,8 +98,10 @@ namespace HPReserger
         }
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
-        {try { 
-            dtgconten.DataSource = cllistarfaltantes.ListarOCFaltantes(txtbuscar.Text, DTINICIO.Value, DTFIN.Value, articulo, servicio, opcion, fecha);
+        {
+            try
+            {
+                dtgconten.DataSource = cllistarfaltantes.ListarOCFaltantes(txtbuscar.Text, DTINICIO.Value, DTFIN.Value, articulo, servicio, opcion, fecha);
             }
             catch { }
         }
@@ -212,6 +226,55 @@ namespace HPReserger
         private void button1_Click(object sender, EventArgs e)
         {
             txtbuscar.Text = "";
+        }
+        public void MSG(string cadena)
+        {
+            MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+        DataRow drCOT;
+        private void btncorreo_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.RowCount > 0)
+            {
+                drCOT = cllistarfaltantes.ListarDetalleOC((int)dtgconten["cot", dtgconten.CurrentCell.RowIndex].Value);
+                // MSG(dtgconten["cot", dtgconten.CurrentCell.RowIndex].Value.ToString());
+                if (drCOT != null)
+                {
+                    /// MSG(drCOT["correo"].ToString());
+                    frmMensajeCorreo mensajito = new frmMensajeCorreo();
+                    mensajito.txtmsg.Text = "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
+                    mensajito.Text = "Reenvio de Mensaje de Confirmación"; ;
+                    mensajito.ShowDialog();
+                    if (mensajito.ok)
+                    {
+                        //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        try
+                        {
+                            MailMessage email = new MailMessage();
+                            //CORREO DE PROVEEDOR
+                            email.To.Add(new MailAddress(drCOT["correo"].ToString()));
+                            email.From = new MailAddress("j90orellana@hotmail.com");
+                            email.Subject = "Re:Cotización Aprobada";
+                            email.Priority = MailPriority.High;
+                            email.Body = "Hp Reserger S.A.C. \n " + mensajito.cadena; ;
+                            email.IsBodyHtml = false;
+                            SmtpClient smtp = new SmtpClient();
+                            smtp.Host = "smtp.live.com";
+                            smtp.Port = 25;
+                            smtp.EnableSsl = true;
+                            smtp.UseDefaultCredentials = false;
+                            smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
+                            smtp.Send(email);
+                            email.Dispose();
+                            MSG("Correo electrónico fue enviado a " + drCOT["correo"].ToString().ToLower() + " satisfactoriamente.");
+                        }
+                        catch (Exception ex)
+                        {
+                            MSG("Error enviando correo electrónico: " + ex.Message);
+                        }
+                    }
+                }
+            }
         }
     }
 }

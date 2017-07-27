@@ -111,6 +111,18 @@
     <Compile Include="frmetapas.Designer.cs">
       <DependentUpon>frmetapas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFacturasPorPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturasPorPagar.Designer.cs">
+      <DependentUpon>frmFacturasPorPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFicSinFaactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFicSinFaactura.Designer.cs">
+      <DependentUpon>frmFicSinFaactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGenerarRemuneracionRenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +261,12 @@
     <Compile Include="frmListarOCFaltantes.Designer.cs">
       <DependentUpon>frmListarOCFaltantes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmlistarOrdenesfaltantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmlistarOrdenesfaltantes.Designer.cs">
+      <DependentUpon>frmlistarOrdenesfaltantes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLocacionServicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,11 +297,23 @@
     <Compile Include="frmMemoPremioObservaciones.Designer.cs">
       <DependentUpon>frmMemoPremioObservaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMensajeCorreo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMensajeCorreo.Designer.cs">
+      <DependentUpon>frmMensajeCorreo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmmodelo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmmodelo.designer.cs">
       <DependentUpon>frmmodelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPagarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagarFactura.Designer.cs">
+      <DependentUpon>frmPagarFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPartidaPresupuesto.cs">
       <SubType>Form</SubType>
@@ -315,6 +345,12 @@
     <Compile Include="frmPresupuestodetalle.Designer.cs">
       <DependentUpon>frmPresupuestodetalle.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmpresupuestoetapa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmpresupuestoetapa.Designer.cs">
+      <DependentUpon>frmpresupuestoetapa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmproveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,6 +368,12 @@
     </Compile>
     <Compile Include="frmProyectos.Designer.cs">
       <DependentUpon>frmProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmREciboPorHonorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmREciboPorHonorario.Designer.cs">
+      <DependentUpon>frmREciboPorHonorario.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReporteAdendaNecesidad.cs">
       <SubType>Form</SubType>
@@ -386,6 +428,12 @@
     </Compile>
     <Compile Include="frmReportePresupuestoCuenta.Designer.cs">
       <DependentUpon>frmReportePresupuestoCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmreportepresupuestoetapas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmreportepresupuestoetapas.Designer.cs">
+      <DependentUpon>frmreportepresupuestoetapas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReportePresupuestoOperaciones.cs">
       <SubType>Form</SubType>
@@ -763,11 +811,17 @@
     <EmbeddedResource Include="FrmFactura.resx">
       <DependentUpon>FrmFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFacturasPorPagar.resx">
+      <DependentUpon>frmFacturasPorPagar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFaltas.resx">
       <DependentUpon>frmFaltas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFicModificar.resx">
       <DependentUpon>frmFicModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFicSinFaactura.resx">
+      <DependentUpon>frmFicSinFaactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFoto.resx">
       <DependentUpon>FrmFoto.cs</DependentUpon>
@@ -793,6 +847,9 @@
     <EmbeddedResource Include="frmListarOCFaltantes.resx">
       <DependentUpon>frmListarOCFaltantes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmlistarOrdenesfaltantes.resx">
+      <DependentUpon>frmlistarOrdenesfaltantes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLocacionServicio.resx">
       <DependentUpon>frmLocacionServicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -808,8 +865,14 @@
     <EmbeddedResource Include="frmMemoPremioObservaciones.resx">
       <DependentUpon>frmMemoPremioObservaciones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMensajeCorreo.resx">
+      <DependentUpon>frmMensajeCorreo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmmodelo.resx">
       <DependentUpon>frmmodelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPagarFactura.resx">
+      <DependentUpon>frmPagarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPartidaPresupuesto.resx">
       <DependentUpon>frmPartidaPresupuesto.cs</DependentUpon>
@@ -826,6 +889,9 @@
     <EmbeddedResource Include="frmPresupuestodetalle.resx">
       <DependentUpon>frmPresupuestodetalle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmpresupuestoetapa.resx">
+      <DependentUpon>frmpresupuestoetapa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmproveedor.resx">
       <DependentUpon>frmproveedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -834,6 +900,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProyectos.resx">
       <DependentUpon>frmProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmREciboPorHonorario.resx">
+      <DependentUpon>frmREciboPorHonorario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteAdendaNecesidad.resx">
       <DependentUpon>frmReporteAdendaNecesidad.cs</DependentUpon>
@@ -861,6 +930,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportePresupuestoCuenta.resx">
       <DependentUpon>frmReportePresupuestoCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmreportepresupuestoetapas.resx">
+      <DependentUpon>frmreportepresupuestoetapas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportePresupuestoOperaciones.resx">
       <DependentUpon>frmReportePresupuestoOperaciones.cs</DependentUpon>

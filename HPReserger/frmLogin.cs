@@ -114,7 +114,7 @@ namespace HPReserger
                         frmM.usuario = CodigoUsuario;
                         frmM.Nombres = Usuario;
                         frmM.nick = txtUsuario.Text;
-                        if (drAcceso["FOTO"] != null&&drAcceso["NOMBREFOTO"].ToString().Length>0)
+                        if (drAcceso["FOTO"] != null && drAcceso["foto"].ToString().Length > 0)
                         {
                             byte[] Fotito = new byte[0];
                             Fotito = (byte[])drAcceso["FOTO"];

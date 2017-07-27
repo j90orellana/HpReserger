@@ -29,13 +29,27 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridOC = new System.Windows.Forms.DataGridView();
+            this.ORDENCOMPRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COTIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORDENPEDIDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CENTROCOSTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PARTIDAPRESUPUESTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOUSUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOAREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOGERENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GERENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,20 +68,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnEnviar = new System.Windows.Forms.Button();
             this.btnAnular = new System.Windows.Forms.Button();
-            this.ORDENCOMPRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COTIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORDENPEDIDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CENTROCOSTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PARTIDAPRESUPUESTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOUSUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOAREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOGERENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GERENCIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridOC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +83,7 @@
             this.gridOC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -114,184 +114,6 @@
             this.gridOC.Size = new System.Drawing.Size(858, 261);
             this.gridOC.TabIndex = 29;
             this.gridOC.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridOC_RowEnter);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 13);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Orden de Compra y Servicio:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 300);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Proveedor";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(549, 300);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "Importe";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(684, 300);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 13);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Fecha de Entrega";
-            // 
-            // txtProveedor
-            // 
-            this.txtProveedor.Location = new System.Drawing.Point(74, 300);
-            this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.ReadOnly = true;
-            this.txtProveedor.Size = new System.Drawing.Size(459, 20);
-            this.txtProveedor.TabIndex = 34;
-            // 
-            // txtImporte
-            // 
-            this.txtImporte.Location = new System.Drawing.Point(597, 300);
-            this.txtImporte.Name = "txtImporte";
-            this.txtImporte.ReadOnly = true;
-            this.txtImporte.Size = new System.Drawing.Size(78, 20);
-            this.txtImporte.TabIndex = 35;
-            this.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtFechaEntrega
-            // 
-            this.txtFechaEntrega.Location = new System.Drawing.Point(782, 300);
-            this.txtFechaEntrega.Name = "txtFechaEntrega";
-            this.txtFechaEntrega.ReadOnly = true;
-            this.txtFechaEntrega.Size = new System.Drawing.Size(88, 20);
-            this.txtFechaEntrega.TabIndex = 36;
-            this.txtFechaEntrega.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // gridDetalle
-            // 
-            this.gridDetalle.AllowUserToAddRows = false;
-            this.gridDetalle.AllowUserToOrderColumns = true;
-            this.gridDetalle.AllowUserToResizeRows = false;
-            this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CODIGOARTICULO,
-            this.ITEM,
-            this.CODIGOMARCA,
-            this.MARCA,
-            this.CODIGOMODELO,
-            this.MODELO,
-            this.CANTIDAD});
-            this.gridDetalle.GridColor = System.Drawing.Color.White;
-            this.gridDetalle.Location = new System.Drawing.Point(12, 353);
-            this.gridDetalle.Name = "gridDetalle";
-            this.gridDetalle.ReadOnly = true;
-            this.gridDetalle.RowHeadersVisible = false;
-            this.gridDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDetalle.Size = new System.Drawing.Size(764, 261);
-            this.gridDetalle.TabIndex = 37;
-            // 
-            // CODIGOARTICULO
-            // 
-            this.CODIGOARTICULO.DataPropertyName = "CODIGOARTICULO";
-            this.CODIGOARTICULO.HeaderText = "CODIGOARTICULO";
-            this.CODIGOARTICULO.Name = "CODIGOARTICULO";
-            this.CODIGOARTICULO.ReadOnly = true;
-            this.CODIGOARTICULO.Visible = false;
-            // 
-            // ITEM
-            // 
-            this.ITEM.DataPropertyName = "ITEM";
-            this.ITEM.HeaderText = "ITEM";
-            this.ITEM.Name = "ITEM";
-            this.ITEM.ReadOnly = true;
-            // 
-            // CODIGOMARCA
-            // 
-            this.CODIGOMARCA.DataPropertyName = "CODIGOMARCA";
-            this.CODIGOMARCA.HeaderText = "CODIGOMARCA";
-            this.CODIGOMARCA.Name = "CODIGOMARCA";
-            this.CODIGOMARCA.ReadOnly = true;
-            this.CODIGOMARCA.Visible = false;
-            // 
-            // MARCA
-            // 
-            this.MARCA.DataPropertyName = "MARCA";
-            this.MARCA.HeaderText = "MARCA";
-            this.MARCA.Name = "MARCA";
-            this.MARCA.ReadOnly = true;
-            // 
-            // CODIGOMODELO
-            // 
-            this.CODIGOMODELO.DataPropertyName = "CODIGOMODELO";
-            this.CODIGOMODELO.HeaderText = "CODIGOMODELO";
-            this.CODIGOMODELO.Name = "CODIGOMODELO";
-            this.CODIGOMODELO.ReadOnly = true;
-            this.CODIGOMODELO.Visible = false;
-            // 
-            // MODELO
-            // 
-            this.MODELO.DataPropertyName = "MODELO";
-            this.MODELO.HeaderText = "MODELO";
-            this.MODELO.Name = "MODELO";
-            this.MODELO.ReadOnly = true;
-            // 
-            // CANTIDAD
-            // 
-            this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            this.CANTIDAD.HeaderText = "CANTIDAD";
-            this.CANTIDAD.Name = "CANTIDAD";
-            this.CANTIDAD.ReadOnly = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 337);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 38;
-            this.label5.Text = "Detalle:";
-            // 
-            // btnEnviar
-            // 
-            this.btnEnviar.Location = new System.Drawing.Point(795, 379);
-            this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(75, 23);
-            this.btnEnviar.TabIndex = 39;
-            this.btnEnviar.Text = "Enviar";
-            this.btnEnviar.UseVisualStyleBackColor = true;
-            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
-            // 
-            // btnAnular
-            // 
-            this.btnAnular.Location = new System.Drawing.Point(794, 448);
-            this.btnAnular.Name = "btnAnular";
-            this.btnAnular.Size = new System.Drawing.Size(75, 23);
-            this.btnAnular.TabIndex = 40;
-            this.btnAnular.Text = "Anular";
-            this.btnAnular.UseVisualStyleBackColor = true;
-            this.btnAnular.Click += new System.EventHandler(this.btnAnular_Click);
             // 
             // ORDENCOMPRA
             // 
@@ -415,6 +237,184 @@
             this.TIPO.Name = "TIPO";
             this.TIPO.ReadOnly = true;
             this.TIPO.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Orden de Compra y Servicio:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 300);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Proveedor";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(549, 300);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Importe";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(684, 300);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Fecha de Entrega";
+            // 
+            // txtProveedor
+            // 
+            this.txtProveedor.Location = new System.Drawing.Point(74, 300);
+            this.txtProveedor.Name = "txtProveedor";
+            this.txtProveedor.ReadOnly = true;
+            this.txtProveedor.Size = new System.Drawing.Size(459, 20);
+            this.txtProveedor.TabIndex = 34;
+            // 
+            // txtImporte
+            // 
+            this.txtImporte.Location = new System.Drawing.Point(597, 300);
+            this.txtImporte.Name = "txtImporte";
+            this.txtImporte.ReadOnly = true;
+            this.txtImporte.Size = new System.Drawing.Size(78, 20);
+            this.txtImporte.TabIndex = 35;
+            this.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtFechaEntrega
+            // 
+            this.txtFechaEntrega.Location = new System.Drawing.Point(782, 300);
+            this.txtFechaEntrega.Name = "txtFechaEntrega";
+            this.txtFechaEntrega.ReadOnly = true;
+            this.txtFechaEntrega.Size = new System.Drawing.Size(88, 20);
+            this.txtFechaEntrega.TabIndex = 36;
+            this.txtFechaEntrega.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // gridDetalle
+            // 
+            this.gridDetalle.AllowUserToAddRows = false;
+            this.gridDetalle.AllowUserToOrderColumns = true;
+            this.gridDetalle.AllowUserToResizeRows = false;
+            this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CODIGOARTICULO,
+            this.ITEM,
+            this.CODIGOMARCA,
+            this.MARCA,
+            this.CODIGOMODELO,
+            this.MODELO,
+            this.CANTIDAD});
+            this.gridDetalle.GridColor = System.Drawing.Color.White;
+            this.gridDetalle.Location = new System.Drawing.Point(12, 353);
+            this.gridDetalle.Name = "gridDetalle";
+            this.gridDetalle.ReadOnly = true;
+            this.gridDetalle.RowHeadersVisible = false;
+            this.gridDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridDetalle.Size = new System.Drawing.Size(764, 261);
+            this.gridDetalle.TabIndex = 37;
+            // 
+            // CODIGOARTICULO
+            // 
+            this.CODIGOARTICULO.DataPropertyName = "CODIGOARTICULO";
+            this.CODIGOARTICULO.HeaderText = "CODIGOARTICULO";
+            this.CODIGOARTICULO.Name = "CODIGOARTICULO";
+            this.CODIGOARTICULO.ReadOnly = true;
+            this.CODIGOARTICULO.Visible = false;
+            // 
+            // ITEM
+            // 
+            this.ITEM.DataPropertyName = "ITEM";
+            this.ITEM.HeaderText = "ITEM";
+            this.ITEM.Name = "ITEM";
+            this.ITEM.ReadOnly = true;
+            // 
+            // CODIGOMARCA
+            // 
+            this.CODIGOMARCA.DataPropertyName = "CODIGOMARCA";
+            this.CODIGOMARCA.HeaderText = "CODIGOMARCA";
+            this.CODIGOMARCA.Name = "CODIGOMARCA";
+            this.CODIGOMARCA.ReadOnly = true;
+            this.CODIGOMARCA.Visible = false;
+            // 
+            // MARCA
+            // 
+            this.MARCA.DataPropertyName = "MARCA";
+            this.MARCA.HeaderText = "MARCA";
+            this.MARCA.Name = "MARCA";
+            this.MARCA.ReadOnly = true;
+            // 
+            // CODIGOMODELO
+            // 
+            this.CODIGOMODELO.DataPropertyName = "CODIGOMODELO";
+            this.CODIGOMODELO.HeaderText = "CODIGOMODELO";
+            this.CODIGOMODELO.Name = "CODIGOMODELO";
+            this.CODIGOMODELO.ReadOnly = true;
+            this.CODIGOMODELO.Visible = false;
+            // 
+            // MODELO
+            // 
+            this.MODELO.DataPropertyName = "MODELO";
+            this.MODELO.HeaderText = "MODELO";
+            this.MODELO.Name = "MODELO";
+            this.MODELO.ReadOnly = true;
+            // 
+            // CANTIDAD
+            // 
+            this.CANTIDAD.DataPropertyName = "CANTIDAD";
+            this.CANTIDAD.HeaderText = "CANTIDAD";
+            this.CANTIDAD.Name = "CANTIDAD";
+            this.CANTIDAD.ReadOnly = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 337);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Detalle:";
+            // 
+            // btnEnviar
+            // 
+            this.btnEnviar.Location = new System.Drawing.Point(795, 379);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(75, 23);
+            this.btnEnviar.TabIndex = 39;
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            // 
+            // btnAnular
+            // 
+            this.btnAnular.Location = new System.Drawing.Point(794, 448);
+            this.btnAnular.Name = "btnAnular";
+            this.btnAnular.Size = new System.Drawing.Size(75, 23);
+            this.btnAnular.TabIndex = 40;
+            this.btnAnular.Text = "Anular";
+            this.btnAnular.UseVisualStyleBackColor = true;
+            this.btnAnular.Click += new System.EventHandler(this.btnAnular_Click);
             // 
             // frmOrdenCompra
             // 
