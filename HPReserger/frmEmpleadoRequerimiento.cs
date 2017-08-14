@@ -28,8 +28,8 @@ namespace HPReserger
 
         private void frmEmpleadoRequerimiento_Load(object sender, EventArgs e)
         {
-            CodigoDocumento = 1;
-            NumeroDocumento = "0701046971";
+            //CodigoDocumento = 1;
+            //NumeroDocumento = "0701046971";
 
             cboCelular.SelectedIndex = cboCorreo.SelectedIndex = cboMaquina.SelectedIndex = cboOtros.SelectedIndex = 1;
 

@@ -37,13 +37,6 @@
             this.btneditar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtimporte = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txttotal = new System.Windows.Forms.TextBox();
-            this.lblmsg = new System.Windows.Forms.Label();
             this.btnmas = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CodCentroC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iddep = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +48,15 @@
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fk_id_proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_etapas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtimporte = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txttotal = new System.Windows.Forms.TextBox();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtmontomax = new System.Windows.Forms.TextBox();
             this.gp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -95,7 +97,8 @@
             // 
             // btneditar
             // 
-            this.btneditar.Location = new System.Drawing.Point(655, 32);
+            this.btneditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btneditar.Location = new System.Drawing.Point(672, 27);
             this.btneditar.Name = "btneditar";
             this.btneditar.Size = new System.Drawing.Size(75, 23);
             this.btneditar.TabIndex = 14;
@@ -105,7 +108,8 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(655, 661);
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Location = new System.Drawing.Point(672, 725);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 15;
@@ -119,6 +123,9 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -150,7 +157,7 @@
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(718, 571);
+            this.dtgconten.Size = new System.Drawing.Size(735, 635);
             this.dtgconten.TabIndex = 16;
             this.dtgconten.TabStop = false;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
@@ -158,72 +165,6 @@
             this.dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellEndEdit);
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.Dtgconten_EditingControlShowing);
             this.dtgconten.DoubleClick += new System.EventHandler(this.dtgconten_DoubleClick);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Enabled = false;
-            this.btnaceptar.Location = new System.Drawing.Point(574, 661);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 17;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 13);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Estructura Centro de Costo:";
-            // 
-            // txtimporte
-            // 
-            this.txtimporte.Location = new System.Drawing.Point(453, 32);
-            this.txtimporte.Name = "txtimporte";
-            this.txtimporte.Size = new System.Drawing.Size(100, 20);
-            this.txtimporte.TabIndex = 20;
-            this.txtimporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtimporte.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtimporte_KeyDown);
-            this.txtimporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtimporte_KeyPress);
-            this.txtimporte.Validated += new System.EventHandler(this.txtimporte_Validated);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(402, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Importe:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(601, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Total:";
-            // 
-            // txttotal
-            // 
-            this.txttotal.Enabled = false;
-            this.txttotal.Location = new System.Drawing.Point(641, 61);
-            this.txttotal.Name = "txttotal";
-            this.txttotal.Size = new System.Drawing.Size(89, 20);
-            this.txttotal.TabIndex = 22;
-            this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(12, 666);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(0, 13);
-            this.lblmsg.TabIndex = 23;
             // 
             // btnmas
             // 
@@ -319,11 +260,103 @@
             this.id_etapas.Name = "id_etapas";
             this.id_etapas.Visible = false;
             // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Enabled = false;
+            this.btnaceptar.Location = new System.Drawing.Point(591, 725);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.TabIndex = 17;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(137, 13);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Estructura Centro de Costo:";
+            // 
+            // txtimporte
+            // 
+            this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtimporte.Location = new System.Drawing.Point(512, 56);
+            this.txtimporte.Name = "txtimporte";
+            this.txtimporte.Size = new System.Drawing.Size(100, 20);
+            this.txtimporte.TabIndex = 20;
+            this.txtimporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtimporte.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtimporte_KeyDown);
+            this.txtimporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtimporte_KeyPress);
+            this.txtimporte.Validated += new System.EventHandler(this.txtimporte_Validated);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(461, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Importe:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(618, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Total:";
+            // 
+            // txttotal
+            // 
+            this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotal.Enabled = false;
+            this.txttotal.Location = new System.Drawing.Point(658, 56);
+            this.txttotal.Name = "txttotal";
+            this.txttotal.Size = new System.Drawing.Size(89, 20);
+            this.txttotal.TabIndex = 22;
+            this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.Location = new System.Drawing.Point(12, 666);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(0, 13);
+            this.lblmsg.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(401, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 13);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Presupuesto Maximo";
+            // 
+            // txtmontomax
+            // 
+            this.txtmontomax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtmontomax.Location = new System.Drawing.Point(512, 30);
+            this.txtmontomax.Name = "txtmontomax";
+            this.txtmontomax.Size = new System.Drawing.Size(100, 20);
+            this.txtmontomax.TabIndex = 25;
+            this.txtmontomax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // frmPresupuestodetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 699);
+            this.ClientSize = new System.Drawing.Size(760, 763);
+            this.Controls.Add(this.txtmontomax);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.txttotal);
@@ -374,5 +407,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.DataGridViewTextBoxColumn fk_id_proyecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_etapas;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtmontomax;
     }
 }

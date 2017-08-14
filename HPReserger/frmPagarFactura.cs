@@ -56,14 +56,12 @@ namespace HPReserger
             //    radioButton1.Checked = true;
             Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagar(txtruc.Text);
             cbotipo.SelectedIndex = 0;
-
+            txttotal.Text = "0.00";
         }
-
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbotipo.SelectedIndex == 0 || cbotipo.SelectedIndex == 1)
             {
-
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = true;
                 lblguia.Text = "Banco";
                 cbobanco.ValueMember = "codigo";
@@ -112,9 +110,30 @@ namespace HPReserger
                     return;
                 }
             }
-            if (decimal.Parse(txttotal.Text) == 0)
+            if (cbobanco.Items.Count == 0)
             {
-                msg("El total a pagar no puede ser Cero");
+                msg("No hay Bancos");
+                cbobanco.Focus();
+                return;
+            }
+            if (cbocuentabanco.Items.Count == 0)
+            {
+                msg("El Banco Seleccionado No tiene Cuenta");
+                cbobanco.Focus();
+                return;
+            }
+            if (txttotal.Text.Length > 0)
+            {
+                if (decimal.Parse(txttotal.Text) == 0)
+                {
+                    msg("El total a pagar no puede ser Cero");
+                    Dtguias.Focus();
+                    return;
+                }
+            }
+            else
+            {
+                msg("El Monto esta Vacio, Seleccioné una Fila de la grilla");
                 Dtguias.Focus();
                 return;
             }
@@ -205,7 +224,18 @@ namespace HPReserger
         private void Dtguias_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Dtguias.RowCount < 0)
-                btnaceptar.Enabled = false;
+            {
+                cbotipo.Enabled = cbobanco.Enabled = cbocuentabanco.Enabled = btnaceptar.Enabled = false;
+                cbotipo.SelectedIndex = 0; txtnropago.Enabled = false;
+
+            }
+            else
+            {
+                cbotipo.Enabled = true; cbobanco.Enabled = true; cbocuentabanco.Enabled = true;
+                cbotipo.SelectedIndex = 0; txtnropago.Enabled = true;
+                btnaceptar.Enabled = true;
+            }
+
         }
 
         private void btncancelar_Click(object sender, EventArgs e)

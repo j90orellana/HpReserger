@@ -148,7 +148,7 @@ namespace HPReserger
         {
             if (txtValor.TextLength == 0)
             {
-                MessageBox.Show("Ingrese Nº Validación", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Valorización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtValor.Focus();
                 return;
             }

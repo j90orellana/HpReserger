@@ -123,7 +123,8 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(192, 214);
+            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Location = new System.Drawing.Point(295, 220);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 29);
             this.btncancelar.TabIndex = 37;
@@ -133,7 +134,7 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(94, 214);
+            this.btnaceptar.Location = new System.Drawing.Point(207, 220);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 29);
             this.btnaceptar.TabIndex = 38;

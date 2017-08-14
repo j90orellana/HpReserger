@@ -3282,10 +3282,10 @@ namespace HPResergerCapaDatos
             object[] valores = { si, asiento, @fac, @cc, @debe, @haber };
             return bd.DataTableFromProcedure("usp_guardarfactura", parametros, valores, null);
         }
-        public DataTable ListarFacturasSinPagar(string buscar, int factura, int provee, int check, string tipo)
+        public DataTable ListarFacturasSinPagar(string buscar, int factura, int provee, int check, string tipo, int fecha, DateTime fechainicio, DateTime fechafin)
         {
-            string[] parametros = { "@buscar", "@factura", "@provee", "@checktipo", "@tipo" };
-            object[] valores = { buscar, factura, provee, check, tipo };
+            string[] parametros = { "@buscar", "@factura", "@provee", "@checktipo", "@tipo", "@fecha", "@fechainicio", "@fechafin" };
+            object[] valores = { buscar, factura, provee, check, tipo, fecha, fechainicio, fechafin };
             return bd.DataTableFromProcedure("usp_ListarFacturasSinPagar", parametros, valores, null);
         }
         public DataTable ListarFicSinFactura(string buscar, int fic, int provee, int check, string tipo)
@@ -3306,6 +3306,125 @@ namespace HPResergerCapaDatos
             object[] valores = { cotizacion };
             return bd.DataTableFromProcedure("usp_ListarFaltantesCotizacion", parametros, valores, null);
         }
-
+        public DataRow ListarGravaIgvOrdenCompra(int orden)
+        {
+            string[] parametros = { "@orden" };
+            object[] valores = { orden };
+            return bd.DatarowFromProcedure("usp_ListarGravaIgvOrdenCompra", parametros, valores, null);
+        }
+        public DataRow VerMaximoPresupuesto(int cabecera)
+        {
+            string[] parametros = { "@cabecera" };
+            object[] valores = { cabecera };
+            return bd.DatarowFromProcedure("usp_VerMaximoPresupuesto", parametros, valores, null);
+        }
+        public DataTable listar_Detalle_Cotizacion(int pedido, string proveedor)
+        {
+            string[] parametros = { "@pedido", "@proveedor" };
+            object[] valores = { pedido, proveedor };
+            return bd.DataTableFromProcedure("usp_listar_Detalle_Cotizacion", parametros, valores, null);
+        }
+        public DataRow ActualizarCotizacionDetalle(int cod, decimal valor, decimal total)
+        {
+            string[] parametros = { "@cod", "@valor", "@total" };
+            object[] valores = { cod, valor, total };
+            return bd.DatarowFromProcedure("usp_ActualizarCotizacionDetalle", parametros, valores, null);
+        }
+        public DataTable ListarDetalleDelReporteDeCentrodeCosto(int etapa, string ceco, string cuenta)
+        {
+            string[] parametros = { "@etapa", "@ceco", "@cuenta" };
+            object[] valores = { etapa, ceco, cuenta };
+            return bd.DataTableFromProcedure("usp_ListarDetalleDelReporteDeCentrodeCosto", parametros, valores, null);
+        }
+        public DataRow VerUltimoIdentificador(string tabla, string campo)
+        {
+            string[] parametros = { "@tabla", "@campo" };
+            object[] valores = { tabla, campo };
+            return bd.DatarowFromProcedure("usp_VerUltimoIdentificador", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarCargo(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarCargo", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarEmpresaEps(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarEmpresaEps", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarEpsAdicional(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarEpsAdicional", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarEstadoCivil(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarEstadoCivil", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarGradoInstruccion(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarGradoInstruccion", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarMoneda(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarMoneda", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarPeriodicidad(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarPeriodicidad", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarProfesion(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarProfesion", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarSector_Empresarial(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarSector_Empresarial", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarSede(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarSede", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarSexo(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarSexo", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarTipoContratacion(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarTipoContratacion", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarTipoContrato(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarTipoContrato", parametros, valores, null);
+        }
+        public DataTable InsertarActualizarVinculoFamiliar(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
+            object[] valores = { cod, opcion, cargo, usuario };
+            return bd.DataTableFromProcedure("usp_InsertarActualizarVinculoFamiliar", parametros, valores, null);
+        }
     }
 }

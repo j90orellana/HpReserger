@@ -24,9 +24,9 @@ namespace HPReserger
             cboempresa.DisplayMember = "descripcion";
             cboempresa.DataSource = CLProyectos.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
             // DataRow Empresas = CLProyectos.ListarEmpresasdelUsuario(frmLogin.CodigoUsuario);
-           /* DataRow Empresas = CLProyectos.ListarEmpresasdelUsuario(2);
-            txtempresa.Text = Empresas["empresa"].ToString();
-            empresa = (Empresas["id_empresa"].ToString());*/            
+            /* DataRow Empresas = CLProyectos.ListarEmpresasdelUsuario(2);
+             txtempresa.Text = Empresas["empresa"].ToString();
+             empresa = (Empresas["id_empresa"].ToString());*/
         }
 
         public void cargarproyectos()
@@ -70,10 +70,12 @@ namespace HPReserger
         {
             if (estado != 0)
             {
-                gp1.Enabled = false;
+                gp1.Enabled = true;
                 dtgconten.Enabled = true; cargarproyectos(); btnaceptar.Enabled = btncancelar.Enabled = false;
                 btnnuevo.Enabled = btnmodificar.Enabled = true;
+                btncancelar.Enabled = true;
             }
+            else this.Close();
         }
         public void MSG(string cadena)
         {
@@ -119,6 +121,18 @@ namespace HPReserger
                 empresa = cboempresa.SelectedValue.ToString();
                 cargarproyectos();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (dtgconten.RowCount > 0)
+            {
+                DataGridViewCellEventArgs ex = new DataGridViewCellEventArgs(dtgconten.CurrentCell.ColumnIndex, dtgconten.CurrentCell.RowIndex);
+                dtgconten_CellDoubleClick(sender, ex);
+            }
+            else
+                MSG("No hay proyectos");
         }
     }
 }

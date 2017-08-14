@@ -1159,9 +1159,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber);
         }
-        public DataTable ListarFacturasSinPagar(string buscar, int factura, int provee, int check, string tipo)
+        public DataTable ListarFacturasSinPagar(string buscar, int factura, int provee, int check, string tipo, int fecha, DateTime fechainicio, DateTime fechafin)
         {
-            return cdOrdenPedido.ListarFacturasSinPagar(buscar, factura, provee, check, tipo);
+            return cdOrdenPedido.ListarFacturasSinPagar(buscar, factura, provee, check, tipo, fecha, fechainicio, fechafin);
         }
         public DataTable ListarFicSinFactura(string buscar, int factura, int provee, int check, string tipo)
         {
@@ -1175,6 +1175,87 @@ namespace HPResergerCapaLogica
         public DataTable ListarFaltantesCotizacion(int cotizacion)
         {
             return cdOrdenPedido.ListarFaltantesCotizacion(cotizacion);
+        }
+        public DataRow ListarGravaIgvOrdenCompra(int orden)
+        {
+            return cdOrdenPedido.ListarGravaIgvOrdenCompra(orden);
+        }
+        public DataRow VerMaximoPresupuesto(int cabecera)
+        {
+            return cdOrdenPedido.VerMaximoPresupuesto(cabecera);
+        }
+        public DataTable listar_Detalle_Cotizacion(int pedido, string proveedor)
+        {
+            return cdOrdenPedido.listar_Detalle_Cotizacion(pedido, proveedor);
+        }
+        public DataRow ActualizarCotizacionDetalle(int cod, decimal valor, decimal total)
+        {
+            return cdOrdenPedido.ActualizarCotizacionDetalle(cod, valor, total);
+        }
+        public DataTable ListarDetalleDelReporteDeCentrodeCosto(int etapa, string ceco, string cuenta)
+        {
+            return cdOrdenPedido.ListarDetalleDelReporteDeCentrodeCosto(etapa, ceco, cuenta);
+        }
+        public DataRow VerUltimoIdentificador(string tabla, string campo)
+        {
+            return cdOrdenPedido.VerUltimoIdentificador(tabla, campo);
+        }
+
+        public DataTable InsertarActualizarCargo(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarCargo(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarEmpresaEps(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarEmpresaEps(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarEpsAdicional(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarEpsAdicional(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarEstadoCivil(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarEstadoCivil(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarGradoInstruccion(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarGradoInstruccion(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarMoneda(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarMoneda(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarPeriodicidad(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarPeriodicidad(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarProfesion(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarProfesion(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarSector_Empresarial(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarSector_Empresarial(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarSede(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarSede(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarSexo(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarSexo(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarTipoContratacion(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarTipoContratacion(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarTipoContrato(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarTipoContrato(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarVinculoFamiliar(int @cod, int @opcion, string @cargo, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarVinculoFamiliar(cod, opcion, cargo, usuario);
         }
     }
 }

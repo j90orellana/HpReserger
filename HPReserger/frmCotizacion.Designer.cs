@@ -530,6 +530,7 @@
             this.dtgpedido.TabIndex = 21;
             this.dtgpedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgpedido_CellClick);
             this.dtgpedido.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgpedido_CellEndEdit);
+            this.dtgpedido.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtgpedido_DataError);
             this.dtgpedido.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgpedido_EditingControlShowing);
             this.dtgpedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtgpedido_KeyPress);
             // 

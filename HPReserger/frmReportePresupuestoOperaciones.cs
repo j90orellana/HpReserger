@@ -260,9 +260,80 @@ namespace HPReserger
             }
         }
 
+        private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dtgconten["iddep", e.RowIndex].Value.ToString() != "0")
+            {
+                int Ocultar = 0;
+                if (dtgconten["conta", e.RowIndex].Value.ToString() == "99")
+                {
+                    dtgconten["conta", e.RowIndex].Value = "0";
+                    Ocultar = 1;
+                }
+                else
+                {
+                    Ocultar = 0;
+                    dtgconten["conta", e.RowIndex].Value = "99";
+                }
+                if (!string.IsNullOrWhiteSpace(dtgconten["iddep", e.RowIndex].Value.ToString()))
+                {
+                    System.Data.DataTable tablon = (System.Data.DataTable)dtgconten.DataSource;
+                    List<DataRow> datos = new List<DataRow>();
+                    foreach (DataRow datito in tablon.Rows)
+                    {
+                        datos.Add(datito);
+                    }
+                    System.Data.DataTable tablita = CLPresuOpera.ListarDetalleDelReporteDeCentrodeCosto((int)dtgconten["id_etapas", e.RowIndex].Value, dtgconten["codcentroc", e.RowIndex].Value.ToString(), dtgconten["Cta_Contable", e.RowIndex].Value.ToString());
+                    int i = 1;
+                    //dtgconten.DataSource = null;
+                    foreach (DataRow dato in tablita.Rows)
+                    {
+                        if (Ocultar == 0)
+                            datos.Insert(e.RowIndex + i, dato);
+                        i++;
+                    }
+                    if (Ocultar == 1)
+                        datos.RemoveRange(e.RowIndex + 1, tablita.Rows.Count);
+                    tablon = datos.CopyToDataTable();
+                    dtgconten.DataSource = tablon;
+                    /////////////////////////////////////////////////////////////////////////////*
+                /*    int esto=10;        
+                    List<numeros> numero = new List<numeros>();
+                    numeros valor = new numeros();
+                    valor.numero = 10;
+                    valor.nombre = "Jefferson Orellana";
+                    valor.valor = 10.01m;
+                    numero.Add(valor);
+                    List<numeros> aloja = numero.FindAll(holi => holi.numero > esto);
+                    IEnumerable<numeros> lista = from valores in numero where valores.valor > esto select valor;
+                  */
+                  /////////////////////////////////////////////////////////////////////////////
+                    // List<int> Scores = new List<int>() { 97, 92, 81, 60 };
+                    //   IEnumerable<int> lista = from score in Scores where score > 80 select score;
+                }
+                dtgconten.CurrentCell = dtgconten[e.ColumnIndex, e.RowIndex];
+                // MessageBox.Show("hola");
+            }
+        }
+        public class numeros
+        {
+            public int numero { get; set; }
+            public string nombre { get; set; }
+            public decimal valor { get; set; }
+        }
+
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             dtgconten.DataSource = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
+            System.Data.DataTable tablita = (System.Data.DataTable)dtgconten.DataSource;
+            dtgconten.DataSource = tablita;
+            // System.Data.DataTable dttAgrupamientos = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
+            // BindingSource bAsociacion = new BindingSource();
+            // bAsociacion.DataSource = dttAgrupamientos;
+            dtgconten.AutoGenerateColumns = false;
+            // dtgconten.DataSource = bAsociacion;
+            // System.Data.DataTable tablita = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
+            // dtgconten.DataSource = null;
             contando(dtgconten);
             Sumatoria();
             //  REvisarGrillas();

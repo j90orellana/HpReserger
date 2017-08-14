@@ -169,8 +169,9 @@ namespace HPReserger
                     {
                         X = (decimal.Parse(DtgConten["cantidad", i].Value.ToString().Substring(0, (DtgConten["cantidad", i].Value.ToString().Length - 1))) / 100) * decimal.Parse(DtgConten["PRECIOUNIT", i].Value.ToString());
                         DtgConten["totalfac", i].Value = decimal.Round(X, 2);
-                        igvigv = (X * numigv.Value) / 100;
-                        subtotales = X - igvigv;
+                        subtotales = X / (1 + (numigv.Value / 100));
+                        igvigv = X - subtotales;
+                        //subtotales = X - igvigv;
                         DtgConten["valueigv", i].Value = decimal.Round(igvigv, 2);
                         sumatoria += (X);
                         DtgConten["subtotale", i].Value = decimal.Round(subtotales, 2);

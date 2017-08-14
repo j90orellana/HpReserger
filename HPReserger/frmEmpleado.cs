@@ -413,13 +413,13 @@ namespace HPReserger
                 NewEmpleado = true;
 
                 DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);
-
             }
+            //base.loa
+            ///mostrar imagen;
         }
-
         private void btnAntecedentesPoliciales_Click(object sender, EventArgs e)
         {
-            var dialogoAbrirArchivoAntecedentesPoliciales = new OpenFileDialog();
+            OpenFileDialog dialogoAbrirArchivoAntecedentesPoliciales = new OpenFileDialog();
             dialogoAbrirArchivoAntecedentesPoliciales.Filter = "Jpg Files|*.jpg";
             dialogoAbrirArchivoAntecedentesPoliciales.DefaultExt = ".jpg";
             if (dialogoAbrirArchivoAntecedentesPoliciales.ShowDialog(this) != DialogResult.Cancel)
@@ -578,6 +578,11 @@ namespace HPReserger
                     pbfotoempleado.Image = Bitmap.FromStream(ms);
                     NombreFoto = DatosE["nombrefotoempleado"].ToString();
                 }
+                else
+                {
+                    pbfotoempleado.Image = HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
+                    Foto = null; NombreFoto = "";
+                }
 
                 if (DatosE["FOTOPOLICIALES"] != null && DatosE["FOTOPOLICIALES"].ToString().Length > 0)
                 {
@@ -649,7 +654,7 @@ namespace HPReserger
                 cboProfesion.SelectedIndex = cboGradoInstruccion.SelectedIndex = -1;
                 pbFotoAntecedentesPenales.Image = pbFotoAntecedentesPoliciales.Image = pbFotoReciboServicios.Image = null;
                 FotoAntecedentesPenales = FotoAntecedentesPoliciales = FotoReciboServicios = null;
-                lklpenales.Enabled = lklpoliciales.Enabled = lklservicios.Enabled = false;
+                lklpenales.Enabled = lklpoliciales.Enabled = lklservicios.Enabled = lklfirma.Enabled = false;
                 pbfotoempleado.Image = HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_; Foto = null; cbopais.SelectedItem = -1; txtlugarnacimiento.Text = "";
                 pbfirma.Image = null; txtfirma.Text = ""; FotoFirma = null;
                 txtNHijos.Text = "0";

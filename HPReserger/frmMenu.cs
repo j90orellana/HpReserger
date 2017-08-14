@@ -30,7 +30,7 @@ namespace HPReserger
                 frmCOT = new frmCotizacion();
                 frmCOT.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmCOT.FormClosed += new FormClosedEventHandler(cerrar_cotizacion);
                 frmCOT.Show();
             }
@@ -50,7 +50,7 @@ namespace HPReserger
                 frmACOT = new frmAprobarCotizacion();
                 frmACOT.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmACOT.FormClosed += new FormClosedEventHandler(cerrara_aprobacion);
                 frmACOT.Show();
             }
@@ -70,7 +70,7 @@ namespace HPReserger
                 frmOC = new frmOrdenCompra();
                 frmOC.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmOC.FormClosed += new FormClosedEventHandler(cerrar_ordencompra);
                 frmOC.Show();
             }
@@ -90,7 +90,7 @@ namespace HPReserger
                 frmArti = new frmAlmacen();
                 frmArti.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmArti.FormClosed += new FormClosedEventHandler(cerrar_articulos_fics);
                 frmArti.Show();
             }
@@ -110,7 +110,7 @@ namespace HPReserger
                 frmAS = new frmAlmacenServicio();
                 frmAS.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmAS.FormClosed += new FormClosedEventHandler(cerraralamacenservicio);
                 frmAS.Show();
             }
@@ -130,7 +130,7 @@ namespace HPReserger
                 frmSE = new frmSolicitudEmpleado();
                 frmSE.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmSE.FormClosed += new FormClosedEventHandler(cerrar_alamacenmservicio);
                 frmSE.Show();
             }
@@ -150,7 +150,7 @@ namespace HPReserger
                 frmP = new frmPostulante();
                 frmP.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmP.FormClosed += new FormClosedEventHandler(cerrarpostulante);
                 frmP.Show();
             }
@@ -170,7 +170,7 @@ namespace HPReserger
                 frmE = new frmEmpleado();
                 frmE.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmE.FormClosed += new FormClosedEventHandler(cerrarempleado);
                 frmE.Show();
             }
@@ -190,7 +190,7 @@ namespace HPReserger
                 frmOP = new frmOrdenPedido();
                 frmOP.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmOP.FormClosed += new FormClosedEventHandler(cerrar_orden_pedido);
                 frmOP.Show();
             }
@@ -210,7 +210,7 @@ namespace HPReserger
                 frmVaca = new frmVacaciones();
                 frmVaca.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmVaca.FormClosed += new FormClosedEventHandler(cerrarvacaciones);
                 frmVaca.Show();
             }
@@ -230,7 +230,7 @@ namespace HPReserger
                 frmDesv = new frmDesvinculacion();
                 frmDesv.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmDesv.FormClosed += new FormClosedEventHandler(cerrardesvinculacion);
                 frmDesv.Show();
             }
@@ -250,7 +250,7 @@ namespace HPReserger
                 frmF = new frmFaltas();
                 frmF.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmF.FormClosed += new FormClosedEventHandler(cerrarfaltas);
                 frmF.Show();
             }
@@ -270,7 +270,7 @@ namespace HPReserger
                 frmAP = new frmAmonestacionesPremio();
                 frmAP.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmAP.FormClosed += new FormClosedEventHandler(cerraramonestaciones);
                 frmAP.Show();
             }
@@ -288,9 +288,9 @@ namespace HPReserger
             if (area == null)
             {
                 area = new frmArea();
-                presus.MdiParent = this;
+                area.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 area.FormClosed += new FormClosedEventHandler(cerrarareas);
                 area.Show();
             }
@@ -305,13 +305,13 @@ namespace HPReserger
         frmgerencia gere;
         private void gerenciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+
             if (gere == null)
             {
                 gere = new frmgerencia();
                 gere.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 gere.FormClosed += new FormClosedEventHandler(cerrargerencia);
                 gere.Show();
             }
@@ -326,13 +326,13 @@ namespace HPReserger
         frmccosto costo;
         private void centroDeCostosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             if (costo == null)
             {
                 costo = new frmccosto();
                 costo.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 costo.FormClosed += new FormClosedEventHandler(cerrarcentrocc);
                 costo.Show();
             }
@@ -352,7 +352,7 @@ namespace HPReserger
                 artiser = new frmArticuloServicio();
                 artiser.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 artiser.FormClosed += new FormClosedEventHandler(cerrararticuloservicio);
                 artiser.Show();
             }
@@ -372,7 +372,7 @@ namespace HPReserger
                 marca = new frmmarca();
                 marca.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 marca.FormClosed += new FormClosedEventHandler(cerrarmarcas);
                 marca.Show();
             }
@@ -392,7 +392,7 @@ namespace HPReserger
                 marcamodelo = new frmmarcamodelo();
                 marcamodelo.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 marcamodelo.FormClosed += new FormClosedEventHandler(cerrarmarcamodelo);
                 marcamodelo.Show();
             }
@@ -412,7 +412,7 @@ namespace HPReserger
                 modelo = new frmmodelo();
                 modelo.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 modelo.FormClosed += new FormClosedEventHandler(cerrarmodelo);
                 modelo.Show();
             }
@@ -432,7 +432,7 @@ namespace HPReserger
                 dep = new frmdepartamento();
                 dep.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 dep.FormClosed += new FormClosedEventHandler(cerrardepartamento);
                 dep.Show();
             }
@@ -452,7 +452,7 @@ namespace HPReserger
                 provin = new frmprovincias();
                 provin.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 provin.FormClosed += new FormClosedEventHandler(cerrarprovincia);
                 provin.Show();
             }
@@ -472,7 +472,7 @@ namespace HPReserger
                 distritos = new frmDistritos();
                 distritos.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 distritos.FormClosed += new FormClosedEventHandler(cerrardistrito);
                 distritos.Show();
             }
@@ -492,7 +492,7 @@ namespace HPReserger
                 entidad = new frmEntiFinanciera();
                 entidad.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 entidad.FormClosed += new FormClosedEventHandler(cerrarentidad);
                 entidad.Show();
             }
@@ -506,13 +506,13 @@ namespace HPReserger
         }
         frmproveedor provee;
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
+        {
             if (provee == null)
             {
                 provee = new frmproveedor();
                 provee.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 provee.FormClosed += new FormClosedEventHandler(cerrarproveedor);
                 provee.Show();
             }
@@ -532,7 +532,7 @@ namespace HPReserger
                 tipoid = new frmTipoId();
                 tipoid.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 tipoid.FormClosed += new FormClosedEventHandler(cerrartipoid);
                 tipoid.Show();
             }
@@ -552,7 +552,7 @@ namespace HPReserger
                 dinamica = new frmdinamicaContable();
                 dinamica.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 dinamica.FormClosed += new FormClosedEventHandler(cerrardinamicacontable);
                 dinamica.Show();
             }
@@ -572,7 +572,7 @@ namespace HPReserger
                 cuenta = new frmcuentacontable();
                 cuenta.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 cuenta.FormClosed += new FormClosedEventHandler(cerrarcuentascontanles);
                 cuenta.Show();
             }
@@ -592,7 +592,7 @@ namespace HPReserger
                 asiento = new frmAsientoContable();
                 asiento.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 asiento.FormClosed += new FormClosedEventHandler(cerrarasientocontable);
                 asiento.Show();
             }
@@ -612,7 +612,7 @@ namespace HPReserger
                 perfil = new FrmPerfil();
                 perfil.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 perfil.FormClosed += new FormClosedEventHandler(cerrarperfil);
                 perfil.Show();
             }
@@ -654,7 +654,7 @@ namespace HPReserger
                 usua = new FrmUsuarios();
                 usua.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 usua.FormClosed += new FormClosedEventHandler(cerrarususaruio);
                 usua.Show();
             }
@@ -676,7 +676,7 @@ namespace HPReserger
                 contra.password = nick;
                 contra.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 contra.FormClosed += new FormClosedEventHandler(cerrarusuuario);
                 contra.Show();
             }
@@ -710,7 +710,7 @@ namespace HPReserger
                 frmfac = new FrmFactura();
                 frmfac.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmfac.FormClosed += new FormClosedEventHandler(cerrarfactura);
                 frmfac.Show();
             }
@@ -730,7 +730,7 @@ namespace HPReserger
                 orde = new Frmreporteop();
                 orde.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 orde.FormClosed += new FormClosedEventHandler(cerrarordernesdepedido);
                 orde.Show();
             }
@@ -754,7 +754,7 @@ namespace HPReserger
                 frmreporteoc = new frmreporteordencompra();
                 frmreporteoc.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 frmreporteoc.FormClosed += new FormClosedEventHandler(cerrarodernesdecomprareporte);
                 frmreporteoc.Show();
             }
@@ -774,7 +774,7 @@ namespace HPReserger
                 reporemple = new frmreporteempleado();
                 reporemple.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 reporemple.FormClosed += new FormClosedEventHandler(cerrarempleadoreporte);
                 reporemple.Show();
             }
@@ -803,7 +803,7 @@ namespace HPReserger
                 genbole = new frmGenerarBoletas();
                 genbole.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 genbole.FormClosed += new FormClosedEventHandler(cerrargeneeraboletas);
                 genbole.Show();
             }
@@ -823,7 +823,7 @@ namespace HPReserger
                 remunrenta = new FrmGenerarRemuneracionRenta();
                 remunrenta.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 remunrenta.FormClosed += new FormClosedEventHandler(cerrargenerarrenta);
                 remunrenta.Show();
             }
@@ -843,7 +843,7 @@ namespace HPReserger
                 proyectos = new frmProyectos();
                 proyectos.MdiParent = this;
                 // proyectos.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 proyectos.FormClosed += new FormClosedEventHandler(presus_cerrarproyec);
                 proyectos.Show();
             }
@@ -868,7 +868,7 @@ namespace HPReserger
                 //presus.StartPosition = FormStartPosition.CenterParent;
                 presus.FormClosed += new FormClosedEventHandler(presus_cerrarpresus);
                 presus.Show();
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
             }
             else
                 presus.Activate();
@@ -888,7 +888,7 @@ namespace HPReserger
             {
                 presuope = new frmReportePresupuestoOperaciones();
                 presuope.MdiParent = this;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 //  presuope.StartPosition = FormStartPosition.CenterParent;
                 presuope.FormClosed += new FormClosedEventHandler(presus_cerrarpresusope);
                 presuope.Show();
@@ -909,7 +909,7 @@ namespace HPReserger
                 presuscuenta = new frmReportePresupuestoCuenta();
                 presuscuenta.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 presuscuenta.FormClosed += new FormClosedEventHandler(presus_cerrarpresusoperaciones);
                 presuscuenta.Show();
             }
@@ -927,9 +927,9 @@ namespace HPReserger
             if (pagarfac == null)
             {
                 pagarfac = new frmPagarFactura();
-                presus.MdiParent = this;
+                pagarfac.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 pagarfac.FormClosed += new FormClosedEventHandler(presus_cerrarpagarfactura);
                 pagarfac.Show();
             }
@@ -949,7 +949,7 @@ namespace HPReserger
                 recibohonorario = new frmREciboPorHonorario();
                 recibohonorario.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 recibohonorario.FormClosed += new FormClosedEventHandler(cerrarreciboporhonorario);
                 recibohonorario.Show();
             }
@@ -969,7 +969,7 @@ namespace HPReserger
                 facturaporpagar = new HPReserger.frmFacturasPorPagar();
                 facturaporpagar.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 facturaporpagar.FormClosed += new FormClosedEventHandler(cerrarfacturasinpagar);
                 facturaporpagar.Show();
             }
@@ -989,7 +989,7 @@ namespace HPReserger
                 ficsinfactura = new frmFicSinFaactura();
                 ficsinfactura.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 ficsinfactura.FormClosed += new FormClosedEventHandler(cerrarfcisincomprobante);
                 ficsinfactura.Show();
             }
@@ -998,7 +998,7 @@ namespace HPReserger
         }
         void cerrarfcisincomprobante(object sender, FormClosedEventArgs e)
         {
-            presus = null;
+            ficsinfactura = null;
             pbfotoempleado.Visible = true;
         }
         frmListarOCFaltantes ocfaltantes;
@@ -1009,7 +1009,7 @@ namespace HPReserger
                 ocfaltantes = new frmListarOCFaltantes();
                 ocfaltantes.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                pbfotoempleado.Visible = false;
+                // pbfotoempleado.Visible = false;
                 ocfaltantes.FormClosed += new FormClosedEventHandler(cerrarlistaroc);
                 ocfaltantes.Show();
             }
@@ -1059,6 +1059,318 @@ namespace HPReserger
         private void departamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void gestiónDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consolidaciónDeEEFFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmMenu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.F4)
+            {
+                e.Handled = true;
+            }
+        }
+        private void cargarPdfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog var = new OpenFileDialog();
+            var.Filter = "Pdf|*.pdf";
+            var.Multiselect = false;
+            if (var.ShowDialog() != DialogResult.Cancel)
+            {
+                frmVerPdf ver = new frmVerPdf();
+                ver.nombreformulario = var.FileName;
+                ver.ruta = var.FileName;
+                //8ver.EstadoVentana = FormWindowState.Maximized;
+                ver.ShowDialog();
+            }
+        }
+        frmCargos Cargos;
+        private void cargoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Cargos == null)
+            {
+                Cargos = new frmCargos();
+                Cargos.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                Cargos.FormClosed += new FormClosedEventHandler(cerrarcargos);
+                Cargos.Show();
+            }
+            else
+                Cargos.Activate();
+        }
+        void cerrarcargos(object sender, FormClosedEventArgs e)
+        {
+            Cargos = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmEmpresaEps frmEps;
+        private void empresasEPSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmEps == null)
+            {
+                frmEps = new frmEmpresaEps();
+                frmEps.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmEps.FormClosed += new FormClosedEventHandler(cerrarempresapes);
+                frmEps.Show();
+            }
+            else
+                frmEps.Activate();
+        }
+        void cerrarempresapes(object sender, FormClosedEventArgs e)
+        {
+            frmEps = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmadicionaleps frmepsadicional;
+        private void epsAdicionalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmepsadicional == null)
+            {
+                frmepsadicional = new frmadicionaleps();
+                frmepsadicional.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmepsadicional.FormClosed += new FormClosedEventHandler(cerrarepsadicional);
+                frmepsadicional.Show();
+            }
+            else
+                frmepsadicional.Activate();
+        }
+        void cerrarepsadicional(object sender, FormClosedEventArgs e)
+        {
+            frmepsadicional = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmEstadoCivil EstadoCivil;
+        private void estadoCivilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (EstadoCivil == null)
+            {
+                EstadoCivil = new frmEstadoCivil();
+                EstadoCivil.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                EstadoCivil.FormClosed += new FormClosedEventHandler(cerrarestadocivil);
+                EstadoCivil.Show();
+            }
+            else
+                EstadoCivil.Activate();
+        }
+        void cerrarestadocivil(object sender, FormClosedEventArgs e)
+        {
+            EstadoCivil = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmGradoInstitucional frmGRado;
+        private void gradoInstitucionalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmGRado == null)
+            {
+                frmGRado = new frmGradoInstitucional();
+                frmGRado.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmGRado.FormClosed += new FormClosedEventHandler(cerrargrado);
+                frmGRado.Show();
+            }
+            else
+                frmGRado.Activate();
+        }
+        void cerrargrado(object sender, FormClosedEventArgs e)
+        {
+            frmGRado = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmmoneda frmmoneda;
+        private void monedaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmmoneda == null)
+            {
+                frmmoneda = new frmmoneda();
+                frmmoneda.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmmoneda.FormClosed += new FormClosedEventHandler(cerrarmonedas);
+                frmmoneda.Show();
+            }
+            else
+                frmmoneda.Activate();
+        }
+        void cerrarmonedas(object sender, FormClosedEventArgs e)
+        {
+            frmmoneda = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmperiodicidad periocidad;
+        private void periocidadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (periocidad == null)
+            {
+                periocidad = new frmperiodicidad();
+                periocidad.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                periocidad.FormClosed += new FormClosedEventHandler(cerrarperiocidad);
+                periocidad.Show();
+            }
+            else
+                periocidad.Activate();
+        }
+        void cerrarperiocidad(object sender, FormClosedEventArgs e)
+        {
+            periocidad = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmprofesion frmProfe;
+        private void profesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmProfe == null)
+            {
+                frmProfe = new frmprofesion();
+                frmProfe.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmProfe.FormClosed += new FormClosedEventHandler(cerrarprofesion);
+                frmProfe.Show();
+            }
+            else
+                frmProfe.Activate();
+        }
+        void cerrarprofesion(object sender, FormClosedEventArgs e)
+        {
+            frmProfe = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmSectorEmpresarial Sector;
+        private void sectorEmpresarialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Sector == null)
+            {
+                Sector = new frmSectorEmpresarial();
+                Sector.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                Sector.FormClosed += new FormClosedEventHandler(cerrarsector);
+                Sector.Show();
+            }
+            else
+                Sector.Activate();
+        }
+        void cerrarsector(object sender, FormClosedEventArgs e)
+        {
+            Sector = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmcede frmcede;
+        private void sedesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcede == null)
+            {
+                frmcede = new frmcede();
+                frmcede.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmcede.FormClosed += new FormClosedEventHandler(cerrarsedes);
+                frmcede.Show();
+            }
+            else
+                frmcede.Activate();
+        }
+        void cerrarsedes(object sender, FormClosedEventArgs e)
+        {
+            frmcede = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmSexo frmsexo;
+        private void sexoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmsexo == null)
+            {
+                frmsexo = new frmSexo();
+                frmsexo.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmsexo.FormClosed += new FormClosedEventHandler(cerrarsexos);
+                frmsexo.Show();
+            }
+            else
+                frmsexo.Activate();
+        }
+        void cerrarsexos(object sender, FormClosedEventArgs e)
+        {
+            frmsexo = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmtipocontratacion_ contrata;
+        private void tipoContrataciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (contrata == null)
+            {
+                contrata = new frmtipocontratacion_();
+                contrata.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                contrata.FormClosed += new FormClosedEventHandler(cerrartipocontratacion);
+                contrata.Show();
+            }
+            else
+                contrata.Activate();
+        }
+        void cerrartipocontratacion(object sender, FormClosedEventArgs e)
+        {
+            contrata = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmtipocontrato frmcontrato;
+        private void tipoDeContratoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcontrato == null)
+            {
+                frmcontrato = new frmtipocontrato();
+                frmcontrato.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmcontrato.FormClosed += new FormClosedEventHandler(cerrartipocontrato);
+                frmcontrato.Show();
+            }
+            else
+                frmcontrato.Activate();
+        }
+        void cerrartipocontrato(object sender, FormClosedEventArgs e)
+        {
+            frmcontrato = null;
+            pbfotoempleado.Visible = true;
+        }
+        frmvinculacionfamiliar frmVinculo;
+        private void vinculoFamiliarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmVinculo == null)
+            {
+                frmVinculo = new frmvinculacionfamiliar();
+                frmVinculo.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmVinculo.FormClosed += new FormClosedEventHandler(cerrarvinculofamiliar);
+                frmVinculo.Show();
+            }
+            else
+                frmVinculo.Activate();
+        }
+        void cerrarvinculofamiliar(object sender, FormClosedEventArgs e)
+        {
+            frmVinculo = null;
+            pbfotoempleado.Visible = true;
         }
     }
 }

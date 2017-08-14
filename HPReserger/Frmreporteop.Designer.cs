@@ -104,7 +104,7 @@
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(353, 19);
+            this.checkBox8.Location = new System.Drawing.Point(233, 19);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(85, 17);
             this.checkBox8.TabIndex = 7;
@@ -115,12 +115,13 @@
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(233, 19);
+            this.checkBox7.Location = new System.Drawing.Point(324, 19);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(114, 17);
             this.checkBox7.TabIndex = 6;
             this.checkBox7.Text = "Cotizado Completo";
             this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.Visible = false;
             this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
             // checkBox6

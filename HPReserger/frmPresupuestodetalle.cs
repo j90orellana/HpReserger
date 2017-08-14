@@ -18,12 +18,17 @@ namespace HPReserger
         }
         HPResergerCapaLogica.HPResergerCL CLDetalle = new HPResergerCapaLogica.HPResergerCL();
         public int cabecera; public int empresa;
+        DataRow DatosMaximo;
         private void frmPresupuestodetalle_Load(object sender, EventArgs e)
         {
             txtimporte.Text = "";
             cboproyecto.ValueMember = "id_proyecto";
             cboproyecto.DisplayMember = "proyecto";
             cboproyecto.DataSource = CLDetalle.ListarProyectosEmpresa(empresa.ToString());
+            DatosMaximo = CLDetalle.VerMaximoPresupuesto(cabecera);
+            if (DatosMaximo != null)
+                txtmontomax.Text = DatosMaximo["diferencia"].ToString();
+            txtmontomax.Enabled = false;
             if (cboproyecto.Items.Count < 1)
                 MSG("No hay Proyectos");
         }
@@ -85,13 +90,20 @@ namespace HPReserger
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro, Desea Salir", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.OK)
+            if (MessageBox.Show("Seguro, Desea Salir", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 this.Close();
             iniciar(false);
         }
 
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            if (decimal.Parse(txttotal.Text) > (decimal.Parse(DatosMaximo["sumaimporte"].ToString()) + decimal.Parse(txtmontomax.Text)))
+            {
+                MSG($"El Total Del Proyecto:{txttotal.Text },  No Puede ser mayor al Presupuesto { decimal.Parse(DatosMaximo["sumaimporte"].ToString()) + decimal.Parse(txtmontomax.Text)}");
+                txtimporte.Focus();
+                return;
+            }
+
             if (txtimporte.Text != txttotal.Text)
             {
                 MSG("Hay diferencia en el Importe");
@@ -115,7 +127,10 @@ namespace HPReserger
             MSG("Modificación Exitosa");
             contando(dtgconten);
             iniciar(false);
-
+            DatosMaximo = CLDetalle.VerMaximoPresupuesto(cabecera);
+            if (DatosMaximo != null)
+                txtmontomax.Text = DatosMaximo["diferencia"].ToString();
+            txtmontomax.Enabled = false;
         }
 
 

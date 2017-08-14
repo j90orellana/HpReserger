@@ -89,13 +89,24 @@ namespace HPReserger
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (txtRUC.Text.Length < 8) {
+                MessageBox.Show("Ingresé Nro de Ruc", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtRUC.Focus();
+                return;
+            }
+            if (cboOC.Items.Count <= 0)
+            {
+                MessageBox.Show("No hay Ordenes de compra", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtRUC.Focus();
+                return;
+
+            }
             if (txtGR.TextLength == 0)
             {
                 MessageBox.Show("Ingrese Guía de Remisión", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtGR.Focus();
                 return;
             }
-
             DataTable dtGuiaRemisionProveedor = clFIG.OrdenCompraProveedor(txtRUC.Text, Convert.ToInt32(txtGR.Text), Convert.ToInt32(cboOC.Text.Substring(2)),0);
             if (dtGuiaRemisionProveedor.Rows.Count > 0)
             {

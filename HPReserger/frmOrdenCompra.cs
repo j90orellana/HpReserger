@@ -96,7 +96,7 @@ namespace HPReserger
                 frmMensajeCorreo mensajito = new frmMensajeCorreo();
                 mensajito.ShowDialog();
                 if (mensajito.ok)
-                {       
+                {
                     clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 4);
                     string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
                     Listar(frmLogin.CodigoUsuario);
@@ -135,14 +135,19 @@ namespace HPReserger
 
         private void btnAnular_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿ Seguro de Anular la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + "  ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (gridOC.RowCount > 0)
             {
-                clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 0);
-                string OC2 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
-                Listar(frmLogin.CodigoUsuario);
-                MessageBox.Show("La OC Nº " + OC2 + " se Anuló como éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtProveedor.Text = txtImporte.Text = txtFechaEntrega.Text = "";
+                if (MessageBox.Show("¿ Seguro de Anular la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + "  ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 0);
+                    string OC2 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
+                    Listar(frmLogin.CodigoUsuario);
+                    MessageBox.Show("La OC Nº " + OC2 + " se Anuló como éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtProveedor.Text = txtImporte.Text = txtFechaEntrega.Text = "";
+                }
+
             }
+            else MSG("No Hay Ordenes de Compra");
         }
 
         private void TitulosGrid(DataGridView Grid, int Tipo)

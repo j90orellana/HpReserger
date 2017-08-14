@@ -41,6 +41,7 @@
             this.btnaceptar = new System.Windows.Forms.Button();
             this.gp1 = new System.Windows.Forms.GroupBox();
             this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.gp1.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +119,7 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(306, 34);
+            this.btnnuevo.Location = new System.Drawing.Point(310, 19);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(75, 20);
             this.btnnuevo.TabIndex = 5;
@@ -128,7 +129,7 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(306, 60);
+            this.btnmodificar.Location = new System.Drawing.Point(310, 45);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(75, 20);
             this.btnmodificar.TabIndex = 6;
@@ -182,11 +183,22 @@
             this.cboempresa.TabIndex = 5;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(310, 71);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 20);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Detalle";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmProyectos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 294);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.gp1);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btncancelar);
@@ -219,5 +231,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idempresa;
         private System.Windows.Forms.GroupBox gp1;
         private System.Windows.Forms.ComboBox cboempresa;
+        private System.Windows.Forms.Button button1;
     }
 }

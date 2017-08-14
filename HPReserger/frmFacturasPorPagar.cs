@@ -21,7 +21,7 @@ namespace HPReserger
         {
             this.Close();
         }
-        int factura = 0, proveedor = 0;
+        int factura = 0, proveedor = 0; int fecha = 0;
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
@@ -50,8 +50,10 @@ namespace HPReserger
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
-
-            dtgconten.DataSource = CLFacturas.ListarFacturasSinPagar(txtbuscar.Text, factura, proveedor, check, cbodocumento.SelectedIndex.ToString());
+            if (dtpfechainicio.Value > dtpfechafin.Value)
+                dtgconten.DataSource = CLFacturas.ListarFacturasSinPagar(txtbuscar.Text, factura, proveedor, check, cbodocumento.SelectedIndex.ToString(), fecha, dtpfechafin.Value, dtpfechainicio.Value);
+            else
+                dtgconten.DataSource = CLFacturas.ListarFacturasSinPagar(txtbuscar.Text, factura, proveedor, check, cbodocumento.SelectedIndex.ToString(), fecha, dtpfechainicio.Value, dtpfechafin.Value);
         }
 
         private void cbodocumento_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,7 +105,7 @@ namespace HPReserger
                     hoja_trabajo.Cells[i + 3, nume + 1] = dtgconten.Rows[i].Cells[j].Value.ToString();
                     //  hoja_trabajo.Cells[i + 4, nume + 1] = dtgoperaciones.Rows[i].Cells[j].Value.ToString();
                     // hoja_trabajo.Cells[i + 5, nume + 1] = dtgdiferencia.Rows[i].Cells[j].Value.ToString();
-                   
+
                     nume++;
 
                 }
@@ -129,11 +131,32 @@ namespace HPReserger
         {
             MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+                fecha = 1;
+            else
+                fecha = 0;
+            txtbuscar_TextChanged(sender, e);
+        }
+
+        private void dtpfechainicio_ValueChanged(object sender, EventArgs e)
+        {
+            txtbuscar_TextChanged(sender, e);
+        }
+
+        private void dtpfechafin_ValueChanged(object sender, EventArgs e)
+        {
+            txtbuscar_TextChanged(sender, e);
+        }
+
         private void frmFacturasPorPagar_Load(object sender, EventArgs e)
         {
+            dtpfechainicio.Value = dtpfechafin.Value = DateTime.Now;
             cbodocumento.SelectedIndex = 0;
             factura = 1;
-            dtgconten.DataSource = CLFacturas.ListarFacturasSinPagar(txtbuscar.Text, factura, proveedor, check, cbodocumento.SelectedIndex.ToString());
+            dtgconten.DataSource = CLFacturas.ListarFacturasSinPagar(txtbuscar.Text, factura, proveedor, check, cbodocumento.SelectedIndex.ToString(), fecha, dtpfechainicio.Value, dtpfechainicio.Value);
         }
     }
 }

@@ -107,7 +107,6 @@
             // 
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToDeleteRows = false;
-            this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -144,9 +143,10 @@
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(930, 500);
+            this.dtgconten.Size = new System.Drawing.Size(900, 480);
             this.dtgconten.TabIndex = 17;
             this.dtgconten.TabStop = false;
+            this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -268,7 +268,7 @@
             // btnexportarexcel
             // 
             this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportarexcel.Location = new System.Drawing.Point(884, 18);
+            this.btnexportarexcel.Location = new System.Drawing.Point(854, 18);
             this.btnexportarexcel.Name = "btnexportarexcel";
             this.btnexportarexcel.Size = new System.Drawing.Size(75, 23);
             this.btnexportarexcel.TabIndex = 19;
@@ -280,7 +280,7 @@
             // 
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(34, 584);
+            this.lblmsg.Location = new System.Drawing.Point(34, 564);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(54, 13);
             this.lblmsg.TabIndex = 24;
@@ -290,7 +290,7 @@
             // 
             this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdiferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdiferencia.Location = new System.Drawing.Point(873, 48);
+            this.txtdiferencia.Location = new System.Drawing.Point(843, 48);
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
             this.txtdiferencia.Size = new System.Drawing.Size(84, 20);
@@ -301,7 +301,7 @@
             // 
             this.txtoperaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtoperaciones.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtoperaciones.Location = new System.Drawing.Point(783, 48);
+            this.txtoperaciones.Location = new System.Drawing.Point(753, 48);
             this.txtoperaciones.Name = "txtoperaciones";
             this.txtoperaciones.ReadOnly = true;
             this.txtoperaciones.Size = new System.Drawing.Size(84, 20);
@@ -312,7 +312,7 @@
             // 
             this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtimporte.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtimporte.Location = new System.Drawing.Point(693, 48);
+            this.txtimporte.Location = new System.Drawing.Point(663, 48);
             this.txtimporte.Name = "txtimporte";
             this.txtimporte.ReadOnly = true;
             this.txtimporte.Size = new System.Drawing.Size(84, 20);
@@ -323,7 +323,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(642, 50);
+            this.label3.Location = new System.Drawing.Point(612, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 28;
@@ -332,7 +332,7 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(883, 579);
+            this.btncancelar.Location = new System.Drawing.Point(853, 559);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 29;
@@ -343,7 +343,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(764, 18);
+            this.button1.Location = new System.Drawing.Point(734, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 23);
             this.button1.TabIndex = 30;
@@ -354,7 +354,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 612);
+            this.ClientSize = new System.Drawing.Size(950, 592);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.label3);

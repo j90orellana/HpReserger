@@ -26,7 +26,7 @@ namespace HPReserger
         public static string Gerencia;
         public static int CodigoPartidaPresupuesto;
         public static string PartidaPresupuesto;
-
+        public frmMenu frmM;
         public int Intentos { get; set; }
 
         public frmLogin()
@@ -110,7 +110,7 @@ namespace HPReserger
                             PartidaPresupuesto = drAcceso["PARTIDAPRESUPUESTO"].ToString();
                         }
                         this.Hide();
-                        frmMenu frmM = new frmMenu();
+                        frmM = new frmMenu();
                         frmM.usuario = CodigoUsuario;
                         frmM.Nombres = Usuario;
                         frmM.nick = txtUsuario.Text;
@@ -143,6 +143,11 @@ namespace HPReserger
                     }
                 }
             }
+        }
+
+        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

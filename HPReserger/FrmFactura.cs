@@ -327,6 +327,14 @@ namespace HPReserger
             txtruc.Enabled = false; txtguia.Enabled = false;
             txtsubtotal.Enabled = txtigv.Enabled = false;
             Dtguias.Enabled = false;
+            if (DatosFactura != null)
+            {
+                cboigv.SelectedIndex = (int)DatosFactura["gravaigv"]-1;
+                MSG($"La Orden de compra {DatosFactura["ordencompra"].ToString() } con Nro de Factura: {DatosFactura["nrofactura"].ToString()} \nya se grabó con la opción {cboigv.Text } ");
+                cboigv.Enabled = false;
+            }            
+            else
+                cboigv.Enabled = true;
         }
         public Boolean validar()
         {
@@ -571,11 +579,46 @@ namespace HPReserger
 
         }
         public int contador = 0;
+        DataRow DatosFactura;
+        public void CalcularGRavaigv()
+        {
+            if (Dtguias.RowCount > 0)
+            {
+                int busorden;
+                foreach (DataGridViewRow lista in Dtguias.Rows)
+                {
+                    DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
+                    ch1 = (DataGridViewCheckBoxCell)lista.Cells["ok"];
+
+                    if (ch1.Value == null)
+                        ch1.Value = false;
+                    if (lista.Cells["OK"].Value == null)
+                        lista.Cells["OK"].Value = false;
+                    switch (lista.Cells["OK"].Value.ToString())
+                    {
+                        case "True":
+                            //busorden +=","+ lista.Cells["oc"].Value.ToString(); 
+                            busorden = (int)lista.Cells["oc"].Value;
+                            DatosFactura = cfactura.ListarGravaIgvOrdenCompra(busorden);
+                            if (DatosFactura != null)
+                            {
+                                //MSG(busorden.ToString());
+                                return;
+                            }
+                            break;
+                        case "False":
+                            break;
+                    }
+                }
+            }
+        }
         public void cargarFics()
         {
             contador = 0;
             if (Dtguias.RowCount > 0)
             {
+                // string busorden = "0";
+                CalcularGRavaigv();
                 string BuscaMonto = "", BuscaFic = "";
                 foreach (DataGridViewRow lista in Dtguias.Rows)
                 {

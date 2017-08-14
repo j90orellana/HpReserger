@@ -32,7 +32,8 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        // HPResergerCapaLogica.HPResergerCL ClModificarCotizacion = new HPResergerCapaLogica.HPResergerCL();
+        int TipoArticulo = 0;
         private void frmCotizacionModificar_Load(object sender, EventArgs e)
         {
             txtCotizacion.Text = Cotizacion;
@@ -43,7 +44,7 @@ namespace HPReserger
             dtpFecha.Value = new DateTime(FechaEntrega.Year, FechaEntrega.Month, FechaEntrega.Day);
             txtAdjunto.Text = Adjunto;
 
-            if (txtCotizacion.Text.Length >0)
+            if (txtCotizacion.Text.Length > 0)
             {
                 DataRow drFoto = clModificarCotizacion.CargarImagenCotizacion(Convert.ToInt32(txtCotizacion.Text.Substring(2)));
                 if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
@@ -61,6 +62,23 @@ namespace HPReserger
             else
             {
                 pbFoto.Image = null;
+            }
+            dtgpedidoX.DataSource = clModificarCotizacion.listar_Detalle_Cotizacion(int.Parse(txtPedido.Text.Substring(2)), txtRUC.Text);
+            dtgpedidoY.DataSource = clModificarCotizacion.listar_Detalle_Cotizacion(int.Parse(txtPedido.Text.Substring(2)), txtRUC.Text);
+            if (dtgpedidoX.RowCount > 0)
+            {
+                if (dtgpedidoX["tipox", 0].Value.ToString() == "ARTICULO")
+                {
+                    dtgpedidoX.Visible = false;
+                    dtgpedidoY.Visible = true;
+                    TipoArticulo = 0;
+                }
+                else
+                {
+                    TipoArticulo = 1;
+                    dtgpedidoX.Visible = true;
+                    dtgpedidoY.Visible = false;
+                }
             }
         }
 
@@ -108,8 +126,11 @@ namespace HPReserger
         {
             if (txtImporte.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Importe de la Cotización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtImporte.Focus();
+
+            }
+            if (decimal.Parse(txtImporte.Text) <= 0)
+            {
+                MessageBox.Show("El Importe de la Cotización No puede ser Cero", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             if (txtProveedor.Text.Length == 0)
@@ -124,32 +145,67 @@ namespace HPReserger
                 btnBuscarPDF.Focus();
                 return;
             }
-            else
+            if (dtgpedidoX.RowCount > 0)
             {
-                if (nombreArchivo == string.Empty || nombreArchivo == null)
+                for (int i = 0; i < dtgpedidoX.RowCount; i++)
                 {
-                    nombreArchivo = txtAdjunto.Text.Trim();
+                    if (TipoArticulo == 0)
+                    {
+                        if (decimal.Parse(dtgpedidoY["preciounity", i].Value.ToString()) <= 0)
+                        {
+                            msg($"El Precio Unitario no Puede Ser Cero en Linea { i + 1}");
+                            dtgpedidoY.CurrentCell = dtgpedidoY["Preciounity", i];
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (decimal.Parse(dtgpedidoX["preciounitx", i].Value.ToString()) <= 0)
+                        {
+                            msg($"El Precio Unitario no Puede Ser Cero en Linea { i + 1}");
+                            dtgpedidoX.CurrentCell = dtgpedidoX["Preciounitx", i];
+                            break;
+                        }
+                    }
                 }
-                clModificarCotizacion.CotizacionModificar(Convert.ToInt32(txtCotizacion.Text.Substring(2)), dtpFecha.Value, Convert.ToDecimal(txtImporte.Text), txtRUC.Text, Foto, nombreArchivo);
-
-                this.Cotizacion = txtCotizacion.Text.Substring(2);
-                this.RUC = txtRUC.Text.Trim();
-                this.Proveedor = txtProveedor.Text.Trim();
-                this.Importe = txtImporte.Text.Trim();
-                this.FechaEntrega = dtpFecha.Value;
-                this.Adjunto = txtAdjunto.Text.Trim();
-
-                txtRUC.Text = "";
-                txtProveedor.Text = "";
-                txtImporte.Text = "";
-                pbFoto.Image = null;
-
-                MessageBox.Show("Cotización Nº " + Convert.ToString(txtCotizacion.Text) + " se actualizó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
             }
-        }
+            if (nombreArchivo == string.Empty || nombreArchivo == null)
+            {
+                nombreArchivo = txtAdjunto.Text.Trim();
+            }
+            clModificarCotizacion.CotizacionModificar(Convert.ToInt32(txtCotizacion.Text.Substring(2)), dtpFecha.Value, Convert.ToDecimal(txtImporte.Text), txtRUC.Text, Foto, nombreArchivo);
+            for (int i = 0; i < dtgpedidoX.RowCount; i++)
+            {
+                if (TipoArticulo == 0)
+                {
+                    clModificarCotizacion.ActualizarCotizacionDetalle(int.Parse(dtgpedidoY["cody", i].Value.ToString()), decimal.Parse(dtgpedidoY["preciounity", i].Value.ToString()), decimal.Parse(dtgpedidoY["totaly", i].Value.ToString()));
+                }
+                else
+                {
+                    clModificarCotizacion.ActualizarCotizacionDetalle(int.Parse(dtgpedidoX["codx", i].Value.ToString()), decimal.Parse(dtgpedidoX["preciounitx", i].Value.ToString()), decimal.Parse(dtgpedidoX["totalx", i].Value.ToString()));
+                }
+            }
+            this.Cotizacion = txtCotizacion.Text.Substring(2);
+            this.RUC = txtRUC.Text.Trim();
+            this.Proveedor = txtProveedor.Text.Trim();
+            this.Importe = txtImporte.Text.Trim();
+            this.FechaEntrega = dtpFecha.Value;
+            this.Adjunto = txtAdjunto.Text.Trim();
 
+            txtRUC.Text = "";
+            txtProveedor.Text = "";
+            txtImporte.Text = "";
+            pbFoto.Image = null;
+
+            MessageBox.Show("Cotización Nº " + Convert.ToString(txtCotizacion.Text) + " se actualizó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close();
+
+        }
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
         private void txtRUC_TextChanged(object sender, EventArgs e)
         {
             DataRow drProveedor = clModificarCotizacion.RUCProveedor(txtRUC.Text.Trim());
@@ -161,6 +217,117 @@ namespace HPReserger
             {
                 txtProveedor.Text = null;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (Modifica == 0)
+                this.Close();
+            if (mensaje("Seguro desea Salir") == DialogResult.OK)
+                this.Close();
+        }
+        public DialogResult mensaje(string cadena)
+        {
+            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
+        TextBox txt;
+        private void dtgpedidoY_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dtgpedidoY.Columns["PrecioUnitY"].Index == dtgpedidoY.CurrentCell.ColumnIndex)
+            {
+                txt = e.Control as TextBox;
+                if (txt != null)
+                {
+                    txt.KeyPress -= new KeyPressEventHandler(dataGridview_KeyPressCajita);
+                    txt.KeyPress += new KeyPressEventHandler(dataGridview_KeyPressCajita);
+                }
+            }
+        }
+
+        private void dtgpedidoX_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dtgpedidoX.Columns["PrecioUnitX"].Index == dtgpedidoX.CurrentCell.ColumnIndex)
+            {
+                txt = e.Control as TextBox;
+                if (txt != null)
+                {
+                    txt.KeyPress -= new KeyPressEventHandler(dataGridview_KeyPressCajita);
+                    txt.KeyPress += new KeyPressEventHandler(dataGridview_KeyPressCajita);
+                }
+            }
+        }
+        private void dataGridview_KeyPressCajita(object sender, KeyPressEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txt.Text);
+        }
+
+        private void dtgpedidoY_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtgpedidoX_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            dtgpedidoX.Columns["PrecioUnitx"].DefaultCellStyle.Format = "N2";
+            dtgpedidoX.Columns["Totalx"].DefaultCellStyle.Format = "N2";
+        }
+
+        private void dtgpedidoY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                dtgpedidoX.EndEdit();
+                dtgpedidoY.EndEdit();
+                // btnmas_Click(sender, e);
+            }
+            else { e.Handled = true; }
+        }
+        int Modifica = 0;
+        private void dtgpedidoY_CellEndEdit_1(object sender, DataGridViewCellEventArgs e)
+        {
+            Modifica = 1;
+            if (string.IsNullOrWhiteSpace(dtgpedidoY[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                dtgpedidoX[e.ColumnIndex, e.RowIndex].Value = "0.00";
+            if (string.IsNullOrWhiteSpace(dtgpedidoX[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                dtgpedidoY[e.ColumnIndex, e.RowIndex].Value = "0.00";
+            dtgpedidoY.Columns["PrecioUnity"].DefaultCellStyle.Format = "N2";
+            dtgpedidoY.Columns["Totaly"].DefaultCellStyle.Format = "N2";
+            dtgpedidoX.Columns["PrecioUnitx"].DefaultCellStyle.Format = "N2";
+            dtgpedidoX.Columns["Totalx"].DefaultCellStyle.Format = "N2";
+            if (dtgpedidoX.RowCount > 0)
+            {
+                decimal sumatorias = 0;
+                for (int i = 0; i < dtgpedidoX.RowCount; i++)
+                {
+                    if (TipoArticulo == 0)
+                    {
+                        dtgpedidoY["totaly", i].Value = decimal.Parse(dtgpedidoY["canty", i].Value.ToString()) * decimal.Parse(dtgpedidoY["preciounity", i].Value.ToString());
+                        sumatorias += (decimal)dtgpedidoY["totaly", i].Value;
+                    }
+                    else
+                    {
+                        dtgpedidoX["totalx", i].Value = decimal.Parse(dtgpedidoX["preciounitX", i].Value.ToString());
+                        sumatorias += decimal.Parse(dtgpedidoX["totalx", i].Value.ToString());
+                    }
+                }
+                txtImporte.Text = sumatorias.ToString("n2");
+            }
+        }
+        private void dtgpedidoY_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtgpedidoY_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            dtgpedidoY[e.ColumnIndex, e.RowIndex].Value = "0.00";
+            e.Cancel = true;
+        }
+
+        private void dtgpedidoX_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            dtgpedidoX[e.ColumnIndex, e.RowIndex].Value = "0.00";
+            e.Cancel = true;
         }
     }
 }

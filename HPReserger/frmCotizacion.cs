@@ -552,6 +552,12 @@ namespace HPReserger
             MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         decimal sumatoria = 0, valor = 0, total = 0;
+
+        private void dtgpedido_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
         private void CalcularImporte()
         {
             dtgpedido.Columns["PrecioUnit"].DefaultCellStyle.Format = "N2";
@@ -563,8 +569,8 @@ namespace HPReserger
                 {
                     valor = Convert.ToDecimal(dtgpedido["PrecioUnit", i].Value.ToString());
                     total = valor * Convert.ToDecimal(dtgpedido["Cant", i].Value.ToString());
-                    dtgpedido["PrecioUnit", i].Value = decimal.Round(valor, 2);
-                    dtgpedido["Total", i].Value = decimal.Round(total, 2);
+                    dtgpedido["PrecioUnit", i].Value = valor;// decimal.Round(valor, 2);
+                    dtgpedido["Total", i].Value = total;//decimal.Round(total, 2);
                     sumatoria += total;
                 }
                 txtImporte.Text = string.Format("{0:N2}", sumatoria);
@@ -574,8 +580,8 @@ namespace HPReserger
                 for (int i = 0; i < dtgpedido.RowCount; i++)
                 {
                     valor = Convert.ToDecimal(dtgpedido["PrecioUnit", i].Value.ToString());
-                    dtgpedido["PrecioUnit", i].Value = decimal.Round(valor, 2);
-                    dtgpedido["Total", i].Value = decimal.Round(valor, 2);
+                    dtgpedido["PrecioUnit", i].Value = valor;// decimal.Round(valor, 2);
+                    dtgpedido["Total", i].Value = valor;// decimal.Round(valor, 2);
                     sumatoria += valor;
                 }
                 txtImporte.Text = string.Format("{0:N2}", sumatoria);
@@ -583,6 +589,8 @@ namespace HPReserger
         }
         private void dtgpedido_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(dtgpedido[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                dtgpedido[e.ColumnIndex, e.RowIndex].Value = "0.00";
             CalcularImporte();
         }
     }

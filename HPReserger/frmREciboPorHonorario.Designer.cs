@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FIC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -196,7 +196,6 @@
             this.cbotipo.Name = "cbotipo";
             this.cbotipo.Size = new System.Drawing.Size(88, 21);
             this.cbotipo.TabIndex = 36;
-            this.cbotipo.Text = "SERVICIO";
             // 
             // gp1
             // 
@@ -342,8 +341,8 @@
             // 
             this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle6;
             this.CANTIDAD.HeaderText = "Cant.";
             this.CANTIDAD.Name = "CANTIDAD";
             this.CANTIDAD.ReadOnly = true;
@@ -353,10 +352,10 @@
             // 
             this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PRECIOUNIT.DataPropertyName = "preciounit";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0.00";
-            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = "0.00";
+            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle7;
             this.PRECIOUNIT.HeaderText = "PrecioUnit.";
             this.PRECIOUNIT.Name = "PRECIOUNIT";
             this.PRECIOUNIT.Width = 84;
@@ -365,10 +364,10 @@
             // 
             this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.subtotale.DataPropertyName = "subtotal";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            dataGridViewCellStyle3.NullValue = "0.00";
-            this.subtotale.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n2";
+            dataGridViewCellStyle8.NullValue = "0.00";
+            this.subtotale.DefaultCellStyle = dataGridViewCellStyle8;
             this.subtotale.HeaderText = "Subtotal";
             this.subtotale.Name = "subtotale";
             this.subtotale.ReadOnly = true;
@@ -378,10 +377,10 @@
             // 
             this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valueigv.DataPropertyName = "valueigv";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.valueigv.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "n2";
+            dataGridViewCellStyle9.NullValue = "0.00";
+            this.valueigv.DefaultCellStyle = dataGridViewCellStyle9;
             this.valueigv.HeaderText = "ImpRta";
             this.valueigv.Name = "valueigv";
             this.valueigv.ReadOnly = true;
@@ -391,10 +390,10 @@
             // 
             this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TOTALFAC.DataPropertyName = "total";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0.00";
+            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle10;
             this.TOTALFAC.HeaderText = "Total";
             this.TOTALFAC.Name = "TOTALFAC";
             this.TOTALFAC.ReadOnly = true;
@@ -432,6 +431,7 @@
             // 
             // cboigv
             // 
+            this.cboigv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboigv.FormattingEnabled = true;
             this.cboigv.Items.AddRange(new object[] {
             "Exonerado",
