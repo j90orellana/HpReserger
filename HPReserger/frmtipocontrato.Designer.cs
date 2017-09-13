@@ -201,6 +201,8 @@
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(404, 285);
+            this.MinimumSize = new System.Drawing.Size(404, 285);
             this.Name = "frmtipocontrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipo de Contrato";

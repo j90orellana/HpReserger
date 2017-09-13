@@ -47,7 +47,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 54);
+            this.label2.Location = new System.Drawing.Point(22, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 1;
@@ -56,7 +56,9 @@
             // txtUsuario
             // 
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtUsuario.Location = new System.Drawing.Point(98, 25);
+            this.txtUsuario.Location = new System.Drawing.Point(98, 22);
+            this.txtUsuario.MaxLength = 20;
+            this.txtUsuario.Multiline = true;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 0;
@@ -65,19 +67,20 @@
             // txtContraseña
             // 
             this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContraseña.Location = new System.Drawing.Point(98, 54);
+            this.txtContraseña.Location = new System.Drawing.Point(98, 48);
+            this.txtContraseña.Multiline = true;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
-            this.txtContraseña.Size = new System.Drawing.Size(100, 24);
+            this.txtContraseña.Size = new System.Drawing.Size(100, 20);
             this.txtContraseña.TabIndex = 1;
             this.txtContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseña_KeyPress);
             // 
             // btnLogueo
             // 
-            this.btnLogueo.Location = new System.Drawing.Point(218, 34);
+            this.btnLogueo.Location = new System.Drawing.Point(204, 33);
             this.btnLogueo.Name = "btnLogueo";
-            this.btnLogueo.Size = new System.Drawing.Size(75, 23);
+            this.btnLogueo.Size = new System.Drawing.Size(85, 23);
             this.btnLogueo.TabIndex = 2;
             this.btnLogueo.Text = "&Aceptar";
             this.btnLogueo.UseVisualStyleBackColor = true;
@@ -87,19 +90,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(312, 92);
+            this.ClientSize = new System.Drawing.Size(304, 81);
             this.Controls.Add(this.btnLogueo);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(320, 120);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(320, 120);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Ventana de Logueo";
+            this.Text = "HpReserger";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);

@@ -32,6 +32,7 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.txthasta = new System.Windows.Forms.TextBox();
             this.txtdesde = new System.Windows.Forms.TextBox();
@@ -67,7 +68,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtsumatoria = new System.Windows.Forms.TextBox();
             this.lblmsg = new System.Windows.Forms.Label();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.btnexcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
@@ -166,6 +166,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opciones";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Checked = true;
+            this.radioButton10.Location = new System.Drawing.Point(7, 42);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(50, 17);
+            this.radioButton10.TabIndex = 22;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.Text = "Todo";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
             // 
             // radioButton9
             // 
@@ -544,19 +557,6 @@
             this.lblmsg.TabIndex = 10;
             this.lblmsg.Text = "Total Registros:";
             // 
-            // radioButton10
-            // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Checked = true;
-            this.radioButton10.Location = new System.Drawing.Point(7, 42);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(50, 17);
-            this.radioButton10.TabIndex = 22;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "Todo";
-            this.radioButton10.UseVisualStyleBackColor = true;
-            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
-            // 
             // btnexcel
             // 
             this.btnexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -581,6 +581,7 @@
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.groupBox1);
+            this.MinimumSize = new System.Drawing.Size(1050, 653);
             this.Name = "frmreporteordencompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de Ordenes de Compra";

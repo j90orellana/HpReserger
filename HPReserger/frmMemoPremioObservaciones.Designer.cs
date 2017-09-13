@@ -48,8 +48,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(481, 394);
             this.Controls.Add(this.txtObservaciones);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(497, 433);
+            this.MinimumSize = new System.Drawing.Size(497, 433);
             this.Name = "frmMemoPremioObservaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Observaciones";

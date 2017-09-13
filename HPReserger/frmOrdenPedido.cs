@@ -84,7 +84,6 @@ namespace HPReserger
                 }
             }
         }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (cboproyecto.SelectedIndex < 0)
@@ -191,7 +190,6 @@ namespace HPReserger
                         }
                     }
                 }
-
                 fila = 0;
                 filaBuscar = 0;
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
@@ -242,7 +240,6 @@ namespace HPReserger
             }
             return true;
         }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
 
@@ -275,27 +272,42 @@ namespace HPReserger
             gridItem[3, gridItem.RowCount - 1].Value = "";
             /*   }
             */
-
-
-
         }
-
+        frmListarOrdenesPedido frmLOP;
         private void btnListar_Click(object sender, EventArgs e)
         {
-            frmListarOrdenesPedido frmLOP = new frmListarOrdenesPedido();
-            frmLOP.ShowDialog();
+            if (frmLOP == null)
+            {
+                frmLOP = new frmListarOrdenesPedido();
+                frmLOP.MdiParent = this.MdiParent;
+                frmLOP.FormClosed += new FormClosedEventHandler(cerrarordenpedido);
+                frmLOP.Show();
+            }
+            else { 
+                frmLOP.Activate();
+            ValidarVentanas(frmLOP);
+            }
         }
-
+        void cerrarordenpedido(object sender, FormClosedEventArgs e)
+        {
+            frmLOP = null;
+        }
+        public void ValidarVentanas(Form formulario)
+        {
+            if (formulario.WindowState != FormWindowState.Normal)
+                formulario.WindowState = FormWindowState.Normal;
+            formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
+            formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2);
+        }
         private void frmOrdenPedido_FormClosing(object sender, FormClosingEventArgs e)
         {
             gridItem.DataSource = null;
             gridItem.Rows.Clear();
             gridItem.Refresh();
         }
-
         private void gridItem_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (gridItem.CurrentCell.ColumnIndex == 3 && cboTipoPedido.SelectedIndex == 0)
+            if (gridItem.CurrentCell.ColumnIndex == 4 && cboTipoPedido.SelectedIndex == 0)
             {
                 TextBox txt = e.Control as TextBox;
 
@@ -305,7 +317,7 @@ namespace HPReserger
                     txt.KeyPress += new KeyPressEventHandler(txtNumeros_KeyPress);
                 }
             }
-            if (gridItem.CurrentCell.ColumnIndex == 3 && cboTipoPedido.SelectedIndex == 1)
+            if (gridItem.CurrentCell.ColumnIndex == 4 && cboTipoPedido.SelectedIndex == 1)
             {
                 TextBox txt = e.Control as TextBox;
                 if (txt != null)
@@ -436,6 +448,27 @@ namespace HPReserger
                 cboproyecto.ValueMember = "id_proyecto";
             }
             else MSG("No hay empresas");
+        }
+        
+        private void gridItem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           if (e.ColumnIndex == 1 && e.RowIndex >= 0)
+             {
+                DataGridViewComboBoxColumn ItemColumn = gridItem.Columns["Item"] as DataGridViewComboBoxColumn;
+                ItemColumn.DisplayMember = "Descripcion";
+                ItemColumn.ValueMember = "Id_Articulo";
+                ItemColumn.DataSource = clOrdenPedido.ItemCombo(Convert.ToInt32(cboTipoPedido.SelectedValue.ToString()));
+
+            }
+        }
+
+        private void btnREfres_Click(object sender, EventArgs e)
+        {
+            DataGridViewComboBoxColumn ItemColumn = gridItem.Columns["Item"] as DataGridViewComboBoxColumn;
+            ItemColumn.DisplayMember = "Descripcion";
+            ItemColumn.ValueMember = "Id_Articulo";
+            ItemColumn.DataSource = clOrdenPedido.ItemCombo(Convert.ToInt32(cboTipoPedido.SelectedValue.ToString()));
+
         }
     }
 }

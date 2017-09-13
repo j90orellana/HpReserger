@@ -82,6 +82,7 @@
             // 
             // btneliminar
             // 
+            this.btneliminar.Enabled = false;
             this.btneliminar.Location = new System.Drawing.Point(493, 72);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 21);
@@ -92,6 +93,7 @@
             // 
             // btnmodificar
             // 
+            this.btnmodificar.Enabled = false;
             this.btnmodificar.Location = new System.Drawing.Point(493, 46);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 21);
@@ -129,7 +131,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 262);
+            this.label5.Location = new System.Drawing.Point(12, 257);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 85;
@@ -295,6 +297,7 @@
             // btnaceptar
             // 
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnaceptar.Enabled = false;
             this.btnaceptar.Location = new System.Drawing.Point(387, 571);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 29);
@@ -477,6 +480,7 @@
             this.chkcentro.TabIndex = 113;
             this.chkcentro.Text = "Si";
             this.chkcentro.UseVisualStyleBackColor = true;
+            this.chkcentro.CheckedChanged += new System.EventHandler(this.chkcentro_CheckedChanged);
             // 
             // chkigv
             // 
@@ -505,6 +509,7 @@
             this.label10.Size = new System.Drawing.Size(66, 13);
             this.label10.TabIndex = 116;
             this.label10.Text = "Cta. General";
+            this.label10.Visible = false;
             // 
             // cbocuenta
             // 
@@ -516,6 +521,7 @@
             this.cbocuenta.Name = "cbocuenta";
             this.cbocuenta.Size = new System.Drawing.Size(147, 21);
             this.cbocuenta.TabIndex = 117;
+            this.cbocuenta.Visible = false;
             // 
             // gp1
             // 
@@ -585,8 +591,8 @@
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(600, 653);
+            this.MinimumSize = new System.Drawing.Size(600, 653);
             this.Name = "frmArticuloServicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Articulo/Servicio";

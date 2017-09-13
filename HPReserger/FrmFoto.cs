@@ -22,9 +22,8 @@ namespace HPReserger
             if (fotito != null)
             {
                 pbfoto.Image = fotito;
-                // this.Size = pbfoto.Image.Size;
-                this.Size = new Size(pbfoto.Image.Size.Width+25, pbfoto.Image.Size.Height+50);
-
+                this.Size = pbfoto.Image.Size;
+                this.Size = new Size(pbfoto.Image.Size.Width + 25, pbfoto.Image.Size.Height + 50);
             }
         }
         private void FrmFoto_KeyDown(object sender, KeyEventArgs e)
@@ -45,6 +44,28 @@ namespace HPReserger
 
             //this.WindowState = FormWindowState.Normal;
             //this.StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbfoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void pbfoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbfoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void FrmFoto_Leave(object sender, EventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbfoto);
         }
 
 

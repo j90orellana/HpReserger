@@ -43,7 +43,7 @@ namespace HPReserger
             Tablita.Rows.Add(new object[] { "NO", "NO" });
             Tablita.Rows.Add(new object[] { "ME", "MENSUAL" });
             Tablita.Rows.Add(new object[] { "BI", "BI-MESTRAL" });
-            Tablita.Rows.Add(new object[] { "TR", "TRI--MESTRAL" });
+            Tablita.Rows.Add(new object[] { "TR", "TRI-MESTRAL" });
             Tablita.Rows.Add(new object[] { "CU", "CUATRI-MESTRAL" });
             Tablita.Rows.Add(new object[] { "QU", "QUI-MESTRAL" });
             Tablita.Rows.Add(new object[] { "SE", "SEMESTRAL" });
@@ -76,7 +76,7 @@ namespace HPReserger
                 cboJefeInmediato.ValueMember = "codigo";
                 cboJefeInmediato.DisplayMember = "jefe";
                 cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento, NumeroDocumento, 0);
-                dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
+                //dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
             }
             else
             {
@@ -111,11 +111,8 @@ namespace HPReserger
                 txtImporteBono.Text = dtgconten["IMPORTE", fila].Value.ToString();
                 txtPeriodicidad.Text = dtgconten["PERIOCIDAD", fila].Value.ToString();
                 if (dtgconten["adenda", fila].Value.ToString() != "0")
-
                     lbladenda.Text = "Adenda Del Contrato Nº " + dtgconten["adenda", fila].Value.ToString();
-                else lbladenda.Text = "";
-
-
+                else lbladenda.Text = "";                
                 if (int.Parse(dtgconten["MercadoObra", fila].Value.ToString()) == 1)
                 {
                     btnmercado.ForeColor = Color.Blue; btnobradeterminada.Visible = false;
@@ -138,7 +135,8 @@ namespace HPReserger
                     byte[] Fotito = new byte[0];
                     FotoContrato = Fotito = (byte[])dtgconten["CONTRATOIMG", fila].Value;
                     MemoryStream ms = new MemoryStream(Fotito);
-                    pbFotoContrato.Image = Bitmap.FromStream(ms);
+                    ContratoPdf = ms;
+                    //pbFotoContrato.Image = Bitmap.FromStream(ms);
                     txtContrato.Text = dtgconten["NOMBRECONTRATOIMG", fila].Value.ToString();
                     lklcontrato.Enabled = true;
                 }
@@ -206,6 +204,7 @@ namespace HPReserger
             }
 
         }
+        MemoryStream ContratoPdf;
         private void CargaCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
         {
             cbo.ValueMember = "codigo";
@@ -230,9 +229,9 @@ namespace HPReserger
 
         private void btnBuscarImagenContrato_Click(object sender, EventArgs e)
         {
-            var dialogoAbrirArchivoContrato = new OpenFileDialog();
-            dialogoAbrirArchivoContrato.Filter = "Jpg Files|*.jpg";
-            dialogoAbrirArchivoContrato.DefaultExt = ".jpg";
+            OpenFileDialog dialogoAbrirArchivoContrato = new OpenFileDialog();
+            dialogoAbrirArchivoContrato.Filter = "Pdf Files|*.pdf";
+            dialogoAbrirArchivoContrato.DefaultExt = ".pdf";
             dialogoAbrirArchivoContrato.ShowDialog(this);
             txtContrato.Enabled = lklcontrato.Enabled = false;
             nombreArchivoContrato = dialogoAbrirArchivoContrato.FileName.ToString();
@@ -241,9 +240,9 @@ namespace HPReserger
                 _memoryStream.Position = 0;
                 _memoryStream.SetLength(0);
                 _memoryStream.Capacity = 0;
-
-                pbFotoContrato.Image = Image.FromFile(nombreArchivoContrato);
-                pbFotoContrato.Image.Save(_memoryStream, ImageFormat.Jpeg);
+                lklcontrato.Enabled = true;
+                //pbFotoContrato.Image = Image.FromFile(nombreArchivoContrato);
+                //pbFotoContrato.Image.Save(_memoryStream, ImageFormat.Jpeg);
                 FotoContrato = File.ReadAllBytes(dialogoAbrirArchivoContrato.FileName);
                 txtContrato.Text = nombreArchivoContrato;
                 txtContrato.Enabled = lklcontrato.Enabled = true;
@@ -347,6 +346,7 @@ namespace HPReserger
                 CargaCombos(cboEmpresa, "Id_Empresa", "Empresa", "TBL_Empresa");
                 CargaCombos(cboGerencia, "Id_Gerencia", "Gerencia", "TBL_Gerencia");
                 CargaCombos(cboSede, "Id_Sede", "Sede", "TBL_Sede");
+                CargaCombos(cbotipocontratacion, "Id_TipoContratacion", "TipoContratacion", "TBL_TipoContratacion");
                 cboJefeInmediato.ValueMember = "codigo";
                 cboJefeInmediato.DisplayMember = "jefe";
                 //cboJefeInmediato.DataSource = clContrato.ListarJefeInmediato(CodigoDocumento,NumeroDocumento,1);
@@ -360,7 +360,10 @@ namespace HPReserger
             grpcontra.Enabled = grpcontrato.Enabled = true;
             pbFotoAnexoFunciones.Image = pbFotoContrato.Image = pbFotoOtros.Image = pbFotoSolicitudPracticas.Image = null;
             FotoContrato = FotoAnexoFunciones = FotoSolicitudPracticas = FotoOtros = null;
-            dtpFechaInicio.Value = (DateTime.Parse(dtgconten["fin", 0].Value.ToString())).AddDays(1);
+            if (dtgconten.RowCount > 0)
+                dtpFechaInicio.Value = (DateTime.Parse(dtgconten["fin", 0].Value.ToString())).AddDays(1);
+            else
+                dtpFechaInicio.Value = DateTime.Now;
         }
 
         private bool Validar()
@@ -529,7 +532,7 @@ namespace HPReserger
             decimal ImporteBono = 0;
             int PeriodicidadBono = 0;
             if (chkjefe.Checked) { jefe = 1; } else { jefe = 0; }
-            if (cboBono.SelectedIndex == 0)
+            if (cboBono.SelectedIndex > 0)
             {
                 ImporteBono = Convert.ToDecimal(txtImporteBono.Text);
                 PeriodicidadBono = Convert.ToInt32(txtPeriodicidad.Text);
@@ -550,7 +553,7 @@ namespace HPReserger
                 numero = Convert.ToInt32(dtgconten["NRO", dtgconten.CurrentCell.RowIndex].Value.ToString());
             }
             else { numero = 0; }
-            clContrato.EmpleadoContrato(numero, CodigoDocumento, NumeroDocumento, tipocontra, adendas, mercadoobras, jefe, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()), Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), tipojefe, docjefe, Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value, Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), cboBono.SelectedItem.ToString(), ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones, txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
+            clContrato.EmpleadoContrato(numero, CodigoDocumento, NumeroDocumento, tipocontra, adendas, mercadoobras, jefe, Convert.ToInt32(cboTipoContrato.SelectedValue.ToString()), Convert.ToInt32(cboCargo.SelectedValue.ToString()), Convert.ToInt32(cboGerencia.SelectedValue.ToString()), Convert.ToInt32(cboArea.SelectedValue.ToString()), tipojefe, docjefe, Convert.ToInt32(cboEmpresa.SelectedValue.ToString()), Convert.ToInt32(cboProyecto.SelectedValue.ToString()), Convert.ToInt32(cboSede.SelectedValue.ToString()), dtpFechaInicio.Value, Convert.ToInt32(txtPeriodoLaboral.Text), dtpFechaFin.Value, Convert.ToDecimal(txtSalario.Text), cboBono.SelectedValue.ToString(), ImporteBono, PeriodicidadBono, FotoContrato, txtContrato.Text, FotoAnexoFunciones, txtAnexoFunciones.Text, FotoSolicitudPracticas, txtSolicitudPracticas.Text, FotoOtros, txtOtros.Text, frmLogin.CodigoUsuario, Opcion);
             //MessageBox.Show(numero+" "+CodigoDocumento +" "+ NumeroDocumento);
         }
 
@@ -741,7 +744,7 @@ namespace HPReserger
                     btnModificar.Enabled = true;
                     btncancelar_Click(sender, e);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4)
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4 && string.IsNullOrWhiteSpace(txtContrato.Text))
                     {
                         clContrato.LocacionServicios(dtgconten["nro", 0].Value.ToString(), CodigoDocumento.ToString(), NumeroDocumento, 1, locacion.ocupacion, locacion.detalle);
                         locacionservis.contrato = dtgconten["nro", 0].Value.ToString();
@@ -749,11 +752,11 @@ namespace HPReserger
                         locacionservis.numero = NumeroDocumento;
                         locacionservis.ShowDialog();
                     }
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1)
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1 && string.IsNullOrWhiteSpace(txtContrato.Text))
                     {
                         clContrato.PracticasPreProfesionales(dtgconten["nro", 0].Value.ToString(), CodigoDocumento.ToString(), NumeroDocumento, 1, pracprepro.ruc, pracprepro.representante, pracprepro.tipoidrepre, pracprepro.docrepre, pracprepro.situacion, pracprepro.especialidad, pracprepro.ocupacion, pracprepro.dias, pracprepro.horario);
                     }
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3)
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3 && string.IsNullOrWhiteSpace(txtContrato.Text))
                     {
                         if (btnmercado.ForeColor == Color.Blue)
                         {
@@ -777,30 +780,30 @@ namespace HPReserger
                     btncancelar_Click(sender, e);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
                     cartelito(dtgconten);
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4)
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 4 && string.IsNullOrWhiteSpace(txtContrato.Text))
                     {
                         locacionservis.contrato = dtgconten["nro", 0].Value.ToString();
                         locacionservis.tipo = CodigoDocumento.ToString();
                         locacionservis.numero = NumeroDocumento;
                         locacionservis.ShowDialog();
                     }
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1)
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 1 && string.IsNullOrWhiteSpace(txtContrato.Text))
                     {
                         reporpracticas.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
                         reporpracticas.tipo = CodigoDocumento;
                         reporpracticas.numero = NumeroDocumento;
                         reporpracticas.ShowDialog();
                     }
-                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3)
+                    if (int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 2 || int.Parse(cbotipocontratacion.SelectedValue.ToString()) == 3 && string.IsNullOrWhiteSpace(txtContrato.Text))
                     {
-                        if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() == "0")
+                        if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() == "0" && string.IsNullOrWhiteSpace(txtContrato.Text))
                         {
                             repormercado.contrato = int.Parse(dtgconten["nro", 0].Value.ToString());
                             repormercado.tipo = CodigoDocumento.ToString();
                             repormercado.numero = NumeroDocumento;
                             repormercado.ShowDialog();
                         }
-                        if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() != "0")
+                        if (btnmercado.ForeColor == Color.Blue && dtgconten["adenda", 0].Value.ToString() != "0" && string.IsNullOrWhiteSpace(txtContrato.Text))
                         {
                             reporteadenda.contrato = (dtgconten["nro", 0].Value.ToString());
                             reporteadenda.tipo = CodigoDocumento.ToString();
@@ -820,13 +823,19 @@ namespace HPReserger
                     PasosAdenda(false);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
                     cartelito(dtgconten); btnExportapdf.Enabled = true;
-                    reporteadenda.contrato = dtgconten["nro", 0].Value.ToString();
-                    reporteadenda.tipo = CodigoDocumento.ToString();
-                    reporteadenda.numero = NumeroDocumento;
-                    reporteadenda.ShowDialog();
+                    if (string.IsNullOrWhiteSpace(txtContrato.Text))
+                    {
+                        reporteadenda.contrato = dtgconten["nro", 0].Value.ToString();
+                        reporteadenda.tipo = CodigoDocumento.ToString();
+                        reporteadenda.numero = NumeroDocumento;
+                        reporteadenda.ShowDialog();
+                    }
                 }
             }
-
+            ///Actualizar los Contratos en el Formulario empleado
+            IFormEmpleado FormEmpleado = this.MdiParent as IFormEmpleado;
+            if (FormEmpleado != null)
+                FormEmpleado.CargarContratos();
         }
         public void cartelito(DataGridView medir)
         {
@@ -905,9 +914,31 @@ namespace HPReserger
 
         private void lklcontrato_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbFotoContrato);
+            MostrarPDF();
         }
+        public void MostrarPDF()
+        {
+            if (FotoContrato != null)
+            {
+                int K;
+                K = FotoContrato.Length;
+                frmVerPdf VerPdf = new frmVerPdf();
+                string Ruta = AppDomain.CurrentDomain.BaseDirectory + "temp.pdf";
+                FileStream RutaArchivo = new FileStream(Ruta, FileMode.Create, FileAccess.ReadWrite);
+                RutaArchivo.Write(FotoContrato, 0, K);
+                RutaArchivo.Close();
 
+                VerPdf.ruta = Ruta;
+                VerPdf.nombreformulario = " Contrato " + dtgconten["documento", dtgconten.CurrentCell.RowIndex].Value.ToString();
+                VerPdf.Show();
+
+                File.Delete(Ruta);
+            }
+        }
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void lklanexo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MostrarFoto(pbFotoAnexoFunciones);

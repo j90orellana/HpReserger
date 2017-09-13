@@ -18,6 +18,7 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL clLogueo = new HPResergerCapaLogica.HPResergerCL();
         public static int CodigoUsuario;
         public static string Usuario;
+        public static string LoginUser;
         public static int CodigoArea;
         public static string Area;
         public static int CodigoCentroCosto;
@@ -28,34 +29,34 @@ namespace HPReserger
         public static string PartidaPresupuesto;
         public frmMenu frmM;
         public int Intentos { get; set; }
-
         public frmLogin()
         {
             InitializeComponent();
         }
-
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                e.Handled = true;
                 txtContraseña.Focus();
             }
         }
-
         private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                e.Handled = true;
                 btnLogueo.Focus();
             }
         }
-
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
             Intentos = 0;
         }
-
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void btnLogueo_Click(object sender, EventArgs e)
         {
             if (txtUsuario.Text.Length == 0)
@@ -85,7 +86,7 @@ namespace HPReserger
                 drAcceso = clLogueo.Loguearse(txtUsuario.Text, 2);
                 if (Convert.ToInt32(drAcceso["Estado"].ToString()) == 0)
                 {
-                    MessageBox.Show("Usuario bloqueado, contactese con el Area de Sistemas", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Usuario bloqueado, contáctese con el Área de Sistemas", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtUsuario.Focus();
                     return;
                 }
@@ -108,6 +109,7 @@ namespace HPReserger
                             Gerencia = drAcceso["GERENCIA"].ToString();
                             CodigoPartidaPresupuesto = Convert.ToInt32(drAcceso["CODIGOPARTIDAPRESUPUESTO"].ToString());
                             PartidaPresupuesto = drAcceso["PARTIDAPRESUPUESTO"].ToString();
+                            LoginUser = drAcceso["LOGINUSER"].ToString();
                         }
                         this.Hide();
                         frmM = new frmMenu();
@@ -139,12 +141,12 @@ namespace HPReserger
                             MessageBox.Show("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             txtUsuario.Text = "";
                             txtContraseña.Text = "";
+                            txtUsuario.Focus();
                         }
                     }
                 }
             }
         }
-
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

@@ -52,6 +52,13 @@
             this.txtOcupacion = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.Grid = new System.Windows.Forms.DataGridView();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.pbconviviente = new System.Windows.Forms.PictureBox();
+            this.lklconviviente = new System.Windows.Forms.LinkLabel();
+            this.btnconviviente = new System.Windows.Forms.Button();
+            this.txtconviviente = new System.Windows.Forms.TextBox();
+            this.lblconviviente = new System.Windows.Forms.Label();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.CODIGOTIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NROID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,15 +68,10 @@
             this.APEMAT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHANACIMIENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EDAD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OCUPACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreimagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.pbconviviente = new System.Windows.Forms.PictureBox();
-            this.lklconviviente = new System.Windows.Forms.LinkLabel();
-            this.btnconviviente = new System.Windows.Forms.Button();
-            this.txtconviviente = new System.Windows.Forms.TextBox();
-            this.lblconviviente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).BeginInit();
             this.SuspendLayout();
@@ -196,6 +198,7 @@
             this.APEMAT,
             this.NOMBRES,
             this.FECHANACIMIENTO,
+            this.EDAD,
             this.OCUPACION,
             this.imagen,
             this.nombreimagen});
@@ -208,6 +211,51 @@
             this.Grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellContentClick);
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
+            // 
+            // btnRegistrar
+            // 
+            resources.ApplyResources(this.btnRegistrar, "btnRegistrar");
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            // 
+            // pbconviviente
+            // 
+            resources.ApplyResources(this.pbconviviente, "pbconviviente");
+            this.pbconviviente.Name = "pbconviviente";
+            this.pbconviviente.TabStop = false;
+            // 
+            // lklconviviente
+            // 
+            resources.ApplyResources(this.lklconviviente, "lklconviviente");
+            this.lklconviviente.Name = "lklconviviente";
+            this.lklconviviente.TabStop = true;
+            this.lklconviviente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklconviviente_LinkClicked);
+            // 
+            // btnconviviente
+            // 
+            resources.ApplyResources(this.btnconviviente, "btnconviviente");
+            this.btnconviviente.Name = "btnconviviente";
+            this.btnconviviente.UseVisualStyleBackColor = true;
+            this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
+            // 
+            // txtconviviente
+            // 
+            resources.ApplyResources(this.txtconviviente, "txtconviviente");
+            this.txtconviviente.Name = "txtconviviente";
+            this.txtconviviente.ReadOnly = true;
+            // 
+            // lblconviviente
+            // 
+            resources.ApplyResources(this.lblconviviente, "lblconviviente");
+            this.lblconviviente.Name = "lblconviviente";
+            // 
+            // btnModificar
+            // 
+            resources.ApplyResources(this.btnModificar, "btnModificar");
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.Grid_DoubleClick);
             // 
             // CODIGOTIPOID
             // 
@@ -299,6 +347,14 @@
             this.FECHANACIMIENTO.Name = "FECHANACIMIENTO";
             this.FECHANACIMIENTO.ReadOnly = true;
             // 
+            // EDAD
+            // 
+            this.EDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EDAD.DataPropertyName = "EDAD";
+            resources.ApplyResources(this.EDAD, "EDAD");
+            this.EDAD.Name = "EDAD";
+            this.EDAD.ReadOnly = true;
+            // 
             // OCUPACION
             // 
             this.OCUPACION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -321,48 +377,11 @@
             this.nombreimagen.Name = "nombreimagen";
             this.nombreimagen.ReadOnly = true;
             // 
-            // btnRegistrar
-            // 
-            resources.ApplyResources(this.btnRegistrar, "btnRegistrar");
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
-            // 
-            // pbconviviente
-            // 
-            resources.ApplyResources(this.pbconviviente, "pbconviviente");
-            this.pbconviviente.Name = "pbconviviente";
-            this.pbconviviente.TabStop = false;
-            // 
-            // lklconviviente
-            // 
-            resources.ApplyResources(this.lklconviviente, "lklconviviente");
-            this.lklconviviente.Name = "lklconviviente";
-            this.lklconviviente.TabStop = true;
-            this.lklconviviente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklconviviente_LinkClicked);
-            // 
-            // btnconviviente
-            // 
-            resources.ApplyResources(this.btnconviviente, "btnconviviente");
-            this.btnconviviente.Name = "btnconviviente";
-            this.btnconviviente.UseVisualStyleBackColor = true;
-            this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
-            // 
-            // txtconviviente
-            // 
-            resources.ApplyResources(this.txtconviviente, "txtconviviente");
-            this.txtconviviente.Name = "txtconviviente";
-            this.txtconviviente.ReadOnly = true;
-            // 
-            // lblconviviente
-            // 
-            resources.ApplyResources(this.lblconviviente, "lblconviviente");
-            this.lblconviviente.Name = "lblconviviente";
-            // 
             // frmFamiliares
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.pbconviviente);
             this.Controls.Add(this.lklconviviente);
             this.Controls.Add(this.btnconviviente);
@@ -386,8 +405,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.MaximizeBox = false;
             this.Name = "frmFamiliares";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFamiliares_FormClosing);
             this.Load += new System.EventHandler(this.frmFamiliares_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).EndInit();
@@ -421,6 +440,7 @@
         private System.Windows.Forms.Button btnconviviente;
         private System.Windows.Forms.TextBox txtconviviente;
         private System.Windows.Forms.Label lblconviviente;
+        private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOTIPOID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPOID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NROID;
@@ -430,6 +450,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn APEMAT;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRES;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHANACIMIENTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EDAD;
         private System.Windows.Forms.DataGridViewTextBoxColumn OCUPACION;
         private System.Windows.Forms.DataGridViewTextBoxColumn imagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreimagen;

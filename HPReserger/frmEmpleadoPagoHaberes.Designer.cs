@@ -185,7 +185,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlconten);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(464, 221);
+            this.MinimumSize = new System.Drawing.Size(464, 221);
             this.Name = "frmEmpleadoPagoHaberes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Empleado Pago de Haberes";

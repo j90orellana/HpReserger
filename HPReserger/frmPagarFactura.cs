@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,12 +52,14 @@ namespace HPReserger
         private void frmPagarFactura_Load(object sender, EventArgs e)
         {
             txtruc_TextChanged(sender, e);
-            Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
+            //ESTO DAÑADA LA PRESENTACION DE LA FECHA MODIFICA DE 21/07/2017 A 07/21/2017 POR EL CAMBIO DE CULTURA
+            //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
             // txtruc.Text = "0701046971";
             //    radioButton1.Checked = true;
             Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagar(txtruc.Text);
             cbotipo.SelectedIndex = 0;
-            txttotal.Text = "0.00";
+            txttotaldetrac.Text = txttotal.Text = "0.00";
+            btnaceptar.Enabled = false;
         }
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -139,55 +142,102 @@ namespace HPReserger
             }
             if (MessageBox.Show("Seguro desea Guardar", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                int numasiento; string facturar = "";
-                DataTable asientito = cPagarfactura.UltimoAsiento();
-                DataRow asiento = asientito.Rows[0];
-                numasiento = (int)asiento["codigo"];
-                foreach (DataGridViewRow lista in Dtguias.Rows)
+                SaveFile.FileName = cbobanco.Text + " " + DateTime.Now.ToLongDateString();
+                if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
                 {
-                    DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
-                    ch1 = (DataGridViewCheckBoxCell)lista.Cells["ok"];
-                    if (ch1.Value == null)
-                        ch1.Value = false;
-                    if (lista.Cells["OK"].Value == null)
-                        lista.Cells["OK"].Value = false;
-                    switch (lista.Cells["OK"].Value.ToString())
+                    string path = SaveFile.FileName;
+                    st = File.CreateText(path);
+                    string cadenita = "";
+                    for (int i = 0; i < Dtguias.RowCount; i++)
                     {
-                        case "True":
-                            if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "RH")
+                        DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
+                        ch1 = (DataGridViewCheckBoxCell)Dtguias["ok", i];
+                        if (ch1.Value == null)
+                            ch1.Value = false;
+                        if (Dtguias["ok", i].Value == null)
+                            Dtguias["ok", i].Value = false;
+                        if (Dtguias["ok", i].Value.ToString() == "True")
+                        {
+                            for (int j = 0; j < Dtguias.ColumnCount - 1; j++)
                             {
-                                //actualizo que el recibo este pagado
-                                cPagarfactura.insertarPagarfactura(lista.Cells["nrofactura"].Value.ToString(), int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
-                                //cuenta de recibo por honorarios 4241101
-                                cPagarfactura.guardarfactura(1, numasiento + 1, lista.Cells["nrofactura"].Value.ToString(), "4241101", (decimal)lista.Cells["subtotal"].Value, 0);
-                                facturar = lista.Cells["nrofactura"].Value.ToString();
+                                if (!columnas.Contains(j))
+                                    cadenita = cadenita + Dtguias[j, i].Value.ToString() + "|";
                             }
-                            else
-                            {
-                                //actualizo que la factura esta pagada
-                                cPagarfactura.insertarPagarfactura(lista.Cells["nrofactura"].Value.ToString(), int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
-                                ///facturas por pagar 4212101
-                                cPagarfactura.guardarfactura(1, numasiento + 1, lista.Cells["nrofactura"].Value.ToString(), "4212101", (decimal)lista.Cells["total"].Value, 0);
-                                facturar = lista.Cells["nrofactura"].Value.ToString();
-                            }
-                            break;
-                        case "False":
-                            break;
+                            cadenita = cadenita + Dtguias[Dtguias.ColumnCount - 1, i].Value.ToString() + (char)(13);
+                        }
                     }
+                    st.Write(cadenita);
+                    st.Close();
+
+                    int numasiento; string facturar = "";
+                    DataTable asientito = cPagarfactura.UltimoAsiento();
+                    DataRow asiento = asientito.Rows[0];
+                    numasiento = (int)asiento["codigo"];
+                    foreach (DataGridViewRow lista in Dtguias.Rows)
+                    {
+                        DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
+                        ch1 = (DataGridViewCheckBoxCell)lista.Cells["ok"];
+                        if (ch1.Value == null)
+                            ch1.Value = false;
+                        if (lista.Cells["OK"].Value == null)
+                            lista.Cells["OK"].Value = false;
+                        switch (lista.Cells["OK"].Value.ToString())
+                        {
+                            case "True":
+                                if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "RH")
+                                {
+                                    //actualizo que el recibo este pagado
+                                    cPagarfactura.insertarPagarfactura(lista.Cells["nrofactura"].Value.ToString(), int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
+                                    //cuenta de recibo por honorarios 4241101
+                                    cPagarfactura.guardarfactura(1, numasiento + 1, lista.Cells["nrofactura"].Value.ToString(), "4241101", (decimal)lista.Cells["subtotal"].Value, 0);
+                                    facturar = lista.Cells["nrofactura"].Value.ToString();
+                                }
+                                else
+                                {
+                                    if ((decimal)lista.Cells["detraccion"].Value > 0)
+                                    {
+                                        //actualizo que la factura esta pagada
+                                        cPagarfactura.insertarPagarfactura(lista.Cells["nrofactura"].Value.ToString(), int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
+                                        ///facturas por pagar 4212101
+                                        cPagarfactura.guardarfactura(1, numasiento + 1, lista.Cells["nrofactura"].Value.ToString(), "4011110", (decimal)lista.Cells["detraccion"].Value, 0);
+                                        cPagarfactura.guardarfactura(1, numasiento + 1, lista.Cells["nrofactura"].Value.ToString(), "4212101", (decimal)lista.Cells["total"].Value - (decimal)lista.Cells["detraccion"].Value, 0);
+                                        facturar = lista.Cells["nrofactura"].Value.ToString();
+                                    }
+                                    else
+                                    {
+                                        //actualizo que la factura esta pagada
+                                        cPagarfactura.insertarPagarfactura(lista.Cells["nrofactura"].Value.ToString(), int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
+                                        ///facturas por pagar 4212101
+                                        cPagarfactura.guardarfactura(1, numasiento + 1, lista.Cells["nrofactura"].Value.ToString(), "4212101", (decimal)lista.Cells["total"].Value, 0);
+                                        facturar = lista.Cells["nrofactura"].Value.ToString();
+                                    }
+                                }
+                                break;
+                            case "False":
+                                break;
+                        }
+                    }
+                    cPagarfactura.guardarfactura(0, numasiento + 1, facturar, cbocuentabanco.SelectedValue.ToString(), 0, decimal.Parse(txttotal.Text));
+                    msg("Documento Pagado y se ha Generado su Asiento");
+                    txtruc_TextChanged(sender, e);
+                    txttotaldetrac.Text = txttotal.Text = "0.00";
                 }
-                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, cbocuentabanco.SelectedValue.ToString(), 0, decimal.Parse(txttotal.Text));
-                msg("Documento Pagado y se ha Generado su Asiento");
-                txtruc_TextChanged(sender, e);
+                else
+                {
+                    msg("Cancelado Por el Usuario");
+                }
             }
         }
         decimal sumatoria;
+        decimal detrac;
         private void Dtguias_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Dtguias.EndEdit();
+            sumatoria = 0;
+            detrac = 0;
             if (Dtguias.RowCount > 0)
             {
-                btnaceptar.Enabled = true;
-                sumatoria = 0;
+                // btnaceptar.Enabled = true;                
                 foreach (DataGridViewRow lista in Dtguias.Rows)
                 {
                     DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
@@ -203,19 +253,20 @@ namespace HPReserger
                                 sumatoria += (decimal)lista.Cells["subtotal"].Value;
                             else
                                 sumatoria += (decimal)lista.Cells["total"].Value;
+                            detrac += (decimal)lista.Cells["detraccion"].Value;
                             break;
                         case "False":
                             break;
                     }
                 }
-                txttotal.Text = sumatoria.ToString("n2");
+                txttotaldetrac.Text = detrac.ToString("n2");
+                txttotal.Text = (sumatoria - detrac).ToString("n2");
             }
             if (sumatoria == 0)
                 btnaceptar.Enabled = false;
             else
                 btnaceptar.Enabled = true;
         }
-
         private void Dtguias_RowErrorTextChanged(object sender, DataGridViewRowEventArgs e)
         {
 
@@ -233,7 +284,6 @@ namespace HPReserger
             {
                 cbotipo.Enabled = true; cbobanco.Enabled = true; cbocuentabanco.Enabled = true;
                 cbotipo.SelectedIndex = 0; txtnropago.Enabled = true;
-                btnaceptar.Enabled = true;
             }
 
         }
@@ -249,6 +299,12 @@ namespace HPReserger
             }
             else
                 this.Close();
+        }
+        StreamWriter st, stx;
+        int[] columnas = { 0 };
+        private void btnExportarTxt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

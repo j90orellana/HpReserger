@@ -34,7 +34,7 @@ namespace HPReserger
             CargarCombos(cboTipoContratacion, "Id_TipoContratacion", "TipoContratacion", "TBL_TipoContratacion");
             cboTipoContratacion.SelectedIndex = -1;
 
-            cboBusqueda.SelectedIndex =-1;
+            cboBusqueda.SelectedIndex = -1;
             cboTerna.SelectedIndex = -1;
 
             MostrarGrid(frmLogin.CodigoUsuario);
@@ -186,7 +186,7 @@ namespace HPReserger
                 CargarFoto(Convert.ToInt32(Grid2.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2)), e.RowIndex);
             }
         }
-        
+
         private bool SolicitudTienePostulantes(int Solicitud)
         {
             DataRow VerificaSE = clSolicitudEmpleado.VerificaEstadoSolicitudEmpleado(Solicitud);
@@ -233,7 +233,7 @@ namespace HPReserger
 
         private void cboBusqueda_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboBusqueda.SelectedIndex ==0)
+            if (cboBusqueda.SelectedIndex == 0)
             {
                 Grid1.Visible = true;
             }
@@ -276,6 +276,28 @@ namespace HPReserger
             FrmFoto foto = new FrmFoto();
             foto.fotito = pbFoto.Image;
             foto.ShowDialog();
+        }
+
+        private void pbFoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void frmSolicitudEmpleado_MouseMove(object sender, MouseEventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
     }
 }

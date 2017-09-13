@@ -81,7 +81,7 @@ namespace HPReserger
             clFamilia.EmpleadoFamilia(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboVinculoFamiliar.SelectedValue.ToString()), Convert.ToInt32(cboTipoDocumentoIdentidad.SelectedValue.ToString()), txtNumeroDocumento.Text, 0, "", txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, dtpFecha.Value, txtOcupacion.Text, frmLogin.CodigoUsuario, 1, conviviente, nombreconviviente);
             MessageBox.Show("Vínculo Familiar registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Limpiar();
-            MostrarGrilla();
+            MostrarGrilla();           
         }
 
         private void Limpiar()
@@ -96,8 +96,10 @@ namespace HPReserger
         private void MostrarGrilla()
         {
             Grid.DataSource = clFamilia.ListarEmpleadoFamilia(CodigoDocumento, NumeroDocumento);
+            IFormEmpleado FormEmpleado = this.MdiParent as IFormEmpleado;
+            if (FormEmpleado != null)
+                FormEmpleado.CargarNroHijos(CodigoDocumento, NumeroDocumento);
         }
-
         private void Grid_DoubleClick(object sender, EventArgs e)
         {
             if (Grid.Rows.Count > 0 && Grid.CurrentRow.Cells[0].Value != null)
@@ -112,7 +114,7 @@ namespace HPReserger
                 frmEFM.ApellidoMaterno = Grid.Rows[Item].Cells[6].Value.ToString();
                 frmEFM.Nombres = Grid.Rows[Item].Cells[7].Value.ToString();
                 frmEFM.FechaNacimiento = Convert.ToDateTime(Grid.Rows[Item].Cells[8].Value.ToString());
-                frmEFM.Ocupacion = Grid.Rows[Item].Cells[9].Value.ToString();
+                frmEFM.Ocupacion = Grid.Rows[Item].Cells["OCUPACION"].Value.ToString();
                 if (Grid["nombreimagen", Item].Value.ToString().Length > 0)
                 {
                     frmEFM.txtconviviente.Text = nombreconviviente = Grid["nombreimagen", Item].Value.ToString();
@@ -134,6 +136,10 @@ namespace HPReserger
         private void Grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             Item = e.RowIndex;
+            if (Grid.RowCount > 0)
+                btnModificar.Enabled = true;
+            else
+                btnModificar.Enabled = false;
         }
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
@@ -203,6 +209,11 @@ namespace HPReserger
         private void txtNombres_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Sololetras(e);
+        }
+
+        private void frmFamiliares_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

@@ -50,8 +50,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 561);
             this.Controls.Add(this.crvCTS);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmCTS";
             this.Text = "  Carta CTS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

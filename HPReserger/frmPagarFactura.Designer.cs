@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.cbobanco = new System.Windows.Forms.ComboBox();
             this.btnmaspro = new System.Windows.Forms.Button();
@@ -51,6 +54,9 @@
             this.txtnropago = new System.Windows.Forms.TextBox();
             this.txttotal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txttotaldetrac = new System.Windows.Forms.TextBox();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrofactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +65,7 @@
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaRecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +92,7 @@
             this.subtotal,
             this.Igv,
             this.Total,
+            this.detraccion,
             this.fechaRecepcion});
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.Dtguias.Location = new System.Drawing.Point(12, 86);
@@ -92,7 +100,7 @@
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dtguias.Size = new System.Drawing.Size(872, 408);
+            this.Dtguias.Size = new System.Drawing.Size(872, 448);
             this.Dtguias.TabIndex = 40;
             this.Dtguias.TabStop = false;
             this.Dtguias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellContentClick);
@@ -137,8 +145,7 @@
             // btnaceptar
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Enabled = false;
-            this.btnaceptar.Location = new System.Drawing.Point(730, 526);
+            this.btnaceptar.Location = new System.Drawing.Point(730, 592);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 33;
@@ -149,7 +156,7 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(811, 526);
+            this.btncancelar.Location = new System.Drawing.Point(811, 592);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 34;
@@ -301,20 +308,45 @@
             // 
             this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotal.Enabled = false;
-            this.txttotal.Location = new System.Drawing.Point(786, 500);
+            this.txttotal.Location = new System.Drawing.Point(785, 566);
             this.txttotal.Name = "txttotal";
-            this.txttotal.Size = new System.Drawing.Size(100, 20);
+            this.txttotal.Size = new System.Drawing.Size(99, 20);
             this.txttotal.TabIndex = 45;
+            this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(705, 503);
+            this.label3.Location = new System.Drawing.Point(705, 569);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 41;
             this.label3.Text = "Total a Pagar:";
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Archivos de Texto|*.txt";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(693, 543);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.TabIndex = 46;
+            this.label4.Text = "Total Detracción";
+            // 
+            // txttotaldetrac
+            // 
+            this.txttotaldetrac.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotaldetrac.Enabled = false;
+            this.txttotaldetrac.Location = new System.Drawing.Point(784, 540);
+            this.txttotaldetrac.Name = "txttotaldetrac";
+            this.txttotaldetrac.Size = new System.Drawing.Size(100, 20);
+            this.txttotaldetrac.TabIndex = 47;
+            this.txttotaldetrac.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // OK
             // 
@@ -332,6 +364,7 @@
             this.tipodoc.DataPropertyName = "tipo";
             this.tipodoc.HeaderText = "T";
             this.tipodoc.Name = "tipodoc";
+            this.tipodoc.ReadOnly = true;
             this.tipodoc.Width = 25;
             // 
             // nrofactura
@@ -340,6 +373,7 @@
             this.nrofactura.DataPropertyName = "nrofactura";
             this.nrofactura.HeaderText = "Comprobante";
             this.nrofactura.Name = "nrofactura";
+            this.nrofactura.ReadOnly = true;
             this.nrofactura.Width = 95;
             // 
             // proveedor
@@ -348,6 +382,7 @@
             this.proveedor.DataPropertyName = "proveedor";
             this.proveedor.HeaderText = "Proveedor";
             this.proveedor.Name = "proveedor";
+            this.proveedor.ReadOnly = true;
             this.proveedor.Width = 81;
             // 
             // razon
@@ -363,40 +398,61 @@
             this.subtotal.DataPropertyName = "subtotal";
             this.subtotal.HeaderText = "Subtotal";
             this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
             this.subtotal.Width = 71;
             // 
             // Igv
             // 
             this.Igv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Igv.DataPropertyName = "Igv";
+            dataGridViewCellStyle1.Format = "n2";
+            this.Igv.DefaultCellStyle = dataGridViewCellStyle1;
             this.Igv.HeaderText = "Igv/Rta";
             this.Igv.Name = "Igv";
+            this.Igv.ReadOnly = true;
             this.Igv.Width = 69;
             // 
             // Total
             // 
             this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Total.DataPropertyName = "Total";
+            dataGridViewCellStyle2.Format = "n2";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle2;
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             this.Total.Width = 56;
+            // 
+            // detraccion
+            // 
+            this.detraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.detraccion.DataPropertyName = "detrac";
+            dataGridViewCellStyle3.Format = "n2";
+            this.detraccion.DefaultCellStyle = dataGridViewCellStyle3;
+            this.detraccion.HeaderText = "Detracción";
+            this.detraccion.Name = "detraccion";
+            this.detraccion.ReadOnly = true;
+            this.detraccion.Width = 84;
             // 
             // fechaRecepcion
             // 
             this.fechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechaRecepcion.DataPropertyName = "fechaRecepcion";
-            dataGridViewCellStyle5.Format = "g";
-            dataGridViewCellStyle5.NullValue = null;
-            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Format = "g";
+            dataGridViewCellStyle4.NullValue = null;
+            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle4;
             this.fechaRecepcion.HeaderText = "FechaRecepción";
             this.fechaRecepcion.Name = "fechaRecepcion";
+            this.fechaRecepcion.ReadOnly = true;
             this.fechaRecepcion.Width = 114;
             // 
             // frmPagarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 563);
+            this.ClientSize = new System.Drawing.Size(898, 629);
+            this.Controls.Add(this.txttotaldetrac);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txttotal);
             this.Controls.Add(this.txtnropago);
             this.Controls.Add(this.label2);
@@ -419,7 +475,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtdireccion);
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(914, 600);
             this.Name = "frmPagarFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagar Comprobantes";
@@ -453,6 +509,9 @@
         private System.Windows.Forms.TextBox txtnropago;
         private System.Windows.Forms.TextBox txttotal;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txttotaldetrac;
         private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipodoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrofactura;
@@ -461,6 +520,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Igv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detraccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaRecepcion;
     }
 }

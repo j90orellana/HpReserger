@@ -391,7 +391,6 @@ namespace HPReserger
                         frmAM.TipoArticuloModificar = 1;
                         frmAM.ObservacionesModificar = gridDetalle.CurrentRow.Cells[7].Value.ToString();
                     }
-
                     if (frmAM.ShowDialog() == DialogResult.OK)
                     {
                         if (frmAM.Modo == 1)

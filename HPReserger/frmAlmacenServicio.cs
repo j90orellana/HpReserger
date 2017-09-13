@@ -246,8 +246,8 @@ namespace HPReserger
 
         private void frmAlmacenServicio_Load(object sender, EventArgs e)
         {
-            System.Globalization.CultureInfo C = new System.Globalization.CultureInfo("EN-US");
-            Application.CurrentCulture = C;
+            //System.Globalization.CultureInfo C = new System.Globalization.CultureInfo("EN-US");
+            //Application.CurrentCulture = C;
 
             txtRUC.Text = "";
             txtValor.Text = "";

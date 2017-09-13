@@ -170,6 +170,8 @@
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.cboArticuloServicio);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(660, 205);
+            this.MinimumSize = new System.Drawing.Size(660, 205);
             this.Name = "frmArticuloModificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Modificar Articulo / Servicio";

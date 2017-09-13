@@ -702,9 +702,8 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dtgbusca);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(703, 806);
+            this.MinimumSize = new System.Drawing.Size(703, 806);
             this.Name = "frmAsientoContable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asiento Contable";

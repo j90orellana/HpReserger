@@ -64,7 +64,7 @@ namespace HPReserger
                 {
                     if (dtgconten["ejercicio", i].Value.ToString() == PERIODO && dtgconten["id_empresa", i].Value.ToString() == EMPRESA && dtgconten["tipo_ppto", i].Value.ToString() == TIPO && i != fila)
                     {
-                        MSG("Ya Existe un Presupuesto de Administración en la Fila: "+i+1);
+                        MSG("Ya Existe un Presupuesto de Administración en la Fila: " + i + 1);
                         return false;
                     }
                 }
@@ -201,13 +201,43 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.ValidarDinero(e, txtimporte);
         }
-
+        frmPresupuestodetalle presudetale;
         private void btndetalle_Click(object sender, EventArgs e)
         {
-            frmPresupuestodetalle presudetale = new frmPresupuestodetalle();
-            presudetale.cabecera =int.Parse( dtgconten["idppto", dtgconten.CurrentCell.RowIndex].Value.ToString());
-            presudetale.empresa = int.Parse(dtgconten["id_empresa", dtgconten.CurrentCell.RowIndex].Value.ToString());
-            presudetale.ShowDialog();
+            if (presudetale == null)
+            {
+                presudetale = new frmPresupuestodetalle();
+                presudetale.MdiParent = this.MdiParent;
+                //presudetale.MdiParent = this;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                presudetale.cabecera = int.Parse(dtgconten["idppto", dtgconten.CurrentCell.RowIndex].Value.ToString());
+                presudetale.empresa = int.Parse(dtgconten["id_empresa", dtgconten.CurrentCell.RowIndex].Value.ToString());
+                //                presudetale.ShowDialog();
+                presudetale.FormClosed += new FormClosedEventHandler(cerrarpresusdetalle);
+                presudetale.Show();
+
+            }
+            else { 
+                presudetale.Activate();
+           ValidarVentanas(presudetale);
+            }
+
+        }
+        void cerrarpresusdetalle(object sender, FormClosedEventArgs e)
+        {
+            presudetale = null;
+            // pbfotoempleado.Visible = true;
+        }
+        public void ValidarVentanas(Form formulario)
+        {
+            if (formulario.WindowState != FormWindowState.Normal)
+                formulario.WindowState = FormWindowState.Normal;
+            // if (formulario.StartPosition != FormStartPosition.CenterParent)
+            //   formulario.StartPosition = FormStartPosition.CenterParent;
+            //this.LayoutMdi(MdiLayout.);
+            formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
+            formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2); 
         }
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtocupacion = new System.Windows.Forms.TextBox();
-            this.txtdetalle = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtdetalle = new System.Windows.Forms.TextBox();
+            this.txtocupacion = new System.Windows.Forms.TextBox();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -51,19 +51,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Locacion de Servicios";
             // 
-            // txtocupacion
+            // label2
             // 
-            this.txtocupacion.Location = new System.Drawing.Point(117, 19);
-            this.txtocupacion.Name = "txtocupacion";
-            this.txtocupacion.Size = new System.Drawing.Size(418, 20);
-            this.txtocupacion.TabIndex = 0;
-            // 
-            // txtdetalle
-            // 
-            this.txtdetalle.Location = new System.Drawing.Point(117, 45);
-            this.txtdetalle.Name = "txtdetalle";
-            this.txtdetalle.Size = new System.Drawing.Size(418, 20);
-            this.txtdetalle.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Detalle del Servicio:";
             // 
             // label1
             // 
@@ -74,14 +69,19 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Ocupación Principal:";
             // 
-            // label2
+            // txtdetalle
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Detalle del Servicio:";
+            this.txtdetalle.Location = new System.Drawing.Point(117, 45);
+            this.txtdetalle.Name = "txtdetalle";
+            this.txtdetalle.Size = new System.Drawing.Size(418, 20);
+            this.txtdetalle.TabIndex = 1;
+            // 
+            // txtocupacion
+            // 
+            this.txtocupacion.Location = new System.Drawing.Point(117, 19);
+            this.txtocupacion.Name = "txtocupacion";
+            this.txtocupacion.Size = new System.Drawing.Size(418, 20);
+            this.txtocupacion.TabIndex = 0;
             // 
             // btncancelar
             // 
@@ -111,7 +111,8 @@
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.groupBox1);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(587, 165);
+            this.MinimumSize = new System.Drawing.Size(587, 165);
             this.Name = "frmLocacionServicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contrato De Locacion de Servicios";

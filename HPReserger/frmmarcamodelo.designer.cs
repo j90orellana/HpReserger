@@ -112,7 +112,7 @@
             // btncancelar
             // 
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncancelar.Location = new System.Drawing.Point(282, 386);
+            this.btncancelar.Location = new System.Drawing.Point(370, 386);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 29);
             this.btncancelar.TabIndex = 87;
@@ -123,7 +123,7 @@
             // btnaceptar
             // 
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnaceptar.Location = new System.Drawing.Point(194, 386);
+            this.btnaceptar.Location = new System.Drawing.Point(282, 386);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 29);
             this.btnaceptar.TabIndex = 88;
@@ -237,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 420);
+            this.ClientSize = new System.Drawing.Size(461, 435);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.label5);
@@ -254,8 +254,8 @@
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(477, 474);
+            this.MinimumSize = new System.Drawing.Size(477, 474);
             this.Name = "frmmarcamodelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Marca/Modelo";

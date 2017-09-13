@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtnrofactura = new System.Windows.Forms.TextBox();
             this.txtruc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,10 +53,31 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dtfechaemision = new System.Windows.Forms.DateTimePicker();
             this.gp1 = new System.Windows.Forms.GroupBox();
+            this.txtnroconstancia = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbldetracion = new System.Windows.Forms.Label();
+            this.txtdetraccion = new System.Windows.Forms.TextBox();
+            this.numdetraccion = new System.Windows.Forms.NumericUpDown();
+            this.lblporcentajedetraccion = new System.Windows.Forms.Label();
+            this.cbodetraccion = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.DtFechaRecepcion = new System.Windows.Forms.DateTimePicker();
             this.txtmonto = new System.Windows.Forms.TextBox();
             this.pbfactura = new System.Windows.Forms.PictureBox();
             this.DtgConten = new System.Windows.Forms.DataGridView();
+            this.numfic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CANTIDAD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECIOUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotale = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTALFAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.siigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.provisionada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numigv = new System.Windows.Forms.NumericUpDown();
             this.cboigv = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -83,23 +104,14 @@
             this.OC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GUIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAENTREGA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gpordenes = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.numfic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CANTIDAD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRECIOUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotale = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TOTALFAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnprovisionar = new System.Windows.Forms.Button();
             this.gp1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgConten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numigv)).BeginInit();
@@ -158,6 +170,7 @@
             // 
             // btncancelar
             // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Location = new System.Drawing.Point(733, 614);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
@@ -168,12 +181,13 @@
             // 
             // btnaceptar
             // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Enabled = false;
             this.btnaceptar.Location = new System.Drawing.Point(652, 614);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 10;
-            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.Text = "Guardar";
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
@@ -281,6 +295,16 @@
             // 
             // gp1
             // 
+            this.gp1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gp1.Controls.Add(this.txtnroconstancia);
+            this.gp1.Controls.Add(this.label11);
+            this.gp1.Controls.Add(this.lbldetracion);
+            this.gp1.Controls.Add(this.txtdetraccion);
+            this.gp1.Controls.Add(this.numdetraccion);
+            this.gp1.Controls.Add(this.lblporcentajedetraccion);
+            this.gp1.Controls.Add(this.cbodetraccion);
+            this.gp1.Controls.Add(this.label10);
             this.gp1.Controls.Add(this.DtFechaRecepcion);
             this.gp1.Controls.Add(this.txtmonto);
             this.gp1.Controls.Add(this.pbfactura);
@@ -311,6 +335,93 @@
             this.gp1.Size = new System.Drawing.Size(712, 302);
             this.gp1.TabIndex = 13;
             this.gp1.TabStop = false;
+            // 
+            // txtnroconstancia
+            // 
+            this.txtnroconstancia.Location = new System.Drawing.Point(517, 92);
+            this.txtnroconstancia.MaxLength = 10;
+            this.txtnroconstancia.Name = "txtnroconstancia";
+            this.txtnroconstancia.Size = new System.Drawing.Size(100, 20);
+            this.txtnroconstancia.TabIndex = 23;
+            this.txtnroconstancia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnroconstancia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtnroconstancia_KeyDown);
+            this.txtnroconstancia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnroconstancia_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(429, 96);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(83, 13);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Nro Constancia:";
+            // 
+            // lbldetracion
+            // 
+            this.lbldetracion.AutoSize = true;
+            this.lbldetracion.Location = new System.Drawing.Point(258, 96);
+            this.lbldetracion.Name = "lbldetracion";
+            this.lbldetracion.Size = new System.Drawing.Size(89, 13);
+            this.lbldetracion.TabIndex = 25;
+            this.lbldetracion.Text = "Total Detracción:";
+            // 
+            // txtdetraccion
+            // 
+            this.txtdetraccion.Enabled = false;
+            this.txtdetraccion.Location = new System.Drawing.Point(353, 92);
+            this.txtdetraccion.Name = "txtdetraccion";
+            this.txtdetraccion.Size = new System.Drawing.Size(63, 20);
+            this.txtdetraccion.TabIndex = 24;
+            this.txtdetraccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // numdetraccion
+            // 
+            this.numdetraccion.Location = new System.Drawing.Point(201, 93);
+            this.numdetraccion.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numdetraccion.Name = "numdetraccion";
+            this.numdetraccion.Size = new System.Drawing.Size(38, 20);
+            this.numdetraccion.TabIndex = 22;
+            this.numdetraccion.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numdetraccion.ValueChanged += new System.EventHandler(this.numdetraccion_ValueChanged);
+            // 
+            // lblporcentajedetraccion
+            // 
+            this.lblporcentajedetraccion.AutoSize = true;
+            this.lblporcentajedetraccion.Location = new System.Drawing.Point(237, 95);
+            this.lblporcentajedetraccion.Name = "lblporcentajedetraccion";
+            this.lblporcentajedetraccion.Size = new System.Drawing.Size(15, 13);
+            this.lblporcentajedetraccion.TabIndex = 23;
+            this.lblporcentajedetraccion.Text = "%";
+            // 
+            // cbodetraccion
+            // 
+            this.cbodetraccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbodetraccion.FormattingEnabled = true;
+            this.cbodetraccion.Items.AddRange(new object[] {
+            "NO",
+            "SI"});
+            this.cbodetraccion.Location = new System.Drawing.Point(72, 93);
+            this.cbodetraccion.Name = "cbodetraccion";
+            this.cbodetraccion.Size = new System.Drawing.Size(123, 21);
+            this.cbodetraccion.TabIndex = 21;
+            this.cbodetraccion.SelectedIndexChanged += new System.EventHandler(this.cbodetraccion_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 96);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Detracción:";
             // 
             // DtFechaRecepcion
             // 
@@ -349,6 +460,8 @@
             this.DtgConten.AllowUserToDeleteRows = false;
             this.DtgConten.AllowUserToResizeColumns = false;
             this.DtgConten.AllowUserToResizeRows = false;
+            this.DtgConten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.DtgConten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DtgConten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DtgConten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -364,21 +477,149 @@
             this.valueigv,
             this.TOTALFAC,
             this.numoc,
-            this.siigv});
+            this.siigv,
+            this.provisionada});
             this.DtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgConten.Enabled = false;
-            this.DtgConten.Location = new System.Drawing.Point(6, 93);
+            this.DtgConten.Location = new System.Drawing.Point(6, 120);
             this.DtgConten.MultiSelect = false;
             this.DtgConten.Name = "DtgConten";
             this.DtgConten.RowHeadersVisible = false;
             this.DtgConten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DtgConten.Size = new System.Drawing.Size(699, 196);
+            this.DtgConten.Size = new System.Drawing.Size(699, 169);
             this.DtgConten.TabIndex = 16;
             this.DtgConten.TabStop = false;
             this.DtgConten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgConten_CellEndEdit);
             this.DtgConten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DtgConten_DataError);
             this.DtgConten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DtgConten_EditingControlShowing);
             this.DtgConten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DtgConten_KeyPress);
+            // 
+            // numfic
+            // 
+            this.numfic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.numfic.DataPropertyName = "fic";
+            this.numfic.HeaderText = "Fic";
+            this.numfic.Name = "numfic";
+            this.numfic.ReadOnly = true;
+            this.numfic.Width = 46;
+            // 
+            // DESCRIPCION
+            // 
+            this.DESCRIPCION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
+            this.DESCRIPCION.HeaderText = "Descripción";
+            this.DESCRIPCION.Name = "DESCRIPCION";
+            this.DESCRIPCION.ReadOnly = true;
+            // 
+            // cc
+            // 
+            this.cc.DataPropertyName = "cc";
+            this.cc.HeaderText = "cc";
+            this.cc.Name = "cc";
+            this.cc.Visible = false;
+            // 
+            // MARCA
+            // 
+            this.MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MARCA.DataPropertyName = "MARCA";
+            this.MARCA.HeaderText = "Marca";
+            this.MARCA.Name = "MARCA";
+            this.MARCA.ReadOnly = true;
+            this.MARCA.Width = 62;
+            // 
+            // MODELO
+            // 
+            this.MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MODELO.DataPropertyName = "MODELO";
+            this.MODELO.HeaderText = "Modelo";
+            this.MODELO.Name = "MODELO";
+            this.MODELO.ReadOnly = true;
+            this.MODELO.Width = 67;
+            // 
+            // CANTIDAD
+            // 
+            this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CANTIDAD.DataPropertyName = "CANTIDAD";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CANTIDAD.HeaderText = "Cant.";
+            this.CANTIDAD.Name = "CANTIDAD";
+            this.CANTIDAD.ReadOnly = true;
+            this.CANTIDAD.Width = 57;
+            // 
+            // PRECIOUNIT
+            // 
+            this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PRECIOUNIT.DataPropertyName = "preciounit";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle7;
+            this.PRECIOUNIT.HeaderText = "PrecioUnit.";
+            this.PRECIOUNIT.Name = "PRECIOUNIT";
+            this.PRECIOUNIT.Width = 84;
+            // 
+            // subtotale
+            // 
+            this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.subtotale.DataPropertyName = "subtotal";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n2";
+            dataGridViewCellStyle8.NullValue = "0.00";
+            this.subtotale.DefaultCellStyle = dataGridViewCellStyle8;
+            this.subtotale.HeaderText = "Subtotal";
+            this.subtotale.Name = "subtotale";
+            this.subtotale.ReadOnly = true;
+            this.subtotale.Width = 71;
+            // 
+            // valueigv
+            // 
+            this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valueigv.DataPropertyName = "valueigv";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "n2";
+            dataGridViewCellStyle9.NullValue = "0.00";
+            this.valueigv.DefaultCellStyle = dataGridViewCellStyle9;
+            this.valueigv.HeaderText = "Igv";
+            this.valueigv.Name = "valueigv";
+            this.valueigv.ReadOnly = true;
+            this.valueigv.Width = 47;
+            // 
+            // TOTALFAC
+            // 
+            this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TOTALFAC.DataPropertyName = "total";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0.00";
+            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle10;
+            this.TOTALFAC.HeaderText = "Total";
+            this.TOTALFAC.Name = "TOTALFAC";
+            this.TOTALFAC.ReadOnly = true;
+            this.TOTALFAC.Width = 56;
+            // 
+            // numoc
+            // 
+            this.numoc.DataPropertyName = "oc";
+            this.numoc.HeaderText = "oc";
+            this.numoc.Name = "numoc";
+            this.numoc.ReadOnly = true;
+            this.numoc.Visible = false;
+            // 
+            // siigv
+            // 
+            this.siigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.siigv.DataPropertyName = "igv";
+            this.siigv.HeaderText = "siigv";
+            this.siigv.Name = "siigv";
+            this.siigv.ReadOnly = true;
+            this.siigv.Visible = false;
+            // 
+            // provisionada
+            // 
+            this.provisionada.DataPropertyName = "estado";
+            this.provisionada.HeaderText = "estado";
+            this.provisionada.Name = "provisionada";
+            this.provisionada.Visible = false;
             // 
             // numigv
             // 
@@ -487,6 +728,7 @@
             this.txttotal.Size = new System.Drawing.Size(78, 20);
             this.txttotal.TabIndex = 6;
             this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttotal.TextChanged += new System.EventHandler(this.txttotal_TextChanged);
             // 
             // txtigv
             // 
@@ -597,7 +839,8 @@
             this.FIC1,
             this.OC,
             this.GUIA,
-            this.FECHAENTREGA});
+            this.FECHAENTREGA,
+            this.estadox});
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.Dtguias.Location = new System.Drawing.Point(15, 116);
             this.Dtguias.MultiSelect = false;
@@ -627,6 +870,7 @@
             this.FIC1.FillWeight = 93.27411F;
             this.FIC1.HeaderText = "FIC";
             this.FIC1.Name = "FIC1";
+            this.FIC1.ReadOnly = true;
             // 
             // OC
             // 
@@ -634,6 +878,7 @@
             this.OC.FillWeight = 93.27411F;
             this.OC.HeaderText = "OC";
             this.OC.Name = "OC";
+            this.OC.ReadOnly = true;
             // 
             // GUIA
             // 
@@ -641,6 +886,7 @@
             this.GUIA.FillWeight = 93.27411F;
             this.GUIA.HeaderText = "TIPO DOCUMENTO";
             this.GUIA.Name = "GUIA";
+            this.GUIA.ReadOnly = true;
             // 
             // FECHAENTREGA
             // 
@@ -648,6 +894,16 @@
             this.FECHAENTREGA.FillWeight = 93.27411F;
             this.FECHAENTREGA.HeaderText = "FECHAENTREGA";
             this.FECHAENTREGA.Name = "FECHAENTREGA";
+            this.FECHAENTREGA.ReadOnly = true;
+            // 
+            // estadox
+            // 
+            this.estadox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.estadox.DataPropertyName = "ESTADO";
+            this.estadox.HeaderText = "ESTADO";
+            this.estadox.Name = "estadox";
+            this.estadox.ReadOnly = true;
+            this.estadox.Width = 76;
             // 
             // gpordenes
             // 
@@ -656,7 +912,7 @@
             this.gpordenes.Enabled = false;
             this.gpordenes.Location = new System.Drawing.Point(532, 15);
             this.gpordenes.Name = "gpordenes";
-            this.gpordenes.Size = new System.Drawing.Size(182, 76);
+            this.gpordenes.Size = new System.Drawing.Size(182, 69);
             this.gpordenes.TabIndex = 22;
             this.gpordenes.TabStop = false;
             this.gpordenes.Text = "Ordenes de Compra";
@@ -691,133 +947,23 @@
             // 
             this.tooltip.IsBalloon = true;
             // 
-            // numfic
+            // btnprovisionar
             // 
-            this.numfic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.numfic.DataPropertyName = "fic";
-            this.numfic.HeaderText = "FIC";
-            this.numfic.Name = "numfic";
-            this.numfic.ReadOnly = true;
-            this.numfic.Width = 48;
-            // 
-            // DESCRIPCION
-            // 
-            this.DESCRIPCION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
-            this.DESCRIPCION.HeaderText = "DESCRIPCION";
-            this.DESCRIPCION.Name = "DESCRIPCION";
-            this.DESCRIPCION.ReadOnly = true;
-            // 
-            // cc
-            // 
-            this.cc.DataPropertyName = "cc";
-            this.cc.HeaderText = "cc";
-            this.cc.Name = "cc";
-            this.cc.Visible = false;
-            // 
-            // MARCA
-            // 
-            this.MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MARCA.DataPropertyName = "MARCA";
-            this.MARCA.HeaderText = "Marca";
-            this.MARCA.Name = "MARCA";
-            this.MARCA.ReadOnly = true;
-            this.MARCA.Width = 62;
-            // 
-            // MODELO
-            // 
-            this.MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MODELO.DataPropertyName = "MODELO";
-            this.MODELO.HeaderText = "Modelo";
-            this.MODELO.Name = "MODELO";
-            this.MODELO.ReadOnly = true;
-            this.MODELO.Width = 67;
-            // 
-            // CANTIDAD
-            // 
-            this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle1;
-            this.CANTIDAD.HeaderText = "Cant.";
-            this.CANTIDAD.Name = "CANTIDAD";
-            this.CANTIDAD.ReadOnly = true;
-            this.CANTIDAD.Width = 57;
-            // 
-            // PRECIOUNIT
-            // 
-            this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PRECIOUNIT.DataPropertyName = "preciounit";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0.00";
-            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle2;
-            this.PRECIOUNIT.HeaderText = "PrecioUnit.";
-            this.PRECIOUNIT.Name = "PRECIOUNIT";
-            this.PRECIOUNIT.Width = 84;
-            // 
-            // subtotale
-            // 
-            this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.subtotale.DataPropertyName = "subtotal";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            dataGridViewCellStyle3.NullValue = "0.00";
-            this.subtotale.DefaultCellStyle = dataGridViewCellStyle3;
-            this.subtotale.HeaderText = "Subtotal";
-            this.subtotale.Name = "subtotale";
-            this.subtotale.ReadOnly = true;
-            this.subtotale.Width = 71;
-            // 
-            // valueigv
-            // 
-            this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valueigv.DataPropertyName = "valueigv";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.valueigv.DefaultCellStyle = dataGridViewCellStyle4;
-            this.valueigv.HeaderText = "IGV";
-            this.valueigv.Name = "valueigv";
-            this.valueigv.ReadOnly = true;
-            this.valueigv.Width = 50;
-            // 
-            // TOTALFAC
-            // 
-            this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TOTALFAC.DataPropertyName = "total";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle5;
-            this.TOTALFAC.HeaderText = "Total";
-            this.TOTALFAC.Name = "TOTALFAC";
-            this.TOTALFAC.ReadOnly = true;
-            this.TOTALFAC.Width = 56;
-            // 
-            // numoc
-            // 
-            this.numoc.DataPropertyName = "oc";
-            this.numoc.HeaderText = "oc";
-            this.numoc.Name = "numoc";
-            this.numoc.ReadOnly = true;
-            this.numoc.Visible = false;
-            // 
-            // siigv
-            // 
-            this.siigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.siigv.DataPropertyName = "igv";
-            this.siigv.HeaderText = "siigv";
-            this.siigv.Name = "siigv";
-            this.siigv.ReadOnly = true;
-            this.siigv.Visible = false;
-            this.siigv.Width = 53;
+            this.btnprovisionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnprovisionar.Location = new System.Drawing.Point(517, 614);
+            this.btnprovisionar.Name = "btnprovisionar";
+            this.btnprovisionar.Size = new System.Drawing.Size(75, 23);
+            this.btnprovisionar.TabIndex = 23;
+            this.btnprovisionar.Text = "Provisionar";
+            this.btnprovisionar.UseVisualStyleBackColor = true;
+            this.btnprovisionar.Click += new System.EventHandler(this.btnprovisionar_Click);
             // 
             // FrmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 644);
+            this.ClientSize = new System.Drawing.Size(820, 651);
+            this.Controls.Add(this.btnprovisionar);
             this.Controls.Add(this.gpordenes);
             this.Controls.Add(this.chlbx);
             this.Controls.Add(this.Dtguias);
@@ -839,13 +985,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtdireccion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(836, 690);
             this.Name = "FrmFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Factura";
             this.Load += new System.EventHandler(this.FrmFactura_Load);
             this.gp1.ResumeLayout(false);
             this.gp1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgConten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numigv)).EndInit();
@@ -906,11 +1053,21 @@
         private System.Windows.Forms.ToolTip tooltip;
         private System.Windows.Forms.DateTimePicker DtFechaRecepcion;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbldetracion;
+        private System.Windows.Forms.TextBox txtdetraccion;
+        private System.Windows.Forms.NumericUpDown numdetraccion;
+        private System.Windows.Forms.Label lblporcentajedetraccion;
+        private System.Windows.Forms.ComboBox cbodetraccion;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtnroconstancia;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnprovisionar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
         private System.Windows.Forms.DataGridViewTextBoxColumn FIC1;
         private System.Windows.Forms.DataGridViewTextBoxColumn OC;
         private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAENTREGA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadox;
         private System.Windows.Forms.DataGridViewTextBoxColumn numfic;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
         private System.Windows.Forms.DataGridViewTextBoxColumn cc;
@@ -923,5 +1080,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTALFAC;
         private System.Windows.Forms.DataGridViewTextBoxColumn numoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn siigv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn provisionada;
     }
 }

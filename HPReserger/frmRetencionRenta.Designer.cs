@@ -50,8 +50,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 740);
             this.Controls.Add(this.crvRetencionRenta);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmRetencionRenta";
             this.Text = "  Retención Renta";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

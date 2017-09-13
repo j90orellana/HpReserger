@@ -43,7 +43,8 @@ namespace HPReserger
         }
 
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
-        {//Verifico si el empleado existe
+        {
+            //Verifico si el empleado existe
             DataRow EmpleadoVacaciones = clDesvinculacion.ExisteBeneficioEmpleado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_DatosEmpleado");
             if (EmpleadoVacaciones != null)
             {
@@ -163,7 +164,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    lblcontrato.Text = "No Tiene Contrato ";
+                    lblcontrato.Text = "No Tiene Contrato Activo ";
                     panelliquidacion.Enabled = false;
                     txtLiq.Text = ""; FotoLiq = null;
                     pbLiquidacion.Image = null;
@@ -663,12 +664,12 @@ namespace HPReserger
             {
                 button1.Text = "Ver Desvinculaciones";
                 dtgconten.Enabled = !dtgconten.Enabled;
-                dtpfechacese.Value = fechita; dtgconten.CurrentCell = dtgconten[0, 0];
+                dtpfechacese.Value = fechita;
+                if (dtgconten.RowCount > 0)
+                    dtgconten.CurrentCell = dtgconten[0, 0];
                 txtNumeroDocumento_TextChanged(sender, e);
             }
-
         }
-
         private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgconten.RowCount > 0)
@@ -699,6 +700,56 @@ namespace HPReserger
                 txtNumeroDocumento_TextChanged(sender, e);
             }
             catch { }
+        }
+        frmListarEmpleadosDesvinculados frmlisdesempl;
+        private void btnverTodas_Click(object sender, EventArgs e)
+        {
+            if (frmlisdesempl == null)
+            {
+                frmlisdesempl = new frmListarEmpleadosDesvinculados();
+                frmlisdesempl.MdiParent = this.ParentForm;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmlisdesempl.FormClosed += new FormClosedEventHandler(cerrartodasdesvinculaciones);
+                frmlisdesempl.Show();
+            }
+            else
+            {
+                frmlisdesempl.Activate();
+                ValidarVentanas(frmlisdesempl);
+            }
+        }
+        void cerrartodasdesvinculaciones(object sender, FormClosedEventArgs e)
+        {
+            frmlisdesempl = null;
+        }
+        public void ValidarVentanas(Form formulario)
+        {
+            if (formulario.WindowState != FormWindowState.Normal)
+                formulario.WindowState = FormWindowState.Normal;
+            formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
+            formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2) - 54;
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+        private void pbFoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void frmDesvinculacion_MouseMove(object sender, MouseEventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
     }
 }

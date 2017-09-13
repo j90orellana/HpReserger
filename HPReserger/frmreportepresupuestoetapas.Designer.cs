@@ -397,6 +397,7 @@
             this.Controls.Add(this.txtcentro);
             this.Controls.Add(this.txtetapa);
             this.Controls.Add(this.lbl1);
+            this.MinimumSize = new System.Drawing.Size(1209, 237);
             this.Name = "frmreportepresupuestoetapas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte Presupuesto Etapas";

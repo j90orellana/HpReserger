@@ -102,18 +102,38 @@ namespace HPReserger
             dtgconten.Enabled = true;
             cargarproyectos(); btnaceptar.Enabled = btncancelar.Enabled = false; estado = 0; btnnuevo.Enabled = btnmodificar.Enabled = true;
         }
-
+        fmrProyectodatos proyec;
         private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                fmrProyectodatos proyec = new fmrProyectodatos();
-                proyec.Proyecto = int.Parse(dtgconten["idproyecto", e.RowIndex].Value.ToString());
-                proyec.txtnombre.Text = (dtgconten["proyecto", e.RowIndex].Value.ToString());
-                proyec.ShowDialog();
+                if (proyec == null)
+                {
+                    proyec = new fmrProyectodatos();
+                    proyec.MdiParent = this.MdiParent;
+                    proyec.Proyecto = int.Parse(dtgconten["idproyecto", e.RowIndex].Value.ToString());
+                    proyec.txtnombre.Text = (dtgconten["proyecto", e.RowIndex].Value.ToString());
+                    proyec.FormClosed += new FormClosedEventHandler(cerrarpresupuestoetapas);
+                    proyec.Show();
+                }
+                else
+                {
+                    proyec.Activate();
+                    ValidarVentanas(proyec);
+                }
             }
         }
-
+        void cerrarpresupuestoetapas(object sender, FormClosedEventArgs e)
+        {
+            proyec = null;
+        }
+        public void ValidarVentanas(Form formulario)
+        {
+            if (formulario.WindowState != FormWindowState.Normal)
+                formulario.WindowState = FormWindowState.Normal;
+            formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
+            formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2);
+        }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboempresa.Items.Count > 0)

@@ -50,6 +50,7 @@
             this.txtSolicitud = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btndescargar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
@@ -291,6 +292,21 @@
             this.pbFoto.TabIndex = 14;
             this.pbFoto.TabStop = false;
             this.pbFoto.DoubleClick += new System.EventHandler(this.pbFoto_DoubleClick);
+            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(523, 215);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 75;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
             // frmSolicitudEmpleadoModificar
             // 
@@ -299,13 +315,16 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(693, 255);
+            this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.pbFoto);
             this.Controls.Add(this.groupBox1);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(709, 294);
+            this.MinimumSize = new System.Drawing.Size(709, 294);
             this.Name = "frmSolicitudEmpleadoModificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Modificar Solicitud de Empleado";
             this.Load += new System.EventHandler(this.frmSolicitudEmpleadoModificar_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSolicitudEmpleadoModificar_MouseMove);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
@@ -337,5 +356,6 @@
         private System.Windows.Forms.ComboBox cboOS;
         private System.Windows.Forms.TextBox txtOS;
         private System.Windows.Forms.CheckBox chkCambiar;
+        private System.Windows.Forms.Button btndescargar;
     }
 }

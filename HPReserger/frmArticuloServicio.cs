@@ -29,13 +29,12 @@ namespace HPReserger
             CargarArticuloServicio();
             CargarMarcas();
             CargarModelos(1);
-           
             cbocuenta.DataSource = CArticulo.ListarCuentasArticulos();
             cbocuenta.DisplayMember = "codigo";
             cbocuenta.ValueMember = "codigo";
-            cbocentrocosto.DataSource = CArticulo.ListarCentroCostos();
+            cbocentrocosto.DataSource = CArticulo.ListarCentroCostoTieneCuenta();
             cbocentrocosto.DisplayMember = "CentroCosto";
-            cbocentrocosto.ValueMember = "Cod_CCosto";
+            cbocentrocosto.ValueMember = "Id_CtaCtble";
             dtgconten.DataSource = listarArticulos("");
             msg(dtgconten);
             CargarCodigo();
@@ -58,8 +57,20 @@ namespace HPReserger
             else
             {
                 estado = 0;
-                Activar(); Txtbusca.Enabled = true; gp1.Enabled = false;
+                //  Activar(); Txtbusca.Enabled = true; gp1.Enabled = false;
+                Iniciar(false);
             }
+        }
+        public void Iniciar(Boolean a)
+        {
+            gp1.Enabled = a;
+            dtgconten.Enabled = !a;
+            btnnuevo.Enabled = !a;
+            btnmodificar.Enabled = !a;
+            btneliminar.Enabled = !a;
+            btnlimpiar.Enabled = !a;
+            Txtbusca.Enabled = !a;
+            btnaceptar.Enabled = a;
         }
         public DataTable listarArticulos(string busca)
         {
@@ -71,22 +82,27 @@ namespace HPReserger
             tipmsg.Show("Ingrese Descripción del Artículo", txtdescripcion, 700);
             txtdescripcion.Text = txtobservacion.Text = "";
             estado = 1; Desactivar();
-            cbotipo.Focus(); Txtbusca.Enabled = false; gp1.Enabled = true;
+            cbotipo.Focus();
+            //Txtbusca.Enabled = false; gp1.Enabled = true;
+            Iniciar(true);
         }
         public void Activar()
         {
-            btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = cbotipo.Enabled = true;
+            //  btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = cbotipo.Enabled = true;
+            //   gp1.Enabled = false;
         }
         public void Desactivar()
         {
-            btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
+            // btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;gp1.Enabled = false;
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             tipmsg.Show("Ingrese Descripción", txtdescripcion, 700);
-            Desactivar(); cbotipo.Enabled = false; modmarca = Convert.ToInt32(cbomarca.SelectedValue.ToString());
+            //Desactivar(); cbotipo.Enabled = false;
+            modmarca = Convert.ToInt32(cbomarca.SelectedValue.ToString());
             estado = 2;
-            txtdescripcion.Focus(); gp1.Enabled = true;
+            txtdescripcion.Focus(); //gp1.Enabled = true;
+            Iniciar(true);
         }
         public void CargarArticuloServicio()
         {
@@ -166,12 +182,17 @@ namespace HPReserger
         private void btnmarcamas_Click(object sender, EventArgs e)
         {
             frmmarca marcae = new frmmarca();
-            marcae.Visible = true;
+            marcae.ShowDialog();
+            string filamarca = cbomarca.SelectedText;
+            CargarMarcas();
+            cbomarca.Text = filamarca;
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgconten.RowCount > 0)
             {
+                btnmodificar.Enabled = true;
+                btneliminar.Enabled = true;
                 int y = e.RowIndex;
                 txtcodigo.Text = dtgconten["ida", y].Value.ToString();
                 cbotipo.Text = dtgconten["tipo", y].Value.ToString();
@@ -187,7 +208,12 @@ namespace HPReserger
                     chkigv.Checked = false;
                 else chkigv.Checked = true;
                 cbocuenta.Text = dtgconten["cuenta", y].Value.ToString();
-                cbocentrocosto.Text = dtgconten["centrodecosto", y].Value.ToString();
+                cbocentrocosto.SelectedValue = dtgconten["cc", y].Value.ToString();
+            }
+            else
+            {
+                btnmodificar.Enabled = false;
+                btneliminar.Enabled = false;
             }
 
         }
@@ -195,7 +221,8 @@ namespace HPReserger
         private void btnmodelomas_Click(object sender, EventArgs e)
         {
             frmmarcamodelo modelo = new frmmarcamodelo();
-            modelo.Visible = true;
+            modelo.ShowDialog();
+            cbomarca_SelectedIndexChanged(sender, e);
         }
 
         private void btneliminar_Click(object sender, EventArgs e)
@@ -208,7 +235,7 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.ToUpper(e);
         }
-        int IGV, CENTRO;
+        int IGV, CENTRO; string cuentax;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (chkcentro.Checked)
@@ -217,6 +244,9 @@ namespace HPReserger
             if (chkigv.Checked)
                 IGV = 1;
             else IGV = 0;
+            if (chkcentro.Checked)
+                cuentax = cbocentrocosto.SelectedValue.ToString();
+            else cuentax = "0";
 
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
             //tipo 2 = sin marca marcas= sin marca
@@ -236,7 +266,8 @@ namespace HPReserger
             {
                 if (ArtExiste == 0)
                 {
-                    CArticulo.InsertarArticulo(concepto, 0, tipo, txtobservacion.Text, IGV, CENTRO, cbocuenta.SelectedText,cbocentrocosto.SelectedValue.ToString());
+                    CArticulo.InsertarArticulo(concepto, 0, tipo, txtobservacion.Text, IGV, int.Parse(cuentax), cuentax, cuentax);
+                    //CArticulo.InsertarArticulo(concepto, 0, tipo, txtobservacion.Text, IGV, CENTRO, cbocuenta.SelectedText, cbocentrocosto.SelectedValue.ToString());
                 }
                 CArticulo.InsertarArticuloMarca(marcas, GenerarCodigo());
                 MessageBox.Show("Insertado Exitosamente " + concepto + ";" + marcas, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
@@ -245,7 +276,8 @@ namespace HPReserger
             {
                 if (estado == 2 && VerificarValores(concepto, marcas))
                 {
-                    CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, CENTRO, cbocuenta.SelectedText,cbocentrocosto.SelectedValue.ToString());
+                    //CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, CENTRO, cbocuenta.SelectedText, cbocentrocosto.SelectedValue.ToString());
+                    CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, int.Parse(cuentax), cuentax, cuentax);
                     MessageBox.Show("Modificado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
                 }
                 else
@@ -266,15 +298,16 @@ namespace HPReserger
             //cbotipo_TextChanged(sender, e);
             dtgconten.DataSource = listarArticulos("");
             CargarCodigo();
-            Activar(); Txtbusca.Enabled = false;
+            Iniciar(false);
+            //Activar(); Txtbusca.Enabled = false;
         }
-        public Boolean VerificarValores(string concepto,int marca)
+        public Boolean VerificarValores(string concepto, int marca)
         {
             if (dtgconten.RowCount > 0)
             {
-                for(int i = 0; i < dtgconten.RowCount; i++)
+                for (int i = 0; i < dtgconten.RowCount; i++)
                 {
-                    if (dtgconten["descripcion", i].Value.ToString() == concepto && dtgconten["idm", i].Value.ToString() == marca.ToString()&& i != dtgconten.CurrentCell.RowIndex)
+                    if (dtgconten["descripcion", i].Value.ToString() == concepto && dtgconten["idm", i].Value.ToString() == marca.ToString() && i != dtgconten.CurrentCell.RowIndex)
                     {
                         MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + txtdescripcion.Text, "Hp Reserger", MessageBoxButtons.OK);
                         return false;
@@ -356,6 +389,15 @@ namespace HPReserger
                 }
                 else CargarModelos(Convert.ToInt32(cbomarca.SelectedValue.ToString()));
             }
+        }
+
+        private void chkcentro_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkcentro.Checked)
+                cbocentrocosto.Enabled = true;
+            else
+                cbocentrocosto.Enabled = false;
+
         }
 
         private void txtdescripcion_TextChanged(object sender, EventArgs e)

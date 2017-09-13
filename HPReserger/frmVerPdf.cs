@@ -21,7 +21,7 @@ namespace HPReserger
         public FormWindowState EstadoVentana = FormWindowState.Normal;
         private void frmVerPdf_Load(object sender, EventArgs e)
         {
-            this.Text = "Ver Pdf - " + nombreformulario;
+            this.Text = "Pdf - " + nombreformulario;
             AdbVer.src = ruta;
             this.WindowState = EstadoVentana;
             dtgconten.Columns.Add("id", "hola");
@@ -39,7 +39,6 @@ namespace HPReserger
         public void ManejarCajita(out int hola)
         {
             hola = 0;
-
         }
         int fila;
         private void btnadd_Click(object sender, EventArgs e)
@@ -68,6 +67,11 @@ namespace HPReserger
                 }
             }
             dtgconten.Rows[e.RowIndex].Visible = false;
+        }
+
+        private void AdbVer_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

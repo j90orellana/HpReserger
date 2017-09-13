@@ -680,8 +680,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboreflejadebe);
             this.Controls.Add(this.label19);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MinimizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(763, 686);
+            this.MinimumSize = new System.Drawing.Size(763, 686);
             this.Name = "frmcuentacontable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CUENTA CONTABLE";

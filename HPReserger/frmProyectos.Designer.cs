@@ -205,6 +205,8 @@
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.dtgconten);
+            this.MaximumSize = new System.Drawing.Size(415, 333);
+            this.MinimumSize = new System.Drawing.Size(415, 333);
             this.Name = "frmProyectos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proyectos";

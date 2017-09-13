@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtpfechacese = new System.Windows.Forms.DateTimePicker();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
@@ -64,7 +64,6 @@
             this.txtCTS = new System.Windows.Forms.TextBox();
             this.txtEntrevistaSalida = new System.Windows.Forms.TextBox();
             this.txtEvaluacionPracticas = new System.Windows.Forms.TextBox();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.lklliquidacion = new System.Windows.Forms.LinkLabel();
             this.lklcts = new System.Windows.Forms.LinkLabel();
@@ -73,12 +72,6 @@
             this.lklpracticas = new System.Windows.Forms.LinkLabel();
             this.lklsalida = new System.Windows.Forms.LinkLabel();
             this.panelliquidacion = new System.Windows.Forms.Panel();
-            this.pbLiquidacion = new System.Windows.Forms.PictureBox();
-            this.pbCts = new System.Windows.Forms.PictureBox();
-            this.pbConstancia = new System.Windows.Forms.PictureBox();
-            this.pbRenta = new System.Windows.Forms.PictureBox();
-            this.pbPracticas = new System.Windows.Forms.PictureBox();
-            this.pbSalida = new System.Windows.Forms.PictureBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.NRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,17 +92,26 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.panelverimagen = new System.Windows.Forms.Panel();
+            this.pbSalida = new System.Windows.Forms.PictureBox();
+            this.pbPracticas = new System.Windows.Forms.PictureBox();
+            this.pbRenta = new System.Windows.Forms.PictureBox();
+            this.pbConstancia = new System.Windows.Forms.PictureBox();
+            this.pbCts = new System.Windows.Forms.PictureBox();
+            this.pbLiquidacion = new System.Windows.Forms.PictureBox();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btnverTodas = new System.Windows.Forms.Button();
+            this.btndescargar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.panelliquidacion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLiquidacion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbConstancia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRenta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPracticas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSalida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.panelverimagen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSalida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPracticas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRenta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbConstancia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLiquidacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -445,15 +447,6 @@
             this.txtEvaluacionPracticas.TabIndex = 90;
             this.txtEvaluacionPracticas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // pbFoto
-            // 
-            this.pbFoto.Location = new System.Drawing.Point(443, 10);
-            this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(353, 404);
-            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFoto.TabIndex = 105;
-            this.pbFoto.TabStop = false;
-            // 
             // btnGrabar
             // 
             this.btnGrabar.Location = new System.Drawing.Point(273, 173);
@@ -557,66 +550,6 @@
             this.panelliquidacion.Size = new System.Drawing.Size(354, 205);
             this.panelliquidacion.TabIndex = 109;
             // 
-            // pbLiquidacion
-            // 
-            this.pbLiquidacion.Location = new System.Drawing.Point(802, 181);
-            this.pbLiquidacion.Name = "pbLiquidacion";
-            this.pbLiquidacion.Size = new System.Drawing.Size(99, 32);
-            this.pbLiquidacion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLiquidacion.TabIndex = 110;
-            this.pbLiquidacion.TabStop = false;
-            this.pbLiquidacion.Visible = false;
-            // 
-            // pbCts
-            // 
-            this.pbCts.Location = new System.Drawing.Point(802, 222);
-            this.pbCts.Name = "pbCts";
-            this.pbCts.Size = new System.Drawing.Size(99, 32);
-            this.pbCts.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCts.TabIndex = 110;
-            this.pbCts.TabStop = false;
-            this.pbCts.Visible = false;
-            // 
-            // pbConstancia
-            // 
-            this.pbConstancia.Location = new System.Drawing.Point(802, 260);
-            this.pbConstancia.Name = "pbConstancia";
-            this.pbConstancia.Size = new System.Drawing.Size(99, 32);
-            this.pbConstancia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbConstancia.TabIndex = 110;
-            this.pbConstancia.TabStop = false;
-            this.pbConstancia.Visible = false;
-            // 
-            // pbRenta
-            // 
-            this.pbRenta.Location = new System.Drawing.Point(802, 296);
-            this.pbRenta.Name = "pbRenta";
-            this.pbRenta.Size = new System.Drawing.Size(99, 32);
-            this.pbRenta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbRenta.TabIndex = 110;
-            this.pbRenta.TabStop = false;
-            this.pbRenta.Visible = false;
-            // 
-            // pbPracticas
-            // 
-            this.pbPracticas.Location = new System.Drawing.Point(802, 334);
-            this.pbPracticas.Name = "pbPracticas";
-            this.pbPracticas.Size = new System.Drawing.Size(99, 32);
-            this.pbPracticas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPracticas.TabIndex = 110;
-            this.pbPracticas.TabStop = false;
-            this.pbPracticas.Visible = false;
-            // 
-            // pbSalida
-            // 
-            this.pbSalida.Location = new System.Drawing.Point(802, 373);
-            this.pbSalida.Name = "pbSalida";
-            this.pbSalida.Size = new System.Drawing.Size(99, 32);
-            this.pbSalida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbSalida.TabIndex = 110;
-            this.pbSalida.TabStop = false;
-            this.pbSalida.Visible = false;
-            // 
             // dtgconten
             // 
             this.dtgconten.AllowUserToAddRows = false;
@@ -629,14 +562,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NRO,
@@ -656,31 +589,31 @@
             this.SALIDA,
             this.NOMBRESALIDA});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle14;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Enabled = false;
             this.dtgconten.Location = new System.Drawing.Point(8, 420);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(784, 189);
             this.dtgconten.TabIndex = 150;
@@ -833,6 +766,100 @@
             this.panelverimagen.Size = new System.Drawing.Size(65, 198);
             this.panelverimagen.TabIndex = 152;
             // 
+            // pbSalida
+            // 
+            this.pbSalida.Location = new System.Drawing.Point(802, 373);
+            this.pbSalida.Name = "pbSalida";
+            this.pbSalida.Size = new System.Drawing.Size(99, 32);
+            this.pbSalida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbSalida.TabIndex = 110;
+            this.pbSalida.TabStop = false;
+            this.pbSalida.Visible = false;
+            // 
+            // pbPracticas
+            // 
+            this.pbPracticas.Location = new System.Drawing.Point(802, 334);
+            this.pbPracticas.Name = "pbPracticas";
+            this.pbPracticas.Size = new System.Drawing.Size(99, 32);
+            this.pbPracticas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPracticas.TabIndex = 110;
+            this.pbPracticas.TabStop = false;
+            this.pbPracticas.Visible = false;
+            // 
+            // pbRenta
+            // 
+            this.pbRenta.Location = new System.Drawing.Point(802, 296);
+            this.pbRenta.Name = "pbRenta";
+            this.pbRenta.Size = new System.Drawing.Size(99, 32);
+            this.pbRenta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbRenta.TabIndex = 110;
+            this.pbRenta.TabStop = false;
+            this.pbRenta.Visible = false;
+            // 
+            // pbConstancia
+            // 
+            this.pbConstancia.Location = new System.Drawing.Point(802, 260);
+            this.pbConstancia.Name = "pbConstancia";
+            this.pbConstancia.Size = new System.Drawing.Size(99, 32);
+            this.pbConstancia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbConstancia.TabIndex = 110;
+            this.pbConstancia.TabStop = false;
+            this.pbConstancia.Visible = false;
+            // 
+            // pbCts
+            // 
+            this.pbCts.Location = new System.Drawing.Point(802, 222);
+            this.pbCts.Name = "pbCts";
+            this.pbCts.Size = new System.Drawing.Size(99, 32);
+            this.pbCts.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCts.TabIndex = 110;
+            this.pbCts.TabStop = false;
+            this.pbCts.Visible = false;
+            // 
+            // pbLiquidacion
+            // 
+            this.pbLiquidacion.Location = new System.Drawing.Point(802, 181);
+            this.pbLiquidacion.Name = "pbLiquidacion";
+            this.pbLiquidacion.Size = new System.Drawing.Size(99, 32);
+            this.pbLiquidacion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLiquidacion.TabIndex = 110;
+            this.pbLiquidacion.TabStop = false;
+            this.pbLiquidacion.Visible = false;
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.Location = new System.Drawing.Point(443, 10);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(353, 404);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFoto.TabIndex = 105;
+            this.pbFoto.TabStop = false;
+            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
+            // 
+            // btnverTodas
+            // 
+            this.btnverTodas.Location = new System.Drawing.Point(798, 446);
+            this.btnverTodas.Name = "btnverTodas";
+            this.btnverTodas.Size = new System.Drawing.Size(100, 23);
+            this.btnverTodas.TabIndex = 153;
+            this.btnverTodas.Text = "Ver Todas";
+            this.btnverTodas.UseVisualStyleBackColor = true;
+            this.btnverTodas.Click += new System.EventHandler(this.btnverTodas_Click);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(580, 384);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 154;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
+            // 
             // frmDesvinculacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -840,6 +867,8 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(923, 645);
+            this.Controls.Add(this.btndescargar);
+            this.Controls.Add(this.btnverTodas);
             this.Controls.Add(this.panelverimagen);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.button1);
@@ -853,25 +882,27 @@
             this.Controls.Add(this.panelliquidacion);
             this.Controls.Add(this.pbFoto);
             this.Controls.Add(this.groupBox2);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(939, 684);
+            this.MinimumSize = new System.Drawing.Size(939, 684);
             this.Name = "frmDesvinculacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Desvinculación";
             this.Load += new System.EventHandler(this.frmDesvinculacion_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmDesvinculacion_MouseMove);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.panelliquidacion.ResumeLayout(false);
             this.panelliquidacion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLiquidacion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbConstancia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRenta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPracticas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSalida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.panelverimagen.ResumeLayout(false);
             this.panelverimagen.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSalida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPracticas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRenta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbConstancia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLiquidacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -945,5 +976,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBREPRACTICAS;
         private System.Windows.Forms.DataGridViewTextBoxColumn SALIDA;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRESALIDA;
+        private System.Windows.Forms.Button btnverTodas;
+        private System.Windows.Forms.Button btndescargar;
     }
 }

@@ -51,8 +51,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 725);
             this.Controls.Add(this.crvEvaluacionPracticas);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmEvaludacionPracticas";
             this.Text = "  Evaluación de Prácticas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

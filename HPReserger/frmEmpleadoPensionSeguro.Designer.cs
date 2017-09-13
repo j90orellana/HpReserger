@@ -270,7 +270,8 @@
             this.Controls.Add(this.pnlconten);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnRegistrar);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(472, 243);
+            this.MinimumSize = new System.Drawing.Size(472, 243);
             this.Name = "frmEmpleadoPensionSeguro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Pensión y Seguro";

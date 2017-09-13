@@ -251,15 +251,61 @@ namespace HPReserger
             int x = e.ColumnIndex, y = e.RowIndex;
             if (e.RowIndex >= 0)
             {
-                frmreportepresupuestoetapas etapitas = new frmreportepresupuestoetapas();
-                etapitas.etapa = (int)dtgconten["Id_etapas", y].Value;
-                etapitas.txtetapa.Text = dtgconten["descripcionetapa", y].Value.ToString();
-                etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
-                etapitas.txtcentro.Text = dtgconten["Descripción", y].Value.ToString();
-                etapitas.ShowDialog();
+                if (!string.IsNullOrWhiteSpace(dtgconten["Descripción", y].Value.ToString()))
+                {
+                    frmreportepresupuestoetapas etapitas = new frmreportepresupuestoetapas();
+                    etapitas.etapa = (int)dtgconten["Id_etapas", y].Value;
+                    etapitas.txtetapa.Text = dtgconten["descripcionetapa", y].Value.ToString();
+                    etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
+                    etapitas.txtcentro.Text = dtgconten["Descripción", y].Value.ToString();
+                    etapitas.ShowDialog();
+                }
+                else
+                {
+                    //  System.Globalization.CultureInfo C = new System.Globalization.CultureInfo("es-ES");
+                    // System.Windows.Forms.Application.CurrentCulture = C;
+                    int[] fila = SacarValores((dtgconten["descripcionetapa", y].Value.ToString()));
+                    DateTime tiempo = DateTime.Parse("01/" + fila[0] + "/" + fila[1]);
+                    // MSG(tiempo.ToString());
+                    frmVerDetallePresuspuestoOperaciones Frmpresu = new frmVerDetallePresuspuestoOperaciones();
+                    Frmpresu.cuenta = int.Parse(dtgconten["cta_contable", y].Value.ToString());
+                    Frmpresu.etapa = int.Parse(dtgconten["id_etapas", y].Value.ToString());
+                    Frmpresu.fecha = tiempo;
+                    Frmpresu.ShowDialog();
+                }
             }
         }
+        public class MesAño
+        {
+            public string mes { get; set; }
+            public int numero { get; set; }
+        }
+        List<MesAño> liston = new List<MesAño>();
+        public int[] SacarValores(string cadena) //jul - 2017
+        {
+            liston.Add(new MesAño() { mes = "Ene", numero = 1 });
+            liston.Add(new MesAño() { mes = "Feb", numero = 2 });
+            liston.Add(new MesAño() { mes = "Mar", numero = 3 });
+            liston.Add(new MesAño() { mes = "Abr", numero = 4 });
+            liston.Add(new MesAño() { mes = "May", numero = 5 });
+            liston.Add(new MesAño() { mes = "Jun", numero = 6 });
+            liston.Add(new MesAño() { mes = "Jul", numero = 7 });
+            liston.Add(new MesAño() { mes = "Ago", numero = 8 });
+            liston.Add(new MesAño() { mes = "Sep", numero = 9 });
+            liston.Add(new MesAño() { mes = "Oct", numero = 10 });
+            liston.Add(new MesAño() { mes = "Nov", numero = 11 });
+            liston.Add(new MesAño() { mes = "Dic", numero = 12 });
+            ///
+            string cadenita = cadena.Substring(0, 3);
+            int año = int.Parse(cadena.Substring(6, 4));
+            MesAño numerito = liston.Find(val => val.mes == cadenita);
+            int[] numeron = new int[2];
+            numeron[0] = numerito.numero;
+            numeron[1] = año;
+            liston.Clear();
+            return numeron;
 
+        }
         private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && dtgconten["iddep", e.RowIndex].Value.ToString() != "0")
@@ -297,17 +343,17 @@ namespace HPReserger
                     tablon = datos.CopyToDataTable();
                     dtgconten.DataSource = tablon;
                     /////////////////////////////////////////////////////////////////////////////*
-                /*    int esto=10;        
-                    List<numeros> numero = new List<numeros>();
-                    numeros valor = new numeros();
-                    valor.numero = 10;
-                    valor.nombre = "Jefferson Orellana";
-                    valor.valor = 10.01m;
-                    numero.Add(valor);
-                    List<numeros> aloja = numero.FindAll(holi => holi.numero > esto);
-                    IEnumerable<numeros> lista = from valores in numero where valores.valor > esto select valor;
-                  */
-                  /////////////////////////////////////////////////////////////////////////////
+                    /*    int esto=10;        
+                        List<numeros> numero = new List<numeros>();
+                        numeros valor = new numeros();
+                        valor.numero = 10;
+                        valor.nombre = "Jefferson Orellana";
+                        valor.valor = 10.01m;
+                        numero.Add(valor);
+                        List<numeros> aloja = numero.FindAll(holi => holi.numero > esto);
+                        IEnumerable<numeros> lista = from valores in numero where valores.valor > esto select valor;
+                      */
+                    /////////////////////////////////////////////////////////////////////////////
                     // List<int> Scores = new List<int>() { 97, 92, 81, 60 };
                     //   IEnumerable<int> lista = from score in Scores where score > 80 select score;
                 }
@@ -337,6 +383,8 @@ namespace HPReserger
             contando(dtgconten);
             Sumatoria();
             //  REvisarGrillas();
+            if (dtgconten.RowCount <= 0)
+                MSG("No hay Etapas en el Proyecto");
         }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)

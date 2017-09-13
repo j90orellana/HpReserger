@@ -57,8 +57,8 @@ namespace HPReserger
                 gridCotizacion.DataSource = clCotizacion.ListarPedidosCotizacion(Convert.ToInt32(cboArea.SelectedValue.ToString()), frmLogin.CodigoUsuario);
             }
 
-            System.Globalization.CultureInfo C = new System.Globalization.CultureInfo("EN-US");
-            Application.CurrentCulture = C;
+            //System.Globalization.CultureInfo C = new System.Globalization.CultureInfo("EN-US");
+            //Application.CurrentCulture = C;
         }
 
         private void cboArea_SelectedIndexChanged(object sender, EventArgs e)
@@ -355,9 +355,7 @@ namespace HPReserger
 
                 DateTime Fecha = DateTime.ParseExact(gridCotizacionesAsociadas.CurrentRow.Cells[5].Value.ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 frmCot.FechaEntrega = Fecha;
-
                 frmCot.Adjunto = gridCotizacionesAsociadas.CurrentRow.Cells[6].Value.ToString();
-
                 if (frmCot.ShowDialog() == DialogResult.OK)
                 {
                     MostrarPedidosAsociados(frmCot.Itemsito);
@@ -512,13 +510,6 @@ namespace HPReserger
         {
             lsbproveedor.Visible = true;
         }
-        private void dtgpedido_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dtgpedido.Columns["PrecioUnit"].Index != e.ColumnIndex && e.RowIndex > -1)
-            {
-                dtgpedido[e.ColumnIndex, e.RowIndex].ReadOnly = true;
-            }
-        }
 
         private void dtgpedido_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -558,6 +549,41 @@ namespace HPReserger
 
         }
 
+        private void dtgpedido_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            CalcularImporte();
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void pbFoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void frmCotizacion_MouseMove(object sender, MouseEventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
+        }
+
+        private void dtgpedido_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgpedido.Columns["PrecioUnit"].Index != e.ColumnIndex && e.RowIndex > -1)
+            {
+                dtgpedido[e.ColumnIndex, e.RowIndex].ReadOnly = true;
+            }
+        }
+
         private void CalcularImporte()
         {
             dtgpedido.Columns["PrecioUnit"].DefaultCellStyle.Format = "N2";
@@ -586,12 +612,6 @@ namespace HPReserger
                 }
                 txtImporte.Text = string.Format("{0:N2}", sumatoria);
             }
-        }
-        private void dtgpedido_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(dtgpedido[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                dtgpedido[e.ColumnIndex, e.RowIndex].Value = "0.00";
-            CalcularImporte();
         }
     }
 }

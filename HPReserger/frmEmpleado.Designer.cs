@@ -79,10 +79,7 @@
             this.btnContrato = new System.Windows.Forms.Button();
             this.btnHaberes = new System.Windows.Forms.Button();
             this.btnRequerimiento = new System.Windows.Forms.Button();
-            this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnPensionSeguro = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txttipo = new System.Windows.Forms.TextBox();
             this.lklpoliciales = new System.Windows.Forms.LinkLabel();
@@ -93,27 +90,32 @@
             this.txtlugarnacimiento = new System.Windows.Forms.TextBox();
             this.tip = new System.Windows.Forms.ToolTip(this.components);
             this.btnfoto = new System.Windows.Forms.Button();
-            this.pbFotoReciboServicios = new System.Windows.Forms.PictureBox();
-            this.pbFotoAntecedentesPenales = new System.Windows.Forms.PictureBox();
-            this.pbFotoAntecedentesPoliciales = new System.Windows.Forms.PictureBox();
-            this.pbfotoempleado = new System.Windows.Forms.PictureBox();
             this.lblconviviente = new System.Windows.Forms.Label();
             this.txtconviviente = new System.Windows.Forms.TextBox();
             this.btnconviviente = new System.Windows.Forms.Button();
             this.lklconviviente = new System.Windows.Forms.LinkLabel();
-            this.pbconviviente = new System.Windows.Forms.PictureBox();
             this.lklfirma = new System.Windows.Forms.LinkLabel();
-            this.pbfirma = new System.Windows.Forms.PictureBox();
             this.btnfirma = new System.Windows.Forms.Button();
             this.txtfirma = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.btnnuevo = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btndescargar = new System.Windows.Forms.Button();
+            this.pbfirma = new System.Windows.Forms.PictureBox();
+            this.pbconviviente = new System.Windows.Forms.PictureBox();
+            this.pbFotoReciboServicios = new System.Windows.Forms.PictureBox();
+            this.pbFotoAntecedentesPenales = new System.Windows.Forms.PictureBox();
+            this.pbfotoempleado = new System.Windows.Forms.PictureBox();
+            this.pbFotoAntecedentesPoliciales = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfirma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoReciboServicios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPenales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPoliciales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbfirma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPoliciales)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -157,45 +159,45 @@
             this.cboTipoDocumento.BackColor = System.Drawing.SystemColors.Window;
             this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(181, 16);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(180, 16);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
-            this.cboTipoDocumento.Size = new System.Drawing.Size(202, 21);
+            this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
             this.cboTipoDocumento.TabIndex = 4;
             this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
             // 
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombres.Location = new System.Drawing.Point(182, 99);
+            this.txtNombres.Location = new System.Drawing.Point(180, 99);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(202, 20);
+            this.txtNombres.Size = new System.Drawing.Size(204, 20);
             this.txtNombres.TabIndex = 5;
             // 
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(181, 73);
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(180, 73);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(202, 20);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(203, 20);
             this.txtApellidoMaterno.TabIndex = 6;
             // 
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(181, 47);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(180, 47);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(202, 20);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(203, 20);
             this.txtApellidoPaterno.TabIndex = 7;
             // 
             // txtNumeroDocumento
             // 
-            this.txtNumeroDocumento.Location = new System.Drawing.Point(614, 16);
+            this.txtNumeroDocumento.Location = new System.Drawing.Point(607, 17);
             this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(111, 20);
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(118, 20);
             this.txtNumeroDocumento.TabIndex = 9;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
@@ -205,7 +207,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(420, 16);
+            this.label5.Location = new System.Drawing.Point(393, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(179, 13);
             this.label5.TabIndex = 8;
@@ -214,7 +216,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 436);
+            this.label6.Location = new System.Drawing.Point(12, 402);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 13);
             this.label6.TabIndex = 10;
@@ -223,7 +225,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 384);
+            this.label7.Location = new System.Drawing.Point(12, 350);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 13);
             this.label7.TabIndex = 11;
@@ -232,7 +234,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 294);
+            this.label8.Location = new System.Drawing.Point(14, 268);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 13);
             this.label8.TabIndex = 12;
@@ -241,16 +243,16 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 227);
+            this.label9.Location = new System.Drawing.Point(13, 218);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.Size = new System.Drawing.Size(119, 13);
             this.label9.TabIndex = 13;
-            this.label9.Text = "Dirección";
+            this.label9.Text = "Dirección del Empleado";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 410);
+            this.label10.Location = new System.Drawing.Point(12, 376);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(114, 13);
             this.label10.TabIndex = 14;
@@ -259,7 +261,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 328);
+            this.label11.Location = new System.Drawing.Point(14, 297);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(51, 13);
             this.label11.TabIndex = 15;
@@ -268,7 +270,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 263);
+            this.label12.Location = new System.Drawing.Point(13, 244);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 13);
             this.label12.TabIndex = 16;
@@ -297,26 +299,26 @@
             this.cboSexo.BackColor = System.Drawing.SystemColors.Window;
             this.cboSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSexo.FormattingEnabled = true;
-            this.cboSexo.Location = new System.Drawing.Point(181, 159);
+            this.cboSexo.Location = new System.Drawing.Point(180, 159);
             this.cboSexo.Name = "cboSexo";
-            this.cboSexo.Size = new System.Drawing.Size(100, 21);
+            this.cboSexo.Size = new System.Drawing.Size(101, 21);
             this.cboSexo.TabIndex = 19;
             // 
             // dtpFecha
             // 
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(181, 192);
+            this.dtpFecha.Location = new System.Drawing.Point(180, 189);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(121, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(100, 20);
             this.dtpFecha.TabIndex = 20;
             // 
             // txtDireccion
             // 
             this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDireccion.Location = new System.Drawing.Point(181, 227);
+            this.txtDireccion.Location = new System.Drawing.Point(180, 215);
             this.txtDireccion.MaxLength = 80;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(544, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(545, 20);
             this.txtDireccion.TabIndex = 21;
             // 
             // cboDepartamento
@@ -324,9 +326,9 @@
             this.cboDepartamento.BackColor = System.Drawing.SystemColors.Window;
             this.cboDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartamento.FormattingEnabled = true;
-            this.cboDepartamento.Location = new System.Drawing.Point(181, 260);
+            this.cboDepartamento.Location = new System.Drawing.Point(181, 241);
             this.cboDepartamento.Name = "cboDepartamento";
-            this.cboDepartamento.Size = new System.Drawing.Size(135, 21);
+            this.cboDepartamento.Size = new System.Drawing.Size(119, 21);
             this.cboDepartamento.TabIndex = 22;
             this.cboDepartamento.SelectedIndexChanged += new System.EventHandler(this.cboDepartamento_SelectedIndexChanged);
             // 
@@ -341,16 +343,17 @@
             // 
             // txtTelefonoFijo
             // 
-            this.txtTelefonoFijo.Location = new System.Drawing.Point(181, 294);
+            this.txtTelefonoFijo.Location = new System.Drawing.Point(180, 268);
             this.txtTelefonoFijo.MaxLength = 10;
             this.txtTelefonoFijo.Name = "txtTelefonoFijo";
-            this.txtTelefonoFijo.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefonoFijo.Size = new System.Drawing.Size(120, 20);
             this.txtTelefonoFijo.TabIndex = 24;
             this.txtTelefonoFijo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefonoFijo_KeyDown);
             this.txtTelefonoFijo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoFijo_KeyPress);
             // 
             // txtNHijos
             // 
+            this.txtNHijos.Enabled = false;
             this.txtNHijos.Location = new System.Drawing.Point(532, 159);
             this.txtNHijos.MaxLength = 2;
             this.txtNHijos.Name = "txtNHijos";
@@ -365,14 +368,14 @@
             this.cboProfesion.BackColor = System.Drawing.SystemColors.Window;
             this.cboProfesion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfesion.FormattingEnabled = true;
-            this.cboProfesion.Location = new System.Drawing.Point(181, 328);
+            this.cboProfesion.Location = new System.Drawing.Point(180, 294);
             this.cboProfesion.Name = "cboProfesion";
-            this.cboProfesion.Size = new System.Drawing.Size(154, 21);
+            this.cboProfesion.Size = new System.Drawing.Size(233, 21);
             this.cboProfesion.TabIndex = 26;
             // 
             // txtReciboServicio
             // 
-            this.txtReciboServicio.Location = new System.Drawing.Point(181, 433);
+            this.txtReciboServicio.Location = new System.Drawing.Point(180, 399);
             this.txtReciboServicio.Name = "txtReciboServicio";
             this.txtReciboServicio.ReadOnly = true;
             this.txtReciboServicio.Size = new System.Drawing.Size(441, 20);
@@ -381,7 +384,7 @@
             // 
             // txtAntecedentesPenales
             // 
-            this.txtAntecedentesPenales.Location = new System.Drawing.Point(181, 407);
+            this.txtAntecedentesPenales.Location = new System.Drawing.Point(180, 373);
             this.txtAntecedentesPenales.Name = "txtAntecedentesPenales";
             this.txtAntecedentesPenales.ReadOnly = true;
             this.txtAntecedentesPenales.Size = new System.Drawing.Size(441, 20);
@@ -390,7 +393,7 @@
             // 
             // txtAntecedentesPoliciales
             // 
-            this.txtAntecedentesPoliciales.Location = new System.Drawing.Point(181, 381);
+            this.txtAntecedentesPoliciales.Location = new System.Drawing.Point(180, 347);
             this.txtAntecedentesPoliciales.Name = "txtAntecedentesPoliciales";
             this.txtAntecedentesPoliciales.ReadOnly = true;
             this.txtAntecedentesPoliciales.Size = new System.Drawing.Size(441, 20);
@@ -439,7 +442,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(332, 263);
+            this.label18.Location = new System.Drawing.Point(306, 244);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(51, 13);
             this.label18.TabIndex = 35;
@@ -450,9 +453,9 @@
             this.cboDistrito.BackColor = System.Drawing.SystemColors.Window;
             this.cboDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDistrito.FormattingEnabled = true;
-            this.cboDistrito.Location = new System.Drawing.Point(590, 260);
+            this.cboDistrito.Location = new System.Drawing.Point(532, 241);
             this.cboDistrito.Name = "cboDistrito";
-            this.cboDistrito.Size = new System.Drawing.Size(135, 21);
+            this.cboDistrito.Size = new System.Drawing.Size(193, 21);
             this.cboDistrito.TabIndex = 36;
             // 
             // cboProvincia
@@ -460,16 +463,16 @@
             this.cboProvincia.BackColor = System.Drawing.SystemColors.Window;
             this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProvincia.FormattingEnabled = true;
-            this.cboProvincia.Location = new System.Drawing.Point(390, 260);
+            this.cboProvincia.Location = new System.Drawing.Point(363, 241);
             this.cboProvincia.Name = "cboProvincia";
-            this.cboProvincia.Size = new System.Drawing.Size(135, 21);
+            this.cboProvincia.Size = new System.Drawing.Size(119, 21);
             this.cboProvincia.TabIndex = 37;
             this.cboProvincia.SelectedIndexChanged += new System.EventHandler(this.cboProvincia_SelectedIndexChanged);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(545, 263);
+            this.label19.Location = new System.Drawing.Point(488, 244);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(39, 13);
             this.label19.TabIndex = 38;
@@ -477,10 +480,10 @@
             // 
             // txtTelefonoCelular
             // 
-            this.txtTelefonoCelular.Location = new System.Drawing.Point(425, 294);
+            this.txtTelefonoCelular.Location = new System.Drawing.Point(401, 268);
             this.txtTelefonoCelular.MaxLength = 15;
             this.txtTelefonoCelular.Name = "txtTelefonoCelular";
-            this.txtTelefonoCelular.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefonoCelular.Size = new System.Drawing.Size(112, 20);
             this.txtTelefonoCelular.TabIndex = 40;
             this.txtTelefonoCelular.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefonoCelular_KeyDown);
             this.txtTelefonoCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoCelular_KeyPress);
@@ -488,7 +491,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(333, 294);
+            this.label20.Location = new System.Drawing.Point(306, 271);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(84, 13);
             this.label20.TabIndex = 39;
@@ -499,24 +502,25 @@
             this.cboGradoInstruccion.BackColor = System.Drawing.SystemColors.Window;
             this.cboGradoInstruccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGradoInstruccion.FormattingEnabled = true;
-            this.cboGradoInstruccion.Location = new System.Drawing.Point(468, 328);
+            this.cboGradoInstruccion.Location = new System.Drawing.Point(532, 294);
             this.cboGradoInstruccion.Name = "cboGradoInstruccion";
-            this.cboGradoInstruccion.Size = new System.Drawing.Size(154, 21);
+            this.cboGradoInstruccion.Size = new System.Drawing.Size(193, 21);
             this.cboGradoInstruccion.TabIndex = 42;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(357, 328);
+            this.label21.Location = new System.Drawing.Point(420, 297);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(106, 13);
             this.label21.TabIndex = 41;
             this.label21.Text = "Grado de Instrucción";
+            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // btnReciboServicios
             // 
             this.btnReciboServicios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReciboServicios.Location = new System.Drawing.Point(628, 433);
+            this.btnReciboServicios.Location = new System.Drawing.Point(627, 399);
             this.btnReciboServicios.Name = "btnReciboServicios";
             this.btnReciboServicios.Size = new System.Drawing.Size(25, 23);
             this.btnReciboServicios.TabIndex = 43;
@@ -527,7 +531,7 @@
             // btnAntecedentesPenales
             // 
             this.btnAntecedentesPenales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAntecedentesPenales.Location = new System.Drawing.Point(628, 405);
+            this.btnAntecedentesPenales.Location = new System.Drawing.Point(627, 371);
             this.btnAntecedentesPenales.Name = "btnAntecedentesPenales";
             this.btnAntecedentesPenales.Size = new System.Drawing.Size(25, 23);
             this.btnAntecedentesPenales.TabIndex = 44;
@@ -538,7 +542,7 @@
             // btnAntecedentesPoliciales
             // 
             this.btnAntecedentesPoliciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAntecedentesPoliciales.Location = new System.Drawing.Point(628, 379);
+            this.btnAntecedentesPoliciales.Location = new System.Drawing.Point(627, 345);
             this.btnAntecedentesPoliciales.Name = "btnAntecedentesPoliciales";
             this.btnAntecedentesPoliciales.Size = new System.Drawing.Size(25, 23);
             this.btnAntecedentesPoliciales.TabIndex = 45;
@@ -548,7 +552,7 @@
             // 
             // btnFamilia
             // 
-            this.btnFamilia.Location = new System.Drawing.Point(33, 500);
+            this.btnFamilia.Location = new System.Drawing.Point(66, 457);
             this.btnFamilia.Name = "btnFamilia";
             this.btnFamilia.Size = new System.Drawing.Size(75, 23);
             this.btnFamilia.TabIndex = 46;
@@ -558,7 +562,7 @@
             // 
             // btnCTS
             // 
-            this.btnCTS.Location = new System.Drawing.Point(342, 500);
+            this.btnCTS.Location = new System.Drawing.Point(375, 457);
             this.btnCTS.Name = "btnCTS";
             this.btnCTS.Size = new System.Drawing.Size(75, 23);
             this.btnCTS.TabIndex = 48;
@@ -568,7 +572,7 @@
             // 
             // btnContrato
             // 
-            this.btnContrato.Location = new System.Drawing.Point(134, 500);
+            this.btnContrato.Location = new System.Drawing.Point(167, 457);
             this.btnContrato.Name = "btnContrato";
             this.btnContrato.Size = new System.Drawing.Size(75, 23);
             this.btnContrato.TabIndex = 49;
@@ -578,7 +582,7 @@
             // 
             // btnHaberes
             // 
-            this.btnHaberes.Location = new System.Drawing.Point(241, 500);
+            this.btnHaberes.Location = new System.Drawing.Point(274, 457);
             this.btnHaberes.Name = "btnHaberes";
             this.btnHaberes.Size = new System.Drawing.Size(75, 23);
             this.btnHaberes.TabIndex = 50;
@@ -588,7 +592,7 @@
             // 
             // btnRequerimiento
             // 
-            this.btnRequerimiento.Location = new System.Drawing.Point(448, 500);
+            this.btnRequerimiento.Location = new System.Drawing.Point(481, 457);
             this.btnRequerimiento.Name = "btnRequerimiento";
             this.btnRequerimiento.Size = new System.Drawing.Size(98, 23);
             this.btnRequerimiento.TabIndex = 51;
@@ -596,45 +600,15 @@
             this.btnRequerimiento.UseVisualStyleBackColor = true;
             this.btnRequerimiento.Click += new System.EventHandler(this.btnRequerimiento_Click);
             // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.Location = new System.Drawing.Point(6, 19);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(70, 23);
-            this.btnRegistrar.TabIndex = 52;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
-            // 
             // btnPensionSeguro
             // 
-            this.btnPensionSeguro.Location = new System.Drawing.Point(574, 500);
+            this.btnPensionSeguro.Location = new System.Drawing.Point(607, 457);
             this.btnPensionSeguro.Name = "btnPensionSeguro";
             this.btnPensionSeguro.Size = new System.Drawing.Size(106, 23);
             this.btnPensionSeguro.TabIndex = 56;
             this.btnPensionSeguro.Text = "Pensión y Seguro ";
             this.btnPensionSeguro.UseVisualStyleBackColor = true;
             this.btnPensionSeguro.Click += new System.EventHandler(this.btnPensionSeguro_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(82, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 23);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "Listar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnRegistrar);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(406, 37);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(161, 56);
-            this.groupBox1.TabIndex = 58;
-            this.groupBox1.TabStop = false;
             // 
             // label22
             // 
@@ -649,16 +623,16 @@
             // 
             this.txttipo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txttipo.Enabled = false;
-            this.txttipo.Location = new System.Drawing.Point(181, 125);
+            this.txttipo.Location = new System.Drawing.Point(180, 125);
             this.txttipo.MaxLength = 30;
             this.txttipo.Name = "txttipo";
-            this.txttipo.Size = new System.Drawing.Size(202, 20);
+            this.txttipo.Size = new System.Drawing.Size(203, 20);
             this.txttipo.TabIndex = 5;
             // 
             // lklpoliciales
             // 
             this.lklpoliciales.AutoSize = true;
-            this.lklpoliciales.Location = new System.Drawing.Point(661, 384);
+            this.lklpoliciales.Location = new System.Drawing.Point(660, 350);
             this.lklpoliciales.Name = "lklpoliciales";
             this.lklpoliciales.Size = new System.Drawing.Size(61, 13);
             this.lklpoliciales.TabIndex = 59;
@@ -669,7 +643,7 @@
             // lklpenales
             // 
             this.lklpenales.AutoSize = true;
-            this.lklpenales.Location = new System.Drawing.Point(659, 410);
+            this.lklpenales.Location = new System.Drawing.Point(658, 376);
             this.lklpenales.Name = "lklpenales";
             this.lklpenales.Size = new System.Drawing.Size(61, 13);
             this.lklpenales.TabIndex = 59;
@@ -680,7 +654,7 @@
             // lklservicios
             // 
             this.lklservicios.AutoSize = true;
-            this.lklservicios.Location = new System.Drawing.Point(661, 436);
+            this.lklservicios.Location = new System.Drawing.Point(660, 402);
             this.lklservicios.Name = "lklservicios";
             this.lklservicios.Size = new System.Drawing.Size(61, 13);
             this.lklservicios.TabIndex = 59;
@@ -691,7 +665,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(308, 192);
+            this.label23.Location = new System.Drawing.Point(286, 192);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(30, 13);
             this.label23.TabIndex = 60;
@@ -704,9 +678,9 @@
             this.cbopais.BackColor = System.Drawing.SystemColors.Window;
             this.cbopais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbopais.FormattingEnabled = true;
-            this.cbopais.Location = new System.Drawing.Point(342, 189);
+            this.cbopais.Location = new System.Drawing.Point(323, 189);
             this.cbopais.Name = "cbopais";
-            this.cbopais.Size = new System.Drawing.Size(131, 21);
+            this.cbopais.Size = new System.Drawing.Size(150, 21);
             this.cbopais.TabIndex = 61;
             this.cbopais.SelectedIndexChanged += new System.EventHandler(this.cbopais_SelectedIndexChanged);
             // 
@@ -726,61 +700,18 @@
             // 
             // btnfoto
             // 
-            this.btnfoto.Location = new System.Drawing.Point(614, 157);
+            this.btnfoto.Location = new System.Drawing.Point(607, 160);
             this.btnfoto.Name = "btnfoto";
-            this.btnfoto.Size = new System.Drawing.Size(111, 23);
+            this.btnfoto.Size = new System.Drawing.Size(118, 23);
             this.btnfoto.TabIndex = 58;
             this.btnfoto.Text = "Cambiar Foto";
             this.btnfoto.UseVisualStyleBackColor = true;
             this.btnfoto.Click += new System.EventHandler(this.btnfoto_Click);
             // 
-            // pbFotoReciboServicios
-            // 
-            this.pbFotoReciboServicios.Location = new System.Drawing.Point(728, 440);
-            this.pbFotoReciboServicios.Name = "pbFotoReciboServicios";
-            this.pbFotoReciboServicios.Size = new System.Drawing.Size(23, 28);
-            this.pbFotoReciboServicios.TabIndex = 55;
-            this.pbFotoReciboServicios.TabStop = false;
-            this.pbFotoReciboServicios.Visible = false;
-            this.pbFotoReciboServicios.DoubleClick += new System.EventHandler(this.pbFotoReciboServicios_DoubleClick);
-            // 
-            // pbFotoAntecedentesPenales
-            // 
-            this.pbFotoAntecedentesPenales.Location = new System.Drawing.Point(728, 405);
-            this.pbFotoAntecedentesPenales.Name = "pbFotoAntecedentesPenales";
-            this.pbFotoAntecedentesPenales.Size = new System.Drawing.Size(23, 28);
-            this.pbFotoAntecedentesPenales.TabIndex = 54;
-            this.pbFotoAntecedentesPenales.TabStop = false;
-            this.pbFotoAntecedentesPenales.Visible = false;
-            this.pbFotoAntecedentesPenales.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPenales_DoubleClick);
-            // 
-            // pbFotoAntecedentesPoliciales
-            // 
-            this.pbFotoAntecedentesPoliciales.Location = new System.Drawing.Point(728, 374);
-            this.pbFotoAntecedentesPoliciales.Name = "pbFotoAntecedentesPoliciales";
-            this.pbFotoAntecedentesPoliciales.Size = new System.Drawing.Size(23, 28);
-            this.pbFotoAntecedentesPoliciales.TabIndex = 53;
-            this.pbFotoAntecedentesPoliciales.TabStop = false;
-            this.pbFotoAntecedentesPoliciales.Visible = false;
-            this.pbFotoAntecedentesPoliciales.Click += new System.EventHandler(this.pbFotoAntecedentesPoliciales_Click);
-            this.pbFotoAntecedentesPoliciales.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPoliciales_DoubleClick);
-            // 
-            // pbfotoempleado
-            // 
-            this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
-            this.pbfotoempleado.Location = new System.Drawing.Point(614, 42);
-            this.pbfotoempleado.Name = "pbfotoempleado";
-            this.pbfotoempleado.Size = new System.Drawing.Size(111, 109);
-            this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbfotoempleado.TabIndex = 53;
-            this.pbfotoempleado.TabStop = false;
-            this.pbfotoempleado.Click += new System.EventHandler(this.pbFotoAntecedentesPoliciales_Click);
-            this.pbfotoempleado.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPoliciales_DoubleClick);
-            // 
             // lblconviviente
             // 
             this.lblconviviente.AutoSize = true;
-            this.lblconviviente.Location = new System.Drawing.Point(13, 465);
+            this.lblconviviente.Location = new System.Drawing.Point(12, 431);
             this.lblconviviente.Name = "lblconviviente";
             this.lblconviviente.Size = new System.Drawing.Size(66, 13);
             this.lblconviviente.TabIndex = 10;
@@ -788,7 +719,7 @@
             // 
             // txtconviviente
             // 
-            this.txtconviviente.Location = new System.Drawing.Point(181, 462);
+            this.txtconviviente.Location = new System.Drawing.Point(180, 428);
             this.txtconviviente.Name = "txtconviviente";
             this.txtconviviente.ReadOnly = true;
             this.txtconviviente.Size = new System.Drawing.Size(441, 20);
@@ -798,7 +729,7 @@
             // btnconviviente
             // 
             this.btnconviviente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconviviente.Location = new System.Drawing.Point(628, 462);
+            this.btnconviviente.Location = new System.Drawing.Point(627, 428);
             this.btnconviviente.Name = "btnconviviente";
             this.btnconviviente.Size = new System.Drawing.Size(25, 23);
             this.btnconviviente.TabIndex = 43;
@@ -809,7 +740,7 @@
             // lklconviviente
             // 
             this.lklconviviente.AutoSize = true;
-            this.lklconviviente.Location = new System.Drawing.Point(659, 465);
+            this.lklconviviente.Location = new System.Drawing.Point(658, 431);
             this.lklconviviente.Name = "lklconviviente";
             this.lklconviviente.Size = new System.Drawing.Size(61, 13);
             this.lklconviviente.TabIndex = 63;
@@ -818,19 +749,10 @@
             this.lklconviviente.Visible = false;
             this.lklconviviente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklconviviente_LinkClicked);
             // 
-            // pbconviviente
-            // 
-            this.pbconviviente.Location = new System.Drawing.Point(728, 474);
-            this.pbconviviente.Name = "pbconviviente";
-            this.pbconviviente.Size = new System.Drawing.Size(23, 28);
-            this.pbconviviente.TabIndex = 64;
-            this.pbconviviente.TabStop = false;
-            this.pbconviviente.Visible = false;
-            // 
             // lklfirma
             // 
             this.lklfirma.AutoSize = true;
-            this.lklfirma.Location = new System.Drawing.Point(661, 358);
+            this.lklfirma.Location = new System.Drawing.Point(660, 324);
             this.lklfirma.Name = "lklfirma";
             this.lklfirma.Size = new System.Drawing.Size(61, 13);
             this.lklfirma.TabIndex = 69;
@@ -838,19 +760,10 @@
             this.lklfirma.Text = "Ver Imagen";
             this.lklfirma.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklfirma_LinkClicked);
             // 
-            // pbfirma
-            // 
-            this.pbfirma.Location = new System.Drawing.Point(728, 348);
-            this.pbfirma.Name = "pbfirma";
-            this.pbfirma.Size = new System.Drawing.Size(23, 28);
-            this.pbfirma.TabIndex = 68;
-            this.pbfirma.TabStop = false;
-            this.pbfirma.Visible = false;
-            // 
             // btnfirma
             // 
             this.btnfirma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnfirma.Location = new System.Drawing.Point(628, 353);
+            this.btnfirma.Location = new System.Drawing.Point(627, 319);
             this.btnfirma.Name = "btnfirma";
             this.btnfirma.Size = new System.Drawing.Size(25, 23);
             this.btnfirma.TabIndex = 67;
@@ -860,7 +773,7 @@
             // 
             // txtfirma
             // 
-            this.txtfirma.Location = new System.Drawing.Point(181, 355);
+            this.txtfirma.Location = new System.Drawing.Point(180, 321);
             this.txtfirma.Name = "txtfirma";
             this.txtfirma.ReadOnly = true;
             this.txtfirma.Size = new System.Drawing.Size(441, 20);
@@ -869,19 +782,153 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(13, 358);
+            this.label24.Location = new System.Drawing.Point(12, 324);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(71, 13);
             this.label24.TabIndex = 65;
             this.label24.Text = "Firma Digital *";
+            // 
+            // btnnuevo
+            // 
+            this.btnnuevo.Location = new System.Drawing.Point(520, 43);
+            this.btnnuevo.Name = "btnnuevo";
+            this.btnnuevo.Size = new System.Drawing.Size(81, 23);
+            this.btnnuevo.TabIndex = 58;
+            this.btnnuevo.Text = "Nuevo";
+            this.btnnuevo.UseVisualStyleBackColor = true;
+            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Enabled = false;
+            this.btnModificar.Location = new System.Drawing.Point(520, 72);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(81, 23);
+            this.btnModificar.TabIndex = 70;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Location = new System.Drawing.Point(655, 495);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(70, 23);
+            this.btncancelar.TabIndex = 72;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Location = new System.Drawing.Point(579, 495);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(70, 23);
+            this.btnGuardar.TabIndex = 71;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(520, 101);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 23);
+            this.button1.TabIndex = 73;
+            this.button1.Text = "Listar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(633, 128);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 74;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
+            // 
+            // pbfirma
+            // 
+            this.pbfirma.Location = new System.Drawing.Point(728, 295);
+            this.pbfirma.Name = "pbfirma";
+            this.pbfirma.Size = new System.Drawing.Size(23, 28);
+            this.pbfirma.TabIndex = 68;
+            this.pbfirma.TabStop = false;
+            this.pbfirma.Visible = false;
+            // 
+            // pbconviviente
+            // 
+            this.pbconviviente.Location = new System.Drawing.Point(728, 421);
+            this.pbconviviente.Name = "pbconviviente";
+            this.pbconviviente.Size = new System.Drawing.Size(23, 28);
+            this.pbconviviente.TabIndex = 64;
+            this.pbconviviente.TabStop = false;
+            this.pbconviviente.Visible = false;
+            // 
+            // pbFotoReciboServicios
+            // 
+            this.pbFotoReciboServicios.Location = new System.Drawing.Point(728, 387);
+            this.pbFotoReciboServicios.Name = "pbFotoReciboServicios";
+            this.pbFotoReciboServicios.Size = new System.Drawing.Size(23, 28);
+            this.pbFotoReciboServicios.TabIndex = 55;
+            this.pbFotoReciboServicios.TabStop = false;
+            this.pbFotoReciboServicios.Visible = false;
+            this.pbFotoReciboServicios.DoubleClick += new System.EventHandler(this.pbFotoReciboServicios_DoubleClick);
+            // 
+            // pbFotoAntecedentesPenales
+            // 
+            this.pbFotoAntecedentesPenales.Location = new System.Drawing.Point(728, 352);
+            this.pbFotoAntecedentesPenales.Name = "pbFotoAntecedentesPenales";
+            this.pbFotoAntecedentesPenales.Size = new System.Drawing.Size(23, 28);
+            this.pbFotoAntecedentesPenales.TabIndex = 54;
+            this.pbFotoAntecedentesPenales.TabStop = false;
+            this.pbFotoAntecedentesPenales.Visible = false;
+            this.pbFotoAntecedentesPenales.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPenales_DoubleClick);
+            // 
+            // pbfotoempleado
+            // 
+            this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
+            this.pbfotoempleado.Location = new System.Drawing.Point(607, 43);
+            this.pbfotoempleado.Name = "pbfotoempleado";
+            this.pbfotoempleado.Size = new System.Drawing.Size(118, 112);
+            this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbfotoempleado.TabIndex = 53;
+            this.pbfotoempleado.TabStop = false;
+            this.pbfotoempleado.Click += new System.EventHandler(this.pbFotoAntecedentesPoliciales_Click);
+            this.pbfotoempleado.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPoliciales_DoubleClick);
+            this.pbfotoempleado.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbfotoempleado_MouseMove);
+            this.pbfotoempleado.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbfotoempleado_MouseUp);
+            // 
+            // pbFotoAntecedentesPoliciales
+            // 
+            this.pbFotoAntecedentesPoliciales.Location = new System.Drawing.Point(728, 321);
+            this.pbFotoAntecedentesPoliciales.Name = "pbFotoAntecedentesPoliciales";
+            this.pbFotoAntecedentesPoliciales.Size = new System.Drawing.Size(23, 28);
+            this.pbFotoAntecedentesPoliciales.TabIndex = 53;
+            this.pbFotoAntecedentesPoliciales.TabStop = false;
+            this.pbFotoAntecedentesPoliciales.Visible = false;
+            this.pbFotoAntecedentesPoliciales.Click += new System.EventHandler(this.pbFotoAntecedentesPoliciales_Click);
+            this.pbFotoAntecedentesPoliciales.DoubleClick += new System.EventHandler(this.pbFotoAntecedentesPoliciales_DoubleClick);
             // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(756, 529);
+            this.ClientSize = new System.Drawing.Size(735, 530);
+            this.Controls.Add(this.btndescargar);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btncancelar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.lklfirma);
             this.Controls.Add(this.pbfirma);
             this.Controls.Add(this.btnfirma);
@@ -895,7 +942,6 @@
             this.Controls.Add(this.lklservicios);
             this.Controls.Add(this.lklpenales);
             this.Controls.Add(this.lklpoliciales);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnPensionSeguro);
             this.Controls.Add(this.pbFotoReciboServicios);
             this.Controls.Add(this.pbFotoAntecedentesPenales);
@@ -957,18 +1003,17 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtlugarnacimiento);
             this.Controls.Add(this.cboLugarNacimiento);
-            this.MaximizeBox = false;
             this.Name = "frmEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Empleado";
             this.Load += new System.EventHandler(this.frmEmpleado_Load);
-            this.groupBox1.ResumeLayout(false);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmEmpleado_MouseMove);
+            ((System.ComponentModel.ISupportInitialize)(this.pbfirma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoReciboServicios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPenales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPoliciales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbfirma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFotoAntecedentesPoliciales)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1001,7 +1046,6 @@
         private System.Windows.Forms.ComboBox cboDepartamento;
         private System.Windows.Forms.ComboBox cboLugarNacimiento;
         private System.Windows.Forms.TextBox txtTelefonoFijo;
-        private System.Windows.Forms.TextBox txtNHijos;
         private System.Windows.Forms.ComboBox cboProfesion;
         private System.Windows.Forms.TextBox txtReciboServicio;
         private System.Windows.Forms.TextBox txtAntecedentesPenales;
@@ -1026,13 +1070,10 @@
         private System.Windows.Forms.Button btnContrato;
         private System.Windows.Forms.Button btnHaberes;
         private System.Windows.Forms.Button btnRequerimiento;
-        private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.PictureBox pbFotoAntecedentesPoliciales;
         private System.Windows.Forms.PictureBox pbFotoAntecedentesPenales;
         private System.Windows.Forms.PictureBox pbFotoReciboServicios;
         private System.Windows.Forms.Button btnPensionSeguro;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txttipo;
         private System.Windows.Forms.LinkLabel lklpoliciales;
@@ -1054,5 +1095,12 @@
         private System.Windows.Forms.Button btnfirma;
         private System.Windows.Forms.TextBox txtfirma;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button btnnuevo;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btncancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox txtNHijos;
+        private System.Windows.Forms.Button btndescargar;
     }
 }

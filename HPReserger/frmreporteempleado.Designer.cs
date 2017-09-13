@@ -189,7 +189,7 @@
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(1232, 393);
+            this.dtgconten.Size = new System.Drawing.Size(1210, 370);
             this.dtgconten.TabIndex = 6;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
@@ -197,7 +197,7 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(1167, 578);
+            this.btncancelar.Location = new System.Drawing.Point(1145, 555);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(77, 23);
             this.btncancelar.TabIndex = 7;
@@ -210,7 +210,7 @@
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(9, 585);
+            this.lblmsg.Location = new System.Drawing.Point(9, 562);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(81, 13);
             this.lblmsg.TabIndex = 11;
@@ -536,7 +536,7 @@
             // 
             this.txtsumatoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtsumatoria.Enabled = false;
-            this.txtsumatoria.Location = new System.Drawing.Point(1065, 580);
+            this.txtsumatoria.Location = new System.Drawing.Point(1043, 557);
             this.txtsumatoria.Name = "txtsumatoria";
             this.txtsumatoria.Size = new System.Drawing.Size(96, 20);
             this.txtsumatoria.TabIndex = 27;
@@ -545,7 +545,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1000, 583);
+            this.label6.Location = new System.Drawing.Point(978, 560);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 26;
@@ -554,7 +554,7 @@
             // btnexportarplano
             // 
             this.btnexportarplano.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportarplano.Location = new System.Drawing.Point(917, 577);
+            this.btnexportarplano.Location = new System.Drawing.Point(895, 554);
             this.btnexportarplano.Name = "btnexportarplano";
             this.btnexportarplano.Size = new System.Drawing.Size(77, 23);
             this.btnexportarplano.TabIndex = 28;
@@ -570,7 +570,7 @@
             // btnexportaexcel
             // 
             this.btnexportaexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportaexcel.Location = new System.Drawing.Point(818, 577);
+            this.btnexportaexcel.Location = new System.Drawing.Point(796, 554);
             this.btnexportaexcel.Name = "btnexportaexcel";
             this.btnexportaexcel.Size = new System.Drawing.Size(93, 23);
             this.btnexportaexcel.TabIndex = 29;
@@ -633,7 +633,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 619);
+            this.ClientSize = new System.Drawing.Size(1237, 596);
             this.Controls.Add(this.gpbanco);
             this.Controls.Add(this.btnexportaexcel);
             this.Controls.Add(this.btnexportarplano);
@@ -655,6 +655,7 @@
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtbusca);
+            this.MinimumSize = new System.Drawing.Size(1253, 635);
             this.Name = "frmreporteempleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de Empleados";

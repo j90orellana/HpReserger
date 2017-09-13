@@ -355,7 +355,8 @@
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.pnl1);
             this.Controls.Add(this.Dtgconten);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(665, 451);
+            this.MinimumSize = new System.Drawing.Size(665, 451);
             this.Name = "frmetapas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Etapas";

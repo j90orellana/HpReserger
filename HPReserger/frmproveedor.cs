@@ -78,16 +78,18 @@ namespace HPReserger
             cboregimen.SelectedIndex = 1;
         }
         public string rucito;
-
+        public int llamada = 0;
         private void frmproveedor_Load(object sender, EventArgs e)
         {
             estado = 0;
-            tipobusca = 1;
+            tipobusca = 2;
             CargarDocumentoIdentidad();
             CargarSEctorComercial();
             CargarBanco();
             CargarRegimen();
-            ListarProveedores("", tipobusca);
+            Iniciar(false);
+            radioButton2.Checked = true;
+            Txtbusca_TextChanged(sender, e);
             msg(dtgconten);
 
         }
@@ -167,7 +169,7 @@ namespace HPReserger
             tipobusca = 6; Txtbusca_TextChanged(sender, e);
         }
 
-        private void Txtbusca_TextChanged(object sender, EventArgs e)
+        public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
             dtgconten.DataSource = CProveedor.ListarProveedores(Txtbusca.Text, tipobusca);
             msg(dtgconten);
@@ -205,6 +207,39 @@ namespace HPReserger
             }
             catch { }
         }
+        public void Iniciar(Boolean a)
+        {
+            btnsectormas.Enabled = a;
+            cbodocumento.Enabled = a;
+            txtnumeroidentidad.Enabled = a;
+            txtnombrerazonsocial.Enabled = a;
+            cbosectorcomercial.Enabled = a;
+            btnbancosmas.Enabled = a;
+            btntipoidmas.Enabled = a;
+            txtdireccionalmacen.Enabled = a;
+            txtdireccionoficina.Enabled = a;
+            txtdireccionsucursal.Enabled = a;
+            txttelefonoalmacen.Enabled = a;
+            txttelefonocontacto.Enabled = a;
+            txttelefonooficina.Enabled = a;
+            txttelefonosucursal.Enabled = a;
+            txtpersonacontacto.Enabled = a;
+            txtemailcontacto.Enabled = a;
+            txtccidolares.Enabled = a;
+            txtccisoles.Enabled = a;
+            txtcuentadolares.Enabled = a;
+            txtcuentasoles.Enabled = a;
+            txtcuentadetracciones.Enabled = a;
+            cbobancodolares.Enabled = a;
+            cbobancosoles.Enabled = a;
+            cboregimen.Enabled = a;
+            dtgconten.Enabled = !a;
+            btnlimpiar.Enabled = !a;
+            Txtbusca.Enabled = !a;
+            btnnuevo.Enabled = !a;
+            btnmodificar.Enabled = !a;
+            btneliminar.Enabled = !a;
+        }
         public void Activar()
         {
             btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
@@ -237,12 +272,12 @@ namespace HPReserger
             txtcuentadolares.Text =
             txtccisoles.Text =
             txtccidolares.Text =
-            txtcuentadetracciones.Text = "";
+            txtcuentadetracciones.Text = ""; Iniciar(true);
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            rucito = txtnumeroidentidad.Text;
+            Iniciar(false);llamada = 100;
             if (estado == 0)
             {
 
@@ -278,7 +313,7 @@ namespace HPReserger
             estado = 2;
             tipmsg.Show("Ingrese Dirección de Oficina", txtdireccionoficina, 700);
             Desactivar(); DesactivarModi();
-            txtdireccionoficina.Focus();
+            txtdireccionoficina.Focus(); Iniciar(true);
             //cbotipo.Enabled = false; modmarca = Convert.ToInt32(cbomarca.SelectedValue.ToString());
 
         }
@@ -336,7 +371,11 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            rucito = txtnumeroidentidad.Text;
+            if (llamada != 0)
+            {
+                rucito = txtnumeroidentidad.Text;
+                this.Close();
+            }
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones    
             string Documentoid, nombrerazon;
             Documentoid = txtnumeroidentidad.Text;
@@ -348,7 +387,7 @@ namespace HPReserger
                 MessageBox.Show("Se Insertó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CProveedor.InsertarProveedor(numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                 persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen);
-                PresentarValor(nombrerazon);
+                PresentarValor(nombrerazon); Iniciar(false);
             }
             else
             {
@@ -359,7 +398,7 @@ namespace HPReserger
                     MessageBox.Show("Se Modificó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CProveedor.ActualizarProveedor(numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                     persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen);
-                    PresentarValor(nombrerazon);
+                    PresentarValor(nombrerazon); Iniciar(false);
                 }
                 else
                 {
@@ -470,6 +509,16 @@ namespace HPReserger
         private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ValidarPegarSoloLetras(e, txtpersonacontacto, 40);
+        }
+
+        private void btnsectormas_Click(object sender, EventArgs e)
+        {
+            string sector = cbosectorcomercial.Text;
+            frmSectorEmpresarial frmsector = new frmSectorEmpresarial();
+            frmsector.ShowDialog();
+            CargarSEctorComercial();
+            cbosectorcomercial.Text = sector;
+
         }
     }
 }

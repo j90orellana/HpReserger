@@ -88,7 +88,7 @@ namespace HPReserger
             }
             frmlistarOrdenesfaltantes ordenes = new frmlistarOrdenesfaltantes();
             ordenes.txtcotizacion.Text = dtgconten["cot", dtgconten.CurrentCell.RowIndex].Value.ToString();
-            ordenes.txtorden.Text= dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString();
+            ordenes.txtorden.Text = dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString();
             ordenes.ShowDialog();
         }
 
@@ -242,8 +242,10 @@ namespace HPReserger
                 {
                     /// MSG(drCOT["correo"].ToString());
                     frmMensajeCorreo mensajito = new frmMensajeCorreo();
-                    mensajito.txtmsg.Text = "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
-                    mensajito.Text = "Reenvio de Mensaje de Confirmación"; ;
+                    mensajito.txtmsg.Text = "Hp Reserger S.A.C. \nEs Un Placer Saludarlos para Recordarles " + (char)13 + "que ";
+                    ///mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
+                    mensajito.Text = "Reenvio de Mensaje de Confirmación";
+                    mensajito.txtasunto.Text = "Ordenes de Compra Faltantes";
                     mensajito.ShowDialog();
                     if (mensajito.ok)
                     {
@@ -253,10 +255,22 @@ namespace HPReserger
                             MailMessage email = new MailMessage();
                             //CORREO DE PROVEEDOR
                             email.To.Add(new MailAddress(drCOT["correo"].ToString()));
+                            ///
                             email.From = new MailAddress("j90orellana@hotmail.com");
-                            email.Subject = "Re:Cotización Aprobada";
-                            email.Priority = MailPriority.High;
-                            email.Body = "Hp Reserger S.A.C. \n " + mensajito.cadena; ;
+                            email.Subject = mensajito.txtasunto.Text;
+                            email.Priority = mensajito.PrioridadCorreo();
+                            email.Body = mensajito.txtmsg.Text;
+                            if (mensajito.Adjunto())
+                            {
+                                foreach (string ruta in mensajito.ArchivosAdjuntos())
+                                {
+                                    Attachment Archivos = new Attachment(ruta);
+                                    email.Attachments.Add(Archivos);
+                                }
+                            }
+                            else
+                                email.Attachments.Clear();
+                            ///
                             email.IsBodyHtml = false;
                             SmtpClient smtp = new SmtpClient();
                             smtp.Host = "smtp.live.com";
@@ -270,7 +284,7 @@ namespace HPReserger
                         }
                         catch (Exception ex)
                         {
-                            MSG("Error enviando correo electrónico: " + ex.Message);
+                            MSG("Error enviando correo electrónico: " + ex.Source + " " + ex.Message);
                         }
                     }
                 }

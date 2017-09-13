@@ -233,8 +233,8 @@
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(761, 415);
+            this.MinimumSize = new System.Drawing.Size(761, 415);
             this.Name = "frmlistarcuentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar Cuentas";

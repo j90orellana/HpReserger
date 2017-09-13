@@ -206,8 +206,8 @@
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(404, 300);
+            this.MinimumSize = new System.Drawing.Size(404, 300);
             this.Name = "frmEntiFinanciera";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Instituciones Financieras";

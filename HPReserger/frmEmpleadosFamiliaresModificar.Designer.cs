@@ -314,7 +314,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(550, 282);
             this.Controls.Add(this.groupBox1);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(566, 321);
+            this.MinimumSize = new System.Drawing.Size(566, 321);
             this.Name = "frmEmpleadosFamiliaresModificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Familiares Empleado Modificar";

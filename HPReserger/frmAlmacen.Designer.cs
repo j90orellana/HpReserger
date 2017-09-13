@@ -487,7 +487,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.gridDetalle1);
             this.Controls.Add(this.gridDetalle);
-            this.MaximizeBox = false;
             this.Name = "frmAlmacen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAlmacen_FormClosing);
             this.Load += new System.EventHandler(this.frmAlmacen_Load);

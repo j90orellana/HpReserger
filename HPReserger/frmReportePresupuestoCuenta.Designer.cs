@@ -51,6 +51,7 @@
             this.conta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cta_Contable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fk_etapas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importe_proy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,6 +217,7 @@
             this.conta,
             this.Descripción,
             this.Cta_Contable,
+            this.fk_etapas,
             this.importe_proy,
             this.importe,
             this.Operaciones,
@@ -273,6 +275,15 @@
             this.Cta_Contable.Name = "Cta_Contable";
             this.Cta_Contable.ReadOnly = true;
             this.Cta_Contable.Width = 108;
+            // 
+            // fk_etapas
+            // 
+            this.fk_etapas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fk_etapas.DataPropertyName = "descripcion";
+            this.fk_etapas.HeaderText = "Etapa";
+            this.fk_etapas.Name = "fk_etapas";
+            this.fk_etapas.ReadOnly = true;
+            this.fk_etapas.Width = 60;
             // 
             // importe_proy
             // 
@@ -361,7 +372,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgconten);
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(831, 642);
             this.Name = "frmReportePresupuestoCuenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte Presupuesto Cuenta";
@@ -387,16 +398,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtgconten;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbocuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodCentroC;
         private System.Windows.Forms.DataGridViewTextBoxColumn iddep;
         private System.Windows.Forms.DataGridViewTextBoxColumn conta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripción;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cta_Contable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fk_etapas;
         private System.Windows.Forms.DataGridViewTextBoxColumn importe_proy;
         private System.Windows.Forms.DataGridViewTextBoxColumn importe;
         private System.Windows.Forms.DataGridViewTextBoxColumn Operaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Diferencia;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbocuenta;
     }
 }

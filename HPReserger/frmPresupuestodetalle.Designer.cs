@@ -109,7 +109,7 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(672, 725);
+            this.btncancelar.Location = new System.Drawing.Point(672, 646);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 15;
@@ -157,7 +157,7 @@
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(735, 635);
+            this.dtgconten.Size = new System.Drawing.Size(735, 556);
             this.dtgconten.TabIndex = 16;
             this.dtgconten.TabStop = false;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
@@ -264,7 +264,7 @@
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Enabled = false;
-            this.btnaceptar.Location = new System.Drawing.Point(591, 725);
+            this.btnaceptar.Location = new System.Drawing.Point(591, 646);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 17;
@@ -354,7 +354,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 763);
+            this.ClientSize = new System.Drawing.Size(760, 684);
             this.Controls.Add(this.txtmontomax);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtgconten);
@@ -368,7 +368,7 @@
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.gp1);
             this.Controls.Add(this.btneditar);
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(776, 723);
             this.Name = "frmPresupuestodetalle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle del Presupuesto";

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -91,46 +92,71 @@ namespace HPReserger
         }
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            {
-                frmMensajeCorreo mensajito = new frmMensajeCorreo();
-                mensajito.ShowDialog();
-                if (mensajito.ok)
+            if (gridOC.RowCount > 0)
+                if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 4);
-                    string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
-                    Listar(frmLogin.CodigoUsuario);
-                    MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    try
+                    frmMensajeCorreo mensajito = new frmMensajeCorreo();
+                    mensajito.Text = "Mensaje de Aprobación";
+                    mensajito.txtasunto.Text = "Cotización Aprobada";
+                    //mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es para nosotros un placer aceptar su cotizacion";
+                    mensajito.txtmsg.Text = "Hp Reserger S.A.C. \nEs para nosotros un placer aceptar su cotizacion";
+                    mensajito.ShowDialog();
+                    if (mensajito.ok)
                     {
-                        MailMessage email = new MailMessage();
-                        //CORREO DE PROVEEDOR
-                        email.To.Add(new MailAddress(drCOT["correo"].ToString()));
-                        email.From = new MailAddress("j90orellana@hotmail.com");
-                        email.Subject = "Cotización Aprobada";
-                        email.Priority = MailPriority.High;
-                        email.Body = "Hp Reserger S.A.C. \nEs para nosotros un placer aceptar su cotizacion " + mensajito.cadena; ;
-                        email.IsBodyHtml = false;
-                        SmtpClient smtp = new SmtpClient();
-                        smtp.Host = "smtp.live.com";
-                        smtp.Port = 25;
-                        smtp.EnableSsl = true;
-                        smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
-                        smtp.Send(email);
-                        email.Dispose();
-                        MSG("Correo electrónico fue enviado satisfactoriamente.");
+                        clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 4);
+                        string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
+                        Listar(frmLogin.CodigoUsuario);
+                        MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        try
+                        {
+                            MailMessage email = new MailMessage();
+                            //CORREO DE PROVEEDOR
+                            email.To.Add(new MailAddress(drCOT["correo"].ToString()));
+                            ///
+                            email.From = new MailAddress("j90orellana@hotmail.com");
+                            email.Subject = mensajito.txtasunto.Text;
+                            email.Priority = mensajito.PrioridadCorreo();
+                            email.Body = mensajito.txtmsg.Text;
+                            //ContentType alo = new ContentType();
+                            //alo.MediaType = MediaTypeNames.Text.RichText;
+                            //AlternateView fuente;
+                            //fuente = AlternateView.CreateAlternateViewFromString(mensajito.txtmsg.DocumentText, alo);
+                            //email.AlternateViews.Add(fuente);
+
+                            //ContentType holi= new ContentType(mensajito.txtmsg.Font)
+                            //AlternateView fuente= AlternateView.CreateAlternateViewFromString()
+                            //email.AlternateViews.
+                            if (mensajito.Adjunto())
+                            {
+                                foreach (string ruta in mensajito.ArchivosAdjuntos())
+                                {
+                                    Attachment Archivos = new Attachment(ruta);
+                                    email.Attachments.Add(Archivos);
+                                }
+                            }
+                            else
+                                email.Attachments.Clear();
+                            email.IsBodyHtml = false;
+                            SmtpClient smtp = new SmtpClient();
+                            smtp.Host = "smtp.live.com";
+                            smtp.Port = 25;
+                            smtp.EnableSsl = true;
+                            smtp.UseDefaultCredentials = false;
+                            smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
+                            smtp.Send(email);
+                            email.Dispose();
+                            MSG("Correo electrónico fue enviado satisfactoriamente.");
+                        }
+                        catch (Exception ex)
+                        {
+                            MSG("Error enviando correo electrónico: " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MSG("Error enviando correo electrónico: " + ex.Message);
+                        MSG("Orden De compra no enviada");
                     }
                 }
-                else
-                {
-                    MSG("Orden De compra no enviada");
-                }
-            }
         }
 
         private void btnAnular_Click(object sender, EventArgs e)

@@ -45,6 +45,7 @@
             this.AdbVer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("AdbVer.OcxState")));
             this.AdbVer.Size = new System.Drawing.Size(897, 670);
             this.AdbVer.TabIndex = 0;
+            this.AdbVer.Enter += new System.EventHandler(this.AdbVer_Enter);
             // 
             // dtgconten
             // 

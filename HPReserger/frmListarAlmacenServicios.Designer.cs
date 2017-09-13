@@ -445,6 +445,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.gridDetalle1);
+            this.MaximumSize = new System.Drawing.Size(624, 590);
+            this.MinimumSize = new System.Drawing.Size(624, 590);
             this.Name = "frmListarAlmacenServicios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listar Articulos Almacen";

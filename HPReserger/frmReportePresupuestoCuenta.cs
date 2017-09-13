@@ -36,7 +36,7 @@ namespace HPReserger
             {
                 cbocuenta.ValueMember = "Id_CtaCtble";
                 cbocuenta.DisplayMember = "Id_CtaCtble";
-                cbocuenta.DataSource = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
+                cbocuenta.DataSource = CLPresuOpera.ListarPresupuestoCentrodeCostoReporteVerCuentas(int.Parse(cboproyecto.SelectedValue.ToString()));
                 if (cbocuenta.Items.Count < 1)
                     MSG("No hay Cuentas");
             }

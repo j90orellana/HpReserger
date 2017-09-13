@@ -676,6 +676,7 @@
             this.btnsectormas.Text = "+";
             this.tipmsg.SetToolTip(this.btnsectormas, "Agregar Sector Comercial");
             this.btnsectormas.UseVisualStyleBackColor = true;
+            this.btnsectormas.Click += new System.EventHandler(this.btnsectormas_Click);
             // 
             // btnbancosmas
             // 
@@ -909,8 +910,8 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label14);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(754, 734);
+            this.MinimumSize = new System.Drawing.Size(754, 734);
             this.Name = "frmproveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proveedor";
@@ -971,7 +972,6 @@
         private System.Windows.Forms.Label lblmsg;
         private System.Windows.Forms.Button btnlimpiar;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox Txtbusca;
         private System.Windows.Forms.DataGridView dtgconten;
         private System.Windows.Forms.ToolTip tipmsg;
         private System.Windows.Forms.Label label23;
@@ -984,7 +984,6 @@
         private System.Windows.Forms.Button btnsectormas;
         private System.Windows.Forms.Button btnbancosmas;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton6;
@@ -993,5 +992,7 @@
         private System.Windows.Forms.ComboBox cbosectorcomercial;
         public System.Windows.Forms.Button btnnuevo;
         public System.Windows.Forms.TextBox txtnumeroidentidad;
+        public System.Windows.Forms.TextBox Txtbusca;
+        public System.Windows.Forms.RadioButton radioButton2;
     }
 }

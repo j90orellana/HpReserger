@@ -232,7 +232,8 @@
             this.Controls.Add(this.txtcentro);
             this.Controls.Add(this.txtetapa);
             this.Controls.Add(this.lbl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MaximumSize = new System.Drawing.Size(964, 205);
+            this.MinimumSize = new System.Drawing.Size(964, 205);
             this.Name = "frmpresupuestoetapa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Presupuesto Etapa";

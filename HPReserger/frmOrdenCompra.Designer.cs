@@ -77,6 +77,8 @@
             this.gridOC.AllowUserToAddRows = false;
             this.gridOC.AllowUserToOrderColumns = true;
             this.gridOC.AllowUserToResizeRows = false;
+            this.gridOC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridOC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridOC.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gridOC.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -305,6 +307,9 @@
             this.gridDetalle.AllowUserToAddRows = false;
             this.gridDetalle.AllowUserToOrderColumns = true;
             this.gridDetalle.AllowUserToResizeRows = false;
+            this.gridDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -398,6 +403,7 @@
             // 
             // btnEnviar
             // 
+            this.btnEnviar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnviar.Location = new System.Drawing.Point(795, 379);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(75, 23);
@@ -408,6 +414,7 @@
             // 
             // btnAnular
             // 
+            this.btnAnular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnular.Location = new System.Drawing.Point(794, 448);
             this.btnAnular.Name = "btnAnular";
             this.btnAnular.Size = new System.Drawing.Size(75, 23);
@@ -422,7 +429,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(895, 623);
+            this.ClientSize = new System.Drawing.Size(885, 623);
             this.Controls.Add(this.btnAnular);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.label5);
@@ -435,7 +442,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gridOC);
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(901, 662);
             this.Name = "frmOrdenCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Orden de Compra y Servicio";

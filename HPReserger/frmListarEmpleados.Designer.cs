@@ -221,7 +221,8 @@
             this.ClientSize = new System.Drawing.Size(718, 319);
             this.Controls.Add(this.Grid);
             this.Controls.Add(this.groupBox1);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(734, 358);
+            this.MinimumSize = new System.Drawing.Size(734, 358);
             this.Name = "frmListarEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Listar Empleados";

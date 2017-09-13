@@ -298,8 +298,8 @@
             this.ClientSize = new System.Drawing.Size(795, 371);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(811, 410);
+            this.MinimumSize = new System.Drawing.Size(811, 410);
             this.Name = "frmOrdenPedidoCotizacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Orden de Pedido";

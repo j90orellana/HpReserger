@@ -52,6 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbVacaciones = new System.Windows.Forms.PictureBox();
             this.txtDiasPendientes = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDiasUtilizados = new System.Windows.Forms.TextBox();
@@ -80,13 +81,16 @@
             this.FECHAFIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DIASVACACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OBSERVACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAprobarVacaciones = new System.Windows.Forms.Button();
             this.btnSeleccionarImagen = new System.Windows.Forms.Button();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
             this.txtRuta = new System.Windows.Forms.TextBox();
             this.btnCompraVacaciones = new System.Windows.Forms.Button();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btndescargar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVacaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
@@ -245,6 +249,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pbVacaciones);
             this.groupBox1.Controls.Add(this.txtDiasPendientes);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtDiasUtilizados);
@@ -267,6 +272,18 @@
             this.groupBox1.Size = new System.Drawing.Size(383, 305);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
+            // 
+            // pbVacaciones
+            // 
+            this.pbVacaciones.Image = global::HPReserger.Properties.Resources.NoRegistrarVacaciones2;
+            this.pbVacaciones.InitialImage = null;
+            this.pbVacaciones.Location = new System.Drawing.Point(0, 0);
+            this.pbVacaciones.Name = "pbVacaciones";
+            this.pbVacaciones.Size = new System.Drawing.Size(383, 305);
+            this.pbVacaciones.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbVacaciones.TabIndex = 107;
+            this.pbVacaciones.TabStop = false;
+            this.pbVacaciones.Visible = false;
             // 
             // txtDiasPendientes
             // 
@@ -439,7 +456,7 @@
             // 
             // btnBoletaVacaciones
             // 
-            this.btnBoletaVacaciones.Location = new System.Drawing.Point(401, 528);
+            this.btnBoletaVacaciones.Location = new System.Drawing.Point(401, 526);
             this.btnBoletaVacaciones.Name = "btnBoletaVacaciones";
             this.btnBoletaVacaciones.Size = new System.Drawing.Size(172, 23);
             this.btnBoletaVacaciones.TabIndex = 101;
@@ -476,7 +493,8 @@
             this.FECHAINICIO,
             this.FECHAFIN,
             this.DIASVACACIONES,
-            this.ESTADO});
+            this.ESTADO,
+            this.OBSERVACION});
             this.Grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.Grid.Location = new System.Drawing.Point(401, 8);
             this.Grid.MultiSelect = false;
@@ -511,6 +529,7 @@
             // 
             // TIPOID
             // 
+            this.TIPOID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TIPOID.DataPropertyName = "TIPOID";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -520,9 +539,11 @@
             this.TIPOID.ReadOnly = true;
             this.TIPOID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.TIPOID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TIPOID.Width = 52;
             // 
             // NDI
             // 
+            this.NDI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NDI.DataPropertyName = "NID";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.NDI.DefaultCellStyle = dataGridViewCellStyle4;
@@ -531,9 +552,11 @@
             this.NDI.ReadOnly = true;
             this.NDI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.NDI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NDI.Width = 39;
             // 
             // DIASTRABAJADOS
             // 
+            this.DIASTRABAJADOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.DIASTRABAJADOS.DataPropertyName = "DIASTRABAJADOS";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -543,9 +566,11 @@
             this.DIASTRABAJADOS.ReadOnly = true;
             this.DIASTRABAJADOS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.DIASTRABAJADOS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DIASTRABAJADOS.Width = 73;
             // 
             // FECHAINICIO
             // 
+            this.FECHAINICIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FECHAINICIO.DataPropertyName = "FECHAINICIO";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.FECHAINICIO.DefaultCellStyle = dataGridViewCellStyle6;
@@ -554,9 +579,11 @@
             this.FECHAINICIO.ReadOnly = true;
             this.FECHAINICIO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.FECHAINICIO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.FECHAINICIO.Width = 65;
             // 
             // FECHAFIN
             // 
+            this.FECHAFIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FECHAFIN.DataPropertyName = "FECHAFIN";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
@@ -566,9 +593,11 @@
             this.FECHAFIN.ReadOnly = true;
             this.FECHAFIN.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.FECHAFIN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.FECHAFIN.Width = 68;
             // 
             // DIASVACACIONES
             // 
+            this.DIASVACACIONES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.DIASVACACIONES.DataPropertyName = "DIASVACACIONES";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.DIASVACACIONES.DefaultCellStyle = dataGridViewCellStyle8;
@@ -577,9 +606,11 @@
             this.DIASVACACIONES.ReadOnly = true;
             this.DIASVACACIONES.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.DIASVACACIONES.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DIASVACACIONES.Width = 65;
             // 
             // ESTADO
             // 
+            this.ESTADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ESTADO.DataPropertyName = "ESTADO";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.ESTADO.DefaultCellStyle = dataGridViewCellStyle9;
@@ -588,10 +619,19 @@
             this.ESTADO.ReadOnly = true;
             this.ESTADO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ESTADO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ESTADO.Width = 57;
+            // 
+            // OBSERVACION
+            // 
+            this.OBSERVACION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.OBSERVACION.DataPropertyName = "OBSERVACION";
+            this.OBSERVACION.HeaderText = "OBSERVACION";
+            this.OBSERVACION.Name = "OBSERVACION";
+            this.OBSERVACION.ReadOnly = true;
             // 
             // btnAprobarVacaciones
             // 
-            this.btnAprobarVacaciones.Location = new System.Drawing.Point(745, 528);
+            this.btnAprobarVacaciones.Location = new System.Drawing.Point(742, 526);
             this.btnAprobarVacaciones.Name = "btnAprobarVacaciones";
             this.btnAprobarVacaciones.Size = new System.Drawing.Size(172, 23);
             this.btnAprobarVacaciones.TabIndex = 102;
@@ -601,23 +641,13 @@
             // 
             // btnSeleccionarImagen
             // 
-            this.btnSeleccionarImagen.Location = new System.Drawing.Point(1078, 528);
+            this.btnSeleccionarImagen.Location = new System.Drawing.Point(1078, 526);
             this.btnSeleccionarImagen.Name = "btnSeleccionarImagen";
             this.btnSeleccionarImagen.Size = new System.Drawing.Size(267, 23);
             this.btnSeleccionarImagen.TabIndex = 103;
             this.btnSeleccionarImagen.Text = "Seleccionar Imagen de Boleta deVacaciones";
             this.btnSeleccionarImagen.UseVisualStyleBackColor = true;
             this.btnSeleccionarImagen.Click += new System.EventHandler(this.btnSeleccionarImagen_Click);
-            // 
-            // pbFoto
-            // 
-            this.pbFoto.Location = new System.Drawing.Point(1078, 8);
-            this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(466, 512);
-            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFoto.TabIndex = 104;
-            this.pbFoto.TabStop = false;
-            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
             // 
             // txtRuta
             // 
@@ -629,13 +659,39 @@
             // 
             // btnCompraVacaciones
             // 
-            this.btnCompraVacaciones.Location = new System.Drawing.Point(12, 530);
+            this.btnCompraVacaciones.Location = new System.Drawing.Point(12, 526);
             this.btnCompraVacaciones.Name = "btnCompraVacaciones";
-            this.btnCompraVacaciones.Size = new System.Drawing.Size(172, 23);
+            this.btnCompraVacaciones.Size = new System.Drawing.Size(173, 23);
             this.btnCompraVacaciones.TabIndex = 106;
             this.btnCompraVacaciones.Text = "Compra de Vacaciones";
             this.btnCompraVacaciones.UseVisualStyleBackColor = true;
             this.btnCompraVacaciones.Click += new System.EventHandler(this.btnCompraVacaciones_Click);
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.BackColor = System.Drawing.SystemColors.Control;
+            this.pbFoto.Location = new System.Drawing.Point(1078, 8);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(466, 512);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFoto.TabIndex = 104;
+            this.pbFoto.TabStop = false;
+            this.pbFoto.Click += new System.EventHandler(this.pbFoto_Click);
+            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(1290, 491);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 107;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
             // frmVacaciones
             // 
@@ -644,6 +700,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1552, 561);
+            this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.btnCompraVacaciones);
             this.Controls.Add(this.txtRuta);
             this.Controls.Add(this.pbFoto);
@@ -653,15 +710,17 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnBoletaVacaciones);
             this.Controls.Add(this.groupBox2);
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1568, 600);
             this.Name = "frmVacaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Vacaciones";
             this.Load += new System.EventHandler(this.frmVacaciones_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmVacaciones_MouseMove);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVacaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.ResumeLayout(false);
@@ -718,5 +777,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAFIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DIASVACACIONES;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OBSERVACION;
+        protected System.Windows.Forms.PictureBox pbVacaciones;
+        private System.Windows.Forms.Button btndescargar;
     }
 }

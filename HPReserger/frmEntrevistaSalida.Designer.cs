@@ -54,8 +54,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 684);
             this.Controls.Add(this.crvEntrevistaSalida);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmEntrevistaSalida";
             this.Text = "  Entrevista de Salida";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

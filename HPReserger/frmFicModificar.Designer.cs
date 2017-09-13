@@ -244,7 +244,8 @@
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.groupBox1);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(347, 364);
+            this.MinimumSize = new System.Drawing.Size(347, 364);
             this.Name = "frmFicModificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Modificar FIC";

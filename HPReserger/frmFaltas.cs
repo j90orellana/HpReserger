@@ -28,7 +28,7 @@ namespace HPReserger
         private void frmFaltas_Load(object sender, EventArgs e)
         {
             estado = 1; txtRuta.Text = "";
-            groupBox1.Enabled = false;
+            groupBox1.Visible = false;
             LimpiarGrillas();
             txtNumeroDocumento.Text = "";
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
@@ -72,19 +72,24 @@ namespace HPReserger
                 DataRow Contratoactivo = clEmpleadoFaltas.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
                 if (Contratoactivo != null)
                 {
+                    groupBox1.Visible = true;
                     groupBox1.Enabled = btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = true;
                     lblmensajito.Text = "EMPLEADO ACTIVO CONTRATO Nº" + Contratoactivo["Nro_Contrato"].ToString();
+                    pbFaltas.Visible = false;
                 }
                 else
                 {
-                    groupBox1.Enabled = btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
+                    groupBox1.Enabled = true;
+                    groupBox1.Visible = true;
+                    btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
                     lblmensajito.Text = "EMPLEADO INACTIVO";
                     btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
+                    pbFaltas.Visible = true;
                 }
             }
             else
             {
-                txtApellidoPaterno.Text = ""; groupBox1.Enabled = false; btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
+                txtApellidoPaterno.Text = ""; groupBox1.Visible = false; btnRegistrarFalta.Enabled = btnAdjuntarSustento.Enabled = false;
                 txtApellidoMaterno.Text = "";
                 txtNombres.Text = "";
                 txtDias.Text = "";
@@ -331,6 +336,28 @@ namespace HPReserger
             {
                 estado = 1; btnAdjuntarSustento.Enabled = true;
             }
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void pbFoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void frmFaltas_MouseMove(object sender, MouseEventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
     }
 }

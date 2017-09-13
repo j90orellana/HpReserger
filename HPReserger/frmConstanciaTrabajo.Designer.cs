@@ -52,8 +52,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 606);
             this.Controls.Add(this.crvConstanciaTrabajo);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmConstanciaTrabajo";
             this.Text = "  Constancia de Trabajo";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -14,15 +14,24 @@ namespace HPResergerCapaLogica
     {
         HPResergerCapaDatos.HPResergerCD cdOrdenPedido = new HPResergerCapaDatos.HPResergerCD();
         /// <summary>
-        /// 
+        /// Listar Empleado Contrato
+        /// </summary>
+        ///<example> y que dice</example>
+        ///<param name="numero" >Numero De contrato</param>
+        ///<param name="tipo">Tipo de Contrato</param>
         public DataTable ListarEmpleadoContrato(int tipo, string numero)
         {
             return cdOrdenPedido.ListarContratoEmpleado(tipo, numero);
         }
+        /// <summary>
+        /// Aguega un Perfil
+        /// </summary>
+        /// <param name="descripcion">Descripción del perfil</param>
         public void AgregarPerfil(string descripcion)
         {
             cdOrdenPedido.AgregarPerfil(descripcion);
         }
+        
         public void ActualizarPerfil(int codigo, string descripcion)
         {
             cdOrdenPedido.ActualizarPerfil(codigo, descripcion);
@@ -606,9 +615,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarAsientoRecibo(num, opcion, oc, monto, igv, total, cc, numfac);
         }
-        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario)
+        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario, int detraccion, decimal nroconstancia)
         {
-            cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, fecharecepcion, estado, moneda, imgfactura, usuario);
+            cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, fecharecepcion, estado, moneda, imgfactura, usuario, detraccion, nroconstancia);
         }
         public DataTable ListarFicsDetalle(string fic)
         {
@@ -1050,6 +1059,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarCuentasArticulos();
         }
+        public DataTable ListarCentroCostoTieneCuenta()
+        {
+            return cdOrdenPedido.ListarCentroCostoTieneCuenta();
+        }
         public DataTable ListarCentroCostos()
         {
             return cdOrdenPedido.ListarCentroCostos();
@@ -1106,6 +1119,14 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarAsientoFactura(num, opcion, oc, monto, igv, total, cc, numfac);
         }
+        public DataTable InsertarAsientoFacturaLlegada(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
+        {
+            return cdOrdenPedido.InsertarAsientoFacturaLlegada(num, opcion, oc, monto, igv, total, cc, numfac);
+        }
+        public DataTable InsertarAsientoFacturaProvisionada(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
+        {
+            return cdOrdenPedido.InsertarAsientoFacturaProvisionada(num, opcion, oc, monto, igv, total, cc, numfac);
+        }
         public DataRow Siguiente(string tabla, string campo)
         {
             return cdOrdenPedido.Siguiente(tabla, campo);
@@ -1113,6 +1134,10 @@ namespace HPResergerCapaLogica
         public DataTable ListarPresupuestoCentrodeCostoReporte(int proyecto)
         {
             return cdOrdenPedido.ListarPresupuestoCentrodeCostoReporte(proyecto);
+        }
+        public DataTable ListarPresupuestoCentrodeCostoReporteVerCuentas(int proyecto)
+        {
+            return cdOrdenPedido.ListarPresupuestoCentrodeCostoReporteVerCuentas(proyecto);
         }
         public DataTable ListarPresupuestoCentrodeCostoReporteCuentas(int proyecto, string cuentas)
         {
@@ -1256,6 +1281,71 @@ namespace HPResergerCapaLogica
         public DataTable InsertarActualizarVinculoFamiliar(int @cod, int @opcion, string @cargo, int @usuario)
         {
             return cdOrdenPedido.InsertarActualizarVinculoFamiliar(cod, opcion, cargo, usuario);
+        }
+        public DataTable InsertarActualizarListarAfp(int @cod, int @opcion, string descripcion, decimal aporte, decimal seguro, decimal comision, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarListarAfp(cod, opcion, descripcion, aporte, seguro, comision, usuario);
+        }
+        public DataTable InsertarActualizarListarInstitucionEducativa(string @cod, int @opcion, string descripcion, string direccion, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarListarInstitucionEducativa(cod, opcion, descripcion, direccion, usuario);
+        }
+        public DataTable InsertarActualizarListarPais(string @cod, int @opcion, string campo1, string campo2, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarListarPais(cod, opcion, campo1, campo2, usuario);
+        }
+        public DataTable InsertarActualizarListarOperacion(string @cod, int @opcion, string campo1, string campo2, int @usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarListarOperacion(cod, opcion, campo1, campo2, usuario);
+        }
+        public DataTable InsertarActualizarListarSubOperacion(string @cod, int @opcion, string campo1, string campo2, string campo3, int @usuario, int cod2)
+        {
+            return cdOrdenPedido.InsertarActualizarListarSubOperacion(cod, opcion, campo1, campo2, campo3, usuario, cod2);
+        }
+        public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo, string @repre, int @cia, int usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarListarEmpresas(@id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario);
+
+        }
+        public DataTable BuscarEmpleadoActivo()
+        {
+            return cdOrdenPedido.BuscarEmpleadoActivo();
+        }
+        public DataTable ActualizarParametros(int @opcion, string @campo, decimal valor, string observa, int usuario)
+        {
+            return cdOrdenPedido.ActualizarParametros(opcion, campo, valor, observa, usuario);
+        }
+        public DataTable ListarDetalleDelReporteDeCentrodeCostoFecha(int etapa, int cuenta, DateTime fecha)
+        {
+            return cdOrdenPedido.ListarDetalleDelReporteDeCentrodeCostoFecha(etapa, cuenta, fecha);
+        }
+        public DataTable ListarDetalleDelReporteDeCentrodeCostoFechaFacturas(int etapa, int cuenta, DateTime fecha)
+        {
+            return cdOrdenPedido.ListarDetalleDelReporteDeCentrodeCostoFechaFacturas(etapa, cuenta, fecha);
+        }
+        public DataTable ListarCotizacionesPorNumero(int numero)
+        {
+            return cdOrdenPedido.ListarCotizacionesPorNumero(numero);
+        }
+        public DataTable InsertarActualizarImpuestoRenta(int opcion, int codigo, string descripcion, decimal minimo, decimal maximo, decimal valor, string observacion, int usuario)
+        {
+            return cdOrdenPedido.InsertarActualizarImpuestoRenta(opcion, codigo, descripcion, minimo, maximo, valor, observacion, usuario);
+        }
+        public DataTable BuscarPaisActual(string pais)
+        {
+            return cdOrdenPedido.BuscarPaisActual(pais);
+        }
+        public DataTable EliminarFactura(int fic, int estado)
+        {
+            return cdOrdenPedido.EliminarFactura(fic, estado);
+        }
+        /// <summary>
+        /// Listar Empleados Desvinculados
+        /// </summary>
+        /// <returns>Regresa una tabla</returns>
+        public DataTable ListarEmpleadosDesvinculados()
+        {
+            return cdOrdenPedido.ListarEmpleadosDesvinculados();
         }
     }
 }

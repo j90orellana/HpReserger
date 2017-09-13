@@ -163,9 +163,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(476, 205);
+            this.ClientSize = new System.Drawing.Size(456, 205);
             this.Controls.Add(this.btngenerar);
             this.Controls.Add(this.groupBox1);
+            this.MaximumSize = new System.Drawing.Size(472, 244);
+            this.MinimumSize = new System.Drawing.Size(472, 244);
             this.Name = "FrmGenerarRemuneracionRenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar Certificado de Remuneracion y Renta de Quinta Categoria";

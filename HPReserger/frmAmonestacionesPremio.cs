@@ -120,20 +120,29 @@ namespace HPReserger
                 DataRow Contratoactivo = clAmonestacionesPremio.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
                 if (Contratoactivo != null)
                 {
-                    tab.Enabled = btnGenerar.Enabled =  true;
+                    tab.Enabled = btnGenerar.Enabled = true;
                     lblmensajito.Text = "EMPLEADO ACTIVO CONTRATO Nº" + Contratoactivo["Nro_Contrato"].ToString();
+                    btnAdjuntarSustento.Enabled = true;
                 }
                 else
                 {
-                    tab.Enabled = btnGenerar.Enabled =  false;
+                    btnAdjuntarSustento.Enabled = false;
+                    tab.Enabled = btnGenerar.Enabled = false;
                     lblmensajito.Text = "EMPLEADO INACTIVO";
                 }
             }
             else
             {
+                if (Grid.RowCount > 0)
+                {
+                    DataTable Filas = ((DataTable)Grid.DataSource).Clone();
+                    Grid.DataSource = Filas;
+                }
                 txtApellidoPaterno.Text = "";
                 txtApellidoMaterno.Text = "";
-                txtNombres.Text = "";
+                txtNombres.Text = txtObservacionesMemo.Text = "";
+                pbFoto.Image = null; lblmensajito.Text = "";
+                txtRuta.Text = "";
             }
         }
 
@@ -206,7 +215,7 @@ namespace HPReserger
 
         private void CargarFoto(int Registro, int TipoDocumento, string NumeroDocumento, int Tipo)
         {
-            DataRow drFoto = clAmonestacionesPremio.ImagenEmpleadoMemoPremio(Registro, TipoDocumento, NumeroDocumento,Tipo);
+            DataRow drFoto = clAmonestacionesPremio.ImagenEmpleadoMemoPremio(Registro, TipoDocumento, NumeroDocumento, Tipo);
             if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
             {
                 byte[] Fotito = new byte[0];
@@ -277,6 +286,28 @@ namespace HPReserger
                 frmMPO.Observaciones = Grid.CurrentRow.Cells[5].Value.ToString();
                 frmMPO.ShowDialog();
             }
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void pbFoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void frmAmonestacionesPremio_MouseMove(object sender, MouseEventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
     }
 }

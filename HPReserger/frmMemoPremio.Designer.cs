@@ -54,8 +54,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 612);
             this.Controls.Add(this.crvMemoPremio);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmMemoPremio";
             this.Text = "  Memorandum y/o Cartas de Felicitación";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

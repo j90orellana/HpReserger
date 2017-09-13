@@ -34,6 +34,7 @@ namespace HPReserger
             DataRow DatosProyecto = CLProyectos.ProyectodatosListar(Proyecto);
             if (DatosProyecto != null)
             {
+                CalcularDatos();
                 txtubicacion.Text = DatosProyecto["Ubicacion"].ToString();
                 cbomoneda.SelectedValue = DatosProyecto["moneda"].ToString();
                 txtareabruta.Text = DatosProyecto["AreaBruta"].ToString();
@@ -331,6 +332,31 @@ namespace HPReserger
         }
 
         private void Dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        public void CalcularDatos()
+        {
+            if (Dtgconten.RowCount > 0)
+            {
+                int contador = 0, c = 0;
+                foreach (DataGridViewRow filita in Dtgconten.Rows)
+                {
+                    contador += int.Parse(filita.Cells["mesesconstruccion"].Value.ToString());
+                    c++;
+                }
+                if (contador == 1) txtplazo.Text = contador + " Mes";
+                else
+                    txtplazo.Text = contador + " Meses";
+
+                if (c == 1)
+                    txtetapas.Text = c + " Etapa";
+                else
+                    txtetapas.Text = c + " Etapas";
+            }
+        }
+
+        private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 
         }

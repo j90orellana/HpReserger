@@ -24,7 +24,7 @@ namespace HPReserger
         private void frmreportepresupuestoetapas_Load(object sender, EventArgs e)
         {
             ok = false;
-            Application.CurrentCulture = new System.Globalization.CultureInfo("EN-US");
+            //Application.CurrentCulture = new System.Globalization.CultureInfo("EN-US");
             dtgconten.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
             dtgoperaciones.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
             dtgdiferencia.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);

@@ -52,17 +52,13 @@ namespace HPReserger
         {
             if (gridDetalle1.RowCount > 0)
             {
-                //gridDetalle1.DataSource = null;
-                //gridDetalle1.Rows.Clear();
-                //.Columns.Clear();
-               //   gridDetalle1.Refresh();
+                DataTable tablita = ((DataTable)gridDetalle1.DataSource).Clone();
+                gridDetalle1.DataSource = tablita;
             }
             if (gridDetalle2.RowCount > 0)
             {
-                //gridDetalle2.DataSource = null;
-                //gridDetalle2.Rows.Clear();
-                // gridDetalle2.Columns.Clear();
-                  //gridDetalle2.Refresh();
+                DataTable tablita = ((DataTable)gridDetalle2.DataSource).Clone();
+                gridDetalle2.DataSource = tablita;
             }
         }
         private void TitulosGrillas()
@@ -175,7 +171,7 @@ namespace HPReserger
             {
                 Actualiza(Convert.ToInt32(cboOC.SelectedValue.ToString()));
             }
-            
+
         }
         private void Actualiza(int OC)
         {
@@ -188,7 +184,7 @@ namespace HPReserger
                 }
                 else
                 {
-                   // gridDetalle1.DataSource = null;
+                    // gridDetalle1.DataSource = null;
                 }
             }
             else
@@ -206,14 +202,14 @@ namespace HPReserger
             }
             else
             {
-               // gridDetalle2.DataSource = null;
+                // gridDetalle2.DataSource = null;
             }
         }
 
         private void frmListarAlmacenArticulos_Load(object sender, EventArgs e)
         {
 
-           // LimpiarGrillas();
+            // LimpiarGrillas();
             //TitulosGrillas();
         }
 

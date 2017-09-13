@@ -30,16 +30,16 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.falta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtcotizacion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtorden = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btncopiar = new System.Windows.Forms.Button();
-            this.falta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +79,37 @@
             this.dtgconten.Size = new System.Drawing.Size(531, 155);
             this.dtgconten.TabIndex = 25;
             this.dtgconten.TabStop = false;
+            // 
+            // falta
+            // 
+            this.falta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.falta.DataPropertyName = "falta";
+            this.falta.HeaderText = "Faltante";
+            this.falta.Name = "falta";
+            this.falta.Width = 70;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.DataPropertyName = "descripcion";
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // ma
+            // 
+            this.ma.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.ma.DataPropertyName = "ma";
+            this.ma.HeaderText = "Marca";
+            this.ma.Name = "ma";
+            this.ma.Width = 5;
+            // 
+            // mo
+            // 
+            this.mo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.mo.DataPropertyName = "mo";
+            this.mo.HeaderText = "Modelo";
+            this.mo.Name = "mo";
+            this.mo.Visible = false;
             // 
             // txtcotizacion
             // 
@@ -137,38 +168,6 @@
             this.btncopiar.UseVisualStyleBackColor = true;
             this.btncopiar.Click += new System.EventHandler(this.btncopiar_Click);
             // 
-            // falta
-            // 
-            this.falta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.falta.DataPropertyName = "falta";
-            this.falta.HeaderText = "Faltante";
-            this.falta.Name = "falta";
-            this.falta.Width = 70;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.DataPropertyName = "descripcion";
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // ma
-            // 
-            this.ma.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.ma.DataPropertyName = "ma";
-            this.ma.HeaderText = "Marca";
-            this.ma.Name = "ma";
-            this.ma.Width = 5;
-            // 
-            // mo
-            // 
-            this.mo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.mo.DataPropertyName = "mo";
-            this.mo.HeaderText = "Modelo";
-            this.mo.Name = "mo";
-            this.mo.Visible = false;
-            this.mo.Width = 5;
-            // 
             // frmlistarOrdenesfaltantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +181,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtcotizacion);
             this.Controls.Add(this.dtgconten);
+            this.MaximumSize = new System.Drawing.Size(571, 299);
+            this.MinimumSize = new System.Drawing.Size(571, 299);
             this.Name = "frmlistarOrdenesfaltantes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle de la Orden de Compra Faltante";

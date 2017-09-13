@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -131,8 +132,10 @@ namespace HPReserger
             {
                 /// MSG(drCOT["correo"].ToString());
                 frmMensajeCorreo mensajito = new frmMensajeCorreo();
-                mensajito.txtmsg.Text = "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
-                mensajito.Text = "Solicitud de Factura"; ;
+                mensajito.txtmsg.Text = "Hp Reserger S.A.C. \nEs Un Placer Saludarlos para Recordarles " + (char)13 + "que";
+                //mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
+                mensajito.Text = "Solicitud de Factura";
+                mensajito.txtasunto.Text = "Solicitud de Factura";
                 mensajito.ShowDialog();
                 if (mensajito.ok)
                 {
@@ -142,10 +145,26 @@ namespace HPReserger
                         MailMessage email = new MailMessage();
                         //CORREO DE PROVEEDOR
                         email.To.Add(new MailAddress(dtgconten["email", dtgconten.CurrentCell.RowIndex].Value.ToString()));
+                        ///
                         email.From = new MailAddress("j90orellana@hotmail.com");
-                        email.Subject = "Re:Cotización Aprobada";
-                        email.Priority = MailPriority.High;
-                        email.Body = "Hp Reserger S.A.C. \n " + mensajito.cadena; ;
+                        email.Subject = mensajito.txtasunto.Text;
+                        email.Priority = mensajito.PrioridadCorreo();
+                        //email.Body = mensajito.cadena;
+                        //ContentType alo = new ContentType(MediaTypeNames.Text.RichText);
+                        //AlternateView fuente = AlternateView.CreateAlternateViewFromString(mensajito.txtmsg.DocumentText, alo);
+                        //email.AlternateViews.Add(fuente);
+                        if (mensajito.Adjunto())
+                        {
+                            foreach (string ruta in mensajito.ArchivosAdjuntos())
+                            {
+                                Attachment Archivos = new Attachment(ruta);
+                                email.Attachments.Add(Archivos);
+                            }
+                        }
+                        else
+                            email.Attachments.Clear();
+                        email.Body = mensajito.txtmsg.Text;
+                        ///                       
                         email.IsBodyHtml = false;
                         SmtpClient smtp = new SmtpClient();
                         smtp.Host = "smtp.live.com";

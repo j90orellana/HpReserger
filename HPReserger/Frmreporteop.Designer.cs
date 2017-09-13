@@ -422,6 +422,7 @@
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.groupBox1);
+            this.MinimumSize = new System.Drawing.Size(750, 752);
             this.Name = "Frmreporteop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ver Ordenes de Pedido";

@@ -557,7 +557,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(681, 707);
+            this.ClientSize = new System.Drawing.Size(684, 711);
             this.Controls.Add(this.dtgayuda2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnlimpiar);
@@ -587,8 +587,8 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dtgbusca);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(700, 750);
+            this.MinimumSize = new System.Drawing.Size(700, 750);
             this.Name = "frmdinamicaContable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dinámica Cuenta Contable";

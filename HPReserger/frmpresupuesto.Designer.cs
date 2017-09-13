@@ -412,6 +412,8 @@
             this.Controls.Add(this.btndetalle);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.btnmodificar);
+            this.MaximumSize = new System.Drawing.Size(734, 566);
+            this.MinimumSize = new System.Drawing.Size(734, 566);
             this.Name = "frmpresupuesto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Presupuestos";

@@ -144,7 +144,10 @@ namespace HPReserger
                 txtsumatoria.Text = sumatoria.ToString();
             }
             else
+            {
                 txtsumatoria.Text = "0.00";
+                dtgconten1.DataSource = null;
+            }
             ContarRegistros(dtgconten);
         }
 
@@ -279,8 +282,10 @@ namespace HPReserger
         {
             if (dtgconten["TIPO", e.RowIndex].Value.ToString() == "ARTICULO") op = 1;
             else op = 0;
-            dtgconten1.DataSource = CReportORden.reportepedidodetalle(op, Convert.ToInt32(dtgconten["nroPED.", e.RowIndex].Value.ToString()));
-
+            if (dtgconten.RowCount > 0)
+                dtgconten1.DataSource = CReportORden.reportepedidodetalle(op, Convert.ToInt32(dtgconten["nroPED.", e.RowIndex].Value.ToString()));
+            else
+                dtgconten1.DataSource = null;
         }
 
         private void checkBox9_CheckedChanged(object sender, EventArgs e)

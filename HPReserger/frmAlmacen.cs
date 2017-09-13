@@ -38,8 +38,8 @@ namespace HPReserger
             }
             else
             {
-                LimpiarGrillas();
-                TitulosGrillas();
+             //   LimpiarGrillas();
+                //TitulosGrillas();
             }
         }
 
@@ -57,7 +57,7 @@ namespace HPReserger
             else
             {
                 LimpiarGrillas();
-                TitulosGrillas();
+               // TitulosGrillas();
             }
         }
 
@@ -83,13 +83,14 @@ namespace HPReserger
             txtRUC.Text = "";
             txtGR.Text = "";
 
-            LimpiarGrillas();
-            TitulosGrillas();
+           // LimpiarGrillas();
+            //TitulosGrillas();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtRUC.Text.Length < 8) {
+            if (txtRUC.Text.Length < 8)
+            {
                 MessageBox.Show("Ingresé Nro de Ruc", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtRUC.Focus();
                 return;
@@ -107,7 +108,7 @@ namespace HPReserger
                 txtGR.Focus();
                 return;
             }
-            DataTable dtGuiaRemisionProveedor = clFIG.OrdenCompraProveedor(txtRUC.Text, Convert.ToInt32(txtGR.Text), Convert.ToInt32(cboOC.Text.Substring(2)),0);
+            DataTable dtGuiaRemisionProveedor = clFIG.OrdenCompraProveedor(txtRUC.Text, Convert.ToInt32(txtGR.Text), Convert.ToInt32(cboOC.Text.Substring(2)), 0);
             if (dtGuiaRemisionProveedor.Rows.Count > 0)
             {
                 MessageBox.Show("Guía de Remisión ya existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -188,13 +189,12 @@ namespace HPReserger
             if (ListaOCProveedor.Rows.Count > 0)
             {
                 cboOC.DataSource = ListaOCProveedor;
-                TitulosGrillas();
             }
             else
             {
                 LimpiarCombos();
-                LimpiarGrillas();
-                TitulosGrillas();
+                //LimpiarGrillas();
+                //TitulosGrillas();
             }
         }
 
@@ -207,26 +207,32 @@ namespace HPReserger
 
         private void LimpiarGrillas()
         {
-            gridDetalle.DataSource = null;
-            gridDetalle.Rows.Clear();
-            gridDetalle.Columns.Clear();
-            gridDetalle.Refresh();
+            DataTable tablitas = ((DataTable)gridDetalle.DataSource).Clone();
+            gridDetalle.DataSource = tablitas;
+            tablitas = ((DataTable)gridDetalle1.DataSource).Clone();
+            gridDetalle1.DataSource = tablitas;
+            tablitas = ((DataTable)gridDetalle2.DataSource).Clone();
+            gridDetalle2.DataSource = tablitas;
+            //gridDetalle.DataSource = null;
+            //gridDetalle.Rows.Clear();
+            //gridDetalle.Columns.Clear();
+            //gridDetalle.Refresh();
 
-            gridDetalle1.DataSource = null;
-            gridDetalle1.Rows.Clear();
-            gridDetalle1.Columns.Clear();
-            gridDetalle1.Refresh();
+            //gridDetalle1.DataSource = null;
+            //gridDetalle1.Rows.Clear();
+            //gridDetalle1.Columns.Clear();
+            //gridDetalle1.Refresh();
 
-            gridDetalle2.DataSource = null;
-            gridDetalle2.Rows.Clear();
-            gridDetalle2.Columns.Clear();
-            gridDetalle2.Refresh();
+            //gridDetalle2.DataSource = null;
+            //gridDetalle2.Rows.Clear();
+            //gridDetalle2.Columns.Clear();
+            //gridDetalle2.Refresh();
         }
 
         private void frmAlmacen_FormClosing(object sender, FormClosingEventArgs e)
         {
             LimpiarCombos();
-            LimpiarGrillas();
+           // LimpiarGrillas();
         }
 
         private void TitulosGrillas()
@@ -469,12 +475,33 @@ namespace HPReserger
             }
             return 0;
         }
-
+        frmListarAlmacenArticulos frmlistar;
         private void btnlistar_Click(object sender, EventArgs e)
         {
-            frmListarAlmacenArticulos frmlistar = new frmListarAlmacenArticulos();
-            frmlistar.txtRUC.Text = txtRUC.Text;
-            frmlistar.ShowDialog();
+            if (frmlistar == null)
+            {
+                frmlistar = new frmListarAlmacenArticulos();
+                frmlistar.txtRUC.Text = txtRUC.Text;
+                frmlistar.MdiParent = this.MdiParent;
+                frmlistar.FormClosed += new FormClosedEventHandler(cerrarlistaralmacen);
+                frmlistar.Show();
+            }
+            else
+            {
+                frmlistar.Activate();
+                ValidarVentanas(frmlistar);
+            }
+        }
+        void cerrarlistaralmacen(object sender, FormClosedEventArgs e)
+        {
+            frmlistar = null;
+        }
+        public void ValidarVentanas(Form formulario)
+        {
+            if (formulario.WindowState != FormWindowState.Normal)
+                formulario.WindowState = FormWindowState.Normal;
+            formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
+            formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2);
         }
     }
 }

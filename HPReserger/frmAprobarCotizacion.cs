@@ -49,9 +49,10 @@ namespace HPReserger
         private void frmAprobarCotizacion_Load(object sender, EventArgs e)
         {
             Mostrar(frmLogin.CodigoUsuario);
-            System.Globalization.CultureInfo CT = new System.Globalization.CultureInfo("EN-US");
-            Application.CurrentCulture = CT;
+            //System.Globalization.CultureInfo CT = new System.Globalization.CultureInfo("EN-US");
+            //Application.CurrentCulture = CT;
             pbFoto.Image = null;
+
         }
 
         private void Mostrar(int Usuario)
@@ -95,7 +96,7 @@ namespace HPReserger
                 MessageBox.Show("Mínimo son 3 cotizaciones", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-            
+
             if (MessageBox.Show("¿ Desea Aprobar Cotización Nº " + gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString() + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 clAprobarCotizacion.AprobacionNOCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2)), "usp_Set_Aprobacion_Cotizacion");
@@ -103,7 +104,7 @@ namespace HPReserger
                 int fila = 0;
                 for (fila = 0; fila < gridCotizacionesAsociadas.Rows.Count; fila++)
                 {
-                    if(fila != ItemAprob)
+                    if (fila != ItemAprob)
                     {
                         clAprobarCotizacion.AprobacionNOCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.Rows[fila].Cells[0].Value.ToString().Substring(2)), "usp_Set_NOAprobacion_Cotizacion");
                     }
@@ -114,19 +115,27 @@ namespace HPReserger
                 {
                     TipoArticulo = 1;
                 }
-                clAprobarCotizacion.OrdenCompraInsertar(out NumeroCotizacion, Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2)),  Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[8].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[10].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[1].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[3].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[5].Value.ToString()), gridCotizacionesAsociadas.Rows[ItemAprob].Cells[2].Value.ToString(), Convert.ToDecimal(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[4].Value.ToString()), TipoArticulo);
+                clAprobarCotizacion.OrdenCompraInsertar(out NumeroCotizacion, Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2)), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[8].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[10].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[1].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[3].Value.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[5].Value.ToString()), gridCotizacionesAsociadas.Rows[ItemAprob].Cells[2].Value.ToString(), Convert.ToDecimal(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[4].Value.ToString()), TipoArticulo);
 
                 string Cot = gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2);
                 Mostrar(frmLogin.CodigoUsuario);
-                MessageBox.Show("Se aprobó la Cotización Nº " + Cot + " y se generó la OC Nº " + Convert.ToString(NumeroCotizacion) + "" , "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se aprobó la Cotización Nº " + Cot + " y se generó la OC Nº " + Convert.ToString(NumeroCotizacion) + "", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 pbFoto.Image = null;
             }
         }
 
         private void gridCotizacionesAsociadas_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            ItemAprob = e.RowIndex;
-            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2)), e.RowIndex);
+            if (e.RowIndex >= 0)
+            {
+                btndetalle.Enabled = true;
+                ItemAprob = e.RowIndex;
+                CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2)), e.RowIndex);
+            }
+            else
+            {
+                btndetalle.Enabled = false;
+            }
         }
         private void CargarFoto(int Cotizacion, int Item)
         {
@@ -282,6 +291,58 @@ namespace HPReserger
                 Grid.Columns[6].Visible = false;
                 Grid.Columns[6].DataPropertyName = "ADJUNTO";
             }
+        }
+
+        private void gridCotizacionesAsociadas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                frmMostrarCotizacionDetalle frmmotrar = new frmMostrarCotizacionDetalle();
+                int len = gridCotizacionesAsociadas["COTIZACION", e.RowIndex].Value.ToString().Length;
+                int numero = frmmotrar.numero = int.Parse(gridCotizacionesAsociadas["COTIZACION", e.RowIndex].Value.ToString().Substring(2, len - 2));
+                //MessageBox.Show(gridCotizacionesAsociadas["COTIZACION", e.RowIndex].Value.ToString().Substring(2, len - 2));
+                frmmotrar.txtcotizacion.Text = numero.ToString();
+                frmmotrar.txtimporte.Text = gridCotizacionesAsociadas["IMPORTE", e.RowIndex].Value.ToString();
+                frmmotrar.txtruc.Text = gridCotizacionesAsociadas["CODIGOPROVEEDOR", e.RowIndex].Value.ToString();
+                frmmotrar.txtproveedor.Text = gridCotizacionesAsociadas["PROVEEDOR", e.RowIndex].Value.ToString();
+                //frmmotrar.dateTimePicker1.Value = HPResergerFunciones.Utilitarios.DeStringDiaMesAÑoaDatetime(gridCotizacionesAsociadas["FECHAENTREGA", e.RowIndex].Value.ToString());
+                frmmotrar.dateTimePicker1.Value = DateTime.Parse(gridCotizacionesAsociadas["FECHAENTREGA", e.RowIndex].Value.ToString());
+                frmmotrar.Show();
+            }
+        }
+
+        private void btndetalle_Click(object sender, EventArgs e)
+        {
+            int fila = gridCotizacionesAsociadas.CurrentCell.RowIndex;
+            frmMostrarCotizacionDetalle frmmotrar = new frmMostrarCotizacionDetalle();
+            int len = gridCotizacionesAsociadas["COTIZACION", fila].Value.ToString().Length;
+            int numero = frmmotrar.numero = int.Parse(gridCotizacionesAsociadas["COTIZACION", fila].Value.ToString().Substring(2, len - 2));
+            frmmotrar.txtcotizacion.Text = numero.ToString();
+            frmmotrar.txtimporte.Text = gridCotizacionesAsociadas["IMPORTE", fila].Value.ToString();
+            frmmotrar.txtruc.Text = gridCotizacionesAsociadas["CODIGOPROVEEDOR", fila].Value.ToString();
+            frmmotrar.txtproveedor.Text = gridCotizacionesAsociadas["PROVEEDOR", fila].Value.ToString();
+            //frmmotrar.dateTimePicker1.Value = HPResergerFunciones.Utilitarios.DeStringDiaMesAÑoaDatetime(gridCotizacionesAsociadas["FECHAENTREGA", fila].Value.ToString());
+            frmmotrar.dateTimePicker1.Value = DateTime.Parse(gridCotizacionesAsociadas["FECHAENTREGA", fila].Value.ToString());
+            frmmotrar.Show();
+        }
+
+        private void pbFoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+        private void frmAprobarCotizacion_MouseMove(object sender, MouseEventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
     }
 }

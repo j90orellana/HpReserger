@@ -24,20 +24,17 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        int habiles = 0, nohabiles = 0, Acumulados = 0;
         private void DiasInicio(int TipoDocumento, string NumeroDocumento, string sStoredProcedureName)
         {
             DataRow EmpleadoVacaciones = clEmpleadoVacaciones.ExisteBeneficioEmpleado(TipoDocumento, NumeroDocumento, sStoredProcedureName);
             if (EmpleadoVacaciones != null)
             {
-                txtApellidoPaterno.Text = EmpleadoVacaciones["APELLIDOPATERNO"].ToString();
-                txtApellidoMaterno.Text = EmpleadoVacaciones["APELLIDOMATERNO"].ToString();
-                txtNombres.Text = EmpleadoVacaciones["NOMBRES"].ToString();
                 txtFecha.Text = EmpleadoVacaciones["FECHAINICIO"].ToString();
                 MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                 Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
-                txtDiasUtilizados.Text = EmpleadoVacaciones["DIASUTILIZADOS"].ToString();
-                txtDiasPendientes.Text = EmpleadoVacaciones["DIASPENDIENTES"].ToString();
+                //txtDiasUtilizados.Text = EmpleadoVacaciones["DIASUTILIZADOS"].ToString();
+                //txtDiasPendientes.Text = EmpleadoVacaciones["DIASPENDIENTES"].ToString();
                 txttipo.Text = EmpleadoVacaciones["TIPOCONTRATACION"].ToString();
 
                 if (Convert.ToInt32(EmpleadoVacaciones["DIASPENDIENTES"].ToString()) <= 0)
@@ -54,45 +51,49 @@ namespace HPReserger
                     groupBox1.Enabled = true;
                     btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
                 }
-                if (EmpleadoVacaciones["IDTIPO"].ToString() == "2" || EmpleadoVacaciones["IDTIPO"].ToString() == "3")
+                //if (EmpleadoVacaciones["IDTIPO"].ToString() == "2" || EmpleadoVacaciones["IDTIPO"].ToString() == "3")
+                //{
+                //    btnBoletaVacaciones.Enabled = true;
+                //    btnCompraVacaciones.Enabled = true;
+                //    groupBox1.Visible = true;
+                //    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
+                //}
+                //else
+                //{
+                //    btnBoletaVacaciones.Enabled = false;
+                //    btnCompraVacaciones.Enabled = false;
+                //    groupBox1.Visible = false;
+                //    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
+                //}
+                ///calculos de dias utilizados 
+                habiles = 0;
+                for (int i = 0; i < Grid.RowCount; i++)
                 {
-                    btnBoletaVacaciones.Enabled = true;
-                    btnCompraVacaciones.Enabled = true;
-                    groupBox1.Visible = true;
-                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
+                    if (Grid["estado", i].Value.ToString() == "APROBADO")
+                    {
+                        TimeSpan ts = DateTime.Parse(Grid["fechafin", i].Value.ToString()) - DateTime.Parse(Grid["fechainicio", i].Value.ToString());
+                        int dias = ts.Days + 1;
+
+                        DateTime AuxDays = DateTime.Parse(Grid["fechainicio", i].Value.ToString());
+                        for (int j = 0; j < dias; j++)
+                        {
+                            if (AuxDays.DayOfWeek == DayOfWeek.Saturday || AuxDays.DayOfWeek == DayOfWeek.Sunday)
+                                nohabiles++;
+                            else
+                                habiles++;
+                            AuxDays = AuxDays.AddDays(1);
+                        }
+                    }
                 }
-                else
-                {
-                    btnBoletaVacaciones.Enabled = false;
-                    btnCompraVacaciones.Enabled = false;
-                    groupBox1.Visible = false;
-                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
-                }
-                DataRow Contratoactivo = clEmpleadoVacaciones.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
-                if (Contratoactivo != null)
-                {
-                    // btnBoletaVacaciones.Enabled = true;
-                    // btnCompraVacaciones.Enabled = true;
-                    // groupBox1.Enabled = true;
-                    //  btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
-                    lblmensajito.Text = "EMPLEADO ACTIVO CONTRATO Nº" + Contratoactivo["Nro_Contrato"].ToString();
-                }
-                else
-                {
-                    btnBoletaVacaciones.Enabled = false;
-                    btnCompraVacaciones.Enabled = false;
-                    groupBox1.Visible = false;
-                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
-                    lblmensajito.Text = "EMPLEADO INACTIVO";
-                }
+                Acumulados = (habiles + (habiles / 5) * 2);
+                txtDiasUtilizados.Text = Acumulados.ToString("n0");
+                txtDiasPendientes.Text = (30 - Acumulados).ToString("n0");
+                //MessageBox.Show($"habiles {habiles } y no habiles { nohabiles} Acumulado { habiles % 5} Division { (habiles/ 5).ToString("n0")} ");
             }
             else
             {
                 btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
                 groupBox1.Visible = false;
-                txtApellidoPaterno.Text = "";
-                txtApellidoMaterno.Text = "";
-                txtNombres.Text = "";
                 txtFecha.Text = "";
                 txtVacaciones.Text = "";
                 txtDias.Text = "";
@@ -100,23 +101,79 @@ namespace HPReserger
                 txtDiasPendientes.Text = "";
                 txtDiasUtilizados.Text = "";
                 txtObservaciones.Text = "";
-                txttipo.Text = ""; lblmensajito.Text = "";
+                txttipo.Text = ""; //lblmensajito.Text = "";
                 LimpiarGrillas();
-                TitulosGrillas();
+                // TitulosGrillas();
                 pbFoto.Image = null;
             }
-        }
 
+            DataRow EmpleadoVacacionesx = clEmpleadoVacaciones.ExisteBeneficioEmpleado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_DatosEmpleado");
+            if (EmpleadoVacacionesx != null)
+            {
+                txtApellidoPaterno.Text = EmpleadoVacacionesx["APELLIDOPATERNO"].ToString();
+                txtApellidoMaterno.Text = EmpleadoVacacionesx["APELLIDOMATERNO"].ToString();
+                txtNombres.Text = EmpleadoVacacionesx["NOMBRES"].ToString();
+                DataRow Contratoactivo = clEmpleadoVacaciones.ContratoActivo(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
+                if (Contratoactivo != null)
+                {
+                    lblmensajito.Text = "EMPLEADO ACTIVO CONTRATO Nº" + Contratoactivo["Nro_Contrato"].ToString();
+                    if (Contratoactivo["tipocontratacion"].ToString() == "2" || Contratoactivo["tipocontratacion"].ToString() == "3")
+                    {
+                        btnBoletaVacaciones.Enabled = true;
+                        btnCompraVacaciones.Enabled = true;
+                        groupBox1.Visible = true;
+                        btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
+                        pbVacaciones.Visible = false;
+                    }
+                    else
+                    {
+                        btnBoletaVacaciones.Enabled = false;
+                        btnCompraVacaciones.Enabled = false;
+                        // groupBox1.Visible = false;
+                        btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
+                        pbVacaciones.Visible = true;
+                    }
+                    //btnBoletaVacaciones.Enabled = true;
+                    // btnCompraVacaciones.Enabled = true;
+                    // groupBox1.Visible = true;
+                    // btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
+                }
+                else
+                {
+                    lblmensajito.Text = "EMPLEADO INACTIVO";
+                    btnBoletaVacaciones.Enabled = false;
+                    btnCompraVacaciones.Enabled = false;
+                    groupBox1.Visible = true;
+                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
+                    pbVacaciones.Visible = true;
+                }
+            }
+            else
+            {
+                if (Grid.RowCount > 0)
+                {
+                    DataTable Filas = ((DataTable)Grid.DataSource).Clone();
+                    Grid.DataSource = Filas;
+                }
+                txtApellidoPaterno.Text = "";
+                txtApellidoMaterno.Text = "";
+                txtNombres.Text = "";
+                pbFoto.Image = null; lblmensajito.Text = "";
+                txtRuta.Text = "";
+            }
+            btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
+
+        }
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
             DiasInicio(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_GetDiasVacaciones");
             Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
         }
-
         private void frmVacaciones_Load(object sender, EventArgs e)
         {
+
+            // TitulosGrillas();
             LimpiarGrillas();
-            TitulosGrillas();
             txtNumeroDocumento.Text = "";
             txtApellidoPaterno.Text = "";
             txtApellidoMaterno.Text = "";
@@ -142,7 +199,7 @@ namespace HPReserger
             cbo.DisplayMember = "descripcion";
             cbo.DataSource = clEmpleadoVacaciones.getCargoTipoContratacion(codigo, descripcion, tabla);
         }
-
+        int Habiles = 0;
         private void Dias(DateTime Inicio, DateTime Fin, int TipoDocumento, string NumeroDocumento)
         {
             DiasVaca = clEmpleadoVacaciones.DiasVacaciones(Inicio, Fin);
@@ -150,6 +207,27 @@ namespace HPReserger
             {
                 txtDias.Text = DiasVaca["DIAS"].ToString();
             }
+            ////contador de dias habiles y no habiles
+            TimeSpan ts = Fin - Inicio;
+            int dif = ts.Days + 1;
+            DateTime DayAux;
+            if (Inicio > Fin)
+                DayAux = Fin;
+            else
+                DayAux = Inicio;
+            int Nohabiles = 0;
+            Habiles = 0;
+            for (int i = 0; i < dif; i++)
+            {
+                if (DayAux.DayOfWeek == DayOfWeek.Sunday || DayAux.DayOfWeek == DayOfWeek.Saturday)
+                    Nohabiles++;
+                else
+                    Habiles++;
+                DayAux = DayAux.AddDays(1);
+            }
+            //txtObservaciones.Text = dif.ToString() + $" = Habiles {Habiles } + No habiles { Nohabiles} = DiasExtras{ Habiles % 5}";
+            if ((habiles + Habiles) > 22)
+                MessageBox.Show("No se Puede Tomar muchos días el Máximo son 30 días", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DataRow DiasGenerado = clEmpleadoVacaciones.DiasGenerado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value);
             if (DiasGenerado != null)
             {
@@ -169,6 +247,12 @@ namespace HPReserger
 
         private void btnBoletaVacaciones_Click(object sender, EventArgs e)
         {
+            if ((habiles + Habiles) > 22)
+            {
+                MessageBox.Show("No se Puede Tomar muchos días el Máximo son 30 días", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dtpFin.Focus();
+                return;
+            }
             if (txtDias.Text.Length == 0 || Convert.ToInt32(txtDias.Text) <= 0)
             {
                 MessageBox.Show("Días Inválido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -217,10 +301,14 @@ namespace HPReserger
 
         private void LimpiarGrillas()
         {
-            Grid.DataSource = null;
-            Grid.Rows.Clear();
-            Grid.Columns.Clear();
-            Grid.Refresh();
+            if (Grid.RowCount > 0)
+            {
+                DataTable tablita = ((DataTable)Grid.DataSource).Clone();
+                Grid.DataSource = tablita;
+            }
+            // Grid.Rows.Clear();
+            //   Grid.Columns.Clear();
+            // Grid.Refresh();
         }
 
         private void TitulosGrillas()
@@ -362,22 +450,15 @@ namespace HPReserger
         private void Grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Grid.Rows.Count > 0 && Grid.Rows[e.RowIndex].Cells[8].Value.ToString() == "APROBADO")
-            {
                 CargarFoto(Convert.ToInt32(Grid.Rows[e.RowIndex].Cells[0].Value.ToString()), Convert.ToInt32(Grid.Rows[e.RowIndex].Cells[1].Value.ToString()), Grid.Rows[e.RowIndex].Cells[3].Value.ToString());
-            }
             else
-            {
                 pbFoto.Image = null;
-            }
             if (Grid["estado", e.RowIndex].Value.ToString() == "ANULADA")
-            {
                 btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
-            }
-            else
-            {
+            if (Grid["estado", e.RowIndex].Value.ToString() == "PENDIENTE")
                 btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
-            }
-
+            else
+                btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
         }
 
         private void CargarFoto(int Registro, int TipoDocumento, string NumeroDocumento)
@@ -397,7 +478,6 @@ namespace HPReserger
                 txtRuta.Text = "";
             }
         }
-
         private void btnCompraVacaciones_Click(object sender, EventArgs e)
         {
             if (txtDiasPendientes.Text.Length > 0)
@@ -444,6 +524,27 @@ namespace HPReserger
         private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtNumeroDocumento_TextChanged(sender, e);
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+        private void pbFoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void frmVacaciones_MouseMove(object sender, MouseEventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtProveedor = new System.Windows.Forms.TextBox();
@@ -71,6 +71,7 @@
             this.Canty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.preciounity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totaly = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btndescargar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
@@ -272,6 +273,7 @@
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFoto.TabIndex = 28;
             this.pbFoto.TabStop = false;
+            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
             // 
             // btncancelar
             // 
@@ -302,14 +304,14 @@
             this.dtgpedidoX.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgpedidoX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgpedidoX.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgpedidoX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgpedidoX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dtgpedidoX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgpedidoX.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tipox,
@@ -379,9 +381,9 @@
             // 
             this.PrecioUnitx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PrecioUnitx.DataPropertyName = "preciounit";
-            dataGridViewCellStyle2.Format = "n2";
-            dataGridViewCellStyle2.NullValue = "0.00";
-            this.PrecioUnitx.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Format = "n2";
+            dataGridViewCellStyle14.NullValue = "0.00";
+            this.PrecioUnitx.DefaultCellStyle = dataGridViewCellStyle14;
             this.PrecioUnitx.HeaderText = "Precio Unit";
             this.PrecioUnitx.Name = "PrecioUnitx";
             this.PrecioUnitx.Width = 84;
@@ -405,14 +407,14 @@
             this.dtgpedidoY.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgpedidoY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgpedidoY.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgpedidoY.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgpedidoY.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dtgpedidoY.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgpedidoY.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tipoy,
@@ -500,9 +502,8 @@
             // 
             this.preciounity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.preciounity.DataPropertyName = "preciounit";
-            dataGridViewCellStyle4.Format = "n2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.preciounity.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Format = "n2";
+            this.preciounity.DefaultCellStyle = dataGridViewCellStyle16;
             this.preciounity.HeaderText = "Precio Unit";
             this.preciounity.Name = "preciounity";
             this.preciounity.Width = 84;
@@ -516,11 +517,26 @@
             this.totaly.ReadOnly = true;
             this.totaly.Width = 56;
             // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(908, 354);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 111;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
+            // 
             // frmCotizacionModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1155, 402);
+            this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.pbFoto);
@@ -529,11 +545,13 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.dtgpedidoY);
             this.Controls.Add(this.dtgpedidoX);
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1171, 441);
+            this.MinimumSize = new System.Drawing.Size(1171, 441);
             this.Name = "frmCotizacionModificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Modificar Cotización";
             this.Load += new System.EventHandler(this.frmCotizacionModificar_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmCotizacionModificar_MouseMove);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -586,5 +604,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Canty;
         private System.Windows.Forms.DataGridViewTextBoxColumn preciounity;
         private System.Windows.Forms.DataGridViewTextBoxColumn totaly;
+        private System.Windows.Forms.Button btndescargar;
     }
 }

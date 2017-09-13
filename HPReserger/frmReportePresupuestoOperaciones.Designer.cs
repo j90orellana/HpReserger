@@ -38,6 +38,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.btnGenerar = new System.Windows.Forms.Button();
+            this.btnexportarexcel = new System.Windows.Forms.Button();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.txtdiferencia = new System.Windows.Forms.TextBox();
+            this.txtoperaciones = new System.Windows.Forms.TextBox();
+            this.txtimporte = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.iddep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.conta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,15 +58,6 @@
             this.Operaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Diferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_etapas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGenerar = new System.Windows.Forms.Button();
-            this.btnexportarexcel = new System.Windows.Forms.Button();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.txtdiferencia = new System.Windows.Forms.TextBox();
-            this.txtoperaciones = new System.Windows.Forms.TextBox();
-            this.txtimporte = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,7 +123,6 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iddep,
             this.conta,
@@ -136,7 +135,7 @@
             this.Operaciones,
             this.Diferencia,
             this.id_etapas});
-            this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Location = new System.Drawing.Point(28, 74);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
@@ -149,111 +148,6 @@
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // iddep
-            // 
-            this.iddep.DataPropertyName = "iddep";
-            this.iddep.HeaderText = "idedep";
-            this.iddep.Name = "iddep";
-            this.iddep.ReadOnly = true;
-            this.iddep.Visible = false;
-            // 
-            // conta
-            // 
-            this.conta.DataPropertyName = "contador";
-            this.conta.HeaderText = "conta";
-            this.conta.Name = "conta";
-            this.conta.ReadOnly = true;
-            this.conta.Visible = false;
-            // 
-            // Descripción
-            // 
-            this.Descripción.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripción.DataPropertyName = "centrocosto";
-            this.Descripción.HeaderText = "Descripción";
-            this.Descripción.Name = "Descripción";
-            this.Descripción.ReadOnly = true;
-            // 
-            // Cta_Contable
-            // 
-            this.Cta_Contable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Cta_Contable.DataPropertyName = "id_ctactble";
-            this.Cta_Contable.HeaderText = "CuentaContable";
-            this.Cta_Contable.Name = "Cta_Contable";
-            this.Cta_Contable.ReadOnly = true;
-            this.Cta_Contable.Width = 108;
-            // 
-            // importe_proy
-            // 
-            this.importe_proy.DataPropertyName = "importe_proy";
-            dataGridViewCellStyle2.Format = "n2";
-            this.importe_proy.DefaultCellStyle = dataGridViewCellStyle2;
-            this.importe_proy.HeaderText = "Importe_proy";
-            this.importe_proy.Name = "importe_proy";
-            this.importe_proy.ReadOnly = true;
-            this.importe_proy.Visible = false;
-            // 
-            // CodCentroC
-            // 
-            this.CodCentroC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CodCentroC.DataPropertyName = "Cod_ccosto";
-            this.CodCentroC.HeaderText = "CentroCosto";
-            this.CodCentroC.Name = "CodCentroC";
-            this.CodCentroC.ReadOnly = true;
-            this.CodCentroC.Width = 90;
-            // 
-            // descripcionetapa
-            // 
-            this.descripcionetapa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.descripcionetapa.DataPropertyName = "descripcion";
-            this.descripcionetapa.HeaderText = "Etapas";
-            this.descripcionetapa.Name = "descripcionetapa";
-            this.descripcionetapa.ReadOnly = true;
-            this.descripcionetapa.Width = 65;
-            // 
-            // importe
-            // 
-            this.importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.importe.DataPropertyName = "importe_Ceco";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            this.importe.DefaultCellStyle = dataGridViewCellStyle3;
-            this.importe.HeaderText = "Importe";
-            this.importe.Name = "importe";
-            this.importe.ReadOnly = true;
-            this.importe.Width = 67;
-            // 
-            // Operaciones
-            // 
-            this.Operaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Operaciones.DataPropertyName = "operaciones";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.Operaciones.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Operaciones.HeaderText = "Operaciones";
-            this.Operaciones.Name = "Operaciones";
-            this.Operaciones.ReadOnly = true;
-            this.Operaciones.Width = 92;
-            // 
-            // Diferencia
-            // 
-            this.Diferencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Diferencia.DataPropertyName = "diferencia";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.Diferencia.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Diferencia.HeaderText = "Diferencia";
-            this.Diferencia.Name = "Diferencia";
-            this.Diferencia.ReadOnly = true;
-            this.Diferencia.Width = 80;
-            // 
-            // id_etapas
-            // 
-            this.id_etapas.DataPropertyName = "Id_etapa";
-            this.id_etapas.HeaderText = "id_etapas";
-            this.id_etapas.Name = "id_etapas";
-            this.id_etapas.ReadOnly = true;
-            this.id_etapas.Visible = false;
             // 
             // btnGenerar
             // 
@@ -350,6 +244,118 @@
             this.button1.Text = "Análisis por Periodo";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // iddep
+            // 
+            this.iddep.DataPropertyName = "iddep";
+            this.iddep.HeaderText = "idedep";
+            this.iddep.Name = "iddep";
+            this.iddep.ReadOnly = true;
+            this.iddep.Visible = false;
+            // 
+            // conta
+            // 
+            this.conta.DataPropertyName = "contador";
+            this.conta.HeaderText = "conta";
+            this.conta.Name = "conta";
+            this.conta.ReadOnly = true;
+            this.conta.Visible = false;
+            // 
+            // Descripción
+            // 
+            this.Descripción.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripción.DataPropertyName = "centrocosto";
+            this.Descripción.HeaderText = "Descripción";
+            this.Descripción.Name = "Descripción";
+            this.Descripción.ReadOnly = true;
+            this.Descripción.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Cta_Contable
+            // 
+            this.Cta_Contable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Cta_Contable.DataPropertyName = "id_ctactble";
+            this.Cta_Contable.HeaderText = "CuentaContable";
+            this.Cta_Contable.Name = "Cta_Contable";
+            this.Cta_Contable.ReadOnly = true;
+            this.Cta_Contable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cta_Contable.Width = 89;
+            // 
+            // importe_proy
+            // 
+            this.importe_proy.DataPropertyName = "importe_proy";
+            dataGridViewCellStyle2.Format = "n2";
+            this.importe_proy.DefaultCellStyle = dataGridViewCellStyle2;
+            this.importe_proy.HeaderText = "Importe_proy";
+            this.importe_proy.Name = "importe_proy";
+            this.importe_proy.ReadOnly = true;
+            this.importe_proy.Visible = false;
+            // 
+            // CodCentroC
+            // 
+            this.CodCentroC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CodCentroC.DataPropertyName = "Cod_ccosto";
+            this.CodCentroC.HeaderText = "CentroCosto";
+            this.CodCentroC.Name = "CodCentroC";
+            this.CodCentroC.ReadOnly = true;
+            this.CodCentroC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CodCentroC.Width = 71;
+            // 
+            // descripcionetapa
+            // 
+            this.descripcionetapa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descripcionetapa.DataPropertyName = "descripcion";
+            this.descripcionetapa.HeaderText = "Etapas";
+            this.descripcionetapa.Name = "descripcionetapa";
+            this.descripcionetapa.ReadOnly = true;
+            this.descripcionetapa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.descripcionetapa.Width = 46;
+            // 
+            // importe
+            // 
+            this.importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.importe.DataPropertyName = "importe_Ceco";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "n2";
+            this.importe.DefaultCellStyle = dataGridViewCellStyle3;
+            this.importe.HeaderText = "Importe";
+            this.importe.Name = "importe";
+            this.importe.ReadOnly = true;
+            this.importe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.importe.Width = 48;
+            // 
+            // Operaciones
+            // 
+            this.Operaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Operaciones.DataPropertyName = "operaciones";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.Operaciones.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Operaciones.HeaderText = "Operaciones";
+            this.Operaciones.Name = "Operaciones";
+            this.Operaciones.ReadOnly = true;
+            this.Operaciones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Operaciones.Width = 73;
+            // 
+            // Diferencia
+            // 
+            this.Diferencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Diferencia.DataPropertyName = "diferencia";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.Diferencia.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Diferencia.HeaderText = "Diferencia";
+            this.Diferencia.Name = "Diferencia";
+            this.Diferencia.ReadOnly = true;
+            this.Diferencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Diferencia.Width = 61;
+            // 
+            // id_etapas
+            // 
+            this.id_etapas.DataPropertyName = "Id_etapa";
+            this.id_etapas.HeaderText = "id_etapas";
+            this.id_etapas.Name = "id_etapas";
+            this.id_etapas.ReadOnly = true;
+            this.id_etapas.Visible = false;
+            // 
             // frmReportePresupuestoOperaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,6 +375,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgconten);
+            this.MinimumSize = new System.Drawing.Size(966, 631);
             this.Name = "frmReportePresupuestoOperaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte Presupuesto-Operaciones";

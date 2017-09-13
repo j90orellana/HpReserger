@@ -24,7 +24,7 @@ namespace HPReserger
         private void frmpresupuestoetapa_Load(object sender, EventArgs e)
         {
             ok = false;
-            Application.CurrentCulture = new System.Globalization.CultureInfo("EN-US");
+            //Application.CurrentCulture = new System.Globalization.CultureInfo("EN-US");
             dtgconten.DataSource = CLpresupuestoetapa.MesEtapaProyecto(etapa);
             dtgconten.Columns[0].Visible = false;
             DataTable EtapasDatos = CLpresupuestoetapa.ListarEtapasdelProyecto(10, 0, etapa, "", 0, DateTime.Now, DateTime.Now, 0, "", 0);

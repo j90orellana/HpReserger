@@ -166,6 +166,8 @@
             this.ClientSize = new System.Drawing.Size(354, 205);
             this.Controls.Add(this.btngenerar);
             this.Controls.Add(this.groupBox1);
+            this.MaximumSize = new System.Drawing.Size(370, 244);
+            this.MinimumSize = new System.Drawing.Size(370, 244);
             this.Name = "frmGenerarBoletas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar Boletas";

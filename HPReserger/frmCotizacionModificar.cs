@@ -287,9 +287,9 @@ namespace HPReserger
         {
             Modifica = 1;
             if (string.IsNullOrWhiteSpace(dtgpedidoY[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                dtgpedidoX[e.ColumnIndex, e.RowIndex].Value = "0.00";
-            if (string.IsNullOrWhiteSpace(dtgpedidoX[e.ColumnIndex, e.RowIndex].Value.ToString()))
                 dtgpedidoY[e.ColumnIndex, e.RowIndex].Value = "0.00";
+            if (string.IsNullOrWhiteSpace(dtgpedidoX[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                dtgpedidoX[e.ColumnIndex, e.RowIndex].Value = "0.00";
             dtgpedidoY.Columns["PrecioUnity"].DefaultCellStyle.Format = "N2";
             dtgpedidoY.Columns["Totaly"].DefaultCellStyle.Format = "N2";
             dtgpedidoX.Columns["PrecioUnitx"].DefaultCellStyle.Format = "N2";
@@ -328,6 +328,28 @@ namespace HPReserger
         {
             dtgpedidoX[e.ColumnIndex, e.RowIndex].Value = "0.00";
             e.Cancel = true;
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void pbFoto_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbFoto.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void frmCotizacionModificar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btndescargar.Visible = false;
+        }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
     }
 }

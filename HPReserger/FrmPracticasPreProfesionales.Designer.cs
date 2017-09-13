@@ -364,6 +364,8 @@
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gp1);
+            this.MaximumSize = new System.Drawing.Size(959, 243);
+            this.MinimumSize = new System.Drawing.Size(959, 243);
             this.Name = "FrmPracticasPreProfesionales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Practicas Pre Profesionales";

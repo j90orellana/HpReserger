@@ -164,6 +164,7 @@ namespace HPReserger
         {
             txtimporte.Text = decimal.Parse(txtimporte.Text.ToString()).ToString("n2");
         }
+        frmpresupuestoetapa etapitas;
         private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex, y = e.RowIndex;
@@ -171,20 +172,49 @@ namespace HPReserger
             {
                 if (dtgconten["btnmas", y].ColumnIndex == x)
                 {
-                    frmpresupuestoetapa etapitas = new frmpresupuestoetapa();
-                    etapitas.Text = "PRESUPUESTO POR ETAPAS DE " + cboproyecto.Text;
-                    etapitas.etapa = (int)dtgconten["id_Etapas", y].Value;
-                    etapitas.txtetapa.Text = dtgconten["etapa_des", y].Value.ToString();
-                    etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
-                    etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
-                    etapitas.ShowDialog();
-                    if (etapitas.ok)
+                    if (etapitas == null)
                     {
-                        dtgconten["importe", y].Value = etapitas.valor;
-                        calcularsumatoria();
+                        etapitas = new frmpresupuestoetapa();
+                        etapitas.MdiParent = this.MdiParent;
+                        //presudetale.MdiParent = this;
+                        //presus.StartPosition = FormStartPosition.CenterParent;
+                        // pbfotoempleado.Visible = false;
+                        //                presudetale.ShowDialog();
+                        etapitas.Text = "PRESUPUESTO POR ETAPAS DE " + cboproyecto.Text;
+                        etapitas.etapa = (int)dtgconten["id_Etapas", y].Value;
+                        etapitas.txtetapa.Text = dtgconten["etapa_des", y].Value.ToString();
+                        etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
+                        etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
+                        etapitas.FormClosed += new FormClosedEventHandler(cerrarpresupuestoetapas);
+                        etapitas.Show();
+                        if (etapitas.ok)
+                        {
+                            dtgconten["importe", y].Value = etapitas.valor;
+                            calcularsumatoria();
+                        }
+                    }
+                    else
+                    {
+                        etapitas.Activate();
+                        ValidarVentanas(etapitas);
                     }
                 }
             }
+        }
+        void cerrarpresupuestoetapas(object sender, FormClosedEventArgs e)
+        {
+            etapitas = null;
+            // pbfotoempleado.Visible = true;
+        }
+        public void ValidarVentanas(Form formulario)
+        {
+            if (formulario.WindowState != FormWindowState.Normal)
+                formulario.WindowState = FormWindowState.Normal;
+            // if (formulario.StartPosition != FormStartPosition.CenterParent)
+            //   formulario.StartPosition = FormStartPosition.CenterParent;
+            //this.LayoutMdi(MdiLayout.);
+            formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
+            formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2);
         }
         private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -193,17 +223,31 @@ namespace HPReserger
             {
                 if (dtgconten.RowCount > 0)
                 {
-                    frmpresupuestoetapa etapitas = new frmpresupuestoetapa();
-                    etapitas.Text = "PRESUPUESTO POR ETAPAS DE " + cboproyecto.Text;
-                    etapitas.etapa = (int)dtgconten["id_Etapas", y].Value;
-                    etapitas.txtetapa.Text = dtgconten["etapa_des", y].Value.ToString();
-                    etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
-                    etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
-                    etapitas.ShowDialog();
-                    if (etapitas.ok)
+                    if (etapitas == null)
                     {
-                        dtgconten["importe", y].Value = etapitas.valor;
-                        calcularsumatoria();
+                        etapitas = new frmpresupuestoetapa();
+                        etapitas.MdiParent = this.MdiParent;
+                        //presudetale.MdiParent = this;
+                        //presus.StartPosition = FormStartPosition.CenterParent;
+                        // pbfotoempleado.Visible = false;
+                        //                presudetale.ShowDialog();
+                        etapitas.Text = "PRESUPUESTO POR ETAPAS DE " + cboproyecto.Text;
+                        etapitas.etapa = (int)dtgconten["id_Etapas", y].Value;
+                        etapitas.txtetapa.Text = dtgconten["etapa_des", y].Value.ToString();
+                        etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
+                        etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
+                        etapitas.FormClosed += new FormClosedEventHandler(cerrarpresupuestoetapas);
+                        etapitas.Show();
+                        if (etapitas.ok)
+                        {
+                            dtgconten["importe", y].Value = etapitas.valor;
+                            calcularsumatoria();
+                        }
+                    }
+                    else
+                    {
+                        etapitas.Activate();
+                        ValidarVentanas(etapitas);
                     }
                 }
             }

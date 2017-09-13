@@ -56,8 +56,6 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(930, 665);
             this.Controls.Add(this.cvrLiquidacion);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmLiquidacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "  Liquidación de Beneficios";
