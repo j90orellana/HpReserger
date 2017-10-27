@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.cbodocumento = new System.Windows.Forms.ComboBox();
             this.txtnumeroidentidad = new System.Windows.Forms.TextBox();
@@ -82,6 +82,32 @@
             this.label22 = new System.Windows.Forms.Label();
             this.Txtbusca = new System.Windows.Forms.TextBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.RUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RAZONSOCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRECOMERCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPOPER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SECTOREMPRESACIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIROFICINA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TELOFICINA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIRALMACEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TELALMACEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIRSUCURSAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TELSUCURSAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMCONTACTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TELCONTACTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMAILCONTACTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTASOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCISOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BANCOSOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPOCTASOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTADOLARES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCIDOLARES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BANCODOLARES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPOCTADOLARES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTADETRACCIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REGIMEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
             this.btntipoidmas = new System.Windows.Forms.Button();
             this.btnsectormas = new System.Windows.Forms.Button();
@@ -99,6 +125,12 @@
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label26 = new System.Windows.Forms.Label();
+            this.cbotipopersona = new System.Windows.Forms.ComboBox();
+            this.txtnombrecomercial = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.cboctadolares = new System.Windows.Forms.ComboBox();
+            this.cboctasoles = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +139,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 20);
+            this.label2.Location = new System.Drawing.Point(12, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 13);
             this.label2.TabIndex = 92;
@@ -118,6 +150,7 @@
             this.cbodocumento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbodocumento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbodocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbodocumento.Enabled = false;
             this.cbodocumento.FormattingEnabled = true;
             this.cbodocumento.Location = new System.Drawing.Point(151, 12);
             this.cbodocumento.Name = "cbodocumento";
@@ -128,7 +161,7 @@
             // 
             this.txtnumeroidentidad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtnumeroidentidad.Location = new System.Drawing.Point(489, 13);
-            this.txtnumeroidentidad.MaxLength = 10;
+            this.txtnumeroidentidad.MaxLength = 11;
             this.txtnumeroidentidad.Name = "txtnumeroidentidad";
             this.txtnumeroidentidad.Size = new System.Drawing.Size(154, 20);
             this.txtnumeroidentidad.TabIndex = 2;
@@ -140,7 +173,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(334, 20);
+            this.label1.Location = new System.Drawing.Point(334, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 13);
             this.label1.TabIndex = 93;
@@ -150,25 +183,25 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 43);
+            this.label3.Location = new System.Drawing.Point(12, 39);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 13);
+            this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 95;
-            this.label3.Text = "Nombre o Razón Social";
+            this.label3.Text = "Razón Social:";
             // 
             // txtnombrerazonsocial
             // 
             this.txtnombrerazonsocial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtnombrerazonsocial.Location = new System.Drawing.Point(151, 36);
+            this.txtnombrerazonsocial.Location = new System.Drawing.Point(115, 36);
             this.txtnombrerazonsocial.Name = "txtnombrerazonsocial";
-            this.txtnombrerazonsocial.Size = new System.Drawing.Size(492, 20);
+            this.txtnombrerazonsocial.Size = new System.Drawing.Size(528, 20);
             this.txtnombrerazonsocial.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 96);
+            this.label4.Location = new System.Drawing.Point(12, 113);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 13);
             this.label4.TabIndex = 97;
@@ -178,7 +211,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 120);
+            this.label5.Location = new System.Drawing.Point(13, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 13);
             this.label5.TabIndex = 98;
@@ -188,7 +221,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 146);
+            this.label6.Location = new System.Drawing.Point(13, 163);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 13);
             this.label6.TabIndex = 99;
@@ -197,7 +230,7 @@
             // txtdireccionoficina
             // 
             this.txtdireccionoficina.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtdireccionoficina.Location = new System.Drawing.Point(114, 89);
+            this.txtdireccionoficina.Location = new System.Drawing.Point(115, 110);
             this.txtdireccionoficina.Name = "txtdireccionoficina";
             this.txtdireccionoficina.Size = new System.Drawing.Size(308, 20);
             this.txtdireccionoficina.TabIndex = 5;
@@ -205,7 +238,7 @@
             // txtdireccionalmacen
             // 
             this.txtdireccionalmacen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtdireccionalmacen.Location = new System.Drawing.Point(114, 113);
+            this.txtdireccionalmacen.Location = new System.Drawing.Point(115, 134);
             this.txtdireccionalmacen.Name = "txtdireccionalmacen";
             this.txtdireccionalmacen.Size = new System.Drawing.Size(308, 20);
             this.txtdireccionalmacen.TabIndex = 6;
@@ -213,7 +246,7 @@
             // txtdireccionsucursal
             // 
             this.txtdireccionsucursal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtdireccionsucursal.Location = new System.Drawing.Point(114, 139);
+            this.txtdireccionsucursal.Location = new System.Drawing.Point(115, 160);
             this.txtdireccionsucursal.Name = "txtdireccionsucursal";
             this.txtdireccionsucursal.Size = new System.Drawing.Size(308, 20);
             this.txtdireccionsucursal.TabIndex = 7;
@@ -222,7 +255,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(428, 146);
+            this.label7.Location = new System.Drawing.Point(426, 163);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 13);
             this.label7.TabIndex = 105;
@@ -232,7 +265,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(428, 120);
+            this.label8.Location = new System.Drawing.Point(426, 137);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 13);
             this.label8.TabIndex = 104;
@@ -242,7 +275,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(428, 96);
+            this.label9.Location = new System.Drawing.Point(429, 113);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(85, 13);
             this.label9.TabIndex = 103;
@@ -251,7 +284,7 @@
             // txttelefonosucursal
             // 
             this.txttelefonosucursal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txttelefonosucursal.Location = new System.Drawing.Point(519, 139);
+            this.txttelefonosucursal.Location = new System.Drawing.Point(525, 160);
             this.txttelefonosucursal.MaxLength = 15;
             this.txttelefonosucursal.Name = "txttelefonosucursal";
             this.txttelefonosucursal.Size = new System.Drawing.Size(124, 20);
@@ -263,7 +296,7 @@
             // txttelefonoalmacen
             // 
             this.txttelefonoalmacen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txttelefonoalmacen.Location = new System.Drawing.Point(519, 113);
+            this.txttelefonoalmacen.Location = new System.Drawing.Point(525, 134);
             this.txttelefonoalmacen.MaxLength = 15;
             this.txttelefonoalmacen.Name = "txttelefonoalmacen";
             this.txttelefonoalmacen.Size = new System.Drawing.Size(124, 20);
@@ -275,7 +308,7 @@
             // txttelefonooficina
             // 
             this.txttelefonooficina.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txttelefonooficina.Location = new System.Drawing.Point(519, 89);
+            this.txttelefonooficina.Location = new System.Drawing.Point(525, 110);
             this.txttelefonooficina.MaxLength = 15;
             this.txttelefonooficina.Name = "txttelefonooficina";
             this.txttelefonooficina.Size = new System.Drawing.Size(124, 20);
@@ -287,7 +320,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(-11, 155);
+            this.label10.Location = new System.Drawing.Point(-10, 176);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(817, 13);
             this.label10.TabIndex = 109;
@@ -299,7 +332,7 @@
             // 
             this.txtpersonacontacto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtpersonacontacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpersonacontacto.Location = new System.Drawing.Point(114, 177);
+            this.txtpersonacontacto.Location = new System.Drawing.Point(115, 198);
             this.txtpersonacontacto.MaxLength = 40;
             this.txtpersonacontacto.Name = "txtpersonacontacto";
             this.txtpersonacontacto.Size = new System.Drawing.Size(308, 20);
@@ -311,7 +344,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(12, 184);
+            this.label11.Location = new System.Drawing.Point(14, 201);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 13);
             this.label11.TabIndex = 110;
@@ -320,7 +353,7 @@
             // txtemailcontacto
             // 
             this.txtemailcontacto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtemailcontacto.Location = new System.Drawing.Point(114, 203);
+            this.txtemailcontacto.Location = new System.Drawing.Point(115, 224);
             this.txtemailcontacto.Name = "txtemailcontacto";
             this.txtemailcontacto.Size = new System.Drawing.Size(308, 20);
             this.txtemailcontacto.TabIndex = 12;
@@ -329,7 +362,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 210);
+            this.label12.Location = new System.Drawing.Point(13, 227);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(78, 13);
             this.label12.TabIndex = 112;
@@ -339,7 +372,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(428, 184);
+            this.label13.Location = new System.Drawing.Point(426, 201);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(95, 13);
             this.label13.TabIndex = 105;
@@ -348,7 +381,7 @@
             // txttelefonocontacto
             // 
             this.txttelefonocontacto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txttelefonocontacto.Location = new System.Drawing.Point(519, 177);
+            this.txttelefonocontacto.Location = new System.Drawing.Point(525, 198);
             this.txttelefonocontacto.MaxLength = 15;
             this.txttelefonocontacto.Name = "txttelefonocontacto";
             this.txttelefonocontacto.Size = new System.Drawing.Size(124, 20);
@@ -360,7 +393,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(-12, 220);
+            this.label14.Location = new System.Drawing.Point(-11, 241);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(817, 13);
             this.label14.TabIndex = 114;
@@ -372,19 +405,19 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(11, 245);
+            this.label15.Location = new System.Drawing.Point(12, 262);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 13);
+            this.label15.Size = new System.Drawing.Size(72, 13);
             this.label15.TabIndex = 110;
-            this.label15.Text = "Nro Cuentas Soles";
+            this.label15.Text = "Nro Cta Soles";
             // 
             // txtcuentasoles
             // 
             this.txtcuentasoles.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcuentasoles.Location = new System.Drawing.Point(144, 238);
-            this.txtcuentasoles.MaxLength = 20;
+            this.txtcuentasoles.Location = new System.Drawing.Point(90, 259);
+            this.txtcuentasoles.MaxLength = 16;
             this.txtcuentasoles.Name = "txtcuentasoles";
-            this.txtcuentasoles.Size = new System.Drawing.Size(133, 20);
+            this.txtcuentasoles.Size = new System.Drawing.Size(111, 20);
             this.txtcuentasoles.TabIndex = 14;
             this.txtcuentasoles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtcuentasoles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcuentasoles_KeyDown);
@@ -394,19 +427,19 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(11, 271);
+            this.label16.Location = new System.Drawing.Point(12, 285);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(100, 13);
+            this.label16.Size = new System.Drawing.Size(82, 13);
             this.label16.TabIndex = 112;
-            this.label16.Text = "Nro Cuenta Dolares";
+            this.label16.Text = "Nro Cta Dolares";
             // 
             // txtcuentadolares
             // 
             this.txtcuentadolares.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcuentadolares.Location = new System.Drawing.Point(144, 264);
-            this.txtcuentadolares.MaxLength = 20;
+            this.txtcuentadolares.Location = new System.Drawing.Point(90, 282);
+            this.txtcuentadolares.MaxLength = 16;
             this.txtcuentadolares.Name = "txtcuentadolares";
-            this.txtcuentadolares.Size = new System.Drawing.Size(133, 20);
+            this.txtcuentadolares.Size = new System.Drawing.Size(111, 20);
             this.txtcuentadolares.TabIndex = 17;
             this.txtcuentadolares.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtcuentadolares.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcuentadolares_KeyDown);
@@ -416,7 +449,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(11, 297);
+            this.label17.Location = new System.Drawing.Point(12, 308);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(127, 13);
             this.label17.TabIndex = 112;
@@ -425,7 +458,7 @@
             // txtcuentadetracciones
             // 
             this.txtcuentadetracciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcuentadetracciones.Location = new System.Drawing.Point(144, 290);
+            this.txtcuentadetracciones.Location = new System.Drawing.Point(145, 305);
             this.txtcuentadetracciones.MaxLength = 20;
             this.txtcuentadetracciones.Name = "txtcuentadetracciones";
             this.txtcuentadetracciones.Size = new System.Drawing.Size(230, 20);
@@ -438,7 +471,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(478, 244);
+            this.label18.Location = new System.Drawing.Point(392, 262);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(67, 13);
             this.label18.TabIndex = 103;
@@ -448,7 +481,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(478, 268);
+            this.label19.Location = new System.Drawing.Point(391, 285);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(77, 13);
             this.label19.TabIndex = 104;
@@ -460,7 +493,7 @@
             this.cbobancosoles.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbobancosoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobancosoles.FormattingEnabled = true;
-            this.cbobancosoles.Location = new System.Drawing.Point(557, 236);
+            this.cbobancosoles.Location = new System.Drawing.Point(465, 258);
             this.cbobancosoles.Name = "cbobancosoles";
             this.cbobancosoles.Size = new System.Drawing.Size(150, 21);
             this.cbobancosoles.TabIndex = 16;
@@ -471,7 +504,7 @@
             this.cbobancodolares.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbobancodolares.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobancodolares.FormattingEnabled = true;
-            this.cbobancodolares.Location = new System.Drawing.Point(557, 260);
+            this.cbobancodolares.Location = new System.Drawing.Point(465, 281);
             this.cbobancodolares.Name = "cbobancodolares";
             this.cbobancodolares.Size = new System.Drawing.Size(150, 21);
             this.cbobancodolares.TabIndex = 19;
@@ -480,7 +513,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(12, 70);
+            this.label20.Location = new System.Drawing.Point(14, 86);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(87, 13);
             this.label20.TabIndex = 95;
@@ -491,7 +524,7 @@
             this.cbosectorcomercial.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbosectorcomercial.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbosectorcomercial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbosectorcomercial.Location = new System.Drawing.Point(114, 62);
+            this.cbosectorcomercial.Location = new System.Drawing.Point(115, 83);
             this.cbosectorcomercial.Name = "cbosectorcomercial";
             this.cbosectorcomercial.Size = new System.Drawing.Size(308, 21);
             this.cbosectorcomercial.TabIndex = 4;
@@ -528,7 +561,7 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(649, 654);
+            this.btncancelar.Location = new System.Drawing.Point(650, 634);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 29);
             this.btncancelar.TabIndex = 120;
@@ -538,7 +571,7 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(551, 654);
+            this.btnaceptar.Location = new System.Drawing.Point(562, 634);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 29);
             this.btnaceptar.TabIndex = 22;
@@ -549,7 +582,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(-11, 313);
+            this.label21.Location = new System.Drawing.Point(-12, 320);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(817, 13);
             this.label21.TabIndex = 114;
@@ -560,7 +593,7 @@
             // lblmsg
             // 
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(13, 671);
+            this.lblmsg.Location = new System.Drawing.Point(14, 642);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(96, 13);
             this.lblmsg.TabIndex = 126;
@@ -570,7 +603,7 @@
             // 
             this.btnlimpiar.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btnlimpiar.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(3)));
-            this.btnlimpiar.Location = new System.Drawing.Point(88, 338);
+            this.btnlimpiar.Location = new System.Drawing.Point(87, 341);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(20, 21);
             this.btnlimpiar.TabIndex = 125;
@@ -581,7 +614,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(13, 346);
+            this.label22.Location = new System.Drawing.Point(12, 349);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(51, 13);
             this.label22.TabIndex = 124;
@@ -593,7 +626,7 @@
             this.Txtbusca.BackColor = System.Drawing.SystemColors.Info;
             this.Txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.Txtbusca.Cursor = System.Windows.Forms.Cursors.Help;
-            this.Txtbusca.Location = new System.Drawing.Point(114, 338);
+            this.Txtbusca.Location = new System.Drawing.Point(113, 341);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(529, 20);
             this.Txtbusca.TabIndex = 123;
@@ -610,45 +643,305 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RUC,
+            this.RAZONSOCIAL,
+            this.NOMBRECOMERCIAL,
+            this.TIPOPER,
+            this.SECTOREMPRESACIAL,
+            this.DIROFICINA,
+            this.TELOFICINA,
+            this.DIRALMACEN,
+            this.TELALMACEN,
+            this.DIRSUCURSAL,
+            this.TELSUCURSAL,
+            this.NOMCONTACTO,
+            this.TELCONTACTO,
+            this.EMAILCONTACTO,
+            this.CTASOLES,
+            this.CCISOLES,
+            this.IDS,
+            this.BANCOSOLES,
+            this.TIPOCTASOLES,
+            this.CTADOLARES,
+            this.CCIDOLARES,
+            this.IDD,
+            this.BANCODOLARES,
+            this.TIPOCTADOLARES,
+            this.CTADETRACCIONES,
+            this.REGIMEN});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(16, 394);
+            this.dtgconten.Location = new System.Drawing.Point(17, 399);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(715, 254);
+            this.dtgconten.Size = new System.Drawing.Size(715, 229);
             this.dtgconten.TabIndex = 122;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // RUC
+            // 
+            this.RUC.DataPropertyName = "RUC";
+            this.RUC.HeaderText = "RUC";
+            this.RUC.Name = "RUC";
+            this.RUC.ReadOnly = true;
+            this.RUC.Width = 53;
+            // 
+            // RAZONSOCIAL
+            // 
+            this.RAZONSOCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.RAZONSOCIAL.DataPropertyName = "RAZONSOCIAL";
+            this.RAZONSOCIAL.HeaderText = "RAZON SOCIAL";
+            this.RAZONSOCIAL.Name = "RAZONSOCIAL";
+            this.RAZONSOCIAL.ReadOnly = true;
+            this.RAZONSOCIAL.Width = 99;
+            // 
+            // NOMBRECOMERCIAL
+            // 
+            this.NOMBRECOMERCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NOMBRECOMERCIAL.DataPropertyName = "NOMBRE COMERCIAL";
+            this.NOMBRECOMERCIAL.HeaderText = "NOMBRE COMERCIAL";
+            this.NOMBRECOMERCIAL.Name = "NOMBRECOMERCIAL";
+            this.NOMBRECOMERCIAL.ReadOnly = true;
+            this.NOMBRECOMERCIAL.Width = 129;
+            // 
+            // TIPOPER
+            // 
+            this.TIPOPER.DataPropertyName = "TIPOPER";
+            this.TIPOPER.HeaderText = "TIPOPER";
+            this.TIPOPER.Name = "TIPOPER";
+            this.TIPOPER.ReadOnly = true;
+            this.TIPOPER.Visible = false;
+            this.TIPOPER.Width = 76;
+            // 
+            // SECTOREMPRESACIAL
+            // 
+            this.SECTOREMPRESACIAL.DataPropertyName = "SECTOREMPRESARIAL";
+            this.SECTOREMPRESACIAL.HeaderText = "SECTOREMPRESARIAL";
+            this.SECTOREMPRESACIAL.Name = "SECTOREMPRESACIAL";
+            this.SECTOREMPRESACIAL.ReadOnly = true;
+            this.SECTOREMPRESACIAL.Visible = false;
+            this.SECTOREMPRESACIAL.Width = 147;
+            // 
+            // DIROFICINA
+            // 
+            this.DIROFICINA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DIROFICINA.DataPropertyName = "DIROFICINA";
+            this.DIROFICINA.HeaderText = "DIROFICINA";
+            this.DIROFICINA.Name = "DIROFICINA";
+            this.DIROFICINA.ReadOnly = true;
+            this.DIROFICINA.Visible = false;
+            // 
+            // TELOFICINA
+            // 
+            this.TELOFICINA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TELOFICINA.DataPropertyName = "TELOFICINA";
+            this.TELOFICINA.HeaderText = "TEL.OFICINA";
+            this.TELOFICINA.Name = "TELOFICINA";
+            this.TELOFICINA.ReadOnly = true;
+            this.TELOFICINA.Width = 94;
+            // 
+            // DIRALMACEN
+            // 
+            this.DIRALMACEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DIRALMACEN.DataPropertyName = "DIRALMACEN";
+            this.DIRALMACEN.HeaderText = "DIR. ALMACEN";
+            this.DIRALMACEN.Name = "DIRALMACEN";
+            this.DIRALMACEN.ReadOnly = true;
+            this.DIRALMACEN.Width = 97;
+            // 
+            // TELALMACEN
+            // 
+            this.TELALMACEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TELALMACEN.DataPropertyName = "TELALMACEN";
+            this.TELALMACEN.HeaderText = "TEL. ALMACEN";
+            this.TELALMACEN.Name = "TELALMACEN";
+            this.TELALMACEN.ReadOnly = true;
+            this.TELALMACEN.Width = 97;
+            // 
+            // DIRSUCURSAL
+            // 
+            this.DIRSUCURSAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DIRSUCURSAL.DataPropertyName = "DIRSUCURSAL";
+            this.DIRSUCURSAL.HeaderText = "DIR. SUCURSAL";
+            this.DIRSUCURSAL.Name = "DIRSUCURSAL";
+            this.DIRSUCURSAL.ReadOnly = true;
+            this.DIRSUCURSAL.Width = 102;
+            // 
+            // TELSUCURSAL
+            // 
+            this.TELSUCURSAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TELSUCURSAL.DataPropertyName = "TELSUCURSAL";
+            this.TELSUCURSAL.HeaderText = "TEL. SUCURSAL";
+            this.TELSUCURSAL.Name = "TELSUCURSAL";
+            this.TELSUCURSAL.ReadOnly = true;
+            this.TELSUCURSAL.Width = 102;
+            // 
+            // NOMCONTACTO
+            // 
+            this.NOMCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NOMCONTACTO.DataPropertyName = "NOMCONTACTO";
+            this.NOMCONTACTO.HeaderText = "NOM. CONTACTO";
+            this.NOMCONTACTO.Name = "NOMCONTACTO";
+            this.NOMCONTACTO.ReadOnly = true;
+            this.NOMCONTACTO.Width = 106;
+            // 
+            // TELCONTACTO
+            // 
+            this.TELCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TELCONTACTO.DataPropertyName = "TELCONTACTO";
+            this.TELCONTACTO.HeaderText = "TEL. CONTACTO";
+            this.TELCONTACTO.Name = "TELCONTACTO";
+            this.TELCONTACTO.ReadOnly = true;
+            this.TELCONTACTO.Width = 101;
+            // 
+            // EMAILCONTACTO
+            // 
+            this.EMAILCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EMAILCONTACTO.DataPropertyName = "EMAILCONTACTO";
+            this.EMAILCONTACTO.HeaderText = "EMAIL CONTACTO";
+            this.EMAILCONTACTO.Name = "EMAILCONTACTO";
+            this.EMAILCONTACTO.ReadOnly = true;
+            this.EMAILCONTACTO.Width = 111;
+            // 
+            // CTASOLES
+            // 
+            this.CTASOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CTASOLES.DataPropertyName = "CTASOLES";
+            this.CTASOLES.HeaderText = "CTA. SOLES";
+            this.CTASOLES.Name = "CTASOLES";
+            this.CTASOLES.ReadOnly = true;
+            this.CTASOLES.Width = 85;
+            // 
+            // CCISOLES
+            // 
+            this.CCISOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CCISOLES.DataPropertyName = "CCISOLES";
+            this.CCISOLES.HeaderText = "CCI SOLES";
+            this.CCISOLES.Name = "CCISOLES";
+            this.CCISOLES.ReadOnly = true;
+            this.CCISOLES.Width = 80;
+            // 
+            // IDS
+            // 
+            this.IDS.DataPropertyName = "IDS";
+            this.IDS.HeaderText = "IDS";
+            this.IDS.Name = "IDS";
+            this.IDS.ReadOnly = true;
+            this.IDS.Visible = false;
+            this.IDS.Width = 50;
+            // 
+            // BANCOSOLES
+            // 
+            this.BANCOSOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BANCOSOLES.DataPropertyName = "BANCOSOLES";
+            this.BANCOSOLES.HeaderText = "BANCO SOLES";
+            this.BANCOSOLES.Name = "BANCOSOLES";
+            this.BANCOSOLES.ReadOnly = true;
+            this.BANCOSOLES.Width = 97;
+            // 
+            // TIPOCTASOLES
+            // 
+            this.TIPOCTASOLES.DataPropertyName = "TIPOCTASOLES";
+            this.TIPOCTASOLES.HeaderText = "TIPOCTASOLES";
+            this.TIPOCTASOLES.Name = "TIPOCTASOLES";
+            this.TIPOCTASOLES.ReadOnly = true;
+            this.TIPOCTASOLES.Visible = false;
+            this.TIPOCTASOLES.Width = 109;
+            // 
+            // CTADOLARES
+            // 
+            this.CTADOLARES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CTADOLARES.DataPropertyName = "CTADOLARES";
+            this.CTADOLARES.HeaderText = "CTADOLARES";
+            this.CTADOLARES.Name = "CTADOLARES";
+            this.CTADOLARES.ReadOnly = true;
+            this.CTADOLARES.Width = 101;
+            // 
+            // CCIDOLARES
+            // 
+            this.CCIDOLARES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CCIDOLARES.DataPropertyName = "CCIDOLARES";
+            this.CCIDOLARES.HeaderText = "CCIDOLARES";
+            this.CCIDOLARES.Name = "CCIDOLARES";
+            this.CCIDOLARES.ReadOnly = true;
+            this.CCIDOLARES.Width = 99;
+            // 
+            // IDD
+            // 
+            this.IDD.DataPropertyName = "IDD";
+            this.IDD.HeaderText = "IDD";
+            this.IDD.Name = "IDD";
+            this.IDD.ReadOnly = true;
+            this.IDD.Visible = false;
+            this.IDD.Width = 51;
+            // 
+            // BANCODOLARES
+            // 
+            this.BANCODOLARES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BANCODOLARES.DataPropertyName = "BANCODOLARES";
+            this.BANCODOLARES.HeaderText = "BANCO DOLARES";
+            this.BANCODOLARES.Name = "BANCODOLARES";
+            this.BANCODOLARES.ReadOnly = true;
+            this.BANCODOLARES.Width = 111;
+            // 
+            // TIPOCTADOLARES
+            // 
+            this.TIPOCTADOLARES.DataPropertyName = "TIPOCTADOLARES";
+            this.TIPOCTADOLARES.HeaderText = "TIPOCTADOLARES";
+            this.TIPOCTADOLARES.Name = "TIPOCTADOLARES";
+            this.TIPOCTADOLARES.ReadOnly = true;
+            this.TIPOCTADOLARES.Visible = false;
+            this.TIPOCTADOLARES.Width = 124;
+            // 
+            // CTADETRACCIONES
+            // 
+            this.CTADETRACCIONES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CTADETRACCIONES.DataPropertyName = "CTADETRACCIONES";
+            this.CTADETRACCIONES.HeaderText = "CTADETRACCIONES";
+            this.CTADETRACCIONES.Name = "CTADETRACCIONES";
+            this.CTADETRACCIONES.ReadOnly = true;
+            this.CTADETRACCIONES.Width = 131;
+            // 
+            // REGIMEN
+            // 
+            this.REGIMEN.DataPropertyName = "REGIMEN";
+            this.REGIMEN.HeaderText = "REGIMEN";
+            this.REGIMEN.Name = "REGIMEN";
+            this.REGIMEN.ReadOnly = true;
+            this.REGIMEN.Visible = false;
+            this.REGIMEN.Width = 80;
             // 
             // tipmsg
             // 
@@ -657,7 +950,7 @@
             // btntipoidmas
             // 
             this.btntipoidmas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntipoidmas.Location = new System.Drawing.Point(308, 13);
+            this.btntipoidmas.Location = new System.Drawing.Point(308, 12);
             this.btntipoidmas.Name = "btntipoidmas";
             this.btntipoidmas.Size = new System.Drawing.Size(20, 21);
             this.btntipoidmas.TabIndex = 127;
@@ -669,7 +962,7 @@
             // btnsectormas
             // 
             this.btnsectormas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsectormas.Location = new System.Drawing.Point(428, 62);
+            this.btnsectormas.Location = new System.Drawing.Point(429, 83);
             this.btnsectormas.Name = "btnsectormas";
             this.btnsectormas.Size = new System.Drawing.Size(20, 21);
             this.btnsectormas.TabIndex = 128;
@@ -681,9 +974,9 @@
             // btnbancosmas
             // 
             this.btnbancosmas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbancosmas.Location = new System.Drawing.Point(711, 248);
+            this.btnbancosmas.Location = new System.Drawing.Point(616, 274);
             this.btnbancosmas.Name = "btnbancosmas";
-            this.btnbancosmas.Size = new System.Drawing.Size(20, 21);
+            this.btnbancosmas.Size = new System.Drawing.Size(15, 21);
             this.btnbancosmas.TabIndex = 129;
             this.btnbancosmas.Text = "+";
             this.tipmsg.SetToolTip(this.btnbancosmas, "Agregar Entidad Bancaria");
@@ -694,7 +987,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(283, 248);
+            this.label23.Location = new System.Drawing.Point(201, 262);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(51, 13);
             this.label23.TabIndex = 110;
@@ -704,7 +997,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(283, 271);
+            this.label24.Location = new System.Drawing.Point(200, 285);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(61, 13);
             this.label24.TabIndex = 112;
@@ -713,10 +1006,10 @@
             // txtccisoles
             // 
             this.txtccisoles.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtccisoles.Location = new System.Drawing.Point(340, 241);
+            this.txtccisoles.Location = new System.Drawing.Point(258, 259);
             this.txtccisoles.MaxLength = 20;
             this.txtccisoles.Name = "txtccisoles";
-            this.txtccisoles.Size = new System.Drawing.Size(132, 20);
+            this.txtccisoles.Size = new System.Drawing.Size(134, 20);
             this.txtccisoles.TabIndex = 15;
             this.txtccisoles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtccisoles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtccisoles_KeyDown);
@@ -725,10 +1018,10 @@
             // txtccidolares
             // 
             this.txtccidolares.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtccidolares.Location = new System.Drawing.Point(340, 264);
+            this.txtccidolares.Location = new System.Drawing.Point(258, 282);
             this.txtccidolares.MaxLength = 20;
             this.txtccidolares.Name = "txtccidolares";
-            this.txtccidolares.Size = new System.Drawing.Size(132, 20);
+            this.txtccidolares.Size = new System.Drawing.Size(134, 20);
             this.txtccidolares.TabIndex = 18;
             this.txtccidolares.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtccidolares.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtccidolares_KeyDown);
@@ -738,7 +1031,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(380, 293);
+            this.label25.Location = new System.Drawing.Point(392, 308);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(92, 13);
             this.label25.TabIndex = 104;
@@ -751,9 +1044,9 @@
             this.cboregimen.DisplayMember = "dfsd";
             this.cboregimen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboregimen.FormattingEnabled = true;
-            this.cboregimen.Location = new System.Drawing.Point(481, 287);
+            this.cboregimen.Location = new System.Drawing.Point(499, 305);
             this.cboregimen.Name = "cboregimen";
-            this.cboregimen.Size = new System.Drawing.Size(250, 21);
+            this.cboregimen.Size = new System.Drawing.Size(233, 21);
             this.cboregimen.TabIndex = 21;
             this.cboregimen.TextChanged += new System.EventHandler(this.cboregimen_TextChanged);
             // 
@@ -791,7 +1084,7 @@
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(14, 362);
+            this.groupBox1.Location = new System.Drawing.Point(13, 365);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(712, 28);
             this.groupBox1.TabIndex = 131;
@@ -845,11 +1138,88 @@
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(448, 87);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(73, 13);
+            this.label26.TabIndex = 132;
+            this.label26.Text = "Tipo Persona:";
+            // 
+            // cbotipopersona
+            // 
+            this.cbotipopersona.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbotipopersona.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbotipopersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipopersona.Enabled = false;
+            this.cbotipopersona.FormattingEnabled = true;
+            this.cbotipopersona.Items.AddRange(new object[] {
+            "1. JURÍDICA",
+            "2. NATURAL"});
+            this.cbotipopersona.Location = new System.Drawing.Point(525, 82);
+            this.cbotipopersona.Name = "cbotipopersona";
+            this.cbotipopersona.Size = new System.Drawing.Size(119, 21);
+            this.cbotipopersona.TabIndex = 133;
+            // 
+            // txtnombrecomercial
+            // 
+            this.txtnombrecomercial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtnombrecomercial.Location = new System.Drawing.Point(115, 58);
+            this.txtnombrecomercial.Name = "txtnombrecomercial";
+            this.txtnombrecomercial.Size = new System.Drawing.Size(528, 20);
+            this.txtnombrecomercial.TabIndex = 3;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(13, 61);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(96, 13);
+            this.label27.TabIndex = 95;
+            this.label27.Text = "Nombre Comercial:";
+            // 
+            // cboctadolares
+            // 
+            this.cboctadolares.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboctadolares.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboctadolares.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboctadolares.Enabled = false;
+            this.cboctadolares.FormattingEnabled = true;
+            this.cboctadolares.Items.AddRange(new object[] {
+            "1. AHORROS",
+            "2. CORRIENTE"});
+            this.cboctadolares.Location = new System.Drawing.Point(632, 280);
+            this.cboctadolares.Name = "cboctadolares";
+            this.cboctadolares.Size = new System.Drawing.Size(100, 21);
+            this.cboctadolares.TabIndex = 134;
+            // 
+            // cboctasoles
+            // 
+            this.cboctasoles.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboctasoles.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboctasoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboctasoles.Enabled = false;
+            this.cboctasoles.FormattingEnabled = true;
+            this.cboctasoles.Items.AddRange(new object[] {
+            "1. AHORROS",
+            "2. CORRIENTE"});
+            this.cboctasoles.Location = new System.Drawing.Point(632, 257);
+            this.cboctasoles.Name = "cboctasoles";
+            this.cboctasoles.Size = new System.Drawing.Size(100, 21);
+            this.cboctasoles.TabIndex = 135;
+            // 
             // frmproveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 695);
+            this.ClientSize = new System.Drawing.Size(738, 668);
+            this.Controls.Add(this.cboctasoles);
+            this.Controls.Add(this.cboctadolares);
+            this.Controls.Add(this.cbotipopersona);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnbancosmas);
             this.Controls.Add(this.btnsectormas);
@@ -898,8 +1268,10 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtnombrecomercial);
             this.Controls.Add(this.txtnombrerazonsocial);
             this.Controls.Add(this.label20);
+            this.Controls.Add(this.label27);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtnumeroidentidad);
             this.Controls.Add(this.label1);
@@ -910,8 +1282,8 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label14);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaximumSize = new System.Drawing.Size(754, 734);
-            this.MinimumSize = new System.Drawing.Size(754, 734);
+            this.MaximumSize = new System.Drawing.Size(754, 707);
+            this.MinimumSize = new System.Drawing.Size(754, 707);
             this.Name = "frmproveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proveedor";
@@ -994,5 +1366,37 @@
         public System.Windows.Forms.TextBox txtnumeroidentidad;
         public System.Windows.Forms.TextBox Txtbusca;
         public System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.ComboBox cbotipopersona;
+        private System.Windows.Forms.TextBox txtnombrecomercial;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox cboctadolares;
+        private System.Windows.Forms.ComboBox cboctasoles;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RUC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RAZONSOCIAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRECOMERCIAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIPOPER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SECTOREMPRESACIAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DIROFICINA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TELOFICINA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DIRALMACEN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TELALMACEN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DIRSUCURSAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TELSUCURSAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NOMCONTACTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TELCONTACTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EMAILCONTACTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTASOLES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCISOLES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BANCOSOLES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIPOCTASOLES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTADOLARES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCIDOLARES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BANCODOLARES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIPOCTADOLARES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTADETRACCIONES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn REGIMEN;
     }
 }

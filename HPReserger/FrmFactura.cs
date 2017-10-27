@@ -19,6 +19,20 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL cfactura = new HPResergerCapaLogica.HPResergerCL();
+        public void BuscarIgv()
+        {
+            Busqueda:
+            DataRow BuscarIgv = cfactura.BuscarParametros("igv", DateTime.Now);
+            if (BuscarIgv != null)
+                numigv.Value = (decimal.Parse(BuscarIgv["valor"].ToString()) * 100);
+            else
+            {
+                MSG("No ha Ingresado el Valor Del IGV, Ingréselo en El Siguiente Formulario");
+                frmParametros param = new frmParametros();
+                param.ShowDialog();
+                goto Busqueda;
+            }
+        }
         private void FrmFactura_Load(object sender, EventArgs e)
         {
             //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
@@ -29,20 +43,10 @@ namespace HPReserger
             cbotipo.ValueMember = "Codigo_Tipo_Compra";
             cbotipo.DataSource = cfactura.ListarTipoPedido();
             cbotipo.SelectedIndex = 0;
-
+            BuscarIgv();
             imgfactura = null;
             dtfechaemision.Value = Dtfechaentregado.Value = DateTime.Now;
-            Busqueda:
-            DataRow BuscarIgv = cfactura.BuscarParametros("igv", DateTime.Now);
-            if (BuscarIgv != null)
-                numigv.Value = (decimal.Parse(BuscarIgv["valor"].ToString()) * 100);
-            else
-            {
-                MSG("No ha Ingresado el Valor Del IGV, Ingreselo en El Siguiente Formulario");
-                frmParametros param = new frmParametros();
-                param.ShowDialog();
-                goto Busqueda;
-            }
+
         }
         Decimal monto = 0.2m;
         public string nrofactura;
@@ -82,6 +86,7 @@ namespace HPReserger
             {
                 FrmFoto foto = new FrmFoto();
                 foto.fotito = fotito.Image;
+                foto.Owner = this.MdiParent;
                 foto.ShowDialog();
             }
         }
@@ -369,7 +374,7 @@ namespace HPReserger
             txtruc.Enabled = false; txtguia.Enabled = false;
             txtsubtotal.Enabled = txtigv.Enabled = false;
             Dtguias.Enabled = false;
-            btnprovisionar.Enabled = true;
+            btnprovisionar.Enabled = false;
             //Valido que el boton Provisionar se APague si ya esta una fic provisionada
             for (int i = 0; i < Dtguias.RowCount; i++)
             {
@@ -379,6 +384,7 @@ namespace HPReserger
                     break;
                 }
             }
+            CalcularGRavaigv();
             if (DatosFactura != null)
             {
                 cboigv.SelectedIndex = (int)DatosFactura["gravaigv"] - 1;
@@ -744,10 +750,27 @@ namespace HPReserger
 
             }
         }
+        public Boolean VerSitanPRovisionadas()
+        {
+            Dtguias.Refresh();
+            for (int i = 0; i < Dtguias.RowCount; i++)
+            {
+                if (Dtguias["estadox", i].Value.ToString() == "PROVISIONADA" && (Boolean)Dtguias["ok", i].Value == true)
+                {
+                    btnprovisionar.Enabled = false;
+                    return false;
+                }
+                if (Dtguias["estadox", i].Value.ToString() != "PROVISIONADA" && (Boolean)Dtguias["ok", i].Value == true)
+                    btnprovisionar.Enabled = true;
+            }
+            return btnprovisionar.Enabled;
+        }
         private void Dtguias_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnprovisionar.Enabled = false;
             Dtguias.EndEdit();
             cargarFics();
+            VerSitanPRovisionadas();
             /*
                         if (ch1.Value == null)
                             ch1.Value = false;
@@ -939,6 +962,9 @@ namespace HPReserger
 
         private void btnprovisionar_Click(object sender, EventArgs e)
         {
+            btnprovisionar.Enabled = false;
+            if (VerSitanPRovisionadas() == false)
+                return;
             for (int i = 0; i < DtgConten.RowCount; i++)
             {
                 if ((decimal)DtgConten["preciounit", i].Value <= 0)
@@ -954,6 +980,31 @@ namespace HPReserger
                     return;
                 }
             }
+
+            frmprovisionarQuestion frmProvi = new frmprovisionarQuestion();
+            CalcularGRavaigv();
+            if (DatosFactura != null)
+            {
+                frmProvi.cboigv.SelectedIndex = (int)DatosFactura["gravaigv"] - 1;
+                MSG($"La Orden de compra {DatosFactura["ordencompra"].ToString() } con Nro de Factura: {DatosFactura["nrofactura"].ToString()} \nya se grabó con la opción {cboigv.Text } ");
+                frmProvi.cboigv.Enabled = false;
+            }
+            else
+            {
+                frmProvi.cboigv.Enabled = true;
+                frmProvi.cboigv.SelectedIndex = 0;
+            }
+
+            frmProvi.cbodetraccion.SelectedIndex = 0;
+            if (frmProvi.ShowDialog() != DialogResult.OK)
+                return;
+            if (frmProvi.cboigv.SelectedIndex == -1)
+                return;
+            if (frmProvi.cbodetraccion.SelectedIndex == -1)
+                return;
+            cboigv.SelectedIndex = frmProvi.cboigv.SelectedIndex;
+            cbodetraccion.SelectedIndex = frmProvi.cbodetraccion.SelectedIndex;
+            numdetraccion.Value = frmProvi.numdetraccion.Value;
             if (MessageBox.Show("Seguro Desea Provisionar esta Factura", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 int detracc = 0;
@@ -978,6 +1029,7 @@ namespace HPReserger
                     cfactura.InsertarAsientoFacturaProvisionada(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                     cfactura.InsertarAsientoFacturaProvisionada(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                 }
+                estado = 1;
                 string Rux = txtruc.Text;
                 button1_Click(sender, e);
                 txtnrofactura.Text = ""; txtmonto.Text = ""; txtsubtotal.Text = txtigv.Text = txttotal.Text = ""; pbfactura.Image = null; imgfactura = null;
@@ -988,6 +1040,36 @@ namespace HPReserger
                 txtruc.Text = Rux;
             }
         }
+
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbfactura);
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbfactura.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void gp1_Move(object sender, EventArgs e)
+        {
+
+            btndescargar.Visible = false;
+        }
+
+        private void pbfactura_Move(object sender, EventArgs e)
+        {
+            if (pbfactura.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void pbfactura_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbfactura.Image != null)
+                btndescargar.Visible = true;
+        }
+
         private void DtgConten_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";

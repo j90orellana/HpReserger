@@ -47,6 +47,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btncancelar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbopresupuestos = new System.Windows.Forms.ComboBox();
             this.iddep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.conta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,7 +78,7 @@
             this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(92, 20);
+            this.cboempresa.Location = new System.Drawing.Point(83, 20);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(242, 21);
             this.cboempresa.TabIndex = 1;
@@ -85,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 50);
+            this.label2.Location = new System.Drawing.Point(25, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 0;
@@ -97,7 +99,7 @@
             this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboproyecto.FormattingEnabled = true;
-            this.cboproyecto.Location = new System.Drawing.Point(93, 47);
+            this.cboproyecto.Location = new System.Drawing.Point(83, 47);
             this.cboproyecto.Name = "cboproyecto";
             this.cboproyecto.Size = new System.Drawing.Size(242, 21);
             this.cboproyecto.TabIndex = 1;
@@ -151,7 +153,7 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(351, 45);
+            this.btnGenerar.Location = new System.Drawing.Point(360, 45);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
             this.btnGenerar.TabIndex = 18;
@@ -243,6 +245,28 @@
             this.button1.TabIndex = 30;
             this.button1.Text = "Análisis por Periodo";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(331, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "Presupuestos:";
+            // 
+            // cbopresupuestos
+            // 
+            this.cbopresupuestos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbopresupuestos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbopresupuestos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbopresupuestos.FormattingEnabled = true;
+            this.cbopresupuestos.Location = new System.Drawing.Point(411, 20);
+            this.cbopresupuestos.Name = "cbopresupuestos";
+            this.cbopresupuestos.Size = new System.Drawing.Size(242, 21);
+            this.cbopresupuestos.TabIndex = 32;
+            this.cbopresupuestos.SelectedIndexChanged += new System.EventHandler(this.cbopresupuestos_SelectedIndexChanged);
             // 
             // iddep
             // 
@@ -361,6 +385,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 592);
+            this.Controls.Add(this.cbopresupuestos);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.label3);
@@ -402,6 +428,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbopresupuestos;
         private System.Windows.Forms.DataGridViewTextBoxColumn iddep;
         private System.Windows.Forms.DataGridViewTextBoxColumn conta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripción;

@@ -12,7 +12,7 @@ using System.Drawing.Imaging;
 
 namespace HPReserger
 {
-    public partial class frmEmpleado : Form
+    public partial class frmEmpleado : Form, IProfesion
     {
         HPResergerCapaLogica.HPResergerCL clEmpleado = new HPResergerCapaLogica.HPResergerCL();
         public byte[] FotoAntecedentesPoliciales { get; set; }
@@ -35,6 +35,19 @@ namespace HPReserger
         public frmEmpleado()
         {
             InitializeComponent();
+        }
+        string cadena = "";
+        public void CargarProfesion()
+        {
+            cadena = cboProfesion.Text;
+            CargaCombos2(cboProfesion, "Id_Profesion", "Profesion", "TBL_Profesion");
+            cboProfesion.Text = cadena;
+        }
+        public void CargarGrado()
+        {
+            cadena = cboGradoInstruccion.Text;
+            CargaCombos(cboGradoInstruccion, "Id_GrdInstruccion", "GradoInstruccion", "TBL_GradoInstruccion");
+            cboGradoInstruccion.Text = cadena;
         }
         public void CargarNroHijos(int tipo, string doc)
         {
@@ -90,7 +103,7 @@ namespace HPReserger
             btnfoto.Visible = false;
             cboTipoDocumento.SelectedIndex = 0;
             txtNumeroDocumento_TextChanged(sender, e);
-            BloquearControles(true);           
+            BloquearControles(true);
         }
         private void CargaCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
         {
@@ -129,6 +142,7 @@ namespace HPReserger
                         frmContrato = new frmContrato();
                         frmContrato.CodigoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
                         frmContrato.NumeroDocumento = txtNumeroDocumento.Text;
+                        frmContrato.CodigoEmpleado = int.Parse(txtcodigo.Text);
                         frmContrato.MdiParent = this.MdiParent;
                         frmContrato.FormClosed += new FormClosedEventHandler(cerrarcontrato);
                         frmContrato.Show();
@@ -614,7 +628,7 @@ namespace HPReserger
                     else
                     {
                         txtApellidoPaterno.Text = "";
-                        txtApellidoMaterno.Text = "";
+                        txtApellidoMaterno.Text = ""; txtcodigo.Text = "00000";
                         txttipo.Text = "";
                         txtNombres.Text = ""; btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
                         btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
@@ -638,6 +652,7 @@ namespace HPReserger
                 lklpenales.Enabled = lklpoliciales.Enabled = lklservicios.Enabled = true;
                 txtApellidoPaterno.Text = DatosE["APELLIDOPATERNO"].ToString();
                 txtApellidoMaterno.Text = DatosE["APELLIDOMATERNO"].ToString();
+                txtcodigo.Text = ((int)DatosE["CODIGO"]).ToString("00000");
                 txtNombres.Text = DatosE["NOMBRES"].ToString();
                 cboSexo.Text = DatosE["SEXO"].ToString();
                 cboEstadoCivil.Text = DatosE["ESTADOCIVIL"].ToString();
@@ -683,7 +698,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    pbfotoempleado.Image = HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;                    
+                    pbfotoempleado.Image = HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
                     Foto = null; NombreFoto = "";
                 }
 
@@ -749,7 +764,7 @@ namespace HPReserger
                 btnfoto.Visible = false;
                 cboSexo.Text = txtDireccion.Text = txtTelefonoFijo.Text = txtTelefonoCelular.Text =
                   txtAntecedentesPoliciales.Text = txtAntecedentesPenales.Text = txtReciboServicio.Text = "";// txttipo.Text = "";
-                dtpFecha.Value = DateTime.Now;
+                dtpFecha.Value = DateTime.Now; txtcodigo.Text = "00000";
                 EmpleadoExiste = false;
                 cboDepartamento.SelectedIndex = cboProvincia.SelectedIndex = -1; cbopais.SelectedIndex = -1;
                 cboDistrito.SelectedIndex = cboSexo.SelectedIndex = -1;
@@ -770,11 +785,26 @@ namespace HPReserger
                 if (Contratoactivo != null)
                 {
                     txttipo.Text = Contratoactivo["tipo"].ToString();
-                    if (estadito == 0)
-                        BloquearControles(true);
-                    if (estadito == 1)
+
+                    if (Contratoactivo["tipocontratacion"].ToString() == "1" || Contratoactivo["tipocontratacion"].ToString() == "4")
                     {
-                        if (Contratoactivo["tipocontratacion"].ToString() == "1" || Contratoactivo["tipocontratacion"].ToString() == "4")
+                        btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
+                        btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
+                    }
+                    else
+                    {
+                        btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = true;
+                        btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
+                    }
+                }
+                else
+                {
+                    DataRow ContratoactivoTiene = clEmpleado.ContratoActivo_oTiene(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, DateTime.Now);
+                    if (ContratoactivoTiene != null)
+                    {
+                        txttipo.Text = ContratoactivoTiene["tipo"].ToString() + " NO INICIA CONTRATO";//" Inicia:" + ContratoactivoTiene["fechainicio"].ToString();
+                        txttipo.Text = ContratoactivoTiene["tipo"].ToString() + " INICIA EL: " + ((DateTime)ContratoactivoTiene["fechainicio"]).ToShortDateString();
+                        if (ContratoactivoTiene["tipocontratacion"].ToString() == "1" || ContratoactivoTiene["tipocontratacion"].ToString() == "4")
                         {
                             btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
                             btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
@@ -785,19 +815,15 @@ namespace HPReserger
                             btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
                         }
                     }
-                }
-                else
-                {
-                    txttipo.Text = "EMPLEADO SIN CONTRATO ACTIVO";
                     BloquearControles(true);
-                    if (estadito != 0)
-                        btnContrato.Enabled = true;
+                    btnContrato.Enabled = true;
                 }
             }
             else
             {
                 btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
-                btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
+                btnContrato.Enabled = false;
+                btnHaberes.Enabled = btnRequerimiento.Enabled = false;
             }
         }
         DataRow Contratoactivo;
@@ -826,14 +852,14 @@ namespace HPReserger
             btnAntecedentesPenales.Enabled = a;
             btnAntecedentesPoliciales.Enabled = a;
             btnconviviente.Enabled = a;
-            btnCTS.Enabled = a;
-            btnFamilia.Enabled = a;
+            //btnCTS.Enabled = a;
+            //btnFamilia.Enabled = a;
             btnfirma.Enabled = a;
             btnfoto.Enabled = a;
-            btnHaberes.Enabled = a;
-            btnPensionSeguro.Enabled = a;
+            // btnHaberes.Enabled = a;
+            // btnPensionSeguro.Enabled = a;
             btnReciboServicios.Enabled = a;
-            btnRequerimiento.Enabled = a;
+            //btnRequerimiento.Enabled = a;
             dtpFecha.Enabled = a;
         }
         frmEmpleadoPensionSeguro frmPS;
@@ -906,7 +932,7 @@ namespace HPReserger
                 ExisteEmpleado = clEmpleado.CargarCualquierImagenPostulanteEmpleado("*", "TBL_Empleado", "Tipo_ID_Emp", Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), "Nro_ID_Emp", txtNumeroDocumento.Text);
                 if (ExisteEmpleado != null)
                 {
-                    if (frmPS == null)
+                    if (frmF == null)
                     {
                         frmF = new frmFamiliares();
                         frmF.CodigoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
@@ -991,10 +1017,10 @@ namespace HPReserger
             {
                 FrmFoto foto = new FrmFoto();
                 foto.fotito = fotito.Image;
+                foto.Owner = this.MdiParent;
                 foto.ShowDialog();
             }
         }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MostrarFoto(pbFotoAntecedentesPoliciales);
@@ -1159,7 +1185,7 @@ namespace HPReserger
             {
                 if (string.IsNullOrWhiteSpace(txtconviviente.Text))
                 {
-                    MessageBox.Show("Falta La foto del Certificad de Convivencia", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Falta La foto del Certificado de Convivencia", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnconviviente.Focus();
                     return;
                 }
@@ -1353,7 +1379,7 @@ namespace HPReserger
         {
             txtNumeroDocumento.Enabled = !a;
             cboTipoDocumento.Enabled = !a;
-            btnContrato.Enabled = a;
+            //btnContrato.Enabled = a;
             btnGuardar.Enabled = a;
             btnfoto.Enabled = a;
             btnModificar.Enabled = !a;
@@ -1426,6 +1452,17 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.DescargarImagen(pbfotoempleado);
         }
+
+        private void pbfotoempleado_DoubleClick(object sender, EventArgs e)
+        {
+            MostrarFoto(pbfotoempleado);
+        }
+
+        private void txttipo_TextChanged(object sender, EventArgs e)
+        {
+            tip.SetToolTip(txttipo, txttipo.Text);
+        }
+
 
     }
 }

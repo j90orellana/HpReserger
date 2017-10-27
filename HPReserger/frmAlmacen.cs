@@ -171,8 +171,12 @@ namespace HPReserger
 
             if (FIG != 0)
             {
-                MessageBox.Show("EL FIG Nº " + Convert.ToString(FIG) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("EL FIC Nº " + Convert.ToString(FIG) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            string cadenita = txtRUC.Text;
+            txtRUC.Text = "";
+            txtRUC.Text = cadenita;
+            txtRUC_TextChanged(sender, e);
         }
 
         private void txtRUC_TextChanged(object sender, EventArgs e)

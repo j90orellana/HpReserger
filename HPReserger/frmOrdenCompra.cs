@@ -92,26 +92,39 @@ namespace HPReserger
         }
         private void btnEnviar_Click(object sender, EventArgs e)
         {
+            //Boolean salir = false;
             if (gridOC.RowCount > 0)
                 if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
+                    drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC["cotizacion", gridOC.CurrentCell.RowIndex].Value.ToString().Substring(2)));
+                    if (drCOT != null)
+                        if (string.IsNullOrWhiteSpace(drCOT["correo"].ToString()))
+                        {
+                            MSG("Proveedor " + drCOT["correo"].ToString() + " no tiene correo Electrónico");
+                            //if (MessageBox.Show("Proveedor No tiene Correo Electrónico, Desea igual enviar", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            //{
+                            //    salir = true;                               
+                            //}
+                            //else
+                            return;
+                        }
                     frmMensajeCorreo mensajito = new frmMensajeCorreo();
                     mensajito.Text = "Mensaje de Aprobación";
                     mensajito.txtasunto.Text = "Cotización Aprobada";
                     //mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es para nosotros un placer aceptar su cotizacion";
                     mensajito.txtmsg.Text = "Hp Reserger S.A.C. \nEs para nosotros un placer aceptar su cotizacion";
+                    mensajito.txtcorreo.Text = drCOT["correo"].ToString().ToLower();
                     mensajito.ShowDialog();
                     if (mensajito.ok)
                     {
                         clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 4);
                         string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
-                        Listar(frmLogin.CodigoUsuario);
                         MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         try
                         {
                             MailMessage email = new MailMessage();
                             //CORREO DE PROVEEDOR
-                            email.To.Add(new MailAddress(drCOT["correo"].ToString()));
+                            email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
                             ///
                             email.From = new MailAddress("j90orellana@hotmail.com");
                             email.Subject = mensajito.txtasunto.Text;
@@ -145,12 +158,13 @@ namespace HPReserger
                             smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
                             smtp.Send(email);
                             email.Dispose();
-                            MSG("Correo electrónico fue enviado satisfactoriamente.");
+                            MSG("Correo electrónico fue enviado a " + mensajito.txtcorreo.Text + " satisfactoriamente.");
                         }
                         catch (Exception ex)
                         {
                             MSG("Error enviando correo electrónico: " + ex.Message);
                         }
+                        Listar(frmLogin.CodigoUsuario);
                     }
                     else
                     {
@@ -158,7 +172,6 @@ namespace HPReserger
                     }
                 }
         }
-
         private void btnAnular_Click(object sender, EventArgs e)
         {
             if (gridOC.RowCount > 0)

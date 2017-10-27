@@ -42,6 +42,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fuenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtmsg = new System.Windows.Forms.RichTextBox();
+            this.txtcorreo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 15);
+            this.label2.Location = new System.Drawing.Point(12, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 4;
@@ -80,7 +82,7 @@
             // 
             this.txtasunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtasunto.Location = new System.Drawing.Point(69, 12);
+            this.txtasunto.Location = new System.Drawing.Point(69, 29);
             this.txtasunto.Name = "txtasunto";
             this.txtasunto.Size = new System.Drawing.Size(418, 20);
             this.txtasunto.TabIndex = 4;
@@ -88,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 41);
+            this.label3.Location = new System.Drawing.Point(12, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 6;
@@ -98,14 +100,14 @@
             // 
             this.cboprioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboprioridad.FormattingEnabled = true;
-            this.cboprioridad.Location = new System.Drawing.Point(69, 38);
+            this.cboprioridad.Location = new System.Drawing.Point(69, 52);
             this.cboprioridad.Name = "cboprioridad";
             this.cboprioridad.Size = new System.Drawing.Size(129, 21);
             this.cboprioridad.TabIndex = 5;
             // 
             // btnadjuntar
             // 
-            this.btnadjuntar.Location = new System.Drawing.Point(204, 38);
+            this.btnadjuntar.Location = new System.Drawing.Point(204, 52);
             this.btnadjuntar.Name = "btnadjuntar";
             this.btnadjuntar.Size = new System.Drawing.Size(54, 21);
             this.btnadjuntar.TabIndex = 8;
@@ -117,7 +119,7 @@
             // 
             this.lbldatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbldatos.Location = new System.Drawing.Point(264, 41);
+            this.lbldatos.Location = new System.Drawing.Point(264, 54);
             this.lbldatos.Name = "lbldatos";
             this.lbldatos.Size = new System.Drawing.Size(223, 21);
             this.lbldatos.TabIndex = 9;
@@ -152,18 +154,38 @@
             this.txtmsg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtmsg.EnableAutoDragDrop = true;
             this.txtmsg.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtmsg.Location = new System.Drawing.Point(12, 65);
+            this.txtmsg.Location = new System.Drawing.Point(12, 78);
             this.txtmsg.Name = "txtmsg";
             this.txtmsg.ShowSelectionMargin = true;
-            this.txtmsg.Size = new System.Drawing.Size(472, 255);
+            this.txtmsg.Size = new System.Drawing.Size(472, 242);
             this.txtmsg.TabIndex = 59;
             this.txtmsg.Text = "";
+            // 
+            // txtcorreo
+            // 
+            this.txtcorreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtcorreo.Location = new System.Drawing.Point(69, 6);
+            this.txtcorreo.Name = "txtcorreo";
+            this.txtcorreo.Size = new System.Drawing.Size(418, 20);
+            this.txtcorreo.TabIndex = 60;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 61;
+            this.label1.Text = "Correo:";
             // 
             // frmMensajeCorreo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 364);
+            this.Controls.Add(this.txtcorreo);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtmsg);
             this.Controls.Add(this.lbldatos);
             this.Controls.Add(this.btnadjuntar);
@@ -200,5 +222,7 @@
         private System.Windows.Forms.ToolStripMenuItem fuenteToolStripMenuItem;
         public System.Windows.Forms.FontDialog fontDialog1;
         public System.Windows.Forms.RichTextBox txtmsg;
+        public System.Windows.Forms.TextBox txtcorreo;
+        private System.Windows.Forms.Label label1;
     }
 }

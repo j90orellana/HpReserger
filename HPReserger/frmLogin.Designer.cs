@@ -62,6 +62,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 0;
+            this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // txtContraseña

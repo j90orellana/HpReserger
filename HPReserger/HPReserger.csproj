@@ -68,10 +68,6 @@
     <Reference Include="HPResergerCapaLogica">
       <HintPath>..\..\Ejecutable_19052017\HPResergerCapaLogica.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Ejecutable\itextsharp.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -95,6 +91,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboMesAño.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComboMesAño.Designer.cs">
+      <DependentUpon>ComboMesAño.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmReporteRemuneracionRenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +121,36 @@
     <Compile Include="frmAfps.Designer.cs">
       <DependentUpon>frmAfps.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBancoBcp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBancoBcp.Designer.cs">
+      <DependentUpon>frmBancoBcp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBancoInterAmericano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBancoInterAmericano.Designer.cs">
+      <DependentUpon>frmBancoInterAmericano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBancoInterbank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBancoInterbank.Designer.cs">
+      <DependentUpon>frmBancoInterbank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmbonos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmbonos.Designer.cs">
+      <DependentUpon>frmbonos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargaDatosProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargaDatosProveedor.Designer.cs">
+      <DependentUpon>frmCargaDatosProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCargos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +162,12 @@
     </Compile>
     <Compile Include="frmcede.Designer.cs">
       <DependentUpon>frmcede.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEliminarPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEliminarPeriodo.Designer.cs">
+      <DependentUpon>frmEliminarPeriodo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEmpresaEps.cs">
       <SubType>Form</SubType>
@@ -407,6 +445,12 @@
     <Compile Include="frmParametros.Designer.cs">
       <DependentUpon>frmParametros.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmParametrosDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParametrosDetalle.Designer.cs">
+      <DependentUpon>frmParametrosDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPartidaPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +511,12 @@
     <Compile Include="frmprovincias.designer.cs">
       <DependentUpon>frmprovincias.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmprovisionarQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmprovisionarQuestion.Designer.cs">
+      <DependentUpon>frmprovisionarQuestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProyectos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -496,6 +546,12 @@
     </Compile>
     <Compile Include="frmReporteconvenioPracticas.Designer.cs">
       <DependentUpon>frmReporteconvenioPracticas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportedeFlujoOperaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportedeFlujoOperaciones.Designer.cs">
+      <DependentUpon>frmReportedeFlujoOperaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="frmreporteempleado.cs">
       <SubType>Form</SubType>
@@ -563,6 +619,12 @@
     <Compile Include="frmSexo.Designer.cs">
       <DependentUpon>frmSexo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSolicitudes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitudes.Designer.cs">
+      <DependentUpon>frmSolicitudes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSubOperacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -619,6 +681,14 @@
     </Compile>
     <Compile Include="IForm.cs" />
     <Compile Include="IFormEmpleado.cs" />
+    <Compile Include="IProfesion.cs" />
+    <Compile Include="IRentas.cs" />
+    <Compile Include="NumBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumBox.Designer.cs">
+      <DependentUpon>NumBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="rptAdendaNecesidad.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -927,6 +997,9 @@
     <Compile Include="TextboxSoloNumeros.Designer.cs">
       <DependentUpon>TextboxSoloNumeros.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ComboMesAño.resx">
+      <DependentUpon>ComboMesAño.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmReporteRemuneracionRenta.resx">
       <DependentUpon>fmReporteRemuneracionRenta.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -955,8 +1028,23 @@
     <EmbeddedResource Include="frmAsientoContable.resx">
       <DependentUpon>frmAsientoContable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBancoBcp.resx">
+      <DependentUpon>frmBancoBcp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBancoInterAmericano.resx">
+      <DependentUpon>frmBancoInterAmericano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBancoInterbank.resx">
+      <DependentUpon>frmBancoInterbank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmbonos.resx">
+      <DependentUpon>frmbonos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCambioContra.resx">
       <DependentUpon>FrmCambioContra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargaDatosProveedor.resx">
+      <DependentUpon>frmCargaDatosProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCargos.resx">
       <DependentUpon>frmCargos.cs</DependentUpon>
@@ -978,6 +1066,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDistritos.resx">
       <DependentUpon>frmDistritos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEliminarPeriodo.resx">
+      <DependentUpon>frmEliminarPeriodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpresaEps.resx">
       <DependentUpon>frmEmpresaEps.cs</DependentUpon>
@@ -1087,6 +1178,9 @@
     <EmbeddedResource Include="frmParametros.resx">
       <DependentUpon>frmParametros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmParametrosDetalle.resx">
+      <DependentUpon>frmParametrosDetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPartidaPresupuesto.resx">
       <DependentUpon>frmPartidaPresupuesto.cs</DependentUpon>
     </EmbeddedResource>
@@ -1117,6 +1211,9 @@
     <EmbeddedResource Include="frmprovincias.resx">
       <DependentUpon>frmprovincias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmprovisionarQuestion.resx">
+      <DependentUpon>frmprovisionarQuestion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProyectos.resx">
       <DependentUpon>frmProyectos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1131,6 +1228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteconvenioPracticas.resx">
       <DependentUpon>frmReporteconvenioPracticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportedeFlujoOperaciones.resx">
+      <DependentUpon>frmReportedeFlujoOperaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmreporteempleado.resx">
       <DependentUpon>frmreporteempleado.cs</DependentUpon>
@@ -1165,6 +1265,9 @@
     <EmbeddedResource Include="frmSexo.resx">
       <DependentUpon>frmSexo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitudes.resx">
+      <DependentUpon>frmSolicitudes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSubOperacion.resx">
       <DependentUpon>frmSubOperacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -1191,6 +1294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmimpuestoRenta.resx">
       <DependentUpon>frmimpuestoRenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumBox.resx">
+      <DependentUpon>NumBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptAdendaNecesidad.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1574,6 +1680,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InstallShield.ico" />
+    <None Include="Resources\Bcp-Proveedores.bmp" />
+    <None Include="Resources\BanBif-Proveedores.jpg" />
+    <None Include="Resources\Interbank.jpg" />
     <None Include="Resources\menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

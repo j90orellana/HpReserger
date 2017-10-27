@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmMenu : Form, IForm, IFormEmpleado
+    public partial class frmMenu : Form, IForm, IFormEmpleado, IRentas, IProfesion
     {
         public frmMenu()
         {
@@ -23,6 +23,13 @@ namespace HPReserger
         public void CargarContratos()
         {
             frmE.VerificarContrato();
+        }
+        public void BuscarRenta(params int[] opcion)
+        {
+            if (opcion.Contains(1))
+                recibohonorario.BuscarRenta();
+            if (opcion.Contains(2))
+                frmfac.BuscarIgv();
         }
         private void editarAnularToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1272,7 +1279,7 @@ namespace HPReserger
         private void consolidaciónDeEEFFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pbfotoempleado.Image.Save("holi", pbfotoempleado.Image.RawFormat);
-            
+
 
         }
 
@@ -1292,7 +1299,7 @@ namespace HPReserger
             {
                 frmVerPdf ver = new frmVerPdf();
                 ver.nombreformulario = var.FileName;
-                ver.ruta = var.FileName;               
+                ver.ruta = var.FileName;
                 //8ver.EstadoVentana = FormWindowState.Maximized;
                 ver.ShowDialog();
             }
@@ -1860,6 +1867,72 @@ namespace HPReserger
         private void generalesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+        frmReportedeFlujoOperaciones frmFlujos;
+        private void flujoDeOperacionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmFlujos == null)
+            {
+                frmFlujos = new frmReportedeFlujoOperaciones();
+                frmFlujos.MdiParent = this;
+                frmFlujos.FormClosed += new FormClosedEventHandler(cerrarformflujos);
+                frmFlujos.Show();
+            }
+            else
+            {
+                frmFlujos.Activate();
+                ValidarVentanas(frmFlujos);
+            }
+        }
+        void cerrarformflujos(object sender, FormClosedEventArgs e)
+        {
+            frmFlujos = null;
+        }
+
+        public void CargarProfesion()
+        {
+            ((IProfesion)frmE).CargarProfesion();
+        }
+
+        public void CargarGrado()
+        {
+            ((IProfesion)frmE).CargarGrado();
+        }
+
+        private void frmMenu_Scroll(object sender, ScrollEventArgs e)
+        {
+            MessageBox.Show("value:" + e.NewValue);
+        }
+
+        private void frmMenu_MouseDown(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("button:" + e.Button.ToString());
+        }
+
+        private void eliminarPeriodoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEliminarPeriodo frmelimin = new frmEliminarPeriodo();
+            frmelimin.ShowDialog();
+        }
+        frmSolicitudes frmsolis;
+        private void solicitudesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmsolis == null)
+            {
+                frmsolis = new frmSolicitudes();
+                frmsolis.MdiParent = this;
+                frmsolis.FormClosed += new FormClosedEventHandler(Cerrarsolicitudes);
+                frmsolis.Show();
+            }
+            else
+            {
+                frmsolis.Activate();
+                ValidarVentanas(frmsolis);
+            }
+        }
+        private void Cerrarsolicitudes(object sender, FormClosedEventArgs e)
+        {
+            frmsolis = null;
         }
     }
 }

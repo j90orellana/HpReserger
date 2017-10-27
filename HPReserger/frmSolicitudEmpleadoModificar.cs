@@ -207,10 +207,16 @@ namespace HPReserger
 
         private void pbFoto_DoubleClick(object sender, EventArgs e)
         {
-            FrmFoto foto = new FrmFoto();
-            foto.fotito = pbFoto.Image;
-            foto.ShowDialog();
+            
+            if (pbFoto.Image != null)
+            {
+                FrmFoto foto = new FrmFoto();
+                foto.fotito = pbFoto.Image;
+                foto.Owner = this.MdiParent;
+                foto.ShowDialog();
+            
         }
+    }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {

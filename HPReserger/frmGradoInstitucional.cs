@@ -68,6 +68,9 @@ namespace HPReserger
             {
                 iniciar(false);
                 estado = 0;
+                IProfesion iForm = this.MdiParent as IProfesion;
+                if (iForm != null)
+                    iForm.CargarProfesion();
             }
             CargarDatos();
         }

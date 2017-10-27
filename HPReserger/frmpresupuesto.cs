@@ -218,9 +218,10 @@ namespace HPReserger
                 presudetale.Show();
 
             }
-            else { 
+            else
+            {
                 presudetale.Activate();
-           ValidarVentanas(presudetale);
+                ValidarVentanas(presudetale);
             }
 
         }
@@ -237,7 +238,15 @@ namespace HPReserger
             //   formulario.StartPosition = FormStartPosition.CenterParent;
             //this.LayoutMdi(MdiLayout.);
             formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
-            formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2); 
+            formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2);
+        }
+
+        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+            {
+                btndetalle_Click(sender, e);
+            }
         }
     }
 }

@@ -246,6 +246,7 @@ namespace HPReserger
                     ///mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
                     mensajito.Text = "Reenvio de Mensaje de Confirmación";
                     mensajito.txtasunto.Text = "Ordenes de Compra Faltantes";
+                    mensajito.txtcorreo.Text = drCOT["correo"].ToString().ToLower();
                     mensajito.ShowDialog();
                     if (mensajito.ok)
                     {
@@ -254,7 +255,7 @@ namespace HPReserger
                         {
                             MailMessage email = new MailMessage();
                             //CORREO DE PROVEEDOR
-                            email.To.Add(new MailAddress(drCOT["correo"].ToString()));
+                            email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
                             ///
                             email.From = new MailAddress("j90orellana@hotmail.com");
                             email.Subject = mensajito.txtasunto.Text;
@@ -280,7 +281,7 @@ namespace HPReserger
                             smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
                             smtp.Send(email);
                             email.Dispose();
-                            MSG("Correo electrónico fue enviado a " + drCOT["correo"].ToString().ToLower() + " satisfactoriamente.");
+                            MSG("Correo electrónico fue enviado a " + mensajito.txtcorreo.Text.ToLower() + " satisfactoriamente.");
                         }
                         catch (Exception ex)
                         {

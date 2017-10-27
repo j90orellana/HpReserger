@@ -110,10 +110,26 @@ namespace HPReserger
             {
                 FrmFoto foto = new FrmFoto();
                 foto.fotito = fotito.Image;
+                foto.Owner = this.MdiParent;
                 foto.ShowDialog();
             }
         }
-
+        public void BuscarRenta()
+        {
+            Busqueda:
+            DataRow BuscarIgv = cfactura.BuscarParametros("4ta", DateTime.Now);
+            if (BuscarIgv != null)
+            {
+                numigv.Value = (decimal.Parse(BuscarIgv["valor"].ToString()) * 100);
+            }
+            else
+            {
+                MSG("No ha Ingresado el Valor Del Imp. Renta 4ta Categoría, Ingréselo en El Siguiente Formulario");
+                frmParametros param = new frmParametros();
+                param.ShowDialog();
+                goto Busqueda;
+            }
+        }
         private void frmREciboPorHonorario_Load(object sender, EventArgs e)
         {
             //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
@@ -123,19 +139,7 @@ namespace HPReserger
             imgfactura = null;
             dtfechaemision.Value = Dtfechaentregado.Value = DateTime.Now;
             cbotipo.SelectedIndex = 0;
-            Busqueda:
-            DataRow BuscarIgv = cfactura.BuscarParametros("4ta", DateTime.Now);
-            if (BuscarIgv != null)
-            {
-                numigv.Value = (decimal.Parse(BuscarIgv["valor"].ToString()) * 100);
-            }
-            else
-            {
-                MSG("No ha Ingresado el Valor Del Imp Renta 4ta Categoria, Ingreselo en El Siguiente Formulario");
-                frmParametros param = new frmParametros();
-                param.ShowDialog();
-                goto Busqueda;
-            }
+            BuscarRenta();
         }
         int estado = 0;
         private void btnagregar_Click(object sender, EventArgs e)

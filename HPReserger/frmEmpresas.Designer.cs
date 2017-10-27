@@ -611,6 +611,8 @@
             // 
             // cbonombre
             // 
+            this.cbonombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbonombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbonombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbonombre.Enabled = false;
             this.cbonombre.FormattingEnabled = true;

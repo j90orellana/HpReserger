@@ -91,7 +91,6 @@ namespace HPReserger
             radioButton2.Checked = true;
             Txtbusca_TextChanged(sender, e);
             msg(dtgconten);
-
         }
 
         public void ListarProveedores(string busca, int opcion)
@@ -100,15 +99,24 @@ namespace HPReserger
         }
         private void frmproveedor_Activated(object sender, EventArgs e)
         {
+            string valor = "", valor2 = "";
             //TIPO ID =1 sector empresarial=2 bancos=3
             if (cambios == 1)
             {
+                valor = cbodocumento.Text;
                 CargarDocumentoIdentidad();
+                cbodocumento.Text = valor;
             }
             else
             {
                 if (cambios == 3)
+                {
+                    valor = cbobancosoles.Text;
+                    valor2 = cbobancodolares.Text;
                     CargarBanco();
+                    cbobancosoles.Text = valor;
+                    cbobancodolares.Text = valor2;
+                }
             }
             cambios = 0;
         }
@@ -181,36 +189,41 @@ namespace HPReserger
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            int y = e.RowIndex;
+            if (y >= 0)
             {
-                int y = e.RowIndex;
-                txtnumeroidentidad.Text = dtgconten[0, y].Value.ToString();
-                txtnombrerazonsocial.Text = dtgconten[1, y].Value.ToString();
-                cbosectorcomercial.Text = dtgconten[2, y].Value.ToString();
-                txtdireccionoficina.Text = dtgconten[3, y].Value.ToString();
-                txttelefonooficina.Text = dtgconten[4, y].Value.ToString();
-                txtdireccionalmacen.Text = dtgconten[5, y].Value.ToString();
-                txttelefonoalmacen.Text = dtgconten[6, y].Value.ToString();
-                txtdireccionsucursal.Text = dtgconten[7, y].Value.ToString();
-                txttelefonosucursal.Text = dtgconten[8, y].Value.ToString();
-                txtpersonacontacto.Text = dtgconten[9, y].Value.ToString();
-                txttelefonocontacto.Text = dtgconten[10, y].Value.ToString();
-                txtemailcontacto.Text = dtgconten[11, y].Value.ToString();
-                txtcuentasoles.Text = dtgconten[12, y].Value.ToString();
-                txtccisoles.Text = dtgconten[13, y].Value.ToString();
-                cbobancosoles.Text = dtgconten[15, y].Value.ToString();
-                txtcuentadolares.Text = dtgconten[16, y].Value.ToString();
-                txtccidolares.Text = dtgconten[17, y].Value.ToString();
-                cbobancodolares.Text = dtgconten[19, y].Value.ToString();
-                txtcuentadetracciones.Text = dtgconten[20, y].Value.ToString();
-                cboregimen.SelectedValue = dtgconten[21, y].Value.ToString();
+                txtnumeroidentidad.Text = dtgconten["RUC", y].Value.ToString();
+                txtnombrerazonsocial.Text = dtgconten["RAZONSOCIAL", y].Value.ToString();
+                txtnombrecomercial.Text = dtgconten["nombrecomercial", y].Value.ToString();
+                cbosectorcomercial.Text = dtgconten["SECTOREMPRESACIAL", y].Value.ToString();
+                txtdireccionoficina.Text = dtgconten["DIROFICINA", y].Value.ToString();
+                txttelefonooficina.Text = dtgconten["TELOFICINA", y].Value.ToString();
+                txtdireccionalmacen.Text = dtgconten["DIRALMACEN", y].Value.ToString();
+                txttelefonoalmacen.Text = dtgconten["TELALMACEN", y].Value.ToString();
+                txtdireccionsucursal.Text = dtgconten["DIRSUCURSAL", y].Value.ToString();
+                txttelefonosucursal.Text = dtgconten["TELSUCURSAL", y].Value.ToString();
+                txtpersonacontacto.Text = dtgconten["NOMCONTACTO", y].Value.ToString();
+                txttelefonocontacto.Text = dtgconten["TELCONTACTO", y].Value.ToString();
+                txtemailcontacto.Text = dtgconten["EMAILCONTACTO", y].Value.ToString();
+                txtcuentasoles.Text = dtgconten["CTASOLES", y].Value.ToString();
+                txtccisoles.Text = dtgconten["CCISOLES", y].Value.ToString();
+                cbobancosoles.Text = dtgconten["BANCOSOLES", y].Value.ToString();
+                txtcuentadolares.Text = dtgconten["CTADOLARES", y].Value.ToString();
+                txtccidolares.Text = dtgconten["CCIDOLARES", y].Value.ToString();
+                cbobancodolares.Text = dtgconten["BANCODOLARES", y].Value.ToString();
+                txtcuentadetracciones.Text = dtgconten["CTADETRACCIONES", y].Value.ToString();
+                cboregimen.SelectedValue = dtgconten["REGIMEN", y].Value.ToString();
+                cbotipopersona.SelectedIndex = int.Parse(dtgconten["TIPOPER", y].Value.ToString()) - 1;
+                cboctasoles.SelectedIndex = int.Parse(dtgconten["TIPOCTASOLES", y].Value.ToString()) - 1;
+                cboctadolares.SelectedIndex = int.Parse(dtgconten["TIPOCTADOLARES", y].Value.ToString()) - 1;
             }
-            catch { }
         }
         public void Iniciar(Boolean a)
         {
-            btnsectormas.Enabled = a;
-            cbodocumento.Enabled = a;
+            txtnombrecomercial.Enabled = a;
+            cbotipopersona.Enabled = a;
+            btnsectormas.Enabled = a; cboctasoles.Enabled = cboctadolares.Enabled = a;
+            //cbodocumento.Enabled = a;
             txtnumeroidentidad.Enabled = a;
             txtnombrerazonsocial.Enabled = a;
             cbosectorcomercial.Enabled = a;
@@ -272,12 +285,15 @@ namespace HPReserger
             txtcuentadolares.Text =
             txtccisoles.Text =
             txtccidolares.Text =
-            txtcuentadetracciones.Text = ""; Iniciar(true);
+         txtnombrecomercial.Text = txtcuentadetracciones.Text = "";
+            cboctasoles.SelectedIndex = cboctadolares.SelectedIndex = -1;
+            Iniciar(true);
+            llamada = 0;
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            Iniciar(false);llamada = 100;
+            Iniciar(false); llamada = 100;
             if (estado == 0)
             {
 
@@ -291,7 +307,7 @@ namespace HPReserger
                     {
                         estado = 0;
                         Activar();
-                        ActivarModi();
+                        //ActivarModi();
                         PresentarValor("");
                         Txtbusca.Enabled = true;
                     }
@@ -300,23 +316,25 @@ namespace HPReserger
                 {
                     estado = 0;
                     Activar();
-                    ActivarModi();
+                    //ActivarModi();
                     PresentarValor("");
                     Txtbusca.Enabled = true;
                 }
             }
         }
         public void DesactivarModi() { cbodocumento.Enabled = txtnumeroidentidad.Enabled = txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = false; }
-        public void ActivarModi() { cbodocumento.Enabled = txtnumeroidentidad.Enabled = txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = true; }
+        public void ActivarModi() { txtnumeroidentidad.Enabled = txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = true; }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            estado = 2;
+            estado = 2; anterior = txtnumeroidentidad.Text.Trim();
             tipmsg.Show("Ingrese Dirección de Oficina", txtdireccionoficina, 700);
             Desactivar(); DesactivarModi();
             txtdireccionoficina.Focus(); Iniciar(true);
+            llamada = 0;
             //cbotipo.Enabled = false; modmarca = Convert.ToInt32(cbomarca.SelectedValue.ToString());
 
         }
+        string anterior = "";
         public Boolean VerificarDatos(string DocumentoId, string RazonSocial)
         {
             Boolean aux = true;
@@ -335,6 +353,7 @@ namespace HPReserger
             }
             return aux;
         }
+        int ctasoles = 0, ctadolares = 0, tipoper = 0;
         public void CargarValoresDeIngreso()
         {
             numeroidentidad = txtnumeroidentidad.Text;
@@ -357,6 +376,9 @@ namespace HPReserger
             bancodolares = Convert.ToInt32(cbobancodolares.SelectedValue);
             nroctadetracciones = txtcuentadetracciones.Text;
             regimen = Convert.ToInt32(cboregimen.SelectedValue);
+            tipoper = cbotipopersona.SelectedIndex + 1;
+            ctasoles = cboctasoles.SelectedIndex + 1;
+            ctadolares = cboctadolares.SelectedIndex + 1;
         }
 
         public void MensajedeDatos()
@@ -385,9 +407,10 @@ namespace HPReserger
                 CargarValoresDeIngreso();
                 //MensajedeDatos();
                 MessageBox.Show("Se Insertó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CProveedor.InsertarProveedor(numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
-                persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen);
-                PresentarValor(nombrerazon); Iniciar(false);
+                CProveedor.InsertarProveedor(anterior, numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
+                persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares);
+                PresentarValor(nombrerazon);
+                Iniciar(false);
             }
             else
             {
@@ -396,15 +419,16 @@ namespace HPReserger
                     CargarValoresDeIngreso();
                     //MensajedeDatos();
                     MessageBox.Show("Se Modificó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CProveedor.ActualizarProveedor(numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
-                    persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen);
-                    PresentarValor(nombrerazon); Iniciar(false);
+                    CProveedor.ActualizarProveedor(anterior,numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
+                    persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares);
+                    PresentarValor(nombrerazon);
+                    Iniciar(false);
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrerazonsocial.Text + " Nro Documento: " + txtnumeroidentidad.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes") ;
+                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrerazonsocial.Text + " Nro Documento: " + txtnumeroidentidad.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
                             MessageBox.Show("Eliminado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -419,7 +443,7 @@ namespace HPReserger
         {
             estado = 0;
             dtgconten.DataSource = CProveedor.ListarProveedores(final, 1);
-            Activar(); ActivarModi();
+            Activar(); //ActivarModi();
         }
         private void txtnumeroidentidad_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -443,7 +467,6 @@ namespace HPReserger
 
         private void btneliminar_Click(object sender, EventArgs e)
         {
-
             estado = 3;
             btnaceptar_Click(sender, e);
         }
@@ -475,12 +498,12 @@ namespace HPReserger
 
         private void txtcuentasoles_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtcuentasoles, 20);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtcuentasoles, 16);
         }
 
         private void txtcuentadolares_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtcuentadolares, 20);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtcuentadolares, 16);
         }
 
         private void txtccisoles_KeyDown(object sender, KeyEventArgs e)
@@ -505,7 +528,6 @@ namespace HPReserger
                 rucito = txtnumeroidentidad.Text;
             }
         }
-
         private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ValidarPegarSoloLetras(e, txtpersonacontacto, 40);

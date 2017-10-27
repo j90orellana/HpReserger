@@ -103,6 +103,26 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BanBif_Proveedores {
+            get {
+                object obj = ResourceManager.GetObject("BanBif-Proveedores", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bcp_Proveedores {
+            get {
+                object obj = ResourceManager.GetObject("Bcp-Proveedores", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CambioClave {
             get {
                 object obj = ResourceManager.GetObject("CambioClave", resourceCulture);
@@ -196,6 +216,26 @@ namespace HPReserger.Properties {
         internal static System.Drawing.Bitmap Faltas {
             get {
                 object obj = ResourceManager.GetObject("Faltas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Interbank {
+            get {
+                object obj = ResourceManager.GetObject("Interbank", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Interbank1 {
+            get {
+                object obj = ResourceManager.GetObject("Interbank1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

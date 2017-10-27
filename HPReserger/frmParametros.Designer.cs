@@ -35,6 +35,12 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnexportarExcel = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
@@ -43,13 +49,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtdescripcion = new System.Windows.Forms.TextBox();
             this.txtobservacion = new System.Windows.Forms.TextBox();
+            this.dtpfecha = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtvalor = new HPReserger.TextboxSoloNumeros();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,6 +137,64 @@
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten_EditingControlShowing);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter_1);
             // 
+            // descripcion
+            // 
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.descripcion.DataPropertyName = "descripcion";
+            this.descripcion.HeaderText = "Descripción";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Width = 88;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id_parametro_numero";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // valor
+            // 
+            this.valor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valor.DataPropertyName = "valor";
+            this.valor.HeaderText = "Valor";
+            this.valor.Name = "valor";
+            this.valor.ReadOnly = true;
+            this.valor.Width = 56;
+            // 
+            // Observacion
+            // 
+            this.Observacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Observacion.DataPropertyName = "observacion";
+            this.Observacion.HeaderText = "Observación";
+            this.Observacion.Name = "Observacion";
+            this.Observacion.ReadOnly = true;
+            // 
+            // fecha
+            // 
+            this.fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fecha.DataPropertyName = "fecha";
+            dataGridViewCellStyle2.Format = "d";
+            this.fecha.DefaultCellStyle = dataGridViewCellStyle2;
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            this.fecha.Width = 62;
+            // 
+            // usuari
+            // 
+            this.usuari.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.usuari.DataPropertyName = "usuario";
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.usuari.DefaultCellStyle = dataGridViewCellStyle3;
+            this.usuari.HeaderText = "usuario";
+            this.usuari.Name = "usuari";
+            this.usuari.ReadOnly = true;
+            this.usuari.Visible = false;
+            this.usuari.Width = 66;
+            // 
             // btnexportarExcel
             // 
             this.btnexportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -209,8 +269,26 @@
             this.txtobservacion.Enabled = false;
             this.txtobservacion.Location = new System.Drawing.Point(81, 40);
             this.txtobservacion.Name = "txtobservacion";
-            this.txtobservacion.Size = new System.Drawing.Size(500, 20);
+            this.txtobservacion.Size = new System.Drawing.Size(354, 20);
             this.txtobservacion.TabIndex = 143;
+            // 
+            // dtpfecha
+            // 
+            this.dtpfecha.Enabled = false;
+            this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpfecha.Location = new System.Drawing.Point(484, 39);
+            this.dtpfecha.Name = "dtpfecha";
+            this.dtpfecha.Size = new System.Drawing.Size(97, 20);
+            this.dtpfecha.TabIndex = 145;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(441, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 146;
+            this.label3.Text = "Fecha";
             // 
             // txtvalor
             // 
@@ -220,69 +298,13 @@
             this.txtvalor.Size = new System.Drawing.Size(142, 22);
             this.txtvalor.TabIndex = 144;
             // 
-            // descripcion
-            // 
-            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.descripcion.DataPropertyName = "descripcion";
-            this.descripcion.HeaderText = "Descripción";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 88;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id_parametro_numero";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // valor
-            // 
-            this.valor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valor.DataPropertyName = "valor";
-            this.valor.HeaderText = "Valor";
-            this.valor.Name = "valor";
-            this.valor.ReadOnly = true;
-            this.valor.Width = 56;
-            // 
-            // Observacion
-            // 
-            this.Observacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Observacion.DataPropertyName = "observacion";
-            this.Observacion.HeaderText = "Observación";
-            this.Observacion.Name = "Observacion";
-            this.Observacion.ReadOnly = true;
-            // 
-            // fecha
-            // 
-            this.fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.fecha.DataPropertyName = "fecha";
-            dataGridViewCellStyle2.Format = "d";
-            this.fecha.DefaultCellStyle = dataGridViewCellStyle2;
-            this.fecha.HeaderText = "Fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.ReadOnly = true;
-            this.fecha.Width = 62;
-            // 
-            // usuari
-            // 
-            this.usuari.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.usuari.DataPropertyName = "usuario";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.usuari.DefaultCellStyle = dataGridViewCellStyle3;
-            this.usuari.HeaderText = "usuario";
-            this.usuari.Name = "usuari";
-            this.usuari.ReadOnly = true;
-            this.usuari.Visible = false;
-            this.usuari.Width = 66;
-            // 
             // frmParametros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 402);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtpfecha);
             this.Controls.Add(this.txtvalor);
             this.Controls.Add(this.txtobservacion);
             this.Controls.Add(this.txtdescripcion);
@@ -327,5 +349,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuari;
+        private System.Windows.Forms.DateTimePicker dtpfecha;
+        private System.Windows.Forms.Label label3;
     }
 }

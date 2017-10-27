@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gp1 = new System.Windows.Forms.GroupBox();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@
             this.etapa_Des = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importe_proy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FLujos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fk_id_proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_etapas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnaceptar = new System.Windows.Forms.Button();
@@ -57,6 +58,8 @@
             this.lblmsg = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtmontomax = new System.Windows.Forms.TextBox();
+            this.txtflujos = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.gp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -98,7 +101,7 @@
             // btneditar
             // 
             this.btneditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btneditar.Location = new System.Drawing.Point(672, 27);
+            this.btneditar.Location = new System.Drawing.Point(675, 36);
             this.btneditar.Name = "btneditar";
             this.btneditar.Size = new System.Drawing.Size(75, 23);
             this.btneditar.TabIndex = 14;
@@ -129,14 +132,14 @@
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnmas,
@@ -148,16 +151,17 @@
             this.etapa_Des,
             this.importe_proy,
             this.Importe,
+            this.FLujos,
             this.fk_id_proyecto,
             this.id_etapas});
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.Enabled = false;
-            this.dtgconten.Location = new System.Drawing.Point(12, 84);
+            this.dtgconten.Location = new System.Drawing.Point(15, 90);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(735, 556);
+            this.dtgconten.Size = new System.Drawing.Size(735, 550);
             this.dtgconten.TabIndex = 16;
             this.dtgconten.TabStop = false;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
@@ -227,8 +231,8 @@
             // importe_proy
             // 
             this.importe_proy.DataPropertyName = "Importe_Proy";
-            dataGridViewCellStyle2.Format = "n2";
-            this.importe_proy.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Format = "n2";
+            this.importe_proy.DefaultCellStyle = dataGridViewCellStyle5;
             this.importe_proy.HeaderText = "Importe_proy";
             this.importe_proy.Name = "importe_proy";
             this.importe_proy.ReadOnly = true;
@@ -238,13 +242,22 @@
             // 
             this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Importe.DataPropertyName = "Importe_CeCo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            this.Importe.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.Importe.DefaultCellStyle = dataGridViewCellStyle6;
             this.Importe.HeaderText = "Importe";
             this.Importe.Name = "Importe";
             this.Importe.ReadOnly = true;
             this.Importe.Width = 67;
+            // 
+            // FLujos
+            // 
+            this.FLujos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.FLujos.DataPropertyName = "totalflujo";
+            this.FLujos.HeaderText = "Flujo";
+            this.FLujos.Name = "FLujos";
+            this.FLujos.ReadOnly = true;
+            this.FLujos.Width = 54;
             // 
             // fk_id_proyecto
             // 
@@ -284,7 +297,7 @@
             // txtimporte
             // 
             this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtimporte.Location = new System.Drawing.Point(512, 56);
+            this.txtimporte.Location = new System.Drawing.Point(512, 38);
             this.txtimporte.Name = "txtimporte";
             this.txtimporte.Size = new System.Drawing.Size(100, 20);
             this.txtimporte.TabIndex = 20;
@@ -297,7 +310,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(461, 59);
+            this.label2.Location = new System.Drawing.Point(462, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 19;
@@ -307,7 +320,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(618, 59);
+            this.label4.Location = new System.Drawing.Point(473, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 21;
@@ -317,9 +330,9 @@
             // 
             this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotal.Enabled = false;
-            this.txttotal.Location = new System.Drawing.Point(658, 56);
+            this.txttotal.Location = new System.Drawing.Point(513, 64);
             this.txttotal.Name = "txttotal";
-            this.txttotal.Size = new System.Drawing.Size(89, 20);
+            this.txttotal.Size = new System.Drawing.Size(98, 20);
             this.txttotal.TabIndex = 22;
             this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -335,7 +348,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(401, 33);
+            this.label5.Location = new System.Drawing.Point(402, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 13);
             this.label5.TabIndex = 24;
@@ -344,23 +357,48 @@
             // txtmontomax
             // 
             this.txtmontomax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtmontomax.Location = new System.Drawing.Point(512, 30);
+            this.txtmontomax.Location = new System.Drawing.Point(512, 12);
             this.txtmontomax.Name = "txtmontomax";
             this.txtmontomax.Size = new System.Drawing.Size(100, 20);
             this.txtmontomax.TabIndex = 25;
             this.txtmontomax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtflujos
+            // 
+            this.txtflujos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtflujos.Enabled = false;
+            this.txtflujos.Location = new System.Drawing.Point(650, 65);
+            this.txtflujos.Name = "txtflujos";
+            this.txtflujos.Size = new System.Drawing.Size(100, 20);
+            this.txtflujos.TabIndex = 20;
+            this.txtflujos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtflujos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtimporte_KeyDown);
+            this.txtflujos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtimporte_KeyPress);
+            this.txtflujos.Validated += new System.EventHandler(this.txtimporte_Validated);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(611, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Flujos:";
             // 
             // frmPresupuestodetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 684);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtmontomax);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.txttotal);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtflujos);
             this.Controls.Add(this.txtimporte);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -396,6 +434,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txttotal;
         private System.Windows.Forms.Label lblmsg;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtmontomax;
         private System.Windows.Forms.DataGridViewButtonColumn btnmas;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodCentroC;
         private System.Windows.Forms.DataGridViewTextBoxColumn iddep;
@@ -405,9 +445,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn etapa_Des;
         private System.Windows.Forms.DataGridViewTextBoxColumn importe_proy;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FLujos;
         private System.Windows.Forms.DataGridViewTextBoxColumn fk_id_proyecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_etapas;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtmontomax;
+        private System.Windows.Forms.TextBox txtflujos;
+        private System.Windows.Forms.Label label6;
     }
 }

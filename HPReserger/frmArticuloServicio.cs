@@ -235,7 +235,8 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.ToUpper(e);
         }
-        int IGV, CENTRO; string cuentax;
+        int IGV;
+        int CENTRO; string cuentax;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (chkcentro.Checked)

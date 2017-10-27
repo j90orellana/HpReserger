@@ -13,18 +13,22 @@ namespace HPReserger
     public partial class frmOrdenPedido : Form
     {
         HPResergerCapaLogica.HPResergerCL clOrdenPedido = new HPResergerCapaLogica.HPResergerCL();
-
         public frmOrdenPedido()
         {
             InitializeComponent();
         }
-
+        DataRow DatosU;
         private void frmOrdenPedido_Load(object sender, EventArgs e)
         {
             txtUsuario.Text = frmLogin.Usuario;
             txtArea.Text = frmLogin.Area;
             txtGerencia.Text = frmLogin.Gerencia;
-
+            DatosU = clOrdenPedido.ListarAreaGerenciaDeUsuario(txtUsuario.Text);
+            if (DatosU != null)
+            {
+                txtArea.Text = DatosU["area"].ToString();
+                txtGerencia.Text = DatosU["gerencia"].ToString();
+            }
             string Repeticion = new string('0', 4 - frmLogin.CodigoCentroCosto.ToString().Length);
             txtCentroCosto.Text = "CC_" + Repeticion + Convert.ToString(frmLogin.CodigoCentroCosto);
 
@@ -283,9 +287,10 @@ namespace HPReserger
                 frmLOP.FormClosed += new FormClosedEventHandler(cerrarordenpedido);
                 frmLOP.Show();
             }
-            else { 
+            else
+            {
                 frmLOP.Activate();
-            ValidarVentanas(frmLOP);
+                ValidarVentanas(frmLOP);
             }
         }
         void cerrarordenpedido(object sender, FormClosedEventArgs e)
@@ -449,11 +454,11 @@ namespace HPReserger
             }
             else MSG("No hay empresas");
         }
-        
+
         private void gridItem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           if (e.ColumnIndex == 1 && e.RowIndex >= 0)
-             {
+            if (e.ColumnIndex == 1 && e.RowIndex >= 0)
+            {
                 DataGridViewComboBoxColumn ItemColumn = gridItem.Columns["Item"] as DataGridViewComboBoxColumn;
                 ItemColumn.DisplayMember = "Descripcion";
                 ItemColumn.ValueMember = "Id_Articulo";

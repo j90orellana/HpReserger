@@ -55,18 +55,22 @@ namespace HPReserger
             {
                 iniciar(false);
                 dtgconten.DataSource = CLDetalle.ListarPresupuestoCentrodeCosto(cabecera, int.Parse(cboproyecto.SelectedValue.ToString()));
-                txtimporte.Text = dtgconten["importe_proy", 0].Value.ToString();
-                calcularsumatoria();
-                for (int i = 0; i < dtgconten.RowCount; i++)
+                if (dtgconten.RowCount > 0)
                 {
-                    importes = decimal.Parse(dtgconten["importe_proy", i].Value.ToString());
-                    if (importes > 0)
+                    txtimporte.Text = dtgconten["importe_proy", 0].Value.ToString();
+                    calcularsumatoria();
+                    for (int i = 0; i < dtgconten.RowCount; i++)
                     {
-                        txtimporte.Text = importes.ToString("n2");
-                        break;
+                        importes = decimal.Parse(dtgconten["importe_proy", i].Value.ToString());
+                        if (importes > 0)
+                        {
+                            txtimporte.Text = importes.ToString("n2");
+                            break;
+                        }
                     }
+                    contando(dtgconten);
                 }
-                contando(dtgconten);
+                else MSG("Proyecto - No Tiene Etapas");
             }
         }
         public void iniciar(Boolean a)
@@ -116,12 +120,12 @@ namespace HPReserger
                 cboproyecto.Focus();
                 return;
             }
-            CLDetalle.ProyectoCentrodecostodetalle(10, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), 0, 0, "0", 0, 0);
+            CLDetalle.ProyectoCentrodecostodetalle(10, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), 0, 0, "0", 0, 0, 0);
             for (int i = 0; i < dtgconten.RowCount; i++)
             {
                 if (decimal.Parse(dtgconten["importe", i].Value.ToString()) > 0)
                 {
-                    CLDetalle.ProyectoCentrodecostodetalle(0, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), int.Parse(dtgconten["id_etapas", i].Value.ToString()), decimal.Parse(txtimporte.Text), dtgconten["CodCentroC", i].Value.ToString(), decimal.Parse(dtgconten["importe", i].Value.ToString()), frmLogin.CodigoUsuario);
+                    CLDetalle.ProyectoCentrodecostodetalle(0, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), int.Parse(dtgconten["id_etapas", i].Value.ToString()), decimal.Parse(txtimporte.Text), dtgconten["CodCentroC", i].Value.ToString(), decimal.Parse(dtgconten["importe", i].Value.ToString()), decimal.Parse(dtgconten["flujos", i].Value.ToString()), frmLogin.CodigoUsuario);
                 }
             }
             MSG("Modificación Exitosa");
@@ -141,15 +145,17 @@ namespace HPReserger
         }
         int deci, punto;
         TextBox txt;
-        decimal total;
+        decimal total, flujos;
         public void calcularsumatoria()
         {
-            total = 0;
+            total = 0; flujos = 0;
             for (int i = 0; i < dtgconten.RowCount; i++)
             {
                 total += decimal.Parse(dtgconten["importe", i].Value.ToString());
+                flujos += decimal.Parse(dtgconten["flujos", i].Value.ToString());
             }
             txttotal.Text = total.ToString("n2");
+            txtflujos.Text = flujos.ToString("n2");
         }
         private void dtgconten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -185,11 +191,13 @@ namespace HPReserger
                         etapitas.txtetapa.Text = dtgconten["etapa_des", y].Value.ToString();
                         etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
                         etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
+                        etapitas.cabecera = cabecera;
                         etapitas.FormClosed += new FormClosedEventHandler(cerrarpresupuestoetapas);
                         etapitas.Show();
                         if (etapitas.ok)
                         {
                             dtgconten["importe", y].Value = etapitas.valor;
+                            dtgconten["FLujos", y].Value = etapitas.valorflujo;
                             calcularsumatoria();
                         }
                     }
@@ -203,6 +211,12 @@ namespace HPReserger
         }
         void cerrarpresupuestoetapas(object sender, FormClosedEventArgs e)
         {
+            if (etapitas.ok)
+            {
+                dtgconten["importe", dtgconten.CurrentCell.RowIndex].Value = etapitas.valor;
+                dtgconten["FLujos", dtgconten.CurrentCell.RowIndex].Value = etapitas.valorflujo;
+                calcularsumatoria();
+            }
             etapitas = null;
             // pbfotoempleado.Visible = true;
         }
@@ -236,11 +250,13 @@ namespace HPReserger
                         etapitas.txtetapa.Text = dtgconten["etapa_des", y].Value.ToString();
                         etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
                         etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
+                        etapitas.cabecera = cabecera;
                         etapitas.FormClosed += new FormClosedEventHandler(cerrarpresupuestoetapas);
                         etapitas.Show();
                         if (etapitas.ok)
                         {
                             dtgconten["importe", y].Value = etapitas.valor;
+                            dtgconten["FLujos", y].Value = etapitas.valorflujo;
                             calcularsumatoria();
                         }
                     }

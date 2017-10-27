@@ -136,6 +136,7 @@ namespace HPReserger
                 //mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
                 mensajito.Text = "Solicitud de Factura";
                 mensajito.txtasunto.Text = "Solicitud de Factura";
+                mensajito.txtcorreo.Text = dtgconten["email", dtgconten.CurrentCell.RowIndex].Value.ToString().ToLower();
                 mensajito.ShowDialog();
                 if (mensajito.ok)
                 {
@@ -144,7 +145,7 @@ namespace HPReserger
                     {
                         MailMessage email = new MailMessage();
                         //CORREO DE PROVEEDOR
-                        email.To.Add(new MailAddress(dtgconten["email", dtgconten.CurrentCell.RowIndex].Value.ToString()));
+                        email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
                         ///
                         email.From = new MailAddress("j90orellana@hotmail.com");
                         email.Subject = mensajito.txtasunto.Text;
@@ -174,7 +175,7 @@ namespace HPReserger
                         smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
                         smtp.Send(email);
                         email.Dispose();
-                        MSG("Correo electrónico a " + dtgconten["email", dtgconten.CurrentCell.RowIndex].Value.ToString().ToLower() + " fue enviado satisfactoriamente.");
+                        MSG("Correo electrónico a " + mensajito.txtcorreo.Text.ToLower() + " fue enviado satisfactoriamente.");
                     }
                     catch (Exception ex)
                     {

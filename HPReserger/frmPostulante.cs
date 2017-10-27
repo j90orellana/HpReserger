@@ -439,14 +439,14 @@ namespace HPReserger
         private void txtDocumento_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtDocumento, 10);
-        }
-
+        }       
         private void pbFoto_DoubleClick(object sender, EventArgs e)
         {
             if (pbFoto.Image != null)
             {
                 FrmFoto foto = new FrmFoto();
                 foto.fotito = pbFoto.Image;
+                foto.Owner = this.MdiParent;
                 foto.ShowDialog();
             }
         }
@@ -471,6 +471,11 @@ namespace HPReserger
         private void btndescargar_Click(object sender, EventArgs e)
         {
             HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
+        }
+
+        private void pbFoto_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

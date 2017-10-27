@@ -155,7 +155,8 @@ namespace HPResergerFunciones
             }
             if (e.Control && e.KeyCode == Keys.C && !string.IsNullOrWhiteSpace(cajita.Text))
             {
-                Clipboard.SetText(cajita.SelectedText);
+                if (!string.IsNullOrWhiteSpace(cajita.SelectedText))
+                    Clipboard.SetText(cajita.SelectedText);
             }
         }
         public static void ValidarCuentaBancos(KeyEventArgs e, TextBox cajita, int tamaño)
@@ -479,58 +480,121 @@ namespace HPResergerFunciones
                 aplicacion.Quit();
             }
         }
-       /*    public void EnviarMensaje(string mensaje, string titulo, string asunto, string para, string de)
-            {
-                frmMensajeCorreo mensajito = new frmMensajeCorreo();
-                mensajito.txtmsg.Text = mensaje;
-                mensajito.Text = titulo;
-                mensajito.txtasunto.Text = asunto;
-                mensajito.ShowDialog();
-                if (mensajito.ok)
-                {
-                    try
-                    {
-                        MailMessage email = new MailMessage();
-                        //CORREO DE PROVEEDOR
-                        email.To.Add(new MailAddress(para));
-                        ///
-                        email.From = new MailAddress("j90orellana@hotmail.com");
-                        email.Subject = mensajito.txtasunto.Text;
-                        email.Priority = mensajito.PrioridadCorreo();
-                        email.Body = mensajito.txtmsg.Text;
-                        if (mensajito.Adjunto())
-                        {
-                            foreach (string ruta in mensajito.ArchivosAdjuntos())
-                            {
-                                Attachment Archivos = new Attachment(ruta);
-                                email.Attachments.Add(Archivos);
-                            }
-                        }
-                        else
-                            email.Attachments.Clear();
-                        ///
-                        email.IsBodyHtml = false;
-                        SmtpClient smtp = new SmtpClient();
-                        smtp.Host = "smtp.live.com";
-                        smtp.Port = 25;
-                        smtp.EnableSsl = true;
-                        smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
-                        smtp.Send(email);
-                        email.Dispose();
-                        MSG("Correo electrónico fue enviado a " + para.ToLower() + " satisfactoriamente.");
-                    }
-                    catch (Exception ex)
-                    {
-                        MSG("Error enviando correo electrónico: " + ex.Source + " " + ex.Message);
-                    }
-                }
-            }
-            */
+        /*    public void EnviarMensaje(string mensaje, string titulo, string asunto, string para, string de)
+             {
+                 frmMensajeCorreo mensajito = new frmMensajeCorreo();
+                 mensajito.txtmsg.Text = mensaje;
+                 mensajito.Text = titulo;
+                 mensajito.txtasunto.Text = asunto;
+                 mensajito.ShowDialog();
+                 if (mensajito.ok)
+                 {
+                     try
+                     {
+                         MailMessage email = new MailMessage();
+                         //CORREO DE PROVEEDOR
+                         email.To.Add(new MailAddress(para));
+                         ///
+                         email.From = new MailAddress("j90orellana@hotmail.com");
+                         email.Subject = mensajito.txtasunto.Text;
+                         email.Priority = mensajito.PrioridadCorreo();
+                         email.Body = mensajito.txtmsg.Text;
+                         if (mensajito.Adjunto())
+                         {
+                             foreach (string ruta in mensajito.ArchivosAdjuntos())
+                             {
+                                 Attachment Archivos = new Attachment(ruta);
+                                 email.Attachments.Add(Archivos);
+                             }
+                         }
+                         else
+                             email.Attachments.Clear();
+                         ///
+                         email.IsBodyHtml = false;
+                         SmtpClient smtp = new SmtpClient();
+                         smtp.Host = "smtp.live.com";
+                         smtp.Port = 25;
+                         smtp.EnableSsl = true;
+                         smtp.UseDefaultCredentials = false;
+                         smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
+                         smtp.Send(email);
+                         email.Dispose();
+                         MSG("Correo electrónico fue enviado a " + para.ToLower() + " satisfactoriamente.");
+                     }
+                     catch (Exception ex)
+                     {
+                         MSG("Error enviando correo electrónico: " + ex.Source + " " + ex.Message);
+                     }
+                 }
+             }
+             */
         public void MSG(string cadena)
         {
             MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
-
+        public enum Direccion
+        {
+            derecha = 0, izquierda
+        }
+        public static string AddCaracter(string cadena, char caracter, int tamaño, Direccion direccion)
+        {
+            cadena = cadena.Trim();
+            string cade = "";
+            for (int i = cadena.Length; i < tamaño; i++)
+            {
+                cade += caracter;
+            }
+            if ((int)direccion == 0)
+                cadena = cade + cadena;
+            else
+                cadena = cadena + cade;
+            return cadena.Substring(0, tamaño);
+        }
+        public static string AddCaracterMultiplicarx100(string cadena, char caracter, int tamaño, Direccion direccion)
+        {
+            cadena = cadena.Trim();
+            decimal monto = decimal.Parse(((decimal.Parse(cadena)).ToString("n2"))) * 100;
+            string cade = "";
+            cadena = "";
+            foreach (char var in monto.ToString("n0"))
+            {
+                if (char.IsNumber(var))
+                    cadena += var;
+            }
+            for (int i = cadena.Length; i < tamaño; i++)
+            {
+                cade += caracter;
+            }
+            if ((int)direccion == 0)
+                cadena = cade + cadena;
+            else
+                cadena = cadena + cade;
+            return cadena.Substring(0, tamaño);
+        }
+        public static string ExtraerCuenta(string cuenta)
+        {
+            Boolean numero = false;
+            string caden = "";
+            foreach (char txt in cuenta)
+            {
+                if ((char.IsLetter(txt) || txt == '-') && numero == false)
+                    numero = true;
+                if ((char.IsNumber(txt) || txt == '-') && numero == true)
+                    caden += txt;
+                if (char.IsLetter(txt) && numero == true && caden.Length > 9)
+                    return caden.Trim('-');
+            }
+            return caden.Trim('-');
+        }
+        public static string QuitarCaracterCuenta(string cuenta, char caracter)
+        {
+            string caden = "";
+            foreach (char cas in cuenta)
+            {
+                if (cas != caracter)
+                    caden += cas;
+            }
+            return caden;
+        }
     }
 }

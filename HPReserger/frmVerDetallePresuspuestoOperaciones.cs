@@ -19,11 +19,15 @@ namespace HPReserger
         public int etapa;
         public int cuenta;
         public DateTime fecha;
+        public int Tipo;
         HPResergerCapaLogica.HPResergerCL Ccampos = new HPResergerCapaLogica.HPResergerCL();
         private void frmVerDetallePresuspuestoOperaciones_Load(object sender, EventArgs e)
         {
             //Msg($"etapa { etapa} cuenta { cuenta} fecha { fecha}");
+            if(Tipo==1)
             dtgconten.DataSource = Ccampos.ListarDetalleDelReporteDeCentrodeCostoFechaFacturas(etapa, cuenta, fecha);
+            else
+                dtgconten.DataSource = Ccampos.ListarDetalleDelReporteDeCentrodeCostoFechaFlujoFacturas(etapa, cuenta, fecha);
             if (dtgconten.RowCount > 0)
                 btnexportarExcel.Enabled = true;
             else

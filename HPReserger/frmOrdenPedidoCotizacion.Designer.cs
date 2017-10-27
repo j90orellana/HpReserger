@@ -75,6 +75,7 @@
             this.groupBox1.Size = new System.Drawing.Size(777, 87);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtGerencia
             // 

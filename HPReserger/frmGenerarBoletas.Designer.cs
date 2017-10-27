@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnlimpiar = new System.Windows.Forms.Button();
@@ -38,11 +40,17 @@
             this.btnrecempresa = new System.Windows.Forms.Button();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.btngenerar = new System.Windows.Forms.Button();
+            this.comboMesAño2 = new HPReserger.ComboMesAño();
+            this.comboMesAño1 = new HPReserger.ComboMesAño();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.comboMesAño2);
+            this.groupBox1.Controls.Add(this.comboMesAño1);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.btnlimpiar);
@@ -51,18 +59,36 @@
             this.groupBox1.Controls.Add(this.cbotipoid);
             this.groupBox1.Controls.Add(this.btnrecempresa);
             this.groupBox1.Controls.Add(this.cboempresa);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(306, 151);
+            this.groupBox1.Size = new System.Drawing.Size(382, 158);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parametros";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(77, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Hasta:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(93, 105);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "De:";
+            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 69);
+            this.radioButton2.Location = new System.Drawing.Point(13, 46);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(83, 17);
             this.radioButton2.TabIndex = 9;
@@ -74,7 +100,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
+            this.radioButton1.Location = new System.Drawing.Point(11, 19);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(85, 17);
             this.radioButton1.TabIndex = 9;
@@ -89,7 +115,7 @@
             this.btnlimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnlimpiar.Enabled = false;
             this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnlimpiar.Location = new System.Drawing.Point(243, 119);
+            this.btnlimpiar.Location = new System.Drawing.Point(349, 73);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(27, 21);
             this.btnlimpiar.TabIndex = 8;
@@ -99,9 +125,9 @@
             // txtnumero
             // 
             this.txtnumero.Enabled = false;
-            this.txtnumero.Location = new System.Drawing.Point(84, 119);
+            this.txtnumero.Location = new System.Drawing.Point(102, 73);
             this.txtnumero.Name = "txtnumero";
-            this.txtnumero.Size = new System.Drawing.Size(153, 20);
+            this.txtnumero.Size = new System.Drawing.Size(241, 20);
             this.txtnumero.TabIndex = 7;
             // 
             // btnrectipo
@@ -110,7 +136,7 @@
             this.btnrectipo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnrectipo.Enabled = false;
             this.btnrectipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnrectipo.Location = new System.Drawing.Point(243, 92);
+            this.btnrectipo.Location = new System.Drawing.Point(349, 46);
             this.btnrectipo.Name = "btnrectipo";
             this.btnrectipo.Size = new System.Drawing.Size(27, 21);
             this.btnrectipo.TabIndex = 5;
@@ -122,9 +148,9 @@
             this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipoid.Enabled = false;
             this.cbotipoid.FormattingEnabled = true;
-            this.cbotipoid.Location = new System.Drawing.Point(84, 92);
+            this.cbotipoid.Location = new System.Drawing.Point(102, 46);
             this.cbotipoid.Name = "cbotipoid";
-            this.cbotipoid.Size = new System.Drawing.Size(153, 21);
+            this.cbotipoid.Size = new System.Drawing.Size(241, 21);
             this.cbotipoid.TabIndex = 4;
             // 
             // btnrecempresa
@@ -132,7 +158,7 @@
             this.btnrecempresa.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
             this.btnrecempresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnrecempresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnrecempresa.Location = new System.Drawing.Point(243, 42);
+            this.btnrecempresa.Location = new System.Drawing.Point(349, 19);
             this.btnrecempresa.Name = "btnrecempresa";
             this.btnrecempresa.Size = new System.Drawing.Size(27, 21);
             this.btnrecempresa.TabIndex = 2;
@@ -143,31 +169,45 @@
             // 
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(84, 42);
+            this.cboempresa.Location = new System.Drawing.Point(102, 19);
             this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(153, 21);
+            this.cboempresa.Size = new System.Drawing.Size(241, 21);
             this.cboempresa.TabIndex = 1;
             // 
             // btngenerar
             // 
-            this.btngenerar.Location = new System.Drawing.Point(124, 169);
+            this.btngenerar.Location = new System.Drawing.Point(173, 169);
             this.btngenerar.Name = "btngenerar";
-            this.btngenerar.Size = new System.Drawing.Size(103, 29);
+            this.btngenerar.Size = new System.Drawing.Size(103, 24);
             this.btngenerar.TabIndex = 1;
-            this.btngenerar.Text = "Generar";
+            this.btngenerar.Text = "&Generar";
             this.btngenerar.UseVisualStyleBackColor = true;
             this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
+            // 
+            // comboMesAño2
+            // 
+            this.comboMesAño2.Location = new System.Drawing.Point(112, 124);
+            this.comboMesAño2.Name = "comboMesAño2";
+            this.comboMesAño2.Size = new System.Drawing.Size(205, 29);
+            this.comboMesAño2.TabIndex = 14;
+            // 
+            // comboMesAño1
+            // 
+            this.comboMesAño1.Location = new System.Drawing.Point(112, 99);
+            this.comboMesAño1.Name = "comboMesAño1";
+            this.comboMesAño1.Size = new System.Drawing.Size(205, 29);
+            this.comboMesAño1.TabIndex = 13;
             // 
             // frmGenerarBoletas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(354, 205);
+            this.ClientSize = new System.Drawing.Size(406, 200);
             this.Controls.Add(this.btngenerar);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(370, 244);
-            this.MinimumSize = new System.Drawing.Size(370, 244);
+            this.MaximumSize = new System.Drawing.Size(422, 239);
+            this.MinimumSize = new System.Drawing.Size(422, 239);
             this.Name = "frmGenerarBoletas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar Boletas";
@@ -190,5 +230,9 @@
         private System.Windows.Forms.ComboBox cbotipoid;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private ComboMesAño comboMesAño2;
+        private ComboMesAño comboMesAño1;
     }
 }

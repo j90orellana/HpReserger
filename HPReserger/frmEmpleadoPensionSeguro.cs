@@ -114,14 +114,15 @@ namespace HPReserger
             pnlconten.Enabled = true;
         }
 
-        private void GrabarEditar(int Opcion)
+        private Boolean GrabarEditar(int Opcion)
         {
-            if (txtCUPSS.Text.Length == 0)
-            {
-                MessageBox.Show("Ingrese Número CUPSS", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtCUPSS.Focus();
-                return;
-            }
+            if (cboAFP.Text == "SI")
+                if (txtCUPSS.Text.Length == 0)
+                {
+                    MessageBox.Show("Ingrese Número CUPSS", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    txtCUPSS.Focus();
+                    return false;
+                }
             int EPSAdiconal = 0;
             int AFP = 0;
             string ONP;
@@ -146,7 +147,7 @@ namespace HPReserger
                 ONP = "NO";
             }
             clPensionSeguro.EmpleadoSeguroPension(CodigoDocumento, NumeroDocumento, cboEPS.SelectedItem.ToString(), EPSAdiconal, cboSCTR.SelectedItem.ToString(), ONP, cboAFP.SelectedItem.ToString(), AFP, txtCUPSS.Text, frmLogin.CodigoUsuario, Opcion);
-
+            return true;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -192,21 +193,25 @@ namespace HPReserger
         {
             if (estado == 1)
             {
-                GrabarEditar(1);
-                MessageBox.Show("Seguro Pensión generado con éxito", "HP Reserger ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                estado = 0;
-                btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;
-                btnModificar.Enabled = true;
+                if (GrabarEditar(1))
+                {
+                    MessageBox.Show("Seguro Pensión generado con éxito", "HP Reserger ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    estado = 0;
+                    btnaceptar.Enabled = false;
+                    pnlconten.Enabled = false;
+                    btnModificar.Enabled = true;
+                }
             }
             if (estado == 2)
             {
-                GrabarEditar(0);
-                MessageBox.Show("Seguro Pensión actualizado con éxito", "HP Reserger ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                estado = 0;
-                btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;
-                btnModificar.Enabled = true;
+                if (GrabarEditar(0))
+                {
+                    MessageBox.Show("Seguro Pensión actualizado con éxito", "HP Reserger ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    estado = 0;
+                    btnaceptar.Enabled = false;
+                    pnlconten.Enabled = false;
+                    btnModificar.Enabled = true;
+                }
             }
         }
 

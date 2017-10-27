@@ -18,9 +18,9 @@ namespace HPReserger
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
         int estado = 0;
-        string tabla = "TBL_Cargo";
-        string campo = "Cargo";
-        string id = "Id_Cargo";
+        //string tabla = "TBL_Cargo";
+        //string campo = "Cargo";
+        //string id = "Id_Cargo";
         public void iniciar(Boolean a)
         {
             btnnuevo.Enabled = !a;

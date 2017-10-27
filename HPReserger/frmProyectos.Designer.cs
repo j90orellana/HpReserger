@@ -197,7 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 294);
+            this.ClientSize = new System.Drawing.Size(390, 283);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gp1);
             this.Controls.Add(this.btnaceptar);
@@ -205,8 +205,8 @@
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.dtgconten);
-            this.MaximumSize = new System.Drawing.Size(415, 333);
-            this.MinimumSize = new System.Drawing.Size(415, 333);
+            this.MaximumSize = new System.Drawing.Size(406, 322);
+            this.MinimumSize = new System.Drawing.Size(406, 322);
             this.Name = "frmProyectos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proyectos";

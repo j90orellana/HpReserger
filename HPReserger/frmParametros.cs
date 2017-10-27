@@ -23,7 +23,7 @@ namespace HPReserger
         }
         public void CargarDatos()
         {
-            dtgconten.DataSource = CapaLogica.ActualizarParametros(0, "", 3, "", 1);
+            dtgconten.DataSource = CapaLogica.ActualizarParametros(0, "", 3, "", 1,dtpfecha.Value);
         }
         private void frmParametros_Load(object sender, EventArgs e)
         {
@@ -110,18 +110,20 @@ namespace HPReserger
             btnexportarExcel.Enabled = !a;
             btneliminar.Enabled = !a;
             txtobservacion.Enabled = txtdescripcion.Enabled = txtvalor.Enabled = a;
+            dtpfecha.Enabled = a;btnnuevo.Enabled = !a;
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             iniciar(true);
             estado = 1;
-            txtobservacion.Text = txtdescripcion.Text = "";
-            txtvalor.txt.Text = "0";
+            txtdescripcion.Text = txtobservacion.Text = "";
+            txtvalor.txt.Text = "0";dtpfecha.Value = DateTime.Now;
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             estado = 2;
             iniciar(true);
+            txtdescripcion.Enabled = false;
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -152,12 +154,12 @@ namespace HPReserger
                 txtdescripcion.Focus();
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtobservacion.Text))
-            {
-                msg("Ingresé la Observación");
-                txtobservacion.Focus();
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(txtobservacion.Text))
+            // {
+            //     msg("Ingresé la Observación");
+            //     txtobservacion.Focus();
+            //     return;
+            //  }
             if (string.IsNullOrWhiteSpace(txtvalor.txt.Text))
             {
                 msg("Ingresé el Valor");
@@ -197,7 +199,7 @@ namespace HPReserger
                       dtgconten.CurrentCell = dtgconten["valor", i];
                       return;
                   }
-
+                  i
               }///fin del for
               for (int i = 0; i < dtgconten.RowCount; i++)
               {*/
@@ -205,9 +207,11 @@ namespace HPReserger
             //  if (dtgconten["id", i].Value != null)
             //     CapaLogica.ActualizarParametros(2, (int)dtgconten["id", i].Value, dtgconten["descripcion", i].Value.ToString(), (decimal)dtgconten["minimo", i].Value, (decimal)dtgconten["maximo", i].Value, ((decimal)dtgconten["valor", i].Value), dtgconten["observacion", i].Value.ToString(), frmLogin.CodigoUsuario);
             //  else
-            CapaLogica.ActualizarParametros(1, txtdescripcion.Text, decimal.Parse(txtvalor.txt.Text), txtobservacion.Text, frmLogin.CodigoUsuario);
+            CapaLogica.ActualizarParametros(1, txtdescripcion.Text, decimal.Parse(txtvalor.txt.Text), txtobservacion.Text, frmLogin.CodigoUsuario, dtpfecha.Value);
             // }
-
+            IRentas Rentas = this.MdiParent as IRentas;
+            if (Rentas != null)
+                Rentas.BuscarRenta(1, 2);
             Msg("Guardado con Exito");
             btncancelar_Click(sender, e);
         }
@@ -234,6 +238,7 @@ namespace HPReserger
                 txtvalor.txt.Text = dtgconten["valor", fila].Value.ToString();
                 txtobservacion.Text = dtgconten["observacion", fila].Value.ToString();
                 txtdescripcion.Text = dtgconten["descripcion", fila].Value.ToString();
+                dtpfecha.Value = (DateTime)dtgconten["fecha", fila].Value;
             }
         }
         private void dtgconten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -296,9 +301,12 @@ namespace HPReserger
         {
             if (MessageBox.Show("Seguro Quiere Eliminar", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                CapaLogica.ActualizarParametros(10, dtgconten["descripcion", dtgconten.CurrentCell.RowIndex].Value.ToString(), 0, "", 0);
+                CapaLogica.ActualizarParametros(10, dtgconten["descripcion", dtgconten.CurrentCell.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", dtgconten.CurrentCell.RowIndex].Value, dtpfecha.Value);
                 CargarDatos();
             }
+            IRentas Rentas = this.MdiParent as IRentas;
+            if (Rentas != null)
+                Rentas.BuscarRenta(1, 2);
         }
         private void btnexportarExcel_Click(object sender, EventArgs e)
         {
@@ -308,7 +316,7 @@ namespace HPReserger
                 HPResergerFunciones.Utilitarios.NombreCelda Celdita = new HPResergerFunciones.Utilitarios.NombreCelda();
                 Celdita.fila = 1; Celdita.columna = 1; Celdita.Nombre = "Tabla de Parametros";
                 Celditas.Add(Celdita);
-                HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Parametros", Celditas, 2, new int[] { 1, 5, 6 }, new int[] { 1 }, new int[] { });
+                HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Parametros", Celditas, 2, new int[] { 1, 5 }, new int[] { 1 }, new int[] { });
                 msg("Exportado con Exito");
             }
             else
@@ -319,86 +327,84 @@ namespace HPReserger
         {
             if (e.RowIndex >= 0)
             {
-                int Ocultar = 0;
-                if (dtgconten["id", e.RowIndex].Value.ToString() == "99")
-                {
-                    dtgconten["id", e.RowIndex].Value = "0";
-                    Ocultar = 1;
-                }
-                else
-                {
-                    Ocultar = 0;
-                    dtgconten["id", e.RowIndex].Value = "99";
-                }
-                if (!string.IsNullOrWhiteSpace(dtgconten["id", e.RowIndex].Value.ToString()))
-                {
-                    DataTable tablon = ((DataTable)dtgconten.DataSource).Clone();
-                    tablon = (System.Data.DataTable)dtgconten.DataSource;                    
-                    List<DataRow> datos = new List<DataRow>();
-                    foreach (DataRow datito in tablon.Rows)
-                    {
-                        datos.Add(datito);
-                    }
-                    DataTable tablita = CapaLogica.ActualizarParametros(9, dtgconten["descripcion", e.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", e.RowIndex].Value);
-                    //System.Data.DataTable tablita = CLPresuOpera.ListarDetalleDelReporteDeCentrodeCosto((int)dtgconten["id_etapas", e.RowIndex].Value, dtgconten["codcentroc", e.RowIndex].Value.ToString(), dtgconten["Cta_Contable", e.RowIndex].Value.ToString());
-                    int i = 1;
-                    //dtgconten.DataSource = null;
-                    foreach (DataRow dato in tablita.Rows)
-                    {
-                        if (Ocultar == 0)
-                            datos.Insert(e.RowIndex + i, dato);
-                        i++;
-                    }
-                    if (Ocultar == 1)
-                        datos.RemoveRange(e.RowIndex + 1, tablita.Rows.Count);
-                    tablon = datos.CopyToDataTable();
-                    dtgconten.DataSource = tablon;
-                    /////////////////////////////////////////////////////////////////////////////*
-                    /*    int esto=10;        
-                        List<numeros> numero = new List<numeros>();
-                        numeros valor = new numeros();
-                        valor.numero = 10;
-                        valor.nombre = "Jefferson Orellana";
-                        valor.valor = 10.01m;
-                        numero.Add(valor);
-                        List<numeros> aloja = numero.FindAll(holi => holi.numero > esto);
-                        IEnumerable<numeros> lista = from valores in numero where valores.valor > esto select valor;
-                      */
-                    /////////////////////////////////////////////////////////////////////////////
-                    // List<int> Scores = new List<int>() { 97, 92, 81, 60 };
-                    //   IEnumerable<int> lista = from score in Scores where score > 80 select score;
-                }
-                dtgconten.CurrentCell = dtgconten[e.ColumnIndex, e.RowIndex];
-
-
-
-
-
-                //if (dtgconten["id", e.RowIndex].Value.ToString() != "0")
+                frmParametrosDetalle Detallito = new frmParametrosDetalle();
+                Detallito.dtgconten.DataSource = CapaLogica.ActualizarParametros(9, dtgconten["descripcion", e.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", e.RowIndex].Value, dtpfecha.Value);
+                Detallito.ShowDialog();
+                //int Ocultar = 0;
+                //if (dtgconten["id", e.RowIndex].Value.ToString() == "99")
                 //{
-                //    int fila = e.RowIndex;
-                //    DataTable tablita = ((DataTable)dtgconten.DataSource).Clone();
-                //    tablita = CapaLogica.ActualizarParametros(9, dtgconten["descripcion", e.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", e.RowIndex].Value);
-                //    DataTable conten = (DataTable)dtgconten.DataSource;
-                //    int con = 1;
-                //    foreach (DataRow filita in tablita.Rows)
-                //    {
-                //        // conten.Rows.InsertAt(filita, con);
-                //        //conten.AcceptChanges();
-                //        //conten.NewRow();
-                //        //conten.Rows.Add(filita);
-
-
-                //        conten.Rows.InsertAt(filita, conten.Rows.Count + 1);
-
-
-                //        con++;
-                //    }
-                //    dtgconten.DataSource = conten;
-                //    dtgconten.CurrentCell = dtgconten[e.ColumnIndex, fila];
+                //    dtgconten["id", e.RowIndex].Value = "0";
+                //    Ocultar = 1;
                 //}
+                //else
+                //{
+                //    Ocultar = 0;
+                //    dtgconten["id", e.RowIndex].Value = "99";
+                //}
+                //if (!string.IsNullOrWhiteSpace(dtgconten["id", e.RowIndex].Value.ToString()))
+                //{
+                //    DataTable tablon = ((DataTable)dtgconten.DataSource).Clone();
+                //    tablon = (System.Data.DataTable)dtgconten.DataSource;                    
+                //    List<DataRow> datos = new List<DataRow>();
+                //    foreach (DataRow datito in tablon.Rows)
+                //    {
+                //        datos.Add(datito);
+                //    }
+                //    DataTable tablita = CapaLogica.ActualizarParametros(9, dtgconten["descripcion", e.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", e.RowIndex].Value);
+                //    //System.Data.DataTable tablita = CLPresuOpera.ListarDetalleDelReporteDeCentrodeCosto((int)dtgconten["id_etapas", e.RowIndex].Value, dtgconten["codcentroc", e.RowIndex].Value.ToString(), dtgconten["Cta_Contable", e.RowIndex].Value.ToString());
+                //    int i = 1;
+                //    //dtgconten.DataSource = null;
+                //    foreach (DataRow dato in tablita.Rows)
+                //    {
+                //        if (Ocultar == 0)
+                //            datos.Insert(e.RowIndex + i, dato);
+                //        i++;
+                //    }
+                //    if (Ocultar == 1)
+                //        datos.RemoveRange(e.RowIndex + 1, tablita.Rows.Count);
+                //    tablon = datos.CopyToDataTable();
+                //    dtgconten.DataSource = tablon;
+                /////////////////////////////////////////////////////////////////////////////*
+                /*    int esto=10;        
+                    List<numeros> numero = new List<numeros>();
+                    numeros valor = new numeros();
+                    valor.numero = 10;
+                    valor.nombre = "Jefferson Orellana";
+                    valor.valor = 10.01m;
+                    numero.Add(valor);
+                    List<numeros> aloja = numero.FindAll(holi => holi.numero > esto);
+                    IEnumerable<numeros> lista = from valores in numero where valores.valor > esto select valor;
+                  */
+                /////////////////////////////////////////////////////////////////////////////
+                // List<int> Scores = new List<int>() { 97, 92, 81, 60 };
+                //   IEnumerable<int> lista = from score in Scores where score > 80 select score;
             }
+            // dtgconten.CurrentCell = dtgconten[e.ColumnIndex, e.RowIndex];
+            //if (dtgconten["id", e.RowIndex].Value.ToString() != "0")
+            //{
+            //    int fila = e.RowIndex;
+            //    DataTable tablita = ((DataTable)dtgconten.DataSource).Clone();
+            //    tablita = CapaLogica.ActualizarParametros(9, dtgconten["descripcion", e.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", e.RowIndex].Value);
+            //    DataTable conten = (DataTable)dtgconten.DataSource;
+            //    int con = 1;
+            //    foreach (DataRow filita in tablita.Rows)
+            //    {
+            //        // conten.Rows.InsertAt(filita, con);
+            //        //conten.AcceptChanges();
+            //        //conten.NewRow();
+            //        //conten.Rows.Add(filita);
+
+
+            //        conten.Rows.InsertAt(filita, conten.Rows.Count + 1);
+
+
+            //        con++;
+            //    }
+            //    dtgconten.DataSource = conten;
+            //    dtgconten.CurrentCell = dtgconten[e.ColumnIndex, fila];
+            //}
         }
+
 
         private void dataGridview_KeyPressCajita(object sender, KeyPressEventArgs e)
         {

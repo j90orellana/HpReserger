@@ -302,6 +302,7 @@ namespace HPReserger
                 Msg("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
+            int x = dtgconten.CurrentCell.RowIndex;
             if (estado == 2)
             {
                 //Modificar
@@ -314,7 +315,7 @@ namespace HPReserger
                 int fila = 0;
                 foreach (DataGridViewRow valor in dtgconten.Rows)
                 {
-                    if (txtruc.Text.ToString() == valor.Cells["ruc"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
+                    if (txtruc.Text.ToString() == valor.Cells["ruc"].Value.ToString() && fila != x)
                     {
                         Msg("La Empresa ya Existe");
                         txtruc.Focus();
@@ -323,7 +324,7 @@ namespace HPReserger
                     fila++;
                 }
                 //modificando
-                CCargos.InsertarActualizarListarEmpresas(dtgconten["ruc", dtgconten.CurrentCell.RowIndex].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
+                CCargos.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
                 Msg("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }

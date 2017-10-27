@@ -23,12 +23,7 @@ namespace HPReserger
             cboempresa.ValueMember = "codigo";
             cboempresa.DisplayMember = "descripcion";
             cboempresa.DataSource = CLProyectos.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
-            // DataRow Empresas = CLProyectos.ListarEmpresasdelUsuario(frmLogin.CodigoUsuario);
-            /* DataRow Empresas = CLProyectos.ListarEmpresasdelUsuario(2);
-             txtempresa.Text = Empresas["empresa"].ToString();
-             empresa = (Empresas["id_empresa"].ToString());*/
         }
-
         public void cargarproyectos()
         {
             dtgconten.DataSource = CLProyectos.ListarProyectosEmpresa(empresa);
@@ -49,21 +44,33 @@ namespace HPReserger
         int estado = 0; int fila = 0;
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-            gp1.Enabled = true;
-            dtgconten.Enabled = false;
-            estado = 1; txtproyecto.Text = "";
-            fila = dtgconten.CurrentCell.RowIndex;
-            btnaceptar.Enabled = btncancelar.Enabled = true;
-            btnnuevo.Enabled = btnmodificar.Enabled = false;
-            txtproyecto.Focus();
+            if (cboempresa.Items.Count != 0)
+            {
+                gp1.Enabled = true;
+                dtgconten.Enabled = false;
+                estado = 1; txtproyecto.Text = "";
+                if (dtgconten.RowCount > 0)
+                    fila = dtgconten.CurrentCell.RowIndex;
+                else fila = 0;
+                btnaceptar.Enabled = btncancelar.Enabled = true;
+                btnnuevo.Enabled = btnmodificar.Enabled = false;
+                txtproyecto.Focus();
+            }
+            else
+                MSG("No hay Empresas");
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            gp1.Enabled = true;
-            dtgconten.Enabled = false;
-            estado = 2; btnaceptar.Enabled = btncancelar.Enabled = true; txtproyecto.Focus();
-            btnnuevo.Enabled = btnmodificar.Enabled = false;
+            if (cboempresa.Items.Count != 0)
+            {
+                gp1.Enabled = true;
+                dtgconten.Enabled = false;
+                estado = 2; btnaceptar.Enabled = btncancelar.Enabled = true; txtproyecto.Focus();
+                btnnuevo.Enabled = btnmodificar.Enabled = false;
+            }
+            else
+                MSG("No hay Empresas");
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -77,9 +84,9 @@ namespace HPReserger
             }
             else this.Close();
         }
-        public void MSG(string cadena)
+        public DialogResult MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -142,10 +149,8 @@ namespace HPReserger
                 cargarproyectos();
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-
             if (dtgconten.RowCount > 0)
             {
                 DataGridViewCellEventArgs ex = new DataGridViewCellEventArgs(dtgconten.CurrentCell.ColumnIndex, dtgconten.CurrentCell.RowIndex);

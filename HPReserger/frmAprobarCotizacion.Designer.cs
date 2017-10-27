@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAprobar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -110,14 +110,14 @@
             this.gridCotizacion.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridCotizacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridCotizacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridCotizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridCotizacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCotizacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OP,
@@ -146,8 +146,8 @@
             // 
             this.OP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.OP.DataPropertyName = "OP";
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.OP.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.OP.DefaultCellStyle = dataGridViewCellStyle2;
             this.OP.HeaderText = "Nº OP";
             this.OP.Name = "OP";
             this.OP.ReadOnly = true;
@@ -165,9 +165,9 @@
             // 
             this.USUARIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.USUARIO.DataPropertyName = "USUARIO";
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.USUARIO.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.USUARIO.DefaultCellStyle = dataGridViewCellStyle3;
             this.USUARIO.HeaderText = "USUARIO";
             this.USUARIO.Name = "USUARIO";
             this.USUARIO.ReadOnly = true;
@@ -186,9 +186,9 @@
             // 
             this.AREA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AREA.DataPropertyName = "AREA";
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AREA.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AREA.DefaultCellStyle = dataGridViewCellStyle4;
             this.AREA.HeaderText = "AREA";
             this.AREA.Name = "AREA";
             this.AREA.ReadOnly = true;
@@ -207,8 +207,8 @@
             // 
             this.GERENCIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.GERENCIA.DataPropertyName = "GERENCIA";
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.GERENCIA.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.GERENCIA.DefaultCellStyle = dataGridViewCellStyle5;
             this.GERENCIA.HeaderText = "GERENCIA";
             this.GERENCIA.Name = "GERENCIA";
             this.GERENCIA.ReadOnly = true;
@@ -219,9 +219,9 @@
             // 
             this.TIPO_PEDIDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TIPO_PEDIDO.DataPropertyName = "TIPO_PEDIDO";
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TIPO_PEDIDO.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIPO_PEDIDO.DefaultCellStyle = dataGridViewCellStyle6;
             this.TIPO_PEDIDO.HeaderText = "TIPO PEDIDO";
             this.TIPO_PEDIDO.Name = "TIPO_PEDIDO";
             this.TIPO_PEDIDO.ReadOnly = true;
@@ -267,14 +267,14 @@
             this.gridCotizacionesAsociadas.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridCotizacionesAsociadas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridCotizacionesAsociadas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacionesAsociadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridCotizacionesAsociadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridCotizacionesAsociadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.COTIZACION,
             this.PEDIDO,
@@ -286,14 +286,14 @@
             this.gridCotizacionesAsociadas.Location = new System.Drawing.Point(12, 344);
             this.gridCotizacionesAsociadas.Name = "gridCotizacionesAsociadas";
             this.gridCotizacionesAsociadas.ReadOnly = true;
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacionesAsociadas.RowHeadersDefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridCotizacionesAsociadas.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.gridCotizacionesAsociadas.RowHeadersVisible = false;
             this.gridCotizacionesAsociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacionesAsociadas.Size = new System.Drawing.Size(616, 176);
@@ -305,8 +305,8 @@
             // 
             this.COTIZACION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.COTIZACION.DataPropertyName = "COTIZACION";
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.COTIZACION.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.COTIZACION.DefaultCellStyle = dataGridViewCellStyle8;
             this.COTIZACION.HeaderText = "Nº COT";
             this.COTIZACION.Name = "COTIZACION";
             this.COTIZACION.ReadOnly = true;
@@ -316,8 +316,8 @@
             // 
             this.PEDIDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PEDIDO.DataPropertyName = "PEDIDO";
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.PEDIDO.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PEDIDO.DefaultCellStyle = dataGridViewCellStyle9;
             this.PEDIDO.HeaderText = "Nº OP";
             this.PEDIDO.Name = "PEDIDO";
             this.PEDIDO.ReadOnly = true;
@@ -345,8 +345,8 @@
             // 
             this.IMPORTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.IMPORTE.DataPropertyName = "IMPORTE";
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.IMPORTE.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.IMPORTE.DefaultCellStyle = dataGridViewCellStyle10;
             this.IMPORTE.HeaderText = "IMPORTE";
             this.IMPORTE.Name = "IMPORTE";
             this.IMPORTE.ReadOnly = true;
@@ -356,8 +356,8 @@
             // 
             this.FECHAENTREGA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FECHAENTREGA.DataPropertyName = "FECHAENTREGA";
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FECHAENTREGA.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FECHAENTREGA.DefaultCellStyle = dataGridViewCellStyle11;
             this.FECHAENTREGA.HeaderText = "FECHA ENTREGA";
             this.FECHAENTREGA.Name = "FECHAENTREGA";
             this.FECHAENTREGA.ReadOnly = true;
@@ -389,6 +389,7 @@
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFoto.TabIndex = 38;
             this.pbFoto.TabStop = false;
+            this.pbFoto.DoubleClick += new System.EventHandler(this.pbFoto_DoubleClick);
             this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
             // 
             // btndescargar

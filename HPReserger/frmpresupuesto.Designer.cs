@@ -292,6 +292,7 @@
             this.dtgconten.Size = new System.Drawing.Size(692, 353);
             this.dtgconten.TabIndex = 11;
             this.dtgconten.TabStop = false;
+            this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
             // idppto

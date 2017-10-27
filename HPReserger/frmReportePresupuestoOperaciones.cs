@@ -41,14 +41,13 @@ namespace HPReserger
 
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CLPresuOpera.ListarPresupuestosCabecera();
             if (cboempresa.SelectedIndex > -1)
             {
-                cboproyecto.ValueMember = "id_proyecto";
-                cboproyecto.DisplayMember = "proyecto";
-                cboproyecto.DataSource = CLPresuOpera.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
-                if (cboproyecto.Items.Count < 1)
-                    MSG("No hay Proyectos");
+                cbopresupuestos.DisplayMember = "PartidaPpto";
+                cbopresupuestos.ValueMember = "Id_PPresupuesto";
+                cbopresupuestos.DataSource = CLPresuOpera.ListarPptoEmpresas((int)cboempresa.SelectedValue);
+                if (cbopresupuestos.Items.Count < 1)
+                    MSG("No Hay Proyectos");
             }
         }
         public void contando(DataGridView grilla)
@@ -258,6 +257,8 @@ namespace HPReserger
                     etapitas.txtetapa.Text = dtgconten["descripcionetapa", y].Value.ToString();
                     etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
                     etapitas.txtcentro.Text = dtgconten["Descripción", y].Value.ToString();
+                    etapitas.cabecera = (int)cbopresupuestos.SelectedValue;
+                    etapitas.Tipo = 1;//Operaciones
                     etapitas.ShowDialog();
                 }
                 else
@@ -270,6 +271,7 @@ namespace HPReserger
                     frmVerDetallePresuspuestoOperaciones Frmpresu = new frmVerDetallePresuspuestoOperaciones();
                     Frmpresu.cuenta = int.Parse(dtgconten["cta_contable", y].Value.ToString());
                     Frmpresu.etapa = int.Parse(dtgconten["id_etapas", y].Value.ToString());
+                    Frmpresu.Tipo = 1;//flujos
                     Frmpresu.fecha = tiempo;
                     Frmpresu.ShowDialog();
                 }
@@ -308,7 +310,7 @@ namespace HPReserger
         }
         private void dtgconten_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dtgconten["iddep", e.RowIndex].Value.ToString() != "0")
+            if (e.RowIndex >= 0 && !string.IsNullOrWhiteSpace(dtgconten["CodCentroC", e.RowIndex].Value.ToString()))
             {
                 int Ocultar = 0;
                 if (dtgconten["conta", e.RowIndex].Value.ToString() == "99")
@@ -329,7 +331,7 @@ namespace HPReserger
                     {
                         datos.Add(datito);
                     }
-                    System.Data.DataTable tablita = CLPresuOpera.ListarDetalleDelReporteDeCentrodeCosto((int)dtgconten["id_etapas", e.RowIndex].Value, dtgconten["codcentroc", e.RowIndex].Value.ToString(), dtgconten["Cta_Contable", e.RowIndex].Value.ToString());
+                    System.Data.DataTable tablita = CLPresuOpera.ListarDetalleDelReporteDeCentrodeCosto((int)dtgconten["id_etapas", e.RowIndex].Value, dtgconten["codcentroc", e.RowIndex].Value.ToString(), dtgconten["Cta_Contable", e.RowIndex].Value.ToString(), (int)cbopresupuestos.SelectedValue);
                     int i = 1;
                     //dtgconten.DataSource = null;
                     foreach (DataRow dato in tablita.Rows)
@@ -368,9 +370,23 @@ namespace HPReserger
             public decimal valor { get; set; }
         }
 
+        private void cbopresupuestos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboproyecto.ValueMember = "id_proyecto";
+            cboproyecto.DisplayMember = "proyecto";
+            cboproyecto.DataSource = CLPresuOpera.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString(), (int)cbopresupuestos.SelectedValue);
+            if (cboproyecto.Items.Count < 1)
+                MSG("No hay Proyectos Presupuestados");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            dtgconten.DataSource = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
+            dtgconten.DataSource = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()), (int)cbopresupuestos.SelectedValue);
             System.Data.DataTable tablita = (System.Data.DataTable)dtgconten.DataSource;
             dtgconten.DataSource = tablita;
             // System.Data.DataTable dttAgrupamientos = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));

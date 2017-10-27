@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl1 = new System.Windows.Forms.Label();
             this.txtetapa = new System.Windows.Forms.TextBox();
             this.txtcentro = new System.Windows.Forms.TextBox();
@@ -43,8 +44,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dtpinicio = new System.Windows.Forms.DateTimePicker();
             this.dtpfin = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dtgconten1 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtpagos = new System.Windows.Forms.TextBox();
+            this.txtflujo = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtdiferencia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvalores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl1
@@ -104,8 +115,7 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -121,12 +131,13 @@
             this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dtgconten.Location = new System.Drawing.Point(12, 89);
+            this.dtgconten.Location = new System.Drawing.Point(12, 107);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dtgconten.Size = new System.Drawing.Size(926, 65);
+            this.dtgconten.Size = new System.Drawing.Size(801, 52);
             this.dtgconten.TabIndex = 17;
             this.dtgconten.TabStop = false;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
@@ -138,7 +149,7 @@
             // btnguardar
             // 
             this.btnguardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnguardar.Location = new System.Drawing.Point(864, 57);
+            this.btnguardar.Location = new System.Drawing.Point(739, 75);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Size = new System.Drawing.Size(74, 26);
             this.btnguardar.TabIndex = 18;
@@ -168,12 +179,12 @@
             this.dtgvalores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvalores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvalores.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dtgvalores.Location = new System.Drawing.Point(10, 244);
+            this.dtgvalores.Location = new System.Drawing.Point(12, 315);
             this.dtgvalores.MultiSelect = false;
             this.dtgvalores.Name = "dtgvalores";
             this.dtgvalores.RowHeadersVisible = false;
             this.dtgvalores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dtgvalores.Size = new System.Drawing.Size(488, 109);
+            this.dtgvalores.Size = new System.Drawing.Size(363, 109);
             this.dtgvalores.TabIndex = 19;
             this.dtgvalores.TabStop = false;
             this.dtgvalores.Visible = false;
@@ -202,7 +213,7 @@
             this.dtpinicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpinicio.Location = new System.Drawing.Point(471, 12);
             this.dtpinicio.Name = "dtpinicio";
-            this.dtpinicio.Size = new System.Drawing.Size(104, 20);
+            this.dtpinicio.Size = new System.Drawing.Size(86, 20);
             this.dtpinicio.TabIndex = 22;
             // 
             // dtpfin
@@ -211,14 +222,137 @@
             this.dtpfin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpfin.Location = new System.Drawing.Point(471, 38);
             this.dtpfin.Name = "dtpfin";
-            this.dtpfin.Size = new System.Drawing.Size(104, 20);
+            this.dtpfin.Size = new System.Drawing.Size(86, 20);
             this.dtpfin.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 91);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Gastos:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 162);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Flujos:";
+            // 
+            // dtgconten1
+            // 
+            this.dtgconten1.AllowUserToAddRows = false;
+            this.dtgconten1.AllowUserToDeleteRows = false;
+            this.dtgconten1.AllowUserToResizeColumns = false;
+            this.dtgconten1.AllowUserToResizeRows = false;
+            this.dtgconten1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgconten1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dtgconten1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtgconten1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtgconten1.CausesValidation = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dtgconten1.Location = new System.Drawing.Point(11, 176);
+            this.dtgconten1.MultiSelect = false;
+            this.dtgconten1.Name = "dtgconten1";
+            this.dtgconten1.RowHeadersVisible = false;
+            this.dtgconten1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dtgconten1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dtgconten1.Size = new System.Drawing.Size(801, 52);
+            this.dtgconten1.TabIndex = 26;
+            this.dtgconten1.TabStop = false;
+            this.dtgconten1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellClick);
+            this.dtgconten1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellEndEdit);
+            this.dtgconten1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten1_EditingControlShowing);
+            this.dtgconten1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtgconten1_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(566, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Total Gastos:";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(570, 41);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Total Flujo:";
+            // 
+            // txtpagos
+            // 
+            this.txtpagos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtpagos.Location = new System.Drawing.Point(635, 12);
+            this.txtpagos.Name = "txtpagos";
+            this.txtpagos.ReadOnly = true;
+            this.txtpagos.Size = new System.Drawing.Size(89, 20);
+            this.txtpagos.TabIndex = 29;
+            this.txtpagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtflujo
+            // 
+            this.txtflujo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtflujo.Location = new System.Drawing.Point(635, 38);
+            this.txtflujo.Name = "txtflujo";
+            this.txtflujo.ReadOnly = true;
+            this.txtflujo.Size = new System.Drawing.Size(89, 20);
+            this.txtflujo.TabIndex = 30;
+            this.txtflujo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(570, 67);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Diferencia:";
+            // 
+            // txtdiferencia
+            // 
+            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdiferencia.Location = new System.Drawing.Point(635, 64);
+            this.txtdiferencia.Name = "txtdiferencia";
+            this.txtdiferencia.ReadOnly = true;
+            this.txtdiferencia.Size = new System.Drawing.Size(89, 20);
+            this.txtdiferencia.TabIndex = 30;
+            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frmpresupuestoetapa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 166);
+            this.ClientSize = new System.Drawing.Size(823, 236);
+            this.Controls.Add(this.txtdiferencia);
+            this.Controls.Add(this.txtflujo);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtpagos);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.dtgconten1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dtpfin);
             this.Controls.Add(this.dtpinicio);
             this.Controls.Add(this.label4);
@@ -232,14 +366,14 @@
             this.Controls.Add(this.txtcentro);
             this.Controls.Add(this.txtetapa);
             this.Controls.Add(this.lbl1);
-            this.MaximumSize = new System.Drawing.Size(964, 205);
-            this.MinimumSize = new System.Drawing.Size(964, 205);
+            this.MinimumSize = new System.Drawing.Size(839, 275);
             this.Name = "frmpresupuestoetapa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Presupuesto Etapa";
             this.Load += new System.EventHandler(this.frmpresupuestoetapa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvalores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +394,14 @@
         public System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpinicio;
         private System.Windows.Forms.DateTimePicker dtpfin;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dtgconten1;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtpagos;
+        private System.Windows.Forms.TextBox txtflujo;
+        public System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtdiferencia;
     }
 }

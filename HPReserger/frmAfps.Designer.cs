@@ -28,13 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.idafp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Afp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Seguro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -50,6 +45,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnexportarExcel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.idafp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Afp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seguro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,14 +64,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idafp,
@@ -92,50 +92,6 @@
             this.dtgconten.Size = new System.Drawing.Size(367, 196);
             this.dtgconten.TabIndex = 56;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // idafp
-            // 
-            this.idafp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idafp.DataPropertyName = "id";
-            this.idafp.HeaderText = "Id";
-            this.idafp.Name = "idafp";
-            this.idafp.ReadOnly = true;
-            this.idafp.Visible = false;
-            // 
-            // Afp
-            // 
-            this.Afp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Afp.DataPropertyName = "afp";
-            this.Afp.HeaderText = "Afp";
-            this.Afp.Name = "Afp";
-            this.Afp.ReadOnly = true;
-            // 
-            // Aporte
-            // 
-            this.Aporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Aporte.DataPropertyName = "aporte";
-            this.Aporte.HeaderText = "Aporte";
-            this.Aporte.Name = "Aporte";
-            this.Aporte.ReadOnly = true;
-            this.Aporte.Width = 63;
-            // 
-            // Seguro
-            // 
-            this.Seguro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Seguro.DataPropertyName = "seguro";
-            this.Seguro.HeaderText = "Seguro";
-            this.Seguro.Name = "Seguro";
-            this.Seguro.ReadOnly = true;
-            this.Seguro.Width = 66;
-            // 
-            // Comision
-            // 
-            this.Comision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Comision.DataPropertyName = "comision";
-            this.Comision.HeaderText = "Comisión";
-            this.Comision.Name = "Comision";
-            this.Comision.ReadOnly = true;
-            this.Comision.Width = 74;
             // 
             // btneliminar
             // 
@@ -282,6 +238,51 @@
             this.label5.TabIndex = 69;
             this.label5.Text = "%";
             // 
+            // idafp
+            // 
+            this.idafp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idafp.DataPropertyName = "id";
+            this.idafp.HeaderText = "Id";
+            this.idafp.Name = "idafp";
+            this.idafp.ReadOnly = true;
+            this.idafp.Visible = false;
+            this.idafp.Width = 22;
+            // 
+            // Afp
+            // 
+            this.Afp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Afp.DataPropertyName = "afp";
+            this.Afp.HeaderText = "Afp";
+            this.Afp.Name = "Afp";
+            this.Afp.ReadOnly = true;
+            // 
+            // Aporte
+            // 
+            this.Aporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Aporte.DataPropertyName = "aporte";
+            this.Aporte.HeaderText = "Aporte";
+            this.Aporte.Name = "Aporte";
+            this.Aporte.ReadOnly = true;
+            this.Aporte.Width = 63;
+            // 
+            // Seguro
+            // 
+            this.Seguro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Seguro.DataPropertyName = "seguro";
+            this.Seguro.HeaderText = "Prima";
+            this.Seguro.Name = "Seguro";
+            this.Seguro.ReadOnly = true;
+            this.Seguro.Width = 58;
+            // 
+            // Comision
+            // 
+            this.Comision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Comision.DataPropertyName = "comision";
+            this.Comision.HeaderText = "Comisión";
+            this.Comision.Name = "Comision";
+            this.Comision.ReadOnly = true;
+            this.Comision.Width = 74;
+            // 
             // frmAfps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,11 +327,6 @@
         private System.Windows.Forms.TextBox txtgerencia;
         private System.Windows.Forms.TextBox txtaporte;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idafp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Afp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Aporte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Seguro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtseguro;
         private System.Windows.Forms.Label label3;
@@ -338,5 +334,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnexportarExcel;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idafp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Afp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Aporte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Seguro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
     }
 }

@@ -19,7 +19,6 @@ namespace HPReserger
 
         public string NumeroDocumento { get; set; }
         public int estado { get; set; }
-
         MemoryStream _memoryStream = new MemoryStream();
         public byte[] FotoContrato { get; set; }
         public string nombreArchivoContrato { get; set; }
@@ -29,7 +28,7 @@ namespace HPReserger
         public string nombreArchivoSolicitudPracticas { get; set; }
         public byte[] FotoOtros { get; set; }
         public string nombreArchivoOtros { get; set; }
-
+        public int CodigoEmpleado { get; set; }
         public frmContrato()
         {
             InitializeComponent();
@@ -104,7 +103,7 @@ namespace HPReserger
                 cboEmpresa.SelectedValue = Convert.ToInt32(dtgconten["IDE", fila].Value.ToString());
                 cboSede.SelectedValue = Convert.ToInt32(dtgconten["SEDE", fila].Value.ToString());
                 dtpFechaInicio.Value = Convert.ToDateTime(dtgconten["INICIO", fila].Value.ToString());
-                //txtPeriodoLaboral.Text = dtgconten["PERIODO", fila].Value.ToString();
+                txtPeriodoLaboral.Text = dtgconten["PERIODO", fila].Value.ToString();
                 dtpFechaFin.Value = Convert.ToDateTime(dtgconten["FIN", fila].Value.ToString());
                 txtSalario.Text = dtgconten["SUELDO", fila].Value.ToString();
                 cboBono.Text = dtgconten["BONO", fila].Value.ToString();
@@ -112,7 +111,8 @@ namespace HPReserger
                 txtPeriodicidad.Text = dtgconten["PERIOCIDAD", fila].Value.ToString();
                 if (dtgconten["adenda", fila].Value.ToString() != "0")
                     lbladenda.Text = "Adenda Del Contrato Nº " + dtgconten["adenda", fila].Value.ToString();
-                else lbladenda.Text = "";                
+                else lbladenda.Text = "";
+                cbotipocontratacion.SelectedValue = Int32.Parse(dtgconten["tc", fila].Value.ToString());
                 if (int.Parse(dtgconten["MercadoObra", fila].Value.ToString()) == 1)
                 {
                     btnmercado.ForeColor = Color.Blue; btnobradeterminada.Visible = false;
@@ -123,8 +123,6 @@ namespace HPReserger
                     btnmercado.ForeColor = Color.Black; btnmercado.Visible = false;
                     btnobradeterminada.ForeColor = Color.Blue;
                 }
-
-                cbotipocontratacion.SelectedValue = Int32.Parse(dtgconten["tc", fila].Value.ToString());
 
                 if (Convert.ToInt32(dtgconten["JEFE", fila].Value.ToString()) == 1)
                 {
@@ -323,6 +321,7 @@ namespace HPReserger
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             PasosAdenda(false);
+            lklcontrato.Enabled = lklanexo.Enabled = lklpracticas.Enabled = lklotros.Enabled = false;
             if (dtgconten.RowCount > 0)
             {
                 fila = dtgconten.CurrentCell.RowIndex;
@@ -468,7 +467,8 @@ namespace HPReserger
                 dtpFechaFin.Focus();
                 return false;
             }
-            txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
+            txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month + 1).ToString();
+            // txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
             //txtPeriodoLaboral.Text = Convert.ToDateTime(dtpFechaFin.Value - dtpFechaInicio.Value).Month.ToString();
             /*
             if (txtAnexoFunciones.Text.Length == 0)
@@ -618,10 +618,10 @@ namespace HPReserger
 
         private void txtPeriodoLaboral_TextChanged(object sender, EventArgs e)
         {
-            ///if (!string.IsNullOrWhiteSpace(txtPeriodoLaboral.Text))
-            ///   {
-            //       dtpFechaFin.Value = (dtpFechaInicio.Value.AddMonths(Convert.ToInt32(txtPeriodoLaboral.Text)));
-            ////   }
+            if (!string.IsNullOrWhiteSpace(txtPeriodoLaboral.Text))
+            {
+                dtpFechaFin.Value = (dtpFechaInicio.Value.AddMonths(Convert.ToInt32(txtPeriodoLaboral.Text))).AddDays(-1);
+            }
         }
 
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
@@ -671,6 +671,7 @@ namespace HPReserger
             {
                 FrmFoto foto = new FrmFoto();
                 foto.fotito = fotito.Image;
+                foto.Owner = this.MdiParent;
                 foto.ShowDialog();
             }
         }
@@ -892,12 +893,15 @@ namespace HPReserger
                     }
                 }
             }
-            txtPeriodoLaboral_TextChanged(sender, e);
+            txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month + 1).ToString();
+            // txtPeriodoLaboral_TextChanged(sender, e);
         }
 
         private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
         {
-            txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
+            //   txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
+            //   TimeSpan ts = (dtpFechaFin.Value.Date - dtpFechaInicio.Value.Date);
+            //  txtPeriodicidad.Text = (ts.Days / 30).ToString("n0");
         }
 
         private void dtpFechaFin_CloseUp(object sender, EventArgs e)
@@ -1114,7 +1118,26 @@ namespace HPReserger
             btnobradeterminada.Enabled = btnlocacion.Enabled = btnpracticas.Enabled = btnmercado.Enabled = !accion;
             cboGerencia.Enabled = cboArea.Enabled = !accion;
             grpcontra.Enabled = grpcontrato.Enabled = accion;
+        }
+        private void btnbonos_Click(object sender, EventArgs e)
+        {
+            frmbonos frbono = new frmbonos();
+            frbono.numerodo = NumeroDocumento;
+            frbono.tipodoc = CodigoDocumento;
+            frbono.CodigoEmpleado = CodigoEmpleado;
+            int con = int.Parse(dtgconten[NRO.Name.ToString(), 0].Value.ToString());
+            if (estado == 1)
+                frbono.Contrato = con + 1;
+            if (estado == 2)
+                frbono.Contrato = con;
+            frbono.fechainicio = dtpFechaInicio.Value;
+            frbono.fechafin = dtpFechaFin.Value;
+            frbono.ShowDialog();
+        }
 
+        private void txtSalario_Leave(object sender, EventArgs e)
+        {
+            txtSalario.Text = decimal.Parse(txtSalario.Text).ToString("00.00");
         }
     }
 }

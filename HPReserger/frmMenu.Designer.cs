@@ -43,6 +43,7 @@
             this.seguimientoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestoOperacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestoOperacionesCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flujoDeOperacionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,6 +84,7 @@
             this.empleadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarPeriodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certificadoDeRetencionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,6 +141,7 @@
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.pbfotoempleado = new System.Windows.Forms.PictureBox();
+            this.solicitudesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -227,7 +230,8 @@
             this.nuevoToolStripMenuItem,
             this.proyectosToolStripMenuItem,
             this.seguimientoToolStripMenuItem2,
-            this.pagosToolStripMenuItem});
+            this.pagosToolStripMenuItem,
+            this.solicitudesToolStripMenuItem});
             this.arToolStripMenuItem.Image = global::HPReserger.Properties.Resources.Orden_Pedido;
             this.arToolStripMenuItem.Name = "arToolStripMenuItem";
             this.arToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
@@ -258,7 +262,8 @@
             // 
             this.seguimientoToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.presupuestoOperacionesToolStripMenuItem,
-            this.presupuestoOperacionesCuentaToolStripMenuItem});
+            this.presupuestoOperacionesCuentaToolStripMenuItem,
+            this.flujoDeOperacionsToolStripMenuItem});
             this.seguimientoToolStripMenuItem2.Name = "seguimientoToolStripMenuItem2";
             this.seguimientoToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.seguimientoToolStripMenuItem2.Text = "&Seguimiento";
@@ -277,6 +282,13 @@
             this.presupuestoOperacionesCuentaToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.presupuestoOperacionesCuentaToolStripMenuItem.Text = "Presupuesto &Operaciones Cuenta";
             this.presupuestoOperacionesCuentaToolStripMenuItem.Click += new System.EventHandler(this.presupuestoOperacionesCuentaToolStripMenuItem_Click);
+            // 
+            // flujoDeOperacionsToolStripMenuItem
+            // 
+            this.flujoDeOperacionsToolStripMenuItem.Name = "flujoDeOperacionsToolStripMenuItem";
+            this.flujoDeOperacionsToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
+            this.flujoDeOperacionsToolStripMenuItem.Text = "Flujo de Operaciones";
+            this.flujoDeOperacionsToolStripMenuItem.Click += new System.EventHandler(this.flujoDeOperacionsToolStripMenuItem_Click);
             // 
             // pagosToolStripMenuItem
             // 
@@ -625,7 +637,8 @@
             // boletasToolStripMenuItem
             // 
             this.boletasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generarToolStripMenuItem});
+            this.generarToolStripMenuItem,
+            this.eliminarPeriodoToolStripMenuItem});
             this.boletasToolStripMenuItem.Name = "boletasToolStripMenuItem";
             this.boletasToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.boletasToolStripMenuItem.Text = "&Boletas";
@@ -638,6 +651,13 @@
             this.generarToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.generarToolStripMenuItem.Text = "Generar";
             this.generarToolStripMenuItem.Click += new System.EventHandler(this.generarToolStripMenuItem_Click);
+            // 
+            // eliminarPeriodoToolStripMenuItem
+            // 
+            this.eliminarPeriodoToolStripMenuItem.Name = "eliminarPeriodoToolStripMenuItem";
+            this.eliminarPeriodoToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.eliminarPeriodoToolStripMenuItem.Text = "Eliminar Boletas";
+            this.eliminarPeriodoToolStripMenuItem.Click += new System.EventHandler(this.eliminarPeriodoToolStripMenuItem_Click);
             // 
             // certificadoDeRetencionesToolStripMenuItem
             // 
@@ -1097,7 +1117,7 @@
             this.lblwelcome.Location = new System.Drawing.Point(0, 24);
             this.lblwelcome.Name = "lblwelcome";
             this.lblwelcome.Padding = new System.Windows.Forms.Padding(0, 0, 70, 0);
-            this.lblwelcome.Size = new System.Drawing.Size(784, 54);
+            this.lblwelcome.Size = new System.Drawing.Size(784, 42);
             this.lblwelcome.TabIndex = 2;
             this.lblwelcome.Text = "Bienvenidos";
             this.lblwelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1112,14 +1132,22 @@
             this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
             this.pbfotoempleado.Location = new System.Drawing.Point(710, 0);
             this.pbfotoempleado.Name = "pbfotoempleado";
-            this.pbfotoempleado.Size = new System.Drawing.Size(74, 78);
+            this.pbfotoempleado.Size = new System.Drawing.Size(74, 66);
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfotoempleado.TabIndex = 54;
             this.pbfotoempleado.TabStop = false;
             // 
+            // solicitudesToolStripMenuItem
+            // 
+            this.solicitudesToolStripMenuItem.Name = "solicitudesToolStripMenuItem";
+            this.solicitudesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.solicitudesToolStripMenuItem.Text = "Solicitudes";
+            this.solicitudesToolStripMenuItem.Click += new System.EventHandler(this.solicitudesToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.pbfotoempleado);
             this.Controls.Add(this.lblwelcome);
@@ -1133,9 +1161,11 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenu_FormClosing);
             this.Load += new System.EventHandler(this.frmMenu_Load);
+            this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.frmMenu_Scroll);
             this.Click += new System.EventHandler(this.frmMenu_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMenu_KeyDown);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.frmMenu_MouseClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMenu_MouseDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.cmenuclick.ResumeLayout(false);
@@ -1257,5 +1287,8 @@
         private System.Windows.Forms.ToolStripMenuItem maximizarTodasToolStripMenuItem;
         public System.Windows.Forms.Label lblwelcome;
         public System.Windows.Forms.PictureBox pbfotoempleado;
+        private System.Windows.Forms.ToolStripMenuItem flujoDeOperacionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarPeriodoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem solicitudesToolStripMenuItem;
     }
 }

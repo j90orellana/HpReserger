@@ -53,9 +53,9 @@ namespace HPReserger
         {
             Intentos = 0;
         }
-        public void msg(string cadena)
+        public DialogResult msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnLogueo_Click(object sender, EventArgs e)
         {
@@ -77,7 +77,6 @@ namespace HPReserger
             drAcceso = clLogueo.Loguearse(txtUsuario.Text, 0);
             if (drAcceso == null)
             {
-                MessageBox.Show("Usuario NO existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtUsuario.Focus();
                 return;
             }
@@ -110,20 +109,22 @@ namespace HPReserger
                             CodigoPartidaPresupuesto = Convert.ToInt32(drAcceso["CODIGOPARTIDAPRESUPUESTO"].ToString());
                             PartidaPresupuesto = drAcceso["PARTIDAPRESUPUESTO"].ToString();
                             LoginUser = drAcceso["LOGINUSER"].ToString();
+                            this.Hide();
+                            frmM = new frmMenu();
+                            frmM.usuario = CodigoUsuario;
+                            frmM.Nombres = Usuario;
+                            frmM.nick = txtUsuario.Text;
+                            if (drAcceso["FOTO"] != null && drAcceso["FOTO"].ToString().Length > 0)
+                            {
+                                byte[] Fotito = new byte[0];
+                                Fotito = (byte[])drAcceso["FOTO"];
+                                MemoryStream ms = new MemoryStream(Fotito);
+                                frmM.pbfotoempleado.Image = Bitmap.FromStream(ms);
+                            }
+                            frmM.ShowDialog();
                         }
-                        this.Hide();
-                        frmM = new frmMenu();
-                        frmM.usuario = CodigoUsuario;
-                        frmM.Nombres = Usuario;
-                        frmM.nick = txtUsuario.Text;
-                        if (drAcceso["FOTO"] != null && drAcceso["foto"].ToString().Length > 0)
-                        {
-                            byte[] Fotito = new byte[0];
-                            Fotito = (byte[])drAcceso["FOTO"];
-                            MemoryStream ms = new MemoryStream(Fotito);
-                            frmM.pbfotoempleado.Image = Bitmap.FromStream(ms);
-                        }
-                        frmM.ShowDialog();
+                        else msg("Usuario no esta Activo");
+
                     }
                     else
                     {

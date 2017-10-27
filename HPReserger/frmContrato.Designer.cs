@@ -30,9 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.grpcontrato = new System.Windows.Forms.Panel();
+            this.btnbonos = new System.Windows.Forms.Button();
             this.lbladenda = new System.Windows.Forms.Label();
             this.btnobradeterminada = new System.Windows.Forms.Button();
             this.cbotipocontratacion = new System.Windows.Forms.ComboBox();
@@ -110,7 +112,6 @@
             this.txtSalario = new System.Windows.Forms.TextBox();
             this.cboBono = new System.Windows.Forms.ComboBox();
             this.txtPeriodicidad = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -139,11 +140,11 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.btnExportapdf = new System.Windows.Forms.Button();
+            this.btnadenda = new System.Windows.Forms.Button();
             this.pbFotoSolicitudPracticas = new System.Windows.Forms.PictureBox();
             this.pbFotoAnexoFunciones = new System.Windows.Forms.PictureBox();
             this.pbFotoOtros = new System.Windows.Forms.PictureBox();
             this.pbFotoContrato = new System.Windows.Forms.PictureBox();
-            this.btnadenda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.grpcontrato.SuspendLayout();
             this.grpcontra.SuspendLayout();
@@ -156,7 +157,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 239);
+            this.label1.Location = new System.Drawing.Point(12, 215);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;
@@ -165,7 +166,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 273);
+            this.label2.Location = new System.Drawing.Point(14, 249);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 1;
@@ -174,16 +175,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 321);
+            this.label3.Location = new System.Drawing.Point(14, 279);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Contrato*";
+            this.label3.Text = "Contrato";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 414);
+            this.label4.Location = new System.Drawing.Point(14, 372);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 3;
@@ -192,7 +193,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 352);
+            this.label5.Location = new System.Drawing.Point(12, 310);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 4;
@@ -201,7 +202,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 383);
+            this.label6.Location = new System.Drawing.Point(12, 341);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(113, 13);
             this.label6.TabIndex = 5;
@@ -219,7 +220,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(238, 103);
+            this.label9.Location = new System.Drawing.Point(286, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 8;
@@ -228,7 +229,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 183);
+            this.label10.Location = new System.Drawing.Point(14, 159);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 9;
@@ -237,7 +238,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 209);
+            this.label11.Location = new System.Drawing.Point(14, 185);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 13);
             this.label11.TabIndex = 16;
@@ -249,7 +250,7 @@
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
             this.btnRegistrar.TabIndex = 35;
-            this.btnRegistrar.Text = "Nuevo";
+            this.btnRegistrar.Text = "&Nuevo";
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
@@ -259,7 +260,7 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 55;
-            this.btnModificar.Text = "Modificar";
+            this.btnModificar.Text = "&Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
@@ -271,7 +272,7 @@
             // chkjefe
             // 
             this.chkjefe.AutoSize = true;
-            this.chkjefe.Location = new System.Drawing.Point(17, 135);
+            this.chkjefe.Location = new System.Drawing.Point(18, 120);
             this.chkjefe.Name = "chkjefe";
             this.chkjefe.Size = new System.Drawing.Size(15, 14);
             this.chkjefe.TabIndex = 94;
@@ -338,30 +339,30 @@
             this.USUARIO,
             this.FECHA});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(17, 440);
+            this.dtgconten.Location = new System.Drawing.Point(17, 398);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(710, 217);
             this.dtgconten.TabIndex = 149;
@@ -544,6 +545,8 @@
             // 
             this.PERIODO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.PERIODO.DataPropertyName = "PERIODO";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PERIODO.DefaultCellStyle = dataGridViewCellStyle2;
             this.PERIODO.HeaderText = "PERIODO";
             this.PERIODO.Name = "PERIODO";
             this.PERIODO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -672,7 +675,7 @@
             // lblmsg
             // 
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(14, 668);
+            this.lblmsg.Location = new System.Drawing.Point(14, 626);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(96, 13);
             this.lblmsg.TabIndex = 150;
@@ -680,7 +683,7 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(571, 663);
+            this.btnaceptar.Location = new System.Drawing.Point(571, 621);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 35;
@@ -690,7 +693,7 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(653, 663);
+            this.btncancelar.Location = new System.Drawing.Point(653, 621);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 55;
@@ -700,6 +703,7 @@
             // 
             // grpcontrato
             // 
+            this.grpcontrato.Controls.Add(this.btnbonos);
             this.grpcontrato.Controls.Add(this.lbladenda);
             this.grpcontrato.Controls.Add(this.btnobradeterminada);
             this.grpcontrato.Controls.Add(this.cbotipocontratacion);
@@ -723,7 +727,6 @@
             this.grpcontrato.Controls.Add(this.label9);
             this.grpcontrato.Controls.Add(this.cboBono);
             this.grpcontrato.Controls.Add(this.txtPeriodicidad);
-            this.grpcontrato.Controls.Add(this.label16);
             this.grpcontrato.Controls.Add(this.label8);
             this.grpcontrato.Controls.Add(this.label18);
             this.grpcontrato.Controls.Add(this.label17);
@@ -736,8 +739,18 @@
             this.grpcontrato.Controls.Add(this.btnpracticas);
             this.grpcontrato.Location = new System.Drawing.Point(111, 12);
             this.grpcontrato.Name = "grpcontrato";
-            this.grpcontrato.Size = new System.Drawing.Size(544, 291);
+            this.grpcontrato.Size = new System.Drawing.Size(544, 259);
             this.grpcontrato.TabIndex = 152;
+            // 
+            // btnbonos
+            // 
+            this.btnbonos.Location = new System.Drawing.Point(111, 236);
+            this.btnbonos.Name = "btnbonos";
+            this.btnbonos.Size = new System.Drawing.Size(60, 21);
+            this.btnbonos.TabIndex = 159;
+            this.btnbonos.Text = "&Bonos";
+            this.btnbonos.UseVisualStyleBackColor = true;
+            this.btnbonos.Click += new System.EventHandler(this.btnbonos_Click);
             // 
             // lbladenda
             // 
@@ -781,7 +794,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(38, 132);
+            this.label7.Location = new System.Drawing.Point(39, 120);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 13);
             this.label7.TabIndex = 59;
@@ -791,7 +804,7 @@
             // 
             this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargo.FormattingEnabled = true;
-            this.cboCargo.Location = new System.Drawing.Point(327, 100);
+            this.cboCargo.Location = new System.Drawing.Point(327, 90);
             this.cboCargo.Name = "cboCargo";
             this.cboCargo.Size = new System.Drawing.Size(195, 21);
             this.cboCargo.TabIndex = 61;
@@ -801,7 +814,7 @@
             // 
             this.cboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEmpresa.FormattingEnabled = true;
-            this.cboEmpresa.Location = new System.Drawing.Point(13, 165);
+            this.cboEmpresa.Location = new System.Drawing.Point(13, 144);
             this.cboEmpresa.Name = "cboEmpresa";
             this.cboEmpresa.Size = new System.Drawing.Size(320, 21);
             this.cboEmpresa.TabIndex = 62;
@@ -811,7 +824,7 @@
             // 
             this.cboGerencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGerencia.FormattingEnabled = true;
-            this.cboGerencia.Location = new System.Drawing.Point(14, 68);
+            this.cboGerencia.Location = new System.Drawing.Point(14, 63);
             this.cboGerencia.Name = "cboGerencia";
             this.cboGerencia.Size = new System.Drawing.Size(215, 21);
             this.cboGerencia.TabIndex = 93;
@@ -823,7 +836,7 @@
             this.cboJefeInmediato.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboJefeInmediato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboJefeInmediato.FormattingEnabled = true;
-            this.cboJefeInmediato.Location = new System.Drawing.Point(116, 129);
+            this.cboJefeInmediato.Location = new System.Drawing.Point(116, 117);
             this.cboJefeInmediato.Name = "cboJefeInmediato";
             this.cboJefeInmediato.Size = new System.Drawing.Size(406, 21);
             this.cboJefeInmediato.TabIndex = 63;
@@ -831,7 +844,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(339, 168);
+            this.label12.Location = new System.Drawing.Point(339, 147);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 13);
             this.label12.TabIndex = 64;
@@ -839,17 +852,18 @@
             // 
             // txtImporteBono
             // 
-            this.txtImporteBono.Location = new System.Drawing.Point(278, 258);
+            this.txtImporteBono.Location = new System.Drawing.Point(307, 237);
             this.txtImporteBono.Name = "txtImporteBono";
             this.txtImporteBono.Size = new System.Drawing.Size(76, 20);
             this.txtImporteBono.TabIndex = 91;
             this.txtImporteBono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtImporteBono.Visible = false;
             this.txtImporteBono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporteBono_KeyPress);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(103, 227);
+            this.label14.Location = new System.Drawing.Point(103, 206);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(83, 13);
             this.label14.TabIndex = 66;
@@ -858,7 +872,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(279, 227);
+            this.label15.Location = new System.Drawing.Point(279, 206);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(54, 13);
             this.label15.TabIndex = 68;
@@ -867,7 +881,7 @@
             // lblfechacese
             // 
             this.lblfechacese.AutoSize = true;
-            this.lblfechacese.Location = new System.Drawing.Point(423, 227);
+            this.lblfechacese.Location = new System.Drawing.Point(423, 206);
             this.lblfechacese.Name = "lblfechacese";
             this.lblfechacese.Size = new System.Drawing.Size(31, 13);
             this.lblfechacese.TabIndex = 67;
@@ -877,7 +891,7 @@
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(14, 224);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(14, 203);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(83, 20);
             this.dtpFechaInicio.TabIndex = 69;
@@ -886,7 +900,7 @@
             // 
             // txtPeriodoLaboral
             // 
-            this.txtPeriodoLaboral.Location = new System.Drawing.Point(192, 224);
+            this.txtPeriodoLaboral.Location = new System.Drawing.Point(192, 203);
             this.txtPeriodoLaboral.MaxLength = 2;
             this.txtPeriodoLaboral.Name = "txtPeriodoLaboral";
             this.txtPeriodoLaboral.Size = new System.Drawing.Size(37, 20);
@@ -898,7 +912,7 @@
             // dtpFechaFin
             // 
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(339, 224);
+            this.dtpFechaFin.Location = new System.Drawing.Point(339, 203);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(78, 20);
             this.dtpFechaFin.TabIndex = 72;
@@ -908,7 +922,7 @@
             // dtpfechacese
             // 
             this.dtpfechacese.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechacese.Location = new System.Drawing.Point(460, 224);
+            this.dtpfechacese.Location = new System.Drawing.Point(460, 203);
             this.dtpfechacese.Name = "dtpfechacese";
             this.dtpfechacese.Size = new System.Drawing.Size(78, 20);
             this.dtpfechacese.TabIndex = 71;
@@ -916,47 +930,41 @@
             // 
             // txtSalario
             // 
-            this.txtSalario.Location = new System.Drawing.Point(14, 259);
+            this.txtSalario.Location = new System.Drawing.Point(14, 237);
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Size = new System.Drawing.Size(91, 20);
             this.txtSalario.TabIndex = 73;
             this.txtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSalario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalario_KeyPress);
+            this.txtSalario.Leave += new System.EventHandler(this.txtSalario_Leave);
             // 
             // cboBono
             // 
             this.cboBono.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBono.FormattingEnabled = true;
-            this.cboBono.Location = new System.Drawing.Point(149, 258);
+            this.cboBono.Location = new System.Drawing.Point(177, 236);
             this.cboBono.Name = "cboBono";
             this.cboBono.Size = new System.Drawing.Size(123, 21);
             this.cboBono.TabIndex = 74;
+            this.cboBono.Visible = false;
             this.cboBono.SelectedIndexChanged += new System.EventHandler(this.cboBono_SelectedIndexChanged);
             // 
             // txtPeriodicidad
             // 
-            this.txtPeriodicidad.Location = new System.Drawing.Point(441, 259);
+            this.txtPeriodicidad.Location = new System.Drawing.Point(460, 239);
             this.txtPeriodicidad.MaxLength = 2;
             this.txtPeriodicidad.Name = "txtPeriodicidad";
             this.txtPeriodicidad.Size = new System.Drawing.Size(37, 20);
             this.txtPeriodicidad.TabIndex = 86;
             this.txtPeriodicidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPeriodicidad.Visible = false;
             this.txtPeriodicidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPeriodicidad_KeyPress);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(113, 263);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 13);
-            this.label16.TabIndex = 75;
-            this.label16.Text = "Bono";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.Blue;
-            this.label18.Location = new System.Drawing.Point(235, 227);
+            this.label18.Location = new System.Drawing.Point(235, 206);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(38, 13);
             this.label18.TabIndex = 85;
@@ -965,27 +973,29 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(370, 262);
+            this.label17.Location = new System.Drawing.Point(389, 242);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(65, 13);
             this.label17.TabIndex = 76;
             this.label17.Text = "Periodicidad";
+            this.label17.Visible = false;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.Blue;
-            this.label19.Location = new System.Drawing.Point(484, 263);
+            this.label19.Location = new System.Drawing.Point(500, 242);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(38, 13);
             this.label19.TabIndex = 84;
             this.label19.Text = "Meses";
+            this.label19.Visible = false;
             // 
             // cboSede
             // 
             this.cboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSede.FormattingEnabled = true;
-            this.cboSede.Location = new System.Drawing.Point(377, 165);
+            this.cboSede.Location = new System.Drawing.Point(377, 144);
             this.cboSede.Name = "cboSede";
             this.cboSede.Size = new System.Drawing.Size(145, 21);
             this.cboSede.TabIndex = 83;
@@ -994,7 +1004,7 @@
             // 
             this.cboProyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProyecto.FormattingEnabled = true;
-            this.cboProyecto.Location = new System.Drawing.Point(13, 192);
+            this.cboProyecto.Location = new System.Drawing.Point(13, 171);
             this.cboProyecto.Name = "cboProyecto";
             this.cboProyecto.Size = new System.Drawing.Size(509, 21);
             this.cboProyecto.TabIndex = 82;
@@ -1003,7 +1013,7 @@
             // 
             this.cboArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboArea.FormattingEnabled = true;
-            this.cboArea.Location = new System.Drawing.Point(14, 100);
+            this.cboArea.Location = new System.Drawing.Point(14, 90);
             this.cboArea.Name = "cboArea";
             this.cboArea.Size = new System.Drawing.Size(215, 21);
             this.cboArea.TabIndex = 81;
@@ -1045,7 +1055,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(14, 86);
+            this.label20.Location = new System.Drawing.Point(16, 78);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(50, 13);
             this.label20.TabIndex = 92;
@@ -1054,7 +1064,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 118);
+            this.label13.Location = new System.Drawing.Point(16, 105);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(29, 13);
             this.label13.TabIndex = 65;
@@ -1106,7 +1116,7 @@
             // 
             // txtContrato
             // 
-            this.txtContrato.Location = new System.Drawing.Point(124, 319);
+            this.txtContrato.Location = new System.Drawing.Point(124, 277);
             this.txtContrato.Name = "txtContrato";
             this.txtContrato.ReadOnly = true;
             this.txtContrato.Size = new System.Drawing.Size(474, 20);
@@ -1116,7 +1126,7 @@
             // 
             // txtAnexoFunciones
             // 
-            this.txtAnexoFunciones.Location = new System.Drawing.Point(124, 350);
+            this.txtAnexoFunciones.Location = new System.Drawing.Point(124, 308);
             this.txtAnexoFunciones.Name = "txtAnexoFunciones";
             this.txtAnexoFunciones.ReadOnly = true;
             this.txtAnexoFunciones.Size = new System.Drawing.Size(474, 20);
@@ -1126,7 +1136,7 @@
             // 
             // txtSolicitudPracticas
             // 
-            this.txtSolicitudPracticas.Location = new System.Drawing.Point(124, 380);
+            this.txtSolicitudPracticas.Location = new System.Drawing.Point(124, 338);
             this.txtSolicitudPracticas.Name = "txtSolicitudPracticas";
             this.txtSolicitudPracticas.ReadOnly = true;
             this.txtSolicitudPracticas.Size = new System.Drawing.Size(474, 20);
@@ -1136,7 +1146,7 @@
             // 
             // txtOtros
             // 
-            this.txtOtros.Location = new System.Drawing.Point(125, 411);
+            this.txtOtros.Location = new System.Drawing.Point(125, 369);
             this.txtOtros.Name = "txtOtros";
             this.txtOtros.ReadOnly = true;
             this.txtOtros.Size = new System.Drawing.Size(474, 20);
@@ -1150,7 +1160,7 @@
             this.grpcontra.Controls.Add(this.btnBuscarImagenAnexoFunciones);
             this.grpcontra.Controls.Add(this.btnBuscarImagenSolicitudPracticas);
             this.grpcontra.Controls.Add(this.btnBuscarImagenOtros);
-            this.grpcontra.Location = new System.Drawing.Point(600, 309);
+            this.grpcontra.Location = new System.Drawing.Point(600, 267);
             this.grpcontra.Name = "grpcontra";
             this.grpcontra.Size = new System.Drawing.Size(33, 125);
             this.grpcontra.TabIndex = 153;
@@ -1158,7 +1168,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(12, 147);
+            this.label21.Location = new System.Drawing.Point(12, 133);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(109, 13);
             this.label21.TabIndex = 154;
@@ -1167,7 +1177,7 @@
             // lklcontrato
             // 
             this.lklcontrato.AutoSize = true;
-            this.lklcontrato.Location = new System.Drawing.Point(639, 322);
+            this.lklcontrato.Location = new System.Drawing.Point(639, 280);
             this.lklcontrato.Name = "lklcontrato";
             this.lklcontrato.Size = new System.Drawing.Size(42, 13);
             this.lklcontrato.TabIndex = 91;
@@ -1178,7 +1188,7 @@
             // lklanexo
             // 
             this.lklanexo.AutoSize = true;
-            this.lklanexo.Location = new System.Drawing.Point(639, 353);
+            this.lklanexo.Location = new System.Drawing.Point(639, 311);
             this.lklanexo.Name = "lklanexo";
             this.lklanexo.Size = new System.Drawing.Size(61, 13);
             this.lklanexo.TabIndex = 91;
@@ -1189,7 +1199,7 @@
             // lklpracticas
             // 
             this.lklpracticas.AutoSize = true;
-            this.lklpracticas.Location = new System.Drawing.Point(639, 382);
+            this.lklpracticas.Location = new System.Drawing.Point(639, 340);
             this.lklpracticas.Name = "lklpracticas";
             this.lklpracticas.Size = new System.Drawing.Size(61, 13);
             this.lklpracticas.TabIndex = 91;
@@ -1200,7 +1210,7 @@
             // lklotros
             // 
             this.lklotros.AutoSize = true;
-            this.lklotros.Location = new System.Drawing.Point(639, 415);
+            this.lklotros.Location = new System.Drawing.Point(639, 373);
             this.lklotros.Name = "lklotros";
             this.lklotros.Size = new System.Drawing.Size(61, 13);
             this.lklotros.TabIndex = 91;
@@ -1235,6 +1245,16 @@
             this.btnExportapdf.Text = "PDF";
             this.btnExportapdf.UseVisualStyleBackColor = true;
             this.btnExportapdf.Click += new System.EventHandler(this.btnExportapdf_Click);
+            // 
+            // btnadenda
+            // 
+            this.btnadenda.Location = new System.Drawing.Point(652, 80);
+            this.btnadenda.Name = "btnadenda";
+            this.btnadenda.Size = new System.Drawing.Size(75, 23);
+            this.btnadenda.TabIndex = 158;
+            this.btnadenda.Text = "Adenda";
+            this.btnadenda.UseVisualStyleBackColor = true;
+            this.btnadenda.Click += new System.EventHandler(this.btnadenda_Click);
             // 
             // pbFotoSolicitudPracticas
             // 
@@ -1272,21 +1292,11 @@
             this.pbFotoContrato.TabStop = false;
             this.pbFotoContrato.Visible = false;
             // 
-            // btnadenda
-            // 
-            this.btnadenda.Location = new System.Drawing.Point(652, 80);
-            this.btnadenda.Name = "btnadenda";
-            this.btnadenda.Size = new System.Drawing.Size(75, 23);
-            this.btnadenda.TabIndex = 158;
-            this.btnadenda.Text = "Adenda";
-            this.btnadenda.UseVisualStyleBackColor = true;
-            this.btnadenda.Click += new System.EventHandler(this.btnadenda_Click);
-            // 
             // frmContrato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 697);
+            this.ClientSize = new System.Drawing.Size(734, 649);
             this.Controls.Add(this.btnadenda);
             this.Controls.Add(this.btnExportapdf);
             this.Controls.Add(this.label23);
@@ -1322,7 +1332,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grpcontra);
             this.Controls.Add(this.grpcontrato);
-            this.MinimumSize = new System.Drawing.Size(750, 736);
+            this.MinimumSize = new System.Drawing.Size(750, 688);
             this.Name = "frmContrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Empleado Contrato";
@@ -1388,7 +1398,6 @@
         private System.Windows.Forms.Button btnBuscarImagenAnexoFunciones;
         private System.Windows.Forms.ComboBox cboBono;
         private System.Windows.Forms.TextBox txtPeriodicidad;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
@@ -1414,6 +1423,9 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button btnExportapdf;
         private System.Windows.Forms.Button btnadenda;
+        private System.Windows.Forms.Label lbladenda;
+        private System.Windows.Forms.ComboBox cboCargo;
+        private System.Windows.Forms.Button btnbonos;
         private System.Windows.Forms.DataGridViewTextBoxColumn NRO;
         private System.Windows.Forms.DataGridViewTextBoxColumn mercadoobra;
         private System.Windows.Forms.DataGridViewTextBoxColumn adenda;
@@ -1451,7 +1463,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBREOTROSIMG;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
-        private System.Windows.Forms.Label lbladenda;
-        private System.Windows.Forms.ComboBox cboCargo;
     }
 }

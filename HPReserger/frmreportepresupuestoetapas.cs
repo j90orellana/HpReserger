@@ -21,6 +21,9 @@ namespace HPReserger
         public string cc;
         public Boolean ok;
         public decimal valor;
+        public int cabecera;
+        public int Tipo;
+
         private void frmreportepresupuestoetapas_Load(object sender, EventArgs e)
         {
             ok = false;
@@ -43,15 +46,21 @@ namespace HPReserger
                 dtgdiferencia[i, 0].Value = "0.00";
             }
             cc = txtcc.Text;
-            dtgvalores.DataSource = CLpresupuestoetapa.MesEtapaCentroCosto(0, etapa, 0, cc, 0, 0);
+            dtgvalores.DataSource = CLpresupuestoetapa.MesEtapaCentroCosto(0, etapa, 0, cc, 0, 0, cabecera, 0);
             if (dtgvalores.RowCount > 0)
             {
                 for (int i = 0; i < dtgvalores.RowCount; i++)
                 {
-                    dtgconten[i + 1, 0].Value = dtgvalores["Importe_MesEtapa", i].Value;
+                    if (Tipo == 1)
+                        dtgconten[i + 1, 0].Value = dtgvalores["Importe_MesEtapa", i].Value;
+                    else
+                        dtgconten[i + 1, 0].Value = dtgvalores["Importe_Flujo", i].Value;
                 }
             }
-            dtgvalores1.DataSource = CLpresupuestoetapa.ListarReporteCuentaCosto(etapa, cc);
+            if (Tipo == 1)
+                dtgvalores1.DataSource = CLpresupuestoetapa.ListarReporteCuentaCosto(etapa, cc);
+            else
+                dtgvalores1.DataSource = CLpresupuestoetapa.ListarReporteCuentaCostoFlujo(etapa, cc);
             if (dtgvalores1.RowCount > 0)
             {
                 for (int i = 0; i < dtgvalores1.RowCount; i++)
@@ -63,7 +72,9 @@ namespace HPReserger
             {
                 for (int i = 0; i < dtgvalores.RowCount; i++)
                 {
-                    dtgdiferencia[i + 1, 0].Value = (decimal)dtgvalores["Importe_MesEtapa", i].Value - (decimal)dtgvalores1["operaciones", i].Value;
+                    if (Tipo == 1)
+                        dtgdiferencia[i + 1, 0].Value = (decimal)dtgvalores["Importe_MesEtapa", i].Value - (decimal)dtgvalores1["operaciones", i].Value;
+                    else dtgdiferencia[i + 1, 0].Value = (decimal)dtgvalores["Importe_Flujo", i].Value - (decimal)dtgvalores1["operaciones", i].Value;
                 }
             }
 
@@ -109,7 +120,7 @@ namespace HPReserger
             hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
             hoja_trabajo.Name = "Presupuesto Operaciones";
             //Recorremos el DataGridView rellenando la hoja de trabajo
-            hoja_trabajo.Cells[1, 1] = txtetapa.Text; hoja_trabajo.Cells[1, 3] = txtcc.Text; hoja_trabajo.Cells[1,2] = txtcentro.Text;
+            hoja_trabajo.Cells[1, 1] = txtetapa.Text; hoja_trabajo.Cells[1, 3] = txtcc.Text; hoja_trabajo.Cells[1, 2] = txtcentro.Text;
             hoja_trabajo.Cells[2, 1] = "Periodo";
             hoja_trabajo.Cells[3, 1] = "Presupuesto";
             hoja_trabajo.Cells[4, 1] = "Operaciones";
@@ -134,7 +145,7 @@ namespace HPReserger
                 if (contador != 0)
                 {
                     hoja_trabajo.Cells[2, numer + 1] = dtgconten.Columns[contador].HeaderText.ToString();
-                    hoja_trabajo.Columns[numer ].AutoFit();                    
+                    hoja_trabajo.Columns[numer].AutoFit();
                     numer++;
                 }
             }

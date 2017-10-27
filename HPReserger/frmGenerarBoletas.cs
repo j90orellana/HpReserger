@@ -54,19 +54,69 @@ namespace HPReserger
         {
             cargartipoid();
         }
-
+        public DialogResult msg(string cadena)
+        {
+            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
+        DataTable DBoleta;
         private void btngenerar_Click(object sender, EventArgs e)
         {
-            if (radioButton1.Checked) empresa = int.Parse(cboempresa.SelectedValue.ToString());
-            if (radioButton2.Checked) tipo = int.Parse(cbotipoid.SelectedValue.ToString());
-            if (radioButton2.Checked) numero = txtnumero.Text;
+            empresa = 0; tipo = 0;
+            if (radioButton1.Checked)
+                if (cboempresa.Items.Count > 0)
+                    empresa = int.Parse(cboempresa.SelectedValue.ToString());
+                else
+                {
+                    msg("No hay Empresas");
+                    return;
+                }
+            if (radioButton2.Checked)
+            {
+                if (cbotipoid.Items.Count > 0)
+                {
+                    tipo = int.Parse(cbotipoid.SelectedValue.ToString());
+                    numero = txtnumero.Text;
+                }
+                else
+                {
+                    msg("No Hay Tipos de ID"); return;
+                }
+            }
+            DBoleta = new DataTable();
+            DateTime inicial, final;
+            ///Ver si hay datos
+            inicial = comboMesAño1.GetFechaPRimerDia();
+            final = comboMesAño2.GetFecha();
+            if (inicial > final)
+            {
+                inicial = comboMesAño2.GetFechaPRimerDia();
+                final = comboMesAño1.GetFecha();
+            }
+            DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+            int aux = (12 * (final.Year - inicial.Year) + final.Month) - inicial.Month + 1;
+            // msg("meses " + aux + "inicial " + inicial + "final " + final);
+            List<string> listita = new List<string>();
+            foreach (DataRow x in DBoleta.Rows)
+                listita.Add(x["mes"].ToString());
+            listita = listita.Distinct().ToList<string>();
+            //if (listita.Count != aux)
+            if (DBoleta.Rows.Count == 0)
+                CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+            DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+            if (DBoleta.Rows.Count == 0)
+            {
+                msg($"No hay Boletas que Mostrar del :{inicial.ToLongDateString()} \nHasta: {final.ToLongDateString()}");
+                return;
+            }
             frmreporteboletasfin boletas = new frmreporteboletasfin();
             boletas.empresa = empresa;
             boletas.tipo = tipo;
             boletas.numero = numero;
+            boletas.fecha = 1;
+            boletas.fechainicial = inicial;
+            boletas.Fechafin = final;
             boletas.ShowDialog();
         }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)

@@ -144,6 +144,7 @@
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(1090, 47);
             this.dtgconten.TabIndex = 30;
@@ -286,6 +287,7 @@
             this.dtgoperaciones.Name = "dtgoperaciones";
             this.dtgoperaciones.ReadOnly = true;
             this.dtgoperaciones.RowHeadersVisible = false;
+            this.dtgoperaciones.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dtgoperaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgoperaciones.Size = new System.Drawing.Size(1090, 37);
             this.dtgoperaciones.TabIndex = 38;
@@ -336,6 +338,7 @@
             this.dtgdiferencia.Name = "dtgdiferencia";
             this.dtgdiferencia.ReadOnly = true;
             this.dtgdiferencia.RowHeadersVisible = false;
+            this.dtgdiferencia.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dtgdiferencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgdiferencia.Size = new System.Drawing.Size(1090, 25);
             this.dtgdiferencia.TabIndex = 40;

@@ -242,9 +242,10 @@ namespace HPReserger
         {
             if (pbFoto.Image != null)
             {
-                FrmFoto fotito = new FrmFoto();
-                fotito.fotito = pbFoto.Image;
-                fotito.Show();
+                FrmFoto foto = new FrmFoto();
+                foto.fotito = pbFoto.Image;
+                foto.Owner = this.MdiParent;
+                foto.ShowDialog();
             }
         }
 

@@ -37,6 +37,7 @@
             this.crvboletas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvboletas.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvboletas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crvboletas.InitialFocus = CrystalDecisions.Windows.Forms.UIComponent.GroupTree;
             this.crvboletas.Location = new System.Drawing.Point(0, 0);
             this.crvboletas.Name = "crvboletas";
             this.crvboletas.ShowCloseButton = false;
@@ -45,6 +46,8 @@
             this.crvboletas.ShowParameterPanelButton = false;
             this.crvboletas.Size = new System.Drawing.Size(1030, 466);
             this.crvboletas.TabIndex = 0;
+            this.crvboletas.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvboletas_ReportRefresh);
+            this.crvboletas.Click += new System.EventHandler(this.crvboletas_Click);
             // 
             // frmreporteboletasfin
             // 

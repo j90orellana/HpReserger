@@ -309,5 +309,20 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
+
+        private void pbFoto_DoubleClick(object sender, EventArgs e)
+        {
+            MostrarFoto(pbFoto);
+        }
+        public void MostrarFoto(PictureBox fotito)
+        {
+            if (fotito.Image != null)
+            {
+                FrmFoto foto = new FrmFoto();
+                foto.fotito = fotito.Image;
+                foto.Owner = this.MdiParent;
+                foto.ShowDialog();
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmprofesion : Form
+    public partial class frmprofesion : Form, IProfesion
     {
         public frmprofesion()
         {
@@ -69,6 +69,9 @@ namespace HPReserger
                 estado = 0;
             }
             CargarDatos();
+            IProfesion iForm = this.MdiParent as IProfesion;
+            if (iForm != null)
+                iForm.CargarProfesion();
         }
 
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -140,6 +143,15 @@ namespace HPReserger
                 btnmodificar.Enabled = false;
                 btneliminar.Enabled = false;
             }
+        }
+        public void CargarProfesion()
+        {
+            CargarDatos();
+        }
+
+        public void CargarGrado()
+        {
+            throw new NotImplementedException();
         }
     }
 }

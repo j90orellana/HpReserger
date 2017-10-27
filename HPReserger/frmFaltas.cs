@@ -318,6 +318,7 @@ namespace HPReserger
             {
                 FrmFoto foto = new FrmFoto();
                 foto.fotito = fotito.Image;
+                foto.Owner = this.MdiParent;
                 foto.ShowDialog();
             }
         }
