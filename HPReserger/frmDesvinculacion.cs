@@ -48,8 +48,8 @@ namespace HPReserger
             DataRow EmpleadoVacaciones = clDesvinculacion.ExisteBeneficioEmpleado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_DatosEmpleado");
             if (EmpleadoVacaciones != null)
             {
-                txtApellidoPaterno.Text = EmpleadoVacaciones["APELLIDOPATERNO"].ToString();
-                txtApellidoMaterno.Text = EmpleadoVacaciones["APELLIDOMATERNO"].ToString();
+                txtApellidoPaterno.Text = EmpleadoVacaciones["APELLIDOPATERNO"].ToString() + " " + EmpleadoVacaciones["APELLIDOMATERNO"].ToString();
+                //txtApellidoMaterno.Text = EmpleadoVacaciones["APELLIDOMATERNO"].ToString();
                 txtNombres.Text = EmpleadoVacaciones["NOMBRES"].ToString();
                 //Verifico si tiene un contrato activo en la fecha ingresada
                 DataRow Listarcontrato = clDesvinculacion.ListarContrato(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpfechacese.Value);
@@ -184,7 +184,7 @@ namespace HPReserger
             }
             else
             {
-                txtApellidoPaterno.Text = txtApellidoMaterno.Text = txtNombres.Text = "";
+                txtApellidoPaterno.Text = txtNombres.Text = "";
                 dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(1, "");
                 lklliquidacion.Enabled = lklcts.Enabled = lklrenta.Enabled = lkltrabajo.Enabled = lklpracticas.Enabled = lklsalida.Enabled = false;
             }
@@ -219,11 +219,19 @@ namespace HPReserger
                 txtNumeroDocumento.Focus();
                 return;
             }
+            if (!txtMotivoCese.EstaLLeno())
+            {
+                MessageBox.Show("Ingrese Motivo del Cese", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtMotivoCese.Focus();
+                return;
+            }
 
             frmLiquidacion frmLIQ = new frmLiquidacion();
             frmLIQ.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmLIQ.NumeroDocumento = txtNumeroDocumento.Text;
-
+            frmLIQ._FechaInicio = dtpfechacese.Value;
+            frmLIQ._Monto =decimal.Parse( txtmonto.Num.Text);
+            frmLIQ._MotivoCese = txtMotivoCese.Text;
             frmLIQ.ShowDialog();
         }
 
@@ -730,12 +738,6 @@ namespace HPReserger
                 formulario.WindowState = FormWindowState.Normal;
             formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
             formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2) - 54;
-        }
-
-        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (pbFoto.Image != null)
-                btndescargar.Visible = true;
         }
         private void pbFoto_MouseMove(object sender, MouseEventArgs e)
         {

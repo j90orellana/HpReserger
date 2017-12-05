@@ -71,6 +71,7 @@ namespace HPReserger
             btnlimpiar.Enabled = !a;
             Txtbusca.Enabled = !a;
             btnaceptar.Enabled = a;
+            btncentro.Enabled = a;
         }
         public DataTable listarArticulos(string busca)
         {
@@ -285,7 +286,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtdescripcion.Text + " Marca: " + cbomarca.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes") ;
+                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtdescripcion.Text + " Marca: " + cbomarca.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes") 
                         {
                             CArticulo.EliminarARticuloMarca(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));
                             estado = 0;
@@ -404,6 +405,19 @@ namespace HPReserger
         private void txtdescripcion_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        public DialogResult MSG(string cadena)
+        {
+            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void btncentro_Click(object sender, EventArgs e)
+        {
+            frmccosto fccentro = new frmccosto();
+            if (fccentro.ShowDialog() == DialogResult.OK)
+            {
+                if (fccentro.siono.ToUpper().Trim() == "SI")
+                    cbocentrocosto.SelectedValue = fccentro.cadeaux;
+            }
         }
     }
 }

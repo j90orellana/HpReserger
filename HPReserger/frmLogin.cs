@@ -40,7 +40,7 @@ namespace HPReserger
                 e.Handled = true;
                 txtContraseña.Focus();
             }
-        }
+        }      
         private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
@@ -52,6 +52,10 @@ namespace HPReserger
         private void frmLogin_Load(object sender, EventArgs e)
         {
             Intentos = 0;
+
+            //System.Drawing.Drawing2D.GraphicsPath GRafico = new System.Drawing.Drawing2D.GraphicsPath();
+            //GRafico.AddEllipse(0.12f, 0.12f,this.Width, this.Width );
+            //this.Region = new Region(GRafico);
         }
         public DialogResult msg(string cadena)
         {
@@ -151,6 +155,101 @@ namespace HPReserger
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+        int x, y;
+        Boolean mover = false;
+
+        private void panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mover)
+            {
+                this.Location = new Point(Left + e.X - x, Top + e.Y - y);
+            }
+        }
+
+        private void panel_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (mover)
+            {
+                this.Location = new Point(Left + e.X - x, Top + e.Y - y);
+                mover = false;
+            }
+        }
+
+        private void label3_MouseUp(object sender, MouseEventArgs e)
+        {
+        }
+        private void label3_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label3_MouseMove(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void pbclose_MouseMove(object sender, MouseEventArgs e)
+        {
+            pbclose.Image = HPReserger.Properties.Resources.xCloseBlue; ;
+        }
+        private void pbclose_MouseLeave(object sender, EventArgs e)
+        {
+            pbclose.Image = HPReserger.Properties.Resources.XCloseRed;
+        }
+        private void pbclose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void btnLogueo_MouseMove(object sender, MouseEventArgs e)
+        {
+        }
+        private void btnLogueo_MouseLeave(object sender, EventArgs e)
+        {
+        }
+
+        private void txtUsuario_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+        string[] cadena;
+        private void txtUsuario_DragDrop(object sender, DragEventArgs e)
+        {
+            cadena = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (cadena != null)
+                foreach (string x in cadena)
+                    MessageBox.Show(x);
+        }
+
+        private void textBoxPer1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                txtContraseña.Focus();
+        }
+
+        private void panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                x = e.X; y = e.Y; mover = true;
+            }
         }
     }
 }

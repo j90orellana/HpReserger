@@ -36,17 +36,45 @@ namespace HPReserger
             //reporte.SetParameterValue(6, frmLogin.CodigoUsuario);
             reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
             crvboletas.ReportSource = reporte;
-
+            crvboletas.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
+            //string cadena = "";
+            //foreach (Control ctl in crvboletas.Controls)
+            //{
+            //    if (ctl is ToolStrip)
+            //    {
+            //        ToolStrip ts = (ToolStrip)ctl;
+            //        cadena = "";
+            //        foreach (ToolStripItem clt in ts.Items)
+            //        {
+            //            if (clt.ToolTipText.ToUpper() == "EXPORTAR INFORME")
+            //                cadena += clt.ToolTipText;
+            //            ToolStripButton tsb = new ToolStripButton();
+            //            tsb.Size = clt.Size;
+            //            tsb.Padding = clt.Padding;
+            //            tsb.Margin = clt.Margin;
+            //            tsb.TextImageRelation = clt.TextImageRelation;
+            //            tsb.Text = clt.Text;
+            //            tsb.ToolTipText = clt.ToolTipText;
+            //            tsb.ImageScaling = clt.ImageScaling;
+            //            tsb.ImageAlign = clt.ImageAlign;
+            //            tsb.ImageIndex = clt.ImageIndex;
+            //            tsb.Click += new EventHandler(CLicktime);
+            //            ts.Items.Insert(3, tsb);
+            //            break;
+            //        }
+            //    }
+            //}
+            //msg(cadena);            
+        }        
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void crvboletas_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {
             e.Handled = true;
             frmreporteboletasfin_Load(crvboletas, e);
         }
 
-        private void crvboletas_Click(object sender, EventArgs e)
-        {
-        }
     }
 }

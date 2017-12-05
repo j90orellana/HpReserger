@@ -984,6 +984,7 @@ namespace HPReserger
             btnobradeterminada.Visible = false;
             btnlocacion.Visible = false;
             btnmercado.Visible = false;
+            btnEmpresaExt.Enabled = false;
             if (cbotipocontratacion.SelectedValue.ToString() == "4")
             {
                 btnlocacion.Visible = true;
@@ -994,6 +995,7 @@ namespace HPReserger
             }
             if (cbotipocontratacion.SelectedValue.ToString() == "2" || cbotipocontratacion.SelectedValue.ToString() == "3")
             {
+                btnEmpresaExt.Enabled = true; 
                 btnobradeterminada.Visible = true; btnmercado.Visible = true;
             }
         }
@@ -1138,6 +1140,13 @@ namespace HPReserger
         private void txtSalario_Leave(object sender, EventArgs e)
         {
             txtSalario.Text = decimal.Parse(txtSalario.Text).ToString("00.00");
+        }
+
+        private void btnEmpresaExt_Click(object sender, EventArgs e)
+        {
+            frmDatosExterno frmDatosExternos = new frmDatosExterno();
+            frmDatosExternos.CodigoEmpleado = CodigoEmpleado;
+            frmDatosExternos.ShowDialog();
         }
     }
 }

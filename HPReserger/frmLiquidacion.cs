@@ -16,6 +16,9 @@ namespace HPReserger
     {
         public int TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
+        public DateTime _FechaInicio;
+        public decimal _Monto;
+        public string _MotivoCese;
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         public frmLiquidacion()
         {
@@ -28,6 +31,9 @@ namespace HPReserger
             Reporte.Refresh();
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
             Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
+            Reporte.SetParameterValue("@fecha", _FechaInicio);
+            Reporte.SetParameterValue("@motivo", _MotivoCese);
+            Reporte.SetParameterValue("@monto", _Monto);
             // Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS,datos.DATASOURCE,datos.BASEDEDATOS);
             Reporte.SetDatabaseLogon("mmendoza", "123");
             cvrLiquidacion.ReportSource = Reporte;

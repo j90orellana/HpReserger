@@ -1397,9 +1397,25 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.SeleccionarBoletas(empresa, tipo, numero, fecha, fechaini, fechafin);
         }
+        public DataTable SeleccionarGratificacion(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin)
+        {
+            return cdOrdenPedido.SeleccionarGratificacion(empresa, tipo, numero, fecha, fechaini, fechafin);
+        }
+        public DataTable SeleccionarPagoCts(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin)
+        {
+            return cdOrdenPedido.SeleccionarPagoCts(empresa, tipo, numero, fecha, fechaini, fechafin);
+        }
         public DataTable GenerarBoletasMensuales(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin, int usuario)
         {
-            return cdOrdenPedido.GenerarBoletasMensuales(empresa, tipo, numero, fecha, fechaini, fechafin, usuario );
+            return cdOrdenPedido.GenerarBoletasMensuales(empresa, tipo, numero, fecha, fechaini, fechafin, usuario);
+        }
+        public DataTable GenerarGratificaciones(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin, int usuario)
+        {
+            return cdOrdenPedido.GenerarGratificaciones(empresa, tipo, numero, fecha, fechaini, fechafin, usuario);
+        }
+        public DataTable Generarcts(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin, int usuario)
+        {
+            return cdOrdenPedido.Generarcts(empresa, tipo, numero, fecha, fechaini, fechafin, usuario);
         }
         public DataRow getMinMaxContrato()
         {
@@ -1408,6 +1424,11 @@ namespace HPResergerCapaLogica
         public DataTable TablaSolicitudes(int opcion, int jefe, string accion, string valor, int estado, int solicita, string observacion)
         {
             return cdOrdenPedido.TablaSolicitudes(opcion, jefe, accion, valor, estado, solicita, observacion);
+        }
+        public DataTable EmpresasExternas(int opcion, int registro, int codigo, string ruc, string empresa, int certificado, decimal importe, byte[] foto, string nombrefoto, int usuario, DateTime fecha)
+        {
+            return cdOrdenPedido.EmpresasExternas(opcion, registro, codigo, ruc, empresa, certificado, importe, foto, nombrefoto, usuario, fecha);
+
         }
     }
 }

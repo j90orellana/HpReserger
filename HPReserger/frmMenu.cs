@@ -27,9 +27,11 @@ namespace HPReserger
         public void BuscarRenta(params int[] opcion)
         {
             if (opcion.Contains(1))
-                recibohonorario.BuscarRenta();
+                if (recibohonorario != null)
+                    recibohonorario.BuscarRenta();
             if (opcion.Contains(2))
-                frmfac.BuscarIgv();
+                if (frmfac != null)
+                    frmfac.BuscarIgv();
         }
         private void editarAnularToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -66,15 +68,13 @@ namespace HPReserger
                 try
                 {
                     mdi = (MdiClient)ctl;
-                    mdi.BackColor = this.BackColor;
+                    mdi.BackColor = Color.FromArgb(240, 240, 240);
                 }
-                catch (InvalidCastException ex)
+                catch (InvalidCastException )
                 {
-                    //  MessageBox.Show(ex.Message, "HpReserger");
                 }
             }
             cerrado = 0;
-            //MessageBox.Show("usuario:"+usuario+"nick:"+nick);
             lblwelcome.Text = "Bienvenido: " + Nombres;
         }
         public void ValidarVentanas(Form formulario)
@@ -1888,27 +1888,22 @@ namespace HPReserger
         {
             frmFlujos = null;
         }
-
         public void CargarProfesion()
         {
             ((IProfesion)frmE).CargarProfesion();
         }
-
         public void CargarGrado()
         {
             ((IProfesion)frmE).CargarGrado();
         }
-
         private void frmMenu_Scroll(object sender, ScrollEventArgs e)
         {
             MessageBox.Show("value:" + e.NewValue);
         }
-
         private void frmMenu_MouseDown(object sender, MouseEventArgs e)
         {
             MessageBox.Show("button:" + e.Button.ToString());
         }
-
         private void eliminarPeriodoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEliminarPeriodo frmelimin = new frmEliminarPeriodo();
@@ -1933,6 +1928,85 @@ namespace HPReserger
         private void Cerrarsolicitudes(object sender, FormClosedEventArgs e)
         {
             frmsolis = null;
+        }
+        private void frmMenu_SizeChanged(object sender, EventArgs e)
+        {
+            this.Refresh();
+        }
+        frmTipodeCambio tipocam;
+        private void tipoDeCambioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tipocam == null)
+            {
+                tipocam = new frmTipodeCambio();
+                tipocam.MdiParent = this;
+                tipocam.FormClosed += new FormClosedEventHandler(Cerrartipocam);
+                frmMenu_SizeChanged(sender, new EventArgs());
+                tipocam.Show();
+            }
+            else
+            {
+                tipocam.Activate();
+                ValidarVentanas(tipocam);
+            }
+        }
+        private void Cerrartipocam(object sender, FormClosedEventArgs e)
+        {
+            tipocam = null;
+        }
+        frmGenerarGratificacion frmgrati;
+        private void generarGratificacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmgrati == null)
+            {
+                frmgrati = new frmGenerarGratificacion();
+                frmgrati.MdiParent = this;
+                frmgrati.FormClosed += new FormClosedEventHandler(Cerrargrati);
+                frmMenu_SizeChanged(sender, new EventArgs());
+                frmgrati.Show();
+            }
+            else
+            {
+                frmgrati.Activate();
+                ValidarVentanas(frmgrati);
+            }
+        }
+        private void Cerrargrati(object sender, FormClosedEventArgs e)
+        {
+            frmgrati = null;
+        }
+        frmGenerarCTS frmcts;
+        private void generarCTSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcts == null)
+            {
+                frmcts = new frmGenerarCTS();
+                frmcts.MdiParent = this;
+                frmcts.FormClosed += new FormClosedEventHandler(cerrarcts);
+                frmMenu_SizeChanged(sender, new EventArgs());
+                frmcts.Show();
+            }
+            else
+            {
+                frmcts.Activate();
+                ValidarVentanas(frmcts);
+            }
+        }
+        private void cerrarcts(object sender, FormClosedEventArgs e)
+        {
+            frmcts = null;
+        }
+        private void eliminarGratificacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEliminarPeriodo frmelimin = new frmEliminarPeriodo();
+            frmelimin.Opcion = 2;
+            frmelimin.ShowDialog();
+        }
+        private void eliminarCTSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEliminarPeriodo frmelimin = new frmEliminarPeriodo();
+            frmelimin.Opcion = 1;
+            frmelimin.ShowDialog();
         }
     }
 }

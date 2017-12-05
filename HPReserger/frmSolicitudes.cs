@@ -16,7 +16,7 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+               HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmSolicitudes_Load(object sender, EventArgs e)
         {
             REcargardatos();
@@ -51,5 +51,6 @@ namespace HPReserger
 
             REcargardatos();
         }
+       
     }
 }

@@ -66,6 +66,19 @@ namespace HPReserger
             comboaño.DisplayMember = "codigo";
             comboaño.DataSource = años;
         }
+        public void MostrarMeses(params int[] Cantmes)
+        {
+            int x = meses.Rows.Count;
+            for (int i = 0; i < meses.Rows.Count; i++)
+            {
+                DataRow fila = meses.Rows[i];
+                if (!Cantmes.Contains(int.Parse(fila["codigo"].ToString())))
+                {
+                    meses.Rows.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
         private void ComboMesAño_Load(object sender, EventArgs e)
         {
             Cargarmeses();
@@ -75,7 +88,15 @@ namespace HPReserger
         public DateTime GetFecha()
         {
             DateTime timeaux;
-            timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, DateTime.Now.Day);
+            try
+            {
+                timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, DateTime.Now.Day);
+            }
+            catch (ArgumentOutOfRangeException )
+            {
+                timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
+                timeaux = timeaux.AddMonths(1).AddDays(-1);
+            }
             return timeaux;
         }
         public DateTime GetFechaPRimerDia()
@@ -87,6 +108,14 @@ namespace HPReserger
         public string FechaParaSQL()
         {
             return comboaño.SelectedValue.ToString() + int.Parse(combomes.SelectedValue.ToString()).ToString("00") + "01";
+        }
+        public int getMesNumero()
+        {
+            return (int)combomes.SelectedValue;
+        }
+        public int GetAño()
+        {
+            return (int)comboaño.SelectedValue;
         }
     }
 }

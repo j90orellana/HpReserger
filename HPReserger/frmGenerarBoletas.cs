@@ -36,20 +36,15 @@ namespace HPReserger
             cbotipoid.DisplayMember = "descripcion";
         }
         int empresa = 0, tipo = 0;
-
-
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
             txtnumero.Text = "";
         }
         string numero = "0";
-
-
         private void btnrecempresa_Click(object sender, EventArgs e)
         {
             cargarempresas();
         }
-
         private void btnrectipo_Click(object sender, EventArgs e)
         {
             cargartipoid();
@@ -131,7 +126,6 @@ namespace HPReserger
             }
             else empresa = 0;
         }
-
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton2.Checked)
@@ -150,10 +144,8 @@ namespace HPReserger
                 tipo = 0; numero = "0";
             }
         }
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-
         }
 
 

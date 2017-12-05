@@ -157,6 +157,7 @@
             // 
             // btncancelar
             // 
+            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncancelar.Location = new System.Drawing.Point(393, 454);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 29);
@@ -167,6 +168,7 @@
             // 
             // btnaceptar
             // 
+            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnaceptar.Location = new System.Drawing.Point(304, 454);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 29);
@@ -234,6 +236,7 @@
             this.cbocuentas.Name = "cbocuentas";
             this.cbocuentas.Size = new System.Drawing.Size(275, 21);
             this.cbocuentas.TabIndex = 25;
+            this.cbocuentas.TextChanged += new System.EventHandler(this.cbocuentas_TextChanged);
             // 
             // cbotiene
             // 
@@ -256,7 +259,7 @@
             // lblcuenta
             // 
             this.lblcuenta.AutoSize = true;
-            this.lblcuenta.Location = new System.Drawing.Point(5, 97);
+            this.lblcuenta.Location = new System.Drawing.Point(5, 84);
             this.lblcuenta.Name = "lblcuenta";
             this.lblcuenta.Size = new System.Drawing.Size(44, 13);
             this.lblcuenta.TabIndex = 14;
@@ -390,7 +393,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbotiene;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbocuentas;
         private System.Windows.Forms.Label lblcuenta;
         private System.Windows.Forms.GroupBox gp1;
         private System.Windows.Forms.Button Limpiar;
@@ -403,5 +405,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn idcuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn tienecuenta;
+        public System.Windows.Forms.ComboBox cbocuentas;
     }
 }

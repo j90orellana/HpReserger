@@ -162,6 +162,7 @@
             this.txtaporte.Name = "txtaporte";
             this.txtaporte.Size = new System.Drawing.Size(46, 20);
             this.txtaporte.TabIndex = 60;
+            this.txtaporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtaporte.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtaporte_KeyPress);
             // 
             // label2
@@ -189,16 +190,17 @@
             this.txtseguro.Name = "txtseguro";
             this.txtseguro.Size = new System.Drawing.Size(56, 20);
             this.txtseguro.TabIndex = 65;
+            this.txtseguro.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtseguro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtseguro_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(111, 41);
+            this.label3.Location = new System.Drawing.Point(106, 41);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 64;
-            this.label3.Text = "% Seguro:";
+            this.label3.Text = "%    Seguro:";
             // 
             // txtcomision
             // 
@@ -207,16 +209,17 @@
             this.txtcomision.Name = "txtcomision";
             this.txtcomision.Size = new System.Drawing.Size(55, 20);
             this.txtcomision.TabIndex = 67;
+            this.txtcomision.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtcomision.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcomision_KeyPress);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(234, 41);
+            this.label4.Location = new System.Drawing.Point(229, 41);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 66;
-            this.label4.Text = "% Comisión:";
+            this.label4.Text = "%     Comisión:";
             // 
             // btnexportarExcel
             // 
@@ -232,7 +235,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(364, 40);
+            this.label5.Location = new System.Drawing.Point(359, 41);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 13);
             this.label5.TabIndex = 69;
@@ -261,6 +264,7 @@
             this.Aporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Aporte.DataPropertyName = "aporte";
             this.Aporte.HeaderText = "Aporte";
+            this.Aporte.MinimumWidth = 50;
             this.Aporte.Name = "Aporte";
             this.Aporte.ReadOnly = true;
             this.Aporte.Width = 63;
@@ -270,6 +274,7 @@
             this.Seguro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Seguro.DataPropertyName = "seguro";
             this.Seguro.HeaderText = "Prima";
+            this.Seguro.MinimumWidth = 50;
             this.Seguro.Name = "Seguro";
             this.Seguro.ReadOnly = true;
             this.Seguro.Width = 58;
@@ -279,6 +284,7 @@
             this.Comision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Comision.DataPropertyName = "comision";
             this.Comision.HeaderText = "Comisión";
+            this.Comision.MinimumWidth = 50;
             this.Comision.Name = "Comision";
             this.Comision.ReadOnly = true;
             this.Comision.Width = 74;

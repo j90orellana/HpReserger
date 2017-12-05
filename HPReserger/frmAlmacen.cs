@@ -38,7 +38,7 @@ namespace HPReserger
             }
             else
             {
-             //   LimpiarGrillas();
+                //   LimpiarGrillas();
                 //TitulosGrillas();
             }
         }
@@ -57,7 +57,7 @@ namespace HPReserger
             else
             {
                 LimpiarGrillas();
-               // TitulosGrillas();
+                // TitulosGrillas();
             }
         }
 
@@ -83,7 +83,7 @@ namespace HPReserger
             txtRUC.Text = "";
             txtGR.Text = "";
 
-           // LimpiarGrillas();
+            // LimpiarGrillas();
             //TitulosGrillas();
         }
 
@@ -213,10 +213,16 @@ namespace HPReserger
         {
             DataTable tablitas = ((DataTable)gridDetalle.DataSource).Clone();
             gridDetalle.DataSource = tablitas;
-            tablitas = ((DataTable)gridDetalle1.DataSource).Clone();
-            gridDetalle1.DataSource = tablitas;
-            tablitas = ((DataTable)gridDetalle2.DataSource).Clone();
-            gridDetalle2.DataSource = tablitas;
+            if (gridDetalle1.DataSource != null)
+            {
+                tablitas = ((DataTable)gridDetalle1.DataSource).Clone();
+                gridDetalle1.DataSource = tablitas;
+            }
+            if (gridDetalle2.DataSource != null)
+            {
+                tablitas = ((DataTable)gridDetalle2.DataSource).Clone();
+                gridDetalle2.DataSource = tablitas;
+            }
             //gridDetalle.DataSource = null;
             //gridDetalle.Rows.Clear();
             //gridDetalle.Columns.Clear();
@@ -236,7 +242,7 @@ namespace HPReserger
         private void frmAlmacen_FormClosing(object sender, FormClosingEventArgs e)
         {
             LimpiarCombos();
-           // LimpiarGrillas();
+            // LimpiarGrillas();
         }
 
         private void TitulosGrillas()

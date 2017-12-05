@@ -123,7 +123,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Location = new System.Drawing.Point(22, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
@@ -133,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 51);
+            this.label2.Location = new System.Drawing.Point(22, 51);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
@@ -143,7 +143,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 77);
+            this.label3.Location = new System.Drawing.Point(22, 77);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
@@ -153,7 +153,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 103);
+            this.label4.Location = new System.Drawing.Point(22, 103);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
@@ -228,7 +228,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 402);
+            this.label6.Location = new System.Drawing.Point(22, 402);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 13);
@@ -238,7 +238,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 350);
+            this.label7.Location = new System.Drawing.Point(22, 350);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 13);
@@ -248,7 +248,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 272);
+            this.label8.Location = new System.Drawing.Point(22, 272);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 13);
@@ -258,7 +258,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 220);
+            this.label9.Location = new System.Drawing.Point(22, 220);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(119, 13);
@@ -268,7 +268,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 376);
+            this.label10.Location = new System.Drawing.Point(22, 376);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(114, 13);
@@ -278,7 +278,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 298);
+            this.label11.Location = new System.Drawing.Point(22, 298);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(51, 13);
@@ -288,7 +288,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 246);
+            this.label12.Location = new System.Drawing.Point(22, 246);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 13);
@@ -298,7 +298,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 194);
+            this.label13.Location = new System.Drawing.Point(22, 194);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(108, 13);
@@ -308,7 +308,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 160);
+            this.label14.Location = new System.Drawing.Point(22, 160);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
@@ -567,9 +567,10 @@
             this.btnReciboServicios.Location = new System.Drawing.Point(624, 399);
             this.btnReciboServicios.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnReciboServicios.Name = "btnReciboServicios";
-            this.btnReciboServicios.Size = new System.Drawing.Size(24, 25);
+            this.btnReciboServicios.Size = new System.Drawing.Size(24, 20);
             this.btnReciboServicios.TabIndex = 43;
             this.btnReciboServicios.Text = "...";
+            this.btnReciboServicios.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnReciboServicios.UseVisualStyleBackColor = true;
             this.btnReciboServicios.Click += new System.EventHandler(this.btnReciboServicios_Click);
             // 
@@ -579,9 +580,10 @@
             this.btnAntecedentesPenales.Location = new System.Drawing.Point(624, 373);
             this.btnAntecedentesPenales.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnAntecedentesPenales.Name = "btnAntecedentesPenales";
-            this.btnAntecedentesPenales.Size = new System.Drawing.Size(24, 25);
+            this.btnAntecedentesPenales.Size = new System.Drawing.Size(24, 20);
             this.btnAntecedentesPenales.TabIndex = 44;
             this.btnAntecedentesPenales.Text = "...";
+            this.btnAntecedentesPenales.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAntecedentesPenales.UseVisualStyleBackColor = true;
             this.btnAntecedentesPenales.Click += new System.EventHandler(this.btnAntecedentesPenales_Click);
             // 
@@ -591,18 +593,19 @@
             this.btnAntecedentesPoliciales.Location = new System.Drawing.Point(624, 347);
             this.btnAntecedentesPoliciales.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnAntecedentesPoliciales.Name = "btnAntecedentesPoliciales";
-            this.btnAntecedentesPoliciales.Size = new System.Drawing.Size(24, 25);
+            this.btnAntecedentesPoliciales.Size = new System.Drawing.Size(24, 20);
             this.btnAntecedentesPoliciales.TabIndex = 45;
             this.btnAntecedentesPoliciales.Text = "...";
+            this.btnAntecedentesPoliciales.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnAntecedentesPoliciales.UseVisualStyleBackColor = true;
             this.btnAntecedentesPoliciales.Click += new System.EventHandler(this.btnAntecedentesPoliciales_Click);
             // 
             // btnFamilia
             // 
-            this.btnFamilia.Location = new System.Drawing.Point(66, 456);
+            this.btnFamilia.Location = new System.Drawing.Point(25, 461);
             this.btnFamilia.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnFamilia.Name = "btnFamilia";
-            this.btnFamilia.Size = new System.Drawing.Size(72, 25);
+            this.btnFamilia.Size = new System.Drawing.Size(108, 25);
             this.btnFamilia.TabIndex = 46;
             this.btnFamilia.Text = "&Familia";
             this.btnFamilia.UseVisualStyleBackColor = true;
@@ -610,10 +613,10 @@
             // 
             // btnCTS
             // 
-            this.btnCTS.Location = new System.Drawing.Point(372, 456);
+            this.btnCTS.Location = new System.Drawing.Point(379, 461);
             this.btnCTS.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnCTS.Name = "btnCTS";
-            this.btnCTS.Size = new System.Drawing.Size(72, 25);
+            this.btnCTS.Size = new System.Drawing.Size(108, 25);
             this.btnCTS.TabIndex = 48;
             this.btnCTS.Text = "CT&S";
             this.btnCTS.UseVisualStyleBackColor = true;
@@ -621,10 +624,10 @@
             // 
             // btnContrato
             // 
-            this.btnContrato.Location = new System.Drawing.Point(168, 456);
+            this.btnContrato.Location = new System.Drawing.Point(143, 461);
             this.btnContrato.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnContrato.Name = "btnContrato";
-            this.btnContrato.Size = new System.Drawing.Size(72, 25);
+            this.btnContrato.Size = new System.Drawing.Size(108, 25);
             this.btnContrato.TabIndex = 49;
             this.btnContrato.Text = "&Contrato";
             this.btnContrato.UseVisualStyleBackColor = true;
@@ -632,10 +635,10 @@
             // 
             // btnHaberes
             // 
-            this.btnHaberes.Location = new System.Drawing.Point(276, 456);
+            this.btnHaberes.Location = new System.Drawing.Point(261, 461);
             this.btnHaberes.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnHaberes.Name = "btnHaberes";
-            this.btnHaberes.Size = new System.Drawing.Size(72, 25);
+            this.btnHaberes.Size = new System.Drawing.Size(108, 25);
             this.btnHaberes.TabIndex = 50;
             this.btnHaberes.Text = "&Haberes";
             this.btnHaberes.UseVisualStyleBackColor = true;
@@ -643,10 +646,10 @@
             // 
             // btnRequerimiento
             // 
-            this.btnRequerimiento.Location = new System.Drawing.Point(480, 456);
+            this.btnRequerimiento.Location = new System.Drawing.Point(497, 461);
             this.btnRequerimiento.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnRequerimiento.Name = "btnRequerimiento";
-            this.btnRequerimiento.Size = new System.Drawing.Size(96, 25);
+            this.btnRequerimiento.Size = new System.Drawing.Size(108, 25);
             this.btnRequerimiento.TabIndex = 51;
             this.btnRequerimiento.Text = "&Requerimiento";
             this.btnRequerimiento.UseVisualStyleBackColor = true;
@@ -654,7 +657,7 @@
             // 
             // btnPensionSeguro
             // 
-            this.btnPensionSeguro.Location = new System.Drawing.Point(606, 456);
+            this.btnPensionSeguro.Location = new System.Drawing.Point(615, 461);
             this.btnPensionSeguro.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnPensionSeguro.Name = "btnPensionSeguro";
             this.btnPensionSeguro.Size = new System.Drawing.Size(108, 25);
@@ -666,7 +669,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(12, 129);
+            this.label22.Location = new System.Drawing.Point(22, 129);
             this.label22.Margin = new System.Windows.Forms.Padding(0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(91, 13);
@@ -774,7 +777,7 @@
             // lblconviviente
             // 
             this.lblconviviente.AutoSize = true;
-            this.lblconviviente.Location = new System.Drawing.Point(12, 430);
+            this.lblconviviente.Location = new System.Drawing.Point(22, 428);
             this.lblconviviente.Margin = new System.Windows.Forms.Padding(0);
             this.lblconviviente.Name = "lblconviviente";
             this.lblconviviente.Size = new System.Drawing.Size(66, 13);
@@ -783,7 +786,7 @@
             // 
             // txtconviviente
             // 
-            this.txtconviviente.Location = new System.Drawing.Point(180, 428);
+            this.txtconviviente.Location = new System.Drawing.Point(180, 425);
             this.txtconviviente.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.txtconviviente.Name = "txtconviviente";
             this.txtconviviente.ReadOnly = true;
@@ -794,12 +797,13 @@
             // btnconviviente
             // 
             this.btnconviviente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconviviente.Location = new System.Drawing.Point(624, 428);
+            this.btnconviviente.Location = new System.Drawing.Point(624, 425);
             this.btnconviviente.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnconviviente.Name = "btnconviviente";
-            this.btnconviviente.Size = new System.Drawing.Size(24, 25);
+            this.btnconviviente.Size = new System.Drawing.Size(24, 20);
             this.btnconviviente.TabIndex = 43;
             this.btnconviviente.Text = "...";
+            this.btnconviviente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnconviviente.UseVisualStyleBackColor = true;
             this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
             // 
@@ -834,9 +838,10 @@
             this.btnfirma.Location = new System.Drawing.Point(624, 321);
             this.btnfirma.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnfirma.Name = "btnfirma";
-            this.btnfirma.Size = new System.Drawing.Size(24, 25);
+            this.btnfirma.Size = new System.Drawing.Size(24, 20);
             this.btnfirma.TabIndex = 67;
             this.btnfirma.Text = "...";
+            this.btnfirma.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnfirma.UseVisualStyleBackColor = true;
             this.btnfirma.Click += new System.EventHandler(this.btnfirma_Click);
             // 
@@ -852,7 +857,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(12, 324);
+            this.label24.Location = new System.Drawing.Point(22, 324);
             this.label24.Margin = new System.Windows.Forms.Padding(0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(71, 13);
@@ -873,7 +878,7 @@
             // btnModificar
             // 
             this.btnModificar.Enabled = false;
-            this.btnModificar.Location = new System.Drawing.Point(522, 74);
+            this.btnModificar.Location = new System.Drawing.Point(522, 75);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(78, 25);
@@ -889,7 +894,7 @@
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(72, 25);
             this.btncancelar.TabIndex = 72;
-            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.Text = "&Cancelar";
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -901,13 +906,13 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(72, 25);
             this.btnGuardar.TabIndex = 71;
-            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Text = "&Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(522, 103);
+            this.button1.Location = new System.Drawing.Point(522, 102);
             this.button1.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 25);

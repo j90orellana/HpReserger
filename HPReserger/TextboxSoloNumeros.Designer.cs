@@ -36,18 +36,18 @@
             this.txt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt.Location = new System.Drawing.Point(0, 0);
             this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(150, 20);
+            this.txt.Size = new System.Drawing.Size(178, 20);
             this.txt.TabIndex = 0;
             this.txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
             this.txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
             // TextboxSoloNumeros
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
             this.Controls.Add(this.txt);
             this.Name = "TextboxSoloNumeros";
-            this.Size = new System.Drawing.Size(150, 19);
+            this.Size = new System.Drawing.Size(178, 26);
             this.ResumeLayout(false);
             this.PerformLayout();
 

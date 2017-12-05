@@ -17,6 +17,7 @@ namespace HPReserger
             InitializeComponent();
         }
         public int estado { get; set; }
+        public string cadeaux = ""; public string siono = "";
         HPResergerCapaLogica.HPResergerCL Ccostos = new HPResergerCapaLogica.HPResergerCL();
         private void frmccosto_Load(object sender, EventArgs e)
         {
@@ -90,6 +91,7 @@ namespace HPReserger
 
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            cadeaux = cbocuentas.Text; siono = cbotiene.Text;
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
             if (!string.IsNullOrWhiteSpace(txtcosto.Text))
             {
@@ -231,6 +233,10 @@ namespace HPReserger
             {
                 btnaceptar.Focus();
             }
+        }
+
+        private void cbocuentas_TextChanged(object sender, EventArgs e)
+        {
         }
 
         private void chkcodigo_CheckedChanged(object sender, EventArgs e)

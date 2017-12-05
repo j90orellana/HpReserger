@@ -80,6 +80,7 @@
     <Reference Include="System.Messaging" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -163,6 +164,12 @@
     <Compile Include="frmcede.Designer.cs">
       <DependentUpon>frmcede.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDatosExterno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDatosExterno.Designer.cs">
+      <DependentUpon>frmDatosExterno.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEliminarPeriodo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +211,18 @@
     </Compile>
     <Compile Include="frmFicSinFaactura.Designer.cs">
       <DependentUpon>frmFicSinFaactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGenerarCTS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGenerarCTS.Designer.cs">
+      <DependentUpon>frmGenerarCTS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGenerarGratificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGenerarGratificacion.Designer.cs">
+      <DependentUpon>frmGenerarGratificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGenerarRemuneracionRenta.cs">
       <SubType>Form</SubType>
@@ -547,6 +566,12 @@
     <Compile Include="frmReporteconvenioPracticas.Designer.cs">
       <DependentUpon>frmReporteconvenioPracticas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReportects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportects.Designer.cs">
+      <DependentUpon>frmReportects.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReportedeFlujoOperaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -558,6 +583,12 @@
     </Compile>
     <Compile Include="frmreporteempleado.Designer.cs">
       <DependentUpon>frmreporteempleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteGratificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteGratificacion.Designer.cs">
+      <DependentUpon>frmReporteGratificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReporteLocacionServicios.cs">
       <SubType>Form</SubType>
@@ -689,6 +720,11 @@
     <Compile Include="NumBox.Designer.cs">
       <DependentUpon>NumBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="rptAdendaNecesidad.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -723,6 +759,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptNecesidadMercado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPagoCTS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPagoCTS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPagoGratificacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPagoGratificacion.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="rptReporteRequerimientos.cs">
@@ -985,6 +1033,12 @@
       <DependentUpon>rptVacaciones.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TextBoxPer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TextBoxPer.Designer.cs">
+      <DependentUpon>TextBoxPer.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextBoxSoloLetrasMayusculas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -996,6 +1050,12 @@
     </Compile>
     <Compile Include="TextboxSoloNumeros.Designer.cs">
       <DependentUpon>TextboxSoloNumeros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipodeCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipodeCambio.Designer.cs">
+      <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ComboMesAño.resx">
       <DependentUpon>ComboMesAño.cs</DependentUpon>
@@ -1058,6 +1118,9 @@
     <EmbeddedResource Include="frmcuentacontable.resx">
       <DependentUpon>frmcuentacontable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDatosExterno.resx">
+      <DependentUpon>frmDatosExterno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmdepartamento.resx">
       <DependentUpon>frmdepartamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -1108,6 +1171,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGenerarBoletas.resx">
       <DependentUpon>frmGenerarBoletas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGenerarCTS.resx">
+      <DependentUpon>frmGenerarCTS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGenerarGratificacion.resx">
+      <DependentUpon>frmGenerarGratificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGenerarRemuneracionRenta.resx">
       <DependentUpon>FrmGenerarRemuneracionRenta.cs</DependentUpon>
@@ -1229,11 +1298,17 @@
     <EmbeddedResource Include="frmReporteconvenioPracticas.resx">
       <DependentUpon>frmReporteconvenioPracticas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReportects.resx">
+      <DependentUpon>frmReportects.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReportedeFlujoOperaciones.resx">
       <DependentUpon>frmReportedeFlujoOperaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmreporteempleado.resx">
       <DependentUpon>frmreporteempleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteGratificacion.resx">
+      <DependentUpon>frmReporteGratificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteLocacionServicios.resx">
       <DependentUpon>frmReporteLocacionServicios.cs</DependentUpon>
@@ -1321,6 +1396,14 @@
     <EmbeddedResource Include="rptNecesidadMercado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptNecesidadMercado.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPagoCTS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPagoCTS.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPagoGratificacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPagoGratificacion.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptReporteRequerimientos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1445,14 +1528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="rptCTS.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCTS.cs</LastGenOutput>
@@ -1477,11 +1555,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptVacaciones.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TextBoxPer.resx">
+      <DependentUpon>TextBoxPer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TextBoxSoloLetrasMayusculas.resx">
       <DependentUpon>TextBoxSoloLetrasMayusculas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TextboxSoloNumeros.resx">
       <DependentUpon>TextboxSoloNumeros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipodeCambio.resx">
+      <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
@@ -1545,6 +1629,15 @@
       <VersionMinor>7</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
@@ -1680,6 +1773,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InstallShield.ico" />
+    <None Include="Resources\erase.ico" />
+    <None Include="Resources\Generate.ico" />
+    <Content Include="Resources\xCloseBlue.ico" />
+    <None Include="Resources\xCloseBlue1.ico" />
+    <None Include="Resources\xCloseBlack.ico" />
+    <None Include="Resources\XCloseRed.ico" />
+    <None Include="Resources\Account.ico" />
+    <None Include="Resources\Business.ico" />
+    <None Include="Resources\Settings.ico" />
+    <None Include="Resources\Users.ico" />
+    <None Include="Resources\profile.ico" />
+    <None Include="Resources\Request.ico" />
+    <None Include="Resources\Buys.ico" />
+    <None Include="Resources\Presentation.ico" />
+    <None Include="Resources\Project.ico" />
+    <None Include="Resources\PedidoOrden.ico" />
+    <None Include="Resources\Almacenes.ico" />
+    <None Include="Resources\pagos.ico" />
+    <None Include="Resources\ordencompras.ico" />
+    <None Include="Resources\Cotizacion.ico" />
+    <None Include="Resources\fechas.ico" />
+    <None Include="Resources\libro.ico" />
+    <None Include="Resources\Ban.ico" />
+    <None Include="Resources\payment.ico" />
+    <None Include="Resources\Moneda.ico" />
+    <None Include="Resources\fondo-gris-degradado.jpg" />
+    <None Include="Resources\Bliss2.jpg" />
+    <None Include="Resources\SalirButon.png" />
+    <None Include="Resources\48px-Crystal_Clear_action_share.png" />
     <None Include="Resources\Bcp-Proveedores.bmp" />
     <None Include="Resources\BanBif-Proveedores.jpg" />
     <None Include="Resources\Interbank.jpg" />

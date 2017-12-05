@@ -55,9 +55,7 @@
             // 
             // NumBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.Num);
             this.Name = "NumBox";
             this.Size = new System.Drawing.Size(148, 20);

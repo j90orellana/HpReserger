@@ -33,83 +33,169 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnLogueo = new System.Windows.Forms.Button();
+            this.panel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pbclose = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbclose)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 25);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(74, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 50);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(44, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(83, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Contraseña";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtUsuario
             // 
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtUsuario.Location = new System.Drawing.Point(98, 22);
+            this.txtUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.ForeColor = System.Drawing.Color.White;
+            this.txtUsuario.Location = new System.Drawing.Point(133, 61);
             this.txtUsuario.MaxLength = 20;
-            this.txtUsuario.Multiline = true;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(100, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(171, 23);
             this.txtUsuario.TabIndex = 0;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            this.txtUsuario.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtUsuario_DragDrop);
+            this.txtUsuario.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtUsuario_DragEnter);
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContraseña.Location = new System.Drawing.Point(98, 48);
-            this.txtContraseña.Multiline = true;
+            this.txtContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            this.txtContraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContraseña.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContraseña.ForeColor = System.Drawing.Color.White;
+            this.txtContraseña.Location = new System.Drawing.Point(133, 90);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
-            this.txtContraseña.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseña.Size = new System.Drawing.Size(171, 23);
             this.txtContraseña.TabIndex = 1;
             this.txtContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseña_KeyPress);
             // 
             // btnLogueo
             // 
-            this.btnLogueo.Location = new System.Drawing.Point(204, 33);
+            this.btnLogueo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(224)))));
+            this.btnLogueo.FlatAppearance.BorderSize = 0;
+            this.btnLogueo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(224)))));
+            this.btnLogueo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(250)))));
+            this.btnLogueo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogueo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogueo.ForeColor = System.Drawing.Color.White;
+            this.btnLogueo.Location = new System.Drawing.Point(89, 127);
             this.btnLogueo.Name = "btnLogueo";
-            this.btnLogueo.Size = new System.Drawing.Size(85, 23);
+            this.btnLogueo.Size = new System.Drawing.Size(171, 28);
             this.btnLogueo.TabIndex = 2;
             this.btnLogueo.Text = "&Aceptar";
-            this.btnLogueo.UseVisualStyleBackColor = true;
+            this.btnLogueo.UseVisualStyleBackColor = false;
             this.btnLogueo.Click += new System.EventHandler(this.btnLogueo_Click);
+            this.btnLogueo.MouseLeave += new System.EventHandler(this.btnLogueo_MouseLeave);
+            this.btnLogueo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLogueo_MouseMove);
+            // 
+            // panel
+            // 
+            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(56)))), ((int)(((byte)(71)))));
+            this.panel.Controls.Add(this.panel1);
+            this.panel.Controls.Add(this.txtUsuario);
+            this.panel.Controls.Add(this.txtContraseña);
+            this.panel.Controls.Add(this.btnLogueo);
+            this.panel.Controls.Add(this.label1);
+            this.panel.Controls.Add(this.label2);
+            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel.Location = new System.Drawing.Point(0, 0);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(349, 167);
+            this.panel.TabIndex = 3;
+            this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
+            this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
+            this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(24)))), ((int)(((byte)(31)))));
+            this.panel1.Controls.Add(this.pbclose);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(349, 43);
+            this.panel1.TabIndex = 5;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            // 
+            // pbclose
+            // 
+            this.pbclose.Image = global::HPReserger.Properties.Resources.XCloseRed;
+            this.pbclose.InitialImage = global::HPReserger.Properties.Resources.xCloseBlue;
+            this.pbclose.Location = new System.Drawing.Point(316, 10);
+            this.pbclose.Name = "pbclose";
+            this.pbclose.Size = new System.Drawing.Size(30, 23);
+            this.pbclose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbclose.TabIndex = 6;
+            this.pbclose.TabStop = false;
+            this.pbclose.Click += new System.EventHandler(this.pbclose_Click);
+            this.pbclose.MouseLeave += new System.EventHandler(this.pbclose_MouseLeave);
+            this.pbclose.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbclose_MouseMove);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(107, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(153, 28);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Hp Reserger";
             // 
             // frmLogin
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(304, 81);
-            this.Controls.Add(this.btnLogueo);
-            this.Controls.Add(this.txtContraseña);
-            this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(349, 167);
+            this.Controls.Add(this.panel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(320, 120);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(320, 120);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HpReserger";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             this.Load += new System.EventHandler(this.frmLogin_Load);
+            this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbclose)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -120,5 +206,9 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.Button btnLogueo;
+        private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pbclose;
+        private System.Windows.Forms.Label label4;
     }
 }

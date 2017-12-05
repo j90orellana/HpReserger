@@ -33,7 +33,6 @@
             this.Btncancelar = new System.Windows.Forms.Button();
             this.btnaprovar = new System.Windows.Forms.Button();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.btnrecargar = new System.Windows.Forms.Button();
             this.empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cod_empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +40,7 @@
             this.estados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Solicitaemp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnrecargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             // Btncancelar
             // 
             this.Btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btncancelar.Location = new System.Drawing.Point(472, 261);
+            this.Btncancelar.Location = new System.Drawing.Point(612, 462);
             this.Btncancelar.Name = "Btncancelar";
             this.Btncancelar.Size = new System.Drawing.Size(75, 23);
             this.Btncancelar.TabIndex = 1;
@@ -67,7 +67,7 @@
             // btnaprovar
             // 
             this.btnaprovar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaprovar.Location = new System.Drawing.Point(275, 261);
+            this.btnaprovar.Location = new System.Drawing.Point(415, 462);
             this.btnaprovar.Name = "btnaprovar";
             this.btnaprovar.Size = new System.Drawing.Size(75, 23);
             this.btnaprovar.TabIndex = 2;
@@ -116,19 +116,8 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(535, 209);
+            this.dtgconten.Size = new System.Drawing.Size(675, 410);
             this.dtgconten.TabIndex = 57;
-            // 
-            // btnrecargar
-            // 
-            this.btnrecargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnrecargar.Location = new System.Drawing.Point(472, 17);
-            this.btnrecargar.Name = "btnrecargar";
-            this.btnrecargar.Size = new System.Drawing.Size(75, 23);
-            this.btnrecargar.TabIndex = 58;
-            this.btnrecargar.Text = "Recargar";
-            this.btnrecargar.UseVisualStyleBackColor = true;
-            this.btnrecargar.Click += new System.EventHandler(this.btnrecargar_Click);
             // 
             // empleado
             // 
@@ -183,21 +172,32 @@
             this.observacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.observacion.DataPropertyName = "observacion";
             this.observacion.HeaderText = "Solicitud";
+            this.observacion.MinimumWidth = 270;
             this.observacion.Name = "observacion";
             this.observacion.ReadOnly = true;
-            this.observacion.Width = 72;
+            this.observacion.Width = 270;
+            // 
+            // btnrecargar
+            // 
+            this.btnrecargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnrecargar.Location = new System.Drawing.Point(612, 17);
+            this.btnrecargar.Name = "btnrecargar";
+            this.btnrecargar.Size = new System.Drawing.Size(75, 23);
+            this.btnrecargar.TabIndex = 58;
+            this.btnrecargar.Text = "Recargar";
+            this.btnrecargar.UseVisualStyleBackColor = true;
+            this.btnrecargar.Click += new System.EventHandler(this.btnrecargar_Click);
             // 
             // frmSolicitudes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(555, 296);
+            this.ClientSize = new System.Drawing.Size(695, 497);
             this.Controls.Add(this.btnrecargar);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btnaprovar);
             this.Controls.Add(this.Btncancelar);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(571, 335);
             this.MinimumSize = new System.Drawing.Size(571, 335);
             this.Name = "frmSolicitudes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

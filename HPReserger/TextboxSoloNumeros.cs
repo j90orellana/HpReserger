@@ -16,11 +16,20 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        public int MaxLengthTxt
+        {
+            get { return txt.MaxLength; }
+            set { txt.MaxLength = value; }
+        }
+        public Font FuenteDelTxt
+        {
+            get { return txt.Font; }
+            set { txt.Font = value; }
+        }
         private void txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosDecimalesX(e, txt.Text);
-            
+
         }
 
         private void txt_KeyDown(object sender, KeyEventArgs e)

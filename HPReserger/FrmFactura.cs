@@ -308,8 +308,10 @@ namespace HPReserger
                 if (cbodetraccion.Text == "NO")
                     detracc = 0;
                 else
-                    detracc = decimal.Parse(txtnroconstancia.Text);
+                    detracc = decimal.Parse(txtdetraccion.Text);
                 int next;
+                if (txtnroconstancia.Text.Length == 0)
+                    txtnroconstancia.Text = "0";
                 DataRow siguiente = cfactura.Siguiente("TBL_Asiento_Contable", "Id_Asiento_Contable");
                 next = int.Parse(siguiente["valor"].ToString());
                 //eliminando las provisionadas para luego actualizar
@@ -331,7 +333,7 @@ namespace HPReserger
                     cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 0,
                       valorsubtotal, valorigv, valortotal,
                          cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario),
-                         int.Parse(txtdetraccion.Text), detracc);
+                         int.Parse(txtnroconstancia.Text), detracc);
                     //provisionada
                     if ((int)DtgConten["provisionada", i].Value != 3)
                     {

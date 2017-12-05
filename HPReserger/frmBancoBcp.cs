@@ -371,7 +371,7 @@ namespace HPReserger
                     }
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ) { }
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -510,7 +510,7 @@ namespace HPReserger
                                 registros += 1;
                     }
             }
-            catch (Exception ex) { }
+            catch (Exception ) { }
             txtcantidaabono.Text = registros.ToString("000000");
             txtmontototal.Text = montos.ToString("n2");
         }

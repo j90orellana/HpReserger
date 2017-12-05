@@ -1940,7 +1940,7 @@ namespace HPResergerCapaDatos
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@nrofactura", SqlDbType.VarChar, 40).Value = nrofactura;
-                    cmd.Parameters.Add("@proveedor", SqlDbType.Char, 40).Value = proveedor;
+                    cmd.Parameters.Add("@proveedor", SqlDbType.VarChar, 40).Value = proveedor;
                     cmd.Parameters.Add("@fic", SqlDbType.Int).Value = fic;
                     cmd.Parameters.Add("@oc", SqlDbType.Int).Value = oc;
                     cmd.Parameters.Add("@tipo", SqlDbType.Int).Value = tipo;
@@ -1955,8 +1955,8 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@moneda", SqlDbType.Int).Value = moneda;
                     cmd.Parameters.Add("@imgfactura", SqlDbType.Image).Value = imgfactura;
                     cmd.Parameters.Add("@usuario", SqlDbType.Int).Value = usuario;
-                    cmd.Parameters.Add("@detraccion", SqlDbType.Int).Value = detracion;
-                    cmd.Parameters.Add("@nroconstancia", SqlDbType.Decimal).Value = nroconstancia;
+                    cmd.Parameters.Add("@detraccion", SqlDbType.Int).Value = nroconstancia;
+                    cmd.Parameters.Add("@nroconstancia", SqlDbType.Decimal).Value = detracion;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -3627,11 +3627,35 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, tipo, numero, fecha, fechaini, fechafin };
             return bd.DataTableFromProcedure("usp_SeleccionarBoletas", parametros, valores, null); ;
         }
+        public DataTable SeleccionarGratificacion(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@numero", "@fecha", "@fechaini", "@fechafin" };
+            object[] valores = { empresa, tipo, numero, fecha, fechaini, fechafin };
+            return bd.DataTableFromProcedure("usp_SeleccionarGratificacion", parametros, valores, null); ;
+        }
+        public DataTable SeleccionarPagoCts(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@numero", "@fecha", "@fechaini", "@fechafin" };
+            object[] valores = { empresa, tipo, numero, fecha, fechaini, fechafin };
+            return bd.DataTableFromProcedure("usp_SeleccionarPagoCts", parametros, valores, null); ;
+        }
         public DataTable GenerarBoletasMensuales(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin, int usuario)
         {
             string[] parametros = { "@empresa", "@tipo", "@numero", "@fecha", "@fechaini", "@fechafin", "@usuario" };
             object[] valores = { empresa, tipo, numero, fecha, fechaini, fechafin, usuario };
             return bd.DataTableFromProcedure("usp_GenerarBoletasMensuales", parametros, valores, null); ;
+        }
+        public DataTable GenerarGratificaciones(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin, int usuario)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@numero", "@fecha", "@fechaini", "@fechafin", "@usuario" };
+            object[] valores = { empresa, tipo, numero, fecha, fechaini, fechafin, usuario };
+            return bd.DataTableFromProcedure("usp_GenerarGratificaciones", parametros, valores, null); ;
+        }
+        public DataTable Generarcts(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin, int usuario)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@numero", "@fecha", "@fechaini", "@fechafin", "@usuario" };
+            object[] valores = { empresa, tipo, numero, fecha, fechaini, fechafin, usuario };
+            return bd.DataTableFromProcedure("usp_Generarcts", parametros, valores, null); ;
         }
         public DataRow getMinMaxContrato()
         {
@@ -3642,6 +3666,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@opcion", "@empleado", "@accion", "@valores", "@estado", "@solicita", "@observacion" };
             object[] valores = { opcion, empleado, accion, valor, estado, solicita, observacion };
             return bd.DataTableFromProcedure("usp_TablaSolicitudes", parametros, valores, null); ;
+        }
+        public DataTable EmpresasExternas(int opcion, int registro, int codigo, string ruc, string empresa, int certificado, decimal importe, byte[] foto, string nombrefoto, int usuario, DateTime fecha)
+        {
+            string[] parametros = { "@opcion", "@registro", "@codigo", "@ruc", "@empresa", "@certificado", "@importe", "@imagen", "@nombreimagen", "@usuario", "@fechaCertificado" };
+            object[] valores = { opcion, registro, codigo, ruc, empresa, certificado, importe, foto, nombrefoto, usuario, fecha };
+            return bd.DataTableFromProcedure("usp_EmpresasExternas", parametros, valores, null);
         }
     }
 }

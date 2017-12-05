@@ -487,8 +487,11 @@ namespace HPReserger
                 frmCV.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
                 frmCV.NumeroDocumento = txtNumeroDocumento.Text;
                 frmCV.FechaInicioLabores = txtFecha.Text;
-                frmCV.FechaUltimoPeriodoDesde = Grid.Rows[Grid.Rows.Count - 1].Cells[5].Value.ToString();
-                frmCV.FechaUltimoPeriodoHasta = Grid.Rows[Grid.Rows.Count - 1].Cells[6].Value.ToString();
+                if (Grid.RowCount > 0)
+                {
+                    frmCV.FechaUltimoPeriodoDesde = Grid.Rows[Grid.Rows.Count - 1].Cells[5].Value.ToString();
+                    frmCV.FechaUltimoPeriodoHasta = Grid.Rows[Grid.Rows.Count - 1].Cells[6].Value.ToString();
+                }
                 frmCV.DiasUtilizados = txtDiasUtilizados.Text;
                 frmCV.MaximoDiasComprar = txtDiasPendientes.Text;
 
