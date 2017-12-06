@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace HPReserger
 {
     public partial class frmMenu : Form, IForm, IFormEmpleado, IRentas, IProfesion
@@ -15,6 +16,7 @@ namespace HPReserger
         public frmMenu()
         {
             InitializeComponent();
+            
         }
         public void CargarNroHijos(int tipo, string doc)
         {
@@ -2007,6 +2009,6 @@ namespace HPReserger
             frmEliminarPeriodo frmelimin = new frmEliminarPeriodo();
             frmelimin.Opcion = 1;
             frmelimin.ShowDialog();
-        }
+        }       
     }
 }

@@ -28,12 +28,13 @@ namespace HPReserger
         private void frmLiquidacion_Load(object sender, EventArgs e)
         {
             rptLiquidacion Reporte = new rptLiquidacion();
-            Reporte.Refresh();
-            Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
-            Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
+            Reporte.Refresh();            
             Reporte.SetParameterValue("@fecha", _FechaInicio);
             Reporte.SetParameterValue("@motivo", _MotivoCese);
             Reporte.SetParameterValue("@monto", _Monto);
+            Reporte.SetParameterValue("@tipo", TipoDocumento);
+            Reporte.SetParameterValue("@numero", NumeroDocumento);
+            Reporte.SetParameterValue("@usuario", frmLogin.CodigoUsuario);
             // Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS,datos.DATASOURCE,datos.BASEDEDATOS);
             Reporte.SetDatabaseLogon("mmendoza", "123");
             cvrLiquidacion.ReportSource = Reporte;

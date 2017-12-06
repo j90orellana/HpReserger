@@ -1,4 +1,4 @@
-﻿namespace HPReserger
+﻿namespace HpResergerUserControls
 {
     partial class ComboMesAño
     {
@@ -32,7 +32,6 @@
             this.comboaño = new System.Windows.Forms.ComboBox();
             this.lbl1 = new System.Windows.Forms.Label();
             this.lbl2 = new System.Windows.Forms.Label();
-            this.cachedrptAdendaNecesidad1 = new HPReserger.CachedrptAdendaNecesidad();
             this.SuspendLayout();
             // 
             // combomes
@@ -95,6 +94,5 @@
         private System.Windows.Forms.ComboBox comboaño;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Label lbl2;
-        private CachedrptAdendaNecesidad cachedrptAdendaNecesidad1;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace HPReserger
+﻿namespace HpResergerUserControls
 {
     partial class NumBox
     {

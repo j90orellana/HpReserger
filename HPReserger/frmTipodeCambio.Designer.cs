@@ -43,7 +43,7 @@
             this.Btncancelar = new System.Windows.Forms.Button();
             this.Buscar = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.comboMesAño1 = new HPReserger.ComboMesAño();
+            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,7 +198,7 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.DataGridView dtgconten;
         private System.Windows.Forms.Button Btncancelar;
-        private ComboMesAño comboMesAño1;
+        private HpResergerUserControls.ComboMesAño comboMesAño1;
         private System.Windows.Forms.Button Buscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mes;

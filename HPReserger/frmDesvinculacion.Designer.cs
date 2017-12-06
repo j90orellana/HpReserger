@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpfechacese = new System.Windows.Forms.DateTimePicker();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
@@ -100,9 +101,8 @@
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btnverTodas = new System.Windows.Forms.Button();
             this.btndescargar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtmonto = new HPReserger.NumBox();
-            this.txtMotivoCese = new HPReserger.TextBoxPer();
+            this.txtmonto = new HpResergerUserControls.NumBox();
+            this.txtMotivoCese = new HpResergerUserControls.TextBoxPer();
             this.groupBox2.SuspendLayout();
             this.panelliquidacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
@@ -139,6 +139,15 @@
             this.groupBox2.TabIndex = 71;
             this.groupBox2.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 167);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.TabIndex = 83;
+            this.label3.Text = "Monto Acordado:";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -154,7 +163,7 @@
             this.dtpfechacese.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpfechacese.Name = "dtpfechacese";
             this.dtpfechacese.Size = new System.Drawing.Size(220, 20);
-            this.dtpfechacese.TabIndex = 79;
+            this.dtpfechacese.TabIndex = 2;
             this.dtpfechacese.CloseUp += new System.EventHandler(this.dtpfechacese_CloseUp);
             this.dtpfechacese.ValueChanged += new System.EventHandler(this.dtpfechacese_ValueChanged);
             // 
@@ -260,7 +269,7 @@
             this.btnGenerarLiquidacion.Location = new System.Drawing.Point(3, 3);
             this.btnGenerarLiquidacion.Name = "btnGenerarLiquidacion";
             this.btnGenerarLiquidacion.Size = new System.Drawing.Size(132, 23);
-            this.btnGenerarLiquidacion.TabIndex = 72;
+            this.btnGenerarLiquidacion.TabIndex = 5;
             this.btnGenerarLiquidacion.Text = "Generar Liquidación";
             this.btnGenerarLiquidacion.UseVisualStyleBackColor = true;
             this.btnGenerarLiquidacion.Click += new System.EventHandler(this.btnGenerarLiquidacion_Click);
@@ -270,7 +279,7 @@
             this.btnCTS.Location = new System.Drawing.Point(3, 32);
             this.btnCTS.Name = "btnCTS";
             this.btnCTS.Size = new System.Drawing.Size(132, 23);
-            this.btnCTS.TabIndex = 73;
+            this.btnCTS.TabIndex = 6;
             this.btnCTS.Text = "Constancia CTS";
             this.btnCTS.UseVisualStyleBackColor = true;
             this.btnCTS.Click += new System.EventHandler(this.btnCTS_Click);
@@ -280,7 +289,7 @@
             this.btnConstanciaTrabajo.Location = new System.Drawing.Point(3, 61);
             this.btnConstanciaTrabajo.Name = "btnConstanciaTrabajo";
             this.btnConstanciaTrabajo.Size = new System.Drawing.Size(132, 23);
-            this.btnConstanciaTrabajo.TabIndex = 74;
+            this.btnConstanciaTrabajo.TabIndex = 7;
             this.btnConstanciaTrabajo.Text = "Constancia de trabajo";
             this.btnConstanciaTrabajo.UseVisualStyleBackColor = true;
             this.btnConstanciaTrabajo.Click += new System.EventHandler(this.btnConstanciaTrabajo_Click);
@@ -290,7 +299,7 @@
             this.btnRetencionRenta.Location = new System.Drawing.Point(3, 90);
             this.btnRetencionRenta.Name = "btnRetencionRenta";
             this.btnRetencionRenta.Size = new System.Drawing.Size(132, 23);
-            this.btnRetencionRenta.TabIndex = 75;
+            this.btnRetencionRenta.TabIndex = 8;
             this.btnRetencionRenta.Text = "Retención Renta";
             this.btnRetencionRenta.UseVisualStyleBackColor = true;
             this.btnRetencionRenta.Click += new System.EventHandler(this.btnRetencionRenta_Click);
@@ -854,37 +863,31 @@
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
             this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 167);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 83;
-            this.label3.Text = "Monto Acordado:";
-            // 
             // txtmonto
             // 
             this.txtmonto.Location = new System.Drawing.Point(199, 165);
             this.txtmonto.Name = "txtmonto";
             this.txtmonto.Size = new System.Drawing.Size(220, 20);
-            this.txtmonto.TabIndex = 84;
+            this.txtmonto.TabIndex = 4;
             // 
             // txtMotivoCese
             // 
             this.txtMotivoCese.BackColor = System.Drawing.Color.White;
+            this.txtMotivoCese.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMotivoCese.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtMotivoCese.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtMotivoCese.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtMotivoCese.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.txtMotivoCese.ForeColor = System.Drawing.Color.White;
             this.txtMotivoCese.Location = new System.Drawing.Point(199, 139);
+            this.txtMotivoCese.MaxLength = 100;
             this.txtMotivoCese.Name = "txtMotivoCese";
-            this.txtMotivoCese.SiguienteControl = null;
+            this.txtMotivoCese.NextControlOnEnter = this.txtmonto;
             this.txtMotivoCese.Size = new System.Drawing.Size(220, 20);
-            this.txtMotivoCese.TabIndex = 81;
+            this.txtMotivoCese.TabIndex = 3;
             this.txtMotivoCese.Text = "Ingrese Motivo de Cese";
             this.txtMotivoCese.TextoDefecto = "Ingrese Motivo de Cese";
-            this.txtMotivoCese.TextoDefectoColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtMotivoCese.TiposDatos = HPReserger.TextBoxPer.ListaTipos.SoloLetras;
+            this.txtMotivoCese.TextoDefectoColor = System.Drawing.Color.Blue;
+            this.txtMotivoCese.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloLetras;
             // 
             // frmDesvinculacion
             // 
@@ -1003,8 +1006,8 @@
         private System.Windows.Forms.Button btnverTodas;
         private System.Windows.Forms.Button btndescargar;
         private System.Windows.Forms.Label label7;
-        private TextBoxPer txtMotivoCese;
-        private NumBox txtmonto;
+        private HpResergerUserControls.TextBoxPer txtMotivoCese;
+        private HpResergerUserControls.NumBox txtmonto;
         private System.Windows.Forms.Label label3;
     }
 }

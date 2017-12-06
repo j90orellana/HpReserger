@@ -403,7 +403,7 @@ namespace HPReserger
         {
             return int.Parse(combito.SelectedValue.ToString());
         }
-        public decimal DelTxt(NumBox cajita)
+        public decimal DelTxt(HpResergerUserControls.NumBox cajita)
         {
             return decimal.Parse(cajita.Num.Text.ToString());
         }

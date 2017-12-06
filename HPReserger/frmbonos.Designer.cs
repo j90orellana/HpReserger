@@ -63,10 +63,10 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnmodificar = new System.Windows.Forms.Button();
             this.dialogoAbrirArchivoAnexoFunciones = new System.Windows.Forms.OpenFileDialog();
-            this.txtdestaque = new HPReserger.NumBox();
-            this.txtproduccion = new HPReserger.NumBox();
-            this.txtregular = new HPReserger.NumBox();
-            this.txtmovilidad = new HPReserger.NumBox();
+            this.txtdestaque = new HpResergerUserControls.NumBox();
+            this.txtproduccion = new HpResergerUserControls.NumBox();
+            this.txtregular = new HpResergerUserControls.NumBox();
+            this.txtmovilidad = new HpResergerUserControls.NumBox();
             ((System.ComponentModel.ISupportInitialize)(this.numproduccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgdestaque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgproduccion)).BeginInit();
@@ -573,9 +573,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private NumBox txtmovilidad;
-        private NumBox txtproduccion;
-        private NumBox txtdestaque;
+        private HpResergerUserControls.NumBox txtmovilidad;
+        private HpResergerUserControls.NumBox txtproduccion;
+        private HpResergerUserControls.NumBox txtdestaque;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lblc;
         private System.Windows.Forms.DataGridView dtgcomision;
@@ -587,6 +587,6 @@
         private System.Windows.Forms.PictureBox pbfotoproduccion;
         private System.Windows.Forms.Label lbldestaque;
         private System.Windows.Forms.NumericUpDown numdestaque;
-        private NumBox txtregular;
+        private HpResergerUserControls.NumBox txtregular;
     }
 }

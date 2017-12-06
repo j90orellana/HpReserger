@@ -8,13 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HPReserger
+namespace HpResergerUserControls
 {
     public partial class TextBoxPer : TextBox
     {
         public TextBoxPer()
         {
             InitializeComponent();
+            BackColor = Color.FromArgb(136, 178, 178);
+            BorderStyle = BorderStyle.FixedSingle;
+            TextoDefectoColor = Color.White;
+            MaxLength = 100;
+            Font x = new Font(Font.FontFamily, 10, FontStyle.Bold);
+            Font = x;
+            Invalidate();
         }
         public Color ColorTextoDefecto = Color.Black;
         public Color ColorLetras = Color.Black;
@@ -40,11 +47,6 @@ namespace HPReserger
             get { return ListadeTipos; }
             set { this.ListadeTipos = value; }
         }
-        public ControlesList SiguienteControl
-        {
-            get { return (ControlesList)Combito.SelectedItem; }
-            set { Combito.SelectedItem = value; }
-        }
         public Color TextoDefectoColor
         {
             get { return ColorTextoDefecto; }
@@ -60,29 +62,19 @@ namespace HPReserger
             get { return ColorMousePresionado; }
             set { this.ColorMousePresionado = value; }
         }
-        public class ControlesList
+        [Description("El Siguiente Control al Presionar Enter")]
+        public Control NextControlOnEnter
         {
-            public string _Name;
+            get { return _NextControlOnEnter; }
+            set { _NextControlOnEnter = value; }
         }
-        List<ControlesList> Controles = new List<ControlesList>();
         protected override void OnCreateControl()
         {
             ColorLetras = ForeColor;
             ColorFondo = BackColor;
             this.Text = TextoPorDefecto;
             this.ForeColor = ColorTextoDefecto;
-            /*this.Parent.Controls.Add(Combito);
-            Combito.Visible = false;
-            foreach (Control xx in this.Parent.Controls)
-            {
-                ControlesList _list = new ControlesList();
-                _list._Name = xx.Name;
-                Controles.Add(_list);
-            }
-            Combito.DisplayMember = "_Name";
-            Combito.ValueMember = "_Name";
-
-            Combito.DataSource = Controles;*/
+            Invalidate();
         }
         protected override void OnLeave(EventArgs e)
         {
@@ -126,6 +118,7 @@ namespace HPReserger
             if (Text != TextoPorDefecto)
                 ForeColor = ColorLetras;
         }
+        private Control _NextControlOnEnter;
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             if (TiposDatos == ListaTipos.SoloLetras)
@@ -140,20 +133,24 @@ namespace HPReserger
             {
                 HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
             }
-            if (e.KeyChar == (char)e.KeyChar)
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                ControlesList _list = new ControlesList();
-                _list = (ControlesList)Combito.SelectedItem;
-                if (_list != null)
-                {
-                    Control[] x = this.Parent.Controls.Find(_list._Name, false);
-                    if (x.Length > 0)
-                    {
-                        Objeto = x[0];
-                        ((Control)Objeto).Focus();
-                    }
-                }
+                _NextControlOnEnter.Focus();
+                //// ControlesList _list = new ControlesList();
+                //// _list = (ControlesList)Combito.SelectedItem;
+                //// if (_list != null)
+                ////  {
+                //if (_SiguienteControl != null)
+                //{
+                //    Control[] x = this.Parent.Controls.Find(_SiguienteControl, false);
+                //    if (x.Length > 0)
+                //    {
+                //        Objeto = x[0];
+                //        ((Control)Objeto).Focus();
+                //    }
+                //}
             }
+            base.OnKeyPress(e);
         }
         protected override void OnKeyDown(KeyEventArgs e)
         {

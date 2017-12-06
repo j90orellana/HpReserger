@@ -46,7 +46,7 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.txtruc = new HPReserger.TextboxSoloNumeros();
-            this.comboMesAño1 = new HPReserger.ComboMesAño();
+            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.numimporte = new HPReserger.NumBox();
             this.btnnuevo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -322,7 +322,7 @@
         private System.Windows.Forms.Label label5;
         private NumBox numimporte;
         private System.Windows.Forms.PictureBox pbimagen;
-        private ComboMesAño comboMesAño1;
+        private HpResergerUserControls. ComboMesAño comboMesAño1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnnuevo;
     }

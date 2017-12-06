@@ -224,8 +224,7 @@ namespace HPReserger
                 MessageBox.Show("Ingrese Motivo del Cese", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtMotivoCese.Focus();
                 return;
-            }
-
+            }            
             frmLiquidacion frmLIQ = new frmLiquidacion();
             frmLIQ.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmLIQ.NumeroDocumento = txtNumeroDocumento.Text;

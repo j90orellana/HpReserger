@@ -40,8 +40,8 @@
             this.btnrecempresa = new System.Windows.Forms.Button();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.btngenerar = new System.Windows.Forms.Button();
-            this.comboMesAño2 = new HPReserger.ComboMesAño();
-            this.comboMesAño1 = new HPReserger.ComboMesAño();
+            this.comboMesAño2 = new HpResergerUserControls.ComboMesAño();
+            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -232,7 +232,7 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private ComboMesAño comboMesAño2;
-        private ComboMesAño comboMesAño1;
+        private HpResergerUserControls.ComboMesAño comboMesAño2;
+        private HpResergerUserControls.ComboMesAño comboMesAño1;
     }
 }

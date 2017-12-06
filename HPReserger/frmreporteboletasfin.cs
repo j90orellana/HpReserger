@@ -35,8 +35,11 @@ namespace HPReserger
             reporte.SetParameterValue(5, Fechafin);
             //reporte.SetParameterValue(6, frmLogin.CodigoUsuario);
             reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+            //CrystalDecisions.Shared.PdfFormatOptions options = new CrystalDecisions.Shared.PdfFormatOptions();
+            //options.CreateBookmarksFromGroupTree = true;
             crvboletas.ReportSource = reporte;
             crvboletas.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
+            
             //string cadena = "";
             //foreach (Control ctl in crvboletas.Controls)
             //{
