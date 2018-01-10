@@ -31,6 +31,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboMesAño2 = new HpResergerUserControls.ComboMesAño();
+            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnlimpiar = new System.Windows.Forms.Button();
@@ -40,8 +42,6 @@
             this.btnrecempresa = new System.Windows.Forms.Button();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.btngenerar = new System.Windows.Forms.Button();
-            this.comboMesAño2 = new HpResergerUserControls.ComboMesAño();
-            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +84,20 @@
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "De:";
+            // 
+            // comboMesAño2
+            // 
+            this.comboMesAño2.Location = new System.Drawing.Point(112, 124);
+            this.comboMesAño2.Name = "comboMesAño2";
+            this.comboMesAño2.Size = new System.Drawing.Size(205, 29);
+            this.comboMesAño2.TabIndex = 14;
+            // 
+            // comboMesAño1
+            // 
+            this.comboMesAño1.Location = new System.Drawing.Point(112, 99);
+            this.comboMesAño1.Name = "comboMesAño1";
+            this.comboMesAño1.Size = new System.Drawing.Size(205, 29);
+            this.comboMesAño1.TabIndex = 13;
             // 
             // radioButton2
             // 
@@ -152,6 +166,7 @@
             this.cbotipoid.Name = "cbotipoid";
             this.cbotipoid.Size = new System.Drawing.Size(241, 21);
             this.cbotipoid.TabIndex = 4;
+            this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
             // 
             // btnrecempresa
             // 
@@ -183,20 +198,6 @@
             this.btngenerar.Text = "&Generar";
             this.btngenerar.UseVisualStyleBackColor = true;
             this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
-            // 
-            // comboMesAño2
-            // 
-            this.comboMesAño2.Location = new System.Drawing.Point(112, 124);
-            this.comboMesAño2.Name = "comboMesAño2";
-            this.comboMesAño2.Size = new System.Drawing.Size(205, 29);
-            this.comboMesAño2.TabIndex = 14;
-            // 
-            // comboMesAño1
-            // 
-            this.comboMesAño1.Location = new System.Drawing.Point(112, 99);
-            this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(205, 29);
-            this.comboMesAño1.TabIndex = 13;
             // 
             // frmGenerarBoletas
             // 

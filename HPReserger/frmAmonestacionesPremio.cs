@@ -64,6 +64,18 @@ namespace HPReserger
 
         private void tab_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btneliminar.Enabled = false;
+            btnmodificiar.Enabled = false;
+            if (ESTADO == 1)
+            {
+                if (tab.SelectedIndex != TABINDEX)
+                {
+                    tab.SelectedIndex = TABINDEX;
+                    btneliminar.Enabled = false;
+                    btnmodificiar.Enabled = false;
+                    return;
+                }
+            }
             MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, tab.SelectedIndex);
         }
 
@@ -76,20 +88,19 @@ namespace HPReserger
         {
             lblPremio.Text = Convert.ToString(8000 - txtObservacionesPremio.Text.Length) + " Caracteres";
         }
-
+        // DataTable Inicial;
         private void frmAmonestacionesPremio_Load(object sender, EventArgs e)
         {
+            // Inicial = new DataTable();
             txtNumeroDocumento.Text = "";
             txtRuta.Text = "";
             txtObservacionesMemo.Text = "";
             txtObservacionesPremio.Text = "";
             pbFoto.Image = null;
 
-            Grid.DataSource = null;
-            Grid.Rows.Clear();
-            Grid.Refresh();
+            //  Inicial = ((DataTable)Grid.DataSource).Clone();
 
-            TitulosGrillas();
+            //TitulosGrillas();
 
             CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
             tab.SelectedIndex = 0;
@@ -109,6 +120,8 @@ namespace HPReserger
 
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
+            btnmodificiar.Enabled = false;
+            btneliminar.Enabled = false;
             DataRow EmpleadoVacaciones = clAmonestacionesPremio.ExisteBeneficioEmpleado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_DatosEmpleado");
             if (EmpleadoVacaciones != null)
             {
@@ -123,12 +136,20 @@ namespace HPReserger
                     tab.Enabled = btnGenerar.Enabled = true;
                     lblmensajito.Text = "EMPLEADO ACTIVO CONTRATO Nº" + Contratoactivo["Nro_Contrato"].ToString();
                     btnAdjuntarSustento.Enabled = true;
+                    tab.Enabled = true;
+                    btnGenerar.Enabled = true;
+                    btnAdjuntarSustento.Enabled = true;
                 }
                 else
                 {
+                    btnGenerar.Enabled = false;
+                    btnAdjuntarSustento.Enabled = false;
+                    tab.Enabled = false;
                     btnAdjuntarSustento.Enabled = false;
                     tab.Enabled = btnGenerar.Enabled = false;
                     lblmensajito.Text = "EMPLEADO INACTIVO";
+                    btnmodificiar.Enabled = false;
+                    btneliminar.Enabled = false;
                 }
             }
             else
@@ -138,55 +159,77 @@ namespace HPReserger
                     DataTable Filas = ((DataTable)Grid.DataSource).Clone();
                     Grid.DataSource = Filas;
                 }
+                tab.Enabled = false;
                 txtApellidoPaterno.Text = "";
                 txtApellidoMaterno.Text = "";
                 txtNombres.Text = txtObservacionesMemo.Text = "";
                 pbFoto.Image = null; lblmensajito.Text = "";
                 txtRuta.Text = "";
+                btnGenerar.Enabled = false;
+                btnAdjuntarSustento.Enabled = false;
+                btnmodificiar.Enabled = false;
+                btneliminar.Enabled = false;
             }
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            if (txtNumeroDocumento.Text.Length == 0)
+            int Registrox = 0;
+            if (ESTADO == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtNumeroDocumento.Focus();
-                return;
-            }
+                if (txtNumeroDocumento.Text.Length == 0)
+                {
+                    MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    txtNumeroDocumento.Focus();
+                    return;
+                }
 
-            if (tab.SelectedIndex == 0 && txtObservacionesMemo.Text.Length == 0)
-            {
-                MessageBox.Show("Ingrese Observaciones para el Memorandum", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtObservacionesMemo.Focus();
-                return;
-            }
+                if (tab.SelectedIndex == 0 && txtObservacionesMemo.Text.Length == 0)
+                {
+                    MessageBox.Show("Ingrese Observaciones para el Memorandum", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    txtObservacionesMemo.Focus();
+                    return;
+                }
 
-            if (tab.SelectedIndex == 1 && txtObservacionesPremio.Text.Length == 0)
-            {
-                MessageBox.Show("Ingrese Observaciones para la Carta de Premio", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtObservacionesPremio.Focus();
-                return;
-            }
+                if (tab.SelectedIndex == 1 && txtObservacionesPremio.Text.Length == 0)
+                {
+                    MessageBox.Show("Ingrese Observaciones para la Carta de Premio", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    txtObservacionesPremio.Focus();
+                    return;
+                }
 
-            int Registro = 0;
-            if (tab.SelectedIndex == 0)
-            {
-                clAmonestacionesPremio.EmpleadoMemoPremio(out Registro, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 0, txtObservacionesMemo.Text);
-                txtObservacionesMemo.Text = "";
+
+                if (tab.SelectedIndex == 0)
+                {
+                    clAmonestacionesPremio.EmpleadoMemoPremio(out Registrox, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 0, txtObservacionesMemo.Text);
+                    txtObservacionesMemo.Text = "";
+                }
+                else
+                {
+                    clAmonestacionesPremio.EmpleadoMemoPremio(out Registrox, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 1, txtObservacionesPremio.Text);
+                    txtObservacionesPremio.Text = "";
+                }
+
+                MessageBox.Show("Se procesó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                clAmonestacionesPremio.EmpleadoMemoPremio(out Registro, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 1, txtObservacionesPremio.Text);
-                txtObservacionesPremio.Text = "";
+                int x = Grid.CurrentCell.RowIndex;
+                string caden = "";
+                if (tab.SelectedIndex == 0)
+                    caden = txtObservacionesMemo.Text;
+                else
+                    caden = txtObservacionesPremio.Text;
+                Registrox = (int)Grid[Registro.Name, x].Value;
+                clAmonestacionesPremio.ActualizarMemoPremio(Registrox, (int)Grid[CODIGOTIPO.Name, x].Value, Grid[NDI.Name, x].Value.ToString(), tab.SelectedIndex, caden);
+                msg("Actualizado con Exito");
+                btncancelar_Click(sender, e);
             }
-
-            MessageBox.Show("Se procesó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, tab.SelectedIndex);
 
             frmMemoPremio frmMP = new frmMemoPremio();
 
-            frmMP.Registro = Registro;
+            frmMP.Registro = Registrox;
             frmMP.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmMP.NumeroDocumento = txtNumeroDocumento.Text;
             frmMP.TabIndex = tab.SelectedIndex;
@@ -200,16 +243,24 @@ namespace HPReserger
         {
             Grid.DataSource = clAmonestacionesPremio.ListarMemoPremio(TipoDocumento, NumeroDocumento, Index);
         }
-
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void Grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (Grid.Rows.Count > 0 && Grid.Rows[0].Cells[0].Value != null)
+
+            if (Grid.Rows.Count > 0)
             {
+                btneliminar.Enabled = true;
+                btnmodificiar.Enabled = true;
                 CargarFoto(Convert.ToInt32(Grid.Rows[e.RowIndex].Cells[0].Value.ToString()), Convert.ToInt32(Grid.Rows[e.RowIndex].Cells[1].Value.ToString()), Grid.Rows[e.RowIndex].Cells[3].Value.ToString(), tab.SelectedIndex);
             }
             else
             {
                 pbFoto.Image = null;
+                btneliminar.Enabled = false;
+                btnmodificiar.Enabled = false;
             }
         }
 
@@ -322,6 +373,85 @@ namespace HPReserger
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
+            }
+        }
+
+        private void Grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        public DialogResult MSG(string cadena)
+        {
+            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
+        DataTable tablita;
+        private void btneliminar_Click(object sender, EventArgs e)
+        {
+            if (Grid.RowCount > 0)
+            {
+                tablita = new DataTable();
+                tablita = clAmonestacionesPremio.ListarJefeInmediato(frmLogin.CodigoUsuario, "", 10);
+                if (MSG("Desea Eliminar Registro?") == DialogResult.OK)
+                    if (tablita.Rows.Count != 0)
+                    {
+                        int x = Grid.CurrentCell.RowIndex;
+                        DataRow filita = tablita.Rows[0];
+                        string cade = Grid[Registro.Name, x].Value.ToString() + "," + Grid[CODIGOTIPO.Name, x].Value.ToString() + ",'" + Grid[NDI.Name, x].Value.ToString() + "'," + tab.SelectedIndex;
+                        clAmonestacionesPremio.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarMemoPremio", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Amonestación a " + Grid["APELLIDOSNOMBRES", Grid.CurrentCell.RowIndex].Value.ToString());
+
+                        msg("Solicitud Enviada a su Jefe");
+                    }
+                    else msg("No se Encuentra el Código del Jefe");
+            }
+            else
+            {
+                msg("No hay Que Eliminar");
+            }
+        }
+        int ESTADO = 0; int TABINDEX = 0;
+        private void btnmodificiar_Click(object sender, EventArgs e)
+        {
+            ESTADO = 1;
+            TABINDEX = tab.SelectedIndex;
+            int x = Grid.CurrentCell.RowIndex;
+            if (x < 0)
+            {
+                msg("No hay que Modificar");
+                return;
+            }
+            else
+            {
+                txtNumeroDocumento.Enabled = false;
+                cboTipoDocumento.Enabled = false;
+                btnmodificiar.Enabled = false;
+                btneliminar.Enabled = false;
+                Grid.Enabled = false;
+                if (tab.SelectedIndex == 0)
+                {
+                    txtObservacionesMemo.Text = Grid[OBSERVACIONES.Name, x].Value.ToString();
+                }
+                else
+                {
+                    txtObservacionesPremio.Text = Grid[OBSERVACIONES.Name, x].Value.ToString();
+                }
+            }
+        }
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            if (ESTADO != 0)
+            {
+                btnmodificiar.Enabled = true;
+                btneliminar.Enabled = true;
+                Grid.Enabled = true;
+                txtNumeroDocumento.Enabled = true;
+                cboTipoDocumento.Enabled = true;
+                txtObservacionesPremio.Text = "";
+                txtObservacionesMemo.Text = "";
+                ESTADO = 0;
+            }
+            else
+            {
+                this.Close();
             }
         }
     }

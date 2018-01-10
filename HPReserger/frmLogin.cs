@@ -30,7 +30,7 @@ namespace HPReserger
         public frmMenu frmM;
         public int Intentos { get; set; }
         public frmLogin()
-        {
+        { 
             InitializeComponent();
         }
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -52,7 +52,7 @@ namespace HPReserger
         private void frmLogin_Load(object sender, EventArgs e)
         {
             Intentos = 0;
-
+            moveControl1.cargar();
             //System.Drawing.Drawing2D.GraphicsPath GRafico = new System.Drawing.Drawing2D.GraphicsPath();
             //GRafico.AddEllipse(0.12f, 0.12f,this.Width, this.Width );
             //this.Region = new Region(GRafico);
@@ -175,22 +175,14 @@ namespace HPReserger
                 mover = false;
             }
         }
-
-        private void label3_MouseUp(object sender, MouseEventArgs e)
-        {
-        }
         private void label3_MouseLeave(object sender, EventArgs e)
         {
-
+            
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void label3_MouseMove(object sender, MouseEventArgs e)
-        {
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -242,6 +234,15 @@ namespace HPReserger
         {
             if (e.KeyChar == (char)Keys.Enter)
                 txtContraseña.Focus();
+           
+        }
+        private void moveControl1_MouseMove(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void panel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void panel_MouseDown(object sender, MouseEventArgs e)

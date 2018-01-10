@@ -61,7 +61,7 @@ namespace HPReserger
             cargartipoid();
             empresa = 1;
         }
-
+       
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton2.Checked)
@@ -105,6 +105,8 @@ namespace HPReserger
             boletas.empresa = empresa;
             boletas.tipo = tipo;
             boletas.numero = numero;
+            boletas.año = (int)comboMesAño1.GetFechaPRimerDia().Year;
+            boletas.fechainicial = comboMesAño1.GetFechaPRimerDia();
             boletas.ShowDialog();
         }
 

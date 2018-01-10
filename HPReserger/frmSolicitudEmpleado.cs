@@ -28,8 +28,7 @@ namespace HPReserger
 
         private void frmSolicitudEmpleado_Load(object sender, EventArgs e)
         {
-            CargarCombos(cboCargoPuesto, "Id_Cargo", "Cargo", "TBL_Cargo");
-            cboCargoPuesto.SelectedIndex = -1;
+            CargarCombos(cbogerencia, "Id_Gerencia", "Gerencia", "TBL_Gerencia");
 
             CargarCombos(cboTipoContratacion, "Id_TipoContratacion", "TipoContratacion", "TBL_TipoContratacion");
             cboTipoContratacion.SelectedIndex = -1;
@@ -44,12 +43,13 @@ namespace HPReserger
 
         private void Correlativo()
         {
-            DataRow Correlativo = clSolicitudEmpleado.Correlativo("TBL_SolicitaEmpleado");
+            DataRow Correlativo = clSolicitudEmpleado.CorrelativoCampo("TBL_SolicitaEmpleado", "ID_SolicitaEmpleado");
             txtSolicitud.Text = Correlativo["CORRELATIVO"].ToString();
         }
 
         private void CargarCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
         {
+            cbo.DataSource = null;
             cbo.ValueMember = "codigo";
             cbo.DisplayMember = "descripcion";
             cbo.DataSource = clSolicitudEmpleado.getCargoTipoContratacion(codigo, descripcion, tabla);
@@ -96,28 +96,24 @@ namespace HPReserger
                 cboBusqueda.Focus();
                 return;
             }
-
             if (cboTerna.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione Terna", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTerna.Focus();
                 return;
             }
-
             if (txtPuestos.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Cantidad de Puestos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPuestos.Focus();
                 return;
             }
-
             if (txtAdjunto.Text.Length == 0)
             {
                 MessageBox.Show("Seleccione Imagen", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtAdjunto.Focus();
                 return;
             }
-
             DataRow ExisteImagen = clSolicitudEmpleado.ExisteImagen("NombreFoto", txtAdjunto.Text.Trim(), "TBL_SolicitaEmpleado");
             if (ExisteImagen != null)
             {
@@ -125,32 +121,42 @@ namespace HPReserger
                 btnBuscarJPG.Focus();
                 return;
             }
-
             if (Convert.ToInt32(txtPuestos.Text) == 0)
             {
                 MessageBox.Show("Cant. Puestos NO puede ser cero", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPuestos.Focus();
                 return;
             }
-
             //int NumeroSolicitudEmpleado = 0;
             int OC = 0;
             if (cboBusqueda.SelectedIndex == 0)
             {
-                OC = Convert.ToInt32(Grid1.Rows[Item].Cells[0].Value.ToString().Substring(2));
-                clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), Convert.ToInt32(Grid1.Rows[Item].Cells[1].Value.ToString()), Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
+                if (cbogerencia.SelectedIndex == -1) { msg("Selecciones Gerencias"); cbogerencia.Focus(); return; }
+                if (cbogerencia.Items.Count <= 0) { msg("No Hay Gerencias Creadas"); cbogerencia.Focus(); return; }
+                if (cboarea.SelectedIndex == -1) { msg("Selecciones Area"); cboarea.Focus(); return; }
+                if (cboarea.Items.Count <= 0) { msg("No Hay Areas Creadas"); cboarea.Focus(); return; }
+                //if (!txtservicio.EstaLLeno()) { msg("Ingrese Servicio"); txtservicio.Focus(); return; }
+                DataRow Filita = clSolicitudEmpleado.Correlativo("[TBL_Solicitud_Empleado_Ext]");
+                OC = (int)Filita[0];
+                clSolicitudEmpleado.SolicitudEmpleadoExt(OC, (int)cboarea.SelectedValue, "", txtobservacion.Text, 1, frmLogin.CodigoUsuario);
+                //sin modulo
+                //OC = Convert.ToInt32(Grid1.Rows[Item].Cells[0].Value.ToString().Substring(2));
+                //clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), Convert.ToInt32(Grid1.Rows[Item].Cells[1].Value.ToString()), Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
+                clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString() + "OUT", cboTerna.SelectedItem.ToString(), (int)cboarea.SelectedValue, (int)cbogerencia.SelectedValue, Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
             }
             else
             {
-                clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), frmLogin.CodigoArea, Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
+                clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), frmLogin.CodigoArea, frmLogin.CodigoGerencia, Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
             }
-
             MessageBox.Show("La Solicitud de Empleado Nº " + (txtSolicitud.Text.ToString()) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             MostrarGrid(frmLogin.CodigoUsuario);
             Correlativo();
             Limpiar();
         }
-
+        public void msg(string cadenar)
+        {
+            MessageBox.Show(cadenar, "Hp Reseger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void Grid1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             Item = e.RowIndex;
@@ -236,10 +242,16 @@ namespace HPReserger
             if (cboBusqueda.SelectedIndex == 0)
             {
                 Grid1.Visible = true;
+                panelOre1.Visible = true;
+                cboarea_SelectedIndexChanged(sender, e);
             }
             else
             {
                 Grid1.Visible = false;
+                panelOre1.Visible = true;
+                cboarea_SelectedIndexChanged(sender, e);
+                //cboCargoPuesto.Enabled = true;
+                // CargarCombos(cboCargoPuesto, "Id_Cargo", "Cargo", "TBL_Cargo");
             }
         }
 
@@ -257,10 +269,21 @@ namespace HPReserger
                             MostrarGrid(frmLogin.CodigoUsuario);
                         }
                     }
+                    else
+                    {
+                        if (MSG("Solicitud YA tiene Postulantes, Desea Eliminar?") == DialogResult.OK)
+                        {
+                            clSolicitudEmpleado.EliminarSolicitudEmpleado(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)));
+                            MostrarGrid(frmLogin.CodigoUsuario);
+                        }
+                    }
                 }
             }
         }
-
+        public DialogResult MSG(string cadena)
+        {
+            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
         private void Limpiar()
         {
             cboBusqueda.SelectedIndex = -1;
@@ -269,6 +292,9 @@ namespace HPReserger
             cboCargoPuesto.SelectedIndex = -1;
             cboTipoContratacion.SelectedIndex = -1;
             txtAdjunto.Text = "";
+            cbogerencia.SelectedIndex = -1;
+            txtobservacion.Text = "";
+            pbFoto.Image = null;
         }
 
         private void pbFoto_DoubleClick(object sender, EventArgs e)
@@ -302,6 +328,75 @@ namespace HPReserger
         private void btndescargar_Click(object sender, EventArgs e)
         {
             HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
+        }
+        public void Activar(Control x)
+        {
+            x.Enabled = true;
+        }
+        public void Desactivar(Control x)
+        {
+            x.Enabled = false;
+        }
+        private void cbogerencia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbogerencia.SelectedIndex >= 0)
+            {
+                cboarea.DisplayMember = "area";
+                cboarea.ValueMember = "codigoarea";
+                cboarea.DataSource = clSolicitudEmpleado.AreaGerencia((int)cbogerencia.SelectedValue);
+            }
+            else
+            {
+                cboarea.SelectedIndex = -1;
+            }
+            if (cboarea.Items.Count > 0)
+            {
+                Activar(txtobservacion);
+                Activar(cboarea);
+            }
+            else
+            {
+                Desactivar(txtobservacion);
+                Desactivar(cboarea);
+                Desactivar(cboCargoPuesto);
+            }
+        }
+        private void cboarea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboarea.SelectedIndex >= 0)
+            {
+                cboCargoPuesto.DataSource = null;
+                cboCargoPuesto.ValueMember = "fk_idcargo";
+                cboCargoPuesto.DisplayMember = "cargo";
+                cboCargoPuesto.DataSource = clSolicitudEmpleado.CargosAreas(10, 0, (int)cboarea.SelectedValue);
+                cboCargoPuesto.SelectedIndex = -1;
+            }
+            else
+            {
+                cboCargoPuesto.SelectedIndex = -1;
+            }
+            if (cboCargoPuesto.Items.Count > 0)
+            {
+                Activar(cboCargoPuesto);
+            }
+            else
+            {
+                Desactivar(cboCargoPuesto);
+            }
+        }
+
+        private void btnr_Click(object sender, EventArgs e)
+        {
+            CargarCombos(cbogerencia, "Id_Gerencia", "Gerencia", "TBL_Gerencia");
+        }
+        private void cboCargoPuesto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btncargos_Click(object sender, EventArgs e)
+        {
+            cboBusqueda_SelectedIndexChanged(sender, e);
         }
     }
 }

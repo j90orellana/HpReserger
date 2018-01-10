@@ -29,24 +29,35 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarEmpleados));
             this.label1 = new System.Windows.Forms.Label();
             this.cboListar = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Grid = new System.Windows.Forms.DataGridView();
+            this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkemp = new System.Windows.Forms.CheckBox();
+            this.checkpos = new System.Windows.Forms.CheckBox();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NDI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.T = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.APELLIDOPATERNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.APELLIDOMATERNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.areax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gerenciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.SuspendLayout();
@@ -95,13 +106,19 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkpos);
+            this.groupBox1.Controls.Add(this.checkemp);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtDocumento);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cboTipoDocumento);
             this.groupBox1.Controls.Add(this.cboListar);
             this.groupBox1.Controls.Add(this.txtBuscar);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(564, 52);
+            this.groupBox1.Size = new System.Drawing.Size(861, 75);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
@@ -111,12 +128,15 @@
             this.Grid.AllowUserToDeleteRows = false;
             this.Grid.AllowUserToResizeColumns = false;
             this.Grid.AllowUserToResizeRows = false;
+            this.Grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -126,18 +146,84 @@
             this.CODIGOTIPO,
             this.TIPO,
             this.NDI,
+            this.T,
             this.APELLIDOPATERNO,
             this.APELLIDOMATERNO,
-            this.NOMBRES});
-            this.Grid.Location = new System.Drawing.Point(12, 70);
+            this.NOMBRES,
+            this.areax,
+            this.gerenciax});
+            this.Grid.Location = new System.Drawing.Point(12, 84);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
             this.Grid.RowHeadersVisible = false;
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
+            this.Grid.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Grid.Size = new System.Drawing.Size(694, 237);
+            this.Grid.Size = new System.Drawing.Size(861, 377);
             this.Grid.TabIndex = 36;
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
+            // 
+            // cboTipoDocumento
+            // 
+            this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDocumento.FormattingEnabled = true;
+            this.cboTipoDocumento.Location = new System.Drawing.Point(65, 43);
+            this.cboTipoDocumento.Name = "cboTipoDocumento";
+            this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
+            this.cboTipoDocumento.TabIndex = 4;
+            this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "TipoDoc:";
+            // 
+            // txtDocumento
+            // 
+            this.txtDocumento.Location = new System.Drawing.Point(340, 44);
+            this.txtDocumento.MaxLength = 10;
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(206, 20);
+            this.txtDocumento.TabIndex = 6;
+            this.txtDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDocumento.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(287, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "NroDoc:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // checkemp
+            // 
+            this.checkemp.AutoSize = true;
+            this.checkemp.Location = new System.Drawing.Point(563, 47);
+            this.checkemp.Name = "checkemp";
+            this.checkemp.Size = new System.Drawing.Size(73, 17);
+            this.checkemp.TabIndex = 8;
+            this.checkemp.Text = "Empleado";
+            this.checkemp.UseVisualStyleBackColor = true;
+            this.checkemp.CheckedChanged += new System.EventHandler(this.checkemp_CheckedChanged);
+            // 
+            // checkpos
+            // 
+            this.checkpos.AutoSize = true;
+            this.checkpos.Location = new System.Drawing.Point(642, 47);
+            this.checkpos.Name = "checkpos";
+            this.checkpos.Size = new System.Drawing.Size(76, 17);
+            this.checkpos.TabIndex = 9;
+            this.checkpos.Text = "Postulante";
+            this.checkpos.UseVisualStyleBackColor = true;
+            this.checkpos.CheckedChanged += new System.EventHandler(this.checkemp_CheckedChanged);
             // 
             // CODIGOTIPO
             // 
@@ -160,7 +246,7 @@
             this.TIPO.Name = "TIPO";
             this.TIPO.ReadOnly = true;
             this.TIPO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TIPO.Width = 67;
+            this.TIPO.Width = 65;
             // 
             // NDI
             // 
@@ -171,7 +257,17 @@
             this.NDI.HeaderText = "Nº ID";
             this.NDI.Name = "NDI";
             this.NDI.ReadOnly = true;
-            this.NDI.Width = 58;
+            this.NDI.Width = 56;
+            // 
+            // T
+            // 
+            this.T.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.T.DataPropertyName = "T";
+            this.T.HeaderText = "Tipo";
+            this.T.MinimumWidth = 40;
+            this.T.Name = "T";
+            this.T.ReadOnly = true;
+            this.T.Width = 40;
             // 
             // APELLIDOPATERNO
             // 
@@ -184,8 +280,7 @@
             this.APELLIDOPATERNO.Name = "APELLIDOPATERNO";
             this.APELLIDOPATERNO.ReadOnly = true;
             this.APELLIDOPATERNO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.APELLIDOPATERNO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.APELLIDOPATERNO.Width = 90;
+            this.APELLIDOPATERNO.Width = 111;
             // 
             // APELLIDOMATERNO
             // 
@@ -197,8 +292,7 @@
             this.APELLIDOMATERNO.Name = "APELLIDOMATERNO";
             this.APELLIDOMATERNO.ReadOnly = true;
             this.APELLIDOMATERNO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.APELLIDOMATERNO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.APELLIDOMATERNO.Width = 92;
+            this.APELLIDOMATERNO.Width = 114;
             // 
             // NOMBRES
             // 
@@ -210,19 +304,33 @@
             this.NOMBRES.Name = "NOMBRES";
             this.NOMBRES.ReadOnly = true;
             this.NOMBRES.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NOMBRES.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // areax
+            // 
+            this.areax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.areax.DataPropertyName = "area";
+            this.areax.HeaderText = "Área";
+            this.areax.Name = "areax";
+            this.areax.ReadOnly = true;
+            this.areax.Width = 54;
+            // 
+            // gerenciax
+            // 
+            this.gerenciax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gerenciax.DataPropertyName = "gerencia";
+            this.gerenciax.HeaderText = "Gerencia";
+            this.gerenciax.Name = "gerenciax";
+            this.gerenciax.ReadOnly = true;
+            this.gerenciax.Width = 75;
             // 
             // frmListarEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(718, 319);
+            this.ClientSize = new System.Drawing.Size(885, 473);
             this.Controls.Add(this.Grid);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(734, 358);
-            this.MinimumSize = new System.Drawing.Size(734, 358);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListarEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Listar Empleados";
@@ -242,11 +350,20 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView Grid;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboTipoDocumento;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDocumento;
+        private System.Windows.Forms.CheckBox checkpos;
+        private System.Windows.Forms.CheckBox checkemp;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOTIPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn NDI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn T;
         private System.Windows.Forms.DataGridViewTextBoxColumn APELLIDOPATERNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn APELLIDOMATERNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn areax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gerenciax;
     }
 }

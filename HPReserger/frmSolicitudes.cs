@@ -16,7 +16,7 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-               HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmSolicitudes_Load(object sender, EventArgs e)
         {
             REcargardatos();
@@ -29,10 +29,16 @@ namespace HPReserger
         {
             REcargardatos();
         }
-
         private void Btncancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (dtgconten.RowCount >= 0)
+            {
+                int x = dtgconten.CurrentCell.RowIndex;
+                CapaLogica.TablaSolicitudes(8, frmLogin.CodigoUsuario, dtgconten["accion", x].Value.ToString(), dtgconten["valores", x].Value.ToString(), 0, 1, "");
+                msg("Solicitud Eliminada");
+            }
+            else msg("No Hay Solicitudes");
+            REcargardatos();
         }
         public void msg(string cadena)
         {
@@ -47,10 +53,9 @@ namespace HPReserger
                 CapaLogica.TablaSolicitudes(10, frmLogin.CodigoUsuario, dtgconten["accion", x].Value.ToString(), dtgconten["valores", x].Value.ToString(), 0, 1, "");
                 msg("Solicitud Aprobada");
             }
-            else msg("No Hay Solucitudes");
-
+            else msg("No Hay Solicitudes");
             REcargardatos();
         }
-       
+
     }
 }

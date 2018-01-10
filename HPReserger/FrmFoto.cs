@@ -15,6 +15,7 @@ namespace HPReserger
         public FrmFoto()
         {
             InitializeComponent();
+
         }
         public Image fotito;
         private void FrmFoto_Load(object sender, EventArgs e)
@@ -26,10 +27,15 @@ namespace HPReserger
                 this.Size = new Size(pbfoto.Image.Size.Width + 25, pbfoto.Image.Size.Height + 50);
                 if (Owner != null)
                 {
-                    this.Top = (this.Owner.Height - pbfoto.Height) / 2;
+                    this.Top = (this.Owner.Height - pbfoto.Height)/2 ;
                     this.Left = (this.Owner.Width - pbfoto.Width) / 2;
                 }
+                else
+                {
+                    this.StartPosition = FormStartPosition.CenterScreen;
+                }
             }
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         private void FrmFoto_KeyDown(object sender, KeyEventArgs e)
         {

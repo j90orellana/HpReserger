@@ -280,7 +280,7 @@ namespace HPResergerFunciones
                 {
                     if (!FilasNoMostrar.Contains(j + 1))
                     {
-                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = grd.Rows[i].Cells[j].Value.ToString();
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = grd.Rows[i].Cells[j].Value;
                         nume++;
                     }
                     //   }
@@ -450,7 +450,7 @@ namespace HPResergerFunciones
                 nume = 0;
                 foreach (int j in OrdendelasColumnas)
                 {
-                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = grd.Rows[i].Cells[j - 1].Value.ToString();
+                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = grd.Rows[i].Cells[j - 1].Value;
                     nume++;
                 }
             }
@@ -461,7 +461,10 @@ namespace HPResergerFunciones
                 //{
                 hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
                 hoja_trabajo.Columns[numer + 1].AutoFit();
+                if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(decimal))
+                    hoja_trabajo.Columns[numer + 1].NumberFormat = "0.00";
                 numer++;
+
                 //}
             }
             foreach (int fila in FilasNegritas)

@@ -46,6 +46,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.check18 = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbosexo = new System.Windows.Forms.ComboBox();
             this.pbconviviente = new System.Windows.Forms.PictureBox();
             this.lklconviviente = new System.Windows.Forms.LinkLabel();
             this.btnconviviente = new System.Windows.Forms.Button();
@@ -61,7 +64,7 @@
             this.btnModificar.Location = new System.Drawing.Point(432, 17);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 34;
+            this.btnModificar.TabIndex = 12;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -69,55 +72,55 @@
             // dtpFecha
             // 
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(195, 99);
+            this.dtpFecha.Location = new System.Drawing.Point(193, 99);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(231, 20);
-            this.dtpFecha.TabIndex = 33;
+            this.dtpFecha.TabIndex = 4;
             // 
             // txtOcupacion
             // 
             this.txtOcupacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtOcupacion.Location = new System.Drawing.Point(195, 203);
+            this.txtOcupacion.Location = new System.Drawing.Point(193, 233);
             this.txtOcupacion.MaxLength = 30;
             this.txtOcupacion.Name = "txtOcupacion";
             this.txtOcupacion.Size = new System.Drawing.Size(311, 20);
-            this.txtOcupacion.TabIndex = 32;
+            this.txtOcupacion.TabIndex = 10;
             // 
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 125);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(193, 125);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(309, 20);
-            this.txtApellidoPaterno.TabIndex = 31;
+            this.txtApellidoPaterno.TabIndex = 5;
             // 
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombres.Location = new System.Drawing.Point(195, 177);
+            this.txtNombres.Location = new System.Drawing.Point(193, 177);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(309, 20);
-            this.txtNombres.TabIndex = 30;
+            this.txtNombres.TabIndex = 7;
             // 
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(195, 151);
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(193, 151);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.Size = new System.Drawing.Size(309, 20);
-            this.txtApellidoMaterno.TabIndex = 29;
+            this.txtApellidoMaterno.TabIndex = 6;
             this.txtApellidoMaterno.TextChanged += new System.EventHandler(this.txtApellidoMaterno_TextChanged);
             // 
             // txtNumeroDocumento
             // 
-            this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 46);
+            this.txtNumeroDocumento.Location = new System.Drawing.Point(193, 46);
             this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(231, 20);
-            this.txtNumeroDocumento.TabIndex = 28;
+            this.txtNumeroDocumento.TabIndex = 2;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumeroDocumento_KeyDown);
             this.txtNumeroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroDocumento_KeyPress);
@@ -128,10 +131,10 @@
             this.cboVinculoFamiliar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboVinculoFamiliar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVinculoFamiliar.FormattingEnabled = true;
-            this.cboVinculoFamiliar.Location = new System.Drawing.Point(195, 72);
+            this.cboVinculoFamiliar.Location = new System.Drawing.Point(193, 72);
             this.cboVinculoFamiliar.Name = "cboVinculoFamiliar";
             this.cboVinculoFamiliar.Size = new System.Drawing.Size(231, 21);
-            this.cboVinculoFamiliar.TabIndex = 27;
+            this.cboVinculoFamiliar.TabIndex = 3;
             // 
             // cboTipoDocumentoIdentidad
             // 
@@ -139,10 +142,11 @@
             this.cboTipoDocumentoIdentidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboTipoDocumentoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumentoIdentidad.FormattingEnabled = true;
-            this.cboTipoDocumentoIdentidad.Location = new System.Drawing.Point(195, 19);
+            this.cboTipoDocumentoIdentidad.Location = new System.Drawing.Point(193, 19);
             this.cboTipoDocumentoIdentidad.Name = "cboTipoDocumentoIdentidad";
             this.cboTipoDocumentoIdentidad.Size = new System.Drawing.Size(231, 21);
-            this.cboTipoDocumentoIdentidad.TabIndex = 26;
+            this.cboTipoDocumentoIdentidad.TabIndex = 1;
+            this.cboTipoDocumentoIdentidad.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumentoIdentidad_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -158,7 +162,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(10, 206);
+            this.label7.Location = new System.Drawing.Point(8, 236);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 24;
@@ -226,6 +230,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.check18);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.cbosexo);
             this.groupBox1.Controls.Add(this.pbconviviente);
             this.groupBox1.Controls.Add(this.lklconviviente);
             this.groupBox1.Controls.Add(this.btnconviviente);
@@ -250,9 +257,40 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(10, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(522, 267);
+            this.groupBox1.Size = new System.Drawing.Size(522, 290);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
+            // 
+            // check18
+            // 
+            this.check18.AutoSize = true;
+            this.check18.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.check18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.check18.Location = new System.Drawing.Point(319, 207);
+            this.check18.Name = "check18";
+            this.check18.Size = new System.Drawing.Size(185, 17);
+            this.check18.TabIndex = 9;
+            this.check18.Text = "Esta Estudiando Antes de los 18?";
+            this.check18.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label9.Location = new System.Drawing.Point(10, 206);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 13);
+            this.label9.TabIndex = 75;
+            this.label9.Text = "Sexo del Familiar:";
+            // 
+            // cbosexo
+            // 
+            this.cbosexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbosexo.FormattingEnabled = true;
+            this.cbosexo.Location = new System.Drawing.Point(193, 203);
+            this.cbosexo.Name = "cbosexo";
+            this.cbosexo.Size = new System.Drawing.Size(120, 21);
+            this.cbosexo.TabIndex = 8;
             // 
             // pbconviviente
             // 
@@ -268,7 +306,7 @@
             // 
             this.lklconviviente.AutoSize = true;
             this.lklconviviente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lklconviviente.Location = new System.Drawing.Point(446, 232);
+            this.lklconviviente.Location = new System.Drawing.Point(444, 262);
             this.lklconviviente.Name = "lklconviviente";
             this.lklconviviente.Size = new System.Drawing.Size(61, 13);
             this.lklconviviente.TabIndex = 72;
@@ -280,17 +318,17 @@
             // 
             this.btnconviviente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnconviviente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnconviviente.Location = new System.Drawing.Point(415, 228);
+            this.btnconviviente.Location = new System.Drawing.Point(413, 258);
             this.btnconviviente.Name = "btnconviviente";
             this.btnconviviente.Size = new System.Drawing.Size(25, 20);
-            this.btnconviviente.TabIndex = 71;
+            this.btnconviviente.TabIndex = 11;
             this.btnconviviente.Text = "...";
             this.btnconviviente.UseVisualStyleBackColor = true;
             this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
             // 
             // txtconviviente
             // 
-            this.txtconviviente.Location = new System.Drawing.Point(195, 229);
+            this.txtconviviente.Location = new System.Drawing.Point(193, 259);
             this.txtconviviente.Name = "txtconviviente";
             this.txtconviviente.ReadOnly = true;
             this.txtconviviente.Size = new System.Drawing.Size(213, 20);
@@ -300,7 +338,7 @@
             // 
             this.lblconviviente.AutoSize = true;
             this.lblconviviente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblconviviente.Location = new System.Drawing.Point(10, 232);
+            this.lblconviviente.Location = new System.Drawing.Point(8, 262);
             this.lblconviviente.Name = "lblconviviente";
             this.lblconviviente.Size = new System.Drawing.Size(45, 13);
             this.lblconviviente.TabIndex = 69;
@@ -312,10 +350,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(550, 282);
+            this.ClientSize = new System.Drawing.Size(542, 309);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(566, 321);
-            this.MinimumSize = new System.Drawing.Size(566, 321);
+            this.MaximumSize = new System.Drawing.Size(558, 348);
+            this.MinimumSize = new System.Drawing.Size(558, 348);
             this.Name = "frmEmpleadosFamiliaresModificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Familiares Empleado Modificar";
@@ -352,5 +390,8 @@
         public System.Windows.Forms.PictureBox pbconviviente;
         public System.Windows.Forms.TextBox txtconviviente;
         public System.Windows.Forms.LinkLabel lklconviviente;
+        private System.Windows.Forms.CheckBox check18;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbosexo;
     }
 }

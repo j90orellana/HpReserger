@@ -39,7 +39,7 @@ namespace HPReserger
             btnModificar.Enabled = false;
             btnRegistrar.Enabled = false;
             btnaceptar.Enabled = true;
-            pnlconten.Enabled = true; 
+            pnlconten.Enabled = true;
         }
 
         private void GrabarEditar(int Opcion)
@@ -50,7 +50,7 @@ namespace HPReserger
                 txtCuenta.Focus();
                 return;
             }
-            if (txtCuentaCCI.Text.Length == 0)
+            if (txtCuentaCCI.Text.Length < 20)
             {
                 MessageBox.Show("Ingrese Nº de Cuenta CCI", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuentaCCI.Focus();
@@ -115,7 +115,7 @@ namespace HPReserger
             {
                 GrabarEditar(1);
                 MessageBox.Show("Pago de Haberes registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
+
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false;
@@ -125,7 +125,7 @@ namespace HPReserger
             {
                 GrabarEditar(0);
                 MessageBox.Show("Pago de Haberes actualizo con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false; btnModificar.Enabled = true;

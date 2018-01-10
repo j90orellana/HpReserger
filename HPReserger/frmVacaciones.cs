@@ -231,7 +231,10 @@ namespace HPReserger
             DataRow DiasGenerado = clEmpleadoVacaciones.DiasGenerado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value);
             if (DiasGenerado != null)
             {
-                txtVacaciones.Text = DiasGenerado["DIAS"].ToString();
+                if (DiasGenerado["DIAS"].ToString().Length > 0)
+                {
+                    txtVacaciones.Text = ((decimal)DiasGenerado["DIAS"]).ToString("n2");
+                }
             }
         }
 
@@ -289,6 +292,7 @@ namespace HPReserger
             frmBV.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmBV.NumeroDocumento = txtNumeroDocumento.Text;
             frmBV.Registro = Numero;
+            frmBV.tipo = 1;
 
             frmBV.ShowDialog();
             return;
@@ -486,6 +490,7 @@ namespace HPReserger
                 frmCompraVacaciones frmCV = new frmCompraVacaciones();
                 frmCV.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
                 frmCV.NumeroDocumento = txtNumeroDocumento.Text;
+                frmCV.Icon = Icon;
                 frmCV.FechaInicioLabores = txtFecha.Text;
                 if (Grid.RowCount > 0)
                 {
@@ -497,6 +502,17 @@ namespace HPReserger
 
                 if (frmCV.ShowDialog() == DialogResult.OK)
                 {
+                    frmBoletaVacaciones frmBV = new frmBoletaVacaciones();
+                    frmBV.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
+                    frmBV.NumeroDocumento = txtNumeroDocumento.Text;
+                    DataRow Filita = clEmpleadoVacaciones.UltimoRegistoVacaciones((int)cboTipoDocumento.SelectedValue, txtNumeroDocumento.Text);
+                    if (Filita != null)
+                    {
+                        int Numero = (int)Filita["ultimo"];
+                        frmBV.Registro = Numero;
+                        frmBV.tipo = 2;
+                        frmBV.ShowDialog();
+                    }
                     DiasInicio(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_GetDiasVacaciones");
                     Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                 }

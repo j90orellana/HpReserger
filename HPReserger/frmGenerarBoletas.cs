@@ -144,6 +144,12 @@ namespace HPReserger
                 tipo = 0; numero = "0";
             }
         }
+
+        private void cbotipoid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
         }

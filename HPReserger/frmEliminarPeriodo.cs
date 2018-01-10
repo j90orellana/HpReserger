@@ -19,7 +19,7 @@ namespace HPReserger
         public int Opcion = 0;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmEliminarPeriodo_Load(object sender, EventArgs e)
-        {            
+        {
             Cargarempresa();
             //1 =cts 2=gratificacion
             if (Opcion == 1)
@@ -54,39 +54,44 @@ namespace HPReserger
         {
             return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
+        public DialogResult msgx(string cadena)
+        {
+            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         DataTable tablita;
         private void btngenerar_Click(object sender, EventArgs e)
         {
             // msg(comboMesAño1.GetFecha().ToLongDateString());
             tablita = new DataTable();
             tablita = CapaLogica.ListarJefeInmediato(frmLogin.CodigoUsuario, "", 10);
-            if (tablita.Rows.Count != 0)
-            {
-                DataRow filita = tablita.Rows[0];
-                ///opcion 0listar 1 insertar 10 aceptar
-                if (Opcion == 0)
+            if (msg("Desea Eliminar Periodo") == DialogResult.OK)
+                if (tablita.Rows.Count != 0)
                 {
-                    string cade = "";
-                    cade = cboempresa.SelectedValue.ToString() + ",'" + comboMesAño1.FechaParaSQL() + "'";
-                    CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarBoletas", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Boletas Periodo " + comboMesAño1.GetFechaPRimerDia().ToShortDateString());
+                    DataRow filita = tablita.Rows[0];
+                    ///opcion 0listar 1 insertar 10 aceptar
+                    if (Opcion == 0)
+                    {
+                        string cade = "";
+                        cade = cboempresa.SelectedValue.ToString() + ",'" + comboMesAño1.FechaParaSQL() + "'";
+                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarBoletas", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Boletas Periodo " + comboMesAño1.GetFechaPRimerDia().ToString("MMMM yyyy") + ", " + cboempresa.Text);
+                    }
+                    //cts
+                    if (Opcion == 1)
+                    {
+                        string cade = "";
+                        cade = cboempresa.SelectedValue.ToString() + ",'" + comboMesAño1.FechaParaSQL() + "'";
+                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarCts", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Cts Periodo " + comboMesAño1.GetFechaPRimerDia().ToString("MMMM yyyy") + ", " + cboempresa.Text);
+                    }
+                    //gratificacion
+                    if (Opcion == 2)
+                    {
+                        string cade = "";
+                        cade = cboempresa.SelectedValue.ToString() + ",'" + comboMesAño1.FechaParaSQL() + "'";
+                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarGratificacion", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Gratificación Periodo " + comboMesAño1.GetFechaPRimerDia().ToString("MMMM yyyy") + ", " + cboempresa.Text);
+                    }
+                    msgx("Solicitud Enviada a su Jefe");
                 }
-                //cts
-                if (Opcion == 1)
-                {
-                    string cade = "";
-                    cade = cboempresa.SelectedValue.ToString() + ",'" + comboMesAño1.FechaParaSQL() + "'";
-                    CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarCts", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Cts Periodo " + comboMesAño1.GetFechaPRimerDia().ToShortDateString());
-                }
-                //gratificacion
-                if (Opcion == 2)
-                {
-                    string cade = "";
-                    cade = cboempresa.SelectedValue.ToString() + ",'" + comboMesAño1.FechaParaSQL() + "'";
-                    CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarGratificacion", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Gratificación Periodo " + comboMesAño1.GetFechaPRimerDia().ToShortDateString());
-                }
-                msg("Solicitud Enviada a su Jefe");
-            }
-            else msg("No se Encuentra el Código del Jefe");
+                else msg("No se Encuentra el Código del Jefe");
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -36,10 +37,13 @@
             this.panel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbclose = new System.Windows.Forms.PictureBox();
+            this.pbfoto = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.moveControl1 = new HpResergerUserControls.MoveControl();
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfoto)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +51,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(74, 64);
+            this.label1.Location = new System.Drawing.Point(74, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 0;
@@ -59,7 +63,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(44, 93);
+            this.label2.Location = new System.Drawing.Point(44, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 16);
             this.label2.TabIndex = 1;
@@ -73,7 +77,7 @@
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.White;
-            this.txtUsuario.Location = new System.Drawing.Point(133, 61);
+            this.txtUsuario.Location = new System.Drawing.Point(133, 78);
             this.txtUsuario.MaxLength = 20;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(171, 23);
@@ -90,7 +94,7 @@
             this.txtContraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContraseña.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.ForeColor = System.Drawing.Color.White;
-            this.txtContraseña.Location = new System.Drawing.Point(133, 90);
+            this.txtContraseña.Location = new System.Drawing.Point(133, 107);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(171, 23);
@@ -107,7 +111,7 @@
             this.btnLogueo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogueo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogueo.ForeColor = System.Drawing.Color.White;
-            this.btnLogueo.Location = new System.Drawing.Point(89, 127);
+            this.btnLogueo.Location = new System.Drawing.Point(89, 144);
             this.btnLogueo.Name = "btnLogueo";
             this.btnLogueo.Size = new System.Drawing.Size(171, 28);
             this.btnLogueo.TabIndex = 2;
@@ -119,7 +123,7 @@
             // 
             // panel
             // 
-            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(56)))), ((int)(((byte)(71)))));
+            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.panel.Controls.Add(this.panel1);
             this.panel.Controls.Add(this.txtUsuario);
             this.panel.Controls.Add(this.txtContraseña);
@@ -129,25 +133,24 @@
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(349, 167);
+            this.panel.Size = new System.Drawing.Size(349, 187);
             this.panel.TabIndex = 3;
+            this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
             this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
             this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(24)))), ((int)(((byte)(31)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.pbclose);
+            this.panel1.Controls.Add(this.pbfoto);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(349, 43);
+            this.panel1.Size = new System.Drawing.Size(349, 61);
             this.panel1.TabIndex = 5;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
-            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
             // 
             // pbclose
             // 
@@ -163,6 +166,20 @@
             this.pbclose.MouseLeave += new System.EventHandler(this.pbclose_MouseLeave);
             this.pbclose.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbclose_MouseMove);
             // 
+            // pbfoto
+            // 
+            this.pbfoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbfoto.Image = global::HPReserger.Properties.Resources.MainFrame;
+            this.pbfoto.Location = new System.Drawing.Point(0, 0);
+            this.pbfoto.Name = "pbfoto";
+            this.pbfoto.Size = new System.Drawing.Size(349, 61);
+            this.pbfoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbfoto.TabIndex = 7;
+            this.pbfoto.TabStop = false;
+            this.pbfoto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
+            this.pbfoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
+            this.pbfoto.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -173,6 +190,13 @@
             this.label4.Size = new System.Drawing.Size(153, 28);
             this.label4.TabIndex = 5;
             this.label4.Text = "Hp Reserger";
+            this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
+            this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
+            this.label4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            // 
+            // moveControl1
+            // 
+            this.moveControl1.Control = this.panel1;
             // 
             // frmLogin
             // 
@@ -180,9 +204,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(349, 167);
+            this.ClientSize = new System.Drawing.Size(349, 187);
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
@@ -195,6 +220,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbclose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -210,5 +236,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbclose;
         private System.Windows.Forms.Label label4;
+        private HpResergerUserControls.MoveControl moveControl1;
+        private System.Windows.Forms.PictureBox pbfoto;
     }
 }

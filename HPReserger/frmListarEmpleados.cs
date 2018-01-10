@@ -22,12 +22,21 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        DataTable TablaTipoID;
         private void frmListarEmpleados_Load(object sender, EventArgs e)
         {
             cboListar.SelectedIndex = 0;
+            CargarTiposID("TBL_Tipo_ID");
+            checkemp.Checked = checkpos.Checked = true;
         }
-
+        public void CargarTiposID(string tabla)
+        {
+            TablaTipoID = new DataTable();
+            TablaTipoID = clListarEmpleado.CualquierTabla(tabla, "Desc_Tipo_ID", "RUC");
+            cboTipoDocumento.DisplayMember = "Desc_Tipo_ID";
+            cboTipoDocumento.ValueMember = "Codigo_Tipo_ID";
+            cboTipoDocumento.DataSource = TablaTipoID;
+        }
         private void cboListar_SelectedIndexChanged(object sender, EventArgs e)
         {
             label2.Text = cboListar.SelectedItem.ToString();
@@ -41,25 +50,40 @@ namespace HPReserger
 
         private void MostrarGrid()
         {
-            if (txtBuscar.Text.Length == 0)
+            if (txtBuscar.Text.Length == 0 && txtDocumento.Text.Length == 0)
             {
-                Grid.DataSource = clListarEmpleado.ListarEmpleado(3, "", "", "");
+                Grid.DataSource = clListarEmpleado.ListarEmpleado(3, "", "", "", 0, "", Posemp);
             }
             else
             {
-                Grid.DataSource = clListarEmpleado.ListarEmpleado(cboListar.SelectedIndex, txtBuscar.Text, txtBuscar.Text, txtBuscar.Text);
+                Grid.DataSource = clListarEmpleado.ListarEmpleado(cboListar.SelectedIndex, txtBuscar.Text, txtBuscar.Text, txtBuscar.Text, (int)cboTipoDocumento.SelectedValue, txtDocumento.Text, Posemp);
             }
         }
 
         private void Grid_DoubleClick(object sender, EventArgs e)
         {
-            if (Grid.Rows.Count > 0 && Grid.CurrentRow.Cells[0].Value != null)
+            if (Grid.Rows.Count > 0 && Grid.CurrentRow.Cells[CODIGOTIPO.Name].Value != null)
             {
-                TipoDocumento = Convert.ToInt32(Grid.CurrentRow.Cells[0].Value.ToString());
-                NumeroDocumento = Grid.CurrentRow.Cells[2].Value.ToString();
+                TipoDocumento = Convert.ToInt32(Grid.CurrentRow.Cells[CODIGOTIPO.Name].Value.ToString());
+                NumeroDocumento = Grid.CurrentRow.Cells[NDI.Name].Value.ToString();
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
+        }
+
+        private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtBuscar_TextChanged(sender, e);
+        }
+        int Posemp = 12;
+        private void checkemp_CheckedChanged(object sender, EventArgs e)
+        {
+            Posemp = 0;
+            if (checkpos.Checked)
+                Posemp += 2;
+            if (checkemp.Checked)
+                Posemp += 10;
+            txtBuscar_TextChanged(sender, e);
         }
     }
 }

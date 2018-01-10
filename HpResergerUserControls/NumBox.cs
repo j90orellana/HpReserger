@@ -16,10 +16,21 @@ namespace HpResergerUserControls
         {
             InitializeComponent();
         }
-
+        
+        private Control _NextControlOnEnter;
+        public Control NextControlOnEnter
+        {
+            get { return _NextControlOnEnter; }
+            set { _NextControlOnEnter = value; }
+        }
         private void Num_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, Num.Text);
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                _NextControlOnEnter.Focus();
+            }
+            base.OnKeyPress(e);
         }
 
         private void Num_KeyDown(object sender, KeyEventArgs e)

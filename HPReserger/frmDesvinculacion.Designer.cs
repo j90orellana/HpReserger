@@ -33,7 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnOtrosDescuentos = new System.Windows.Forms.Button();
+            this.txtmonto = new HpResergerUserControls.NumBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtMotivoCese = new HpResergerUserControls.TextBoxPer();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpfechacese = new System.Windows.Forms.DateTimePicker();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
@@ -92,6 +95,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.panelverimagen = new System.Windows.Forms.Panel();
+            this.btnverTodas = new System.Windows.Forms.Button();
+            this.btndescargar = new System.Windows.Forms.Button();
             this.pbSalida = new System.Windows.Forms.PictureBox();
             this.pbPracticas = new System.Windows.Forms.PictureBox();
             this.pbRenta = new System.Windows.Forms.PictureBox();
@@ -99,10 +104,6 @@
             this.pbCts = new System.Windows.Forms.PictureBox();
             this.pbLiquidacion = new System.Windows.Forms.PictureBox();
             this.pbFoto = new System.Windows.Forms.PictureBox();
-            this.btnverTodas = new System.Windows.Forms.Button();
-            this.btndescargar = new System.Windows.Forms.Button();
-            this.txtmonto = new HpResergerUserControls.NumBox();
-            this.txtMotivoCese = new HpResergerUserControls.TextBoxPer();
             this.groupBox2.SuspendLayout();
             this.panelliquidacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
@@ -118,6 +119,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnOtrosDescuentos);
             this.groupBox2.Controls.Add(this.txtmonto);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtMotivoCese);
@@ -138,6 +140,25 @@
             this.groupBox2.Size = new System.Drawing.Size(425, 210);
             this.groupBox2.TabIndex = 71;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // btnOtrosDescuentos
+            // 
+            this.btnOtrosDescuentos.Location = new System.Drawing.Point(312, 165);
+            this.btnOtrosDescuentos.Name = "btnOtrosDescuentos";
+            this.btnOtrosDescuentos.Size = new System.Drawing.Size(107, 20);
+            this.btnOtrosDescuentos.TabIndex = 108;
+            this.btnOtrosDescuentos.Text = "Otros Descuentos";
+            this.btnOtrosDescuentos.UseVisualStyleBackColor = true;
+            this.btnOtrosDescuentos.Click += new System.EventHandler(this.btnOtrosDescuentos_Click);
+            // 
+            // txtmonto
+            // 
+            this.txtmonto.Location = new System.Drawing.Point(199, 165);
+            this.txtmonto.Name = "txtmonto";
+            this.txtmonto.NextControlOnEnter = null;
+            this.txtmonto.Size = new System.Drawing.Size(107, 20);
+            this.txtmonto.TabIndex = 4;
             // 
             // label3
             // 
@@ -147,6 +168,25 @@
             this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 83;
             this.label3.Text = "Monto Acordado:";
+            // 
+            // txtMotivoCese
+            // 
+            this.txtMotivoCese.BackColor = System.Drawing.Color.White;
+            this.txtMotivoCese.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMotivoCese.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtMotivoCese.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtMotivoCese.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.txtMotivoCese.ForeColor = System.Drawing.Color.Blue;
+            this.txtMotivoCese.Location = new System.Drawing.Point(199, 139);
+            this.txtMotivoCese.MaxLength = 100;
+            this.txtMotivoCese.Name = "txtMotivoCese";
+            this.txtMotivoCese.NextControlOnEnter = this.txtmonto;
+            this.txtMotivoCese.Size = new System.Drawing.Size(220, 20);
+            this.txtMotivoCese.TabIndex = 3;
+            this.txtMotivoCese.Text = "Ingrese Motivo de Cese";
+            this.txtMotivoCese.TextoDefecto = "Ingrese Motivo de Cese";
+            this.txtMotivoCese.TextoDefectoColor = System.Drawing.Color.Blue;
+            this.txtMotivoCese.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloLetras;
             // 
             // label7
             // 
@@ -618,7 +658,7 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(784, 189);
+            this.dtgconten.Size = new System.Drawing.Size(788, 189);
             this.dtgconten.TabIndex = 150;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
@@ -738,7 +778,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(560, 615);
+            this.button1.Location = new System.Drawing.Point(571, 615);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 23);
             this.button1.TabIndex = 109;
@@ -748,7 +788,7 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(715, 615);
+            this.btncancelar.Location = new System.Drawing.Point(719, 615);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(77, 23);
             this.btncancelar.TabIndex = 151;
@@ -768,6 +808,30 @@
             this.panelverimagen.Name = "panelverimagen";
             this.panelverimagen.Size = new System.Drawing.Size(65, 198);
             this.panelverimagen.TabIndex = 152;
+            // 
+            // btnverTodas
+            // 
+            this.btnverTodas.Location = new System.Drawing.Point(801, 443);
+            this.btnverTodas.Name = "btnverTodas";
+            this.btnverTodas.Size = new System.Drawing.Size(100, 23);
+            this.btnverTodas.TabIndex = 153;
+            this.btnverTodas.Text = "Ver Todas";
+            this.btnverTodas.UseVisualStyleBackColor = true;
+            this.btnverTodas.Click += new System.EventHandler(this.btnverTodas_Click);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(580, 384);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 154;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
             // 
             // pbSalida
             // 
@@ -839,63 +903,13 @@
             this.pbFoto.TabStop = false;
             this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
             // 
-            // btnverTodas
-            // 
-            this.btnverTodas.Location = new System.Drawing.Point(798, 446);
-            this.btnverTodas.Name = "btnverTodas";
-            this.btnverTodas.Size = new System.Drawing.Size(100, 23);
-            this.btnverTodas.TabIndex = 153;
-            this.btnverTodas.Text = "Ver Todas";
-            this.btnverTodas.UseVisualStyleBackColor = true;
-            this.btnverTodas.Click += new System.EventHandler(this.btnverTodas_Click);
-            // 
-            // btndescargar
-            // 
-            this.btndescargar.AutoEllipsis = true;
-            this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(580, 384);
-            this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
-            this.btndescargar.TabIndex = 154;
-            this.btndescargar.Text = "Descargar";
-            this.btndescargar.UseVisualStyleBackColor = false;
-            this.btndescargar.Visible = false;
-            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
-            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
-            // 
-            // txtmonto
-            // 
-            this.txtmonto.Location = new System.Drawing.Point(199, 165);
-            this.txtmonto.Name = "txtmonto";
-            this.txtmonto.Size = new System.Drawing.Size(220, 20);
-            this.txtmonto.TabIndex = 4;
-            // 
-            // txtMotivoCese
-            // 
-            this.txtMotivoCese.BackColor = System.Drawing.Color.White;
-            this.txtMotivoCese.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMotivoCese.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtMotivoCese.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtMotivoCese.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.txtMotivoCese.ForeColor = System.Drawing.Color.White;
-            this.txtMotivoCese.Location = new System.Drawing.Point(199, 139);
-            this.txtMotivoCese.MaxLength = 100;
-            this.txtMotivoCese.Name = "txtMotivoCese";
-            this.txtMotivoCese.NextControlOnEnter = this.txtmonto;
-            this.txtMotivoCese.Size = new System.Drawing.Size(220, 20);
-            this.txtMotivoCese.TabIndex = 3;
-            this.txtMotivoCese.Text = "Ingrese Motivo de Cese";
-            this.txtMotivoCese.TextoDefecto = "Ingrese Motivo de Cese";
-            this.txtMotivoCese.TextoDefectoColor = System.Drawing.Color.Blue;
-            this.txtMotivoCese.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloLetras;
-            // 
             // frmDesvinculacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(923, 645);
+            this.ClientSize = new System.Drawing.Size(905, 645);
             this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.btnverTodas);
             this.Controls.Add(this.panelverimagen);
@@ -911,8 +925,8 @@
             this.Controls.Add(this.panelliquidacion);
             this.Controls.Add(this.pbFoto);
             this.Controls.Add(this.groupBox2);
-            this.MaximumSize = new System.Drawing.Size(939, 684);
-            this.MinimumSize = new System.Drawing.Size(939, 684);
+            this.MaximumSize = new System.Drawing.Size(921, 684);
+            this.MinimumSize = new System.Drawing.Size(921, 684);
             this.Name = "frmDesvinculacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Desvinculación";
@@ -1009,5 +1023,6 @@
         private HpResergerUserControls.TextBoxPer txtMotivoCese;
         private HpResergerUserControls.NumBox txtmonto;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnOtrosDescuentos;
     }
 }

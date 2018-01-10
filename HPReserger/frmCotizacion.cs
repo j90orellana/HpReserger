@@ -590,6 +590,12 @@ namespace HPReserger
                 foto.ShowDialog();
             }
         }
+
+        private void pbFoto_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void dtgpedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgpedido.Columns["PrecioUnit"].Index != e.ColumnIndex && e.RowIndex > -1)

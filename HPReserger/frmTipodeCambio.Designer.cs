@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTipodeCambio));
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +45,7 @@
             this.Buscar = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +87,7 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dtgconten.Size = new System.Drawing.Size(486, 387);
+            this.dtgconten.Size = new System.Drawing.Size(499, 341);
             this.dtgconten.TabIndex = 61;
             this.dtgconten.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dtgconten_MouseDown);
             // 
@@ -138,8 +140,8 @@
             // 
             // Btncancelar
             // 
-            this.Btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btncancelar.Location = new System.Drawing.Point(404, 440);
+            this.Btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btncancelar.Location = new System.Drawing.Point(417, 14);
             this.Btncancelar.Name = "Btncancelar";
             this.Btncancelar.Size = new System.Drawing.Size(75, 23);
             this.Btncancelar.TabIndex = 62;
@@ -162,7 +164,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(3, 56);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(763, 209);
+            this.webBrowser1.Size = new System.Drawing.Size(331, 123);
             this.webBrowser1.TabIndex = 60;
             this.webBrowser1.Visible = false;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -174,16 +176,28 @@
             this.comboMesAño1.Size = new System.Drawing.Size(205, 29);
             this.comboMesAño1.TabIndex = 63;
             // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 402);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(504, 87);
+            this.label1.TabIndex = 65;
+            this.label1.Text = resources.GetString("label1.Text");
+            // 
             // frmTipodeCambio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 475);
+            this.ClientSize = new System.Drawing.Size(504, 489);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Buscar);
             this.Controls.Add(this.comboMesAño1);
             this.Controls.Add(this.Btncancelar);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.webBrowser1);
+            this.MinimumSize = new System.Drawing.Size(520, 528);
             this.Name = "frmTipodeCambio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipo de Cambio";
@@ -205,5 +219,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Año;
         private System.Windows.Forms.DataGridViewTextBoxColumn Compra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Venta;
+        private System.Windows.Forms.Label label1;
     }
 }

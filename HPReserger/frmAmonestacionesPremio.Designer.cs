@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab = new System.Windows.Forms.TabControl();
             this.Memo = new System.Windows.Forms.TabPage();
             this.lblMemo = new System.Windows.Forms.Label();
@@ -54,17 +54,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Grid = new System.Windows.Forms.DataGridView();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btnGenerar = new System.Windows.Forms.Button();
+            this.btnAdjuntarSustento = new System.Windows.Forms.Button();
+            this.txtRuta = new System.Windows.Forms.TextBox();
+            this.btndescargar = new System.Windows.Forms.Button();
+            this.btnmodificiar = new System.Windows.Forms.Button();
+            this.btneliminar = new System.Windows.Forms.Button();
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NDI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.APELLIDOSNOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OBSERVACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
-            this.btnGenerar = new System.Windows.Forms.Button();
-            this.btnAdjuntarSustento = new System.Windows.Forms.Button();
-            this.txtRuta = new System.Windows.Forms.TextBox();
-            this.btndescargar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
             this.tab.SuspendLayout();
             this.Memo.SuspendLayout();
             this.Premio.SuspendLayout();
@@ -77,6 +80,7 @@
             // 
             this.tab.Controls.Add(this.Memo);
             this.tab.Controls.Add(this.Premio);
+            this.tab.Enabled = false;
             this.tab.ItemSize = new System.Drawing.Size(100, 18);
             this.tab.Location = new System.Drawing.Point(11, 231);
             this.tab.Name = "tab";
@@ -207,7 +211,7 @@
             this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(161, 20);
-            this.txtNumeroDocumento.TabIndex = 78;
+            this.txtNumeroDocumento.TabIndex = 1;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
             this.txtNumeroDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumeroDocumento_KeyDown);
@@ -304,14 +308,15 @@
             this.Grid.AllowUserToDeleteRows = false;
             this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Registro,
@@ -328,8 +333,86 @@
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(418, 178);
             this.Grid.TabIndex = 73;
+            this.Grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellContentClick);
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.Location = new System.Drawing.Point(402, 196);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(418, 436);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFoto.TabIndex = 74;
+            this.pbFoto.TabStop = false;
+            this.pbFoto.DoubleClick += new System.EventHandler(this.pbFoto_DoubleClick);
+            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Enabled = false;
+            this.btnGenerar.Location = new System.Drawing.Point(11, 638);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(94, 23);
+            this.btnGenerar.TabIndex = 108;
+            this.btnGenerar.Text = "Generar";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
+            // 
+            // btnAdjuntarSustento
+            // 
+            this.btnAdjuntarSustento.Enabled = false;
+            this.btnAdjuntarSustento.Location = new System.Drawing.Point(12, 196);
+            this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
+            this.btnAdjuntarSustento.Size = new System.Drawing.Size(121, 23);
+            this.btnAdjuntarSustento.TabIndex = 107;
+            this.btnAdjuntarSustento.Text = "Adjuntar Imagen";
+            this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
+            this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
+            // 
+            // txtRuta
+            // 
+            this.txtRuta.Enabled = false;
+            this.txtRuta.Location = new System.Drawing.Point(139, 196);
+            this.txtRuta.Name = "txtRuta";
+            this.txtRuta.Size = new System.Drawing.Size(245, 20);
+            this.txtRuta.TabIndex = 109;
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(583, 601);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 110;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
+            // 
+            // btnmodificiar
+            // 
+            this.btnmodificiar.Enabled = false;
+            this.btnmodificiar.Location = new System.Drawing.Point(402, 638);
+            this.btnmodificiar.Name = "btnmodificiar";
+            this.btnmodificiar.Size = new System.Drawing.Size(94, 23);
+            this.btnmodificiar.TabIndex = 111;
+            this.btnmodificiar.Text = "Modificiar";
+            this.btnmodificiar.UseVisualStyleBackColor = true;
+            this.btnmodificiar.Click += new System.EventHandler(this.btnmodificiar_Click);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.Enabled = false;
+            this.btneliminar.Location = new System.Drawing.Point(502, 638);
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.Size = new System.Drawing.Size(94, 23);
+            this.btneliminar.TabIndex = 112;
+            this.btneliminar.Text = "Eliminar";
+            this.btneliminar.UseVisualStyleBackColor = true;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // Registro
             // 
@@ -342,8 +425,8 @@
             // CODIGOTIPO
             // 
             this.CODIGOTIPO.DataPropertyName = "CODIGOTIPO";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle6;
             this.CODIGOTIPO.HeaderText = "CODIGOTIPO";
             this.CODIGOTIPO.Name = "CODIGOTIPO";
             this.CODIGOTIPO.ReadOnly = true;
@@ -352,9 +435,9 @@
             // TIPOID
             // 
             this.TIPOID.DataPropertyName = "TIPOID";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle7;
             this.TIPOID.HeaderText = "TIPO ID";
             this.TIPOID.Name = "TIPOID";
             this.TIPOID.ReadOnly = true;
@@ -365,8 +448,8 @@
             // NDI
             // 
             this.NDI.DataPropertyName = "NID";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.NDI.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NDI.DefaultCellStyle = dataGridViewCellStyle8;
             this.NDI.HeaderText = "Nº ID";
             this.NDI.Name = "NDI";
             this.NDI.ReadOnly = true;
@@ -389,57 +472,15 @@
             this.OBSERVACIONES.Name = "OBSERVACIONES";
             this.OBSERVACIONES.ReadOnly = true;
             // 
-            // pbFoto
+            // btncancelar
             // 
-            this.pbFoto.Location = new System.Drawing.Point(402, 196);
-            this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(418, 436);
-            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFoto.TabIndex = 74;
-            this.pbFoto.TabStop = false;
-            this.pbFoto.DoubleClick += new System.EventHandler(this.pbFoto_DoubleClick);
-            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
-            // 
-            // btnGenerar
-            // 
-            this.btnGenerar.Location = new System.Drawing.Point(11, 638);
-            this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(94, 23);
-            this.btnGenerar.TabIndex = 108;
-            this.btnGenerar.Text = "Generar";
-            this.btnGenerar.UseVisualStyleBackColor = true;
-            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
-            // 
-            // btnAdjuntarSustento
-            // 
-            this.btnAdjuntarSustento.Location = new System.Drawing.Point(12, 196);
-            this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
-            this.btnAdjuntarSustento.Size = new System.Drawing.Size(121, 23);
-            this.btnAdjuntarSustento.TabIndex = 107;
-            this.btnAdjuntarSustento.Text = "Adjuntar Imagen";
-            this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
-            this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
-            // 
-            // txtRuta
-            // 
-            this.txtRuta.Location = new System.Drawing.Point(139, 196);
-            this.txtRuta.Name = "txtRuta";
-            this.txtRuta.Size = new System.Drawing.Size(245, 20);
-            this.txtRuta.TabIndex = 109;
-            // 
-            // btndescargar
-            // 
-            this.btndescargar.AutoEllipsis = true;
-            this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(583, 601);
-            this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
-            this.btndescargar.TabIndex = 110;
-            this.btndescargar.Text = "Descargar";
-            this.btndescargar.UseVisualStyleBackColor = false;
-            this.btndescargar.Visible = false;
-            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
-            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
+            this.btncancelar.Location = new System.Drawing.Point(726, 638);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(94, 23);
+            this.btncancelar.TabIndex = 113;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // frmAmonestacionesPremio
             // 
@@ -448,6 +489,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(832, 670);
+            this.Controls.Add(this.btncancelar);
+            this.Controls.Add(this.btneliminar);
+            this.Controls.Add(this.btnmodificiar);
             this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.txtRuta);
             this.Controls.Add(this.btnGenerar);
@@ -505,13 +549,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblPremio;
         private System.Windows.Forms.TextBox txtRuta;
+        private System.Windows.Forms.TextBox lblmensajito;
+        private System.Windows.Forms.Button btndescargar;
+        private System.Windows.Forms.Button btnmodificiar;
+        private System.Windows.Forms.Button btneliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOTIPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPOID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NDI;
         private System.Windows.Forms.DataGridViewTextBoxColumn APELLIDOSNOMBRES;
         private System.Windows.Forms.DataGridViewTextBoxColumn OBSERVACIONES;
-        private System.Windows.Forms.TextBox lblmensajito;
-        private System.Windows.Forms.Button btndescargar;
+        private System.Windows.Forms.Button btncancelar;
     }
 }

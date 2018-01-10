@@ -16,7 +16,9 @@ namespace HPReserger
     {
         public int TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
-
+        public int año;
+        public DateTime fechainicial;
+        public string numero = "";
         public frmRetencionRenta()
         {
             InitializeComponent();
@@ -24,13 +26,16 @@ namespace HPReserger
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void frmRetencionRenta_Load(object sender, EventArgs e)
         {
-            rptRetencionRemta Reporte = new rptRetencionRemta();
-            Reporte.Refresh();
-            Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
-            Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
+            RptGenerarRenta reporte = new RptGenerarRenta();
+            reporte.Refresh();
+            reporte.SetParameterValue(0, 0);
+            reporte.SetParameterValue(1, TipoDocumento);
+            reporte.SetParameterValue(2, NumeroDocumento);
+            reporte.SetParameterValue(3, año);
+            reporte.SetParameterValue(4, fechainicial);
             //Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS, datos.DATASOURCE, datos.BASEDEDATOS);
-            Reporte.SetDatabaseLogon("mmendoza", "123");
-            crvRetencionRenta.ReportSource = Reporte;
+            reporte.SetDatabaseLogon("mmendoza", "123");
+            crvRetencionRenta.ReportSource = reporte;
         }
     }
 }

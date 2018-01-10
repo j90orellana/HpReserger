@@ -40,6 +40,7 @@
             this.crvRetencionRenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvRetencionRenta.Location = new System.Drawing.Point(0, 0);
             this.crvRetencionRenta.Name = "crvRetencionRenta";
+            this.crvRetencionRenta.ShowLogo = false;
             this.crvRetencionRenta.Size = new System.Drawing.Size(885, 740);
             this.crvRetencionRenta.TabIndex = 0;
             this.crvRetencionRenta.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;

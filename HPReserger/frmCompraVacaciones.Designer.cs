@@ -63,11 +63,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtEquivaleDias = new System.Windows.Forms.TextBox();
             this.btnComprarVacaciones = new System.Windows.Forms.Button();
+            this.cbopago = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtobservacion = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtobservacion);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.cbopago);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.txtMontoPactado);
             this.groupBox1.Controls.Add(this.label18);
@@ -101,16 +109,17 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtEquivaleDias);
-            this.groupBox1.Location = new System.Drawing.Point(17, 9);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(477, 261);
+            this.groupBox1.Size = new System.Drawing.Size(471, 308);
             this.groupBox1.TabIndex = 72;
             this.groupBox1.TabStop = false;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(352, 226);
+            this.label17.Location = new System.Drawing.Point(330, 200);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(19, 13);
             this.label17.TabIndex = 127;
@@ -119,7 +128,7 @@
             // txtMontoPactado
             // 
             this.txtMontoPactado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMontoPactado.Location = new System.Drawing.Point(377, 226);
+            this.txtMontoPactado.Location = new System.Drawing.Point(355, 193);
             this.txtMontoPactado.MaxLength = 30;
             this.txtMontoPactado.Name = "txtMontoPactado";
             this.txtMontoPactado.Size = new System.Drawing.Size(85, 20);
@@ -130,7 +139,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(270, 226);
+            this.label18.Location = new System.Drawing.Point(248, 200);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(80, 13);
             this.label18.TabIndex = 125;
@@ -139,7 +148,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(123, 226);
+            this.label19.Location = new System.Drawing.Point(101, 200);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(19, 13);
             this.label19.TabIndex = 124;
@@ -148,7 +157,7 @@
             // txtMontoPropuesto
             // 
             this.txtMontoPropuesto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMontoPropuesto.Location = new System.Drawing.Point(148, 226);
+            this.txtMontoPropuesto.Location = new System.Drawing.Point(126, 193);
             this.txtMontoPropuesto.MaxLength = 30;
             this.txtMontoPropuesto.Name = "txtMontoPropuesto";
             this.txtMontoPropuesto.ReadOnly = true;
@@ -159,7 +168,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(10, 226);
+            this.label20.Location = new System.Drawing.Point(6, 196);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(88, 13);
             this.label20.TabIndex = 122;
@@ -168,7 +177,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(352, 191);
+            this.label15.Location = new System.Drawing.Point(330, 174);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(19, 13);
             this.label15.TabIndex = 121;
@@ -177,7 +186,7 @@
             // txtSueldoDiario
             // 
             this.txtSueldoDiario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSueldoDiario.Location = new System.Drawing.Point(377, 191);
+            this.txtSueldoDiario.Location = new System.Drawing.Point(355, 167);
             this.txtSueldoDiario.MaxLength = 30;
             this.txtSueldoDiario.Name = "txtSueldoDiario";
             this.txtSueldoDiario.ReadOnly = true;
@@ -188,7 +197,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(270, 191);
+            this.label16.Location = new System.Drawing.Point(248, 174);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(70, 13);
             this.label16.TabIndex = 119;
@@ -197,7 +206,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(123, 191);
+            this.label10.Location = new System.Drawing.Point(101, 174);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(19, 13);
             this.label10.TabIndex = 118;
@@ -206,7 +215,7 @@
             // txtSueldoMensual
             // 
             this.txtSueldoMensual.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSueldoMensual.Location = new System.Drawing.Point(148, 191);
+            this.txtSueldoMensual.Location = new System.Drawing.Point(126, 167);
             this.txtSueldoMensual.MaxLength = 30;
             this.txtSueldoMensual.Name = "txtSueldoMensual";
             this.txtSueldoMensual.ReadOnly = true;
@@ -217,7 +226,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 191);
+            this.label9.Location = new System.Drawing.Point(6, 170);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(83, 13);
             this.label9.TabIndex = 116;
@@ -226,7 +235,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(295, 88);
+            this.label5.Location = new System.Drawing.Point(272, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 115;
@@ -235,7 +244,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(148, 88);
+            this.label12.Location = new System.Drawing.Point(128, 72);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
             this.label12.TabIndex = 114;
@@ -244,7 +253,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 88);
+            this.label4.Location = new System.Drawing.Point(6, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 13);
             this.label4.TabIndex = 113;
@@ -253,7 +262,7 @@
             // txtUltimoPeriodoHasta
             // 
             this.txtUltimoPeriodoHasta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtUltimoPeriodoHasta.Location = new System.Drawing.Point(336, 53);
+            this.txtUltimoPeriodoHasta.Location = new System.Drawing.Point(316, 39);
             this.txtUltimoPeriodoHasta.MaxLength = 30;
             this.txtUltimoPeriodoHasta.Name = "txtUltimoPeriodoHasta";
             this.txtUltimoPeriodoHasta.ReadOnly = true;
@@ -264,7 +273,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(295, 53);
+            this.label2.Location = new System.Drawing.Point(272, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 111;
@@ -273,7 +282,7 @@
             // txtUltimoPeriodoDesde
             // 
             this.txtUltimoPeriodoDesde.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtUltimoPeriodoDesde.Location = new System.Drawing.Point(192, 53);
+            this.txtUltimoPeriodoDesde.Location = new System.Drawing.Point(169, 39);
             this.txtUltimoPeriodoDesde.MaxLength = 30;
             this.txtUltimoPeriodoDesde.Name = "txtUltimoPeriodoDesde";
             this.txtUltimoPeriodoDesde.ReadOnly = true;
@@ -284,7 +293,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(148, 53);
+            this.label3.Location = new System.Drawing.Point(125, 46);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 109;
@@ -293,7 +302,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 53);
+            this.label1.Location = new System.Drawing.Point(6, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 13);
             this.label1.TabIndex = 108;
@@ -302,7 +311,7 @@
             // txtDiasComprar
             // 
             this.txtDiasComprar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDiasComprar.Location = new System.Drawing.Point(148, 156);
+            this.txtDiasComprar.Location = new System.Drawing.Point(126, 114);
             this.txtDiasComprar.MaxLength = 30;
             this.txtDiasComprar.Name = "txtDiasComprar";
             this.txtDiasComprar.ReadOnly = true;
@@ -313,7 +322,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 156);
+            this.label14.Location = new System.Drawing.Point(6, 117);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(81, 13);
             this.label14.TabIndex = 106;
@@ -322,7 +331,7 @@
             // txtDiasUtilizados
             // 
             this.txtDiasUtilizados.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDiasUtilizados.Location = new System.Drawing.Point(270, 156);
+            this.txtDiasUtilizados.Location = new System.Drawing.Point(248, 114);
             this.txtDiasUtilizados.MaxLength = 30;
             this.txtDiasUtilizados.Name = "txtDiasUtilizados";
             this.txtDiasUtilizados.ReadOnly = true;
@@ -333,7 +342,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(188, 156);
+            this.label13.Location = new System.Drawing.Point(166, 121);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(76, 13);
             this.label13.TabIndex = 104;
@@ -342,7 +351,7 @@
             // txtMaximoDias
             // 
             this.txtMaximoDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMaximoDias.Location = new System.Drawing.Point(437, 156);
+            this.txtMaximoDias.Location = new System.Drawing.Point(415, 114);
             this.txtMaximoDias.MaxLength = 30;
             this.txtMaximoDias.Name = "txtMaximoDias";
             this.txtMaximoDias.ReadOnly = true;
@@ -353,7 +362,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(313, 156);
+            this.label11.Location = new System.Drawing.Point(291, 121);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(117, 13);
             this.label11.TabIndex = 99;
@@ -363,7 +372,7 @@
             // 
             this.dtpPeriodoComprarHasta.CalendarTrailingForeColor = System.Drawing.Color.White;
             this.dtpPeriodoComprarHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpPeriodoComprarHasta.Location = new System.Drawing.Point(336, 88);
+            this.dtpPeriodoComprarHasta.Location = new System.Drawing.Point(316, 65);
             this.dtpPeriodoComprarHasta.Name = "dtpPeriodoComprarHasta";
             this.dtpPeriodoComprarHasta.Size = new System.Drawing.Size(85, 20);
             this.dtpPeriodoComprarHasta.TabIndex = 97;
@@ -374,7 +383,7 @@
             this.dtpPeriodoComprarDesde.CalendarTitleBackColor = System.Drawing.Color.Yellow;
             this.dtpPeriodoComprarDesde.CalendarTrailingForeColor = System.Drawing.Color.Red;
             this.dtpPeriodoComprarDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpPeriodoComprarDesde.Location = new System.Drawing.Point(192, 88);
+            this.dtpPeriodoComprarDesde.Location = new System.Drawing.Point(169, 65);
             this.dtpPeriodoComprarDesde.Name = "dtpPeriodoComprarDesde";
             this.dtpPeriodoComprarDesde.Size = new System.Drawing.Size(85, 20);
             this.dtpPeriodoComprarDesde.TabIndex = 95;
@@ -383,7 +392,7 @@
             // txtFechaInicioLabores
             // 
             this.txtFechaInicioLabores.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFechaInicioLabores.Location = new System.Drawing.Point(151, 19);
+            this.txtFechaInicioLabores.Location = new System.Drawing.Point(169, 13);
             this.txtFechaInicioLabores.MaxLength = 30;
             this.txtFechaInicioLabores.Name = "txtFechaInicioLabores";
             this.txtFechaInicioLabores.ReadOnly = true;
@@ -394,7 +403,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 19);
+            this.label8.Location = new System.Drawing.Point(6, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(136, 13);
             this.label8.TabIndex = 93;
@@ -403,16 +412,16 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(193, 123);
+            this.label7.Location = new System.Drawing.Point(171, 95);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 13);
+            this.label7.Size = new System.Drawing.Size(103, 13);
             this.label7.TabIndex = 92;
-            this.label7.Text = "días de vacaciones";
+            this.label7.Text = "Días de vacaciones";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 123);
+            this.label6.Location = new System.Drawing.Point(6, 91);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 91;
@@ -421,7 +430,7 @@
             // txtEquivaleDias
             // 
             this.txtEquivaleDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEquivaleDias.Location = new System.Drawing.Point(148, 123);
+            this.txtEquivaleDias.Location = new System.Drawing.Point(126, 88);
             this.txtEquivaleDias.MaxLength = 2;
             this.txtEquivaleDias.Name = "txtEquivaleDias";
             this.txtEquivaleDias.ReadOnly = true;
@@ -439,17 +448,55 @@
             this.btnComprarVacaciones.UseVisualStyleBackColor = true;
             this.btnComprarVacaciones.Click += new System.EventHandler(this.btnComprarVacaciones_Click);
             // 
+            // cbopago
+            // 
+            this.cbopago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbopago.FormattingEnabled = true;
+            this.cbopago.Items.AddRange(new object[] {
+            "Adelanto de Pago",
+            "Pago Normal"});
+            this.cbopago.Location = new System.Drawing.Point(126, 140);
+            this.cbopago.Name = "cbopago";
+            this.cbopago.Size = new System.Drawing.Size(181, 21);
+            this.cbopago.TabIndex = 128;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 143);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(106, 13);
+            this.label21.TabIndex = 129;
+            this.label21.Text = "Pago de Vacaciones";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 225);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(70, 13);
+            this.label22.TabIndex = 130;
+            this.label22.Text = "Observacion:";
+            // 
+            // txtobservacion
+            // 
+            this.txtobservacion.Location = new System.Drawing.Point(82, 225);
+            this.txtobservacion.MaxLength = 500;
+            this.txtobservacion.Multiline = true;
+            this.txtobservacion.Name = "txtobservacion";
+            this.txtobservacion.Size = new System.Drawing.Size(358, 45);
+            this.txtobservacion.TabIndex = 131;
+            // 
             // frmCompraVacaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(506, 308);
+            this.ClientSize = new System.Drawing.Size(471, 308);
             this.Controls.Add(this.btnComprarVacaciones);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(522, 347);
-            this.MinimumSize = new System.Drawing.Size(522, 347);
+            this.MinimumSize = new System.Drawing.Size(487, 347);
             this.Name = "frmCompraVacaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Compra de Vacaciones";
@@ -497,5 +544,9 @@
         private System.Windows.Forms.TextBox txtMontoPropuesto;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnComprarVacaciones;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox cbopago;
+        private System.Windows.Forms.TextBox txtobservacion;
+        private System.Windows.Forms.Label label22;
     }
 }

@@ -27,23 +27,41 @@ namespace HPReserger
         public string Nombres { get; set; }
         public string AdjuntarCV { get; set; }
         public string nombreArchivo { get; set; }
+        public DateTime FechaNac;
         HPResergerCapaLogica.HPResergerCL clPostulanteModificar = new HPResergerCapaLogica.HPResergerCL();
 
         public frmPostulanteModificar()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         string cadenita = "";
+        DataTable TablaTipoID;
+        public void CargarTiposID(string tabla)
+        {
+            TablaTipoID = new DataTable();
+            TablaTipoID = clPostulanteModificar.CualquierTabla(tabla, "Desc_Tipo_ID", "RUC");
+            cboTipoDocumento.DisplayMember = "Desc_Tipo_ID";
+            cboTipoDocumento.ValueMember = "Codigo_Tipo_ID";
+            cboTipoDocumento.DataSource = TablaTipoID;
+        }
+        public void ModificarTamañoTipo(TextBox txt, int index)
+        {
+            if (index >= 0 && TablaTipoID != null)
+            {
+                DataRow Filita = TablaTipoID.Rows[index];
+                txt.MaxLength = (int)Filita["Length"];
+            }
+        }
         private void frmPostulanteModificar_Load(object sender, EventArgs e)
         {
-            CargarCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
-
+            CargarTiposID("TBL_Tipo_ID");
             cboTipoDocumento.Text = TipoDocumento;
             txtDocumento.Text = NumeroDocumento;
             txtApellidoPaterno.Text = ApellidoPaterno;
             txtApellidoMaterno.Text = ApellidoMaterno;
             txtNombres.Text = Nombres;
+            dtpFechaNacimiento.Value = FechaNac;
             cadenita = txtAdjuntarCV.Text = AdjuntarCV;
             CargarFoto(CodigoTipoDocumento, NumeroDocumento);
 
@@ -109,7 +127,7 @@ namespace HPReserger
                 if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
                 {
                     byte[] Fotito = new byte[0];
-                    Fotito = (byte[])drFoto["Foto"];
+                    Foto = Fotito = (byte[])drFoto["Foto"];
                     MemoryStream ms = new MemoryStream(Fotito);
                     pbFoto.Image = Bitmap.FromStream(ms);
                 }
@@ -156,6 +174,12 @@ namespace HPReserger
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (txtDocumento.Text.Length != txtDocumento.MaxLength && cboTipoDocumento.Text != "CARNE EXTRANJERIA")
+            {
+                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtDocumento.Focus();
+                return;
+            }
             if (txtDocumento.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -183,7 +207,17 @@ namespace HPReserger
                 txtNombres.Focus();
                 return;
             }
-
+            DataRow Filita = clPostulanteModificar.CalcularEdad(dtpFechaNacimiento.Value, DateTime.Now, 1);
+            if (Filita != null)
+            {
+                if ((int)Filita["edad"] < 18)
+                {
+                    MessageBox.Show("El Postulante Debe ser Mayor de Edad", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    dtpFechaNacimiento.Focus();
+                    return;
+                }
+            }
+            else { return; }
             if (txtAdjuntarCV.Text.Length == 0 || pbFoto.Image == null)
             {
                 MessageBox.Show("Seleccione Imagen", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -192,7 +226,9 @@ namespace HPReserger
             }
             if (Foto == null)
             {
-                Foto = File.ReadAllBytes(txtAdjuntarCV.Text);
+                MessageBox.Show("Seleccione Imagen", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                btnAdjuntarCV.Focus();
+                return;
             }
 
             if (chkReasignarSolicitud.Checked == true)
@@ -209,7 +245,7 @@ namespace HPReserger
                 }
             }
 
-            clPostulanteModificar.PostulanteModificar(CodigoTipoDocumento, NumeroDocumento, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Foto, txtAdjuntarCV.Text, Solicitud);
+            clPostulanteModificar.PostulanteModificar(CodigoTipoDocumento, NumeroDocumento, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Foto, txtAdjuntarCV.Text, Solicitud,dtpFechaNacimiento.Value);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
@@ -269,6 +305,26 @@ namespace HPReserger
         private void btndescargar_Click(object sender, EventArgs e)
         {
             HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
+        }
+
+        private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ModificarTamañoTipo(txtDocumento, cboTipoDocumento.SelectedIndex);
+        }
+
+        private void txtDocumento_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtDocumento, txtDocumento.MaxLength);
+        }
+
+        private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            DataRow Filita = clPostulanteModificar.CalcularEdad(dtpFechaNacimiento.Value, DateTime.Now, 1);
+            if (Filita != null)
+            {
+                txtedad.Text = Filita["edad"].ToString();
+            }
+            else { return; }
         }
     }
 }

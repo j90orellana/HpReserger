@@ -661,9 +661,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.getCargoTipoContratacion(Campo1, Campo2, Tabla);
         }
 
-        public void SolicitudEmpleadoInsertar(int Numero, int Cargo, int TipoContratacion, string Busqueda, string AplicaTerna, int Area, int CantPuestos, int NroOrdenCompra, byte[] Foto, string NombreFoto, int Usuario)
+        public void SolicitudEmpleadoInsertar(int Numero, int Cargo, int TipoContratacion, string Busqueda, string AplicaTerna, int Area, int gerencia, int CantPuestos, int NroOrdenCompra, byte[] Foto, string NombreFoto, int Usuario)
         {
-            cdOrdenPedido.SolicitudEmpleadoInsertar(Numero, Cargo, TipoContratacion, Busqueda, AplicaTerna, Area, CantPuestos, NroOrdenCompra, Foto, NombreFoto, Usuario);
+            cdOrdenPedido.SolicitudEmpleadoInsertar(Numero, Cargo, TipoContratacion, Busqueda, AplicaTerna, Area, gerencia, CantPuestos, NroOrdenCompra, Foto, NombreFoto, Usuario);
         }
 
         public DataTable ListarSE(int Usuario)
@@ -684,9 +684,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarSEPostulantes(Usuario);
         }
 
-        public void PostulanteInsertar(int Tipo_ID_Postulante, string Nro_ID_Postulante, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, int ID_Puesto_Postulante, byte[] Foto, string NombreFoto, int OC, int SE, int Usuario)
+        public void PostulanteInsertar(int Tipo_ID_Postulante, string Nro_ID_Postulante, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, int ID_Puesto_Postulante, byte[] Foto, string NombreFoto, int OC, int SE, int Usuario, DateTime fecha)
         {
-            cdOrdenPedido.PostulanteInsertar(Tipo_ID_Postulante, Nro_ID_Postulante, Apepat_Postulante, Apemat_Postulante, Nombres_Postulante, ID_Puesto_Postulante, Foto, NombreFoto, OC, SE, Usuario);
+            cdOrdenPedido.PostulanteInsertar(Tipo_ID_Postulante, Nro_ID_Postulante, Apepat_Postulante, Apemat_Postulante, Nombres_Postulante, ID_Puesto_Postulante, Foto, NombreFoto, OC, SE, Usuario, fecha);
         }
 
         public DataTable ListarPostulanteSE(int Solicitud)
@@ -714,9 +714,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.DatosPostulante(Tipo, Numero);
         }
 
-        public void EmpleadoRequerimiento(int Tipo_ID_Emp, string Nro_ID_Emp, string Correo, string Correo_Obs, string Celular, string Celular_Obs, string Pc, string Pc_Obs, string Otros, string Otros_Obs, int Usuario, int Opcion)
+        public void EmpleadoRequerimiento(int Tipo_ID_Emp, string Nro_ID_Emp, string Correo, string Correo_Obs, string Celular, string Celular_Obs, string Pc, string Pc_Obs, string Otros, string Otros_Obs, int Usuario, int Opcion, string nombre, byte[] foto)
         {
-            cdOrdenPedido.EmpleadoRequerimiento(Tipo_ID_Emp, Nro_ID_Emp, Correo, Correo_Obs, Celular, Celular_Obs, Pc, Pc_Obs, Otros, Otros_Obs, Usuario, Opcion);
+            cdOrdenPedido.EmpleadoRequerimiento(Tipo_ID_Emp, Nro_ID_Emp, Correo, Correo_Obs, Celular, Celular_Obs, Pc, Pc_Obs, Otros, Otros_Obs, Usuario, Opcion, nombre, foto);
         }
 
         public void EmpleadoCTS(int Tipo_ID_Emp, string Nro_ID_Emp, int Banco, int Moneda, string Nro_Cta, string Nro_Cci, int Usuario, int Opcion)
@@ -729,9 +729,9 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.EmpleadoPagoHaberes(Tipo_ID_Emp, Nro_ID_Emp, Banco, Moneda, Nro_Cta, Nro_Cci, Usuario, Opcion);
         }
 
-        public void EmpleadoSeguroPension(int Tipo_ID_Emp, string Nro_ID_Emp, string Eps, int Eps_Adicional, string Sctr, string Onp, string Afp, int Afp_Empresa, string Nro_Cupss, int Usuario, int Opcion)
+        public void EmpleadoSeguroPension(int Tipo_ID_Emp, string Nro_ID_Emp, string Eps, int Eps_Adicional, string Sctr, string Onp, string Afp, int Afp_Empresa, string Nro_Cupss, int Usuario, int Opcion, int descuento, decimal descvalor, int aplica, int plann)
         {
-            cdOrdenPedido.EmpleadoSeguroPension(Tipo_ID_Emp, Nro_ID_Emp, Eps, Eps_Adicional, Sctr, Onp, Afp, Afp_Empresa, Nro_Cupss, Usuario, Opcion);
+            cdOrdenPedido.EmpleadoSeguroPension(Tipo_ID_Emp, Nro_ID_Emp, Eps, Eps_Adicional, Sctr, Onp, Afp, Afp_Empresa, Nro_Cupss, Usuario, Opcion, descuento, descvalor, aplica, plann);
         }
 
         public DataTable ListarJefeInmediato(int tipo, string documento, int opcion)
@@ -744,9 +744,9 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.EmpleadoContrato(numero, Tipo_ID_Emp, Nro_ID_Emp, tipocontra, adendas, mercadoobra, jefe, Tipo_Contrato, Cargo, Gerencia, Area, tipojefe, Jefe_Inmediato, Empresa, Proyecto, Sede, Fec_Inicio, Periodo_Laboral, Fec_Fin, Sueldo, Bono, Bono_Importe, Bono_Periodicidad, Contrato_Img, Contrato, AnxFunc_Img, AnxFunc, SolPrac_Img, SolPrac, Otros_Img, Otros, Usuario, Opcion);
         }
 
-        public void EmpleadoFamilia(int Tipo_ID_Emp, string Nro_ID_Emp, int Vinculo_Familiar, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old, int Tipo_ID_Fam_New, string Nro_ID_Fam_New, string Apepat_Fam, string Apemat_Fam, string Nombres_Fam, DateTime Fec_Nacimiento_Fam, string Ocupacion, int Usuario, int Opcion, byte[] foto, string nombrefoto)
+        public void EmpleadoFamilia(int Tipo_ID_Emp, string Nro_ID_Emp, int Vinculo_Familiar, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old, int Tipo_ID_Fam_New, string Nro_ID_Fam_New, string Apepat_Fam, string Apemat_Fam, string Nombres_Fam, DateTime Fec_Nacimiento_Fam, string Ocupacion, int Usuario, int Opcion, byte[] foto, string nombrefoto, int sexo, int estudia)
         {
-            cdOrdenPedido.EmpleadoFamilia(Tipo_ID_Emp, Nro_ID_Emp, Vinculo_Familiar, Tipo_ID_Fam_Old, Nro_ID_Fam_Old, Tipo_ID_Fam_New, Nro_ID_Fam_New, Apepat_Fam, Apemat_Fam, Nombres_Fam, Fec_Nacimiento_Fam, Ocupacion, Usuario, Opcion, foto, nombrefoto);
+            cdOrdenPedido.EmpleadoFamilia(Tipo_ID_Emp, Nro_ID_Emp, Vinculo_Familiar, Tipo_ID_Fam_Old, Nro_ID_Fam_Old, Tipo_ID_Fam_New, Nro_ID_Fam_New, Apepat_Fam, Apemat_Fam, Nombres_Fam, Fec_Nacimiento_Fam, Ocupacion, Usuario, Opcion, foto, nombrefoto, sexo, estudia);
         }
 
         public DataTable ListarEmpleadoFamilia(int CodugoDocumento, string NumeroDocumento)
@@ -799,14 +799,14 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.CargarCualquierImagenPostulanteEmpleado(CampoBuscado, Tabla, PrimerCampoComparativo, PrimerValor, SegundoCampoComparativo, SegundoValorComparativo);
         }
 
-        public void PostulanteModificar(int Tipo_ID_Postulante_Old, string Nro_ID_Postulante_Old, int Tipo_ID_Postulante_New, string Nro_ID_Postulante_New, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, byte[] Foto, string NombreFoto, int Id_SolicitaEmpleado)
+        public void PostulanteModificar(int Tipo_ID_Postulante_Old, string Nro_ID_Postulante_Old, int Tipo_ID_Postulante_New, string Nro_ID_Postulante_New, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, byte[] Foto, string NombreFoto, int Id_SolicitaEmpleado, DateTime fecnacimiento)
         {
-            cdOrdenPedido.PostulanteModificar(Tipo_ID_Postulante_Old, Nro_ID_Postulante_Old, Tipo_ID_Postulante_New, Nro_ID_Postulante_New, Apepat_Postulante, Apemat_Postulante, Nombres_Postulante, Foto, NombreFoto, Id_SolicitaEmpleado);
+            cdOrdenPedido.PostulanteModificar(Tipo_ID_Postulante_Old, Nro_ID_Postulante_Old, Tipo_ID_Postulante_New, Nro_ID_Postulante_New, Apepat_Postulante, Apemat_Postulante, Nombres_Postulante, Foto, NombreFoto, Id_SolicitaEmpleado, fecnacimiento);
         }
 
-        public DataTable ListarEmpleado(int Opcion, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp)
+        public DataTable ListarEmpleado(int Opcion, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp, int tipo, string doc, int pos)
         {
-            return cdOrdenPedido.ListarEmpleado(Opcion, Apepat_Emp, Apemat_Emp, Nombres_Emp);
+            return cdOrdenPedido.ListarEmpleado(Opcion, Apepat_Emp, Apemat_Emp, Nombres_Emp, tipo, doc, pos);
         }
 
         public void EmpleadoModificar(int pais, string lugar, int Tipo_ID_Emp_New, string Nro_ID_Emp_New, int Tipo_ID_Emp_Old, string Nro_ID_Emp_Old, string Apepat_Emp, string Apemat_Emp, string Nombres_Emp, int Sexo, DateTime Fec_Nacimiento, int Lugar_Nacimiento, int Estado_Civil, int Hijos, string Direccion, int Distrito, int Provincia, int Departamento, string Telf_Fijo, string Telf_Celular, int Profesion, int Grado_Instruccion, byte[] AntecedentesPoliciales, string NombreFotoAntecedentesPoliciales, byte[] AntecedentesPenales, string NombreFotoAntecedentesPenales, byte[] ReciboServicios, string NombreFotoReciboServicios, byte[] foto, string nombrefoto, byte[] firma, string nombrefirma)
@@ -853,9 +853,21 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.EliminarSolicitudEmpleado(Solicitud);
         }
 
+        public DataTable CualquierTabla(string Tabla)
+        {
+            return cdOrdenPedido.CualquierTabla(Tabla);
+        }
+        public DataTable CualquierTabla(string Tabla, string campo, string fila)
+        {
+            return cdOrdenPedido.CualquierTabla(Tabla, campo, fila);
+        }
         public DataRow Correlativo(string Tabla)
         {
             return cdOrdenPedido.Correlativo(Tabla);
+        }
+        public DataRow CorrelativoCampo(string Tabla, string campo)
+        {
+            return cdOrdenPedido.CorrelativoCampo(Tabla, campo);
         }
 
         public DataTable ListarSECombo(int Usuario, int Solicitud)
@@ -872,7 +884,10 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.EmpleadoVacacionesInsertar(out Numero, Tipo_ID_Emp, Nro_ID_Emp, Fec_Inicio, Fec_Fin, Dias_Vacaciones, Observaciones);
         }
-
+        public DataRow UltimoRegistoVacaciones(int tipo, string doc)
+        {
+            return cdOrdenPedido.UltimoRegistoVacaciones(tipo, doc);
+        }
         public DataTable AreaGerencia(int Gerencia)
         {
             return cdOrdenPedido.AreaGerencia(Gerencia);
@@ -918,9 +933,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.Sueldo(Tipo_ID_Emp, Nro_ID_Emp);
         }
 
-        public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado, int usuario)
+        public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado, int usuario, int pago, string observacion)
         {
-            cdOrdenPedido.ComprarVacaciones(Tipo_ID_Emp, Nro_ID_Emp, Desde, Hasta, Dias_Pendiente, Monto_Propuesto, Monto_Pactado, usuario);
+            cdOrdenPedido.ComprarVacaciones(Tipo_ID_Emp, Nro_ID_Emp, Desde, Hasta, Dias_Pendiente, Monto_Propuesto, Monto_Pactado, usuario, pago, observacion);
         }
 
         public void EmpleadoFaltas(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias, string Observaciones, byte[] Foto, string NombreFoto, int estado)
@@ -1254,9 +1269,17 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarActualizarCargo(cod, opcion, cargo, usuario);
         }
-        public DataTable InsertarActualizarEmpresaEps(int @cod, int @opcion, string @cargo, int @usuario)
+        public DataTable InsertarActualizarEmpresaEps(int @cod, int @opcion, string @cargo, int @usuario, decimal beneficiario, decimal adicional1, decimal adicional2, decimal adicional3, Boolean activo)
         {
-            return cdOrdenPedido.InsertarActualizarEmpresaEps(cod, opcion, cargo, usuario);
+            return cdOrdenPedido.InsertarActualizarEmpresaEps(cod, opcion, cargo, usuario, beneficiario, adicional1, adicional2, adicional3, activo);
+        }
+        public DataTable InsertarActualizarEmpresaEpsPLanes(int @cod, int codplan, int @opcion, string @cargo, int @usuario, decimal beneficiario, decimal adicional1, decimal adicional2, decimal adicional3)
+        {
+            return cdOrdenPedido.InsertarActualizarEmpresaEpsPLanes(cod, codplan, opcion, cargo, usuario, beneficiario, adicional1, adicional2, adicional3);
+        }
+        public DataTable PLanesdelaEmpresa()
+        {
+            return cdOrdenPedido.PLanesdelaEmpresa();
         }
         public DataTable InsertarActualizarEpsAdicional(int @cod, int @opcion, string @cargo, int @usuario)
         {
@@ -1425,10 +1448,49 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.TablaSolicitudes(opcion, jefe, accion, valor, estado, solicita, observacion);
         }
-        public DataTable EmpresasExternas(int opcion, int registro, int codigo, string ruc, string empresa, int certificado, decimal importe, byte[] foto, string nombrefoto, int usuario, DateTime fecha)
+        public DataTable EmpresasExternas(int opcion, int registro, int codigo, string ruc, string empresa, int certificado, decimal importe, decimal renta, byte[] foto, string nombrefoto, int usuario, DateTime fecha)
         {
-            return cdOrdenPedido.EmpresasExternas(opcion, registro, codigo, ruc, empresa, certificado, importe, foto, nombrefoto, usuario, fecha);
-
+            return cdOrdenPedido.EmpresasExternas(opcion, registro, codigo, ruc, empresa, certificado, importe, renta, foto, nombrefoto, usuario, fecha);
+        }
+        public DataTable DesvinculacionOtrosDscto(int opcion, int registro, int tipo, string numero, string motivo, decimal importe, byte[] descuento, string nombredesc, int usuario)
+        {
+            return cdOrdenPedido.DesvinculacionOtrosDscto(opcion, registro, tipo, numero, motivo, importe, descuento, nombredesc, usuario);
+        }
+        public DataTable AbonosExternos(int opcion, DateTime fecha, int empresa, int codigo, string ruc, decimal importe, int usuario)
+        {
+            return cdOrdenPedido.AbonosExternos(opcion, fecha, empresa, codigo, ruc, importe, usuario);
+        }
+        public DataTable SolicitudEmpleadoExt(int numero, int area, string servicio, string observacion, int estado, int usuario)
+        {
+            return cdOrdenPedido.SolicitudEmpleadoExt(numero, area, servicio, observacion, estado, usuario);
+        }
+        public DataRow EmpresaEPsMOntosMaximos(int numero, int codigo)
+        {
+            return cdOrdenPedido.EmpresaEPsMOntosMaximos(numero, codigo);
+        }
+        public DataTable ActualizarMemoPremio(int codigo, int tipoid, string numero, int tipo, string observacion)
+        {
+            return cdOrdenPedido.ActualizarMemoPremio(codigo, tipoid, numero, tipo, observacion);
+        }
+        public DataTable ReporteBoletas(int empresa, int tipo, string numero, int fecha, DateTime fecinicio, DateTime fecfin)
+        {
+            return cdOrdenPedido.ReporteBoletas(empresa, tipo, numero, fecha, fecinicio, fecfin);
+        }
+        public DataTable CargosAreas(int opcion, int cargo, int area)
+        {
+            return cdOrdenPedido.CargosAreas(opcion, cargo, area);
+        }
+        public DataRow EmpleadoFamiliaExiste(int Tipo_ID_Emp, string Nro_ID_Emp, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old)
+        {
+            return cdOrdenPedido.EmpleadoFamiliaExiste(Tipo_ID_Emp, Nro_ID_Emp, Tipo_ID_Fam_Old, Nro_ID_Fam_Old);
+        }
+        public DataRow CalcularEdad(DateTime fecha, DateTime hoy, int opcion)
+        {
+            return cdOrdenPedido.CalcularEdad(fecha, hoy, opcion);
+        }
+        public DataRow AprobarPostulantePrevia(int Tipo_ID_Postulante, string Nro_ID_Postulante, int Id_SolicitaEmpleado, int opcion)
+        {
+            return cdOrdenPedido.AprobarPostulantePrevia(Tipo_ID_Postulante, Nro_ID_Postulante, Id_SolicitaEmpleado, opcion);
         }
     }
 }

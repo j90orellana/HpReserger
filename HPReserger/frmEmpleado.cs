@@ -12,7 +12,7 @@ using System.Drawing.Imaging;
 
 namespace HPReserger
 {
-    public partial class frmEmpleado : Form, IProfesion
+    public partial class frmEmpleado : Form, IProfesion, IFormEmpleado
     {
         HPResergerCapaLogica.HPResergerCL clEmpleado = new HPResergerCapaLogica.HPResergerCL();
         public byte[] FotoAntecedentesPoliciales { get; set; }
@@ -37,6 +37,11 @@ namespace HPReserger
             InitializeComponent();
         }
         string cadena = "";
+        public void CargarContratos()
+        {
+            //CargarDatosEmpleado((int)cboTipoDocumento.SelectedValue, txtNumeroDocumento.Text);
+            txtNumeroDocumento_TextChanged(this, new EventArgs());
+        }
         public void CargarProfesion()
         {
             cadena = cboProfesion.Text;
@@ -84,10 +89,26 @@ namespace HPReserger
             pbfirma.Image = null;
             txtfirma.Text = "";
         }
-
+        DataTable TablaTipoID;
+        public void CargarTiposID(string tabla)
+        {
+            TablaTipoID = new DataTable();
+            TablaTipoID = clEmpleado.CualquierTabla(tabla);
+            cboTipoDocumento.DisplayMember = "Desc_Tipo_ID";
+            cboTipoDocumento.ValueMember = "Codigo_Tipo_ID";
+            cboTipoDocumento.DataSource = TablaTipoID;
+        }
+        public void ModificarTamañoTipo(TextBox txt, int index)
+        {
+            if (index >= 0 && TablaTipoID != null)
+            {
+                DataRow Filita = TablaTipoID.Rows[index];
+                txt.MaxLength = (int)Filita["Length"];
+            }
+        }
         private void frmEmpleado_Load(object sender, EventArgs e)
         {
-            CargaCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
+            CargarTiposID("TBL_Tipo_ID");
             CargaCombos(cboSexo, "Id_Sexo", "Sexo", "TBL_Sexo");
             CargaCombos(cboEstadoCivil, "Id_EstCivil", "EstadoCivil", "TBL_EstadoCivil");
             CargaCombos2(cboProfesion, "Id_Profesion", "Profesion", "TBL_Profesion");
@@ -144,6 +165,7 @@ namespace HPReserger
                         frmContrato.NumeroDocumento = txtNumeroDocumento.Text;
                         frmContrato.CodigoEmpleado = int.Parse(txtcodigo.Text);
                         frmContrato.MdiParent = this.MdiParent;
+                        frmContrato.Icon = this.Icon;
                         frmContrato.FormClosed += new FormClosedEventHandler(cerrarcontrato);
                         frmContrato.Show();
                     }
@@ -199,6 +221,7 @@ namespace HPReserger
                         frmHab.CodigoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
                         frmHab.NumeroDocumento = txtNumeroDocumento.Text;
                         frmHab.MdiParent = this.MdiParent;
+                        frmHab.Icon = this.Icon;
                         frmHab.FormClosed += new FormClosedEventHandler(cerrarpagohaberes);
                         frmHab.Show();
                     }
@@ -247,6 +270,7 @@ namespace HPReserger
                         frmCTS.CodigoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
                         frmCTS.NumeroDocumento = txtNumeroDocumento.Text;
                         frmCTS.MdiParent = this.MdiParent;
+                        frmCTS.Icon = this.Icon;
                         frmCTS.FormClosed += new FormClosedEventHandler(cerrarcts);
                         frmCTS.Show();
                     }
@@ -294,6 +318,7 @@ namespace HPReserger
                         frmReq.CodigoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
                         frmReq.NumeroDocumento = txtNumeroDocumento.Text;
                         frmReq.MdiParent = this.MdiParent;
+                        frmReq.Icon = this.Icon;
                         frmReq.FormClosed += new FormClosedEventHandler(cerrarrequerimientos);
                         frmReq.Show();
                     }
@@ -587,7 +612,7 @@ namespace HPReserger
                 }
             }
         }
-
+        DateTime FEchaActual;
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
             NewEmpleado = true;
@@ -595,6 +620,7 @@ namespace HPReserger
             {
                 if (cboTipoDocumento.SelectedIndex > -1)
                 {
+                    FEchaActual = DateTime.Now;
                     DataRow DatosP = clEmpleado.DatosPostulante(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                     if (DatosP != null)
                     {
@@ -605,6 +631,7 @@ namespace HPReserger
                         txtApellidoMaterno.Text = DatosP["APELLIDOMATERNO"].ToString();
                         txtNombres.Text = DatosP["NOMBRES"].ToString();
                         txttipo.Text = DatosP["CONTRATACION"].ToString();
+                        FEchaActual = dtpFecha.Value = (DateTime)DatosP["FechaNacimiento"];
                         if (estadito == 1)
                         {
                             if (DatosP["TIPO"].ToString() == "2" || DatosP["TIPO"].ToString() == "3")
@@ -657,7 +684,7 @@ namespace HPReserger
                 cboSexo.Text = DatosE["SEXO"].ToString();
                 cboEstadoCivil.Text = DatosE["ESTADOCIVIL"].ToString();
                 txtNHijos.Text = DatosE["NROHIJOS"].ToString();
-                dtpFecha.Value = Convert.ToDateTime(DatosE["FECHANACIMIENTO"].ToString());
+                FEchaActual = dtpFecha.Value = Convert.ToDateTime(DatosE["FECHANACIMIENTO"].ToString());
                 cboLugarNacimiento.Text = DatosE["LUGARNACIMIENTO"].ToString();
                 txtDireccion.Text = DatosE["DIRECCION"].ToString();
                 cboDepartamento.Text = DatosE["DEPARTAMENTO"].ToString();
@@ -764,7 +791,7 @@ namespace HPReserger
                 btnfoto.Visible = false;
                 cboSexo.Text = txtDireccion.Text = txtTelefonoFijo.Text = txtTelefonoCelular.Text =
                   txtAntecedentesPoliciales.Text = txtAntecedentesPenales.Text = txtReciboServicio.Text = "";// txttipo.Text = "";
-                dtpFecha.Value = DateTime.Now; txtcodigo.Text = "00000";
+                dtpFecha.Value = FEchaActual; txtcodigo.Text = "00000";
                 EmpleadoExiste = false;
                 cboDepartamento.SelectedIndex = cboProvincia.SelectedIndex = -1; cbopais.SelectedIndex = -1;
                 cboDistrito.SelectedIndex = cboSexo.SelectedIndex = -1;
@@ -890,6 +917,7 @@ namespace HPReserger
                         frmPS.NumeroDocumento = txtNumeroDocumento.Text;
                         frmPS.NuevoPensionSeguro = NewEmpleado;
                         frmPS.MdiParent = this.MdiParent;
+                        frmPS.Icon = this.Icon;
                         frmPS.FormClosed += new FormClosedEventHandler(cerrarpensionseguro);
                         frmPS.Show();
                     }
@@ -937,6 +965,7 @@ namespace HPReserger
                         frmF = new frmFamiliares();
                         frmF.CodigoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
                         frmF.NumeroDocumento = txtNumeroDocumento.Text;
+                        frmF.Icon = this.Icon;
                         frmF.MdiParent = this.MdiParent;
                         frmF.FormClosed += new FormClosedEventHandler(cerrarventanafamiliares);
                         frmF.Show();
@@ -967,19 +996,20 @@ namespace HPReserger
                 CargarDatosEmpleado(frmLE.TipoDocumento, frmLE.NumeroDocumento);
                 NewEmpleado = frmLE.UpdateEmpleado;
                 CodigoTipoDocumento = frmLE.TipoDocumento;
-                NumeroDocumento = frmLE.NumeroDocumento;
+                txtNumeroDocumento.Text = NumeroDocumento = frmLE.NumeroDocumento;
             }
             txtNumeroDocumento_TextChanged(sender, e);
         }
 
         private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ModificarTamañoTipo(txtNumeroDocumento, cboTipoDocumento.SelectedIndex);
             txtNumeroDocumento_TextChanged(sender, e);
         }
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 10);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, txtNumeroDocumento.MaxLength);
         }
 
         private void txtTelefonoFijo_KeyDown(object sender, KeyEventArgs e)
@@ -1178,6 +1208,12 @@ namespace HPReserger
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (txtNumeroDocumento.Text.Length != txtNumeroDocumento.MaxLength && txtNumeroDocumento.Text != "0701046971")
+            {
+                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtNumeroDocumento.Focus();
+                return;
+            }
             DataRow DatosE = clEmpleado.DatosEmpleado((int)cboTipoDocumento.SelectedValue, txtNumeroDocumento.Text);
             if (DatosE != null)
                 txtNHijos.Text = DatosE["NROHIJOS"].ToString();
@@ -1208,6 +1244,18 @@ namespace HPReserger
                 txtDireccion.Focus();
                 return;
             }
+            DataRow Filita = clEmpleado.CalcularEdad(dtpFecha.Value, DateTime.Now, 1);
+            if (Filita != null)
+            {
+                if ((int)Filita["edad"] < 18)
+                {
+                    MessageBox.Show("El Empleado Debe ser Mayor de Edad", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    dtpFecha.Focus();
+                    return;
+                }
+            }
+            else { return; }
+
             /*if (txtTelefonoFijo.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Teléfono Fijo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -1220,25 +1268,27 @@ namespace HPReserger
                 txtTelefonoCelular.Focus();
                 return;
             }
-            if (txtAntecedentesPoliciales.Text.Length == 0)
+            if (txttipo.Text != "RECIBO POR HONORARIOS")
             {
-                MessageBox.Show("Seleccione Imagen Antecedentes Policiales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                btnAntecedentesPoliciales.Focus();
-                return;
+                if (txtAntecedentesPoliciales.Text.Length == 0)
+                {
+                    MessageBox.Show("Seleccione Imagen Antecedentes Policiales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    btnAntecedentesPoliciales.Focus();
+                    return;
+                }
+                if (txtAntecedentesPenales.Text.Length == 0)
+                {
+                    MessageBox.Show("Seleccione Imagen Antecedentes Penales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    btnAntecedentesPenales.Focus();
+                    return;
+                }
+                if (txtReciboServicio.Text.Length == 0)
+                {
+                    MessageBox.Show("Seleccione Imagen de Recibo Servicios", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    btnReciboServicios.Focus();
+                    return;
+                }
             }
-            if (txtAntecedentesPenales.Text.Length == 0)
-            {
-                MessageBox.Show("Seleccione Imagen Antecedentes Penales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                btnAntecedentesPenales.Focus();
-                return;
-            }
-            if (txtReciboServicio.Text.Length == 0)
-            {
-                MessageBox.Show("Seleccione Imagen de Recibo Servicios", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                btnReciboServicios.Focus();
-                return;
-            }
-
             if (cboTipoDocumento.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -1293,7 +1343,10 @@ namespace HPReserger
                 txtlugarnacimiento.Focus();
                 return;
             }
-
+            if (cbopais.Text.Trim() != "PERÚ")
+            {
+                txtlugarnacimiento.Focus(); cboLugarNacimiento.SelectedIndex = 0;
+            }
             if (cboProfesion.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione Profesión", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -1337,18 +1390,23 @@ namespace HPReserger
             DataTable DatosEmpleados = clEmpleado.usuarios(txtNumeroDocumento.Text, (int)cboTipoDocumento.SelectedValue, 1);
             if (DatosEmpleados != null)
             {
-                filitas = DatosEmpleados.Rows[0];
-                if (filitas["loginuser"].ToString() == frmLogin.LoginUser)
+                if (DatosEmpleados.Rows.Count > 0)
                 {
-                    IForm Iforma = this.MdiParent as IForm;
-                    if (Iforma != null)
+                    filitas = DatosEmpleados.Rows[0];
+                    if (filitas["loginuser"].ToString() == frmLogin.LoginUser)
                     {
-                        Iforma.CambiarImagen(pbfotoempleado);
+                        IForm Iforma = this.MdiParent as IForm;
+                        if (Iforma != null)
+                        {
+                            Iforma.CambiarImagen(pbfotoempleado);
+                        }
                     }
                 }
             }
             Iniciar(false);
             BloquearControles(true);
+            if (NewEmpleado)
+                txtNumeroDocumento_TextChanged(sender, e);
             //base.loa
             ///mostrar imagen;
 
@@ -1414,7 +1472,7 @@ namespace HPReserger
         Image FotoEmp;
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-            txtNumeroDocumento.Text = "";
+            //            txtNumeroDocumento.Text = "";
             estadito = 1;
             BloquearControles(false);
             Iniciar(true);
@@ -1424,7 +1482,9 @@ namespace HPReserger
             txttipo.Enabled = false;
             Contratoactivo = null;
             btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
+            btnfoto.Visible = true;
             FotoEmp = pbfotoempleado.Image;
+            cbopais.SelectedIndex = cbopais.FindString("PERÚ");
         }
         private void pbfotoempleado_MouseUp(object sender, MouseEventArgs e)
         {
@@ -1462,7 +1522,5 @@ namespace HPReserger
         {
             tip.SetToolTip(txttipo, txttipo.Text);
         }
-
-
     }
 }

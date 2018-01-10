@@ -29,7 +29,8 @@ namespace HPReserger
             Valores = new DataTable();
             Valores.Columns.Add("Codigo", typeof(int));
             Valores.Columns.Add("Valor", typeof(string));
-            Valores.Rows.Add(0, "No Retenerle Renta");
+            Valores.Rows.Add(0, "Retener Renta");
+            Valores.Rows.Add(10, "No Retenerle Renta");
             Valores.Rows.Add(1, "Certificado de Retención de 5ta Categoría");
             Valores.Rows.Add(2, "Trabaja en otra Empresa");
             cboCertificados.ValueMember = "codigo";
@@ -47,7 +48,7 @@ namespace HPReserger
             cboCertificados.SelectedValue = 1;
 
             DataTable DatosEmp = new DataTable();
-            DatosEmp = CapaLogica.EmpresasExternas(0, 0, CodigoEmpleado, "", "", 0, 0, null, "", 0, DateTime.Now);
+            DatosEmp = CapaLogica.EmpresasExternas(0, 0, CodigoEmpleado, "", "", 0, 0, 0, null, "", 0, DateTime.Now);
             if (DatosEmp.Rows.Count > 0)
             {
                 DataRow DatosF = DatosEmp.Rows[0];
@@ -55,7 +56,8 @@ namespace HPReserger
                 txtruc.txt.Text = DatosF["ruc_empresa"].ToString();
                 txtempresa.Text = DatosF["empresa"].ToString();
                 cboCertificados.SelectedValue = int.Parse(DatosF["certificado_declaracion"].ToString());
-                numimporte.Num.Text = DatosF["importe_renta5ta"].ToString();
+                numimporte.Num.Text = DatosF["Importe_Ingresos"].ToString();
+                numrenta.Num.Text = DatosF["importe_renta5ta"].ToString();
                 txtnombreimagen.Text = DatosF["nombre_imagendocumento"].ToString();
                 if (DatosF["imagen_documento"].ToString() != null && DatosF["imagen_documento"].ToString().Length > 0)
                 {
@@ -77,6 +79,7 @@ namespace HPReserger
                 txtruc.txt.Text = "";
                 txtempresa.Text = "-ingrese nombre de la empresa-";
                 numimporte.Num.Text = "0.00";
+                cboCertificados.SelectedIndex = 0;
             }
             iniciar(false);
         }
@@ -134,9 +137,9 @@ namespace HPReserger
                     }
                 }
                 if (NroRegsitro == 0)
-                    CapaLogica.EmpresasExternas(1, NroRegsitro, CodigoEmpleado, txtruc.txt.Text, txtempresa.Text, (int)cboCertificados.SelectedValue, decimal.Parse(numimporte.Num.Text), Foto, txtnombreimagen.Text, frmLogin.CodigoUsuario, comboMesAño1.GetFechaPRimerDia());
+                    CapaLogica.EmpresasExternas(1, NroRegsitro, CodigoEmpleado, txtruc.txt.Text, txtempresa.Text, (int)cboCertificados.SelectedValue, decimal.Parse(numimporte.Num.Text), decimal.Parse(numrenta.Num.Text), Foto, txtnombreimagen.Text, frmLogin.CodigoUsuario, comboMesAño1.GetFechaPRimerDia());
                 else
-                    CapaLogica.EmpresasExternas(2, NroRegsitro, CodigoEmpleado, txtruc.txt.Text, txtempresa.Text, (int)cboCertificados.SelectedValue, decimal.Parse(numimporte.Num.Text), Foto, txtnombreimagen.Text, frmLogin.CodigoUsuario, comboMesAño1.GetFechaPRimerDia());
+                    CapaLogica.EmpresasExternas(2, NroRegsitro, CodigoEmpleado, txtruc.txt.Text, txtempresa.Text, (int)cboCertificados.SelectedValue, decimal.Parse(numimporte.Num.Text), decimal.Parse(numrenta.Num.Text), Foto, txtnombreimagen.Text, frmLogin.CodigoUsuario, comboMesAño1.GetFechaPRimerDia());
                 msg("Guardado Con Exito");
                 iniciar(false);
                 estado = 0;
@@ -154,7 +157,7 @@ namespace HPReserger
                 estado = 0;
             }
             else this.Close();
-            if (estado == 10) NroRegsitro--;            
+            if (estado == 10) NroRegsitro--;
         }
 
         private void cboCertificados_SelectedIndexChanged(object sender, EventArgs e)

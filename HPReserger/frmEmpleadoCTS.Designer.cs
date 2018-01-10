@@ -75,7 +75,7 @@
             // txtCuentaCCI
             // 
             this.txtCuentaCCI.Location = new System.Drawing.Point(3, 100);
-            this.txtCuentaCCI.MaxLength = 30;
+            this.txtCuentaCCI.MaxLength = 20;
             this.txtCuentaCCI.Name = "txtCuentaCCI";
             this.txtCuentaCCI.Size = new System.Drawing.Size(210, 20);
             this.txtCuentaCCI.TabIndex = 3;

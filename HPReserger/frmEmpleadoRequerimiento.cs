@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,22 @@ namespace HPReserger
                 txtObservacionesCorreo.Text = ExisteRequerimiento["CORREO_OBS"].ToString();
                 cboOtros.Text = ExisteRequerimiento["OTROS"].ToString();
                 txtObservacionesOtros.Text = ExisteRequerimiento["OTROS_OBS"].ToString();
+
+                if (ExisteRequerimiento["Imagen"] != null && ExisteRequerimiento["Imagen"].ToString().Length > 0)
+                {
+                    byte[] Fotito = new byte[0];
+                    Foto = Fotito = (byte[])ExisteRequerimiento["Imagen"];
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbimagen.Image = Bitmap.FromStream(ms);
+                    txtimagen.Text = ExisteRequerimiento["NombreImagen"].ToString();
+                }
+                else
+                {
+                    pbimagen.Image = null;
+                    Foto = null; txtimagen.Text = "";
+                }
+
+
                 btnModificar.Enabled = true;
                 btnRegistrar.Enabled = false;
                 btnexportar.Enabled = true;
@@ -131,7 +148,7 @@ namespace HPReserger
 
         private void GrabarEditar(int Opcion)
         {
-            clEmpleadoRequerimiento.EmpleadoRequerimiento(CodigoDocumento, NumeroDocumento, cboCorreo.SelectedItem.ToString(), txtObservacionesCorreo.Text, cboCelular.SelectedItem.ToString(), txtObservacionesCelular.Text, cboMaquina.SelectedItem.ToString(), txtObservacionesMaquina.Text, cboOtros.SelectedItem.ToString(), txtObservacionesOtros.Text, frmLogin.CodigoUsuario, Opcion);
+            clEmpleadoRequerimiento.EmpleadoRequerimiento(CodigoDocumento, NumeroDocumento, cboCorreo.SelectedItem.ToString(), txtObservacionesCorreo.Text, cboCelular.SelectedItem.ToString(), txtObservacionesCelular.Text, cboMaquina.SelectedItem.ToString(), txtObservacionesMaquina.Text, cboOtros.SelectedItem.ToString(), txtObservacionesOtros.Text, frmLogin.CodigoUsuario, Opcion, txtimagen.Text, Foto);
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -280,6 +297,40 @@ namespace HPReserger
             reporterequerimientos.ShowDialog();
             //requeri.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, savefile.FileName);
             //   }
+        }
+        MemoryStream _memoryStream = new MemoryStream();
+        public byte[] Foto { get; set; }
+        private void btnimagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialogoAbrirArchivoOtros = new OpenFileDialog();
+            dialogoAbrirArchivoOtros.Filter = "Jpg Files|*.jpg";
+            dialogoAbrirArchivoOtros.DefaultExt = ".jpg";
+            dialogoAbrirArchivoOtros.ShowDialog(this);
+            txtimagen.Text = dialogoAbrirArchivoOtros.FileName.ToString();
+            if (dialogoAbrirArchivoOtros.FileName != string.Empty)
+            {
+                _memoryStream.Position = 0;
+                _memoryStream.SetLength(0);
+                _memoryStream.Capacity = 0;
+
+                pbimagen.Image = Image.FromFile(dialogoAbrirArchivoOtros.FileName);
+                pbimagen.Image.Save(_memoryStream, ImageFormat.Jpeg);
+                Foto = File.ReadAllBytes(dialogoAbrirArchivoOtros.FileName);
+            }
+        }
+        public void MostrarFoto(PictureBox fotito)
+        {
+            if (fotito.Image != null)
+            {
+                FrmFoto foto = new FrmFoto();
+                foto.fotito = fotito.Image;
+                foto.Owner = this.MdiParent;
+                foto.ShowDialog();
+            }
+        }
+        private void lklimagen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MostrarFoto(pbimagen);
         }
     }
 }

@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFamiliares));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,6 +60,10 @@
             this.txtconviviente = new System.Windows.Forms.TextBox();
             this.lblconviviente = new System.Windows.Forms.Label();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.cbosexo = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.check18 = new System.Windows.Forms.CheckBox();
+            this.btncancelar = new System.Windows.Forms.Button();
             this.CODIGOTIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NROID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +77,8 @@
             this.OCUPACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreimagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estudia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).BeginInit();
             this.SuspendLayout();
@@ -122,6 +129,7 @@
             this.cboTipoDocumentoIdentidad.FormattingEnabled = true;
             resources.ApplyResources(this.cboTipoDocumentoIdentidad, "cboTipoDocumentoIdentidad");
             this.cboTipoDocumentoIdentidad.Name = "cboTipoDocumentoIdentidad";
+            this.cboTipoDocumentoIdentidad.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumentoIdentidad_SelectedIndexChanged);
             // 
             // cboVinculoFamiliar
             // 
@@ -180,14 +188,14 @@
             this.Grid.AllowUserToResizeRows = false;
             this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGOTIPOID,
             this.TIPOID,
@@ -201,7 +209,17 @@
             this.EDAD,
             this.OCUPACION,
             this.imagen,
-            this.nombreimagen});
+            this.nombreimagen,
+            this.sexo,
+            this.estudia});
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Grid.DefaultCellStyle = dataGridViewCellStyle21;
             this.Grid.GridColor = System.Drawing.Color.White;
             resources.ApplyResources(this.Grid, "Grid");
             this.Grid.Name = "Grid";
@@ -224,6 +242,7 @@
             resources.ApplyResources(this.pbconviviente, "pbconviviente");
             this.pbconviviente.Name = "pbconviviente";
             this.pbconviviente.TabStop = false;
+            this.pbconviviente.Click += new System.EventHandler(this.pbconviviente_Click);
             // 
             // lklconviviente
             // 
@@ -257,6 +276,31 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.Grid_DoubleClick);
             // 
+            // cbosexo
+            // 
+            this.cbosexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbosexo.FormattingEnabled = true;
+            resources.ApplyResources(this.cbosexo, "cbosexo");
+            this.cbosexo.Name = "cbosexo";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // check18
+            // 
+            resources.ApplyResources(this.check18, "check18");
+            this.check18.Name = "check18";
+            this.check18.UseVisualStyleBackColor = true;
+            // 
+            // btncancelar
+            // 
+            resources.ApplyResources(this.btncancelar, "btncancelar");
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
             // CODIGOTIPOID
             // 
             this.CODIGOTIPOID.DataPropertyName = "CODIGOTIPOID";
@@ -268,8 +312,8 @@
             // 
             this.TIPOID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TIPOID.DataPropertyName = "TIPODOCUMENTO";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(this.TIPOID, "TIPOID");
             this.TIPOID.Name = "TIPOID";
             this.TIPOID.ReadOnly = true;
@@ -292,7 +336,7 @@
             // 
             // VINCULOFAMILIAR
             // 
-            this.VINCULOFAMILIAR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.VINCULOFAMILIAR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.VINCULOFAMILIAR.DataPropertyName = "VINCULOFAMILIAR";
             resources.ApplyResources(this.VINCULOFAMILIAR, "VINCULOFAMILIAR");
             this.VINCULOFAMILIAR.Name = "VINCULOFAMILIAR";
@@ -302,9 +346,9 @@
             // 
             this.APEPAT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.APEPAT.DataPropertyName = "APELLIDOPATERNO";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.APEPAT.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.APEPAT.DefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(this.APEPAT, "APEPAT");
             this.APEPAT.Name = "APEPAT";
             this.APEPAT.ReadOnly = true;
@@ -315,9 +359,9 @@
             // 
             this.APEMAT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.APEMAT.DataPropertyName = "APELLIDOMATERNO";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.APEMAT.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.APEMAT.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(this.APEMAT, "APEMAT");
             this.APEMAT.Name = "APEMAT";
             this.APEMAT.ReadOnly = true;
@@ -328,8 +372,8 @@
             // 
             this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.NOMBRES.DataPropertyName = "NOMBRES";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.NOMBRES.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.NOMBRES.DefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(this.NOMBRES, "NOMBRES");
             this.NOMBRES.Name = "NOMBRES";
             this.NOMBRES.ReadOnly = true;
@@ -340,9 +384,9 @@
             // 
             this.FECHANACIMIENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FECHANACIMIENTO.DataPropertyName = "FECHA";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FECHANACIMIENTO.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FECHANACIMIENTO.DefaultCellStyle = dataGridViewCellStyle20;
             resources.ApplyResources(this.FECHANACIMIENTO, "FECHANACIMIENTO");
             this.FECHANACIMIENTO.Name = "FECHANACIMIENTO";
             this.FECHANACIMIENTO.ReadOnly = true;
@@ -357,7 +401,6 @@
             // 
             // OCUPACION
             // 
-            this.OCUPACION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.OCUPACION.DataPropertyName = "OCUPACION";
             resources.ApplyResources(this.OCUPACION, "OCUPACION");
             this.OCUPACION.Name = "OCUPACION";
@@ -377,10 +420,28 @@
             this.nombreimagen.Name = "nombreimagen";
             this.nombreimagen.ReadOnly = true;
             // 
+            // sexo
+            // 
+            this.sexo.DataPropertyName = "sexo";
+            resources.ApplyResources(this.sexo, "sexo");
+            this.sexo.Name = "sexo";
+            this.sexo.ReadOnly = true;
+            // 
+            // estudia
+            // 
+            this.estudia.DataPropertyName = "estudia";
+            resources.ApplyResources(this.estudia, "estudia");
+            this.estudia.Name = "estudia";
+            this.estudia.ReadOnly = true;
+            // 
             // frmFamiliares
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btncancelar);
+            this.Controls.Add(this.check18);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.cbosexo);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.pbconviviente);
             this.Controls.Add(this.lklconviviente);
@@ -441,6 +502,10 @@
         private System.Windows.Forms.TextBox txtconviviente;
         private System.Windows.Forms.Label lblconviviente;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.ComboBox cbosexo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox check18;
+        private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOTIPOID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPOID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NROID;
@@ -454,5 +519,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OCUPACION;
         private System.Windows.Forms.DataGridViewTextBoxColumn imagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreimagen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estudia;
     }
 }

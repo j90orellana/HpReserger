@@ -20,6 +20,7 @@ namespace HPReserger
         public int tipo;
         public string numero = "";
         public int fecha;
+        public int año;
         public DateTime fechainicial;
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void fmReporteRemuneracionRenta_Load(object sender, EventArgs e)
@@ -29,6 +30,8 @@ namespace HPReserger
             reporte.SetParameterValue(0, empresa);
             reporte.SetParameterValue(1, tipo);
             reporte.SetParameterValue(2, numero);
+            reporte.SetParameterValue(3, año);
+            reporte.SetParameterValue(4, fechainicial);
             ///  reporte.SetParameterValue(3, fecha);
             ///   reporte.SetParameterValue(4, fechainicial);
             reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);

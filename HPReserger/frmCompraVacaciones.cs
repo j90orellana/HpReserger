@@ -12,7 +12,7 @@ namespace HPReserger
 {
     public partial class frmCompraVacaciones : Form
     {
-        public int TipoDocumento{ get; set; }
+        public int TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
 
         public string FechaInicioLabores { get; set; }
@@ -54,6 +54,7 @@ namespace HPReserger
             dtpPeriodoComprarHasta.Value = DateTime.Now.Date;
 
             CalcularSueldo(TipoDocumento, NumeroDocumento);
+            cbopago.SelectedIndex = 0;
         }
 
         private void txtMontoPactado_KeyPress(object sender, KeyPressEventArgs e)
@@ -72,7 +73,7 @@ namespace HPReserger
             DiasGenerado = clCompraVacaciones.DiasGenerado(TipoDocumento, NumeroDocumento, dtpPeriodoComprarDesde.Value);
             if (!DiasGenerado.IsNull("DIAS"))
             {
-                txtEquivaleDias.Text = DiasGenerado["DIAS"].ToString();
+                txtEquivaleDias.Text = ((decimal)DiasGenerado["DIAS"]).ToString("n2");
             }
 
             CalcularSueldo(TipoDocumento, NumeroDocumento);
@@ -102,7 +103,11 @@ namespace HPReserger
                 MessageBox.Show("Solo puedes tomar " + Convert.ToString(txtMaximoDias.Text) + " días de vacaciones como máximo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
+            if (Convert.ToInt32(txtDiasComprar.Text) > 15)
+            {
+                MessageBox.Show("Solo puedes Comprar 15 Días Como Máximo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
             DateTime FechaMaxima;
             DataRow MaximaFecha = clCompraVacaciones.MaximaFechaATomar(TipoDocumento, NumeroDocumento);
             if (!MaximaFecha.IsNull("FECHA"))
@@ -119,7 +124,7 @@ namespace HPReserger
 
             if (MessageBox.Show("¿ Seguro de Comprar las Vacaciones ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                clCompraVacaciones.ComprarVacaciones(TipoDocumento, NumeroDocumento, dtpPeriodoComprarDesde.Value, dtpPeriodoComprarHasta.Value, Convert.ToInt32(txtDiasComprar.Text), Convert.ToDecimal(txtMontoPropuesto.Text), Convert.ToDecimal(txtMontoPactado.Text),frmLogin.CodigoUsuario);
+                clCompraVacaciones.ComprarVacaciones(TipoDocumento, NumeroDocumento, dtpPeriodoComprarDesde.Value, dtpPeriodoComprarHasta.Value, Convert.ToInt32(txtDiasComprar.Text), Convert.ToDecimal(txtMontoPropuesto.Text), Convert.ToDecimal(txtMontoPactado.Text), frmLogin.CodigoUsuario,cbopago.SelectedIndex+1,txtobservacion.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }

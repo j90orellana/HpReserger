@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -90,18 +90,17 @@
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.grpcontrato = new System.Windows.Forms.Panel();
+            this.btnEmpresaExt = new System.Windows.Forms.Button();
             this.btnbonos = new System.Windows.Forms.Button();
             this.lbladenda = new System.Windows.Forms.Label();
             this.btnobradeterminada = new System.Windows.Forms.Button();
             this.cbotipocontratacion = new System.Windows.Forms.ComboBox();
             this.cboTipoContrato = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.cboCargo = new System.Windows.Forms.ComboBox();
             this.cboEmpresa = new System.Windows.Forms.ComboBox();
             this.cboGerencia = new System.Windows.Forms.ComboBox();
             this.cboJefeInmediato = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtImporteBono = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.lblfechacese = new System.Windows.Forms.Label();
@@ -110,11 +109,7 @@
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.dtpfechacese = new System.Windows.Forms.DateTimePicker();
             this.txtSalario = new System.Windows.Forms.TextBox();
-            this.cboBono = new System.Windows.Forms.ComboBox();
-            this.txtPeriodicidad = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.cboSede = new System.Windows.Forms.ComboBox();
             this.cboProyecto = new System.Windows.Forms.ComboBox();
             this.cboArea = new System.Windows.Forms.ComboBox();
@@ -145,7 +140,7 @@
             this.pbFotoAnexoFunciones = new System.Windows.Forms.PictureBox();
             this.pbFotoOtros = new System.Windows.Forms.PictureBox();
             this.pbFotoContrato = new System.Windows.Forms.PictureBox();
-            this.btnEmpresaExt = new System.Windows.Forms.Button();
+            this.cboCargo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.grpcontrato.SuspendLayout();
             this.grpcontra.SuspendLayout();
@@ -221,7 +216,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(286, 93);
+            this.label9.Location = new System.Drawing.Point(279, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 8;
@@ -292,14 +287,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NRO,
@@ -340,30 +335,30 @@
             this.USUARIO,
             this.FECHA});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Location = new System.Drawing.Point(17, 398);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(710, 217);
             this.dtgconten.TabIndex = 149;
@@ -546,8 +541,8 @@
             // 
             this.PERIODO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.PERIODO.DataPropertyName = "PERIODO";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.PERIODO.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PERIODO.DefaultCellStyle = dataGridViewCellStyle2;
             this.PERIODO.HeaderText = "PERIODO";
             this.PERIODO.Name = "PERIODO";
             this.PERIODO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -704,6 +699,7 @@
             // 
             // grpcontrato
             // 
+            this.grpcontrato.Controls.Add(this.cboCargo);
             this.grpcontrato.Controls.Add(this.btnEmpresaExt);
             this.grpcontrato.Controls.Add(this.btnbonos);
             this.grpcontrato.Controls.Add(this.lbladenda);
@@ -711,13 +707,11 @@
             this.grpcontrato.Controls.Add(this.cbotipocontratacion);
             this.grpcontrato.Controls.Add(this.cboTipoContrato);
             this.grpcontrato.Controls.Add(this.label7);
-            this.grpcontrato.Controls.Add(this.cboCargo);
             this.grpcontrato.Controls.Add(this.chkjefe);
             this.grpcontrato.Controls.Add(this.cboEmpresa);
             this.grpcontrato.Controls.Add(this.cboGerencia);
             this.grpcontrato.Controls.Add(this.cboJefeInmediato);
             this.grpcontrato.Controls.Add(this.label12);
-            this.grpcontrato.Controls.Add(this.txtImporteBono);
             this.grpcontrato.Controls.Add(this.label14);
             this.grpcontrato.Controls.Add(this.label15);
             this.grpcontrato.Controls.Add(this.lblfechacese);
@@ -727,12 +721,8 @@
             this.grpcontrato.Controls.Add(this.dtpfechacese);
             this.grpcontrato.Controls.Add(this.txtSalario);
             this.grpcontrato.Controls.Add(this.label9);
-            this.grpcontrato.Controls.Add(this.cboBono);
-            this.grpcontrato.Controls.Add(this.txtPeriodicidad);
             this.grpcontrato.Controls.Add(this.label8);
             this.grpcontrato.Controls.Add(this.label18);
-            this.grpcontrato.Controls.Add(this.label17);
-            this.grpcontrato.Controls.Add(this.label19);
             this.grpcontrato.Controls.Add(this.cboSede);
             this.grpcontrato.Controls.Add(this.cboProyecto);
             this.grpcontrato.Controls.Add(this.cboArea);
@@ -743,6 +733,16 @@
             this.grpcontrato.Name = "grpcontrato";
             this.grpcontrato.Size = new System.Drawing.Size(544, 259);
             this.grpcontrato.TabIndex = 152;
+            // 
+            // btnEmpresaExt
+            // 
+            this.btnEmpresaExt.Location = new System.Drawing.Point(382, 63);
+            this.btnEmpresaExt.Name = "btnEmpresaExt";
+            this.btnEmpresaExt.Size = new System.Drawing.Size(140, 23);
+            this.btnEmpresaExt.TabIndex = 160;
+            this.btnEmpresaExt.Text = "Empresa Externa";
+            this.btnEmpresaExt.UseVisualStyleBackColor = true;
+            this.btnEmpresaExt.Click += new System.EventHandler(this.btnEmpresaExt_Click);
             // 
             // btnbonos
             // 
@@ -802,16 +802,6 @@
             this.label7.TabIndex = 59;
             this.label7.Text = "Jefe Inmediato";
             // 
-            // cboCargo
-            // 
-            this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCargo.FormattingEnabled = true;
-            this.cboCargo.Location = new System.Drawing.Point(327, 90);
-            this.cboCargo.Name = "cboCargo";
-            this.cboCargo.Size = new System.Drawing.Size(195, 21);
-            this.cboCargo.TabIndex = 61;
-            this.cboCargo.SelectedIndexChanged += new System.EventHandler(this.cboCargo_SelectedIndexChanged);
-            // 
             // cboEmpresa
             // 
             this.cboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -851,16 +841,6 @@
             this.label12.Size = new System.Drawing.Size(32, 13);
             this.label12.TabIndex = 64;
             this.label12.Text = "Sede";
-            // 
-            // txtImporteBono
-            // 
-            this.txtImporteBono.Location = new System.Drawing.Point(307, 237);
-            this.txtImporteBono.Name = "txtImporteBono";
-            this.txtImporteBono.Size = new System.Drawing.Size(76, 20);
-            this.txtImporteBono.TabIndex = 91;
-            this.txtImporteBono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtImporteBono.Visible = false;
-            this.txtImporteBono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtImporteBono_KeyPress);
             // 
             // label14
             // 
@@ -940,28 +920,6 @@
             this.txtSalario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalario_KeyPress);
             this.txtSalario.Leave += new System.EventHandler(this.txtSalario_Leave);
             // 
-            // cboBono
-            // 
-            this.cboBono.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBono.FormattingEnabled = true;
-            this.cboBono.Location = new System.Drawing.Point(177, 236);
-            this.cboBono.Name = "cboBono";
-            this.cboBono.Size = new System.Drawing.Size(123, 21);
-            this.cboBono.TabIndex = 74;
-            this.cboBono.Visible = false;
-            this.cboBono.SelectedIndexChanged += new System.EventHandler(this.cboBono_SelectedIndexChanged);
-            // 
-            // txtPeriodicidad
-            // 
-            this.txtPeriodicidad.Location = new System.Drawing.Point(460, 239);
-            this.txtPeriodicidad.MaxLength = 2;
-            this.txtPeriodicidad.Name = "txtPeriodicidad";
-            this.txtPeriodicidad.Size = new System.Drawing.Size(37, 20);
-            this.txtPeriodicidad.TabIndex = 86;
-            this.txtPeriodicidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPeriodicidad.Visible = false;
-            this.txtPeriodicidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPeriodicidad_KeyPress);
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -971,27 +929,6 @@
             this.label18.Size = new System.Drawing.Size(38, 13);
             this.label18.TabIndex = 85;
             this.label18.Text = "Meses";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(389, 242);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 13);
-            this.label17.TabIndex = 76;
-            this.label17.Text = "Periodicidad";
-            this.label17.Visible = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.Blue;
-            this.label19.Location = new System.Drawing.Point(500, 242);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(38, 13);
-            this.label19.TabIndex = 84;
-            this.label19.Text = "Meses";
-            this.label19.Visible = false;
             // 
             // cboSede
             // 
@@ -1294,15 +1231,14 @@
             this.pbFotoContrato.TabStop = false;
             this.pbFotoContrato.Visible = false;
             // 
-            // btnEmpresaExt
+            // cboCargo
             // 
-            this.btnEmpresaExt.Location = new System.Drawing.Point(382, 63);
-            this.btnEmpresaExt.Name = "btnEmpresaExt";
-            this.btnEmpresaExt.Size = new System.Drawing.Size(140, 23);
-            this.btnEmpresaExt.TabIndex = 160;
-            this.btnEmpresaExt.Text = "Empresa Externa";
-            this.btnEmpresaExt.UseVisualStyleBackColor = true;
-            this.btnEmpresaExt.Click += new System.EventHandler(this.btnEmpresaExt_Click);
+            this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCargo.FormattingEnabled = true;
+            this.cboCargo.Location = new System.Drawing.Point(327, 90);
+            this.cboCargo.Name = "cboCargo";
+            this.cboCargo.Size = new System.Drawing.Size(195, 21);
+            this.cboCargo.TabIndex = 159;
             // 
             // frmContrato
             // 
@@ -1344,6 +1280,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grpcontra);
             this.Controls.Add(this.grpcontrato);
+            this.MaximumSize = new System.Drawing.Size(750, 688);
             this.MinimumSize = new System.Drawing.Size(750, 688);
             this.Name = "frmContrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1395,7 +1332,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtImporteBono;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblfechacese;
@@ -1408,11 +1344,7 @@
         private System.Windows.Forms.Button btnBuscarImagenContrato;
         private System.Windows.Forms.TextBox txtSalario;
         private System.Windows.Forms.Button btnBuscarImagenAnexoFunciones;
-        private System.Windows.Forms.ComboBox cboBono;
-        private System.Windows.Forms.TextBox txtPeriodicidad;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtContrato;
         private System.Windows.Forms.ComboBox cboSede;
         private System.Windows.Forms.TextBox txtAnexoFunciones;
@@ -1436,7 +1368,6 @@
         private System.Windows.Forms.Button btnExportapdf;
         private System.Windows.Forms.Button btnadenda;
         private System.Windows.Forms.Label lbladenda;
-        private System.Windows.Forms.ComboBox cboCargo;
         private System.Windows.Forms.Button btnbonos;
         private System.Windows.Forms.DataGridViewTextBoxColumn NRO;
         private System.Windows.Forms.DataGridViewTextBoxColumn mercadoobra;
@@ -1476,5 +1407,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
         private System.Windows.Forms.Button btnEmpresaExt;
+        private System.Windows.Forms.ComboBox cboCargo;
     }
 }

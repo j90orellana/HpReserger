@@ -28,14 +28,17 @@ namespace HPReserger
             txtcodigo.Text = cboprovincia.Text = "";
             estado = 1; Desactivar();
             cboprovincia.Focus();
+            Txtbusca.Enabled = false;
+            cboprovincia.DropDownStyle = ComboBoxStyle.DropDown;
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             tipmsg.Show("Ingrese Provincia", cboprovincia, 700);
             Desactivar();
+            Txtbusca.Enabled = false;
             estado = 2;
-            cboprovincia.Focus();
+            cboprovincia.Focus(); cboprovincia.DropDownStyle = ComboBoxStyle.DropDown;
         }
 
         private void btneliminar_Click(object sender, EventArgs e)
@@ -54,7 +57,8 @@ namespace HPReserger
             {
                 estado = 0;
                 Activar();
-                frmprovincias_Load(sender, e);
+                frmprovincias_Load(sender, e); cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList;
+                Txtbusca.Enabled = true;
             }
         }
 
@@ -77,7 +81,7 @@ namespace HPReserger
                 }
                 Cprovincia.InsertarProvincia(coddep, codpro, cboprovincia.Text);
                 MessageBox.Show("Provincia Ingresada Exitosamente con Id:'" + codpro + "'", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Txtbusca.Text = cboprovincia.Text;
+                Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
             }
             else
             {
@@ -85,7 +89,7 @@ namespace HPReserger
                 {
                     Cprovincia.ActualizarProvincia(coddep, codpro, cboprovincia.Text);
                     MessageBox.Show("Provincia Modificada Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Txtbusca.Text = cboprovincia.Text;
+                    Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
                 }
                 else
                 {
@@ -95,7 +99,7 @@ namespace HPReserger
                         {
                             Cprovincia.EliminarProvincia(coddep, codpro);
                             MessageBox.Show("Provincia Eliminada Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            Txtbusca.Text = cboprovincia.Text;
+                            Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
                         }
                     }
                 }

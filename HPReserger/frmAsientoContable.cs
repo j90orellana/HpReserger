@@ -30,7 +30,7 @@ namespace HPReserger
             System.Globalization.CultureInfo.CreateSpecificCulture("es-ES");
             fechaini.Value = fecha.Value = DateTime.Today;
             fechafin.Value = DateTime.Today.AddDays(1);
-            dtgbusca.DataSource = Casiento.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today,0);
+            dtgbusca.DataSource = Casiento.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0);
             if (dtgbusca.RowCount > 0) { activar(); }
 
             fecha.Value = DateTime.Now;
@@ -204,7 +204,7 @@ namespace HPReserger
         }
         private void txtdinamica_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 coddinamica = Convert.ToInt32(txtdinamica.Text);
                 dtgayuda.DataSource = Casiento.ListarDinamicas(coddinamica + "", 1);
@@ -485,9 +485,9 @@ namespace HPReserger
         {
             if (fechaini.Value < fechafin.Value)
             {
-                dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechaini.Value, fechafin.Value.AddDays(1),fechacheck);
+                dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechaini.Value, fechafin.Value.AddDays(1), fechacheck);
             }
-            else { dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechafin.Value, fechaini.Value.AddDays(1),fechacheck); }
+            else { dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechafin.Value, fechaini.Value.AddDays(1), fechacheck); }
             msg2(dtgbusca);
 
             if (dtgbusca.RowCount < 1)

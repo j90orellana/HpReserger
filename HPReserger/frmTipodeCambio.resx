@@ -132,4 +132,10 @@
   <metadata name="Venta.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Notas:
+1.- El tipo de cambio publicado corresponde a la cotización de cierre de la SBS del día anterior.
+2.- En los días que no se cuente con tipo de cambio publicado, se deberá tomar el del día inmediato anterior.
+3.- Para efectos del Impuesto a la Renta, se deberá tomar el tipo de cambio de cierre, al 31 de Diciembre del ejercicio correspondiente.</value>
+  </data>
 </root>

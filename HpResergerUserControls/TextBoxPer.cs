@@ -29,7 +29,6 @@ namespace HpResergerUserControls
         public Color ColorMouseSobre;
         public Color ColorMousePresionado;
         public string TextoPorDefecto = "Ingrese Cadena";
-        public object Objeto = null;
         public string TextoDefecto
         {
             get { return TextoPorDefecto; }
@@ -37,7 +36,7 @@ namespace HpResergerUserControls
         }
         public enum ListaTipos
         {
-            SoloLetras, SoloNumeros, SoloDinero
+           Todo, SoloLetras, SoloNumeros, SoloDinero
         }
         public ListaTipos ListadeTipos;
         DataTable Controlss = new DataTable();
@@ -111,6 +110,7 @@ namespace HpResergerUserControls
         {
             if (this.Text.ToUpper() == TextoPorDefecto.ToUpper()) return false;
             if (this.Text.Length <= 0) return false;
+            if (TiposDatos == ListaTipos.SoloNumeros && Text == "0.00") return false;
             return true;
         }
         protected override void OnTextChanged(EventArgs e)
@@ -136,19 +136,6 @@ namespace HpResergerUserControls
             if (e.KeyChar == (char)Keys.Enter)
             {
                 _NextControlOnEnter.Focus();
-                //// ControlesList _list = new ControlesList();
-                //// _list = (ControlesList)Combito.SelectedItem;
-                //// if (_list != null)
-                ////  {
-                //if (_SiguienteControl != null)
-                //{
-                //    Control[] x = this.Parent.Controls.Find(_SiguienteControl, false);
-                //    if (x.Length > 0)
-                //    {
-                //        Objeto = x[0];
-                //        ((Control)Objeto).Focus();
-                //    }
-                //}
             }
             base.OnKeyPress(e);
         }

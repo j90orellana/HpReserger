@@ -16,6 +16,8 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public Boolean Consulta = false;
+        public int ConsulCodi = 0;
         public int estado { get; set; }
         public string cadeaux = ""; public string siono = "";
         HPResergerCapaLogica.HPResergerCL Ccostos = new HPResergerCapaLogica.HPResergerCL();
@@ -91,6 +93,16 @@ namespace HPReserger
 
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            if (Consulta)
+            {
+                if (dtgconten.RowCount > 0)
+                {
+                    int x = dtgconten.CurrentCell.RowIndex;
+                    ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
+                }
+                this.Close();
+            }
+
             cadeaux = cbocuentas.Text; siono = cbotiene.Text;
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
             if (!string.IsNullOrWhiteSpace(txtcosto.Text))
@@ -237,6 +249,16 @@ namespace HPReserger
 
         private void cbocuentas_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Consulta)
+            {
+                int x = e.RowIndex;
+                ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
+                this.Close();
+            }
         }
 
         private void chkcodigo_CheckedChanged(object sender, EventArgs e)

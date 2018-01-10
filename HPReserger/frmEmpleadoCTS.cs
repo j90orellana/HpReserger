@@ -82,7 +82,7 @@ namespace HPReserger
                 txtCuenta.Focus();
                 return;
             }
-            if (txtCuentaCCI.Text.Length == 0)
+            if (txtCuentaCCI.Text.Length < 20)
             {
                 MessageBox.Show("Ingrese Nº de Cuenta CCI", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuentaCCI.Focus();
@@ -141,7 +141,7 @@ namespace HPReserger
             {
                 GrabarEditar(1);
                 MessageBox.Show("CTS registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
+
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false; btnModificar.Enabled = true;
@@ -150,7 +150,7 @@ namespace HPReserger
             {
                 GrabarEditar(0);
                 MessageBox.Show("CTS Modificada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
+
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false; btnModificar.Enabled = true;

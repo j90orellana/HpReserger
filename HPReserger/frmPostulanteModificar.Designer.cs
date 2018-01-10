@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPostulanteModificar));
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btnModificar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -47,6 +48,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.btndescargar = new System.Windows.Forms.Button();
+            this.txtedad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +69,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(195, 247);
+            this.btnModificar.Location = new System.Drawing.Point(222, 241);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 27;
@@ -74,6 +79,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtedad);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dtpFechaNacimiento);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cboReasignarSolicitud);
             this.groupBox1.Controls.Add(this.chkReasignarSolicitud);
             this.groupBox1.Controls.Add(this.btnModificar);
@@ -102,7 +111,7 @@
             this.cboReasignarSolicitud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboReasignarSolicitud.Enabled = false;
             this.cboReasignarSolicitud.FormattingEnabled = true;
-            this.cboReasignarSolicitud.Location = new System.Drawing.Point(195, 210);
+            this.cboReasignarSolicitud.Location = new System.Drawing.Point(195, 203);
             this.cboReasignarSolicitud.Name = "cboReasignarSolicitud";
             this.cboReasignarSolicitud.Size = new System.Drawing.Size(113, 21);
             this.cboReasignarSolicitud.TabIndex = 53;
@@ -110,7 +119,7 @@
             // chkReasignarSolicitud
             // 
             this.chkReasignarSolicitud.AutoSize = true;
-            this.chkReasignarSolicitud.Location = new System.Drawing.Point(6, 210);
+            this.chkReasignarSolicitud.Location = new System.Drawing.Point(9, 204);
             this.chkReasignarSolicitud.Name = "chkReasignarSolicitud";
             this.chkReasignarSolicitud.Size = new System.Drawing.Size(123, 17);
             this.chkReasignarSolicitud.TabIndex = 52;
@@ -122,7 +131,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 19);
+            this.label14.Location = new System.Drawing.Point(9, 22);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(166, 13);
             this.label14.TabIndex = 39;
@@ -133,7 +142,7 @@
             this.btnAdjuntarCV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntarCV.Location = new System.Drawing.Point(481, 176);
             this.btnAdjuntarCV.Name = "btnAdjuntarCV";
-            this.btnAdjuntarCV.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarCV.Size = new System.Drawing.Size(25, 20);
             this.btnAdjuntarCV.TabIndex = 51;
             this.btnAdjuntarCV.Text = "...";
             this.btnAdjuntarCV.UseVisualStyleBackColor = true;
@@ -143,26 +152,28 @@
             // 
             this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(197, 19);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(195, 19);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
             this.cboTipoDocumento.TabIndex = 40;
+            this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(197, 51);
+            this.txtDocumento.Location = new System.Drawing.Point(195, 46);
             this.txtDocumento.MaxLength = 14;
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(167, 20);
             this.txtDocumento.TabIndex = 42;
             this.txtDocumento.TabStop = false;
             this.txtDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDocumento_KeyDown);
             this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 177);
+            this.label9.Location = new System.Drawing.Point(9, 178);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 13);
             this.label9.TabIndex = 46;
@@ -170,7 +181,7 @@
             // 
             // txtAdjuntarCV
             // 
-            this.txtAdjuntarCV.Location = new System.Drawing.Point(195, 177);
+            this.txtAdjuntarCV.Location = new System.Drawing.Point(195, 176);
             this.txtAdjuntarCV.Name = "txtAdjuntarCV";
             this.txtAdjuntarCV.ReadOnly = true;
             this.txtAdjuntarCV.Size = new System.Drawing.Size(280, 20);
@@ -179,7 +190,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 145);
+            this.label10.Location = new System.Drawing.Point(9, 126);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(52, 13);
             this.label10.TabIndex = 45;
@@ -188,7 +199,7 @@
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombres.Location = new System.Drawing.Point(196, 145);
+            this.txtNombres.Location = new System.Drawing.Point(195, 124);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(280, 20);
@@ -199,7 +210,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 51);
+            this.label13.Location = new System.Drawing.Point(9, 48);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(182, 13);
             this.label13.TabIndex = 41;
@@ -208,7 +219,7 @@
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(196, 114);
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(195, 98);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.Size = new System.Drawing.Size(280, 20);
@@ -219,7 +230,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 83);
+            this.label12.Location = new System.Drawing.Point(9, 74);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(87, 13);
             this.label12.TabIndex = 43;
@@ -228,7 +239,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 114);
+            this.label11.Location = new System.Drawing.Point(9, 100);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 13);
             this.label11.TabIndex = 44;
@@ -237,7 +248,7 @@
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 83);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 72);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(280, 20);
@@ -259,6 +270,46 @@
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
             this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
+            // txtedad
+            // 
+            this.txtedad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtedad.Enabled = false;
+            this.txtedad.Location = new System.Drawing.Point(342, 150);
+            this.txtedad.MaxLength = 30;
+            this.txtedad.Name = "txtedad";
+            this.txtedad.Size = new System.Drawing.Size(35, 20);
+            this.txtedad.TabIndex = 120;
+            this.txtedad.Text = "0";
+            this.txtedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(301, 154);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 119;
+            this.label1.Text = "Edad:";
+            // 
+            // dtpFechaNacimiento
+            // 
+            this.dtpFechaNacimiento.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(195, 150);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(100, 20);
+            this.dtpFechaNacimiento.TabIndex = 117;
+            this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 153);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 118;
+            this.label2.Text = "Fecha Nacimiento:";
+            // 
             // frmPostulanteModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +320,7 @@
             this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.pbFoto);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(798, 332);
             this.MinimumSize = new System.Drawing.Size(798, 332);
             this.Name = "frmPostulanteModificar";
@@ -304,5 +356,9 @@
         private System.Windows.Forms.ComboBox cboReasignarSolicitud;
         private System.Windows.Forms.CheckBox chkReasignarSolicitud;
         private System.Windows.Forms.Button btndescargar;
+        private System.Windows.Forms.TextBox txtedad;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
+        private System.Windows.Forms.Label label2;
     }
 }

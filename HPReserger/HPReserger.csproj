@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HPReserger</RootNamespace>
-    <AssemblyName>HPReserger</AssemblyName>
+    <AssemblyName>SIGE</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,11 +51,14 @@
     <StartupObject>HPReserger.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>InstallShield.ico</ApplicationIcon>
+    <ApplicationIcon>LogoHP.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="abcBaseDatos">
       <HintPath>..\Referencias\abcBaseDatos.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.52 ">
+      <HintPath>..\Referencias\Bunifu_UI_v1.52 .dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -104,6 +107,12 @@
     <Compile Include="fmrProyectodatos.Designer.cs">
       <DependentUpon>fmrProyectodatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAbonoExternoEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbonoExternoEmpleado.Designer.cs">
+      <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmadicionaleps.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +124,12 @@
     </Compile>
     <Compile Include="frmAfps.Designer.cs">
       <DependentUpon>frmAfps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAreaCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAreaCargo.Designer.cs">
+      <DependentUpon>frmAreaCargo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBancoBcp.cs">
       <SubType>Form</SubType>
@@ -440,6 +455,12 @@
     <Compile Include="frmOperacion.Designer.cs">
       <DependentUpon>frmOperacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOtrosDescuentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOtrosDescuentos.Designer.cs">
+      <DependentUpon>frmOtrosDescuentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPagarFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -481,6 +502,12 @@
     </Compile>
     <Compile Include="frmperiodicidad.Designer.cs">
       <DependentUpon>frmperiodicidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPLanesEPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPLanesEPS.Designer.cs">
+      <DependentUpon>frmPLanesEPS.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPracticasPreProfesionales.cs">
       <SubType>Form</SubType>
@@ -547,6 +574,12 @@
     </Compile>
     <Compile Include="frmReporteAdendaNecesidad.Designer.cs">
       <DependentUpon>frmReporteAdendaNecesidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReporteBoletas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteBoletas.Designer.cs">
+      <DependentUpon>FrmReporteBoletas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmreporteboletasfin.cs">
       <SubType>Form</SubType>
@@ -1047,6 +1080,9 @@
       <DependentUpon>fmrProyectodatos.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAbonoExternoEmpleado.resx">
+      <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmadicionaleps.resx">
       <DependentUpon>frmadicionaleps.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1060,6 +1096,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmArea.resx">
       <DependentUpon>frmArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAreaCargo.resx">
+      <DependentUpon>frmAreaCargo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmArticuloServicio.resx">
       <DependentUpon>frmArticuloServicio.cs</DependentUpon>
@@ -1217,6 +1256,9 @@
     <EmbeddedResource Include="frmOperacion.resx">
       <DependentUpon>frmOperacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmOtrosDescuentos.resx">
+      <DependentUpon>frmOtrosDescuentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPagarFactura.resx">
       <DependentUpon>frmPagarFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -1237,6 +1279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmperiodicidad.resx">
       <DependentUpon>frmperiodicidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPLanesEPS.resx">
+      <DependentUpon>frmPLanesEPS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPracticasPreProfesionales.resx">
       <DependentUpon>FrmPracticasPreProfesionales.cs</DependentUpon>
@@ -1270,6 +1315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteAdendaNecesidad.resx">
       <DependentUpon>frmReporteAdendaNecesidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteBoletas.resx">
+      <DependentUpon>FrmReporteBoletas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmreporteboletasfin.resx">
       <DependentUpon>frmreporteboletasfin.cs</DependentUpon>
@@ -1503,9 +1551,9 @@
       <DependentUpon>frmVacaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptCTS.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1749,9 +1797,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icono.ico" />
     <Content Include="InstallShield.ico" />
     <None Include="Resources\erase.ico" />
     <None Include="Resources\Generate.ico" />
+    <None Include="Resources\External.ico" />
+    <None Include="Resources\Frames.ico" />
+    <None Include="Resources\MainFrame.ico" />
+    <None Include="Resources\Cuadros.ico" />
+    <None Include="Resources\Icono.ico" />
+    <None Include="Resources\Logo_HP.png" />
+    <Content Include="LogoHP.ico" />
     <Content Include="Resources\xCloseBlue.ico" />
     <None Include="Resources\xCloseBlue1.ico" />
     <None Include="Resources\xCloseBlack.ico" />

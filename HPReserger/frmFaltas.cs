@@ -215,7 +215,7 @@ namespace HPReserger
                 return;
             }
 
-            if (Foto == null && chkfaltas.Checked == false)
+            if (Foto == null )//&& chkfaltas.Checked == false)
             {
                 MessageBox.Show("Seleccione Imagen de Sustento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnAdjuntarSustento.Focus();
@@ -245,6 +245,7 @@ namespace HPReserger
             dtpFin.Value = DateTime.Today.Date;
             txtObservaciones.Text = "";
             chkfaltas.Checked = false;
+            Foto = null;
         }
 
         private void btnAdjuntarSustento_Click(object sender, EventArgs e)

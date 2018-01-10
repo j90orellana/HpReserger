@@ -30,6 +30,7 @@ namespace HPReserger
             tipmsg.Show("Ingrese Nuevo Distrito", cbodistrito, 700);
             txtcodigo.Text = cbodistrito.Text = "";
             estado = 1; Desactivar();
+            cbodistrito.DropDownStyle = ComboBoxStyle.DropDown;
             cbodistrito.Focus();
         }
         public void Cargarprovincias(int codigo, string busca)
@@ -56,6 +57,7 @@ namespace HPReserger
             Desactivar();
             estado = 2;
             cbodistrito.Focus();
+            cbodistrito.DropDownStyle = ComboBoxStyle.DropDown;
         }
 
         private void btneliminar_Click(object sender, EventArgs e)
@@ -123,7 +125,7 @@ namespace HPReserger
                 }
                 CDistrito.insertardistrito(coddep, codpro, coddis, cbodistrito.Text);
                 MessageBox.Show("Distrito Ingresado Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Txtbusca.Text = cbodistrito.Text;
+                Txtbusca.Text = cbodistrito.Text; cbodistrito.DropDownStyle = ComboBoxStyle.DropDownList;
             }
             else
             {
@@ -131,7 +133,7 @@ namespace HPReserger
                 {
                     CDistrito.modificardistrito(coddep, codpro, coddis, cbodistrito.Text);
                     MessageBox.Show("Distrito Modificado Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Txtbusca.Text = cbodistrito.Text;
+                    Txtbusca.Text = cbodistrito.Text; cbodistrito.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
                 else
                 {
@@ -161,19 +163,13 @@ namespace HPReserger
                 estado = 0;
                 Activar();
                 frmDistritos_Load(sender, e);
+                cbodistrito.DropDownStyle = ComboBoxStyle.DropDownList;
             }
         }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                txtcodigo.Text = dtgconten[4, e.RowIndex].Value.ToString();
-                cbodepartamento.Text = dtgconten[1, e.RowIndex].Value.ToString();
-                cboprovincia.Text = dtgconten[3, e.RowIndex].Value.ToString();
-                cbodistrito.Text = dtgconten[5, e.RowIndex].Value.ToString();
-            }
-            catch { }
+            
         }
         private void txtbusca_TextChanged(object sender, EventArgs e)
         {
@@ -296,6 +292,18 @@ namespace HPReserger
         private void cboprovincia_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ToUpper(e);
+        }
+
+        private void dtgconten_RowEnter_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                txtcodigo.Text = dtgconten[4, e.RowIndex].Value.ToString();
+                cbodepartamento.Text = dtgconten[1, e.RowIndex].Value.ToString();
+                cboprovincia.Text = dtgconten[3, e.RowIndex].Value.ToString();
+                cbodistrito.Text = dtgconten[5, e.RowIndex].Value.ToString();
+            }
+            catch { }
         }
     }
 }

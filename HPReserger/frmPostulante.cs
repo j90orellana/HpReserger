@@ -29,7 +29,8 @@ namespace HPReserger
 
         private void frmPostulante_Load(object sender, EventArgs e)
         {
-            CargarCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
+            //CargarCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
+            CargarTiposID("TBL_Tipo_ID");
             Grid2.DataSource = clPostulante.ListarSEPostulantes(frmLogin.CodigoUsuario);
 
             if (Grid2.Rows.Count > 0)
@@ -37,6 +38,24 @@ namespace HPReserger
                 CargarGrid(Convert.ToInt32(Grid2.Rows[0].Cells[0].Value.ToString().Substring(2)));
             }
             Grid2.TabStop = grid3.TabStop = false;
+            dtpFechaNacimiento.MaxDate = DateTime.Now;
+        }
+        DataTable TablaTipoID;
+        public void CargarTiposID(string tabla)
+        {
+            TablaTipoID = new DataTable();
+            TablaTipoID = clPostulante.CualquierTabla(tabla, "Desc_Tipo_ID", "RUC");
+            cboTipoDocumento.DisplayMember = "Desc_Tipo_ID";
+            cboTipoDocumento.ValueMember = "Codigo_Tipo_ID";
+            cboTipoDocumento.DataSource = TablaTipoID;
+        }
+        public void ModificarTamañoTipo(TextBox txt, int index)
+        {
+            if (index >= 0 && TablaTipoID != null)
+            {
+                DataRow Filita = TablaTipoID.Rows[index];
+                txt.MaxLength = (int)Filita["Length"];
+            }
         }
 
         private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
@@ -84,6 +103,12 @@ namespace HPReserger
                 txtDocumento.Focus();
                 return;
             }
+            if (txtDocumento.Text.Length != txtDocumento.MaxLength && cboTipoDocumento.Text != "CARNE EXTRANJERIA")
+            {
+                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtDocumento.Focus();
+                return;
+            }
             if (txtApellidoPaterno.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Apellido Paterno", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -102,6 +127,26 @@ namespace HPReserger
                 txtNombres.Focus();
                 return;
             }
+            DataRow Filita = clPostulante.CalcularEdad(dtpFechaNacimiento.Value, DateTime.Now, 1);
+            if (Filita != null)
+            {
+                if ((int)Filita["edad"] < 18)
+                {
+                    MessageBox.Show("El Postulante Debe ser Mayor de Edad", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    dtpFechaNacimiento.Focus();
+                    return;
+                }
+            }
+            else { return; }
+
+            Filita = clPostulante.ContratoActivo((int)cboTipoDocumento.SelectedValue, txtDocumento.Text, DateTime.Now);
+            if (Filita != null)
+                if (Filita["Nro_Contrato"] != null)
+                {
+                    MessageBox.Show("El Empleado Tiene un Contrato Activo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
+
             if (txtAdjuntarCV.Text.Length == 0)
             {
                 MessageBox.Show("Seleccione Imagen CV", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -121,11 +166,11 @@ namespace HPReserger
                 return;
             }
 
-            if (PostulanteExiste == true)
-            {
-                MessageBox.Show("Postulante ya registrado en la base de datos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
+            // if (PostulanteExiste == true)
+            //{
+            //MessageBox.Show("Postulante ya registrado en la base de datos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //return;
+            //  }
 
             int OC = 0;
             if (Grid2.CurrentRow.Cells[2].Value.ToString() != string.Empty)
@@ -135,8 +180,9 @@ namespace HPReserger
             int fila = 0;
             fila = Grid2.CurrentCell.RowIndex;
 
-            clPostulante.PostulanteInsertar(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(Grid2.CurrentRow.Cells[3].Value.ToString()), Foto, txtAdjuntarCV.Text, OC, Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)), frmLogin.CodigoUsuario);
+            clPostulante.PostulanteInsertar(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(Grid2.CurrentRow.Cells[3].Value.ToString()), Foto, txtAdjuntarCV.Text, OC, Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)), frmLogin.CodigoUsuario, dtpFechaNacimiento.Value);
             MessageBox.Show("El postulante con DNI Nº " + txtDocumento.Text + " se registró con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             if (Grid2["Terna", Grid2.CurrentCell.RowIndex].Value.ToString() == "NO")
             {
                 clPostulante.AprobarPostulante(Convert.ToInt32(cboTipoDocumento.SelectedValue), txtDocumento.Text, Convert.ToInt32(Grid2["SOLICITUD", Grid2.CurrentCell.RowIndex].Value.ToString().Substring(2)));
@@ -222,41 +268,75 @@ namespace HPReserger
                 btnBuscarJPG.Focus();
             }
         }
-
+        public DialogResult msg(string cadena)
+        {
+            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        }
+        public DialogResult msgx(string cadena)
+        {
+            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        DataTable tablita;
         private void btnAprobar_Click(object sender, EventArgs e)
         {
             if (Grid2.Rows.Count > 0 && grid3.Rows.Count > 0)
             {
-                int fila = 0;
+                int fila = 0, filitax = 0;
                 fila = Grid2.CurrentCell.RowIndex;
-                if (Convert.ToInt32(grid3.CurrentRow.Cells[7].Value.ToString()) == 2)
+                filitax = grid3.CurrentCell.RowIndex;
+                tablita = new DataTable();
+                tablita = clPostulante.ListarJefeInmediato(frmLogin.CodigoUsuario, "", 10);
+                if (tablita.Rows.Count != 0)
                 {
-                    MessageBox.Show("Postulante ya se encuentra Aprobado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                    DataRow filita = tablita.Rows[0];
+                    if (Convert.ToInt32(grid3.CurrentRow.Cells[7].Value.ToString()) == 2)
+                    {
+                        MessageBox.Show("Postulante ya se encuentra Aprobado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    /*if (Convert.ToInt32(grid3.CurrentRow.Cells[7].Value.ToString()) == 10)
+                    {
+                        MessageBox.Show("Postulante Esperando Aprobación del Jefe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }*/
+                    if (Grid2[terna.Name, fila].Value.ToString() == "SI")
+                    {
+                        if (grid3.RowCount < 3)
+                        {
+                            if (MessageBox.Show("Necesita 3 Postulantes para Aprobar Terna¿ Desea Continuar ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                                return;
+                        }
+                    }
+                    if (MessageBox.Show("¿ Seguro desea Aprobar ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        clPostulante.AprobarPostulantePrevia(Convert.ToInt32(grid3.CurrentRow.Cells[0].Value.ToString()), grid3.CurrentRow.Cells[2].Value.ToString(), Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)), 10);
+                        //Solicitar AProbacion
+                        string cade = grid3[CODIGOTIPO.Name, filitax].Value.ToString() + ",'" + grid3[NDI.Name, filitax].Value + "'," + Grid2[SOLICITUD.Name, fila].Value.ToString().Substring(2);
+                        clPostulante.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_AprobarPostulante", cade, 0, frmLogin.CodigoUsuario, "Solicita Aprobar Postulante " + grid3[NOMBRES.Name, filitax].Value.ToString() + " " + grid3[APELLIDOPATERNO.Name, filitax].Value.ToString() + " " + grid3[APELLIDOMATERNO.Name, filitax].Value.ToString());
 
-                if (MessageBox.Show("¿ Seguro de Aprobar ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    clPostulante.AprobarPostulante(Convert.ToInt32(grid3.CurrentRow.Cells[0].Value.ToString()), grid3.CurrentRow.Cells[2].Value.ToString(), Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)));
-                    txtDocumento.Text = "";
-                    txtApellidoPaterno.Text = "";
-                    txtApellidoMaterno.Text = "";
-                    txtNombres.Text = "";
-                    txtAdjuntarCV.Text = "";
-                    pbFoto.Image = null;
-                    Grid2.DataSource = clPostulante.ListarSEPostulantes(frmLogin.CodigoUsuario);
-                    if (Grid2.Rows.Count > 0)
-                    {
-                        Grid2.CurrentCell = Grid2[0, fila];
-                        ColorearGrid(grid3);
+                        txtDocumento.Text = "";
+                        txtApellidoPaterno.Text = "";
+                        txtApellidoMaterno.Text = "";
+                        txtNombres.Text = "";
+                        txtAdjuntarCV.Text = "";
+                        pbFoto.Image = null;
+                        Grid2.DataSource = clPostulante.ListarSEPostulantes(frmLogin.CodigoUsuario);
+                        if (Grid2.Rows.Count > 0)
+                        {
+                            Grid2.CurrentCell = Grid2[0, fila];
+                            ColorearGrid(grid3);
+                        }
+                        else
+                        {
+                            LimpiarGrid();
+                            Titulos();
+                        }
                     }
-                    else
-                    {
-                        LimpiarGrid();
-                        Titulos();
-                    }
+                    msgx("Solicitud Enviada a su Jefe");
                 }
+                else msg("No se Encuentra el Código del Jefe, Posiblemente Problema con el Contrato");
             }
+
         }
 
         private void ColorearGrid(DataGridView G)
@@ -268,7 +348,11 @@ namespace HPReserger
                 {
                     G.Rows[FilaColor].DefaultCellStyle.ForeColor = Color.Red;
                     G.Rows[FilaColor].DefaultCellStyle.SelectionForeColor = Color.Red;
-
+                }
+                else if ((int)G[Estado.Name, FilaColor].Value == 10)
+                {
+                    G.Rows[FilaColor].DefaultCellStyle.ForeColor = Color.Blue;
+                    G.Rows[FilaColor].DefaultCellStyle.SelectionForeColor = Color.Blue;
                 }
                 else
                 {
@@ -288,7 +372,7 @@ namespace HPReserger
                 txtNombres.Text = ExistePostulante["NOMBRES"].ToString();
                 txtAdjuntarCV.Text = ExistePostulante["NOMBREFOTO"].ToString();
                 PostulanteExiste = true;
-                btnRegistrar.Enabled = false;
+                //btnRegistrar.Enabled = false;
                 MessageBox.Show("Postulante ya fué registrado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -325,11 +409,12 @@ namespace HPReserger
                 frmPM.ApellidoPaterno = grid3.CurrentRow.Cells[3].Value.ToString();
                 frmPM.ApellidoMaterno = grid3.CurrentRow.Cells[4].Value.ToString();
                 frmPM.Nombres = grid3.CurrentRow.Cells[5].Value.ToString();
+                frmPM.FechaNac = (DateTime)grid3[FecNacimiento.Name, grid3.CurrentCell.RowIndex].Value;
                 frmPM.AdjuntarCV = grid3.CurrentRow.Cells[6].Value.ToString();
 
                 if (frmPM.ShowDialog() == DialogResult.OK)
                 {
-                    CargarCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
+                    // CargarCombos(cboTipoDocumento, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
                     Grid2.DataSource = clPostulante.ListarSEPostulantes(frmLogin.CodigoUsuario);
                     if (Grid2.Rows.Count > 0)
                     {
@@ -359,7 +444,6 @@ namespace HPReserger
                 pbFoto.Image = null;
             }
         }
-
         private void grid3_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             CargarFoto(Convert.ToInt32(grid3.Rows[e.RowIndex].Cells[0].Value.ToString()), grid3.Rows[e.RowIndex].Cells[2].Value.ToString());
@@ -438,8 +522,8 @@ namespace HPReserger
 
         private void txtDocumento_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtDocumento, 10);
-        }       
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtDocumento, txtDocumento.MaxLength);
+        }
         private void pbFoto_DoubleClick(object sender, EventArgs e)
         {
             if (pbFoto.Image != null)
@@ -474,6 +558,31 @@ namespace HPReserger
         }
 
         private void pbFoto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ModificarTamañoTipo(txtDocumento, cboTipoDocumento.SelectedIndex);
+        }
+
+        private void dtpFechaNacimiento_CloseUp(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            DataRow Filita = clPostulante.CalcularEdad(dtpFechaNacimiento.Value, DateTime.Now, 1);
+            if (Filita != null)
+            {
+                txtedad.Text = Filita["edad"].ToString();
+            }
+            else { return; }
+        }
+
+        private void grid3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

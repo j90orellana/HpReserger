@@ -224,12 +224,12 @@ namespace HPReserger
                 MessageBox.Show("Ingrese Motivo del Cese", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtMotivoCese.Focus();
                 return;
-            }            
+            }
             frmLiquidacion frmLIQ = new frmLiquidacion();
             frmLIQ.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmLIQ.NumeroDocumento = txtNumeroDocumento.Text;
             frmLIQ._FechaInicio = dtpfechacese.Value;
-            frmLIQ._Monto =decimal.Parse( txtmonto.Num.Text);
+            frmLIQ._Monto = decimal.Parse(txtmonto.Num.Text);
             frmLIQ._MotivoCese = txtMotivoCese.Text;
             frmLIQ.ShowDialog();
         }
@@ -310,7 +310,8 @@ namespace HPReserger
             frmRetencionRenta frmRR = new frmRetencionRenta();
             frmRR.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmRR.NumeroDocumento = txtNumeroDocumento.Text;
-
+            frmRR.año = (int)dtpfechacese.Value.Year;
+            frmRR.fechainicial = dtpfechacese.Value;
             frmRR.ShowDialog();
         }
 
@@ -752,6 +753,33 @@ namespace HPReserger
         private void btndescargar_Click(object sender, EventArgs e)
         {
             HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOtrosDescuentos_Click(object sender, EventArgs e)
+        {
+            if (txtNumeroDocumento.Text.Length == 0)
+            {
+                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtNumeroDocumento.Focus();
+                return;
+            }
+            if (!txtMotivoCese.EstaLLeno())
+            {
+                MessageBox.Show("Ingrese Motivo del Cese", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtMotivoCese.Focus();
+                return;
+            }
+            frmOtrosDescuentos frmotro = new frmOtrosDescuentos();
+            frmotro.tipodoc = (int)cboTipoDocumento.SelectedValue;
+            frmotro.numerodoc = txtNumeroDocumento.Text;
+            frmotro.desvinculacion = dtgconten.RowCount + 1;
+            frmotro.MdiParent = this.MdiParent;
+            frmotro.Show();
         }
     }
 }

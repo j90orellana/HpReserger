@@ -65,6 +65,10 @@ namespace HPReserger
             txtapepat.Text = txtapetmat.Text = txtcontra.Text = txtlogin.Text = txtnombre.Text = "";
             cboarea.DataSource = cboestado.DataSource = cboperfil.DataSource = null;
         }
+        public void CargarUsuarios()
+        {
+            GridUser.DataSource = Cusuario.usuarios("0", 0, 0);
+        }
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
             estado = 0; CargarTipoDocumento(cbotipoid);
@@ -73,7 +77,7 @@ namespace HPReserger
             btnmodificar.Enabled = btneliminar.Enabled = false;
             cbotipoid.Enabled = true;
             txtlogin.Enabled = txtcontra.Enabled = false; cboperfil.Enabled = cboestado.Enabled = false;
-
+            CargarUsuarios();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -146,7 +150,7 @@ namespace HPReserger
                         else
                         {
                             //bloqueado(true);
-                            limpiar(); checkBox1.Enabled = false;btnnuevo.Enabled = false;
+                            limpiar(); checkBox1.Enabled = false; btnnuevo.Enabled = false;
                             cboperfil.Enabled = cboestado.Enabled = false;
                             txtlogin.Enabled = false; txtcontra.Enabled = false; txtid.Enabled = true;
                             cbotipoid.Enabled = true;
@@ -205,7 +209,7 @@ namespace HPReserger
         }
         public void Activar(Boolean si)
         {
-             btnmodificar.Enabled = btneliminar.Enabled = si;
+            btnmodificar.Enabled = btneliminar.Enabled = si;
         }
         public int estado = 0;
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -214,9 +218,9 @@ namespace HPReserger
             estado = 1; txtid.Text = "";
             bloqueado(true);
             Activar(false);
-            limpiar();btnnuevo.Enabled = false;
+            limpiar(); btnnuevo.Enabled = false;
             txtid.Enabled = cbotipoid.Enabled = true;
-            txtid.Focus();
+            txtid.Focus(); GridUser.Enabled = false;
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
@@ -230,7 +234,8 @@ namespace HPReserger
             txtlogin.Enabled = true;
             txtcontra.Enabled = true;
             cboestado.Enabled = true;
-
+            GridUser.Enabled = false;
+            btnnuevo.Enabled = false;
         }
 
         private void btneliminar_Click(object sender, EventArgs e)
@@ -252,10 +257,10 @@ namespace HPReserger
             if (estado == 1)
             {
                 btnnuevo.Enabled = true; cboperfil.Enabled = false;
-                txtlogin.Enabled = false;limpiar();
+                txtlogin.Enabled = false; limpiar();
                 txtcontra.Enabled = false; txtid.Enabled = cbotipoid.Enabled = true; txtid.Text = "";
                 cboestado.Enabled = false; estado = 0;
-                txtid_TextChanged(sender, e);
+                txtid_TextChanged(sender, e); GridUser.Enabled = true;
             }
             if (estado == 2)
             {
@@ -265,16 +270,16 @@ namespace HPReserger
                 cboperfil.Enabled = false;
                 txtlogin.Enabled = false;
                 txtcontra.Enabled = false;
-                cboestado.Enabled = false;
-                txtid_TextChanged(sender, e);
+                cboestado.Enabled = false; btnnuevo.Enabled = true;
+                txtid_TextChanged(sender, e); GridUser.Enabled = true;
             }
             if (estado == 3)
             {
-                bloqueado(true);
+                bloqueado(true); GridUser.Enabled = true;
                 btnnuevo.Enabled = true; txtid_TextChanged(sender, e); estado = 0;
                 btnnuevo.Enabled = true;
             }
-
+            CargarUsuarios();
             estado = 0;
         }
         public int tipoid;
@@ -324,9 +329,9 @@ namespace HPReserger
                             }
                             else
                             {
-                                Mensajes("Usuario Creado Exitosamente");bloqueado(true);
-                                estado = 0;txtid.Enabled = cbotipoid.Enabled = true;estado = 0;
-                                txtid_TextChanged(sender, e);
+                                Mensajes("Usuario Creado Exitosamente"); bloqueado(true);
+                                estado = 0; txtid.Enabled = cbotipoid.Enabled = true; estado = 0;
+                                txtid_TextChanged(sender, e); GridUser.Enabled = true;
                             }
                         }
                     }
@@ -364,7 +369,7 @@ namespace HPReserger
                             {
                                 Mensajes("Usuario Actualizado Exitosamente"); Activar(false);
                                 bloqueado(true); checkBox1.Checked = true; estado = 0; txtid.Enabled = cbotipoid.Enabled = true;
-                                txtid_TextChanged(sender, e);
+                                txtid_TextChanged(sender, e); GridUser.Enabled = true;
 
                             }
                         }
@@ -378,8 +383,9 @@ namespace HPReserger
                 Cusuario.InsertarActualizarUsuario(tipoid, nroid, login, contra, perfil, 0, 3, out respuesta);
                 Mensajes("Usuario Eliminado Exitosamente");
                 bloqueado(true); checkBox1.Checked = true; btnnuevo.Enabled = true;
-                txtid_TextChanged(sender, e);
+                txtid_TextChanged(sender, e); GridUser.Enabled = true;
             }
+            CargarUsuarios();
         }
         public void msg(string cadena)
         {
@@ -445,6 +451,16 @@ namespace HPReserger
         private void txtid_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtid, 10);
+        }
+
+        private void GridUser_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.RowIndex;
+            if (x >= 0)
+            {
+               cbotipoid.SelectedValue= (int)GridUser[IDX.Name, x].Value;
+                txtid.Text = GridUser[docx.Name, x].Value.ToString();                   
+            }
         }
     }
 }

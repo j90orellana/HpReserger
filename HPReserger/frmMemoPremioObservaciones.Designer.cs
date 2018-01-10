@@ -33,6 +33,7 @@
             // 
             // txtObservaciones
             // 
+            this.txtObservaciones.Enabled = false;
             this.txtObservaciones.Location = new System.Drawing.Point(12, 12);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";

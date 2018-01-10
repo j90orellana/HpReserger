@@ -303,6 +303,16 @@ namespace HPReserger.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap External {
+            get {
+                object obj = ResourceManager.GetObject("External", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Faltas {
             get {
                 object obj = ResourceManager.GetObject("Faltas", resourceCulture);
@@ -326,6 +336,16 @@ namespace HPReserger.Properties {
         internal static System.Drawing.Bitmap fondo_gris_degradado {
             get {
                 object obj = ResourceManager.GetObject("fondo-gris-degradado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Frames {
+            get {
+                object obj = ResourceManager.GetObject("Frames", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -366,6 +386,16 @@ namespace HPReserger.Properties {
         internal static System.Drawing.Bitmap libro {
             get {
                 object obj = ResourceManager.GetObject("libro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainFrame {
+            get {
+                object obj = ResourceManager.GetObject("MainFrame", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

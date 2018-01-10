@@ -49,9 +49,17 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.pnlconten = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnimagen = new System.Windows.Forms.Button();
+            this.txtimagen = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnBuscarImagenOtros = new System.Windows.Forms.Button();
             this.btnexportar = new System.Windows.Forms.Button();
             this.savefile = new System.Windows.Forms.SaveFileDialog();
+            this.lklimagen = new System.Windows.Forms.LinkLabel();
+            this.pbimagen = new System.Windows.Forms.PictureBox();
             this.pnlconten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbimagen)).BeginInit();
             this.SuspendLayout();
             // 
             // cboCelular
@@ -240,7 +248,7 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(493, 180);
+            this.btncancelar.Location = new System.Drawing.Point(495, 208);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 24;
@@ -250,7 +258,7 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(412, 180);
+            this.btnaceptar.Location = new System.Drawing.Point(414, 208);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 23;
@@ -260,6 +268,11 @@
             // 
             // pnlconten
             // 
+            this.pnlconten.Controls.Add(this.label10);
+            this.pnlconten.Controls.Add(this.btnimagen);
+            this.pnlconten.Controls.Add(this.txtimagen);
+            this.pnlconten.Controls.Add(this.label9);
+            this.pnlconten.Controls.Add(this.btnBuscarImagenOtros);
             this.pnlconten.Controls.Add(this.label1);
             this.pnlconten.Controls.Add(this.cboCelular);
             this.pnlconten.Controls.Add(this.cboMaquina);
@@ -278,9 +291,56 @@
             this.pnlconten.Controls.Add(this.txtObservacionesCelular);
             this.pnlconten.Location = new System.Drawing.Point(12, 12);
             this.pnlconten.Name = "pnlconten";
-            this.pnlconten.Size = new System.Drawing.Size(475, 167);
+            this.pnlconten.Size = new System.Drawing.Size(475, 190);
             this.pnlconten.TabIndex = 25;
             this.pnlconten.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlconten_Paint);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 168);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(136, 13);
+            this.label10.TabIndex = 94;
+            this.label10.Text = "Imagen de Requerimientos:";
+            // 
+            // btnimagen
+            // 
+            this.btnimagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnimagen.Location = new System.Drawing.Point(377, 163);
+            this.btnimagen.Name = "btnimagen";
+            this.btnimagen.Size = new System.Drawing.Size(25, 23);
+            this.btnimagen.TabIndex = 92;
+            this.btnimagen.Text = "...";
+            this.btnimagen.UseVisualStyleBackColor = true;
+            this.btnimagen.Click += new System.EventHandler(this.btnimagen_Click);
+            // 
+            // txtimagen
+            // 
+            this.txtimagen.Location = new System.Drawing.Point(145, 165);
+            this.txtimagen.Name = "txtimagen";
+            this.txtimagen.ReadOnly = true;
+            this.txtimagen.Size = new System.Drawing.Size(226, 20);
+            this.txtimagen.TabIndex = 92;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(-83, 166);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 13);
+            this.label9.TabIndex = 91;
+            this.label9.Text = "Otros*";
+            // 
+            // btnBuscarImagenOtros
+            // 
+            this.btnBuscarImagenOtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarImagenOtros.Location = new System.Drawing.Point(-94, -106);
+            this.btnBuscarImagenOtros.Name = "btnBuscarImagenOtros";
+            this.btnBuscarImagenOtros.Size = new System.Drawing.Size(25, 23);
+            this.btnBuscarImagenOtros.TabIndex = 93;
+            this.btnBuscarImagenOtros.Text = "...";
+            this.btnBuscarImagenOtros.UseVisualStyleBackColor = true;
             // 
             // btnexportar
             // 
@@ -297,28 +357,52 @@
             this.savefile.DefaultExt = "pdf";
             this.savefile.Filter = "|*.pdf";
             // 
+            // lklimagen
+            // 
+            this.lklimagen.AutoSize = true;
+            this.lklimagen.Location = new System.Drawing.Point(418, 179);
+            this.lklimagen.Name = "lklimagen";
+            this.lklimagen.Size = new System.Drawing.Size(61, 13);
+            this.lklimagen.TabIndex = 93;
+            this.lklimagen.TabStop = true;
+            this.lklimagen.Text = "Ver Imagen";
+            this.lklimagen.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklimagen_LinkClicked);
+            // 
+            // pbimagen
+            // 
+            this.pbimagen.Location = new System.Drawing.Point(493, 84);
+            this.pbimagen.Name = "pbimagen";
+            this.pbimagen.Size = new System.Drawing.Size(72, 47);
+            this.pbimagen.TabIndex = 94;
+            this.pbimagen.TabStop = false;
+            this.pbimagen.Visible = false;
+            // 
             // frmEmpleadoRequerimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(763, 212);
+            this.ClientSize = new System.Drawing.Size(577, 236);
+            this.Controls.Add(this.pbimagen);
+            this.Controls.Add(this.lklimagen);
             this.Controls.Add(this.btnexportar);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.pnlconten);
-            this.MaximumSize = new System.Drawing.Size(779, 251);
-            this.MinimumSize = new System.Drawing.Size(779, 251);
+            this.MaximumSize = new System.Drawing.Size(593, 275);
+            this.MinimumSize = new System.Drawing.Size(593, 275);
             this.Name = "frmEmpleadoRequerimiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Empleado Requerimiento";
             this.Load += new System.EventHandler(this.frmEmpleadoRequerimiento_Load);
             this.pnlconten.ResumeLayout(false);
             this.pnlconten.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbimagen)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -347,5 +431,12 @@
         private System.Windows.Forms.Panel pnlconten;
         private System.Windows.Forms.Button btnexportar;
         private System.Windows.Forms.SaveFileDialog savefile;
+        private System.Windows.Forms.TextBox txtimagen;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnBuscarImagenOtros;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnimagen;
+        private System.Windows.Forms.LinkLabel lklimagen;
+        private System.Windows.Forms.PictureBox pbimagen;
     }
 }

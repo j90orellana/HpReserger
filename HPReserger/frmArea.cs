@@ -156,18 +156,18 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
-            if (estado == 1 && ValidarDes(txtdescripcion.Text) )
+            if (estado == 1 && ValidarDes(txtdescripcion.Text))
             {
-                CArea.InsertarArea(txtdescripcion.Text,CodCCosto,Codgerencia);                
-                MessageBox.Show("Descripción Insertada Exitosamente "+ txtdescripcion.Text, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                CArea.InsertarArea(txtdescripcion.Text, CodCCosto, Codgerencia);
+                MessageBox.Show("Descripción Insertada Exitosamente " + txtdescripcion.Text, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Txtbusca.Text = txtdescripcion.Text;
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtdescripcion.Text))
                 {
-                    CArea.ActualizarArea(txtdescripcion.Text, CodCCosto, Codgerencia,Codarea);
-                    MessageBox.Show("Descripción Modificada Exitosamente" , "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CArea.ActualizarArea(txtdescripcion.Text, CodCCosto, Codgerencia, Codarea);
+                    MessageBox.Show("Descripción Modificada Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Txtbusca.Text = txtdescripcion.Text;
                 }
                 else
@@ -176,7 +176,7 @@ namespace HPReserger
                     {
                         if (MessageBox.Show("Seguró Desea Eliminar: " + txtdescripcion.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
-                            CArea.EliminarArea(CodCCosto,Codgerencia,Codarea);
+                            CArea.EliminarArea(CodCCosto, Codgerencia, Codarea);
                             MessageBox.Show("Descripción Eliminada Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             Txtbusca.Text = txtdescripcion.Text;
                         }
@@ -184,7 +184,7 @@ namespace HPReserger
                 }
             }
             estado = 0;
-            Activar();Activarmas();
+            Activar(); Activarmas();
             /*Cargarprovincias(coddep, "");
             codpro = Convert.ToInt32(cboprovincia.SelectedValue.ToString());
             codprofinal = cboprovincia.Items.Count;*/
@@ -192,12 +192,14 @@ namespace HPReserger
         private void btnccostomas_Click(object sender, EventArgs e)
         {
             frmccosto costo = new frmccosto();
-            costo.Visible = true;
+            costo.Consulta = true;
+            costo.ShowDialog();
+            if (costo.Consulta)
+                cboccosto.SelectedValue = costo.ConsulCodi;
         }
-
         private void frmArea_Activated_1(object sender, EventArgs e)
         {
             //frmArea_Load(sender, e);
-        }        
+        }
     }
 }

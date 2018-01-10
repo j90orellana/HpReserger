@@ -28,17 +28,34 @@ namespace HPReserger
         public string Nombres { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Ocupacion { get; set; }
-
+        public int sexo;
+        public Boolean estudia;
         public frmEmpleadosFamiliaresModificar()
         {
             InitializeComponent();
         }
-
+        DataTable TablaTipoID;
+        public void CargarTiposID(string tabla)
+        {
+            TablaTipoID = new DataTable();
+            TablaTipoID = clEmpleadoFamiliaModificar.CualquierTabla(tabla, "Desc_Tipo_ID", "RUC");
+            cboTipoDocumentoIdentidad.DisplayMember = "Desc_Tipo_ID";
+            cboTipoDocumentoIdentidad.ValueMember = "Codigo_Tipo_ID";
+            cboTipoDocumentoIdentidad.DataSource = TablaTipoID;
+        }
+        public void ModificarTamañoTipo(TextBox txt, int index)
+        {
+            if (index >= 0 && TablaTipoID != null)
+            {
+                DataRow Filita = TablaTipoID.Rows[index];
+                txt.MaxLength = (int)Filita["Length"];
+            }
+        }
         private void frmEmpleadosFamiliaresModificar_Load(object sender, EventArgs e)
         {
-            CargaCombos(cboTipoDocumentoIdentidad, "Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
+            CargarTiposID("TBL_Tipo_ID");
             CargaCombos(cboVinculoFamiliar, "Id_VinculoFamiliar", "VinculoFamiliar", "TBL_VinculoFamiliar");
-
+            CargaCombos(cbosexo, "Id_Sexo", "Sexo", "TBL_Sexo");
             cboTipoDocumentoIdentidad.SelectedValue = CodigoDocumentoFamiliar;
             txtNumeroDocumento.Text = NumeroDocumentoFamiliar;
             cboVinculoFamiliar.SelectedValue = VinculoFamiliar;
@@ -47,6 +64,8 @@ namespace HPReserger
             txtNombres.Text = Nombres;
             dtpFecha.Value = FechaNacimiento;
             txtOcupacion.Text = Ocupacion;
+            check18.Checked = estudia;
+            cbosexo.SelectedValue = sexo;
         }
 
         private void CargaCombos(ComboBox cbo, string codigo, string descripcion, string tabla)
@@ -58,6 +77,12 @@ namespace HPReserger
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (txtNumeroDocumento.Text.Length != txtNumeroDocumento.MaxLength && cboTipoDocumentoIdentidad.Text != "CARNE EXTRANJERIA")
+            {
+                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                txtNumeroDocumento.Focus();
+                return;
+            }
             if (txtNumeroDocumento.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -88,17 +113,50 @@ namespace HPReserger
                 txtOcupacion.Focus();
                 return;
             }
-            clEmpleadoFamiliaModificar.EmpleadoFamilia(CodigoDocumentoEmpleado, NumeroDocumentoEmpleado, Convert.ToInt32(cboVinculoFamiliar.SelectedValue.ToString()), CodigoDocumentoFamiliar, NumeroDocumentoFamiliar, Convert.ToInt32(cboTipoDocumentoIdentidad.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, dtpFecha.Value, txtOcupacion.Text, frmLogin.CodigoUsuario, 0,conviviente,nombreconviviente);
+            if (cbosexo.SelectedIndex < 0)
+            {
+                msg("Seleccion el Sexo");
+                cbosexo.Focus();
+                return;
+            }
+            if (cboTipoDocumentoIdentidad.SelectedIndex < 0)
+            {
+                msg("Seleccion el Tipo de Documento");
+                cboTipoDocumentoIdentidad.Focus();
+                return;
+            }
+            if (cboVinculoFamiliar.SelectedIndex < 0)
+            {
+                msg("Seleccion el Vinculo Familiar");
+                cboVinculoFamiliar.Focus();
+                return;
+            }
+            if (NumeroDocumentoFamiliar != txtNumeroDocumento.Text || (int)cboTipoDocumentoIdentidad.SelectedValue != CodigoDocumentoFamiliar)
+            {
+                DataRow filita = clEmpleadoFamiliaModificar.EmpleadoFamiliaExiste(CodigoDocumentoEmpleado, NumeroDocumentoEmpleado, CodigoDocumentoFamiliar, NumeroDocumentoFamiliar);
+                if (filita != null)
+                {
+                    msg("Documento Familiar Ya Existe");
+                    return;
+                }
+            }
+            int x = 0;
+            if (check18.Checked) x = 1;
+            else x = 0;
+            clEmpleadoFamiliaModificar.EmpleadoFamilia(CodigoDocumentoEmpleado, NumeroDocumentoEmpleado, Convert.ToInt32(cboVinculoFamiliar.SelectedValue.ToString()), CodigoDocumentoFamiliar, NumeroDocumentoFamiliar, Convert.ToInt32(cboTipoDocumentoIdentidad.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, dtpFecha.Value, txtOcupacion.Text, frmLogin.CodigoUsuario, 0, conviviente, nombreconviviente, (int)cbosexo.SelectedValue, x);
             MessageBox.Show("Vínculo Familiar modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
-
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void txtApellidoMaterno_TextChanged(object sender, EventArgs e)
         {
 
         }
-        
+
         private void btnconviviente_Click(object sender, EventArgs e)
         {
             var dialogoAbriArchivoConviviente = new OpenFileDialog();
@@ -113,7 +171,7 @@ namespace HPReserger
                 _memoryStream.Capacity = 0;
                 pbconviviente.Image = Image.FromFile(dialogoAbriArchivoConviviente.FileName);
                 pbconviviente.Image.Save(_memoryStream, ImageFormat.Jpeg);
-                 lklconviviente.Enabled = true;
+                lklconviviente.Enabled = true;
             }
             else lklconviviente.Enabled = false;
         }
@@ -145,7 +203,12 @@ namespace HPReserger
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, 10);
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtNumeroDocumento, txtNumeroDocumento.MaxLength);
+        }
+
+        private void cboTipoDocumentoIdentidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ModificarTamañoTipo(txtNumeroDocumento, cboTipoDocumentoIdentidad.SelectedIndex);
         }
     }
 }
