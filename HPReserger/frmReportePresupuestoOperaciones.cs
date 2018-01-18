@@ -146,7 +146,7 @@ namespace HPReserger
                 {
                     if (j != 0 && j != 4 && j != 6 && j != 10)
                     {
-                        hoja_trabajo.Cells[i + 2, nume + 1] = grd.Rows[i].Cells[j].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, nume + 1] = grd.Rows[i].Cells[j].Value;
                         nume++;
                     }
                 }
@@ -158,6 +158,9 @@ namespace HPReserger
                 if (contador != 0 && contador != 4 && contador != 6 && contador != 10)
                 {
                     hoja_trabajo.Cells[1, numer + 1] = grd.Columns[contador].HeaderText.ToString();
+
+                    if (dtgconten.Rows[0].Cells[contador].Value.GetType() == typeof(decimal))
+                        hoja_trabajo.Columns[numer + 1].NumberFormat = "0.00";
                     hoja_trabajo.Columns[numer + 1].AutoFit();
                     numer++;
                 }
@@ -173,6 +176,13 @@ namespace HPReserger
             //ExportarExcel(dtgconten, "");
             if (dtgconten.RowCount > 0)
             {
+                int a = 0;
+                foreach (DataGridViewRow xx in dtgconten.Rows)
+                {
+                    if ((decimal)xx.Cells[importe.Name].Value != 0 || (decimal)xx.Cells[importe_proy.Name].Value != 0 || (decimal)xx.Cells[Diferencia.Name].Value != 0)
+                        dtgconten_CellClick(sender, new DataGridViewCellEventArgs(2, a));
+                    a++;
+                }
                 ExportarDataGridViewExcel(dtgconten);
                 MSG("Exportado con Exito");
             }
@@ -386,21 +396,24 @@ namespace HPReserger
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            dtgconten.DataSource = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()), (int)cbopresupuestos.SelectedValue);
-            System.Data.DataTable tablita = (System.Data.DataTable)dtgconten.DataSource;
-            dtgconten.DataSource = tablita;
-            // System.Data.DataTable dttAgrupamientos = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
-            // BindingSource bAsociacion = new BindingSource();
-            // bAsociacion.DataSource = dttAgrupamientos;
-            dtgconten.AutoGenerateColumns = false;
-            // dtgconten.DataSource = bAsociacion;
-            // System.Data.DataTable tablita = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
-            // dtgconten.DataSource = null;
-            contando(dtgconten);
-            Sumatoria();
-            //  REvisarGrillas();
-            if (dtgconten.RowCount <= 0)
-                MSG("No hay Etapas en el Proyecto");
+            if (cboproyecto.SelectedIndex >= 0 && cbopresupuestos.SelectedIndex >= 0)
+            {
+                dtgconten.DataSource = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()), (int)cbopresupuestos.SelectedValue);
+                System.Data.DataTable tablita = (System.Data.DataTable)dtgconten.DataSource;
+                dtgconten.DataSource = tablita;
+                // System.Data.DataTable dttAgrupamientos = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
+                // BindingSource bAsociacion = new BindingSource();
+                // bAsociacion.DataSource = dttAgrupamientos;
+                dtgconten.AutoGenerateColumns = false;
+                // dtgconten.DataSource = bAsociacion;
+                // System.Data.DataTable tablita = CLPresuOpera.ListarPresupuestoCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()));
+                // dtgconten.DataSource = null;
+                contando(dtgconten);
+                Sumatoria();
+                //  REvisarGrillas();
+                if (dtgconten.RowCount <= 0)
+                    MSG("No hay Etapas en el Proyecto");
+            }//MSG("Seleccione Proyecto y Presupuesto");
         }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)

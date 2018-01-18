@@ -649,7 +649,7 @@ namespace HPReserger
                 cboCargo.DataSource = null;
                 cboCargo.ValueMember = "fk_idcargo";
                 cboCargo.DisplayMember = "cargo";
-                cboCargo.DataSource = clContrato.CargosAreas(10, 0, (int)cboArea.SelectedValue);
+                cboCargo.DataSource = clContrato.CargosAreas(10, 0, (int)cboArea.SelectedValue, "");
                 cboCargo.SelectedIndex = -1;
             }
         }
@@ -663,28 +663,29 @@ namespace HPReserger
 
         private void txtContrato_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbFotoContrato);
+            // MostrarFoto(pbFotoContrato);
+            MostrarPDF();
         }
 
         private void txtAnexoFunciones_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbFotoAnexoFunciones);
+            MostrarFoto(pbFotoAnexoFunciones, $"Imagen de Anexo de Funciones");
         }
 
         private void txtSolicitudPracticas_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbFotoSolicitudPracticas);
+            MostrarFoto(pbFotoSolicitudPracticas, $"Imagen de Solicitud de Practicas");
         }
 
         private void txtOtros_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbFotoOtros);
+            MostrarFoto(pbFotoOtros, $"Imagen de Otros");
         }
-        public void MostrarFoto(PictureBox fotito)
+        public void MostrarFoto(PictureBox fotito, string namex)
         {
             if (fotito.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto(namex);
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
@@ -967,17 +968,17 @@ namespace HPReserger
         }
         private void lklanexo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbFotoAnexoFunciones);
+            MostrarFoto(pbFotoAnexoFunciones, $"Imagen de Anexo de Funciones");
         }
 
         private void lklpracticas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbFotoSolicitudPracticas);
+            MostrarFoto(pbFotoSolicitudPracticas, $"Imagen de Solicitud de Practicas");
         }
 
         private void lklotros_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbFotoOtros);
+            MostrarFoto(pbFotoOtros, $"Imagen de Otros");
         }
 
         private void txtAnexoFunciones_TextChanged(object sender, EventArgs e)

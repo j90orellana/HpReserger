@@ -38,17 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.btnGenerar = new System.Windows.Forms.Button();
-            this.btnexportarexcel = new System.Windows.Forms.Button();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.txtdiferencia = new System.Windows.Forms.TextBox();
-            this.txtoperaciones = new System.Windows.Forms.TextBox();
-            this.txtimporte = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbopresupuestos = new System.Windows.Forms.ComboBox();
             this.iddep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.conta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,13 +49,24 @@
             this.Operaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Diferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_etapas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGenerar = new System.Windows.Forms.Button();
+            this.btnexportarexcel = new System.Windows.Forms.Button();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.txtdiferencia = new System.Windows.Forms.TextBox();
+            this.txtoperaciones = new System.Windows.Forms.TextBox();
+            this.txtimporte = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbopresupuestos = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 23);
+            this.label1.Location = new System.Drawing.Point(11, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 0;
@@ -78,16 +78,16 @@
             this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(83, 20);
+            this.cboempresa.Location = new System.Drawing.Point(68, 20);
             this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(242, 21);
+            this.cboempresa.Size = new System.Drawing.Size(257, 21);
             this.cboempresa.TabIndex = 1;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 51);
+            this.label2.Location = new System.Drawing.Point(13, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 0;
@@ -99,9 +99,9 @@
             this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboproyecto.FormattingEnabled = true;
-            this.cboproyecto.Location = new System.Drawing.Point(83, 47);
+            this.cboproyecto.Location = new System.Drawing.Point(69, 48);
             this.cboproyecto.Name = "cboproyecto";
-            this.cboproyecto.Size = new System.Drawing.Size(242, 21);
+            this.cboproyecto.Size = new System.Drawing.Size(257, 21);
             this.cboproyecto.TabIndex = 1;
             this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
             // 
@@ -138,135 +138,18 @@
             this.Diferencia,
             this.id_etapas});
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(28, 74);
+            this.dtgconten.Location = new System.Drawing.Point(12, 74);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(900, 480);
+            this.dtgconten.Size = new System.Drawing.Size(926, 480);
             this.dtgconten.TabIndex = 17;
             this.dtgconten.TabStop = false;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // btnGenerar
-            // 
-            this.btnGenerar.Location = new System.Drawing.Point(360, 45);
-            this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(75, 23);
-            this.btnGenerar.TabIndex = 18;
-            this.btnGenerar.Text = "Generar";
-            this.btnGenerar.UseVisualStyleBackColor = true;
-            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
-            // 
-            // btnexportarexcel
-            // 
-            this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportarexcel.Location = new System.Drawing.Point(854, 18);
-            this.btnexportarexcel.Name = "btnexportarexcel";
-            this.btnexportarexcel.Size = new System.Drawing.Size(75, 23);
-            this.btnexportarexcel.TabIndex = 19;
-            this.btnexportarexcel.Text = "Excel";
-            this.btnexportarexcel.UseVisualStyleBackColor = true;
-            this.btnexportarexcel.Click += new System.EventHandler(this.btnexportarexcel_Click);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(34, 564);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(54, 13);
-            this.lblmsg.TabIndex = 24;
-            this.lblmsg.Text = "Registros:";
-            // 
-            // txtdiferencia
-            // 
-            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdiferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdiferencia.Location = new System.Drawing.Point(843, 48);
-            this.txtdiferencia.Name = "txtdiferencia";
-            this.txtdiferencia.ReadOnly = true;
-            this.txtdiferencia.Size = new System.Drawing.Size(84, 20);
-            this.txtdiferencia.TabIndex = 25;
-            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtoperaciones
-            // 
-            this.txtoperaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtoperaciones.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtoperaciones.Location = new System.Drawing.Point(753, 48);
-            this.txtoperaciones.Name = "txtoperaciones";
-            this.txtoperaciones.ReadOnly = true;
-            this.txtoperaciones.Size = new System.Drawing.Size(84, 20);
-            this.txtoperaciones.TabIndex = 26;
-            this.txtoperaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtimporte
-            // 
-            this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtimporte.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtimporte.Location = new System.Drawing.Point(663, 48);
-            this.txtimporte.Name = "txtimporte";
-            this.txtimporte.ReadOnly = true;
-            this.txtimporte.Size = new System.Drawing.Size(84, 20);
-            this.txtimporte.TabIndex = 27;
-            this.txtimporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(612, 50);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Totales:";
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(853, 559);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 29;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(734, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 23);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Análisis por Periodo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(331, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "Presupuestos:";
-            // 
-            // cbopresupuestos
-            // 
-            this.cbopresupuestos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbopresupuestos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbopresupuestos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbopresupuestos.FormattingEnabled = true;
-            this.cbopresupuestos.Location = new System.Drawing.Point(411, 20);
-            this.cbopresupuestos.Name = "cbopresupuestos";
-            this.cbopresupuestos.Size = new System.Drawing.Size(242, 21);
-            this.cbopresupuestos.TabIndex = 32;
-            this.cbopresupuestos.SelectedIndexChanged += new System.EventHandler(this.cbopresupuestos_SelectedIndexChanged);
             // 
             // iddep
             // 
@@ -379,6 +262,123 @@
             this.id_etapas.Name = "id_etapas";
             this.id_etapas.ReadOnly = true;
             this.id_etapas.Visible = false;
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Location = new System.Drawing.Point(439, 48);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(75, 20);
+            this.btnGenerar.TabIndex = 18;
+            this.btnGenerar.Text = "Generar";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
+            // 
+            // btnexportarexcel
+            // 
+            this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnexportarexcel.Location = new System.Drawing.Point(864, 20);
+            this.btnexportarexcel.Name = "btnexportarexcel";
+            this.btnexportarexcel.Size = new System.Drawing.Size(75, 21);
+            this.btnexportarexcel.TabIndex = 19;
+            this.btnexportarexcel.Text = "Excel";
+            this.btnexportarexcel.UseVisualStyleBackColor = true;
+            this.btnexportarexcel.Click += new System.EventHandler(this.btnexportarexcel_Click);
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.Location = new System.Drawing.Point(9, 564);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(54, 13);
+            this.lblmsg.TabIndex = 24;
+            this.lblmsg.Text = "Registros:";
+            // 
+            // txtdiferencia
+            // 
+            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdiferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtdiferencia.Location = new System.Drawing.Point(854, 49);
+            this.txtdiferencia.Name = "txtdiferencia";
+            this.txtdiferencia.ReadOnly = true;
+            this.txtdiferencia.Size = new System.Drawing.Size(84, 20);
+            this.txtdiferencia.TabIndex = 25;
+            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtoperaciones
+            // 
+            this.txtoperaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtoperaciones.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtoperaciones.Location = new System.Drawing.Point(764, 49);
+            this.txtoperaciones.Name = "txtoperaciones";
+            this.txtoperaciones.ReadOnly = true;
+            this.txtoperaciones.Size = new System.Drawing.Size(84, 20);
+            this.txtoperaciones.TabIndex = 26;
+            this.txtoperaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtimporte
+            // 
+            this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtimporte.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtimporte.Location = new System.Drawing.Point(674, 49);
+            this.txtimporte.Name = "txtimporte";
+            this.txtimporte.ReadOnly = true;
+            this.txtimporte.Size = new System.Drawing.Size(84, 20);
+            this.txtimporte.TabIndex = 27;
+            this.txtimporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(623, 53);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Totales:";
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Location = new System.Drawing.Point(863, 559);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 29;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(744, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 21);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Análisis por Periodo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(331, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "Presupuestos:";
+            // 
+            // cbopresupuestos
+            // 
+            this.cbopresupuestos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbopresupuestos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbopresupuestos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbopresupuestos.FormattingEnabled = true;
+            this.cbopresupuestos.Location = new System.Drawing.Point(411, 20);
+            this.cbopresupuestos.Name = "cbopresupuestos";
+            this.cbopresupuestos.Size = new System.Drawing.Size(242, 21);
+            this.cbopresupuestos.TabIndex = 32;
+            this.cbopresupuestos.SelectedIndexChanged += new System.EventHandler(this.cbopresupuestos_SelectedIndexChanged);
             // 
             // frmReportePresupuestoOperaciones
             // 

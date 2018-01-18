@@ -65,6 +65,13 @@ namespace HPReserger
         {
             if (dtgconten.RowCount > 0)
             {
+                int a = 0;
+                foreach (DataGridViewRow xx in dtgconten.Rows)
+                {
+                    if ((decimal)xx.Cells[Importe.Name].Value != 0 || (decimal)xx.Cells[importe_proy.Name].Value != 0 || (decimal)xx.Cells[Diferencia.Name].Value != 0)
+                        dtgconten_CellContentClick(sender, new DataGridViewCellEventArgs(2, a));
+                    a++;
+                }
                 ExportarDataGridViewExcel(dtgconten);
                 MSG("Exportado con Exito");
             }
@@ -241,7 +248,7 @@ namespace HPReserger
         }
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            MSG(int.Parse(cboproyecto.SelectedValue.ToString()) + " " + (int)cbopresupuestos.SelectedValue + "");
+            //MSG(int.Parse(cboproyecto.SelectedValue.ToString()) + " " + (int)cbopresupuestos.SelectedValue + "");
             dtgconten.DataSource = CapaLogica.ListarFLujosCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()), (int)cbopresupuestos.SelectedValue);
             System.Data.DataTable tablita = (System.Data.DataTable)dtgconten.DataSource;
             dtgconten.DataSource = tablita;

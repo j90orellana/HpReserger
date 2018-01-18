@@ -257,7 +257,7 @@ namespace HPResergerCapaDatos
                     cmd.CommandText = "usp_gerencia_actualizar";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@Id_Gerencia", SqlDbType.Int).Value = codigo;
-                    cmd.Parameters.Add("@gerencia", SqlDbType.VarChar, 20).Value = gerencia;
+                    cmd.Parameters.Add("@gerencia", SqlDbType.VarChar, 100).Value = gerencia;
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
@@ -2496,7 +2496,7 @@ namespace HPResergerCapaDatos
             return bd.DatarowFromProcedure("usp_Get_CualquierCampo_PostulanteEmpleado", parametros, valores, null);
         }
 
-        public void PostulanteModificar(int Tipo_ID_Postulante_Old, string Nro_ID_Postulante_Old, int Tipo_ID_Postulante_New, string Nro_ID_Postulante_New, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, byte[] Foto, string NombreFoto, int Id_SolicitaEmpleado,DateTime fechanacimiento)
+        public void PostulanteModificar(int Tipo_ID_Postulante_Old, string Nro_ID_Postulante_Old, int Tipo_ID_Postulante_New, string Nro_ID_Postulante_New, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, byte[] Foto, string NombreFoto, int Id_SolicitaEmpleado, DateTime fechanacimiento)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -2732,12 +2732,12 @@ namespace HPResergerCapaDatos
             object[] valores = { FechaInicio, FechaFin };
             return bd.DatarowFromProcedure("usp_Dias_Vacaciones", parametros, valores, null);
         }
-        public DataRow UltimoRegistoVacaciones(int tipo ,string doc)
+        public DataRow UltimoRegistoVacaciones(int tipo, string doc)
         {
             string[] parametros = { "@tipo", "@doc" };
             object[] valores = { tipo, doc };
             return bd.DatarowFromProcedure("usp_UltimoRegistoVacaciones", parametros, valores, null);
-        }      
+        }
         public void EmpleadoVacacionesInsertar(out int Numero, int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Fec_Inicio, DateTime Fec_Fin, int Dias_Vacaciones, string Observaciones)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
@@ -2859,7 +2859,7 @@ namespace HPResergerCapaDatos
             return bd.DatarowFromProcedure("usp_GetEmpleadoSueldo", parametros, valores, null);
         }
 
-        public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado, int usuario,int pago,string observacion)
+        public void ComprarVacaciones(int Tipo_ID_Emp, string Nro_ID_Emp, DateTime Desde, DateTime Hasta, int Dias_Pendiente, decimal Monto_Propuesto, decimal Monto_Pactado, int usuario, int pago, string observacion)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -3380,10 +3380,10 @@ namespace HPResergerCapaDatos
             object[] valores = { nrofactura, tipo, nropago };
             return bd.DataTableFromProcedure("usp_insertarPagarfactura", parametros, valores, null);
         }
-        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber)
+        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina)
         {
-            string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber" };
-            object[] valores = { si, asiento, @fac, @cc, @debe, @haber };
+            string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber", "@dina" };
+            object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina };
             return bd.DataTableFromProcedure("usp_guardarfactura", parametros, valores, null);
         }
         public DataTable ListarFacturasSinPagar(string buscar, int factura, int provee, int check, string tipo, int fecha, DateTime fechainicio, DateTime fechafin)
@@ -3481,6 +3481,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@cod", "@opcion", "@cargo", "@usuario" };
             object[] valores = { cod, opcion, cargo, usuario };
             return bd.DataTableFromProcedure("usp_InsertarActualizarEstadoCivil", parametros, valores, null);
+        }
+        public DataTable ReversaDeFacturas(string nrofac, string proveedor)
+        {
+            string[] parametros = { "@nrofac", "@proveedor" };
+            object[] valores = { nrofac, proveedor };
+            return bd.DataTableFromProcedure("usp_ReversaDeFacturas", parametros, valores, null);
         }
         public DataTable InsertarActualizarGradoInstruccion(int @cod, int @opcion, string @cargo, int @usuario)
         {
@@ -3753,10 +3759,10 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, tipo, numero, fecha, fecinicio, fecfin };
             return bd.DataTableFromProcedure("usp_ReporteBoletas", parametros, valores, null); ;
         }
-        public DataTable CargosAreas(int opcion, int cargo, int area)
+        public DataTable CargosAreas(int opcion, int cargo, int area, string cadena)
         {
-            string[] parametros = { "@opcion", "@cargo", "@area" };
-            object[] valores = { opcion, cargo, area };
+            string[] parametros = { "@opcion", "@cargo", "@area", "@cadena" };
+            object[] valores = { opcion, cargo, area, cadena };
             return bd.DataTableFromProcedure("usp_CargosAreas", parametros, valores, null); ;
         }
         public DataRow EmpleadoFamiliaExiste(int Tipo_ID_Emp, string Nro_ID_Emp, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old)

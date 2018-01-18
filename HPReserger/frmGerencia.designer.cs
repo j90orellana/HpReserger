@@ -49,6 +49,9 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -57,7 +60,7 @@
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dtgconten.Location = new System.Drawing.Point(13, 69);
+            this.dtgconten.Location = new System.Drawing.Point(13, 92);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -65,13 +68,13 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(262, 133);
+            this.dtgconten.Size = new System.Drawing.Size(371, 145);
             this.dtgconten.TabIndex = 6;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(296, 65);
+            this.btneliminar.Location = new System.Drawing.Point(302, 65);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 21);
             this.btneliminar.TabIndex = 11;
@@ -81,7 +84,7 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(296, 38);
+            this.btnmodificar.Location = new System.Drawing.Point(302, 38);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 21);
             this.btnmodificar.TabIndex = 12;
@@ -91,9 +94,10 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(193, 208);
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Location = new System.Drawing.Point(206, 243);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(82, 29);
+            this.btncancelar.Size = new System.Drawing.Size(82, 23);
             this.btncancelar.TabIndex = 7;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -101,9 +105,10 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(95, 208);
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Location = new System.Drawing.Point(108, 243);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(82, 29);
+            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
             this.btnaceptar.TabIndex = 8;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -111,7 +116,7 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(296, 12);
+            this.btnnuevo.Location = new System.Drawing.Point(302, 12);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 20);
             this.btnnuevo.TabIndex = 9;
@@ -122,23 +127,24 @@
             // txtgerencia
             // 
             this.txtgerencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtgerencia.Location = new System.Drawing.Point(87, 43);
+            this.txtgerencia.Location = new System.Drawing.Point(87, 51);
+            this.txtgerencia.MaxLength = 100;
             this.txtgerencia.Name = "txtgerencia";
-            this.txtgerencia.Size = new System.Drawing.Size(188, 20);
+            this.txtgerencia.Size = new System.Drawing.Size(209, 20);
             this.txtgerencia.TabIndex = 13;
             // 
             // txtcodigo
             // 
             this.txtcodigo.Enabled = false;
-            this.txtcodigo.Location = new System.Drawing.Point(87, 12);
+            this.txtcodigo.Location = new System.Drawing.Point(87, 25);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(188, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(209, 20);
             this.txtcodigo.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 50);
+            this.label2.Location = new System.Drawing.Point(13, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 4;
@@ -147,7 +153,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 19);
+            this.label1.Location = new System.Drawing.Point(13, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 5;
@@ -161,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 246);
+            this.ClientSize = new System.Drawing.Size(396, 278);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
@@ -172,8 +178,8 @@
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(412, 285);
-            this.MinimumSize = new System.Drawing.Size(412, 285);
+            this.MaximumSize = new System.Drawing.Size(412, 317);
+            this.MinimumSize = new System.Drawing.Size(412, 317);
             this.Name = "frmgerencia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerencia";

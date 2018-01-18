@@ -215,7 +215,7 @@ namespace HPReserger
                 return;
             }
 
-            if (Foto == null )//&& chkfaltas.Checked == false)
+            if (Foto == null)//&& chkfaltas.Checked == false)
             {
                 MessageBox.Show("Seleccione Imagen de Sustento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnAdjuntarSustento.Focus();
@@ -317,7 +317,7 @@ namespace HPReserger
         {
             if (fotito.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto($"Falta de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();

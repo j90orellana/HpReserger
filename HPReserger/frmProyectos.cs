@@ -121,6 +121,7 @@ namespace HPReserger
                     proyec.Proyecto = int.Parse(dtgconten["idproyecto", e.RowIndex].Value.ToString());
                     proyec.txtnombre.Text = (dtgconten["proyecto", e.RowIndex].Value.ToString());
                     proyec.FormClosed += new FormClosedEventHandler(cerrarpresupuestoetapas);
+                    proyec.Icon = Icon;
                     proyec.Show();
                 }
                 else

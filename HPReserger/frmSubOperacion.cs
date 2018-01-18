@@ -211,7 +211,7 @@ namespace HPReserger
                     fila++;
                 }
                 //modificando
-                CCargos.InsertarActualizarListarSubOperacion((dtgconten["codigo", dtgconten.CurrentCell.RowIndex].Value.ToString()), 2, txtnombre.Text, cboestado.SelectedValue.ToString(), cbooperacion.SelectedValue.ToString(), frmLogin.CodigoUsuario, int.Parse(dtgconten["campo4", dtgconten.CurrentCell.RowIndex].Value.ToString()));
+                CCargos.InsertarActualizarListarSubOperacion((dtgconten["campo4", dtgconten.CurrentCell.RowIndex].Value.ToString()), 2, txtnombre.Text, cboestado.SelectedValue.ToString(), cbooperacion.SelectedValue.ToString(), frmLogin.CodigoUsuario, int.Parse(dtgconten["codigo", dtgconten.CurrentCell.RowIndex].Value.ToString()));
                 Msg("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }

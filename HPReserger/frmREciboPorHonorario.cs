@@ -108,7 +108,7 @@ namespace HPReserger
         {
             if (fotito.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto($"Imagen de Recibo por Honorarios");
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
@@ -302,8 +302,14 @@ namespace HPReserger
                     cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 1,
                       valorsubtotal, valorigv, valortotal,
                          cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario), 0, 0);
+                    ///////////////////////
+                    ///Dinamica Contable///
+                    ///////////////////////                    
                     cfactura.InsertarAsientoRecibo(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                     cfactura.InsertarAsientoRecibo(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
+                    ///////////////////////
+                    ///Dinamica Contable///
+                    ///////////////////////  
                 }
                 MSG("Recibo por Honorario Ingresado Exitosamente");
                 btncancelar_Click(sender, e);

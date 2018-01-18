@@ -84,7 +84,7 @@ namespace HPReserger
         {
             if (fotito.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto($"Imagen de Comprobantes");
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
@@ -337,11 +337,17 @@ namespace HPReserger
                     //provisionada
                     if ((int)DtgConten["provisionada", i].Value != 3)
                     {
+                        //////////////////////
+                        ///Insertar-Asiento///
+                        //////////////////////
                         cfactura.InsertarAsientoFactura(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                         cfactura.InsertarAsientoFactura(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                     }
                     else
                     {
+                        //////////////////////
+                        ///Insertar-Asiento///
+                        //////////////////////
                         cfactura.InsertarAsientoFacturaLlegada(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                         cfactura.InsertarAsientoFacturaLlegada(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), 0, 0, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                     }
@@ -1028,8 +1034,14 @@ namespace HPReserger
                       valorsubtotal, valorigv, valortotal,
                          cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 3, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario),
                          int.Parse(txtdetraccion.Text), detracc);
+                    ///////////////////////
+                    ///Dinamica Contable///
+                    ///////////////////////  
                     cfactura.InsertarAsientoFacturaProvisionada(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                     cfactura.InsertarAsientoFacturaProvisionada(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
+                    ///////////////////////
+                    ///Dinamica Contable///
+                    ///////////////////////  
                 }
                 estado = 1;
                 string Rux = txtruc.Text;

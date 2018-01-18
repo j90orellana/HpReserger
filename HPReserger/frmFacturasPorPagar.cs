@@ -102,7 +102,7 @@ namespace HPReserger
                 for (int j = 0; j < dtgconten.Columns.Count; j++)
                 {
 
-                    hoja_trabajo.Cells[i + 3, nume + 1] = dtgconten.Rows[i].Cells[j].Value.ToString();
+                    hoja_trabajo.Cells[i + 3, nume + 1] = dtgconten.Rows[i].Cells[j].Value;
                     //  hoja_trabajo.Cells[i + 4, nume + 1] = dtgoperaciones.Rows[i].Cells[j].Value.ToString();
                     // hoja_trabajo.Cells[i + 5, nume + 1] = dtgdiferencia.Rows[i].Cells[j].Value.ToString();
 
@@ -114,8 +114,13 @@ namespace HPReserger
             //COLUMNAS
             for (int contador = 0; contador < dtgconten.ColumnCount; contador++)
             {
-
                 hoja_trabajo.Cells[2, numer + 1] = dtgconten.Columns[contador].HeaderText.ToString();
+                if (dtgconten.Rows[0].Cells[contador ].Value.GetType() == typeof(decimal))
+                    hoja_trabajo.Columns[numer + 1].NumberFormat = "0.00";
+
+               // if (dtgconten.Rows[0].Cells[contador].Value.GetType() == typeof(DateTime))
+                 //   hoja_trabajo.Columns[numer + 1].NumberFormat = "dd/mm/aa hh:mm";
+
                 hoja_trabajo.Columns[numer + 1].AutoFit();
                 numer++;
 

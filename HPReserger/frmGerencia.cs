@@ -16,14 +16,15 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public Boolean Solicita = false;
         public int estado { get; set; }
         HPResergerCapaLogica.HPResergerCL cgerencia = new HPResergerCapaLogica.HPResergerCL();
         private void frmgerencia_Load(object sender, EventArgs e)
         {
             estado = 0;
-            dtgconten.DataSource = cgerencia.getCargoTipoContratacion("Id_Gerencia", "Gerencia", "TBL_Gerencia");            
+            dtgconten.DataSource = cgerencia.getCargoTipoContratacion("Id_Gerencia", "Gerencia", "TBL_Gerencia");
             dtgconten.Focus();
-            
+
         }
         public void Activar()
         {
@@ -49,8 +50,8 @@ namespace HPReserger
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-            
-            tipmsg.Show("Ingrese Gerencia",txtgerencia,1000);
+
+            tipmsg.Show("Ingrese Gerencia", txtgerencia, 1000);
             txtcodigo.Text = txtgerencia.Text = "";
             estado = 1;
             Desactivar();
@@ -72,7 +73,7 @@ namespace HPReserger
 
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            tipmsg.Show("Ingrese Gerencia",txtgerencia,700);
+            tipmsg.Show("Ingrese Gerencia", txtgerencia, 700);
             Desactivar();
             estado = 2;
         }
@@ -106,10 +107,20 @@ namespace HPReserger
                     }
                 }
             }
+            if (Solicita)
+            {
+                if (txtcodigo.TextLength > 0)
+                {
+                    estado = int.Parse(txtcodigo.Text);
+                    this.Close();
+                    this.DialogResult = DialogResult.OK;
+                    return;
+                }
+            }
             estado = 0;
             frmgerencia_Load(sender, e);
             Activar();
-        }                
+        }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             try

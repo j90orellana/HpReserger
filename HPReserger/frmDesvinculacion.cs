@@ -609,11 +609,11 @@ namespace HPReserger
         {
 
         }
-        public void MostrarFoto(PictureBox fotito)
+        public void MostrarFoto(PictureBox fotito, string namex)
         {
             if (fotito.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto(namex);
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
@@ -622,32 +622,32 @@ namespace HPReserger
 
         private void lklliquidacion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbLiquidacion);
+            MostrarFoto(pbLiquidacion, $"Liquidación de {txtNombres.Text} {txtApellidoPaterno.Text} ");
         }
 
         private void lklcts_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbCts);
+            MostrarFoto(pbCts, $"CTS de {txtNombres.Text} {txtApellidoPaterno.Text} ");
         }
 
         private void lkltrabajo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbConstancia);
+            MostrarFoto(pbConstancia, $"Constancia de {txtNombres.Text} {txtApellidoPaterno.Text} ");
         }
 
         private void lklrenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbRenta);
+            MostrarFoto(pbRenta, $"Renta de {txtNombres.Text} {txtApellidoPaterno.Text} ");
         }
 
         private void lklpracticas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbPracticas);
+            MostrarFoto(pbPracticas, $"Practicas de {txtNombres.Text} {txtApellidoPaterno.Text} ");
         }
 
         private void lklsalida_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbSalida);
+            MostrarFoto(pbSalida, $"Entrevista de Salida de {txtNombres.Text} {txtApellidoPaterno.Text} ");
         }
 
         private void dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)

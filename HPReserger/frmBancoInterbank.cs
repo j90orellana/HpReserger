@@ -77,9 +77,6 @@ namespace HPReserger
             tablasdocumento.Rows.Add(new object[] { "03", "03:Carne Extranjería" });
             tablasdocumento.Rows.Add(new object[] { "04", "04:Cédula Identidad" });
             tablasdocumento.Rows.Add(new object[] { "05", "05:Pasaporte" });
-
-
-
         }
         private void frmBancoInterbank_Load(object sender, EventArgs e)
         {

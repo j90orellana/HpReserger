@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -114,7 +115,6 @@ namespace HPReserger
                 return;
             }
             frmReportects frmcts = new frmReportects();
-          
             frmcts.empresa = empresa;
             frmcts.tipo = tipo;
             frmcts.numero = numero;
@@ -122,8 +122,48 @@ namespace HPReserger
             frmcts.fechainicial = inicial;
             msg("Cts Generadas con Éxito");
             frmcts.Fechafin = inicial;
+            frmcts.Icon = Icon;
             frmcts.Show();
+            //// Carta a los bancos
+            frmGenerarCartaBancosCTs frmCartaBancos = new frmGenerarCartaBancosCTs();
+            frmCartaBancos.empresa = empresa;
+            frmCartaBancos.tipo = tipo;
+            frmCartaBancos.numero = numero;
+            frmCartaBancos.fecha = 1;
+            frmCartaBancos.fechainicial = inicial;
+            frmCartaBancos.Fechafin = inicial;
+            frmCartaBancos.Icon = Icon;
+            frmCartaBancos.Show();
+            ///Generar el TXT
+            MSG("Generando TXT del pago de la CTS");
+            SaveFileDialog SAvesito = new SaveFileDialog();
+            if ( SAvesito.ShowDialog() == DialogResult.OK)
+            {
+                cadenatxt = "";
+                string[] Aux = new string[6];
+                //Columnas a Mostrar de dBoleta-->CTS { 10  4   15  14  16  5 }
+                foreach (DataRow row in DBoleta.Rows)
+                {
+                    Aux[0] = row[9].ToString();
+                    Aux[1] = row[3].ToString();
+                    Aux[2] = row[14].ToString();
+                    Aux[3] = row[13].ToString();
+                    Aux[4] = row[15].ToString();
+                    Aux[5] = row[4].ToString();
+                    cadenatxt += string.Join("|", Aux) + "\n";
+                }
+                string path = SAvesito.FileName;
+                st = File.CreateText(path);
+                st.Write(cadenatxt);
+                st.Close();
+            }
         }
+        public void MSG(string cadena)
+        {
+            MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        string cadenatxt = "";
+        private StreamWriter st;
         private void frmGenerarCTS_Load(object sender, EventArgs e)
         {
             comboMesAño1.MostrarMeses(5, 11);

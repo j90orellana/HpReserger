@@ -363,13 +363,13 @@ namespace HPReserger
 
         private void pbFoto_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbFoto);
+            MostrarFoto(pbFoto, $"Foto de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
-        public void MostrarFoto(PictureBox fotito)
+        public void MostrarFoto(PictureBox fotito,string Nombre)
         {
             if (fotito.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto(Nombre);
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();

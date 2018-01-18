@@ -18,7 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
-        int estado = 0;
+        public int estado = 0;
+        public Boolean Consulta = false;
         string tabla = "TBL_Sector_Empresarial";
         string campo = "Desc_Sector_Empresarial";
         string id = "Codigo_Sector_Empresarial";
@@ -70,6 +71,7 @@ namespace HPReserger
             else
             {
                 iniciar(false);
+                if (Consulta) btnaceptar.Enabled = true;
                 estado = 0;
             }
             CargarDatos();
@@ -98,7 +100,7 @@ namespace HPReserger
                 //Insertando;
                 CCargos.InsertarActualizarSector_Empresarial(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario);
                 Msg("Insertado Con Exito");
-                btncancelar_Click(sender, e);
+                iniciar(false);
             }
             if (estado == 2)
             {
@@ -123,12 +125,24 @@ namespace HPReserger
                 //modificando
                 CCargos.InsertarActualizarSector_Empresarial(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario);
                 Msg("Actualizado Con Exito");
-                btncancelar_Click(sender, e);
+                iniciar(false);
             }
             if (estado == 0)
             {
 
             }
+            if (Consulta && estado != 1)
+            {
+                if (txtcodigo.TextLength > 0)
+                {
+                    estado = int.Parse(txtcodigo.Text);
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                    return;
+                }
+            }
+            if (Consulta) btnaceptar.Enabled = true;
+            estado = 0; CargarDatos();
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

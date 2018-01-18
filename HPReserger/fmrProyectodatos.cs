@@ -21,6 +21,7 @@ namespace HPReserger
         {
             frmetapas etapas = new frmetapas();
             etapas.proyecto = Proyecto;
+            etapas.Icon = Icon;
             etapas.ShowDialog();
             Dtgconten.DataSource = CLProyectos.ListarEtapasProyecto(Proyecto.ToString());
         }

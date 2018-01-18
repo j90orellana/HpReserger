@@ -24,13 +24,17 @@ namespace HPReserger
 
         private void frmArea_Load(object sender, EventArgs e)
         {
-            cboarea.DataSource = CArea.getCargoTipoContratacion("Id_Gerencia", "Gerencia", "TBL_Gerencia");
-            cboarea.ValueMember = "CODIGO";
-            cboarea.DisplayMember = "DESCRIPCION";
+            CArgargErencias();
             dtgconten.DataSource = CArea.ListarAreas("");
             cboccosto.DataSource = CArea.getCargoTipoContratacion("Id_CCosto", "CentroCosto", "TBL_Centro_Costo");
             cboccosto.ValueMember = "CODIGO";
             cboccosto.DisplayMember = "DESCRIPCION";
+        }
+        public void CArgargErencias()
+        {
+            cboarea.DataSource = CArea.getCargoTipoContratacion("Id_Gerencia", "Gerencia", "TBL_Gerencia");
+            cboarea.ValueMember = "CODIGO";
+            cboarea.DisplayMember = "DESCRIPCION";
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
@@ -40,7 +44,12 @@ namespace HPReserger
         private void btndepmas_Click(object sender, EventArgs e)
         {
             frmgerencia gerencia = new frmgerencia();
-            gerencia.Visible = true;
+            gerencia.Solicita = true;
+            if (gerencia.ShowDialog() == DialogResult.OK)
+            {
+                CArgargErencias();
+                cboarea.SelectedValue = gerencia.estado; 
+            }
         }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)

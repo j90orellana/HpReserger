@@ -210,7 +210,7 @@ namespace HPReserger
             
             if (pbFoto.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto("Solicitud de Empleado");
                 foto.fotito = pbFoto.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();

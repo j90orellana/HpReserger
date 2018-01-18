@@ -221,6 +221,12 @@
     <Compile Include="frmFicSinFaactura.Designer.cs">
       <DependentUpon>frmFicSinFaactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGenerarCartaBancosCTs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGenerarCartaBancosCTs.Designer.cs">
+      <DependentUpon>frmGenerarCartaBancosCTs.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGenerarCTS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -758,6 +764,12 @@
       <DependentUpon>rptboletas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RptCartaABancosCTS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCartaABancosCTS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptConvenioPracticasPreprofesional.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1190,6 +1202,9 @@
     <EmbeddedResource Include="frmGenerarBoletas.resx">
       <DependentUpon>frmGenerarBoletas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGenerarCartaBancosCTs.resx">
+      <DependentUpon>frmGenerarCartaBancosCTs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGenerarCTS.resx">
       <DependentUpon>frmGenerarCTS.cs</DependentUpon>
     </EmbeddedResource>
@@ -1404,6 +1419,10 @@
     <EmbeddedResource Include="rptboletas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptboletas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptCartaABancosCTS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCartaABancosCTS.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptConvenioPracticasPreprofesional.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

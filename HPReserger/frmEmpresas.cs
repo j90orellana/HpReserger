@@ -42,6 +42,8 @@ namespace HPReserger
             cbotipo.Enabled = a;
             cboseguro.Enabled = a;
             cbonombre.Enabled = a;
+            btnsector.Enabled = a;
+            btnciaseguro.Enabled = a;
         }
         public void CargarCombos(ComboBox combito)
         {
@@ -352,12 +354,12 @@ namespace HPReserger
 
         private void txtnombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Sololetras(e);
+            //HPResergerFunciones.Utilitarios.Sololetras(e);
         }
 
         private void txtnombre_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.ValidarPegarSoloLetrasyEspacio(e, txtnombre, 100);
+            //HPResergerFunciones.Utilitarios.ValidarPegarSoloLetrasyEspacio(e, txtnombre, 100);
         }
 
         private void txtnroid_KeyPress_1(object sender, KeyPressEventArgs e)
@@ -373,6 +375,32 @@ namespace HPReserger
         private void txtruc_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtruc, 11);
+        }
+
+        private void btnsector_Click(object sender, EventArgs e)
+        {
+            frmSectorEmpresarial frmsector = new frmSectorEmpresarial();
+            frmsector.Consulta = true;
+            frmsector.Icon = Icon;
+            frmsector.btnaceptar.Enabled = true;
+            if (frmsector.ShowDialog() == DialogResult.OK)
+            {
+                CargarSectores(cbosector);
+                cbosector.SelectedValue = frmsector.estado;
+            }
+        }
+
+        private void btnciaseguro_Click(object sender, EventArgs e)
+        {
+            frmEmpresaEps frmempresaeps = new frmEmpresaEps();
+            frmempresaeps.Consulta = true;
+            frmempresaeps.Icon = Icon;
+            frmempresaeps.btnaceptar.Enabled = true;
+            if (frmempresaeps.ShowDialog() == DialogResult.OK)
+            {
+                CargarSeguros(cboseguro);
+                cboseguro.SelectedValue = frmempresaeps.estado;
+            }
         }
     }
 }

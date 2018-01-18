@@ -17,7 +17,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
-        int estado = 0;
+        public int estado = 0;
+        public Boolean Consulta = false;
         public void iniciar(Boolean a)
         {
             btnnuevo.Enabled = !a;
@@ -67,7 +68,8 @@ namespace HPReserger
             else
             {
                 iniciar(false);
-                estado = 0;                
+                if (Consulta) btnaceptar.Enabled = true;
+                estado = 0;
             }
             CargarDatos();
         }
@@ -95,7 +97,7 @@ namespace HPReserger
                 //Insertando;
                 CCargos.InsertarActualizarEmpresaEps(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario, 0, 0, 0, 0, checkActivo.Checked);
                 Msg("Insertado Con Exito");
-                btncancelar_Click(sender, e);
+                iniciar(false); 
             }
             if (estado == 2)
             {
@@ -120,12 +122,23 @@ namespace HPReserger
                 //modificando
                 CCargos.InsertarActualizarEmpresaEps(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario, 0, 0, 0, 0, checkActivo.Checked);
                 Msg("Actualizado Con Exito");
-                btncancelar_Click(sender, e);
+                iniciar(false);
             }
             if (estado == 0)
             {
 
             }
+            if (Consulta && estado != 1)
+            {
+                if (txtcodigo.TextLength > 0)
+                {
+                    estado = int.Parse(txtcodigo.Text);
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                    return;
+                }
+            }
+            estado = 0; CargarDatos();
         }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)

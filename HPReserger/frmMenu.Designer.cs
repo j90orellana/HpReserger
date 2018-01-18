@@ -38,6 +38,7 @@
             this.minimizarTodasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maximizarTodasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelOre1 = new HpResergerUserControls.PanelOre();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.pbfotoempleado = new System.Windows.Forms.PictureBox();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -152,7 +153,6 @@
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.cmenuclick.SuspendLayout();
             this.panelOre1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -232,13 +232,21 @@
             this.panelOre1.Size = new System.Drawing.Size(784, 69);
             this.panelOre1.TabIndex = 56;
             // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 66);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(10, 3);
+            this.splitter1.TabIndex = 55;
+            this.splitter1.TabStop = false;
+            // 
             // pbfotoempleado
             // 
             this.pbfotoempleado.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.pbfotoempleado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbfotoempleado.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pbfotoempleado.ContextMenuStrip = this.cmenuclick;
             this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
-            this.pbfotoempleado.Location = new System.Drawing.Point(708, 0);
+            this.pbfotoempleado.Location = new System.Drawing.Point(710, 0);
             this.pbfotoempleado.Name = "pbfotoempleado";
             this.pbfotoempleado.Size = new System.Drawing.Size(74, 66);
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1260,14 +1268,6 @@
             this.cargarPdfToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.cargarPdfToolStripMenuItem.Text = "Cargar Pdf";
             this.cargarPdfToolStripMenuItem.Click += new System.EventHandler(this.cargarPdfToolStripMenuItem_Click);
-            // 
-            // splitter1
-            // 
-            this.splitter1.Location = new System.Drawing.Point(0, 66);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(10, 3);
-            this.splitter1.TabIndex = 55;
-            this.splitter1.TabStop = false;
             // 
             // frmMenu
             // 

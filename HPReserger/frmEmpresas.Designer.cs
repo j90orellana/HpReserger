@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbotipo = new System.Windows.Forms.ComboBox();
             this.btnborrar = new System.Windows.Forms.Button();
             this.txtbuscar = new System.Windows.Forms.TextBox();
@@ -81,6 +81,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.cboseguro = new System.Windows.Forms.ComboBox();
             this.cbonombre = new System.Windows.Forms.ComboBox();
+            this.btnsector = new System.Windows.Forms.Button();
+            this.btnciaseguro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,14 +141,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ruc,
             this.empresa,
@@ -519,7 +521,7 @@
             this.cbosector.FormattingEnabled = true;
             this.cbosector.Location = new System.Drawing.Point(113, 92);
             this.cbosector.Name = "cbosector";
-            this.cbosector.Size = new System.Drawing.Size(278, 21);
+            this.cbosector.Size = new System.Drawing.Size(317, 21);
             this.cbosector.TabIndex = 142;
             // 
             // label5
@@ -593,7 +595,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(397, 95);
+            this.label11.Location = new System.Drawing.Point(466, 96);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 13);
             this.label11.TabIndex = 150;
@@ -604,9 +606,9 @@
             this.cboseguro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboseguro.Enabled = false;
             this.cboseguro.FormattingEnabled = true;
-            this.cboseguro.Location = new System.Drawing.Point(468, 92);
+            this.cboseguro.Location = new System.Drawing.Point(537, 92);
             this.cboseguro.Name = "cboseguro";
-            this.cboseguro.Size = new System.Drawing.Size(176, 21);
+            this.cboseguro.Size = new System.Drawing.Size(146, 21);
             this.cboseguro.TabIndex = 151;
             // 
             // cbonombre
@@ -622,11 +624,35 @@
             this.cbonombre.TabIndex = 152;
             this.cbonombre.SelectedIndexChanged += new System.EventHandler(this.cbonombre_SelectedIndexChanged);
             // 
+            // btnsector
+            // 
+            this.btnsector.Enabled = false;
+            this.btnsector.Location = new System.Drawing.Point(436, 92);
+            this.btnsector.Name = "btnsector";
+            this.btnsector.Size = new System.Drawing.Size(24, 21);
+            this.btnsector.TabIndex = 153;
+            this.btnsector.Text = "...";
+            this.btnsector.UseVisualStyleBackColor = true;
+            this.btnsector.Click += new System.EventHandler(this.btnsector_Click);
+            // 
+            // btnciaseguro
+            // 
+            this.btnciaseguro.Enabled = false;
+            this.btnciaseguro.Location = new System.Drawing.Point(689, 92);
+            this.btnciaseguro.Name = "btnciaseguro";
+            this.btnciaseguro.Size = new System.Drawing.Size(24, 21);
+            this.btnciaseguro.TabIndex = 154;
+            this.btnciaseguro.Text = "...";
+            this.btnciaseguro.UseVisualStyleBackColor = true;
+            this.btnciaseguro.Click += new System.EventHandler(this.btnciaseguro_Click);
+            // 
             // frmEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1083, 394);
+            this.Controls.Add(this.btnciaseguro);
+            this.Controls.Add(this.btnsector);
             this.Controls.Add(this.cbonombre);
             this.Controls.Add(this.cboseguro);
             this.Controls.Add(this.label11);
@@ -722,5 +748,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn eps;
+        private System.Windows.Forms.Button btnsector;
+        private System.Windows.Forms.Button btnciaseguro;
     }
 }

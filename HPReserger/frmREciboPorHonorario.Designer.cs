@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FIC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +44,7 @@
             this.btnmaspro = new System.Windows.Forms.Button();
             this.cbotipo = new System.Windows.Forms.ComboBox();
             this.gp1 = new System.Windows.Forms.GroupBox();
+            this.btndescargar = new System.Windows.Forms.Button();
             this.DtFechaRecepcion = new System.Windows.Forms.DateTimePicker();
             this.txtmonto = new System.Windows.Forms.TextBox();
             this.pbfactura = new System.Windows.Forms.PictureBox();
@@ -93,7 +94,6 @@
             this.txtdireccion = new System.Windows.Forms.TextBox();
             this.Openfd = new System.Windows.Forms.OpenFileDialog();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.btndescargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.gp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).BeginInit();
@@ -118,12 +118,12 @@
             this.GUIA,
             this.FECHAENTREGA});
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.Dtguias.Location = new System.Drawing.Point(16, 116);
+            this.Dtguias.Location = new System.Drawing.Point(16, 115);
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dtguias.Size = new System.Drawing.Size(705, 184);
+            this.Dtguias.Size = new System.Drawing.Size(701, 185);
             this.Dtguias.TabIndex = 40;
             this.Dtguias.TabStop = false;
             this.Dtguias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellContentClick);
@@ -184,7 +184,7 @@
             // 
             // btnmaspro
             // 
-            this.btnmaspro.Location = new System.Drawing.Point(408, 38);
+            this.btnmaspro.Location = new System.Drawing.Point(408, 37);
             this.btnmaspro.Name = "btnmaspro";
             this.btnmaspro.Size = new System.Drawing.Size(24, 20);
             this.btnmaspro.TabIndex = 37;
@@ -232,12 +232,26 @@
             this.gp1.Controls.Add(this.txtnrofactura);
             this.gp1.Controls.Add(this.txtfoto);
             this.gp1.Enabled = false;
-            this.gp1.Location = new System.Drawing.Point(16, 306);
+            this.gp1.Location = new System.Drawing.Point(12, 306);
             this.gp1.Name = "gp1";
-            this.gp1.Size = new System.Drawing.Size(712, 302);
+            this.gp1.Size = new System.Drawing.Size(716, 302);
             this.gp1.TabIndex = 35;
             this.gp1.TabStop = false;
             this.gp1.Move += new System.EventHandler(this.gp1_Move);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(612, 29);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 114;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
             // DtFechaRecepcion
             // 
@@ -250,7 +264,7 @@
             // txtmonto
             // 
             this.txtmonto.Enabled = false;
-            this.txtmonto.Location = new System.Drawing.Point(260, 67);
+            this.txtmonto.Location = new System.Drawing.Point(260, 66);
             this.txtmonto.Name = "txtmonto";
             this.txtmonto.Size = new System.Drawing.Size(78, 20);
             this.txtmonto.TabIndex = 18;
@@ -351,8 +365,8 @@
             // 
             this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle1;
             this.CANTIDAD.HeaderText = "Cant.";
             this.CANTIDAD.Name = "CANTIDAD";
             this.CANTIDAD.ReadOnly = true;
@@ -362,10 +376,10 @@
             // 
             this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PRECIOUNIT.DataPropertyName = "preciounit";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "N2";
-            dataGridViewCellStyle17.NullValue = "0.00";
-            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0.00";
+            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle2;
             this.PRECIOUNIT.HeaderText = "PrecioUnit.";
             this.PRECIOUNIT.Name = "PRECIOUNIT";
             this.PRECIOUNIT.Width = 84;
@@ -374,10 +388,10 @@
             // 
             this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.subtotale.DataPropertyName = "subtotal";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "n2";
-            dataGridViewCellStyle18.NullValue = "0.00";
-            this.subtotale.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "n2";
+            dataGridViewCellStyle3.NullValue = "0.00";
+            this.subtotale.DefaultCellStyle = dataGridViewCellStyle3;
             this.subtotale.HeaderText = "Subtotal";
             this.subtotale.Name = "subtotale";
             this.subtotale.ReadOnly = true;
@@ -387,10 +401,10 @@
             // 
             this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valueigv.DataPropertyName = "valueigv";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "n2";
-            dataGridViewCellStyle19.NullValue = "0.00";
-            this.valueigv.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            dataGridViewCellStyle4.NullValue = "0.00";
+            this.valueigv.DefaultCellStyle = dataGridViewCellStyle4;
             this.valueigv.HeaderText = "ImpRta";
             this.valueigv.Name = "valueigv";
             this.valueigv.ReadOnly = true;
@@ -400,10 +414,10 @@
             // 
             this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TOTALFAC.DataPropertyName = "total";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.Format = "N2";
-            dataGridViewCellStyle20.NullValue = "0.00";
-            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0.00";
+            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle5;
             this.TOTALFAC.HeaderText = "Total";
             this.TOTALFAC.Name = "TOTALFAC";
             this.TOTALFAC.ReadOnly = true;
@@ -429,7 +443,7 @@
             // numigv
             // 
             this.numigv.Enabled = false;
-            this.numigv.Location = new System.Drawing.Point(201, 67);
+            this.numigv.Location = new System.Drawing.Point(201, 66);
             this.numigv.Name = "numigv";
             this.numigv.Size = new System.Drawing.Size(38, 20);
             this.numigv.TabIndex = 15;
@@ -455,7 +469,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(593, 69);
+            this.label15.Location = new System.Drawing.Point(593, 70);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(34, 13);
             this.label15.TabIndex = 3;
@@ -464,11 +478,11 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(477, 69);
+            this.label14.Location = new System.Drawing.Point(477, 70);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.Size = new System.Drawing.Size(44, 13);
             this.label14.TabIndex = 3;
-            this.label14.Text = "ImpRta";
+            this.label14.Text = "ImpRta:";
             // 
             // label13
             // 
@@ -482,7 +496,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Location = new System.Drawing.Point(6, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 3;
@@ -491,7 +505,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(393, 43);
+            this.label9.Location = new System.Drawing.Point(393, 44);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 13);
             this.label9.TabIndex = 3;
@@ -500,7 +514,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(393, 17);
+            this.label17.Location = new System.Drawing.Point(393, 18);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(94, 13);
             this.label17.TabIndex = 3;
@@ -509,7 +523,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(206, 16);
+            this.label8.Location = new System.Drawing.Point(206, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 13);
             this.label8.TabIndex = 3;
@@ -534,7 +548,7 @@
             // lblporcentaje
             // 
             this.lblporcentaje.AutoSize = true;
-            this.lblporcentaje.Location = new System.Drawing.Point(239, 69);
+            this.lblporcentaje.Location = new System.Drawing.Point(239, 70);
             this.lblporcentaje.Name = "lblporcentaje";
             this.lblporcentaje.Size = new System.Drawing.Size(15, 13);
             this.lblporcentaje.TabIndex = 3;
@@ -543,7 +557,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 69);
+            this.label3.Location = new System.Drawing.Point(6, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 3;
@@ -552,7 +566,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 43);
+            this.label4.Location = new System.Drawing.Point(6, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 3;
@@ -560,7 +574,7 @@
             // 
             // btnCargarFoto
             // 
-            this.btnCargarFoto.Location = new System.Drawing.Point(363, 39);
+            this.btnCargarFoto.Location = new System.Drawing.Point(363, 40);
             this.btnCargarFoto.Name = "btnCargarFoto";
             this.btnCargarFoto.Size = new System.Drawing.Size(24, 20);
             this.btnCargarFoto.TabIndex = 11;
@@ -589,7 +603,7 @@
             // txtsubtotal
             // 
             this.txtsubtotal.Enabled = false;
-            this.txtsubtotal.Location = new System.Drawing.Point(402, 67);
+            this.txtsubtotal.Location = new System.Drawing.Point(402, 66);
             this.txtsubtotal.Name = "txtsubtotal";
             this.txtsubtotal.Size = new System.Drawing.Size(75, 20);
             this.txtsubtotal.TabIndex = 6;
@@ -635,7 +649,7 @@
             // 
             this.txtTelefono.BackColor = System.Drawing.SystemColors.Control;
             this.txtTelefono.Enabled = false;
-            this.txtTelefono.Location = new System.Drawing.Point(107, 90);
+            this.txtTelefono.Location = new System.Drawing.Point(107, 89);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(295, 20);
             this.txtTelefono.TabIndex = 23;
@@ -645,7 +659,7 @@
             // 
             this.txtRazonSocial.BackColor = System.Drawing.SystemColors.Control;
             this.txtRazonSocial.Enabled = false;
-            this.txtRazonSocial.Location = new System.Drawing.Point(107, 38);
+            this.txtRazonSocial.Location = new System.Drawing.Point(107, 37);
             this.txtRazonSocial.Name = "txtRazonSocial";
             this.txtRazonSocial.Size = new System.Drawing.Size(295, 20);
             this.txtRazonSocial.TabIndex = 25;
@@ -653,7 +667,7 @@
             // 
             // txtruc
             // 
-            this.txtruc.Location = new System.Drawing.Point(107, 12);
+            this.txtruc.Location = new System.Drawing.Point(107, 11);
             this.txtruc.MaxLength = 11;
             this.txtruc.Name = "txtruc";
             this.txtruc.Size = new System.Drawing.Size(100, 20);
@@ -710,7 +724,7 @@
             // 
             this.txtdireccion.BackColor = System.Drawing.SystemColors.Control;
             this.txtdireccion.Enabled = false;
-            this.txtdireccion.Location = new System.Drawing.Point(107, 64);
+            this.txtdireccion.Location = new System.Drawing.Point(107, 63);
             this.txtdireccion.Name = "txtdireccion";
             this.txtdireccion.Size = new System.Drawing.Size(418, 20);
             this.txtdireccion.TabIndex = 26;
@@ -723,20 +737,6 @@
             // tooltip
             // 
             this.tooltip.IsBalloon = true;
-            // 
-            // btndescargar
-            // 
-            this.btndescargar.AutoEllipsis = true;
-            this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(612, 29);
-            this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
-            this.btndescargar.TabIndex = 114;
-            this.btndescargar.Text = "Descargar";
-            this.btndescargar.UseVisualStyleBackColor = false;
-            this.btndescargar.Visible = false;
-            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
-            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
             // frmREciboPorHonorario
             // 
@@ -819,6 +819,12 @@
         private System.Windows.Forms.TextBox txtdireccion;
         private System.Windows.Forms.OpenFileDialog Openfd;
         private System.Windows.Forms.ToolTip tooltip;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIC1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAENTREGA;
+        private System.Windows.Forms.Button btndescargar;
         private System.Windows.Forms.DataGridViewTextBoxColumn numfic;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
         private System.Windows.Forms.DataGridViewTextBoxColumn cc;
@@ -831,11 +837,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTALFAC;
         private System.Windows.Forms.DataGridViewTextBoxColumn numoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn siigv;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIC1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAENTREGA;
-        private System.Windows.Forms.Button btndescargar;
     }
 }

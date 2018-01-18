@@ -182,11 +182,11 @@ namespace HPReserger
                 //Fecha
             }
         }
-        public void MostrarFoto(PictureBox fotito)
+        public void MostrarFoto(PictureBox fotito,string namex)
         {
             if (fotito.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto(namex);
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
@@ -467,7 +467,7 @@ namespace HPReserger
 
         private void lklProduccion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbfotoproduccion);
+            MostrarFoto(pbfotoproduccion, $"Foto de Producción / Doc={numerodo}");
         }
 
         private void cboregular_SelectedIndexChanged(object sender, EventArgs e)

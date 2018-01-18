@@ -528,7 +528,7 @@ namespace HPReserger
         {
             if (pbFoto.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto($"Foto Postulante {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
                 foto.fotito = pbFoto.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();

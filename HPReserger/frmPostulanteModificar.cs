@@ -32,7 +32,7 @@ namespace HPReserger
 
         public frmPostulanteModificar()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         string cadenita = "";
@@ -245,7 +245,7 @@ namespace HPReserger
                 }
             }
 
-            clPostulanteModificar.PostulanteModificar(CodigoTipoDocumento, NumeroDocumento, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Foto, txtAdjuntarCV.Text, Solicitud,dtpFechaNacimiento.Value);
+            clPostulanteModificar.PostulanteModificar(CodigoTipoDocumento, NumeroDocumento, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Foto, txtAdjuntarCV.Text, Solicitud, dtpFechaNacimiento.Value);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
@@ -278,7 +278,7 @@ namespace HPReserger
         {
             if (pbFoto.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto($"Foto Postulante {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
                 foto.fotito = pbFoto.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();

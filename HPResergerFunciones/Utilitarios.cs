@@ -53,7 +53,6 @@ namespace HPResergerFunciones
             }
             return P.Handled;
         }
-
         public static Boolean SoloNumerosEnteros(KeyPressEventArgs P)
         {
             string cadena = "1234567890" + (char)8;
@@ -406,6 +405,8 @@ namespace HPResergerFunciones
                 //{
                 hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
                 hoja_trabajo.Columns[numer + 1].AutoFit();
+                if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(decimal))
+                    hoja_trabajo.Columns[numer + 1].NumberFormat = "0.00";
                 numer++;
                 //}
             }

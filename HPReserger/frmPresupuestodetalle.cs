@@ -192,6 +192,7 @@ namespace HPReserger
                         etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
                         etapitas.txtcentro.Text = dtgconten["descripción", y].Value.ToString();
                         etapitas.cabecera = cabecera;
+                        etapitas.Icon = Icon;
                         etapitas.FormClosed += new FormClosedEventHandler(cerrarpresupuestoetapas);
                         etapitas.Show();
                         if (etapitas.ok)
@@ -241,6 +242,7 @@ namespace HPReserger
                     {
                         etapitas = new frmpresupuestoetapa();
                         etapitas.MdiParent = this.MdiParent;
+                        etapitas.Icon = Icon;
                         //presudetale.MdiParent = this;
                         //presus.StartPosition = FormStartPosition.CenterParent;
                         // pbfotoempleado.Visible = false;

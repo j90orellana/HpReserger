@@ -1024,46 +1024,47 @@ namespace HPReserger
 
         private void pbFotoAntecedentesPoliciales_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbFotoAntecedentesPoliciales);
+            MostrarFoto(pbFotoAntecedentesPoliciales, $"Antecedentes de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
 
         private void pbFotoAntecedentesPenales_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbFotoAntecedentesPenales);
+            MostrarFoto(pbFotoAntecedentesPenales, $"Antecedentes de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
 
         private void pbFotoReciboServicios_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbFotoReciboServicios);
+            MostrarFoto(pbFotoReciboServicios, $"Recibo de Servicios de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
 
         private void pbFotoAntecedentesPoliciales_Click(object sender, EventArgs e)
         {
 
         }
-        public void MostrarFoto(PictureBox fotito)
+        public void MostrarFoto(PictureBox fotito, string nombre)
         {
             if (fotito.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto(nombre);
                 foto.fotito = fotito.Image;
                 foto.Owner = this.MdiParent;
+                foto.Nombre = nombre;
                 foto.ShowDialog();
             }
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbFotoAntecedentesPoliciales);
+            MostrarFoto(pbFotoAntecedentesPoliciales, $"Antecedentes de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbFotoAntecedentesPenales);
+            MostrarFoto(pbFotoAntecedentesPenales, $"Antecedentes de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbFotoReciboServicios);
+            MostrarFoto(pbFotoReciboServicios, $"Recibo de Servicios de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
 
         private void cbopais_SelectedIndexChanged(object sender, EventArgs e)
@@ -1167,7 +1168,7 @@ namespace HPReserger
 
         private void lklconviviente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbconviviente);
+            MostrarFoto(pbconviviente, $"Conviviente de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
 
         private void txtAntecedentesPoliciales_TextChanged(object sender, EventArgs e)
@@ -1199,7 +1200,7 @@ namespace HPReserger
         }
         private void lklfirma_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MostrarFoto(pbfirma);
+            MostrarFoto(pbfirma, $"Firma Digital de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
         private void label21_Click(object sender, EventArgs e)
         {
@@ -1419,6 +1420,7 @@ namespace HPReserger
                 Iniciar(false); BloquearControles(true);
                 estadito = 0;
                 pbfotoempleado.Image = FotoEmp;
+                txtNumeroDocumento_TextChanged(sender, e);
             }
             else
                 this.Close();
@@ -1515,7 +1517,7 @@ namespace HPReserger
 
         private void pbfotoempleado_DoubleClick(object sender, EventArgs e)
         {
-            MostrarFoto(pbfotoempleado);
+            MostrarFoto(pbfotoempleado, $"Foto de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
 
         private void txttipo_TextChanged(object sender, EventArgs e)

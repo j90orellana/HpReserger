@@ -129,5 +129,13 @@ namespace HPReserger
                 this.Close();
             }
         }
+
+        private void txtMontoPactado_Leave(object sender, EventArgs e)
+        {
+            if (txtMontoPactado.TextLength > 0)
+            {
+                txtMontoPactado.Text = decimal.Parse(txtMontoPactado.Text).ToString("n2");
+            }
+        }
     }
 }

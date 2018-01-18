@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbodocumento = new System.Windows.Forms.ComboBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.txtbuscar = new System.Windows.Forms.TextBox();
@@ -82,20 +86,22 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nrofactura,
@@ -109,11 +115,13 @@
             this.Total,
             this.Fechaemision,
             this.Fecharecepcion});
-            this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Location = new System.Drawing.Point(12, 101);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(1117, 427);
             this.dtgconten.TabIndex = 17;
@@ -297,7 +305,7 @@
             this.ruc.DataPropertyName = "ruc";
             this.ruc.HeaderText = "RUC";
             this.ruc.Name = "ruc";
-            this.ruc.Width = 55;
+            this.ruc.Width = 52;
             // 
             // tipos
             // 
@@ -305,7 +313,7 @@
             this.tipos.DataPropertyName = "tipos";
             this.tipos.HeaderText = "Tipo";
             this.tipos.Name = "tipos";
-            this.tipos.Width = 53;
+            this.tipos.Width = 52;
             // 
             // subtotal
             // 
@@ -321,7 +329,7 @@
             this.Imp.DataPropertyName = "igv";
             this.Imp.HeaderText = "Impuesto";
             this.Imp.Name = "Imp";
-            this.Imp.Width = 75;
+            this.Imp.Width = 76;
             // 
             // Total
             // 
@@ -329,23 +337,28 @@
             this.Total.DataPropertyName = "Total";
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
-            this.Total.Width = 56;
+            this.Total.Width = 55;
             // 
             // Fechaemision
             // 
             this.Fechaemision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Fechaemision.DataPropertyName = "fechaemision";
+            dataGridViewCellStyle3.Format = "g";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Fechaemision.DefaultCellStyle = dataGridViewCellStyle3;
             this.Fechaemision.HeaderText = "Fecha Emision";
             this.Fechaemision.Name = "Fechaemision";
-            this.Fechaemision.Width = 101;
+            this.Fechaemision.Width = 102;
             // 
             // Fecharecepcion
             // 
             this.Fecharecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Fecharecepcion.DataPropertyName = "fecharecepcion";
+            dataGridViewCellStyle4.Format = "g";
+            this.Fecharecepcion.DefaultCellStyle = dataGridViewCellStyle4;
             this.Fecharecepcion.HeaderText = "Fecha Recepción";
             this.Fecharecepcion.Name = "Fecharecepcion";
-            this.Fecharecepcion.Width = 107;
+            this.Fecharecepcion.Width = 114;
             // 
             // frmFacturasPorPagar
             // 

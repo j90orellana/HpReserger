@@ -179,12 +179,12 @@ namespace HPReserger
         {
             if (cbotipo.SelectedIndex != 2)
             {
-                if (string.IsNullOrWhiteSpace(txtnropago.Text))
-                {
-                    msg("Ingrese Nro de pago");
-                    txtnropago.Focus();
-                    return;
-                }
+                // // if (string.IsNullOrWhiteSpace(txtnropago.Text))
+                //  {
+                //      msg("Ingrese Nro de pago");
+                //      txtnropago.Focus();
+                //      return;
+                //  }
             }
             if (cbobanco.Items.Count == 0)
             {
@@ -267,36 +267,87 @@ namespace HPReserger
                     //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
                     //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
                     bancobcp.txtcuentapago.Text = frmcargardatosproveedor.txtcuenta.Text;
+                    bancobcp.Icon = Icon;
                     bancobcp.Comprobantes = Comprobantes;
                     bancobcp.Show();
                 }
                 if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "IBK")
                 {
                     //abrimos el formulario del banco interbank
-                   // msg("FORMULARIO DEL IBK");
+                    // msg("FORMULARIO DEL IBK");
                     frmBancoInterbank bancointerbank = new frmBancoInterbank();
                     bancointerbank.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
                     //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
                     //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
                     bancointerbank.txtcuenta.Text = frmcargardatosproveedor.txtcuenta.Text;
                     bancointerbank.Comprobantes = Comprobantes;
+                    bancointerbank.Icon = Icon;
                     bancointerbank.Show();
                 }
                 if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "BIF")
                 {
                     //abrimso el formulario del banco interarmericano de finanzas
-                  //  msg("FORMULARIO DEL BIF");
+                    //  msg("FORMULARIO DEL BIF");
                     frmBancoInterAmericano bancointeramericano = new frmBancoInterAmericano();
                     bancointeramericano.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
                     //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
                     //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
                     bancointeramericano.txtcuenta.Text = frmcargardatosproveedor.txtcuenta.Text;
                     bancointeramericano.Comprobantes = Comprobantes;
+                    bancointeramericano.Icon = Icon;
                     bancointeramericano.Show();
                 }
             }
             //proceso para pagar facturas!!!
-
+            //Movimiento de las cuentas 
+            ///////////////////////
+            ///Dinamica Contable///
+            /////////////////////// 
+            int numasiento; string facturar = "";
+            DataTable asientito = cPagarfactura.UltimoAsiento();
+            DataRow asiento = asientito.Rows[0];
+            if (asiento == null) { numasiento = 0; }
+            else
+            {
+                numasiento = (int)asiento["codigo"];
+            }
+            foreach (FACTURAS fac in Comprobantes)
+            {
+                //Recorremos los comprobantes seleccionados RH / FT
+                //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
+                if (fac.tipo.Substring(0, 2) == "RH")
+                {
+                    //actualizo que el recibo este pagado
+                    cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
+                    //cuenta de recibo por honorarios 4241101
+                    cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 18);
+                    facturar = fac.numero;
+                }
+                else
+                {
+                    if (fac.detraccion > 0)
+                    {
+                        //actualizo que la factura esta pagada
+                        cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
+                        ///facturas por pagar 4212101
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", fac.detraccion, 0, 18);
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 18);
+                        facturar = fac.numero;
+                    }
+                    else
+                    {
+                        //actualizo que la factura esta pagada
+                        cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
+                        ///facturas por pagar 4212101
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 18);
+                        facturar = fac.numero;
+                    }
+                }
+            }
+            cPagarfactura.guardarfactura(0, numasiento + 1, facturar, cbocuentabanco.SelectedValue.ToString(), 0, decimal.Parse(txttotal.Text) + decimal.Parse(txttotaldetrac.Text), 18);
+            msg("Documento Pagado y se ha Generado su Asiento");
+            btnActualizar_Click(sender, e);
+            txttotaldetrac.Text = txttotal.Text = "0.00";
         }
         public Boolean PasoFactura = false;
         int contador = 0;
@@ -670,6 +721,30 @@ namespace HPReserger
 
             }
 
+        }
+        public DialogResult MSG(string cadena)
+        {
+            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
+        private void btnReversar_Click(object sender, EventArgs e)
+        {
+            if (Comprobantes.Count > 0)
+            {
+                if (MSG("Seguro Desea Reversar") == DialogResult.OK)
+                {
+                    foreach (FACTURAS xx in Comprobantes)
+                    {
+                        cPagarfactura.ReversaDeFacturas(xx.numero, xx.proveedor);
+                    }
+                }
+            }
+            else
+            {
+                msg("No hay Facturas Seleccionadas ");
+                btnseleccion.Focus();
+                return;
+            }
+            txtbuscar_TextChanged(sender, e);
         }
     }
 }

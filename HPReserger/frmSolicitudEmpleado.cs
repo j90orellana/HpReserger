@@ -301,7 +301,7 @@ namespace HPReserger
         {
             if (pbFoto.Image != null)
             {
-                FrmFoto foto = new FrmFoto();
+                FrmFoto foto = new FrmFoto($"Solicitud de Empleados");
                 foto.fotito = pbFoto.Image;
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
@@ -368,7 +368,7 @@ namespace HPReserger
                 cboCargoPuesto.DataSource = null;
                 cboCargoPuesto.ValueMember = "fk_idcargo";
                 cboCargoPuesto.DisplayMember = "cargo";
-                cboCargoPuesto.DataSource = clSolicitudEmpleado.CargosAreas(10, 0, (int)cboarea.SelectedValue);
+                cboCargoPuesto.DataSource = clSolicitudEmpleado.CargosAreas(10, 0, (int)cboarea.SelectedValue,"");
                 cboCargoPuesto.SelectedIndex = -1;
             }
             else

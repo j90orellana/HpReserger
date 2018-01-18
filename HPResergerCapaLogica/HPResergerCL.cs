@@ -1215,9 +1215,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.insertarPagarfactura(nrofactura, tipo, nropago);
         }
-        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber)
+        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina)
         {
-            return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber);
+            return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina);
         }
         public DataTable ListarFacturasSinPagar(string buscar, int factura, int provee, int check, string tipo, int fecha, DateTime fechainicio, DateTime fechafin)
         {
@@ -1276,6 +1276,10 @@ namespace HPResergerCapaLogica
         public DataTable InsertarActualizarEmpresaEpsPLanes(int @cod, int codplan, int @opcion, string @cargo, int @usuario, decimal beneficiario, decimal adicional1, decimal adicional2, decimal adicional3)
         {
             return cdOrdenPedido.InsertarActualizarEmpresaEpsPLanes(cod, codplan, opcion, cargo, usuario, beneficiario, adicional1, adicional2, adicional3);
+        }
+        public DataTable ReversaDeFacturas(string nrofac, string proveedor)
+        {
+            return cdOrdenPedido.ReversaDeFacturas(nrofac, proveedor);
         }
         public DataTable PLanesdelaEmpresa()
         {
@@ -1476,9 +1480,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ReporteBoletas(empresa, tipo, numero, fecha, fecinicio, fecfin);
         }
-        public DataTable CargosAreas(int opcion, int cargo, int area)
+        public DataTable CargosAreas(int opcion, int cargo, int area, string cadena)
         {
-            return cdOrdenPedido.CargosAreas(opcion, cargo, area);
+            return cdOrdenPedido.CargosAreas(opcion, cargo, area, cadena);
         }
         public DataRow EmpleadoFamiliaExiste(int Tipo_ID_Emp, string Nro_ID_Emp, int Tipo_ID_Fam_Old, string Nro_ID_Fam_Old)
         {

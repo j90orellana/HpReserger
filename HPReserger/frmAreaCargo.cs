@@ -21,17 +21,18 @@ namespace HPReserger
         {
             if (estado != 0)
             {
-                Activar(cboarea, btnmodificar, cbogerencia, btnr);
+                Activar(cboarea, btnmodificar, cbogerencia, btnr, btnlimpiar, txtbuscar, cbotipos);
                 Desactivar(cboCargoPuesto, btnagregar);
                 estado = 0;
-                dtgconten.DataSource = CapaLogica.CargosAreas(0, 0, 0);
+                dtgconten.DataSource = CapaLogica.CargosAreas(0, 0, 0, "");
             }
             else { this.Close(); }
         }
         private void frmAreaCargo_Load(object sender, EventArgs e)
         {
-            dtgconten.DataSource = CapaLogica.CargosAreas(0, 0, 0);
-            CargarCombos(cboCargoPuesto, "Id_Cargo", "Cargo", "TBL_Cargo");
+            cbotipos.SelectedIndex = 0;
+            dtgconten.DataSource = CapaLogica.CargosAreas(0, 0, 0, " ");
+            CargarCombosOrdenados(cboCargoPuesto, "Id_Cargo", "Cargo", "TBL_Cargo");
             //CargarCombos(cboarea, "Id_Area", "Area", "TBL_Area");
             CargarCombos(cbogerencia, "Id_Gerencia", "Gerencia", "TBL_Gerencia");
             Activar(cboarea, btnmodificar, btnr);
@@ -43,15 +44,21 @@ namespace HPReserger
             cbo.DisplayMember = "descripcion";
             cbo.DataSource = CapaLogica.getCargoTipoContratacion(codigo, descripcion, tabla);
         }
+        private void CargarCombosOrdenados(ComboBox cbo, string codigo, string descripcion, string tabla)
+        {
+            cbo.ValueMember = "codigo";
+            cbo.DisplayMember = "descripcion";
+            cbo.DataSource = CapaLogica.getCargoTipoContratacion2(codigo, descripcion, tabla);
+        }
         int estado = 0;
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             if (cboarea.SelectedIndex >= 0)
             {
                 estado = 1;
-                Desactivar(btnmodificar, cboarea, cbogerencia, btnr);
+                Desactivar(btnmodificar, cboarea, cbogerencia, btnr, btnlimpiar, txtbuscar,cbotipos);
                 Activar(cboCargoPuesto, btnagregar);
-                dtgconten.DataSource = CapaLogica.CargosAreas(10, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue);
+                dtgconten.DataSource = CapaLogica.CargosAreas(10, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue, "");
             }
         }
         public void Activar(params object[] control)
@@ -68,8 +75,8 @@ namespace HPReserger
         {
             if (cboarea.SelectedIndex >= 0 && cboCargoPuesto.SelectedIndex >= 0)
             {
-                CapaLogica.CargosAreas(1, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue);
-                dtgconten.DataSource = CapaLogica.CargosAreas(10, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue);
+                CapaLogica.CargosAreas(1, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue, "");
+                dtgconten.DataSource = CapaLogica.CargosAreas(10, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue, "");
             }
         }
         public DialogResult MSG(string cadena)
@@ -83,11 +90,11 @@ namespace HPReserger
                 if (MSG("Desea ELiminar ??") == DialogResult.OK)
                 {
                     int x = dtgconten.CurrentCell.RowIndex;
-                    CapaLogica.CargosAreas(99, (int)dtgconten["fk_id_cargo", x].Value, (int)dtgconten["fk_id_area", x].Value);
+                    CapaLogica.CargosAreas(99, (int)dtgconten["fk_id_cargo", x].Value, (int)dtgconten["fk_id_area", x].Value, "");
                     if (estado == 1)
-                        dtgconten.DataSource = CapaLogica.CargosAreas(10, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue);
+                        dtgconten.DataSource = CapaLogica.CargosAreas(10, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue, "");
                     else
-                        dtgconten.DataSource = CapaLogica.CargosAreas(0, 0, 0);
+                        dtgconten.DataSource = CapaLogica.CargosAreas(0, 0, 0, "");
                 }
             }
         }
@@ -125,6 +132,28 @@ namespace HPReserger
             {
                 CargarCombos(cboCargoPuesto, "Id_Cargo", "Cargo", "TBL_Cargo");
             }
+        }
+
+        private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int fila = e.RowIndex;
+            if (fila >= 0)
+            {
+                cbogerencia.SelectedValue = dtgconten[pk_id_gerencia.Name, fila].Value;
+                cboarea.SelectedValue = dtgconten[fk_id_Area.Name, fila].Value;
+                cboCargoPuesto.SelectedValue = dtgconten[fk_id_cargo.Name, fila].Value;
+            }
+        }
+
+        private void btnlimpiar_Click(object sender, EventArgs e)
+        {
+            txtbuscar.Text = "";
+        }
+
+        private void txtbuscar_TextChanged(object sender, EventArgs e)
+        {
+            //50 filtrar
+            dtgconten.DataSource = CapaLogica.CargosAreas(50, cbotipos.SelectedIndex, 0, txtbuscar.Text);
         }
     }
 }

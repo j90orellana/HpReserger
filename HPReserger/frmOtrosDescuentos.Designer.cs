@@ -101,7 +101,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -143,7 +143,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(386, 191);
@@ -247,7 +247,7 @@
             // lkldescuento
             // 
             this.lkldescuento.AutoSize = true;
-            this.lkldescuento.Location = new System.Drawing.Point(329, 122);
+            this.lkldescuento.Location = new System.Drawing.Point(329, 121);
             this.lkldescuento.Name = "lkldescuento";
             this.lkldescuento.Size = new System.Drawing.Size(61, 13);
             this.lkldescuento.TabIndex = 76;
@@ -291,7 +291,7 @@
             // 
             this.btnaddfoto.Location = new System.Drawing.Point(296, 117);
             this.btnaddfoto.Name = "btnaddfoto";
-            this.btnaddfoto.Size = new System.Drawing.Size(27, 23);
+            this.btnaddfoto.Size = new System.Drawing.Size(27, 20);
             this.btnaddfoto.TabIndex = 6;
             this.btnaddfoto.Text = "...";
             this.btnaddfoto.UseVisualStyleBackColor = true;

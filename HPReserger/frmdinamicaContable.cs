@@ -508,7 +508,7 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             aceptar = true;
-            if (salida||estado!=0)
+            if (salida || estado != 0)
             {
                 if (estado == 1)
                 {
@@ -571,7 +571,8 @@ namespace HPReserger
                         }
                     }
                 }
-            }else { this.Close(); }
+            }
+            else { this.Close(); }
         }
 
         private void label22_Click(object sender, EventArgs e)
@@ -602,6 +603,47 @@ namespace HPReserger
         private void cboyear_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtgbusca_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dtgbusca.Rows.Count > 0)
+            {
+                if (dtgbusca.CurrentCell.RowIndex >= 0)
+                {
+                    if (e.KeyCode == Keys.Down)
+                    {
+                        //Tecla para Abajo
+                        int x = dtgbusca.CurrentCell.RowIndex;
+                        int cox = 0;
+                        cox = (int)dtgbusca[0, x].Value;
+                        for (int i = x; i < dtgbusca.RowCount; i++)
+                        {
+                            //Buscar Siguiente Codigo de Asiento;
+                            if (cox != (int)dtgbusca[0, i].Value)
+                            {
+                                dtgbusca.CurrentCell = dtgbusca[0, i - 1];
+                                break;
+                            }
+                        }
+                    }
+                    if (e.KeyCode == Keys.Up)
+                    {
+                        int x = dtgbusca.CurrentCell.RowIndex;
+                        int cox = 0;
+                        cox = (int)dtgbusca[0, x].Value;
+                        for (int i = x; i > 0; i--)
+                        {
+                            //Buscar Siguiente Codigo de Asiento;
+                            if (cox != (int)dtgbusca[0, i].Value)
+                            {
+                                dtgbusca.CurrentCell = dtgbusca[0, i];
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -632,6 +632,7 @@ namespace HPReserger
             txtcodigo.Text = codigo + "";
             txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "";
             fecha.Value = DateTime.Now;
+            btnActualizar.Enabled = false;
         }
         public Boolean modifico;
         public int dinamimodi;
@@ -641,7 +642,7 @@ namespace HPReserger
             dinamimodi = Convert.ToInt16(dtgayuda3[8, 0].Value.ToString());
             modifico = true;
             desactivar();
-            btnmas.Focus();
+            btnmas.Focus(); btnActualizar.Enabled = false;
         }
         public int pos;
         public void validar()
@@ -802,7 +803,7 @@ namespace HPReserger
                 }
             }
             else { }
-
+            btnActualizar.Enabled = true;
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -821,7 +822,7 @@ namespace HPReserger
                         activar();
                         dtgbusca.DataSource = Casiento.BuscarAsientosContables(Txtbusca.Text, 1);
                         Txtbusca.Enabled = false;
-                        dtgbusca.Focus();
+                        dtgbusca.Focus(); btnActualizar.Enabled = true;
                     }
                     else { }
                 }
@@ -845,7 +846,7 @@ namespace HPReserger
                         activar();
                         dtgbusca.DataSource = Casiento.BuscarAsientosContables(Txtbusca.Text, 1);
                         Txtbusca.Enabled = true;
-                        dtgbusca.Focus();
+                        dtgbusca.Focus(); btnActualizar.Enabled = true;
                     }
                 }
             }
@@ -880,6 +881,53 @@ namespace HPReserger
             if (chkfecha.Checked) fechacheck = 1;
             else fechacheck = 0;
 
+            Txtbusca_TextChanged(sender, e);
+        }
+
+        private void dtgbusca_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dtgbusca.Rows.Count > 0)
+            {
+                if (dtgbusca.CurrentCell.RowIndex >= 0)
+                {
+                    if (e.KeyCode == Keys.Down)
+                    {
+                        //Tecla para Abajo
+                        int x = dtgbusca.CurrentCell.RowIndex;
+                        int cox = 0;
+                        cox = (int)dtgbusca[0, x].Value;
+                        for (int i = x; i < dtgbusca.RowCount; i++)
+                        {
+                            //Buscar Siguiente Codigo de Asiento;
+                            if (cox != (int)dtgbusca[0, i].Value)
+                            {
+                                dtgbusca.CurrentCell = dtgbusca[0, i-1];
+                                break;
+                            }
+                        }
+                    }
+                    if (e.KeyCode == Keys.Up)
+                    {
+                        int x = dtgbusca.CurrentCell.RowIndex;
+                        int cox = 0;
+                        cox = (int)dtgbusca[0, x].Value;
+                        for (int i = x; i >0; i--)
+                        {
+                            //Buscar Siguiente Codigo de Asiento;
+                            if (cox != (int)dtgbusca[0, i].Value)
+                            {
+                                dtgbusca.CurrentCell = dtgbusca[0, i];
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Txtbusca.Text = "";
             Txtbusca_TextChanged(sender, e);
         }
 

@@ -12,14 +12,16 @@ namespace HPReserger
 {
     public partial class FrmFoto : Form
     {
-        public FrmFoto()
+        public FrmFoto(string nombres)
         {
             InitializeComponent();
-
+            Text = nombres.Trim();
         }
         public Image fotito;
+        public string Nombre;
         private void FrmFoto_Load(object sender, EventArgs e)
         {
+            Text = Nombre;
             if (fotito != null)
             {
                 pbfoto.Image = fotito;

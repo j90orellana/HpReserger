@@ -33,6 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label13 = new System.Windows.Forms.Label();
             this.cboyear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -71,6 +75,16 @@
             this.dtgbusca = new System.Windows.Forms.DataGridView();
             this.lblmsg2 = new System.Windows.Forms.Label();
             this.dtgayuda2 = new System.Windows.Forms.DataGridView();
+            this.codx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ejerciciox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.csx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suboperacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ccx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.partex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -274,8 +288,19 @@
             // 
             this.Dtgconten.AllowUserToAddRows = false;
             this.Dtgconten.AllowUserToResizeColumns = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.HighlightText;
+            this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cuenta,
@@ -285,6 +310,8 @@
             this.Dtgconten.MultiSelect = false;
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtgconten.ShowRowErrors = false;
@@ -310,14 +337,15 @@
             // 
             // descripcion
             // 
-            this.descripcion.HeaderText = "DESCRIPCION CUENTA CONTABLE";
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion.HeaderText = "DESCRIPCIÓN CUENTA CONTABLE";
             this.descripcion.Name = "descripcion";
             this.descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.descripcion.Width = 350;
             // 
             // debehaber
             // 
             this.debehaber.HeaderText = "DEBE/HABER";
+            this.debehaber.MinimumWidth = 80;
             this.debehaber.Name = "debehaber";
             this.debehaber.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.debehaber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -476,51 +504,65 @@
             this.dtgbusca.AllowUserToDeleteRows = false;
             this.dtgbusca.AllowUserToResizeColumns = false;
             this.dtgbusca.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgbusca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgbusca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dtgbusca.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgbusca.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgbusca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgbusca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgbusca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgbusca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgbusca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgbusca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codx,
+            this.Ejerciciox,
+            this.opx,
+            this.operacionx,
+            this.csx,
+            this.suboperacionx,
+            this.ccx,
+            this.cuentax,
+            this.partex,
+            this.estadox});
             this.dtgbusca.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgbusca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgbusca.Location = new System.Drawing.Point(18, 410);
             this.dtgbusca.MultiSelect = false;
             this.dtgbusca.Name = "dtgbusca";
             this.dtgbusca.ReadOnly = true;
             this.dtgbusca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgbusca.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgbusca.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgbusca.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgbusca.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgbusca.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgbusca.Size = new System.Drawing.Size(647, 254);
             this.dtgbusca.TabIndex = 134;
             this.dtgbusca.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_CellContentClick);
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
+            this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
             // 
             // lblmsg2
             // 
@@ -550,6 +592,98 @@
             this.dtgayuda2.TabIndex = 139;
             this.dtgayuda2.Visible = false;
             this.dtgayuda2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgayuda2_RowEnter);
+            // 
+            // codx
+            // 
+            this.codx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.codx.DataPropertyName = "cod";
+            this.codx.HeaderText = "Cod";
+            this.codx.MinimumWidth = 30;
+            this.codx.Name = "codx";
+            this.codx.ReadOnly = true;
+            this.codx.Width = 30;
+            // 
+            // Ejerciciox
+            // 
+            this.Ejerciciox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Ejerciciox.DataPropertyName = "ejercicio";
+            this.Ejerciciox.HeaderText = "Ejercicio";
+            this.Ejerciciox.MinimumWidth = 55;
+            this.Ejerciciox.Name = "Ejerciciox";
+            this.Ejerciciox.ReadOnly = true;
+            this.Ejerciciox.Width = 55;
+            // 
+            // opx
+            // 
+            this.opx.DataPropertyName = "op";
+            this.opx.HeaderText = "op";
+            this.opx.Name = "opx";
+            this.opx.ReadOnly = true;
+            this.opx.Visible = false;
+            this.opx.Width = 44;
+            // 
+            // operacionx
+            // 
+            this.operacionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.operacionx.DataPropertyName = "operacion";
+            this.operacionx.HeaderText = "Operación";
+            this.operacionx.Name = "operacionx";
+            this.operacionx.ReadOnly = true;
+            this.operacionx.Width = 81;
+            // 
+            // csx
+            // 
+            this.csx.DataPropertyName = "cs";
+            this.csx.HeaderText = "cs";
+            this.csx.Name = "csx";
+            this.csx.ReadOnly = true;
+            this.csx.Visible = false;
+            this.csx.Width = 42;
+            // 
+            // suboperacionx
+            // 
+            this.suboperacionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.suboperacionx.DataPropertyName = "suboperacion";
+            this.suboperacionx.HeaderText = "SubOperación";
+            this.suboperacionx.Name = "suboperacionx";
+            this.suboperacionx.ReadOnly = true;
+            this.suboperacionx.Width = 99;
+            // 
+            // ccx
+            // 
+            this.ccx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ccx.DataPropertyName = "cc";
+            this.ccx.HeaderText = "Cuenta";
+            this.ccx.Name = "ccx";
+            this.ccx.ReadOnly = true;
+            this.ccx.Width = 65;
+            // 
+            // cuentax
+            // 
+            this.cuentax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cuentax.DataPropertyName = "cuenta";
+            this.cuentax.HeaderText = "Cuenta";
+            this.cuentax.MinimumWidth = 80;
+            this.cuentax.Name = "cuentax";
+            this.cuentax.ReadOnly = true;
+            // 
+            // partex
+            // 
+            this.partex.DataPropertyName = "parte";
+            this.partex.HeaderText = "Parte";
+            this.partex.Name = "partex";
+            this.partex.ReadOnly = true;
+            this.partex.Visible = false;
+            this.partex.Width = 57;
+            // 
+            // estadox
+            // 
+            this.estadox.DataPropertyName = "estado";
+            this.estadox.HeaderText = "estado";
+            this.estadox.Name = "estadox";
+            this.estadox.ReadOnly = true;
+            this.estadox.Visible = false;
+            this.estadox.Width = 64;
             // 
             // frmdinamicaContable
             // 
@@ -627,9 +761,6 @@
         private System.Windows.Forms.DataGridView Dtgconten;
         private System.Windows.Forms.Button btnmas;
         private System.Windows.Forms.DataGridView dtgayuda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.DataGridViewComboBoxColumn debehaber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton4;
@@ -644,5 +775,18 @@
         private System.Windows.Forms.DataGridView dtgayuda2;
         public System.Windows.Forms.TextBox txtcodigo;
         public System.Windows.Forms.TextBox Txtbusca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.DataGridViewComboBoxColumn debehaber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ejerciciox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacionx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn csx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suboperacionx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ccx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn partex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadox;
     }
 }
