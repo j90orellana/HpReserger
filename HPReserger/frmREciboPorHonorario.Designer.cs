@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmREciboPorHonorario));
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FIC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -574,11 +575,14 @@
             // 
             // btnCargarFoto
             // 
+            this.btnCargarFoto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCargarFoto.BackgroundImage")));
+            this.btnCargarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCargarFoto.FlatAppearance.BorderSize = 0;
+            this.btnCargarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargarFoto.Location = new System.Drawing.Point(363, 40);
             this.btnCargarFoto.Name = "btnCargarFoto";
-            this.btnCargarFoto.Size = new System.Drawing.Size(24, 20);
+            this.btnCargarFoto.Size = new System.Drawing.Size(20, 20);
             this.btnCargarFoto.TabIndex = 11;
-            this.btnCargarFoto.Text = "- -";
             this.btnCargarFoto.UseVisualStyleBackColor = true;
             this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
             // 

@@ -32,6 +32,10 @@
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btnModificar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtedad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.cboReasignarSolicitud = new System.Windows.Forms.ComboBox();
             this.chkReasignarSolicitud = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -48,10 +52,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.btndescargar = new System.Windows.Forms.Button();
-            this.txtedad = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +106,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // txtedad
+            // 
+            this.txtedad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtedad.Enabled = false;
+            this.txtedad.Location = new System.Drawing.Point(342, 150);
+            this.txtedad.MaxLength = 30;
+            this.txtedad.Name = "txtedad";
+            this.txtedad.Size = new System.Drawing.Size(35, 20);
+            this.txtedad.TabIndex = 120;
+            this.txtedad.Text = "0";
+            this.txtedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(301, 154);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 119;
+            this.label1.Text = "Edad:";
+            // 
+            // dtpFechaNacimiento
+            // 
+            this.dtpFechaNacimiento.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(195, 150);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(100, 20);
+            this.dtpFechaNacimiento.TabIndex = 117;
+            this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 153);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 118;
+            this.label2.Text = "Fecha Nacimiento:";
+            // 
             // cboReasignarSolicitud
             // 
             this.cboReasignarSolicitud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -139,12 +179,15 @@
             // 
             // btnAdjuntarCV
             // 
+            this.btnAdjuntarCV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarCV.BackgroundImage")));
+            this.btnAdjuntarCV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdjuntarCV.FlatAppearance.BorderSize = 0;
+            this.btnAdjuntarCV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarCV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntarCV.Location = new System.Drawing.Point(481, 176);
             this.btnAdjuntarCV.Name = "btnAdjuntarCV";
-            this.btnAdjuntarCV.Size = new System.Drawing.Size(25, 20);
+            this.btnAdjuntarCV.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarCV.TabIndex = 51;
-            this.btnAdjuntarCV.Text = "...";
             this.btnAdjuntarCV.UseVisualStyleBackColor = true;
             this.btnAdjuntarCV.Click += new System.EventHandler(this.btnAdjuntarCV_Click);
             // 
@@ -269,46 +312,6 @@
             this.btndescargar.Visible = false;
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
             this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
-            // 
-            // txtedad
-            // 
-            this.txtedad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtedad.Enabled = false;
-            this.txtedad.Location = new System.Drawing.Point(342, 150);
-            this.txtedad.MaxLength = 30;
-            this.txtedad.Name = "txtedad";
-            this.txtedad.Size = new System.Drawing.Size(35, 20);
-            this.txtedad.TabIndex = 120;
-            this.txtedad.Text = "0";
-            this.txtedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(301, 154);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 119;
-            this.label1.Text = "Edad:";
-            // 
-            // dtpFechaNacimiento
-            // 
-            this.dtpFechaNacimiento.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(195, 150);
-            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(100, 20);
-            this.dtpFechaNacimiento.TabIndex = 117;
-            this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 153);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 118;
-            this.label2.Text = "Fecha Nacimiento:";
             // 
             // frmPostulanteModificar
             // 

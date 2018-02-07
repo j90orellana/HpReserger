@@ -27,11 +27,12 @@ namespace HPReserger
         DataTable TipoCuentas;
         public DataTable TablaProveedorBanco;
         public DataTable TablaComprobantes;
+        public DataTable TablaComprobanteS;
         public Boolean PAgoFactura = false;
         public List<frmPagarFactura.FACTURAS> Comprobantes = new List<frmPagarFactura.FACTURAS>();
+        public List<frmPagarBoletas.FACTURAS> ComprobanteS = new List<frmPagarBoletas.FACTURAS>();
         public void CargarDatos()
         {
-
             TipoCuentas = new DataTable();
             TipoCuentas.Columns.Add("codigo");
             TipoCuentas.Columns.Add("valor");
@@ -93,9 +94,8 @@ namespace HPReserger
             //  TipoComprobante.Rows.Add(new object[] { "B", "Nota Débito Empresa" });///
             TipoComprobante.Rows.Add(new object[] { "Z", "Cobranza" });
             TipoComprobante.Rows.Add(new object[] { "D", "Otros" });
-
         }
-        DataTable TablaConsulta;
+        public DataTable TablaConsulta;
         public Color Naranja, Azul;
         public void CargarColores()
         {
@@ -127,74 +127,154 @@ namespace HPReserger
             cboitf.ValueMember = "codigo";
             cboitf.SelectedIndex = 1;
             ///CARGA DE DATOS DEL OTRO FORMULARIO
-            TablaComprobantes = new DataTable();
-            TablaComprobantes.Columns.Add("index", typeof(int));
-            TablaComprobantes.Columns.Add("tipo", typeof(string));
-            TablaComprobantes.Columns.Add("numero", typeof(string));
-            TablaComprobantes.Columns.Add("proveedor", typeof(string));
-            TablaComprobantes.Columns.Add("detraccion", typeof(decimal));
-            TablaComprobantes.Columns.Add("total", typeof(decimal));
-            TablaComprobantes.Columns.Add("fechacancelado", typeof(DateTime));
-            int i = 1;
-            foreach (frmPagarFactura.FACTURAS fac in Comprobantes)
+            if (!PAgoFactura)
             {
-                TablaComprobantes.Rows.Add(new object[] { 1, fac.tipo, fac.numero, fac.proveedor, fac.detraccion, fac.total, fac.fechacancelado });
-                i++;
+                TablaComprobantes = new DataTable();
+                TablaComprobantes.Columns.Add("index", typeof(int));
+                TablaComprobantes.Columns.Add("tipo", typeof(string));
+                TablaComprobantes.Columns.Add("numero", typeof(string));
+                TablaComprobantes.Columns.Add("proveedor", typeof(string));
+                TablaComprobantes.Columns.Add("detraccion", typeof(decimal));
+                TablaComprobantes.Columns.Add("total", typeof(decimal));
+                TablaComprobantes.Columns.Add("fechacancelado", typeof(DateTime));
+                int i = 1;
+                foreach (frmPagarFactura.FACTURAS fac in Comprobantes)
+                {
+                    TablaComprobantes.Rows.Add(new object[] { 1, fac.tipo, fac.numero, fac.proveedor, fac.detraccion, fac.total, fac.fechacancelado });
+                    i++;
+                }
             }
-            ////cargar valores de los proveedores
+            else
+            {
+                //tabla comprobates de boleta
+                TablaComprobanteS = new DataTable();
+                TablaComprobanteS.Columns.Add("index", typeof(int));
+                TablaComprobanteS.Columns.Add("año", typeof(int));
+                TablaComprobanteS.Columns.Add("mes", typeof(string));
+                TablaComprobanteS.Columns.Add("tipo", typeof(string));
+                TablaComprobanteS.Columns.Add("numero", typeof(string));
+                TablaComprobanteS.Columns.Add("neto", typeof(decimal));
+                TablaComprobanteS.Columns.Add("fechacancelado", typeof(DateTime));
+                int i = 1;
+                foreach (frmPagarBoletas.FACTURAS fac in ComprobanteS)
+                {
+                    TablaComprobanteS.Rows.Add(new object[] { 1, fac.año, fac.mes, fac.tipo, fac.nro, fac.neto, fac.fecha });
+                    i++;
+                }
+            }
             TablaConsulta = new DataTable();
-            var cargas = from tblcomprobante in TablaComprobantes.AsEnumerable()
-                         join tblproveedor in TablaProveedorBanco.AsEnumerable() on tblcomprobante["proveedor"].ToString().Trim() equals (string)tblproveedor["ruc"].ToString().Trim()
-                         select new
-                         {
-                             index = tblcomprobante["index"],
-                             proveedor = tblcomprobante["proveedor"],
-                             razonsocial = tblproveedor["razon_social"],
-                             ctaseleccionada = tblproveedor["ctaseleccionada"],
-                             cuentasoles = tblproveedor["nro_cta_soles"],
-                             cuentaccisoles = tblproveedor["nro_cta_cci_soles"],
-                             tipo = tblcomprobante["tipo"],
-                             nro = tblcomprobante["numero"],
-                             total = decimal.Parse(tblcomprobante["total"].ToString()) - decimal.Parse(tblcomprobante["detraccion"].ToString()),
-                             fechacancelado = tblcomprobante["fechacancelado"],
-                             banco = tblproveedor["Entidad_Financiera"],
-                             tipocuenta = tblproveedor["tipocuenta"]
-                         };
-            TablaConsulta.Columns.Add("codigo", typeof(string));
-            TablaConsulta.Columns.Add("tipocuenta", typeof(string));
-            TablaConsulta.Columns.Add("monedaabono", typeof(string));
-            TablaConsulta.Columns.Add("neto", typeof(decimal));
-            //TablaConsulta.Columns.Add("banco", typeof(string));
-            //TablaConsulta.Columns.Add("tipoabono", typeof(string));
-            TablaConsulta.Columns.Add("nrocuenta", typeof(string));
-            TablaConsulta.Columns.Add("tipodoc", typeof(string));
-            TablaConsulta.Columns.Add("nrodoc", typeof(string));
-            TablaConsulta.Columns.Add("razon", typeof(string));
-            TablaConsulta.Columns.Add("correlativo", typeof(string));
-            TablaConsulta.Columns.Add("cantidad", typeof(int));
-            TablaConsulta.Columns.Add("tipoop", typeof(string));
-            TablaConsulta.Columns.Add("nrofac", typeof(string));
-            TablaConsulta.Columns.Add("monedacuenta", typeof(string));
-            TablaConsulta.Columns.Add("validacion", typeof(string));
-
-            string tipo = "F", soles = "0001", tipodoc = "6", tipocuenta = "";
-            decimal total = 0;
-            foreach (var x in cargas)
+            if (!PAgoFactura)
             {
-                if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
-                    tipo = "F";
-                if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
-                    tipocuenta = "B";
-                else if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
-                    tipocuenta = "C";
-                else tipocuenta = "A";
+                ////cargar valores de los proveedores               
+                var cargas = from tblcomprobante in TablaComprobantes.AsEnumerable()
+                             join tblproveedor in TablaProveedorBanco.AsEnumerable() on tblcomprobante["proveedor"].ToString().Trim() equals (string)tblproveedor["ruc"].ToString().Trim()
+                             select new
+                             {
+                                 index = tblcomprobante["index"],
+                                 proveedor = tblcomprobante["proveedor"],
+                                 razonsocial = tblproveedor["razon_social"],
+                                 ctaseleccionada = tblproveedor["ctaseleccionada"],
+                                 cuentasoles = tblproveedor["nro_cta_soles"],
+                                 cuentaccisoles = tblproveedor["nro_cta_cci_soles"],
+                                 tipo = tblcomprobante["tipo"],
+                                 nro = tblcomprobante["numero"],
+                                 total = decimal.Parse(tblcomprobante["total"].ToString()) - decimal.Parse(tblcomprobante["detraccion"].ToString()),
+                                 fechacancelado = tblcomprobante["fechacancelado"],
+                                 banco = tblproveedor["Entidad_Financiera"],
+                                 tipocuenta = tblproveedor["tipocuenta"]
+                             };
+                TablaConsulta.Columns.Add("codigo", typeof(string));
+                TablaConsulta.Columns.Add("tipocuenta", typeof(string));
+                TablaConsulta.Columns.Add("monedaabono", typeof(string));
+                TablaConsulta.Columns.Add("neto", typeof(decimal));
+                //TablaConsulta.Columns.Add("banco", typeof(string));
+                //TablaConsulta.Columns.Add("tipoabono", typeof(string));
+                TablaConsulta.Columns.Add("nrocuenta", typeof(string));
+                TablaConsulta.Columns.Add("tipodoc", typeof(string));
+                TablaConsulta.Columns.Add("nrodoc", typeof(string));
+                TablaConsulta.Columns.Add("razon", typeof(string));
+                TablaConsulta.Columns.Add("correlativo", typeof(string));
+                TablaConsulta.Columns.Add("cantidad", typeof(int));
+                TablaConsulta.Columns.Add("tipoop", typeof(string));
+                TablaConsulta.Columns.Add("nrofac", typeof(string));
+                TablaConsulta.Columns.Add("monedacuenta", typeof(string));
+                TablaConsulta.Columns.Add("validacion", typeof(string));
+                //paso para la configuracion de la tabla
+                string tipo = "F", soles = "0001", tipodoc = "6", tipocuenta = "";
+                decimal total = 0;
+                foreach (var x in cargas)
+                {
+                    if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
+                        tipo = "F";
+                    if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
+                        tipocuenta = "B";
+                    else if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
+                        tipocuenta = "C";
+                    else tipocuenta = "A";
 
-                total = decimal.Parse(x.total.ToString());
-                TablaConsulta.Rows.Add("A", tipocuenta, soles, total, x.ctaseleccionada, tipodoc, x.proveedor, x.razonsocial, "", 1, tipo, x.nro, soles, "S");
+                    total = decimal.Parse(x.total.ToString());
+                    TablaConsulta.Rows.Add("A", tipocuenta, soles, total, x.ctaseleccionada, tipodoc, x.proveedor, x.razonsocial, "", 1, tipo, x.nro, soles, "S");
+                }
+                Dtguias.DataSource = TablaConsulta;
+                Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
             }
-            Dtguias.DataSource = TablaConsulta;
-            Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
+            else
+            {
+                ///datos de empleado
+                var cargas = from tblcomprobante in TablaComprobanteS.AsEnumerable()
+                             join tblproveedor in TablaProveedorBanco.AsEnumerable() on tblcomprobante["tipo"].ToString().Trim() + tblcomprobante["numero"].ToString().Trim() equals (string)tblproveedor["tipo_id_emp"].ToString().Trim() + tblproveedor["nro_id_emp"].ToString().Trim()
+                             select new
+                             {
+                                 index = tblcomprobante["index"],
+                                 proveedor = tblcomprobante["numero"],
+                                 razonsocial = tblproveedor["nombres"],
+                                 ctaseleccionada = tblproveedor["ctaseleccionada"],
+                                 cuentasoles = tblproveedor["nro_cta_soles"],
+                                 cuentaccisoles = tblproveedor["nro_cta_cci_soles"],
+                                 tipo = tblcomprobante["tipo"],
+                                 nro = tblcomprobante["numero"],
+                                 total = decimal.Parse(tblcomprobante["neto"].ToString()),
+                                 fechacancelado = (DateTime)tblcomprobante["fechacancelado"],
+                                 banco = tblproveedor["Entidad_Financiera"],
+                                 tipocuenta = tblproveedor["tipocuenta"]
+                             };
+                //creacion de la tabla de consulta
+                TablaConsulta.Columns.Add("codigo", typeof(string));
+                TablaConsulta.Columns.Add("tipocuenta", typeof(string));
+                TablaConsulta.Columns.Add("monedaabono", typeof(string));
+                TablaConsulta.Columns.Add("neto", typeof(decimal));
+                //TablaConsulta.Columns.Add("banco", typeof(string));
+                //TablaConsulta.Columns.Add("tipoabono", typeof(string));
+                TablaConsulta.Columns.Add("nrocuenta", typeof(string));
+                TablaConsulta.Columns.Add("tipodoc", typeof(string));
+                TablaConsulta.Columns.Add("nrodoc", typeof(string));
+                TablaConsulta.Columns.Add("razon", typeof(string));
+                TablaConsulta.Columns.Add("correlativo", typeof(string));
+                TablaConsulta.Columns.Add("cantidad", typeof(int));
+                TablaConsulta.Columns.Add("tipoop", typeof(string));
+                TablaConsulta.Columns.Add("nrofac", typeof(string));
+                TablaConsulta.Columns.Add("monedacuenta", typeof(string));
+                TablaConsulta.Columns.Add("validacion", typeof(string));
+                TablaConsulta.Columns.Add("fecha", typeof(DateTime));
+                ///paso de configuracion para guardar
+                string tipo = "F", soles = "0001", tipodoc = "1", tipocuenta = "";
+                decimal total = 0;
+                foreach (var x in cargas)
+                {
+                    if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
+                        tipo = "F";
+                    if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
+                        tipocuenta = "B";
+                    else if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
+                        tipocuenta = "C";
+                    else tipocuenta = "A";
 
+                    total = decimal.Parse(x.total.ToString());
+                    TablaConsulta.Rows.Add("A", tipocuenta, soles, total, x.ctaseleccionada, tipodoc, x.nro, x.razonsocial, "", 1, tipo, x.nro, soles, "S", x.fechacancelado);
+                }
+                Dtguias.DataSource = TablaConsulta;
+                Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
+            }
         }
         DataGridViewComboBoxColumn Combo;
         private void Dtguias_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -206,32 +286,32 @@ namespace HPReserger
                 Combo.DataSource = TipoRegistro;
                 Combo.ValueMember = "codigo";
                 Combo.DisplayMember = "valor";
-
+                //
                 Combo = Dtguias.Columns[TIPOABONO.Name.ToString()] as DataGridViewComboBoxColumn;
                 Combo.DataSource = TipoCuenta;
                 Combo.ValueMember = "codigo";
                 Combo.DisplayMember = "valor";
-
+                //
                 Combo = Dtguias.Columns[TIPODOCUMENTO1.Name.ToString()] as DataGridViewComboBoxColumn;
                 Combo.DataSource = TipoDocumento;
                 Combo.ValueMember = "codigo";
                 Combo.DisplayMember = "valor";
-
+                //
                 Combo = Dtguias.Columns[MONEDAABONO.Name.ToString()] as DataGridViewComboBoxColumn;
                 Combo.DataSource = TipoMonedas;
                 Combo.ValueMember = "codigo";
                 Combo.DisplayMember = "valor";
-
+                //
                 Combo = Dtguias.Columns[VALIDACIONIDC.Name.ToString()] as DataGridViewComboBoxColumn;
                 Combo.DataSource = TipoValidacion;
                 Combo.ValueMember = "codigo";
                 Combo.DisplayMember = "valor";
-
+                //
                 Combo = Dtguias.Columns[MONEDAPAGO.Name.ToString()] as DataGridViewComboBoxColumn;
                 Combo.DataSource = TipoMonedaEsp;
                 Combo.ValueMember = "codigo";
                 Combo.DisplayMember = "valor";
-
+                //
                 Combo = Dtguias.Columns[TIPODOC.Name.ToString()] as DataGridViewComboBoxColumn;
                 Combo.DataSource = TipoComprobante;
                 Combo.ValueMember = "codigo";
@@ -239,12 +319,10 @@ namespace HPReserger
             }
             CalcularTotales();
         }
-
         private void Dtguias_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
         }
-
         private void dtgcheques_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Dtguias.RowCount > 0)
@@ -282,7 +360,6 @@ namespace HPReserger
             }
             CalcularTotales();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             TablaConsulta.Rows.Add();
@@ -318,10 +395,8 @@ namespace HPReserger
                 else
                     Dtguias["TIPOABONO", x].ReadOnly = Dtguias["CUENTAABONO", x].ReadOnly = Dtguias["TIPODOCUMENTO1", x].ReadOnly = Dtguias["NUMDOCIDE", x].ReadOnly = Dtguias["NOMBREPROVEEDOR", x].ReadOnly = Dtguias["MONEDAABONO", x].ReadOnly
                             = Dtguias["MONTOABONO", x].ReadOnly = Dtguias["VALIDACIONIDC", x].ReadOnly = Dtguias["CANTIDADDOCUMENTOS", x].ReadOnly = true;
-
             }
         }
-
         private void Dtguias_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex;
@@ -331,7 +406,6 @@ namespace HPReserger
                 if (Dtguias.Columns[CANTIDADDOCUMENTOS.Name.ToString()].Index == y)
                 {
                     int val = 0;
-
                     if (!string.IsNullOrWhiteSpace(Dtguias[y, x].Value.ToString()))
                     {
                         Dtguias["TIPODOC", x].ReadOnly = Dtguias["NRODOCUMENTO", x].ReadOnly = Dtguias["MONEDAPAGO", x].ReadOnly = Dtguias["MONTODOC", x].ReadOnly = true;
@@ -353,7 +427,6 @@ namespace HPReserger
                 }
             }
         }
-
         private void Dtguias_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -371,14 +444,13 @@ namespace HPReserger
                     }
                 }
             }
-            catch (Exception ) { }
+            catch (Exception) { }
         }
-
         private void btncancelar_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
         string cadenatxt = "";
         private StreamWriter st;
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -443,9 +515,7 @@ namespace HPReserger
                             campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[NRODOCUMENTO.Name.ToString(), i].Value.ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                             campo[3] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[MONTODOC.Name.ToString(), i].Value.ToString(), '0', 17, HPResergerFunciones.Utilitarios.Direccion.derecha);
                             cadenatxt += string.Join("", campo) + "\n";
-
                         }
-
                 }
                 //msg(cadenatxt);
                 SaveFile.FileName = "BCP " + DateTime.Now.ToLongDateString();
@@ -457,9 +527,13 @@ namespace HPReserger
                     st.Close();
                     msg("Generado TXT con Éxito");
                     PAgoFactura = true;
+                    DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                else msg("Cancelado por el Usuario");
+                else
+                {
+                    msg("Cancelado por el Usuario"); DialogResult = DialogResult.Cancel;
+                }
             }
             else
                 msg("No hay Filas en la Grilla");
@@ -510,7 +584,7 @@ namespace HPReserger
                                 registros += 1;
                     }
             }
-            catch (Exception ) { }
+            catch (Exception) { }
             txtcantidaabono.Text = registros.ToString("000000");
             txtmontototal.Text = montos.ToString("n2");
         }

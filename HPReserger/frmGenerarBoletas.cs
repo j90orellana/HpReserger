@@ -96,7 +96,33 @@ namespace HPReserger
             listita = listita.Distinct().ToList<string>();
             //if (listita.Count != aux)
             if (DBoleta.Rows.Count == 0)
+            {
+                //cuando no hay boletas 
                 CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                //Generar Asiento de Boletas Generadas
+                DataTable Tablita = new DataTable();
+                Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                if (Tablita.Rows.Count > 0)
+                {
+                    DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                    int ultimo = 1 + (int)Ultimo["ultimo"];
+                    DataRow Filita = Tablita.Rows[0];
+                    foreach (DataColumn col in Tablita.Columns)
+                    {
+                        CReporteboleta.InsertarAsientosdeBoletas(19, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
+                    }
+                    //cuentas de Reflejo
+                    DataTable Cuentas = new DataTable();
+                    Cuentas = CReporteboleta.CuentasReflejo(ultimo);
+                    if (Cuentas.Rows.Count > 0)
+                    {
+                        DataRow Fila0 = Cuentas.Rows[0];
+                        CReporteboleta.InsertarCuentasReflejo(ultimo + 1, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
+                        CReporteboleta.InsertarCuentasReflejo(ultimo + 1, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
+                    }
+                }
+                //fin de Asientos DE boletas Generadas
+            }
             DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
             if (DBoleta.Rows.Count == 0)
             {

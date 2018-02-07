@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDesvinculacion));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -366,67 +367,85 @@
             // 
             // btnAdjuntarLiq
             // 
+            this.btnAdjuntarLiq.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarLiq.BackgroundImage")));
+            this.btnAdjuntarLiq.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdjuntarLiq.FlatAppearance.BorderSize = 0;
+            this.btnAdjuntarLiq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarLiq.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntarLiq.Location = new System.Drawing.Point(141, 3);
             this.btnAdjuntarLiq.Name = "btnAdjuntarLiq";
-            this.btnAdjuntarLiq.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarLiq.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarLiq.TabIndex = 78;
-            this.btnAdjuntarLiq.Text = "...";
             this.btnAdjuntarLiq.UseVisualStyleBackColor = true;
             this.btnAdjuntarLiq.Click += new System.EventHandler(this.btnAdjuntarLiq_Click);
             // 
             // btnAdjuntarCTS
             // 
+            this.btnAdjuntarCTS.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarCTS.BackgroundImage")));
+            this.btnAdjuntarCTS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdjuntarCTS.FlatAppearance.BorderSize = 0;
+            this.btnAdjuntarCTS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarCTS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntarCTS.Location = new System.Drawing.Point(141, 32);
             this.btnAdjuntarCTS.Name = "btnAdjuntarCTS";
-            this.btnAdjuntarCTS.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarCTS.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarCTS.TabIndex = 79;
-            this.btnAdjuntarCTS.Text = "...";
             this.btnAdjuntarCTS.UseVisualStyleBackColor = true;
             this.btnAdjuntarCTS.Click += new System.EventHandler(this.btnAdjuntarCTS_Click);
             // 
             // btnAdjuntarEntrevistaSalida
             // 
+            this.btnAdjuntarEntrevistaSalida.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarEntrevistaSalida.BackgroundImage")));
+            this.btnAdjuntarEntrevistaSalida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdjuntarEntrevistaSalida.FlatAppearance.BorderSize = 0;
+            this.btnAdjuntarEntrevistaSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarEntrevistaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntarEntrevistaSalida.Location = new System.Drawing.Point(141, 148);
             this.btnAdjuntarEntrevistaSalida.Name = "btnAdjuntarEntrevistaSalida";
-            this.btnAdjuntarEntrevistaSalida.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarEntrevistaSalida.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarEntrevistaSalida.TabIndex = 81;
-            this.btnAdjuntarEntrevistaSalida.Text = "...";
             this.btnAdjuntarEntrevistaSalida.UseVisualStyleBackColor = true;
             this.btnAdjuntarEntrevistaSalida.Click += new System.EventHandler(this.btnAdjuntarEntrevistaSalida_Click);
             // 
             // btnAdjuntarEvaluacionPracticas
             // 
+            this.btnAdjuntarEvaluacionPracticas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarEvaluacionPracticas.BackgroundImage")));
+            this.btnAdjuntarEvaluacionPracticas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdjuntarEvaluacionPracticas.FlatAppearance.BorderSize = 0;
+            this.btnAdjuntarEvaluacionPracticas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarEvaluacionPracticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntarEvaluacionPracticas.Location = new System.Drawing.Point(141, 119);
             this.btnAdjuntarEvaluacionPracticas.Name = "btnAdjuntarEvaluacionPracticas";
-            this.btnAdjuntarEvaluacionPracticas.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarEvaluacionPracticas.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarEvaluacionPracticas.TabIndex = 82;
-            this.btnAdjuntarEvaluacionPracticas.Text = "...";
             this.btnAdjuntarEvaluacionPracticas.UseVisualStyleBackColor = true;
             this.btnAdjuntarEvaluacionPracticas.Click += new System.EventHandler(this.btnAdjuntarEvaluacionPracticas_Click);
             // 
             // btnAdjuntarRetencionRenta
             // 
+            this.btnAdjuntarRetencionRenta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarRetencionRenta.BackgroundImage")));
+            this.btnAdjuntarRetencionRenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdjuntarRetencionRenta.FlatAppearance.BorderSize = 0;
+            this.btnAdjuntarRetencionRenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarRetencionRenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntarRetencionRenta.Location = new System.Drawing.Point(141, 90);
             this.btnAdjuntarRetencionRenta.Name = "btnAdjuntarRetencionRenta";
-            this.btnAdjuntarRetencionRenta.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarRetencionRenta.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarRetencionRenta.TabIndex = 83;
-            this.btnAdjuntarRetencionRenta.Text = "...";
             this.btnAdjuntarRetencionRenta.UseVisualStyleBackColor = true;
             this.btnAdjuntarRetencionRenta.Click += new System.EventHandler(this.btnAdjuntarRetencionRenta_Click);
             // 
             // btnAdjuntarConstanciaTrabajo
             // 
+            this.btnAdjuntarConstanciaTrabajo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarConstanciaTrabajo.BackgroundImage")));
+            this.btnAdjuntarConstanciaTrabajo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdjuntarConstanciaTrabajo.FlatAppearance.BorderSize = 0;
+            this.btnAdjuntarConstanciaTrabajo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarConstanciaTrabajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjuntarConstanciaTrabajo.Location = new System.Drawing.Point(141, 61);
             this.btnAdjuntarConstanciaTrabajo.Name = "btnAdjuntarConstanciaTrabajo";
-            this.btnAdjuntarConstanciaTrabajo.Size = new System.Drawing.Size(25, 23);
+            this.btnAdjuntarConstanciaTrabajo.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarConstanciaTrabajo.TabIndex = 84;
-            this.btnAdjuntarConstanciaTrabajo.Text = "...";
             this.btnAdjuntarConstanciaTrabajo.UseVisualStyleBackColor = true;
             this.btnAdjuntarConstanciaTrabajo.Click += new System.EventHandler(this.btnAdjuntarConstanciaTrabajo_Click);
             // 

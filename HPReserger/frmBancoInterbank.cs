@@ -26,8 +26,10 @@ namespace HPReserger
         DataTable tablasdocumento;
         public DataTable TablaProveedorBanco;
         public DataTable TablaComprobantes;
+        public DataTable TablaComprobanteS;
         public DataTable TablaBancos;
         public Boolean PAgoFactura = false;
+        public List<frmPagarBoletas.FACTURAS> ComprobanteS = new List<frmPagarBoletas.FACTURAS>();
         public List<frmPagarFactura.FACTURAS> Comprobantes = new List<frmPagarFactura.FACTURAS>();
         public void valoresdecarga()
         {
@@ -78,87 +80,173 @@ namespace HPReserger
             tablasdocumento.Rows.Add(new object[] { "04", "04:Cédula Identidad" });
             tablasdocumento.Rows.Add(new object[] { "05", "05:Pasaporte" });
         }
+        public DataTable TablaConsulta;
         private void frmBancoInterbank_Load(object sender, EventArgs e)
         {
             valoresdecarga();
             ///cargar los valores de comprobantes
             ///
-            TablaComprobantes = new DataTable();
-            TablaComprobantes.Columns.Add("index", typeof(int));
-            TablaComprobantes.Columns.Add("tipo", typeof(string));
-            TablaComprobantes.Columns.Add("numero", typeof(string));
-            TablaComprobantes.Columns.Add("proveedor", typeof(string));
-            TablaComprobantes.Columns.Add("subtotal", typeof(decimal));
-            TablaComprobantes.Columns.Add("igv", typeof(decimal));
-            TablaComprobantes.Columns.Add("total", typeof(decimal));
-            TablaComprobantes.Columns.Add("detraccion", typeof(decimal));
-            TablaComprobantes.Columns.Add("fechacancelado", typeof(DateTime));
-            int i = 1;
-            foreach (frmPagarFactura.FACTURAS fac in Comprobantes)
+            if (!PAgoFactura)
             {
-                TablaComprobantes.Rows.Add(new object[] { i, fac.tipo, fac.numero, fac.proveedor, fac.subtotal, fac.igv, fac.total, fac.detraccion, fac.fechacancelado });
-                i++;
+                TablaComprobantes = new DataTable();
+                TablaComprobantes.Columns.Add("index", typeof(int));
+                TablaComprobantes.Columns.Add("tipo", typeof(string));
+                TablaComprobantes.Columns.Add("numero", typeof(string));
+                TablaComprobantes.Columns.Add("proveedor", typeof(string));
+                TablaComprobantes.Columns.Add("subtotal", typeof(decimal));
+                TablaComprobantes.Columns.Add("igv", typeof(decimal));
+                TablaComprobantes.Columns.Add("total", typeof(decimal));
+                TablaComprobantes.Columns.Add("detraccion", typeof(decimal));
+                TablaComprobantes.Columns.Add("fechacancelado", typeof(DateTime));
+                int i = 1;
+                foreach (frmPagarFactura.FACTURAS fac in Comprobantes)
+                {
+                    TablaComprobantes.Rows.Add(new object[] { i, fac.tipo, fac.numero, fac.proveedor, fac.subtotal, fac.igv, fac.total, fac.detraccion, fac.fechacancelado });
+                    i++;
+                }
             }
-            ////cargar valores de los proveedores
-            DataTable TablaConsulta = new DataTable();
-            var cargas = from tblcomprobante in TablaComprobantes.AsEnumerable()
-                         join tblproveedor in TablaProveedorBanco.AsEnumerable() on tblcomprobante["proveedor"].ToString().Trim() equals (string)tblproveedor["ruc"].ToString().Trim()
-                         select new
-                         {
-                             index = tblcomprobante["index"],
-                             proveedor = tblcomprobante["proveedor"],
-                             razonsocial = tblproveedor["razon_social"],
-                             personatipo = tblproveedor["PERSONA_TIPO"],
-                             ctaseleccionada = tblproveedor["ctaseleccionada"],
-                             cuentasoles = tblproveedor["nro_cta_soles"],
-                             cuentaccisoles = tblproveedor["nro_cta_cci_soles"],
-                             tipo = tblcomprobante["tipo"],
-                             nro = tblcomprobante["numero"],
-                             subtotal = tblcomprobante["subtotal"],
-                             igv = tblcomprobante["igv"],
-                             total = tblcomprobante["total"],
-                             detraccion = tblcomprobante["detraccion"],
-                             fechacancelado = tblcomprobante["fechacancelado"],
-                             tipocuenta = tblproveedor["tipocuenta"]
-                         };
-            TablaConsulta.Columns.Add("codigo", typeof(int));
-            TablaConsulta.Columns.Add("tipoop", typeof(string));
-            TablaConsulta.Columns.Add("nrofac", typeof(string));
-            TablaConsulta.Columns.Add("fechaven", typeof(DateTime));
-            TablaConsulta.Columns.Add("monedaabono", typeof(string));
-            TablaConsulta.Columns.Add("importe", typeof(decimal));
-            TablaConsulta.Columns.Add("neto", typeof(decimal));
-            TablaConsulta.Columns.Add("banco", typeof(string));
-            TablaConsulta.Columns.Add("tipoabono", typeof(string));
-            TablaConsulta.Columns.Add("tipocuenta", typeof(string));
-            TablaConsulta.Columns.Add("monedacuenta", typeof(string));
-            TablaConsulta.Columns.Add("tienda", typeof(string));
-            TablaConsulta.Columns.Add("nrocuenta", typeof(string));
-            TablaConsulta.Columns.Add("tipopersona", typeof(string));
-            TablaConsulta.Columns.Add("tipodoc", typeof(string));
-            TablaConsulta.Columns.Add("nrodoc", typeof(string));
-            TablaConsulta.Columns.Add("razon", typeof(string));
+            else
+            {
+                //tabla comprobates de boleta
+                TablaComprobanteS = new DataTable();
+                TablaComprobanteS.Columns.Add("index", typeof(int));
+                TablaComprobanteS.Columns.Add("año", typeof(int));
+                TablaComprobanteS.Columns.Add("mes", typeof(string));
+                TablaComprobanteS.Columns.Add("tipo", typeof(string));
+                TablaComprobanteS.Columns.Add("numero", typeof(string));
+                TablaComprobanteS.Columns.Add("neto", typeof(decimal));
+                TablaComprobanteS.Columns.Add("fechacancelado", typeof(DateTime));
 
-            string tipo = "", soles = "01", banco = "xx", abono = "09", tipocuenta = "", tipopersona = "", tipodoc = "02";
-            decimal total = 0;
-            foreach (var x in cargas)
-            {
-                if (x.tipo.ToString().Trim().ToUpper() == "RH" || x.tipo.ToString().Trim().ToUpper() == "FT")
-                    tipo = "F";
-                if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
-                    banco = "xx";
-                else banco = "x";
-                if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
-                    tipocuenta = "001";
-                else tipocuenta = "002";
-                if (x.personatipo.ToString().Trim().ToUpper() == "NATURAL")
-                    tipopersona = "P";
-                else tipopersona = "C";
-                total = decimal.Parse(x.total.ToString()) - decimal.Parse(x.detraccion.ToString());
-                TablaConsulta.Rows.Add(x.index, tipo, x.nro, x.fechacancelado, soles, total, total, banco, abono, tipocuenta, soles, "", x.ctaseleccionada, tipopersona, tipodoc, x.proveedor, x.razonsocial);
+                int i = 1;
+                foreach (frmPagarBoletas.FACTURAS fac in ComprobanteS)
+                {
+                    TablaComprobanteS.Rows.Add(new object[] { 1, fac.año, fac.mes, fac.tipo, fac.nro, fac.neto, fac.fecha });
+                    i++;
+                }
             }
-            Dtguias.DataSource = TablaConsulta;
-            Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
+            if (!PAgoFactura)
+            {
+                ////cargar valores de los proveedores
+                TablaConsulta = new DataTable();
+                var cargas = from tblcomprobante in TablaComprobantes.AsEnumerable()
+                             join tblproveedor in TablaProveedorBanco.AsEnumerable() on tblcomprobante["proveedor"].ToString().Trim() equals (string)tblproveedor["ruc"].ToString().Trim()
+                             select new
+                             {
+                                 index = tblcomprobante["index"],
+                                 proveedor = tblcomprobante["proveedor"],
+                                 razonsocial = tblproveedor["razon_social"],
+                                 personatipo = tblproveedor["PERSONA_TIPO"],
+                                 ctaseleccionada = tblproveedor["ctaseleccionada"],
+                                 cuentasoles = tblproveedor["nro_cta_soles"],
+                                 cuentaccisoles = tblproveedor["nro_cta_cci_soles"],
+                                 tipo = tblcomprobante["tipo"],
+                                 nro = tblcomprobante["numero"],
+                                 subtotal = tblcomprobante["subtotal"],
+                                 igv = tblcomprobante["igv"],
+                                 total = tblcomprobante["total"],
+                                 detraccion = tblcomprobante["detraccion"],
+                                 fechacancelado = tblcomprobante["fechacancelado"],
+                                 tipocuenta = tblproveedor["tipocuenta"]
+                             };
+                TablaConsulta.Columns.Add("codigo", typeof(int));
+                TablaConsulta.Columns.Add("tipoop", typeof(string));
+                TablaConsulta.Columns.Add("nrofac", typeof(string));
+                TablaConsulta.Columns.Add("fecha", typeof(DateTime));
+                TablaConsulta.Columns.Add("monedaabono", typeof(string));
+                TablaConsulta.Columns.Add("importe", typeof(decimal));
+                TablaConsulta.Columns.Add("neto", typeof(decimal));
+                TablaConsulta.Columns.Add("banco", typeof(string));
+                TablaConsulta.Columns.Add("tipoabono", typeof(string));
+                TablaConsulta.Columns.Add("tipocuenta", typeof(string));
+                TablaConsulta.Columns.Add("monedacuenta", typeof(string));
+                TablaConsulta.Columns.Add("tienda", typeof(string));
+                TablaConsulta.Columns.Add("nrocuenta", typeof(string));
+                TablaConsulta.Columns.Add("tipopersona", typeof(string));
+                TablaConsulta.Columns.Add("tipodoc", typeof(string));
+                TablaConsulta.Columns.Add("nrodoc", typeof(string));
+                TablaConsulta.Columns.Add("razon", typeof(string));
+
+                string tipo = "", soles = "01", banco = "xx", abono = "09", tipocuenta = "", tipopersona = "", tipodoc = "02";
+                decimal total = 0;
+                foreach (var x in cargas)
+                {
+                    if (x.tipo.ToString().Trim().ToUpper() == "RH" || x.tipo.ToString().Trim().ToUpper() == "FT")
+                        tipo = "F";
+                    if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
+                        banco = "xx";
+                    else banco = "x";
+                    if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
+                        tipocuenta = "001";
+                    else tipocuenta = "002";
+                    if (x.personatipo.ToString().Trim().ToUpper() == "NATURAL")
+                        tipopersona = "P";
+                    else tipopersona = "C";
+                    total = decimal.Parse(x.total.ToString()) - decimal.Parse(x.detraccion.ToString());
+                    TablaConsulta.Rows.Add(x.index, tipo, x.nro, x.fechacancelado, soles, total, total, banco, abono, tipocuenta, soles, "", x.ctaseleccionada, tipopersona, tipodoc, x.proveedor, x.razonsocial);
+                }
+                Dtguias.DataSource = TablaConsulta;
+                Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
+            }
+            else
+            {
+                ////cargar valores de los planillas
+                TablaConsulta = new DataTable();
+                var cargas = from tblcomprobante in TablaComprobanteS.AsEnumerable()
+                             join tblproveedor in TablaProveedorBanco.AsEnumerable() on tblcomprobante["tipo"].ToString().Trim() + tblcomprobante["numero"].ToString().Trim() equals (string)tblproveedor["tipo_id_emp"].ToString().Trim() + tblproveedor["nro_id_emp"].ToString().Trim()
+                             select new
+                             {
+                                 index = tblcomprobante["index"],
+                                 proveedor = tblcomprobante["numero"],
+                                 razonsocial = tblproveedor["nombres"],
+                                 ctaseleccionada = tblproveedor["ctaseleccionada"],
+                                 cuentasoles = tblproveedor["nro_cta_soles"],
+                                 cuentaccisoles = tblproveedor["nro_cta_cci_soles"],
+                                 tipo = tblcomprobante["tipo"],
+                                 nro = tblcomprobante["numero"],
+                                 total = decimal.Parse(tblcomprobante["neto"].ToString()),
+                                 fechacancelado = (DateTime)tblcomprobante["fechacancelado"],
+                                 banco = tblproveedor["Entidad_Financiera"],
+                                 tipocuenta = tblproveedor["tipocuenta"]
+                             };
+                TablaConsulta.Columns.Add("codigo", typeof(int));
+                TablaConsulta.Columns.Add("tipoop", typeof(string));
+                TablaConsulta.Columns.Add("nrofac", typeof(string));
+                TablaConsulta.Columns.Add("fecha", typeof(DateTime));
+                TablaConsulta.Columns.Add("monedaabono", typeof(string));
+                TablaConsulta.Columns.Add("importe", typeof(decimal));
+                TablaConsulta.Columns.Add("neto", typeof(decimal));
+                TablaConsulta.Columns.Add("banco", typeof(string));
+                TablaConsulta.Columns.Add("tipoabono", typeof(string));
+                TablaConsulta.Columns.Add("tipocuenta", typeof(string));
+                TablaConsulta.Columns.Add("monedacuenta", typeof(string));
+                TablaConsulta.Columns.Add("tienda", typeof(string));
+                TablaConsulta.Columns.Add("nrocuenta", typeof(string));
+                TablaConsulta.Columns.Add("tipopersona", typeof(string));
+                TablaConsulta.Columns.Add("tipodoc", typeof(string));
+                TablaConsulta.Columns.Add("nrodoc", typeof(string));
+                TablaConsulta.Columns.Add("razon", typeof(string));
+
+                string tipo = "", soles = "01", banco = "xx", abono = "09", tipocuenta = "", tipopersona = "", tipodoc = "01";
+                decimal total = 0;
+                foreach (var x in cargas)
+                {
+                    if (x.tipo.ToString().Trim().ToUpper() == "RH" || x.tipo.ToString().Trim().ToUpper() == "FT")
+                        tipo = "F";
+                    if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
+                        banco = "xx";
+                    else banco = "x";
+                    if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
+                        tipocuenta = "001";
+                    else tipocuenta = "002";
+                    //if (x.personatipo.ToString().Trim().ToUpper() == "NATURAL")
+                        tipopersona = "P";
+                    // else tipopersona = "C";
+                    total = x.total;
+                    TablaConsulta.Rows.Add(x.index, tipo, x.nro, x.fechacancelado, soles, total, total, banco, abono, tipocuenta, soles, "", x.ctaseleccionada, tipopersona, tipodoc, x.proveedor, x.razonsocial);
+                }
+                Dtguias.DataSource = TablaConsulta;
+                Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
+            }
         }
         public DialogResult msg(string cadena)
         {
@@ -334,6 +422,7 @@ namespace HPReserger
                     st.Close();
                     msg("Generado TXT con Éxito");
                     PAgoFactura = true;
+                    DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else msg("Cancelado por el Usuario");
@@ -344,6 +433,8 @@ namespace HPReserger
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
         private void Dtguias_CellClick(object sender, DataGridViewCellEventArgs e)

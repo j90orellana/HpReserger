@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleadosFamiliaresModificar));
             this.btnModificar = new System.Windows.Forms.Button();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtOcupacion = new System.Windows.Forms.TextBox();
@@ -316,13 +317,16 @@
             // 
             // btnconviviente
             // 
+            this.btnconviviente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnconviviente.BackgroundImage")));
+            this.btnconviviente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnconviviente.FlatAppearance.BorderSize = 0;
+            this.btnconviviente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnconviviente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnconviviente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnconviviente.Location = new System.Drawing.Point(413, 258);
+            this.btnconviviente.Location = new System.Drawing.Point(413, 259);
             this.btnconviviente.Name = "btnconviviente";
-            this.btnconviviente.Size = new System.Drawing.Size(25, 20);
+            this.btnconviviente.Size = new System.Drawing.Size(20, 20);
             this.btnconviviente.TabIndex = 11;
-            this.btnconviviente.Text = "...";
             this.btnconviviente.UseVisualStyleBackColor = true;
             this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
             // 

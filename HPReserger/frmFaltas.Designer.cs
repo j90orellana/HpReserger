@@ -549,7 +549,7 @@
             this.MinimumSize = new System.Drawing.Size(1557, 507);
             this.Name = "frmFaltas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Registro de Faltas";
+            this.Text = "Registro de Faltas";
             this.Load += new System.EventHandler(this.frmFaltas_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmFaltas_MouseMove);
             this.groupBox2.ResumeLayout(false);

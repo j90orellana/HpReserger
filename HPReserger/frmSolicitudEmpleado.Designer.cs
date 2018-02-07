@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSolicitudEmpleado));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -69,16 +70,6 @@
             this.Servicios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Grid2 = new System.Windows.Forms.DataGridView();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
-            this.btndescargar = new System.Windows.Forms.Button();
-            this.panelOre1 = new HpResergerUserControls.PanelOre();
-            this.btnr = new System.Windows.Forms.Button();
-            this.cbogerencia = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtobservacion = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cboarea = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.SOLICITUD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,6 +82,16 @@
             this.AREA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Adjunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PUESTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btndescargar = new System.Windows.Forms.Button();
+            this.panelOre1 = new HpResergerUserControls.PanelOre();
+            this.btnr = new System.Windows.Forms.Button();
+            this.cbogerencia = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtobservacion = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboarea = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid2)).BeginInit();
@@ -149,12 +150,15 @@
             // 
             // btnBuscarJPG
             // 
+            this.btnBuscarJPG.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarJPG.BackgroundImage")));
+            this.btnBuscarJPG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarJPG.FlatAppearance.BorderSize = 0;
+            this.btnBuscarJPG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarJPG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarJPG.Location = new System.Drawing.Point(395, 176);
             this.btnBuscarJPG.Name = "btnBuscarJPG";
-            this.btnBuscarJPG.Size = new System.Drawing.Size(25, 23);
+            this.btnBuscarJPG.Size = new System.Drawing.Size(20, 20);
             this.btnBuscarJPG.TabIndex = 26;
-            this.btnBuscarJPG.Text = "...";
             this.btnBuscarJPG.UseVisualStyleBackColor = true;
             this.btnBuscarJPG.Click += new System.EventHandler(this.btnBuscarJPG_Click);
             // 
@@ -422,128 +426,6 @@
             this.Grid2.DoubleClick += new System.EventHandler(this.Grid2_DoubleClick);
             this.Grid2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Grid2_KeyDown);
             // 
-            // pbFoto
-            // 
-            this.pbFoto.Location = new System.Drawing.Point(984, 253);
-            this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(298, 211);
-            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFoto.TabIndex = 18;
-            this.pbFoto.TabStop = false;
-            this.pbFoto.DoubleClick += new System.EventHandler(this.pbFoto_DoubleClick);
-            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
-            // 
-            // btndescargar
-            // 
-            this.btndescargar.AutoEllipsis = true;
-            this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(1110, 435);
-            this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
-            this.btndescargar.TabIndex = 115;
-            this.btndescargar.Text = "Descargar";
-            this.btndescargar.UseVisualStyleBackColor = false;
-            this.btndescargar.Visible = false;
-            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
-            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
-            // 
-            // panelOre1
-            // 
-            this.panelOre1.BackColor = System.Drawing.SystemColors.Control;
-            this.panelOre1.Controls.Add(this.btnr);
-            this.panelOre1.Controls.Add(this.cbogerencia);
-            this.panelOre1.Controls.Add(this.label9);
-            this.panelOre1.Controls.Add(this.txtobservacion);
-            this.panelOre1.Controls.Add(this.label10);
-            this.panelOre1.Controls.Add(this.cboarea);
-            this.panelOre1.Controls.Add(this.label8);
-            this.panelOre1.Location = new System.Drawing.Point(466, 10);
-            this.panelOre1.Movible = false;
-            this.panelOre1.Name = "panelOre1";
-            this.panelOre1.Size = new System.Drawing.Size(815, 237);
-            this.panelOre1.TabIndex = 116;
-            this.panelOre1.Visible = false;
-            // 
-            // btnr
-            // 
-            this.btnr.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
-            this.btnr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnr.Location = new System.Drawing.Point(341, 24);
-            this.btnr.Name = "btnr";
-            this.btnr.Size = new System.Drawing.Size(26, 21);
-            this.btnr.TabIndex = 86;
-            this.btnr.Tag = "1";
-            this.btnr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnr.UseVisualStyleBackColor = true;
-            this.btnr.Click += new System.EventHandler(this.btnr_Click);
-            // 
-            // cbogerencia
-            // 
-            this.cbogerencia.BackColor = System.Drawing.Color.White;
-            this.cbogerencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbogerencia.FormattingEnabled = true;
-            this.cbogerencia.Items.AddRange(new object[] {
-            "EXTERNA",
-            "INTERNA"});
-            this.cbogerencia.Location = new System.Drawing.Point(107, 24);
-            this.cbogerencia.Name = "cbogerencia";
-            this.cbogerencia.Size = new System.Drawing.Size(228, 21);
-            this.cbogerencia.TabIndex = 34;
-            this.cbogerencia.SelectedIndexChanged += new System.EventHandler(this.cbogerencia_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Location = new System.Drawing.Point(20, 27);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 33;
-            this.label9.Text = "Gerencia:";
-            // 
-            // txtobservacion
-            // 
-            this.txtobservacion.Location = new System.Drawing.Point(107, 78);
-            this.txtobservacion.Multiline = true;
-            this.txtobservacion.Name = "txtobservacion";
-            this.txtobservacion.Size = new System.Drawing.Size(260, 133);
-            this.txtobservacion.TabIndex = 32;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Location = new System.Drawing.Point(20, 82);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 13);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Observaciones:";
-            // 
-            // cboarea
-            // 
-            this.cboarea.BackColor = System.Drawing.Color.White;
-            this.cboarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboarea.FormattingEnabled = true;
-            this.cboarea.Items.AddRange(new object[] {
-            "EXTERNA",
-            "INTERNA"});
-            this.cboarea.Location = new System.Drawing.Point(107, 51);
-            this.cboarea.Name = "cboarea";
-            this.cboarea.Size = new System.Drawing.Size(260, 21);
-            this.cboarea.TabIndex = 28;
-            this.cboarea.SelectedIndexChanged += new System.EventHandler(this.cboarea_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Location = new System.Drawing.Point(20, 54);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Area:";
-            // 
             // SOLICITUD
             // 
             this.SOLICITUD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -679,6 +561,128 @@
             this.PUESTOS.Name = "PUESTOS";
             this.PUESTOS.ReadOnly = true;
             this.PUESTOS.Visible = false;
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.Location = new System.Drawing.Point(984, 253);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(298, 211);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFoto.TabIndex = 18;
+            this.pbFoto.TabStop = false;
+            this.pbFoto.DoubleClick += new System.EventHandler(this.pbFoto_DoubleClick);
+            this.pbFoto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFoto_MouseMove);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(1110, 435);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 115;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
+            // 
+            // panelOre1
+            // 
+            this.panelOre1.BackColor = System.Drawing.SystemColors.Control;
+            this.panelOre1.Controls.Add(this.btnr);
+            this.panelOre1.Controls.Add(this.cbogerencia);
+            this.panelOre1.Controls.Add(this.label9);
+            this.panelOre1.Controls.Add(this.txtobservacion);
+            this.panelOre1.Controls.Add(this.label10);
+            this.panelOre1.Controls.Add(this.cboarea);
+            this.panelOre1.Controls.Add(this.label8);
+            this.panelOre1.Location = new System.Drawing.Point(466, 10);
+            this.panelOre1.Movible = false;
+            this.panelOre1.Name = "panelOre1";
+            this.panelOre1.Size = new System.Drawing.Size(815, 237);
+            this.panelOre1.TabIndex = 116;
+            this.panelOre1.Visible = false;
+            // 
+            // btnr
+            // 
+            this.btnr.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
+            this.btnr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnr.Location = new System.Drawing.Point(341, 24);
+            this.btnr.Name = "btnr";
+            this.btnr.Size = new System.Drawing.Size(26, 21);
+            this.btnr.TabIndex = 86;
+            this.btnr.Tag = "1";
+            this.btnr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnr.UseVisualStyleBackColor = true;
+            this.btnr.Click += new System.EventHandler(this.btnr_Click);
+            // 
+            // cbogerencia
+            // 
+            this.cbogerencia.BackColor = System.Drawing.Color.White;
+            this.cbogerencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbogerencia.FormattingEnabled = true;
+            this.cbogerencia.Items.AddRange(new object[] {
+            "EXTERNA",
+            "INTERNA"});
+            this.cbogerencia.Location = new System.Drawing.Point(107, 24);
+            this.cbogerencia.Name = "cbogerencia";
+            this.cbogerencia.Size = new System.Drawing.Size(228, 21);
+            this.cbogerencia.TabIndex = 34;
+            this.cbogerencia.SelectedIndexChanged += new System.EventHandler(this.cbogerencia_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Location = new System.Drawing.Point(20, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Gerencia:";
+            // 
+            // txtobservacion
+            // 
+            this.txtobservacion.Location = new System.Drawing.Point(107, 78);
+            this.txtobservacion.Multiline = true;
+            this.txtobservacion.Name = "txtobservacion";
+            this.txtobservacion.Size = new System.Drawing.Size(260, 133);
+            this.txtobservacion.TabIndex = 32;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Location = new System.Drawing.Point(20, 82);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Observaciones:";
+            // 
+            // cboarea
+            // 
+            this.cboarea.BackColor = System.Drawing.Color.White;
+            this.cboarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboarea.FormattingEnabled = true;
+            this.cboarea.Items.AddRange(new object[] {
+            "EXTERNA",
+            "INTERNA"});
+            this.cboarea.Location = new System.Drawing.Point(107, 51);
+            this.cboarea.Name = "cboarea";
+            this.cboarea.Size = new System.Drawing.Size(260, 21);
+            this.cboarea.TabIndex = 28;
+            this.cboarea.SelectedIndexChanged += new System.EventHandler(this.cboarea_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(20, 54);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Area:";
             // 
             // frmSolicitudEmpleado
             // 

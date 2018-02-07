@@ -18,6 +18,7 @@ namespace HPReserger
             InitializeComponent();
             ICono = this.Icon;
         }
+        HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public static Icon ICono;
         public void CargarNroHijos(int tipo, string doc)
         {
@@ -66,8 +67,54 @@ namespace HPReserger
         {
             pbfotoempleado.Image = fotito.Image;
         }
+        public void RecargarMenu()
+        {
+            DataTable datos = new DataTable();
+            DataRow filita;
+            datos = CapaLogica.usuarios("", frmLogin.CodigoUsuario, 10);
+            if (datos.Rows.Count > 0)
+            {
+                filita = datos.Rows[0];
+                datos = CapaLogica.ListarPerfiles((int)filita["CODIGOPERFIL"], 99, 0, 1, DateTime.Now);
+                foreach (ToolStripMenuItem x in menuStrip1.Items)
+                {
+                    foreach (ToolStripItem xx in x.DropDownItems)
+                    {
+                        if (xx.Tag != null && xx.Tag.ToString() != "8")
+                        {
+                            xx.Visible = false;
+                        }
+                    }
+                    if (x.Tag != null && x.Tag.ToString() != "8")
+                    {
+                        x.Visible = false;
+                    }
+                }
+                List<string> Lista = new List<string>();
+                foreach (DataRow a in datos.Rows)
+                {
+                    Lista.Add(a["titulo"].ToString());
+                }
+                foreach (ToolStripMenuItem x in menuStrip1.Items)
+                {
+                    Boolean prueba = false;
+                    foreach (ToolStripItem xx in x.DropDownItems)
+                    {
+                        if (Lista.Contains(xx.Tag))
+                        {
+                            xx.Visible = true; prueba = true;
+                        }
+                    }
+                    if (prueba)
+                    {
+                        x.Visible = true;
+                    }
+                }
+            }
+        }
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            RecargarMenu();
             MdiClient mdi;
             foreach (Control ctl in this.Controls)
             {
@@ -92,6 +139,8 @@ namespace HPReserger
             //this.LayoutMdi(MdiLayout.);
             formulario.Left = (Width - formulario.Width) / 2;
             formulario.Top = ((Height - formulario.Height) / 2) - lblwelcome.Height;
+            OnMdiChildActivate(null);
+            ValidarFormularios();
         }
         void cerrar_cotizacion(object sender, FormClosedEventArgs e)
         {
@@ -861,7 +910,7 @@ namespace HPReserger
             if (cerrar == 0)
             {
                 if (MessageBox.Show("Seguro Desea Salir del Sistema", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-                {                    
+                {
                     cerrado = 0; cerrar = 10;
                     Application.Exit();
                 }
@@ -874,7 +923,7 @@ namespace HPReserger
                 cerrar = 10;
             }
         }
-        frmListarOCFaltantes frmlisoc;        
+        frmListarOCFaltantes frmlisoc;
         private void listarOCFaltantesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (frmlisoc == null)
@@ -1070,7 +1119,6 @@ namespace HPReserger
                 // pbfotoempleado.Visible = false;
                 proyectos.FormClosed += new FormClosedEventHandler(presus_cerrarproyec);
                 proyectos.Show();
-
             }
             else
             {
@@ -2152,6 +2200,106 @@ namespace HPReserger
         private void cerrarareacargos(object sender, FormClosedEventArgs e)
         {
             frmareacargo = null;
+        }
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+        public void ValidarFormularios()
+        {
+            //  ventanasToolStripMenuItem.DropDownItems.Clear();
+            //   foreach (Form frm in MdiChildren)
+            //   {
+            //       ventanasToolStripMenuItem.DropDownItems.Add(frm.Text.Trim().ToUpper(), null, ckick);
+            //   }
+        }
+        private void ckick(object sender, EventArgs e)
+        {
+            Boolean Buscar = false;
+            foreach (Form frm in MdiChildren)
+            {
+                if (frm.Text.Trim().ToUpper() == ((ToolStripItem)(sender)).Text.Trim().ToUpper())
+                {
+                    frm.BringToFront(); Buscar = true;
+                }
+            }
+            if (!Buscar)
+            {
+                ventanasToolStripMenuItem.DropDownItems.Remove(((ToolStripItem)(sender)));
+            }
+        }
+        private void frmMenu_MdiChildActivate(object sender, EventArgs e)
+        {
+            //    ValidarFormularios();
+        }
+
+        private void sadasdToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //  ValidarFormularios();
+        }
+
+        private void frmMenu_Activated(object sender, EventArgs e)
+        {
+
+            // ValidarFormularios();
+        }
+        private void ventanasToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
+        {
+            //  OnMdiChildActivate(e);
+            // ValidarFormularios();
+        }
+        private void ventanasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // OnMdiChildActivate(e);
+        }
+
+        private void frmMenu_Validated(object sender, EventArgs e)
+        {
+            //MessageBox.Show("y que dice Validado");
+        }
+        frmPagarBoletas pagarBoletas;
+        private void pagarBoletasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pagarBoletas == null)
+            {
+                pagarBoletas = new frmPagarBoletas();
+                pagarBoletas.MdiParent = this;
+                pagarBoletas.Icon = ICono;
+                pagarBoletas.FormClosed += new FormClosedEventHandler(cerrarPAgarBoletas);
+                pagarBoletas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                pagarBoletas.Activate();
+                ValidarVentanas(pagarBoletas);
+            }
+        }
+
+        private void cerrarPAgarBoletas(object sender, FormClosedEventArgs e)
+        {
+            pagarBoletas = null;
+        }
+        frmConfigurarDinamicas frmcofig;
+        private void configurarDinamicasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcofig == null)
+            {
+                frmcofig = new frmConfigurarDinamicas();
+                frmcofig.MdiParent = this;
+                frmcofig.Icon = ICono;
+                frmcofig.FormClosed += new FormClosedEventHandler(cerrarConfigurardinamicas);
+                frmcofig.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcofig.Activate();
+                ValidarVentanas(frmcofig);
+            }
+        }
+        private void cerrarConfigurardinamicas(object sender, FormClosedEventArgs e)
+        {
+            frmcofig = null;
         }
     }
 }

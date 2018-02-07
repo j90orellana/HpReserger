@@ -1033,7 +1033,7 @@ namespace HPReserger
                     cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 0,
                       valorsubtotal, valorigv, valortotal,
                          cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 3, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario),
-                         int.Parse(txtdetraccion.Text), detracc);
+                        0, detracc);
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////  

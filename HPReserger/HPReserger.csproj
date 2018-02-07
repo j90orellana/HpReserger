@@ -161,6 +161,12 @@
     <Compile Include="frmCargaDatosProveedor.Designer.cs">
       <DependentUpon>frmCargaDatosProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCargarDatosEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargarDatosEmpleados.Designer.cs">
+      <DependentUpon>frmCargarDatosEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCargos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,12 @@
     </Compile>
     <Compile Include="frmcede.Designer.cs">
       <DependentUpon>frmcede.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfigurarDinamicas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfigurarDinamicas.Designer.cs">
+      <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDatosExterno.cs">
       <SubType>Form</SubType>
@@ -466,6 +478,12 @@
     </Compile>
     <Compile Include="frmOtrosDescuentos.Designer.cs">
       <DependentUpon>frmOtrosDescuentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPagarBoletas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagarBoletas.Designer.cs">
+      <DependentUpon>frmPagarBoletas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPagarFactura.cs">
       <SubType>Form</SubType>
@@ -1136,6 +1154,9 @@
     <EmbeddedResource Include="frmCargaDatosProveedor.resx">
       <DependentUpon>frmCargaDatosProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCargarDatosEmpleados.resx">
+      <DependentUpon>frmCargarDatosEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCargos.resx">
       <DependentUpon>frmCargos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1144,6 +1165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmcede.resx">
       <DependentUpon>frmcede.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfigurarDinamicas.resx">
+      <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmcuentacontable.resx">
       <DependentUpon>frmcuentacontable.cs</DependentUpon>
@@ -1273,6 +1297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmOtrosDescuentos.resx">
       <DependentUpon>frmOtrosDescuentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPagarBoletas.resx">
+      <DependentUpon>frmPagarBoletas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPagarFactura.resx">
       <DependentUpon>frmPagarFactura.cs</DependentUpon>
@@ -1827,6 +1854,7 @@
     <None Include="Resources\Icono.ico" />
     <None Include="Resources\Logo_HP.png" />
     <Content Include="LogoHP.ico" />
+    <None Include="Resources\LoadFile.ico" />
     <Content Include="Resources\xCloseBlue.ico" />
     <None Include="Resources\xCloseBlue1.ico" />
     <None Include="Resources\xCloseBlack.ico" />

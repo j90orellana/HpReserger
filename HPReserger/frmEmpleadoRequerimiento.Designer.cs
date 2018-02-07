@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleadoRequerimiento));
             this.cboCelular = new System.Windows.Forms.ComboBox();
             this.cboMaquina = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -69,7 +70,7 @@
             this.cboCelular.Items.AddRange(new object[] {
             "SI",
             "NO"});
-            this.cboCelular.Location = new System.Drawing.Point(57, 13);
+            this.cboCelular.Location = new System.Drawing.Point(57, 17);
             this.cboCelular.Name = "cboCelular";
             this.cboCelular.Size = new System.Drawing.Size(66, 21);
             this.cboCelular.TabIndex = 0;
@@ -82,7 +83,7 @@
             this.cboMaquina.Items.AddRange(new object[] {
             "SI",
             "NO"});
-            this.cboMaquina.Location = new System.Drawing.Point(57, 49);
+            this.cboMaquina.Location = new System.Drawing.Point(57, 55);
             this.cboMaquina.Name = "cboMaquina";
             this.cboMaquina.Size = new System.Drawing.Size(66, 21);
             this.cboMaquina.TabIndex = 1;
@@ -91,7 +92,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 16);
+            this.label1.Location = new System.Drawing.Point(3, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 4;
@@ -100,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 52);
+            this.label2.Location = new System.Drawing.Point(3, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 5;
@@ -109,7 +110,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 95);
+            this.label3.Location = new System.Drawing.Point(3, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 6;
@@ -118,7 +119,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 132);
+            this.label4.Location = new System.Drawing.Point(3, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 7;
@@ -127,7 +128,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(129, 16);
+            this.label8.Location = new System.Drawing.Point(129, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 8;
@@ -180,7 +181,7 @@
             this.cboOtros.Items.AddRange(new object[] {
             "SI",
             "NO"});
-            this.cboOtros.Location = new System.Drawing.Point(57, 129);
+            this.cboOtros.Location = new System.Drawing.Point(57, 131);
             this.cboOtros.Name = "cboOtros";
             this.cboOtros.Size = new System.Drawing.Size(66, 21);
             this.cboOtros.TabIndex = 17;
@@ -193,7 +194,7 @@
             this.cboCorreo.Items.AddRange(new object[] {
             "SI",
             "NO"});
-            this.cboCorreo.Location = new System.Drawing.Point(57, 92);
+            this.cboCorreo.Location = new System.Drawing.Point(57, 93);
             this.cboCorreo.Name = "cboCorreo";
             this.cboCorreo.Size = new System.Drawing.Size(66, 21);
             this.cboCorreo.TabIndex = 16;
@@ -202,7 +203,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(129, 132);
+            this.label5.Location = new System.Drawing.Point(129, 135);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 18;
@@ -211,7 +212,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(129, 95);
+            this.label6.Location = new System.Drawing.Point(129, 97);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 19;
@@ -220,7 +221,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(129, 55);
+            this.label7.Location = new System.Drawing.Point(129, 59);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 13);
             this.label7.TabIndex = 20;
@@ -298,7 +299,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 168);
+            this.label10.Location = new System.Drawing.Point(3, 169);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(136, 13);
             this.label10.TabIndex = 94;
@@ -306,12 +307,15 @@
             // 
             // btnimagen
             // 
+            this.btnimagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnimagen.BackgroundImage")));
+            this.btnimagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnimagen.FlatAppearance.BorderSize = 0;
+            this.btnimagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnimagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnimagen.Location = new System.Drawing.Point(377, 163);
+            this.btnimagen.Location = new System.Drawing.Point(449, 165);
             this.btnimagen.Name = "btnimagen";
-            this.btnimagen.Size = new System.Drawing.Size(25, 23);
+            this.btnimagen.Size = new System.Drawing.Size(20, 20);
             this.btnimagen.TabIndex = 92;
-            this.btnimagen.Text = "...";
             this.btnimagen.UseVisualStyleBackColor = true;
             this.btnimagen.Click += new System.EventHandler(this.btnimagen_Click);
             // 
@@ -320,7 +324,7 @@
             this.txtimagen.Location = new System.Drawing.Point(145, 165);
             this.txtimagen.Name = "txtimagen";
             this.txtimagen.ReadOnly = true;
-            this.txtimagen.Size = new System.Drawing.Size(226, 20);
+            this.txtimagen.Size = new System.Drawing.Size(298, 20);
             this.txtimagen.TabIndex = 92;
             // 
             // label9
@@ -360,7 +364,7 @@
             // lklimagen
             // 
             this.lklimagen.AutoSize = true;
-            this.lklimagen.Location = new System.Drawing.Point(418, 179);
+            this.lklimagen.Location = new System.Drawing.Point(493, 181);
             this.lklimagen.Name = "lklimagen";
             this.lklimagen.Size = new System.Drawing.Size(61, 13);
             this.lklimagen.TabIndex = 93;

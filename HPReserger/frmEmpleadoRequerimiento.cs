@@ -58,13 +58,9 @@ namespace HPReserger
                     pbimagen.Image = null;
                     Foto = null; txtimagen.Text = "";
                 }
-
-
                 btnModificar.Enabled = true;
                 btnRegistrar.Enabled = false;
                 btnexportar.Enabled = true;
-
-
             }
             else
             {
@@ -74,6 +70,7 @@ namespace HPReserger
             }
             btnaceptar.Enabled = false;
             pnlconten.Enabled = false;
+            lklimagen.BringToFront();
         }
 
         private void cboCelular_SelectedIndexChanged(object sender, EventArgs e)

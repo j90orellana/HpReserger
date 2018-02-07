@@ -39,6 +39,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtguias = new System.Windows.Forms.DataGridView();
+            this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nrofactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.razon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaRecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaCancelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbobanco = new System.Windows.Forms.ComboBox();
             this.btnmaspro = new System.Windows.Forms.Button();
             this.cbotipo = new System.Windows.Forms.ComboBox();
@@ -80,18 +92,6 @@
             this.lblmensaje = new System.Windows.Forms.Label();
             this.btnseleccion = new System.Windows.Forms.Button();
             this.btnReversar = new System.Windows.Forms.Button();
-            this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nrofactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.razon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Igv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaRecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaCancelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +148,136 @@
             this.Dtguias.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_RowEnter);
             this.Dtguias.RowErrorTextChanged += new System.Windows.Forms.DataGridViewRowEventHandler(this.Dtguias_RowErrorTextChanged);
             this.Dtguias.Sorted += new System.EventHandler(this.Dtguias_Sorted);
+            // 
+            // OK
+            // 
+            this.OK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.OK.DataPropertyName = "OK";
+            this.OK.FalseValue = "False";
+            this.OK.FillWeight = 126.9036F;
+            this.OK.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.OK.HeaderText = "OK";
+            this.OK.Name = "OK";
+            this.OK.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.OK.TrueValue = "True";
+            this.OK.Width = 50;
+            // 
+            // tipodoc
+            // 
+            this.tipodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tipodoc.DataPropertyName = "tipo";
+            this.tipodoc.HeaderText = "T";
+            this.tipodoc.Name = "tipodoc";
+            this.tipodoc.ReadOnly = true;
+            this.tipodoc.Width = 25;
+            // 
+            // nrofactura
+            // 
+            this.nrofactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nrofactura.DataPropertyName = "nrofactura";
+            this.nrofactura.HeaderText = "Comprobante";
+            this.nrofactura.Name = "nrofactura";
+            this.nrofactura.ReadOnly = true;
+            this.nrofactura.Width = 96;
+            // 
+            // proveedor
+            // 
+            this.proveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.proveedor.DataPropertyName = "proveedor";
+            this.proveedor.HeaderText = "Proveedor";
+            this.proveedor.Name = "proveedor";
+            this.proveedor.ReadOnly = true;
+            this.proveedor.Width = 81;
+            // 
+            // razon
+            // 
+            this.razon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.razon.DataPropertyName = "razon";
+            this.razon.HeaderText = "Razón Social";
+            this.razon.Name = "razon";
+            this.razon.ReadOnly = true;
+            // 
+            // subtotal
+            // 
+            this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.subtotal.DataPropertyName = "subtotal";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "n2";
+            this.subtotal.DefaultCellStyle = dataGridViewCellStyle3;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 71;
+            // 
+            // Igv
+            // 
+            this.Igv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Igv.DataPropertyName = "Igv";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.Igv.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Igv.HeaderText = "Igv/Rta";
+            this.Igv.Name = "Igv";
+            this.Igv.ReadOnly = true;
+            this.Igv.Width = 66;
+            // 
+            // Total
+            // 
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Total.DataPropertyName = "Total";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 55;
+            // 
+            // detraccion
+            // 
+            this.detraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.detraccion.DataPropertyName = "detrac";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.detraccion.DefaultCellStyle = dataGridViewCellStyle6;
+            this.detraccion.HeaderText = "Detracción";
+            this.detraccion.Name = "detraccion";
+            this.detraccion.ReadOnly = true;
+            this.detraccion.Width = 83;
+            // 
+            // FechaEmision
+            // 
+            this.FechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.FechaEmision.DataPropertyName = "FechaEmision";
+            dataGridViewCellStyle7.Format = "g";
+            this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle7;
+            this.FechaEmision.HeaderText = "Fecha Emisión";
+            this.FechaEmision.Name = "FechaEmision";
+            this.FechaEmision.ReadOnly = true;
+            this.FechaEmision.Width = 94;
+            // 
+            // fechaRecepcion
+            // 
+            this.fechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fechaRecepcion.DataPropertyName = "fechaRecepcion";
+            dataGridViewCellStyle8.Format = "g";
+            dataGridViewCellStyle8.NullValue = null;
+            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle8;
+            this.fechaRecepcion.HeaderText = "Fecha Recepción";
+            this.fechaRecepcion.Name = "fechaRecepcion";
+            this.fechaRecepcion.ReadOnly = true;
+            this.fechaRecepcion.Width = 105;
+            // 
+            // FechaCancelado
+            // 
+            this.FechaCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.FechaCancelado.DataPropertyName = "FechaCancelado";
+            dataGridViewCellStyle9.Format = "g";
+            this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle9;
+            this.FechaCancelado.HeaderText = "Fecha Cancelado";
+            this.FechaCancelado.Name = "FechaCancelado";
+            this.FechaCancelado.ReadOnly = true;
+            this.FechaCancelado.Width = 105;
             // 
             // cbobanco
             // 
@@ -341,6 +471,7 @@
             // txtnropago
             // 
             this.txtnropago.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtnropago.Enabled = false;
             this.txtnropago.Location = new System.Drawing.Point(73, 18);
             this.txtnropago.Name = "txtnropago";
             this.txtnropago.Size = new System.Drawing.Size(155, 20);
@@ -565,136 +696,6 @@
             this.btnReversar.Text = "Reversar";
             this.btnReversar.UseVisualStyleBackColor = true;
             this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
-            // 
-            // OK
-            // 
-            this.OK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.OK.DataPropertyName = "OK";
-            this.OK.FalseValue = "False";
-            this.OK.FillWeight = 126.9036F;
-            this.OK.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OK.HeaderText = "OK";
-            this.OK.Name = "OK";
-            this.OK.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.OK.TrueValue = "True";
-            this.OK.Width = 50;
-            // 
-            // tipodoc
-            // 
-            this.tipodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tipodoc.DataPropertyName = "tipo";
-            this.tipodoc.HeaderText = "T";
-            this.tipodoc.Name = "tipodoc";
-            this.tipodoc.ReadOnly = true;
-            this.tipodoc.Width = 25;
-            // 
-            // nrofactura
-            // 
-            this.nrofactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nrofactura.DataPropertyName = "nrofactura";
-            this.nrofactura.HeaderText = "Comprobante";
-            this.nrofactura.Name = "nrofactura";
-            this.nrofactura.ReadOnly = true;
-            this.nrofactura.Width = 96;
-            // 
-            // proveedor
-            // 
-            this.proveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.proveedor.DataPropertyName = "proveedor";
-            this.proveedor.HeaderText = "Proveedor";
-            this.proveedor.Name = "proveedor";
-            this.proveedor.ReadOnly = true;
-            this.proveedor.Width = 81;
-            // 
-            // razon
-            // 
-            this.razon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.razon.DataPropertyName = "razon";
-            this.razon.HeaderText = "Razón Social";
-            this.razon.Name = "razon";
-            this.razon.ReadOnly = true;
-            // 
-            // subtotal
-            // 
-            this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.subtotal.DataPropertyName = "subtotal";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            this.subtotal.DefaultCellStyle = dataGridViewCellStyle3;
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 71;
-            // 
-            // Igv
-            // 
-            this.Igv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Igv.DataPropertyName = "Igv";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.Igv.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Igv.HeaderText = "Igv/Rta";
-            this.Igv.Name = "Igv";
-            this.Igv.ReadOnly = true;
-            this.Igv.Width = 66;
-            // 
-            // Total
-            // 
-            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Total.DataPropertyName = "Total";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.Total.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.Width = 55;
-            // 
-            // detraccion
-            // 
-            this.detraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.detraccion.DataPropertyName = "detrac";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n2";
-            this.detraccion.DefaultCellStyle = dataGridViewCellStyle6;
-            this.detraccion.HeaderText = "Detracción";
-            this.detraccion.Name = "detraccion";
-            this.detraccion.ReadOnly = true;
-            this.detraccion.Width = 83;
-            // 
-            // FechaEmision
-            // 
-            this.FechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.FechaEmision.DataPropertyName = "FechaEmision";
-            dataGridViewCellStyle7.Format = "g";
-            this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle7;
-            this.FechaEmision.HeaderText = "Fecha Emisión";
-            this.FechaEmision.Name = "FechaEmision";
-            this.FechaEmision.ReadOnly = true;
-            this.FechaEmision.Width = 102;
-            // 
-            // fechaRecepcion
-            // 
-            this.fechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.fechaRecepcion.DataPropertyName = "fechaRecepcion";
-            dataGridViewCellStyle8.Format = "g";
-            dataGridViewCellStyle8.NullValue = null;
-            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle8;
-            this.fechaRecepcion.HeaderText = "Fecha Recepción";
-            this.fechaRecepcion.Name = "fechaRecepcion";
-            this.fechaRecepcion.ReadOnly = true;
-            this.fechaRecepcion.Width = 114;
-            // 
-            // FechaCancelado
-            // 
-            this.FechaCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.FechaCancelado.DataPropertyName = "FechaCancelado";
-            dataGridViewCellStyle9.Format = "g";
-            this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle9;
-            this.FechaCancelado.HeaderText = "Fecha Cancelado";
-            this.FechaCancelado.Name = "FechaCancelado";
-            this.FechaCancelado.ReadOnly = true;
-            this.FechaCancelado.Width = 114;
             // 
             // frmPagarFactura
             // 

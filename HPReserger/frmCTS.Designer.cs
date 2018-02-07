@@ -39,6 +39,7 @@
             this.crvCTS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvCTS.Location = new System.Drawing.Point(0, 0);
             this.crvCTS.Name = "crvCTS";
+            this.crvCTS.ShowCloseButton = false;
             this.crvCTS.ShowLogo = false;
             this.crvCTS.Size = new System.Drawing.Size(767, 561);
             this.crvCTS.TabIndex = 0;

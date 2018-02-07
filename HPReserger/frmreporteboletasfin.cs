@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.Windows.Forms;
 
 namespace HPReserger
 {
@@ -34,12 +35,24 @@ namespace HPReserger
             reporte.SetParameterValue(4, fechainicial);
             reporte.SetParameterValue(5, Fechafin);
             //reporte.SetParameterValue(6, frmLogin.CodigoUsuario);
-            reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+            reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);//, "hplaptop", "HPReserger");
             //CrystalDecisions.Shared.PdfFormatOptions options = new CrystalDecisions.Shared.PdfFormatOptions();
             //options.CreateBookmarksFromGroupTree = true;
             crvboletas.ReportSource = reporte;
+            foreach (Control x in crvboletas.Controls)
+            {
+                if (x.GetType().Name.ToUpper() == "REPORTGROUPTREE")
+                {
+                    ReportGroupTree xx = x as ReportGroupTree;
+                    //xx.BackColor = Color.Red;
+                    // xx.ForeColor = Color.Blue;
+                    //xx.BorderStyle = BorderStyle.Fixed3D;
+                    //xx.Font = new Font("Franklin Gothic Book", 12,FontStyle.Bold);
+                    //  xx.Paint += new PaintEventHandler(CrearPintura);
+
+                }
+            }
             crvboletas.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
-            
             //string cadena = "";
             //foreach (Control ctl in crvboletas.Controls)
             //{
@@ -68,7 +81,16 @@ namespace HPReserger
             //    }
             //}
             //msg(cadena);            
-        }        
+        }
+
+        private void CrearPintura(object sender, PaintEventArgs e)
+        {
+            msg(this.Name);
+            ((ReportGroupTree)(sender)).BackColor = Color.Green;
+            ((ReportGroupTree)(sender)).ForeColor = Color.Blue;
+
+        }
+
         public void msg(string cadena)
         {
             MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);

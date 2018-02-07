@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmContrato));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,6 +49,10 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.chkjefe = new System.Windows.Forms.CheckBox();
+            this.btnBuscarImagenOtros = new System.Windows.Forms.Button();
+            this.btnBuscarImagenSolicitudPracticas = new System.Windows.Forms.Button();
+            this.btnBuscarImagenContrato = new System.Windows.Forms.Button();
+            this.btnBuscarImagenAnexoFunciones = new System.Windows.Forms.Button();
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.NRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mercadoobra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,6 +95,7 @@
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.grpcontrato = new System.Windows.Forms.Panel();
+            this.cboCargo = new System.Windows.Forms.ComboBox();
             this.btnEmpresaExt = new System.Windows.Forms.Button();
             this.btnbonos = new System.Windows.Forms.Button();
             this.lbladenda = new System.Windows.Forms.Label();
@@ -118,10 +124,6 @@
             this.btnpracticas = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnBuscarImagenOtros = new System.Windows.Forms.Button();
-            this.btnBuscarImagenSolicitudPracticas = new System.Windows.Forms.Button();
-            this.btnBuscarImagenContrato = new System.Windows.Forms.Button();
-            this.btnBuscarImagenAnexoFunciones = new System.Windows.Forms.Button();
             this.txtContrato = new System.Windows.Forms.TextBox();
             this.txtAnexoFunciones = new System.Windows.Forms.TextBox();
             this.txtSolicitudPracticas = new System.Windows.Forms.TextBox();
@@ -140,7 +142,6 @@
             this.pbFotoAnexoFunciones = new System.Windows.Forms.PictureBox();
             this.pbFotoOtros = new System.Windows.Forms.PictureBox();
             this.pbFotoContrato = new System.Windows.Forms.PictureBox();
-            this.cboCargo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.grpcontrato.SuspendLayout();
             this.grpcontra.SuspendLayout();
@@ -274,6 +275,66 @@
             this.chkjefe.TabIndex = 94;
             this.toolTip1.SetToolTip(this.chkjefe, "Es jefe?");
             this.chkjefe.UseVisualStyleBackColor = true;
+            // 
+            // btnBuscarImagenOtros
+            // 
+            this.btnBuscarImagenOtros.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarImagenOtros.BackgroundImage")));
+            this.btnBuscarImagenOtros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarImagenOtros.FlatAppearance.BorderSize = 0;
+            this.btnBuscarImagenOtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarImagenOtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarImagenOtros.Location = new System.Drawing.Point(6, 102);
+            this.btnBuscarImagenOtros.Name = "btnBuscarImagenOtros";
+            this.btnBuscarImagenOtros.Size = new System.Drawing.Size(20, 20);
+            this.btnBuscarImagenOtros.TabIndex = 90;
+            this.toolTip1.SetToolTip(this.btnBuscarImagenOtros, "Subir Imagen");
+            this.btnBuscarImagenOtros.UseVisualStyleBackColor = true;
+            this.btnBuscarImagenOtros.Click += new System.EventHandler(this.btnBuscarImagenOtros_Click);
+            // 
+            // btnBuscarImagenSolicitudPracticas
+            // 
+            this.btnBuscarImagenSolicitudPracticas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarImagenSolicitudPracticas.BackgroundImage")));
+            this.btnBuscarImagenSolicitudPracticas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarImagenSolicitudPracticas.FlatAppearance.BorderSize = 0;
+            this.btnBuscarImagenSolicitudPracticas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarImagenSolicitudPracticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarImagenSolicitudPracticas.Location = new System.Drawing.Point(6, 71);
+            this.btnBuscarImagenSolicitudPracticas.Name = "btnBuscarImagenSolicitudPracticas";
+            this.btnBuscarImagenSolicitudPracticas.Size = new System.Drawing.Size(20, 20);
+            this.btnBuscarImagenSolicitudPracticas.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.btnBuscarImagenSolicitudPracticas, "Subir Imagen");
+            this.btnBuscarImagenSolicitudPracticas.UseVisualStyleBackColor = true;
+            this.btnBuscarImagenSolicitudPracticas.Click += new System.EventHandler(this.btnBuscarImagenSolicitudPracticas_Click);
+            // 
+            // btnBuscarImagenContrato
+            // 
+            this.btnBuscarImagenContrato.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarImagenContrato.BackgroundImage")));
+            this.btnBuscarImagenContrato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarImagenContrato.FlatAppearance.BorderSize = 0;
+            this.btnBuscarImagenContrato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarImagenContrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarImagenContrato.Location = new System.Drawing.Point(6, 10);
+            this.btnBuscarImagenContrato.Name = "btnBuscarImagenContrato";
+            this.btnBuscarImagenContrato.Size = new System.Drawing.Size(20, 20);
+            this.btnBuscarImagenContrato.TabIndex = 88;
+            this.toolTip1.SetToolTip(this.btnBuscarImagenContrato, "Subir PDF");
+            this.btnBuscarImagenContrato.UseVisualStyleBackColor = true;
+            this.btnBuscarImagenContrato.Click += new System.EventHandler(this.btnBuscarImagenContrato_Click);
+            // 
+            // btnBuscarImagenAnexoFunciones
+            // 
+            this.btnBuscarImagenAnexoFunciones.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarImagenAnexoFunciones.BackgroundImage")));
+            this.btnBuscarImagenAnexoFunciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarImagenAnexoFunciones.FlatAppearance.BorderSize = 0;
+            this.btnBuscarImagenAnexoFunciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarImagenAnexoFunciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarImagenAnexoFunciones.Location = new System.Drawing.Point(6, 41);
+            this.btnBuscarImagenAnexoFunciones.Name = "btnBuscarImagenAnexoFunciones";
+            this.btnBuscarImagenAnexoFunciones.Size = new System.Drawing.Size(20, 20);
+            this.btnBuscarImagenAnexoFunciones.TabIndex = 87;
+            this.toolTip1.SetToolTip(this.btnBuscarImagenAnexoFunciones, "Subir Imagen");
+            this.btnBuscarImagenAnexoFunciones.UseVisualStyleBackColor = true;
+            this.btnBuscarImagenAnexoFunciones.Click += new System.EventHandler(this.btnBuscarImagenAnexoFunciones_Click);
             // 
             // dtgconten
             // 
@@ -734,11 +795,20 @@
             this.grpcontrato.Size = new System.Drawing.Size(544, 259);
             this.grpcontrato.TabIndex = 152;
             // 
+            // cboCargo
+            // 
+            this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCargo.FormattingEnabled = true;
+            this.cboCargo.Location = new System.Drawing.Point(327, 90);
+            this.cboCargo.Name = "cboCargo";
+            this.cboCargo.Size = new System.Drawing.Size(195, 21);
+            this.cboCargo.TabIndex = 159;
+            // 
             // btnEmpresaExt
             // 
-            this.btnEmpresaExt.Location = new System.Drawing.Point(382, 63);
+            this.btnEmpresaExt.Location = new System.Drawing.Point(327, 63);
             this.btnEmpresaExt.Name = "btnEmpresaExt";
-            this.btnEmpresaExt.Size = new System.Drawing.Size(140, 23);
+            this.btnEmpresaExt.Size = new System.Drawing.Size(195, 23);
             this.btnEmpresaExt.TabIndex = 160;
             this.btnEmpresaExt.Text = "Empresa Externa";
             this.btnEmpresaExt.UseVisualStyleBackColor = true;
@@ -1009,50 +1079,6 @@
             this.label13.TabIndex = 65;
             this.label13.Text = "Area";
             // 
-            // btnBuscarImagenOtros
-            // 
-            this.btnBuscarImagenOtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarImagenOtros.Location = new System.Drawing.Point(3, 100);
-            this.btnBuscarImagenOtros.Name = "btnBuscarImagenOtros";
-            this.btnBuscarImagenOtros.Size = new System.Drawing.Size(25, 23);
-            this.btnBuscarImagenOtros.TabIndex = 90;
-            this.btnBuscarImagenOtros.Text = "...";
-            this.btnBuscarImagenOtros.UseVisualStyleBackColor = true;
-            this.btnBuscarImagenOtros.Click += new System.EventHandler(this.btnBuscarImagenOtros_Click);
-            // 
-            // btnBuscarImagenSolicitudPracticas
-            // 
-            this.btnBuscarImagenSolicitudPracticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarImagenSolicitudPracticas.Location = new System.Drawing.Point(3, 68);
-            this.btnBuscarImagenSolicitudPracticas.Name = "btnBuscarImagenSolicitudPracticas";
-            this.btnBuscarImagenSolicitudPracticas.Size = new System.Drawing.Size(25, 23);
-            this.btnBuscarImagenSolicitudPracticas.TabIndex = 89;
-            this.btnBuscarImagenSolicitudPracticas.Text = "...";
-            this.btnBuscarImagenSolicitudPracticas.UseVisualStyleBackColor = true;
-            this.btnBuscarImagenSolicitudPracticas.Click += new System.EventHandler(this.btnBuscarImagenSolicitudPracticas_Click);
-            // 
-            // btnBuscarImagenContrato
-            // 
-            this.btnBuscarImagenContrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarImagenContrato.Location = new System.Drawing.Point(3, 7);
-            this.btnBuscarImagenContrato.Name = "btnBuscarImagenContrato";
-            this.btnBuscarImagenContrato.Size = new System.Drawing.Size(25, 23);
-            this.btnBuscarImagenContrato.TabIndex = 88;
-            this.btnBuscarImagenContrato.Text = "...";
-            this.btnBuscarImagenContrato.UseVisualStyleBackColor = true;
-            this.btnBuscarImagenContrato.Click += new System.EventHandler(this.btnBuscarImagenContrato_Click);
-            // 
-            // btnBuscarImagenAnexoFunciones
-            // 
-            this.btnBuscarImagenAnexoFunciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarImagenAnexoFunciones.Location = new System.Drawing.Point(3, 38);
-            this.btnBuscarImagenAnexoFunciones.Name = "btnBuscarImagenAnexoFunciones";
-            this.btnBuscarImagenAnexoFunciones.Size = new System.Drawing.Size(25, 23);
-            this.btnBuscarImagenAnexoFunciones.TabIndex = 87;
-            this.btnBuscarImagenAnexoFunciones.Text = "...";
-            this.btnBuscarImagenAnexoFunciones.UseVisualStyleBackColor = true;
-            this.btnBuscarImagenAnexoFunciones.Click += new System.EventHandler(this.btnBuscarImagenAnexoFunciones_Click);
-            // 
             // txtContrato
             // 
             this.txtContrato.Location = new System.Drawing.Point(124, 277);
@@ -1177,11 +1203,14 @@
             // 
             // btnExportapdf
             // 
+            this.btnExportapdf.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnExportapdf.Image = ((System.Drawing.Image)(resources.GetObject("btnExportapdf.Image")));
             this.btnExportapdf.Location = new System.Drawing.Point(652, 248);
             this.btnExportapdf.Name = "btnExportapdf";
             this.btnExportapdf.Size = new System.Drawing.Size(75, 23);
             this.btnExportapdf.TabIndex = 157;
             this.btnExportapdf.Text = "PDF";
+            this.btnExportapdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportapdf.UseVisualStyleBackColor = true;
             this.btnExportapdf.Click += new System.EventHandler(this.btnExportapdf_Click);
             // 
@@ -1230,15 +1259,6 @@
             this.pbFotoContrato.TabIndex = 50;
             this.pbFotoContrato.TabStop = false;
             this.pbFotoContrato.Visible = false;
-            // 
-            // cboCargo
-            // 
-            this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCargo.FormattingEnabled = true;
-            this.cboCargo.Location = new System.Drawing.Point(327, 90);
-            this.cboCargo.Name = "cboCargo";
-            this.cboCargo.Size = new System.Drawing.Size(195, 21);
-            this.cboCargo.TabIndex = 159;
             // 
             // frmContrato
             // 

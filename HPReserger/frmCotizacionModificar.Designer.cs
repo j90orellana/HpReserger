@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCotizacionModificar));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -148,12 +149,15 @@
             // 
             // btnBuscarPDF
             // 
+            this.btnBuscarPDF.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarPDF.BackgroundImage")));
+            this.btnBuscarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarPDF.FlatAppearance.BorderSize = 0;
+            this.btnBuscarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarPDF.Location = new System.Drawing.Point(664, 45);
             this.btnBuscarPDF.Name = "btnBuscarPDF";
-            this.btnBuscarPDF.Size = new System.Drawing.Size(25, 23);
+            this.btnBuscarPDF.Size = new System.Drawing.Size(20, 20);
             this.btnBuscarPDF.TabIndex = 24;
-            this.btnBuscarPDF.Text = "...";
             this.btnBuscarPDF.UseVisualStyleBackColor = true;
             this.btnBuscarPDF.Click += new System.EventHandler(this.btnBuscarPDF_Click);
             // 

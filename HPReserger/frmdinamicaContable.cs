@@ -87,13 +87,13 @@ namespace HPReserger
         }
         public void Codigito(int codigo)
         {
-
             txtcodigo.Text = "DC_00" + codigo;
         }
         public DataTable ListarDinamicas(string busca, int opcion)
         {
             return CDinamica.ListarDinamicas(busca, opcion);
         }
+        public Boolean Busqueda = false;
         private void frmdinamicaContable_Load(object sender, EventArgs e)
         {
             ultimadinamica();
@@ -231,7 +231,7 @@ namespace HPReserger
             {
                 // string cadenita = Dtgconten[0, e.RowIndex].Value.ToString();
                 btnmas.Focus();
-                if (e.RowIndex > -1 && e.ColumnIndex == 0)
+                if (e.RowIndex > -1 && e.ColumnIndex == 0 && estado!=0)
                 {
                     frmlistarcuentas cuentitas = new frmlistarcuentas();
                     if (Dtgconten[0, e.RowIndex].Value != null)
@@ -248,7 +248,7 @@ namespace HPReserger
                         btnmas.Focus();
                     }
                 }
-                if (e.RowIndex > -1 && e.ColumnIndex == 1)
+                if (e.RowIndex > -1 && e.ColumnIndex == 1 && estado != 0)
                 {
                     frmlistarcuentas cuentitas = new frmlistarcuentas();
                     if (Dtgconten[1, e.RowIndex].Value != null)
@@ -497,11 +497,15 @@ namespace HPReserger
         public Boolean aux;
         public void ActivarModi()
         {
-            btnmas.Enabled = Dtgconten.Enabled = cboyear.Enabled = cboestado.Enabled = cbooperacion.Enabled = cbosuboperacion.Enabled = true;
+            btnmas.Enabled = cboyear.Enabled = cboestado.Enabled = cbooperacion.Enabled = cbosuboperacion.Enabled = true;
+            foreach (DataGridViewColumn col in Dtgconten.Columns)
+                col.ReadOnly = false;
         }
         public void DesactivarModi()
         {
-            btnmas.Enabled = Dtgconten.Enabled = cboyear.Enabled = cboestado.Enabled = cbooperacion.Enabled = cbosuboperacion.Enabled = false;
+            btnmas.Enabled = cboyear.Enabled = cboestado.Enabled = cbooperacion.Enabled = cbosuboperacion.Enabled = false;
+            foreach (DataGridViewColumn col in Dtgconten.Columns)
+                col.ReadOnly = true;
         }
         public Boolean aceptar = false;
         public Boolean salida = true;

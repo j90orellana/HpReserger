@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleado));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,13 +90,13 @@
             this.cbopais = new System.Windows.Forms.ComboBox();
             this.txtlugarnacimiento = new System.Windows.Forms.TextBox();
             this.tip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnconviviente = new System.Windows.Forms.Button();
+            this.btnfirma = new System.Windows.Forms.Button();
             this.btnfoto = new System.Windows.Forms.Button();
             this.lblconviviente = new System.Windows.Forms.Label();
             this.txtconviviente = new System.Windows.Forms.TextBox();
-            this.btnconviviente = new System.Windows.Forms.Button();
             this.lklconviviente = new System.Windows.Forms.LinkLabel();
             this.lklfirma = new System.Windows.Forms.LinkLabel();
-            this.btnfirma = new System.Windows.Forms.Button();
             this.txtfirma = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.btnnuevo = new System.Windows.Forms.Button();
@@ -563,40 +564,52 @@
             // 
             // btnReciboServicios
             // 
+            this.btnReciboServicios.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnReciboServicios.BackgroundImage")));
+            this.btnReciboServicios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnReciboServicios.FlatAppearance.BorderSize = 0;
+            this.btnReciboServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReciboServicios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReciboServicios.Location = new System.Drawing.Point(624, 399);
             this.btnReciboServicios.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnReciboServicios.Name = "btnReciboServicios";
-            this.btnReciboServicios.Size = new System.Drawing.Size(24, 20);
+            this.btnReciboServicios.Size = new System.Drawing.Size(20, 20);
             this.btnReciboServicios.TabIndex = 43;
-            this.btnReciboServicios.Text = "...";
             this.btnReciboServicios.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tip.SetToolTip(this.btnReciboServicios, "Subir Imagen");
             this.btnReciboServicios.UseVisualStyleBackColor = true;
             this.btnReciboServicios.Click += new System.EventHandler(this.btnReciboServicios_Click);
             // 
             // btnAntecedentesPenales
             // 
+            this.btnAntecedentesPenales.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAntecedentesPenales.BackgroundImage")));
+            this.btnAntecedentesPenales.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAntecedentesPenales.FlatAppearance.BorderSize = 0;
+            this.btnAntecedentesPenales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAntecedentesPenales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAntecedentesPenales.Location = new System.Drawing.Point(624, 373);
             this.btnAntecedentesPenales.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnAntecedentesPenales.Name = "btnAntecedentesPenales";
-            this.btnAntecedentesPenales.Size = new System.Drawing.Size(24, 20);
+            this.btnAntecedentesPenales.Size = new System.Drawing.Size(20, 20);
             this.btnAntecedentesPenales.TabIndex = 44;
-            this.btnAntecedentesPenales.Text = "...";
             this.btnAntecedentesPenales.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tip.SetToolTip(this.btnAntecedentesPenales, "Subir Imagen");
             this.btnAntecedentesPenales.UseVisualStyleBackColor = true;
             this.btnAntecedentesPenales.Click += new System.EventHandler(this.btnAntecedentesPenales_Click);
             // 
             // btnAntecedentesPoliciales
             // 
+            this.btnAntecedentesPoliciales.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAntecedentesPoliciales.BackgroundImage")));
+            this.btnAntecedentesPoliciales.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAntecedentesPoliciales.FlatAppearance.BorderSize = 0;
+            this.btnAntecedentesPoliciales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAntecedentesPoliciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAntecedentesPoliciales.Location = new System.Drawing.Point(624, 347);
             this.btnAntecedentesPoliciales.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnAntecedentesPoliciales.Name = "btnAntecedentesPoliciales";
-            this.btnAntecedentesPoliciales.Size = new System.Drawing.Size(24, 20);
+            this.btnAntecedentesPoliciales.Size = new System.Drawing.Size(20, 20);
             this.btnAntecedentesPoliciales.TabIndex = 45;
-            this.btnAntecedentesPoliciales.Text = "...";
             this.btnAntecedentesPoliciales.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tip.SetToolTip(this.btnAntecedentesPoliciales, "Subir Imagen");
             this.btnAntecedentesPoliciales.UseVisualStyleBackColor = true;
             this.btnAntecedentesPoliciales.Click += new System.EventHandler(this.btnAntecedentesPoliciales_Click);
             // 
@@ -763,6 +776,40 @@
             // 
             this.tip.IsBalloon = true;
             // 
+            // btnconviviente
+            // 
+            this.btnconviviente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnconviviente.BackgroundImage")));
+            this.btnconviviente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnconviviente.FlatAppearance.BorderSize = 0;
+            this.btnconviviente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnconviviente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnconviviente.Location = new System.Drawing.Point(624, 425);
+            this.btnconviviente.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.btnconviviente.Name = "btnconviviente";
+            this.btnconviviente.Size = new System.Drawing.Size(20, 20);
+            this.btnconviviente.TabIndex = 43;
+            this.btnconviviente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tip.SetToolTip(this.btnconviviente, "Subir Imagen");
+            this.btnconviviente.UseVisualStyleBackColor = true;
+            this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
+            // 
+            // btnfirma
+            // 
+            this.btnfirma.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnfirma.BackgroundImage")));
+            this.btnfirma.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnfirma.FlatAppearance.BorderSize = 0;
+            this.btnfirma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnfirma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnfirma.Location = new System.Drawing.Point(624, 321);
+            this.btnfirma.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.btnfirma.Name = "btnfirma";
+            this.btnfirma.Size = new System.Drawing.Size(20, 20);
+            this.btnfirma.TabIndex = 67;
+            this.btnfirma.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tip.SetToolTip(this.btnfirma, "Subir Imagen");
+            this.btnfirma.UseVisualStyleBackColor = true;
+            this.btnfirma.Click += new System.EventHandler(this.btnfirma_Click);
+            // 
             // btnfoto
             // 
             this.btnfoto.Location = new System.Drawing.Point(606, 165);
@@ -794,19 +841,6 @@
             this.txtconviviente.TabIndex = 28;
             this.txtconviviente.DoubleClick += new System.EventHandler(this.pbFotoReciboServicios_DoubleClick);
             // 
-            // btnconviviente
-            // 
-            this.btnconviviente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconviviente.Location = new System.Drawing.Point(624, 425);
-            this.btnconviviente.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.btnconviviente.Name = "btnconviviente";
-            this.btnconviviente.Size = new System.Drawing.Size(24, 20);
-            this.btnconviviente.TabIndex = 43;
-            this.btnconviviente.Text = "...";
-            this.btnconviviente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnconviviente.UseVisualStyleBackColor = true;
-            this.btnconviviente.Click += new System.EventHandler(this.btnconviviente_Click);
-            // 
             // lklconviviente
             // 
             this.lklconviviente.AutoSize = true;
@@ -831,19 +865,6 @@
             this.lklfirma.TabStop = true;
             this.lklfirma.Text = "Ver Imagen";
             this.lklfirma.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklfirma_LinkClicked);
-            // 
-            // btnfirma
-            // 
-            this.btnfirma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnfirma.Location = new System.Drawing.Point(624, 321);
-            this.btnfirma.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.btnfirma.Name = "btnfirma";
-            this.btnfirma.Size = new System.Drawing.Size(24, 20);
-            this.btnfirma.TabIndex = 67;
-            this.btnfirma.Text = "...";
-            this.btnfirma.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnfirma.UseVisualStyleBackColor = true;
-            this.btnfirma.Click += new System.EventHandler(this.btnfirma_Click);
             // 
             // txtfirma
             // 
@@ -1120,7 +1141,7 @@
             this.MinimumSize = new System.Drawing.Size(751, 570);
             this.Name = "frmEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Empleado";
+            this.Text = "Empleado";
             this.Load += new System.EventHandler(this.frmEmpleado_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmEmpleado_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pbfirma)).EndInit();

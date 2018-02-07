@@ -30,7 +30,7 @@ namespace HPReserger
         public frmMenu frmM;
         public int Intentos { get; set; }
         public frmLogin()
-        { 
+        {
             InitializeComponent();
         }
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -40,7 +40,7 @@ namespace HPReserger
                 e.Handled = true;
                 txtContraseña.Focus();
             }
-        }      
+        }
         private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
@@ -53,6 +53,14 @@ namespace HPReserger
         {
             Intentos = 0;
             moveControl1.cargar();
+            // OpenFileDialog dias = new OpenFileDialog();
+            // dias.ShowDialog();
+            //SaveFileDialog save = new SaveFileDialog();
+            //save.ShowDialog();
+            //string asa = File.ReadAllText(dias.FileName);
+            //File.WriteAllText(save.FileName, asa);
+            //File.Decrypt(dias.FileName);
+
             //System.Drawing.Drawing2D.GraphicsPath GRafico = new System.Drawing.Drawing2D.GraphicsPath();
             //GRafico.AddEllipse(0.12f, 0.12f,this.Width, this.Width );
             //this.Region = new Region(GRafico);
@@ -125,7 +133,7 @@ namespace HPReserger
                                 MemoryStream ms = new MemoryStream(Fotito);
                                 frmM.pbfotoempleado.Image = Bitmap.FromStream(ms);
                             }
-                            frmM.ShowDialog();
+                            frmM.Show();
                         }
                         else msg("Usuario no esta Activo");
 
@@ -177,7 +185,7 @@ namespace HPReserger
         }
         private void label3_MouseLeave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -234,7 +242,7 @@ namespace HPReserger
         {
             if (e.KeyChar == (char)Keys.Enter)
                 txtContraseña.Focus();
-           
+
         }
         private void moveControl1_MouseMove(object sender, MouseEventArgs e)
         {

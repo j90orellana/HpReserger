@@ -30,30 +30,17 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBancoInterAmericano));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtguias = new System.Windows.Forms.DataGridView();
-            this.TIPODOC = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NRODOCUMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRECLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPOOP = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NRODOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MONEDA = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NETO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECVENDOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOPROPIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPOABONO = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.BANCO = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.MONEDACUENTA = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NUMEROCTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumNotaDebito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAADELANTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FORMADEPAGOPROVEEDOR = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.txtrecibo = new System.Windows.Forms.TextBox();
@@ -72,6 +59,22 @@
             this.txtnotadebito = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.TIPODOC = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NRODOCUMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRECLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPOOP = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NRODOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MONEDA = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NETO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECVENDOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOPROPIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPOABONO = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.BANCO = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.MONEDACUENTA = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NUMEROCTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumNotaDebito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAADELANTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FORMADEPAGOPROVEEDOR = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb)).BeginInit();
             this.SuspendLayout();
@@ -117,27 +120,27 @@
             this.NumNotaDebito,
             this.FECHAADELANTO,
             this.FORMADEPAGOPROVEEDOR});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dtguias.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dtguias.DefaultCellStyle = dataGridViewCellStyle10;
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtguias.EnableHeadersVisualStyles = false;
             this.Dtguias.Location = new System.Drawing.Point(12, 127);
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dtguias.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dtguias.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtguias.Size = new System.Drawing.Size(1510, 436);
@@ -146,185 +149,6 @@
             this.Dtguias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellClick);
             this.Dtguias.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Dtguias_DataError);
             this.Dtguias.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_RowEnter);
-            // 
-            // TIPODOC
-            // 
-            this.TIPODOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPODOC.DataPropertyName = "tipodoc";
-            this.TIPODOC.HeaderText = "TIPO DOC.";
-            this.TIPODOC.MinimumWidth = 80;
-            this.TIPODOC.Name = "TIPODOC";
-            this.TIPODOC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TIPODOC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TIPODOC.Width = 80;
-            // 
-            // NRODOCUMENTO
-            // 
-            this.NRODOCUMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NRODOCUMENTO.DataPropertyName = "nrodoc";
-            this.NRODOCUMENTO.HeaderText = "NRO. DOCUMENTO";
-            this.NRODOCUMENTO.MaxInputLength = 15;
-            this.NRODOCUMENTO.MinimumWidth = 80;
-            this.NRODOCUMENTO.Name = "NRODOCUMENTO";
-            this.NRODOCUMENTO.Width = 80;
-            // 
-            // NOMBRECLIENTE
-            // 
-            this.NOMBRECLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBRECLIENTE.DataPropertyName = "razon";
-            this.NOMBRECLIENTE.HeaderText = "NOMBRE CLIENTE O AP. PATERNO ; AP. MATERNO; NOMBRES";
-            this.NOMBRECLIENTE.MaxInputLength = 60;
-            this.NOMBRECLIENTE.MinimumWidth = 150;
-            this.NOMBRECLIENTE.Name = "NOMBRECLIENTE";
-            // 
-            // TIPOOP
-            // 
-            this.TIPOOP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPOOP.DataPropertyName = "tipoop";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.TIPOOP.DefaultCellStyle = dataGridViewCellStyle3;
-            this.TIPOOP.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.TIPOOP.HeaderText = "TIPO DE OP.";
-            this.TIPOOP.MinimumWidth = 115;
-            this.TIPOOP.Name = "TIPOOP";
-            this.TIPOOP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TIPOOP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TIPOOP.ToolTipText = "Tipo de Operación: C: Nota de Crédito; D: Nota de Débito; F: Factura";
-            this.TIPOOP.Width = 115;
-            // 
-            // NRODOC
-            // 
-            this.NRODOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NRODOC.DataPropertyName = "nrofac";
-            this.NRODOC.HeaderText = "NRO. DOC. PAGO- FACTURA";
-            this.NRODOC.MaxInputLength = 14;
-            this.NRODOC.MinimumWidth = 85;
-            this.NRODOC.Name = "NRODOC";
-            this.NRODOC.Width = 85;
-            // 
-            // MONEDA
-            // 
-            this.MONEDA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MONEDA.DataPropertyName = "monedaabono";
-            this.MONEDA.HeaderText = "MONEDA ABONO";
-            this.MONEDA.MinimumWidth = 75;
-            this.MONEDA.Name = "MONEDA";
-            this.MONEDA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.MONEDA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.MONEDA.Width = 75;
-            // 
-            // NETO
-            // 
-            this.NETO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NETO.DataPropertyName = "neto";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "00.00";
-            dataGridViewCellStyle4.NullValue = null;
-            this.NETO.DefaultCellStyle = dataGridViewCellStyle4;
-            this.NETO.HeaderText = "NETO";
-            this.NETO.MaxInputLength = 10;
-            this.NETO.Name = "NETO";
-            this.NETO.Width = 60;
-            // 
-            // FECVENDOC
-            // 
-            this.FECVENDOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.FECVENDOC.DataPropertyName = "fechaven";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.FECVENDOC.DefaultCellStyle = dataGridViewCellStyle5;
-            this.FECVENDOC.HeaderText = "FEC. VENC. DOC. (DDMMAAAA)";
-            this.FECVENDOC.MaxInputLength = 10;
-            this.FECVENDOC.MinimumWidth = 80;
-            this.FECVENDOC.Name = "FECVENDOC";
-            this.FECVENDOC.Width = 80;
-            // 
-            // CODIGOPROPIO
-            // 
-            this.CODIGOPROPIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CODIGOPROPIO.DataPropertyName = "codigo";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.CODIGOPROPIO.DefaultCellStyle = dataGridViewCellStyle6;
-            this.CODIGOPROPIO.HeaderText = "CÓDIGO PROPIO BENEFICIARIO";
-            this.CODIGOPROPIO.MaxInputLength = 15;
-            this.CODIGOPROPIO.MinimumWidth = 100;
-            this.CODIGOPROPIO.Name = "CODIGOPROPIO";
-            // 
-            // TIPOABONO
-            // 
-            this.TIPOABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPOABONO.DataPropertyName = "tipoabono";
-            this.TIPOABONO.HeaderText = "TIPO DE ABONO";
-            this.TIPOABONO.MinimumWidth = 158;
-            this.TIPOABONO.Name = "TIPOABONO";
-            this.TIPOABONO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TIPOABONO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TIPOABONO.Width = 158;
-            // 
-            // BANCO
-            // 
-            this.BANCO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.BANCO.DataPropertyName = "banco";
-            this.BANCO.HeaderText = "BANCO";
-            this.BANCO.MinimumWidth = 136;
-            this.BANCO.Name = "BANCO";
-            this.BANCO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BANCO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BANCO.Width = 158;
-            // 
-            // MONEDACUENTA
-            // 
-            this.MONEDACUENTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MONEDACUENTA.DataPropertyName = "monedacuenta";
-            this.MONEDACUENTA.HeaderText = "MONEDA CUENTA";
-            this.MONEDACUENTA.MinimumWidth = 80;
-            this.MONEDACUENTA.Name = "MONEDACUENTA";
-            this.MONEDACUENTA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.MONEDACUENTA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.MONEDACUENTA.Width = 80;
-            // 
-            // NUMEROCTA
-            // 
-            this.NUMEROCTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NUMEROCTA.DataPropertyName = "nrocuenta";
-            this.NUMEROCTA.HeaderText = "NÚMERO CTA.";
-            this.NUMEROCTA.MaxInputLength = 20;
-            this.NUMEROCTA.Name = "NUMEROCTA";
-            this.NUMEROCTA.Width = 96;
-            // 
-            // NumNotaDebito
-            // 
-            this.NumNotaDebito.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NumNotaDebito.DataPropertyName = "credito";
-            this.NumNotaDebito.HeaderText = "Núm. Doc. de Aplicación para la nota de Crédito";
-            this.NumNotaDebito.MaxInputLength = 14;
-            this.NumNotaDebito.MinimumWidth = 110;
-            this.NumNotaDebito.Name = "NumNotaDebito";
-            this.NumNotaDebito.Width = 110;
-            // 
-            // FECHAADELANTO
-            // 
-            this.FECHAADELANTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.FECHAADELANTO.DataPropertyName = "FECHAADE";
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.FECHAADELANTO.DefaultCellStyle = dataGridViewCellStyle7;
-            this.FECHAADELANTO.HeaderText = "FECHA DE ADELANTO (DDMMAAAA)";
-            this.FECHAADELANTO.MaxInputLength = 10;
-            this.FECHAADELANTO.MinimumWidth = 80;
-            this.FECHAADELANTO.Name = "FECHAADELANTO";
-            this.FECHAADELANTO.Width = 80;
-            // 
-            // FORMADEPAGOPROVEEDOR
-            // 
-            this.FORMADEPAGOPROVEEDOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.FORMADEPAGOPROVEEDOR.DataPropertyName = "tipopago";
-            this.FORMADEPAGOPROVEEDOR.HeaderText = "FORMA DE PAGO AL PROVEEDOR";
-            this.FORMADEPAGOPROVEEDOR.MinimumWidth = 115;
-            this.FORMADEPAGOPROVEEDOR.Name = "FORMADEPAGOPROVEEDOR";
-            this.FORMADEPAGOPROVEEDOR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.FORMADEPAGOPROVEEDOR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.FORMADEPAGOPROVEEDOR.Width = 115;
             // 
             // btnaceptar
             // 
@@ -413,7 +237,7 @@
             // 
             // ptb
             // 
-            this.ptb.Image = global::HPReserger.Properties.Resources.BanBif_Proveedores;
+            this.ptb.Image = ((System.Drawing.Image)(resources.GetObject("ptb.Image")));
             this.ptb.Location = new System.Drawing.Point(12, 12);
             this.ptb.Name = "ptb";
             this.ptb.Size = new System.Drawing.Size(596, 83);
@@ -498,6 +322,189 @@
             // 
             this.SaveFile.Filter = "Archivos de Texto|*.txt";
             // 
+            // TIPODOC
+            // 
+            this.TIPODOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPODOC.DataPropertyName = "tipodoc";
+            this.TIPODOC.HeaderText = "TIPO DOC.";
+            this.TIPODOC.MinimumWidth = 80;
+            this.TIPODOC.Name = "TIPODOC";
+            this.TIPODOC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TIPODOC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.TIPODOC.Width = 80;
+            // 
+            // NRODOCUMENTO
+            // 
+            this.NRODOCUMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NRODOCUMENTO.DataPropertyName = "nrodoc";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NRODOCUMENTO.DefaultCellStyle = dataGridViewCellStyle3;
+            this.NRODOCUMENTO.HeaderText = "NRO. DOCUMENTO";
+            this.NRODOCUMENTO.MaxInputLength = 15;
+            this.NRODOCUMENTO.MinimumWidth = 80;
+            this.NRODOCUMENTO.Name = "NRODOCUMENTO";
+            this.NRODOCUMENTO.Width = 80;
+            // 
+            // NOMBRECLIENTE
+            // 
+            this.NOMBRECLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBRECLIENTE.DataPropertyName = "razon";
+            this.NOMBRECLIENTE.HeaderText = "NOMBRE CLIENTE O AP. PATERNO ; AP. MATERNO; NOMBRES";
+            this.NOMBRECLIENTE.MaxInputLength = 60;
+            this.NOMBRECLIENTE.MinimumWidth = 150;
+            this.NOMBRECLIENTE.Name = "NOMBRECLIENTE";
+            // 
+            // TIPOOP
+            // 
+            this.TIPOOP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPOOP.DataPropertyName = "tipoop";
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.TIPOOP.DefaultCellStyle = dataGridViewCellStyle4;
+            this.TIPOOP.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.TIPOOP.HeaderText = "TIPO DE OP.";
+            this.TIPOOP.MinimumWidth = 115;
+            this.TIPOOP.Name = "TIPOOP";
+            this.TIPOOP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TIPOOP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.TIPOOP.ToolTipText = "Tipo de Operación: C: Nota de Crédito; D: Nota de Débito; F: Factura";
+            this.TIPOOP.Width = 115;
+            // 
+            // NRODOC
+            // 
+            this.NRODOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NRODOC.DataPropertyName = "nrofac";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NRODOC.DefaultCellStyle = dataGridViewCellStyle5;
+            this.NRODOC.HeaderText = "NRO. DOC. PAGO- FACTURA";
+            this.NRODOC.MaxInputLength = 14;
+            this.NRODOC.MinimumWidth = 85;
+            this.NRODOC.Name = "NRODOC";
+            this.NRODOC.Width = 85;
+            // 
+            // MONEDA
+            // 
+            this.MONEDA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MONEDA.DataPropertyName = "monedaabono";
+            this.MONEDA.HeaderText = "MONEDA ABONO";
+            this.MONEDA.MinimumWidth = 75;
+            this.MONEDA.Name = "MONEDA";
+            this.MONEDA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MONEDA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.MONEDA.Width = 75;
+            // 
+            // NETO
+            // 
+            this.NETO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NETO.DataPropertyName = "neto";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "00.00";
+            dataGridViewCellStyle6.NullValue = null;
+            this.NETO.DefaultCellStyle = dataGridViewCellStyle6;
+            this.NETO.HeaderText = "NETO";
+            this.NETO.MaxInputLength = 10;
+            this.NETO.Name = "NETO";
+            this.NETO.Width = 60;
+            // 
+            // FECVENDOC
+            // 
+            this.FECVENDOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.FECVENDOC.DataPropertyName = "fechaven";
+            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.NullValue = null;
+            this.FECVENDOC.DefaultCellStyle = dataGridViewCellStyle7;
+            this.FECVENDOC.HeaderText = "FEC. VENC. DOC. (DDMMAAAA)";
+            this.FECVENDOC.MaxInputLength = 10;
+            this.FECVENDOC.MinimumWidth = 80;
+            this.FECVENDOC.Name = "FECVENDOC";
+            this.FECVENDOC.Width = 80;
+            // 
+            // CODIGOPROPIO
+            // 
+            this.CODIGOPROPIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CODIGOPROPIO.DataPropertyName = "codigo";
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            this.CODIGOPROPIO.DefaultCellStyle = dataGridViewCellStyle8;
+            this.CODIGOPROPIO.HeaderText = "CÓDIGO PROPIO BENEFICIARIO";
+            this.CODIGOPROPIO.MaxInputLength = 15;
+            this.CODIGOPROPIO.MinimumWidth = 100;
+            this.CODIGOPROPIO.Name = "CODIGOPROPIO";
+            // 
+            // TIPOABONO
+            // 
+            this.TIPOABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPOABONO.DataPropertyName = "tipoabono";
+            this.TIPOABONO.HeaderText = "TIPO DE ABONO";
+            this.TIPOABONO.MinimumWidth = 158;
+            this.TIPOABONO.Name = "TIPOABONO";
+            this.TIPOABONO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TIPOABONO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.TIPOABONO.Width = 158;
+            // 
+            // BANCO
+            // 
+            this.BANCO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.BANCO.DataPropertyName = "banco";
+            this.BANCO.HeaderText = "BANCO";
+            this.BANCO.MinimumWidth = 136;
+            this.BANCO.Name = "BANCO";
+            this.BANCO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BANCO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.BANCO.Width = 158;
+            // 
+            // MONEDACUENTA
+            // 
+            this.MONEDACUENTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MONEDACUENTA.DataPropertyName = "monedacuenta";
+            this.MONEDACUENTA.HeaderText = "MONEDA CUENTA";
+            this.MONEDACUENTA.MinimumWidth = 80;
+            this.MONEDACUENTA.Name = "MONEDACUENTA";
+            this.MONEDACUENTA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MONEDACUENTA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.MONEDACUENTA.Width = 80;
+            // 
+            // NUMEROCTA
+            // 
+            this.NUMEROCTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NUMEROCTA.DataPropertyName = "nrocuenta";
+            this.NUMEROCTA.HeaderText = "NÚMERO CTA.";
+            this.NUMEROCTA.MaxInputLength = 20;
+            this.NUMEROCTA.Name = "NUMEROCTA";
+            this.NUMEROCTA.Width = 96;
+            // 
+            // NumNotaDebito
+            // 
+            this.NumNotaDebito.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NumNotaDebito.DataPropertyName = "credito";
+            this.NumNotaDebito.HeaderText = "Núm. Doc. de Aplicación para la nota de Crédito";
+            this.NumNotaDebito.MaxInputLength = 14;
+            this.NumNotaDebito.MinimumWidth = 110;
+            this.NumNotaDebito.Name = "NumNotaDebito";
+            this.NumNotaDebito.Width = 110;
+            // 
+            // FECHAADELANTO
+            // 
+            this.FECHAADELANTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.FECHAADELANTO.DataPropertyName = "FECHAADE";
+            dataGridViewCellStyle9.Format = "d";
+            dataGridViewCellStyle9.NullValue = null;
+            this.FECHAADELANTO.DefaultCellStyle = dataGridViewCellStyle9;
+            this.FECHAADELANTO.HeaderText = "FECHA DE ADELANTO (DDMMAAAA)";
+            this.FECHAADELANTO.MaxInputLength = 10;
+            this.FECHAADELANTO.MinimumWidth = 80;
+            this.FECHAADELANTO.Name = "FECHAADELANTO";
+            this.FECHAADELANTO.Width = 80;
+            // 
+            // FORMADEPAGOPROVEEDOR
+            // 
+            this.FORMADEPAGOPROVEEDOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.FORMADEPAGOPROVEEDOR.DataPropertyName = "tipopago";
+            this.FORMADEPAGOPROVEEDOR.HeaderText = "FORMA DE PAGO AL PROVEEDOR";
+            this.FORMADEPAGOPROVEEDOR.MinimumWidth = 115;
+            this.FORMADEPAGOPROVEEDOR.Name = "FORMADEPAGOPROVEEDOR";
+            this.FORMADEPAGOPROVEEDOR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.FORMADEPAGOPROVEEDOR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.FORMADEPAGOPROVEEDOR.Width = 115;
+            // 
             // frmBancoInterAmericano
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,6 +560,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtnotadebito;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
         private System.Windows.Forms.DataGridViewComboBoxColumn TIPODOC;
         private System.Windows.Forms.DataGridViewTextBoxColumn NRODOCUMENTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRECLIENTE;
@@ -569,6 +577,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NumNotaDebito;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAADELANTO;
         private System.Windows.Forms.DataGridViewComboBoxColumn FORMADEPAGOPROVEEDOR;
-        private System.Windows.Forms.SaveFileDialog SaveFile;
     }
 }

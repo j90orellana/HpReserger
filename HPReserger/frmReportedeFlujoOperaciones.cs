@@ -115,6 +115,7 @@ namespace HPReserger
                         datos.Add(datito);
                     }
                     System.Data.DataTable tablita = CapaLogica.ListarDetalleDelReporteDeCentrodeCostoFLujos((int)dtgconten["id_etapas", e.RowIndex].Value, dtgconten["codcentroc", e.RowIndex].Value.ToString(), dtgconten["Cta_Contable", e.RowIndex].Value.ToString(), (int)cbopresupuestos.SelectedValue);
+                    dataGridView1.DataSource = tablita;
                     int i = 1;
                     //dtgconten.DataSource = null;
                     foreach (DataRow dato in tablita.Rows)
@@ -252,6 +253,7 @@ namespace HPReserger
             dtgconten.DataSource = CapaLogica.ListarFLujosCentrodeCostoReporte(int.Parse(cboproyecto.SelectedValue.ToString()), (int)cbopresupuestos.SelectedValue);
             System.Data.DataTable tablita = (System.Data.DataTable)dtgconten.DataSource;
             dtgconten.DataSource = tablita;
+            dataGridView1.DataSource = tablita;
             dtgconten.AutoGenerateColumns = false;
             contando(dtgconten);
             Sumatoria();

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAmonestacionesPremio));
             this.tab = new System.Windows.Forms.TabControl();
             this.Memo = new System.Windows.Forms.TabPage();
             this.lblMemo = new System.Windows.Forms.Label();
@@ -54,6 +55,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Grid = new System.Windows.Forms.DataGridView();
+            this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NDI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.APELLIDOSNOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OBSERVACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnAdjuntarSustento = new System.Windows.Forms.Button();
@@ -61,12 +68,6 @@
             this.btndescargar = new System.Windows.Forms.Button();
             this.btnmodificiar = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
-            this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NDI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.APELLIDOSNOMBRES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OBSERVACIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btncancelar = new System.Windows.Forms.Button();
             this.tab.SuspendLayout();
             this.Memo.SuspendLayout();
@@ -309,14 +310,14 @@
             this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Registro,
@@ -336,6 +337,64 @@
             this.Grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellContentClick);
             this.Grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_RowEnter);
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
+            // 
+            // Registro
+            // 
+            this.Registro.DataPropertyName = "REGISTRO";
+            this.Registro.HeaderText = "REGISTRO";
+            this.Registro.Name = "Registro";
+            this.Registro.ReadOnly = true;
+            this.Registro.Visible = false;
+            // 
+            // CODIGOTIPO
+            // 
+            this.CODIGOTIPO.DataPropertyName = "CODIGOTIPO";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CODIGOTIPO.HeaderText = "CODIGOTIPO";
+            this.CODIGOTIPO.Name = "CODIGOTIPO";
+            this.CODIGOTIPO.ReadOnly = true;
+            this.CODIGOTIPO.Visible = false;
+            // 
+            // TIPOID
+            // 
+            this.TIPOID.DataPropertyName = "TIPOID";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle3;
+            this.TIPOID.HeaderText = "TIPO ID";
+            this.TIPOID.Name = "TIPOID";
+            this.TIPOID.ReadOnly = true;
+            this.TIPOID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TIPOID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TIPOID.Visible = false;
+            // 
+            // NDI
+            // 
+            this.NDI.DataPropertyName = "NID";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NDI.DefaultCellStyle = dataGridViewCellStyle4;
+            this.NDI.HeaderText = "Nº ID";
+            this.NDI.Name = "NDI";
+            this.NDI.ReadOnly = true;
+            this.NDI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NDI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NDI.Visible = false;
+            // 
+            // APELLIDOSNOMBRES
+            // 
+            this.APELLIDOSNOMBRES.DataPropertyName = "EMPLEADO";
+            this.APELLIDOSNOMBRES.HeaderText = "APELLIDOS Y NOMBRES";
+            this.APELLIDOSNOMBRES.Name = "APELLIDOSNOMBRES";
+            this.APELLIDOSNOMBRES.ReadOnly = true;
+            this.APELLIDOSNOMBRES.Visible = false;
+            // 
+            // OBSERVACIONES
+            // 
+            this.OBSERVACIONES.DataPropertyName = "OBSERVACIONES";
+            this.OBSERVACIONES.HeaderText = "OBSERVACIONES";
+            this.OBSERVACIONES.Name = "OBSERVACIONES";
+            this.OBSERVACIONES.ReadOnly = true;
             // 
             // pbFoto
             // 
@@ -362,11 +421,15 @@
             // btnAdjuntarSustento
             // 
             this.btnAdjuntarSustento.Enabled = false;
-            this.btnAdjuntarSustento.Location = new System.Drawing.Point(12, 196);
+            this.btnAdjuntarSustento.FlatAppearance.BorderSize = 0;
+            this.btnAdjuntarSustento.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarSustento.Image")));
+            this.btnAdjuntarSustento.Location = new System.Drawing.Point(12, 193);
             this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
             this.btnAdjuntarSustento.Size = new System.Drawing.Size(121, 23);
             this.btnAdjuntarSustento.TabIndex = 107;
             this.btnAdjuntarSustento.Text = "Adjuntar Imagen";
+            this.btnAdjuntarSustento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdjuntarSustento.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
             this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
             // 
@@ -414,64 +477,6 @@
             this.btneliminar.UseVisualStyleBackColor = true;
             this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
-            // Registro
-            // 
-            this.Registro.DataPropertyName = "REGISTRO";
-            this.Registro.HeaderText = "REGISTRO";
-            this.Registro.Name = "Registro";
-            this.Registro.ReadOnly = true;
-            this.Registro.Visible = false;
-            // 
-            // CODIGOTIPO
-            // 
-            this.CODIGOTIPO.DataPropertyName = "CODIGOTIPO";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle6;
-            this.CODIGOTIPO.HeaderText = "CODIGOTIPO";
-            this.CODIGOTIPO.Name = "CODIGOTIPO";
-            this.CODIGOTIPO.ReadOnly = true;
-            this.CODIGOTIPO.Visible = false;
-            // 
-            // TIPOID
-            // 
-            this.TIPOID.DataPropertyName = "TIPOID";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle7;
-            this.TIPOID.HeaderText = "TIPO ID";
-            this.TIPOID.Name = "TIPOID";
-            this.TIPOID.ReadOnly = true;
-            this.TIPOID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TIPOID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.TIPOID.Visible = false;
-            // 
-            // NDI
-            // 
-            this.NDI.DataPropertyName = "NID";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.NDI.DefaultCellStyle = dataGridViewCellStyle8;
-            this.NDI.HeaderText = "Nº ID";
-            this.NDI.Name = "NDI";
-            this.NDI.ReadOnly = true;
-            this.NDI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.NDI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NDI.Visible = false;
-            // 
-            // APELLIDOSNOMBRES
-            // 
-            this.APELLIDOSNOMBRES.DataPropertyName = "EMPLEADO";
-            this.APELLIDOSNOMBRES.HeaderText = "APELLIDOS Y NOMBRES";
-            this.APELLIDOSNOMBRES.Name = "APELLIDOSNOMBRES";
-            this.APELLIDOSNOMBRES.ReadOnly = true;
-            this.APELLIDOSNOMBRES.Visible = false;
-            // 
-            // OBSERVACIONES
-            // 
-            this.OBSERVACIONES.DataPropertyName = "OBSERVACIONES";
-            this.OBSERVACIONES.HeaderText = "OBSERVACIONES";
-            this.OBSERVACIONES.Name = "OBSERVACIONES";
-            this.OBSERVACIONES.ReadOnly = true;
-            // 
             // btncancelar
             // 
             this.btncancelar.Location = new System.Drawing.Point(726, 638);
@@ -505,7 +510,7 @@
             this.MinimumSize = new System.Drawing.Size(848, 709);
             this.Name = "frmAmonestacionesPremio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Registro de Amonestaciones y Premios";
+            this.Text = "Registro de Amonestaciones y Premios";
             this.Load += new System.EventHandler(this.frmAmonestacionesPremio_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmAmonestacionesPremio_MouseMove);
             this.tab.ResumeLayout(false);

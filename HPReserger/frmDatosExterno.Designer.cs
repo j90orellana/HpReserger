@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatosExterno));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -35,22 +36,22 @@
             this.cboCertificados = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numrenta = new HpResergerUserControls.NumBox();
+            this.txtnombreimagen = new System.Windows.Forms.TextBox();
+            this.numimporte = new HpResergerUserControls.NumBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.label7 = new System.Windows.Forms.Label();
             this.pbimagen = new System.Windows.Forms.PictureBox();
             this.lklimagen = new System.Windows.Forms.LinkLabel();
             this.btnimagen = new System.Windows.Forms.Button();
-            this.txtnombreimagen = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.numimporte = new HpResergerUserControls.NumBox();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.txtruc = new HPReserger.TextboxSoloNumeros();
             this.btnnuevo = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numrenta = new HpResergerUserControls.NumBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbimagen)).BeginInit();
             this.SuspendLayout();
@@ -138,6 +139,42 @@
             this.panel1.Size = new System.Drawing.Size(359, 94);
             this.panel1.TabIndex = 7;
             // 
+            // numrenta
+            // 
+            this.numrenta.Location = new System.Drawing.Point(252, 5);
+            this.numrenta.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.numrenta.Name = "numrenta";
+            this.numrenta.NextControlOnEnter = null;
+            this.numrenta.Size = new System.Drawing.Size(96, 27);
+            this.numrenta.TabIndex = 5;
+            // 
+            // txtnombreimagen
+            // 
+            this.txtnombreimagen.Enabled = false;
+            this.txtnombreimagen.Location = new System.Drawing.Point(86, 28);
+            this.txtnombreimagen.Name = "txtnombreimagen";
+            this.txtnombreimagen.Size = new System.Drawing.Size(137, 21);
+            this.txtnombreimagen.TabIndex = 6;
+            // 
+            // numimporte
+            // 
+            this.numimporte.Location = new System.Drawing.Point(86, 5);
+            this.numimporte.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            this.numimporte.Name = "numimporte";
+            this.numimporte.NextControlOnEnter = null;
+            this.numimporte.Size = new System.Drawing.Size(96, 27);
+            this.numimporte.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(190, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 16);
+            this.label8.TabIndex = 67;
+            this.label8.Text = "Renta 5ta:";
+            // 
             // comboMesAño1
             // 
             this.comboMesAño1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,21 +216,16 @@
             // 
             // btnimagen
             // 
+            this.btnimagen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnimagen.BackgroundImage")));
+            this.btnimagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnimagen.FlatAppearance.BorderSize = 0;
+            this.btnimagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnimagen.Location = new System.Drawing.Point(229, 28);
             this.btnimagen.Name = "btnimagen";
-            this.btnimagen.Size = new System.Drawing.Size(24, 20);
+            this.btnimagen.Size = new System.Drawing.Size(20, 20);
             this.btnimagen.TabIndex = 7;
-            this.btnimagen.Text = "...";
             this.btnimagen.UseVisualStyleBackColor = true;
             this.btnimagen.Click += new System.EventHandler(this.btnimagen_Click);
-            // 
-            // txtnombreimagen
-            // 
-            this.txtnombreimagen.Enabled = false;
-            this.txtnombreimagen.Location = new System.Drawing.Point(86, 28);
-            this.txtnombreimagen.Name = "txtnombreimagen";
-            this.txtnombreimagen.Size = new System.Drawing.Size(137, 21);
-            this.txtnombreimagen.TabIndex = 6;
             // 
             // label6
             // 
@@ -214,15 +246,6 @@
             this.label5.Size = new System.Drawing.Size(75, 16);
             this.label5.TabIndex = 59;
             this.label5.Text = "Renta Bruta:";
-            // 
-            // numimporte
-            // 
-            this.numimporte.Location = new System.Drawing.Point(86, 5);
-            this.numimporte.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.numimporte.Name = "numimporte";
-            this.numimporte.NextControlOnEnter = null;
-            this.numimporte.Size = new System.Drawing.Size(96, 27);
-            this.numimporte.TabIndex = 4;
             // 
             // btnModificar
             // 
@@ -274,25 +297,6 @@
             this.btnnuevo.Text = "&Nuevo";
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(190, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 16);
-            this.label8.TabIndex = 67;
-            this.label8.Text = "Renta 5ta:";
-            // 
-            // numrenta
-            // 
-            this.numrenta.Location = new System.Drawing.Point(252, 5);
-            this.numrenta.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.numrenta.Name = "numrenta";
-            this.numrenta.NextControlOnEnter = null;
-            this.numrenta.Size = new System.Drawing.Size(96, 27);
-            this.numrenta.TabIndex = 5;
             // 
             // frmDatosExterno
             // 

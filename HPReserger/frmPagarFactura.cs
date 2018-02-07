@@ -55,6 +55,11 @@ namespace HPReserger
             // txtruc.Text = "0701046971";
             //    radioButton1.Checked = true;
             txtbuscar_TextChanged(sender, e);
+
+            DataRow Filita = cPagarfactura.VerUltimoIdentificador("TBL_Factura", "Nro_DocPago");
+            if (Filita != null)
+                txtnropago.Text = (decimal.Parse(Filita["ultimo"].ToString()) + 1).ToString();
+            else txtnropago.Text = "1";
             //List<Persona> personas = new List<Persona>();
             //Persona person1 = new Persona(1, "jefferson", 27);
             //personas.Add(person1);
@@ -175,6 +180,7 @@ namespace HPReserger
         {
             MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
+        DialogResult PAsoBanco = DialogResult.Cancel;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (cbotipo.SelectedIndex != 2)
@@ -269,7 +275,8 @@ namespace HPReserger
                     bancobcp.txtcuentapago.Text = frmcargardatosproveedor.txtcuenta.Text;
                     bancobcp.Icon = Icon;
                     bancobcp.Comprobantes = Comprobantes;
-                    bancobcp.Show();
+                    bancobcp.ShowDialog();
+                    PAsoBanco = bancobcp.DialogResult;
                 }
                 if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "IBK")
                 {
@@ -282,7 +289,7 @@ namespace HPReserger
                     bancointerbank.txtcuenta.Text = frmcargardatosproveedor.txtcuenta.Text;
                     bancointerbank.Comprobantes = Comprobantes;
                     bancointerbank.Icon = Icon;
-                    bancointerbank.Show();
+                    bancointerbank.ShowDialog();
                 }
                 if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "BIF")
                 {
@@ -295,7 +302,7 @@ namespace HPReserger
                     bancointeramericano.txtcuenta.Text = frmcargardatosproveedor.txtcuenta.Text;
                     bancointeramericano.Comprobantes = Comprobantes;
                     bancointeramericano.Icon = Icon;
-                    bancointeramericano.Show();
+                    bancointeramericano.ShowDialog();
                 }
             }
             //proceso para pagar facturas!!!
@@ -303,51 +310,55 @@ namespace HPReserger
             ///////////////////////
             ///Dinamica Contable///
             /////////////////////// 
-            int numasiento; string facturar = "";
-            DataTable asientito = cPagarfactura.UltimoAsiento();
-            DataRow asiento = asientito.Rows[0];
-            if (asiento == null) { numasiento = 0; }
-            else
+            if (PAsoBanco == DialogResult.OK)
             {
-                numasiento = (int)asiento["codigo"];
-            }
-            foreach (FACTURAS fac in Comprobantes)
-            {
-                //Recorremos los comprobantes seleccionados RH / FT
-                //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
-                if (fac.tipo.Substring(0, 2) == "RH")
-                {
-                    //actualizo que el recibo este pagado
-                    cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
-                    //cuenta de recibo por honorarios 4241101
-                    cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 18);
-                    facturar = fac.numero;
-                }
+                int numasiento; string facturar = "";
+                DataTable asientito = cPagarfactura.UltimoAsiento();
+                DataRow asiento = asientito.Rows[0];
+                if (asiento == null) { numasiento = 0; }
                 else
                 {
-                    if (fac.detraccion > 0)
+                    numasiento = (int)asiento["codigo"];
+                }
+                foreach (FACTURAS fac in Comprobantes)
+                {
+                    //Recorremos los comprobantes seleccionados RH / FT
+                    //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
+                    if (fac.tipo.Substring(0, 2) == "RH")
                     {
-                        //actualizo que la factura esta pagada
+                        //actualizo que el recibo este pagado
                         cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
-                        ///facturas por pagar 4212101
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", fac.detraccion, 0, 18);
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 18);
+                        //cuenta de recibo por honorarios 4241101
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 18);
                         facturar = fac.numero;
                     }
                     else
                     {
-                        //actualizo que la factura esta pagada
-                        cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
-                        ///facturas por pagar 4212101
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 18);
-                        facturar = fac.numero;
+                        if (fac.detraccion > 0)
+                        {
+                            //actualizo que la factura esta pagada
+                            cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
+                            ///facturas por pagar 4212101
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 18);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 18);
+                            facturar = fac.numero;
+                        }
+                        else
+                        {
+                            //actualizo que la factura esta pagada
+                            cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
+                            ///facturas por pagar 4212101
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 18);
+                            facturar = fac.numero;
+                        }
                     }
                 }
+                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, cbocuentabanco.SelectedValue.ToString(), 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 18);
+                msg("Documento Pagado y se ha Generado su Asiento");
+                btnActualizar_Click(sender, e);
+                txttotaldetrac.Text = txttotal.Text = "0.00";
+                Comprobantes.Clear();
             }
-            cPagarfactura.guardarfactura(0, numasiento + 1, facturar, cbocuentabanco.SelectedValue.ToString(), 0, decimal.Parse(txttotal.Text) + decimal.Parse(txttotaldetrac.Text), 18);
-            msg("Documento Pagado y se ha Generado su Asiento");
-            btnActualizar_Click(sender, e);
-            txttotaldetrac.Text = txttotal.Text = "0.00";
         }
         public Boolean PasoFactura = false;
         int contador = 0;
@@ -556,13 +567,13 @@ namespace HPReserger
             if (Dtguias.RowCount < 0)
             {
                 cbotipo.Enabled = cbobanco.Enabled = cbocuentabanco.Enabled = btnaceptar.Enabled = false;
-                cbotipo.SelectedIndex = 0; txtnropago.Enabled = false;
+                cbotipo.SelectedIndex = 0;// txtnropago.Enabled = false;
 
             }
             else
             {
                 cbotipo.Enabled = true; cbobanco.Enabled = true; cbocuentabanco.Enabled = true;
-                cbotipo.SelectedIndex = 0; txtnropago.Enabled = true;
+                cbotipo.SelectedIndex = 0;// txtnropago.Enabled = true;
             }
 
         }

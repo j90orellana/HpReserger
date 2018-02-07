@@ -40,7 +40,6 @@ namespace HPReserger
         {
             CargarDatos();
         }
-
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             estado = 1;

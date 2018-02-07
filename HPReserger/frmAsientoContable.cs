@@ -32,26 +32,27 @@ namespace HPReserger
             fechafin.Value = DateTime.Today.AddDays(1);
             dtgbusca.DataSource = Casiento.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0);
             if (dtgbusca.RowCount > 0) { activar(); }
-
             fecha.Value = DateTime.Now;
         }
         public void activar()
         {
             btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled =
                 Txtbusca.Enabled = groupBox1.Enabled = btnlimpiar.Enabled = true;
-            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = Dtgconten.Enabled = fecha.Enabled =
+            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = fecha.Enabled =
                 txtdinamica.Enabled = false;
-
+            foreach (DataGridViewColumn col in Dtgconten.Columns)
+                col.ReadOnly = true;
         }
         public void desactivar()
         {
             btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled =
                 Txtbusca.Enabled = groupBox1.Enabled = btnlimpiar.Enabled = false;
-            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = Dtgconten.Enabled = fecha.Enabled =
+            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = fecha.Enabled =
                 txtdinamica.Enabled = true;
-
+            foreach (DataGridViewColumn col in Dtgconten.Columns)
+                if (col.Name != descripcion.Name)
+                    col.ReadOnly = false;
         }
-
         private void txtcodigo_TextChanged(object sender, EventArgs e)
         {
             modifico = false;
@@ -60,7 +61,6 @@ namespace HPReserger
                 if (!llamado)
                 {
                     dtgayuda.DataSource = Casiento.ListarDinamicas(coddinamica + "", 10);
-
                 }
             }
             catch { }
@@ -90,7 +90,6 @@ namespace HPReserger
             }
             Dtgconten.Focus();
         }
-
         private void Dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -137,11 +136,9 @@ namespace HPReserger
                     CargaDinamicas();
                     btnmas.Focus();
                 }
-
             }
             catch { }
         }
-
         private void btndina_Click(object sender, EventArgs e)
         {
             try
@@ -161,15 +158,12 @@ namespace HPReserger
                     btnmas.Focus();
                 }
                 else { coddinamica = 0; txtdinamica.Text = ""; }
-
             }
             catch { }
 
             if (coddinamica != 0)
             {
-
             }
-
         }
         public void Mensajes(string text)
         {
@@ -177,9 +171,8 @@ namespace HPReserger
         }
         private void txtdinamica_Leave(object sender, EventArgs e)
         {
-            txtdinamica.Text = "CD_00" + coddinamica;
+            txtdinamica.Text = coddinamica.ToString("CD_0000");
         }
-
         private void txtdinamica_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back) { }
@@ -212,22 +205,18 @@ namespace HPReserger
                 btndina.Focus();
             }
         }
-
         private void dtgayuda_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void dtgayuda_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void dtgayuda_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
 
         }
-
         private void Dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -247,12 +236,9 @@ namespace HPReserger
                         //aux = false;
                     }
                 }
-
             }
             catch { }
-
         }
-
         private void Dtgconten_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -260,12 +246,9 @@ namespace HPReserger
                 btnmas_Click(sender, e);
             }
             else { e.Handled = true; }
-
         }
         private void Dtgconten_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-
-
         }
         int punto = 0, deci = 0;
         private void dataGridview_KeyPressCajita(object sender, KeyPressEventArgs e)
@@ -276,15 +259,12 @@ namespace HPReserger
             }
             else
             {
-
                 e.Handled = true;
             }
-
         }
         private void Dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             punto = deci = 0;
-
             if (Dtgconten.CurrentCell.ColumnIndex == 2 || Dtgconten.CurrentCell.ColumnIndex == 3)
             {
                 TextBox txt = e.Control as TextBox;
@@ -305,7 +285,6 @@ namespace HPReserger
         }
         private void Dtgconten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
             try
             {
                 if (e.ColumnIndex > 1)
@@ -330,7 +309,6 @@ namespace HPReserger
                         {
                             totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString());
                         }
-
                         txttotaldebe.Text = string.Format("{0:N2}", totaldebe);
                         txttotalhaber.Text = string.Format("{0:N2}", totalhaber);
                     }
@@ -489,31 +467,26 @@ namespace HPReserger
             }
             else { dtgbusca.DataSource = Casiento.ListarAsientosContables(Txtbusca.Text, tipobusca, fechafin.Value, fechaini.Value.AddDays(1), fechacheck); }
             msg2(dtgbusca);
-
             if (dtgbusca.RowCount < 1)
             {
                 Dtgconten.Rows.Clear();
             }
         }
-
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
             Txtbusca.Text = "";
             Txtbusca_TextChanged(sender, e);
         }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             tipobusca = 1;
             Txtbusca_TextChanged(sender, e);
         }
-
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             tipobusca = 2;
             Txtbusca_TextChanged(sender, e);
         }
-
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             tipobusca = 3;
@@ -521,13 +494,10 @@ namespace HPReserger
         }
         private void fechaini_ValueChanged(object sender, EventArgs e)
         {
-
             Txtbusca_TextChanged(sender, e);
         }
-
         private void fechafin_ValueChanged(object sender, EventArgs e)
         {
-
             Txtbusca_TextChanged(sender, e);
         }
         public int dinamica { get; set; }
@@ -581,17 +551,12 @@ namespace HPReserger
         private void dtgbusca_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
-
         private void dtgbusca_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
         }
-
         private void dtgbusca_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-
-
         }
-
         public void RellenarEstado(ComboBox combito)
         {
             DataTable tablita = new DataTable();
@@ -602,11 +567,9 @@ namespace HPReserger
             combito.DataSource = tablita;
             combito.DisplayMember = "VALOR";
             combito.ValueMember = "CODIGO";
-
         }
         private void cboestado_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
         public int estado { get; set; }
         public int codigo;
@@ -685,7 +648,6 @@ namespace HPReserger
                         break;
                     }
                 }
-
                 if (totaldebe != totalhaber && salida)
                 {
                     salida = false;
@@ -702,7 +664,6 @@ namespace HPReserger
             {
                 salida = false;
             }
-
         }
         public Boolean salida { get; set; }
         public Boolean aceptar { get; set; }
@@ -750,9 +711,7 @@ namespace HPReserger
                     for (int i = 0; i < Dtgconten.RowCount; i++)
                     {
                         Casiento.InsertarAsiento(codigo, FECHA, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Convert.ToDouble(Dtgconten[2, i].Value.ToString()), Convert.ToDouble(Dtgconten[3, i].Value.ToString()), DINAMICA, ESTADO);
-
                     }
-
                     Txtbusca.Text = codigo + "";
                     dtgbusca.DataSource = Casiento.BuscarAsientosContables(Txtbusca.Text, 1);
                     activar(); estado = 0;
@@ -851,13 +810,11 @@ namespace HPReserger
                 }
             }
         }
-
         private void btneliminar_Click(object sender, EventArgs e)
         {
             estado = 3;
             btnaceptar_Click(sender, e);
         }
-
         private void Dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -870,20 +827,16 @@ namespace HPReserger
                 else { e.Handled = true; msg(Dtgconten); }
             }
         }
-
         private void txtdinamica_Click(object sender, EventArgs e)
         {
             txtdinamica.SelectAll();
         }
-
         private void chkfecha_CheckedChanged(object sender, EventArgs e)
         {
             if (chkfecha.Checked) fechacheck = 1;
             else fechacheck = 0;
-
             Txtbusca_TextChanged(sender, e);
         }
-
         private void dtgbusca_KeyDown(object sender, KeyEventArgs e)
         {
             if (dtgbusca.Rows.Count > 0)
@@ -901,7 +854,7 @@ namespace HPReserger
                             //Buscar Siguiente Codigo de Asiento;
                             if (cox != (int)dtgbusca[0, i].Value)
                             {
-                                dtgbusca.CurrentCell = dtgbusca[0, i-1];
+                                dtgbusca.CurrentCell = dtgbusca[0, i - 1];
                                 break;
                             }
                         }
@@ -911,7 +864,7 @@ namespace HPReserger
                         int x = dtgbusca.CurrentCell.RowIndex;
                         int cox = 0;
                         cox = (int)dtgbusca[0, x].Value;
-                        for (int i = x; i >0; i--)
+                        for (int i = x; i > 0; i--)
                         {
                             //Buscar Siguiente Codigo de Asiento;
                             if (cox != (int)dtgbusca[0, i].Value)
@@ -924,19 +877,16 @@ namespace HPReserger
                 }
             }
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Txtbusca.Text = "";
             Txtbusca_TextChanged(sender, e);
         }
-
         private void dtgayuda3_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 
             Dtgconten_CellEndEdit(sender, e);
         }
-
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             msg(Dtgconten);

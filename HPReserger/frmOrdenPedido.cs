@@ -72,7 +72,6 @@ namespace HPReserger
                     gridItem.Rows.RemoveAt(e.RowIndex);
                 }
             }
-
         }
         public void msg(string cadena)
         {
@@ -102,7 +101,6 @@ namespace HPReserger
                 cboetapa.Focus();
                 return;
             }
-
             if (Validar(gridItem, cboTipoPedido.SelectedIndex))
             {
                 int IdNumero = 0;
@@ -146,7 +144,6 @@ namespace HPReserger
                 MessageBox.Show("Ingrese Articulos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return false;
             }
-
             int fila = 0;
             int filaBuscar = 0;
             int CodigoArticulo = 0;
@@ -226,7 +223,6 @@ namespace HPReserger
                         return false;
                     }
                 }
-
                 fila = 0;
                 filaBuscar = 0;
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
@@ -315,7 +311,6 @@ namespace HPReserger
             if (gridItem.CurrentCell.ColumnIndex == 4 && cboTipoPedido.SelectedIndex == 0)
             {
                 TextBox txt = e.Control as TextBox;
-
                 if (txt != null)
                 {
                     txt.KeyPress -= new KeyPressEventHandler(txtNumeros_KeyPress);

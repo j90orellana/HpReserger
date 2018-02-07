@@ -42,13 +42,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Grid = new System.Windows.Forms.DataGridView();
-            this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkemp = new System.Windows.Forms.CheckBox();
             this.checkpos = new System.Windows.Forms.CheckBox();
+            this.checkemp = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.Grid = new System.Windows.Forms.DataGridView();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NDI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Location = new System.Drawing.Point(6, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
@@ -88,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(205, 16);
+            this.label2.Location = new System.Drawing.Point(205, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
@@ -101,7 +101,7 @@
             this.txtBuscar.MaxLength = 30;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(256, 20);
-            this.txtBuscar.TabIndex = 3;
+            this.txtBuscar.TabIndex = 0;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // groupBox1
@@ -121,6 +121,67 @@
             this.groupBox1.Size = new System.Drawing.Size(861, 75);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            // 
+            // checkpos
+            // 
+            this.checkpos.AutoSize = true;
+            this.checkpos.Location = new System.Drawing.Point(642, 45);
+            this.checkpos.Name = "checkpos";
+            this.checkpos.Size = new System.Drawing.Size(76, 17);
+            this.checkpos.TabIndex = 5;
+            this.checkpos.Text = "Postulante";
+            this.checkpos.UseVisualStyleBackColor = true;
+            this.checkpos.CheckedChanged += new System.EventHandler(this.checkemp_CheckedChanged);
+            // 
+            // checkemp
+            // 
+            this.checkemp.AutoSize = true;
+            this.checkemp.Location = new System.Drawing.Point(563, 45);
+            this.checkemp.Name = "checkemp";
+            this.checkemp.Size = new System.Drawing.Size(73, 17);
+            this.checkemp.TabIndex = 4;
+            this.checkemp.Text = "Empleado";
+            this.checkemp.UseVisualStyleBackColor = true;
+            this.checkemp.CheckedChanged += new System.EventHandler(this.checkemp_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(287, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "NroDoc:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtDocumento
+            // 
+            this.txtDocumento.Location = new System.Drawing.Point(340, 43);
+            this.txtDocumento.MaxLength = 10;
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(206, 20);
+            this.txtDocumento.TabIndex = 3;
+            this.txtDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDocumento.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 47);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "TipoDoc:";
+            // 
+            // cboTipoDocumento
+            // 
+            this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDocumento.FormattingEnabled = true;
+            this.cboTipoDocumento.Location = new System.Drawing.Point(65, 43);
+            this.cboTipoDocumento.Name = "cboTipoDocumento";
+            this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
+            this.cboTipoDocumento.TabIndex = 2;
+            this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
             // 
             // Grid
             // 
@@ -163,67 +224,6 @@
             this.Grid.Size = new System.Drawing.Size(861, 377);
             this.Grid.TabIndex = 36;
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
-            // 
-            // cboTipoDocumento
-            // 
-            this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(65, 43);
-            this.cboTipoDocumento.Name = "cboTipoDocumento";
-            this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
-            this.cboTipoDocumento.TabIndex = 4;
-            this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "TipoDoc:";
-            // 
-            // txtDocumento
-            // 
-            this.txtDocumento.Location = new System.Drawing.Point(340, 44);
-            this.txtDocumento.MaxLength = 10;
-            this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(206, 20);
-            this.txtDocumento.TabIndex = 6;
-            this.txtDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDocumento.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(287, 47);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "NroDoc:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // checkemp
-            // 
-            this.checkemp.AutoSize = true;
-            this.checkemp.Location = new System.Drawing.Point(563, 47);
-            this.checkemp.Name = "checkemp";
-            this.checkemp.Size = new System.Drawing.Size(73, 17);
-            this.checkemp.TabIndex = 8;
-            this.checkemp.Text = "Empleado";
-            this.checkemp.UseVisualStyleBackColor = true;
-            this.checkemp.CheckedChanged += new System.EventHandler(this.checkemp_CheckedChanged);
-            // 
-            // checkpos
-            // 
-            this.checkpos.AutoSize = true;
-            this.checkpos.Location = new System.Drawing.Point(642, 47);
-            this.checkpos.Name = "checkpos";
-            this.checkpos.Size = new System.Drawing.Size(76, 17);
-            this.checkpos.TabIndex = 9;
-            this.checkpos.Text = "Postulante";
-            this.checkpos.UseVisualStyleBackColor = true;
-            this.checkpos.CheckedChanged += new System.EventHandler(this.checkemp_CheckedChanged);
             // 
             // CODIGOTIPO
             // 

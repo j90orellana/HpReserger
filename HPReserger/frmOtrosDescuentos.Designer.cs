@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOtrosDescuentos));
             this.panelOre3 = new HpResergerUserControls.PanelOre();
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.desvinculancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -289,11 +290,14 @@
             // 
             // btnaddfoto
             // 
+            this.btnaddfoto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnaddfoto.BackgroundImage")));
+            this.btnaddfoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnaddfoto.FlatAppearance.BorderSize = 0;
+            this.btnaddfoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnaddfoto.Location = new System.Drawing.Point(296, 117);
             this.btnaddfoto.Name = "btnaddfoto";
-            this.btnaddfoto.Size = new System.Drawing.Size(27, 20);
+            this.btnaddfoto.Size = new System.Drawing.Size(20, 20);
             this.btnaddfoto.TabIndex = 6;
-            this.btnaddfoto.Text = "...";
             this.btnaddfoto.UseVisualStyleBackColor = true;
             this.btnaddfoto.Click += new System.EventHandler(this.button1_Click);
             // 

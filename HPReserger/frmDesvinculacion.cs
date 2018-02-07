@@ -66,101 +66,6 @@ namespace HPReserger
                         dtpfechacese.Value = Convert.ToDateTime(Listarcontrato["Fec_cesado"]);
                     }
                     panelliquidacion.Enabled = true;
-                    DataRow ListarDesvinculaciones = clDesvinculacion.ListarDesvinculaciones(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, Convert.ToInt32(Listarcontrato["Nro_Contrato"].ToString()));
-                    if (ListarDesvinculaciones != null)
-                    {
-                        panelverimagen.Enabled = true;
-                        if (ListarDesvinculaciones["Liquidacion"].ToString() != null && ListarDesvinculaciones["Liquidacion"].ToString().Length > 0)
-                        {
-                            byte[] Fotito = new byte[0];
-                            FotoLiq = Fotito = (byte[])ListarDesvinculaciones["Liquidacion"];
-                            MemoryStream ms = new MemoryStream(Fotito);
-                            pbLiquidacion.Image = Bitmap.FromStream(ms);
-                            txtLiq.Text = ListarDesvinculaciones["Nombre_Liquidacion"].ToString();
-                            lklliquidacion.Enabled = true;
-                        }
-                        else
-                        {
-                            txtLiq.Text = ""; FotoLiq = null;
-                            pbLiquidacion.Image = null; lklliquidacion.Enabled = false;
-                        }
-                        if (ListarDesvinculaciones["Cts"].ToString() != null && ListarDesvinculaciones["Cts"].ToString().Length > 0)
-                        {
-                            byte[] Fotito = new byte[0];
-                            FotoCTS = Fotito = (byte[])ListarDesvinculaciones["Cts"];
-                            MemoryStream ms = new MemoryStream(Fotito);
-                            pbCts.Image = Bitmap.FromStream(ms);
-                            txtCTS.Text = ListarDesvinculaciones["Nombre_Cts"].ToString();
-                            lklcts.Enabled = true;
-                        }
-                        else
-                        {
-                            txtCTS.Text = ""; FotoCTS = null; lklcts.Enabled = false;
-                            pbCts.Image = null;
-                        }
-                        if (ListarDesvinculaciones["Retencion_Renta"].ToString() != null && ListarDesvinculaciones["Retencion_Renta"].ToString().Length > 0)
-                        {
-                            byte[] Fotito = new byte[0];
-                            FotoRetencionRenta = Fotito = (byte[])ListarDesvinculaciones["Retencion_Renta"];
-                            MemoryStream ms = new MemoryStream(Fotito);
-                            pbRenta.Image = Bitmap.FromStream(ms);
-                            txtRetencionRenta.Text = ListarDesvinculaciones["Nombre_Retencion_Renta"].ToString();
-                            lklrenta.Enabled = true;
-                        }
-                        else
-                        {
-                            txtRetencionRenta.Text = ""; FotoRetencionRenta = null; lklrenta.Enabled = false;
-                            pbRenta.Image = null;
-                        }
-                        if (ListarDesvinculaciones["Constancia_Trabajo"].ToString() != null && ListarDesvinculaciones["Constancia_Trabajo"].ToString().Length > 0)
-                        {
-                            byte[] Fotito = new byte[0];
-                            FotoConstanciaTrabajo = Fotito = (byte[])ListarDesvinculaciones["Constancia_Trabajo"];
-                            MemoryStream ms = new MemoryStream(Fotito);
-                            pbConstancia.Image = Bitmap.FromStream(ms);
-                            txtConstanciaTrabajo.Text = ListarDesvinculaciones["Nombre_Constancia_Trabajo"].ToString();
-                            lkltrabajo.Enabled = true;
-                        }
-                        else
-                        {
-                            txtConstanciaTrabajo.Text = ""; FotoConstanciaTrabajo = null;
-                            pbConstancia.Image = null; lkltrabajo.Enabled = false;
-                        }
-                        if (ListarDesvinculaciones["Evaluacion_Practicas"].ToString() != null && ListarDesvinculaciones["Evaluacion_Practicas"].ToString().Length > 0)
-                        {
-                            byte[] Fotito = new byte[0];
-                            FotoEvaluacionPracticas = Fotito = (byte[])ListarDesvinculaciones["Evaluacion_Practicas"];
-                            MemoryStream ms = new MemoryStream(Fotito);
-                            pbPracticas.Image = Bitmap.FromStream(ms);
-                            txtEvaluacionPracticas.Text = ListarDesvinculaciones["Nombre_Evaluacion_Practicas"].ToString();
-                            lklpracticas.Enabled = true;
-                        }
-                        else
-                        {
-                            txtEvaluacionPracticas.Text = ""; FotoEvaluacionPracticas = null; lklpracticas.Enabled = false;
-                            pbPracticas.Image = null;
-                        }
-                        if (ListarDesvinculaciones["Entrevista_Salida"].ToString() != null && ListarDesvinculaciones["Entrevista_Salida"].ToString().Length > 0)
-                        {
-                            byte[] Fotito = new byte[0];
-                            FotoEntrevistaSalida = Fotito = (byte[])ListarDesvinculaciones["Entrevista_Salida"];
-                            MemoryStream ms = new MemoryStream(Fotito);
-                            pbSalida.Image = Bitmap.FromStream(ms);
-                            txtEntrevistaSalida.Text = ListarDesvinculaciones["Nombre_Entrevista_Salida"].ToString();
-                            lklsalida.Enabled = true;
-                        }
-                        else
-                        {
-                            txtEntrevistaSalida.Text = ""; FotoEntrevistaSalida = null; lklsalida.Enabled = false;
-                            pbSalida.Image = null;
-                        }
-                    }
-                    else
-                    {
-                        panelverimagen.Enabled = false;
-                        txtLiq.Text = txtConstanciaTrabajo.Text = txtCTS.Text = txtEntrevistaSalida.Text = txtEvaluacionPracticas.Text = txtRetencionRenta.Text = "";
-                    }
-
                 }
                 else
                 {
@@ -181,6 +86,103 @@ namespace HPReserger
                     lklliquidacion.Enabled = lklcts.Enabled = lklrenta.Enabled = lkltrabajo.Enabled = lklpracticas.Enabled = lklsalida.Enabled = false;
                     panelliquidacion.Enabled = false; panelverimagen.Enabled = false;
                 }
+                dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
+                DataRow ListarDesvinculaciones = clDesvinculacion.ListarDesvinculaciones(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text,0);
+                if (ListarDesvinculaciones != null)
+                {
+                    panelverimagen.Enabled = true;
+                    if (ListarDesvinculaciones["Liquidacion"].ToString() != null && ListarDesvinculaciones["Liquidacion"].ToString().Length > 0)
+                    {
+                        byte[] Fotito = new byte[0];
+                        FotoLiq = Fotito = (byte[])ListarDesvinculaciones["Liquidacion"];
+                        MemoryStream ms = new MemoryStream(Fotito);
+                        pbLiquidacion.Image = Bitmap.FromStream(ms);
+                        txtLiq.Text = ListarDesvinculaciones["Nombre_Liquidacion"].ToString();
+                        lklliquidacion.Enabled = true;
+                    }
+                    else
+                    {
+                        txtLiq.Text = ""; FotoLiq = null;
+                        pbLiquidacion.Image = null; lklliquidacion.Enabled = false;
+                    }
+                    if (ListarDesvinculaciones["Cts"].ToString() != null && ListarDesvinculaciones["Cts"].ToString().Length > 0)
+                    {
+                        byte[] Fotito = new byte[0];
+                        FotoCTS = Fotito = (byte[])ListarDesvinculaciones["Cts"];
+                        MemoryStream ms = new MemoryStream(Fotito);
+                        pbCts.Image = Bitmap.FromStream(ms);
+                        txtCTS.Text = ListarDesvinculaciones["Nombre_Cts"].ToString();
+                        lklcts.Enabled = true;
+                    }
+                    else
+                    {
+                        txtCTS.Text = ""; FotoCTS = null; lklcts.Enabled = false;
+                        pbCts.Image = null;
+                    }
+                    if (ListarDesvinculaciones["Retencion_Renta"].ToString() != null && ListarDesvinculaciones["Retencion_Renta"].ToString().Length > 0)
+                    {
+                        byte[] Fotito = new byte[0];
+                        FotoRetencionRenta = Fotito = (byte[])ListarDesvinculaciones["Retencion_Renta"];
+                        MemoryStream ms = new MemoryStream(Fotito);
+                        pbRenta.Image = Bitmap.FromStream(ms);
+                        txtRetencionRenta.Text = ListarDesvinculaciones["Nombre_Retencion_Renta"].ToString();
+                        lklrenta.Enabled = true;
+                    }
+                    else
+                    {
+                        txtRetencionRenta.Text = ""; FotoRetencionRenta = null; lklrenta.Enabled = false;
+                        pbRenta.Image = null;
+                    }
+                    if (ListarDesvinculaciones["Constancia_Trabajo"].ToString() != null && ListarDesvinculaciones["Constancia_Trabajo"].ToString().Length > 0)
+                    {
+                        byte[] Fotito = new byte[0];
+                        FotoConstanciaTrabajo = Fotito = (byte[])ListarDesvinculaciones["Constancia_Trabajo"];
+                        MemoryStream ms = new MemoryStream(Fotito);
+                        pbConstancia.Image = Bitmap.FromStream(ms);
+                        txtConstanciaTrabajo.Text = ListarDesvinculaciones["Nombre_Constancia_Trabajo"].ToString();
+                        lkltrabajo.Enabled = true;
+                    }
+                    else
+                    {
+                        txtConstanciaTrabajo.Text = ""; FotoConstanciaTrabajo = null;
+                        pbConstancia.Image = null; lkltrabajo.Enabled = false;
+                    }
+                    if (ListarDesvinculaciones["Evaluacion_Practicas"].ToString() != null && ListarDesvinculaciones["Evaluacion_Practicas"].ToString().Length > 0)
+                    {
+                        byte[] Fotito = new byte[0];
+                        FotoEvaluacionPracticas = Fotito = (byte[])ListarDesvinculaciones["Evaluacion_Practicas"];
+                        MemoryStream ms = new MemoryStream(Fotito);
+                        pbPracticas.Image = Bitmap.FromStream(ms);
+                        txtEvaluacionPracticas.Text = ListarDesvinculaciones["Nombre_Evaluacion_Practicas"].ToString();
+                        lklpracticas.Enabled = true;
+                    }
+                    else
+                    {
+                        txtEvaluacionPracticas.Text = ""; FotoEvaluacionPracticas = null; lklpracticas.Enabled = false;
+                        pbPracticas.Image = null;
+                    }
+                    if (ListarDesvinculaciones["Entrevista_Salida"].ToString() != null && ListarDesvinculaciones["Entrevista_Salida"].ToString().Length > 0)
+                    {
+                        byte[] Fotito = new byte[0];
+                        FotoEntrevistaSalida = Fotito = (byte[])ListarDesvinculaciones["Entrevista_Salida"];
+                        MemoryStream ms = new MemoryStream(Fotito);
+                        pbSalida.Image = Bitmap.FromStream(ms);
+                        txtEntrevistaSalida.Text = ListarDesvinculaciones["Nombre_Entrevista_Salida"].ToString();
+                        lklsalida.Enabled = true;
+                    }
+                    else
+                    {
+                        txtEntrevistaSalida.Text = ""; FotoEntrevistaSalida = null; lklsalida.Enabled = false;
+                        pbSalida.Image = null;
+                    }
+                }
+                else
+                {
+                    panelverimagen.Enabled = false;
+                    txtLiq.Text = txtConstanciaTrabajo.Text = txtCTS.Text = txtEntrevistaSalida.Text = txtEvaluacionPracticas.Text = txtRetencionRenta.Text = "";
+                }
+
+
             }
             else
             {

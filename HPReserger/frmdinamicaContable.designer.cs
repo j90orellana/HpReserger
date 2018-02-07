@@ -73,8 +73,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.Txtbusca = new System.Windows.Forms.TextBox();
             this.dtgbusca = new System.Windows.Forms.DataGridView();
-            this.lblmsg2 = new System.Windows.Forms.Label();
-            this.dtgayuda2 = new System.Windows.Forms.DataGridView();
             this.codx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ejerciciox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +83,8 @@
             this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblmsg2 = new System.Windows.Forms.Label();
+            this.dtgayuda2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -96,7 +96,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 15);
+            this.label13.Location = new System.Drawing.Point(43, 16);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(50, 13);
             this.label13.TabIndex = 102;
@@ -108,11 +108,11 @@
             this.cboyear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboyear.FormattingEnabled = true;
             this.cboyear.ItemHeight = 13;
-            this.cboyear.Location = new System.Drawing.Point(76, 12);
+            this.cboyear.Location = new System.Drawing.Point(99, 12);
             this.cboyear.MaxDropDownItems = 1;
             this.cboyear.MaxLength = 4;
             this.cboyear.Name = "cboyear";
-            this.cboyear.Size = new System.Drawing.Size(76, 21);
+            this.cboyear.Size = new System.Drawing.Size(73, 21);
             this.cboyear.TabIndex = 101;
             this.cboyear.SelectedIndexChanged += new System.EventHandler(this.cboyear_SelectedIndexChanged);
             this.cboyear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboanalitica_KeyPress);
@@ -121,7 +121,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(163, 15);
+            this.label1.Location = new System.Drawing.Point(182, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 104;
@@ -140,7 +140,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(309, 15);
+            this.label2.Location = new System.Drawing.Point(309, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 105;
@@ -160,7 +160,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 42);
+            this.label3.Location = new System.Drawing.Point(34, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 108;
@@ -169,9 +169,9 @@
             // cbooperacion
             // 
             this.cbooperacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbooperacion.Location = new System.Drawing.Point(77, 39);
+            this.cbooperacion.Location = new System.Drawing.Point(99, 39);
             this.cbooperacion.Name = "cbooperacion";
-            this.cbooperacion.Size = new System.Drawing.Size(319, 21);
+            this.cbooperacion.Size = new System.Drawing.Size(297, 21);
             this.cbooperacion.TabIndex = 107;
             this.cbooperacion.SelectedIndexChanged += new System.EventHandler(this.cbooperacion_SelectedIndexChanged);
             this.cbooperacion.TextChanged += new System.EventHandler(this.cbooperacion_TextChanged);
@@ -288,11 +288,13 @@
             // 
             this.Dtgconten.AllowUserToAddRows = false;
             this.Dtgconten.AllowUserToResizeColumns = false;
+            this.Dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.HighlightText;
+            this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -306,10 +308,14 @@
             this.cuenta,
             this.descripcion,
             this.debehaber});
+            this.Dtgconten.GridColor = System.Drawing.SystemColors.Highlight;
             this.Dtgconten.Location = new System.Drawing.Point(13, 130);
             this.Dtgconten.MultiSelect = false;
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.Dtgconten.RowHeadersVisible = false;
+            this.Dtgconten.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -564,35 +570,6 @@
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
             this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
             // 
-            // lblmsg2
-            // 
-            this.lblmsg2.AutoSize = true;
-            this.lblmsg2.Location = new System.Drawing.Point(15, 678);
-            this.lblmsg2.Name = "lblmsg2";
-            this.lblmsg2.Size = new System.Drawing.Size(96, 13);
-            this.lblmsg2.TabIndex = 130;
-            this.lblmsg2.Text = "Total de Registros:";
-            this.lblmsg2.Click += new System.EventHandler(this.lblmsg2_Click);
-            // 
-            // dtgayuda2
-            // 
-            this.dtgayuda2.AllowUserToAddRows = false;
-            this.dtgayuda2.AllowUserToDeleteRows = false;
-            this.dtgayuda2.AllowUserToResizeColumns = false;
-            this.dtgayuda2.BackgroundColor = System.Drawing.SystemColors.HighlightText;
-            this.dtgayuda2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgayuda2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dtgayuda2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtgayuda2.Location = new System.Drawing.Point(695, 368);
-            this.dtgayuda2.Name = "dtgayuda2";
-            this.dtgayuda2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgayuda2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dtgayuda2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgayuda2.Size = new System.Drawing.Size(679, 196);
-            this.dtgayuda2.TabIndex = 139;
-            this.dtgayuda2.Visible = false;
-            this.dtgayuda2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgayuda2_RowEnter);
-            // 
             // codx
             // 
             this.codx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
@@ -684,6 +661,35 @@
             this.estadox.ReadOnly = true;
             this.estadox.Visible = false;
             this.estadox.Width = 64;
+            // 
+            // lblmsg2
+            // 
+            this.lblmsg2.AutoSize = true;
+            this.lblmsg2.Location = new System.Drawing.Point(15, 678);
+            this.lblmsg2.Name = "lblmsg2";
+            this.lblmsg2.Size = new System.Drawing.Size(96, 13);
+            this.lblmsg2.TabIndex = 130;
+            this.lblmsg2.Text = "Total de Registros:";
+            this.lblmsg2.Click += new System.EventHandler(this.lblmsg2_Click);
+            // 
+            // dtgayuda2
+            // 
+            this.dtgayuda2.AllowUserToAddRows = false;
+            this.dtgayuda2.AllowUserToDeleteRows = false;
+            this.dtgayuda2.AllowUserToResizeColumns = false;
+            this.dtgayuda2.BackgroundColor = System.Drawing.SystemColors.HighlightText;
+            this.dtgayuda2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgayuda2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dtgayuda2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtgayuda2.Location = new System.Drawing.Point(695, 368);
+            this.dtgayuda2.Name = "dtgayuda2";
+            this.dtgayuda2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtgayuda2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dtgayuda2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgayuda2.Size = new System.Drawing.Size(679, 196);
+            this.dtgayuda2.TabIndex = 139;
+            this.dtgayuda2.Visible = false;
+            this.dtgayuda2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgayuda2_RowEnter);
             // 
             // frmdinamicaContable
             // 

@@ -41,6 +41,8 @@
             this.crvConstanciaTrabajo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvConstanciaTrabajo.Location = new System.Drawing.Point(0, 0);
             this.crvConstanciaTrabajo.Name = "crvConstanciaTrabajo";
+            this.crvConstanciaTrabajo.ShowCloseButton = false;
+            this.crvConstanciaTrabajo.ShowLogo = false;
             this.crvConstanciaTrabajo.Size = new System.Drawing.Size(749, 606);
             this.crvConstanciaTrabajo.TabIndex = 0;
             this.crvConstanciaTrabajo.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;

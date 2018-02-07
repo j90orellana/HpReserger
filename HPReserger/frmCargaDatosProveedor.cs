@@ -19,6 +19,7 @@ namespace HPReserger
         public List<string> Proveedores = new List<string>();
         public string banco;
         public string cuenta;
+        public Boolean Boletas = false;
         public DialogResult Resultado = DialogResult.Cancel;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void btncancelar_Click(object sender, EventArgs e)

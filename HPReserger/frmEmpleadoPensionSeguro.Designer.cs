@@ -44,6 +44,8 @@
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.pnlconten = new System.Windows.Forms.Panel();
+            this.cboplan = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.cboaplica = new System.Windows.Forms.ComboBox();
             this.numdesc = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -51,8 +53,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
-            this.cboplan = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.pnlconten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numdesc)).BeginInit();
             this.SuspendLayout();
@@ -248,6 +248,28 @@
             this.pnlconten.Size = new System.Drawing.Size(350, 202);
             this.pnlconten.TabIndex = 21;
             // 
+            // cboplan
+            // 
+            this.cboplan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboplan.FormattingEnabled = true;
+            this.cboplan.Items.AddRange(new object[] {
+            "SI",
+            "NO"});
+            this.cboplan.Location = new System.Drawing.Point(145, 8);
+            this.cboplan.Name = "cboplan";
+            this.cboplan.Size = new System.Drawing.Size(99, 21);
+            this.cboplan.TabIndex = 24;
+            this.cboplan.SelectedIndexChanged += new System.EventHandler(this.cboplan_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(119, 11);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Plan";
+            // 
             // cboaplica
             // 
             this.cboaplica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -333,28 +355,6 @@
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // cboplan
-            // 
-            this.cboplan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboplan.FormattingEnabled = true;
-            this.cboplan.Items.AddRange(new object[] {
-            "SI",
-            "NO"});
-            this.cboplan.Location = new System.Drawing.Point(145, 8);
-            this.cboplan.Name = "cboplan";
-            this.cboplan.Size = new System.Drawing.Size(99, 21);
-            this.cboplan.TabIndex = 24;
-            this.cboplan.SelectedIndexChanged += new System.EventHandler(this.cboplan_SelectedIndexChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(119, 11);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 13);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Plan";
             // 
             // frmEmpleadoPensionSeguro
             // 

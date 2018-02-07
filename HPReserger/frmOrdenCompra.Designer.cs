@@ -445,7 +445,7 @@
             this.MinimumSize = new System.Drawing.Size(901, 662);
             this.Name = "frmOrdenCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Orden de Compra y Servicio";
+            this.Text = "Orden de Compra y Servicio";
             this.Load += new System.EventHandler(this.frmOrdenCompra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridOC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle)).EndInit();

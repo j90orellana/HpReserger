@@ -48,12 +48,16 @@
             this.cbomovilidad = new System.Windows.Forms.ComboBox();
             this.dtgmovilidad = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtmovilidad = new HpResergerUserControls.NumBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtregular = new HpResergerUserControls.NumBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.pbfotoproduccion = new System.Windows.Forms.PictureBox();
             this.lklProduccion = new System.Windows.Forms.LinkLabel();
             this.btnimagenproduccion = new System.Windows.Forms.Button();
+            this.txtproduccion = new HpResergerUserControls.NumBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtdestaque = new HpResergerUserControls.NumBox();
             this.lbldestaque = new System.Windows.Forms.Label();
             this.numdestaque = new System.Windows.Forms.NumericUpDown();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -63,10 +67,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnmodificar = new System.Windows.Forms.Button();
             this.dialogoAbrirArchivoAnexoFunciones = new System.Windows.Forms.OpenFileDialog();
-            this.txtdestaque = new HpResergerUserControls.NumBox();
-            this.txtproduccion = new HpResergerUserControls.NumBox();
-            this.txtregular = new HpResergerUserControls.NumBox();
-            this.txtmovilidad = new HpResergerUserControls.NumBox();
             ((System.ComponentModel.ISupportInitialize)(this.numproduccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgdestaque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgproduccion)).BeginInit();
@@ -304,6 +304,15 @@
             this.toolTip1.SetToolTip(this.groupBox1, "Monto fijo. \r\nPuede aplicarse a un solo periodo o a varios periodos. \r\nHabilitar " +
         "checks para marcar los meses y año que corresponde.");
             // 
+            // txtmovilidad
+            // 
+            this.txtmovilidad.AutoSize = true;
+            this.txtmovilidad.Location = new System.Drawing.Point(309, 13);
+            this.txtmovilidad.Name = "txtmovilidad";
+            this.txtmovilidad.NextControlOnEnter = null;
+            this.txtmovilidad.Size = new System.Drawing.Size(103, 21);
+            this.txtmovilidad.TabIndex = 71;
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -317,6 +326,15 @@
             this.groupBox2.Size = new System.Drawing.Size(660, 37);
             this.groupBox2.TabIndex = 72;
             this.groupBox2.TabStop = false;
+            // 
+            // txtregular
+            // 
+            this.txtregular.AutoSize = true;
+            this.txtregular.Location = new System.Drawing.Point(309, 10);
+            this.txtregular.Name = "txtregular";
+            this.txtregular.NextControlOnEnter = null;
+            this.txtregular.Size = new System.Drawing.Size(103, 21);
+            this.txtregular.TabIndex = 72;
             // 
             // groupBox3
             // 
@@ -362,13 +380,26 @@
             // 
             // btnimagenproduccion
             // 
+            this.btnimagenproduccion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnimagenproduccion.BackgroundImage")));
+            this.btnimagenproduccion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnimagenproduccion.FlatAppearance.BorderSize = 0;
+            this.btnimagenproduccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnimagenproduccion.Location = new System.Drawing.Point(485, 12);
             this.btnimagenproduccion.Name = "btnimagenproduccion";
-            this.btnimagenproduccion.Size = new System.Drawing.Size(28, 22);
+            this.btnimagenproduccion.Size = new System.Drawing.Size(20, 20);
             this.btnimagenproduccion.TabIndex = 70;
             this.btnimagenproduccion.Text = "...";
             this.btnimagenproduccion.UseVisualStyleBackColor = true;
             this.btnimagenproduccion.Click += new System.EventHandler(this.btnimagenproduccion_Click);
+            // 
+            // txtproduccion
+            // 
+            this.txtproduccion.AutoSize = true;
+            this.txtproduccion.Location = new System.Drawing.Point(309, 12);
+            this.txtproduccion.Name = "txtproduccion";
+            this.txtproduccion.NextControlOnEnter = null;
+            this.txtproduccion.Size = new System.Drawing.Size(103, 22);
+            this.txtproduccion.TabIndex = 67;
             // 
             // groupBox4
             // 
@@ -387,6 +418,15 @@
             this.groupBox4.TabIndex = 74;
             this.groupBox4.TabStop = false;
             this.toolTip1.SetToolTip(this.groupBox4, resources.GetString("groupBox4.ToolTip"));
+            // 
+            // txtdestaque
+            // 
+            this.txtdestaque.AutoSize = true;
+            this.txtdestaque.Location = new System.Drawing.Point(309, 13);
+            this.txtdestaque.Name = "txtdestaque";
+            this.txtdestaque.NextControlOnEnter = null;
+            this.txtdestaque.Size = new System.Drawing.Size(103, 21);
+            this.txtdestaque.TabIndex = 66;
             // 
             // lbldestaque
             // 
@@ -476,38 +516,6 @@
             // dialogoAbrirArchivoAnexoFunciones
             // 
             this.dialogoAbrirArchivoAnexoFunciones.FileName = "openFileDialog1";
-            // 
-            // txtdestaque
-            // 
-            this.txtdestaque.AutoSize = true;
-            this.txtdestaque.Location = new System.Drawing.Point(309, 13);
-            this.txtdestaque.Name = "txtdestaque";
-            this.txtdestaque.Size = new System.Drawing.Size(103, 21);
-            this.txtdestaque.TabIndex = 66;
-            // 
-            // txtproduccion
-            // 
-            this.txtproduccion.AutoSize = true;
-            this.txtproduccion.Location = new System.Drawing.Point(309, 12);
-            this.txtproduccion.Name = "txtproduccion";
-            this.txtproduccion.Size = new System.Drawing.Size(103, 22);
-            this.txtproduccion.TabIndex = 67;
-            // 
-            // txtregular
-            // 
-            this.txtregular.AutoSize = true;
-            this.txtregular.Location = new System.Drawing.Point(309, 10);
-            this.txtregular.Name = "txtregular";
-            this.txtregular.Size = new System.Drawing.Size(103, 21);
-            this.txtregular.TabIndex = 72;
-            // 
-            // txtmovilidad
-            // 
-            this.txtmovilidad.AutoSize = true;
-            this.txtmovilidad.Location = new System.Drawing.Point(309, 13);
-            this.txtmovilidad.Name = "txtmovilidad";
-            this.txtmovilidad.Size = new System.Drawing.Size(103, 21);
-            this.txtmovilidad.TabIndex = 71;
             // 
             // frmbonos
             // 
