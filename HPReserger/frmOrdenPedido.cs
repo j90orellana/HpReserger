@@ -17,7 +17,9 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        DataTable Activo;
         DataRow DatosU;
+
         private void frmOrdenPedido_Load(object sender, EventArgs e)
         {
             txtUsuario.Text = frmLogin.Usuario;
@@ -40,10 +42,20 @@ namespace HPReserger
             cboempresa.DisplayMember = "descripcion";
             cboempresa.ValueMember = "codigo";
             cboempresa.DataSource = clOrdenPedido.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
+            CargarValoresdeActivo();
         }
+
+        private void CargarValoresdeActivo()
+        {
+            Activo = new DataTable();
+            Activo.Columns.Add("CODIGO", typeof(int));
+            Activo.Columns.Add("VALOR", typeof(string));
+            Activo.Rows.Add(new object[] { "0", "NO" });
+            Activo.Rows.Add(new object[] { "1", "SI" });
+                    }
         private void gridItem_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 1 && e.RowIndex > -1)
+            if (e.ColumnIndex == Item.Index && e.RowIndex > -1)
             {
                 DataGridViewComboBoxCell MarcaColumn = gridItem.Rows[e.RowIndex].Cells["Marca"] as DataGridViewComboBoxCell;
                 MarcaColumn.Value = null;
@@ -53,12 +65,12 @@ namespace HPReserger
                 MarcaColumn.DisplayMember = "Marcas";
                 MarcaColumn.DataSource = clOrdenPedido.MarcaArticulo(idItem);
             }
-            if (e.ColumnIndex == 2 && e.RowIndex > -1)
+            if (e.ColumnIndex == Marca.Index && e.RowIndex > -1)
             {
                 DataGridViewComboBoxCell ModeloColumn = gridItem.Rows[e.RowIndex].Cells["Modelo"] as DataGridViewComboBoxCell;
                 ModeloColumn.Value = null;
 
-                if (gridItem.CurrentRow.Cells["Marca"].Value != null)
+                if (gridItem.CurrentRow.Cells["Marca"].Value != null && gridItem.CurrentRow.Cells["Marca"].Value.ToString() != "")
                 {
                     ModeloColumn.ValueMember = "IdModelos";
                     ModeloColumn.DisplayMember = "Modelos";
@@ -111,7 +123,7 @@ namespace HPReserger
                     int FilaGrabarArticulo = 0;
                     for (FilaGrabarArticulo = 0; FilaGrabarArticulo < gridItem.Rows.Count; FilaGrabarArticulo++)
                     {
-                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[4].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[1].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[2].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[3].Value), "ARTICULO");
+                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Cantidad.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Item.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Marca.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Modelo.Name].Value), "ARTICULO", (int)gridItem[ActFijo.Name, FilaGrabarArticulo].Value);
                     }
                 }
                 else
@@ -120,11 +132,11 @@ namespace HPReserger
                     for (FilaGrabarServicio = 0; FilaGrabarServicio < gridItem.Rows.Count; FilaGrabarServicio++)
                     {
                         string cadenita = "";
-                        foreach (char c in gridItem.Rows[FilaGrabarServicio].Cells[4].Value.ToString())
+                        foreach (char c in gridItem.Rows[FilaGrabarServicio].Cells[Cantidad.Name].Value.ToString())
                         {
                             cadenita += char.ToUpper(c);
                         }
-                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, 0, Convert.ToInt32(gridItem.Rows[FilaGrabarServicio].Cells[1].Value), 1, 1, cadenita);
+                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, 0, Convert.ToInt32(gridItem.Rows[FilaGrabarServicio].Cells[Item.Name].Value), 1, 1, cadenita, 0);
                     }
                 }
                 if (IdNumero != 0)
@@ -149,39 +161,45 @@ namespace HPReserger
             int CodigoArticulo = 0;
             int CodigoMarca = 0;
             int CodigoModelo = 0;
+            int Activofijo = 0;
             if (Tipo == 0)
             {
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
                 {
-                    if (Grid.Rows[fila].Cells[1].Value == null)
+                    if (Grid.Rows[fila].Cells[Item.Name].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Artículo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
-                    if (Grid.Rows[fila].Cells[2].Value == null)
+                    if (Grid.Rows[fila].Cells[Marca.Name].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar una Marca", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
-                    if (Grid.Rows[fila].Cells[3].Value == null)
+                    if (Grid.Rows[fila].Cells[Modelo.Name].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Modelo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
-                    if (string.IsNullOrWhiteSpace(Grid.Rows[fila].Cells[4].Value.ToString()))
+                    if (Grid.Rows[fila].Cells[Cantidad.Name].Value == null)
+                    {
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return false;
+                    }
+                    if (string.IsNullOrWhiteSpace(Grid.Rows[fila].Cells[Cantidad.Name].Value.ToString()))
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     else
-                        if (Convert.ToInt32(Grid.Rows[fila].Cells[4].Value.ToString()) <= 0)
+                        if (Convert.ToInt32(Grid.Rows[fila].Cells[Cantidad.Name].Value.ToString()) <= 0)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     else
                     {
-                        string Cant1 = Grid.Rows[fila].Cells[4].Value.ToString();
+                        string Cant1 = Grid.Rows[fila].Cells[Cantidad.Name].Value.ToString();
                         decimal Cant2 = 0;
                         bool Res = decimal.TryParse(Cant1, out Cant2);
                         if (Res == false)
@@ -195,14 +213,15 @@ namespace HPReserger
                 filaBuscar = 0;
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
                 {
-                    CodigoArticulo = Convert.ToInt32(Grid.Rows[fila].Cells[1].Value.ToString());
-                    CodigoMarca = Convert.ToInt32(Grid.Rows[fila].Cells[2].Value.ToString());
-                    CodigoModelo = Convert.ToInt32(Grid.Rows[fila].Cells[3].Value.ToString());
+                    CodigoArticulo = Convert.ToInt32(Grid.Rows[fila].Cells[Item.Name].Value.ToString());
+                    CodigoMarca = Convert.ToInt32(Grid.Rows[fila].Cells[Marca.Name].Value.ToString());
+                    CodigoModelo = Convert.ToInt32(Grid.Rows[fila].Cells[Modelo.Name].Value.ToString());
+                    Activofijo = Convert.ToInt32(Grid.Rows[fila].Cells[ActFijo.Name].Value.ToString());
                     for (filaBuscar = 0; filaBuscar < Grid.Rows.Count; filaBuscar++)
                     {
-                        if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[1].Value.ToString()) && CodigoMarca == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[2].Value.ToString()) && CodigoModelo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[3].Value.ToString()) && fila != filaBuscar)
+                        if (Activofijo == (int)Grid.Rows[filaBuscar].Cells[Item.Name].Value && CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Item.Name].Value.ToString()) && CodigoMarca == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Marca.Name].Value.ToString()) && CodigoModelo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Modelo.Name].Value.ToString()) && fila != filaBuscar)
                         {
-                            MessageBox.Show("El Artículo " + Grid.Rows[filaBuscar].Cells[1].FormattedValue.ToString() + " de Marca " + Grid.Rows[filaBuscar].Cells[2].FormattedValue.ToString() + " de Modelo " + Grid.Rows[filaBuscar].Cells[3].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("El Artículo " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " de Marca " + Grid.Rows[filaBuscar].Cells[Marca.Name].FormattedValue.ToString() + " de Modelo " + Grid.Rows[filaBuscar].Cells[Modelo.Name].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return false;
                         }
                     }
@@ -212,12 +231,12 @@ namespace HPReserger
             {
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
                 {
-                    if (Grid.Rows[fila].Cells[1].Value == null)
+                    if (Grid.Rows[fila].Cells[Item.Name].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Servicio", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
-                    if (Grid.Rows[fila].Cells[4].Value == null)
+                    if (Grid.Rows[fila].Cells[Cantidad.Name].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe ingresar Observaciones", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
@@ -227,12 +246,12 @@ namespace HPReserger
                 filaBuscar = 0;
                 for (fila = 0; fila < Grid.Rows.Count; fila++)
                 {
-                    CodigoArticulo = Convert.ToInt32(Grid.Rows[fila].Cells[1].Value.ToString());
+                    CodigoArticulo = Convert.ToInt32(Grid.Rows[fila].Cells[Item.Name].Value.ToString());
                     for (filaBuscar = 0; filaBuscar < Grid.Rows.Count; filaBuscar++)
                     {
-                        if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[1].Value.ToString()) && fila != filaBuscar)
+                        if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Item.Name].Value.ToString()) && fila != filaBuscar)
                         {
-                            MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[1].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return false;
                         }
                     }
@@ -269,7 +288,9 @@ namespace HPReserger
                 else
                 {*/
             gridItem.Rows.Add();
-            gridItem[3, gridItem.RowCount - 1].Value = "";
+            gridItem[Cantidad.Name, gridItem.RowCount - 1].Value = 0;
+
+            gridItem[ActFijo.Name, gridItem.RowCount - 1].Value = 1;
             /*   }
             */
         }
@@ -308,7 +329,7 @@ namespace HPReserger
         }
         private void gridItem_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (gridItem.CurrentCell.ColumnIndex == 4 && cboTipoPedido.SelectedIndex == 0)
+            if (gridItem.CurrentCell.ColumnIndex == Cantidad.Index && cboTipoPedido.SelectedIndex == 0)
             {
                 TextBox txt = e.Control as TextBox;
                 if (txt != null)
@@ -317,7 +338,7 @@ namespace HPReserger
                     txt.KeyPress += new KeyPressEventHandler(txtNumeros_KeyPress);
                 }
             }
-            if (gridItem.CurrentCell.ColumnIndex == 4 && cboTipoPedido.SelectedIndex == 1)
+            if (gridItem.CurrentCell.ColumnIndex == Cantidad.Index && cboTipoPedido.SelectedIndex == 1)
             {
                 TextBox txt = e.Control as TextBox;
                 if (txt != null)
@@ -346,20 +367,20 @@ namespace HPReserger
                 gridItem.Refresh();
             }
 
-            DataGridViewComboBoxColumn ItemColumn = gridItem.Columns["Item"] as DataGridViewComboBoxColumn;
+            DataGridViewComboBoxColumn ItemColumn = gridItem.Columns[Item.Name] as DataGridViewComboBoxColumn;
             ItemColumn.DisplayMember = "Descripcion";
             ItemColumn.ValueMember = "Id_Articulo";
 
             if (cboTipoPedido.SelectedIndex > -1)
             {
                 ItemColumn.DataSource = clOrdenPedido.ItemCombo(Convert.ToInt32(cboTipoPedido.SelectedValue.ToString()));
-
                 if (cboTipoPedido.SelectedIndex == 0)
                 {
                     if (gridItem.Columns.Count == 0)
                     {
                         gridItem.Columns.Add("accion", "");
                         gridItem.Columns.Add("Item", "");
+                        gridItem.Columns.Add("ActFijo", "");
                         gridItem.Columns.Add("Marca", "");
                         gridItem.Columns.Add("Modelo", "");
                         gridItem.Columns.Add("Cantidad", "");
@@ -370,18 +391,21 @@ namespace HPReserger
                     gridItem.Columns[1].Visible = true;
                     gridItem.Columns[1].HeaderText = "Item";
 
-                    //   gridItem.Columns[1].Width = 180;
                     gridItem.Columns[2].Visible = true;
-                    gridItem.Columns[2].HeaderText = "Marca";
+                    gridItem.Columns[2].HeaderText = "ActFijo";
+
+                    //   gridItem.Columns[1].Width = 180;
+                    gridItem.Columns[3].Visible = true;
+                    gridItem.Columns[3].HeaderText = "Marca";
 
                     //   gridItem.Columns[2].Width = 180;
-                    gridItem.Columns[3].Visible = true;
-                    gridItem.Columns[3].HeaderText = "Modelo";
+                    gridItem.Columns[4].Visible = true;
+                    gridItem.Columns[4].HeaderText = "Modelo";
 
                     //  gridItem.Columns[3].Width = 100;
-                    gridItem.Columns[4].Visible = true;
-                    gridItem.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    gridItem.Columns[4].HeaderText = "Cantidad";
+                    gridItem.Columns[5].Visible = true;
+                    gridItem.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    gridItem.Columns[5].HeaderText = "Cantidad";
 
                 }
                 else
@@ -390,6 +414,7 @@ namespace HPReserger
                     {
                         gridItem.Columns.Add("Accion", "");
                         gridItem.Columns.Add("Item", "");
+                        gridItem.Columns.Add("ActFijo", "");
                         gridItem.Columns.Add("Marca", "");
                         gridItem.Columns.Add("Modelo", "");
                         gridItem.Columns.Add("Cantidad", "");
@@ -406,13 +431,16 @@ namespace HPReserger
                     //   gridItem.Columns[1].Width = 0;
                     gridItem.Columns[2].Visible = false;
 
-                    //   gridItem.Columns[2].Width = 0;
+
                     gridItem.Columns[3].Visible = false;
 
+                    //   gridItem.Columns[2].Width = 0;
+                    gridItem.Columns[4].Visible = false;
+
                     //      gridItem.Columns[3].Width = 340;
-                    gridItem.Columns[4].Visible = true;
-                    gridItem.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    gridItem.Columns[4].HeaderText = "Observaciones";
+                    gridItem.Columns[5].Visible = true;
+                    gridItem.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    gridItem.Columns[5].HeaderText = "Observaciones";
 
                 }
 
@@ -452,7 +480,7 @@ namespace HPReserger
 
         private void gridItem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 1 && e.RowIndex >= 0)
+            if (e.ColumnIndex == Item.Index && e.RowIndex >= 0)
             {
                 DataGridViewComboBoxColumn ItemColumn = gridItem.Columns["Item"] as DataGridViewComboBoxColumn;
                 ItemColumn.DisplayMember = "Descripcion";
@@ -460,6 +488,14 @@ namespace HPReserger
                 ItemColumn.DataSource = clOrdenPedido.ItemCombo(Convert.ToInt32(cboTipoPedido.SelectedValue.ToString()));
 
             }
+            if (e.ColumnIndex == ActFijo.Index && e.RowIndex >= 0)
+            {
+                DataGridViewComboBoxColumn ItemColumna = gridItem.Columns[ActFijo.Name] as DataGridViewComboBoxColumn;
+                ItemColumna.DisplayMember = "valor";
+                ItemColumna.ValueMember = "codigo";
+                ItemColumna.DataSource = Activo;
+            }
+
         }
 
         private void btnREfres_Click(object sender, EventArgs e)
@@ -469,6 +505,23 @@ namespace HPReserger
             ItemColumn.ValueMember = "Id_Articulo";
             ItemColumn.DataSource = clOrdenPedido.ItemCombo(Convert.ToInt32(cboTipoPedido.SelectedValue.ToString()));
 
+        }
+
+        private void gridItem_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+        DataGridViewComboBoxColumn Combo;
+        private void gridItem_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (gridItem.RowCount > 0)
+            {
+                int y = e.RowIndex;
+                Combo = gridItem.Columns[ActFijo.Name.ToString()] as DataGridViewComboBoxColumn;
+                Combo.ValueMember = "codigo";
+                Combo.DisplayMember = "valor";
+                Combo.DataSource = Activo;
+            }
         }
     }
 }

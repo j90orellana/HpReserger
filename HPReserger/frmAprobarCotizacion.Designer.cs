@@ -137,6 +137,7 @@
             this.gridCotizacion.Name = "gridCotizacion";
             this.gridCotizacion.ReadOnly = true;
             this.gridCotizacion.RowHeadersVisible = false;
+            this.gridCotizacion.RowTemplate.Height = 16;
             this.gridCotizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacion.Size = new System.Drawing.Size(616, 278);
             this.gridCotizacion.TabIndex = 28;
@@ -295,6 +296,7 @@
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridCotizacionesAsociadas.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.gridCotizacionesAsociadas.RowHeadersVisible = false;
+            this.gridCotizacionesAsociadas.RowTemplate.Height = 16;
             this.gridCotizacionesAsociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacionesAsociadas.Size = new System.Drawing.Size(616, 176);
             this.gridCotizacionesAsociadas.TabIndex = 37;

@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFactura));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtnrofactura = new System.Windows.Forms.TextBox();
             this.txtruc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -508,6 +508,7 @@
             this.DtgConten.MultiSelect = false;
             this.DtgConten.Name = "DtgConten";
             this.DtgConten.RowHeadersVisible = false;
+            this.DtgConten.RowTemplate.Height = 16;
             this.DtgConten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DtgConten.Size = new System.Drawing.Size(699, 169);
             this.DtgConten.TabIndex = 16;
@@ -563,8 +564,8 @@
             // 
             this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle1;
             this.CANTIDAD.HeaderText = "Cant.";
             this.CANTIDAD.Name = "CANTIDAD";
             this.CANTIDAD.ReadOnly = true;
@@ -574,9 +575,9 @@
             // 
             this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PRECIOUNIT.DataPropertyName = "preciounit";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle2;
             this.PRECIOUNIT.HeaderText = "PrecioUnit.";
             this.PRECIOUNIT.Name = "PRECIOUNIT";
             this.PRECIOUNIT.Width = 84;
@@ -585,10 +586,10 @@
             // 
             this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.subtotale.DataPropertyName = "subtotal";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "n2";
-            dataGridViewCellStyle8.NullValue = "0.00";
-            this.subtotale.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "n2";
+            dataGridViewCellStyle3.NullValue = "0.00";
+            this.subtotale.DefaultCellStyle = dataGridViewCellStyle3;
             this.subtotale.HeaderText = "Subtotal";
             this.subtotale.Name = "subtotale";
             this.subtotale.ReadOnly = true;
@@ -598,10 +599,10 @@
             // 
             this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valueigv.DataPropertyName = "valueigv";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "n2";
-            dataGridViewCellStyle9.NullValue = "0.00";
-            this.valueigv.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            dataGridViewCellStyle4.NullValue = "0.00";
+            this.valueigv.DefaultCellStyle = dataGridViewCellStyle4;
             this.valueigv.HeaderText = "Igv";
             this.valueigv.Name = "valueigv";
             this.valueigv.ReadOnly = true;
@@ -611,10 +612,10 @@
             // 
             this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TOTALFAC.DataPropertyName = "total";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0.00";
-            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0.00";
+            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle5;
             this.TOTALFAC.HeaderText = "Total";
             this.TOTALFAC.Name = "TOTALFAC";
             this.TOTALFAC.ReadOnly = true;
@@ -869,6 +870,7 @@
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
+            this.Dtguias.RowTemplate.Height = 16;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtguias.Size = new System.Drawing.Size(705, 184);
             this.Dtguias.TabIndex = 21;

@@ -117,6 +117,7 @@
             this.gridCotizacion.Name = "gridCotizacion";
             this.gridCotizacion.ReadOnly = true;
             this.gridCotizacion.RowHeadersVisible = false;
+            this.gridCotizacion.RowTemplate.Height = 16;
             this.gridCotizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacion.Size = new System.Drawing.Size(616, 230);
             this.gridCotizacion.TabIndex = 2;
@@ -247,6 +248,7 @@
             this.gridCotizacionesAsociadas.Name = "gridCotizacionesAsociadas";
             this.gridCotizacionesAsociadas.ReadOnly = true;
             this.gridCotizacionesAsociadas.RowHeadersVisible = false;
+            this.gridCotizacionesAsociadas.RowTemplate.Height = 16;
             this.gridCotizacionesAsociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacionesAsociadas.Size = new System.Drawing.Size(619, 125);
             this.gridCotizacionesAsociadas.TabIndex = 17;
@@ -534,6 +536,7 @@
             this.dtgpedido.Location = new System.Drawing.Point(9, 520);
             this.dtgpedido.Name = "dtgpedido";
             this.dtgpedido.RowHeadersVisible = false;
+            this.dtgpedido.RowTemplate.Height = 16;
             this.dtgpedido.Size = new System.Drawing.Size(619, 150);
             this.dtgpedido.TabIndex = 21;
             this.dtgpedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgpedido_CellClick);

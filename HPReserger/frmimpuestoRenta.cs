@@ -115,10 +115,10 @@ namespace HPReserger
             for (int i = 0; i < dtgconten.RowCount; i++)
             {
                 //1=insertar 2=actualizar
-                if (dtgconten["id", i].Value != null)
-                    CapaLogica.InsertarActualizarImpuestoRenta(2, (int)dtgconten["id", i].Value, dtgconten["descripcion", i].Value.ToString(), (decimal)dtgconten["minimo", i].Value, (decimal)dtgconten["maximo", i].Value, ((decimal)dtgconten["valor", i].Value), dtgconten["observacion", i].Value.ToString(), frmLogin.CodigoUsuario);
+                if (dtgconten["id", i].Value.ToString() != "")
+                    CapaLogica.InsertarActualizarImpuestoRenta(2, (int)dtgconten["id", i].Value, dtgconten["descripcion", i].Value.ToString(), (decimal)dtgconten["minimo", i].Value, (decimal)dtgconten["maximo", i].Value, ((decimal)dtgconten["valor", i].Value) / 100, dtgconten["observacion", i].Value.ToString(), frmLogin.CodigoUsuario);
                 else
-                    CapaLogica.InsertarActualizarImpuestoRenta(1, (int)dtgconten["id", i].Value, dtgconten["descripcion", i].Value.ToString(), (decimal)dtgconten["minimo", i].Value, (decimal)dtgconten["maximo", i].Value, ((decimal)dtgconten["valor", i].Value), dtgconten["observacion", i].Value.ToString(), frmLogin.CodigoUsuario);
+                    CapaLogica.InsertarActualizarImpuestoRenta(1, i, dtgconten["descripcion", i].Value.ToString(), (decimal)dtgconten["minimo", i].Value, (decimal)dtgconten["maximo", i].Value, ((decimal)dtgconten["valor", i].Value), dtgconten["observacion", i].Value.ToString(), frmLogin.CodigoUsuario);
             }
             msg("Guardado Con Exito");
             btncancelar_Click(sender, e);
@@ -184,10 +184,11 @@ namespace HPReserger
             {
                 if (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4)
                 {
-                    if (string.IsNullOrWhiteSpace(dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                    {
-                        dtgconten[e.ColumnIndex, e.RowIndex].Value = 0;
-                    }
+                    if (dtgconten[e.ColumnIndex, e.RowIndex].Value != null)
+                        if (string.IsNullOrWhiteSpace(dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                        {
+                            dtgconten[e.ColumnIndex, e.RowIndex].Value = 0;
+                        }
                 }
             }
         }

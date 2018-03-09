@@ -9,6 +9,7 @@ using System.Data.SqlTypes;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace HPResergerCapaDatos
 {
@@ -17,9 +18,9 @@ namespace HPResergerCapaDatos
         abcBaseDatos.Database bd;
         // public string DATASOURCE = "HPLAPTOP";
         public string DATASOURCE = "192.168.0.102";
-        public string BASEDEDATOS = " HpReserger";
-        public string USERID = "mmendoza";
-        public string USERPASS = "123";
+        public string BASEDEDATOS = "sige";
+        public string USERID = "jorellana";
+        public string USERPASS = "456";
         public HPResergerCD()
         {
             bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
@@ -656,7 +657,7 @@ namespace HPResergerCapaDatos
             object[] valor = { buscar };
             return bd.DataTableFromProcedure("usp_listar_provincias", parametros, valor, null);
         }
-        public void InsertarDepartamento(int valor)
+        public void InsertarDepartamento(string valor)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -666,7 +667,7 @@ namespace HPResergerCapaDatos
                     cmd.Connection = cn;
                     cmd.CommandText = "usp_insertar_departamento";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@coddep", SqlDbType.Int).Value = valor;
+                    cmd.Parameters.Add("@valor", SqlDbType.VarChar, 50).Value = valor;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -1059,7 +1060,7 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_ultima_dinamica", null, null, null);
         }
 
-        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, int cuenta, string debe, int estado)
+        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1074,7 +1075,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@ejercicio", SqlDbType.Int).Value = ejercicio;
                     cmd.Parameters.Add("@codope", SqlDbType.Int).Value = codope;
                     cmd.Parameters.Add("@codsub", SqlDbType.Int).Value = codsub;
-                    cmd.Parameters.Add("@cuenta", SqlDbType.Int).Value = cuenta;
+                    cmd.Parameters.Add("@cuenta", SqlDbType.VarChar, 12).Value = cuenta;
                     cmd.Parameters.Add("@debe", SqlDbType.VarChar, 150).Value = debe;
                     cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
 
@@ -1084,7 +1085,7 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, int cuenta, string debe, int estado)
+        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1099,7 +1100,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@ejercicio", SqlDbType.Int).Value = ejercicio;
                     cmd.Parameters.Add("@codope", SqlDbType.Int).Value = codope;
                     cmd.Parameters.Add("@codsub", SqlDbType.Int).Value = codsub;
-                    cmd.Parameters.Add("@cuenta", SqlDbType.Int).Value = cuenta;
+                    cmd.Parameters.Add("@cuenta", SqlDbType.VarChar, 12).Value = cuenta;
                     cmd.Parameters.Add("@debe", SqlDbType.VarChar, 150).Value = debe;
                     cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
 
@@ -1163,7 +1164,7 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_buscar_asientos", parametros, valor, null);
         }
 
-        public void InsertarAsiento(int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado)
+        public void InsertarAsiento(int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1181,6 +1182,9 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@haber", SqlDbType.Decimal).Value = haber;
                     cmd.Parameters.Add("@dina", SqlDbType.Int).Value = dina;
                     cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
+                    cmd.Parameters.Add("@fechavalor", SqlDbType.DateTime).Value = fechavalor;
+                    cmd.Parameters.Add("@proyec", SqlDbType.Int).Value = proyecto;
+                    cmd.Parameters.Add("@etapa", SqlDbType.Int).Value = etapa;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -1240,7 +1244,7 @@ namespace HPResergerCapaDatos
             object[] valor = { codigo, nombre };
             return bd.DataTableFromProcedure("usp_verificar_cuentas_contables", parametros, valor, null);
         }
-        public void InsertarCuentasContables(string cuentan1, int codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
+        public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
        string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
        string traslacion, string bc)
         {
@@ -1254,7 +1258,7 @@ namespace HPResergerCapaDatos
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@cuentan1", SqlDbType.VarChar, 150).Value = cuentan1;
-                    cmd.Parameters.Add("@codcuenta", SqlDbType.Int).Value = codcuenta;
+                    cmd.Parameters.Add("@codcuenta", SqlDbType.VarChar, 12).Value = codcuenta;
                     cmd.Parameters.Add("@nombre", SqlDbType.VarChar, 150).Value = nombre;
                     cmd.Parameters.Add("@tipo", SqlDbType.VarChar, 150).Value = tipo;
                     cmd.Parameters.Add("@natu", SqlDbType.VarChar, 150).Value = natu;
@@ -1279,7 +1283,7 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-        public void ActualizarCuentasContables(int codcuenta, string generica, string grupo,
+        public void ActualizarCuentasContables(string codcuenta, string generica, string grupo,
      string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
      string traslacion, string bc)
         {
@@ -1467,7 +1471,7 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones)
+        public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones, int ActivoFijo)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1484,6 +1488,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@Marca", SqlDbType.Int).Value = Marca;
                     cmd.Parameters.Add("@Modelo", SqlDbType.Int).Value = Modelo;
                     cmd.Parameters.Add("@Observaciones", SqlDbType.VarChar, 256).Value = Observaciones;
+                    cmd.Parameters.Add("@activofijo", SqlDbType.Int).Value = ActivoFijo;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -1491,7 +1496,15 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-
+        DataTable TAblitaSionNo;
+        public void CargarSioNo()
+        {
+            TAblitaSionNo = new DataTable();
+            TAblitaSionNo.Columns.Add("codigo", typeof(int));
+            TAblitaSionNo.Columns.Add("Valor", typeof(string));
+            TAblitaSionNo.Rows.Add(new object[] { 0, "NO" });
+            TAblitaSionNo.Rows.Add(new object[] { 1, "SI" });
+        }
         public DataTable ListarPedidos(int TipoArticulo, string Articulo, DateTime Desde, DateTime Hasta, int Usuario)
         {
             string[] parametros = { "@TipoArticulo", "@Articulo", "@Desde", "@Hasta", "Usuario" };
@@ -2008,7 +2021,10 @@ namespace HPResergerCapaDatos
             object[] valores = { Campo1, Campo2, Tabla };
             return bd.DataTableFromProcedure("usp_get_CargoTipoContratacion", parametros, valores, null);
         }
-
+        public DataTable ConsultaRCumples()
+        {
+            return bd.DataTableFromProcedure("uspConsultarCumpleanos", null, null, null);
+        }
         public DataTable ListarOS(int Usuario)
         {
             string[] parametros = { "@Usuario" };
@@ -2632,7 +2648,7 @@ namespace HPResergerCapaDatos
                 }
                 return datoslogueo;
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 MessageBox.Show("No Hay Conexión a la Base de datos", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
@@ -3396,6 +3412,43 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber", "@dina" };
             object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina };
             return bd.DataTableFromProcedure("usp_guardarfactura", parametros, valores, null);
+
+        }
+        public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)
+        {
+            string[] parametros = { "@año", "@empresa" };
+            object[] valores = { año, empresa };
+            return bd.DataTableFromProcedure("usp_EstadodeGanaciasPerdidas", parametros, valores, null);
+        }
+        public DataTable BalanceGenerarlActivoCorriente(DateTime año, int empresa)
+        {
+            string[] parametros = { "@año", "@empresa" };
+            object[] valores = { año, empresa };
+            return bd.DataTableFromProcedure("usp_BalanceGeneralActivoCorriente", parametros, valores, null);
+        }
+        public DataTable BalanceGenerarlActivonoCorriente(DateTime año, int empresa)
+        {
+            string[] parametros = { "@año", "@empresa" };
+            object[] valores = { año, empresa };
+            return bd.DataTableFromProcedure("usp_BalanceGeneralActivonoCorriente", parametros, valores, null);
+        }
+        public DataTable BalanceGeneralActivoPasivoCorriente(DateTime año, int empresa)
+        {
+            string[] parametros = { "@año", "@empresa" };
+            object[] valores = { año, empresa };
+            return bd.DataTableFromProcedure("usp_BalanceGeneralActivoPasivoCorriente", parametros, valores, null);
+        }
+        public DataTable BalanceGeneralActivoPasivonoCorriente(DateTime año, int empresa)
+        {
+            string[] parametros = { "@año", "@empresa" };
+            object[] valores = { año, empresa };
+            return bd.DataTableFromProcedure("usp_BalanceGeneralActivoPasivonoCorriente", parametros, valores, null);
+        }
+        public DataTable BalanceGeneralPatrimonio(DateTime año, int empresa)
+        {
+            string[] parametros = { "@año", "@empresa" };
+            object[] valores = { año, empresa };
+            return bd.DataTableFromProcedure("usp_BalanceGeneralPatrimonio", parametros, valores, null);
         }
         public DataTable ListarFacturasSinPagar(string buscar, int factura, int provee, int check, string tipo, int fecha, DateTime fechainicio, DateTime fechafin)
         {
@@ -3451,6 +3504,18 @@ namespace HPResergerCapaDatos
             object[] valores = { etapa, ceco, cuenta, cabecera };
             return bd.DataTableFromProcedure("usp_ListarDetalleDelReporteDeCentrodeCosto", parametros, valores, null);
         }
+        public DataTable TiposID(int opcion, int codigo, string valor, int leng)
+        {
+            string[] parametros = { "@opcion", "@cod", "@valor", "@len" };
+            object[] valores = { opcion, codigo, valor, leng };
+            return bd.DataTableFromProcedure("usp_TiposiD", parametros, valores, null);
+        }
+        public DataTable EntidadFinanciera(int opcion, int codigo, string valor, string leng)
+        {
+            string[] parametros = { "@opcion", "@cod", "@valor", "@sufijo" };
+            object[] valores = { opcion, codigo, valor, leng };
+            return bd.DataTableFromProcedure("usp_EntidadFinanciera", parametros, valores, null);
+        }
         public DataTable ListarDetalleDelReporteDeCentrodeCostoFLujos(int etapa, string ceco, string cuenta, int cabecera)
         {
             string[] parametros = { "@etapa", "@ceco", "@cuenta", "@cabecera" };
@@ -3475,11 +3540,17 @@ namespace HPResergerCapaDatos
             object[] valores = { cod, opcion, cargo, usuario, beneficiario, adicional1, adicional2, adicional3, activo };
             return bd.DataTableFromProcedure("usp_InsertarActualizarEmpresaEps", parametros, valores, null);
         }
-        public DataTable InsertarActualizarEmpresaEpsPLanes(int @cod, int codplan, int @opcion, string @cargo, int @usuario, decimal beneficiario, decimal adicional1, decimal adicional2, decimal adicional3)
+        public DataTable InsertarActualizarEmpresaEpsPLanes(int @cod, int codplan, int codeps, int @opcion, string @cargo, int @usuario, decimal monto)
         {
-            string[] parametros = { "@codEmp", "@codPlan", "@opcion", "@cargo", "@usuario", "@beneficiario", "@adicional1", "@adicional2", "@adicional3" };
-            object[] valores = { cod, codplan, opcion, cargo, usuario, beneficiario, adicional1, adicional2, adicional3 };
+            string[] parametros = { "@codEmp", "@codPlan", "@codEps", "@opcion", "@cargo", "@usuario", "@monto" };
+            object[] valores = { cod, codplan, codeps, opcion, cargo, usuario, monto };
             return bd.DataTableFromProcedure("usp_InsertarActualizarEmpresaEpsPLanes", parametros, valores, null);
+        }
+        public DataTable PLanes(int opcion, int cod, int empresa, string plan)
+        {
+            string[] parametros = { "@opcion", "@cod", "@empresa", "@plan" };
+            object[] valores = { opcion, cod, empresa, plan };
+            return bd.DataTableFromProcedure("usp_PLanes", parametros, valores, null);
         }
         public DataTable InsertarActualizarEpsAdicional(int @cod, int @opcion, string @cargo, int @usuario)
         {
@@ -3719,6 +3790,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@empresa", "@tipo", "@numero", "@fecha", "@fechaini", "@fechafin", "@usuario" };
             object[] valores = { empresa, tipo, numero, fecha, fechaini, fechafin, usuario };
             return bd.DataTableFromProcedure("usp_GenerarAsientodeBoletasGeneradas", parametros, valores, null); ;
+        }
+        public DataTable TipodeCambio(int opcion, int año, int mes, int dia, decimal compra, decimal venta, byte[] img)
+        {
+            string[] parametros = { "@opcion", "@año", "@mes", "@dia", "@compra", "@venta", "@img" };
+            object[] valores = { opcion, año, mes, dia, compra, venta, img };
+            return bd.DataTableFromProcedure("usp_TipodeCambio", parametros, valores, null); ;
         }
         public DataTable InsertarCuentasReflejo(int asiento, string cuenta, decimal monto, string lado)
         {

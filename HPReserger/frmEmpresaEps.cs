@@ -122,6 +122,10 @@ namespace HPReserger
                 //modificando
                 CCargos.InsertarActualizarEmpresaEps(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario, 0, 0, 0, 0, checkActivo.Checked);
                 Msg("Actualizado Con Exito");
+                IEpsAdicional IFOrmAdicional = MdiParent as IEpsAdicional;
+                if (IFOrmAdicional != null)
+                    IFOrmAdicional.CargarPLanes();
+
                 iniciar(false);
             }
             if (estado == 0)
@@ -187,6 +191,7 @@ namespace HPReserger
                 planes.Icon = this.Icon;
                 planes.Text = "Planes EPS - " + dtgconten[empresaeps.Name, fila].Value.ToString();
                 planes.CodigoEmpresa = (int)dtgconten[ideps.Name, fila].Value;
+                planes.Owner = MdiParent;
                 planes.ShowDialog();
             }
         }

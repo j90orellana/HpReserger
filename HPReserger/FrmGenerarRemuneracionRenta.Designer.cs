@@ -30,6 +30,7 @@
         {
             this.btngenerar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -39,7 +40,6 @@
             this.cbotipoid = new System.Windows.Forms.ComboBox();
             this.btnrecempresa = new System.Windows.Forms.Button();
             this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,15 +69,24 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(456, 205);
+            this.groupBox1.Size = new System.Drawing.Size(454, 178);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parametros";
             // 
+            // comboMesAño1
+            // 
+            this.comboMesAño1.AutoSize = true;
+            this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.comboMesAño1.Location = new System.Drawing.Point(153, 21);
+            this.comboMesAño1.Name = "comboMesAño1";
+            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.TabIndex = 12;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(101, 29);
+            this.label1.Location = new System.Drawing.Point(104, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 11;
@@ -172,23 +181,16 @@
             this.cboempresa.Size = new System.Drawing.Size(296, 21);
             this.cboempresa.TabIndex = 1;
             // 
-            // comboMesAño1
-            // 
-            this.comboMesAño1.Location = new System.Drawing.Point(150, 21);
-            this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(205, 29);
-            this.comboMesAño1.TabIndex = 12;
-            // 
             // FrmGenerarRemuneracionRenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(456, 205);
+            this.ClientSize = new System.Drawing.Size(454, 178);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(472, 244);
-            this.MinimumSize = new System.Drawing.Size(472, 244);
+            this.MaximumSize = new System.Drawing.Size(470, 217);
+            this.MinimumSize = new System.Drawing.Size(470, 217);
             this.Name = "FrmGenerarRemuneracionRenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar Certificado de Remuneracion y Renta de Quinta Categoria";

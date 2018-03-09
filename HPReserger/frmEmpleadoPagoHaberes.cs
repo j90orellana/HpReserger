@@ -42,21 +42,22 @@ namespace HPReserger
             pnlconten.Enabled = true;
         }
 
-        private void GrabarEditar(int Opcion)
+        private Boolean GrabarEditar(int Opcion)
         {
             if (txtCuenta.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Nº de Cuenta", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuenta.Focus();
-                return;
+                return false;
             }
-            if (txtCuentaCCI.Text.Length < 20)
+            if (txtCuentaCCI.Text.Length < 20 && txtCuentaCCI.Text != "0")
             {
                 MessageBox.Show("Ingrese Nº de Cuenta CCI", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuentaCCI.Focus();
-                return;
+                return false;
             }
             clPagoHaberes.EmpleadoPagoHaberes(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboBanco.SelectedValue.ToString()), Convert.ToInt32(cboMoneda.SelectedValue.ToString()), txtCuenta.Text, txtCuentaCCI.Text, frmLogin.CodigoUsuario, Opcion);
+            return true;
         }
 
         private void frmEmpleadoPagoHaberes_Load(object sender, EventArgs e)
@@ -113,22 +114,25 @@ namespace HPReserger
         {
             if (estado == 1)
             {
-                GrabarEditar(1);
-                MessageBox.Show("Pago de Haberes registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (GrabarEditar(1))
+                {
+                    MessageBox.Show("Pago de Haberes registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                estado = 0;
-                btnaceptar.Enabled = false;
-                pnlconten.Enabled = false;
-                btnModificar.Enabled = true;
+                    estado = 0;
+                    btnaceptar.Enabled = false;
+                    pnlconten.Enabled = false;
+                    btnModificar.Enabled = true;
+                }
             }
             if (estado == 2)
             {
-                GrabarEditar(0);
-                MessageBox.Show("Pago de Haberes actualizo con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                estado = 0;
-                btnaceptar.Enabled = false;
-                pnlconten.Enabled = false; btnModificar.Enabled = true;
+                if (GrabarEditar(0))
+                {
+                    MessageBox.Show("Pago de Haberes actualizo con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    estado = 0;
+                    btnaceptar.Enabled = false;
+                    pnlconten.Enabled = false; btnModificar.Enabled = true;
+                }
             }
         }
 

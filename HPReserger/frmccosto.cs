@@ -171,7 +171,10 @@ namespace HPReserger
             {
                 txtcodigo.Text = dtgconten["codigos", e.RowIndex].Value.ToString();
                 txtcosto.Text = dtgconten["Descripcion", e.RowIndex].Value.ToString();
-                cbocuentas.Text = dtgconten["idcuenta", e.RowIndex].Value.ToString();
+                if (dtgconten["idcuenta", e.RowIndex].Value.ToString() == "")
+                    cbocuentas.SelectedIndex = -1;
+                else
+                    cbocuentas.Text = dtgconten["idcuenta", e.RowIndex].Value.ToString();
                 cbotiene.SelectedValue = dtgconten["tienecuenta", e.RowIndex].Value.ToString();
             }
 

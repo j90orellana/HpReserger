@@ -77,12 +77,13 @@ namespace HpResergerUserControls
         }
         protected override void OnLeave(EventArgs e)
         {
-            if (this.Text.Length <= 0)
+            if (this.Text.Length <= 0 || Text == "")
             {
                 this.Text = TextoPorDefecto;
                 this.ForeColor = ColorTextoDefecto;
             }
         }
+        
         protected override void OnClick(EventArgs e)
         {
             if (this.Text.ToUpper() == this.TextoPorDefecto.ToUpper())

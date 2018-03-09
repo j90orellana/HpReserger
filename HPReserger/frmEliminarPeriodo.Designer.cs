@@ -30,16 +30,16 @@
         {
             this.btngenerar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnrecempresa = new System.Windows.Forms.Button();
             this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btngenerar
             // 
-            this.btngenerar.Location = new System.Drawing.Point(132, 81);
+            this.btngenerar.Location = new System.Drawing.Point(132, 76);
             this.btngenerar.Name = "btngenerar";
             this.btngenerar.Size = new System.Drawing.Size(121, 24);
             this.btngenerar.TabIndex = 3;
@@ -56,10 +56,19 @@
             this.groupBox1.Controls.Add(this.cboempresa);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(382, 124);
+            this.groupBox1.Size = new System.Drawing.Size(382, 113);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parametros";
+            // 
+            // comboMesAño1
+            // 
+            this.comboMesAño1.AutoSize = true;
+            this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.comboMesAño1.Location = new System.Drawing.Point(81, 46);
+            this.comboMesAño1.Name = "comboMesAño1";
+            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.TabIndex = 13;
             // 
             // radioButton1
             // 
@@ -95,19 +104,14 @@
             this.cboempresa.TabIndex = 0;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
-            // comboMesAño1
-            // 
-            this.comboMesAño1.Location = new System.Drawing.Point(81, 46);
-            this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(205, 29);
-            this.comboMesAño1.TabIndex = 13;
-            // 
             // frmEliminarPeriodo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 151);
+            this.ClientSize = new System.Drawing.Size(404, 137);
             this.Controls.Add(this.groupBox1);
+            this.MaximumSize = new System.Drawing.Size(420, 176);
+            this.MinimumSize = new System.Drawing.Size(420, 176);
             this.Name = "frmEliminarPeriodo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Eliminar Periodo";

@@ -50,6 +50,11 @@ namespace HpResergerUserControls
             combomes.SelectedValue = mes;
             comboaño.SelectedValue = año;
         }
+        public void Fecha(DateTime fecha)
+        {
+            comboaño.SelectedValue = fecha.Year;
+            combomes.SelectedValue = fecha.Month;
+        }
         public void cargarAños()
         {
             años = new DataTable();
@@ -57,7 +62,13 @@ namespace HpResergerUserControls
             años.Columns.Add("valor", typeof(int));
             int año = DateTime.Now.Year;
             DataRow datito = CapaLogica.getMinMaxContrato();
-            int x = DateTime.Now.Year + 1 - DateTime.Parse(datito["minimo"].ToString()).Year;
+            int x;
+            if (datito["minimo"].ToString() != "")
+
+                x = DateTime.Now.Year + 1 - DateTime.Parse(datito["minimo"].ToString()).Year;
+            else
+                x = DateTime.Now.Year - DateTime.Now.Year + 1;
+
             for (int i = 0; i < x; i++)
             {
                 años.Rows.Add(año - i, año - i);
@@ -92,7 +103,7 @@ namespace HpResergerUserControls
             {
                 timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, DateTime.Now.Day);
             }
-            catch (ArgumentOutOfRangeException )
+            catch (ArgumentOutOfRangeException)
             {
                 timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
                 timeaux = timeaux.AddMonths(1).AddDays(-1);
@@ -103,6 +114,13 @@ namespace HpResergerUserControls
         {
             DateTime timeaux;
             timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
+            return timeaux;
+        }
+        public DateTime UltimoDiaDelMes()
+        {
+            DateTime timeaux;
+            timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
+            timeaux = (timeaux.AddMonths(1)).AddDays(-1);
             return timeaux;
         }
         public string FechaParaSQL()
@@ -116,6 +134,31 @@ namespace HpResergerUserControls
         public int GetAño()
         {
             return (int)comboaño.SelectedValue;
+        }
+        public DateTime FechaInicioMes { get; set; }
+        public DateTime FechaFinMes { get; set; }
+        public DateTime FechaConDiaActual { get; set; }
+
+        protected void comboaño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DateTime timexx;
+            if (comboaño.SelectedValue != null && combomes.SelectedValue != null)
+            {
+                timexx = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
+                timexx = (timexx.AddMonths(1)).AddDays(-1);
+                FechaFinMes = timexx;
+                timexx = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, DateTime.Now.Day);
+                FechaConDiaActual = timexx;
+                timexx = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
+                FechaInicioMes = timexx;
+            }
+            OnCambioFechas(e);
+        }
+        public event EventHandler CambioFechas;
+        protected virtual void OnCambioFechas(EventArgs e)
+        {
+            if (CambioFechas != null)
+                CambioFechas(this, e);
         }
     }
 }

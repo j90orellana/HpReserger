@@ -209,7 +209,7 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.listar_Distrito(coddep, codpro, busca);
         }
-        public void InsertarDepartamento(int valor)
+        public void InsertarDepartamento(string valor)
         {
             cdOrdenPedido.InsertarDepartamento(valor);
         }
@@ -334,11 +334,11 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.SacarDinamicas(busca);
         }
-        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, int cuenta, string debe, int estado)
+        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado)
         {
             cdOrdenPedido.InsertarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado);
         }
-        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, int cuenta, string debe, int estado)
+        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado)
         {
             cdOrdenPedido.ModificarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado);
         }
@@ -366,9 +366,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.UltimoAsiento();
         }
-        public void InsertarAsiento(int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado)
+        public void InsertarAsiento(int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa)
         {
-            cdOrdenPedido.InsertarAsiento(codigo, fecha, cuenta, debe, haber, dina, estado);
+            cdOrdenPedido.InsertarAsiento(codigo, fecha, cuenta, debe, haber, dina, estado, fechavalor, proyecto, etapa);
         }
         public void EliminarAsiento(int codigo)
         {
@@ -382,14 +382,14 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerificarCuentas(codigo, nombre);
         }
-        public void InsertarCuentasContables(string cuentan1, int codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
+        public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
            string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
            string traslacion, string bc)
         {
             cdOrdenPedido.InsertarCuentasContables(cuentan1, codcuenta, nombre, tipo, natu, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
                 cuentacierre, analitica, mensual, cierre, traslacion, bc);
         }
-        public void ActualizarCuentasContables(int codcuenta, string generica, string grupo,
+        public void ActualizarCuentasContables(string codcuenta, string generica, string grupo,
           string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
           string traslacion, string bc)
         {
@@ -440,9 +440,9 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.OrdenPedidoCabeceraInsertar(out Numero, Usuario, Tipo, proyecto, etapa);
         }
 
-        public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones)
+        public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones, int ActivoFijo)
         {
-            cdOrdenPedido.OrdenPedidoDetalleInsertar(Numero, Cantidad, Articulo, Marca, Modelo, Observaciones);
+            cdOrdenPedido.OrdenPedidoDetalleInsertar(Numero, Cantidad, Articulo, Marca, Modelo, Observaciones, ActivoFijo);
         }
 
         public DataTable ListarPedidos(int TipoArticulo, string Articulo, DateTime Desde, DateTime Hasta, int Usuario)
@@ -669,10 +669,21 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.SolicitudEmpleadoInsertar(Numero, Cargo, TipoContratacion, Busqueda, AplicaTerna, Area, gerencia, CantPuestos, NroOrdenCompra, Foto, NombreFoto, Usuario);
         }
-
+        public DataTable ConsultarCumpleano()
+        {
+            return cdOrdenPedido.ConsultaRCumples();
+        }
         public DataTable ListarSE(int Usuario)
         {
             return cdOrdenPedido.ListarSE(Usuario);
+        }
+        public DataTable TiposID(int opcion, int codigo, string valor, int leng)
+        {
+            return cdOrdenPedido.TiposID(opcion, codigo, valor, leng);
+        }
+        public DataTable EntidadFinanciera(int opcion, int codigo, string valor, string leng)
+        {
+            return cdOrdenPedido.EntidadFinanciera(opcion, codigo, valor, leng);
         }
         public DataRow CargarImagenSolicitudEmpleado(int Numero)
         {
@@ -1226,6 +1237,30 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina);
         }
+        public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)
+        {
+            return cdOrdenPedido.EstadodeGanaciasPerdidas(año, empresa);
+        }
+        public DataTable BalanceGenerarlActivoCorriente(DateTime año, int empresa)
+        {
+            return cdOrdenPedido.BalanceGenerarlActivoCorriente(año, empresa);
+        }
+        public DataTable BalanceGenerarlActivonoCorriente(DateTime año, int empresa)
+        {
+            return cdOrdenPedido.BalanceGenerarlActivonoCorriente(año, empresa);
+        }
+        public DataTable BalanceGeneralPatrimonio(DateTime año, int empresa)
+        {
+            return cdOrdenPedido.BalanceGeneralPatrimonio(año, empresa);
+        }
+        public DataTable BalanceGeneralActivoPasivoCorriente(DateTime año, int empresa)
+        {
+            return cdOrdenPedido.BalanceGeneralActivoPasivoCorriente(año, empresa);
+        }
+        public DataTable BalanceGeneralActivoPasivonoCorriente(DateTime año, int empresa)
+        {
+            return cdOrdenPedido.BalanceGeneralActivoPasivonoCorriente(año, empresa);
+        }
         public DataTable ListarFacturasSinPagar(string buscar, int factura, int provee, int check, string tipo, int fecha, DateTime fechainicio, DateTime fechafin)
         {
             return cdOrdenPedido.ListarFacturasSinPagar(buscar, factura, provee, check, tipo, fecha, fechainicio, fechafin);
@@ -1280,9 +1315,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarActualizarEmpresaEps(cod, opcion, cargo, usuario, beneficiario, adicional1, adicional2, adicional3, activo);
         }
-        public DataTable InsertarActualizarEmpresaEpsPLanes(int @cod, int codplan, int @opcion, string @cargo, int @usuario, decimal beneficiario, decimal adicional1, decimal adicional2, decimal adicional3)
+        public DataTable InsertarActualizarEmpresaEpsPLanes(int @cod, int codplan, int @opcion, int CodEps, string @cargo, int @usuario, decimal monto)
         {
-            return cdOrdenPedido.InsertarActualizarEmpresaEpsPLanes(cod, codplan, opcion, cargo, usuario, beneficiario, adicional1, adicional2, adicional3);
+            return cdOrdenPedido.InsertarActualizarEmpresaEpsPLanes(cod, codplan, CodEps, opcion, cargo, usuario, monto);
         }
         public DataTable ReversaDeFacturas(string nrofac, string proveedor)
         {
@@ -1291,6 +1326,10 @@ namespace HPResergerCapaLogica
         public DataTable PLanesdelaEmpresa()
         {
             return cdOrdenPedido.PLanesdelaEmpresa();
+        }
+        public DataTable PLanes(int opcion, int cod, int empresa, string plan)
+        {
+            return cdOrdenPedido.PLanes(opcion, cod, empresa, plan);
         }
         public DataTable InsertarActualizarEpsAdicional(int @cod, int @opcion, string @cargo, int @usuario)
         {
@@ -1470,6 +1509,10 @@ namespace HPResergerCapaLogica
         public DataTable GenerarAsientodeBoletasGeneradas(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin, int usuario)
         {
             return cdOrdenPedido.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, fecha, fechaini, fechafin, usuario);
+        }
+        public DataTable TipodeCambio(int opcion, int año, int mes, int dia, decimal compra, decimal venta, byte[] img)
+        {
+            return cdOrdenPedido.TipodeCambio(opcion, año, mes, dia, compra, venta, img);
         }
         public DataTable GenerarGratificaciones(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin, int usuario)
         {

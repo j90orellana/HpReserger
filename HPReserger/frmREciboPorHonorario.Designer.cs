@@ -123,6 +123,7 @@
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
+            this.Dtguias.RowTemplate.Height = 16;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtguias.Size = new System.Drawing.Size(701, 185);
             this.Dtguias.TabIndex = 40;
@@ -311,6 +312,7 @@
             this.DtgConten.MultiSelect = false;
             this.DtgConten.Name = "DtgConten";
             this.DtgConten.RowHeadersVisible = false;
+            this.DtgConten.RowTemplate.Height = 16;
             this.DtgConten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DtgConten.Size = new System.Drawing.Size(699, 196);
             this.DtgConten.TabIndex = 16;

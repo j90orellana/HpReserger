@@ -47,7 +47,7 @@ namespace HPReserger
             iniciar(true);
             txtgerencia.Text = "";
             DataRow codigo = CCargos.VerUltimoIdentificador("TBL_Periodicidad", "Id_Periodicidad");
-            txtcodigo.Text = (int.Parse(codigo["ultimo"].ToString()) + 1).ToString();
+             txtcodigo.Text = (int.Parse(codigo["ultimo"].ToString()) + 1).ToString();
             txtgerencia.Focus();
         }
 

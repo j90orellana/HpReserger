@@ -20,7 +20,7 @@ namespace HPReserger
         public int tipobusca { get; set; }
         public int estado { get; set; }
         public string CuentaN1 { get; set; }
-        public int CodCuenta { get; set; }
+        public string CodCuenta { get; set; }
         public string DesCuentea { get; set; }
         public string TipoCuenta { get; set; }
         public string NatuCuenta { get; set; }
@@ -147,28 +147,46 @@ namespace HPReserger
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            int y = e.RowIndex;
+            if (y >= 0)
             {
-                int y = e.RowIndex;
                 txtcuentan1.Text = dtgconten[1, y].Value.ToString();
                 txtcodcuenta.Text = dtgconten[0, y].Value.ToString();
                 txtnombrecuenta.Text = dtgconten[2, y].Value.ToString();
-                cbotipo.Text = dtgconten[3, y].Value.ToString();
+                if (dtgconten[3, y].Value.ToString() == "")
+                    cbotipo.SelectedIndex = -1;
+                else
+                    cbotipo.Text = dtgconten[3, y].Value.ToString();
                 cbonaturaleza.SelectedValue = dtgconten[4, y].Value.ToString();
-                cbogenerica.Text = dtgconten[5, y].Value.ToString();
-                cbogrupo.Text = dtgconten[6, y].Value.ToString();
+                if (dtgconten[5, y].Value.ToString() == "")
+                    cbogenerica.SelectedValue = 0;
+                else
+                    cbogenerica.Text = dtgconten[5, y].Value.ToString();
+                if (dtgconten[6, y].Value.ToString() == "")
+                    cbogrupo.SelectedValue = 0;
+                else
+                    cbogrupo.Text = dtgconten[6, y].Value.ToString();
                 cborefleja.SelectedValue = dtgconten[7, y].Value.ToString();
                 cboreflejacc.SelectedValue = dtgconten[8, y].Value.ToString();
                 cboreflejadebe.Text = dtgconten[9, y].Value.ToString();
                 cboreflejahaber.Text = dtgconten[10, y].Value.ToString();
                 txtcuentacierre.Text = dtgconten[11, y].Value.ToString();
-                cbocierre.Text = dtgconten[12, y].Value.ToString();
                 cboanalitica.SelectedValue = dtgconten[13, y].Value.ToString();
-                cboajustetraslacion.Text = dtgconten[14, y].Value.ToString();
-                cboajustemensual.Text = dtgconten[15, y].Value.ToString();
+                if (dtgconten[12, y].Value.ToString() == "")
+                    cbocierre.SelectedIndex = -1;
+                else
+                    cbocierre.Text = dtgconten[12, y].Value.ToString();
+                if (dtgconten[14, y].Value.ToString() == "")
+                    cboajustetraslacion.SelectedIndex = -1;
+                else
+                    cboajustetraslacion.Text = dtgconten[14, y].Value.ToString();
+                if (dtgconten[15, y].Value.ToString() == "")
+                    cboajustemensual.SelectedIndex = -1;
+                else
+                    cboajustemensual.Text = dtgconten[15, y].Value.ToString();
+
                 cbocuentabc.SelectedValue = dtgconten[16, y].Value.ToString();
             }
-            catch { }
         }
         public void Activar()
         {
@@ -255,7 +273,7 @@ namespace HPReserger
         public void CargarValoresDeIngreso()
         {
             CuentaN1 = txtcuentan1.Text;
-            CodCuenta = Convert.ToInt32(txtcodcuenta.Text);
+            CodCuenta = txtcodcuenta.Text;
             DesCuentea = txtnombrecuenta.Text;
             if (cbotipo.Text != "")
                 TipoCuenta = cbotipo.SelectedValue.ToString();
@@ -344,7 +362,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrecuenta.Text + " Código Cuenta: " + txtcodcuenta.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes") ;
+                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrecuenta.Text + " Código Cuenta: " + txtcodcuenta.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
                             MessageBox.Show("Eliminado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -362,10 +380,32 @@ namespace HPReserger
             Txtbusca.Text = final;
             Activar(); ActivarModi();
         }
-
         private void cbotipo_TextChanged(object sender, EventArgs e)
         {
             //cbotipo.SelectedIndex = index;
+        }
+        private void btncargarcuentas_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog.Filter = "Archivo de Excel|*.xls;*.xlsx";
+            if (DialogResult.OK == OpenFileDialog.ShowDialog())
+            {
+                if (OpenFileDialog.FileName != null)
+                {
+                    frmCargadeDatosExcel frmcargaexcel = new frmCargadeDatosExcel();
+                    frmcargaexcel.ruta = OpenFileDialog.FileName;
+                    frmcargaexcel.txtRuta.Text = frmcargaexcel.ruta;
+                    frmcargaexcel.Show();
+                }
+                else
+                {
+                    MSG("No ha Seleccionado un Archivo");
+                }
+            }
+            else MSG("No ha Seleccionado un Archivo");
+        }
+        public void MSG(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 

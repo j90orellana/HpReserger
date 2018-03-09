@@ -202,6 +202,7 @@
             this.gridDetalle2.ReadOnly = true;
             this.gridDetalle2.RowHeadersVisible = false;
             this.gridDetalle2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridDetalle2.RowTemplate.Height = 16;
             this.gridDetalle2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle2.Size = new System.Drawing.Size(587, 182);
             this.gridDetalle2.TabIndex = 33;
@@ -353,6 +354,7 @@
             this.gridDetalle1.ReadOnly = true;
             this.gridDetalle1.RowHeadersVisible = false;
             this.gridDetalle1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridDetalle1.RowTemplate.Height = 16;
             this.gridDetalle1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle1.Size = new System.Drawing.Size(587, 182);
             this.gridDetalle1.TabIndex = 29;

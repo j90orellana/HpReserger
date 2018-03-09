@@ -62,6 +62,7 @@
             this.Acción = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ActivoFijox = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOMODELO = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -119,6 +120,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridListar.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridListar.RowHeadersVisible = false;
+            this.gridListar.RowTemplate.Height = 16;
             this.gridListar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridListar.Size = new System.Drawing.Size(430, 304);
             this.gridListar.TabIndex = 1;
@@ -329,6 +331,7 @@
             this.Acción,
             this.CODIGOARTICULO,
             this.Item,
+            this.ActivoFijox,
             this.CODIGOMARCA,
             this.Marca,
             this.CODIGOMODELO,
@@ -355,10 +358,12 @@
             this.gridDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.gridDetalle.RowHeadersVisible = false;
             this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridDetalle.RowTemplate.Height = 16;
             this.gridDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle.Size = new System.Drawing.Size(677, 304);
             this.gridDetalle.TabIndex = 15;
             this.gridDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle_CellContentClick);
+            this.gridDetalle.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.gridDetalle_DataError);
             this.gridDetalle.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle_RowEnter);
             // 
             // Acción
@@ -390,6 +395,15 @@
             this.Item.Name = "Item";
             this.Item.ReadOnly = true;
             this.Item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ActivoFijox
+            // 
+            this.ActivoFijox.DataPropertyName = "activofijo";
+            this.ActivoFijox.HeaderText = "ACTIVOFIJO";
+            this.ActivoFijox.Name = "ActivoFijox";
+            this.ActivoFijox.ReadOnly = true;
+            this.ActivoFijox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ActivoFijox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // CODIGOMARCA
             // 
@@ -516,6 +530,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Acción;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOARTICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ActivoFijox;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMARCA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewButtonColumn CODIGOMODELO;

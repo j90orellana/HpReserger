@@ -100,7 +100,7 @@ namespace HPReserger
         public void CargarColores()
         {
             Naranja = Color.FromArgb(244, 124, 46);
-            Azul = Color.FromArgb(0, 75, 140);
+            Azul = Color.FromArgb(0, 75, 140);            
         }
         private void frmBancoBcp_Load(object sender, EventArgs e)
         {

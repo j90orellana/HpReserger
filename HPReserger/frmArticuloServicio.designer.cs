@@ -73,9 +73,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cbocuenta = new System.Windows.Forms.ComboBox();
             this.gp1 = new System.Windows.Forms.GroupBox();
+            this.btncentro = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.cbocentrocosto = new System.Windows.Forms.ComboBox();
-            this.btncentro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.veri)).BeginInit();
             this.gp1.SuspendLayout();
@@ -181,6 +181,7 @@
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(545, 287);
@@ -556,6 +557,18 @@
             this.gp1.TabIndex = 118;
             this.gp1.TabStop = false;
             // 
+            // btncentro
+            // 
+            this.btncentro.Enabled = false;
+            this.btncentro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncentro.Location = new System.Drawing.Point(438, 202);
+            this.btncentro.Name = "btncentro";
+            this.btncentro.Size = new System.Drawing.Size(26, 21);
+            this.btncentro.TabIndex = 120;
+            this.btncentro.Text = "...";
+            this.btncentro.UseVisualStyleBackColor = true;
+            this.btncentro.Click += new System.EventHandler(this.btncentro_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -575,18 +588,6 @@
             this.cbocentrocosto.Name = "cbocentrocosto";
             this.cbocentrocosto.Size = new System.Drawing.Size(343, 21);
             this.cbocentrocosto.TabIndex = 118;
-            // 
-            // btncentro
-            // 
-            this.btncentro.Enabled = false;
-            this.btncentro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncentro.Location = new System.Drawing.Point(438, 202);
-            this.btncentro.Name = "btncentro";
-            this.btncentro.Size = new System.Drawing.Size(26, 21);
-            this.btncentro.TabIndex = 120;
-            this.btncentro.Text = "...";
-            this.btncentro.UseVisualStyleBackColor = true;
-            this.btncentro.Click += new System.EventHandler(this.btncentro_Click);
             // 
             // frmArticuloServicio
             // 

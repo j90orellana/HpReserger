@@ -30,6 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.idafp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Afp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seguro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -45,11 +50,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnexportarExcel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.idafp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Afp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Seguro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,11 +87,59 @@
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(367, 196);
             this.dtgconten.TabIndex = 56;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // idafp
+            // 
+            this.idafp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idafp.DataPropertyName = "id";
+            this.idafp.HeaderText = "Id";
+            this.idafp.Name = "idafp";
+            this.idafp.ReadOnly = true;
+            this.idafp.Visible = false;
+            // 
+            // Afp
+            // 
+            this.Afp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Afp.DataPropertyName = "afp";
+            this.Afp.HeaderText = "Afp";
+            this.Afp.Name = "Afp";
+            this.Afp.ReadOnly = true;
+            // 
+            // Aporte
+            // 
+            this.Aporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Aporte.DataPropertyName = "aporte";
+            this.Aporte.HeaderText = "Aporte";
+            this.Aporte.MinimumWidth = 50;
+            this.Aporte.Name = "Aporte";
+            this.Aporte.ReadOnly = true;
+            this.Aporte.Width = 63;
+            // 
+            // Seguro
+            // 
+            this.Seguro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Seguro.DataPropertyName = "seguro";
+            this.Seguro.HeaderText = "Prima";
+            this.Seguro.MinimumWidth = 50;
+            this.Seguro.Name = "Seguro";
+            this.Seguro.ReadOnly = true;
+            this.Seguro.Width = 58;
+            // 
+            // Comision
+            // 
+            this.Comision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Comision.DataPropertyName = "comision";
+            this.Comision.HeaderText = "Comisión";
+            this.Comision.MinimumWidth = 50;
+            this.Comision.Name = "Comision";
+            this.Comision.ReadOnly = true;
+            this.Comision.Width = 74;
             // 
             // btneliminar
             // 
@@ -240,54 +288,6 @@
             this.label5.Size = new System.Drawing.Size(15, 13);
             this.label5.TabIndex = 69;
             this.label5.Text = "%";
-            // 
-            // idafp
-            // 
-            this.idafp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idafp.DataPropertyName = "id";
-            this.idafp.HeaderText = "Id";
-            this.idafp.Name = "idafp";
-            this.idafp.ReadOnly = true;
-            this.idafp.Visible = false;
-            this.idafp.Width = 22;
-            // 
-            // Afp
-            // 
-            this.Afp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Afp.DataPropertyName = "afp";
-            this.Afp.HeaderText = "Afp";
-            this.Afp.Name = "Afp";
-            this.Afp.ReadOnly = true;
-            // 
-            // Aporte
-            // 
-            this.Aporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Aporte.DataPropertyName = "aporte";
-            this.Aporte.HeaderText = "Aporte";
-            this.Aporte.MinimumWidth = 50;
-            this.Aporte.Name = "Aporte";
-            this.Aporte.ReadOnly = true;
-            this.Aporte.Width = 63;
-            // 
-            // Seguro
-            // 
-            this.Seguro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Seguro.DataPropertyName = "seguro";
-            this.Seguro.HeaderText = "Prima";
-            this.Seguro.MinimumWidth = 50;
-            this.Seguro.Name = "Seguro";
-            this.Seguro.ReadOnly = true;
-            this.Seguro.Width = 58;
-            // 
-            // Comision
-            // 
-            this.Comision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Comision.DataPropertyName = "comision";
-            this.Comision.HeaderText = "Comisión";
-            this.Comision.MinimumWidth = 50;
-            this.Comision.Name = "Comision";
-            this.Comision.ReadOnly = true;
-            this.Comision.Width = 74;
             // 
             // frmAfps
             // 

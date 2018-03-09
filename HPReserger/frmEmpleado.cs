@@ -42,6 +42,16 @@ namespace HPReserger
             //CargarDatosEmpleado((int)cboTipoDocumento.SelectedValue, txtNumeroDocumento.Text);
             txtNumeroDocumento_TextChanged(this, new EventArgs());
         }
+        public void CargarEpsAdicional()
+        {
+            if (frmPS != null)
+                frmPS.CargarEpsAdicional();
+        }
+        public void CargarPLanes()
+        {
+            if (frmPS != null)
+                frmPS.CargarPLanes();
+        }
         public void CargarProfesion()
         {
             cadena = cboProfesion.Text;

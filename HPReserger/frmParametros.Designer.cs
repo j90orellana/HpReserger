@@ -128,6 +128,7 @@
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(569, 289);
@@ -193,7 +194,6 @@
             this.usuari.Name = "usuari";
             this.usuari.ReadOnly = true;
             this.usuari.Visible = false;
-            this.usuari.Width = 66;
             // 
             // btnexportarExcel
             // 
@@ -292,8 +292,11 @@
             // 
             // txtvalor
             // 
+            this.txtvalor.AutoSize = true;
             this.txtvalor.Enabled = false;
+            this.txtvalor.FuenteDelTxt = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtvalor.Location = new System.Drawing.Point(439, 12);
+            this.txtvalor.MaxLengthTxt = 32767;
             this.txtvalor.Name = "txtvalor";
             this.txtvalor.Size = new System.Drawing.Size(142, 22);
             this.txtvalor.TabIndex = 144;

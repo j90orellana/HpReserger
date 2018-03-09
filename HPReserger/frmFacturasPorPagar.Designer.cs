@@ -35,6 +35,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbodocumento = new System.Windows.Forms.ComboBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.Nrofactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.razonsocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fechaemision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecharecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -48,17 +59,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnexportarexcel = new System.Windows.Forms.Button();
-            this.Nrofactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.razonsocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fechaemision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecharecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -122,10 +122,101 @@
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(1117, 427);
             this.dtgconten.TabIndex = 17;
             this.dtgconten.TabStop = false;
+            // 
+            // Nrofactura
+            // 
+            this.Nrofactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Nrofactura.DataPropertyName = "nrofactura";
+            this.Nrofactura.HeaderText = "Nro Factura";
+            this.Nrofactura.Name = "Nrofactura";
+            this.Nrofactura.Width = 88;
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "email";
+            this.email.Name = "email";
+            this.email.Visible = false;
+            // 
+            // telefono
+            // 
+            this.telefono.DataPropertyName = "telefono";
+            this.telefono.HeaderText = "telefono";
+            this.telefono.Name = "telefono";
+            this.telefono.Visible = false;
+            // 
+            // razonsocial
+            // 
+            this.razonsocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.razonsocial.DataPropertyName = "razon_social";
+            this.razonsocial.HeaderText = "RazonSocial";
+            this.razonsocial.Name = "razonsocial";
+            // 
+            // ruc
+            // 
+            this.ruc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ruc.DataPropertyName = "ruc";
+            this.ruc.HeaderText = "RUC";
+            this.ruc.Name = "ruc";
+            this.ruc.Width = 52;
+            // 
+            // tipos
+            // 
+            this.tipos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tipos.DataPropertyName = "tipos";
+            this.tipos.HeaderText = "Tipo";
+            this.tipos.Name = "tipos";
+            this.tipos.Width = 52;
+            // 
+            // subtotal
+            // 
+            this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.subtotal.DataPropertyName = "subtotal";
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.Width = 71;
+            // 
+            // Imp
+            // 
+            this.Imp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Imp.DataPropertyName = "igv";
+            this.Imp.HeaderText = "Impuesto";
+            this.Imp.Name = "Imp";
+            this.Imp.Width = 76;
+            // 
+            // Total
+            // 
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.Width = 55;
+            // 
+            // Fechaemision
+            // 
+            this.Fechaemision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Fechaemision.DataPropertyName = "fechaemision";
+            dataGridViewCellStyle3.Format = "g";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Fechaemision.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Fechaemision.HeaderText = "Fecha Emision";
+            this.Fechaemision.Name = "Fechaemision";
+            this.Fechaemision.Width = 94;
+            // 
+            // Fecharecepcion
+            // 
+            this.Fecharecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Fecharecepcion.DataPropertyName = "fecharecepcion";
+            dataGridViewCellStyle4.Format = "g";
+            this.Fecharecepcion.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Fecharecepcion.HeaderText = "Fecha Recepción";
+            this.Fecharecepcion.Name = "Fecharecepcion";
+            this.Fecharecepcion.Width = 105;
             // 
             // txtbuscar
             // 
@@ -269,96 +360,6 @@
             this.btnexportarexcel.Text = "Excel";
             this.btnexportarexcel.UseVisualStyleBackColor = true;
             this.btnexportarexcel.Click += new System.EventHandler(this.btnexportarexcel_Click);
-            // 
-            // Nrofactura
-            // 
-            this.Nrofactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Nrofactura.DataPropertyName = "nrofactura";
-            this.Nrofactura.HeaderText = "Nro Factura";
-            this.Nrofactura.Name = "Nrofactura";
-            this.Nrofactura.Width = 88;
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "email";
-            this.email.Name = "email";
-            this.email.Visible = false;
-            // 
-            // telefono
-            // 
-            this.telefono.DataPropertyName = "telefono";
-            this.telefono.HeaderText = "telefono";
-            this.telefono.Name = "telefono";
-            this.telefono.Visible = false;
-            // 
-            // razonsocial
-            // 
-            this.razonsocial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.razonsocial.DataPropertyName = "razon_social";
-            this.razonsocial.HeaderText = "RazonSocial";
-            this.razonsocial.Name = "razonsocial";
-            // 
-            // ruc
-            // 
-            this.ruc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ruc.DataPropertyName = "ruc";
-            this.ruc.HeaderText = "RUC";
-            this.ruc.Name = "ruc";
-            this.ruc.Width = 52;
-            // 
-            // tipos
-            // 
-            this.tipos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tipos.DataPropertyName = "tipos";
-            this.tipos.HeaderText = "Tipo";
-            this.tipos.Name = "tipos";
-            this.tipos.Width = 52;
-            // 
-            // subtotal
-            // 
-            this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.subtotal.DataPropertyName = "subtotal";
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.Width = 71;
-            // 
-            // Imp
-            // 
-            this.Imp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Imp.DataPropertyName = "igv";
-            this.Imp.HeaderText = "Impuesto";
-            this.Imp.Name = "Imp";
-            this.Imp.Width = 76;
-            // 
-            // Total
-            // 
-            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Total.DataPropertyName = "Total";
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.Width = 55;
-            // 
-            // Fechaemision
-            // 
-            this.Fechaemision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Fechaemision.DataPropertyName = "fechaemision";
-            dataGridViewCellStyle3.Format = "g";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Fechaemision.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Fechaemision.HeaderText = "Fecha Emision";
-            this.Fechaemision.Name = "Fechaemision";
-            this.Fechaemision.Width = 102;
-            // 
-            // Fecharecepcion
-            // 
-            this.Fecharecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Fecharecepcion.DataPropertyName = "fecharecepcion";
-            dataGridViewCellStyle4.Format = "g";
-            this.Fecharecepcion.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Fecharecepcion.HeaderText = "Fecha Recepción";
-            this.Fecharecepcion.Name = "Fecharecepcion";
-            this.Fecharecepcion.Width = 114;
             // 
             // frmFacturasPorPagar
             // 

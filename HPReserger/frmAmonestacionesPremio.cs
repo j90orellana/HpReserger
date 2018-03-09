@@ -232,7 +232,7 @@ namespace HPReserger
             frmMP.Registro = Registrox;
             frmMP.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
             frmMP.NumeroDocumento = txtNumeroDocumento.Text;
-            frmMP.TabIndex = tab.SelectedIndex;
+            frmMP.TabIndexa = tab.SelectedIndex;
 
             frmMP.ShowDialog();
             return;

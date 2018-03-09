@@ -63,6 +63,7 @@
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(262, 133);
@@ -190,12 +191,12 @@
         private System.Windows.Forms.Button btneliminar;
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Button btncancelar;
-        private System.Windows.Forms.Button btnaceptar;
         private System.Windows.Forms.Button btnnuevo;
-        private System.Windows.Forms.TextBox txtdepartamento;
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip tipmsg;
+        public System.Windows.Forms.Button btnaceptar;
+        public System.Windows.Forms.TextBox txtdepartamento;
     }
 }

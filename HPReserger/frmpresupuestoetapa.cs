@@ -39,6 +39,15 @@ namespace HPReserger
             {
                 dtgconten[i, 0].Value = "0.00";
                 dtgconten1[i, 0].Value = "0.00";
+                dtgconten.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dtgconten1.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                if (dtgconten.ColumnCount - i < 3)
+                {
+                    dtgconten.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);                                     
+                    dtgconten1.Columns[i].DefaultCellStyle.BackColor = Color.FromArgb(136, 178, 178);
+                    dtgconten.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
+                    dtgconten1.Columns[i].DefaultCellStyle.ForeColor = Color.Red;
+                }
             }
             cc = txtcc.Text;
             dtgvalores.DataSource = CLpresupuestoetapa.MesEtapaCentroCosto(0, etapa, 0, cc, 0, 0, cabecera, 0);

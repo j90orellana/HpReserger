@@ -19,8 +19,7 @@ namespace HPReserger
         public int Registro { get; set; }
         public int TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
-        public int TabIndex { get; set; }
-
+        public int TabIndexa { get; set; }
         public frmMemoPremio()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace HPReserger
             Reporte.SetParameterValue("@Registro", Registro);
             Reporte.SetParameterValue("@Tipo_ID_Emp", TipoDocumento);
             Reporte.SetParameterValue("@Nro_ID_Emp", NumeroDocumento);
-            Reporte.SetParameterValue("@Tipo", TabIndex);
+            Reporte.SetParameterValue("@Tipo", TabIndexa);
             //   Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS, datos.DATASOURCE, datos.BASEDEDATOS);
             Reporte.SetDatabaseLogon("mmendoza", "123");
             crvMemoPremio.ReportSource = Reporte;

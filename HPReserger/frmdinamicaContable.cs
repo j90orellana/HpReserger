@@ -532,7 +532,7 @@ namespace HPReserger
                     estado = 0;
                     for (int i = 0; i < fila; i++)
                     {
-                        CDinamica.InsertarDinamica(codigo + 1, ejercicio, codope, codsub, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Dtgconten[2, i].Value.ToString(), activo);
+                        CDinamica.InsertarDinamica(codigo + 1, ejercicio, codope, codsub,(Dtgconten[0, i].Value.ToString()), Dtgconten[2, i].Value.ToString(), activo);
                     }
                     //INGRESO DE REVERSA
                     //////////////////////////
@@ -552,7 +552,7 @@ namespace HPReserger
                         CDinamica.Modificar2Dinamica(codigo);
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
-                            CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Dtgconten[2, i].Value.ToString(), activo);
+                            CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Dtgconten[0, i].Value.ToString(), Dtgconten[2, i].Value.ToString(), activo);
                         }
                         //MODIFICAR DE REVERSA
                         //////////////////////////

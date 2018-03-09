@@ -24,21 +24,30 @@ namespace HPReserger
             estado = 0;
             CargarDatos();
         }
+        DataTable DATOSEPS;
         public void CargarDatos()
         {
-            dtgconten.DataSource = CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, 0, 0, txtplan.Text, frmLogin.CodigoUsuario, 0, 0, 0, 0);
+            DATOSEPS = new DataTable();
+            DATOSEPS = CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, 0, 0, 0, txtplan.Text, frmLogin.CodigoUsuario, 0);
+            dtgconten.DataSource = DATOSEPS;
             dtgconten.Focus();
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgconten.RowCount > 0)
             {
-                btnmodificar.Enabled = true;
-                txtplan.Text = (string)dtgconten[nombreplan.Name, e.RowIndex].Value.ToString();
-                NumAporte.Value = (decimal)dtgconten[Titular.Name, e.RowIndex].Value;
-                Numadicional1.Value = (decimal)dtgconten[Beneficiario1.Name, e.RowIndex].Value;
-                Numadicional2.Value = (decimal)dtgconten[Beneficiario2.Name, e.RowIndex].Value;
-                Numadicional3.Value = (decimal)dtgconten[Beneficiario3.Name, e.RowIndex].Value;
+                fila = (int)dtgconten[id_eps_planes.Name, e.RowIndex].Value;
+                if (estado != 2 && estado != 1)
+                {
+                    btnmodificar.Enabled = true;
+                    //txtplan.Text = dtgconten[Plansx.Name, e.RowIndex].Value.ToString();
+                }
+                if (estado != 1)
+                    txtplan.Text = dtgconten[Plansx.Name, e.RowIndex].Value.ToString();
+                // NumAporte.Value = (decimal)dtgconten[Monto.Name, e.RowIndex].Value;
+                // Numadicional1.Value = (decimal)dtgconten[Beneficiario1.Name, e.RowIndex].Value;
+                // Numadicional2.Value = (decimal)dtgconten[Beneficiario2.Name, e.RowIndex].Value;
+                // Numadicional3.Value = (decimal)dtgconten[Beneficiario3.Name, e.RowIndex].Value;
             }
             else
             {
@@ -50,12 +59,12 @@ namespace HPReserger
             btnnuevo.Enabled = !a;
             btnmodificar.Enabled = !a;
             btnaceptar.Enabled = a;
-            dtgconten.Enabled = !a;
+            // dtgconten.Enabled = !a;
             txtplan.Enabled = a;
-            NumAporte.Enabled = a;
-            Numadicional1.Enabled = a;
-            Numadicional2.Enabled = a;
-            Numadicional3.Enabled = a;
+            //NumAporte.Enabled = a;
+            //Numadicional1.Enabled = a;
+            //Numadicional2.Enabled = a;
+            //Numadicional3.Enabled = a;
 
         }
         private void btncancelar_Click(object sender, EventArgs e)
@@ -68,6 +77,12 @@ namespace HPReserger
             {
                 iniciar(false);
                 estado = 0;
+                dtgconten.Columns[Monto.Name].ReadOnly = true;
+            }
+            IEpsAdicional IformAdicional = Owner as IEpsAdicional;
+            if (IformAdicional != null)
+            {
+                IformAdicional.CargarPLanes();
             }
             CargarDatos();
         }
@@ -86,17 +101,21 @@ namespace HPReserger
                     txtplan.Focus();
                     return;
                 }
+                string Busqueda = "";
                 foreach (DataGridViewRow valor in dtgconten.Rows)
                 {
-                    if (txtplan.Text.ToString().ToUpper() == valor.Cells[nombreplan.Name].Value.ToString().ToUpper())
-                    {
-                        Msg("El Plan ya Existe");
-                        txtplan.Focus();
-                        return;
-                    }
+                    if (Busqueda != valor.Cells[Plansx.Name].Value.ToString())
+                        if (txtplan.Text.ToString().ToUpper() == valor.Cells[Plansx.Name].Value.ToString().ToUpper())
+                        {
+                            Msg("El Plan ya Existe");
+                            txtplan.Focus();
+                            return;
+                        }
+                    Busqueda = valor.Cells[Plansx.Name].Value.ToString();
                 }
                 //Insertando;
-                CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, 0, 1, txtplan.Text, frmLogin.CodigoUsuario, NumAporte.Value, Numadicional1.Value, Numadicional2.Value, Numadicional3.Value);
+                CapaLogica.PLanes(1, 0, CodigoEmpresa, txtplan.Text);
+                // CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, 0, 1, txtplan.Text, frmLogin.CodigoUsuario, NumAporte.Value, Numadicional1.Value, Numadicional2.Value, Numadicional3.Value);
                 Msg("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -109,20 +128,24 @@ namespace HPReserger
                     txtplan.Focus();
                     return;
                 }
-                int fila = 0;
+                // int fila = 0;
                 foreach (DataGridViewRow valor in dtgconten.Rows)
                 {
-                    if (txtplan.Text.ToString().ToUpper() == valor.Cells[nombreplan.Name].Value.ToString().ToUpper() && fila != dtgconten.CurrentCell.RowIndex)
-                    {
-                        Msg("El Plan ya Existe");
-                        txtplan.Focus();
-                        return;
-                    }
-                    fila++;
+                    //    //int filo = (int)valor.Cells[id_eps_planes.Name].Value;
+                    //    //if (txtplan.Text.ToString().ToUpper() == valor.Cells[Plansx.Name].Value.ToString().ToUpper() &&)
+                    //    //{
+                    //    //    Msg("El Plan ya Existe");
+                    //    //    txtplan.Focus();
+                    //    //    return;
+                    //    //}
+                    //    //fila++;
+                    CapaLogica.PLanes(2, (int)valor.Cells[id_eps_planes.Name].Value, CodigoEmpresa, valor.Cells[Plansx.Name].Value.ToString());
+                    CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, (int)valor.Cells[id_eps_planes.Name].Value, 1, (int)valor.Cells[ideps.Name].Value, valor.Cells[Plansx.Name].Value.ToString(), frmLogin.CodigoUsuario, (decimal)valor.Cells[Monto.Name].Value);
                 }
+
                 //modificando
                 int filax = dtgconten.CurrentCell.RowIndex;
-                CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, (int)dtgconten[id_eps_planes.Name, filax].Value, 2, txtplan.Text, frmLogin.CodigoUsuario, NumAporte.Value, Numadicional1.Value, Numadicional2.Value, Numadicional3.Value);
+                //CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, (int)dtgconten[id_eps_planes.Name, filax].Value, 2, txtplan.Text, frmLogin.CodigoUsuario, NumAporte.Value, Numadicional1.Value, Numadicional2.Value, Numadicional3.Value);
                 Msg("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -137,11 +160,45 @@ namespace HPReserger
             iniciar(true);
             txtplan.Text = "";
             txtplan.Focus(); btnmodificar.Enabled = false;
+            dtgconten.Columns[Monto.Name].ReadOnly = true;
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             estado = 2; btnmodificar.Enabled = false;
             iniciar(true); txtplan.Focus();
+            dtgconten.Columns[Monto.Name].ReadOnly = false;
+        }
+        TextBox txt;
+        private void dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dtgconten.CurrentCell.RowIndex > 0)
+            {
+                if (dtgconten.CurrentCell.ColumnIndex == dtgconten.Columns[Monto.Name].Index)
+                {
+                    txt = e.Control as TextBox;
+                    if (txt != null)
+                    {
+                        txt.KeyPress -= new KeyPressEventHandler(dataGridview_KeyPressCajita);
+                        txt.KeyPress += new KeyPressEventHandler(dataGridview_KeyPressCajita);
+                    }
+                }
+            }
+        }
+        private void dataGridview_KeyPressCajita(object sender, KeyPressEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txt.Text);
+        }
+        int fila = 0;
+        private void txtplan_TextChanged(object sender, EventArgs e)
+        {
+            if (estado == 2)
+            {
+                foreach (DataGridViewRow item in dtgconten.Rows)
+                {
+                    if ((int)item.Cells[id_eps_planes.Name].Value == fila)
+                        item.Cells[Plansx.Name].Value = txtplan.Text;
+                }
+            }
         }
     }
 }

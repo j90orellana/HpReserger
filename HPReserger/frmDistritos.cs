@@ -169,7 +169,7 @@ namespace HPReserger
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
         private void txtbusca_TextChanged(object sender, EventArgs e)
         {
@@ -256,14 +256,23 @@ namespace HPReserger
         private void btndepmas_Click(object sender, EventArgs e)
         {
             frmdepartamento frmdepartamento = new frmdepartamento();
-            frmdepartamento.ShowDialog();
+            frmdepartamento.Acepta = true;
+            if (DialogResult.OK == frmdepartamento.ShowDialog())
+            {
+                cbodepartamento.Text = frmdepartamento.txtdepartamento.Text;
+            }
             presionado = 1;
         }
 
         private void btnpromas_Click(object sender, EventArgs e)
         {
             frmprovincias Provincias = new frmprovincias();
-            Provincias.ShowDialog();
+            Provincias.deparment = cbodepartamento.Text;
+            Provincias.Acepta = true;
+            if (DialogResult.OK == Provincias.ShowDialog())
+            {
+                cboprovincia.Text = Provincias.Text;
+            }
             presionado = 2;
         }
 

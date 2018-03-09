@@ -97,15 +97,14 @@ namespace HPReserger
                 txtDiasComprar.Focus();
                 return;
             }
-
-            if (Convert.ToInt32(txtDiasComprar.Text) > Convert.ToInt32(txtMaximoDias.Text))
-            {
-                MessageBox.Show("Solo puedes tomar " + Convert.ToString(txtMaximoDias.Text) + " días de vacaciones como máximo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
             if (Convert.ToInt32(txtDiasComprar.Text) > 15)
             {
                 MessageBox.Show("Solo puedes Comprar 15 Días Como Máximo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            if (Convert.ToInt32(txtDiasComprar.Text) > Convert.ToInt32(txtMaximoDias.Text))
+            {
+                MessageBox.Show("Solo puedes tomar " + Convert.ToString(txtMaximoDias.Text) + " días de vacaciones como máximo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             DateTime FechaMaxima;
@@ -121,10 +120,9 @@ namespace HPReserger
                     return;
                 }
             }
-
             if (MessageBox.Show("¿ Seguro de Comprar las Vacaciones ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                clCompraVacaciones.ComprarVacaciones(TipoDocumento, NumeroDocumento, dtpPeriodoComprarDesde.Value, dtpPeriodoComprarHasta.Value, Convert.ToInt32(txtDiasComprar.Text), Convert.ToDecimal(txtMontoPropuesto.Text), Convert.ToDecimal(txtMontoPactado.Text), frmLogin.CodigoUsuario,cbopago.SelectedIndex+1,txtobservacion.Text);
+                clCompraVacaciones.ComprarVacaciones(TipoDocumento, NumeroDocumento, dtpPeriodoComprarDesde.Value, dtpPeriodoComprarHasta.Value, Convert.ToInt32(txtDiasComprar.Text), Convert.ToDecimal(txtMontoPropuesto.Text), Convert.ToDecimal(txtMontoPactado.Text), frmLogin.CodigoUsuario, cbopago.SelectedIndex + 1, txtobservacion.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }

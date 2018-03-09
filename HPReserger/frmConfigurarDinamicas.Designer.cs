@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.cod_storex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +62,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(124)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(65)))), ((int)(((byte)(104)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -73,6 +74,14 @@
             this.Cadenax,
             this.Fechax});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.Location = new System.Drawing.Point(12, 41);
             this.dtgconten.MultiSelect = false;
@@ -80,8 +89,9 @@
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgconten.Size = new System.Drawing.Size(369, 207);
             this.dtgconten.TabIndex = 60;
@@ -100,24 +110,24 @@
             // 
             this.storex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.storex.DataPropertyName = "store";
-            this.storex.HeaderText = "Store";
+            this.storex.FillWeight = 149.2386F;
+            this.storex.HeaderText = "Procedimiento Almacenado";
             this.storex.MinimumWidth = 100;
             this.storex.Name = "storex";
             this.storex.ReadOnly = true;
             // 
             // Cadenax
             // 
-            this.Cadenax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Cadenax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Cadenax.DataPropertyName = "cadena";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.Format = "0";
             dataGridViewCellStyle3.NullValue = null;
             this.Cadenax.DefaultCellStyle = dataGridViewCellStyle3;
             this.Cadenax.HeaderText = "Dínamica";
-            this.Cadenax.MinimumWidth = 50;
+            this.Cadenax.MinimumWidth = 100;
             this.Cadenax.Name = "Cadenax";
             this.Cadenax.ReadOnly = true;
-            this.Cadenax.Width = 77;
             // 
             // Fechax
             // 
@@ -169,6 +179,7 @@
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.dtgconten);
+            this.MinimumSize = new System.Drawing.Size(409, 323);
             this.Name = "frmConfigurarDinamicas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurar Dinámicas";
@@ -181,12 +192,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dtgconten;
+        private System.Windows.Forms.Button btnmodificar;
+        private System.Windows.Forms.Button btnguardar;
+        private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn cod_storex;
         private System.Windows.Forms.DataGridViewTextBoxColumn storex;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cadenax;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fechax;
-        private System.Windows.Forms.Button btnmodificar;
-        private System.Windows.Forms.Button btnguardar;
-        private System.Windows.Forms.Button btncancelar;
     }
 }

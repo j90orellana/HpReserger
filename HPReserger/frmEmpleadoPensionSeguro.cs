@@ -13,12 +13,9 @@ namespace HPReserger
     public partial class frmEmpleadoPensionSeguro : Form
     {
         HPResergerCapaLogica.HPResergerCL clPensionSeguro = new HPResergerCapaLogica.HPResergerCL();
-
         public int CodigoDocumento { get; set; }
-
         public string NumeroDocumento { get; set; }
         public bool NuevoPensionSeguro { get; set; }
-
         public frmEmpleadoPensionSeguro()
         {
             InitializeComponent();
@@ -98,6 +95,12 @@ namespace HPReserger
                     cboplan.SelectedIndex = -1;
                 }
                 else cboplan.SelectedValue = ExistePension["planes"];
+                if ((decimal)ExistePension["descvalor"] > numdesc.Maximum)
+                {
+                    numdesc.Value = numdesc.Maximum;
+                }
+                else
+                    numdesc.Value = (decimal)ExistePension["descvalor"];
                 btnModificar.Enabled = true;
                 btnRegistrar.Enabled = false;
             }
@@ -112,19 +115,29 @@ namespace HPReserger
         {
             DataRow Filita = clPensionSeguro.EmpresaEPsMOntosMaximos(index, codigo);
             MontoMAximo = (decimal)Filita[0];
-
         }
-
         public void CargarPLanes()
         {
+            int pla = 0;
+            if (cboplan.SelectedValue != null)
+                pla = (int)cboplan.SelectedValue;
             cboplan.DataSource = clPensionSeguro.PLanesdelaEmpresa(); ;
             cboplan.DisplayMember = "planes";
             cboplan.ValueMember = "ID_Eps_Planes";
+            cboplan.SelectedValue = pla;
+        }
+        public void CargarEpsAdicional()
+        {
+            int txt = 0;
+            if (cboEPSAdicional.SelectedValue != null)
+                txt = (int)cboEPSAdicional.SelectedValue;
+            CargaCombos(cboEPSAdicional, "Id_EpsAdic", "Eps_Adicional", "TBL_Eps_Adicional");
+            cboEPSAdicional.SelectedValue = txt;
         }
         private void frmEmpleadoPensionSeguro_Load(object sender, EventArgs e)
         {
             CargaCombos(cboAFPEmpresa, "Id_AFP", "AFP", "TBL_AFP");
-            CargaCombos(cboEPSAdicional, "Id_EpsAdic", "Eps_Adicional", "TBL_Eps_Adicional");
+            CargarEpsAdicional();
             CargarPLanes();
             cboEPS.SelectedIndex = 0;
             cboEPSAdicional.SelectedIndex = 0;
@@ -135,7 +148,7 @@ namespace HPReserger
 
             CargarValores();
             if (cboEPSAdicional.SelectedIndex >= 0 && cboplan.SelectedIndex >= 0)
-                CargarMontoMaximoEmpresaEPS(cboEPSAdicional.SelectedIndex, (int)cboplan.SelectedValue);
+                CargarMontoMaximoEmpresaEPS((int)cboEPSAdicional.SelectedValue, (int)cboplan.SelectedValue);
             btnaceptar.Enabled = false;
             pnlconten.Enabled = false;
         }
@@ -268,6 +281,7 @@ namespace HPReserger
                     pnlconten.Enabled = false;
                     btnModificar.Enabled = true;
                 }
+                else return;
             }
             if (estado == 2)
             {
@@ -279,6 +293,7 @@ namespace HPReserger
                     pnlconten.Enabled = false;
                     btnModificar.Enabled = true;
                 }
+                else return;
             }
             CargarValores();
         }
@@ -292,7 +307,6 @@ namespace HPReserger
         {
             //ninguno
             numdesc.Maximum = 100000; numdesc.Minimum = 0;
-            numdesc.Enabled = true;
             if (cbodescuento.SelectedIndex == 0)
             {
                 numdesc.Enabled = false;
@@ -301,11 +315,15 @@ namespace HPReserger
             //montofijo
             if (cbodescuento.SelectedIndex == 1)
             {
+                if (cboaplica.SelectedIndex == 1) numdesc.Enabled = true;
+                if (cboplan.SelectedValue != null)
+                    CargarMontoMaximoEmpresaEPS((int)cboEPSAdicional.SelectedValue, (int)cboplan.SelectedValue);
                 numdesc.Maximum = MontoMAximo; numdesc.Minimum = 0;
             }
             //porcentaje
             if (cbodescuento.SelectedIndex == 2)
             {
+                if (cboaplica.SelectedIndex == 1) numdesc.Enabled = true;
                 numdesc.Maximum = 100; numdesc.Minimum = 0;
             }
         }
@@ -313,7 +331,7 @@ namespace HPReserger
         private void cboEPSAdicional_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboEPSAdicional.SelectedIndex >= 0 && cboplan.SelectedIndex >= 0)
-                CargarMontoMaximoEmpresaEPS(cboEPSAdicional.SelectedIndex, (int)cboplan.SelectedValue);
+                CargarMontoMaximoEmpresaEPS((int)cboEPSAdicional.SelectedValue, (int)cboplan.SelectedValue);
             cbodescuento_SelectedIndexChanged(sender, e);
         }
         public void msg(string cadena)
@@ -378,6 +396,11 @@ namespace HPReserger
                 cboEPSAdicional.Enabled = false;
             }
             if (cboaplica.SelectedIndex < 0) cboaplica.SelectedIndex = 0;
+            else
+            {
+                cboaplica_SelectedIndexChanged(sender, e);
+                cbodescuento_SelectedIndexChanged(sender, e);
+            }
         }
     }
 }

@@ -220,6 +220,7 @@
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
             this.Grid.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.Grid.RowTemplate.Height = 16;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(861, 377);
             this.Grid.TabIndex = 36;

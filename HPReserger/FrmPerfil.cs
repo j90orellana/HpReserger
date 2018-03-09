@@ -31,7 +31,7 @@ namespace HPReserger
             cboperfiles.DisplayMember = "DESCRIPCION";
             cboperfiles.DataSource = cperfil.getCargoTipoContratacion("Codgo_perfil_User", "desc_perfil_user", "TBL_PERFIL_USER");
             //CargarDAtosalTRee(0, 0, 0);
-            cboperfiles.SelectedIndex = 0;
+            //cboperfiles.SelectedIndex = 0;
         }
         TreeNode pap, ramita, ramon;
         public void CargarDAtosalTRee(int Perfile, int opcion, int codigo)
@@ -80,7 +80,8 @@ namespace HPReserger
         public Boolean ValidarDes(string valor)
         {
             Boolean Aux = true;
-            dtgperfil.CurrentCell = dtgperfil[1, cboperfiles.SelectedIndex];
+            if (cboperfiles.SelectedIndex >= 0)
+                dtgperfil.CurrentCell = dtgperfil[1, cboperfiles.SelectedIndex];
             for (int i = 0; i < dtgperfil.RowCount; i++)
             {
                 if (estado == 1)
@@ -151,7 +152,7 @@ namespace HPReserger
                     RecorrerNodos(x, ultimo);
                 Activar(cboperfiles);
                 Desactivar(txtdes);
-                MessageBox.Show( "Insertado con exito", "HpReserger",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Insertado con exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -163,7 +164,7 @@ namespace HPReserger
                         RecorrerNodos(x, (int)cboperfiles.SelectedValue);
                     Activar(cboperfiles);
                     Desactivar(txtdes);
-                    MessageBox.Show( "Modificado con exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Modificado con exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

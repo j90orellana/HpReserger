@@ -308,6 +308,7 @@
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(620, 290);
             this.dtgconten.TabIndex = 74;

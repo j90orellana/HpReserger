@@ -46,7 +46,7 @@
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(359, 21);
+            this.btnRegistrar.Location = new System.Drawing.Point(361, 20);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
             this.btnRegistrar.TabIndex = 18;
@@ -57,7 +57,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 59);
+            this.label4.Location = new System.Drawing.Point(75, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 17;
@@ -66,7 +66,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 126);
+            this.label3.Location = new System.Drawing.Point(5, 93);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 13);
             this.label3.TabIndex = 16;
@@ -75,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 94);
+            this.label2.Location = new System.Drawing.Point(25, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 15;
@@ -84,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 21);
+            this.label1.Location = new System.Drawing.Point(83, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 14;
@@ -92,7 +92,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(359, 50);
+            this.btnModificar.Location = new System.Drawing.Point(361, 53);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 19;
@@ -102,7 +102,7 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(278, 149);
+            this.btnaceptar.Location = new System.Drawing.Point(280, 130);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 18;
@@ -112,7 +112,7 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(359, 149);
+            this.btncancelar.Location = new System.Drawing.Point(361, 130);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 19;
@@ -126,45 +126,49 @@
             this.pnlconten.Controls.Add(this.cboMoneda);
             this.pnlconten.Controls.Add(this.txtCuenta);
             this.pnlconten.Controls.Add(this.txtCuentaCCI);
-            this.pnlconten.Location = new System.Drawing.Point(134, 12);
+            this.pnlconten.Controls.Add(this.label4);
+            this.pnlconten.Controls.Add(this.label3);
+            this.pnlconten.Controls.Add(this.label1);
+            this.pnlconten.Controls.Add(this.label2);
+            this.pnlconten.Location = new System.Drawing.Point(2, 12);
             this.pnlconten.Name = "pnlconten";
-            this.pnlconten.Size = new System.Drawing.Size(219, 131);
+            this.pnlconten.Size = new System.Drawing.Size(351, 115);
             this.pnlconten.TabIndex = 20;
             // 
             // cboBanco
             // 
             this.cboBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBanco.FormattingEnabled = true;
-            this.cboBanco.Location = new System.Drawing.Point(3, 3);
+            this.cboBanco.Location = new System.Drawing.Point(127, 9);
             this.cboBanco.Name = "cboBanco";
-            this.cboBanco.Size = new System.Drawing.Size(210, 21);
+            this.cboBanco.Size = new System.Drawing.Size(209, 21);
             this.cboBanco.TabIndex = 10;
             // 
             // cboMoneda
             // 
             this.cboMoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMoneda.FormattingEnabled = true;
-            this.cboMoneda.Location = new System.Drawing.Point(3, 38);
+            this.cboMoneda.Location = new System.Drawing.Point(127, 36);
             this.cboMoneda.Name = "cboMoneda";
-            this.cboMoneda.Size = new System.Drawing.Size(121, 21);
+            this.cboMoneda.Size = new System.Drawing.Size(209, 21);
             this.cboMoneda.TabIndex = 11;
             // 
             // txtCuenta
             // 
-            this.txtCuenta.Location = new System.Drawing.Point(3, 73);
+            this.txtCuenta.Location = new System.Drawing.Point(127, 63);
             this.txtCuenta.MaxLength = 20;
             this.txtCuenta.Name = "txtCuenta";
-            this.txtCuenta.Size = new System.Drawing.Size(168, 20);
+            this.txtCuenta.Size = new System.Drawing.Size(209, 20);
             this.txtCuenta.TabIndex = 12;
             this.txtCuenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCuenta_KeyDown);
             this.txtCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuenta_KeyPress);
             // 
             // txtCuentaCCI
             // 
-            this.txtCuentaCCI.Location = new System.Drawing.Point(3, 105);
+            this.txtCuentaCCI.Location = new System.Drawing.Point(127, 89);
             this.txtCuentaCCI.MaxLength = 20;
             this.txtCuentaCCI.Name = "txtCuentaCCI";
-            this.txtCuentaCCI.Size = new System.Drawing.Size(210, 20);
+            this.txtCuentaCCI.Size = new System.Drawing.Size(209, 20);
             this.txtCuentaCCI.TabIndex = 13;
             this.txtCuentaCCI.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCuentaCCI_KeyDown);
             this.txtCuentaCCI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuentaCCI_KeyPress);
@@ -175,18 +179,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(448, 182);
+            this.ClientSize = new System.Drawing.Size(448, 161);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btnRegistrar);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlconten);
-            this.MaximumSize = new System.Drawing.Size(464, 221);
-            this.MinimumSize = new System.Drawing.Size(464, 221);
+            this.MaximumSize = new System.Drawing.Size(464, 200);
+            this.MinimumSize = new System.Drawing.Size(464, 200);
             this.Name = "frmEmpleadoPagoHaberes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Empleado Pago de Haberes";
@@ -194,7 +194,6 @@
             this.pnlconten.ResumeLayout(false);
             this.pnlconten.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

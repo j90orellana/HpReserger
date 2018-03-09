@@ -57,8 +57,9 @@
     <Reference Include="abcBaseDatos">
       <HintPath>..\Referencias\abcBaseDatos.dll</HintPath>
     </Reference>
-    <Reference Include="Bunifu_UI_v1.52 ">
-      <HintPath>..\Referencias\Bunifu_UI_v1.52 .dll</HintPath>
+    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Ejecutable\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -73,6 +74,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -80,6 +82,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -95,6 +98,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EstadoGananciaPerdidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EstadoGananciaPerdidas.Designer.cs">
+      <DependentUpon>EstadoGananciaPerdidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmReporteRemuneracionRenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +169,12 @@
     </Compile>
     <Compile Include="frmCargaDatosProveedor.Designer.cs">
       <DependentUpon>frmCargaDatosProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargadeDatosExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargadeDatosExcel.Designer.cs">
+      <DependentUpon>frmCargadeDatosExcel.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCargarDatosEmpleados.cs">
       <SubType>Form</SubType>
@@ -557,6 +572,12 @@
     <Compile Include="frmpresupuestoetapa.Designer.cs">
       <DependentUpon>frmpresupuestoetapa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProcesando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProcesando.Designer.cs">
+      <DependentUpon>frmProcesando.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmprofesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -599,6 +620,12 @@
     <Compile Include="frmReporteAdendaNecesidad.Designer.cs">
       <DependentUpon>frmReporteAdendaNecesidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteBalanceGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteBalanceGeneral.Designer.cs">
+      <DependentUpon>frmReporteBalanceGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReporteBoletas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -634,6 +661,18 @@
     </Compile>
     <Compile Include="frmreporteempleado.Designer.cs">
       <DependentUpon>frmreporteempleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteEstadoPerdidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteEstadoPerdidas.Designer.cs">
+      <DependentUpon>frmReporteEstadoPerdidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteGeneral.Designer.cs">
+      <DependentUpon>frmReporteGeneral.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReporteGratificacion.cs">
       <SubType>Form</SubType>
@@ -761,6 +800,7 @@
     <Compile Include="frmimpuestoRenta.Designer.cs">
       <DependentUpon>frmimpuestoRenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="IEpsAdicional.cs" />
     <Compile Include="IForm.cs" />
     <Compile Include="IFormEmpleado.cs" />
     <Compile Include="IProfesion.cs" />
@@ -774,6 +814,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptAdendaNecesidad.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptBalanceGeneral.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneral.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="rptboletas.cs">
@@ -1084,6 +1130,12 @@
       <DependentUpon>rptVacaciones.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rtpGanaciasPerdidas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rtpGanaciasPerdidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TextBoxSoloLetrasMayusculas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1102,6 +1154,9 @@
     <Compile Include="frmTipodeCambio.Designer.cs">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EstadoGananciaPerdidas.resx">
+      <DependentUpon>EstadoGananciaPerdidas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmReporteRemuneracionRenta.resx">
       <DependentUpon>fmReporteRemuneracionRenta.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1153,6 +1208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCargaDatosProveedor.resx">
       <DependentUpon>frmCargaDatosProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargadeDatosExcel.resx">
+      <DependentUpon>frmCargadeDatosExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCargarDatosEmpleados.resx">
       <DependentUpon>frmCargarDatosEmpleados.cs</DependentUpon>
@@ -1337,6 +1395,9 @@
     <EmbeddedResource Include="frmpresupuestoetapa.resx">
       <DependentUpon>frmpresupuestoetapa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProcesando.resx">
+      <DependentUpon>frmProcesando.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmprofesion.resx">
       <DependentUpon>frmprofesion.cs</DependentUpon>
     </EmbeddedResource>
@@ -1358,6 +1419,9 @@
     <EmbeddedResource Include="frmReporteAdendaNecesidad.resx">
       <DependentUpon>frmReporteAdendaNecesidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteBalanceGeneral.resx">
+      <DependentUpon>frmReporteBalanceGeneral.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmReporteBoletas.resx">
       <DependentUpon>FrmReporteBoletas.cs</DependentUpon>
     </EmbeddedResource>
@@ -1375,6 +1439,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmreporteempleado.resx">
       <DependentUpon>frmreporteempleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteEstadoPerdidas.resx">
+      <DependentUpon>frmReporteEstadoPerdidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteGeneral.resx">
+      <DependentUpon>frmReporteGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteGratificacion.resx">
       <DependentUpon>frmReporteGratificacion.cs</DependentUpon>
@@ -1442,6 +1512,10 @@
     <EmbeddedResource Include="rptAdendaNecesidad.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAdendaNecesidad.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptBalanceGeneral.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneral.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptboletas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1624,6 +1698,10 @@
     <EmbeddedResource Include="rptVacaciones.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptVacaciones.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rtpGanaciasPerdidas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rtpGanaciasPerdidas.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TextBoxSoloLetrasMayusculas.resx">
       <DependentUpon>TextBoxSoloLetrasMayusculas.cs</DependentUpon>
@@ -1844,6 +1922,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icono.ico" />
+    <Content Include="ImgFiles\icons8_Close_Window_50px_3.png" />
     <Content Include="InstallShield.ico" />
     <None Include="Resources\erase.ico" />
     <None Include="Resources\Generate.ico" />
@@ -1887,6 +1966,7 @@
     <None Include="Resources\Interbank.jpg" />
     <None Include="Resources\menu.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

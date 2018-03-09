@@ -146,7 +146,7 @@ namespace HPReserger
             }
             else
             {
-                clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), frmLogin.CodigoArea, frmLogin.CodigoGerencia, Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
+                clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), (int)cboarea.SelectedValue, (int)cbogerencia.SelectedValue, Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
             }
             MessageBox.Show("La Solicitud de Empleado Nº " + (txtSolicitud.Text.ToString()) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             MostrarGrid(frmLogin.CodigoUsuario);

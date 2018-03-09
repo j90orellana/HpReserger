@@ -43,16 +43,17 @@ namespace HPReserger
         public Boolean ValidarDes(string valor)
         {
             Boolean Aux = true;
-            if(valor!=" ") { 
-            for (int i = 0; i < dtgconten.RowCount; i++)
+            if (valor != " ")
             {
-                if (dtgconten[1, i].Value.ToString() == valor)
+                for (int i = 0; i < dtgconten.RowCount; i++)
                 {
-                    Aux = false;
-                    MessageBox.Show("Este valor:" + txtdepartamento.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    return Aux;
+                    if (dtgconten[1, i].Value.ToString() == valor)
+                    {
+                        Aux = false;
+                        MessageBox.Show("Este valor:" + txtdepartamento.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return Aux;
+                    }
                 }
-            }
             }
             else { Aux = false; }
             return Aux;
@@ -87,36 +88,41 @@ namespace HPReserger
                 frmdepartamento_Load(sender, e);
             }
         }
-
+        public Boolean Acepta = false;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
-            if (estado == 1 && ValidarDes(txtdepartamento.Text))
-            {
-                Cdepartamento.InsertarDepartamento(Convert.ToInt32(txtdepartamento.Text));
-                MessageBox.Show("Departamento: "+txtdepartamento.Text+" Insertado","Hp Reserger",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-            }
+            if (Acepta)
+            { this.Close();DialogResult= DialogResult.OK; }
             else
             {
-                if (estado == 2 && ValidarDes(txtdepartamento.Text))
+                //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
+                if (estado == 1 && ValidarDes(txtdepartamento.Text))
                 {
-                    Cdepartamento.ActualizarDepartamento(txtdepartamento.Text.ToString(), Convert.ToInt32(txtcodigo.Text));
-                    MessageBox.Show("Departamento: " + txtdepartamento.Text + " Actualizado", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Cdepartamento.InsertarDepartamento(txtdepartamento.Text);
+                    MessageBox.Show("Departamento: " + txtdepartamento.Text + " Insertado", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    if (estado == 3)
+                    if (estado == 2 && ValidarDes(txtdepartamento.Text))
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar " + txtdepartamento.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        Cdepartamento.ActualizarDepartamento(txtdepartamento.Text.ToString(), Convert.ToInt32(txtcodigo.Text));
+                        MessageBox.Show("Departamento: " + txtdepartamento.Text + " Actualizado", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        if (estado == 3)
                         {
-                            Cdepartamento.EliminarDepartamento(Convert.ToInt32(txtcodigo.Text));
+                            if (MessageBox.Show("Seguró Desea Eliminar " + txtdepartamento.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                            {
+                                Cdepartamento.EliminarDepartamento(Convert.ToInt32(txtcodigo.Text));
+                            }
                         }
                     }
                 }
+                estado = 0;
+                frmdepartamento_Load(sender, e);
+                Activar();
             }
-            estado = 0;
-            frmdepartamento_Load(sender, e);
-            Activar();
         }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)

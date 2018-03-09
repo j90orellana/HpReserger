@@ -38,8 +38,8 @@ namespace HPReserger
             DataTable tablita = new DataTable();
             tablita.Columns.Add("Codigo");
             tablita.Columns.Add("valor");
-            tablita.Rows.Add(new object[] { "1", "Si" });
-            tablita.Rows.Add(new object[] { "0", "No" });
+            tablita.Rows.Add(new object[] { "1", "Activo" });
+            tablita.Rows.Add(new object[] { "0", "Inactivo" });
             combito.DataSource = tablita;
             combito.ValueMember = "codigo";
             combito.DisplayMember = "valor";
@@ -83,7 +83,10 @@ namespace HPReserger
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estados != 0)
+            {
                 Iniciar(false);
+                estados = 0;
+            }
             else this.Close();
         }
         public void msg(string cadena)
@@ -126,9 +129,11 @@ namespace HPReserger
                 int meses = ((dtpfechafin.Value.Month + (dias * 12)) - dtpfechainicio.Value.Month) + 1;
                 cargarlista();
                 CLEtapas.MesEtapa(10, 0, (int)Dtgconten["id_etapa", Dtgconten.RowCount - 1].Value, 0, 0, 0);
-                for (int i = 0; i < meses; i++)
+                for (int i = 0; i < meses + 2; i++)
                 {
-                    CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.RowCount - 1].Value, (int)(dtpfechainicio.Value.Year + (i / 12)), dtpfechainicio.Value.Month + i, frmLogin.CodigoUsuario);
+                    int mes = dtpfechainicio.Value.Month + i;
+                    if (mes > 12) mes = mes - 12;
+                    CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.RowCount - 1].Value, (int)(dtpfechainicio.Value.Year + (dtpfechainicio.Value.Month + i - 1) / 12), mes, frmLogin.CodigoUsuario);
                 }
 
             }
@@ -140,9 +145,11 @@ namespace HPReserger
                 int dias = dtpfechafin.Value.Year - dtpfechainicio.Value.Year;
                 int meses = ((dtpfechafin.Value.Month + (dias * 12)) - dtpfechainicio.Value.Month) + 1;
                 CLEtapas.MesEtapa(10, 0, (int)Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value, 0, 0, 0);
-                for (int i = 0; i < meses; i++)
+                for (int i = 0; i < meses + 2; i++)
                 {
-                    CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value, (int)(dtpfechainicio.Value.Year + (i / 12)), dtpfechainicio.Value.Month + i, frmLogin.CodigoUsuario);
+                    int mes = dtpfechainicio.Value.Month + i;
+                    if (mes > 12) mes = mes - 12;
+                    CLEtapas.MesEtapa(1, i + 1, (int)Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value, (int)(dtpfechainicio.Value.Year + (dtpfechainicio.Value.Month + i - 1) / 12), mes, frmLogin.CodigoUsuario);
                 }
                 estados = 0; cargarlista();
             }

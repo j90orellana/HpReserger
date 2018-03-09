@@ -28,11 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtgconten = new System.Windows.Forms.DataGridView();
+            this.id_etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechainicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mesesconstruccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl1 = new System.Windows.Forms.Panel();
             this.cboestado = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,16 +60,6 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
-            this.id_etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechainicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mesesconstruccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.pnl1.SuspendLayout();
             this.SuspendLayout();
@@ -70,8 +70,8 @@
             this.Dtgconten.AllowUserToDeleteRows = false;
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -93,10 +93,101 @@
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.ReadOnly = true;
             this.Dtgconten.RowHeadersVisible = false;
+            this.Dtgconten.RowTemplate.Height = 16;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtgconten.Size = new System.Drawing.Size(622, 217);
             this.Dtgconten.TabIndex = 12;
             this.Dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_RowEnter);
+            // 
+            // id_etapa
+            // 
+            this.id_etapa.DataPropertyName = "id_etapa";
+            this.id_etapa.HeaderText = "id_etapa";
+            this.id_etapa.Name = "id_etapa";
+            this.id_etapa.ReadOnly = true;
+            this.id_etapa.Visible = false;
+            // 
+            // id_proyecto
+            // 
+            this.id_proyecto.DataPropertyName = "fk_id_proyecto";
+            this.id_proyecto.HeaderText = "id_proyecto";
+            this.id_proyecto.Name = "id_proyecto";
+            this.id_proyecto.ReadOnly = true;
+            this.id_proyecto.Visible = false;
+            // 
+            // descripcion
+            // 
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion.DataPropertyName = "descripcion";
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "estado";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            this.estado.Visible = false;
+            // 
+            // fechainicio
+            // 
+            this.fechainicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fechainicio.DataPropertyName = "fecha_inicio";
+            dataGridViewCellStyle2.Format = "d";
+            this.fechainicio.DefaultCellStyle = dataGridViewCellStyle2;
+            this.fechainicio.HeaderText = "Fecha Inicio";
+            this.fechainicio.Name = "fechainicio";
+            this.fechainicio.ReadOnly = true;
+            this.fechainicio.Width = 90;
+            // 
+            // fechafin
+            // 
+            this.fechafin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fechafin.DataPropertyName = "fecha_fin";
+            dataGridViewCellStyle3.Format = "d";
+            this.fechafin.DefaultCellStyle = dataGridViewCellStyle3;
+            this.fechafin.HeaderText = "Fecha Fin";
+            this.fechafin.Name = "fechafin";
+            this.fechafin.ReadOnly = true;
+            this.fechafin.Width = 79;
+            // 
+            // mesesconstruccion
+            // 
+            this.mesesconstruccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.mesesconstruccion.DataPropertyName = "meses_construccion";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.mesesconstruccion.DefaultCellStyle = dataGridViewCellStyle4;
+            this.mesesconstruccion.HeaderText = "Duracion Meses";
+            this.mesesconstruccion.Name = "mesesconstruccion";
+            this.mesesconstruccion.ReadOnly = true;
+            this.mesesconstruccion.Width = 109;
+            // 
+            // Observacion
+            // 
+            this.Observacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Observacion.DataPropertyName = "Observacion";
+            this.Observacion.HeaderText = "Observacion";
+            this.Observacion.Name = "Observacion";
+            this.Observacion.ReadOnly = true;
+            this.Observacion.Width = 92;
+            // 
+            // usuario
+            // 
+            this.usuario.DataPropertyName = "usuario";
+            this.usuario.HeaderText = "usuario";
+            this.usuario.Name = "usuario";
+            this.usuario.ReadOnly = true;
+            this.usuario.Visible = false;
+            // 
+            // fecha
+            // 
+            this.fecha.DataPropertyName = "fecha";
+            this.fecha.HeaderText = "fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            this.fecha.Visible = false;
             // 
             // pnl1
             // 
@@ -262,96 +353,6 @@
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
-            // 
-            // id_etapa
-            // 
-            this.id_etapa.DataPropertyName = "id_etapa";
-            this.id_etapa.HeaderText = "id_etapa";
-            this.id_etapa.Name = "id_etapa";
-            this.id_etapa.ReadOnly = true;
-            this.id_etapa.Visible = false;
-            // 
-            // id_proyecto
-            // 
-            this.id_proyecto.DataPropertyName = "fk_id_proyecto";
-            this.id_proyecto.HeaderText = "id_proyecto";
-            this.id_proyecto.Name = "id_proyecto";
-            this.id_proyecto.ReadOnly = true;
-            this.id_proyecto.Visible = false;
-            // 
-            // descripcion
-            // 
-            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion.DataPropertyName = "descripcion";
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "estado";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            this.estado.Visible = false;
-            // 
-            // fechainicio
-            // 
-            this.fechainicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.fechainicio.DataPropertyName = "fecha_inicio";
-            dataGridViewCellStyle6.Format = "d";
-            this.fechainicio.DefaultCellStyle = dataGridViewCellStyle6;
-            this.fechainicio.HeaderText = "Fecha Inicio";
-            this.fechainicio.Name = "fechainicio";
-            this.fechainicio.ReadOnly = true;
-            this.fechainicio.Width = 90;
-            // 
-            // fechafin
-            // 
-            this.fechafin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.fechafin.DataPropertyName = "fecha_fin";
-            dataGridViewCellStyle7.Format = "d";
-            this.fechafin.DefaultCellStyle = dataGridViewCellStyle7;
-            this.fechafin.HeaderText = "Fecha Fin";
-            this.fechafin.Name = "fechafin";
-            this.fechafin.ReadOnly = true;
-            this.fechafin.Width = 79;
-            // 
-            // mesesconstruccion
-            // 
-            this.mesesconstruccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.mesesconstruccion.DataPropertyName = "meses_construccion";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.mesesconstruccion.DefaultCellStyle = dataGridViewCellStyle8;
-            this.mesesconstruccion.HeaderText = "Duracion Meses";
-            this.mesesconstruccion.Name = "mesesconstruccion";
-            this.mesesconstruccion.ReadOnly = true;
-            this.mesesconstruccion.Width = 109;
-            // 
-            // Observacion
-            // 
-            this.Observacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Observacion.DataPropertyName = "Observacion";
-            this.Observacion.HeaderText = "Observacion";
-            this.Observacion.Name = "Observacion";
-            this.Observacion.ReadOnly = true;
-            this.Observacion.Width = 92;
-            // 
-            // usuario
-            // 
-            this.usuario.DataPropertyName = "usuario";
-            this.usuario.HeaderText = "usuario";
-            this.usuario.Name = "usuario";
-            this.usuario.ReadOnly = true;
-            this.usuario.Visible = false;
-            // 
-            // fecha
-            // 
-            this.fecha.DataPropertyName = "fecha";
-            this.fecha.HeaderText = "fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.ReadOnly = true;
-            this.fecha.Visible = false;
             // 
             // frmetapas
             // 

@@ -266,6 +266,7 @@
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(568, 269);
             this.dtgconten.TabIndex = 73;
@@ -335,8 +336,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbodepartamento;
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -347,7 +346,6 @@
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Button btnnuevo;
         private System.Windows.Forms.Button btncancelar;
-        private System.Windows.Forms.Button btnaceptar;
         private System.Windows.Forms.ToolTip tipmsg;
         private System.Windows.Forms.ComboBox cboprovincia;
         private System.Windows.Forms.Label label3;
@@ -358,5 +356,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn departamentox;
         private System.Windows.Forms.DataGridViewTextBoxColumn codprox;
         private System.Windows.Forms.DataGridViewTextBoxColumn provinciax;
+        public System.Windows.Forms.Button btnaceptar;
+        public System.Windows.Forms.ComboBox cbodepartamento;
     }
 }

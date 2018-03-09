@@ -30,17 +30,18 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkfecha = new System.Windows.Forms.CheckBox();
             this.fechafin = new System.Windows.Forms.DateTimePicker();
@@ -59,15 +60,6 @@
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dtgbusca = new System.Windows.Forms.DataGridView();
-            this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Codx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubOperacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Debex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Haberx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Iddinamica = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label19 = new System.Windows.Forms.Label();
             this.fecha = new System.Windows.Forms.DateTimePicker();
             this.Dtgconten = new System.Windows.Forms.DataGridView();
@@ -95,6 +87,27 @@
             this.cboestado = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.chkfechavalor = new System.Windows.Forms.CheckBox();
+            this.dtfechavalor = new System.Windows.Forms.DateTimePicker();
+            this.cboetapa = new System.Windows.Forms.ComboBox();
+            this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.cboproyecto = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechavalorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubOperacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Debex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Haberx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iddinamica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empresax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proyectox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.etapax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
@@ -110,7 +123,7 @@
             this.groupBox1.Controls.Add(this.fechaini);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(9, 444);
+            this.groupBox1.Location = new System.Drawing.Point(9, 431);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(565, 28);
             this.groupBox1.TabIndex = 152;
@@ -185,7 +198,7 @@
             this.btnlimpiar.FlatAppearance.BorderSize = 0;
             this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnlimpiar.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(3)));
-            this.btnlimpiar.Location = new System.Drawing.Point(97, 420);
+            this.btnlimpiar.Location = new System.Drawing.Point(97, 412);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(20, 20);
             this.btnlimpiar.TabIndex = 151;
@@ -195,7 +208,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 424);
+            this.label22.Location = new System.Drawing.Point(6, 416);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(51, 13);
             this.label22.TabIndex = 150;
@@ -206,7 +219,7 @@
             this.Txtbusca.BackColor = System.Drawing.SystemColors.Info;
             this.Txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.Txtbusca.Cursor = System.Windows.Forms.Cursors.Help;
-            this.Txtbusca.Location = new System.Drawing.Point(123, 420);
+            this.Txtbusca.Location = new System.Drawing.Point(123, 412);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(543, 20);
             this.Txtbusca.TabIndex = 149;
@@ -267,7 +280,6 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Enabled = false;
             this.btnnuevo.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnnuevo.Location = new System.Drawing.Point(584, 12);
             this.btnnuevo.Name = "btnnuevo";
@@ -323,41 +335,46 @@
             this.dtgbusca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idx,
             this.Fechax,
+            this.fechavalorx,
             this.Codx,
             this.Cuentax,
             this.SubOperacionx,
             this.Debex,
             this.Haberx,
             this.Iddinamica,
-            this.Estadox});
+            this.Estadox,
+            this.empresax,
+            this.proyectox,
+            this.etapax});
             this.dtgbusca.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgbusca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgbusca.Location = new System.Drawing.Point(9, 476);
+            this.dtgbusca.Location = new System.Drawing.Point(9, 463);
             this.dtgbusca.MultiSelect = false;
             this.dtgbusca.Name = "dtgbusca";
             this.dtgbusca.ReadOnly = true;
             this.dtgbusca.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgbusca.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgbusca.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgbusca.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgbusca.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgbusca.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dtgbusca.RowTemplate.Height = 16;
             this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgbusca.Size = new System.Drawing.Size(657, 199);
+            this.dtgbusca.Size = new System.Drawing.Size(657, 212);
             this.dtgbusca.TabIndex = 148;
             this.dtgbusca.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_CellContentClick);
             this.dtgbusca.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_CellValidated);
@@ -365,100 +382,10 @@
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
             this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
             // 
-            // idx
-            // 
-            this.idx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.idx.DataPropertyName = "id";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.idx.DefaultCellStyle = dataGridViewCellStyle3;
-            this.idx.HeaderText = "CUO";
-            this.idx.MinimumWidth = 40;
-            this.idx.Name = "idx";
-            this.idx.ReadOnly = true;
-            this.idx.Width = 40;
-            // 
-            // Fechax
-            // 
-            this.Fechax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Fechax.DataPropertyName = "fecha";
-            this.Fechax.HeaderText = "Fecha";
-            this.Fechax.Name = "Fechax";
-            this.Fechax.ReadOnly = true;
-            this.Fechax.Width = 61;
-            // 
-            // Codx
-            // 
-            this.Codx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Codx.DataPropertyName = "cod";
-            this.Codx.HeaderText = "Cuenta";
-            this.Codx.Name = "Codx";
-            this.Codx.ReadOnly = true;
-            this.Codx.Width = 65;
-            // 
-            // Cuentax
-            // 
-            this.Cuentax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cuentax.DataPropertyName = "cuenta";
-            this.Cuentax.HeaderText = "Cuenta Descripción";
-            this.Cuentax.MinimumWidth = 80;
-            this.Cuentax.Name = "Cuentax";
-            this.Cuentax.ReadOnly = true;
-            // 
-            // SubOperacionx
-            // 
-            this.SubOperacionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.SubOperacionx.DataPropertyName = "sub-operacion";
-            this.SubOperacionx.HeaderText = "SubOperación";
-            this.SubOperacionx.Name = "SubOperacionx";
-            this.SubOperacionx.ReadOnly = true;
-            this.SubOperacionx.Width = 99;
-            // 
-            // Debex
-            // 
-            this.Debex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Debex.DataPropertyName = "debe";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.Debex.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Debex.HeaderText = "Debe";
-            this.Debex.Name = "Debex";
-            this.Debex.ReadOnly = true;
-            this.Debex.Width = 57;
-            // 
-            // Haberx
-            // 
-            this.Haberx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Haberx.DataPropertyName = "haber";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.Haberx.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Haberx.HeaderText = "Haber";
-            this.Haberx.Name = "Haberx";
-            this.Haberx.ReadOnly = true;
-            this.Haberx.Width = 61;
-            // 
-            // Iddinamica
-            // 
-            this.Iddinamica.DataPropertyName = "iddinamica";
-            this.Iddinamica.HeaderText = "IDdinamica";
-            this.Iddinamica.Name = "Iddinamica";
-            this.Iddinamica.ReadOnly = true;
-            this.Iddinamica.Visible = false;
-            this.Iddinamica.Width = 86;
-            // 
-            // Estadox
-            // 
-            this.Estadox.DataPropertyName = "estado";
-            this.Estadox.HeaderText = "Estado";
-            this.Estadox.Name = "Estadox";
-            this.Estadox.ReadOnly = true;
-            this.Estadox.Visible = false;
-            this.Estadox.Width = 64;
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(-19, 404);
+            this.label19.Location = new System.Drawing.Point(-19, 396);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(817, 13);
             this.label19.TabIndex = 153;
@@ -470,7 +397,7 @@
             // 
             this.fecha.Enabled = false;
             this.fecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.fecha.Location = new System.Drawing.Point(224, 36);
+            this.fecha.Location = new System.Drawing.Point(224, 12);
             this.fecha.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.fecha.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.fecha.Name = "fecha";
@@ -484,20 +411,20 @@
             this.Dtgconten.AllowUserToDeleteRows = false;
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cuenta,
@@ -505,17 +432,18 @@
             this.debe,
             this.haber});
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.Dtgconten.Location = new System.Drawing.Point(12, 113);
+            this.Dtgconten.Location = new System.Drawing.Point(12, 123);
             this.Dtgconten.MultiSelect = false;
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            this.Dtgconten.RowTemplate.Height = 16;
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
-            this.Dtgconten.Size = new System.Drawing.Size(654, 235);
+            this.Dtgconten.Size = new System.Drawing.Size(654, 225);
             this.Dtgconten.TabIndex = 155;
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.Dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellEndEdit);
@@ -548,10 +476,10 @@
             // debe
             // 
             this.debe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0.00";
-            this.debe.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = "0.00";
+            this.debe.DefaultCellStyle = dataGridViewCellStyle12;
             this.debe.HeaderText = "DEBE";
             this.debe.MaxInputLength = 30;
             this.debe.MinimumWidth = 100;
@@ -561,10 +489,10 @@
             // haber
             // 
             this.haber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = "0.00";
-            this.haber.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = "0.00";
+            this.haber.DefaultCellStyle = dataGridViewCellStyle13;
             this.haber.HeaderText = "HABER";
             this.haber.MaxInputLength = 30;
             this.haber.MinimumWidth = 100;
@@ -573,7 +501,7 @@
             // btnmas
             // 
             this.btnmas.Enabled = false;
-            this.btnmas.Location = new System.Drawing.Point(584, 88);
+            this.btnmas.Location = new System.Drawing.Point(584, 100);
             this.btnmas.Name = "btnmas";
             this.btnmas.Size = new System.Drawing.Size(82, 21);
             this.btnmas.TabIndex = 156;
@@ -584,7 +512,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-41, 73);
+            this.label1.Location = new System.Drawing.Point(-41, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(817, 13);
             this.label1.TabIndex = 157;
@@ -596,7 +524,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(179, 40);
+            this.label2.Location = new System.Drawing.Point(179, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 140;
@@ -682,9 +610,10 @@
             // 
             this.txttotalhaber.BackColor = System.Drawing.SystemColors.Window;
             this.txttotalhaber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalhaber.Location = new System.Drawing.Point(564, 367);
+            this.txttotalhaber.Location = new System.Drawing.Point(564, 364);
             this.txttotalhaber.MaxLength = 20;
             this.txttotalhaber.Name = "txttotalhaber";
+            this.txttotalhaber.ReadOnly = true;
             this.txttotalhaber.Size = new System.Drawing.Size(102, 20);
             this.txttotalhaber.TabIndex = 160;
             this.txttotalhaber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -713,9 +642,10 @@
             // 
             this.txttotaldebe.BackColor = System.Drawing.SystemColors.Window;
             this.txttotaldebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotaldebe.Location = new System.Drawing.Point(456, 367);
+            this.txttotaldebe.Location = new System.Drawing.Point(456, 364);
             this.txttotaldebe.MaxLength = 20;
             this.txttotaldebe.Name = "txttotaldebe";
+            this.txttotaldebe.ReadOnly = true;
             this.txttotaldebe.Size = new System.Drawing.Size(102, 20);
             this.txttotaldebe.TabIndex = 162;
             this.txttotaldebe.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -724,9 +654,10 @@
             // 
             this.txtdiferencia.BackColor = System.Drawing.SystemColors.Window;
             this.txtdiferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdiferencia.Location = new System.Drawing.Point(564, 393);
+            this.txtdiferencia.Location = new System.Drawing.Point(564, 386);
             this.txtdiferencia.MaxLength = 20;
             this.txtdiferencia.Name = "txtdiferencia";
+            this.txtdiferencia.ReadOnly = true;
             this.txtdiferencia.Size = new System.Drawing.Size(102, 20);
             this.txtdiferencia.TabIndex = 164;
             this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -735,7 +666,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(492, 396);
+            this.label5.Location = new System.Drawing.Point(492, 389);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 165;
@@ -773,7 +704,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(179, 16);
+            this.label6.Location = new System.Drawing.Point(15, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 169;
@@ -784,7 +715,7 @@
             this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboestado.Enabled = false;
             this.cboestado.FormattingEnabled = true;
-            this.cboestado.Location = new System.Drawing.Point(224, 12);
+            this.cboestado.Location = new System.Drawing.Point(60, 12);
             this.cboestado.Name = "cboestado";
             this.cboestado.Size = new System.Drawing.Size(105, 21);
             this.cboestado.TabIndex = 168;
@@ -794,7 +725,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(15, 92);
+            this.label7.Location = new System.Drawing.Point(15, 104);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 13);
             this.label7.TabIndex = 170;
@@ -802,7 +733,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(591, 447);
+            this.btnActualizar.Location = new System.Drawing.Point(591, 434);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 171;
@@ -810,11 +741,247 @@
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
+            // chkfechavalor
+            // 
+            this.chkfechavalor.AutoSize = true;
+            this.chkfechavalor.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkfechavalor.Enabled = false;
+            this.chkfechavalor.Location = new System.Drawing.Point(139, 38);
+            this.chkfechavalor.Name = "chkfechavalor";
+            this.chkfechavalor.Size = new System.Drawing.Size(80, 17);
+            this.chkfechavalor.TabIndex = 172;
+            this.chkfechavalor.Text = "FechaValor";
+            this.chkfechavalor.UseVisualStyleBackColor = true;
+            this.chkfechavalor.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // dtfechavalor
+            // 
+            this.dtfechavalor.Enabled = false;
+            this.dtfechavalor.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtfechavalor.Location = new System.Drawing.Point(225, 36);
+            this.dtfechavalor.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtfechavalor.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtfechavalor.Name = "dtfechavalor";
+            this.dtfechavalor.Size = new System.Drawing.Size(105, 20);
+            this.dtfechavalor.TabIndex = 173;
+            this.dtfechavalor.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            // 
+            // cboetapa
+            // 
+            this.cboetapa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboetapa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboetapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboetapa.Enabled = false;
+            this.cboetapa.FormattingEnabled = true;
+            this.cboetapa.Location = new System.Drawing.Point(405, 72);
+            this.cboetapa.Name = "cboetapa";
+            this.cboetapa.Size = new System.Drawing.Size(173, 21);
+            this.cboetapa.TabIndex = 176;
+            this.cboetapa.Enter += new System.EventHandler(this.cboetapa_Enter);
+            // 
+            // cboempresa
+            // 
+            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.Enabled = false;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(16, 72);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(196, 21);
+            this.cboempresa.TabIndex = 174;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            this.cboempresa.Enter += new System.EventHandler(this.cboempresa_Enter);
+            // 
+            // cboproyecto
+            // 
+            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyecto.Enabled = false;
+            this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.Location = new System.Drawing.Point(218, 72);
+            this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.Size = new System.Drawing.Size(181, 21);
+            this.cboproyecto.TabIndex = 175;
+            this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
+            this.cboproyecto.Enter += new System.EventHandler(this.cboproyecto_Enter);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(15, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 13);
+            this.label8.TabIndex = 177;
+            this.label8.Text = "Empresa:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(215, 58);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 178;
+            this.label9.Text = "Proyecto:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(402, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 179;
+            this.label10.Text = "Etapa:";
+            // 
+            // idx
+            // 
+            this.idx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.idx.DataPropertyName = "id";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.idx.DefaultCellStyle = dataGridViewCellStyle3;
+            this.idx.HeaderText = "CUO";
+            this.idx.MinimumWidth = 40;
+            this.idx.Name = "idx";
+            this.idx.ReadOnly = true;
+            this.idx.Width = 40;
+            // 
+            // Fechax
+            // 
+            this.Fechax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Fechax.DataPropertyName = "fecha";
+            this.Fechax.HeaderText = "Fecha";
+            this.Fechax.Name = "Fechax";
+            this.Fechax.ReadOnly = true;
+            this.Fechax.Width = 61;
+            // 
+            // fechavalorx
+            // 
+            this.fechavalorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fechavalorx.DataPropertyName = "fechavalor";
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.fechavalorx.DefaultCellStyle = dataGridViewCellStyle4;
+            this.fechavalorx.FillWeight = 70F;
+            this.fechavalorx.HeaderText = "Fec.Valor";
+            this.fechavalorx.MinimumWidth = 70;
+            this.fechavalorx.Name = "fechavalorx";
+            this.fechavalorx.ReadOnly = true;
+            this.fechavalorx.Width = 77;
+            // 
+            // Codx
+            // 
+            this.Codx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Codx.DataPropertyName = "cod";
+            this.Codx.HeaderText = "Cuenta";
+            this.Codx.Name = "Codx";
+            this.Codx.ReadOnly = true;
+            this.Codx.Width = 65;
+            // 
+            // Cuentax
+            // 
+            this.Cuentax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cuentax.DataPropertyName = "cuenta";
+            this.Cuentax.HeaderText = "Cuenta Descripción";
+            this.Cuentax.MinimumWidth = 80;
+            this.Cuentax.Name = "Cuentax";
+            this.Cuentax.ReadOnly = true;
+            // 
+            // SubOperacionx
+            // 
+            this.SubOperacionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SubOperacionx.DataPropertyName = "sub-operacion";
+            this.SubOperacionx.HeaderText = "SubOperación";
+            this.SubOperacionx.Name = "SubOperacionx";
+            this.SubOperacionx.ReadOnly = true;
+            this.SubOperacionx.Width = 99;
+            // 
+            // Debex
+            // 
+            this.Debex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Debex.DataPropertyName = "debe";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.Debex.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Debex.HeaderText = "Debe";
+            this.Debex.Name = "Debex";
+            this.Debex.ReadOnly = true;
+            this.Debex.Width = 57;
+            // 
+            // Haberx
+            // 
+            this.Haberx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Haberx.DataPropertyName = "haber";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.Haberx.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Haberx.HeaderText = "Haber";
+            this.Haberx.Name = "Haberx";
+            this.Haberx.ReadOnly = true;
+            this.Haberx.Width = 61;
+            // 
+            // Iddinamica
+            // 
+            this.Iddinamica.DataPropertyName = "iddinamica";
+            this.Iddinamica.HeaderText = "IDdinamica";
+            this.Iddinamica.Name = "Iddinamica";
+            this.Iddinamica.ReadOnly = true;
+            this.Iddinamica.Visible = false;
+            this.Iddinamica.Width = 86;
+            // 
+            // Estadox
+            // 
+            this.Estadox.DataPropertyName = "estado";
+            this.Estadox.HeaderText = "Estado";
+            this.Estadox.Name = "Estadox";
+            this.Estadox.ReadOnly = true;
+            this.Estadox.Visible = false;
+            this.Estadox.Width = 64;
+            // 
+            // empresax
+            // 
+            this.empresax.DataPropertyName = "empresa";
+            this.empresax.HeaderText = "empresa";
+            this.empresax.Name = "empresax";
+            this.empresax.ReadOnly = true;
+            this.empresax.Visible = false;
+            this.empresax.Width = 74;
+            // 
+            // proyectox
+            // 
+            this.proyectox.DataPropertyName = "proyecto";
+            this.proyectox.HeaderText = "proyecto";
+            this.proyectox.Name = "proyectox";
+            this.proyectox.ReadOnly = true;
+            this.proyectox.Visible = false;
+            this.proyectox.Width = 73;
+            // 
+            // etapax
+            // 
+            this.etapax.DataPropertyName = "etapa";
+            this.etapax.HeaderText = "etapa";
+            this.etapax.Name = "etapax";
+            this.etapax.ReadOnly = true;
+            this.etapax.Visible = false;
+            this.etapax.Width = 59;
+            // 
             // frmAsientoContable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 707);
+            this.Controls.Add(this.Txtbusca);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cboetapa);
+            this.Controls.Add(this.cboempresa);
+            this.Controls.Add(this.cboproyecto);
+            this.Controls.Add(this.dtfechavalor);
+            this.Controls.Add(this.chkfechavalor);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -837,7 +1004,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.lblmsg2);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
@@ -916,8 +1082,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn debe;
         private System.Windows.Forms.DataGridViewTextBoxColumn haber;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.CheckBox chkfechavalor;
+        private System.Windows.Forms.DateTimePicker dtfechavalor;
+        private System.Windows.Forms.ComboBox cboetapa;
+        private System.Windows.Forms.ComboBox cboempresa;
+        private System.Windows.Forms.ComboBox cboproyecto;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewTextBoxColumn idx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fechax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechavalorx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuentax;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubOperacionx;
@@ -925,5 +1100,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Haberx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Iddinamica;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estadox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empresax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn proyectox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn etapax;
     }
 }

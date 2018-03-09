@@ -237,9 +237,10 @@ namespace HPReserger
             HPResergerFunciones.Utilitarios.ToUpper(e);
         }
         int IGV;
-        int CENTRO; string cuentax;
+        string cuentax;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            int CENTRO = 0;
             if (chkcentro.Checked)
                 CENTRO = 1;
             else CENTRO = 0;
@@ -286,7 +287,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtdescripcion.Text + " Marca: " + cbomarca.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes") 
+                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtdescripcion.Text + " Marca: " + cbomarca.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             CArticulo.EliminarARticuloMarca(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));
                             estado = 0;

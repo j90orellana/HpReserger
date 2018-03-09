@@ -361,7 +361,6 @@ namespace HPReserger
             }
         }
         public Boolean PasoFactura = false;
-        int contador = 0;
         List<string> Proveedores = new List<string>();
         /*
         SaveFile.FileName = cbobanco.Text + " " + DateTime.Now.ToLongDateString();
@@ -590,7 +589,6 @@ namespace HPReserger
             else
                 this.Close();
         }
-        StreamWriter st;
         int[] columnas = { 0 };
         private void btnActualizar_Click(object sender, EventArgs e)
         {

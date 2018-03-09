@@ -134,6 +134,7 @@
             this.Grid2.ReadOnly = true;
             this.Grid2.RowHeadersVisible = false;
             this.Grid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.Grid2.RowTemplate.Height = 16;
             this.Grid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid2.Size = new System.Drawing.Size(1022, 139);
             this.Grid2.TabIndex = 18;
@@ -450,6 +451,7 @@
             this.grid3.ReadOnly = true;
             this.grid3.RowHeadersVisible = false;
             this.grid3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.grid3.RowTemplate.Height = 16;
             this.grid3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grid3.Size = new System.Drawing.Size(1022, 214);
             this.grid3.TabIndex = 35;

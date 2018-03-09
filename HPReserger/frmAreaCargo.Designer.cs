@@ -32,6 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.pk_id_gerencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gerenciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fk_id_Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.area = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fk_id_cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btncancelar = new System.Windows.Forms.Button();
             this.cboarea = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -47,12 +53,6 @@
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.btnlimpiar = new System.Windows.Forms.Button();
             this.cbotipos = new System.Windows.Forms.ComboBox();
-            this.pk_id_gerencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gerenciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fk_id_Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.area = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fk_id_cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,11 +97,54 @@
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(469, 265);
             this.dtgconten.TabIndex = 59;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             this.dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgconten_KeyDown);
+            // 
+            // pk_id_gerencia
+            // 
+            this.pk_id_gerencia.DataPropertyName = "Id_Gerencia";
+            this.pk_id_gerencia.HeaderText = "idGerencia";
+            this.pk_id_gerencia.Name = "pk_id_gerencia";
+            this.pk_id_gerencia.Visible = false;
+            // 
+            // Gerenciax
+            // 
+            this.Gerenciax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Gerenciax.DataPropertyName = "Gerencia";
+            this.Gerenciax.HeaderText = "Gerencia";
+            this.Gerenciax.Name = "Gerenciax";
+            // 
+            // fk_id_Area
+            // 
+            this.fk_id_Area.DataPropertyName = "fk_id_Area";
+            this.fk_id_Area.HeaderText = "fk_id_Area";
+            this.fk_id_Area.Name = "fk_id_Area";
+            this.fk_id_Area.Visible = false;
+            // 
+            // area
+            // 
+            this.area.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.area.DataPropertyName = "area";
+            this.area.HeaderText = "Área";
+            this.area.Name = "area";
+            // 
+            // fk_id_cargo
+            // 
+            this.fk_id_cargo.DataPropertyName = "fk_idcargo";
+            this.fk_id_cargo.HeaderText = "fk_id_cargo";
+            this.fk_id_cargo.Name = "fk_id_cargo";
+            this.fk_id_cargo.Visible = false;
+            // 
+            // cargo
+            // 
+            this.cargo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cargo.DataPropertyName = "cargo";
+            this.cargo.HeaderText = "Cargo";
+            this.cargo.Name = "cargo";
             // 
             // btncancelar
             // 
@@ -304,48 +347,6 @@
             this.cbotipos.Name = "cbotipos";
             this.cbotipos.Size = new System.Drawing.Size(75, 23);
             this.cbotipos.TabIndex = 90;
-            // 
-            // pk_id_gerencia
-            // 
-            this.pk_id_gerencia.DataPropertyName = "Id_Gerencia";
-            this.pk_id_gerencia.HeaderText = "idGerencia";
-            this.pk_id_gerencia.Name = "pk_id_gerencia";
-            this.pk_id_gerencia.Visible = false;
-            // 
-            // Gerenciax
-            // 
-            this.Gerenciax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Gerenciax.DataPropertyName = "Gerencia";
-            this.Gerenciax.HeaderText = "Gerencia";
-            this.Gerenciax.Name = "Gerenciax";
-            // 
-            // fk_id_Area
-            // 
-            this.fk_id_Area.DataPropertyName = "fk_id_Area";
-            this.fk_id_Area.HeaderText = "fk_id_Area";
-            this.fk_id_Area.Name = "fk_id_Area";
-            this.fk_id_Area.Visible = false;
-            // 
-            // area
-            // 
-            this.area.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.area.DataPropertyName = "area";
-            this.area.HeaderText = "Área";
-            this.area.Name = "area";
-            // 
-            // fk_id_cargo
-            // 
-            this.fk_id_cargo.DataPropertyName = "fk_idcargo";
-            this.fk_id_cargo.HeaderText = "fk_id_cargo";
-            this.fk_id_cargo.Name = "fk_id_cargo";
-            this.fk_id_cargo.Visible = false;
-            // 
-            // cargo
-            // 
-            this.cargo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cargo.DataPropertyName = "cargo";
-            this.cargo.HeaderText = "Cargo";
-            this.cargo.Name = "cargo";
             // 
             // frmAreaCargo
             // 

@@ -18,9 +18,9 @@ namespace HPReserger
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
         int estado = 0;
-        string tabla = "TBL_Cargo";
-        string campo = "Cargo";
-        string id = "Id_Cargo";
+        //string tabla = "TBL_Cargo";
+        //string campo = "Cargo";
+        //string id = "Id_Cargo";
         public void iniciar(Boolean a)
         {
             btnnuevo.Enabled = !a;
@@ -138,12 +138,10 @@ namespace HPReserger
         {
             txtbuscar.Text = "";
         }
-
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
             dtgconten.DataSource = CCargos.InsertarActualizarListarSubOperacion("0", 10, txtbuscar.Text, "0", "0", 0, 0);
         }
-
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtruc.Text))
@@ -219,6 +217,13 @@ namespace HPReserger
             {
 
             }
+        }
+
+        private void cbooperacion_Enter(object sender, EventArgs e)
+        {
+            string cadena = cbooperacion.Text;
+            CargadOperaciones(cbooperacion);
+            cbooperacion.Text = cadena;
         }
     }
 }

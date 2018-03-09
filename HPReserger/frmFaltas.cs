@@ -332,11 +332,11 @@ namespace HPReserger
         {
             if (chkfaltas.Checked)
             {
-                estado = 0; btnAdjuntarSustento.Enabled = false;
+                estado = 0;// btnAdjuntarSustento.Enabled = false;
             }
             else
             {
-                estado = 1; btnAdjuntarSustento.Enabled = true;
+                estado = 1; //btnAdjuntarSustento.Enabled = true;
             }
         }
 

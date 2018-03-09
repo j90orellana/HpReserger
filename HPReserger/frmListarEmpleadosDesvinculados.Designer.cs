@@ -140,7 +140,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(12, 130);
+            this.dtgconten.Location = new System.Drawing.Point(12, 116);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -155,8 +155,9 @@
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(828, 198);
+            this.dtgconten.Size = new System.Drawing.Size(828, 212);
             this.dtgconten.TabIndex = 151;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 

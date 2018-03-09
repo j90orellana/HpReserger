@@ -15,7 +15,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Net.Mail;
 using HPResergerFunciones;
-
+using System.Drawing;
+using System.Data.OleDb;
 
 namespace HPResergerFunciones
 {
@@ -238,6 +239,35 @@ namespace HPResergerFunciones
             public int fila { get; set; }
             public int columna { get; set; }
             public string Nombre { get; set; }
+            public NombreCelda() { }
+            public NombreCelda(int _fila, int _columna, string _nombre)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+            }
+        }
+        public class RangoCelda
+        {
+            public string fila { get; set; }
+            public string columna { get; set; }
+            public string Nombre { get; set; }
+            public int TamañoFuente = 0;
+            public RangoCelda() { }
+            public RangoCelda(string _fila, string _columna, string _nombre)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = 0;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
+            }
         }
         public static void DescargarImagen(PictureBox Fotos)
         {
@@ -272,10 +302,12 @@ namespace HPResergerFunciones
                 hoja_trabajo.Cells[Nombres.columna, Nombres.fila] = Nombres.Nombre;
             }
             //Recorremos el DataGridView rellenando la hoja de trabajo
-            for (int i = 0; i < grd.Rows.Count; i++)
+            int ConCol = grd.Columns.Count;
+            int Conta = grd.Rows.Count;
+            for (int i = 0; i < Conta; i++)
             {
                 nume = 0;
-                for (int j = 0; j < grd.Columns.Count; j++)
+                for (int j = 0; j < ConCol; j++)
                 {
                     if (!FilasNoMostrar.Contains(j + 1))
                     {
@@ -286,7 +318,7 @@ namespace HPResergerFunciones
                 }
             }
             numer = 0;
-            for (int contador = 0; contador < grd.ColumnCount; contador++)
+            for (int contador = 0; contador < ConCol; contador++)
             {
                 if (!FilasNoMostrar.Contains(contador + 1))
                 {
@@ -331,20 +363,22 @@ namespace HPResergerFunciones
                 hoja_trabajo.Cells[Nombres.columna, Nombres.fila] = Nombres.Nombre;
             }
             //Recorremos el DataGridView rellenando la hoja de trabajo
+            int ConCol = grd.Columns.Count;
             for (int i = 0; i < NumFilas; i++)
             {
                 nume = 0;
-                for (int j = 0; j < grd.Columns.Count; j++)
+                for (int j = 0; j < ConCol; j++)
                 {
                     if (!FilasNoMostrar.Contains(j + 1))
                     {
-                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = grd.Rows[i].Cells[j].Value.ToString();
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = grd.Rows[i].Cells[j].Value;
                         nume++;
                     }
                 }
             }
             numer = 0;
-            for (int contador = 0; contador < grd.ColumnCount; contador++)
+            int Conta = grd.ColumnCount;
+            for (int contador = 0; contador < Conta; contador++)
             {
                 if (!FilasNoMostrar.Contains(contador + 1))
                 {
@@ -377,26 +411,35 @@ namespace HPResergerFunciones
             Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
             aplicacion = new Microsoft.Office.Interop.Excel.Application();
             if (string.IsNullOrWhiteSpace(ruta))
-                aplicacion.Visible = true;
+                aplicacion.Visible = false;
             else
                 aplicacion.Visible = false;
             libros_trabajo = aplicacion.Workbooks.Add();
             hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
             hoja_trabajo.Name = nombrehoja;
+
             ///Ponemos Nombre a las Celdas      
             foreach (NombreCelda Nombres in NombresCeldas)
             {
                 hoja_trabajo.Cells[Nombres.columna, Nombres.fila] = Nombres.Nombre;
+                // hoja_trabajo.Range[hoja_trabajo.Cells[Nombres.columna, Nombres.fila], hoja_trabajo.Cells[Nombres.columna , Nombres.fila+3]] = Nombres.Nombre;
+
             }
             //Recorremos el DataGridView rellenando la hoja de trabajo
-            for (int i = 0; i < grd.Rows.Count; i++)
+            int Conta = grd.Rows.Count;
+            int i = 0;
+            foreach (DataGridViewRow item in grd.Rows)
             {
                 nume = 0;
                 foreach (int j in OrdendelasColumnas)
                 {
-                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = grd.Rows[i].Cells[j - 1].Value.ToString();
+                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = item.Cells[j - 1].Value;
+                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = item.Cells[j - 1].Style.BackColor;
+                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j - 1].Style.ForeColor;
+
                     nume++;
                 }
+                i++;
             }
             numer = 0;
             foreach (int contador in OrdendelasColumnas)
@@ -405,8 +448,8 @@ namespace HPResergerFunciones
                 //{
                 hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
                 hoja_trabajo.Columns[numer + 1].AutoFit();
-                if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(decimal))
-                    hoja_trabajo.Columns[numer + 1].NumberFormat = "0.00";
+                if (grd.Rows[0].Cells[contador - 1].ValueType == typeof(decimal))
+                    hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
                 numer++;
                 //}
             }
@@ -418,7 +461,85 @@ namespace HPResergerFunciones
             {
                 hoja_trabajo.Columns[fila].Font.Bold = true;
             }
+            if (aplicacion != null)
+                aplicacion.Visible = true;
+            if (!string.IsNullOrWhiteSpace(ruta))
+            {
+                libros_trabajo.SaveAs(ruta, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                libros_trabajo.Close(true);
+                aplicacion.Quit();
+            }
+        }
+        public static void ExportarAExcelOrdenandoColumnas(DataGridView grd, string ruta, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas, int[] FilasNegritas, int[] ColumnaNegritas)
+        {
+            int nume, numer;
+            Microsoft.Office.Interop.Excel.Application aplicacion;
+            Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
+            Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
+            aplicacion = new Microsoft.Office.Interop.Excel.Application();
+            if (string.IsNullOrWhiteSpace(ruta))
+                aplicacion.Visible = false;
+            else
+                aplicacion.Visible = false;
+            libros_trabajo = aplicacion.Workbooks.Add();
+            hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+            hoja_trabajo.Name = nombrehoja;
 
+            ///Ponemos Nombre a las Celdas      
+            foreach (RangoCelda Nombres in NombresCeldas)
+            {
+                //hoja_trabajo.Cells[Nombres.columna, Nombres.fila] = Nombres.Nombre;
+
+                hoja_trabajo.Range[Nombres.fila].Value2 = Nombres.Nombre;
+                hoja_trabajo.Range[Nombres.fila, Nombres.columna].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+                hoja_trabajo.Range[Nombres.fila, Nombres.columna].VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
+                hoja_trabajo.Range[Nombres.fila, Nombres.columna].Font.Bold = true;
+                if (Nombres.TamañoFuente != 0)
+                    hoja_trabajo.Range[Nombres.fila, Nombres.columna].Font.Size = Nombres.TamañoFuente;
+                hoja_trabajo.Range[Nombres.fila, Nombres.columna].MergeCells = true;
+
+                //hoja_trabajo.Range[hoja_trabajo.Cells[ Nombres.columna,Nombres.fila] = Nombres.Nombre;
+
+            }
+            //Recorremos el DataGridView rellenando la hoja de trabajo
+            int Conta = grd.Rows.Count;
+            int i = 0;
+            foreach (DataGridViewRow item in grd.Rows)
+            {
+                nume = 0;
+                foreach (int j in OrdendelasColumnas)
+                {
+                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Value2 = item.Cells[j - 1].Value;
+                    if (item.Cells[j - 1].Style.BackColor.Name != "0")
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = item.Cells[j - 1].Style.BackColor;
+                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j - 1].Style.ForeColor;
+
+                    nume++;
+                }
+                i++;
+            }
+            numer = 0;
+            foreach (int contador in OrdendelasColumnas)
+            {
+                //if (!FilasNoMostrar.Contains(contador + 1))
+                //{
+                hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
+                hoja_trabajo.Columns[numer + 1].AutoFit();
+                if (grd.Rows[0].Cells[contador - 1].ValueType == typeof(decimal))
+                    hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
+                numer++;
+                //}
+            }
+            foreach (int fila in FilasNegritas)
+            {
+                hoja_trabajo.Rows[fila + PosInicialGrilla].Font.Bold = true;
+            }
+            foreach (int fila in ColumnaNegritas)
+            {
+                hoja_trabajo.Columns[fila].Font.Bold = true;
+            }
+            if (aplicacion != null)
+                aplicacion.Visible = true;
             if (!string.IsNullOrWhiteSpace(ruta))
             {
                 libros_trabajo.SaveAs(ruta, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
@@ -434,7 +555,7 @@ namespace HPResergerFunciones
             Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
             aplicacion = new Microsoft.Office.Interop.Excel.Application();
             if (string.IsNullOrWhiteSpace(ruta))
-                aplicacion.Visible = true;
+                aplicacion.Visible = false;
             else
                 aplicacion.Visible = false;
             libros_trabajo = aplicacion.Workbooks.Add();
@@ -462,8 +583,8 @@ namespace HPResergerFunciones
                 //{
                 hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
                 hoja_trabajo.Columns[numer + 1].AutoFit();
-                if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(decimal))
-                    hoja_trabajo.Columns[numer + 1].NumberFormat = "0.00";
+                if (grd.Rows[0].Cells[contador - 1].ValueType == typeof(decimal))
+                    hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
                 numer++;
 
                 //}
@@ -476,7 +597,8 @@ namespace HPResergerFunciones
             {
                 hoja_trabajo.Columns[fila].Font.Bold = true;
             }
-
+            if (string.IsNullOrWhiteSpace(ruta))
+                aplicacion.Visible = true;
             if (!string.IsNullOrWhiteSpace(ruta))
             {
                 libros_trabajo.SaveAs(ruta, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
@@ -520,7 +642,7 @@ namespace HPResergerFunciones
                          smtp.Port = 25;
                          smtp.EnableSsl = true;
                          smtp.UseDefaultCredentials = false;
-                         smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
+                         smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123");
                          smtp.Send(email);
                          email.Dispose();
                          MSG("Correo electrónico fue enviado a " + para.ToLower() + " satisfactoriamente.");
@@ -536,9 +658,121 @@ namespace HPResergerFunciones
         {
             MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+        public static List<string> ListarHojasDeunExcel(string ruta)
+        {
+            List<string> NombresHojas = new List<string>();
+            if (ruta.Length > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook wb;
+                Microsoft.Office.Interop.Excel.Worksheet ws;
+                //try
+                //{
+                wb = app.Workbooks.Open(ruta);
+                foreach (Microsoft.Office.Interop.Excel.Worksheet item in wb.Sheets)
+                {
+                    NombresHojas.Add(item.Name.ToString());
+                }
+                wb.Close();
+                return NombresHojas;
+                //}
+                //catch
+                //{
+                //    return NombresHojas;
+                //}               
+            }
+            return NombresHojas;
+            //Dim app As Excel.Application = Nothing
+
+            //Try
+            //    app = New Excel.Application()
+
+            //    ' Abrimos el libro de trabajo
+            //    '
+            //    Dim wb As Excel.Workbook = app.Workbooks.Open(rutaLibro)
+
+            //    ' Referenciamos la hoja cuyo índice sea 1.
+            //    '
+            //    Dim ws As Excel.Worksheet = CType(wb.Worksheets.Item(1), Excel.Worksheet)
+
+            //    ' Obtenemos el nombre de la hoja.
+            //    '
+            //    Dim name As String = ws.Name
+
+            //    ws = Nothing
+
+            //    ' Cerramos el libro
+            //    '
+            //    wb.Close()
+            //    wb = Nothing
+
+            //    ' Devolvemos el nombre de la hoja
+            //    '
+            //    Return name
+
+            //Catch ex As Exception
+            //    ' Se ha producido un error; devolvemos la excepción
+            //    ' al procedimiento llamador.
+            //    '
+            //    Throw
+
+            //Finally
+            //    ' Cerramos Excel.
+            //    '
+            //    If(Not app Is Nothing) Then _
+            //        app.Quit()
+
+            //    ' Disminuimos el contador de referencias y liberamos el objeto.
+            //    '
+            //    Runtime.InteropServices.Marshal.ReleaseComObject(app)
+
+            //    app = Nothing
+
+            //End Try
+
+        }
+        public static DataTable CargarDatosDeExcelAGrilla(string ruta, string Tabla)
+        {
+            string strConnnectionOle = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ruta + ";Extended Properties=" + '"' + "Excel 12.0 Xml;HDR=YES" + '"';
+            string sqlExcel = "Select * From [" + Tabla + "$]";
+            DataTable DS = new DataTable();
+            OleDbConnection oledbConn = new OleDbConnection(strConnnectionOle);
+            try
+            {
+                oledbConn.Open();
+                OleDbCommand oledbCmd = new OleDbCommand(sqlExcel, oledbConn);
+                OleDbDataAdapter da = new OleDbDataAdapter(oledbCmd);
+                da.Fill(DS);
+                oledbConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return DS;
+        }
         public enum Direccion
         {
             derecha = 0, izquierda
+        }
+        public static DataTable TablaMeses()
+        {
+            DataTable meses = new DataTable();
+            meses.Columns.Add("codigo", typeof(int));
+            meses.Columns.Add("valor");
+            meses.Rows.Add(new object[] { 1, "Enero" });
+            meses.Rows.Add(new object[] { 2, "Febrero" });
+            meses.Rows.Add(new object[] { 3, "Marzo" });
+            meses.Rows.Add(new object[] { 4, "Abril" });
+            meses.Rows.Add(new object[] { 5, "Mayo" });
+            meses.Rows.Add(new object[] { 6, "Junio" });
+            meses.Rows.Add(new object[] { 7, "Julio" });
+            meses.Rows.Add(new object[] { 8, "Agosto" });
+            meses.Rows.Add(new object[] { 9, "Septiembre" });
+            meses.Rows.Add(new object[] { 10, "Octubre" });
+            meses.Rows.Add(new object[] { 11, "Noviembre" });
+            meses.Rows.Add(new object[] { 12, "Diciembre" });
+            return meses;
         }
         public static string AddCaracter(string cadena, char caracter, int tamaño, Direccion direccion)
         {

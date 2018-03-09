@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace HPReserger
 {
     public partial class frmPagarBoletas : Form
@@ -15,8 +10,10 @@ namespace HPReserger
         public frmPagarBoletas()
         {
             InitializeComponent();
+            
         }
         HPResergerCapaLogica.HPResergerCL Capalogica = new HPResergerCapaLogica.HPResergerCL();
+
         private void frmPagarBoletas_Load(object sender, EventArgs e)
         {
             txtruc_TextChanged(sender, e);
@@ -119,10 +116,8 @@ namespace HPReserger
             //FacturasSeleccionas();
             //CalcularTotal();
         }
-
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (cbotipo.SelectedIndex == 0 || cbotipo.SelectedIndex == 1)
             {
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = true;
@@ -135,9 +130,7 @@ namespace HPReserger
             {
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = false;
             }
-
         }
-
         private void cbobanco_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbobanco.SelectedIndex >= 0)
@@ -148,7 +141,6 @@ namespace HPReserger
                 cbocuentabanco.DataSource = Capalogica.ListarBancosTiposdePago(cbobanco.SelectedValue.ToString());
             }
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             txtbuscar_TextChanged(sender, e);
@@ -165,7 +157,6 @@ namespace HPReserger
                 TIPO = (int)cbotipoid.SelectedValue;
             else { TIPO = 0; }
         }
-
         private void chkempresa_CheckedChanged(object sender, EventArgs e)
         {
             if (!chkempresa.Checked)
@@ -217,7 +208,6 @@ namespace HPReserger
                 TIPO = 0;
             }
         }
-
         private void btnseleccion_Click(object sender, EventArgs e)
         {
             dtgconten.EndEdit();
@@ -299,7 +289,6 @@ namespace HPReserger
                         if (Busqueda)
                             Comprobantes.RemoveAt(Y);
                     }
-
                 }
                 //else
             }
@@ -487,17 +476,14 @@ namespace HPReserger
         {
             return MessageBox.Show(cadena, "HpREserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
-
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             lblmensaje.Text = $"Número de Registros= {dtgconten.RowCount} Seleccionados= {Comprobantes.Count}";
         }
-
         private void dtgconten_Sorted(object sender, EventArgs e)
         {
             PintardeCOloresSinCuenta();

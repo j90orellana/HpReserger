@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmMenu : Form, IForm, IFormEmpleado, IRentas, IProfesion
+    public partial class frmMenu : Form, IForm, IFormEmpleado, IRentas, IProfesion, IEpsAdicional
     {
         public frmMenu()
         {
@@ -20,14 +22,26 @@ namespace HPReserger
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public static Icon ICono;
+        public void CargarEpsAdicional()
+        {
+            if (frmE != null)
+                frmE.CargarEpsAdicional();
+        }
+        public void CargarPLanes()
+        {
+            if (frmE != null)
+                frmE.CargarPLanes();
+        }
         public void CargarNroHijos(int tipo, string doc)
         {
-            frmE.CargarNroHijos(tipo, doc);
+            if (frmE != null)
+                frmE.CargarNroHijos(tipo, doc);
         }
         public void CargarContratos()
         {
             //frmE.VerificarContrato();
-            frmE.CargarContratos();
+            if (frmE != null)
+                frmE.CargarContratos();
         }
         public void BuscarRenta(params int[] opcion)
         {
@@ -129,6 +143,47 @@ namespace HPReserger
             }
             cerrado = 0;
             lblwelcome.Text = "Bienvenido: " + Nombres;
+
+            ConsultarCumpleaños();
+            length = FlowPanel.Width;
+            ImagenDefault = pbesquina.Image;
+        }
+        public void ConsultarCumpleaños()
+        {
+            DataTable Table = new DataTable();
+            Table = CapaLogica.ConsultarCumpleano();
+            if (Table.Rows.Count > 0)
+            {
+                foreach (DataRow item in Table.Rows)
+                {
+                    HpResergerUserControls.FotoCheck fotito = new HpResergerUserControls.FotoCheck();
+                    fotito.Nombre = item["empleado"].ToString();
+                    fotito.Cargo = item["cargo"].ToString();
+                    string Extra = "";
+                    DateTime Fech = (DateTime)item["fila"];
+                    if (Fech.Date == DateTime.Now.Date) Extra = " (HOY) ";
+                    else
+                    if (Fech.Date == DateTime.Now.Date.AddDays(1)) Extra = " (MAÑANA) ";
+                    else
+                        Extra = " (" + ((Fech.Date.Subtract(DateTime.Now.Date)).Days) + " Dias) ";
+                    ///fin de Muestra de Fechas
+                    fotito.Observacion = $"Cumpleaños{Extra}el {((DateTime)item["fila"]).ToString("dd")} de {((DateTime)item["fila"]).ToString("MMMM")} ";
+                    if (item["foto"] != null && item["foto"].ToString().Length > 0)
+                    {
+                        byte[] Fotito = new byte[0];
+                        Fotito = (byte[])((byte[])item["foto"]);
+                        MemoryStream ms = new MemoryStream(Fotito);
+                        fotito.FotoPerfil = Bitmap.FromStream(ms);
+                    }
+                    FlowPanel.Controls.Add(fotito);
+                    fotito.Width = FlowPanel.Width;
+                }
+            }
+
+        }
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public void ValidarVentanas(Form formulario)
         {
@@ -292,7 +347,6 @@ namespace HPReserger
             pbfotoempleado.Visible = true;
         }
         frmEmpleado frmE;
-
         private void empleadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (frmE == null)
@@ -2013,11 +2067,13 @@ namespace HPReserger
         }
         public void CargarProfesion()
         {
-            ((IProfesion)frmE).CargarProfesion();
+            if (frmE != null)
+                ((IProfesion)frmE).CargarProfesion();
         }
         public void CargarGrado()
         {
-            ((IProfesion)frmE).CargarGrado();
+            if (frmE != null)
+                ((IProfesion)frmE).CargarGrado();
         }
         private void frmMenu_Scroll(object sender, ScrollEventArgs e)
         {
@@ -2301,5 +2357,175 @@ namespace HPReserger
         {
             frmcofig = null;
         }
+
+        private void grid1_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void cascadaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
+        private void horizontalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
+        private void verticalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+        private void minimizarTodasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in MdiChildren)
+                f.WindowState = FormWindowState.Minimized;
+        }
+        private void maximizarTodasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in MdiChildren)
+                f.WindowState = FormWindowState.Maximized;
+        }
+        private void normalTodasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in MdiChildren)
+                f.WindowState = FormWindowState.Normal;
+        }
+        private void cerrarTodasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Desea Cerrar Todas las Ventanas", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                foreach (Form ventanitas in this.MdiChildren)
+                    ventanitas.Close();
+        }
+        EstadoGananciaPerdidas frmEstadogan;
+        private void estadoDeGanaciasYPerdidasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmEstadogan == null)
+            {
+                frmEstadogan = new EstadoGananciaPerdidas();
+                frmEstadogan.MdiParent = this;
+                frmEstadogan.Icon = ICono;
+                frmEstadogan.FormClosed += new FormClosedEventHandler(cerrarestadodeganacias);
+                frmEstadogan.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmEstadogan.Activate();
+                ValidarVentanas(frmEstadogan);
+            }
+        }
+        private void cerrarestadodeganacias(object sender, FormClosedEventArgs e)
+        {
+            frmEstadogan = null;
+        }
+        frmReporteGeneral FrmReporteGene;
+        private void balanceGeneralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (FrmReporteGene == null)
+            {
+                FrmReporteGene = new frmReporteGeneral();
+                FrmReporteGene.MdiParent = this;
+                FrmReporteGene.Icon = ICono;
+                FrmReporteGene.FormClosed += new FormClosedEventHandler(cerarrbalancegeneral);
+                FrmReporteGene.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                FrmReporteGene.Activate();
+                ValidarVentanas(FrmReporteGene);
+            }
+        }
+        private void cerarrbalancegeneral(object sender, FormClosedEventArgs e)
+        {
+            FrmReporteGene = null;
+        }
+
+        private void FlowPanel_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            //if (FlowPanel.Controls.Count <= 0)
+            //{
+            //    FlowPanel.Visible = false;
+            //}
+            //else
+            //{
+            //    FlowPanel.Visible = true;
+            //}
+        }
+
+        private void FlowPanel_ControlRemoved_1(object sender, ControlEventArgs e)
+        {
+            if (FlowPanel.Controls.Count <= 0)
+            {
+                Mostrado = true;
+                pbesquina_Click(sender, e);
+                // FlowPanel.Visible = false;
+                //  pbesquina.Visible = false;
+            }
+            else
+            {
+                Mostrado = false;
+                //pbesquina_Click(sender, e);
+                //  FlowPanel.Visible = true;
+                // pbesquina.Visible = true;
+            }
+        }
+        public Boolean Mostrado = true;
+        int length;
+        Image ImagenDefault;
+        private void pbesquina_Click(object sender, EventArgs e)
+        {
+            if (Mostrado)
+            {
+                //Oculto
+                for (int i = length; i > 20; i -= 2)
+                {
+                    FlowPanel.Width = i;
+                    pbesquina.Left = FlowPanel.Left;
+                }
+                FlowPanel.Width -= 2;
+                pbesquina.Left += 2;
+                pbesquina.Image = pbesquina.ErrorImage;
+                Mostrado = false;
+            }
+            else
+            {
+                //Muestra
+                for (int i = 20; i < length; i += 10)
+                {
+                    FlowPanel.Width = i;
+                    pbesquina.Left = FlowPanel.Left;
+                }
+                FlowPanel.Width += 10;
+                pbesquina.Left -= 10;
+                pbesquina.Image = ImagenDefault;
+                Mostrado = true;
+            }
+        }
+        frmPLanesEPS frplaneseps;
+        private void planesEPSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frplaneseps == null)
+            {
+                frplaneseps = new frmPLanesEPS();
+                frplaneseps.MdiParent = this;
+                frplaneseps.Icon = ICono;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frplaneseps.FormClosed += new FormClosedEventHandler(cerrarplaneseps);
+                frplaneseps.Show();
+            }
+            else
+            {
+                frplaneseps.Activate();
+                ValidarVentanas(frplaneseps);
+            }
+        }
+
+        private void cerrarplaneseps(object sender, FormClosedEventArgs e)
+        {
+            frplaneseps = null;
+        }
+
+
     }
 }

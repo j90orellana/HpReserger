@@ -676,6 +676,7 @@
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(788, 189);
             this.dtgconten.TabIndex = 150;
@@ -948,7 +949,7 @@
             this.MinimumSize = new System.Drawing.Size(921, 684);
             this.Name = "frmDesvinculacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Desvinculación";
+            this.Text = "Desvinculación";
             this.Load += new System.EventHandler(this.frmDesvinculacion_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmDesvinculacion_MouseMove);
             this.groupBox2.ResumeLayout(false);

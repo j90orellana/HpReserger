@@ -122,6 +122,7 @@
             this.gridDetalle2.ReadOnly = true;
             this.gridDetalle2.RowHeadersVisible = false;
             this.gridDetalle2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridDetalle2.RowTemplate.Height = 16;
             this.gridDetalle2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle2.DoubleClick += new System.EventHandler(this.gridDetalle2_DoubleClick);
             // 
@@ -258,6 +259,7 @@
             this.gridDetalle1.ReadOnly = true;
             this.gridDetalle1.RowHeadersVisible = false;
             this.gridDetalle1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridDetalle1.RowTemplate.Height = 16;
             this.gridDetalle1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle1_RowEnter);
             // 
@@ -368,6 +370,7 @@
             this.gridDetalle.Name = "gridDetalle";
             this.gridDetalle.RowHeadersVisible = false;
             this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridDetalle.RowTemplate.Height = 16;
             // 
             // CODIGOARTICULO
             // 

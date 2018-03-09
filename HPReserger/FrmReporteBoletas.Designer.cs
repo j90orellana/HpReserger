@@ -46,21 +46,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnrecempresa = new System.Windows.Forms.Button();
-            this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.chkempresa = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.cbotipoid = new System.Windows.Forms.ComboBox();
-            this.btngenerar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnexportar = new System.Windows.Forms.Button();
-            this.txtnumero = new HpResergerUserControls.TextBoxPer();
-            this.comboMesAño2 = new HpResergerUserControls.ComboMesAño();
-            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.diaactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,6 +103,21 @@
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnrecempresa = new System.Windows.Forms.Button();
+            this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.chkempresa = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cbotipoid = new System.Windows.Forms.ComboBox();
+            this.btngenerar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.btnexportar = new System.Windows.Forms.Button();
+            this.txtnumero = new HpResergerUserControls.TextBoxPer();
+            this.comboMesAño2 = new HpResergerUserControls.ComboMesAño();
+            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,176 +206,17 @@
             this.Estadox});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(12, 113);
+            this.dtgconten.Location = new System.Drawing.Point(12, 96);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle17.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(1366, 489);
+            this.dtgconten.Size = new System.Drawing.Size(1366, 506);
             this.dtgconten.TabIndex = 58;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 64;
-            // 
-            // btnrecempresa
-            // 
-            this.btnrecempresa.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
-            this.btnrecempresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnrecempresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnrecempresa.Location = new System.Drawing.Point(345, 24);
-            this.btnrecempresa.Name = "btnrecempresa";
-            this.btnrecempresa.Size = new System.Drawing.Size(27, 21);
-            this.btnrecempresa.TabIndex = 63;
-            this.btnrecempresa.UseVisualStyleBackColor = true;
-            this.btnrecempresa.Click += new System.EventHandler(this.btnrecempresa_Click);
-            // 
-            // cboempresa
-            // 
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(98, 24);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(241, 21);
-            this.cboempresa.TabIndex = 62;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            // 
-            // chkempresa
-            // 
-            this.chkempresa.AutoSize = true;
-            this.chkempresa.Checked = true;
-            this.chkempresa.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkempresa.Location = new System.Drawing.Point(22, 27);
-            this.chkempresa.Name = "chkempresa";
-            this.chkempresa.Size = new System.Drawing.Size(70, 17);
-            this.chkempresa.TabIndex = 65;
-            this.chkempresa.Text = "Empresa:";
-            this.chkempresa.UseVisualStyleBackColor = true;
-            this.chkempresa.CheckedChanged += new System.EventHandler(this.chkempresa_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(22, 58);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(59, 17);
-            this.checkBox1.TabIndex = 67;
-            this.checkBox1.Text = "Fecha:";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
-            this.label2.TabIndex = 69;
-            this.label2.Text = "De:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(328, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 70;
-            this.label3.Text = "Hasta:";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(22, 88);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(84, 17);
-            this.checkBox2.TabIndex = 71;
-            this.checkBox2.Text = "Documento:";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // cbotipoid
-            // 
-            this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbotipoid.Enabled = false;
-            this.cbotipoid.FormattingEnabled = true;
-            this.cbotipoid.Location = new System.Drawing.Point(112, 86);
-            this.cbotipoid.Name = "cbotipoid";
-            this.cbotipoid.Size = new System.Drawing.Size(227, 21);
-            this.cbotipoid.TabIndex = 72;
-            this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
-            // 
-            // btngenerar
-            // 
-            this.btngenerar.Location = new System.Drawing.Point(744, 83);
-            this.btngenerar.Name = "btngenerar";
-            this.btngenerar.Size = new System.Drawing.Size(103, 24);
-            this.btngenerar.TabIndex = 74;
-            this.btngenerar.Text = "&Generar";
-            this.btngenerar.UseVisualStyleBackColor = true;
-            this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(1275, 608);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(103, 24);
-            this.btncancelar.TabIndex = 75;
-            this.btncancelar.Text = "&Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btnexportar
-            // 
-            this.btnexportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportar.Location = new System.Drawing.Point(1166, 608);
-            this.btnexportar.Name = "btnexportar";
-            this.btnexportar.Size = new System.Drawing.Size(103, 24);
-            this.btnexportar.TabIndex = 76;
-            this.btnexportar.Text = "&Exportar Excel";
-            this.btnexportar.UseVisualStyleBackColor = true;
-            this.btnexportar.Click += new System.EventHandler(this.btnexportar_Click);
-            // 
-            // txtnumero
-            // 
-            this.txtnumero.BackColor = System.Drawing.Color.White;
-            this.txtnumero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnumero.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnumero.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnumero.Enabled = false;
-            this.txtnumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.txtnumero.ForeColor = System.Drawing.Color.Black;
-            this.txtnumero.Location = new System.Drawing.Point(345, 86);
-            this.txtnumero.MaxLength = 100;
-            this.txtnumero.Name = "txtnumero";
-            this.txtnumero.NextControlOnEnter = this.btngenerar;
-            this.txtnumero.Size = new System.Drawing.Size(139, 20);
-            this.txtnumero.TabIndex = 77;
-            this.txtnumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnumero.TextoDefecto = "";
-            this.txtnumero.TextoDefectoColor = System.Drawing.Color.Black;
-            this.txtnumero.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
-            // 
-            // comboMesAño2
-            // 
-            this.comboMesAño2.Location = new System.Drawing.Point(372, 51);
-            this.comboMesAño2.Name = "comboMesAño2";
-            this.comboMesAño2.Size = new System.Drawing.Size(205, 29);
-            this.comboMesAño2.TabIndex = 68;
-            // 
-            // comboMesAño1
-            // 
-            this.comboMesAño1.Location = new System.Drawing.Point(117, 51);
-            this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(205, 29);
-            this.comboMesAño1.TabIndex = 66;
             // 
             // diaactual
             // 
@@ -408,7 +249,6 @@
             this.iniciomes.HeaderText = "InicioMes";
             this.iniciomes.Name = "iniciomes";
             this.iniciomes.Visible = false;
-            this.iniciomes.Width = 78;
             // 
             // findemes
             // 
@@ -420,7 +260,7 @@
             // 
             // empres
             // 
-            this.empres.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.empres.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.empres.DataPropertyName = "empresa";
             this.empres.HeaderText = "Empresa";
             this.empres.Name = "empres";
@@ -462,7 +302,6 @@
             this.fechaingreso.HeaderText = "FechaIngreso";
             this.fechaingreso.Name = "fechaingreso";
             this.fechaingreso.Visible = false;
-            this.fechaingreso.Width = 5;
             // 
             // diastrabajados
             // 
@@ -692,7 +531,6 @@
             this.afp.HeaderText = "AFP";
             this.afp.Name = "afp";
             this.afp.Visible = false;
-            this.afp.Width = 50;
             // 
             // onp
             // 
@@ -701,7 +539,6 @@
             this.onp.HeaderText = "ONP";
             this.onp.Name = "onp";
             this.onp.Visible = false;
-            this.onp.Width = 52;
             // 
             // aporte
             // 
@@ -745,7 +582,6 @@
             this.eps.HeaderText = "EPS";
             this.eps.Name = "eps";
             this.eps.Visible = false;
-            this.eps.Width = 50;
             // 
             // empresaafp
             // 
@@ -851,6 +687,176 @@
             this.Estadox.HeaderText = "Estado";
             this.Estadox.Name = "Estadox";
             this.Estadox.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 64;
+            // 
+            // btnrecempresa
+            // 
+            this.btnrecempresa.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
+            this.btnrecempresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnrecempresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnrecempresa.Location = new System.Drawing.Point(336, 12);
+            this.btnrecempresa.Name = "btnrecempresa";
+            this.btnrecempresa.Size = new System.Drawing.Size(27, 21);
+            this.btnrecempresa.TabIndex = 63;
+            this.btnrecempresa.UseVisualStyleBackColor = true;
+            this.btnrecempresa.Click += new System.EventHandler(this.btnrecempresa_Click);
+            // 
+            // cboempresa
+            // 
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(89, 12);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(241, 21);
+            this.cboempresa.TabIndex = 62;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            // 
+            // chkempresa
+            // 
+            this.chkempresa.AutoSize = true;
+            this.chkempresa.Checked = true;
+            this.chkempresa.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkempresa.Location = new System.Drawing.Point(13, 15);
+            this.chkempresa.Name = "chkempresa";
+            this.chkempresa.Size = new System.Drawing.Size(70, 17);
+            this.chkempresa.TabIndex = 65;
+            this.chkempresa.Text = "Empresa:";
+            this.chkempresa.UseVisualStyleBackColor = true;
+            this.chkempresa.CheckedChanged += new System.EventHandler(this.chkempresa_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(13, 43);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(59, 17);
+            this.checkBox1.TabIndex = 67;
+            this.checkBox1.Text = "Fecha:";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(86, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "De:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(319, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 70;
+            this.label3.Text = "Hasta:";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(13, 71);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(84, 17);
+            this.checkBox2.TabIndex = 71;
+            this.checkBox2.Text = "Documento:";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // cbotipoid
+            // 
+            this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipoid.Enabled = false;
+            this.cbotipoid.FormattingEnabled = true;
+            this.cbotipoid.Location = new System.Drawing.Point(103, 69);
+            this.cbotipoid.Name = "cbotipoid";
+            this.cbotipoid.Size = new System.Drawing.Size(227, 21);
+            this.cbotipoid.TabIndex = 72;
+            this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
+            // 
+            // btngenerar
+            // 
+            this.btngenerar.Location = new System.Drawing.Point(735, 67);
+            this.btngenerar.Name = "btngenerar";
+            this.btngenerar.Size = new System.Drawing.Size(103, 24);
+            this.btngenerar.TabIndex = 74;
+            this.btngenerar.Text = "&Generar";
+            this.btngenerar.UseVisualStyleBackColor = true;
+            this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Location = new System.Drawing.Point(1275, 608);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(103, 24);
+            this.btncancelar.TabIndex = 75;
+            this.btncancelar.Text = "&Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btnexportar
+            // 
+            this.btnexportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnexportar.Location = new System.Drawing.Point(1166, 608);
+            this.btnexportar.Name = "btnexportar";
+            this.btnexportar.Size = new System.Drawing.Size(103, 24);
+            this.btnexportar.TabIndex = 76;
+            this.btnexportar.Text = "&Exportar Excel";
+            this.btnexportar.UseVisualStyleBackColor = true;
+            this.btnexportar.Click += new System.EventHandler(this.btnexportar_Click);
+            // 
+            // txtnumero
+            // 
+            this.txtnumero.BackColor = System.Drawing.Color.White;
+            this.txtnumero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnumero.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnumero.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnumero.Enabled = false;
+            this.txtnumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.txtnumero.ForeColor = System.Drawing.Color.Black;
+            this.txtnumero.Location = new System.Drawing.Point(336, 69);
+            this.txtnumero.MaxLength = 100;
+            this.txtnumero.Name = "txtnumero";
+            this.txtnumero.NextControlOnEnter = this.btngenerar;
+            this.txtnumero.Size = new System.Drawing.Size(139, 20);
+            this.txtnumero.TabIndex = 77;
+            this.txtnumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnumero.TextoDefecto = "";
+            this.txtnumero.TextoDefectoColor = System.Drawing.Color.Black;
+            this.txtnumero.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
+            // 
+            // comboMesAño2
+            // 
+            this.comboMesAño2.AutoSize = true;
+            this.comboMesAño2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño2.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
+            this.comboMesAño2.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
+            this.comboMesAño2.Location = new System.Drawing.Point(363, 39);
+            this.comboMesAño2.Name = "comboMesAño2";
+            this.comboMesAño2.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño2.TabIndex = 68;
+            // 
+            // comboMesAño1
+            // 
+            this.comboMesAño1.AutoSize = true;
+            this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
+            this.comboMesAño1.Location = new System.Drawing.Point(108, 39);
+            this.comboMesAño1.Name = "comboMesAño1";
+            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.TabIndex = 66;
             // 
             // FrmReporteBoletas
             // 

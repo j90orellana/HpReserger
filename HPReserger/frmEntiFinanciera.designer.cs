@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sufijox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -47,8 +50,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
-            this.codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtsufijo = new HpResergerUserControls.TextBoxPer();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,40 +89,70 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigox,
-            this.descripcionx});
+            this.descripcionx,
+            this.sufijox});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dtgconten.Location = new System.Drawing.Point(12, 70);
+            this.dtgconten.Location = new System.Drawing.Point(12, 94);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(277, 149);
+            this.dtgconten.Size = new System.Drawing.Size(364, 125);
             this.dtgconten.TabIndex = 36;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // codigox
+            // 
+            this.codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.codigox.DataPropertyName = "CODIGO";
+            this.codigox.HeaderText = "CODIGO";
+            this.codigox.Name = "codigox";
+            this.codigox.ReadOnly = true;
+            this.codigox.Width = 69;
+            // 
+            // descripcionx
+            // 
+            this.descripcionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcionx.DataPropertyName = "DESCRIPCION";
+            this.descripcionx.HeaderText = "DESCRIPCIÓN";
+            this.descripcionx.Name = "descripcionx";
+            this.descripcionx.ReadOnly = true;
+            // 
+            // sufijox
+            // 
+            this.sufijox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sufijox.DataPropertyName = "SUFIJO";
+            this.sufijox.FillWeight = 50F;
+            this.sufijox.HeaderText = "SUFIJO";
+            this.sufijox.MinimumWidth = 50;
+            this.sufijox.Name = "sufijox";
+            this.sufijox.ReadOnly = true;
+            this.sufijox.Width = 65;
             // 
             // btneliminar
             // 
@@ -191,7 +224,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 48);
+            this.label2.Location = new System.Drawing.Point(12, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 34;
@@ -200,7 +233,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Location = new System.Drawing.Point(35, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 35;
@@ -210,22 +243,34 @@
             // 
             this.tipmsg.IsBalloon = true;
             // 
-            // codigox
+            // label3
             // 
-            this.codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.codigox.DataPropertyName = "CODIGO";
-            this.codigox.HeaderText = "CODIGO";
-            this.codigox.Name = "codigox";
-            this.codigox.ReadOnly = true;
-            this.codigox.Width = 69;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(42, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "Sufijo";
             // 
-            // descripcionx
+            // txtsufijo
             // 
-            this.descripcionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcionx.DataPropertyName = "DESCRIPCION";
-            this.descripcionx.HeaderText = "DESCRIPCIÓN";
-            this.descripcionx.Name = "descripcionx";
-            this.descripcionx.ReadOnly = true;
+            this.txtsufijo.BackColor = System.Drawing.Color.White;
+            this.txtsufijo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtsufijo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtsufijo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtsufijo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtsufijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsufijo.ForeColor = System.Drawing.Color.Maroon;
+            this.txtsufijo.Location = new System.Drawing.Point(81, 69);
+            this.txtsufijo.MaxLength = 100;
+            this.txtsufijo.Name = "txtsufijo";
+            this.txtsufijo.NextControlOnEnter = this.btnaceptar;
+            this.txtsufijo.Size = new System.Drawing.Size(207, 20);
+            this.txtsufijo.TabIndex = 46;
+            this.txtsufijo.Text = "[SUFIJO]";
+            this.txtsufijo.TextoDefecto = "[Sufijo]";
+            this.txtsufijo.TextoDefectoColor = System.Drawing.Color.Maroon;
+            this.txtsufijo.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloLetras;
             // 
             // frmEntiFinanciera
             // 
@@ -233,6 +278,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btncancelar;
             this.ClientSize = new System.Drawing.Size(388, 261);
+            this.Controls.Add(this.txtsufijo);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
@@ -274,5 +321,8 @@
         private System.Windows.Forms.ToolTip tipmsg;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigox;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sufijox;
+        private System.Windows.Forms.Label label3;
+        private HpResergerUserControls.TextBoxPer txtsufijo;
     }
 }

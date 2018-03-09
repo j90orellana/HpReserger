@@ -145,6 +145,9 @@ namespace HPReserger
             else x = 0;
             clEmpleadoFamiliaModificar.EmpleadoFamilia(CodigoDocumentoEmpleado, NumeroDocumentoEmpleado, Convert.ToInt32(cboVinculoFamiliar.SelectedValue.ToString()), CodigoDocumentoFamiliar, NumeroDocumentoFamiliar, Convert.ToInt32(cboTipoDocumentoIdentidad.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, dtpFecha.Value, txtOcupacion.Text, frmLogin.CodigoUsuario, 0, conviviente, nombreconviviente, (int)cbosexo.SelectedValue, x);
             MessageBox.Show("Vínculo Familiar modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            IFormEmpleado FormEmpleado = MdiParent as IFormEmpleado;
+            if (FormEmpleado != null)
+                FormEmpleado.CargarNroHijos(CodigoDocumentoEmpleado, NumeroDocumentoEmpleado);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }

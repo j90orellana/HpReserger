@@ -143,7 +143,6 @@ namespace HPReserger
             HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txt.Text);
 
         }
-        int deci, punto;
         TextBox txt;
         decimal total, flujos;
         public void calcularsumatoria()
@@ -212,12 +211,13 @@ namespace HPReserger
         }
         void cerrarpresupuestoetapas(object sender, FormClosedEventArgs e)
         {
-            if (etapitas.ok)
-            {
-                dtgconten["importe", dtgconten.CurrentCell.RowIndex].Value = etapitas.valor;
-                dtgconten["FLujos", dtgconten.CurrentCell.RowIndex].Value = etapitas.valorflujo;
-                calcularsumatoria();
-            }
+            if (etapitas != null)
+                if (etapitas.ok)
+                {
+                    dtgconten["importe", dtgconten.CurrentCell.RowIndex].Value = etapitas.valor;
+                    dtgconten["FLujos", dtgconten.CurrentCell.RowIndex].Value = etapitas.valorflujo;
+                    calcularsumatoria();
+                }
             etapitas = null;
             // pbfotoempleado.Visible = true;
         }
@@ -273,14 +273,12 @@ namespace HPReserger
 
         private void Dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            punto = deci = 0;
             txt = e.Control as TextBox;
             if (txt != null)
             {
                 txt.KeyPress -= new KeyPressEventHandler(dataGridview_KeyPressCajita);
                 txt.KeyPress += new KeyPressEventHandler(dataGridview_KeyPressCajita);
             }
-
         }
         private void dtgconten_DoubleClick(object sender, EventArgs e)
         {

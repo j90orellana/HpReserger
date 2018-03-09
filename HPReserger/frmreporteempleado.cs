@@ -207,9 +207,9 @@ namespace HPReserger
             }
             txtbusca_TextChanged(sender, e);
         }
-        StreamWriter st, stx;
         private void btnexportarplano_Click(object sender, EventArgs e)
         {
+            StreamWriter sTwR;
             if (dtgconten.RowCount > 0)
             {
                 SaveFileCts.FileName = "Cts " + DateTime.Now.ToLongDateString();
@@ -222,7 +222,7 @@ namespace HPReserger
                     //string patchxls;
                     // patchxls = path.Substring(0, path.Length - 3) + "xls";
                     //MSG(path + (char)13+ patchxls);
-                    st = File.CreateText(path);
+                    sTwR = File.CreateText(path);
                     // stx = File.CreateText(patchxls);
                     string cadenita = "";
                     //     string cadenaxls = "";
@@ -236,8 +236,8 @@ namespace HPReserger
                         cadenita = cadenita + dtgconten[dtgconten.ColumnCount - 1, i].Value.ToString() + (char)(13);
                         //     cadenaxls += dtgconten[dtgconten.ColumnCount - 1, i].Value.ToString() + (char)(13);
                     }
-                    st.Write(cadenita);
-                    st.Close();
+                    sTwR.Write(cadenita);
+                    sTwR.Close();
                     //  stx.Write(cadenaxls);
                     //   stx.Close();
                     //ExportarExcel(dtgconten, patchxls);
@@ -313,23 +313,19 @@ namespace HPReserger
             }
             catch { }
         }
-
         private void cbobanco_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtbusca_TextChanged(sender, e);
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Cargarentidad(cbobanco);
         }
-       
         private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Clipboard.SetText(dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString());
             MSG("Celda Copiada");
         }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)

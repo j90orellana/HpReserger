@@ -220,6 +220,7 @@
             this.dtgdestaque.Location = new System.Drawing.Point(9, 37);
             this.dtgdestaque.Name = "dtgdestaque";
             this.dtgdestaque.RowHeadersVisible = false;
+            this.dtgdestaque.RowTemplate.Height = 16;
             this.dtgdestaque.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dtgdestaque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgdestaque.Size = new System.Drawing.Size(641, 60);
@@ -241,6 +242,7 @@
             this.dtgproduccion.Location = new System.Drawing.Point(9, 40);
             this.dtgproduccion.Name = "dtgproduccion";
             this.dtgproduccion.RowHeadersVisible = false;
+            this.dtgproduccion.RowTemplate.Height = 16;
             this.dtgproduccion.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dtgproduccion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgproduccion.Size = new System.Drawing.Size(644, 60);
@@ -282,6 +284,7 @@
             this.dtgmovilidad.Location = new System.Drawing.Point(6, 39);
             this.dtgmovilidad.Name = "dtgmovilidad";
             this.dtgmovilidad.RowHeadersVisible = false;
+            this.dtgmovilidad.RowTemplate.Height = 16;
             this.dtgmovilidad.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dtgmovilidad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgmovilidad.Size = new System.Drawing.Size(647, 60);
@@ -488,6 +491,7 @@
             this.dtgcomision.Location = new System.Drawing.Point(9, 35);
             this.dtgcomision.Name = "dtgcomision";
             this.dtgcomision.RowHeadersVisible = false;
+            this.dtgcomision.RowTemplate.Height = 16;
             this.dtgcomision.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dtgcomision.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgcomision.Size = new System.Drawing.Size(641, 60);

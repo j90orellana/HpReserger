@@ -1,0 +1,146 @@
+﻿namespace HpResergerUserControls
+{
+    partial class FotoCheck
+    {
+        /// <summary> 
+        /// Variable del diseñador necesaria.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Limpiar los recursos que se estén usando.
+        /// </summary>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Código generado por el Diseñador de componentes
+
+        /// <summary> 
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FotoCheck));
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.lblnombre = new System.Windows.Forms.Label();
+            this.lblcargo = new System.Windows.Forms.Label();
+            this.lblObservacion = new System.Windows.Forms.Label();
+            this.btnclose = new System.Windows.Forms.Button();
+            this.btnprueba = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
+            this.pbFoto.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbFoto.Image = ((System.Drawing.Image)(resources.GetObject("pbFoto.Image")));
+            this.pbFoto.Location = new System.Drawing.Point(0, 0);
+            this.pbFoto.Name = "pbFoto";
+            this.pbFoto.Size = new System.Drawing.Size(93, 82);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFoto.TabIndex = 0;
+            this.pbFoto.TabStop = false;
+            // 
+            // lblnombre
+            // 
+            this.lblnombre.AutoSize = true;
+            this.lblnombre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnombre.Location = new System.Drawing.Point(94, 17);
+            this.lblnombre.Name = "lblnombre";
+            this.lblnombre.Size = new System.Drawing.Size(62, 17);
+            this.lblnombre.TabIndex = 1;
+            this.lblnombre.Text = "Nombre:";
+            this.lblnombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblcargo
+            // 
+            this.lblcargo.AutoSize = true;
+            this.lblcargo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcargo.Location = new System.Drawing.Point(94, 38);
+            this.lblcargo.Name = "lblcargo";
+            this.lblcargo.Size = new System.Drawing.Size(47, 17);
+            this.lblcargo.TabIndex = 2;
+            this.lblcargo.Text = "Cargo:";
+            this.lblcargo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblObservacion
+            // 
+            this.lblObservacion.AutoSize = true;
+            this.lblObservacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObservacion.Location = new System.Drawing.Point(94, 59);
+            this.lblObservacion.Name = "lblObservacion";
+            this.lblObservacion.Size = new System.Drawing.Size(51, 17);
+            this.lblObservacion.TabIndex = 3;
+            this.lblObservacion.Text = "Detalle:";
+            this.lblObservacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnclose
+            // 
+            this.btnclose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnclose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnclose.FlatAppearance.BorderSize = 0;
+            this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnclose.Image = ((System.Drawing.Image)(resources.GetObject("btnclose.Image")));
+            this.btnclose.Location = new System.Drawing.Point(279, 4);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(20, 20);
+            this.btnclose.TabIndex = 4;
+            this.btnclose.UseVisualStyleBackColor = true;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
+            this.btnclose.MouseLeave += new System.EventHandler(this.btnclose_MouseLeave);
+            this.btnclose.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnclose_MouseMove);
+            // 
+            // btnprueba
+            // 
+            this.btnprueba.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnprueba.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnprueba.FlatAppearance.BorderSize = 0;
+            this.btnprueba.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnprueba.Image = ((System.Drawing.Image)(resources.GetObject("btnprueba.Image")));
+            this.btnprueba.Location = new System.Drawing.Point(35, 30);
+            this.btnprueba.Name = "btnprueba";
+            this.btnprueba.Size = new System.Drawing.Size(25, 25);
+            this.btnprueba.TabIndex = 5;
+            this.btnprueba.UseVisualStyleBackColor = true;
+            this.btnprueba.Visible = false;
+            // 
+            // FotoCheck
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnclose);
+            this.Controls.Add(this.lblObservacion);
+            this.Controls.Add(this.lblcargo);
+            this.Controls.Add(this.lblnombre);
+            this.Controls.Add(this.pbFoto);
+            this.Controls.Add(this.btnprueba);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(0, 82);
+            this.Name = "FotoCheck";
+            this.Size = new System.Drawing.Size(305, 82);
+            this.Click += new System.EventHandler(this.FotoCheck_Click);
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.PictureBox pbFoto;
+        private System.Windows.Forms.Label lblnombre;
+        private System.Windows.Forms.Label lblcargo;
+        private System.Windows.Forms.Label lblObservacion;
+        private System.Windows.Forms.Button btnclose;
+        private System.Windows.Forms.Button btnprueba;
+    }
+}

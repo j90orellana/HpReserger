@@ -48,6 +48,12 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gerenciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CentroCostox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnlimpiar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.Txtbusca = new System.Windows.Forms.TextBox();
@@ -55,12 +61,6 @@
             this.cboccosto = new System.Windows.Forms.ComboBox();
             this.btnccostomas = new System.Windows.Forms.Button();
             this.dtgareas = new System.Windows.Forms.DataGridView();
-            this.codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gerenciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Costox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CentroCostox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Codx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgareas)).BeginInit();
             this.SuspendLayout();
@@ -239,10 +239,65 @@
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(545, 309);
             this.dtgconten.TabIndex = 74;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // codigox
+            // 
+            this.codigox.DataPropertyName = "codigo";
+            this.codigox.HeaderText = "Codigo";
+            this.codigox.Name = "codigox";
+            this.codigox.ReadOnly = true;
+            this.codigox.Visible = false;
+            this.codigox.Width = 45;
+            // 
+            // Gerenciax
+            // 
+            this.Gerenciax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Gerenciax.DataPropertyName = "gerencia";
+            this.Gerenciax.HeaderText = "Gerencia";
+            this.Gerenciax.Name = "Gerenciax";
+            this.Gerenciax.ReadOnly = true;
+            this.Gerenciax.Width = 75;
+            // 
+            // Descripcionx
+            // 
+            this.Descripcionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Descripcionx.DataPropertyName = "descripcion";
+            this.Descripcionx.HeaderText = "Descripción";
+            this.Descripcionx.Name = "Descripcionx";
+            this.Descripcionx.ReadOnly = true;
+            this.Descripcionx.Width = 88;
+            // 
+            // Costox
+            // 
+            this.Costox.DataPropertyName = "costo";
+            this.Costox.HeaderText = "Costo";
+            this.Costox.Name = "Costox";
+            this.Costox.ReadOnly = true;
+            this.Costox.Visible = false;
+            this.Costox.Width = 58;
+            // 
+            // CentroCostox
+            // 
+            this.CentroCostox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CentroCostox.DataPropertyName = "centro de costo";
+            this.CentroCostox.HeaderText = "Centro De Costo";
+            this.CentroCostox.MinimumWidth = 100;
+            this.CentroCostox.Name = "CentroCostox";
+            this.CentroCostox.ReadOnly = true;
+            // 
+            // Codx
+            // 
+            this.Codx.DataPropertyName = "cod";
+            this.Codx.HeaderText = "Cod";
+            this.Codx.Name = "Codx";
+            this.Codx.ReadOnly = true;
+            this.Codx.Visible = false;
+            this.Codx.Width = 50;
             // 
             // btnlimpiar
             // 
@@ -315,60 +370,6 @@
             this.dtgareas.Name = "dtgareas";
             this.dtgareas.Size = new System.Drawing.Size(350, 150);
             this.dtgareas.TabIndex = 81;
-            // 
-            // codigox
-            // 
-            this.codigox.DataPropertyName = "codigo";
-            this.codigox.HeaderText = "Codigo";
-            this.codigox.Name = "codigox";
-            this.codigox.ReadOnly = true;
-            this.codigox.Visible = false;
-            this.codigox.Width = 45;
-            // 
-            // Gerenciax
-            // 
-            this.Gerenciax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Gerenciax.DataPropertyName = "gerencia";
-            this.Gerenciax.HeaderText = "Gerencia";
-            this.Gerenciax.Name = "Gerenciax";
-            this.Gerenciax.ReadOnly = true;
-            this.Gerenciax.Width = 75;
-            // 
-            // Descripcionx
-            // 
-            this.Descripcionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Descripcionx.DataPropertyName = "descripcion";
-            this.Descripcionx.HeaderText = "Descripción";
-            this.Descripcionx.Name = "Descripcionx";
-            this.Descripcionx.ReadOnly = true;
-            this.Descripcionx.Width = 88;
-            // 
-            // Costox
-            // 
-            this.Costox.DataPropertyName = "costo";
-            this.Costox.HeaderText = "Costo";
-            this.Costox.Name = "Costox";
-            this.Costox.ReadOnly = true;
-            this.Costox.Visible = false;
-            this.Costox.Width = 58;
-            // 
-            // CentroCostox
-            // 
-            this.CentroCostox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CentroCostox.DataPropertyName = "centro de costo";
-            this.CentroCostox.HeaderText = "Centro De Costo";
-            this.CentroCostox.MinimumWidth = 100;
-            this.CentroCostox.Name = "CentroCostox";
-            this.CentroCostox.ReadOnly = true;
-            // 
-            // Codx
-            // 
-            this.Codx.DataPropertyName = "cod";
-            this.Codx.HeaderText = "Cod";
-            this.Codx.Name = "Codx";
-            this.Codx.ReadOnly = true;
-            this.Codx.Visible = false;
-            this.Codx.Width = 50;
             // 
             // frmArea
             // 

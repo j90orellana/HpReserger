@@ -35,17 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtguias = new System.Windows.Forms.DataGridView();
-            this.txtcuenta = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txttotalpagos = new System.Windows.Forms.TextBox();
-            this.txtnropagos = new System.Windows.Forms.TextBox();
-            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.ptb = new System.Windows.Forms.PictureBox();
             this.CODIGOPROPIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOOP = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.NRODOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +52,17 @@
             this.TIPODOC = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.NRODOCUMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRECLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtcuenta = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txttotalpagos = new System.Windows.Forms.TextBox();
+            this.txtnropagos = new System.Windows.Forms.TextBox();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.ptb = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb)).BeginInit();
             this.SuspendLayout();
@@ -116,6 +116,7 @@
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
+            this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtguias.Size = new System.Drawing.Size(1506, 412);
             this.Dtguias.TabIndex = 41;
@@ -123,109 +124,6 @@
             this.Dtguias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellClick);
             this.Dtguias.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Dtguias_DataError);
             this.Dtguias.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_RowEnter);
-            // 
-            // txtcuenta
-            // 
-            this.txtcuenta.BackColor = System.Drawing.Color.White;
-            this.txtcuenta.Location = new System.Drawing.Point(161, 67);
-            this.txtcuenta.Name = "txtcuenta";
-            this.txtcuenta.ReadOnly = true;
-            this.txtcuenta.Size = new System.Drawing.Size(227, 20);
-            this.txtcuenta.TabIndex = 51;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 13);
-            this.label3.TabIndex = 50;
-            this.label3.Text = "Cuenta Seleccionada:";
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.IsBalloon = true;
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(164)))), ((int)(((byte)(92)))));
-            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnaceptar.ForeColor = System.Drawing.Color.White;
-            this.btnaceptar.Location = new System.Drawing.Point(1362, 511);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 53;
-            this.btnaceptar.Text = "Generar";
-            this.btnaceptar.UseVisualStyleBackColor = false;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(164)))), ((int)(((byte)(92)))));
-            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncancelar.ForeColor = System.Drawing.Color.White;
-            this.btncancelar.Location = new System.Drawing.Point(1443, 511);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 54;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = false;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(636, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "Nro. Pagos";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(636, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 57;
-            this.label2.Text = "Total S/.";
-            // 
-            // txttotalpagos
-            // 
-            this.txttotalpagos.BackColor = System.Drawing.Color.White;
-            this.txttotalpagos.Location = new System.Drawing.Point(702, 63);
-            this.txttotalpagos.Name = "txttotalpagos";
-            this.txttotalpagos.ReadOnly = true;
-            this.txttotalpagos.Size = new System.Drawing.Size(100, 20);
-            this.txttotalpagos.TabIndex = 58;
-            this.txttotalpagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtnropagos
-            // 
-            this.txtnropagos.BackColor = System.Drawing.Color.White;
-            this.txtnropagos.Location = new System.Drawing.Point(702, 38);
-            this.txtnropagos.Name = "txtnropagos";
-            this.txtnropagos.ReadOnly = true;
-            this.txtnropagos.Size = new System.Drawing.Size(100, 20);
-            this.txtnropagos.TabIndex = 59;
-            this.txtnropagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // SaveFile
-            // 
-            this.SaveFile.Filter = "Archivos de Texto|*.txt";
-            // 
-            // ptb
-            // 
-            this.ptb.Image = global::HPReserger.Properties.Resources.Interbank1;
-            this.ptb.Location = new System.Drawing.Point(12, 11);
-            this.ptb.Name = "ptb";
-            this.ptb.Size = new System.Drawing.Size(605, 72);
-            this.ptb.TabIndex = 55;
-            this.ptb.TabStop = false;
             // 
             // CODIGOPROPIO
             // 
@@ -409,6 +307,109 @@
             this.NOMBRECLIENTE.MaxInputLength = 60;
             this.NOMBRECLIENTE.MinimumWidth = 150;
             this.NOMBRECLIENTE.Name = "NOMBRECLIENTE";
+            // 
+            // txtcuenta
+            // 
+            this.txtcuenta.BackColor = System.Drawing.Color.White;
+            this.txtcuenta.Location = new System.Drawing.Point(161, 67);
+            this.txtcuenta.Name = "txtcuenta";
+            this.txtcuenta.ReadOnly = true;
+            this.txtcuenta.Size = new System.Drawing.Size(227, 20);
+            this.txtcuenta.TabIndex = 51;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Cuenta Seleccionada:";
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(164)))), ((int)(((byte)(92)))));
+            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnaceptar.ForeColor = System.Drawing.Color.White;
+            this.btnaceptar.Location = new System.Drawing.Point(1362, 511);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.TabIndex = 53;
+            this.btnaceptar.Text = "Generar";
+            this.btnaceptar.UseVisualStyleBackColor = false;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(164)))), ((int)(((byte)(92)))));
+            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncancelar.ForeColor = System.Drawing.Color.White;
+            this.btncancelar.Location = new System.Drawing.Point(1443, 511);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 54;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = false;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(636, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Nro. Pagos";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(636, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "Total S/.";
+            // 
+            // txttotalpagos
+            // 
+            this.txttotalpagos.BackColor = System.Drawing.Color.White;
+            this.txttotalpagos.Location = new System.Drawing.Point(702, 63);
+            this.txttotalpagos.Name = "txttotalpagos";
+            this.txttotalpagos.ReadOnly = true;
+            this.txttotalpagos.Size = new System.Drawing.Size(100, 20);
+            this.txttotalpagos.TabIndex = 58;
+            this.txttotalpagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtnropagos
+            // 
+            this.txtnropagos.BackColor = System.Drawing.Color.White;
+            this.txtnropagos.Location = new System.Drawing.Point(702, 38);
+            this.txtnropagos.Name = "txtnropagos";
+            this.txtnropagos.ReadOnly = true;
+            this.txtnropagos.Size = new System.Drawing.Size(100, 20);
+            this.txtnropagos.TabIndex = 59;
+            this.txtnropagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Archivos de Texto|*.txt";
+            // 
+            // ptb
+            // 
+            this.ptb.Image = global::HPReserger.Properties.Resources.Interbank1;
+            this.ptb.Location = new System.Drawing.Point(12, 11);
+            this.ptb.Name = "ptb";
+            this.ptb.Size = new System.Drawing.Size(605, 72);
+            this.ptb.TabIndex = 55;
+            this.ptb.TabStop = false;
             // 
             // frmBancoInterbank
             // 

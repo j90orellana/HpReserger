@@ -37,20 +37,21 @@ namespace HPReserger
                 //txtDiasPendientes.Text = EmpleadoVacaciones["DIASPENDIENTES"].ToString();
                 txttipo.Text = EmpleadoVacaciones["TIPOCONTRATACION"].ToString();
 
-                if (Convert.ToInt32(EmpleadoVacaciones["DIASPENDIENTES"].ToString()) <= 0)
-                {
-                    btnBoletaVacaciones.Enabled = false;
-                    btnCompraVacaciones.Enabled = false;
-                    groupBox1.Enabled = false;
-                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
-                }
-                else
-                {
-                    btnBoletaVacaciones.Enabled = true;
-                    btnCompraVacaciones.Enabled = true;
-                    groupBox1.Enabled = true;
-                    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
-                }
+                //if (Convert.ToInt32(EmpleadoVacaciones["DIASPENDIENTES"].ToString()) <= 0)
+                //{
+                //    btnBoletaVacaciones.Enabled = false;
+                //    btnCompraVacaciones.Enabled = false;
+                //    groupBox1.Enabled = false;
+                //    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = false;
+                //}
+                //else
+                //{
+                //    btnBoletaVacaciones.Enabled = true;
+                //    btnCompraVacaciones.Enabled = true;
+                //    groupBox1.Enabled = true;
+                //    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
+                //}
+                
                 //if (EmpleadoVacaciones["IDTIPO"].ToString() == "2" || EmpleadoVacaciones["IDTIPO"].ToString() == "3")
                 //{
                 //    btnBoletaVacaciones.Enabled = true;
@@ -87,7 +88,8 @@ namespace HPReserger
                 }
                 Acumulados = (habiles + (habiles / 5) * 2);
                 txtDiasUtilizados.Text = Acumulados.ToString("n0");
-                txtDiasPendientes.Text = (30 - Acumulados).ToString("n0");
+                //txtDiasPendientes.Text = (30 - Acumulados).ToString("n0");
+                txtDiasPendientes.Text =Convert.ToDecimal( txtVacaciones.Text).ToString("0");
                 //MessageBox.Show($"habiles {habiles } y no habiles { nohabiles} Acumulado { habiles % 5} Division { (habiles/ 5).ToString("n0")} ");
             }
             else
@@ -166,6 +168,7 @@ namespace HPReserger
         }
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
+            dtpInicio.Value = DateTime.Now;
             DiasInicio(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_GetDiasVacaciones");
             Dias(dtpInicio.Value, dtpFin.Value, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
         }
@@ -226,8 +229,8 @@ namespace HPReserger
                 DayAux = DayAux.AddDays(1);
             }
             //txtObservaciones.Text = dif.ToString() + $" = Habiles {Habiles } + No habiles { Nohabiles} = DiasExtras{ Habiles % 5}";
-            if ((habiles + Habiles) > 22)
-                MessageBox.Show("No se Puede Tomar muchos días el Máximo son 30 días", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           // if ((habiles + Habiles) > 22)
+           //     MessageBox.Show("No se Puede Tomar muchos días el Máximo son 30 días", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DataRow DiasGenerado = clEmpleadoVacaciones.DiasGenerado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value);
             if (DiasGenerado != null)
             {

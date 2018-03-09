@@ -73,6 +73,7 @@
             this.txtRuta = new System.Windows.Forms.TextBox();
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btndescargar = new System.Windows.Forms.Button();
+            this.cachedrptConvenioPracticasPreprofesional1 = new HPReserger.CachedrptConvenioPracticasPreprofesional();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFaltas)).BeginInit();
@@ -362,6 +363,7 @@
             this.Grid.ReadOnly = true;
             this.Grid.RowHeadersVisible = false;
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.Grid.RowTemplate.Height = 16;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(746, 412);
             this.Grid.TabIndex = 75;
@@ -603,5 +605,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAFIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn DIASFALTAS;
         private System.Windows.Forms.DataGridViewTextBoxColumn OBSERVACIONES;
+        private CachedrptConvenioPracticasPreprofesional cachedrptConvenioPracticasPreprofesional1;
     }
 }

@@ -95,6 +95,7 @@
             this.dtgconten1.MultiSelect = false;
             this.dtgconten1.Name = "dtgconten1";
             this.dtgconten1.RowHeadersVisible = false;
+            this.dtgconten1.RowTemplate.Height = 16;
             this.dtgconten1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten1.Size = new System.Drawing.Size(765, 148);
             this.dtgconten1.TabIndex = 7;
@@ -130,6 +131,7 @@
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(1013, 274);
             this.dtgconten.TabIndex = 5;

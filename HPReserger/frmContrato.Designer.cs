@@ -420,6 +420,7 @@
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(710, 217);
             this.dtgconten.TabIndex = 149;
@@ -960,6 +961,7 @@
             this.txtPeriodoLaboral.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPeriodoLaboral.TextChanged += new System.EventHandler(this.txtPeriodoLaboral_TextChanged);
             this.txtPeriodoLaboral.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPeriodoLaboral_KeyPress);
+            this.txtPeriodoLaboral.Leave += new System.EventHandler(this.txtPeriodoLaboral_Leave);
             // 
             // dtpFechaFin
             // 
@@ -970,6 +972,7 @@
             this.dtpFechaFin.TabIndex = 72;
             this.dtpFechaFin.CloseUp += new System.EventHandler(this.dtpFechaFin_CloseUp);
             this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechaFin_ValueChanged);
+            this.dtpFechaFin.Leave += new System.EventHandler(this.dtpFechaFin_Leave);
             // 
             // dtpfechacese
             // 
@@ -1304,7 +1307,7 @@
             this.MinimumSize = new System.Drawing.Size(750, 688);
             this.Name = "frmContrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Empleado Contrato";
+            this.Text = "Empleado Contrato";
             this.Load += new System.EventHandler(this.frmContrato_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.grpcontrato.ResumeLayout(false);

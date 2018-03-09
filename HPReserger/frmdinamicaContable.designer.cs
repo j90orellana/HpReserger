@@ -318,6 +318,7 @@
             this.Dtgconten.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.Dtgconten.RowTemplate.Height = 16;
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtgconten.ShowRowErrors = false;
@@ -563,6 +564,7 @@
             this.dtgbusca.RowHeadersVisible = false;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgbusca.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dtgbusca.RowTemplate.Height = 16;
             this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgbusca.Size = new System.Drawing.Size(647, 254);
             this.dtgbusca.TabIndex = 134;

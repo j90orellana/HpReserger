@@ -103,13 +103,13 @@ namespace HPReserger
                 cboEmpresa.SelectedValue = Convert.ToInt32(dtgconten["IDE", fila].Value.ToString());
                 cboSede.SelectedValue = Convert.ToInt32(dtgconten["SEDE", fila].Value.ToString());
                 dtpFechaInicio.Value = Convert.ToDateTime(dtgconten["INICIO", fila].Value.ToString());
-                txtPeriodoLaboral.Text = dtgconten["PERIODO", fila].Value.ToString();
                 dtpFechaFin.Value = Convert.ToDateTime(dtgconten["FIN", fila].Value.ToString());
+                txtPeriodoLaboral.Text = dtgconten["PERIODO", fila].Value.ToString();
                 txtSalario.Text = dtgconten["SUELDO", fila].Value.ToString();
                 cboCargo.SelectedValue = Convert.ToInt32(dtgconten["IDCARGO", fila].Value.ToString());
                 //cboBono.Text = dtgconten["BONO", fila].Value.ToString();
                 //txtImporteBono.Text = dtgconten["IMPORTE", fila].Value.ToString();
-                //txtPeriodicidad.Text = dtgconten["PERIOCIDAD", fila].Value.ToString();
+                //txtPeriodoLaboral.Text = dtgconten["PERIOCIDAD", fila].Value.ToString();
                 if (dtgconten["adenda", fila].Value.ToString() != "0")
                     lbladenda.Text = "Adenda Del Contrato Nº " + dtgconten["adenda", fila].Value.ToString();
                 else lbladenda.Text = "";
@@ -475,7 +475,7 @@ namespace HPReserger
                 dtpFechaFin.Focus();
                 return false;
             }
-            txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + 1 + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
+            //txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + 1 + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
             // txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
             //txtPeriodoLaboral.Text = Convert.ToDateTime(dtpFechaFin.Value - dtpFechaInicio.Value).Month.ToString();
             /*
@@ -650,6 +650,7 @@ namespace HPReserger
 
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
         {
+            //txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + 1 + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month - 1).ToString();
             txtPeriodoLaboral_TextChanged(sender, e);
         }
 
@@ -940,12 +941,14 @@ namespace HPReserger
 
         private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
         {
+            //txtPeriodoLaboral_TextChanged(sender, e);
+            // txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + 1 + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month - 1).ToString();
             //txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + 1 + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month + 1).ToString();
             //   txtPeriodoLaboral.Text = ((dtpFechaFin.Value.Month + (dtpFechaFin.Value.Year - dtpFechaInicio.Value.Year) * 12) - dtpFechaInicio.Value.Month).ToString();
             //   TimeSpan ts = (dtpFechaFin.Value.Date - dtpFechaInicio.Value.Date);
             //  txtPeriodicidad.Text = (ts.Days / 30).ToString("n0");
-        }
 
+        }
         private void dtpFechaFin_CloseUp(object sender, EventArgs e)
         {
             if (dtpFechaFin.Value <= dtpFechaInicio.Value)
@@ -1189,7 +1192,9 @@ namespace HPReserger
 
         private void txtSalario_Leave(object sender, EventArgs e)
         {
-            txtSalario.Text = decimal.Parse(txtSalario.Text).ToString("00.00");
+            if (txtSalario.Text != "")
+                txtSalario.Text = decimal.Parse(txtSalario.Text).ToString("00.00");
+            else { txtSalario.Text = "00.00"; }
         }
         private void btnEmpresaExt_Click(object sender, EventArgs e)
         {
@@ -1197,6 +1202,16 @@ namespace HPReserger
             frmDatosExternos.Icon = this.Icon;
             frmDatosExternos.CodigoEmpleado = CodigoEmpleado;
             frmDatosExternos.ShowDialog();
+        }
+
+        private void txtPeriodoLaboral_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpFechaFin_Leave(object sender, EventArgs e)
+        {
+            dtpFechaFin_CloseUp(sender, e);
         }
     }
 }

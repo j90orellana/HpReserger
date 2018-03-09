@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBancoInterAmericano));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,7 +39,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBancoInterAmericano));
             this.Dtguias = new System.Windows.Forms.DataGridView();
+            this.TIPODOC = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NRODOCUMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRECLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPOOP = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NRODOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MONEDA = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NETO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECVENDOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOPROPIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPOABONO = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.BANCO = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.MONEDACUENTA = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NUMEROCTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumNotaDebito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAADELANTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FORMADEPAGOPROVEEDOR = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.txtrecibo = new System.Windows.Forms.TextBox();
@@ -59,22 +75,6 @@
             this.txtnotadebito = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.TIPODOC = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NRODOCUMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRECLIENTE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPOOP = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NRODOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MONEDA = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NETO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECVENDOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOPROPIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPOABONO = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.BANCO = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.MONEDACUENTA = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NUMEROCTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumNotaDebito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAADELANTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FORMADEPAGOPROVEEDOR = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb)).BeginInit();
             this.SuspendLayout();
@@ -142,6 +142,7 @@
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Dtguias.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.Dtguias.RowHeadersVisible = false;
+            this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtguias.Size = new System.Drawing.Size(1510, 436);
             this.Dtguias.TabIndex = 52;
@@ -149,178 +150,6 @@
             this.Dtguias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellClick);
             this.Dtguias.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Dtguias_DataError);
             this.Dtguias.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_RowEnter);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
-            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnaceptar.ForeColor = System.Drawing.Color.White;
-            this.btnaceptar.Location = new System.Drawing.Point(1366, 569);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 55;
-            this.btnaceptar.Text = "Generar";
-            this.btnaceptar.UseVisualStyleBackColor = false;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
-            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncancelar.ForeColor = System.Drawing.Color.White;
-            this.btncancelar.Location = new System.Drawing.Point(1447, 569);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 56;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = false;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // txtrecibo
-            // 
-            this.txtrecibo.BackColor = System.Drawing.Color.White;
-            this.txtrecibo.Location = new System.Drawing.Point(708, 88);
-            this.txtrecibo.Name = "txtrecibo";
-            this.txtrecibo.ReadOnly = true;
-            this.txtrecibo.Size = new System.Drawing.Size(100, 20);
-            this.txtrecibo.TabIndex = 66;
-            this.txtrecibo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txttotalpagos
-            // 
-            this.txttotalpagos.BackColor = System.Drawing.Color.White;
-            this.txttotalpagos.Location = new System.Drawing.Point(904, 88);
-            this.txttotalpagos.Name = "txttotalpagos";
-            this.txttotalpagos.ReadOnly = true;
-            this.txttotalpagos.Size = new System.Drawing.Size(100, 20);
-            this.txttotalpagos.TabIndex = 65;
-            this.txttotalpagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(820, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 64;
-            this.label2.Text = "Total S/.";
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(627, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 35);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "Total Recibo por Honorarios:";
-            // 
-            // txtcuenta
-            // 
-            this.txtcuenta.BackColor = System.Drawing.Color.White;
-            this.txtcuenta.Location = new System.Drawing.Point(152, 101);
-            this.txtcuenta.Name = "txtcuenta";
-            this.txtcuenta.ReadOnly = true;
-            this.txtcuenta.Size = new System.Drawing.Size(227, 20);
-            this.txtcuenta.TabIndex = 61;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 13);
-            this.label3.TabIndex = 60;
-            this.label3.Text = "Cuenta Seleccionada:";
-            // 
-            // ptb
-            // 
-            this.ptb.Image = ((System.Drawing.Image)(resources.GetObject("ptb.Image")));
-            this.ptb.Location = new System.Drawing.Point(12, 12);
-            this.ptb.Name = "ptb";
-            this.ptb.Size = new System.Drawing.Size(596, 83);
-            this.ptb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptb.TabIndex = 62;
-            this.ptb.TabStop = false;
-            // 
-            // txtnotacredito
-            // 
-            this.txtnotacredito.BackColor = System.Drawing.Color.White;
-            this.txtnotacredito.Location = new System.Drawing.Point(708, 62);
-            this.txtnotacredito.Name = "txtnotacredito";
-            this.txtnotacredito.ReadOnly = true;
-            this.txtnotacredito.Size = new System.Drawing.Size(100, 20);
-            this.txtnotacredito.TabIndex = 68;
-            this.txtnotacredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(627, 59);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 26);
-            this.label4.TabIndex = 67;
-            this.label4.Text = "Total Nota Crédito:";
-            // 
-            // txtfacturas
-            // 
-            this.txtfacturas.BackColor = System.Drawing.Color.White;
-            this.txtfacturas.Location = new System.Drawing.Point(708, 36);
-            this.txtfacturas.Name = "txtfacturas";
-            this.txtfacturas.ReadOnly = true;
-            this.txtfacturas.Size = new System.Drawing.Size(100, 20);
-            this.txtfacturas.TabIndex = 70;
-            this.txtfacturas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(624, 39);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 13);
-            this.label5.TabIndex = 69;
-            this.label5.Text = "Total Facturas:";
-            // 
-            // txtordenpago
-            // 
-            this.txtordenpago.BackColor = System.Drawing.Color.White;
-            this.txtordenpago.Location = new System.Drawing.Point(904, 36);
-            this.txtordenpago.Name = "txtordenpago";
-            this.txtordenpago.ReadOnly = true;
-            this.txtordenpago.Size = new System.Drawing.Size(100, 20);
-            this.txtordenpago.TabIndex = 72;
-            this.txtordenpago.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(823, 34);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 26);
-            this.label6.TabIndex = 71;
-            this.label6.Text = "Total Orden de Pago:";
-            // 
-            // txtnotadebito
-            // 
-            this.txtnotadebito.BackColor = System.Drawing.Color.White;
-            this.txtnotadebito.Location = new System.Drawing.Point(904, 62);
-            this.txtnotadebito.Name = "txtnotadebito";
-            this.txtnotadebito.ReadOnly = true;
-            this.txtnotadebito.Size = new System.Drawing.Size(100, 20);
-            this.txtnotadebito.TabIndex = 74;
-            this.txtnotadebito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(823, 60);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 26);
-            this.label7.TabIndex = 73;
-            this.label7.Text = "Total Nota Débito:";
-            // 
-            // SaveFile
-            // 
-            this.SaveFile.Filter = "Archivos de Texto|*.txt";
             // 
             // TIPODOC
             // 
@@ -504,6 +333,178 @@
             this.FORMADEPAGOPROVEEDOR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.FORMADEPAGOPROVEEDOR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.FORMADEPAGOPROVEEDOR.Width = 115;
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
+            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnaceptar.ForeColor = System.Drawing.Color.White;
+            this.btnaceptar.Location = new System.Drawing.Point(1366, 569);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.TabIndex = 55;
+            this.btnaceptar.Text = "Generar";
+            this.btnaceptar.UseVisualStyleBackColor = false;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(217)))));
+            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncancelar.ForeColor = System.Drawing.Color.White;
+            this.btncancelar.Location = new System.Drawing.Point(1447, 569);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 56;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = false;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // txtrecibo
+            // 
+            this.txtrecibo.BackColor = System.Drawing.Color.White;
+            this.txtrecibo.Location = new System.Drawing.Point(708, 88);
+            this.txtrecibo.Name = "txtrecibo";
+            this.txtrecibo.ReadOnly = true;
+            this.txtrecibo.Size = new System.Drawing.Size(100, 20);
+            this.txtrecibo.TabIndex = 66;
+            this.txtrecibo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txttotalpagos
+            // 
+            this.txttotalpagos.BackColor = System.Drawing.Color.White;
+            this.txttotalpagos.Location = new System.Drawing.Point(904, 88);
+            this.txttotalpagos.Name = "txttotalpagos";
+            this.txttotalpagos.ReadOnly = true;
+            this.txttotalpagos.Size = new System.Drawing.Size(100, 20);
+            this.txttotalpagos.TabIndex = 65;
+            this.txttotalpagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(820, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 64;
+            this.label2.Text = "Total S/.";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(627, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 35);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "Total Recibo por Honorarios:";
+            // 
+            // txtcuenta
+            // 
+            this.txtcuenta.BackColor = System.Drawing.Color.White;
+            this.txtcuenta.Location = new System.Drawing.Point(152, 101);
+            this.txtcuenta.Name = "txtcuenta";
+            this.txtcuenta.ReadOnly = true;
+            this.txtcuenta.Size = new System.Drawing.Size(227, 20);
+            this.txtcuenta.TabIndex = 61;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.TabIndex = 60;
+            this.label3.Text = "Cuenta Seleccionada:";
+            // 
+            // ptb
+            // 
+            this.ptb.Image = ((System.Drawing.Image)(resources.GetObject("ptb.Image")));
+            this.ptb.Location = new System.Drawing.Point(12, 12);
+            this.ptb.Name = "ptb";
+            this.ptb.Size = new System.Drawing.Size(596, 83);
+            this.ptb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb.TabIndex = 62;
+            this.ptb.TabStop = false;
+            // 
+            // txtnotacredito
+            // 
+            this.txtnotacredito.BackColor = System.Drawing.Color.White;
+            this.txtnotacredito.Location = new System.Drawing.Point(708, 62);
+            this.txtnotacredito.Name = "txtnotacredito";
+            this.txtnotacredito.ReadOnly = true;
+            this.txtnotacredito.Size = new System.Drawing.Size(100, 20);
+            this.txtnotacredito.TabIndex = 68;
+            this.txtnotacredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(627, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 26);
+            this.label4.TabIndex = 67;
+            this.label4.Text = "Total Nota Crédito:";
+            // 
+            // txtfacturas
+            // 
+            this.txtfacturas.BackColor = System.Drawing.Color.White;
+            this.txtfacturas.Location = new System.Drawing.Point(708, 36);
+            this.txtfacturas.Name = "txtfacturas";
+            this.txtfacturas.ReadOnly = true;
+            this.txtfacturas.Size = new System.Drawing.Size(100, 20);
+            this.txtfacturas.TabIndex = 70;
+            this.txtfacturas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(624, 39);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.TabIndex = 69;
+            this.label5.Text = "Total Facturas:";
+            // 
+            // txtordenpago
+            // 
+            this.txtordenpago.BackColor = System.Drawing.Color.White;
+            this.txtordenpago.Location = new System.Drawing.Point(904, 36);
+            this.txtordenpago.Name = "txtordenpago";
+            this.txtordenpago.ReadOnly = true;
+            this.txtordenpago.Size = new System.Drawing.Size(100, 20);
+            this.txtordenpago.TabIndex = 72;
+            this.txtordenpago.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(823, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 26);
+            this.label6.TabIndex = 71;
+            this.label6.Text = "Total Orden de Pago:";
+            // 
+            // txtnotadebito
+            // 
+            this.txtnotadebito.BackColor = System.Drawing.Color.White;
+            this.txtnotadebito.Location = new System.Drawing.Point(904, 62);
+            this.txtnotadebito.Name = "txtnotadebito";
+            this.txtnotadebito.ReadOnly = true;
+            this.txtnotadebito.Size = new System.Drawing.Size(100, 20);
+            this.txtnotadebito.TabIndex = 74;
+            this.txtnotadebito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(823, 60);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 26);
+            this.label7.TabIndex = 73;
+            this.label7.Text = "Total Nota Débito:";
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Archivos de Texto|*.txt";
             // 
             // frmBancoInterAmericano
             // 

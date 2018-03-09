@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,21 +60,18 @@ namespace HPReserger
         {
             int x = dtgconten.CurrentCell.RowIndex;
             int y = dtgconten.CurrentCell.ColumnIndex;
-
             if (x >= 0 && y == dtgconten.Columns[Cadenax.Name].Index)
             {
                 TextBox txt = e.Control as TextBox;
-
                 txt.KeyPress -= new KeyPressEventHandler(ValidarNumeros);
                 txt.KeyPress += new KeyPressEventHandler(ValidarNumeros);
             }
-        }
 
+        }
         private void ValidarNumeros(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
         }
-
         private void btnguardar_Click(object sender, EventArgs e)
         {
             dtgconten.EndEdit();
@@ -89,13 +87,11 @@ namespace HPReserger
                 Desactivar(btnguardar);
                 estado = 0;
             }
-
         }
         public void msg(string cadena)
         {
             MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void dtgconten_DoubleClick(object sender, EventArgs e)
         {
             if (estado == 1)

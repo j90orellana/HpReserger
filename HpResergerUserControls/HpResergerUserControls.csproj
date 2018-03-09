@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Referencias\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -42,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonOre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ButtonOre.Designer.cs">
+      <DependentUpon>ButtonOre.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComboMesAño.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ComboMesAño.Designer.cs">
       <DependentUpon>ComboMesAño.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlDeslizamiento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlDeslizamiento.Designer.cs">
+      <DependentUpon>ControlDeslizamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FotoCheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FotoCheck.Designer.cs">
+      <DependentUpon>FotoCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="MoveControl.cs">
       <SubType>Component</SubType>
@@ -67,6 +89,11 @@
       <DependentUpon>PanelOre.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TextBoxPer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -75,11 +102,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ButtonOre.resx">
+      <DependentUpon>ButtonOre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComboMesAño.resx">
       <DependentUpon>ComboMesAño.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FotoCheck.resx">
+      <DependentUpon>FotoCheck.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NumBox.resx">
       <DependentUpon>NumBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TextBoxPer.resx">
       <DependentUpon>TextBoxPer.cs</DependentUpon>

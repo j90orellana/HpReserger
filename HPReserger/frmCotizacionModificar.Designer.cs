@@ -436,6 +436,7 @@
             this.dtgpedidoY.Location = new System.Drawing.Point(12, 188);
             this.dtgpedidoY.Name = "dtgpedidoY";
             this.dtgpedidoY.RowHeadersVisible = false;
+            this.dtgpedidoY.RowTemplate.Height = 16;
             this.dtgpedidoY.Size = new System.Drawing.Size(695, 169);
             this.dtgpedidoY.TabIndex = 32;
             this.dtgpedidoY.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgpedidoY_CellContentClick);

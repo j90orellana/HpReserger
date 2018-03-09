@@ -260,8 +260,9 @@
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(902, 299);
+            this.dtgconten.Size = new System.Drawing.Size(902, 469);
             this.dtgconten.TabIndex = 37;
             this.dtgconten.TabStop = false;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
@@ -382,10 +383,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 371);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 546);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(902, 164);
+            this.dataGridView1.Size = new System.Drawing.Size(902, 71);
             this.dataGridView1.TabIndex = 49;
+            this.dataGridView1.Visible = false;
             // 
             // frmReportedeFlujoOperaciones
             // 

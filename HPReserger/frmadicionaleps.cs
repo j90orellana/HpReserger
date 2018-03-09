@@ -120,6 +120,9 @@ namespace HPReserger
             {
 
             }
+            IEpsAdicional FormEps = MdiParent as IEpsAdicional;
+            if (FormEps != null)
+                FormEps.CargarEpsAdicional();
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

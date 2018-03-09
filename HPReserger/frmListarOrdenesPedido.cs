@@ -186,14 +186,18 @@ namespace HPReserger
         {
             this.Acción = new System.Windows.Forms.DataGridViewButtonColumn();
             Acción.Text = "Borrar";
+            ActivoFijox = new DataGridViewComboBoxColumn();
+            ActivoFijox.Name = "ACTIVOFIJOX";
             Acción.UseColumnTextForButtonValue = true;
             if (Tipo == "A")
             {
+
                 if (Grid.Columns.Count == 0)
                 {
                     Grid.Columns.Add(Acción);
                     Grid.Columns.Add("CODIGOARTICULO", "");
                     Grid.Columns.Add("ITEM", "");
+                    Grid.Columns.Add(ActivoFijox);
                     Grid.Columns.Add("CODIGOMARCA", "");
                     Grid.Columns.Add("MARCA", "");
                     Grid.Columns.Add("CODIGOMODELO", "");
@@ -218,34 +222,41 @@ namespace HPReserger
                 Grid.Columns[2].DataPropertyName = "ITEM";
                 Grid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                Grid.Columns[3].Width = 0;
-                Grid.Columns[3].Visible = false;
-                Grid.Columns[3].DataPropertyName = "CODIGOMARCA";
+                Grid.Columns[3].Visible = true;
+                Grid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                Grid.Columns[3].HeaderText = "ACTIVOFIJO";
+                Grid.Columns[3].DataPropertyName = "ACTIVOFIJO";
+                Grid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                Grid.Columns[4].Width = 180;
-                Grid.Columns[4].Visible = true;
-                Grid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                Grid.Columns[4].HeaderText = "MARCA";
-                Grid.Columns[4].DataPropertyName = "MARCA";
-                Grid.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-                Grid.Columns[5].Width = 0;
-                Grid.Columns[5].Visible = false;
-                Grid.Columns[5].DataPropertyName = "CODIGOMODELO";
+                Grid.Columns[4].Width = 0;
+                Grid.Columns[4].Visible = false;
+                Grid.Columns[4].DataPropertyName = "CODIGOMARCA";
 
-                Grid.Columns[6].Width = 180;
-                Grid.Columns[6].Visible = true;
-                Grid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                Grid.Columns[6].HeaderText = "MODELO";
-                Grid.Columns[6].DataPropertyName = "MODELO";
-                Grid.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                Grid.Columns[5].Width = 180;
+                Grid.Columns[5].Visible = true;
+                Grid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                Grid.Columns[5].HeaderText = "MARCA";
+                Grid.Columns[5].DataPropertyName = "MARCA";
+                Grid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-                Grid.Columns[7].Width = 100;
+                Grid.Columns[6].Width = 0;
+                Grid.Columns[6].Visible = false;
+                Grid.Columns[6].DataPropertyName = "CODIGOMODELO";
+
+                Grid.Columns[7].Width = 180;
                 Grid.Columns[7].Visible = true;
-                Grid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                Grid.Columns[7].HeaderText = "CANTIDAD";
-                Grid.Columns[7].DataPropertyName = "CANTIDAD";
+                Grid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                Grid.Columns[7].HeaderText = "MODELO";
+                Grid.Columns[7].DataPropertyName = "MODELO";
                 Grid.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                Grid.Columns[8].Width = 100;
+                Grid.Columns[8].Visible = true;
+                Grid.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                Grid.Columns[8].HeaderText = "CANTIDAD";
+                Grid.Columns[8].DataPropertyName = "CANTIDAD";
+                Grid.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
 
             if (Tipo == "S")
@@ -255,6 +266,7 @@ namespace HPReserger
                     Grid.Columns.Add(Acción);
                     Grid.Columns.Add("CODIGOARTICULO", "");
                     Grid.Columns.Add("ITEM", "");
+                    Grid.Columns.Add("ACTIVOFIJOX", "");
                     Grid.Columns.Add("CODIGOMARCA", "");
                     Grid.Columns.Add("MARCA", "");
                     Grid.Columns.Add("CODIGOMODELO", "");
@@ -281,26 +293,30 @@ namespace HPReserger
 
                 Grid.Columns[3].Width = 0;
                 Grid.Columns[3].Visible = false;
-                Grid.Columns[3].DataPropertyName = "CODIGOMARCA";
+                Grid.Columns[3].DataPropertyName = "ACTIVOFIJO";
 
                 Grid.Columns[4].Width = 0;
                 Grid.Columns[4].Visible = false;
-                Grid.Columns[4].DataPropertyName = "MARCA";
+                Grid.Columns[4].DataPropertyName = "CODIGOMARCA";
 
                 Grid.Columns[5].Width = 0;
                 Grid.Columns[5].Visible = false;
-                Grid.Columns[5].DataPropertyName = "CODIGOMODELO";
+                Grid.Columns[5].DataPropertyName = "MARCA";
 
                 Grid.Columns[6].Width = 0;
                 Grid.Columns[6].Visible = false;
-                Grid.Columns[6].DataPropertyName = "MODELO";
+                Grid.Columns[6].DataPropertyName = "CODIGOMODELO";
 
-                Grid.Columns[7].Width = 340;
-                Grid.Columns[7].Visible = true;
-                Grid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                Grid.Columns[7].HeaderText = "OBSERVACIONES";
-                Grid.Columns[7].DataPropertyName = "CANTIDAD";
-                Grid.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                Grid.Columns[7].Width = 0;
+                Grid.Columns[7].Visible = false;
+                Grid.Columns[7].DataPropertyName = "MODELO";
+
+                Grid.Columns[8].Width = 340;
+                Grid.Columns[8].Visible = true;
+                Grid.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                Grid.Columns[8].HeaderText = "OBSERVACIONES";
+                Grid.Columns[8].DataPropertyName = "CANTIDAD";
+                Grid.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             }
 
@@ -421,6 +437,12 @@ namespace HPReserger
         private void gridDetalle_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             ItemListar = e.RowIndex;
+            DataGridViewComboBoxColumn celdita;
+            celdita = gridDetalle.Columns[ActivoFijox.Name] as DataGridViewComboBoxColumn;
+            celdita.DataSource = tablita;
+            celdita.DisplayMember = "valor";
+            celdita.ValueMember = "codigo";
+
         }
 
         private void dtpDesde_KeyPress(object sender, KeyPressEventArgs e)
@@ -457,11 +479,21 @@ namespace HPReserger
                 }
             }
         }
+        DataTable tablita;
+        public void Cargarsiono()
+        {
+            tablita = new DataTable();
+            tablita.Columns.Add("CODIGO", typeof(int));
+            tablita.Columns.Add("VALOR", typeof(string));
+            tablita.Rows.Add(new object[] { "0", "NO" });
+            tablita.Rows.Add(new object[] { "1", "SI" });
 
+        }
         private void frmListarOrdenesPedido_Load(object sender, EventArgs e)
         {
             dtpDesde.Value = DateTime.Today.Date;
             rbtFechas.Checked = true;
+            Cargarsiono();
         }
 
         private void rbtFechas_CheckedChanged(object sender, EventArgs e)
@@ -518,6 +550,11 @@ namespace HPReserger
                 else
                     msg("Solo se Puede Borrar en Pedidos Pendientes");
             }
+        }
+
+        private void gridDetalle_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
     }
 }

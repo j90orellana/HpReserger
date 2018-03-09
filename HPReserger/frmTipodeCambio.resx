@@ -129,7 +129,13 @@
   <metadata name="Compra.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="cp.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Venta.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="vv.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="label1.Text" xml:space="preserve">
@@ -137,5 +143,31 @@
 1.- El tipo de cambio publicado corresponde a la cotización de cierre de la SBS del día anterior.
 2.- En los días que no se cuente con tipo de cambio publicado, se deberá tomar el del día inmediato anterior.
 3.- Para efectos del Impuesto a la Renta, se deberá tomar el tipo de cambio de cierre, al 31 de Diciembre del ejercicio correspondiente.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pbup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAALxJREFUSEvt
+        k70KwkAQhOd5bNMqaG3vD1aajfgCaqMvrI2FCkqMTo4Vw8UQLp6gcB98EO52ZwgkCAR+CEFHn76EYEvv
+        SLDRE8/EWJmCl0u98USCBUMzqyQz514QvkO54OmNRROdbIhgSNNC6DtTFg10w5EYfQZcrcAqL2beiRl6
+        XDxbQXXm811NqCH/DwQnXXT1iDnamlSBIKKHwlIT8/1IEy2maPFyXxj+xJ3JKyEY8ytZe3SkyYHAfwM8
+        ABISqs2gAexLAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="pbdown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAALZJREFUSEvt
+        jaEOwjAURfsjc+AgmZ1ATeAQ4EEDP8JfgkIRDAICYeO85C4LBEY3iutJTrr1vXvrIpGIP6VzK9wEdKnq
+        Gi4T3GEZwC0mqn6GQR/3Wuyq5XuqfA8LQzwo0FbLDVTVDIspHhX01fZTVfhBIMOTCr5pe5mi7SCY41lF
+        n7R5rkg3KJjgVYWvXnCs1d+gaIY3FVfa/1QrYaBwgXc9YOdco7BQvMbCTl39Bx4Y6TMSacK5B6H9AE3i
+        /0PLAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="pbigual.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAADFJREFUSEtj
+        GAWjYBSMApqD/w5A3EABBuonCMAK/1OAgfoJArr4ZBSMglEwCsgHDAwA5mlSvxhiLyIAAAAASUVORK5C
+        YII=
+</value>
   </data>
 </root>

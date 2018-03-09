@@ -21,8 +21,9 @@ namespace HPReserger
         private void frmEntiFinanciera_Load(object sender, EventArgs e)
         {
             estado = 0;
-            dtgconten.DataSource = cEntiFinanciera.getCargoTipoContratacion("ID_Entidad", "Entidad_Financiera", "TBL_Entidad_Financiera");
+            dtgconten.DataSource = cEntiFinanciera.EntidadFinanciera(0, 0, "", "");
             dtgconten.Focus();
+            Activar();
         }
 
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -30,7 +31,8 @@ namespace HPReserger
             tipmsg.Show("Ingrese Nueva Entidad Financiera", txtgerencia, 700);
             txtcodigo.Text = txtgerencia.Text = "";
             estado = 1;
-            Desactivar();
+            Desactivar();            
+            txtsufijo.Text = "";       
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
@@ -50,8 +52,12 @@ namespace HPReserger
         {
             try
             {
-                txtcodigo.Text = dtgconten[0, e.RowIndex].Value.ToString();
-                txtgerencia.Text = dtgconten[1, e.RowIndex].Value.ToString();
+                if (e.RowIndex >= 0)
+                {
+                    txtcodigo.Text = dtgconten[0, e.RowIndex].Value.ToString();
+                    txtgerencia.Text = dtgconten[1, e.RowIndex].Value.ToString();
+                    txtsufijo.Text = dtgconten[sufijox.Name, e.RowIndex].Value.ToString();
+                }
             }
             catch { }
         }
@@ -72,10 +78,12 @@ namespace HPReserger
         public void Desactivar()
         {
             btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
+            txtgerencia.ReadOnly = txtsufijo.ReadOnly = false;
         }
         public void Activar()
         {
             btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
+            txtcodigo.ReadOnly = txtgerencia.ReadOnly = txtsufijo.ReadOnly = true;
         }
         public Boolean ValidarDes(string valor)
         {
@@ -91,19 +99,29 @@ namespace HPReserger
             }
             return Aux;
         }
-
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
+            if (!txtsufijo.EstaLLeno())
+            {
+                txtsufijo.Focus();
+                msg("Esta Vacio el sufijo");
+                return;
+            }
+            
             if (estado == 1 && ValidarDes(txtgerencia.Text))
             {
-                cEntiFinanciera.AgregarEntiFinanciera(txtgerencia.Text.ToString());
+                cEntiFinanciera.EntidadFinanciera(1, 0, txtgerencia.Text, txtsufijo.Text);
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtgerencia.Text))
                 {
-                    cEntiFinanciera.ActualizarEntiFinanciera(Convert.ToInt32(txtcodigo.Text), txtgerencia.Text.ToString());
+                    cEntiFinanciera.EntidadFinanciera(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, txtsufijo.Text);
                 }
                 else
                 {

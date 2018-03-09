@@ -502,6 +502,7 @@
             this.Grid.ReadOnly = true;
             this.Grid.RowHeadersVisible = false;
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.Grid.RowTemplate.Height = 16;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(662, 512);
             this.Grid.TabIndex = 72;

@@ -215,6 +215,7 @@
             this.gridCotizacionPedido.ReadOnly = true;
             this.gridCotizacionPedido.RowHeadersVisible = false;
             this.gridCotizacionPedido.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridCotizacionPedido.RowTemplate.Height = 16;
             this.gridCotizacionPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacionPedido.Size = new System.Drawing.Size(755, 227);
             this.gridCotizacionPedido.TabIndex = 17;

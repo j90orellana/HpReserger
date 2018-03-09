@@ -61,9 +61,11 @@ namespace HPReserger
                 Txtbusca.Enabled = true;
             }
         }
-
+        public string deparment="";
+        public Boolean Acepta = false;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            if (Acepta) { this.Close(); DialogResult = DialogResult.OK; }
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
             if (estado == 1 && ValidarDes(cboprovincia.Text) && cboprovincia.Text != "")
             {
@@ -161,7 +163,11 @@ namespace HPReserger
         private void btndepmas_Click(object sender, EventArgs e)
         {
             frmdepartamento frmdepartamento = new frmdepartamento();
-            frmdepartamento.Show();
+            frmdepartamento.Acepta = true;
+            if (DialogResult.OK == frmdepartamento.ShowDialog())
+            {
+                cbodepartamento.Text = frmdepartamento.txtdepartamento.Text;
+            }
         }
 
         private void cboprovincia_KeyPress(object sender, KeyPressEventArgs e)
@@ -171,7 +177,7 @@ namespace HPReserger
         public Boolean ValidarDes(string valor)
         {
             Boolean Aux = true;
-            if ( !string.IsNullOrWhiteSpace(cboprovincia.Text))
+            if (!string.IsNullOrWhiteSpace(cboprovincia.Text))
             {
                 dtgprovincias.DataSource = Cprovincia.VerificarProvincia(coddep);
                 for (int i = 0; i < dtgprovincias.RowCount - 1; i++)
@@ -209,7 +215,7 @@ namespace HPReserger
             busca = "";
             estado = 0;
             dtgconten.DataSource = Cprovincia.ListarProvincias(busca);
-            Cargardepartamentos("");
+            Cargardepartamentos(deparment);
             coddep = Convert.ToInt32(cbodepartamento.SelectedValue.ToString());
             Cargarprovincias(coddep, "");
             codpro = Convert.ToInt32(cboprovincia.SelectedValue.ToString());
@@ -228,7 +234,7 @@ namespace HPReserger
 
         private void cbodepartamento_KeyUp(object sender, KeyEventArgs e)
         {
-            
+
         }
 
         private void cbodepartamento_KeyPress(object sender, KeyPressEventArgs e)

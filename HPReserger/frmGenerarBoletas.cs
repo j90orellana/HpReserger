@@ -56,6 +56,7 @@ namespace HPReserger
         DataTable DBoleta;
         private void btngenerar_Click(object sender, EventArgs e)
         {
+
             empresa = 0; tipo = 0;
             if (radioButton1.Checked)
                 if (cboempresa.Items.Count > 0)
@@ -77,66 +78,141 @@ namespace HPReserger
                     msg("No Hay Tipos de ID"); return;
                 }
             }
-            DBoleta = new DataTable();
-            DateTime inicial, final;
-            ///Ver si hay datos
-            inicial = comboMesAño1.GetFechaPRimerDia();
-            final = comboMesAño2.GetFecha();
-            if (inicial > final)
+            if (rbTodasEmpresa.Checked)
             {
-                inicial = comboMesAño2.GetFechaPRimerDia();
-                final = comboMesAño1.GetFecha();
-            }
-            DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
-            int aux = (12 * (final.Year - inicial.Year) + final.Month) - inicial.Month + 1;
-            // msg("meses " + aux + "inicial " + inicial + "final " + final);
-            List<string> listita = new List<string>();
-            foreach (DataRow x in DBoleta.Rows)
-                listita.Add(x["mes"].ToString());
-            listita = listita.Distinct().ToList<string>();
-            //if (listita.Count != aux)
-            if (DBoleta.Rows.Count == 0)
-            {
-                //cuando no hay boletas 
-                CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
-                //Generar Asiento de Boletas Generadas
-                DataTable Tablita = new DataTable();
-                Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
-                if (Tablita.Rows.Count > 0)
+                //todas las empresas
+                foreach (DataRowView item in cboempresa.Items)
                 {
-                    DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
-                    int ultimo = 1 + (int)Ultimo["ultimo"];
-                    DataRow Filita = Tablita.Rows[0];
-                    foreach (DataColumn col in Tablita.Columns)
+                    empresa = (int)item.Row.ItemArray[0];
+                    DBoleta = new DataTable();
+                    DateTime inicial, final;
+                    ///Ver si hay datos
+                    inicial = comboMesAño1.GetFechaPRimerDia();
+                    final = comboMesAño2.GetFecha();
+                    if (inicial > final)
                     {
-                        CReporteboleta.InsertarAsientosdeBoletas(19, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
+                        inicial = comboMesAño2.GetFechaPRimerDia();
+                        final = comboMesAño1.GetFecha();
                     }
-                    //cuentas de Reflejo
-                    DataTable Cuentas = new DataTable();
-                    Cuentas = CReporteboleta.CuentasReflejo(ultimo);
-                    if (Cuentas.Rows.Count > 0)
+                    DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+                    int aux = (12 * (final.Year - inicial.Year) + final.Month) - inicial.Month + 1;
+                    // msg("meses " + aux + "inicial " + inicial + "final " + final);
+                    List<string> listita = new List<string>();
+                    foreach (DataRow x in DBoleta.Rows)
+                        listita.Add(x["mes"].ToString());
+                    listita = listita.Distinct().ToList<string>();
+                    //if (listita.Count != aux)
+                    if (DBoleta.Rows.Count == 0)
                     {
-                        DataRow Fila0 = Cuentas.Rows[0];
-                        CReporteboleta.InsertarCuentasReflejo(ultimo + 1, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
-                        CReporteboleta.InsertarCuentasReflejo(ultimo + 1, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
+                        //cuando no hay boletas 
+                        CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                        //Generar Asiento de Boletas Generadas
+                        DataTable Tablita = new DataTable();
+                        Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                        if (Tablita.Rows.Count > 0)
+                        {
+                            DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                            int ultimo = 1 + (int)Ultimo["ultimo"];
+                            DataRow Filita = Tablita.Rows[0];
+                            foreach (DataColumn col in Tablita.Columns)
+                            {
+                                CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
+                            }
+                            //cuentas de Reflejo
+                            DataTable Cuentas = new DataTable();
+                            Cuentas = CReporteboleta.CuentasReflejo(ultimo);
+                            if (Cuentas.Rows.Count > 0)
+                            {
+                                DataRow Fila0 = Cuentas.Rows[0];
+                                CReporteboleta.InsertarCuentasReflejo(ultimo + 1, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
+                                CReporteboleta.InsertarCuentasReflejo(ultimo + 1, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
+                            }
+                        }
+                        //fin de Asientos DE boletas Generadas
+                    }
+                    DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+                    if (DBoleta.Rows.Count == 0)
+                    {
+                        // msg($"No hay Boletas que Mostrar del :{inicial.ToLongDateString()} \nHasta: {final.ToLongDateString()}");
+                    }
+                    else
+                    {
+                        frmreporteboletasfin boletas = new frmreporteboletasfin();
+                        boletas.Text = "Reporte Boletas de Pagos [ " + item.Row.ItemArray[1].ToString() + " ]";
+                        boletas.empresa = empresa;
+                        boletas.tipo = tipo;
+                        boletas.numero = numero;
+                        boletas.fecha = 1;
+                        boletas.fechainicial = inicial;
+                        boletas.Fechafin = final;
+                        boletas.Show();
                     }
                 }
-                //fin de Asientos DE boletas Generadas
+                msg("Generadas con Exito");
             }
-            DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
-            if (DBoleta.Rows.Count == 0)
+            else
             {
-                msg($"No hay Boletas que Mostrar del :{inicial.ToLongDateString()} \nHasta: {final.ToLongDateString()}");
-                return;
+                DBoleta = new DataTable();
+                DateTime inicial, final;
+                ///Ver si hay datos
+                inicial = comboMesAño1.GetFechaPRimerDia();
+                final = comboMesAño2.GetFecha();
+                if (inicial > final)
+                {
+                    inicial = comboMesAño2.GetFechaPRimerDia();
+                    final = comboMesAño1.GetFecha();
+                }
+                DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+                int aux = (12 * (final.Year - inicial.Year) + final.Month) - inicial.Month + 1;
+                // msg("meses " + aux + "inicial " + inicial + "final " + final);
+                List<string> listita = new List<string>();
+                foreach (DataRow x in DBoleta.Rows)
+                    listita.Add(x["mes"].ToString());
+                listita = listita.Distinct().ToList<string>();
+                //if (listita.Count != aux)
+                if (DBoleta.Rows.Count == 0)
+                {
+                    //cuando no hay boletas 
+                    CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                    //Generar Asiento de Boletas Generadas
+                    DataTable Tablita = new DataTable();
+                    Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                    if (Tablita.Rows.Count > 0)
+                    {
+                        DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                        int ultimo = 1 + (int)Ultimo["ultimo"];
+                        DataRow Filita = Tablita.Rows[0];
+                        foreach (DataColumn col in Tablita.Columns)
+                        {
+                            CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
+                        }
+                        //cuentas de Reflejo
+                        DataTable Cuentas = new DataTable();
+                        Cuentas = CReporteboleta.CuentasReflejo(ultimo);
+                        if (Cuentas.Rows.Count > 0)
+                        {
+                            DataRow Fila0 = Cuentas.Rows[0];
+                            CReporteboleta.InsertarCuentasReflejo(ultimo + 1, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
+                            CReporteboleta.InsertarCuentasReflejo(ultimo + 1, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
+                        }
+                    }
+                    //fin de Asientos DE boletas Generadas
+                }
+                DBoleta = CReporteboleta.SeleccionarBoletas(empresa, tipo, numero, 1, inicial, final);
+                if (DBoleta.Rows.Count == 0)
+                {
+                    msg($"No hay Boletas que Mostrar del :{inicial.ToLongDateString()} \nHasta: {final.ToLongDateString()}");
+                    return;
+                }
+                frmreporteboletasfin boletas = new frmreporteboletasfin();
+                boletas.empresa = empresa;
+                boletas.tipo = tipo;
+                boletas.numero = numero;
+                boletas.fecha = 1;
+                boletas.fechainicial = inicial;
+                boletas.Fechafin = final;
+                boletas.Show();
             }
-            frmreporteboletasfin boletas = new frmreporteboletasfin();
-            boletas.empresa = empresa;
-            boletas.tipo = tipo;
-            boletas.numero = numero;
-            boletas.fecha = 1;
-            boletas.fechainicial = inicial;
-            boletas.Fechafin = final;
-            boletas.ShowDialog();
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -174,6 +250,19 @@ namespace HPReserger
         private void cbotipoid_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void rbTodasEmpresa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTodasEmpresa.Checked)
+            {
+                cbotipoid.Enabled = false;
+                txtnumero.Enabled = false;
+                btnrectipo.Enabled = false;
+                btnlimpiar.Enabled = false;
+                cboempresa.Enabled = false;
+                btnrecempresa.Enabled = false;
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

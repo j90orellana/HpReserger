@@ -28,18 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btngrabar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btncargar = new System.Windows.Forms.Button();
-            this.btnrecempresa = new System.Windows.Forms.Button();
-            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             this.nroregistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diaactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rucempres = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +44,13 @@
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ruc_Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importeabono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btngrabar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.btncargar = new System.Windows.Forms.Button();
+            this.btnrecempresa = new System.Windows.Forms.Button();
+            this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,8 +60,8 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -70,14 +70,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nroregistro,
             this.diaactual,
@@ -92,87 +92,17 @@
             this.importeabono});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dtgconten.Location = new System.Drawing.Point(12, 90);
+            this.dtgconten.Location = new System.Drawing.Point(12, 75);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
+            this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(516, 207);
+            this.dtgconten.Size = new System.Drawing.Size(447, 222);
             this.dtgconten.TabIndex = 57;
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten_EditingControlShowing);
-            // 
-            // cboempresa
-            // 
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(127, 23);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(241, 21);
-            this.cboempresa.TabIndex = 58;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 61;
-            this.label1.Text = "Empresa:";
-            // 
-            // btngrabar
-            // 
-            this.btngrabar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btngrabar.Location = new System.Drawing.Point(366, 304);
-            this.btngrabar.Name = "btngrabar";
-            this.btngrabar.Size = new System.Drawing.Size(78, 23);
-            this.btngrabar.TabIndex = 62;
-            this.btngrabar.Text = "&Grabar";
-            this.btngrabar.UseVisualStyleBackColor = true;
-            this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(450, 303);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(78, 23);
-            this.btncancelar.TabIndex = 63;
-            this.btncancelar.Text = "&Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btncargar
-            // 
-            this.btncargar.Location = new System.Drawing.Point(323, 57);
-            this.btncargar.Name = "btncargar";
-            this.btncargar.Size = new System.Drawing.Size(78, 23);
-            this.btncargar.TabIndex = 64;
-            this.btncargar.Text = "&Cargar";
-            this.btncargar.UseVisualStyleBackColor = true;
-            this.btncargar.Click += new System.EventHandler(this.btncargar_Click);
-            // 
-            // btnrecempresa
-            // 
-            this.btnrecempresa.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
-            this.btnrecempresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnrecempresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnrecempresa.Location = new System.Drawing.Point(374, 23);
-            this.btnrecempresa.Name = "btnrecempresa";
-            this.btnrecempresa.Size = new System.Drawing.Size(27, 21);
-            this.btnrecempresa.TabIndex = 59;
-            this.btnrecempresa.UseVisualStyleBackColor = true;
-            this.btnrecempresa.Click += new System.EventHandler(this.btnrecempresa_Click);
-            // 
-            // comboMesAño1
-            // 
-            this.comboMesAño1.Location = new System.Drawing.Point(83, 55);
-            this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(205, 29);
-            this.comboMesAño1.TabIndex = 60;
-            this.comboMesAño1.Click += new System.EventHandler(this.comboMesAño1_Click);
-            this.comboMesAño1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboMesAño1_MouseClick);
             // 
             // nroregistro
             // 
@@ -246,8 +176,8 @@
             // 
             this.fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.fecha.DataPropertyName = "fecha";
-            dataGridViewCellStyle11.Format = "MMMMyyyy";
-            this.fecha.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Format = "MMMMyyyy";
+            this.fecha.DefaultCellStyle = dataGridViewCellStyle3;
             this.fecha.HeaderText = "Fecha";
             this.fecha.MinimumWidth = 50;
             this.fecha.Name = "fecha";
@@ -273,20 +203,101 @@
             // 
             this.importeabono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.importeabono.DataPropertyName = "importe_abono";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "n2";
-            dataGridViewCellStyle12.NullValue = "0.00";
-            this.importeabono.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            dataGridViewCellStyle4.NullValue = "0.00";
+            this.importeabono.DefaultCellStyle = dataGridViewCellStyle4;
             this.importeabono.HeaderText = "Importe Abono";
             this.importeabono.MinimumWidth = 90;
             this.importeabono.Name = "importeabono";
             this.importeabono.Width = 101;
             // 
+            // cboempresa
+            // 
+            this.cboempresa.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(127, 12);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(241, 21);
+            this.cboempresa.TabIndex = 58;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(70, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 61;
+            this.label1.Text = "Empresa:";
+            // 
+            // btngrabar
+            // 
+            this.btngrabar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btngrabar.Location = new System.Drawing.Point(297, 304);
+            this.btngrabar.Name = "btngrabar";
+            this.btngrabar.Size = new System.Drawing.Size(78, 23);
+            this.btngrabar.TabIndex = 62;
+            this.btngrabar.Text = "&Grabar";
+            this.btngrabar.UseVisualStyleBackColor = true;
+            this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Location = new System.Drawing.Point(381, 303);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(78, 23);
+            this.btncancelar.TabIndex = 63;
+            this.btncancelar.Text = "&Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btncargar
+            // 
+            this.btncargar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btncargar.Location = new System.Drawing.Point(323, 46);
+            this.btncargar.Name = "btncargar";
+            this.btncargar.Size = new System.Drawing.Size(78, 23);
+            this.btncargar.TabIndex = 64;
+            this.btncargar.Text = "&Cargar";
+            this.btncargar.UseVisualStyleBackColor = true;
+            this.btncargar.Click += new System.EventHandler(this.btncargar_Click);
+            // 
+            // btnrecempresa
+            // 
+            this.btnrecempresa.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnrecempresa.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
+            this.btnrecempresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnrecempresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnrecempresa.Location = new System.Drawing.Point(374, 12);
+            this.btnrecempresa.Name = "btnrecempresa";
+            this.btnrecempresa.Size = new System.Drawing.Size(27, 21);
+            this.btnrecempresa.TabIndex = 59;
+            this.btnrecempresa.UseVisualStyleBackColor = true;
+            this.btnrecempresa.Click += new System.EventHandler(this.btnrecempresa_Click);
+            // 
+            // comboMesAño1
+            // 
+            this.comboMesAño1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboMesAño1.AutoSize = true;
+            this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
+            this.comboMesAño1.Location = new System.Drawing.Point(83, 44);
+            this.comboMesAño1.Name = "comboMesAño1";
+            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.TabIndex = 60;
+            this.comboMesAño1.Click += new System.EventHandler(this.comboMesAño1_Click);
+            this.comboMesAño1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboMesAño1_MouseClick);
+            // 
             // frmAbonoExternoEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 339);
+            this.ClientSize = new System.Drawing.Size(471, 339);
             this.Controls.Add(this.btncargar);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btngrabar);
@@ -298,7 +309,7 @@
             this.MinimumSize = new System.Drawing.Size(487, 378);
             this.Name = "frmAbonoExternoEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Abono Externo a Empleados";
+            this.Text = "Planilla Externa De Empleado";
             this.Load += new System.EventHandler(this.frmAbonoExternoEmpleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);
