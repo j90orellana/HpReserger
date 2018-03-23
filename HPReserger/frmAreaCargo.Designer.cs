@@ -90,7 +90,7 @@
             this.cargo});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(12, 122);
+            this.dtgconten.Location = new System.Drawing.Point(12, 125);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -99,7 +99,7 @@
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(469, 265);
+            this.dtgconten.Size = new System.Drawing.Size(469, 262);
             this.dtgconten.TabIndex = 59;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             this.dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgconten_KeyDown);
@@ -169,7 +169,7 @@
             this.cboarea.Items.AddRange(new object[] {
             "EXTERNA",
             "INTERNA"});
-            this.cboarea.Location = new System.Drawing.Point(70, 39);
+            this.cboarea.Location = new System.Drawing.Point(70, 37);
             this.cboarea.Name = "cboarea";
             this.cboarea.Size = new System.Drawing.Size(301, 23);
             this.cboarea.TabIndex = 78;
@@ -180,7 +180,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 42);
+            this.label8.Location = new System.Drawing.Point(32, 41);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 77;
@@ -194,7 +194,7 @@
             this.cboCargoPuesto.Enabled = false;
             this.cboCargoPuesto.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCargoPuesto.FormattingEnabled = true;
-            this.cboCargoPuesto.Location = new System.Drawing.Point(70, 69);
+            this.cboCargoPuesto.Location = new System.Drawing.Point(70, 67);
             this.cboCargoPuesto.Name = "cboCargoPuesto";
             this.cboCargoPuesto.Size = new System.Drawing.Size(269, 23);
             this.cboCargoPuesto.TabIndex = 79;
@@ -204,7 +204,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 72);
+            this.label1.Location = new System.Drawing.Point(26, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 80;
@@ -245,7 +245,7 @@
             this.cbogerencia.Items.AddRange(new object[] {
             "EXTERNA",
             "INTERNA"});
-            this.cbogerencia.Location = new System.Drawing.Point(70, 12);
+            this.cbogerencia.Location = new System.Drawing.Point(70, 11);
             this.cbogerencia.Name = "cbogerencia";
             this.cbogerencia.Size = new System.Drawing.Size(269, 23);
             this.cbogerencia.TabIndex = 84;
@@ -299,7 +299,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 101);
+            this.label2.Location = new System.Drawing.Point(21, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 87;
@@ -308,7 +308,7 @@
             // txtbuscar
             // 
             this.txtbuscar.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbuscar.Location = new System.Drawing.Point(70, 99);
+            this.txtbuscar.Location = new System.Drawing.Point(70, 97);
             this.txtbuscar.MaxLength = 100;
             this.txtbuscar.Name = "txtbuscar";
             this.txtbuscar.Size = new System.Drawing.Size(188, 20);
@@ -322,7 +322,7 @@
             this.btnlimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnlimpiar.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlimpiar.Location = new System.Drawing.Point(345, 95);
+            this.btnlimpiar.Location = new System.Drawing.Point(345, 96);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(26, 23);
             this.btnlimpiar.TabIndex = 89;

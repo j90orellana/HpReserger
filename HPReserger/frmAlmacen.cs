@@ -493,6 +493,7 @@ namespace HPReserger
                 frmlistar = new frmListarAlmacenArticulos();
                 frmlistar.txtRUC.Text = txtRUC.Text;
                 frmlistar.MdiParent = this.MdiParent;
+                frmlistar.Icon = Icon;
                 frmlistar.FormClosed += new FormClosedEventHandler(cerrarlistaralmacen);
                 frmlistar.Show();
             }

@@ -117,7 +117,7 @@
             // 
             // txtdireccionuni
             // 
-            this.txtdireccionuni.Location = new System.Drawing.Point(92, 71);
+            this.txtdireccionuni.Location = new System.Drawing.Point(92, 70);
             this.txtdireccionuni.Name = "txtdireccionuni";
             this.txtdireccionuni.Size = new System.Drawing.Size(306, 20);
             this.txtdireccionuni.TabIndex = 2;
@@ -134,7 +134,7 @@
             // txtrepre
             // 
             this.txtrepre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtrepre.Location = new System.Drawing.Point(92, 123);
+            this.txtrepre.Location = new System.Drawing.Point(92, 122);
             this.txtrepre.Name = "txtrepre";
             this.txtrepre.Size = new System.Drawing.Size(306, 20);
             this.txtrepre.TabIndex = 5;
@@ -142,7 +142,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 100);
+            this.label5.Location = new System.Drawing.Point(6, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 13);
             this.label5.TabIndex = 9;
@@ -151,7 +151,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 22);
+            this.label6.Location = new System.Drawing.Point(6, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(128, 13);
             this.label6.TabIndex = 11;
@@ -168,7 +168,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 48);
+            this.label7.Location = new System.Drawing.Point(6, 49);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 13);
             this.label7.TabIndex = 13;
@@ -193,7 +193,7 @@
             // 
             // txtocupacionmateriaprac
             // 
-            this.txtocupacionmateriaprac.Location = new System.Drawing.Point(192, 71);
+            this.txtocupacionmateriaprac.Location = new System.Drawing.Point(192, 70);
             this.txtocupacionmateriaprac.Name = "txtocupacionmateriaprac";
             this.txtocupacionmateriaprac.Size = new System.Drawing.Size(288, 20);
             this.txtocupacionmateriaprac.TabIndex = 8;
@@ -211,7 +211,7 @@
             // 
             // txtdiasprac
             // 
-            this.txtdiasprac.Location = new System.Drawing.Point(143, 97);
+            this.txtdiasprac.Location = new System.Drawing.Point(143, 96);
             this.txtdiasprac.Name = "txtdiasprac";
             this.txtdiasprac.Size = new System.Drawing.Size(337, 20);
             this.txtdiasprac.TabIndex = 9;
@@ -220,7 +220,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(234, 100);
+            this.label10.Location = new System.Drawing.Point(234, 101);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 13);
             this.label10.TabIndex = 19;
@@ -320,7 +320,7 @@
             // 
             // txthorarioprac
             // 
-            this.txthorarioprac.Location = new System.Drawing.Point(143, 123);
+            this.txthorarioprac.Location = new System.Drawing.Point(143, 122);
             this.txthorarioprac.Name = "txthorarioprac";
             this.txthorarioprac.Size = new System.Drawing.Size(337, 20);
             this.txthorarioprac.TabIndex = 10;

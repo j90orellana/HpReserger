@@ -43,6 +43,7 @@
             this.crvEvaluacionPracticas.Name = "crvEvaluacionPracticas";
             this.crvEvaluacionPracticas.ShowCloseButton = false;
             this.crvEvaluacionPracticas.ShowLogo = false;
+            this.crvEvaluacionPracticas.ShowParameterPanelButton = false;
             this.crvEvaluacionPracticas.Size = new System.Drawing.Size(954, 725);
             this.crvEvaluacionPracticas.TabIndex = 0;
             this.crvEvaluacionPracticas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;

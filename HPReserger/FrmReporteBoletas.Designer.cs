@@ -723,7 +723,7 @@
             this.chkempresa.AutoSize = true;
             this.chkempresa.Checked = true;
             this.chkempresa.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkempresa.Location = new System.Drawing.Point(13, 15);
+            this.chkempresa.Location = new System.Drawing.Point(13, 14);
             this.chkempresa.Name = "chkempresa";
             this.chkempresa.Size = new System.Drawing.Size(70, 17);
             this.chkempresa.TabIndex = 65;
@@ -838,7 +838,7 @@
             // 
             this.comboMesAño2.AutoSize = true;
             this.comboMesAño2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
             this.comboMesAño2.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
             this.comboMesAño2.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
             this.comboMesAño2.Location = new System.Drawing.Point(363, 39);
@@ -850,7 +850,7 @@
             // 
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(108, 39);

@@ -191,6 +191,7 @@ namespace HPReserger
                     etapitas.txtcc.Text = dtgconten["codcentroc", y].Value.ToString();
                     etapitas.txtcentro.Text = dtgconten["Descripción", y].Value.ToString();
                     etapitas.cabecera = (int)cbopresupuestos.SelectedValue;
+                    etapitas.Icon = Icon;
                     etapitas.Tipo = 2;//flujos
                     etapitas.ShowDialog();
                 }
@@ -205,6 +206,7 @@ namespace HPReserger
                     Frmpresu.cuenta = int.Parse(dtgconten["cta_contable", y].Value.ToString());
                     Frmpresu.etapa = int.Parse(dtgconten["id_etapas", y].Value.ToString());
                     Frmpresu.fecha = tiempo;
+                    Frmpresu.Icon = Icon;
                     Frmpresu.Tipo = 2;//flujos
                     Frmpresu.ShowDialog();
                 }

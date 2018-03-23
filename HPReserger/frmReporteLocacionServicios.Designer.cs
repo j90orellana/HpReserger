@@ -46,6 +46,8 @@
             this.crvLocacionServicios.ShowParameterPanelButton = false;
             this.crvLocacionServicios.Size = new System.Drawing.Size(1057, 695);
             this.crvLocacionServicios.TabIndex = 0;
+            this.crvLocacionServicios.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvLocacionServicios.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvLocacionServicios_ReportRefresh);
             // 
             // frmReporteLocacionServicios
             // 

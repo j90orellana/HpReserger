@@ -267,19 +267,21 @@ namespace HPReserger
         private void CargarFoto(int Registro, int TipoDocumento, string NumeroDocumento, int Tipo)
         {
             DataRow drFoto = clAmonestacionesPremio.ImagenEmpleadoMemoPremio(Registro, TipoDocumento, NumeroDocumento, Tipo);
-            if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
-            {
-                byte[] Fotito = new byte[0];
-                Fotito = (byte[])drFoto["Foto"];
-                MemoryStream ms = new MemoryStream(Fotito);
-                pbFoto.Image = Bitmap.FromStream(ms);
-                txtRuta.Text = drFoto["NOMBREFOTO"].ToString();
-            }
-            else
-            {
-                pbFoto.Image = null;
-                txtRuta.Text = "";
-            }
+            if (drFoto["Foto"] != null)
+                if (drFoto["Foto"].ToString().Length > 0)
+                {
+                    byte[] Fotito = new byte[0];
+                    Fotito = (byte[])drFoto["Foto"];
+                    MemoryStream ms = new MemoryStream(Fotito);
+                    pbFoto.Image = Bitmap.FromStream(ms);
+                    txtRuta.Text = drFoto["NOMBREFOTO"].ToString();
+                }
+
+                else
+                {
+                    pbFoto.Image = null;
+                    txtRuta.Text = "";
+                }
         }
 
         private void txtNumeroDocumento_KeyDown(object sender, KeyEventArgs e)
@@ -365,7 +367,7 @@ namespace HPReserger
         {
             MostrarFoto(pbFoto, $"Foto de {txtNombres.Text} {txtApellidoPaterno.Text} {txtApellidoMaterno.Text}");
         }
-        public void MostrarFoto(PictureBox fotito,string Nombre)
+        public void MostrarFoto(PictureBox fotito, string Nombre)
         {
             if (fotito.Image != null)
             {
@@ -453,6 +455,10 @@ namespace HPReserger
             {
                 this.Close();
             }
+        }
+        private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtNumeroDocumento_TextChanged(sender, e);
         }
     }
 }

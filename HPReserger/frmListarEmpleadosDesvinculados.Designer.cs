@@ -140,7 +140,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(12, 116);
+            this.dtgconten.Location = new System.Drawing.Point(12, 119);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -157,7 +157,7 @@
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(828, 212);
+            this.dtgconten.Size = new System.Drawing.Size(828, 209);
             this.dtgconten.TabIndex = 151;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -297,7 +297,8 @@
             // 
             // txttipoid
             // 
-            this.txttipoid.Location = new System.Drawing.Point(149, 12);
+            this.txttipoid.BackColor = System.Drawing.Color.White;
+            this.txttipoid.Location = new System.Drawing.Point(149, 9);
             this.txttipoid.Name = "txttipoid";
             this.txttipoid.ReadOnly = true;
             this.txttipoid.Size = new System.Drawing.Size(144, 20);
@@ -305,7 +306,8 @@
             // 
             // txtnombre
             // 
-            this.txtnombre.Location = new System.Drawing.Point(149, 38);
+            this.txtnombre.BackColor = System.Drawing.Color.White;
+            this.txtnombre.Location = new System.Drawing.Point(149, 37);
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.ReadOnly = true;
             this.txtnombre.Size = new System.Drawing.Size(337, 20);
@@ -313,7 +315,8 @@
             // 
             // txtapellido
             // 
-            this.txtapellido.Location = new System.Drawing.Point(149, 64);
+            this.txtapellido.BackColor = System.Drawing.Color.White;
+            this.txtapellido.Location = new System.Drawing.Point(149, 65);
             this.txtapellido.Name = "txtapellido";
             this.txtapellido.ReadOnly = true;
             this.txtapellido.Size = new System.Drawing.Size(337, 20);
@@ -321,7 +324,8 @@
             // 
             // txtestado
             // 
-            this.txtestado.Location = new System.Drawing.Point(149, 90);
+            this.txtestado.BackColor = System.Drawing.Color.White;
+            this.txtestado.Location = new System.Drawing.Point(149, 93);
             this.txtestado.Name = "txtestado";
             this.txtestado.ReadOnly = true;
             this.txtestado.Size = new System.Drawing.Size(337, 20);
@@ -330,7 +334,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(49, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 156;
@@ -339,7 +343,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 41);
+            this.label2.Location = new System.Drawing.Point(36, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 13);
             this.label2.TabIndex = 156;
@@ -348,7 +352,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 67);
+            this.label3.Location = new System.Drawing.Point(36, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 13);
             this.label3.TabIndex = 156;
@@ -357,7 +361,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 93);
+            this.label4.Location = new System.Drawing.Point(12, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 13);
             this.label4.TabIndex = 156;
@@ -365,7 +369,8 @@
             // 
             // txtnroid
             // 
-            this.txtnroid.Location = new System.Drawing.Point(299, 12);
+            this.txtnroid.BackColor = System.Drawing.Color.White;
+            this.txtnroid.Location = new System.Drawing.Point(299, 9);
             this.txtnroid.Name = "txtnroid";
             this.txtnroid.ReadOnly = true;
             this.txtnroid.Size = new System.Drawing.Size(187, 20);

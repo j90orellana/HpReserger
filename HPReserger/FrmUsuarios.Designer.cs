@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuarios));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -63,9 +62,10 @@
             this.cboarea = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dtgconten = new System.Windows.Forms.DataGridView();
-            this.label19 = new System.Windows.Forms.Label();
             this.lblmensaje = new System.Windows.Forms.Label();
             this.GridUser = new System.Windows.Forms.DataGridView();
+            this.btnnuevoTemporal = new System.Windows.Forms.Button();
+            this.Codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.docx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +76,9 @@
             this.perfilx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loginx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codperfilx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codestadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridUser)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +86,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 36);
+            this.label1.Location = new System.Drawing.Point(47, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 0;
@@ -92,7 +95,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 62);
+            this.label2.Location = new System.Drawing.Point(12, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 0;
@@ -102,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 86);
+            this.label3.Location = new System.Drawing.Point(10, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 0;
@@ -111,7 +114,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 10);
+            this.label4.Location = new System.Drawing.Point(12, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(136, 13);
             this.label4.TabIndex = 0;
@@ -120,7 +123,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(437, 36);
+            this.label5.Location = new System.Drawing.Point(419, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 13);
             this.label5.TabIndex = 0;
@@ -129,7 +132,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(437, 62);
+            this.label6.Location = new System.Drawing.Point(439, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 0;
@@ -138,7 +141,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(437, 86);
+            this.label7.Location = new System.Drawing.Point(419, 90);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 0;
@@ -147,7 +150,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(437, 112);
+            this.label8.Location = new System.Drawing.Point(432, 115);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 0;
@@ -156,7 +159,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(437, 10);
+            this.label9.Location = new System.Drawing.Point(419, 15);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(132, 13);
             this.label9.TabIndex = 0;
@@ -165,7 +168,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(19, 112);
+            this.label10.Location = new System.Drawing.Point(19, 115);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 13);
             this.label10.TabIndex = 0;
@@ -173,9 +176,9 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(657, 130);
+            this.btnaceptar.Location = new System.Drawing.Point(622, 138);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.Size = new System.Drawing.Size(94, 23);
             this.btnaceptar.TabIndex = 1;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -183,9 +186,9 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(740, 130);
+            this.btncancelar.Location = new System.Drawing.Point(721, 138);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.Size = new System.Drawing.Size(94, 23);
             this.btncancelar.TabIndex = 1;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -193,9 +196,9 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(740, 12);
+            this.btnnuevo.Location = new System.Drawing.Point(721, 10);
             this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnnuevo.Size = new System.Drawing.Size(94, 23);
             this.btnnuevo.TabIndex = 1;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -203,9 +206,9 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(740, 41);
+            this.btnmodificar.Location = new System.Drawing.Point(721, 35);
             this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(75, 23);
+            this.btnmodificar.Size = new System.Drawing.Size(94, 23);
             this.btnmodificar.TabIndex = 1;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.UseVisualStyleBackColor = true;
@@ -213,9 +216,9 @@
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(740, 70);
+            this.btneliminar.Location = new System.Drawing.Point(721, 60);
             this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(75, 23);
+            this.btneliminar.Size = new System.Drawing.Size(94, 23);
             this.btneliminar.TabIndex = 1;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.UseVisualStyleBackColor = true;
@@ -224,28 +227,28 @@
             // txtnombre
             // 
             this.txtnombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtnombre.Location = new System.Drawing.Point(105, 32);
+            this.txtnombre.Location = new System.Drawing.Point(105, 36);
             this.txtnombre.MaxLength = 100;
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(327, 20);
+            this.txtnombre.Size = new System.Drawing.Size(305, 20);
             this.txtnombre.TabIndex = 2;
             // 
             // txtapepat
             // 
             this.txtapepat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtapepat.Location = new System.Drawing.Point(105, 58);
+            this.txtapepat.Location = new System.Drawing.Point(105, 61);
             this.txtapepat.MaxLength = 100;
             this.txtapepat.Name = "txtapepat";
-            this.txtapepat.Size = new System.Drawing.Size(327, 20);
+            this.txtapepat.Size = new System.Drawing.Size(305, 20);
             this.txtapepat.TabIndex = 2;
             // 
             // txtapetmat
             // 
             this.txtapetmat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtapetmat.Location = new System.Drawing.Point(105, 82);
+            this.txtapetmat.Location = new System.Drawing.Point(105, 86);
             this.txtapetmat.MaxLength = 100;
             this.txtapetmat.Name = "txtapetmat";
-            this.txtapetmat.Size = new System.Drawing.Size(327, 20);
+            this.txtapetmat.Size = new System.Drawing.Size(305, 20);
             this.txtapetmat.TabIndex = 2;
             // 
             // cbotipoid
@@ -254,9 +257,9 @@
             this.cbotipoid.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipoid.FormattingEnabled = true;
-            this.cbotipoid.Location = new System.Drawing.Point(154, 6);
+            this.cbotipoid.Location = new System.Drawing.Point(154, 11);
             this.cbotipoid.Name = "cbotipoid";
-            this.cbotipoid.Size = new System.Drawing.Size(278, 21);
+            this.cbotipoid.Size = new System.Drawing.Size(256, 21);
             this.cbotipoid.TabIndex = 3;
             this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
             this.cbotipoid.TextChanged += new System.EventHandler(this.cbotipoid_TextChanged);
@@ -267,7 +270,7 @@
             this.cboperfil.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboperfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboperfil.FormattingEnabled = true;
-            this.cboperfil.Location = new System.Drawing.Point(515, 32);
+            this.cboperfil.Location = new System.Drawing.Point(497, 36);
             this.cboperfil.Name = "cboperfil";
             this.cboperfil.Size = new System.Drawing.Size(219, 21);
             this.cboperfil.TabIndex = 3;
@@ -275,7 +278,7 @@
             // txtlogin
             // 
             this.txtlogin.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtlogin.Location = new System.Drawing.Point(499, 58);
+            this.txtlogin.Location = new System.Drawing.Point(481, 61);
             this.txtlogin.MaxLength = 10;
             this.txtlogin.Name = "txtlogin";
             this.txtlogin.Size = new System.Drawing.Size(235, 20);
@@ -286,7 +289,7 @@
             // txtcontra
             // 
             this.txtcontra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcontra.Location = new System.Drawing.Point(499, 82);
+            this.txtcontra.Location = new System.Drawing.Point(481, 86);
             this.txtcontra.MaxLength = 10;
             this.txtcontra.Name = "txtcontra";
             this.txtcontra.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -303,7 +306,7 @@
             this.cboestado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboestado.FormattingEnabled = true;
-            this.cboestado.Location = new System.Drawing.Point(499, 108);
+            this.cboestado.Location = new System.Drawing.Point(481, 111);
             this.cboestado.Name = "cboestado";
             this.cboestado.Size = new System.Drawing.Size(235, 21);
             this.cboestado.TabIndex = 3;
@@ -311,7 +314,7 @@
             // txtid
             // 
             this.txtid.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtid.Location = new System.Drawing.Point(576, 6);
+            this.txtid.Location = new System.Drawing.Point(558, 11);
             this.txtid.MaxLength = 10;
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(158, 20);
@@ -328,9 +331,9 @@
             this.cboarea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboarea.FormattingEnabled = true;
-            this.cboarea.Location = new System.Drawing.Point(105, 108);
+            this.cboarea.Location = new System.Drawing.Point(105, 111);
             this.cboarea.Name = "cboarea";
-            this.cboarea.Size = new System.Drawing.Size(327, 21);
+            this.cboarea.Size = new System.Drawing.Size(305, 21);
             this.cboarea.TabIndex = 3;
             // 
             // checkBox1
@@ -338,7 +341,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(719, 85);
+            this.checkBox1.Location = new System.Drawing.Point(701, 89);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 4;
@@ -376,7 +379,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(282, 630);
+            this.dtgconten.Location = new System.Drawing.Point(25, 657);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -393,24 +396,14 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(798, 254);
+            this.dtgconten.Size = new System.Drawing.Size(798, 139);
             this.dtgconten.TabIndex = 133;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(-15, 144);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(1573, 13);
-            this.label19.TabIndex = 134;
-            this.label19.Text = resources.GetString("label19.Text");
-            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblmensaje
             // 
             this.lblmensaje.AutoSize = true;
-            this.lblmensaje.Location = new System.Drawing.Point(12, 154);
+            this.lblmensaje.Location = new System.Drawing.Point(12, 159);
             this.lblmensaje.Name = "lblmensaje";
             this.lblmensaje.Size = new System.Drawing.Size(0, 13);
             this.lblmensaje.TabIndex = 135;
@@ -423,9 +416,6 @@
             this.GridUser.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.GridUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.GridUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.GridUser.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridUser.BackgroundColor = System.Drawing.SystemColors.Control;
             this.GridUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -441,6 +431,7 @@
             this.GridUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.GridUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.GridUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigox,
             this.IDX,
             this.tipox,
             this.docx,
@@ -450,20 +441,43 @@
             this.gerenciax,
             this.perfilx,
             this.loginx,
-            this.estadox});
+            this.estadox,
+            this.codperfilx,
+            this.codestadox,
+            this.passx});
             this.GridUser.Cursor = System.Windows.Forms.Cursors.Default;
             this.GridUser.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.GridUser.Location = new System.Drawing.Point(12, 170);
+            this.GridUser.Location = new System.Drawing.Point(3, 167);
             this.GridUser.MultiSelect = false;
             this.GridUser.Name = "GridUser";
             this.GridUser.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.GridUser.RowHeadersVisible = false;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
             this.GridUser.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.GridUser.RowTemplate.Height = 18;
             this.GridUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridUser.Size = new System.Drawing.Size(807, 429);
+            this.GridUser.Size = new System.Drawing.Size(824, 444);
             this.GridUser.TabIndex = 136;
             this.GridUser.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridUser_RowEnter);
+            // 
+            // btnnuevoTemporal
+            // 
+            this.btnnuevoTemporal.Location = new System.Drawing.Point(721, 97);
+            this.btnnuevoTemporal.Name = "btnnuevoTemporal";
+            this.btnnuevoTemporal.Size = new System.Drawing.Size(94, 23);
+            this.btnnuevoTemporal.TabIndex = 137;
+            this.btnnuevoTemporal.Text = "Nuevo Temporal";
+            this.btnnuevoTemporal.UseVisualStyleBackColor = true;
+            this.btnnuevoTemporal.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Codigox
+            // 
+            this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Codigox.DataPropertyName = "cod";
+            this.Codigox.HeaderText = "cod";
+            this.Codigox.Name = "Codigox";
+            this.Codigox.Visible = false;
+            this.Codigox.Width = 49;
             // 
             // IDX
             // 
@@ -544,11 +558,33 @@
             this.estadox.Name = "estadox";
             this.estadox.Width = 64;
             // 
+            // codperfilx
+            // 
+            this.codperfilx.DataPropertyName = "codperfil";
+            this.codperfilx.HeaderText = "codperfil";
+            this.codperfilx.Name = "codperfilx";
+            this.codperfilx.Visible = false;
+            // 
+            // codestadox
+            // 
+            this.codestadox.DataPropertyName = "codestado";
+            this.codestadox.HeaderText = "codestado";
+            this.codestadox.Name = "codestadox";
+            this.codestadox.Visible = false;
+            // 
+            // passx
+            // 
+            this.passx.DataPropertyName = "pass";
+            this.passx.HeaderText = "Pasxx";
+            this.passx.Name = "passx";
+            this.passx.Visible = false;
+            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 611);
+            this.ClientSize = new System.Drawing.Size(827, 482);
+            this.Controls.Add(this.btnnuevoTemporal);
             this.Controls.Add(this.lblmensaje);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.cboarea);
@@ -576,7 +612,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label19);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.GridUser);
             this.MaximumSize = new System.Drawing.Size(843, 650);
@@ -621,9 +656,10 @@
         private System.Windows.Forms.ComboBox cboarea;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridView dtgconten;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblmensaje;
         private System.Windows.Forms.DataGridView GridUser;
+        private System.Windows.Forms.Button btnnuevoTemporal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigox;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDX;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipox;
         private System.Windows.Forms.DataGridViewTextBoxColumn docx;
@@ -634,5 +670,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn perfilx;
         private System.Windows.Forms.DataGridViewTextBoxColumn loginx;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codperfilx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codestadox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passx;
     }
 }

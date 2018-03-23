@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 19</value>
+    <value>15, 20</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 13</value>
@@ -150,7 +150,7 @@
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 46</value>
+    <value>15, 47</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 13</value>
@@ -177,7 +177,7 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 72</value>
+    <value>15, 73</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 13</value>
@@ -204,7 +204,7 @@
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>334, 48</value>
+    <value>334, 47</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 13</value>
@@ -231,7 +231,7 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>334, 22</value>
+    <value>334, 20</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
@@ -258,7 +258,7 @@
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 72</value>
+    <value>336, 73</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 13</value>
@@ -285,7 +285,7 @@
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>670, 48</value>
+    <value>670, 47</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 13</value>
@@ -312,7 +312,7 @@
     <value>True</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>669, 24</value>
+    <value>669, 20</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 13</value>
@@ -406,7 +406,7 @@
     <value>17</value>
   </data>
   <data name="txtApellidoMaterno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 45</value>
+    <value>426, 43</value>
   </data>
   <data name="txtApellidoMaterno.MaxLength" type="System.Int32, mscorlib">
     <value>30</value>
@@ -454,7 +454,7 @@
     <value>15</value>
   </data>
   <data name="txtApellidoPaterno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 19</value>
+    <value>426, 16</value>
   </data>
   <data name="txtApellidoPaterno.MaxLength" type="System.Int32, mscorlib">
     <value>30</value>
@@ -478,7 +478,7 @@
     <value>14</value>
   </data>
   <data name="txtOcupacion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>735, 45</value>
+    <value>735, 43</value>
   </data>
   <data name="txtOcupacion.MaxLength" type="System.Int32, mscorlib">
     <value>30</value>
@@ -502,7 +502,7 @@
     <value>13</value>
   </data>
   <data name="dtpFecha.Location" type="System.Drawing.Point, System.Drawing">
-    <value>783, 19</value>
+    <value>783, 16</value>
   </data>
   <data name="dtpFecha.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 20</value>
@@ -727,7 +727,7 @@
     <value>True</value>
   </data>
   <data name="lklconviviente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>669, 126</value>
+    <value>669, 127</value>
   </data>
   <data name="lklconviviente.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 13</value>
@@ -783,6 +783,9 @@
   <data name="btnconviviente.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
+  <data name="btnconviviente.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnconviviente.Location" type="System.Drawing.Point, System.Drawing">
     <value>638, 123</value>
   </data>
@@ -829,7 +832,7 @@
     <value>True</value>
   </data>
   <data name="lblconviviente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 126</value>
+    <value>15, 127</value>
   </data>
   <data name="lblconviviente.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -856,7 +859,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnModificar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>783, 121</value>
+    <value>783, 122</value>
   </data>
   <data name="btnModificar.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
@@ -907,7 +910,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 99</value>
+    <value>15, 100</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 13</value>

@@ -133,7 +133,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(165, 20);
+            this.checkBox2.Location = new System.Drawing.Point(165, 19);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(109, 17);
             this.checkBox2.TabIndex = 5;
@@ -144,7 +144,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(7, 20);
+            this.checkBox1.Location = new System.Drawing.Point(7, 19);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(152, 17);
             this.checkBox1.TabIndex = 0;
@@ -198,7 +198,7 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(1145, 555);
+            this.btncancelar.Location = new System.Drawing.Point(1145, 556);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(77, 23);
             this.btncancelar.TabIndex = 7;
@@ -211,7 +211,7 @@
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(9, 562);
+            this.lblmsg.Location = new System.Drawing.Point(9, 561);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(81, 13);
             this.lblmsg.TabIndex = 11;
@@ -261,7 +261,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(6, 19);
+            this.checkBox5.Location = new System.Drawing.Point(6, 18);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(56, 17);
             this.checkBox5.TabIndex = 4;
@@ -306,7 +306,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(271, 18);
+            this.checkBox6.Location = new System.Drawing.Point(271, 19);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(59, 17);
             this.checkBox6.TabIndex = 7;
@@ -317,7 +317,7 @@
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(165, 18);
+            this.checkBox7.Location = new System.Drawing.Point(165, 19);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(74, 17);
             this.checkBox7.TabIndex = 6;
@@ -339,7 +339,7 @@
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(7, 20);
+            this.checkBox9.Location = new System.Drawing.Point(7, 19);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(42, 17);
             this.checkBox9.TabIndex = 0;
@@ -455,7 +455,7 @@
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(560, 105);
+            this.checkBox11.Location = new System.Drawing.Point(560, 104);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(59, 17);
             this.checkBox11.TabIndex = 23;
@@ -546,7 +546,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(978, 560);
+            this.label6.Location = new System.Drawing.Point(978, 561);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 26;
@@ -555,7 +555,7 @@
             // btnexportarplano
             // 
             this.btnexportarplano.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportarplano.Location = new System.Drawing.Point(895, 554);
+            this.btnexportarplano.Location = new System.Drawing.Point(895, 556);
             this.btnexportarplano.Name = "btnexportarplano";
             this.btnexportarplano.Size = new System.Drawing.Size(77, 23);
             this.btnexportarplano.TabIndex = 28;
@@ -571,7 +571,7 @@
             // btnexportaexcel
             // 
             this.btnexportaexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportaexcel.Location = new System.Drawing.Point(796, 554);
+            this.btnexportaexcel.Location = new System.Drawing.Point(796, 556);
             this.btnexportaexcel.Name = "btnexportaexcel";
             this.btnexportaexcel.Size = new System.Drawing.Size(93, 23);
             this.btnexportaexcel.TabIndex = 29;

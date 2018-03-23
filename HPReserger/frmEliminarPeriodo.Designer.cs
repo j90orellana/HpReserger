@@ -65,6 +65,9 @@
             // 
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(81, 46);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
@@ -87,7 +90,7 @@
             this.btnrecempresa.BackgroundImage = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
             this.btnrecempresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnrecempresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnrecempresa.Location = new System.Drawing.Point(349, 19);
+            this.btnrecempresa.Location = new System.Drawing.Point(349, 17);
             this.btnrecempresa.Name = "btnrecempresa";
             this.btnrecempresa.Size = new System.Drawing.Size(27, 21);
             this.btnrecempresa.TabIndex = 2;
@@ -98,7 +101,7 @@
             // 
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(102, 19);
+            this.cboempresa.Location = new System.Drawing.Point(102, 17);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(241, 21);
             this.cboempresa.TabIndex = 0;

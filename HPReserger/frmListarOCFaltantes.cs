@@ -242,7 +242,8 @@ namespace HPReserger
                 {
                     /// MSG(drCOT["correo"].ToString());
                     frmMensajeCorreo mensajito = new frmMensajeCorreo();
-                    mensajito.txtmsg.Text = "Hp Reserger S.A.C. \nEs Un Placer Saludarlos para Recordarles " + (char)13 + "que ";
+                    mensajito.Icon = Icon;
+                    mensajito.txtmsg.Text = "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que ";
                     ///mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
                     mensajito.Text = "Reenvio de Mensaje de Confirmación";
                     mensajito.txtasunto.Text = "Ordenes de Compra Faltantes";

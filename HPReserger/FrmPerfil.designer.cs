@@ -170,7 +170,7 @@
             // 
             this.cboperfiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboperfiles.FormattingEnabled = true;
-            this.cboperfiles.Location = new System.Drawing.Point(86, 68);
+            this.cboperfiles.Location = new System.Drawing.Point(86, 67);
             this.cboperfiles.Name = "cboperfiles";
             this.cboperfiles.Size = new System.Drawing.Size(236, 21);
             this.cboperfiles.TabIndex = 4;

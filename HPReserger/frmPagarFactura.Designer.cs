@@ -284,7 +284,7 @@
             // 
             this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobanco.FormattingEnabled = true;
-            this.cbobanco.Location = new System.Drawing.Point(73, 45);
+            this.cbobanco.Location = new System.Drawing.Point(73, 44);
             this.cbobanco.Name = "cbobanco";
             this.cbobanco.Size = new System.Drawing.Size(270, 21);
             this.cbobanco.TabIndex = 38;
@@ -376,7 +376,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(246, 21);
+            this.label16.Location = new System.Drawing.Point(246, 22);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 13);
             this.label16.TabIndex = 27;
@@ -446,7 +446,7 @@
             // 
             this.cbocuentabanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuentabanco.FormattingEnabled = true;
-            this.cbocuentabanco.Location = new System.Drawing.Point(425, 45);
+            this.cbocuentabanco.Location = new System.Drawing.Point(425, 44);
             this.cbocuentabanco.Name = "cbocuentabanco";
             this.cbocuentabanco.Size = new System.Drawing.Size(292, 21);
             this.cbocuentabanco.TabIndex = 42;
@@ -463,7 +463,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 21);
+            this.label2.Location = new System.Drawing.Point(12, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 43;
@@ -603,7 +603,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(520, 20);
+            this.label9.Location = new System.Drawing.Point(520, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 51;
@@ -612,7 +612,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(405, 20);
+            this.label8.Location = new System.Drawing.Point(405, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(24, 13);
             this.label8.TabIndex = 50;
@@ -621,7 +621,7 @@
             // dtfin
             // 
             this.dtfin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtfin.Location = new System.Drawing.Point(564, 16);
+            this.dtfin.Location = new System.Drawing.Point(564, 17);
             this.dtfin.Name = "dtfin";
             this.dtfin.Size = new System.Drawing.Size(79, 20);
             this.dtfin.TabIndex = 4;
@@ -630,7 +630,7 @@
             // dtinicio
             // 
             this.dtinicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtinicio.Location = new System.Drawing.Point(435, 16);
+            this.dtinicio.Location = new System.Drawing.Point(435, 17);
             this.dtinicio.Name = "dtinicio";
             this.dtinicio.Size = new System.Drawing.Size(79, 20);
             this.dtinicio.TabIndex = 3;
@@ -639,7 +639,7 @@
             // txtbuscar
             // 
             this.txtbuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtbuscar.Location = new System.Drawing.Point(97, 16);
+            this.txtbuscar.Location = new System.Drawing.Point(97, 17);
             this.txtbuscar.Name = "txtbuscar";
             this.txtbuscar.Size = new System.Drawing.Size(190, 20);
             this.txtbuscar.TabIndex = 2;
@@ -648,7 +648,7 @@
             // chkfecha
             // 
             this.chkfecha.AutoSize = true;
-            this.chkfecha.Location = new System.Drawing.Point(294, 18);
+            this.chkfecha.Location = new System.Drawing.Point(294, 19);
             this.chkfecha.Name = "chkfecha";
             this.chkfecha.Size = new System.Drawing.Size(113, 17);
             this.chkfecha.TabIndex = 1;

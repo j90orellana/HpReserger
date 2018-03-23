@@ -58,7 +58,7 @@
             // btnmodificar
             // 
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnmodificar.Location = new System.Drawing.Point(587, 39);
+            this.btnmodificar.Location = new System.Drawing.Point(587, 40);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 21);
             this.btnmodificar.TabIndex = 135;
@@ -221,7 +221,7 @@
             // btnnuevo
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnnuevo.Location = new System.Drawing.Point(587, 12);
+            this.btnnuevo.Location = new System.Drawing.Point(587, 14);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 21);
             this.btnnuevo.TabIndex = 135;
@@ -232,7 +232,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(12, 17);
+            this.label23.Location = new System.Drawing.Point(12, 18);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(63, 13);
             this.label23.TabIndex = 139;
@@ -241,7 +241,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(402, 17);
+            this.label1.Location = new System.Drawing.Point(402, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 140;
@@ -250,7 +250,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 43);
+            this.label2.Location = new System.Drawing.Point(12, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 141;
@@ -276,7 +276,7 @@
             // 
             this.dtpfecha.Enabled = false;
             this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfecha.Location = new System.Drawing.Point(484, 39);
+            this.dtpfecha.Location = new System.Drawing.Point(484, 40);
             this.dtpfecha.Name = "dtpfecha";
             this.dtpfecha.Size = new System.Drawing.Size(97, 20);
             this.dtpfecha.TabIndex = 145;
@@ -284,7 +284,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(441, 43);
+            this.label3.Location = new System.Drawing.Point(441, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 146;
@@ -295,7 +295,7 @@
             this.txtvalor.AutoSize = true;
             this.txtvalor.Enabled = false;
             this.txtvalor.FuenteDelTxt = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtvalor.Location = new System.Drawing.Point(439, 12);
+            this.txtvalor.Location = new System.Drawing.Point(439, 13);
             this.txtvalor.MaxLengthTxt = 32767;
             this.txtvalor.Name = "txtvalor";
             this.txtvalor.Size = new System.Drawing.Size(142, 22);

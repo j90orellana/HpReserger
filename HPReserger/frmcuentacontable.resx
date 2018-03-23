@@ -117,9 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="label19.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="tipmsg.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnlimpiar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAJDSURBVEhLrZRbb9JQAMf5CGp898GPpT56STRmwFy4ONOuXFQu20rpRsOlQGHTKIUxwSeMTlH2
+        pqLuwRgzYuKSQYGoI8T12MI5Orp2gO0v+T/0NP3/ci49Jj1cIcjz113UOfhoPBYvk3cGU6Ldx4pWT4SF
+        w8ZhcTNbVLok1uoNUKvvgkC8IM56mU34Wj8WF7PlCKTFcvUTqH1ogG0pb943wP0ob4xIFshLlHv2DuSf
+        10G5ugO2pdnIouGMNvSJzG7m5VEBilIUTMiiaAl+NjlaAi3RIlucTjR7lynZpBOUq6gLUI4tXSwP5nyx
+        B7BGm9uh5PwNLCxGcy9Ui5V5+nrn32GQRPNLnHjif4SFOBvFFYXP35rA7ksAtvBKtVgZJJKPN05mRfmH
+        hZWjEOGsM5zd7LR+/QbdPgBf99pTiUrVj2BZ2hczsVKElaPgoZRndb3cFg4OBwKU3f0ucPhZEBuzdI8r
+        b8Hcvbhodq+q78dfQW9UMKlItwBFS4QEM+4VdQFBc3Z67UmndTDcg3FRimTBrYEgwsPKUaz+yFkXnRUm
+        FaAgEfOwMhDItzKsPI7NS5920Rmh+bOvWnZSvnwXwE2cPrR6mAKs0wYnk1eXknxrGlFTOt4kt9F0BFgn
+        rBnPHSpzKRB/1Nnr9lRLj2b/R1+6n3gBW05dg59PjizyjxHpEiCk6+SilsgQAQIn0xeUIlkQZPm2IQLE
+        QBSTRJ3ecAaJXBsLGShA4GHu8gKV6RBSFmhuBg4bD7aYOGUORs/Ax//AZPoDkvbt59kpZUsAAAAASUVO
+        RK5CYII=
+</value>
+  </data>
   <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>106, 17</value>
   </metadata>

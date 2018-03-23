@@ -228,7 +228,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 24);
+            this.label2.Location = new System.Drawing.Point(15, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 44;
@@ -236,7 +236,7 @@
             // 
             // txtbanco
             // 
-            this.txtbanco.Location = new System.Drawing.Point(148, 21);
+            this.txtbanco.Location = new System.Drawing.Point(130, 22);
             this.txtbanco.Name = "txtbanco";
             this.txtbanco.ReadOnly = true;
             this.txtbanco.Size = new System.Drawing.Size(227, 20);
@@ -245,7 +245,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 50);
+            this.label3.Location = new System.Drawing.Point(12, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 46;
@@ -253,7 +253,7 @@
             // 
             // txtcuenta
             // 
-            this.txtcuenta.Location = new System.Drawing.Point(148, 47);
+            this.txtcuenta.Location = new System.Drawing.Point(130, 48);
             this.txtcuenta.Name = "txtcuenta";
             this.txtcuenta.ReadOnly = true;
             this.txtcuenta.Size = new System.Drawing.Size(227, 20);

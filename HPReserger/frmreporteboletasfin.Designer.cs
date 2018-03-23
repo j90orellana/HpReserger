@@ -34,6 +34,7 @@
             // crvboletas
             // 
             this.crvboletas.ActiveViewIndex = -1;
+            this.crvboletas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvboletas.Cursor = System.Windows.Forms.Cursors.Default;
             this.crvboletas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvboletas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -46,6 +47,7 @@
             this.crvboletas.ShowParameterPanelButton = false;
             this.crvboletas.Size = new System.Drawing.Size(1030, 466);
             this.crvboletas.TabIndex = 0;
+            this.crvboletas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crvboletas.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvboletas_ReportRefresh);
             // 
             // frmreporteboletasfin

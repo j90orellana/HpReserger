@@ -42,6 +42,7 @@
             this.crvBoletaVacaciones.Name = "crvBoletaVacaciones";
             this.crvBoletaVacaciones.ShowCloseButton = false;
             this.crvBoletaVacaciones.ShowLogo = false;
+            this.crvBoletaVacaciones.ShowParameterPanelButton = false;
             this.crvBoletaVacaciones.Size = new System.Drawing.Size(860, 642);
             this.crvBoletaVacaciones.TabIndex = 0;
             this.crvBoletaVacaciones.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;

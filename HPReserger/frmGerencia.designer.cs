@@ -128,24 +128,24 @@
             // txtgerencia
             // 
             this.txtgerencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtgerencia.Location = new System.Drawing.Point(87, 51);
+            this.txtgerencia.Location = new System.Drawing.Point(69, 38);
             this.txtgerencia.MaxLength = 100;
             this.txtgerencia.Name = "txtgerencia";
-            this.txtgerencia.Size = new System.Drawing.Size(209, 20);
+            this.txtgerencia.Size = new System.Drawing.Size(227, 20);
             this.txtgerencia.TabIndex = 13;
             // 
             // txtcodigo
             // 
             this.txtcodigo.Enabled = false;
-            this.txtcodigo.Location = new System.Drawing.Point(87, 25);
+            this.txtcodigo.Location = new System.Drawing.Point(69, 12);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(209, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(227, 20);
             this.txtcodigo.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 55);
+            this.label2.Location = new System.Drawing.Point(13, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 4;
@@ -154,7 +154,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 29);
+            this.label1.Location = new System.Drawing.Point(23, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 5;

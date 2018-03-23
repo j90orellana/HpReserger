@@ -16,6 +16,8 @@ namespace HPReserger
     public partial class frmLogin : Form
     {
         HPResergerCapaLogica.HPResergerCL clLogueo = new HPResergerCapaLogica.HPResergerCL();
+        HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
+
         public static int CodigoUsuario;
         public static string Usuario;
         public static string LoginUser;
@@ -28,6 +30,7 @@ namespace HPReserger
         public static int CodigoPartidaPresupuesto;
         public static string PartidaPresupuesto;
         public frmMenu frmM;
+        public static string Basedatos = "sige";
         public int Intentos { get; set; }
         public frmLogin()
         {
@@ -46,11 +49,14 @@ namespace HPReserger
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 e.Handled = true;
-                btnLogueo.Focus();
+                cboBase.Focus();
             }
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            cboBase.SelectedIndex = 0;
+            clLogueo.CambiarBase(Basedatos);
+            HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
             Intentos = 0;
             moveControl1.cargar();
             // OpenFileDialog dias = new OpenFileDialog();
@@ -71,6 +77,10 @@ namespace HPReserger
         }
         private void btnLogueo_Click(object sender, EventArgs e)
         {
+            //Asignacion de la base de datos estatica
+            Basedatos = cboBase.Text;
+            clLogueo.CambiarBase(Basedatos);
+            HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
             if (txtUsuario.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Usuario", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -85,7 +95,15 @@ namespace HPReserger
                 return;
             }
             Boolean Prueba = false;
-            if (txtUsuario.Text == txtContraseña.Text.ToUpper() && txtContraseña.Text.ToUpper() == "ADMIN")
+            //verificacion si hay usuarios por defecto
+            DataTable datito = new DataTable();
+            datito = clLogueo.usuarios("0", 0, 0);
+            Boolean Admin;
+            if (datito.Rows.Count > 0)
+                Admin = false;
+            else Admin = true;
+            //entra por modo admin si no hay usuarios en el sistema
+            if (txtUsuario.Text == txtContraseña.Text.ToUpper() && txtContraseña.Text.ToUpper() == "ADMIN" && Admin)
             {
                 this.Hide();
                 frmMenu menusito = new frmMenu();
@@ -276,6 +294,14 @@ namespace HPReserger
         private void panel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cboBase_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLogueo.Focus();
+            }
         }
 
         private void panel_MouseDown(object sender, MouseEventArgs e)

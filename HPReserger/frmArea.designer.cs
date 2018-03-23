@@ -69,7 +69,7 @@
             // 
             this.cboarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboarea.FormattingEnabled = true;
-            this.cboarea.Location = new System.Drawing.Point(101, 22);
+            this.cboarea.Location = new System.Drawing.Point(101, 12);
             this.cboarea.Name = "cboarea";
             this.cboarea.Size = new System.Drawing.Size(193, 21);
             this.cboarea.TabIndex = 63;
@@ -78,7 +78,7 @@
             // txtcodigo
             // 
             this.txtcodigo.Enabled = false;
-            this.txtcodigo.Location = new System.Drawing.Point(372, 22);
+            this.txtcodigo.Location = new System.Drawing.Point(372, 12);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(100, 20);
             this.txtcodigo.TabIndex = 62;
@@ -87,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 26);
+            this.label2.Location = new System.Drawing.Point(12, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 60;
@@ -96,7 +96,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(326, 26);
+            this.label1.Location = new System.Drawing.Point(326, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 61;
@@ -105,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 52);
+            this.label3.Location = new System.Drawing.Point(12, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 64;
@@ -114,7 +114,7 @@
             // txtdescripcion
             // 
             this.txtdescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtdescripcion.Location = new System.Drawing.Point(101, 49);
+            this.txtdescripcion.Location = new System.Drawing.Point(101, 36);
             this.txtdescripcion.Name = "txtdescripcion";
             this.txtdescripcion.Size = new System.Drawing.Size(371, 20);
             this.txtdescripcion.TabIndex = 62;
@@ -122,7 +122,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 78);
+            this.label4.Location = new System.Drawing.Point(12, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 64;
@@ -130,7 +130,7 @@
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(478, 73);
+            this.btneliminar.Location = new System.Drawing.Point(478, 63);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 21);
             this.btneliminar.TabIndex = 70;
@@ -140,7 +140,7 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(478, 46);
+            this.btnmodificar.Location = new System.Drawing.Point(478, 36);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 21);
             this.btnmodificar.TabIndex = 71;
@@ -150,7 +150,7 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(478, 20);
+            this.btnnuevo.Location = new System.Drawing.Point(478, 12);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 20);
             this.btnnuevo.TabIndex = 69;
@@ -223,7 +223,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dtgconten.Location = new System.Drawing.Point(15, 137);
+            this.dtgconten.Location = new System.Drawing.Point(15, 118);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -241,7 +241,7 @@
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(545, 309);
+            this.dtgconten.Size = new System.Drawing.Size(545, 328);
             this.dtgconten.TabIndex = 74;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -303,7 +303,7 @@
             // 
             this.btnlimpiar.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btnlimpiar.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(3)));
-            this.btnlimpiar.Location = new System.Drawing.Point(100, 101);
+            this.btnlimpiar.Location = new System.Drawing.Point(100, 91);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(20, 21);
             this.btnlimpiar.TabIndex = 77;
@@ -314,7 +314,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 104);
+            this.label5.Location = new System.Drawing.Point(12, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 76;
@@ -325,7 +325,7 @@
             this.Txtbusca.BackColor = System.Drawing.SystemColors.Info;
             this.Txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.Txtbusca.Cursor = System.Windows.Forms.Cursors.Help;
-            this.Txtbusca.Location = new System.Drawing.Point(126, 102);
+            this.Txtbusca.Location = new System.Drawing.Point(126, 92);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(434, 20);
             this.Txtbusca.TabIndex = 75;
@@ -334,7 +334,7 @@
             // btngermas
             // 
             this.btngermas.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btngermas.Location = new System.Drawing.Point(300, 22);
+            this.btngermas.Location = new System.Drawing.Point(300, 12);
             this.btngermas.Name = "btngermas";
             this.btngermas.Size = new System.Drawing.Size(20, 21);
             this.btngermas.TabIndex = 78;
@@ -346,7 +346,7 @@
             // 
             this.cboccosto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboccosto.FormattingEnabled = true;
-            this.cboccosto.Location = new System.Drawing.Point(101, 75);
+            this.cboccosto.Location = new System.Drawing.Point(101, 63);
             this.cboccosto.Name = "cboccosto";
             this.cboccosto.Size = new System.Drawing.Size(345, 21);
             this.cboccosto.TabIndex = 79;
@@ -355,7 +355,7 @@
             // btnccostomas
             // 
             this.btnccostomas.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnccostomas.Location = new System.Drawing.Point(452, 75);
+            this.btnccostomas.Location = new System.Drawing.Point(452, 63);
             this.btnccostomas.Name = "btnccostomas";
             this.btnccostomas.Size = new System.Drawing.Size(20, 21);
             this.btnccostomas.TabIndex = 80;

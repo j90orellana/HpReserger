@@ -129,7 +129,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(72, 145);
+            this.label7.Location = new System.Drawing.Point(72, 146);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 13;
@@ -155,7 +155,7 @@
             this.cboAFPEmpresa.Items.AddRange(new object[] {
             "SI",
             "NO"});
-            this.cboAFPEmpresa.Location = new System.Drawing.Point(161, 115);
+            this.cboAFPEmpresa.Location = new System.Drawing.Point(161, 114);
             this.cboAFPEmpresa.Name = "cboAFPEmpresa";
             this.cboAFPEmpresa.Size = new System.Drawing.Size(274, 21);
             this.cboAFPEmpresa.TabIndex = 15;
@@ -166,7 +166,7 @@
             this.cboONP.FormattingEnabled = true;
             this.cboONP.Items.AddRange(new object[] {
             "SI"});
-            this.cboONP.Location = new System.Drawing.Point(161, 89);
+            this.cboONP.Location = new System.Drawing.Point(161, 88);
             this.cboONP.Name = "cboONP";
             this.cboONP.Size = new System.Drawing.Size(108, 21);
             this.cboONP.TabIndex = 16;
@@ -278,7 +278,7 @@
             this.cboaplica.Items.AddRange(new object[] {
             "No Aplica",
             "Aplica"});
-            this.cboaplica.Location = new System.Drawing.Point(51, 35);
+            this.cboaplica.Location = new System.Drawing.Point(51, 34);
             this.cboaplica.Name = "cboaplica";
             this.cboaplica.Size = new System.Drawing.Size(104, 21);
             this.cboaplica.TabIndex = 23;
@@ -287,7 +287,7 @@
             // numdesc
             // 
             this.numdesc.DecimalPlaces = 2;
-            this.numdesc.Location = new System.Drawing.Point(352, 35);
+            this.numdesc.Location = new System.Drawing.Point(352, 34);
             this.numdesc.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -307,7 +307,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(312, 39);
+            this.label9.Location = new System.Drawing.Point(312, 38);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 21;
@@ -329,7 +329,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 39);
+            this.label8.Location = new System.Drawing.Point(4, 38);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(39, 13);
             this.label8.TabIndex = 19;

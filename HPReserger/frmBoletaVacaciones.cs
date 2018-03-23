@@ -32,10 +32,32 @@ namespace HPReserger
             Reporte.SetParameterValue("@Registro", Registro);
             Reporte.SetParameterValue("@tipo", tipo);
             // Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS, datos.DATASOURCE, datos.BASEDEDATOS);
-            Reporte.SetDatabaseLogon("mmendoza", "123");
-            crvBoletaVacaciones.ReportSource = Reporte;
-        }
+            Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
 
+            ConnectionInfo iConnectionInfo = new ConnectionInfo();
+            // ' ***************************************************************
+            // ' configuro el acceso a la base de datos
+            // ' ***************************************************************
+            //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
+            iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
+            iConnectionInfo.UserID = datos.USERID;
+            iConnectionInfo.Password = datos.USERPASS;
+            iConnectionInfo.ServerName = datos.DATASOURCE;
+
+            iConnectionInfo.Type = ConnectionInfoType.SQL;
+            CrystalDecisions.CrystalReports.Engine.Tables myTables;
+
+            myTables = Reporte.Database.Tables;
+
+            foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
+            {
+                TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
+                myTableLogonInfo.ConnectionInfo = iConnectionInfo;
+                mytable.ApplyLogOnInfo(myTableLogonInfo);
+            }
+            crvBoletaVacaciones.ReportSource = Reporte;
+            crvBoletaVacaciones.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
+        }
         private void crvBoletaVacaciones_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {
             e.Handled = true;

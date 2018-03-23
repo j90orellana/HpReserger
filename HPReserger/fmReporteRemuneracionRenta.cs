@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrystalDecisions.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +23,7 @@ namespace HPReserger
         public int fecha;
         public int año;
         public DateTime fechainicial;
-        HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
+        HPResergerCapaDatos.HPResergerCD CapaLogica = new HPResergerCapaDatos.HPResergerCD();
         private void fmReporteRemuneracionRenta_Load(object sender, EventArgs e)
         {
             RptGenerarRenta reporte = new RptGenerarRenta();
@@ -34,8 +35,35 @@ namespace HPReserger
             reporte.SetParameterValue(4, fechainicial);
             ///  reporte.SetParameterValue(3, fecha);
             ///   reporte.SetParameterValue(4, fechainicial);
-            reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
+            reporte.SetDatabaseLogon(CapaLogica.USERID, CapaLogica.USERPASS);
+
+            ConnectionInfo iConnectionInfo = new ConnectionInfo();
+            // ' *****************************************************************************************************************
+            // ' configuro el acceso a la base de datos
+            //   ' *****************************************************************************************************************
+            //iConnectionInfo.DatabaseName = CapaLogica.BASEDEDATOS;
+            iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
+            iConnectionInfo.UserID = CapaLogica.USERID;
+            iConnectionInfo.Password = CapaLogica.USERPASS;
+            iConnectionInfo.ServerName = CapaLogica.DATASOURCE;
+
+            iConnectionInfo.Type = ConnectionInfoType.SQL;
+            CrystalDecisions.CrystalReports.Engine.Tables myTables;
+
+            myTables = reporte.Database.Tables;
+
+            foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
+            {
+                TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
+                //Dim myTableLogonInfo As TableLogOnInfo = myTable.LogOnInfo
+                myTableLogonInfo.ConnectionInfo = iConnectionInfo;
+                //  myTableLogonInfo.ConnectionInfo = myConnectionInfo
+                mytable.ApplyLogOnInfo(myTableLogonInfo);
+                //myTable.ApplyLogOnInfo(myTableLogonInfo)
+            }
+
             crvboletas.ReportSource = reporte;
+            crvboletas.AllowedExportFormats = (int)(ExportFormatType.PortableDocFormat | ExportFormatType.Excel | ExportFormatType.ExcelWorkbook);
         }
     }
 }

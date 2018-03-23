@@ -361,5 +361,10 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.DescargarImagen(pbFoto);
         }
+
+        private void cboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtNumeroDocumento_TextChanged(sender, e);
+        }
     }
 }

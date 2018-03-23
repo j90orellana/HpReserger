@@ -44,6 +44,8 @@
             this.crvreporte.ShowParameterPanelButton = false;
             this.crvreporte.Size = new System.Drawing.Size(897, 675);
             this.crvreporte.TabIndex = 0;
+            this.crvreporte.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvreporte.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvreporte_ReportRefresh);
             // 
             // frmReporteEstadoPerdidas
             // 

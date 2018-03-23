@@ -62,7 +62,7 @@
             // btnModificar
             // 
             this.btnModificar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnModificar.Location = new System.Drawing.Point(432, 17);
+            this.btnModificar.Location = new System.Drawing.Point(432, 18);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 12;
@@ -81,7 +81,7 @@
             // txtOcupacion
             // 
             this.txtOcupacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtOcupacion.Location = new System.Drawing.Point(193, 233);
+            this.txtOcupacion.Location = new System.Drawing.Point(193, 230);
             this.txtOcupacion.MaxLength = 30;
             this.txtOcupacion.Name = "txtOcupacion";
             this.txtOcupacion.Size = new System.Drawing.Size(311, 20);
@@ -153,7 +153,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(10, 105);
+            this.label8.Location = new System.Drawing.Point(81, 103);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(108, 13);
             this.label8.TabIndex = 25;
@@ -163,7 +163,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(8, 236);
+            this.label7.Location = new System.Drawing.Point(130, 234);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 24;
@@ -173,7 +173,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(10, 180);
+            this.label6.Location = new System.Drawing.Point(140, 181);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 23;
@@ -183,7 +183,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(10, 128);
+            this.label5.Location = new System.Drawing.Point(105, 129);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 22;
@@ -193,7 +193,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(10, 154);
+            this.label4.Location = new System.Drawing.Point(103, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 21;
@@ -203,7 +203,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(10, 75);
+            this.label3.Location = new System.Drawing.Point(110, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 20;
@@ -213,7 +213,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(10, 49);
+            this.label2.Location = new System.Drawing.Point(10, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(179, 13);
             this.label2.TabIndex = 19;
@@ -223,7 +223,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(10, 22);
+            this.label1.Location = new System.Drawing.Point(26, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(163, 13);
             this.label1.TabIndex = 18;
@@ -267,7 +267,7 @@
             this.check18.AutoSize = true;
             this.check18.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.check18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.check18.Location = new System.Drawing.Point(319, 207);
+            this.check18.Location = new System.Drawing.Point(319, 205);
             this.check18.Name = "check18";
             this.check18.Size = new System.Drawing.Size(185, 17);
             this.check18.TabIndex = 9;
@@ -278,7 +278,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(10, 206);
+            this.label9.Location = new System.Drawing.Point(100, 207);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 13);
             this.label9.TabIndex = 75;
@@ -307,7 +307,7 @@
             // 
             this.lklconviviente.AutoSize = true;
             this.lklconviviente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lklconviviente.Location = new System.Drawing.Point(444, 262);
+            this.lklconviviente.Location = new System.Drawing.Point(444, 260);
             this.lklconviviente.Name = "lklconviviente";
             this.lklconviviente.Size = new System.Drawing.Size(61, 13);
             this.lklconviviente.TabIndex = 72;
@@ -323,7 +323,7 @@
             this.btnconviviente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnconviviente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnconviviente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnconviviente.Location = new System.Drawing.Point(413, 259);
+            this.btnconviviente.Location = new System.Drawing.Point(413, 256);
             this.btnconviviente.Name = "btnconviviente";
             this.btnconviviente.Size = new System.Drawing.Size(20, 20);
             this.btnconviviente.TabIndex = 11;
@@ -332,7 +332,7 @@
             // 
             // txtconviviente
             // 
-            this.txtconviviente.Location = new System.Drawing.Point(193, 259);
+            this.txtconviviente.Location = new System.Drawing.Point(193, 256);
             this.txtconviviente.Name = "txtconviviente";
             this.txtconviviente.ReadOnly = true;
             this.txtconviviente.Size = new System.Drawing.Size(213, 20);
@@ -342,7 +342,7 @@
             // 
             this.lblconviviente.AutoSize = true;
             this.lblconviviente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblconviviente.Location = new System.Drawing.Point(8, 262);
+            this.lblconviviente.Location = new System.Drawing.Point(144, 260);
             this.lblconviviente.Name = "lblconviviente";
             this.lblconviviente.Size = new System.Drawing.Size(45, 13);
             this.lblconviviente.TabIndex = 69;

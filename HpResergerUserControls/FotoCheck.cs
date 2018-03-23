@@ -16,7 +16,7 @@ namespace HpResergerUserControls
         {
             InitializeComponent();
             _ImagenDefault = btnclose.Image;
-           _ImagenEncima= btnprueba.Image;
+            _ImagenEncima = btnprueba.Image;
             Invalidate();
         }
         public string Nombre { get { return lblnombre.Text; } set { lblnombre.Text = value; } }
@@ -28,7 +28,7 @@ namespace HpResergerUserControls
         public Image _ImagenEncima;
         public void CambiarImagen(Image Foto)
         {
-            pbFoto.Image = Foto;
+            pbFoto.Image = Foto;    
         }
         private void buttonOre1_Click(object sender, EventArgs e)
         {
@@ -36,9 +36,9 @@ namespace HpResergerUserControls
         }
         private void FotoCheck_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            //oculta al click
+            //this.Dispose();
         }
-
         private void btnclose_MouseMove(object sender, MouseEventArgs e)
         {
             btnclose.Image = _ImagenEncima;
@@ -47,7 +47,6 @@ namespace HpResergerUserControls
         {
             btnclose.Image = _ImagenDefault;
         }
-
         private void btnclose_Click(object sender, EventArgs e)
         {
             this.Dispose();

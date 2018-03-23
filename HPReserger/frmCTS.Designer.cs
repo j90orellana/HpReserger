@@ -44,6 +44,7 @@
             this.crvCTS.Size = new System.Drawing.Size(767, 561);
             this.crvCTS.TabIndex = 0;
             this.crvCTS.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvCTS.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvCTS_ReportRefresh);
             // 
             // frmCTS
             // 

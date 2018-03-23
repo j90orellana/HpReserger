@@ -43,6 +43,7 @@
             this.crvConstanciaTrabajo.Name = "crvConstanciaTrabajo";
             this.crvConstanciaTrabajo.ShowCloseButton = false;
             this.crvConstanciaTrabajo.ShowLogo = false;
+            this.crvConstanciaTrabajo.ShowParameterPanelButton = false;
             this.crvConstanciaTrabajo.Size = new System.Drawing.Size(749, 606);
             this.crvConstanciaTrabajo.TabIndex = 0;
             this.crvConstanciaTrabajo.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;

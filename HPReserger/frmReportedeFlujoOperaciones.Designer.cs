@@ -80,7 +80,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(317, 15);
+            this.label4.Location = new System.Drawing.Point(317, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 47;
@@ -89,7 +89,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(721, 10);
+            this.button1.Location = new System.Drawing.Point(721, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 23);
             this.button1.TabIndex = 46;
@@ -111,7 +111,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(599, 42);
+            this.label3.Location = new System.Drawing.Point(599, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 44;
@@ -121,7 +121,7 @@
             // 
             this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtimporte.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtimporte.Location = new System.Drawing.Point(650, 40);
+            this.txtimporte.Location = new System.Drawing.Point(650, 39);
             this.txtimporte.Name = "txtimporte";
             this.txtimporte.ReadOnly = true;
             this.txtimporte.Size = new System.Drawing.Size(84, 20);
@@ -132,7 +132,7 @@
             // 
             this.txtoperaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtoperaciones.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtoperaciones.Location = new System.Drawing.Point(740, 40);
+            this.txtoperaciones.Location = new System.Drawing.Point(740, 39);
             this.txtoperaciones.Name = "txtoperaciones";
             this.txtoperaciones.ReadOnly = true;
             this.txtoperaciones.Size = new System.Drawing.Size(84, 20);
@@ -143,7 +143,7 @@
             // 
             this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdiferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdiferencia.Location = new System.Drawing.Point(830, 40);
+            this.txtdiferencia.Location = new System.Drawing.Point(830, 39);
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
             this.txtdiferencia.Size = new System.Drawing.Size(84, 20);
@@ -163,7 +163,7 @@
             // btnexportarexcel
             // 
             this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportarexcel.Location = new System.Drawing.Point(841, 10);
+            this.btnexportarexcel.Location = new System.Drawing.Point(841, 11);
             this.btnexportarexcel.Name = "btnexportarexcel";
             this.btnexportarexcel.Size = new System.Drawing.Size(75, 23);
             this.btnexportarexcel.TabIndex = 39;
@@ -173,7 +173,7 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(426, 37);
+            this.btnGenerar.Location = new System.Drawing.Point(426, 38);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
             this.btnGenerar.TabIndex = 38;
@@ -216,7 +216,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 15);
+            this.label1.Location = new System.Drawing.Point(10, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 34;
@@ -414,7 +414,7 @@
             this.MinimumSize = new System.Drawing.Size(942, 615);
             this.Name = "frmReportedeFlujoOperaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reporte de Flujo de Operaciones";
+            this.Text = "Reporte Presupuesto Etapas";
             this.Load += new System.EventHandler(this.frmReportedeFlujoOperaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

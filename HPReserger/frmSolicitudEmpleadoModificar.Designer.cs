@@ -78,9 +78,10 @@
             this.groupBox1.Controls.Add(this.cboBusqueda);
             this.groupBox1.Controls.Add(this.txtSolicitud);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(414, 243);
+            this.groupBox1.Size = new System.Drawing.Size(414, 233);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -90,9 +91,9 @@
             this.chkCambiar.AutoSize = true;
             this.chkCambiar.Checked = true;
             this.chkCambiar.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCambiar.Location = new System.Drawing.Point(237, 53);
+            this.chkCambiar.Location = new System.Drawing.Point(237, 49);
             this.chkCambiar.Name = "chkCambiar";
-            this.chkCambiar.Size = new System.Drawing.Size(82, 17);
+            this.chkCambiar.Size = new System.Drawing.Size(85, 19);
             this.chkCambiar.TabIndex = 34;
             this.chkCambiar.Text = "Cambiar por";
             this.chkCambiar.UseVisualStyleBackColor = true;
@@ -100,7 +101,7 @@
             // 
             // txtOS
             // 
-            this.txtOS.Location = new System.Drawing.Point(135, 51);
+            this.txtOS.Location = new System.Drawing.Point(135, 48);
             this.txtOS.Name = "txtOS";
             this.txtOS.ReadOnly = true;
             this.txtOS.Size = new System.Drawing.Size(77, 20);
@@ -110,9 +111,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 54);
+            this.label8.Location = new System.Drawing.Point(22, 51);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 13);
+            this.label8.Size = new System.Drawing.Size(106, 15);
             this.label8.TabIndex = 29;
             this.label8.Text = "Nº Orden de Servicio";
             // 
@@ -124,16 +125,16 @@
             this.cboOS.Items.AddRange(new object[] {
             "EXTERNA",
             "INTERNA"});
-            this.cboOS.Location = new System.Drawing.Point(325, 51);
+            this.cboOS.Location = new System.Drawing.Point(325, 47);
             this.cboOS.Name = "cboOS";
-            this.cboOS.Size = new System.Drawing.Size(75, 21);
+            this.cboOS.Size = new System.Drawing.Size(75, 23);
             this.cboOS.TabIndex = 28;
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(325, 17);
+            this.btnModificar.Location = new System.Drawing.Point(325, 21);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.Size = new System.Drawing.Size(75, 20);
             this.btnModificar.TabIndex = 27;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -146,16 +147,16 @@
             this.btnBuscarJPG.FlatAppearance.BorderSize = 0;
             this.btnBuscarJPG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarJPG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarJPG.Location = new System.Drawing.Point(375, 209);
+            this.btnBuscarJPG.Location = new System.Drawing.Point(374, 192);
             this.btnBuscarJPG.Name = "btnBuscarJPG";
-            this.btnBuscarJPG.Size = new System.Drawing.Size(20, 20);
+            this.btnBuscarJPG.Size = new System.Drawing.Size(20, 23);
             this.btnBuscarJPG.TabIndex = 26;
             this.btnBuscarJPG.UseVisualStyleBackColor = true;
             this.btnBuscarJPG.Click += new System.EventHandler(this.btnBuscarJPG_Click);
             // 
             // txtPuestos
             // 
-            this.txtPuestos.Location = new System.Drawing.Point(355, 113);
+            this.txtPuestos.Location = new System.Drawing.Point(345, 104);
             this.txtPuestos.MaxLength = 2;
             this.txtPuestos.Name = "txtPuestos";
             this.txtPuestos.Size = new System.Drawing.Size(45, 20);
@@ -166,15 +167,15 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(244, 117);
+            this.label7.Location = new System.Drawing.Point(234, 107);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 13);
+            this.label7.Size = new System.Drawing.Size(104, 15);
             this.label7.TabIndex = 24;
             this.label7.Text = "Cantidad de Puestos";
             // 
             // txtAdjunto
             // 
-            this.txtAdjunto.Location = new System.Drawing.Point(135, 209);
+            this.txtAdjunto.Location = new System.Drawing.Point(134, 193);
             this.txtAdjunto.Name = "txtAdjunto";
             this.txtAdjunto.ReadOnly = true;
             this.txtAdjunto.Size = new System.Drawing.Size(234, 20);
@@ -183,18 +184,18 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 212);
+            this.label6.Location = new System.Drawing.Point(12, 196);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 13);
+            this.label6.Size = new System.Drawing.Size(121, 15);
             this.label6.TabIndex = 22;
             this.label6.Text = "Adjuntar Requerimiento";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 181);
+            this.label5.Location = new System.Drawing.Point(23, 168);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 13);
+            this.label5.Size = new System.Drawing.Size(105, 15);
             this.label5.TabIndex = 21;
             this.label5.Text = "Tipo de Contratación";
             // 
@@ -202,35 +203,35 @@
             // 
             this.cboTipoContratacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoContratacion.FormattingEnabled = true;
-            this.cboTipoContratacion.Location = new System.Drawing.Point(135, 178);
+            this.cboTipoContratacion.Location = new System.Drawing.Point(134, 164);
             this.cboTipoContratacion.Name = "cboTipoContratacion";
-            this.cboTipoContratacion.Size = new System.Drawing.Size(265, 21);
+            this.cboTipoContratacion.Size = new System.Drawing.Size(265, 23);
             this.cboTipoContratacion.TabIndex = 20;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 149);
+            this.label4.Location = new System.Drawing.Point(41, 139);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.Size = new System.Drawing.Size(87, 15);
             this.label4.TabIndex = 19;
             this.label4.Text = "Cargo del Puesto";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(44, 116);
+            this.label3.Location = new System.Drawing.Point(44, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.Size = new System.Drawing.Size(84, 15);
             this.label3.TabIndex = 18;
             this.label3.Text = "¿ Aplica Terna ?";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 84);
+            this.label2.Location = new System.Drawing.Point(74, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 17;
             this.label2.Text = "Búsqueda";
             // 
@@ -241,18 +242,18 @@
             this.cboTerna.Items.AddRange(new object[] {
             "SI",
             "NO"});
-            this.cboTerna.Location = new System.Drawing.Point(135, 113);
+            this.cboTerna.Location = new System.Drawing.Point(135, 103);
             this.cboTerna.Name = "cboTerna";
-            this.cboTerna.Size = new System.Drawing.Size(77, 21);
+            this.cboTerna.Size = new System.Drawing.Size(77, 23);
             this.cboTerna.TabIndex = 16;
             // 
             // cboCargoPuesto
             // 
             this.cboCargoPuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargoPuesto.FormattingEnabled = true;
-            this.cboCargoPuesto.Location = new System.Drawing.Point(135, 146);
+            this.cboCargoPuesto.Location = new System.Drawing.Point(135, 135);
             this.cboCargoPuesto.Name = "cboCargoPuesto";
-            this.cboCargoPuesto.Size = new System.Drawing.Size(265, 21);
+            this.cboCargoPuesto.Size = new System.Drawing.Size(265, 23);
             this.cboCargoPuesto.TabIndex = 15;
             // 
             // cboBusqueda
@@ -263,15 +264,15 @@
             this.cboBusqueda.Items.AddRange(new object[] {
             "EXTERNA",
             "INTERNA"});
-            this.cboBusqueda.Location = new System.Drawing.Point(135, 81);
+            this.cboBusqueda.Location = new System.Drawing.Point(135, 74);
             this.cboBusqueda.Name = "cboBusqueda";
-            this.cboBusqueda.Size = new System.Drawing.Size(100, 21);
+            this.cboBusqueda.Size = new System.Drawing.Size(100, 23);
             this.cboBusqueda.TabIndex = 14;
             this.cboBusqueda.SelectedIndexChanged += new System.EventHandler(this.cboBusqueda_SelectedIndexChanged);
             // 
             // txtSolicitud
             // 
-            this.txtSolicitud.Location = new System.Drawing.Point(135, 19);
+            this.txtSolicitud.Location = new System.Drawing.Point(135, 24);
             this.txtSolicitud.Name = "txtSolicitud";
             this.txtSolicitud.ReadOnly = true;
             this.txtSolicitud.Size = new System.Drawing.Size(77, 20);
@@ -281,17 +282,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 22);
+            this.label1.Location = new System.Drawing.Point(44, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.Size = new System.Drawing.Size(86, 15);
             this.label1.TabIndex = 12;
             this.label1.Text = "Nro. de Solicitud";
             // 
             // pbFoto
             // 
-            this.pbFoto.Location = new System.Drawing.Point(435, 8);
+            this.pbFoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbFoto.Location = new System.Drawing.Point(414, 0);
             this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(247, 237);
+            this.pbFoto.Size = new System.Drawing.Size(403, 233);
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFoto.TabIndex = 14;
             this.pbFoto.TabStop = false;
@@ -300,11 +302,12 @@
             // 
             // btndescargar
             // 
+            this.btndescargar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btndescargar.AutoEllipsis = true;
             this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(523, 215);
+            this.btndescargar.Location = new System.Drawing.Point(593, 194);
             this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.Size = new System.Drawing.Size(76, 27);
             this.btndescargar.TabIndex = 75;
             this.btndescargar.Text = "Descargar";
             this.btndescargar.UseVisualStyleBackColor = false;
@@ -314,16 +317,16 @@
             // 
             // frmSolicitudEmpleadoModificar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(693, 255);
+            this.ClientSize = new System.Drawing.Size(817, 233);
             this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.pbFoto);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(709, 294);
-            this.MinimumSize = new System.Drawing.Size(709, 294);
+            this.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(833, 272);
             this.Name = "frmSolicitudEmpleadoModificar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Modificar Solicitud de Empleado";

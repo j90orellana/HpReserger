@@ -108,7 +108,7 @@
             this.GERENCIA,
             this.TIPO});
             this.gridOC.GridColor = System.Drawing.Color.White;
-            this.gridOC.Location = new System.Drawing.Point(12, 25);
+            this.gridOC.Location = new System.Drawing.Point(11, 25);
             this.gridOC.Name = "gridOC";
             this.gridOC.ReadOnly = true;
             this.gridOC.RowHeadersVisible = false;
@@ -253,7 +253,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 300);
+            this.label2.Location = new System.Drawing.Point(13, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 31;
@@ -262,7 +262,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(549, 300);
+            this.label3.Location = new System.Drawing.Point(550, 296);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 32;
@@ -271,7 +271,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(684, 300);
+            this.label4.Location = new System.Drawing.Point(685, 296);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 33;
@@ -279,7 +279,7 @@
             // 
             // txtProveedor
             // 
-            this.txtProveedor.Location = new System.Drawing.Point(74, 300);
+            this.txtProveedor.Location = new System.Drawing.Point(75, 292);
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.ReadOnly = true;
             this.txtProveedor.Size = new System.Drawing.Size(459, 20);
@@ -287,7 +287,7 @@
             // 
             // txtImporte
             // 
-            this.txtImporte.Location = new System.Drawing.Point(597, 300);
+            this.txtImporte.Location = new System.Drawing.Point(598, 292);
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.ReadOnly = true;
             this.txtImporte.Size = new System.Drawing.Size(78, 20);
@@ -296,7 +296,7 @@
             // 
             // txtFechaEntrega
             // 
-            this.txtFechaEntrega.Location = new System.Drawing.Point(782, 300);
+            this.txtFechaEntrega.Location = new System.Drawing.Point(781, 292);
             this.txtFechaEntrega.Name = "txtFechaEntrega";
             this.txtFechaEntrega.ReadOnly = true;
             this.txtFechaEntrega.Size = new System.Drawing.Size(88, 20);
@@ -333,13 +333,13 @@
             this.MODELO,
             this.CANTIDAD});
             this.gridDetalle.GridColor = System.Drawing.Color.White;
-            this.gridDetalle.Location = new System.Drawing.Point(12, 353);
+            this.gridDetalle.Location = new System.Drawing.Point(11, 335);
             this.gridDetalle.Name = "gridDetalle";
             this.gridDetalle.ReadOnly = true;
             this.gridDetalle.RowHeadersVisible = false;
             this.gridDetalle.RowTemplate.Height = 16;
             this.gridDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDetalle.Size = new System.Drawing.Size(764, 261);
+            this.gridDetalle.Size = new System.Drawing.Size(777, 276);
             this.gridDetalle.TabIndex = 37;
             // 
             // CODIGOARTICULO
@@ -397,7 +397,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 337);
+            this.label5.Location = new System.Drawing.Point(13, 319);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 38;
@@ -406,7 +406,7 @@
             // btnEnviar
             // 
             this.btnEnviar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEnviar.Location = new System.Drawing.Point(795, 379);
+            this.btnEnviar.Location = new System.Drawing.Point(794, 379);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(75, 23);
             this.btnEnviar.TabIndex = 39;

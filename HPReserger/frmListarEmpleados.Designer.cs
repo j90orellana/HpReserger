@@ -65,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 20);
+            this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
@@ -79,7 +79,7 @@
             "AP. PATERNO",
             "AP. MATERNO",
             "NOMBRES"});
-            this.cboListar.Location = new System.Drawing.Point(65, 16);
+            this.cboListar.Location = new System.Drawing.Point(71, 16);
             this.cboListar.Name = "cboListar";
             this.cboListar.Size = new System.Drawing.Size(121, 21);
             this.cboListar.TabIndex = 1;
@@ -88,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(205, 20);
+            this.label2.Location = new System.Drawing.Point(211, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
@@ -97,7 +97,7 @@
             // txtBuscar
             // 
             this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtBuscar.Location = new System.Drawing.Point(290, 16);
+            this.txtBuscar.Location = new System.Drawing.Point(296, 16);
             this.txtBuscar.MaxLength = 30;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(256, 20);
@@ -116,16 +116,17 @@
             this.groupBox1.Controls.Add(this.txtBuscar);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 3);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(861, 75);
+            this.groupBox1.Size = new System.Drawing.Size(795, 75);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
             // checkpos
             // 
             this.checkpos.AutoSize = true;
-            this.checkpos.Location = new System.Drawing.Point(642, 45);
+            this.checkpos.Location = new System.Drawing.Point(648, 45);
             this.checkpos.Name = "checkpos";
             this.checkpos.Size = new System.Drawing.Size(76, 17);
             this.checkpos.TabIndex = 5;
@@ -136,7 +137,7 @@
             // checkemp
             // 
             this.checkemp.AutoSize = true;
-            this.checkemp.Location = new System.Drawing.Point(563, 45);
+            this.checkemp.Location = new System.Drawing.Point(569, 45);
             this.checkemp.Name = "checkemp";
             this.checkemp.Size = new System.Drawing.Size(73, 17);
             this.checkemp.TabIndex = 4;
@@ -147,7 +148,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(287, 47);
+            this.label4.Location = new System.Drawing.Point(293, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 7;
@@ -156,7 +157,7 @@
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(340, 43);
+            this.txtDocumento.Location = new System.Drawing.Point(346, 43);
             this.txtDocumento.MaxLength = 10;
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(206, 20);
@@ -167,7 +168,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 47);
+            this.label3.Location = new System.Drawing.Point(12, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 5;
@@ -177,7 +178,7 @@
             // 
             this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(65, 43);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(71, 43);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
             this.cboTipoDocumento.TabIndex = 2;
@@ -189,9 +190,6 @@
             this.Grid.AllowUserToDeleteRows = false;
             this.Grid.AllowUserToResizeColumns = false;
             this.Grid.AllowUserToResizeRows = false;
-            this.Grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -213,7 +211,8 @@
             this.NOMBRES,
             this.areax,
             this.gerenciax});
-            this.Grid.Location = new System.Drawing.Point(12, 84);
+            this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Grid.Location = new System.Drawing.Point(0, 75);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
             this.Grid.RowHeadersVisible = false;
@@ -222,7 +221,7 @@
             this.Grid.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.Grid.RowTemplate.Height = 16;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Grid.Size = new System.Drawing.Size(861, 377);
+            this.Grid.Size = new System.Drawing.Size(795, 453);
             this.Grid.TabIndex = 36;
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
             // 
@@ -302,6 +301,7 @@
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.NOMBRES.DefaultCellStyle = dataGridViewCellStyle7;
             this.NOMBRES.HeaderText = "Nombres";
+            this.NOMBRES.MinimumWidth = 100;
             this.NOMBRES.Name = "NOMBRES";
             this.NOMBRES.ReadOnly = true;
             this.NOMBRES.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -328,10 +328,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 473);
+            this.ClientSize = new System.Drawing.Size(795, 528);
             this.Controls.Add(this.Grid);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(811, 567);
             this.Name = "frmListarEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  Listar Empleados";

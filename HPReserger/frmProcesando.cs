@@ -16,5 +16,10 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+
+        private void frmProcesando_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

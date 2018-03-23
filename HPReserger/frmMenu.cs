@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Drawing.Drawing2D;
 
 namespace HPReserger
 {
@@ -85,7 +85,7 @@ namespace HPReserger
         {
             DataTable datos = new DataTable();
             DataRow filita;
-            datos = CapaLogica.usuarios("", frmLogin.CodigoUsuario, 10);
+            datos = CapaLogica.usuarios(frmLogin.LoginUser, 1, 10);
             if (datos.Rows.Count > 0)
             {
                 filita = datos.Rows[0];
@@ -128,6 +128,7 @@ namespace HPReserger
         }
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            CapaLogica.CambiarBase(frmLogin.Basedatos);
             RecargarMenu();
             MdiClient mdi;
             foreach (Control ctl in this.Controls)
@@ -135,7 +136,7 @@ namespace HPReserger
                 try
                 {
                     mdi = (MdiClient)ctl;
-                    mdi.BackColor = Color.FromArgb(240, 240, 240);
+                    mdi.BackColor = Color.FromArgb(240, 240, 240);     
                 }
                 catch (InvalidCastException)
                 {
@@ -143,10 +144,20 @@ namespace HPReserger
             }
             cerrado = 0;
             lblwelcome.Text = "Bienvenido: " + Nombres;
-
             ConsultarCumpleaños();
             length = FlowPanel.Width;
             ImagenDefault = pbesquina.Image;
+            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control
+        }
+
+        private void FrmMenu_Paint(object sender, PaintEventArgs e)
+        {
+            LinearGradientBrush linearGradientBrush = new LinearGradientBrush(FlowPanel.ClientRectangle, Color.Black, Color.Black, 180);
+            ColorBlend cblend = new ColorBlend(3);
+            cblend.Colors = new Color[3] { Color.White, Color.Red, Color.White };
+            cblend.Positions = new float[3] { 0f, 0.5f, 1f };
+            linearGradientBrush.InterpolationColors = cblend;
+            e.Graphics.FillRectangle(linearGradientBrush, FlowPanel.ClientRectangle);
         }
         public void ConsultarCumpleaños()
         {
@@ -167,7 +178,7 @@ namespace HPReserger
                     else
                         Extra = " (" + ((Fech.Date.Subtract(DateTime.Now.Date)).Days) + " Dias) ";
                     ///fin de Muestra de Fechas
-                    fotito.Observacion = $"Cumpleaños{Extra}el {((DateTime)item["fila"]).ToString("dd")} de {((DateTime)item["fila"]).ToString("MMMM")} ";
+                    fotito.Observacion = $"Cumpleaño{Extra}el {((DateTime)item["fila"]).ToString("dd")} de {((DateTime)item["fila"]).ToString("MMMM")} ";
                     if (item["foto"] != null && item["foto"].ToString().Length > 0)
                     {
                         byte[] Fotito = new byte[0];
@@ -2083,10 +2094,26 @@ namespace HPReserger
         {
             MessageBox.Show("button:" + e.Button.ToString());
         }
+        frmEliminarPeriodo frmelimin;
         private void eliminarPeriodoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmEliminarPeriodo frmelimin = new frmEliminarPeriodo();
-            frmelimin.ShowDialog();
+            if (frmelimin == null)
+            {
+                frmelimin = new frmEliminarPeriodo();
+                frmelimin.MdiParent = this;
+                frmelimin.Icon = ICono;
+                frmelimin.FormClosed += new FormClosedEventHandler(CerrarELiminarPeriodo);
+                frmelimin.Show();
+            }
+            else
+            {
+                frmelimin.Activate();
+                ValidarVentanas(frmelimin);
+            }
+        }
+        private void CerrarELiminarPeriodo(object sender, FormClosedEventArgs e)
+        {
+            frmelimin = null;
         }
         frmSolicitudes frmsolis;
         private void solicitudesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2179,17 +2206,51 @@ namespace HPReserger
         {
             frmcts = null;
         }
+        frmEliminarPeriodo frmeliminGrati;
         private void eliminarGratificacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmEliminarPeriodo frmelimin = new frmEliminarPeriodo();
-            frmelimin.Opcion = 2;
-            frmelimin.ShowDialog();
+            if (frmeliminGrati == null)
+            {
+                frmeliminGrati = new frmEliminarPeriodo();
+                frmeliminGrati.MdiParent = this;
+                frmeliminGrati.Opcion = 2;
+                frmeliminGrati.Icon = ICono;
+                frmeliminGrati.FormClosed += new FormClosedEventHandler(CerrarEliminarGrati);
+                frmMenu_SizeChanged(sender, new EventArgs());
+                frmeliminGrati.Show();
+            }
+            else
+            {
+                frmeliminGrati.Activate();
+                ValidarVentanas(frmeliminGrati);
+            }
         }
+        private void CerrarEliminarGrati(object sender, FormClosedEventArgs e)
+        {
+            frmeliminGrati = null;
+        }
+        frmEliminarPeriodo frmeliminCts;
         private void eliminarCTSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmEliminarPeriodo frmelimin = new frmEliminarPeriodo();
-            frmelimin.Opcion = 1;
-            frmelimin.ShowDialog();
+            if (frmeliminCts == null)
+            {
+                frmeliminCts = new frmEliminarPeriodo();
+                frmeliminCts.MdiParent = this;
+                frmeliminCts.Opcion = 1;
+                frmeliminCts.Icon = ICono;
+                frmeliminCts.FormClosed += new FormClosedEventHandler(CerrarELiminarCts);
+                frmMenu_SizeChanged(sender, new EventArgs());
+                frmeliminCts.Show();
+            }
+            else
+            {
+                frmeliminCts.Activate();
+                ValidarVentanas(frmeliminCts);
+            }
+        }
+        private void CerrarELiminarCts(object sender, FormClosedEventArgs e)
+        {
+            frmeliminCts = null;
         }
         frmAbonoExternoEmpleado frmaboext;
         private void abonosExternosEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2439,7 +2500,6 @@ namespace HPReserger
         {
             FrmReporteGene = null;
         }
-
         private void FlowPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
             //if (FlowPanel.Controls.Count <= 0)
@@ -2520,12 +2580,18 @@ namespace HPReserger
                 ValidarVentanas(frplaneseps);
             }
         }
-
         private void cerrarplaneseps(object sender, FormClosedEventArgs e)
         {
             frplaneseps = null;
         }
-
-
+        private void frmMenu_Resize(object sender, EventArgs e)
+        {
+            LinearGradientBrush linearGradientBrush = new LinearGradientBrush(this.ClientRectangle, Color.Black, Color.Black, 180);
+            ColorBlend cblend = new ColorBlend(3);
+            cblend.Colors = new Color[3] { Color.White, Color.Red, Color.White };
+            cblend.Positions = new float[3] { 0f, 0.5f, 1f };
+            linearGradientBrush.InterpolationColors = cblend;
+            this.CreateGraphics().FillRectangle(linearGradientBrush, this.ClientRectangle);            
+        }
     }
 }

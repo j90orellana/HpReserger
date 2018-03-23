@@ -51,6 +51,7 @@
             this.rptreporterequerimientos.Size = new System.Drawing.Size(844, 732);
             this.rptreporterequerimientos.TabIndex = 0;
             this.rptreporterequerimientos.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.rptreporterequerimientos.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.rptreporterequerimientos_ReportRefresh);
             // 
             // frmRPTExportarRequerimiento
             // 

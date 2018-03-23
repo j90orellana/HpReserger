@@ -57,7 +57,7 @@
             // btnexportarexcel
             // 
             this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexportarexcel.Location = new System.Drawing.Point(1054, 72);
+            this.btnexportarexcel.Location = new System.Drawing.Point(948, 59);
             this.btnexportarexcel.Name = "btnexportarexcel";
             this.btnexportarexcel.Size = new System.Drawing.Size(75, 23);
             this.btnexportarexcel.TabIndex = 27;
@@ -68,7 +68,7 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(1054, 608);
+            this.btncancelar.Location = new System.Drawing.Point(948, 566);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 26;
@@ -84,7 +84,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.txtbuscar);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(450, 83);
             this.panel1.TabIndex = 25;
@@ -104,7 +104,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(109, 7);
+            this.radioButton2.Location = new System.Drawing.Point(76, 7);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(74, 17);
             this.radioButton2.TabIndex = 21;
@@ -133,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 33);
+            this.label2.Location = new System.Drawing.Point(12, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 19;
@@ -193,13 +193,13 @@
             this.tipo,
             this.fecha});
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dtgconten.Location = new System.Drawing.Point(12, 101);
+            this.dtgconten.Location = new System.Drawing.Point(12, 86);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(1117, 501);
+            this.dtgconten.Size = new System.Drawing.Size(1011, 474);
             this.dtgconten.TabIndex = 24;
             this.dtgconten.TabStop = false;
             // 
@@ -248,6 +248,7 @@
             this.razon_social.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.razon_social.DataPropertyName = "razon_social";
             this.razon_social.HeaderText = "Razon Social";
+            this.razon_social.MinimumWidth = 100;
             this.razon_social.Name = "razon_social";
             // 
             // email
@@ -284,8 +285,8 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(838, 608);
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.Location = new System.Drawing.Point(484, 566);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 28;
@@ -297,7 +298,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 643);
+            this.ClientSize = new System.Drawing.Size(1043, 601);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnexportarexcel);
             this.Controls.Add(this.btncancelar);
@@ -325,6 +326,8 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtbuscar;
         private System.Windows.Forms.DataGridView dtgconten;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbodocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn NUMERO;
         private System.Windows.Forms.DataGridViewTextBoxColumn doc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordencompra;
@@ -335,7 +338,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cbodocumento;
     }
 }

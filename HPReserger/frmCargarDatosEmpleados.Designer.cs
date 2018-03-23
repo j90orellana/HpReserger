@@ -34,9 +34,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1036, 676);
+            this.ClientSize = new System.Drawing.Size(1106, 695);
+            this.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.Blue,
+        System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255))))),
+        System.Drawing.Color.Blue};
+            this.DoubleBuffered = true;
             this.Name = "frmCargarDatosEmpleados";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccione Los Bancos de Los Empleados";
             this.ResumeLayout(false);
 

@@ -328,6 +328,7 @@ namespace HPReserger
             if (e.RowIndex >= 0)
             {
                 frmParametrosDetalle Detallito = new frmParametrosDetalle();
+                Detallito.Icon = Icon;
                 Detallito.dtgconten.DataSource = CapaLogica.ActualizarParametros(9, dtgconten["descripcion", e.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", e.RowIndex].Value, dtpfecha.Value);
                 Detallito.ShowDialog();
                 //int Ocultar = 0;

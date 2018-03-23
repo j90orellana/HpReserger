@@ -92,7 +92,7 @@
             this.importeabono});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dtgconten.Location = new System.Drawing.Point(12, 75);
+            this.dtgconten.Location = new System.Drawing.Point(12, 69);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -100,7 +100,7 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(447, 222);
+            this.dtgconten.Size = new System.Drawing.Size(447, 228);
             this.dtgconten.TabIndex = 57;
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten_EditingControlShowing);
             // 
@@ -257,7 +257,7 @@
             // btncargar
             // 
             this.btncargar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btncargar.Location = new System.Drawing.Point(323, 46);
+            this.btncargar.Location = new System.Drawing.Point(324, 40);
             this.btncargar.Name = "btncargar";
             this.btncargar.Size = new System.Drawing.Size(78, 23);
             this.btncargar.TabIndex = 64;
@@ -283,10 +283,10 @@
             this.comboMesAño1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 14, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
-            this.comboMesAño1.Location = new System.Drawing.Point(83, 44);
+            this.comboMesAño1.Location = new System.Drawing.Point(84, 39);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
             this.comboMesAño1.TabIndex = 60;

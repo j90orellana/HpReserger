@@ -47,6 +47,7 @@
             this.crvreportepracticas.Size = new System.Drawing.Size(721, 591);
             this.crvreportepracticas.TabIndex = 0;
             this.crvreportepracticas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvreportepracticas.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvreportepracticas_ReportRefresh);
             // 
             // frmReporteconvenioPracticas
             // 

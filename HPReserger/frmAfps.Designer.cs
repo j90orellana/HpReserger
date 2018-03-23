@@ -144,7 +144,7 @@
             // btneliminar
             // 
             this.btneliminar.Enabled = false;
-            this.btneliminar.Location = new System.Drawing.Point(391, 68);
+            this.btneliminar.Location = new System.Drawing.Point(391, 65);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 21);
             this.btneliminar.TabIndex = 61;
@@ -154,7 +154,7 @@
             // btnmodificar
             // 
             this.btnmodificar.Enabled = false;
-            this.btnmodificar.Location = new System.Drawing.Point(391, 41);
+            this.btnmodificar.Location = new System.Drawing.Point(391, 38);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 21);
             this.btnmodificar.TabIndex = 62;
@@ -186,7 +186,7 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(391, 15);
+            this.btnnuevo.Location = new System.Drawing.Point(391, 12);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 20);
             this.btnnuevo.TabIndex = 59;
@@ -216,7 +216,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 15);
+            this.label2.Location = new System.Drawing.Point(12, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 54;
@@ -225,7 +225,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 40);
+            this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 54;
@@ -244,7 +244,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(106, 41);
+            this.label3.Location = new System.Drawing.Point(106, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 64;
@@ -263,7 +263,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 41);
+            this.label4.Location = new System.Drawing.Point(229, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 66;
@@ -272,7 +272,7 @@
             // btnexportarExcel
             // 
             this.btnexportarExcel.Enabled = false;
-            this.btnexportarExcel.Location = new System.Drawing.Point(391, 221);
+            this.btnexportarExcel.Location = new System.Drawing.Point(391, 144);
             this.btnexportarExcel.Name = "btnexportarExcel";
             this.btnexportarExcel.Size = new System.Drawing.Size(82, 21);
             this.btnexportarExcel.TabIndex = 68;
@@ -283,7 +283,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(359, 41);
+            this.label5.Location = new System.Drawing.Point(359, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 13);
             this.label5.TabIndex = 69;

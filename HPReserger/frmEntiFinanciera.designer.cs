@@ -111,7 +111,7 @@
             this.sufijox});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dtgconten.Location = new System.Drawing.Point(12, 94);
+            this.dtgconten.Location = new System.Drawing.Point(12, 88);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -122,7 +122,7 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(364, 125);
+            this.dtgconten.Size = new System.Drawing.Size(364, 131);
             this.dtgconten.TabIndex = 36;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -156,7 +156,7 @@
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(294, 70);
+            this.btneliminar.Location = new System.Drawing.Point(294, 62);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 21);
             this.btneliminar.TabIndex = 41;
@@ -166,7 +166,7 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(295, 44);
+            this.btnmodificar.Location = new System.Drawing.Point(295, 37);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 21);
             this.btnmodificar.TabIndex = 42;
@@ -197,7 +197,7 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(295, 18);
+            this.btnnuevo.Location = new System.Drawing.Point(295, 11);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 20);
             this.btnnuevo.TabIndex = 39;
@@ -208,7 +208,7 @@
             // txtgerencia
             // 
             this.txtgerencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtgerencia.Location = new System.Drawing.Point(81, 44);
+            this.txtgerencia.Location = new System.Drawing.Point(81, 37);
             this.txtgerencia.Name = "txtgerencia";
             this.txtgerencia.Size = new System.Drawing.Size(208, 20);
             this.txtgerencia.TabIndex = 43;
@@ -216,7 +216,7 @@
             // txtcodigo
             // 
             this.txtcodigo.Enabled = false;
-            this.txtcodigo.Location = new System.Drawing.Point(81, 18);
+            this.txtcodigo.Location = new System.Drawing.Point(81, 11);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(208, 20);
             this.txtcodigo.TabIndex = 40;
@@ -224,7 +224,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 47);
+            this.label2.Location = new System.Drawing.Point(12, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 34;
@@ -233,7 +233,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 21);
+            this.label1.Location = new System.Drawing.Point(35, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 35;
@@ -246,7 +246,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 73);
+            this.label3.Location = new System.Drawing.Point(42, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 45;
@@ -261,7 +261,7 @@
             this.txtsufijo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtsufijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsufijo.ForeColor = System.Drawing.Color.Maroon;
-            this.txtsufijo.Location = new System.Drawing.Point(81, 69);
+            this.txtsufijo.Location = new System.Drawing.Point(81, 62);
             this.txtsufijo.MaxLength = 100;
             this.txtsufijo.Name = "txtsufijo";
             this.txtsufijo.NextControlOnEnter = this.btnaceptar;

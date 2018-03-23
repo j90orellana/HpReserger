@@ -64,9 +64,9 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(728, 570);
+            this.btncancelar.Location = new System.Drawing.Point(717, 570);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.Size = new System.Drawing.Size(84, 23);
             this.btncancelar.TabIndex = 42;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -75,7 +75,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(486, 65);
+            this.label3.Location = new System.Drawing.Point(486, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 41;
@@ -85,7 +85,7 @@
             // 
             this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtimporte.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtimporte.Location = new System.Drawing.Point(537, 63);
+            this.txtimporte.Location = new System.Drawing.Point(537, 60);
             this.txtimporte.Name = "txtimporte";
             this.txtimporte.ReadOnly = true;
             this.txtimporte.Size = new System.Drawing.Size(84, 20);
@@ -96,7 +96,7 @@
             // 
             this.txtoperaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtoperaciones.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtoperaciones.Location = new System.Drawing.Point(627, 63);
+            this.txtoperaciones.Location = new System.Drawing.Point(627, 60);
             this.txtoperaciones.Name = "txtoperaciones";
             this.txtoperaciones.ReadOnly = true;
             this.txtoperaciones.Size = new System.Drawing.Size(84, 20);
@@ -107,7 +107,7 @@
             // 
             this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdiferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdiferencia.Location = new System.Drawing.Point(717, 63);
+            this.txtdiferencia.Location = new System.Drawing.Point(717, 60);
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
             this.txtdiferencia.Size = new System.Drawing.Size(84, 20);
@@ -118,7 +118,7 @@
             // 
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(9, 575);
+            this.lblmsg.Location = new System.Drawing.Point(12, 575);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(54, 13);
             this.lblmsg.TabIndex = 37;
@@ -128,9 +128,9 @@
             // 
             this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnexportarexcel.Enabled = false;
-            this.btnexportarexcel.Location = new System.Drawing.Point(726, 35);
+            this.btnexportarexcel.Location = new System.Drawing.Point(717, 32);
             this.btnexportarexcel.Name = "btnexportarexcel";
-            this.btnexportarexcel.Size = new System.Drawing.Size(75, 23);
+            this.btnexportarexcel.Size = new System.Drawing.Size(84, 23);
             this.btnexportarexcel.TabIndex = 36;
             this.btnexportarexcel.Text = "Excel";
             this.btnexportarexcel.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(370, 60);
+            this.btnGenerar.Location = new System.Drawing.Point(370, 59);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
             this.btnGenerar.TabIndex = 35;
@@ -174,7 +174,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 36);
+            this.label2.Location = new System.Drawing.Point(13, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 30;
@@ -183,7 +183,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 31;
@@ -335,7 +335,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 63);
+            this.label4.Location = new System.Drawing.Point(16, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 43;
@@ -376,7 +376,7 @@
             this.MinimumSize = new System.Drawing.Size(831, 642);
             this.Name = "frmReportePresupuestoCuenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reporte Presupuesto Cuenta";
+            this.Text = "Detalle de Movimiento Asientos";
             this.Load += new System.EventHandler(this.frmReportePresupuestoCuenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);

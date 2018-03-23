@@ -200,7 +200,7 @@
             this.MinimumSize = new System.Drawing.Size(515, 403);
             this.Name = "frmMensajeCorreo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Aprobacion de Correo";
+            this.Text = "Envío de e-mail";
             this.Load += new System.EventHandler(this.frmMensajeCorreo_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

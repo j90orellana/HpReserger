@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtobservacion = new HpResergerUserControls.TextBoxPer();
+            this.btnComprarVacaciones = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.cbopago = new System.Windows.Forms.ComboBox();
@@ -65,8 +67,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtEquivaleDias = new System.Windows.Forms.TextBox();
-            this.btnComprarVacaciones = new System.Windows.Forms.Button();
-            this.txtobservacion = new HpResergerUserControls.TextBoxPer();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,6 +115,36 @@
             this.groupBox1.Size = new System.Drawing.Size(471, 308);
             this.groupBox1.TabIndex = 72;
             this.groupBox1.TabStop = false;
+            // 
+            // txtobservacion
+            // 
+            this.txtobservacion.BackColor = System.Drawing.Color.White;
+            this.txtobservacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtobservacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtobservacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtobservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtobservacion.ForeColor = System.Drawing.Color.Red;
+            this.txtobservacion.Location = new System.Drawing.Point(126, 214);
+            this.txtobservacion.MaxLength = 100;
+            this.txtobservacion.Multiline = true;
+            this.txtobservacion.Name = "txtobservacion";
+            this.txtobservacion.NextControlOnEnter = this.btnComprarVacaciones;
+            this.txtobservacion.Size = new System.Drawing.Size(314, 56);
+            this.txtobservacion.TabIndex = 132;
+            this.txtobservacion.Text = "Ingrese Observación";
+            this.txtobservacion.TextoDefecto = "Ingrese Observación";
+            this.txtobservacion.TextoDefectoColor = System.Drawing.Color.Red;
+            this.txtobservacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // btnComprarVacaciones
+            // 
+            this.btnComprarVacaciones.Location = new System.Drawing.Point(149, 276);
+            this.btnComprarVacaciones.Name = "btnComprarVacaciones";
+            this.btnComprarVacaciones.Size = new System.Drawing.Size(173, 23);
+            this.btnComprarVacaciones.TabIndex = 73;
+            this.btnComprarVacaciones.Text = "Comprar Vacaciones";
+            this.btnComprarVacaciones.UseVisualStyleBackColor = true;
+            this.btnComprarVacaciones.Click += new System.EventHandler(this.btnComprarVacaciones_Click);
             // 
             // label22
             // 
@@ -469,36 +499,6 @@
             this.txtEquivaleDias.TabIndex = 90;
             this.txtEquivaleDias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btnComprarVacaciones
-            // 
-            this.btnComprarVacaciones.Location = new System.Drawing.Point(165, 276);
-            this.btnComprarVacaciones.Name = "btnComprarVacaciones";
-            this.btnComprarVacaciones.Size = new System.Drawing.Size(173, 23);
-            this.btnComprarVacaciones.TabIndex = 73;
-            this.btnComprarVacaciones.Text = "Comprar Vacaciones";
-            this.btnComprarVacaciones.UseVisualStyleBackColor = true;
-            this.btnComprarVacaciones.Click += new System.EventHandler(this.btnComprarVacaciones_Click);
-            // 
-            // txtobservacion
-            // 
-            this.txtobservacion.BackColor = System.Drawing.Color.White;
-            this.txtobservacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtobservacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtobservacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtobservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtobservacion.ForeColor = System.Drawing.Color.Black;
-            this.txtobservacion.Location = new System.Drawing.Point(126, 214);
-            this.txtobservacion.MaxLength = 100;
-            this.txtobservacion.Multiline = true;
-            this.txtobservacion.Name = "txtobservacion";
-            this.txtobservacion.NextControlOnEnter = this.btnComprarVacaciones;
-            this.txtobservacion.Size = new System.Drawing.Size(314, 56);
-            this.txtobservacion.TabIndex = 132;
-            this.txtobservacion.Text = "Ingrese Cadena";
-            this.txtobservacion.TextoDefecto = "Ingrese Observación";
-            this.txtobservacion.TextoDefectoColor = System.Drawing.Color.Red;
-            this.txtobservacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
             // frmCompraVacaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,6 +508,7 @@
             this.ClientSize = new System.Drawing.Size(471, 308);
             this.Controls.Add(this.btnComprarVacaciones);
             this.Controls.Add(this.groupBox1);
+            this.MaximumSize = new System.Drawing.Size(487, 347);
             this.MinimumSize = new System.Drawing.Size(487, 347);
             this.Name = "frmCompraVacaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

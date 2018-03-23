@@ -66,7 +66,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 24);
+            this.label1.Location = new System.Drawing.Point(12, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 0;
@@ -87,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 52);
+            this.label2.Location = new System.Drawing.Point(12, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 0;
@@ -289,7 +289,7 @@
             // 
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(9, 564);
+            this.lblmsg.Location = new System.Drawing.Point(12, 564);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(54, 13);
             this.lblmsg.TabIndex = 24;
@@ -299,7 +299,7 @@
             // 
             this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdiferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtdiferencia.Location = new System.Drawing.Point(854, 49);
+            this.txtdiferencia.Location = new System.Drawing.Point(854, 48);
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
             this.txtdiferencia.Size = new System.Drawing.Size(84, 20);
@@ -310,7 +310,7 @@
             // 
             this.txtoperaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtoperaciones.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtoperaciones.Location = new System.Drawing.Point(764, 49);
+            this.txtoperaciones.Location = new System.Drawing.Point(764, 48);
             this.txtoperaciones.Name = "txtoperaciones";
             this.txtoperaciones.ReadOnly = true;
             this.txtoperaciones.Size = new System.Drawing.Size(84, 20);
@@ -321,7 +321,7 @@
             // 
             this.txtimporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtimporte.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtimporte.Location = new System.Drawing.Point(674, 49);
+            this.txtimporte.Location = new System.Drawing.Point(674, 48);
             this.txtimporte.Name = "txtimporte";
             this.txtimporte.ReadOnly = true;
             this.txtimporte.Size = new System.Drawing.Size(84, 20);
@@ -332,7 +332,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(623, 53);
+            this.label3.Location = new System.Drawing.Point(623, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 28;
@@ -405,7 +405,7 @@
             this.MinimumSize = new System.Drawing.Size(966, 631);
             this.Name = "frmReportePresupuestoOperaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reporte Presupuesto-Operaciones";
+            this.Text = "Detalle de Movimientos";
             this.Load += new System.EventHandler(this.frmReportePresupuestoOperaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);

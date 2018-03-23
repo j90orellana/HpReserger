@@ -89,6 +89,7 @@ namespace HPReserger
         }
         private void EstadoGananciaPerdidas_Load(object sender, EventArgs e)
         {
+            CapaLogica.CambiarBase(frmLogin.Basedatos);
             Reportes = new DataTable();
             cboempresas.DataSource = CapaLogica.getCargoTipoContratacion2("Id_Empresa", "Empresa", "TBL_Empresa");
             cboempresas.DisplayMember = "descripcion";
@@ -173,7 +174,7 @@ namespace HPReserger
                 Cursor = Cursors.WaitCursor;
                 frmProcesando frmproce = new HPReserger.frmProcesando();
                 frmproce.Show();
-                string _NombreHoja = "ESTADO DE GANANCIAS Y PERDIDAS";
+                string _NombreHoja = "ESTADO DE RESULTADO INTEGRAL";
                 List<HPResergerFunciones.Utilitarios.RangoCelda> ListaCeldas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", cboempresas.Text, 14);
                 ListaCeldas.Add(Celda1);
@@ -206,6 +207,7 @@ namespace HPReserger
                 ReporteEstado.Icon = Icon;
                 ReporteEstado.año = comboMesAño.UltimoDiaDelMes();
                 ReporteEstado.empresa = (int)cboempresas.SelectedValue;
+                ReporteEstado.NombreEmpresa = cboempresas.Text;
                 ReporteEstado.Show();
             }
         }

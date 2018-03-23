@@ -18,11 +18,16 @@ namespace HPResergerCapaDatos
         abcBaseDatos.Database bd;
         // public string DATASOURCE = "HPLAPTOP";
         public string DATASOURCE = "192.168.0.102";
-        public string BASEDEDATOS = "sige";
+        public static string BASEDEDATOS = "SIGE";
         public string USERID = "jorellana";
         public string USERPASS = "456";
         public HPResergerCD()
         {
+            bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
+        }
+        public void HPResergerCDs(string BaseDatos)
+        {
+            BASEDEDATOS = BaseDatos;
             bd = new abcBaseDatos.Database("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + "");
         }
         public DataTable ListarContratoEmpleado(int tipo, string numero)
@@ -65,7 +70,6 @@ namespace HPResergerCapaDatos
                 cn.Close();
                 cn.Dispose();
             }
-
         }
         public void EliminarPerfil(int codigo)
         {
@@ -84,9 +88,7 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-
-
-        public void InsertarActualizarUsuario(int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, out int respuesta)
+        public void InsertarActualizarUsuario(int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, int usuario, out int respuesta)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog =" + BASEDEDATOS + " ; user id =" + USERID + "; password =" + USERPASS + ""))
             {
@@ -104,6 +106,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@perfil", SqlDbType.Int).Value = perfil;
                     cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
                     cmd.Parameters.Add("@opcion", SqlDbType.Int).Value = opcion;
+                    cmd.Parameters.Add("@usuario", SqlDbType.Int).Value = usuario;
 
                     cmd.ExecuteNonQuery();
                     respuesta = int.Parse(cmd.Parameters["@respuesta"].Value.ToString().Trim());
@@ -112,7 +115,6 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-
         public DataTable Usuarios(string numeroid, int tipoid, int opcion)
         {
             string[] parametros = { "@numeroid", "@tipoid", "@opcion" };
@@ -1185,8 +1187,11 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@fechavalor", SqlDbType.DateTime).Value = fechavalor;
                     cmd.Parameters.Add("@proyec", SqlDbType.Int).Value = proyecto;
                     cmd.Parameters.Add("@etapa", SqlDbType.Int).Value = etapa;
-
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex) { }
                 }
                 cn.Close();
                 cn.Dispose();

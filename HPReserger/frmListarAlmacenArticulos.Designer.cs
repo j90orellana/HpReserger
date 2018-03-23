@@ -76,7 +76,7 @@
             // txtNumeros
             // 
             this.txtNumeros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNumeros.Location = new System.Drawing.Point(348, 68);
+            this.txtNumeros.Location = new System.Drawing.Point(514, 17);
             this.txtNumeros.Name = "txtNumeros";
             this.txtNumeros.Size = new System.Drawing.Size(75, 20);
             this.txtNumeros.TabIndex = 36;
@@ -85,7 +85,7 @@
             // btnAceptar
             // 
             this.btnAceptar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAceptar.Location = new System.Drawing.Point(524, 517);
+            this.btnAceptar.Location = new System.Drawing.Point(527, 517);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 35;
@@ -95,15 +95,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtNumeros);
             this.groupBox1.Controls.Add(this.cboOC);
             this.groupBox1.Controls.Add(this.txtGR);
             this.groupBox1.Controls.Add(this.txtRUC);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(587, 50);
+            this.groupBox1.Size = new System.Drawing.Size(614, 50);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             // 
@@ -140,7 +142,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(333, 16);
+            this.label3.Location = new System.Drawing.Point(333, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 13);
             this.label3.TabIndex = 9;
@@ -151,7 +153,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(192, 16);
+            this.label2.Location = new System.Drawing.Point(192, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 8;
@@ -161,7 +163,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Location = new System.Drawing.Point(6, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 7;
@@ -195,14 +197,14 @@
             this.G2MODELO,
             this.CANTOC,
             this.CANTING});
-            this.gridDetalle2.Location = new System.Drawing.Point(12, 329);
+            this.gridDetalle2.Location = new System.Drawing.Point(9, 296);
             this.gridDetalle2.Name = "gridDetalle2";
             this.gridDetalle2.ReadOnly = true;
             this.gridDetalle2.RowHeadersVisible = false;
             this.gridDetalle2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle2.RowTemplate.Height = 16;
             this.gridDetalle2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDetalle2.Size = new System.Drawing.Size(587, 182);
+            this.gridDetalle2.Size = new System.Drawing.Size(593, 215);
             this.gridDetalle2.TabIndex = 33;
             // 
             // ItemDetalle
@@ -297,7 +299,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(9, 313);
+            this.label6.Location = new System.Drawing.Point(6, 280);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 13);
             this.label6.TabIndex = 32;
@@ -316,7 +318,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(9, 107);
+            this.label5.Location = new System.Drawing.Point(6, 53);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 13);
             this.label5.TabIndex = 30;
@@ -346,14 +348,14 @@
             this.NGR,
             this.ARTOC,
             this.ARTFIC});
-            this.gridDetalle1.Location = new System.Drawing.Point(12, 123);
+            this.gridDetalle1.Location = new System.Drawing.Point(9, 69);
             this.gridDetalle1.Name = "gridDetalle1";
             this.gridDetalle1.ReadOnly = true;
             this.gridDetalle1.RowHeadersVisible = false;
             this.gridDetalle1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle1.RowTemplate.Height = 16;
             this.gridDetalle1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDetalle1.Size = new System.Drawing.Size(587, 182);
+            this.gridDetalle1.Size = new System.Drawing.Size(593, 208);
             this.gridDetalle1.TabIndex = 29;
             this.gridDetalle1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle1_RowEnter);
             // 
@@ -409,7 +411,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 549);
-            this.Controls.Add(this.txtNumeros);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gridDetalle2);
@@ -421,7 +422,7 @@
             this.MinimumSize = new System.Drawing.Size(630, 588);
             this.Name = "frmListarAlmacenArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Listar Articulos Almacen";
+            this.Text = "Listar Artículos Almacén";
             this.Load += new System.EventHandler(this.frmListarAlmacenArticulos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

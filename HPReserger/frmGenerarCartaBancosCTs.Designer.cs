@@ -46,6 +46,7 @@
             this.crvReporte.ShowParameterPanelButton = false;
             this.crvReporte.Size = new System.Drawing.Size(854, 603);
             this.crvReporte.TabIndex = 1;
+            this.crvReporte.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crvReporte.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvLocacionServicios_ReportRefresh);
             // 
             // frmGenerarCartaBancosCTs

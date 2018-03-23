@@ -190,7 +190,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(381, 7);
+            this.label1.Location = new System.Drawing.Point(381, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 5;
@@ -200,7 +200,7 @@
             // 
             this.cboArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboArea.FormattingEnabled = true;
-            this.cboArea.Location = new System.Drawing.Point(426, 4);
+            this.cboArea.Location = new System.Drawing.Point(426, 8);
             this.cboArea.Name = "cboArea";
             this.cboArea.Size = new System.Drawing.Size(199, 21);
             this.cboArea.TabIndex = 4;

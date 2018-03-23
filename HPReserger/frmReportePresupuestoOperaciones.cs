@@ -269,6 +269,7 @@ namespace HPReserger
                     etapitas.txtcentro.Text = dtgconten["Descripción", y].Value.ToString();
                     etapitas.cabecera = (int)cbopresupuestos.SelectedValue;
                     etapitas.Tipo = 1;//Operaciones
+                    etapitas.Icon = Icon;
                     etapitas.ShowDialog();
                 }
                 else
@@ -283,6 +284,7 @@ namespace HPReserger
                     Frmpresu.etapa = int.Parse(dtgconten["id_etapas", y].Value.ToString());
                     Frmpresu.Tipo = 1;//flujos
                     Frmpresu.fecha = tiempo;
+                    Frmpresu.Icon = Icon;
                     Frmpresu.ShowDialog();
                 }
             }

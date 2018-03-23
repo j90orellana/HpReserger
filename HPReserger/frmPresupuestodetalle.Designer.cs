@@ -101,7 +101,7 @@
             // btneditar
             // 
             this.btneditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btneditar.Location = new System.Drawing.Point(675, 36);
+            this.btneditar.Location = new System.Drawing.Point(675, 37);
             this.btneditar.Name = "btneditar";
             this.btneditar.Size = new System.Drawing.Size(75, 23);
             this.btneditar.TabIndex = 14;
@@ -311,7 +311,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(462, 41);
+            this.label2.Location = new System.Drawing.Point(462, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 19;
@@ -321,7 +321,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(473, 67);
+            this.label4.Location = new System.Drawing.Point(473, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 21;
@@ -349,7 +349,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(402, 15);
+            this.label5.Location = new System.Drawing.Point(402, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 13);
             this.label5.TabIndex = 24;
@@ -368,7 +368,7 @@
             // 
             this.txtflujos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtflujos.Enabled = false;
-            this.txtflujos.Location = new System.Drawing.Point(650, 65);
+            this.txtflujos.Location = new System.Drawing.Point(650, 64);
             this.txtflujos.Name = "txtflujos";
             this.txtflujos.Size = new System.Drawing.Size(100, 20);
             this.txtflujos.TabIndex = 20;

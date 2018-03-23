@@ -194,7 +194,7 @@
             this.txtServicios.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtServicios.Enabled = false;
             this.txtServicios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServicios.Location = new System.Drawing.Point(354, 19);
+            this.txtServicios.Location = new System.Drawing.Point(354, 17);
             this.txtServicios.Name = "txtServicios";
             this.txtServicios.Size = new System.Drawing.Size(165, 20);
             this.txtServicios.TabIndex = 13;
@@ -205,7 +205,7 @@
             this.txtArticulos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtArticulos.Enabled = false;
             this.txtArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtArticulos.Location = new System.Drawing.Point(96, 19);
+            this.txtArticulos.Location = new System.Drawing.Point(96, 17);
             this.txtArticulos.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.txtArticulos.Name = "txtArticulos";
             this.txtArticulos.Size = new System.Drawing.Size(165, 20);
@@ -216,7 +216,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(768, 19);
+            this.label2.Location = new System.Drawing.Point(768, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 11;
@@ -226,7 +226,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(600, 20);
+            this.label1.Location = new System.Drawing.Point(600, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 10;
@@ -236,7 +236,7 @@
             // 
             this.rbtFechas.AutoSize = true;
             this.rbtFechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtFechas.Location = new System.Drawing.Point(534, 20);
+            this.rbtFechas.Location = new System.Drawing.Point(534, 19);
             this.rbtFechas.Name = "rbtFechas";
             this.rbtFechas.Size = new System.Drawing.Size(60, 17);
             this.rbtFechas.TabIndex = 9;
@@ -251,7 +251,7 @@
             this.dtpHasta.Enabled = false;
             this.dtpHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(809, 19);
+            this.dtpHasta.Location = new System.Drawing.Point(809, 17);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(108, 20);
             this.dtpHasta.TabIndex = 8;
@@ -263,7 +263,7 @@
             this.dtpDesde.Enabled = false;
             this.dtpDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(644, 19);
+            this.dtpDesde.Location = new System.Drawing.Point(644, 17);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(108, 20);
             this.dtpDesde.TabIndex = 7;

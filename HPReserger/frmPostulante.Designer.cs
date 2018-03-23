@@ -129,14 +129,14 @@
             this.CODIGOAREA,
             this.AREA,
             this.PUESTOS});
-            this.Grid2.Location = new System.Drawing.Point(15, 34);
+            this.Grid2.Location = new System.Drawing.Point(15, 25);
             this.Grid2.Name = "Grid2";
             this.Grid2.ReadOnly = true;
             this.Grid2.RowHeadersVisible = false;
             this.Grid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid2.RowTemplate.Height = 16;
             this.Grid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Grid2.Size = new System.Drawing.Size(1022, 139);
+            this.Grid2.Size = new System.Drawing.Size(1022, 148);
             this.Grid2.TabIndex = 18;
             this.Grid2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid2_RowEnter);
             // 
@@ -279,7 +279,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 184);
+            this.label2.Location = new System.Drawing.Point(12, 188);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 13);
             this.label2.TabIndex = 20;
@@ -298,7 +298,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(413, 184);
+            this.label3.Location = new System.Drawing.Point(413, 188);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(182, 13);
             this.label3.TabIndex = 22;
@@ -319,7 +319,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(394, 210);
+            this.label4.Location = new System.Drawing.Point(394, 215);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 13);
             this.label4.TabIndex = 24;
@@ -346,7 +346,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(413, 239);
+            this.label7.Location = new System.Drawing.Point(413, 240);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 27;
@@ -355,7 +355,7 @@
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(489, 210);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(489, 211);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(280, 20);
@@ -445,7 +445,7 @@
             this.ARCHIVOCV,
             this.Estado,
             this.FecNacimiento});
-            this.grid3.Location = new System.Drawing.Point(12, 311);
+            this.grid3.Location = new System.Drawing.Point(12, 306);
             this.grid3.MultiSelect = false;
             this.grid3.Name = "grid3";
             this.grid3.ReadOnly = true;
@@ -453,7 +453,7 @@
             this.grid3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.grid3.RowTemplate.Height = 16;
             this.grid3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid3.Size = new System.Drawing.Size(1022, 214);
+            this.grid3.Size = new System.Drawing.Size(1022, 219);
             this.grid3.TabIndex = 35;
             this.grid3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid3_CellContentClick);
             this.grid3.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid3_RowEnter);

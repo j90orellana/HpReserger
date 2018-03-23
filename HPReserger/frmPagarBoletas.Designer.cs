@@ -190,7 +190,7 @@
             // 
             this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobanco.FormattingEnabled = true;
-            this.cbobanco.Location = new System.Drawing.Point(74, 39);
+            this.cbobanco.Location = new System.Drawing.Point(74, 38);
             this.cbobanco.Name = "cbobanco";
             this.cbobanco.Size = new System.Drawing.Size(270, 21);
             this.cbobanco.TabIndex = 52;
@@ -223,7 +223,7 @@
             // lblguia
             // 
             this.lblguia.AutoSize = true;
-            this.lblguia.Location = new System.Drawing.Point(13, 43);
+            this.lblguia.Location = new System.Drawing.Point(13, 42);
             this.lblguia.Name = "lblguia";
             this.lblguia.Size = new System.Drawing.Size(41, 13);
             this.lblguia.TabIndex = 50;
@@ -907,7 +907,7 @@
             // 
             // btngenerar
             // 
-            this.btngenerar.Location = new System.Drawing.Point(726, 41);
+            this.btngenerar.Location = new System.Drawing.Point(726, 43);
             this.btngenerar.Name = "btngenerar";
             this.btngenerar.Size = new System.Drawing.Size(103, 24);
             this.btngenerar.TabIndex = 75;
@@ -960,7 +960,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(310, 47);
+            this.label1.Location = new System.Drawing.Point(310, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 86;
@@ -969,7 +969,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(77, 47);
+            this.label4.Location = new System.Drawing.Point(77, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 13);
             this.label4.TabIndex = 85;
@@ -980,7 +980,7 @@
             this.comboMesAño2.AutoSize = true;
             this.comboMesAño2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño2.Enabled = false;
-            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
             this.comboMesAño2.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
             this.comboMesAño2.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
             this.comboMesAño2.Location = new System.Drawing.Point(354, 43);
@@ -991,7 +991,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(4, 45);
+            this.checkBox1.Location = new System.Drawing.Point(4, 47);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(59, 17);
             this.checkBox1.TabIndex = 83;
@@ -1004,7 +1004,7 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.Enabled = false;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 15, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(99, 43);

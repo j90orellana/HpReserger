@@ -352,6 +352,7 @@ namespace HPReserger
                 frmCot.Importe = gridCotizacionesAsociadas.CurrentRow.Cells[4].Value.ToString();
                 frmCot.Itemsito = Item;
                 frmCot.Itemsito2 = Item2;
+                frmCot.Icon = Icon;
 
                 DateTime Fecha = DateTime.ParseExact(gridCotizacionesAsociadas.CurrentRow.Cells[5].Value.ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 frmCot.FechaEntrega = Fecha;

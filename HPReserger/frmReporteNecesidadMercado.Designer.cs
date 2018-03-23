@@ -49,6 +49,7 @@
             this.crvnecesidadmercado.Size = new System.Drawing.Size(781, 459);
             this.crvnecesidadmercado.TabIndex = 0;
             this.crvnecesidadmercado.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvnecesidadmercado.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvnecesidadmercado_ReportRefresh);
             // 
             // frmReporteNecesidadMercado
             // 

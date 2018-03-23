@@ -93,6 +93,7 @@ namespace HPReserger
         {
             return CDinamica.ListarDinamicas(busca, opcion);
         }
+        public int ValorBusqueda = 0;
         public Boolean Busqueda = false;
         private void frmdinamicaContable_Load(object sender, EventArgs e)
         {
@@ -104,7 +105,7 @@ namespace HPReserger
             CargarOperacion(cbooperacion);
             CargarSubOperacion(cbosuboperacion);
             label5.Text = label5.Text.ToUpper();
-            dtgbusca.DataSource = ListarDinamicas(Txtbusca.Text, 1);
+            dtgbusca.DataSource = ListarDinamicas(Txtbusca.Text, ValorBusqueda);
             msgs(dtgbusca);
             DesactivarModi();
         }
@@ -312,7 +313,7 @@ namespace HPReserger
             aceptar = false;
             if (estado == 0)
             {
-                this.Visible = false;
+                this.Close();
             }
             else
             {
@@ -322,7 +323,7 @@ namespace HPReserger
                     {
                         estado = 0;
                         Activar(); DesactivarModi();
-                        ListarDinamicas(" ", 1);
+                        ListarDinamicas(" ",ValorBusqueda);
                         Txtbusca.Enabled = false;
                         dtgbusca.Focus();
                     }
@@ -336,7 +337,7 @@ namespace HPReserger
                         {
                             estado = 0;
                             Activar(); DesactivarModi();
-                            ListarDinamicas(" ", 1);
+                            ListarDinamicas(" ",ValorBusqueda);
                             Txtbusca.Enabled = true;
                             dtgbusca.Focus();
                         }
@@ -346,7 +347,7 @@ namespace HPReserger
                     {
                         estado = 0;
                         Activar(); DesactivarModi();
-                        ListarDinamicas(" ", 1);
+                        ListarDinamicas(" ", ValorBusqueda);
                         Txtbusca.Enabled = true;
                         dtgbusca.Focus();
                     }
@@ -439,6 +440,7 @@ namespace HPReserger
             Dtgconten.Rows.Clear();
             ultimadinamica();
             Codigito(codigo + 1); ActivarModi();
+            cboestado.SelectedValue = 1;
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {

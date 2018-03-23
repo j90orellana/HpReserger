@@ -120,6 +120,12 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="groupBox3.ToolTip" xml:space="preserve">
+    <value>Es el porcentaje de un monto fijo en referencia al avance de la producción objetivo. 
+Debe adjuntarse el sustento de la orden con el porcentaje indicado de acuerdo a la evaluación. 
+Generar reporte para poder validar. 
+Puede ser mensual, bimestral, trimestral y cuatrimestral.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnimagenproduccion.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -145,12 +151,6 @@
         +q0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="groupBox3.ToolTip" xml:space="preserve">
-    <value>Es el porcentaje de un monto fijo en referencia al avance de la producción objetivo. 
-Debe adjuntarse el sustento de la orden con el porcentaje indicado de acuerdo a la evaluación. 
-Generar reporte para poder validar. 
-Puede ser mensual, bimestral, trimestral y cuatrimestral.</value>
-  </data>
   <data name="groupBox4.ToolTip" xml:space="preserve">
     <value>Es un porcentaje del sueldo o monto fijo. 
 Puede aplicarse a un solo periodo o a varios periodos. 
@@ -162,6 +162,9 @@ Puede ser mensual, bimestral, trimestral y cuatrimestral.</value>
 Solo se pagan mensualmente. 
 Para incluir el prorrateo en el pago de las gratificaciones se debe tener en cuenta que el pago de las comisiones se debe llevar a cabo en tres meses consecutivos.</value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="dialogoAbrirArchivoAnexoFunciones.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>114, 17</value>
   </metadata>

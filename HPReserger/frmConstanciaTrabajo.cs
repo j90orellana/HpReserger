@@ -33,33 +33,30 @@ namespace HPReserger
             Reporte.SetParameterValue("@fecha", fechacese);
             Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
 
-            
-            /*
             ConnectionInfo iConnectionInfo = new ConnectionInfo();
-            iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
+            // ' ***************************************************************
+            // ' configuro el acceso a la base de datos
+            // ' ***************************************************************
+            //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
+            iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
             iConnectionInfo.UserID = datos.USERID;
             iConnectionInfo.Password = datos.USERPASS;
             iConnectionInfo.ServerName = datos.DATASOURCE;
-            iConnectionInfo.AllowCustomConnection = true;
+
             iConnectionInfo.Type = ConnectionInfoType.SQL;
+            CrystalDecisions.CrystalReports.Engine.Tables myTables;
 
-            SetDBLogonForReport(iConnectionInfo, Reporte);*/
+            myTables = Reporte.Database.Tables;
 
-            crvConstanciaTrabajo.ReportSource = Reporte;
-        }
-        public void SetDBLogonForReport(ConnectionInfo myConnectionInfo, rptConstanciaTrabajo myReportDocument)
-        {
-
-            Tables myTabless = myReportDocument.Database.Tables;
-            foreach (CrystalDecisions.CrystalReports.Engine.Table myTables in myTabless)
+            foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
             {
-                TableLogOnInfo myTableLogonInfo = myTables.LogOnInfo;
-                myTableLogonInfo.ConnectionInfo = myConnectionInfo;
-                myTables.ApplyLogOnInfo(myTableLogonInfo);
+                TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
+                myTableLogonInfo.ConnectionInfo = iConnectionInfo;
+                mytable.ApplyLogOnInfo(myTableLogonInfo);
             }
-
+            crvConstanciaTrabajo.ReportSource = Reporte;
+            crvConstanciaTrabajo.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
         }
-
         public void MSG(string cadena)
         {
             MessageBox.Show(cadena, "HPRESERGER");

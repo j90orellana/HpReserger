@@ -172,7 +172,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 279);
+            this.label3.Location = new System.Drawing.Point(14, 281);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 2;
@@ -181,7 +181,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 372);
+            this.label4.Location = new System.Drawing.Point(14, 359);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 3;
@@ -190,7 +190,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 310);
+            this.label5.Location = new System.Drawing.Point(12, 307);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 4;
@@ -199,7 +199,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 341);
+            this.label6.Location = new System.Drawing.Point(12, 333);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(113, 13);
             this.label6.TabIndex = 5;
@@ -208,7 +208,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(235, 10);
+            this.label8.Location = new System.Drawing.Point(235, 11);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 13);
             this.label8.TabIndex = 7;
@@ -217,7 +217,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(279, 93);
+            this.label9.Location = new System.Drawing.Point(279, 94);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 8;
@@ -269,7 +269,7 @@
             // chkjefe
             // 
             this.chkjefe.AutoSize = true;
-            this.chkjefe.Location = new System.Drawing.Point(18, 120);
+            this.chkjefe.Location = new System.Drawing.Point(18, 119);
             this.chkjefe.Name = "chkjefe";
             this.chkjefe.Size = new System.Drawing.Size(15, 14);
             this.chkjefe.TabIndex = 94;
@@ -283,7 +283,7 @@
             this.btnBuscarImagenOtros.FlatAppearance.BorderSize = 0;
             this.btnBuscarImagenOtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarImagenOtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarImagenOtros.Location = new System.Drawing.Point(6, 102);
+            this.btnBuscarImagenOtros.Location = new System.Drawing.Point(6, 88);
             this.btnBuscarImagenOtros.Name = "btnBuscarImagenOtros";
             this.btnBuscarImagenOtros.Size = new System.Drawing.Size(20, 20);
             this.btnBuscarImagenOtros.TabIndex = 90;
@@ -298,7 +298,7 @@
             this.btnBuscarImagenSolicitudPracticas.FlatAppearance.BorderSize = 0;
             this.btnBuscarImagenSolicitudPracticas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarImagenSolicitudPracticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarImagenSolicitudPracticas.Location = new System.Drawing.Point(6, 71);
+            this.btnBuscarImagenSolicitudPracticas.Location = new System.Drawing.Point(6, 62);
             this.btnBuscarImagenSolicitudPracticas.Name = "btnBuscarImagenSolicitudPracticas";
             this.btnBuscarImagenSolicitudPracticas.Size = new System.Drawing.Size(20, 20);
             this.btnBuscarImagenSolicitudPracticas.TabIndex = 89;
@@ -328,7 +328,7 @@
             this.btnBuscarImagenAnexoFunciones.FlatAppearance.BorderSize = 0;
             this.btnBuscarImagenAnexoFunciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarImagenAnexoFunciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarImagenAnexoFunciones.Location = new System.Drawing.Point(6, 41);
+            this.btnBuscarImagenAnexoFunciones.Location = new System.Drawing.Point(6, 35);
             this.btnBuscarImagenAnexoFunciones.Name = "btnBuscarImagenAnexoFunciones";
             this.btnBuscarImagenAnexoFunciones.Size = new System.Drawing.Size(20, 20);
             this.btnBuscarImagenAnexoFunciones.TabIndex = 87;
@@ -405,7 +405,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(17, 398);
+            this.dtgconten.Location = new System.Drawing.Point(17, 383);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -422,7 +422,7 @@
             this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(710, 217);
+            this.dtgconten.Size = new System.Drawing.Size(710, 232);
             this.dtgconten.TabIndex = 149;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -887,7 +887,7 @@
             // 
             this.cboGerencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGerencia.FormattingEnabled = true;
-            this.cboGerencia.Location = new System.Drawing.Point(14, 63);
+            this.cboGerencia.Location = new System.Drawing.Point(14, 64);
             this.cboGerencia.Name = "cboGerencia";
             this.cboGerencia.Size = new System.Drawing.Size(215, 21);
             this.cboGerencia.TabIndex = 93;
@@ -899,7 +899,7 @@
             this.cboJefeInmediato.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboJefeInmediato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboJefeInmediato.FormattingEnabled = true;
-            this.cboJefeInmediato.Location = new System.Drawing.Point(116, 117);
+            this.cboJefeInmediato.Location = new System.Drawing.Point(116, 116);
             this.cboJefeInmediato.Name = "cboJefeInmediato";
             this.cboJefeInmediato.Size = new System.Drawing.Size(406, 21);
             this.cboJefeInmediato.TabIndex = 63;
@@ -907,7 +907,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(339, 147);
+            this.label12.Location = new System.Drawing.Point(339, 148);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 13);
             this.label12.TabIndex = 64;
@@ -944,7 +944,7 @@
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(14, 203);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(14, 202);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(83, 20);
             this.dtpFechaInicio.TabIndex = 69;
@@ -953,7 +953,7 @@
             // 
             // txtPeriodoLaboral
             // 
-            this.txtPeriodoLaboral.Location = new System.Drawing.Point(192, 203);
+            this.txtPeriodoLaboral.Location = new System.Drawing.Point(192, 202);
             this.txtPeriodoLaboral.MaxLength = 2;
             this.txtPeriodoLaboral.Name = "txtPeriodoLaboral";
             this.txtPeriodoLaboral.Size = new System.Drawing.Size(37, 20);
@@ -966,7 +966,7 @@
             // dtpFechaFin
             // 
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(339, 203);
+            this.dtpFechaFin.Location = new System.Drawing.Point(339, 202);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(78, 20);
             this.dtpFechaFin.TabIndex = 72;
@@ -977,7 +977,7 @@
             // dtpfechacese
             // 
             this.dtpfechacese.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechacese.Location = new System.Drawing.Point(460, 203);
+            this.dtpfechacese.Location = new System.Drawing.Point(460, 202);
             this.dtpfechacese.Name = "dtpfechacese";
             this.dtpfechacese.Size = new System.Drawing.Size(78, 20);
             this.dtpfechacese.TabIndex = 71;
@@ -985,7 +985,7 @@
             // 
             // txtSalario
             // 
-            this.txtSalario.Location = new System.Drawing.Point(14, 237);
+            this.txtSalario.Location = new System.Drawing.Point(14, 236);
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Size = new System.Drawing.Size(91, 20);
             this.txtSalario.TabIndex = 73;
@@ -1094,7 +1094,7 @@
             // 
             // txtAnexoFunciones
             // 
-            this.txtAnexoFunciones.Location = new System.Drawing.Point(124, 308);
+            this.txtAnexoFunciones.Location = new System.Drawing.Point(124, 303);
             this.txtAnexoFunciones.Name = "txtAnexoFunciones";
             this.txtAnexoFunciones.ReadOnly = true;
             this.txtAnexoFunciones.Size = new System.Drawing.Size(474, 20);
@@ -1104,7 +1104,7 @@
             // 
             // txtSolicitudPracticas
             // 
-            this.txtSolicitudPracticas.Location = new System.Drawing.Point(124, 338);
+            this.txtSolicitudPracticas.Location = new System.Drawing.Point(124, 329);
             this.txtSolicitudPracticas.Name = "txtSolicitudPracticas";
             this.txtSolicitudPracticas.ReadOnly = true;
             this.txtSolicitudPracticas.Size = new System.Drawing.Size(474, 20);
@@ -1114,7 +1114,7 @@
             // 
             // txtOtros
             // 
-            this.txtOtros.Location = new System.Drawing.Point(125, 369);
+            this.txtOtros.Location = new System.Drawing.Point(124, 355);
             this.txtOtros.Name = "txtOtros";
             this.txtOtros.ReadOnly = true;
             this.txtOtros.Size = new System.Drawing.Size(474, 20);
@@ -1130,7 +1130,7 @@
             this.grpcontra.Controls.Add(this.btnBuscarImagenOtros);
             this.grpcontra.Location = new System.Drawing.Point(600, 267);
             this.grpcontra.Name = "grpcontra";
-            this.grpcontra.Size = new System.Drawing.Size(33, 125);
+            this.grpcontra.Size = new System.Drawing.Size(33, 110);
             this.grpcontra.TabIndex = 153;
             // 
             // label21
@@ -1145,7 +1145,7 @@
             // lklcontrato
             // 
             this.lklcontrato.AutoSize = true;
-            this.lklcontrato.Location = new System.Drawing.Point(639, 280);
+            this.lklcontrato.Location = new System.Drawing.Point(639, 281);
             this.lklcontrato.Name = "lklcontrato";
             this.lklcontrato.Size = new System.Drawing.Size(42, 13);
             this.lklcontrato.TabIndex = 91;
@@ -1156,7 +1156,7 @@
             // lklanexo
             // 
             this.lklanexo.AutoSize = true;
-            this.lklanexo.Location = new System.Drawing.Point(639, 311);
+            this.lklanexo.Location = new System.Drawing.Point(639, 307);
             this.lklanexo.Name = "lklanexo";
             this.lklanexo.Size = new System.Drawing.Size(61, 13);
             this.lklanexo.TabIndex = 91;
@@ -1167,7 +1167,7 @@
             // lklpracticas
             // 
             this.lklpracticas.AutoSize = true;
-            this.lklpracticas.Location = new System.Drawing.Point(639, 340);
+            this.lklpracticas.Location = new System.Drawing.Point(639, 333);
             this.lklpracticas.Name = "lklpracticas";
             this.lklpracticas.Size = new System.Drawing.Size(61, 13);
             this.lklpracticas.TabIndex = 91;
@@ -1178,7 +1178,7 @@
             // lklotros
             // 
             this.lklotros.AutoSize = true;
-            this.lklotros.Location = new System.Drawing.Point(639, 373);
+            this.lklotros.Location = new System.Drawing.Point(639, 359);
             this.lklotros.Name = "lklotros";
             this.lklotros.Size = new System.Drawing.Size(61, 13);
             this.lklotros.TabIndex = 91;

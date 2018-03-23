@@ -23,6 +23,11 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarContratoEmpleado(tipo, numero);
         }
+        public void CambiarBase(string cadena)
+        {
+            HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = cadena;
+            cdOrdenPedido.HPResergerCDs(cadena);
+        }
         /// <summary>
         /// Aguega un Perfil
         /// </summary>
@@ -40,9 +45,9 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.EliminarPerfil(codigo);
         }
-        public void InsertarActualizarUsuario(int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, out int respuesta)
+        public void InsertarActualizarUsuario(int tipoid, string nroid, string login, string contra, int perfil, int estado, int opcion, int usuario, out int respuesta)
         {
-            cdOrdenPedido.InsertarActualizarUsuario(tipoid, nroid, login, contra, perfil, estado, opcion, out respuesta);
+            cdOrdenPedido.InsertarActualizarUsuario(tipoid, nroid, login, contra, perfil, estado, opcion, usuario, out respuesta);
         }
 
         public void CambioContraseña(out int resultado, string usuario, string contrasena, string nueva)

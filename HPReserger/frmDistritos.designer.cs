@@ -65,7 +65,7 @@
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(551, 76);
+            this.btneliminar.Location = new System.Drawing.Point(551, 69);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 21);
             this.btneliminar.TabIndex = 44;
@@ -75,7 +75,7 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(551, 49);
+            this.btnmodificar.Location = new System.Drawing.Point(551, 44);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 21);
             this.btnmodificar.TabIndex = 45;
@@ -85,7 +85,7 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(551, 23);
+            this.btnnuevo.Location = new System.Drawing.Point(551, 20);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 20);
             this.btnnuevo.TabIndex = 43;
@@ -118,15 +118,15 @@
             // txtcodigo
             // 
             this.txtcodigo.Enabled = false;
-            this.txtcodigo.Location = new System.Drawing.Point(165, 20);
+            this.txtcodigo.Location = new System.Drawing.Point(89, 20);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(197, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(273, 20);
             this.txtcodigo.TabIndex = 51;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 53);
+            this.label2.Location = new System.Drawing.Point(12, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 46;
@@ -135,7 +135,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 27);
+            this.label1.Location = new System.Drawing.Point(46, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 47;
@@ -150,9 +150,9 @@
             this.Txtbusca.BackColor = System.Drawing.SystemColors.Info;
             this.Txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.Txtbusca.Cursor = System.Windows.Forms.Cursors.Help;
-            this.Txtbusca.Location = new System.Drawing.Point(165, 120);
+            this.Txtbusca.Location = new System.Drawing.Point(120, 119);
             this.Txtbusca.Name = "Txtbusca";
-            this.Txtbusca.Size = new System.Drawing.Size(468, 20);
+            this.Txtbusca.Size = new System.Drawing.Size(513, 20);
             this.Txtbusca.TabIndex = 53;
             this.tipmsg.SetToolTip(this.Txtbusca, "Busca Distrito");
             this.Txtbusca.TextChanged += new System.EventHandler(this.txtbusca_TextChanged);
@@ -160,7 +160,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 76);
+            this.label3.Location = new System.Drawing.Point(35, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 46;
@@ -169,7 +169,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 102);
+            this.label4.Location = new System.Drawing.Point(47, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 46;
@@ -178,7 +178,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 127);
+            this.label5.Location = new System.Drawing.Point(35, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 54;
@@ -190,9 +190,9 @@
             this.cbodepartamento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbodepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodepartamento.FormattingEnabled = true;
-            this.cbodepartamento.Location = new System.Drawing.Point(165, 45);
+            this.cbodepartamento.Location = new System.Drawing.Point(89, 44);
             this.cbodepartamento.Name = "cbodepartamento";
-            this.cbodepartamento.Size = new System.Drawing.Size(197, 21);
+            this.cbodepartamento.Size = new System.Drawing.Size(273, 21);
             this.cbodepartamento.TabIndex = 55;
             this.cbodepartamento.TextChanged += new System.EventHandler(this.cbodepartamento_TextChanged);
             this.cbodepartamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbodepartamento_KeyPress);
@@ -203,9 +203,9 @@
             this.cboprovincia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboprovincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboprovincia.FormattingEnabled = true;
-            this.cboprovincia.Location = new System.Drawing.Point(165, 68);
+            this.cboprovincia.Location = new System.Drawing.Point(89, 69);
             this.cboprovincia.Name = "cboprovincia";
-            this.cboprovincia.Size = new System.Drawing.Size(197, 21);
+            this.cboprovincia.Size = new System.Drawing.Size(273, 21);
             this.cboprovincia.TabIndex = 56;
             this.cboprovincia.SelectedIndexChanged += new System.EventHandler(this.cboprovincia_SelectedIndexChanged);
             this.cboprovincia.TextChanged += new System.EventHandler(this.cboprovincia_TextChanged);
@@ -217,9 +217,9 @@
             this.cbodistrito.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbodistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodistrito.FormattingEnabled = true;
-            this.cbodistrito.Location = new System.Drawing.Point(165, 94);
+            this.cbodistrito.Location = new System.Drawing.Point(89, 94);
             this.cbodistrito.Name = "cbodistrito";
-            this.cbodistrito.Size = new System.Drawing.Size(197, 21);
+            this.cbodistrito.Size = new System.Drawing.Size(273, 21);
             this.cbodistrito.TabIndex = 57;
             this.cbodistrito.SelectedIndexChanged += new System.EventHandler(this.cbodistrito_SelectedIndexChanged);
             this.cbodistrito.TextChanged += new System.EventHandler(this.cbodistrito_TextChanged);
@@ -229,7 +229,7 @@
             // 
             this.btnlimpiar.Cursor = System.Windows.Forms.Cursors.Cross;
             this.btnlimpiar.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(3)));
-            this.btnlimpiar.Location = new System.Drawing.Point(134, 119);
+            this.btnlimpiar.Location = new System.Drawing.Point(89, 119);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(25, 21);
             this.btnlimpiar.TabIndex = 59;
@@ -240,7 +240,7 @@
             // btndepmas
             // 
             this.btndepmas.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndepmas.Location = new System.Drawing.Point(369, 47);
+            this.btndepmas.Location = new System.Drawing.Point(369, 45);
             this.btndepmas.Name = "btndepmas";
             this.btndepmas.Size = new System.Drawing.Size(20, 18);
             this.btndepmas.TabIndex = 60;
@@ -259,7 +259,7 @@
             // btnpromas
             // 
             this.btnpromas.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnpromas.Location = new System.Drawing.Point(369, 71);
+            this.btnpromas.Location = new System.Drawing.Point(369, 70);
             this.btnpromas.Name = "btnpromas";
             this.btnpromas.Size = new System.Drawing.Size(20, 18);
             this.btnpromas.TabIndex = 62;

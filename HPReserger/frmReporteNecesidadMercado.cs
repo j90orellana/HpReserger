@@ -21,6 +21,11 @@ namespace HPReserger
         public string numero, tipo;
         public int contrato;
 
+        private void crvnecesidadmercado_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
+        {
+            frmReporteNecesidadMercado_Load(crvnecesidadmercado, e);
+            e.Handled = true;
+        }
         private void frmReporteNecesidadMercado_Load(object sender, EventArgs e)
         {
             crvnecesidadmercado.AllowedExportFormats = (int)(ViewerExportFormats.PdfFormat | ViewerExportFormats.RtfFormat | ViewerExportFormats.EditableRtfFormat);
@@ -32,6 +37,35 @@ namespace HPReserger
             reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
             crvnecesidadmercado.Zoom(125);
             crvnecesidadmercado.ReportSource = reporte;
+            
+            ConnectionInfo iConnectionInfo = new ConnectionInfo();
+            // ' *****************************************************************************************************************
+            // ' configuro el acceso a la base de datos
+            //   ' *****************************************************************************************************************
+            //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
+            iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
+            iConnectionInfo.UserID = datos.USERID;
+            iConnectionInfo.Password = datos.USERPASS;
+            iConnectionInfo.ServerName = datos.DATASOURCE;
+
+            iConnectionInfo.Type = ConnectionInfoType.SQL;
+            CrystalDecisions.CrystalReports.Engine.Tables myTables;
+
+            myTables = reporte.Database.Tables;
+
+            foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
+            {
+                TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
+                //Dim myTableLogonInfo As TableLogOnInfo = myTable.LogOnInfo
+                myTableLogonInfo.ConnectionInfo = iConnectionInfo;
+                //  myTableLogonInfo.ConnectionInfo = myConnectionInfo
+                mytable.ApplyLogOnInfo(myTableLogonInfo);
+                //myTable.ApplyLogOnInfo(myTableLogonInfo)
+            }
+
+            crvnecesidadmercado.ReportSource = reporte;
+            crvnecesidadmercado.AllowedExportFormats = (int)(ExportFormatType.PortableDocFormat | ExportFormatType.Excel | ExportFormatType.ExcelWorkbook);
+
         }
     }
 }

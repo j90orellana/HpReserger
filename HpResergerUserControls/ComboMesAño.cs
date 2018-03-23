@@ -138,7 +138,6 @@ namespace HpResergerUserControls
         public DateTime FechaInicioMes { get; set; }
         public DateTime FechaFinMes { get; set; }
         public DateTime FechaConDiaActual { get; set; }
-
         protected void comboaño_SelectedIndexChanged(object sender, EventArgs e)
         {
             DateTime timexx;
@@ -159,6 +158,6 @@ namespace HpResergerUserControls
         {
             if (CambioFechas != null)
                 CambioFechas(this, e);
-        }
+        }        
     }
 }

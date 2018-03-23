@@ -79,9 +79,10 @@
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(584, 125);
+            this.groupBox1.Size = new System.Drawing.Size(740, 125);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opciones";
@@ -94,7 +95,7 @@
             this.groupBox2.Controls.Add(this.checkBox6);
             this.groupBox2.Controls.Add(this.checkBox5);
             this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Location = new System.Drawing.Point(7, 70);
+            this.groupBox2.Location = new System.Drawing.Point(16, 70);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(482, 44);
             this.groupBox2.TabIndex = 12;
@@ -160,7 +161,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(451, 22);
+            this.label3.Location = new System.Drawing.Point(460, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 11;
@@ -169,7 +170,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(342, 22);
+            this.label2.Location = new System.Drawing.Point(351, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 13);
             this.label2.TabIndex = 10;
@@ -177,7 +178,7 @@
             // 
             // btnlimpiar
             // 
-            this.btnlimpiar.Location = new System.Drawing.Point(342, 44);
+            this.btnlimpiar.Location = new System.Drawing.Point(351, 44);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(75, 20);
             this.btnlimpiar.TabIndex = 9;
@@ -188,7 +189,7 @@
             // txtbusca
             // 
             this.txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtbusca.Location = new System.Drawing.Point(59, 44);
+            this.txtbusca.Location = new System.Drawing.Point(68, 44);
             this.txtbusca.Name = "txtbusca";
             this.txtbusca.Size = new System.Drawing.Size(277, 20);
             this.txtbusca.TabIndex = 8;
@@ -197,7 +198,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 47);
+            this.label1.Location = new System.Drawing.Point(22, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 7;
@@ -206,7 +207,7 @@
             // dtfin
             // 
             this.dtfin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtfin.Location = new System.Drawing.Point(495, 18);
+            this.dtfin.Location = new System.Drawing.Point(504, 18);
             this.dtfin.Name = "dtfin";
             this.dtfin.Size = new System.Drawing.Size(79, 20);
             this.dtfin.TabIndex = 6;
@@ -215,7 +216,7 @@
             // dtinicio
             // 
             this.dtinicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtinicio.Location = new System.Drawing.Point(366, 18);
+            this.dtinicio.Location = new System.Drawing.Point(375, 18);
             this.dtinicio.Name = "dtinicio";
             this.dtinicio.Size = new System.Drawing.Size(79, 20);
             this.dtinicio.TabIndex = 5;
@@ -224,7 +225,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(280, 21);
+            this.checkBox3.Location = new System.Drawing.Point(289, 20);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(56, 17);
             this.checkBox3.TabIndex = 4;
@@ -235,7 +236,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(209, 21);
+            this.checkBox2.Location = new System.Drawing.Point(218, 20);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(64, 17);
             this.checkBox2.TabIndex = 3;
@@ -246,7 +247,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(142, 21);
+            this.checkBox1.Location = new System.Drawing.Point(151, 20);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(61, 17);
             this.checkBox1.TabIndex = 2;
@@ -257,7 +258,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(75, 20);
+            this.radioButton2.Location = new System.Drawing.Point(84, 20);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(61, 17);
             this.radioButton2.TabIndex = 1;
@@ -269,7 +270,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 20);
+            this.radioButton1.Location = new System.Drawing.Point(16, 20);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(62, 17);
             this.radioButton1.TabIndex = 0;
@@ -285,9 +286,8 @@
             this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -301,13 +301,13 @@
             this.tipo,
             this.Estado});
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten.Location = new System.Drawing.Point(12, 143);
+            this.dtgconten.Location = new System.Drawing.Point(0, 120);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(702, 364);
+            this.dtgconten.Size = new System.Drawing.Size(734, 387);
             this.dtgconten.TabIndex = 1;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -360,8 +360,8 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(633, 513);
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btncancelar.Location = new System.Drawing.Point(644, 513);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(78, 23);
             this.btncancelar.TabIndex = 2;
@@ -383,13 +383,13 @@
             this.dtgconten1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtgconten1.Location = new System.Drawing.Point(12, 546);
+            this.dtgconten1.Location = new System.Drawing.Point(0, 546);
             this.dtgconten1.MultiSelect = false;
             this.dtgconten1.Name = "dtgconten1";
             this.dtgconten1.RowHeadersVisible = false;
             this.dtgconten1.RowTemplate.Height = 16;
             this.dtgconten1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten1.Size = new System.Drawing.Size(595, 155);
+            this.dtgconten1.Size = new System.Drawing.Size(734, 166);
             this.dtgconten1.TabIndex = 3;
             // 
             // lblmsg
@@ -404,8 +404,8 @@
             // 
             // btnexcel
             // 
-            this.btnexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexcel.Location = new System.Drawing.Point(549, 513);
+            this.btnexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnexcel.Location = new System.Drawing.Point(328, 513);
             this.btnexcel.Name = "btnexcel";
             this.btnexcel.Size = new System.Drawing.Size(78, 23);
             this.btnexcel.TabIndex = 12;
@@ -417,7 +417,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 713);
+            this.ClientSize = new System.Drawing.Size(740, 713);
             this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.dtgconten1);

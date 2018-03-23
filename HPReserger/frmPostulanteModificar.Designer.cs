@@ -140,7 +140,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 153);
+            this.label2.Location = new System.Drawing.Point(9, 154);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 118;
@@ -159,7 +159,7 @@
             // chkReasignarSolicitud
             // 
             this.chkReasignarSolicitud.AutoSize = true;
-            this.chkReasignarSolicitud.Location = new System.Drawing.Point(9, 204);
+            this.chkReasignarSolicitud.Location = new System.Drawing.Point(9, 205);
             this.chkReasignarSolicitud.Name = "chkReasignarSolicitud";
             this.chkReasignarSolicitud.Size = new System.Drawing.Size(123, 17);
             this.chkReasignarSolicitud.TabIndex = 52;
@@ -195,7 +195,7 @@
             // 
             this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(195, 19);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(195, 18);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
             this.cboTipoDocumento.TabIndex = 40;
@@ -216,7 +216,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 178);
+            this.label9.Location = new System.Drawing.Point(9, 180);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 13);
             this.label9.TabIndex = 46;
@@ -242,7 +242,7 @@
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombres.Location = new System.Drawing.Point(195, 124);
+            this.txtNombres.Location = new System.Drawing.Point(195, 122);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(280, 20);
@@ -253,7 +253,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 48);
+            this.label13.Location = new System.Drawing.Point(9, 50);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(182, 13);
             this.label13.TabIndex = 41;
@@ -282,7 +282,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 100);
+            this.label11.Location = new System.Drawing.Point(9, 102);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 13);
             this.label11.TabIndex = 44;
@@ -291,7 +291,7 @@
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 72);
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 70);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(280, 20);

@@ -57,7 +57,7 @@
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dtgconten.Location = new System.Drawing.Point(12, 69);
+            this.dtgconten.Location = new System.Drawing.Point(12, 65);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -66,7 +66,7 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(262, 133);
+            this.dtgconten.Size = new System.Drawing.Size(277, 137);
             this.dtgconten.TabIndex = 16;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -92,7 +92,7 @@
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(192, 208);
+            this.btncancelar.Location = new System.Drawing.Point(203, 208);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 29);
             this.btncancelar.TabIndex = 17;
@@ -102,7 +102,7 @@
             // 
             // btnaceptar
             // 
-            this.btnaceptar.Location = new System.Drawing.Point(94, 208);
+            this.btnaceptar.Location = new System.Drawing.Point(105, 208);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 29);
             this.btnaceptar.TabIndex = 18;
@@ -123,9 +123,9 @@
             // txtdepartamento
             // 
             this.txtdepartamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtdepartamento.Location = new System.Drawing.Point(86, 43);
+            this.txtdepartamento.Location = new System.Drawing.Point(86, 38);
             this.txtdepartamento.Name = "txtdepartamento";
-            this.txtdepartamento.Size = new System.Drawing.Size(188, 20);
+            this.txtdepartamento.Size = new System.Drawing.Size(203, 20);
             this.txtdepartamento.TabIndex = 23;
             // 
             // txtcodigo
@@ -133,13 +133,13 @@
             this.txtcodigo.Enabled = false;
             this.txtcodigo.Location = new System.Drawing.Point(86, 12);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(188, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(203, 20);
             this.txtcodigo.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 50);
+            this.label2.Location = new System.Drawing.Point(12, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 14;
@@ -148,7 +148,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(46, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 15;

@@ -32,6 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.Codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tamañox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -42,9 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
-            this.Codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tamañox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numup = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
@@ -82,6 +82,36 @@
             this.dtgconten.Size = new System.Drawing.Size(361, 133);
             this.dtgconten.TabIndex = 26;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // Codigox
+            // 
+            this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Codigox.DataPropertyName = "codigo";
+            this.Codigox.HeaderText = "Codigo";
+            this.Codigox.Name = "Codigox";
+            this.Codigox.ReadOnly = true;
+            this.Codigox.Width = 65;
+            // 
+            // Valorx
+            // 
+            this.Valorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Valorx.DataPropertyName = "valor";
+            this.Valorx.HeaderText = "Descripción";
+            this.Valorx.Name = "Valorx";
+            this.Valorx.ReadOnly = true;
+            // 
+            // Tamañox
+            // 
+            this.Tamañox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Tamañox.DataPropertyName = "leng";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Tamañox.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Tamañox.FillWeight = 50F;
+            this.Tamañox.HeaderText = "Tamaño";
+            this.Tamañox.MinimumWidth = 50;
+            this.Tamañox.Name = "Tamañox";
+            this.Tamañox.ReadOnly = true;
+            this.Tamañox.Width = 71;
             // 
             // btneliminar
             // 
@@ -170,36 +200,6 @@
             // tipmsg
             // 
             this.tipmsg.IsBalloon = true;
-            // 
-            // Codigox
-            // 
-            this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Codigox.DataPropertyName = "codigo";
-            this.Codigox.HeaderText = "Codigo";
-            this.Codigox.Name = "Codigox";
-            this.Codigox.ReadOnly = true;
-            this.Codigox.Width = 65;
-            // 
-            // Valorx
-            // 
-            this.Valorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Valorx.DataPropertyName = "valor";
-            this.Valorx.HeaderText = "Descripción";
-            this.Valorx.Name = "Valorx";
-            this.Valorx.ReadOnly = true;
-            // 
-            // Tamañox
-            // 
-            this.Tamañox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Tamañox.DataPropertyName = "leng";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Tamañox.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Tamañox.FillWeight = 50F;
-            this.Tamañox.HeaderText = "Tamaño";
-            this.Tamañox.MinimumWidth = 50;
-            this.Tamañox.Name = "Tamañox";
-            this.Tamañox.ReadOnly = true;
-            this.Tamañox.Width = 71;
             // 
             // numup
             // 

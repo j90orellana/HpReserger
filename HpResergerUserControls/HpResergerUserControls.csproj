@@ -64,6 +64,12 @@
     <Compile Include="ControlDeslizamiento.Designer.cs">
       <DependentUpon>ControlDeslizamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGradient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGradient.Designer.cs">
+      <DependentUpon>FormGradient.cs</DependentUpon>
+    </Compile>
     <Compile Include="FotoCheck.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComboMesAño.resx">
       <DependentUpon>ComboMesAño.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGradient.resx">
+      <DependentUpon>FormGradient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FotoCheck.resx">
       <DependentUpon>FotoCheck.cs</DependentUpon>

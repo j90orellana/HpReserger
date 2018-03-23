@@ -185,7 +185,7 @@
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(614, 19);
+            this.radioButton9.Location = new System.Drawing.Point(614, 20);
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(61, 17);
             this.radioButton9.TabIndex = 21;
@@ -195,7 +195,7 @@
             // 
             // txthasta
             // 
-            this.txthasta.Location = new System.Drawing.Point(883, 19);
+            this.txthasta.Location = new System.Drawing.Point(883, 18);
             this.txthasta.Name = "txthasta";
             this.txthasta.Size = new System.Drawing.Size(64, 20);
             this.txthasta.TabIndex = 20;
@@ -207,7 +207,7 @@
             // 
             // txtdesde
             // 
-            this.txtdesde.Location = new System.Drawing.Point(769, 19);
+            this.txtdesde.Location = new System.Drawing.Point(769, 18);
             this.txtdesde.Name = "txtdesde";
             this.txtdesde.Size = new System.Drawing.Size(64, 20);
             this.txtdesde.TabIndex = 9;
@@ -220,7 +220,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(839, 23);
+            this.label5.Location = new System.Drawing.Point(839, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 12;
@@ -249,7 +249,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(78, 46);
+            this.label1.Location = new System.Drawing.Point(78, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 7;
@@ -258,7 +258,7 @@
             // txtbusca
             // 
             this.txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtbusca.Location = new System.Drawing.Point(124, 43);
+            this.txtbusca.Location = new System.Drawing.Point(124, 40);
             this.txtbusca.Name = "txtbusca";
             this.txtbusca.Size = new System.Drawing.Size(277, 20);
             this.txtbusca.TabIndex = 8;
@@ -267,7 +267,7 @@
             // radioButton8
             // 
             this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(534, 19);
+            this.radioButton8.Location = new System.Drawing.Point(534, 20);
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(74, 17);
             this.radioButton8.TabIndex = 8;
@@ -277,7 +277,7 @@
             // 
             // btnlimpiar
             // 
-            this.btnlimpiar.Location = new System.Drawing.Point(407, 43);
+            this.btnlimpiar.Location = new System.Drawing.Point(407, 40);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(75, 20);
             this.btnlimpiar.TabIndex = 9;
@@ -288,7 +288,7 @@
             // radioButton7
             // 
             this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(460, 19);
+            this.radioButton7.Location = new System.Drawing.Point(460, 20);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(68, 17);
             this.radioButton7.TabIndex = 18;
@@ -299,7 +299,7 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(407, 19);
+            this.radioButton6.Location = new System.Drawing.Point(407, 20);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(47, 17);
             this.radioButton6.TabIndex = 17;
@@ -310,7 +310,7 @@
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(308, 19);
+            this.radioButton5.Location = new System.Drawing.Point(308, 20);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(93, 17);
             this.radioButton5.TabIndex = 16;
@@ -321,7 +321,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(219, 19);
+            this.radioButton4.Location = new System.Drawing.Point(219, 20);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(83, 17);
             this.radioButton4.TabIndex = 15;
@@ -332,7 +332,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(155, 19);
+            this.radioButton3.Location = new System.Drawing.Point(155, 20);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(58, 17);
             this.radioButton3.TabIndex = 14;
@@ -385,7 +385,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(144, 19);
+            this.checkBox3.Location = new System.Drawing.Point(144, 18);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(56, 17);
             this.checkBox3.TabIndex = 4;
@@ -406,7 +406,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkBox1.Location = new System.Drawing.Point(6, 18);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(61, 17);
             this.checkBox1.TabIndex = 2;
@@ -417,7 +417,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(73, 19);
+            this.checkBox2.Location = new System.Drawing.Point(73, 18);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(64, 17);
             this.checkBox2.TabIndex = 3;
@@ -455,7 +455,7 @@
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(438, 20);
+            this.checkBox8.Location = new System.Drawing.Point(438, 19);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(70, 17);
             this.checkBox8.TabIndex = 7;
@@ -466,7 +466,7 @@
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(367, 20);
+            this.checkBox7.Location = new System.Drawing.Point(367, 19);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(65, 17);
             this.checkBox7.TabIndex = 6;
@@ -477,7 +477,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(283, 20);
+            this.checkBox6.Location = new System.Drawing.Point(283, 19);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(78, 17);
             this.checkBox6.TabIndex = 5;
@@ -543,7 +543,7 @@
             // 
             this.txtsumatoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtsumatoria.Enabled = false;
-            this.txtsumatoria.Location = new System.Drawing.Point(846, 427);
+            this.txtsumatoria.Location = new System.Drawing.Point(846, 426);
             this.txtsumatoria.Name = "txtsumatoria";
             this.txtsumatoria.Size = new System.Drawing.Size(96, 20);
             this.txtsumatoria.TabIndex = 9;

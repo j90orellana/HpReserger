@@ -109,10 +109,11 @@ namespace HPReserger
                             return;
                         }
                     frmMensajeCorreo mensajito = new frmMensajeCorreo();
+                    mensajito.Icon = Icon;
                     mensajito.Text = "Mensaje de Aprobación";
                     mensajito.txtasunto.Text = "Cotización Aprobada";
                     //mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es para nosotros un placer aceptar su cotizacion";
-                    mensajito.txtmsg.Text = "Hp Reserger S.A.C. \nEs para nosotros un placer aceptar su cotizacion";
+                    mensajito.txtmsg.Text = "Es para nosotros un placer aceptar su cotizacion";
                     mensajito.txtcorreo.Text = drCOT["correo"].ToString().ToLower();
                     mensajito.ShowDialog();
                     if (mensajito.ok)

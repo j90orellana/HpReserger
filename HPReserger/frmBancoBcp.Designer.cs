@@ -327,7 +327,7 @@
             this.cbotipocuenta.Items.AddRange(new object[] {
             "C",
             "M"});
-            this.cbotipocuenta.Location = new System.Drawing.Point(372, 91);
+            this.cbotipocuenta.Location = new System.Drawing.Point(372, 92);
             this.cbotipocuenta.MaxDropDownItems = 2;
             this.cbotipocuenta.MaxLength = 1;
             this.cbotipocuenta.Name = "cbotipocuenta";

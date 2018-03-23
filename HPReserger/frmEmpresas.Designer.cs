@@ -99,7 +99,7 @@
             // 
             // btnborrar
             // 
-            this.btnborrar.Location = new System.Drawing.Point(400, 137);
+            this.btnborrar.Location = new System.Drawing.Point(400, 124);
             this.btnborrar.Name = "btnborrar";
             this.btnborrar.Size = new System.Drawing.Size(82, 21);
             this.btnborrar.TabIndex = 134;
@@ -109,7 +109,7 @@
             // 
             // txtbuscar
             // 
-            this.txtbuscar.Location = new System.Drawing.Point(113, 138);
+            this.txtbuscar.Location = new System.Drawing.Point(113, 124);
             this.txtbuscar.Name = "txtbuscar";
             this.txtbuscar.Size = new System.Drawing.Size(278, 20);
             this.txtbuscar.TabIndex = 133;
@@ -119,7 +119,7 @@
             // 
             this.btnexportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnexportarExcel.Enabled = false;
-            this.btnexportarExcel.Location = new System.Drawing.Point(989, 132);
+            this.btnexportarExcel.Location = new System.Drawing.Point(989, 124);
             this.btnexportarExcel.Name = "btnexportarExcel";
             this.btnexportarExcel.Size = new System.Drawing.Size(82, 21);
             this.btnexportarExcel.TabIndex = 132;
@@ -173,7 +173,7 @@
             this.eps});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dtgconten.Location = new System.Drawing.Point(15, 164);
+            this.dtgconten.Location = new System.Drawing.Point(15, 151);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -182,7 +182,7 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(1056, 189);
+            this.dtgconten.Size = new System.Drawing.Size(1056, 202);
             this.dtgconten.TabIndex = 124;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
@@ -210,6 +210,7 @@
             this.direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.direccion.DataPropertyName = "direccion";
             this.direccion.HeaderText = "Dirección";
+            this.direccion.MinimumWidth = 100;
             this.direccion.Name = "direccion";
             this.direccion.ReadOnly = true;
             // 
@@ -236,6 +237,7 @@
             this.representante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.representante.DataPropertyName = "empleado";
             this.representante.HeaderText = "Representante";
+            this.representante.MinimumWidth = 100;
             this.representante.Name = "representante";
             this.representante.ReadOnly = true;
             // 
@@ -367,7 +369,7 @@
             // 
             this.btneliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btneliminar.Enabled = false;
-            this.btneliminar.Location = new System.Drawing.Point(989, 60);
+            this.btneliminar.Location = new System.Drawing.Point(989, 63);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 21);
             this.btneliminar.TabIndex = 129;
@@ -378,7 +380,7 @@
             // 
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnmodificar.Enabled = false;
-            this.btnmodificar.Location = new System.Drawing.Point(989, 33);
+            this.btnmodificar.Location = new System.Drawing.Point(989, 37);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 21);
             this.btnmodificar.TabIndex = 130;
@@ -413,7 +415,7 @@
             // btnnuevo
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnnuevo.Location = new System.Drawing.Point(989, 7);
+            this.btnnuevo.Location = new System.Drawing.Point(989, 11);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 20);
             this.btnnuevo.TabIndex = 127;
@@ -434,7 +436,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(167, 14);
+            this.label3.Location = new System.Drawing.Point(167, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 13);
             this.label3.TabIndex = 120;
@@ -454,7 +456,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 140);
+            this.label4.Location = new System.Drawing.Point(12, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 121;
@@ -472,7 +474,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 123;
@@ -481,7 +483,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(407, 40);
+            this.label6.Location = new System.Drawing.Point(407, 41);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 13);
             this.label6.TabIndex = 138;
@@ -498,7 +500,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(442, 14);
+            this.label7.Location = new System.Drawing.Point(442, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 13);
             this.label7.TabIndex = 140;
@@ -507,7 +509,7 @@
             // txtnroid
             // 
             this.txtnroid.Enabled = false;
-            this.txtnroid.Location = new System.Drawing.Point(537, 12);
+            this.txtnroid.Location = new System.Drawing.Point(537, 11);
             this.txtnroid.Name = "txtnroid";
             this.txtnroid.Size = new System.Drawing.Size(121, 20);
             this.txtnroid.TabIndex = 141;
@@ -520,7 +522,7 @@
             this.cbosector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbosector.Enabled = false;
             this.cbosector.FormattingEnabled = true;
-            this.cbosector.Location = new System.Drawing.Point(113, 92);
+            this.cbosector.Location = new System.Drawing.Point(113, 90);
             this.cbosector.Name = "cbosector";
             this.cbosector.Size = new System.Drawing.Size(317, 21);
             this.cbosector.TabIndex = 142;
@@ -528,7 +530,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 96);
+            this.label5.Location = new System.Drawing.Point(12, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 143;
@@ -537,7 +539,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 68);
+            this.label8.Location = new System.Drawing.Point(12, 67);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 13);
             this.label8.TabIndex = 144;
@@ -546,7 +548,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(408, 68);
+            this.label9.Location = new System.Drawing.Point(408, 67);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(54, 13);
             this.label9.TabIndex = 145;
@@ -555,7 +557,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(669, 68);
+            this.label10.Location = new System.Drawing.Point(669, 67);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 13);
             this.label10.TabIndex = 146;
@@ -577,7 +579,7 @@
             this.cbopro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbopro.Enabled = false;
             this.cbopro.FormattingEnabled = true;
-            this.cbopro.Location = new System.Drawing.Point(468, 65);
+            this.cbopro.Location = new System.Drawing.Point(468, 63);
             this.cbopro.Name = "cbopro";
             this.cbopro.Size = new System.Drawing.Size(176, 21);
             this.cbopro.TabIndex = 148;
@@ -588,7 +590,7 @@
             this.cbodis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodis.Enabled = false;
             this.cbodis.FormattingEnabled = true;
-            this.cbodis.Location = new System.Drawing.Point(717, 65);
+            this.cbodis.Location = new System.Drawing.Point(717, 63);
             this.cbodis.Name = "cbodis";
             this.cbodis.Size = new System.Drawing.Size(199, 21);
             this.cbodis.TabIndex = 149;
@@ -596,7 +598,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(466, 96);
+            this.label11.Location = new System.Drawing.Point(466, 94);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 13);
             this.label11.TabIndex = 150;
@@ -607,7 +609,7 @@
             this.cboseguro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboseguro.Enabled = false;
             this.cboseguro.FormattingEnabled = true;
-            this.cboseguro.Location = new System.Drawing.Point(537, 92);
+            this.cboseguro.Location = new System.Drawing.Point(537, 90);
             this.cboseguro.Name = "cboseguro";
             this.cboseguro.Size = new System.Drawing.Size(146, 21);
             this.cboseguro.TabIndex = 151;
@@ -628,7 +630,7 @@
             // btnsector
             // 
             this.btnsector.Enabled = false;
-            this.btnsector.Location = new System.Drawing.Point(436, 92);
+            this.btnsector.Location = new System.Drawing.Point(436, 90);
             this.btnsector.Name = "btnsector";
             this.btnsector.Size = new System.Drawing.Size(24, 21);
             this.btnsector.TabIndex = 153;
@@ -639,7 +641,7 @@
             // btnciaseguro
             // 
             this.btnciaseguro.Enabled = false;
-            this.btnciaseguro.Location = new System.Drawing.Point(689, 92);
+            this.btnciaseguro.Location = new System.Drawing.Point(689, 90);
             this.btnciaseguro.Name = "btnciaseguro";
             this.btnciaseguro.Size = new System.Drawing.Size(24, 21);
             this.btnciaseguro.TabIndex = 154;
@@ -728,6 +730,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cboseguro;
         private System.Windows.Forms.ComboBox cbonombre;
+        private System.Windows.Forms.Button btnsector;
+        private System.Windows.Forms.Button btnciaseguro;
         private System.Windows.Forms.DataGridViewTextBoxColumn ruc;
         private System.Windows.Forms.DataGridViewTextBoxColumn empresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
@@ -749,7 +753,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn eps;
-        private System.Windows.Forms.Button btnsector;
-        private System.Windows.Forms.Button btnciaseguro;
     }
 }

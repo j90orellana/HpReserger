@@ -162,7 +162,7 @@
             // 
             this.btnexportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnexportarExcel.Enabled = false;
-            this.btnexportarExcel.Location = new System.Drawing.Point(303, 237);
+            this.btnexportarExcel.Location = new System.Drawing.Point(252, 237);
             this.btnexportarExcel.Name = "btnexportarExcel";
             this.btnexportarExcel.Size = new System.Drawing.Size(82, 29);
             this.btnexportarExcel.TabIndex = 139;

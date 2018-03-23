@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProcesando));
             this.lblProceso = new System.Windows.Forms.Label();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -47,10 +45,6 @@
             this.lblProceso.Text = "Procesando...";
             this.lblProceso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // timer
-            // 
-            this.timer.Interval = 500;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -65,6 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(466, 74);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
@@ -75,6 +70,7 @@
             this.Name = "frmProcesando";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Procesando...";
+            this.Load += new System.EventHandler(this.frmProcesando_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -84,7 +80,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblProceso;
-        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

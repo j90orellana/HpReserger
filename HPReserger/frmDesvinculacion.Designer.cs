@@ -164,7 +164,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 167);
+            this.label3.Location = new System.Drawing.Point(6, 169);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 83;
@@ -192,7 +192,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 141);
+            this.label7.Location = new System.Drawing.Point(6, 143);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 13);
             this.label7.TabIndex = 80;
@@ -223,7 +223,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 40);
+            this.label5.Location = new System.Drawing.Point(6, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(179, 13);
             this.label5.TabIndex = 77;
@@ -272,7 +272,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 116);
+            this.label6.Location = new System.Drawing.Point(6, 118);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 13);
             this.label6.TabIndex = 72;
@@ -281,7 +281,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 91);
+            this.label4.Location = new System.Drawing.Point(6, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 72;
@@ -290,7 +290,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 65);
+            this.label2.Location = new System.Drawing.Point(6, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 70;
@@ -299,7 +299,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 15);
+            this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(163, 13);
             this.label1.TabIndex = 69;
@@ -372,7 +372,7 @@
             this.btnAdjuntarLiq.FlatAppearance.BorderSize = 0;
             this.btnAdjuntarLiq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarLiq.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdjuntarLiq.Location = new System.Drawing.Point(141, 3);
+            this.btnAdjuntarLiq.Location = new System.Drawing.Point(141, 4);
             this.btnAdjuntarLiq.Name = "btnAdjuntarLiq";
             this.btnAdjuntarLiq.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarLiq.TabIndex = 78;
@@ -386,7 +386,7 @@
             this.btnAdjuntarCTS.FlatAppearance.BorderSize = 0;
             this.btnAdjuntarCTS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarCTS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdjuntarCTS.Location = new System.Drawing.Point(141, 32);
+            this.btnAdjuntarCTS.Location = new System.Drawing.Point(141, 33);
             this.btnAdjuntarCTS.Name = "btnAdjuntarCTS";
             this.btnAdjuntarCTS.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarCTS.TabIndex = 79;
@@ -400,7 +400,7 @@
             this.btnAdjuntarEntrevistaSalida.FlatAppearance.BorderSize = 0;
             this.btnAdjuntarEntrevistaSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarEntrevistaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdjuntarEntrevistaSalida.Location = new System.Drawing.Point(141, 148);
+            this.btnAdjuntarEntrevistaSalida.Location = new System.Drawing.Point(141, 149);
             this.btnAdjuntarEntrevistaSalida.Name = "btnAdjuntarEntrevistaSalida";
             this.btnAdjuntarEntrevistaSalida.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarEntrevistaSalida.TabIndex = 81;
@@ -414,7 +414,7 @@
             this.btnAdjuntarEvaluacionPracticas.FlatAppearance.BorderSize = 0;
             this.btnAdjuntarEvaluacionPracticas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarEvaluacionPracticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdjuntarEvaluacionPracticas.Location = new System.Drawing.Point(141, 119);
+            this.btnAdjuntarEvaluacionPracticas.Location = new System.Drawing.Point(141, 120);
             this.btnAdjuntarEvaluacionPracticas.Name = "btnAdjuntarEvaluacionPracticas";
             this.btnAdjuntarEvaluacionPracticas.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarEvaluacionPracticas.TabIndex = 82;
@@ -428,7 +428,7 @@
             this.btnAdjuntarRetencionRenta.FlatAppearance.BorderSize = 0;
             this.btnAdjuntarRetencionRenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarRetencionRenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdjuntarRetencionRenta.Location = new System.Drawing.Point(141, 90);
+            this.btnAdjuntarRetencionRenta.Location = new System.Drawing.Point(141, 91);
             this.btnAdjuntarRetencionRenta.Name = "btnAdjuntarRetencionRenta";
             this.btnAdjuntarRetencionRenta.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarRetencionRenta.TabIndex = 83;
@@ -442,7 +442,7 @@
             this.btnAdjuntarConstanciaTrabajo.FlatAppearance.BorderSize = 0;
             this.btnAdjuntarConstanciaTrabajo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdjuntarConstanciaTrabajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdjuntarConstanciaTrabajo.Location = new System.Drawing.Point(141, 61);
+            this.btnAdjuntarConstanciaTrabajo.Location = new System.Drawing.Point(141, 62);
             this.btnAdjuntarConstanciaTrabajo.Name = "btnAdjuntarConstanciaTrabajo";
             this.btnAdjuntarConstanciaTrabajo.Size = new System.Drawing.Size(20, 20);
             this.btnAdjuntarConstanciaTrabajo.TabIndex = 84;
@@ -451,7 +451,7 @@
             // 
             // txtLiq
             // 
-            this.txtLiq.Location = new System.Drawing.Point(172, 3);
+            this.txtLiq.Location = new System.Drawing.Point(172, 4);
             this.txtLiq.MaxLength = 14;
             this.txtLiq.Name = "txtLiq";
             this.txtLiq.ReadOnly = true;
@@ -461,7 +461,7 @@
             // 
             // txtRetencionRenta
             // 
-            this.txtRetencionRenta.Location = new System.Drawing.Point(172, 92);
+            this.txtRetencionRenta.Location = new System.Drawing.Point(172, 91);
             this.txtRetencionRenta.MaxLength = 14;
             this.txtRetencionRenta.Name = "txtRetencionRenta";
             this.txtRetencionRenta.ReadOnly = true;
@@ -471,7 +471,7 @@
             // 
             // txtConstanciaTrabajo
             // 
-            this.txtConstanciaTrabajo.Location = new System.Drawing.Point(172, 63);
+            this.txtConstanciaTrabajo.Location = new System.Drawing.Point(172, 62);
             this.txtConstanciaTrabajo.MaxLength = 14;
             this.txtConstanciaTrabajo.Name = "txtConstanciaTrabajo";
             this.txtConstanciaTrabajo.ReadOnly = true;
@@ -481,7 +481,7 @@
             // 
             // txtCTS
             // 
-            this.txtCTS.Location = new System.Drawing.Point(172, 32);
+            this.txtCTS.Location = new System.Drawing.Point(172, 33);
             this.txtCTS.MaxLength = 14;
             this.txtCTS.Name = "txtCTS";
             this.txtCTS.ReadOnly = true;
@@ -491,7 +491,7 @@
             // 
             // txtEntrevistaSalida
             // 
-            this.txtEntrevistaSalida.Location = new System.Drawing.Point(172, 147);
+            this.txtEntrevistaSalida.Location = new System.Drawing.Point(172, 149);
             this.txtEntrevistaSalida.MaxLength = 14;
             this.txtEntrevistaSalida.Name = "txtEntrevistaSalida";
             this.txtEntrevistaSalida.ReadOnly = true;
@@ -501,7 +501,7 @@
             // 
             // txtEvaluacionPracticas
             // 
-            this.txtEvaluacionPracticas.Location = new System.Drawing.Point(172, 121);
+            this.txtEvaluacionPracticas.Location = new System.Drawing.Point(172, 120);
             this.txtEvaluacionPracticas.MaxLength = 14;
             this.txtEvaluacionPracticas.Name = "txtEvaluacionPracticas";
             this.txtEvaluacionPracticas.ReadOnly = true;

@@ -290,9 +290,10 @@
             // 
             // comboMesAño
             // 
+            this.comboMesAño.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboMesAño.AutoSize = true;
             this.comboMesAño.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2018, 3, 7, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2018, 3, 12, 0, 0, 0, 0);
             this.comboMesAño.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
             this.comboMesAño.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(173, 63);

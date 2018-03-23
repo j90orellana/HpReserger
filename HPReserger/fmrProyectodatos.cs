@@ -22,9 +22,14 @@ namespace HPReserger
             frmetapas etapas = new frmetapas();
             etapas.proyecto = Proyecto;
             etapas.Icon = Icon;
-            etapas.ShowDialog();
+            etapas.FormClosed += new FormClosedEventHandler(CLoseEtapa);
+            etapas.Show();            
+        }
+        private void CLoseEtapa(object sender, FormClosedEventArgs e)
+        {
             Dtgconten.DataSource = CLProyectos.ListarEtapasProyecto(Proyecto.ToString());
         }
+
         HPResergerCapaLogica.HPResergerCL CLProyectos = new HPResergerCapaLogica.HPResergerCL();
         private void fmrProyectodatos_Load(object sender, EventArgs e)
         {

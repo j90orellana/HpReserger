@@ -20,19 +20,44 @@ namespace HPReserger
         public DateTime año = DateTime.Now.AddMonths(-1);
         public int empresa = 2;
         public string NombreEmpresa = "CONSTRUCTORA PRUEBA S.A.C.";
-        HPResergerCapaDatos.HPResergerCD CapaLogica = new HPResergerCapaDatos.HPResergerCD();
+        HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void frmReporteBalanceGeneral_Load(object sender, EventArgs e)
         {
             rptBalanceGeneral Reporte = new rptBalanceGeneral();
 
-            Reporte.SetDatabaseLogon(CapaLogica.USERID, CapaLogica.USERPASS);
+            Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
             Reporte.SetParameterValue(0, año);
             Reporte.SetParameterValue(1, empresa);
             Reporte.SetParameterValue(2, NombreEmpresa);
+
+            ConnectionInfo iConnectionInfo = new ConnectionInfo();
+            // ' ***************************************'
+            // ' configuro el acceso a la base de datos '
+            // ' ***************************************'
+            //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
+            iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
+
+            iConnectionInfo.UserID = datos.USERID;
+            iConnectionInfo.Password = datos.USERPASS;
+            iConnectionInfo.ServerName = datos.DATASOURCE;
+
+            iConnectionInfo.Type = ConnectionInfoType.SQL;
+            CrystalDecisions.CrystalReports.Engine.Tables myTables;
+
+            myTables = Reporte.Database.Tables;
+
+            foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
+            {
+                TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
+                //Dim myTableLogonInfo As TableLogOnInfo = myTable.LogOnInfo
+                myTableLogonInfo.ConnectionInfo = iConnectionInfo;
+                //  myTableLogonInfo.ConnectionInfo = myConnectionInfo
+                mytable.ApplyLogOnInfo(myTableLogonInfo);
+                //myTable.ApplyLogOnInfo(myTableLogonInfo)
+            }
             crvreporte.ReportSource = Reporte;
             crvreporte.AllowedExportFormats = (int)(ExportFormatType.PortableDocFormat | ExportFormatType.Excel | ExportFormatType.RichText);
         }
-
         private void crvreporte_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {
             e.Handled = true;

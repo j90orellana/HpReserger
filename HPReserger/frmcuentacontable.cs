@@ -84,14 +84,12 @@ namespace HPReserger
         }
         public void CargarPorPalabra(ComboBox combito, string palabra)
         {
-
             combito.DataSource = CcuentaContable.getCargoTipoContratacion3("Id_CtaCtble_Ajuste", "CtaCtble_Tipo_Ajuste", "CtaCtble_Ajuste", "TBL_Cuenta_Contable_Ajuste", palabra);
             combito.DisplayMember = "DESCRIPCION";
             combito.ValueMember = "CODIGO";
         }
         public void CargarPorDebeHaber(ComboBox combito, string palabra)
         {
-
             combito.DataSource = CcuentaContable.getCargoTipoContratacion3("Nro_CtaCtble_ReflejaDH", "CtaCtble_Naturaleza", "CtaCtble_ReflejaDH", "TBL_Cuenta_Contable_ReflejaDH", palabra);
             combito.DisplayMember = "DESCRIPCION";
             combito.ValueMember = "CODIGO";
@@ -212,7 +210,7 @@ namespace HPReserger
         {
             if (estado == 0)
             {
-                this.Visible = false;
+                this.Close();
             }
             else
             {

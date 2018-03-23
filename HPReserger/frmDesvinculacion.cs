@@ -186,7 +186,7 @@ namespace HPReserger
             }
             else
             {
-                txtApellidoPaterno.Text = txtNombres.Text = "";
+                txtApellidoPaterno.Text = txtNombres.Text = "";lblcontrato.Text = "";
                 dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(1, "");
                 lklliquidacion.Enabled = lklcts.Enabled = lklrenta.Enabled = lkltrabajo.Enabled = lklpracticas.Enabled = lklsalida.Enabled = false;
             }

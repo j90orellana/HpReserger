@@ -35,6 +35,7 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btnLogueo = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.cboBase = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbclose = new System.Windows.Forms.PictureBox();
             this.pbfoto = new System.Windows.Forms.PictureBox();
@@ -111,10 +112,10 @@
             this.btnLogueo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogueo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogueo.ForeColor = System.Drawing.Color.White;
-            this.btnLogueo.Location = new System.Drawing.Point(89, 144);
+            this.btnLogueo.Location = new System.Drawing.Point(89, 171);
             this.btnLogueo.Name = "btnLogueo";
             this.btnLogueo.Size = new System.Drawing.Size(171, 28);
-            this.btnLogueo.TabIndex = 2;
+            this.btnLogueo.TabIndex = 3;
             this.btnLogueo.Text = "&Aceptar";
             this.btnLogueo.UseVisualStyleBackColor = false;
             this.btnLogueo.Click += new System.EventHandler(this.btnLogueo_Click);
@@ -124,6 +125,7 @@
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panel.Controls.Add(this.cboBase);
             this.panel.Controls.Add(this.panel1);
             this.panel.Controls.Add(this.txtUsuario);
             this.panel.Controls.Add(this.txtContraseña);
@@ -133,12 +135,28 @@
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(349, 187);
+            this.panel.Size = new System.Drawing.Size(349, 216);
             this.panel.TabIndex = 3;
             this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
             this.panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
             this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            // 
+            // cboBase
+            // 
+            this.cboBase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            this.cboBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBase.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboBase.ForeColor = System.Drawing.Color.White;
+            this.cboBase.FormattingEnabled = true;
+            this.cboBase.Items.AddRange(new object[] {
+            "HpReserger",
+            "SiGE"});
+            this.cboBase.Location = new System.Drawing.Point(133, 136);
+            this.cboBase.Name = "cboBase";
+            this.cboBase.Size = new System.Drawing.Size(171, 24);
+            this.cboBase.TabIndex = 2;
+            this.cboBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboBase_KeyPress);
             // 
             // panel1
             // 
@@ -204,7 +222,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(349, 187);
+            this.ClientSize = new System.Drawing.Size(349, 216);
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -238,5 +256,6 @@
         private System.Windows.Forms.Label label4;
         private HpResergerUserControls.MoveControl moveControl1;
         private System.Windows.Forms.PictureBox pbfoto;
+        private System.Windows.Forms.ComboBox cboBase;
     }
 }

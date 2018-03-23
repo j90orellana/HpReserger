@@ -42,9 +42,11 @@
             this.crvRetencionRenta.Name = "crvRetencionRenta";
             this.crvRetencionRenta.ShowCloseButton = false;
             this.crvRetencionRenta.ShowLogo = false;
+            this.crvRetencionRenta.ShowParameterPanelButton = false;
             this.crvRetencionRenta.Size = new System.Drawing.Size(885, 740);
             this.crvRetencionRenta.TabIndex = 0;
             this.crvRetencionRenta.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvRetencionRenta.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvRetencionRenta_ReportRefresh);
             // 
             // frmRetencionRenta
             // 

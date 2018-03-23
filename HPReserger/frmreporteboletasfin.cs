@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.Windows.Forms;
+using CrystalDecisions.Shared;
 
 namespace HPReserger
 {
@@ -26,6 +27,9 @@ namespace HPReserger
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void frmreporteboletasfin_Load(object sender, EventArgs e)
         {
+            //DataBoletas DataBoleta = new DataBoletas();
+            //DataBoleta.
+
             rptboletas reporte = new rptboletas();
             reporte.Refresh();
             reporte.SetParameterValue(0, empresa);
@@ -34,8 +38,38 @@ namespace HPReserger
             reporte.SetParameterValue(3, fecha);
             reporte.SetParameterValue(4, fechainicial);
             reporte.SetParameterValue(5, Fechafin);
+
+            ConnectionInfo iConnectionInfo = new ConnectionInfo();
+            // ' *****************************************************************************************************************
+            // ' configuro el acceso a la base de datos
+            //   ' *****************************************************************************************************************
+            //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
+            iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
+            iConnectionInfo.UserID = datos.USERID;
+            iConnectionInfo.Password = datos.USERPASS;
+            iConnectionInfo.ServerName = datos.DATASOURCE;
+
+            iConnectionInfo.Type = ConnectionInfoType.SQL;
+            CrystalDecisions.CrystalReports.Engine.Tables myTables;
+
+            myTables = reporte.Database.Tables;
+
+            foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
+            {
+                TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
+                //Dim myTableLogonInfo As TableLogOnInfo = myTable.LogOnInfo
+                myTableLogonInfo.ConnectionInfo = iConnectionInfo;
+                //  myTableLogonInfo.ConnectionInfo = myConnectionInfo
+                mytable.ApplyLogOnInfo(myTableLogonInfo);
+                //myTable.ApplyLogOnInfo(myTableLogonInfo)
+            }
+
+            //crvboletas.ReportSource = reporte;
+            // Private Sub SetDBLogonForReport(ByVal myConnectionInfo As ConnectionInfo, ByVal myReportDocument As ReportDocument)            
+
             //reporte.SetParameterValue(6, frmLogin.CodigoUsuario);
-            reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);//, "hplaptop", "HPReserger");
+            //reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);//, "hplaptop", "HPReserger");
+            //reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS,datos.DATASOURCE, "sige");
             //CrystalDecisions.Shared.PdfFormatOptions options = new CrystalDecisions.Shared.PdfFormatOptions();
             //options.CreateBookmarksFromGroupTree = true;
             crvboletas.ReportSource = reporte;
@@ -88,9 +122,7 @@ namespace HPReserger
             msg(this.Name);
             ((ReportGroupTree)(sender)).BackColor = Color.Green;
             ((ReportGroupTree)(sender)).ForeColor = Color.Blue;
-
         }
-
         public void msg(string cadena)
         {
             MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
