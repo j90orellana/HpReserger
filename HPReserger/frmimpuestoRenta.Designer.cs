@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmimpuestoRenta));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnexportarExcel = new System.Windows.Forms.Button();
@@ -54,11 +55,14 @@
             // 
             this.btnexportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnexportarExcel.Enabled = false;
-            this.btnexportarExcel.Location = new System.Drawing.Point(670, 180);
+            this.btnexportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarExcel.Image")));
+            this.btnexportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnexportarExcel.Location = new System.Drawing.Point(670, 130);
             this.btnexportarExcel.Name = "btnexportarExcel";
-            this.btnexportarExcel.Size = new System.Drawing.Size(82, 21);
+            this.btnexportarExcel.Size = new System.Drawing.Size(82, 24);
             this.btnexportarExcel.TabIndex = 104;
             this.btnexportarExcel.Text = "A Excel";
+            this.btnexportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexportarExcel.UseVisualStyleBackColor = true;
             this.btnexportarExcel.Click += new System.EventHandler(this.btnexportarExcel_Click);
             // 
@@ -103,7 +107,7 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dtgconten.Size = new System.Drawing.Size(652, 199);
+            this.dtgconten.Size = new System.Drawing.Size(652, 209);
             this.dtgconten.TabIndex = 99;
             this.dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellEndEdit);
             this.dtgconten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtgconten_DataError);
@@ -173,11 +177,14 @@
             // btnmodificar
             // 
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnmodificar.Location = new System.Drawing.Point(670, 38);
+            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
+            this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnmodificar.Location = new System.Drawing.Point(670, 68);
             this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(82, 21);
+            this.btnmodificar.Size = new System.Drawing.Size(82, 24);
             this.btnmodificar.TabIndex = 103;
             this.btnmodificar.Text = "Modificar";
+            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
             this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
             // 
@@ -185,11 +192,14 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncancelar.Location = new System.Drawing.Point(670, 243);
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btncancelar.Location = new System.Drawing.Point(670, 253);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(82, 29);
+            this.btncancelar.Size = new System.Drawing.Size(82, 24);
             this.btncancelar.TabIndex = 100;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -197,22 +207,28 @@
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Enabled = false;
-            this.btnaceptar.Location = new System.Drawing.Point(582, 243);
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnaceptar.Location = new System.Drawing.Point(582, 253);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(82, 29);
+            this.btnaceptar.Size = new System.Drawing.Size(82, 24);
             this.btnaceptar.TabIndex = 101;
             this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // btnnuevo
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnnuevo.Location = new System.Drawing.Point(670, 98);
+            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
+            this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnnuevo.Location = new System.Drawing.Point(670, 38);
             this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(82, 20);
+            this.btnnuevo.Size = new System.Drawing.Size(82, 24);
             this.btnnuevo.TabIndex = 102;
             this.btnnuevo.Text = "Nuevo";
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Visible = false;
             // 

@@ -202,7 +202,10 @@ namespace HPReserger
             {
                 msg("El Banco Seleccionado No tiene Cuenta");
                 cbobanco.Focus();
-                return;
+                if (MSG("Desea Continuar el Proceso de pago") != DialogResult.OK)
+                {
+                    return;
+                }
             }
             if (txttotal.Text.Length > 0)
             {
@@ -243,6 +246,7 @@ namespace HPReserger
             }
             if (ResultadoDialogo == DialogResult.No)
             {
+                PAsoBanco = DialogResult.OK;
                 GenerarTxt = false;
                 //msg("selecciones no en generar txt");
             }
@@ -290,6 +294,7 @@ namespace HPReserger
                     bancointerbank.Comprobantes = Comprobantes;
                     bancointerbank.Icon = Icon;
                     bancointerbank.ShowDialog();
+                    PAsoBanco = bancointerbank.DialogResult;
                 }
                 if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "BIF")
                 {
@@ -303,6 +308,7 @@ namespace HPReserger
                     bancointeramericano.Comprobantes = Comprobantes;
                     bancointeramericano.Icon = Icon;
                     bancointeramericano.ShowDialog();
+                    PAsoBanco = bancointeramericano.DialogResult;
                 }
             }
             //proceso para pagar facturas!!!
@@ -329,7 +335,7 @@ namespace HPReserger
                         //actualizo que el recibo este pagado
                         cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                         //cuenta de recibo por honorarios 4241101
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 18);
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 1);
                         facturar = fac.numero;
                     }
                     else
@@ -339,8 +345,8 @@ namespace HPReserger
                             //actualizo que la factura esta pagada
                             cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                             ///facturas por pagar 4212101
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 18);
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 18);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 2);
                             facturar = fac.numero;
                         }
                         else
@@ -348,12 +354,17 @@ namespace HPReserger
                             //actualizo que la factura esta pagada
                             cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                             ///facturas por pagar 4212101
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 18);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 2);
                             facturar = fac.numero;
                         }
                     }
                 }
-                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, cbocuentabanco.SelectedValue.ToString(), 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 18);
+                string BanCuenta;
+                if (cbocuentabanco.SelectedValue == null)
+                    BanCuenta = "";
+                else
+                    BanCuenta = cbocuentabanco.SelectedValue.ToString();
+                    cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5);
                 msg("Documento Pagado y se ha Generado su Asiento");
                 btnActualizar_Click(sender, e);
                 txttotaldetrac.Text = txttotal.Text = "0.00";

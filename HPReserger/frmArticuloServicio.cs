@@ -72,6 +72,8 @@ namespace HPReserger
             Txtbusca.Enabled = !a;
             btnaceptar.Enabled = a;
             btncentro.Enabled = a;
+            btnctaact.Enabled = a;
+            btnctactble.Enabled = a;
         }
         public DataTable listarArticulos(string busca)
         {
@@ -210,6 +212,8 @@ namespace HPReserger
                 else chkigv.Checked = true;
                 cbocuenta.Text = dtgconten["cuenta", y].Value.ToString();
                 cbocentrocosto.SelectedValue = dtgconten["cc", y].Value.ToString();
+                txtctacble.Text = dtgconten[ctax.Name, y].Value.ToString();
+                txtcntctbleact.Text = dtgconten[ctaactivox.Name, y].Value.ToString();
             }
             else
             {
@@ -269,7 +273,7 @@ namespace HPReserger
             {
                 if (ArtExiste == 0)
                 {
-                    CArticulo.InsertarArticulo(concepto, 0, tipo, txtobservacion.Text, IGV, int.Parse(cuentax), cuentax, cuentax);
+                    CArticulo.InsertarArticulo(concepto, 0, tipo, txtobservacion.Text, IGV, int.Parse(cuentax), cuentax, cuentax, txtctacble.Text, txtcntctbleact.Text);
                     //CArticulo.InsertarArticulo(concepto, 0, tipo, txtobservacion.Text, IGV, CENTRO, cbocuenta.SelectedText, cbocentrocosto.SelectedValue.ToString());
                 }
                 CArticulo.InsertarArticuloMarca(marcas, GenerarCodigo());
@@ -280,7 +284,7 @@ namespace HPReserger
                 if (estado == 2 && VerificarValores(concepto, marcas))
                 {
                     //CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, CENTRO, cbocuenta.SelectedText, cbocentrocosto.SelectedValue.ToString());
-                    CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, int.Parse(cuentax), cuentax, cuentax);
+                    CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, int.Parse(cuentax), cuentax, cuentax, txtctacble.Text, txtcntctbleact.Text);
                     MessageBox.Show("Modificado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
                 }
                 else
@@ -418,6 +422,45 @@ namespace HPReserger
             {
                 if (fccentro.siono.ToUpper().Trim() == "SI")
                     cbocentrocosto.SelectedValue = fccentro.cadeaux;
+            }
+        }
+
+        private void btnctaact_Click(object sender, EventArgs e)
+        {
+            frmlistarcuentas cuentitas = new frmlistarcuentas();
+            cuentitas.Icon = Icon;
+            cuentitas.Txtbusca.Text = txtcntctbleact.Text;
+            cuentitas.radioButton1.Checked = true;
+            cuentitas.ShowDialog();
+            if (cuentitas.aceptar)
+            {
+                if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
+                {
+                    MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                }
+                else
+                {
+                    txtcntctbleact.Text = cuentitas.codigo;
+                }
+            }
+        }
+        private void btnctactble_Click(object sender, EventArgs e)
+        {
+            frmlistarcuentas cuentitas = new frmlistarcuentas();
+            cuentitas.Icon = Icon;
+            cuentitas.Txtbusca.Text = txtctacble.Text;
+            cuentitas.radioButton1.Checked = true;
+            cuentitas.ShowDialog();
+            if (cuentitas.aceptar)
+            {
+                if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
+                {
+                    MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                }
+                else
+                {
+                    txtctacble.Text = cuentitas.codigo;
+                }
             }
         }
     }

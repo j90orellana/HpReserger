@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmmarcamodelo));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -58,31 +59,40 @@
             // 
             // btneliminar
             // 
+            this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
+            this.btneliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btneliminar.Location = new System.Drawing.Point(370, 66);
             this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(82, 21);
+            this.btneliminar.Size = new System.Drawing.Size(82, 24);
             this.btneliminar.TabIndex = 85;
             this.btneliminar.Text = "Eliminar";
+            this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btneliminar.UseVisualStyleBackColor = true;
             this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // btnmodificar
             // 
+            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
+            this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnmodificar.Location = new System.Drawing.Point(370, 39);
             this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(82, 21);
+            this.btnmodificar.Size = new System.Drawing.Size(82, 24);
             this.btnmodificar.TabIndex = 86;
             this.btnmodificar.Text = "Modificar";
+            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
             this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
             // 
             // btnnuevo
             // 
+            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
+            this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnnuevo.Location = new System.Drawing.Point(370, 12);
             this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(82, 20);
+            this.btnnuevo.Size = new System.Drawing.Size(82, 24);
             this.btnnuevo.TabIndex = 84;
             this.btnnuevo.Text = "Nuevo";
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
             // 
@@ -93,44 +103,50 @@
             // btncancelar
             // 
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncancelar.Location = new System.Drawing.Point(370, 402);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(82, 29);
+            this.btncancelar.Size = new System.Drawing.Size(82, 24);
             this.btncancelar.TabIndex = 87;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // btnaceptar
             // 
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnaceptar.Location = new System.Drawing.Point(282, 402);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(82, 29);
+            this.btnaceptar.Size = new System.Drawing.Size(82, 24);
             this.btnaceptar.TabIndex = 88;
             this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // btnmodelomas
             // 
             this.btnmodelomas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmodelomas.Image = ((System.Drawing.Image)(resources.GetObject("btnmodelomas.Image")));
             this.btnmodelomas.Location = new System.Drawing.Point(344, 39);
             this.btnmodelomas.Name = "btnmodelomas";
-            this.btnmodelomas.Size = new System.Drawing.Size(20, 21);
+            this.btnmodelomas.Size = new System.Drawing.Size(20, 24);
             this.btnmodelomas.TabIndex = 104;
-            this.btnmodelomas.Text = "+";
             this.btnmodelomas.UseVisualStyleBackColor = true;
             this.btnmodelomas.Click += new System.EventHandler(this.btnmodelomas_Click);
             // 
             // btnmarcamas
             // 
             this.btnmarcamas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmarcamas.Image = ((System.Drawing.Image)(resources.GetObject("btnmarcamas.Image")));
             this.btnmarcamas.Location = new System.Drawing.Point(344, 12);
             this.btnmarcamas.Name = "btnmarcamas";
-            this.btnmarcamas.Size = new System.Drawing.Size(20, 21);
+            this.btnmarcamas.Size = new System.Drawing.Size(20, 24);
             this.btnmarcamas.TabIndex = 103;
-            this.btnmarcamas.Text = "+";
             this.btnmarcamas.UseVisualStyleBackColor = true;
             this.btnmarcamas.Click += new System.EventHandler(this.btnmarcamas_Click);
             // 
@@ -175,14 +191,17 @@
             // 
             // btnlimpiar
             // 
+            this.btnlimpiar.BackColor = System.Drawing.Color.White;
             this.btnlimpiar.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.btnlimpiar.FlatAppearance.BorderSize = 0;
+            this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnlimpiar.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(3)));
+            this.btnlimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnlimpiar.Image")));
             this.btnlimpiar.Location = new System.Drawing.Point(344, 66);
             this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(20, 21);
+            this.btnlimpiar.Size = new System.Drawing.Size(20, 24);
             this.btnlimpiar.TabIndex = 109;
-            this.btnlimpiar.Text = "";
-            this.btnlimpiar.UseVisualStyleBackColor = true;
+            this.btnlimpiar.UseVisualStyleBackColor = false;
             this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
             // 
             // label5

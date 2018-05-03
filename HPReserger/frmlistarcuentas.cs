@@ -88,10 +88,20 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             codigo = dtgconten[0, dtgconten.CurrentRow.Index].Value.ToString();
-            aceptar = true;
-            this.Close();
+            if (codigo.Substring(codigo.Length - 1, 1) == "0")
+            {
+                MSG("No se Puede Seleccionar una cuenta de Cabecera");
+            }
+            else
+            {
+                aceptar = true;
+                this.Close();
+            }
         }
-
+        private void MSG(string v)
+        {
+            MessageBox.Show(v, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             frmcuentacontable cuentas = new frmcuentacontable();
@@ -103,8 +113,15 @@ namespace HPReserger
             try
             {
                 codigo = dtgconten[0, dtgconten.CurrentCell.RowIndex].Value.ToString();
-                aceptar = true;
-                this.Close();
+                if (codigo.Substring(codigo.Length - 1, 1) == "0")
+                {
+                    MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                }
+                else
+                {
+                    aceptar = true;
+                    this.Close();
+                }
             }
             catch { }
         }

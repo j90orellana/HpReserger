@@ -180,4 +180,24 @@
   <metadata name="CANTIDAD.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnEnviar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEJSURBVDhPY6AY7Jrt8Z9UDNUKASCB/+8WE41xGgAznRSMYQCyTYQwmgGL/u+d5/P/zpHS/39e
+        z8dQjIz/vJoHVrd3vvf///8ZGFFccGN//v8DiwP+3z9e+f/vm4UoGkF8kDhIHqQOzQUIL3y8O/H/6fVx
+        /4+vjvz/5kYXWAxEg/ggcZA8TD1WA2D45eXW/yfWRP/fPdcLSEcB+W1g8XfP5oHpW4eKyAvE3MVV/+/d
+        nQVmww2AYXTF2HDcnLL/KfPL/5+9MhViAAzgMwCkCR0nzC0H0qX5UO2oLoFhfAbEzwXSc8tKodqJB1AD
+        PsTPLXWDCpEGgJrvx84p0YFySQfRs8tkoEwgYGAAADekJRxyNewHAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnAnular.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAALNJREFUOE9j
+        GFxgy7w7Vlvm3A7dOON2zMKWS9fmN136D8KLWi9fBYmB5EBqoMoxwea5t38B8X8C+BdUOSaYVnomdGrp
+        2f/4MEgNVDkmgBnQn38SrHhCwUkwRhYjyoDSkM1gxfXxe8AYWYwoA0rgBuwGY2SxUQOINKAyYjtYcWPi
+        vv9NSfvAbJgYXgOACjxAivDjM25Q5ZigoWE/y9TSc+1AvAobnlZ6tnVV6CpmqHJqAAYGAELDVuqLsJQG
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

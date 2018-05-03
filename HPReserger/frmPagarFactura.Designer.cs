@@ -38,6 +38,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagarFactura));
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -141,7 +142,7 @@
             this.Dtguias.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dtguias.Size = new System.Drawing.Size(1059, 319);
+            this.Dtguias.Size = new System.Drawing.Size(1059, 330);
             this.Dtguias.TabIndex = 40;
             this.Dtguias.TabStop = false;
             this.Dtguias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellContentClick);
@@ -318,22 +319,26 @@
             // btnaceptar
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Location = new System.Drawing.Point(915, 526);
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(915, 532);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 33;
             this.btnaceptar.Text = "Pagar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(996, 526);
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(996, 532);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 34;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -482,7 +487,7 @@
             // 
             this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotal.Enabled = false;
-            this.txttotal.Location = new System.Drawing.Point(972, 501);
+            this.txttotal.Location = new System.Drawing.Point(972, 509);
             this.txttotal.Name = "txttotal";
             this.txttotal.Size = new System.Drawing.Size(99, 20);
             this.txttotal.TabIndex = 45;
@@ -492,7 +497,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(892, 504);
+            this.label3.Location = new System.Drawing.Point(892, 512);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 41;
@@ -506,7 +511,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(880, 478);
+            this.label4.Location = new System.Drawing.Point(880, 489);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 46;
@@ -516,7 +521,7 @@
             // 
             this.txttotaldetrac.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotaldetrac.Enabled = false;
-            this.txttotaldetrac.Location = new System.Drawing.Point(971, 475);
+            this.txttotaldetrac.Location = new System.Drawing.Point(971, 486);
             this.txttotaldetrac.Name = "txttotaldetrac";
             this.txttotaldetrac.Size = new System.Drawing.Size(100, 20);
             this.txttotaldetrac.TabIndex = 47;
@@ -524,11 +529,13 @@
             // 
             // btnActualizar
             // 
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
             this.btnActualizar.Location = new System.Drawing.Point(723, 43);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(86, 23);
             this.btnActualizar.TabIndex = 48;
             this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
@@ -671,7 +678,7 @@
             // 
             this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmensaje.AutoSize = true;
-            this.lblmensaje.Location = new System.Drawing.Point(9, 480);
+            this.lblmensaje.Location = new System.Drawing.Point(9, 490);
             this.lblmensaje.Name = "lblmensaje";
             this.lblmensaje.Size = new System.Drawing.Size(109, 13);
             this.lblmensaje.TabIndex = 50;
@@ -679,22 +686,26 @@
             // 
             // btnseleccion
             // 
+            this.btnseleccion.Image = ((System.Drawing.Image)(resources.GetObject("btnseleccion.Image")));
             this.btnseleccion.Location = new System.Drawing.Point(12, 125);
             this.btnseleccion.Name = "btnseleccion";
-            this.btnseleccion.Size = new System.Drawing.Size(122, 23);
+            this.btnseleccion.Size = new System.Drawing.Size(151, 23);
             this.btnseleccion.TabIndex = 51;
             this.btnseleccion.Text = "Seleccionar Todos";
+            this.btnseleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnseleccion.UseVisualStyleBackColor = true;
             this.btnseleccion.Click += new System.EventHandler(this.btnseleccion_Click);
             // 
             // btnReversar
             // 
             this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReversar.Location = new System.Drawing.Point(509, 475);
+            this.btnReversar.Image = ((System.Drawing.Image)(resources.GetObject("btnReversar.Image")));
+            this.btnReversar.Location = new System.Drawing.Point(509, 485);
             this.btnReversar.Name = "btnReversar";
             this.btnReversar.Size = new System.Drawing.Size(75, 23);
             this.btnReversar.TabIndex = 52;
             this.btnReversar.Text = "Reversar";
+            this.btnReversar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReversar.UseVisualStyleBackColor = true;
             this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
             // 

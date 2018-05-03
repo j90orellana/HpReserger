@@ -289,6 +289,15 @@ namespace HPReserger
         {
             if (estado == 1 && validar())
             {
+               // DtgConten.DataSource = cfactura.ListarFicsDetalleservicio(BuscaFic);
+                foreach (DataGridViewRow item in DtgConten.Rows)
+                {
+                    if (item.Cells[cuentax.Name].Value.ToString() == "")
+                    {
+                        MSG($"El item {item.Cells[DESCRIPCION.Name].Value.ToString() } : No tiene un cuenta Asociada ");
+                        return;
+                    }
+                }
                 int next;
                 DataRow siguiente = cfactura.Siguiente("TBL_Asiento_Contable", "Id_Asiento_Contable");
                 next = int.Parse(siguiente["valor"].ToString());
@@ -305,8 +314,8 @@ namespace HPReserger
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////                    
-                    cfactura.InsertarAsientoRecibo(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
-                    cfactura.InsertarAsientoRecibo(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
+                    cfactura.InsertarAsientoRecibo(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text);
+                    cfactura.InsertarAsientoRecibo(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text);
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////  
@@ -346,6 +355,10 @@ namespace HPReserger
             HPResergerFunciones.Utilitarios.DescargarImagen(pbfactura);
         }
 
+        private void txtruc_DoubleClick(object sender, EventArgs e)
+        {
+            if (estado == 0) btnmaspro_Click(sender, e);
+        }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado == 1)
@@ -415,13 +428,13 @@ namespace HPReserger
                 }
             }
         }
-
+        string BuscaFic = "";
         public void cargarFics()
         {
             contador = 0;
             if (Dtguias.RowCount > 0)
             {
-                string BuscaMonto = "", BuscaFic = "";
+                string BuscaMonto = "";
                 foreach (DataGridViewRow lista in Dtguias.Rows)
                 {
                     DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();

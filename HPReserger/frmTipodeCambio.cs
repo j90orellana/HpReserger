@@ -99,7 +99,7 @@ namespace HPReserger
                         }
                     }
                 }
-            }            
+            }
             if (tablita.Rows.Count > 0)
             {
                 DataRow filita = tablita.Rows[0];
@@ -111,7 +111,7 @@ namespace HPReserger
                 int aux = 0;
                 for (int i = min; i <= max; i++)
                 {
-                    //complea los dias Saltados
+                    //completa los dias Saltados
                     filita = tablita.Rows[aux];
                     if (int.Parse(filita["dia"].ToString()) != i)
                     {
@@ -146,7 +146,9 @@ namespace HPReserger
                     }
                 }
                 ///completar el ultimo dia del mes 
-                if ((int)filita["mes"] != DateTime.Now.Month && (int)filita["año"] != DateTime.Now.Year)
+                //if ((int)filita["mes"] != DateTime.Now.Month && (int)filita["año"] != DateTime.Now.Year)
+                DateTime fechax = new DateTime((int)filita["año"], (int)filita["mes"], 1);
+                if (DateTime.Now > fechax)
                 {
                     int mesio = comboMesAño1.GetFecha().Month;
                     int añio = comboMesAño1.GetFecha().Year;
@@ -171,38 +173,38 @@ namespace HPReserger
                     }
                 }
                 //Buscar el Ultimo Valor del mes anterior
-                filita = tablita.Rows[0];
-                int UltDia = (int)filita["dia"];
-                //Sí es Diferente a uno, es quue el mes ta incompleto
-                //toca buscar al mes anterior el ultimo tipo de cambio
-                if (UltDia != 1 && tablita.Rows.Count > 0)
-                {
-                    DataTable TablaTemporal = new DataTable();
-                    int anio, mesio;
-                    anio = comboMesAño1.GetFechaPRimerDia().AddDays(-1).Year;
-                    mesio = comboMesAño1.GetFechaPRimerDia().AddDays(-1).Month;
-                    TablaTemporal = CapaLogica.TipodeCambio(0, anio, mesio, 1, 0, 0, null);
-                    if (TablaTemporal.Rows.Count > 0)
-                    {
-                        DataRow FilaTemporal = TablaTemporal.Rows[TablaTemporal.Rows.Count - 1];
-                        for (int i = 1; i < UltDia; i++)
-                        {
-                            //completo el mes desde el inicio
-                            filiaux = tablita.NewRow();
-                            filiaux["dia"] = i;
-                            filiaux["mes"] = comboMesAño1.GetFecha().Month;
-                            filiaux["año"] = comboMesAño1.GetFecha().Year;
-                            filiaux["compra"] = FilaTemporal["compra"];
-                            filiaux["venta"] = FilaTemporal["venta"];
-                            tablita.Rows.InsertAt(filiaux, i - 1);
-                        }                        
-                    }
-                }
-                foreach (DataRow filitas in tablita.Rows)
-                {
-                    //inserto a la base de datos el tipo de cambio
-                    CapaLogica.TipodeCambio(1, (int)filitas["año"], (int)filitas["mes"], (int)filitas["dia"], (decimal)filitas["compra"], (decimal)filitas["venta"], ImgVenta);
-                }
+                //filita = tablita.Rows[0];
+                //int UltDia = (int)filita["dia"];
+                ////Sí es Diferente a uno, es quue el mes ta incompleto
+                ////toca buscar al mes anterior el ultimo tipo de cambio
+                //if (UltDia != 1 && tablita.Rows.Count > 0)
+                //{
+                //    DataTable TablaTemporal = new DataTable();
+                //    int anio, mesio;
+                //    anio = comboMesAño1.GetFechaPRimerDia().AddDays(-1).Year;
+                //    mesio = comboMesAño1.GetFechaPRimerDia().AddDays(-1).Month;
+                //    TablaTemporal = CapaLogica.TipodeCambio(0, anio, mesio, 1, 0, 0, null);
+                //    if (TablaTemporal.Rows.Count > 0)
+                //    {
+                //        DataRow FilaTemporal = TablaTemporal.Rows[TablaTemporal.Rows.Count - 1];
+                //        for (int i = 1; i < UltDia; i++)
+                //        {
+                //            //completo el mes desde el inicio
+                //            filiaux = tablita.NewRow();
+                //            filiaux["dia"] = i;
+                //            filiaux["mes"] = comboMesAño1.GetFecha().Month;
+                //            filiaux["año"] = comboMesAño1.GetFecha().Year;
+                //            filiaux["compra"] = FilaTemporal["compra"];
+                //            filiaux["venta"] = FilaTemporal["venta"];
+                //            tablita.Rows.InsertAt(filiaux, i - 1);
+                //        }                        
+                //    }
+                //}
+                //foreach (DataRow filitas in tablita.Rows)
+                //{
+                //    //inserto a la base de datos el tipo de cambio
+                //    CapaLogica.TipodeCambio(1, (int)filitas["año"], (int)filitas["mes"], (int)filitas["dia"], (decimal)filitas["compra"], (decimal)filitas["venta"], ImgVenta);
+                //}
                 tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
                 dtgconten.DataSource = tablita;
                 CargarImagenes();

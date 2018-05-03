@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGenerarRemuneracionRenta));
             this.btngenerar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboMesAño1 = new HpResergerUserControls.ComboMesAño();
@@ -45,11 +46,14 @@
             // 
             // btngenerar
             // 
+            this.btngenerar.Image = ((System.Drawing.Image)(resources.GetObject("btngenerar.Image")));
+            this.btngenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btngenerar.Location = new System.Drawing.Point(190, 136);
             this.btngenerar.Name = "btngenerar";
             this.btngenerar.Size = new System.Drawing.Size(103, 29);
             this.btngenerar.TabIndex = 3;
             this.btngenerar.Text = "Generar";
+            this.btngenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btngenerar.UseVisualStyleBackColor = true;
             this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click_1);
             // 
@@ -78,6 +82,9 @@
             // 
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 4, 24, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 4, 30, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 4, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(153, 21);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(197, 24);

@@ -145,11 +145,13 @@
             // 
             // btnOtrosDescuentos
             // 
-            this.btnOtrosDescuentos.Location = new System.Drawing.Point(312, 165);
+            this.btnOtrosDescuentos.Image = ((System.Drawing.Image)(resources.GetObject("btnOtrosDescuentos.Image")));
+            this.btnOtrosDescuentos.Location = new System.Drawing.Point(299, 164);
             this.btnOtrosDescuentos.Name = "btnOtrosDescuentos";
-            this.btnOtrosDescuentos.Size = new System.Drawing.Size(107, 20);
+            this.btnOtrosDescuentos.Size = new System.Drawing.Size(120, 23);
             this.btnOtrosDescuentos.TabIndex = 108;
             this.btnOtrosDescuentos.Text = "Otros Descuentos";
+            this.btnOtrosDescuentos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOtrosDescuentos.UseVisualStyleBackColor = true;
             this.btnOtrosDescuentos.Click += new System.EventHandler(this.btnOtrosDescuentos_Click);
             // 
@@ -158,7 +160,7 @@
             this.txtmonto.Location = new System.Drawing.Point(199, 165);
             this.txtmonto.Name = "txtmonto";
             this.txtmonto.NextControlOnEnter = null;
-            this.txtmonto.Size = new System.Drawing.Size(107, 20);
+            this.txtmonto.Size = new System.Drawing.Size(94, 20);
             this.txtmonto.TabIndex = 4;
             // 
             // label3
@@ -511,11 +513,13 @@
             // 
             // btnGrabar
             // 
+            this.btnGrabar.Image = ((System.Drawing.Image)(resources.GetObject("btnGrabar.Image")));
             this.btnGrabar.Location = new System.Drawing.Point(273, 173);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(77, 23);
             this.btnGrabar.TabIndex = 107;
             this.btnGrabar.Text = "Grabar";
+            this.btnGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
@@ -798,21 +802,25 @@
             // 
             // button1
             // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(571, 615);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 23);
             this.button1.TabIndex = 109;
             this.button1.Text = "Ver Desvinculaciones";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btncancelar
             // 
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(719, 615);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(77, 23);
             this.btncancelar.TabIndex = 151;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -831,11 +839,13 @@
             // 
             // btnverTodas
             // 
+            this.btnverTodas.Image = ((System.Drawing.Image)(resources.GetObject("btnverTodas.Image")));
             this.btnverTodas.Location = new System.Drawing.Point(801, 443);
             this.btnverTodas.Name = "btnverTodas";
             this.btnverTodas.Size = new System.Drawing.Size(100, 23);
             this.btnverTodas.TabIndex = 153;
             this.btnverTodas.Text = "Ver Todas";
+            this.btnverTodas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnverTodas.UseVisualStyleBackColor = true;
             this.btnverTodas.Click += new System.EventHandler(this.btnverTodas_Click);
             // 

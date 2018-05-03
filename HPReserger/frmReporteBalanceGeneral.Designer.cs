@@ -47,7 +47,7 @@
             this.crvreporte.ShowLogo = false;
             this.crvreporte.ShowParameterPanelButton = false;
             this.crvreporte.ShowZoomButton = false;
-            this.crvreporte.Size = new System.Drawing.Size(957, 689);
+            this.crvreporte.Size = new System.Drawing.Size(1179, 783);
             this.crvreporte.TabIndex = 0;
             this.crvreporte.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crvreporte.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvreporte_ReportRefresh);
@@ -56,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 689);
+            this.ClientSize = new System.Drawing.Size(1179, 783);
             this.Controls.Add(this.crvreporte);
             this.Name = "frmReporteBalanceGeneral";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

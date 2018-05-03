@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteGeneral));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteGeneral));
             this.cboempresas = new System.Windows.Forms.ComboBox();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.lblconteo = new System.Windows.Forms.Label();
@@ -58,6 +58,8 @@
             this.btnColorLetra = new System.Windows.Forms.Button();
             this.btnColorFondo = new System.Windows.Forms.Button();
             this.comboMesAño = new HpResergerUserControls.ComboMesAño();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtdiferencia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +78,13 @@
             // btnGenerar
             // 
             this.btnGenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerar.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerar.Image")));
             this.btnGenerar.Location = new System.Drawing.Point(732, 71);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
             this.btnGenerar.TabIndex = 81;
             this.btnGenerar.Text = "Generar";
+            this.btnGenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
@@ -97,11 +101,13 @@
             // btnexportarpdf
             // 
             this.btnexportarpdf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnexportarpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarpdf.Image")));
             this.btnexportarpdf.Location = new System.Drawing.Point(282, 739);
             this.btnexportarpdf.Name = "btnexportarpdf";
             this.btnexportarpdf.Size = new System.Drawing.Size(75, 23);
             this.btnexportarpdf.TabIndex = 79;
             this.btnexportarpdf.Text = "Pdf";
+            this.btnexportarpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexportarpdf.UseVisualStyleBackColor = true;
             this.btnexportarpdf.Click += new System.EventHandler(this.btnexportarpdf_Click);
             // 
@@ -119,6 +125,7 @@
             // 
             this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnexportarexcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnexportarexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarexcel.Image")));
             this.btnexportarexcel.Location = new System.Drawing.Point(201, 739);
             this.btnexportarexcel.Name = "btnexportarexcel";
             this.btnexportarexcel.Size = new System.Drawing.Size(75, 23);
@@ -131,11 +138,14 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(732, 739);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 76;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -207,7 +217,7 @@
             // Camposx
             // 
             this.Camposx.DataPropertyName = "campo";
-            this.Camposx.HeaderText = "ACTIVO";
+            this.Camposx.HeaderText = "";
             this.Camposx.Name = "Camposx";
             this.Camposx.ReadOnly = true;
             this.Camposx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -242,7 +252,7 @@
             // campoz
             // 
             this.campoz.DataPropertyName = "campox";
-            this.campoz.HeaderText = "PASIVO Y PATRIMONIO";
+            this.campoz.HeaderText = "";
             this.campoz.Name = "campoz";
             this.campoz.ReadOnly = true;
             this.campoz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -336,20 +346,40 @@
             this.comboMesAño.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboMesAño.AutoSize = true;
             this.comboMesAño.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2018, 3, 12, 0, 0, 0, 0);
-            this.comboMesAño.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
-            this.comboMesAño.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2018, 4, 27, 0, 0, 0, 0);
+            this.comboMesAño.FechaFinMes = new System.DateTime(2018, 4, 30, 0, 0, 0, 0);
+            this.comboMesAño.FechaInicioMes = new System.DateTime(2018, 4, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(325, 63);
             this.comboMesAño.Name = "comboMesAño";
             this.comboMesAño.Size = new System.Drawing.Size(197, 24);
             this.comboMesAño.TabIndex = 88;
             this.comboMesAño.CambioFechas += new System.EventHandler(this.comboMesAño_CambioFechas);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(556, 744);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 89;
+            this.label4.Text = "Diferencia";
+            // 
+            // txtdiferencia
+            // 
+            this.txtdiferencia.Location = new System.Drawing.Point(611, 740);
+            this.txtdiferencia.Name = "txtdiferencia";
+            this.txtdiferencia.ReadOnly = true;
+            this.txtdiferencia.Size = new System.Drawing.Size(115, 20);
+            this.txtdiferencia.TabIndex = 90;
+            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // frmReporteGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 774);
+            this.Controls.Add(this.txtdiferencia);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.comboMesAño);
             this.Controls.Add(this.btnColorFondo);
             this.Controls.Add(this.btnColorLetra);
@@ -390,6 +420,7 @@
         private System.Windows.Forms.ColorDialog ColorDialog;
         private System.Windows.Forms.Button btnColorLetra;
         private System.Windows.Forms.Button btnColorFondo;
+        private HpResergerUserControls.ComboMesAño comboMesAño;
         private System.Windows.Forms.DataGridViewTextBoxColumn indexx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Camposx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Totalesx;
@@ -398,6 +429,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn campoz;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalesz;
         private System.Windows.Forms.DataGridViewTextBoxColumn empresaz;
-        private HpResergerUserControls.ComboMesAño comboMesAño;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtdiferencia;
     }
 }

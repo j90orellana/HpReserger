@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuarios));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -64,7 +65,6 @@
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.lblmensaje = new System.Windows.Forms.Label();
             this.GridUser = new System.Windows.Forms.DataGridView();
-            this.btnnuevoTemporal = new System.Windows.Forms.Button();
             this.Codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipox = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +79,7 @@
             this.codperfilx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codestadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnnuevoTemporal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridUser)).BeginInit();
             this.SuspendLayout();
@@ -176,51 +177,66 @@
             // 
             // btnaceptar
             // 
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnaceptar.Location = new System.Drawing.Point(622, 138);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(94, 23);
+            this.btnaceptar.Size = new System.Drawing.Size(94, 24);
             this.btnaceptar.TabIndex = 1;
             this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // btncancelar
             // 
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncancelar.Location = new System.Drawing.Point(721, 138);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(94, 23);
+            this.btncancelar.Size = new System.Drawing.Size(94, 24);
             this.btncancelar.TabIndex = 1;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(721, 10);
+            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
+            this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnnuevo.Location = new System.Drawing.Point(721, 9);
             this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(94, 23);
+            this.btnnuevo.Size = new System.Drawing.Size(94, 24);
             this.btnnuevo.TabIndex = 1;
             this.btnnuevo.Text = "Nuevo";
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(721, 35);
+            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
+            this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnmodificar.Location = new System.Drawing.Point(721, 34);
             this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(94, 23);
+            this.btnmodificar.Size = new System.Drawing.Size(94, 24);
             this.btnmodificar.TabIndex = 1;
             this.btnmodificar.Text = "Modificar";
+            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
             this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(721, 60);
+            this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
+            this.btneliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btneliminar.Location = new System.Drawing.Point(721, 59);
             this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(94, 23);
+            this.btneliminar.Size = new System.Drawing.Size(94, 24);
             this.btneliminar.TabIndex = 1;
             this.btneliminar.Text = "Eliminar";
+            this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btneliminar.UseVisualStyleBackColor = true;
             this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
@@ -460,16 +476,6 @@
             this.GridUser.TabIndex = 136;
             this.GridUser.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridUser_RowEnter);
             // 
-            // btnnuevoTemporal
-            // 
-            this.btnnuevoTemporal.Location = new System.Drawing.Point(721, 97);
-            this.btnnuevoTemporal.Name = "btnnuevoTemporal";
-            this.btnnuevoTemporal.Size = new System.Drawing.Size(94, 23);
-            this.btnnuevoTemporal.TabIndex = 137;
-            this.btnnuevoTemporal.Text = "Nuevo Temporal";
-            this.btnnuevoTemporal.UseVisualStyleBackColor = true;
-            this.btnnuevoTemporal.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Codigox
             // 
             this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -477,7 +483,6 @@
             this.Codigox.HeaderText = "cod";
             this.Codigox.Name = "Codigox";
             this.Codigox.Visible = false;
-            this.Codigox.Width = 49;
             // 
             // IDX
             // 
@@ -578,6 +583,16 @@
             this.passx.HeaderText = "Pasxx";
             this.passx.Name = "passx";
             this.passx.Visible = false;
+            // 
+            // btnnuevoTemporal
+            // 
+            this.btnnuevoTemporal.Location = new System.Drawing.Point(721, 97);
+            this.btnnuevoTemporal.Name = "btnnuevoTemporal";
+            this.btnnuevoTemporal.Size = new System.Drawing.Size(94, 23);
+            this.btnnuevoTemporal.TabIndex = 137;
+            this.btnnuevoTemporal.Text = "Nuevo Temporal";
+            this.btnnuevoTemporal.UseVisualStyleBackColor = true;
+            this.btnnuevoTemporal.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmUsuarios
             // 

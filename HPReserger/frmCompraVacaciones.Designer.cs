@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompraVacaciones));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtobservacion = new HpResergerUserControls.TextBoxPer();
             this.btnComprarVacaciones = new System.Windows.Forms.Button();
@@ -138,11 +139,13 @@
             // 
             // btnComprarVacaciones
             // 
+            this.btnComprarVacaciones.Image = ((System.Drawing.Image)(resources.GetObject("btnComprarVacaciones.Image")));
             this.btnComprarVacaciones.Location = new System.Drawing.Point(149, 276);
             this.btnComprarVacaciones.Name = "btnComprarVacaciones";
             this.btnComprarVacaciones.Size = new System.Drawing.Size(173, 23);
             this.btnComprarVacaciones.TabIndex = 73;
             this.btnComprarVacaciones.Text = "Comprar Vacaciones";
+            this.btnComprarVacaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnComprarVacaciones.UseVisualStyleBackColor = true;
             this.btnComprarVacaciones.Click += new System.EventHandler(this.btnComprarVacaciones_Click);
             // 

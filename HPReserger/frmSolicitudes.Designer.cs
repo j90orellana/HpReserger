@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSolicitudes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.Btncancelar = new System.Windows.Forms.Button();
@@ -56,22 +57,28 @@
             // Btncancelar
             // 
             this.Btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btncancelar.Location = new System.Drawing.Point(403, 462);
+            this.Btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btncancelar.Image")));
+            this.Btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btncancelar.Location = new System.Drawing.Point(350, 462);
             this.Btncancelar.Name = "Btncancelar";
-            this.Btncancelar.Size = new System.Drawing.Size(107, 23);
+            this.Btncancelar.Size = new System.Drawing.Size(114, 24);
             this.Btncancelar.TabIndex = 1;
             this.Btncancelar.Text = "Eliminar Solicitud";
+            this.Btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btncancelar.UseVisualStyleBackColor = true;
             this.Btncancelar.Click += new System.EventHandler(this.Btncancelar_Click);
             // 
             // btnaprovar
             // 
             this.btnaprovar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaprovar.Location = new System.Drawing.Point(290, 462);
+            this.btnaprovar.Image = ((System.Drawing.Image)(resources.GetObject("btnaprovar.Image")));
+            this.btnaprovar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnaprovar.Location = new System.Drawing.Point(231, 462);
             this.btnaprovar.Name = "btnaprovar";
-            this.btnaprovar.Size = new System.Drawing.Size(107, 23);
+            this.btnaprovar.Size = new System.Drawing.Size(113, 24);
             this.btnaprovar.TabIndex = 2;
             this.btnaprovar.Text = "Aprobar Solicitud";
+            this.btnaprovar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaprovar.UseVisualStyleBackColor = true;
             this.btnaprovar.Click += new System.EventHandler(this.btnaprovar_Click);
             // 
@@ -182,11 +189,14 @@
             // btnrecargar
             // 
             this.btnrecargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnrecargar.Location = new System.Drawing.Point(612, 17);
+            this.btnrecargar.Image = ((System.Drawing.Image)(resources.GetObject("btnrecargar.Image")));
+            this.btnrecargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnrecargar.Location = new System.Drawing.Point(606, 17);
             this.btnrecargar.Name = "btnrecargar";
-            this.btnrecargar.Size = new System.Drawing.Size(75, 23);
+            this.btnrecargar.Size = new System.Drawing.Size(81, 24);
             this.btnrecargar.TabIndex = 58;
             this.btnrecargar.Text = "Recargar";
+            this.btnrecargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnrecargar.UseVisualStyleBackColor = true;
             this.btnrecargar.Click += new System.EventHandler(this.btnrecargar_Click);
             // 

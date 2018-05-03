@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmreporteordencompra));
             this.dtgconten1 = new System.Windows.Forms.DataGridView();
             this.btncancelar = new System.Windows.Forms.Button();
             this.dtgconten = new System.Windows.Forms.DataGridView();
@@ -103,11 +104,14 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncancelar.Location = new System.Drawing.Point(950, 425);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.Size = new System.Drawing.Size(75, 24);
             this.btncancelar.TabIndex = 6;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -277,11 +281,14 @@
             // 
             // btnlimpiar
             // 
+            this.btnlimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnlimpiar.Image")));
+            this.btnlimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnlimpiar.Location = new System.Drawing.Point(407, 40);
             this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(75, 20);
+            this.btnlimpiar.Size = new System.Drawing.Size(75, 24);
             this.btnlimpiar.TabIndex = 9;
             this.btnlimpiar.Text = "Limpiar";
+            this.btnlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnlimpiar.UseVisualStyleBackColor = true;
             this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
             // 
@@ -533,7 +540,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(781, 430);
+            this.label6.Location = new System.Drawing.Point(781, 431);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 8;
@@ -543,7 +550,7 @@
             // 
             this.txtsumatoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtsumatoria.Enabled = false;
-            this.txtsumatoria.Location = new System.Drawing.Point(846, 426);
+            this.txtsumatoria.Location = new System.Drawing.Point(846, 427);
             this.txtsumatoria.Name = "txtsumatoria";
             this.txtsumatoria.Size = new System.Drawing.Size(96, 20);
             this.txtsumatoria.TabIndex = 9;
@@ -553,7 +560,7 @@
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(9, 430);
+            this.lblmsg.Location = new System.Drawing.Point(9, 431);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(81, 13);
             this.lblmsg.TabIndex = 10;
@@ -562,11 +569,14 @@
             // btnexcel
             // 
             this.btnexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnexcel.Location = new System.Drawing.Point(690, 425);
+            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
+            this.btnexcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnexcel.Location = new System.Drawing.Point(480, 425);
             this.btnexcel.Name = "btnexcel";
-            this.btnexcel.Size = new System.Drawing.Size(75, 23);
+            this.btnexcel.Size = new System.Drawing.Size(75, 24);
             this.btnexcel.TabIndex = 11;
             this.btnexcel.Text = "Excel";
+            this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexcel.UseVisualStyleBackColor = true;
             this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
             // 

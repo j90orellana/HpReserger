@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMensajeCorreo));
             this.btnenviar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,22 +51,28 @@
             // btnenviar
             // 
             this.btnenviar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnenviar.Location = new System.Drawing.Point(155, 326);
+            this.btnenviar.Image = ((System.Drawing.Image)(resources.GetObject("btnenviar.Image")));
+            this.btnenviar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnenviar.Location = new System.Drawing.Point(164, 326);
             this.btnenviar.Name = "btnenviar";
-            this.btnenviar.Size = new System.Drawing.Size(101, 27);
+            this.btnenviar.Size = new System.Drawing.Size(82, 24);
             this.btnenviar.TabIndex = 2;
             this.btnenviar.Text = "Enviar";
+            this.btnenviar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnenviar.UseVisualStyleBackColor = true;
             this.btnenviar.Click += new System.EventHandler(this.btnenviar_Click);
             // 
             // btncancelar
             // 
             this.btncancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btncancelar.Location = new System.Drawing.Point(262, 326);
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btncancelar.Location = new System.Drawing.Point(252, 326);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(101, 27);
+            this.btncancelar.Size = new System.Drawing.Size(82, 24);
             this.btncancelar.TabIndex = 3;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -107,11 +114,14 @@
             // 
             // btnadjuntar
             // 
+            this.btnadjuntar.Image = ((System.Drawing.Image)(resources.GetObject("btnadjuntar.Image")));
+            this.btnadjuntar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnadjuntar.Location = new System.Drawing.Point(204, 52);
             this.btnadjuntar.Name = "btnadjuntar";
-            this.btnadjuntar.Size = new System.Drawing.Size(54, 21);
+            this.btnadjuntar.Size = new System.Drawing.Size(82, 24);
             this.btnadjuntar.TabIndex = 8;
             this.btnadjuntar.Text = "Adjuntar";
+            this.btnadjuntar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnadjuntar.UseVisualStyleBackColor = true;
             this.btnadjuntar.Click += new System.EventHandler(this.btnadjuntar_Click);
             // 
@@ -119,9 +129,9 @@
             // 
             this.lbldatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbldatos.Location = new System.Drawing.Point(264, 54);
+            this.lbldatos.Location = new System.Drawing.Point(292, 54);
             this.lbldatos.Name = "lbldatos";
-            this.lbldatos.Size = new System.Drawing.Size(223, 21);
+            this.lbldatos.Size = new System.Drawing.Size(195, 21);
             this.lbldatos.TabIndex = 9;
             this.lbldatos.Click += new System.EventHandler(this.lbldatos_Click);
             // 

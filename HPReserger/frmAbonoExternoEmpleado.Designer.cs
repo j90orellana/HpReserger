@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbonoExternoEmpleado));
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.nroregistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diaactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,7 +101,7 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(447, 228);
+            this.dtgconten.Size = new System.Drawing.Size(447, 234);
             this.dtgconten.TabIndex = 57;
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten_EditingControlShowing);
             // 
@@ -235,33 +236,39 @@
             // btngrabar
             // 
             this.btngrabar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btngrabar.Location = new System.Drawing.Point(297, 304);
+            this.btngrabar.Image = ((System.Drawing.Image)(resources.GetObject("btngrabar.Image")));
+            this.btngrabar.Location = new System.Drawing.Point(297, 309);
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(78, 23);
             this.btngrabar.TabIndex = 62;
             this.btngrabar.Text = "&Grabar";
+            this.btngrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btngrabar.UseVisualStyleBackColor = true;
             this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
             // 
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(381, 303);
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(381, 309);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(78, 23);
             this.btncancelar.TabIndex = 63;
             this.btncancelar.Text = "&Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // btncargar
             // 
             this.btncargar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btncargar.Location = new System.Drawing.Point(324, 40);
+            this.btncargar.Image = ((System.Drawing.Image)(resources.GetObject("btncargar.Image")));
+            this.btncargar.Location = new System.Drawing.Point(303, 39);
             this.btncargar.Name = "btncargar";
             this.btncargar.Size = new System.Drawing.Size(78, 23);
             this.btncargar.TabIndex = 64;
             this.btncargar.Text = "&Cargar";
+            this.btncargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncargar.UseVisualStyleBackColor = true;
             this.btncargar.Click += new System.EventHandler(this.btncargar_Click);
             // 
@@ -283,10 +290,10 @@
             this.comboMesAño1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 3, 14, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 3, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
-            this.comboMesAño1.Location = new System.Drawing.Point(84, 39);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 4, 24, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 4, 30, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 4, 1, 0, 0, 0, 0);
+            this.comboMesAño1.Location = new System.Drawing.Point(89, 38);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
             this.comboMesAño1.TabIndex = 60;

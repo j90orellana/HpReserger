@@ -79,29 +79,44 @@ namespace HPReserger
             }
             catch { }
         }
-
+        int Con = 0;
         private void btnmas_Click(object sender, EventArgs e)
         {
             txttotalhaber.Text = txttotaldebe.Text = "0.00";
-            Sumatoria();
             if (Dtgconten.RowCount > 0)
             {
                 Dtgconten.CurrentCell = Dtgconten[cuenta.Name, Dtgconten.RowCount - 1];
                 if (Dtgconten[cuenta.Name, Dtgconten.CurrentCell.RowIndex].Value.ToString() != "" && Dtgconten[descripcion.Name, Dtgconten.CurrentCell.RowIndex].Value.ToString() != "")
                 {
-                    Dtgconten.Rows.Add();
-                    Dtgconten[cuenta.Name, Dtgconten.RowCount - 1].Value = Dtgconten[1, Dtgconten.RowCount - 1].Value = "";
-                    Dtgconten[2, Dtgconten.RowCount - 1].Value = Dtgconten[3, Dtgconten.RowCount - 1].Value = "0.00";
-                    Dtgconten.CurrentCell = Dtgconten[0, Dtgconten.RowCount - 1];
+                    //Con = Dtgconten.RowCount + 1;
+                    int f = 1;
+                    foreach (DataGridViewRow item in Dtgconten.Rows)
+                    {
+                        if (item.Cells[EstadoCuen.Name].Value != null)
+                        {
+                            if (item.Cells[EstadoCuen.Name].Value.ToString() != "3") f++;
+                        }
+                        else f++;
+                    }
+                    Dtgconten.Rows.Insert(f - 1, 1);
+                    Dtgconten[IDASIENTOX.Name, f - 1].Value = f;
+                    Dtgconten[cuenta.Name, f - 1].Value = Dtgconten[cuenta.Name, f - 1].Value = "";
+                    Dtgconten[debe.Name, f - 1].Value = Dtgconten[haber.Name, f - 1].Value = "0.00";
+                    Dtgconten[EstadoCuen.Name, f - 1].Value = 1;
+                    Dtgconten.CurrentCell = Dtgconten[cuenta.Name, f - 1];
                 }
             }
             else
             {
+                Con = Dtgconten.RowCount + 1;
                 Dtgconten.Rows.Add();
-                Dtgconten[0, 0].Value = Dtgconten[1, 0].Value = "";
-                Dtgconten[2, Dtgconten.RowCount - 1].Value = Dtgconten[3, Dtgconten.RowCount - 1].Value = "0.00";
-                Dtgconten.CurrentCell = Dtgconten[0, Dtgconten.RowCount - 1];
+                Dtgconten[IDASIENTOX.Name, 0].Value = Con;
+                Dtgconten[cuenta.Name, 0].Value = Dtgconten[descripcion.Name, 0].Value = "";
+                Dtgconten[EstadoCuen.Name, Dtgconten.RowCount - 1].Value = 1;
+                Dtgconten[debe.Name, Dtgconten.RowCount - 1].Value = Dtgconten[haber.Name, Dtgconten.RowCount - 1].Value = "0.00";
+                Dtgconten.CurrentCell = Dtgconten[cuenta.Name, Dtgconten.RowCount - 1];
             }
+            Sumatoria();
             Dtgconten.Focus();
         }
         private void Dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -110,13 +125,13 @@ namespace HPReserger
             {
                 // string cadenita = Dtgconten[0, e.RowIndex].Value.ToString();
                 btnmas.Focus();
-                if (e.RowIndex > -1 && e.ColumnIndex == 0)
+                if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index)
                 {
                     frmlistarcuentas cuentitas = new frmlistarcuentas();
                     cuentitas.Icon = Icon;
-                    if (Dtgconten[0, e.RowIndex].Value != null)
+                    if (Dtgconten[cuenta.Name, e.RowIndex].Value != null)
                     {
-                        cuentitas.Txtbusca.Text = Dtgconten[0, e.RowIndex].Value.ToString();
+                        cuentitas.Txtbusca.Text = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
                     }
                     else
                     { cuentitas.Txtbusca.Text = ""; }
@@ -124,12 +139,48 @@ namespace HPReserger
                     cuentitas.ShowDialog();
                     if (cuentitas.aceptar)
                     {
-                        Dtgconten[0, e.RowIndex].Value = cuentitas.codigo;
-                        btnmas.Focus();
+                        if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
+                        {
+                            MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                        }
+                        else
+                        {
+                            Dtgconten[cuenta.Name, e.RowIndex].Value = cuentitas.codigo;
+                            btnmas.Focus();
+                        }
                     }
                 }
+                if (Dtgconten[EstadoCuen.Name, e.RowIndex].Value == null) Dtgconten[EstadoCuen.Name, e.RowIndex].Value = cboestado.SelectedValue;
+                if (e.RowIndex >= 0 && e.ColumnIndex == Dtgconten.Columns[descripcion.Name].Index && Dtgconten[descripcion.Name, e.RowIndex].Value.ToString() != "" && Dtgconten[EstadoCuen.Name, e.RowIndex].Value.ToString() != "3")
+                {
+                    //cuando doy click en el detalle
+                    frmdetalle = new frmDetalleAsientos();
+                    frmdetalle.MdiParent = this.MdiParent;
+                    frmdetalle.Icon = this.Icon;
+                    frmdetalle.idasiento = int.Parse(txtcodigo.Text);
+                    frmdetalle.asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
+                    frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
+                    frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
+                    frmdetalle.FormClosed += new FormClosedEventHandler(Frmdetalle_FormClosed);
+                    frmdetalle.Show();
+                }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MSG(ex.Message);
+            }
+        }
+        frmDetalleAsientos frmdetalle;
+        private void Frmdetalle_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //cambia de estado a lo que se ingresa el detalle y cierra la ventana
+            if (frmdetalle.Dtgconten.RowCount > 1)
+            {
+                Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 1;
+            }
+            else
+                Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 0;
+            PintardeCOlores();
         }
         public Boolean llamado = true;
         public int coddinamica { get; set; }
@@ -203,10 +254,10 @@ namespace HPReserger
                 for (int i = 0; i < dtgayuda.RowCount; i++)
                 {//6=CodigoCuenta 7=DescripcionCuenta 8=Debe/Haber //0=CodigoCuenta 1=Descripcion 2=debe 3=haber
                     Dtgconten.Rows.Add();
-                    Dtgconten[0, i].Value = dtgayuda[6, i].Value;
-                    Dtgconten[1, i].Value = dtgayuda[7, i].Value;
-                    Dtgconten[2, i].Value = "0.00";
-                    Dtgconten[3, i].Value = "0.00";
+                    Dtgconten[cuenta.Name, i].Value = dtgayuda[6, i].Value;
+                    Dtgconten[descripcion.Name, i].Value = dtgayuda[7, i].Value;
+                    Dtgconten[debe.Name, i].Value = "0.00";
+                    Dtgconten[haber.Name, i].Value = "0.00";
                 }
                 txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
                 totaldebe = totalhaber = 0;
@@ -238,19 +289,33 @@ namespace HPReserger
         {
             try
             {
-                if (e.RowIndex > -1 && e.ColumnIndex == 0)
+                if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index)
                 { //MODIFICAR LA COLUMNA DE CODIGOS
-                    dtgayuda2.DataSource = CapaLogica.BuscarCuentas(Dtgconten[0, e.RowIndex].Value.ToString(), 1);
+                    dtgayuda2.DataSource = CapaLogica.BuscarCuentas(Dtgconten[cuenta.Name, e.RowIndex].Value.ToString(), 1);
                     if (dtgayuda2.RowCount == 1)
                     {
-                        Dtgconten[1, e.RowIndex].Value = dtgayuda2[0, 0].Value.ToString();
+                        Dtgconten[descripcion.Name, e.RowIndex].Value = dtgayuda2[0, 0].Value.ToString();
                         //Dtgconten[2, e.RowIndex].Value = dtgayuda2[1, 0].Value.ToString();
                         //aux = true;
                     }
                     else
                     {
-                        Dtgconten[1, e.RowIndex].Value = "";
+                        Dtgconten[descripcion.Name, e.RowIndex].Value = "";
                         //aux = false;
+                    }
+                }
+                if (e.RowIndex >= 0)
+                {
+                    if (Dtgconten.Columns[descripcion.Name].Index == e.ColumnIndex)
+                    {
+                        if (Dtgconten[IDASIENTOX.Name, e.RowIndex].Value == null)
+                        {
+                            //if (Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString() == "")
+                            //{
+                            //    Dtgconten[IDASIENTOX.Name, e.RowIndex].Value = e.RowIndex + 1;
+                            //}
+                            Dtgconten[IDASIENTOX.Name, e.RowIndex].Value = e.RowIndex + 1;
+                        }
                     }
                 }
             }
@@ -288,7 +353,7 @@ namespace HPReserger
         private void Dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             punto = 0;
-            if (Dtgconten.CurrentCell.ColumnIndex == 2 || Dtgconten.CurrentCell.ColumnIndex == 3)
+            if (Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[debe.Name].Index || Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[haber.Name].Index)
             {
                 txt = e.Control as TextBox;
                 if (txt != null)
@@ -310,96 +375,154 @@ namespace HPReserger
         }
         private void Dtgconten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            //try
+            //{            
+            if (e.ColumnIndex > 1)
             {
-                if (e.ColumnIndex > 1)
+                if (Dtgconten[e.ColumnIndex, e.RowIndex].Value == null)
+                    Dtgconten[e.ColumnIndex, e.RowIndex].Value = "0.00";
+                if (Dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString() =="")
+                    Dtgconten[e.ColumnIndex, e.RowIndex].Value = "0.00";
+                double aux = Convert.ToDouble(Dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString());
+                Dtgconten[e.ColumnIndex, e.RowIndex].Value = string.Format("{0:N2}", aux);
+            }
+            totaldebe = 0;
+            totalhaber = 0;
+            if (Dtgconten.RowCount > 0)
+            {
+                if (Dtgconten.RowCount == 1)
                 {
-                    double aux = Convert.ToDouble(Dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString());
-                    Dtgconten[e.ColumnIndex, e.RowIndex].Value = string.Format("{0:N2}", aux);
-                }
-                if (Dtgconten.RowCount > 0)
-                {
-                    if (Dtgconten.RowCount == 1)
+                    if (Dtgconten[debe.Name, 0].Value.ToString() == "")
                     {
-                        if (Dtgconten[2, 0].Value.ToString() == "")
+                        totaldebe = 0; Dtgconten[debe.Name, 0].Value = "0.00";
+                    }
+                    else { totaldebe = Convert.ToDecimal(Dtgconten[debe.Name, 0].Value.ToString()); }
+                    if (Dtgconten[haber.Name, 0].Value.ToString() == "")
+                    {
+                        totalhaber = 0; Dtgconten[haber.Name, 0].Value = "0.00";
+                    }
+                    else
+                    {
+                        totaldebe = Convert.ToDecimal(Dtgconten[debe.Name, 0].Value.ToString());
+                    }
+                    txttotaldebe.Text = string.Format("{0:N2}", totaldebe);
+                    txttotalhaber.Text = string.Format("{0:N2}", totalhaber);
+                }
+                if (Dtgconten.RowCount > 1)
+                {
+                    decimal aux1, aux2 = 0;
+                    totaldebe = totalhaber = 0;
+                    foreach (DataGridViewRow item in Dtgconten.Rows)
+                    {
+                        //for (int i = 0; i < Dtgconten.RowCount; i++)
+                        //{
+                        aux1 = 0; aux2 = 0;
+                        if (item.Cells[debe.Name].Value == null) item.Cells[debe.Name].Value = "0.00";
+                        if (item.Cells[debe.Name].Value.ToString() == "" || item.Cells[debe.Name].Value.ToString() == null)
                         {
-                            totaldebe = 0; Dtgconten[2, 0].Value = "0.00";
-                        }
-                        else { totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString()); }
-                        if (Dtgconten[3, 0].Value.ToString() == "")
-                        {
-                            totalhaber = 0; Dtgconten[3, 0].Value = "0.00";
+                            item.Cells[debe.Name].Value = "0.00";
                         }
                         else
                         {
-                            totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString());
+                            aux1 = Convert.ToDecimal(item.Cells[debe.Name].Value.ToString());
                         }
+                        if (item.Cells[haber.Name].Value == null) item.Cells[haber.Name].Value = "0.00";
+                        if (item.Cells[haber.Name].Value.ToString() == "" || item.Cells[haber.Name].Value.ToString() == null)
+                        {
+                            item.Cells[haber.Name].Value = "0.00";
+                        }
+                        else
+                        {
+                            aux2 = Convert.ToDecimal(item.Cells[haber.Name].Value.ToString());
+                        }
+                        totaldebe += aux1;
+                        totalhaber += aux2;
+                        txtdiferencia.Text = string.Format("{0:N2}", totaldebe - totalhaber);
                         txttotaldebe.Text = string.Format("{0:N2}", totaldebe);
                         txttotalhaber.Text = string.Format("{0:N2}", totalhaber);
                     }
-                    if (Dtgconten.RowCount > 1)
+                }
+                if (totaldebe > totalhaber)
+                {
+                    txttotalhaber.ForeColor = Color.Red;
+                }
+                else txttotalhaber.ForeColor = Color.Green;
+                if (totalhaber > totaldebe)
+                {
+                    txttotaldebe.ForeColor = Color.Red;
+                }
+                else txttotaldebe.ForeColor = Color.Green;
+                if (totalhaber == totaldebe)
+                {
+                    txttotaldebe.ForeColor = Color.Black;
+                    txttotalhaber.ForeColor = Color.Black;
+                }
+            }
+            else
+            {
+                totaldebe = 0;
+                totalhaber = 0;
+                txttotaldebe.Text = totaldebe.ToString();
+                txttotalhaber.Text = totalhaber.ToString();
+            }
+            //}
+            //catch
+            //{
+            //}
+            BusquedaReflejoPRevio();
+        }
+        public void BusquedaReflejoPRevio()
+        {
+            int fx = Dtgconten.RowCount;
+            for (int i = 0; i < fx; i++)
+            {
+                if (Dtgconten[EstadoCuen.Name, i].Value != null)
+                    if (Dtgconten[EstadoCuen.Name, i].Value.ToString() == "3")
                     {
-                        decimal aux1, aux2 = 0;
-                        totaldebe = totalhaber = 0;
-                        for (int i = 0; i < Dtgconten.RowCount; i++)
+                        //Dtgconten.CurrentCell = Dtgconten[cuenta.Name, 0];
+                        Dtgconten.Rows.RemoveAt(i);
+                        fx--;
+                        i--;
+                    }
+            }
+            int con = Dtgconten.RowCount;
+            for (int i = 0; i < con; i++)
+            {
+                //busco si tienen refleejo y tiene valores
+                if (decimal.Parse(Dtgconten[debe.Name, i].Value.ToString()) > 0 || decimal.Parse(Dtgconten[haber.Name, i].Value.ToString()) > 0)
+                {
+                    //busco los reflejos
+                    DataTable tablita = new DataTable();
+                    tablita = CapaLogica.BuscarCuentasReflejo(Dtgconten[cuenta.Name, i].Value.ToString(), decimal.Parse(Dtgconten[debe.Name, i].Value.ToString()), decimal.Parse(Dtgconten[haber.Name, i].Value.ToString()));
+                    if (tablita.Rows.Count > 0)
+                    {
+                        foreach (DataRow filita in tablita.Rows)
                         {
-                            if (Dtgconten[2, i].Value.ToString() == "" || Dtgconten[2, i].Value.ToString() == null)
-                            {
-                                aux1 = 0; Dtgconten[2, i].Value = "0.00";
-                            }
-                            else { aux1 = Convert.ToDecimal(Dtgconten[2, i].Value.ToString()); }
-                            if (Dtgconten[3, i].Value.ToString() == "" || Dtgconten[3, i].Value.ToString() == null)
-                            {
-                                aux2 = 0; Dtgconten[3, i].Value = "0.00";
-                            }
-                            else
-                            {
-                                aux2 = Convert.ToDecimal(Dtgconten[3, i].Value.ToString());
-                            }
-                            totaldebe += aux1;
-                            totalhaber += aux2;
-                            txtdiferencia.Text = string.Format("{0:N2}", totaldebe - totalhaber);
-                            txttotaldebe.Text = string.Format("{0:N2}", totaldebe);
-                            txttotalhaber.Text = string.Format("{0:N2}", totalhaber);
+                            Dtgconten.Rows.Add();
+                            int f = Dtgconten.RowCount - 1;
+                            Dtgconten[cuenta.Name, f].Value = filita["cuenta"].ToString();
+                            Dtgconten[debe.Name, f].Value = filita["debe"].ToString();
+                            Dtgconten[haber.Name, f].Value = filita["haber"].ToString();
+                            Dtgconten[EstadoCuen.Name, f].Value = filita["estado"].ToString();
+                            Dtgconten[detallex.Name, f].Value = 0;
+                            Dtgconten.Rows[f].ReadOnly = true;
                         }
                     }
-                    if (totaldebe > totalhaber)
-                    {
-                        txttotalhaber.ForeColor = Color.Red;
-                    }
-                    else txttotalhaber.ForeColor = Color.Green;
-                    if (totalhaber > totaldebe)
-                    {
-                        txttotaldebe.ForeColor = Color.Red;
-                    }
-                    else txttotaldebe.ForeColor = Color.Green;
-                    if (totalhaber == totaldebe)
-                    {
-                        txttotaldebe.ForeColor = Color.Black;
-                        txttotalhaber.ForeColor = Color.Black;
-                    }
-                }
-                else
-                {
-                    totaldebe = 0;
-                    totalhaber = 0;
-                    txttotaldebe.Text = totaldebe.ToString();
-                    txttotalhaber.Text = totalhaber.ToString();
                 }
             }
-            catch
-            {
-            }
-
+            Sumatoria();
+            PintardeCOlores();
         }
         public void Sumatoria()
         {
 
-            try
+            //try
+            //{
+            if (Dtgconten.CurrentCell != null)
             {
                 int e = Dtgconten.CurrentCell.RowIndex;
                 int f = Dtgconten.CurrentCell.ColumnIndex;
-                if (e >= 0 && f > 0)
+                if (e >= 0 && f > 2)
                 {
                     double aux = Convert.ToDouble(Dtgconten[f, e].Value.ToString());
                     Dtgconten[f, e].Value = string.Format("{0:N2}", aux);
@@ -408,18 +531,18 @@ namespace HPReserger
                 {
                     if (Dtgconten.RowCount == 1)
                     {
-                        if (Dtgconten[2, 0].Value.ToString() == "")
+                        if (Dtgconten[debe.Name, 0].Value.ToString() == "")
                         {
-                            totaldebe = 0; Dtgconten[2, 0].Value = "0.00";
+                            totaldebe = 0; Dtgconten[debe.Name, 0].Value = "0.00";
                         }
-                        else { totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString()); }
-                        if (Dtgconten[3, 0].Value.ToString() == "")
+                        else { totaldebe = Convert.ToDecimal(Dtgconten[debe.Name, 0].Value.ToString()); }
+                        if (Dtgconten[haber.Name, 0].Value.ToString() == "")
                         {
-                            totalhaber = 0; Dtgconten[3, 0].Value = "0.00";
+                            totalhaber = 0; Dtgconten[haber.Name, 0].Value = "0.00";
                         }
                         else
                         {
-                            totaldebe = Convert.ToDecimal(Dtgconten[2, 0].Value.ToString());
+                            totaldebe = Convert.ToDecimal(Dtgconten[debe.Name, 0].Value.ToString());
                         }
 
                         txttotaldebe.Text = string.Format("{0:N2}", totaldebe);
@@ -431,18 +554,22 @@ namespace HPReserger
                         totaldebe = totalhaber = 0;
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
-                            if (Dtgconten[2, i].Value.ToString() == "" || Dtgconten[2, i].Value.ToString() == null)
+                            aux1 = 0;
+                            aux2 = 0;
+                            if (Dtgconten[debe.Name, i].Value == null) Dtgconten[debe.Name, i].Value = "0.00";
+                            if (Dtgconten[debe.Name, i].Value.ToString() == "" || Dtgconten[debe.Name, i].Value.ToString() == null)
                             {
-                                aux1 = 0; Dtgconten[2, i].Value = "0.00";
+                                Dtgconten[debe.Name, i].Value = "0.00";
                             }
-                            else { aux1 = Convert.ToDecimal(Dtgconten[2, i].Value.ToString()); }
-                            if (Dtgconten[3, i].Value.ToString() == "" || Dtgconten[3, i].Value.ToString() == null)
+                            else { aux1 = Convert.ToDecimal(Dtgconten[debe.Name, i].Value.ToString()); }
+                            if (Dtgconten[haber.Name, i].Value == null) Dtgconten[haber.Name, i].Value = "0.00";
+                            if (Dtgconten[haber.Name, i].Value.ToString() == "" || Dtgconten[haber.Name, i].Value.ToString() == null)
                             {
-                                aux2 = 0; Dtgconten[3, i].Value = "0.00";
+                                Dtgconten[haber.Name, i].Value = "0.00";
                             }
                             else
                             {
-                                aux2 = Convert.ToDecimal(Dtgconten[3, i].Value.ToString());
+                                aux2 = Convert.ToDecimal(Dtgconten[haber.Name, i].Value.ToString());
                             }
                             totaldebe += aux1;
                             totalhaber += aux2;
@@ -475,9 +602,10 @@ namespace HPReserger
                     txttotalhaber.Text = totalhaber.ToString();
                 }
             }
-            catch
-            {
-            }
+            //}
+            //catch
+            //{
+            //}
         }
         private void lblmsg2_Click(object sender, EventArgs e)
         {
@@ -563,13 +691,15 @@ namespace HPReserger
                     foreach (DataGridViewRow item in dtgayuda3.Rows)
                     {
                         Dtgconten.Rows.Add();
-                        Dtgconten[0, i].Value = item.Cells["cod"].Value.ToString();
-                        Dtgconten[2, i].Value = item.Cells["debe"].Value;
-                        Dtgconten[3, i].Value = item.Cells["haber"].Value;
-                        Dtgconten[4, i].Value = item.Cells["estado"].Value;
+                        Dtgconten[IDASIENTOX.Name, i].Value = item.Cells["idAsiento"].Value.ToString();
+                        Dtgconten[cuenta.Name, i].Value = item.Cells["cod"].Value.ToString();
+                        Dtgconten[debe.Name, i].Value = item.Cells["debe"].Value;
+                        Dtgconten[haber.Name, i].Value = item.Cells["haber"].Value;
+                        Dtgconten[EstadoCuen.Name, i].Value = item.Cells["estado"].Value;
+                        Dtgconten[detallex.Name, i].Value = item.Cells["detalle"].Value;
                         //sumas
-                        activo += Convert.ToDecimal(Dtgconten[2, i].Value);
-                        pasivo += Convert.ToDecimal(Dtgconten[3, i].Value);
+                        activo += Convert.ToDecimal(Dtgconten[debe.Name, i].Value);
+                        pasivo += Convert.ToDecimal(Dtgconten[haber.Name, i].Value);
                         i++;
                     }
                     PintardeCOlores();
@@ -598,10 +728,16 @@ namespace HPReserger
         {
             foreach (DataGridViewRow item in Dtgconten.Rows)
             {
-                if (item.Cells[EstadoCuen.Name].Value.ToString() == "3")
-                {
-                    item.DefaultCellStyle.ForeColor = Color.Red;
-                }
+                if (item.Cells[EstadoCuen.Name].Value != null)
+                    if (item.Cells[EstadoCuen.Name].Value.ToString() == "3")
+                    {
+                        item.DefaultCellStyle.ForeColor = Color.Red;
+                    }
+                if (item.Cells[detallex.Name].Value != null)
+                    if (int.Parse(item.Cells[detallex.Name].Value.ToString()) > 0)
+                    {
+                        item.DefaultCellStyle.ForeColor = Color.Blue;
+                    }
             }
         }
         private void dtgbusca_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -620,6 +756,7 @@ namespace HPReserger
             tablita.Columns.Add("VALOR");
             tablita.Rows.Add(new object[] { "1", "Activo" });
             tablita.Rows.Add(new object[] { "0", "Inactivo" });
+            tablita.Rows.Add(new object[] { "3", "Reflejo" });
             combito.DataSource = tablita;
             combito.DisplayMember = "VALOR";
             combito.ValueMember = "CODIGO";
@@ -649,9 +786,10 @@ namespace HPReserger
             ultimoasiento();
             txtdinamica.Text = "";
             txtcodigo.Text = codigo + "";
-            txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "";
+            txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
             fecha.Value = DateTime.Now;
             btnActualizar.Enabled = false; chkfechavalor.Enabled = true;
+            cboestado.SelectedIndex = 0;
         }
         public Boolean modifico;
         public int dinamimodi;
@@ -669,19 +807,23 @@ namespace HPReserger
             salida = true;
             try
             {
-                if (Dtgconten[1, Dtgconten.RowCount - 1].Value.ToString() == "")
+                foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
-                    Dtgconten.Rows.RemoveAt(Dtgconten.RowCount - 1);
+                    if (item.Cells[cuenta.Name].Value.ToString() == "")
+                    {
+                        Dtgconten.Rows.Remove(item);
+                    }
                 }
+
                 for (pos = 0; pos < Dtgconten.RowCount; pos++)
                 {
-                    if (Dtgconten[1, pos].Value.ToString() == "")
+                    if (Dtgconten[cuenta.Name, pos].Value.ToString() == "")
                     {
                         Mensajes("La Cuenta de la linea:" + (pos + 1) + " Es Incorrecto");
                         salida = false;
                         break;
                     }
-                    if (Convert.ToDouble(Dtgconten[2, pos].Value.ToString()) >= 0)
+                    if (Convert.ToDouble(Dtgconten[debe.Name, pos].Value.ToString()) >= 0)
                     { }
                     else
                     {
@@ -689,7 +831,7 @@ namespace HPReserger
                         salida = false;
                         break;
                     }
-                    if (Convert.ToDouble(Dtgconten[3, pos].Value.ToString()) >= 0)
+                    if (Convert.ToDouble(Dtgconten[haber.Name, pos].Value.ToString()) >= 0)
                     { }
                     else
                     {
@@ -697,7 +839,7 @@ namespace HPReserger
                         salida = false;
                         break;
                     }
-                    if (Convert.ToDouble(Dtgconten[2, pos].Value.ToString()) == Convert.ToDouble(Dtgconten[3, pos].Value.ToString()) && 0 != (Convert.ToDouble(Dtgconten[2, pos].Value.ToString()) + Convert.ToDouble(Dtgconten[3, pos].Value.ToString())))
+                    if (Convert.ToDouble(Dtgconten[debe.Name, pos].Value.ToString()) == Convert.ToDouble(Dtgconten[haber.Name, pos].Value.ToString()) && 0 != (Convert.ToDouble(Dtgconten[debe.Name, pos].Value.ToString()) + Convert.ToDouble(Dtgconten[haber.Name, pos].Value.ToString())))
                     {
                         Mensajes("El DEBE y HABER son iguales en la Linea: " + (pos + 1));
                         salida = false;
@@ -788,7 +930,7 @@ namespace HPReserger
                         DateTime? fechita;
                         if (chkfechavalor.Checked) fechita = dtfechavalor.Value;
                         else fechita = null;
-                        CapaLogica.InsertarAsiento(codigo, FECHA, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Convert.ToDouble(Dtgconten[2, i].Value.ToString()), Convert.ToDouble(Dtgconten[3, i].Value.ToString()), DINAMICA, ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
+                        CapaLogica.InsertarAsiento((int)Dtgconten[IDASIENTOX.Name, i].Value, codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                     }
                     Txtbusca.Text = codigo + "";
                     dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
@@ -810,14 +952,17 @@ namespace HPReserger
                             if (int.Parse(cboestado.SelectedValue.ToString()) == 0)
                                 ESTADO = 0;
                             else
-                                ESTADO = (int)Dtgconten[EstadoCuen.Name, i].Value;
+                                if (Dtgconten[EstadoCuen.Name, i].Value == null)
+                                ESTADO = 1;
+                            else
+                                ESTADO =int.Parse(Dtgconten[EstadoCuen.Name, i].Value.ToString());
                             DateTime? fechitas;
                             if (chkfechavalor.Checked) fechitas = dtfechavalor.Value;
                             else fechitas = null;
                             if (modifico)
-                                CapaLogica.InsertarAsiento(codigo, FECHA, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Convert.ToDouble(Dtgconten[2, i].Value.ToString()), Convert.ToDouble(Dtgconten[3, i].Value.ToString()), DINAMICA, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
+                                CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                             else
-                                CapaLogica.InsertarAsiento(codigo, FECHA, Convert.ToInt32(Dtgconten[0, i].Value.ToString()), Convert.ToDouble(Dtgconten[2, i].Value.ToString()), Convert.ToDouble(Dtgconten[3, i].Value.ToString()), dinamimodi, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
+                                CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), dinamimodi, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                         }
                         estado = 0;
                         Txtbusca.Text = codigo + "";
@@ -1029,8 +1174,20 @@ namespace HPReserger
         private void Dtgconten_RowValidated(object sender, DataGridViewCellEventArgs e)
         {
         }
+
+        private void Dtgconten_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            Sumatoria();
+        }
+
+        private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
+            Sumatoria();
             msg(Dtgconten);
         }
     }

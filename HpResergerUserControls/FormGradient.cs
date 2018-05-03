@@ -23,6 +23,11 @@ namespace HpResergerUserControls
         int _angulo = 45;
         public Color[] Colores { get { return _colores; } set { _colores = value; } }
         public int Angulo { get { return _angulo; } set { _angulo = value; } }
+        public string Nombre
+        {
+            get { return Text; }
+            set { Text = value; }
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -43,5 +48,6 @@ namespace HpResergerUserControls
                     e.Graphics.FillRectangle(BrochaGradienteLineal, this.ClientRectangle);
                 }
         }
+
     }
 }

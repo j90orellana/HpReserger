@@ -588,6 +588,15 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="btnAceptar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAALFJREFUOE9j
+        GDzAZMbt/5oNO8F4w76jcLxw3db/TROmgdlxS678N5l++4DeoovcUG0IgMsAkGY1IwuEAUB1IEOg2hCA
+        JAOAGKoNAUCCWk17wQYs3H4EbgDMC+v3HfsfsOAafgNIwVBtCIBNET4M1YYAIMEfv//9JwRAanAaAAKv
+        3r3/f//pC6wYJAcCtDXgy7fv/99/+owVg+RAgHYGZGx68j9r81O8OB2oBqsBAwQYGAAGcsDzujh5FQAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnAceptar.Location" type="System.Drawing.Point, System.Drawing">
     <value>439, 67</value>
   </data>
@@ -599,6 +608,9 @@
   </data>
   <data name="btnAceptar.Text" xml:space="preserve">
     <value>Aceptar</value>
+  </data>
+  <data name="btnAceptar.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="&gt;&gt;btnAceptar.Name" xml:space="preserve">
     <value>btnAceptar</value>
@@ -636,6 +648,21 @@
   <data name="&gt;&gt;txtNumeros.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnlistar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAILSURBVDhPhVHNbhJRFL6JK30RX8G4NCZGjcu+AVAGNQGrbeEOgVbSYB2duQNtHNuFQAOEKeim
+        bgrGLqztSqhS1LRdS6S21ZK00OR4z3ghM7XiSb7MyfeXezLEPsNUv+UL600pnGhKIfWmoP/J/zWSnNjV
+        Uq9hJrcMkqx/FzTyrdl8GdQXS+Dju6Cd4w1qbp+sQ1BJgX/yGRaAkHiBbnGooYe/wiWkPzM0VDjnpay9
+        sLQOr1Y+gVmpwnBI6xfgvsg51NAjUXaIGSET4qbssj9mHKChB09QBa/M2hZ4gV3zPzQOXPTJJRHnz5dZ
+        LP681LGbsMAsVy3gbtfiRqnDM5MiTsidaHJjvrjiMNlDpwvmim/hdiRZs8KeqHGB339cerPhMA0qKHIv
+        ZgKBp+eJe1y9OjI177gfgaG7EzOHiNMFiPtTc/uucfUK8YZY7JFaOJmNvwRNzgJ+s4urVoEkaxcRuGfN
+        d5bW8/BMxxNiERKkRj0RLcB6ZQc2P+zCGv8moiYEgsn+b7zH9+SE6fDokQKMUqNGFJo5Watsw17rGFrN
+        I9iq/4T35W14TDP9gmm+n+VR5IUuUcYy3S+1PWh9O4Kdxi9L/Fz9AciL/GAPo7kGtiHZw+ryFjCar4v8
+        YM/0g/QNFs638b6vH/et+5icaytj6Wsi/3+PMpK6zkLZhjKa7mo0u2kP9+ZsDyG/ATP7SVacNdp0AAAA
+        AElFTkSuQmCC
+</value>
+  </data>
   <data name="btnlistar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -643,13 +670,16 @@
     <value>12, 67</value>
   </data>
   <data name="btnlistar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 23</value>
+    <value>137, 23</value>
   </data>
   <data name="btnlistar.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
   </data>
   <data name="btnlistar.Text" xml:space="preserve">
     <value>Ver OC Atendidas</value>
+  </data>
+  <data name="btnlistar.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="&gt;&gt;btnlistar.Name" xml:space="preserve">
     <value>btnlistar</value>

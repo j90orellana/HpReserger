@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFoto));
             this.pbfoto = new System.Windows.Forms.PictureBox();
             this.btndescargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbfoto)).BeginInit();
@@ -51,12 +52,15 @@
             // 
             this.btndescargar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.Image = ((System.Drawing.Image)(resources.GetObject("btndescargar.Image")));
+            this.btndescargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(389, 735);
+            this.btndescargar.Location = new System.Drawing.Point(386, 735);
             this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.Size = new System.Drawing.Size(108, 24);
             this.btndescargar.TabIndex = 111;
             this.btndescargar.Text = "Descargar";
+            this.btndescargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btndescargar.UseVisualStyleBackColor = false;
             this.btndescargar.Visible = false;
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);

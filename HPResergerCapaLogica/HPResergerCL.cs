@@ -150,9 +150,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerificarArticuloServicio(articulo, marca);
         }
-        public void InsertarArticulo(string descripcion, int stock, int tipo, string observa, int igv, int centro, string cuenta, string cc)
+        public void InsertarArticulo(string descripcion, int stock, int tipo, string observa, int igv, int centro, string cuenta, string cc, string cta, string ctaact)
         {
-            cdOrdenPedido.InsertarArticulo(descripcion, stock, tipo, observa, igv, centro, cuenta, cc);
+            cdOrdenPedido.InsertarArticulo(descripcion, stock, tipo, observa, igv, centro, cuenta, cc, cta, ctaact);
         }
         public void InsertarArticuloMarca(int marca, int articulo)
         {
@@ -174,9 +174,9 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.ActualizarMarcaModelo(marca, modelo, modmar, modmode);
         }
-        public void ActualizarArticuloMarca(int arti, string descr, int stock, int tipo, string obser, int marca, int modmarca, int igv, int centro, string cuenta, string cc)
+        public void ActualizarArticuloMarca(int arti, string descr, int stock, int tipo, string obser, int marca, int modmarca, int igv, int centro, string cuenta, string cc, string cta, string ctaact)
         {
-            cdOrdenPedido.ActualizarArticuloMarca(arti, descr, stock, tipo, obser, marca, modmarca, igv, centro, cuenta, cc);
+            cdOrdenPedido.ActualizarArticuloMarca(arti, descr, stock, tipo, obser, marca, modmarca, igv, centro, cuenta, cc, cta, ctaact);
         }
         public DataTable VerificarArticulo(string articulo)
         {
@@ -367,13 +367,22 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.BuscarAsientosContables(busca, opcion);
         }
+        public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
+         , DateTime fechaemision, decimal importemn, decimal importeme, decimal tipocambio, int usuario)
+        {
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, importemn, importeme, tipocambio, usuario);
+        }
+        public DataTable DetalleAsientos(int opcion, int idaux, int idasiento)
+        {
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, 0, 0, 0, 0);
+        }
         public DataTable UltimoAsiento()
         {
             return cdOrdenPedido.UltimoAsiento();
         }
-        public void InsertarAsiento(int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa)
+        public void InsertarAsiento(int id, int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa)
         {
-            cdOrdenPedido.InsertarAsiento(codigo, fecha, cuenta, debe, haber, dina, estado, fechavalor, proyecto, etapa);
+            cdOrdenPedido.InsertarAsiento(id, codigo, fecha, cuenta, debe, haber, dina, estado, fechavalor, proyecto, etapa);
         }
         public void EliminarAsiento(int codigo)
         {
@@ -396,10 +405,10 @@ namespace HPResergerCapaLogica
         }
         public void ActualizarCuentasContables(string codcuenta, string generica, string grupo,
           string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-          string traslacion, string bc)
+          string traslacion, string bc, string naturaleza)
         {
             cdOrdenPedido.ActualizarCuentasContables(codcuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
-                cuentacierre, analitica, mensual, cierre, traslacion, bc);
+                cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza);
         }
         public void InsertarProveedor(string anterior, string ruc, string razon, string nombre, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
             string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctasoles, int ctadolares)
@@ -500,9 +509,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarProveedorGiro(Giro);
         }
 
-        public void CotizacionCabeceraInsertar(out int Numero, DateTime FechaEntrega, int Tipo, int Usuario, decimal Importe, int Pedido, string Proveedor, byte[] Foto, string NombreArchivo)
+        public void CotizacionCabeceraInsertar(out int Numero, DateTime FechaEntrega, int Tipo, int Usuario, decimal Importe, int Pedido, string Proveedor, byte[] Foto, string NombreArchivo, int moneda)
         {
-            cdOrdenPedido.CotizacionCabeceraInsertar(out Numero, FechaEntrega, Tipo, Usuario, Importe, Pedido, Proveedor, Foto, NombreArchivo);
+            cdOrdenPedido.CotizacionCabeceraInsertar(out Numero, FechaEntrega, Tipo, Usuario, Importe, Pedido, Proveedor, Foto, NombreArchivo, moneda);
         }
 
         public void CotizacionDetalleInsertar(int Cotizacion, int Pedido, int tipo, int cantidad, decimal preciounit, decimal total, string articulo, string marca, string modelo, string observaciones)
@@ -520,7 +529,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarCotizacionesAsociadasParaAprobar(Usuario);
         }
-
+        public DataTable BuscarCuentasReflejo(string cuenta, decimal saldodebe, decimal saldohaber)
+        {
+            return cdOrdenPedido.BuscarCuentasReflejo(cuenta, saldodebe, saldohaber);
+        }
         public DataRow Logueo(string Login_User, string Password_User)
         {
             return cdOrdenPedido.Logueo(Login_User, Password_User);
@@ -644,15 +656,13 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.RUCProveedor(RUC);
         }
-
         public DataRow CargarImagenCotizacion(int Numero)
         {
             return cdOrdenPedido.CargarImagenCotizacion(Numero);
         }
-
-        public void CotizacionModificar(int Numero, DateTime FechaEntrega, decimal Importe, string Proveedor, byte[] Foto, string NombreArchivo)
+        public void CotizacionModificar(int Numero, DateTime FechaEntrega, decimal Importe, string Proveedor, byte[] Foto, string NombreArchivo, int moneda)
         {
-            cdOrdenPedido.CotizacionModificar(Numero, FechaEntrega, Importe, Proveedor, Foto, NombreArchivo);
+            cdOrdenPedido.CotizacionModificar(Numero, FechaEntrega, Importe, Proveedor, Foto, NombreArchivo, moneda);
         }
 
         public DataRow ExisteFoto(string NombreFoto)
@@ -1250,6 +1260,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.BalanceGenerarlActivoCorriente(año, empresa);
         }
+        public DataTable BalanceGeneral(DateTime año, int empresa)
+        {
+            return cdOrdenPedido.BalanceGeneral(año, empresa);
+        }
         public DataTable BalanceGenerarlActivonoCorriente(DateTime año, int empresa)
         {
             return cdOrdenPedido.BalanceGenerarlActivonoCorriente(año, empresa);
@@ -1407,7 +1421,6 @@ namespace HPResergerCapaLogica
         public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo, string @repre, int @cia, int usuario)
         {
             return cdOrdenPedido.InsertarActualizarListarEmpresas(@id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario);
-
         }
         public DataTable BuscarEmpleadoActivo()
         {
@@ -1502,6 +1515,10 @@ namespace HPResergerCapaLogica
         public DataTable InsertarCuentasReflejo(int asiento, string cuenta, decimal monto, string lado)
         {
             return cdOrdenPedido.InsertarCuentasReflejo(asiento, cuenta, monto, lado);
+        }
+        public DataTable BalanceParametros(int opcion, string codigoreal, string codigo, string nombre, string cuenta, int usuario)
+        {
+            return cdOrdenPedido.BalanceParametros(opcion, codigoreal, codigo, nombre, cuenta, usuario);
         }
         public DataTable SeleccionarPagoCts(int empresa, int tipo, string numero, int fecha, DateTime fechaini, DateTime fechafin)
         {

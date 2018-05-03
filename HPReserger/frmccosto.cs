@@ -100,6 +100,7 @@ namespace HPReserger
                     int x = dtgconten.CurrentCell.RowIndex;
                     ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
                 }
+                DialogResult = DialogResult.OK;
                 this.Close();
             }
 

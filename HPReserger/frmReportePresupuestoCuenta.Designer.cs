@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportePresupuestoCuenta));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -64,11 +65,14 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Location = new System.Drawing.Point(717, 570);
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btncancelar.Location = new System.Drawing.Point(717, 573);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(84, 23);
+            this.btncancelar.Size = new System.Drawing.Size(84, 24);
             this.btncancelar.TabIndex = 42;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -118,7 +122,7 @@
             // 
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(12, 575);
+            this.lblmsg.Location = new System.Drawing.Point(12, 579);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(54, 13);
             this.lblmsg.TabIndex = 37;
@@ -128,22 +132,28 @@
             // 
             this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnexportarexcel.Enabled = false;
+            this.btnexportarexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarexcel.Image")));
+            this.btnexportarexcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnexportarexcel.Location = new System.Drawing.Point(717, 32);
             this.btnexportarexcel.Name = "btnexportarexcel";
-            this.btnexportarexcel.Size = new System.Drawing.Size(84, 23);
+            this.btnexportarexcel.Size = new System.Drawing.Size(84, 24);
             this.btnexportarexcel.TabIndex = 36;
             this.btnexportarexcel.Text = "Excel";
+            this.btnexportarexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexportarexcel.UseVisualStyleBackColor = true;
             this.btnexportarexcel.Visible = false;
             this.btnexportarexcel.Click += new System.EventHandler(this.btnexportarexcel_Click);
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(370, 59);
+            this.btnGenerar.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerar.Image")));
+            this.btnGenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerar.Location = new System.Drawing.Point(370, 58);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerar.Size = new System.Drawing.Size(75, 24);
             this.btnGenerar.TabIndex = 35;
             this.btnGenerar.Text = "Generar";
+            this.btnGenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
@@ -230,7 +240,7 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(789, 478);
+            this.dtgconten.Size = new System.Drawing.Size(789, 480);
             this.dtgconten.TabIndex = 34;
             this.dtgconten.TabStop = false;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);

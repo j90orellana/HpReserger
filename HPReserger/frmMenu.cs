@@ -131,22 +131,25 @@ namespace HPReserger
             CapaLogica.CambiarBase(frmLogin.Basedatos);
             RecargarMenu();
             MdiClient mdi;
+
             foreach (Control ctl in this.Controls)
             {
                 try
                 {
                     mdi = (MdiClient)ctl;
-                    mdi.BackColor = Color.FromArgb(240, 240, 240);     
+                    mdi.BackColor = Color.FromArgb(240, 240, 240);
                 }
                 catch (InvalidCastException)
                 {
                 }
             }
+
             cerrado = 0;
             lblwelcome.Text = "Bienvenido: " + Nombres;
             ConsultarCumpleaños();
             length = FlowPanel.Width;
             ImagenDefault = pbesquina.Image;
+            FlowPanel_ControlRemoved_1(sender, new ControlEventArgs(FlowPanel));
             //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control
         }
 
@@ -2591,7 +2594,48 @@ namespace HPReserger
             cblend.Colors = new Color[3] { Color.White, Color.Red, Color.White };
             cblend.Positions = new float[3] { 0f, 0.5f, 1f };
             linearGradientBrush.InterpolationColors = cblend;
-            this.CreateGraphics().FillRectangle(linearGradientBrush, this.ClientRectangle);            
+            this.CreateGraphics().FillRectangle(linearGradientBrush, this.ClientRectangle);
+        }
+        FrmConfiguracionBalanceSituacionFinanciera frmconfigsitua;
+        private void balanceDeSituaciónFinancieraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmconfigsitua == null)
+            {
+                frmconfigsitua = new FrmConfiguracionBalanceSituacionFinanciera();
+                frmconfigsitua.MdiParent = this;
+                frmconfigsitua.Icon = ICono;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmconfigsitua.FormClosed += new FormClosedEventHandler(cerrarConfigFinanciera);
+                frmconfigsitua.Show();
+            }
+            else
+            {
+                frmconfigsitua.Activate();
+                ValidarVentanas(frmconfigsitua);
+            }
+        }
+        private void cerrarConfigFinanciera(object sender, FormClosedEventArgs e)
+        {
+            frmconfigsitua = null;
+        }
+
+        private void FlowPanel_ControlAdded(object sender, ControlEventArgs e)
+        {
+            if (FlowPanel.Controls.Count <= 0)
+            {
+                Mostrado = true;
+                pbesquina_Click(sender, e);
+                // FlowPanel.Visible = false;
+                //  pbesquina.Visible = false;
+            }
+            else
+            {
+                Mostrado = false;
+                //pbesquina_Click(sender, e);
+                //  FlowPanel.Visible = true;
+                // pbesquina.Visible = true;
+            }
         }
     }
 }

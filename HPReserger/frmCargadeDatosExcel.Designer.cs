@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargadeDatosExcel));
             this.Grid = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -100,33 +101,39 @@
             // 
             // btncargar
             // 
+            this.btncargar.Image = ((System.Drawing.Image)(resources.GetObject("btncargar.Image")));
             this.btncargar.Location = new System.Drawing.Point(470, 11);
             this.btncargar.Name = "btncargar";
             this.btncargar.Size = new System.Drawing.Size(75, 23);
             this.btncargar.TabIndex = 144;
             this.btncargar.Text = "Archivo";
+            this.btncargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncargar.UseVisualStyleBackColor = true;
             this.btncargar.Click += new System.EventHandler(this.btncargar_Click);
             // 
             // btncargaexcel
             // 
             this.btncargaexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncargaexcel.Image = ((System.Drawing.Image)(resources.GetObject("btncargaexcel.Image")));
             this.btncargaexcel.Location = new System.Drawing.Point(712, 41);
             this.btncargaexcel.Name = "btncargaexcel";
             this.btncargaexcel.Size = new System.Drawing.Size(75, 23);
             this.btncargaexcel.TabIndex = 145;
             this.btncargaexcel.Text = "Cargar";
+            this.btncargaexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncargaexcel.UseVisualStyleBackColor = true;
             this.btncargaexcel.Click += new System.EventHandler(this.btncargaexcel_Click);
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(320, 612);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(159, 23);
             this.button1.TabIndex = 146;
             this.button1.Text = "Insertar a Base de Datos";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             // 
             // cbohojas

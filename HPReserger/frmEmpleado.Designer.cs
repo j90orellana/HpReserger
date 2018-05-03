@@ -887,58 +887,68 @@
             // 
             // btnnuevo
             // 
-            this.btnnuevo.Location = new System.Drawing.Point(514, 36);
+            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
+            this.btnnuevo.Location = new System.Drawing.Point(502, 36);
             this.btnnuevo.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(78, 25);
+            this.btnnuevo.Size = new System.Drawing.Size(90, 25);
             this.btnnuevo.TabIndex = 58;
             this.btnnuevo.Text = "Nuevo";
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
             // 
             // btnModificar
             // 
             this.btnModificar.Enabled = false;
-            this.btnModificar.Location = new System.Drawing.Point(514, 62);
+            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
+            this.btnModificar.Location = new System.Drawing.Point(502, 62);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(78, 25);
+            this.btnModificar.Size = new System.Drawing.Size(90, 25);
             this.btnModificar.TabIndex = 70;
             this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btncancelar
             // 
-            this.btncancelar.Location = new System.Drawing.Point(646, 474);
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(636, 472);
             this.btncancelar.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(72, 25);
+            this.btncancelar.Size = new System.Drawing.Size(81, 25);
             this.btncancelar.TabIndex = 72;
             this.btncancelar.Text = "&Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Enabled = false;
-            this.btnGuardar.Location = new System.Drawing.Point(568, 474);
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
+            this.btnGuardar.Location = new System.Drawing.Point(550, 472);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(72, 25);
+            this.btnGuardar.Size = new System.Drawing.Size(81, 25);
             this.btnGuardar.TabIndex = 71;
             this.btnGuardar.Text = "&Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(514, 88);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(502, 88);
             this.button1.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 25);
+            this.button1.Size = new System.Drawing.Size(90, 25);
             this.button1.TabIndex = 73;
             this.button1.Text = "Listar";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

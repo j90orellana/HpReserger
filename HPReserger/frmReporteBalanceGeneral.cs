@@ -23,7 +23,9 @@ namespace HPReserger
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void frmReporteBalanceGeneral_Load(object sender, EventArgs e)
         {
-            rptBalanceGeneral Reporte = new rptBalanceGeneral();
+            //rptBalanceGeneral Reporte = new rptBalanceGeneral();
+            rptBalanceGeneralPro Reporte = new rptBalanceGeneralPro();
+
 
             Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
             Reporte.SetParameterValue(0, año);

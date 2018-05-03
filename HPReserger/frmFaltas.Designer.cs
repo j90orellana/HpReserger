@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaltas));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -481,21 +482,25 @@
             // 
             // btnRegistrarFalta
             // 
+            this.btnRegistrarFalta.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarFalta.Image")));
             this.btnRegistrarFalta.Location = new System.Drawing.Point(401, 433);
             this.btnRegistrarFalta.Name = "btnRegistrarFalta";
-            this.btnRegistrarFalta.Size = new System.Drawing.Size(119, 23);
+            this.btnRegistrarFalta.Size = new System.Drawing.Size(119, 24);
             this.btnRegistrarFalta.TabIndex = 5;
             this.btnRegistrarFalta.Text = "Registrar Falta";
+            this.btnRegistrarFalta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRegistrarFalta.UseVisualStyleBackColor = true;
             this.btnRegistrarFalta.Click += new System.EventHandler(this.btnRegistrarFalta_Click);
             // 
             // btnAdjuntarSustento
             // 
+            this.btnAdjuntarSustento.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarSustento.Image")));
             this.btnAdjuntarSustento.Location = new System.Drawing.Point(1159, 433);
             this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
-            this.btnAdjuntarSustento.Size = new System.Drawing.Size(119, 23);
+            this.btnAdjuntarSustento.Size = new System.Drawing.Size(119, 24);
             this.btnAdjuntarSustento.TabIndex = 6;
             this.btnAdjuntarSustento.Text = "Adjuntar Sustento";
+            this.btnAdjuntarSustento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdjuntarSustento.UseVisualStyleBackColor = true;
             this.btnAdjuntarSustento.Click += new System.EventHandler(this.btnAdjuntarSustento_Click);
             // 

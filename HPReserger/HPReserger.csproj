@@ -207,6 +207,12 @@
     <Compile Include="frmcede.Designer.cs">
       <DependentUpon>frmcede.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmConfiguracionBalanceSituacionFinanciera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfiguracionBalanceSituacionFinanciera.Designer.cs">
+      <DependentUpon>FrmConfiguracionBalanceSituacionFinanciera.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConfigurarDinamicas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,12 @@
     </Compile>
     <Compile Include="frmDatosExterno.Designer.cs">
       <DependentUpon>frmDatosExterno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleAsientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleAsientos.Designer.cs">
+      <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEliminarPeriodo.cs">
       <SubType>Form</SubType>
@@ -422,6 +434,12 @@
     </Compile>
     <Compile Include="frmlistarcuentas.designer.cs">
       <DependentUpon>frmlistarcuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListarCuentasParaConfigurar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListarCuentasParaConfigurar.Designer.cs">
+      <DependentUpon>FrmListarCuentasParaConfigurar.cs</DependentUpon>
     </Compile>
     <Compile Include="frmListarEmpleadosDesvinculados.cs">
       <SubType>Form</SubType>
@@ -835,6 +853,12 @@
       <DependentUpon>rptBalanceGeneral.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptBalanceGeneralPro.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptBalanceGeneralPro.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="rptboletas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1237,6 +1261,9 @@
     <EmbeddedResource Include="frmcede.resx">
       <DependentUpon>frmcede.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfiguracionBalanceSituacionFinanciera.resx">
+      <DependentUpon>FrmConfiguracionBalanceSituacionFinanciera.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConfigurarDinamicas.resx">
       <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
     </EmbeddedResource>
@@ -1248,6 +1275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmdepartamento.resx">
       <DependentUpon>frmdepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleAsientos.resx">
+      <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmdinamicaContable.resx">
       <DependentUpon>frmdinamicaContable.cs</DependentUpon>
@@ -1326,6 +1356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmlistarcuentas.resx">
       <DependentUpon>frmlistarcuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListarCuentasParaConfigurar.resx">
+      <DependentUpon>FrmListarCuentasParaConfigurar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListarEmpleadosDesvinculados.resx">
       <DependentUpon>frmListarEmpleadosDesvinculados.cs</DependentUpon>
@@ -1529,6 +1562,10 @@
     <EmbeddedResource Include="rptBalanceGeneral.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptBalanceGeneral.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptBalanceGeneralPro.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptBalanceGeneralPro.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="rptboletas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

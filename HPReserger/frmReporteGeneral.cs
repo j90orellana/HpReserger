@@ -136,7 +136,7 @@ namespace HPReserger
                 ListaCeldas.Add(Celda3);
                 HPResergerFunciones.Utilitarios.RangoCelda Celda4 = new HPResergerFunciones.Utilitarios.RangoCelda("a4", "d4", $"(Expresado en Soles)");
                 ListaCeldas.Add(Celda4);
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, ListaCeldas, 5, new int[] { 2, 3, 6, 7 }, new int[] { 1, 2, 15, 16, 22, 23, 29, 30 }, new int[] { });
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, ListaCeldas, 5, new int[] { 2, 3, 6, 7 }, new int[] { 1 }, new int[] { });
                 Cursor = Cursors.Default;
                 frmproce.Close();
             }
@@ -161,13 +161,81 @@ namespace HPReserger
         {
             foreach (DataGridViewRow item in grid.Rows)
             {
-                if (item.Cells[indexx.Name].Value.ToString().Substring(1) == "9" || item.Cells[indez.Name].Value.ToString().Substring(1) == "9")
+                if (item.Cells[indexx.Name].Value.ToString() != "" || item.Cells[indez.Name].Value.ToString() != "")
                 {
-                    foreach (DataGridViewCell Celda in item.Cells)
+                    if ((item.Cells[indexx.Name].Value.ToString().Length <= 4) && item.Cells[indexx.Name].Value.ToString() != "")
                     {
-                        Celda.Style.BackColor = Color.FromArgb(198, 239, 206);//255, 255, 153
-                        Celda.Style.ForeColor = Color.FromArgb(0, 97, 0);//.Blue;
-                        Celda.Style.Font = new Font(dtgconten.Font, FontStyle.Bold);
+                        if (item.Cells[indexx.Name].Value.ToString().Substring(item.Cells[indexx.Name].Value.ToString().Length - 2, 2) == "99" || item.Cells[indexx.Name].Value.ToString().Substring(item.Cells[indexx.Name].Value.ToString().Length - 2, 2) == "00")
+                        {
+                            foreach (DataGridViewCell Celda in item.Cells)
+                            {
+                                if (Celda.OwningColumn.Name == Camposx.Name || Celda.OwningColumn.Name == Totalesx.Name)
+                                {
+                                    if (Celda.OwningColumn.Name == Camposx.Name && Celda.Value.ToString().Length < 41)
+                                        Celda.Value = Celda.Value.ToString().ToUpper();
+
+                                    Celda.Style.BackColor = Color.FromArgb(198, 239, 206);//255, 255, 153
+                                    Celda.Style.ForeColor = Color.FromArgb(0, 97, 0);//.Blue;
+                                    Celda.Style.Font = new Font(dtgconten.Font, FontStyle.Bold);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (DataGridViewCell Celda in item.Cells)
+                            {
+                                if (Celda.OwningColumn.Name == Camposx.Name || Celda.OwningColumn.Name == Totalesx.Name)
+                                {
+                                    Celda.Style.BackColor = Color.FromArgb(255, 255, 255);
+                                    Celda.Style.ForeColor = Color.Black;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (DataGridViewCell Celda in item.Cells)
+                        {
+                            Celda.Style.BackColor = Color.FromArgb(255, 255, 255);
+                            Celda.Style.ForeColor = Color.Black;
+                        }
+                    }
+                    if ((item.Cells[indez.Name].Value.ToString().Length <= 4))
+                    {
+                        if (item.Cells[indez.Name].Value.ToString().Substring(item.Cells[indez.Name].Value.ToString().Length - 2, 2) == "99" || item.Cells[indez.Name].Value.ToString().Substring(item.Cells[indez.Name].Value.ToString().Length - 2, 2) == "00")
+                        {
+                            foreach (DataGridViewCell Celda in item.Cells)
+                            {
+                                if (Celda.OwningColumn.Name == campoz.Name || Celda.OwningColumn.Name == totalesz.Name)
+                                {
+                                    if (Celda.OwningColumn.Name == campoz.Name && Celda.Value.ToString().Length < 41)
+                                        Celda.Value = Celda.Value.ToString().ToUpper();
+
+                                    Celda.Style.BackColor = Color.FromArgb(198, 239, 206);//255, 255, 153
+                                    Celda.Style.ForeColor = Color.FromArgb(0, 97, 0);//.Blue;
+                                    Celda.Style.Font = new Font(dtgconten.Font, FontStyle.Bold);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (DataGridViewCell Celda in item.Cells)
+                            {
+                                if (Celda.OwningColumn.Name == campoz.Name || Celda.OwningColumn.Name == totalesz.Name)
+                                {
+                                    Celda.Style.BackColor = Color.FromArgb(255, 255, 255);
+                                    Celda.Style.ForeColor = Color.Black;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (DataGridViewCell Celda in item.Cells)
+                        {
+                            Celda.Style.BackColor = Color.FromArgb(255, 255, 255);
+                            Celda.Style.ForeColor = Color.Black;
+                        }
                     }
                 }
                 else
@@ -185,99 +253,258 @@ namespace HPReserger
         DataTable Consulta = new DataTable();
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+
             if (comboMesAño.GetFecha().Year >= DateTime.Now.Year && comboMesAño.GetFecha().Month >= DateTime.Now.Month)
             {
                 msg("Mes no está Cerrado");
                 Reportes.Clear();
                 return;
             }
-
             if (cboempresas.Items.Count > 0)
             {
-                Reportes.Clear();
-                Reportes.Rows.Add(new object[] { 19, "ACTIVO CORRIENTE" });
-                //ACTIVO CORRIENTE
-                Consulta = CapaLogica.BalanceGenerarlActivoCorriente(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
-                decimal Total = 0;
-                decimal Sumatoria = 0;
-                decimal TotalPasivo = 0;
-                foreach (DataRow item in Consulta.Rows)
+                try
                 {
-                    Reportes.ImportRow(item);
-                    Sumatoria += (decimal)item["Total"];
-                }
-                Total += Sumatoria;
-                Reportes.Rows.Add(new object[] { 29, "TOTAL ACTIVO CORRIENTE", Sumatoria });
-                Reportes.Rows.Add(new object[] { 39, "ACTIVO NO CORRIENTE" });
-                //ACTIVO NO CORRIENTE
-                Consulta = CapaLogica.BalanceGenerarlActivonoCorriente(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
-                Sumatoria = 0;
-                foreach (DataRow item in Consulta.Rows)
-                {
-                    Reportes.ImportRow(item);
-                    Sumatoria += (decimal)item["Total"];
-                }
-                Total += Sumatoria;
-                Reportes.Rows.Add(new object[] { 49, "TOTAL ACTIVO NO CORRIENTE", Sumatoria });
-                AgregarColumnas(Reportes, 7);
-                Reportes.Rows.Add(new object[] { 59, "TOTAL ACTIVO ", Total });
+                    Cursor = Cursors.WaitCursor;
 
-                //Columna2
-                Reporte2.Clear();
-                Reporte2.Rows.Add(new object[] { 49, "PASIVO CORRIENTE" });
-                TotalPasivo = 0;
-                decimal TotalPatrimonio = 0;
-                Consulta = CapaLogica.BalanceGeneralActivoPasivoCorriente(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
-                foreach (DataRow item in Consulta.Rows)
-                {
-                    Reporte2.ImportRow(item);
-                    TotalPasivo += (decimal)item["Total"];
-                }
-                TotalPatrimonio += TotalPasivo;
-                AgregarColumnas(Reporte2, 5);
-                Reporte2.Rows.Add(new object[] { 49, "TOTAL PASIVO CORRIENTE", TotalPasivo });
-                Reporte2.Rows.Add(new object[] { 49, "PASIVO NO CORRIENTE" });
-                TotalPasivo = 0;
-                Consulta = CapaLogica.BalanceGeneralActivoPasivonoCorriente(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
-                foreach (DataRow item in Consulta.Rows)
-                {
-                    Reporte2.ImportRow(item);
-                    TotalPasivo += (decimal)item["Total"];
-                }
-                TotalPatrimonio += TotalPasivo;
-                AgregarColumnas(Reporte2, 1);
-                Reporte2.Rows.Add(new object[] { 49, "TOTAL PASIVO NO CORRIENTE", TotalPasivo });
-                Reporte2.Rows.Add(new object[] { 49, "PATRIMONIO" });
-                TotalPasivo = 0;
-                Consulta = CapaLogica.BalanceGeneralPatrimonio(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
-                foreach (DataRow item in Consulta.Rows)
-                {
-                    Reporte2.ImportRow(item);
-                    TotalPasivo += (decimal)item["Total"];
-                }
-                TotalPatrimonio += TotalPasivo;
-                Reporte2.Rows.Add(new object[] { 49, "TOTAL PATRIMONIO", TotalPasivo });
-                Reporte2.Rows.Add(new object[] { 49, "TOTAL PASIVO Y PATRIMONIO", TotalPatrimonio });
+                    Consulta = CapaLogica.BalanceGeneral(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
+                    Reportes.Clear();
+                    Reporte2.Clear();
+                    int act = 0, pas = 0;
+                    if (Consulta != null)
+                        foreach (DataRow item in Consulta.Rows)
+                        {
 
-                int i = 0;
-                foreach (DataRow item in Reportes.Rows)
+                            if (item["i"].ToString().Substring(0, 1) == "1")
+                            {
+                                Reportes.ImportRow(item);
+                                act++;
+                            }
+                            else
+                            {
+                                Reporte2.ImportRow(item);
+                                pas++;
+                            }
+                        }
+                    //msg($"Activo {act}, Pasivo {pas}");
+                    if (act > pas)
+                    {
+                        int dif = act - pas;
+                        for (int iv = 0; iv < dif; iv++)
+                        {
+                            Reportes.Rows.InsertAt(Reportes.NewRow(), Reportes.Rows.Count - 1);
+                        }
+                    }
+                    else
+                    {
+                        int dif = pas - act;
+                        for (int iv = 0; iv < dif; iv++)
+                        {
+                            Reportes.Rows.InsertAt(Reportes.NewRow(), Reportes.Rows.Count - 2);
+                        }
+                    }
+                    int i = 0;
+                    foreach (DataRow item in Reportes.Rows)
+                    {
+                        item["ix"] = Reporte2.Rows[i].ItemArray[0];
+                        item["campox"] = Reporte2.Rows[i].ItemArray[1];
+                        item["totalx"] = Reporte2.Rows[i].ItemArray[2];
+                        item["empresax"] = Reporte2.Rows[i].ItemArray[3];
+                        i++;
+                    }
+                    ///sacar totales
+                    decimal ActivoTotal = 0;
+                    decimal PasivoTotal = 0;
+                    decimal PatrimonioTotal = 0;
+                    foreach (DataRow item in Reportes.Rows)
+                    {
+                        int ValorMaximo = 0, ValorMinimo = 0;
+                        string cadena = "";
+                        decimal Sumar;
+                        cadena = item["i"].ToString();
+                        if (cadena != "")
+                        {
+                            if (item["i"].ToString().Substring(0, 1) == "1" && cadena.Substring(cadena.Length - 2, 2) != "00" && cadena.Substring(cadena.Length - 2, 2) != "99")
+                                ActivoTotal += decimal.Parse(item["total"].ToString());
+                            //cadena = item["ix"].ToString();
+                            //if (item["ix"].ToString().Substring(0, 1) == "2" && cadena.Substring(cadena.Length - 2, 2) != "00" && cadena.Substring(cadena.Length - 2, 2) != "99")
+                            //    PasivoTotal += decimal.Parse(item["totalx"].ToString());
+                            //if (item["ix"].ToString().Substring(0, 1) == "3" && cadena.Substring(cadena.Length - 2, 2) != "00" && cadena.Substring(cadena.Length - 2, 2) != "99")
+                            //    PatrimonioTotal += decimal.Parse(item["totalx"].ToString());
+
+                            if (item["i"].ToString().Substring(item["i"].ToString().Length - 2, 2) == "99")
+                            {
+
+                                cadena = item["i"].ToString();
+                                ValorMinimo = int.Parse(cadena.Substring(0, cadena.Length - 2) + "00");
+                                ValorMaximo = int.Parse(cadena.Substring(0, cadena.Length - 2) + "99");
+                                Sumar = 0;
+                                foreach (DataRow items in Reportes.Rows)
+                                {
+                                    if (items["i"].ToString() != "")
+                                    {
+                                        int valore = int.Parse(items["i"].ToString());
+                                        if (valore > ValorMinimo && valore < ValorMaximo)
+                                        {
+                                            Sumar += decimal.Parse(items["total"].ToString());
+                                        }
+                                    }
+                                }
+                                item["total"] = Sumar;
+                            }
+                        }
+                        cadena = item["ix"].ToString();
+                        if (cadena != "")
+                        {
+                            cadena = item["ix"].ToString();
+                            if (item["ix"].ToString().Substring(0, 1) == "2" && cadena.Substring(cadena.Length - 2, 2) != "00" && cadena.Substring(cadena.Length - 2, 2) != "99")
+                                PasivoTotal += decimal.Parse(item["totalx"].ToString());
+                            if (item["ix"].ToString().Substring(0, 1) == "3" && cadena.Substring(cadena.Length - 2, 2) != "00" && cadena.Substring(cadena.Length - 2, 2) != "99")
+                                PatrimonioTotal += decimal.Parse(item["totalx"].ToString());
+                            if (item["ix"].ToString().Substring(item["ix"].ToString().Length - 2, 2) == "99")
+                            {
+                                cadena = item["ix"].ToString();
+                                ValorMinimo = int.Parse(cadena.Substring(0, cadena.Length - 2) + "00");
+                                ValorMaximo = int.Parse(cadena.Substring(0, cadena.Length - 2) + "99");
+                                Sumar = 0;
+                                foreach (DataRow items in Reportes.Rows)
+                                {
+                                    if (items["ix"].ToString() != "")
+                                    {
+                                        int valore = int.Parse(items["ix"].ToString());
+                                        if (valore > ValorMinimo && valore < ValorMaximo)
+                                        {
+                                            Sumar += decimal.Parse(items["totalx"].ToString());
+                                        }
+                                    }
+                                }
+                                item["totalx"] = Sumar;
+                            }
+                        }
+                    }
+                    //asignacion de valores
+                    foreach (DataRow item in Reportes.Rows)
+                    {
+                        if (item["i"].ToString() == "199")
+                            item["total"] = ActivoTotal;
+                        if (item["ix"].ToString() == "299")
+                            item["totalx"] = PasivoTotal;
+                        if (item["ix"].ToString() == "399")
+                            item["totalx"] = PatrimonioTotal;
+                        if (item["ix"].ToString() == "499")
+                            item["totalx"] = PatrimonioTotal + PasivoTotal;
+                    }
+
+                    dtgconten.DataSource = Reportes;
+                    ContarRegistros();
+                    PintarNegroTotales(dtgconten);
+                    Cursor = Cursors.Default;
+                    //procesando.Close();
+                    decimal diff = ActivoTotal - (PatrimonioTotal + PasivoTotal);
+                    txtdiferencia.Text = "0.00";
+                    if (diff != 0)
+                        if (diff > 0)
+                        {
+                            msg($"El ACTIVO sobrepasa al PASIVO+PATRIMONIO por: {diff.ToString("n2")}");
+                            txtdiferencia.Text = diff.ToString("n2");
+                        }
+                        else
+                        {
+                            msg($"El PASIVO+PATRIMONIO sobrepasa al ACTIVO por : {(-1 * diff).ToString("n2")}");
+                            txtdiferencia.Text = (-1 * diff).ToString("n2");
+                        }
+                }
+                catch (System.Data.SqlClient.SqlException ex)
                 {
-                    item["ix"] = Reporte2.Rows[i].ItemArray[0];
-                    item["campox"] = Reporte2.Rows[i].ItemArray[1];
-                    item["totalx"] = Reporte2.Rows[i].ItemArray[2];
-                    item["empresax"] = Reporte2.Rows[i].ItemArray[3];
-                    i++;
+                    Cursor = Cursors.Default; msg($"Error: Revise la Naturaleza de las Cuentas  \n{ex.Message}");
                 }
 
-                //Reportes.Merge(Reporte2);
-                dtgconten.DataSource = Reportes;
-                ContarRegistros();
-                PintarNegroTotales(dtgconten);
+                //if (cboempresas.Items.Count > 0)
+                //{
+                //    Reportes.Clear();
+                //    Reportes.Rows.Add(new object[] { 19, "ACTIVO CORRIENTE" });
+                //    //ACTIVO CORRIENTE
+                //   Consulta = CapaLogica.BalanceGenerarlActivoCorriente(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
+                //    decimal Total = 0;
+                //    decimal Sumatoria = 0;
+                //    decimal TotalPasivo = 0;
+                //    foreach (DataRow item in Consulta.Rows)
+                //    {
+                //        Reportes.ImportRow(item);
+                //        Sumatoria += (decimal)item["Total"];
+                //    }
+                //    Total += Sumatoria;
+                //    Reportes.Rows.Add(new object[] { 29, "TOTAL ACTIVO CORRIENTE", Sumatoria });
+                //    Reportes.Rows.Add(new object[] { 39, "ACTIVO NO CORRIENTE" });
+                //    //ACTIVO NO CORRIENTE
+                //    Consulta = CapaLogica.BalanceGenerarlActivonoCorriente(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
+                //    Sumatoria = 0;
+                //    foreach (DataRow item in Consulta.Rows)
+                //    {
+                //        Reportes.ImportRow(item);
+                //        Sumatoria += (decimal)item["Total"];
+                //    }
+                //    Total += Sumatoria;
+                //    Reportes.Rows.Add(new object[] { 49, "TOTAL ACTIVO NO CORRIENTE", Sumatoria });
+                //    AgregarColumnas(Reportes, 7);
+                //    Reportes.Rows.Add(new object[] { 59, "TOTAL ACTIVO ", Total });
+                //    //Columna2
+                //    Reporte2.Clear();
+                //    Reporte2.Rows.Add(new object[] { 49, "PASIVO CORRIENTE" });
+                //    TotalPasivo = 0;
+                //    decimal TotalPatrimonio = 0;
+                //    Consulta = CapaLogica.BalanceGeneralActivoPasivoCorriente(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
+                //    foreach (DataRow item in Consulta.Rows)
+                //    {
+                //        Reporte2.ImportRow(item);
+                //        TotalPasivo += (decimal)item["Total"];
+                //    }
+                //    TotalPatrimonio += TotalPasivo;
+                //    AgregarColumnas(Reporte2, 5);
+                //    Reporte2.Rows.Add(new object[] { 49, "TOTAL PASIVO CORRIENTE", TotalPasivo });
+                //    Reporte2.Rows.Add(new object[] { 49, "PASIVO NO CORRIENTE" });
+                //    TotalPasivo = 0;
+                //    Consulta = CapaLogica.BalanceGeneralActivoPasivonoCorriente(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
+                //    foreach (DataRow item in Consulta.Rows)
+                //    {
+                //        Reporte2.ImportRow(item);
+                //        TotalPasivo += (decimal)item["Total"];
+                //    }
+                //    TotalPatrimonio += TotalPasivo;
+                //    AgregarColumnas(Reporte2, 2);
+                //    Reporte2.Rows.Add(new object[] { 49, "TOTAL PASIVO NO CORRIENTE", TotalPasivo });
+                //    Reporte2.Rows.Add(new object[] { 49, "PATRIMONIO" });
+                //    TotalPasivo = 0;
+                //    Consulta = CapaLogica.BalanceGeneralPatrimonio(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
+                //    foreach (DataRow item in Consulta.Rows)
+                //    {
+                //        Reporte2.ImportRow(item);
+                //        TotalPasivo += (decimal)item["Total"];
+                //    }
+                //    TotalPatrimonio += TotalPasivo;
+                //    Reporte2.Rows.Add(new object[] { 49, "TOTAL PATRIMONIO", TotalPasivo });
+                //    Reporte2.Rows.Add(new object[] { 49, "TOTAL PASIVO Y PATRIMONIO", TotalPatrimonio });
 
-                if ((decimal)dtgconten[Totalesx.Name, dtgconten.RowCount - 1].Value != (decimal)dtgconten[totalesz.Name, dtgconten.RowCount - 1].Value)
-                {
-                    msg("Hay Diferencia\nEntre Total de Activo y Total de Patrimonio mas Pasivo");
-                }
+                //    int i = 0;
+                //    foreach (DataRow item in Reportes.Rows)
+                //    {
+                //        item["ix"] = Reporte2.Rows[i].ItemArray[0];
+                //        item["campox"] = Reporte2.Rows[i].ItemArray[1];
+                //        item["totalx"] = Reporte2.Rows[i].ItemArray[2];
+                //        item["empresax"] = Reporte2.Rows[i].ItemArray[3];
+                //        i++;
+                //    }
+                //    //Reportes.Merge(Reporte2);
+                //    dtgconten.DataSource = Reportes;
+
+                //    ContarRegistros();
+                //    PintarNegroTotales(dtgconten);
+
+                //    if ((decimal)dtgconten[Totalesx.Name, dtgconten.RowCount - 1].Value != (decimal)dtgconten[totalesz.Name, dtgconten.RowCount - 1].Value)
+                //    {
+                //        msg("Hay Diferencia\nEntre Total de Activo y Total de Patrimonio mas Pasivo");
+                //    }
+                //}
+                //else { msg("no Hay Empresas"); }
             }
             else { msg("no Hay Empresas"); }
         }

@@ -241,6 +241,7 @@ namespace HPReserger
             tipmsg.Show("Seleccione Cuenta Genérica", cbogenerica, 700);
             Desactivar(); DesactivarModi();
             cbogenerica.Focus();
+            cbonaturaleza.Enabled = true;
         }
         public Boolean VerificarDatos(int codigo, string nombre)
         {
@@ -353,7 +354,7 @@ namespace HPReserger
                     //MensajedeDatos();
                     MessageBox.Show("Se Modificó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CcuentaContable.ActualizarCuentasContables(CodCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
-                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC);
+                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, cbonaturaleza.SelectedValue.ToString());
                     PresentarValor(codigo.ToString());
                 }
                 else

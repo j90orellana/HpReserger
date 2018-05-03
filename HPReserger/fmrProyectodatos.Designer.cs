@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmrProyectodatos));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Dtgconten = new System.Windows.Forms.DataGridView();
@@ -342,11 +343,13 @@
             // 
             // btetapas
             // 
-            this.btetapas.Location = new System.Drawing.Point(322, 71);
+            this.btetapas.Image = ((System.Drawing.Image)(resources.GetObject("btetapas.Image")));
+            this.btetapas.Location = new System.Drawing.Point(322, 70);
             this.btetapas.Name = "btetapas";
-            this.btetapas.Size = new System.Drawing.Size(110, 21);
+            this.btetapas.Size = new System.Drawing.Size(110, 23);
             this.btetapas.TabIndex = 12;
-            this.btetapas.Text = "+Etapa";
+            this.btetapas.Text = "Etapa";
+            this.btetapas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btetapas.UseVisualStyleBackColor = true;
             this.btetapas.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -1356,11 +1359,13 @@
             // 
             // btnguardar
             // 
+            this.btnguardar.Image = ((System.Drawing.Image)(resources.GetObject("btnguardar.Image")));
             this.btnguardar.Location = new System.Drawing.Point(696, 10);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Size = new System.Drawing.Size(110, 24);
             this.btnguardar.TabIndex = 44;
             this.btnguardar.Text = "Guardar";
+            this.btnguardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnguardar.UseVisualStyleBackColor = true;
             this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
             // 

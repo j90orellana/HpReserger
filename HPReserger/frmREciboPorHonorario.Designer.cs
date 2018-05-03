@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmREciboPorHonorario));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmREciboPorHonorario));
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FIC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +62,7 @@
             this.TOTALFAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numigv = new System.Windows.Forms.NumericUpDown();
             this.cboigv = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -123,7 +124,7 @@
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
-            this.Dtguias.RowTemplate.Height = 16;
+            this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtguias.Size = new System.Drawing.Size(701, 185);
             this.Dtguias.TabIndex = 40;
@@ -176,21 +177,27 @@
             // btnagregar
             // 
             this.btnagregar.Enabled = false;
+            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
             this.btnagregar.Location = new System.Drawing.Point(734, 317);
             this.btnagregar.Name = "btnagregar";
             this.btnagregar.Size = new System.Drawing.Size(75, 23);
             this.btnagregar.TabIndex = 39;
             this.btnagregar.Text = "Ingresar";
+            this.btnagregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnagregar.UseVisualStyleBackColor = true;
             this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
             // btnmaspro
             // 
+            this.btnmaspro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmaspro.BackgroundImage")));
+            this.btnmaspro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmaspro.FlatAppearance.BorderSize = 0;
+            this.btnmaspro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmaspro.Location = new System.Drawing.Point(408, 37);
             this.btnmaspro.Name = "btnmaspro";
-            this.btnmaspro.Size = new System.Drawing.Size(24, 20);
+            this.btnmaspro.Size = new System.Drawing.Size(20, 20);
             this.btnmaspro.TabIndex = 37;
-            this.btnmaspro.Text = "- -";
+            this.tooltip.SetToolTip(this.btnmaspro, "Buscar Proveedor");
             this.btnmaspro.UseVisualStyleBackColor = true;
             this.btnmaspro.Click += new System.EventHandler(this.btnmaspro_Click);
             // 
@@ -305,7 +312,8 @@
             this.valueigv,
             this.TOTALFAC,
             this.numoc,
-            this.siigv});
+            this.siigv,
+            this.cuentax});
             this.DtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgConten.Enabled = false;
             this.DtgConten.Location = new System.Drawing.Point(6, 93);
@@ -442,6 +450,13 @@
             this.siigv.Name = "siigv";
             this.siigv.ReadOnly = true;
             this.siigv.Visible = false;
+            // 
+            // cuentax
+            // 
+            this.cuentax.DataPropertyName = "cuenta";
+            this.cuentax.HeaderText = "cuenta";
+            this.cuentax.Name = "cuentax";
+            this.cuentax.Visible = false;
             // 
             // numigv
             // 
@@ -585,6 +600,7 @@
             this.btnCargarFoto.Name = "btnCargarFoto";
             this.btnCargarFoto.Size = new System.Drawing.Size(20, 20);
             this.btnCargarFoto.TabIndex = 11;
+            this.tooltip.SetToolTip(this.btnCargarFoto, "Cargar Imagen Recibo Honorario");
             this.btnCargarFoto.UseVisualStyleBackColor = true;
             this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
             // 
@@ -633,21 +649,25 @@
             // btnaceptar
             // 
             this.btnaceptar.Enabled = false;
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(653, 614);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 33;
-            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.Text = "Guardar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // btncancelar
             // 
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(734, 614);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 34;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
@@ -680,6 +700,7 @@
             this.txtruc.TabIndex = 24;
             this.txtruc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtruc.TextChanged += new System.EventHandler(this.txtruc_TextChanged);
+            this.txtruc.DoubleClick += new System.EventHandler(this.txtruc_DoubleClick);
             // 
             // label16
             // 
@@ -843,5 +864,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTALFAC;
         private System.Windows.Forms.DataGridViewTextBoxColumn numoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn siigv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentax;
     }
 }

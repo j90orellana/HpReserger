@@ -412,11 +412,13 @@
             // btnGenerar
             // 
             this.btnGenerar.Enabled = false;
+            this.btnGenerar.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerar.Image")));
             this.btnGenerar.Location = new System.Drawing.Point(11, 638);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(94, 23);
             this.btnGenerar.TabIndex = 108;
             this.btnGenerar.Text = "Generar";
+            this.btnGenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
@@ -460,32 +462,38 @@
             // btnmodificiar
             // 
             this.btnmodificiar.Enabled = false;
+            this.btnmodificiar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificiar.Image")));
             this.btnmodificiar.Location = new System.Drawing.Point(402, 638);
             this.btnmodificiar.Name = "btnmodificiar";
             this.btnmodificiar.Size = new System.Drawing.Size(94, 23);
             this.btnmodificiar.TabIndex = 111;
             this.btnmodificiar.Text = "Modificiar";
+            this.btnmodificiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificiar.UseVisualStyleBackColor = true;
             this.btnmodificiar.Click += new System.EventHandler(this.btnmodificiar_Click);
             // 
             // btneliminar
             // 
             this.btneliminar.Enabled = false;
+            this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
             this.btneliminar.Location = new System.Drawing.Point(502, 638);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(94, 23);
             this.btneliminar.TabIndex = 112;
             this.btneliminar.Text = "Eliminar";
+            this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btneliminar.UseVisualStyleBackColor = true;
             this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // btncancelar
             // 
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(726, 638);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(94, 23);
             this.btncancelar.TabIndex = 113;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 

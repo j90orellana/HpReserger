@@ -27,15 +27,30 @@ namespace HPReserger
         public string nombreArchivo { get; set; }
         public int Itemsito { get; set; }
         public int Itemsito2 { get; set; }
+        public int tipomoneda { get; set; }
 
         public frmCotizacionModificar()
         {
             InitializeComponent();
         }
+        public void CargarMoneda()
+        {
+            cbomoneda.DataSource = clModificarCotizacion.getCargoTipoContratacion("id_moneda", "moneda", "tbl_moneda");
+            cbomoneda.DisplayMember = "descripcion";
+            cbomoneda.ValueMember = "codigo";
+        }
+        private void cbomoneda_Click(object sender, EventArgs e)
+        {
+            string txt = cbomoneda.Text;
+            CargarMoneda();
+            cbomoneda.Text = txt;
+        }
         // HPResergerCapaLogica.HPResergerCL ClModificarCotizacion = new HPResergerCapaLogica.HPResergerCL();
         int TipoArticulo = 0;
         private void frmCotizacionModificar_Load(object sender, EventArgs e)
         {
+            CargarMoneda();
+            cbomoneda.SelectedValue = tipomoneda;
             txtCotizacion.Text = Cotizacion;
             txtPedido.Text = Pedido;
             txtRUC.Text = RUC;
@@ -126,7 +141,19 @@ namespace HPReserger
         {
             if (txtImporte.Text.Length == 0)
             {
-
+                return;
+            }
+            if (cbomoneda.Items.Count <= 0)
+            {
+                msg("No hay tipos de monedas");
+                cbomoneda.Focus();
+                return;
+            }
+            if (cbomoneda.SelectedIndex < 0)
+            {
+                msg("Seleccione un tipo de Moneda");
+                cbomoneda.Focus();
+                return;
             }
             if (decimal.Parse(txtImporte.Text) <= 0)
             {
@@ -173,7 +200,7 @@ namespace HPReserger
             {
                 nombreArchivo = txtAdjunto.Text.Trim();
             }
-            clModificarCotizacion.CotizacionModificar(Convert.ToInt32(txtCotizacion.Text.Substring(2)), dtpFecha.Value, Convert.ToDecimal(txtImporte.Text), txtRUC.Text, Foto, nombreArchivo);
+            clModificarCotizacion.CotizacionModificar(Convert.ToInt32(txtCotizacion.Text.Substring(2)), dtpFecha.Value, Convert.ToDecimal(txtImporte.Text), txtRUC.Text, Foto, nombreArchivo,(int)cbomoneda.SelectedValue);
             for (int i = 0; i < dtgpedidoX.RowCount; i++)
             {
                 if (TipoArticulo == 0)

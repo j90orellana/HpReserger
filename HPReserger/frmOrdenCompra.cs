@@ -25,7 +25,6 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
         private void frmOrdenCompra_Load(object sender, EventArgs e)
         {
             Listar(frmLogin.CodigoUsuario);

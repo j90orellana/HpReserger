@@ -58,10 +58,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboOS);
             this.groupBox1.Controls.Add(this.chkCambiar);
             this.groupBox1.Controls.Add(this.txtOS);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.cboOS);
             this.groupBox1.Controls.Add(this.btnModificar);
             this.groupBox1.Controls.Add(this.btnBuscarJPG);
             this.groupBox1.Controls.Add(this.txtPuestos);
@@ -91,7 +91,7 @@
             this.chkCambiar.AutoSize = true;
             this.chkCambiar.Checked = true;
             this.chkCambiar.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCambiar.Location = new System.Drawing.Point(237, 49);
+            this.chkCambiar.Location = new System.Drawing.Point(233, 49);
             this.chkCambiar.Name = "chkCambiar";
             this.chkCambiar.Size = new System.Drawing.Size(85, 19);
             this.chkCambiar.TabIndex = 34;
@@ -125,18 +125,21 @@
             this.cboOS.Items.AddRange(new object[] {
             "EXTERNA",
             "INTERNA"});
-            this.cboOS.Location = new System.Drawing.Point(325, 47);
+            this.cboOS.Location = new System.Drawing.Point(316, 47);
             this.cboOS.Name = "cboOS";
-            this.cboOS.Size = new System.Drawing.Size(75, 23);
+            this.cboOS.Size = new System.Drawing.Size(84, 23);
             this.cboOS.TabIndex = 28;
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(325, 21);
+            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
+            this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnModificar.Location = new System.Drawing.Point(316, 21);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 20);
+            this.btnModificar.Size = new System.Drawing.Size(84, 24);
             this.btnModificar.TabIndex = 27;
             this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 

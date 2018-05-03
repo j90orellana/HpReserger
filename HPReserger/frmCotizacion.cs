@@ -30,32 +30,33 @@ namespace HPReserger
 
         private void frmCotizacion_Load(object sender, EventArgs e)
         {
-            cboArea.ValueMember = "CODIGOAREA";
-            cboArea.DisplayMember = "AREA";
-            cboArea.DataSource = clCotizacion.ListarAreasUsuario(frmLogin.CodigoUsuario);
-
             txtRUC.Text = "";
             txtProveedor.Text = "";
             txtAdjunto.Text = "";
             txtImporte.Text = "";
             dtpFecha.Value = DateTime.Now.Date;
 
-            gridCotizacion.DataSource = null;
-            gridCotizacion.Rows.Clear();
-            gridCotizacion.Refresh();
-            TitulosGrid(gridCotizacion, 0);
-
-            gridCotizacionesAsociadas.DataSource = null;
-            gridCotizacionesAsociadas.Rows.Clear();
-            gridCotizacionesAsociadas.Refresh();
-            TitulosGrid(gridCotizacionesAsociadas, 1);
-
             pbFoto.Image = null;
+
+            cboArea.ValueMember = "CODIGOAREA";
+            cboArea.DisplayMember = "AREA";
+            cboArea.DataSource = clCotizacion.ListarAreasUsuario(frmLogin.CodigoUsuario);
 
             if (cboArea.Items.Count > 0)
             {
                 gridCotizacion.DataSource = clCotizacion.ListarPedidosCotizacion(Convert.ToInt32(cboArea.SelectedValue.ToString()), frmLogin.CodigoUsuario);
             }
+
+            CargarMoneda();
+            //gridCotizacion.DataSource = null;
+            //gridCotizacion.Rows.Clear();
+            //gridCotizacion.Refresh();
+            //TitulosGrid(gridCotizacion, 0);
+
+            //gridCotizacionesAsociadas.DataSource = null;
+            // gridCotizacionesAsociadas.Rows.Clear();
+            //gridCotizacionesAsociadas.Refresh();
+            //TitulosGrid(gridCotizacionesAsociadas, 1);
 
             //System.Globalization.CultureInfo C = new System.Globalization.CultureInfo("EN-US");
             //Application.CurrentCulture = C;
@@ -69,15 +70,15 @@ namespace HPReserger
             }
             else
             {
-                gridCotizacion.DataSource = null;
+                //gridCotizacion.DataSource = null;
                 gridCotizacion.Rows.Clear();
                 gridCotizacion.Refresh();
-                TitulosGrid(gridCotizacion, 0);
+                //TitulosGrid(gridCotizacion, 0);
 
-                gridCotizacionesAsociadas.DataSource = null;
+                //gridCotizacionesAsociadas.DataSource = null;
                 gridCotizacionesAsociadas.Rows.Clear();
                 gridCotizacionesAsociadas.Refresh();
-                TitulosGrid(gridCotizacionesAsociadas, 1);
+                //TitulosGrid(gridCotizacionesAsociadas, 1);
 
                 pbFoto.Image = null;
             }
@@ -90,24 +91,28 @@ namespace HPReserger
                 frmOrdenPedidoCotizacion frmOPC = new frmOrdenPedidoCotizacion();
                 frmOPC.Numero = Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2));
                 frmOPC.Tipo = gridCotizacion.Rows[Item].Cells[5].Value.ToString().Substring(0, 1);
-
                 frmOPC.ShowDialog();
             }
         }
-
+        int filas = 0;
         private void gridCotizacion_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            Item = e.RowIndex;
+            filas = Item = e.RowIndex;
             MostrarPedidosAsociados(Item);
             if (gridCotizacionesAsociadas.RowCount > 0)
             {
-                gridCotizacionesAsociadas.CurrentCell = gridCotizacionesAsociadas[0, 0];
+
+                //gridCotizacionesAsociadas_RowEnter(sender, new DataGridViewCellEventArgs(0,0));     
+
             }
             else
             {
                 txtRUC.Text = txtProveedor.Text = "";
-                dtgpedido.DataSource = null;
+                if (dtgpedido.DataSource != null)
+                    dtgpedido.DataSource = ((DataTable)(dtgpedido.DataSource)).Clone();
             }
+            //txtRUC_TextChanged(sender, e);
+            //txtRUC_TextChanged(sender, e);
         }
 
         private void MostrarPedidosAsociados(int Itemsito)
@@ -116,23 +121,42 @@ namespace HPReserger
             if (dtCotizacionesAsociadas.Rows.Count > 0)
             {
                 gridCotizacionesAsociadas.DataSource = dtCotizacionesAsociadas;
+                //gridCotizacionesAsociadas.Select();
             }
             else
             {
-                gridCotizacionesAsociadas.DataSource = null;
-                gridCotizacionesAsociadas.Rows.Clear();
-                gridCotizacionesAsociadas.Refresh();
-                TitulosGrid(gridCotizacionesAsociadas, 1);
+                if (dtgpedido.DataSource != null)
+                    dtgpedido.DataSource = ((DataTable)(dtgpedido.DataSource)).Clone();
+                gridCotizacionesAsociadas.DataSource = ((DataTable)(gridCotizacionesAsociadas.DataSource)).Clone();
+                //gridCotizacionesAsociadas.Rows.Clear();
+                //gridCotizacionesAsociadas.Refresh();
+                //TitulosGrid(gridCotizacionesAsociadas, 1);
 
                 pbFoto.Image = null;
             }
             //txtRUC.Text = txtAdjunto.Text = txtImporte.Text = txtProveedor.Text = "";
             //Foto = null;
         }
+        public void msg(string cadena)
+        {
+            MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        }
         int articulo = 0; int señal = 0;
         private void btnAsociar_Click(object sender, EventArgs e)
         {
             señal = 0;
+            if (cbomoneda.Items.Count <= 0)
+            {
+                msg("No hay tipos de monedas");
+                cbomoneda.Focus();
+                return;
+            }
+            if (cbomoneda.SelectedIndex < 0)
+            {
+                msg("Seleccione un tipo de Moneda");
+                cbomoneda.Focus();
+                return;
+            }
             if (txtImporte.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Importe de la Cotización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -146,7 +170,7 @@ namespace HPReserger
             }
             for (int i = 0; i < dtgpedido.RowCount; i++)
             {
-                if (decimal.Parse(dtgpedido["total", i].Value.ToString()) == 0)
+                if (decimal.Parse(dtgpedido["totalx", i].Value.ToString()) == 0)
                 {
                     MSG("El total del la línea " + (i + 1) + " esta en cero");
                     señal = 1;
@@ -203,24 +227,24 @@ namespace HPReserger
                 {
                     TipoCotizacion = 1;
                 }
-
                 //insertar la cabeza
-                clCotizacion.CotizacionCabeceraInsertar(out NumeroCotizacion, dtpFecha.Value, TipoCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[1].Value.ToString()), Convert.ToDecimal(txtImporte.Text.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), txtRUC.Text, Foto, nombreArchivo);
+                clCotizacion.CotizacionCabeceraInsertar(out NumeroCotizacion, dtpFecha.Value, TipoCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[1].Value.ToString()), Convert.ToDecimal(txtImporte.Text.ToString()), Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), txtRUC.Text, Foto, nombreArchivo, (int)cbomoneda.SelectedValue);
                 //insertar el detalle
                 if (dtgpedido[0, 0].Value.ToString() == "ARTICULO")
                     articulo = 1;
+                else articulo = 0;
                 if (articulo == 1)
                 {//articulos
                     for (int i = 0; i < dtgpedido.RowCount; i++)
                     {
-                        clCotizacion.CotizacionDetalleInsertar(NumeroCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), 1, int.Parse(dtgpedido["cant", i].Value.ToString()), decimal.Parse(dtgpedido["preciounit", i].Value.ToString()), decimal.Parse(dtgpedido["total", i].Value.ToString()), dtgpedido["articulo", i].Value.ToString(), dtgpedido["marca", i].Value.ToString(), dtgpedido["modelo", i].Value.ToString(), "ARTICULO");
+                        clCotizacion.CotizacionDetalleInsertar(NumeroCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), 1, int.Parse(dtgpedido["detallex", i].Value.ToString()), decimal.Parse(dtgpedido["preciounit", i].Value.ToString()), decimal.Parse(dtgpedido["totalx", i].Value.ToString()), dtgpedido["articulox", i].Value.ToString(), dtgpedido["marcax", i].Value.ToString(), dtgpedido["modelox", i].Value.ToString(), "ARTICULO");
                     }
                 }
                 else
                 {//servicios
                     for (int i = 0; i < dtgpedido.RowCount; i++)
                     {
-                        clCotizacion.CotizacionDetalleInsertar(NumeroCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), 0, 1, decimal.Parse(dtgpedido["preciounit", i].Value.ToString()), decimal.Parse(dtgpedido["total", i].Value.ToString()), dtgpedido["articulo", i].Value.ToString(), 1.ToString(), 1.ToString(), dtgpedido["detalle", i].Value.ToString());
+                        clCotizacion.CotizacionDetalleInsertar(NumeroCotizacion, Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)), 0, 1, decimal.Parse(dtgpedido["preciounit", i].Value.ToString()), decimal.Parse(dtgpedido["totalx", i].Value.ToString()), dtgpedido["articulox", i].Value.ToString(), 1.ToString(), 1.ToString(), dtgpedido["detallex", i].Value.ToString());
                     }
 
                 }
@@ -244,7 +268,6 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txtImporte.Text.ToString());
         }
-
         private void btnBuscarPDF_Click(object sender, EventArgs e)
         {
             var dialogoAbrirArchivo = new OpenFileDialog();
@@ -268,7 +291,7 @@ namespace HPReserger
 
         private void CargarFoto(int Cotizacion, int Item)
         {
-            if (gridCotizacionesAsociadas.Rows[Item].Cells[0].Value != null && gridCotizacionesAsociadas.Rows.Count > 0)
+            if (gridCotizacionesAsociadas.Rows[Item].Cells[COT.Name].Value != null && gridCotizacionesAsociadas.Rows.Count > 0)
             {
                 DataRow drFoto = clCotizacion.CargarImagenCotizacion(Cotizacion);
                 if (drFoto["Foto"] != null && drFoto["Foto"].ToString().Length > 0)
@@ -292,13 +315,15 @@ namespace HPReserger
         private void gridCotizacionesAsociadas_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             fila = e.RowIndex;
-            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(2)), e.RowIndex);
+            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[fila].Cells[COT.Name].Value.ToString().Substring(2)), fila);
 
             //dtgpedido.DataSource = clCotizacion.ListarPedidoProveedor(Int32.Parse(gridCotizacionesAsociadas["NOP", fila].Value.ToString().Substring(2)), gridCotizacionesAsociadas["CODIGOPROVEEDOR", fila].Value.ToString().TrimEnd());
             if (gridCotizacionesAsociadas.RowCount > 0)
             {
                 dtpFecha.Value = DateTime.ParseExact(gridCotizacionesAsociadas["FECHAENTREGA", fila].Value.ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                cbomoneda.SelectedValue = (int)gridCotizacionesAsociadas[idmonedax.Name, fila].Value;
                 txtRUC.Text = gridCotizacionesAsociadas["CODIGOPROVEEDOR", e.RowIndex].Value.ToString().TrimEnd();
+
                 txtRUC_TextChanged(sender, e);
                 //CalcularImporte();
             }
@@ -306,33 +331,108 @@ namespace HPReserger
             {
                 txtRUC.Text = txtProveedor.Text = "";
             }
-            // txtRUC_TextChanged(sender, e);
+            //ValidarCargaDetalle();
+        }
+        public void ValidarCargaDetalle()
+        {
+            /// msg("y que dice");
+            int f = filas;
+            if (gridCotizacionesAsociadas.RowCount > 0)
+            {
+                if (gridCotizacion[TIPO_PEDIDO.Name, f].Value.ToString() == "ARTICULO")
+                {
+                    dtgpedido.Columns[detallex.Name].HeaderText = "Cant";
+                    dtgpedido.Columns[Marcax.Name].Visible = true;
+                    dtgpedido.Columns[modelox.Name].Visible = true;
+                }
+                else
+                {
+                    dtgpedido.Columns[detallex.Name].HeaderText = "Detalle";
+                    dtgpedido.Columns[Marcax.Name].Visible = false;
+                    dtgpedido.Columns[modelox.Name].Visible = false;
+                }
+                foreach (DataGridViewRow item in dtgpedido.Rows)
+                {
+                    //si no tiene numero de cotizacion
+                    if ((int)item.Cells[numcotx.Name].Value == 0)
+                    {
+                        dtgpedido.Columns[numcotx.Name].Visible = false;
+                    }
+                    else
+                        dtgpedido.Columns[numcotx.Name].Visible = true;
+                }
+            }
+            else
+            {
+                //no tiene cotizaciones              
+                if (gridCotizacion[TIPO_PEDIDO.Name, f].Value.ToString() == "ARTICULO")
+                {
+                    dtgpedido.Columns[detallex.Name].HeaderText = "Cant";
+                    dtgpedido.Columns[Marcax.Name].Visible = true;
+                    dtgpedido.Columns[numcotx.Name].Visible = false;
+                    dtgpedido.Columns[modelox.Name].Visible = true;
+                }
+                else
+                {
+                    dtgpedido.Columns[detallex.Name].HeaderText = "Detalle";
+                    dtgpedido.Columns[Marcax.Name].Visible = false;
+                    dtgpedido.Columns[modelox.Name].Visible = false;
+                    dtgpedido.Columns[numcotx.Name].Visible = false;
+                }
 
+            }
         }
         private void txtRUC_TextChanged(object sender, EventArgs e)
         {
             lsbproveedor.DataSource = clCotizacion.ListarProveedores(txtRUC.Text, 2);
             lsbproveedor.ValueMember = "ruc";
             lsbproveedor.DisplayMember = "ruc";
-
             DataRow drProveedor = clCotizacion.RUCProveedor(txtRUC.Text.TrimEnd());
             if (drProveedor != null)
             {
+                dtgpedido.ReadOnly = false;
+
                 txtProveedor.Text = drProveedor["razon_social"].ToString();
                 lsbproveedor.Visible = false;
+                //tiene cotizaciones
                 if (gridCotizacionesAsociadas.RowCount > 0)
-                    dtgpedido.DataSource = clCotizacion.ListarPedidoProveedor(int.Parse(gridCotizacionesAsociadas["NOP", fila].Value.ToString().Substring(2)), txtRUC.Text);
+                {
+                    //sitiene cotizaciones
+                    if (gridCotizacionesAsociadas.CurrentCell != null)
+                        dtgpedido.DataSource = clCotizacion.ListarPedidoProveedor(int.Parse(gridCotizacionesAsociadas["NOP", gridCotizacionesAsociadas.CurrentRow.Index].Value.ToString().Substring(2)), txtRUC.Text);
+                    else
+                        dtgpedido.DataSource = clCotizacion.ListarPedidoProveedor(int.Parse(gridCotizacionesAsociadas["NOP", 0].Value.ToString().Substring(2)), txtRUC.Text);
+
+                }
+                //no tiene cotizaciones
                 else
+                {
+                    //no tiene cotizaciones
                     dtgpedido.DataSource = clCotizacion.ListarPedidoProveedor(int.Parse(gridCotizacion["op", gridCotizacion.CurrentCell.RowIndex].Value.ToString().Substring(2)), txtRUC.Text);
+                }
+                // ValidarCargaDetalle();
+                //hay valores en el pedido
                 if (dtgpedido.RowCount > 0)
                 {
                     CalcularImporte();
                 }
+                //bloqueamos los que no vamos a usar
+                //foreach (DataGridViewColumn item in dtgpedido.Columns)
+                //{
+                //    if (item.Name != Preciounit.Name)
+                //    {
+                //        item.ReadOnly = true;
+                //    }
+                //}
             }
             else
             {
                 txtProveedor.Text = "";
+                if (dtgpedido.DataSource != null)
+                    dtgpedido.DataSource = ((DataTable)(dtgpedido.DataSource)).Clone();
+                dtgpedido.ReadOnly = true;
             }
+            ValidarCargaDetalle();
         }
 
         private void txtRUC_KeyPress(object sender, KeyPressEventArgs e)
@@ -342,39 +442,39 @@ namespace HPReserger
 
         private void gridCotizacionesAsociadas_DoubleClick(object sender, EventArgs e)
         {
-            if (gridCotizacionesAsociadas.Rows.Count > 0 && gridCotizacionesAsociadas.CurrentRow.Cells[0].Value != null)
+            if (gridCotizacionesAsociadas.Rows.Count > 0 && gridCotizacionesAsociadas.CurrentRow.Cells[COT.Name].Value != null)
             {
                 frmCotizacionModificar frmCot = new frmCotizacionModificar();
-                frmCot.Cotizacion = gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString();
-                frmCot.Pedido = gridCotizacionesAsociadas.CurrentRow.Cells[1].Value.ToString();
-                frmCot.RUC = gridCotizacionesAsociadas.CurrentRow.Cells[2].Value.ToString();
-                frmCot.Proveedor = gridCotizacionesAsociadas.CurrentRow.Cells[3].Value.ToString();
-                frmCot.Importe = gridCotizacionesAsociadas.CurrentRow.Cells[4].Value.ToString();
+                frmCot.Cotizacion = gridCotizacionesAsociadas.CurrentRow.Cells[COT.Name].Value.ToString();
+                frmCot.Pedido = gridCotizacionesAsociadas.CurrentRow.Cells[NOP.Name].Value.ToString();
+                frmCot.RUC = gridCotizacionesAsociadas.CurrentRow.Cells[CODIGOPROVEEDOR.Name].Value.ToString();
+                frmCot.Proveedor = gridCotizacionesAsociadas.CurrentRow.Cells[PROVEEDOR.Name].Value.ToString();
+                frmCot.Importe = gridCotizacionesAsociadas.CurrentRow.Cells[IMPORTE.Name].Value.ToString();
+                frmCot.tipomoneda = (int)gridCotizacionesAsociadas.CurrentRow.Cells[idmonedax.Name].Value;
                 frmCot.Itemsito = Item;
                 frmCot.Itemsito2 = Item2;
                 frmCot.Icon = Icon;
 
-                DateTime Fecha = DateTime.ParseExact(gridCotizacionesAsociadas.CurrentRow.Cells[5].Value.ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime Fecha = DateTime.ParseExact(gridCotizacionesAsociadas.CurrentRow.Cells[FECHAENTREGA.Name].Value.ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 frmCot.FechaEntrega = Fecha;
-                frmCot.Adjunto = gridCotizacionesAsociadas.CurrentRow.Cells[6].Value.ToString();
+                frmCot.Adjunto = gridCotizacionesAsociadas.CurrentRow.Cells[ADJUNTO.Name].Value.ToString();
                 if (frmCot.ShowDialog() == DialogResult.OK)
                 {
                     MostrarPedidosAsociados(frmCot.Itemsito);
-                    if (gridCotizacionesAsociadas.Rows[Item2].Cells[0].Value != null && gridCotizacionesAsociadas.Rows.Count > 0)
+                    if (gridCotizacionesAsociadas.Rows[Item2].Cells[COT.Name].Value != null && gridCotizacionesAsociadas.Rows.Count > 0)
                     {
-                        if (Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2)) == Convert.ToInt32(frmCot.Cotizacion))
+                        if (Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[COT.Name].Value.ToString().Substring(2)) == Convert.ToInt32(frmCot.Cotizacion))
                         {
-                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[frmCot.Itemsito2].Cells[0].Value.ToString().Substring(2)), frmCot.Itemsito2);
+                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.Rows[frmCot.Itemsito2].Cells[COT.Name].Value.ToString().Substring(2)), frmCot.Itemsito2);
                         }
                         else
                         {
-                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[0].Value.ToString().Substring(2)), Item2);
+                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[COT.Name].Value.ToString().Substring(2)), Item2);                            
                         }
                     }
                 }
             }
         }
-
         private void TitulosGrid(DataGridView Grid, int Tipo)
         {
             if (Tipo == 0)
@@ -596,28 +696,55 @@ namespace HPReserger
         {
 
         }
+        public void CargarMoneda()
+        {
+            cbomoneda.DataSource = clCotizacion.getCargoTipoContratacion("id_moneda", "moneda", "tbl_moneda");
+            cbomoneda.DisplayMember = "descripcion";
+            cbomoneda.ValueMember = "codigo";
+        }
+        private void cbomoneda_Click(object sender, EventArgs e)
+        {
+            string txt = cbomoneda.Text;
+            CargarMoneda();
+            cbomoneda.Text = txt;
+        }
+
+        private void cboArea_Click(object sender, EventArgs e)
+        {
+            cboArea_SelectedIndexChanged(sender, e);
+        }
+
+        private void btnactualizar_Click(object sender, EventArgs e)
+        {
+            cboArea_SelectedIndexChanged(sender, e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gridCotizacionesAsociadas_DoubleClick(sender, e);
+        }
 
         private void dtgpedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgpedido.Columns["PrecioUnit"].Index != e.ColumnIndex && e.RowIndex > -1)
-            {
-                dtgpedido[e.ColumnIndex, e.RowIndex].ReadOnly = true;
-            }
+            //if (dtgpedido.Columns["PrecioUnit"].Index != e.ColumnIndex && e.RowIndex > -1)
+            //{
+            //    dtgpedido[e.ColumnIndex, e.RowIndex].ReadOnly = true;
+            //}
         }
 
         private void CalcularImporte()
         {
-            dtgpedido.Columns["PrecioUnit"].DefaultCellStyle.Format = "N2";
-            dtgpedido.Columns["Total"].DefaultCellStyle.Format = "N2";
+            dtgpedido.Columns[Preciounit.Name].DefaultCellStyle.Format = "N2";
+            dtgpedido.Columns[totalx.Name].DefaultCellStyle.Format = "N2";
             sumatoria = valor = total = 0;
-            if (dtgpedido["tipo", 0].Value.ToString() == "ARTICULO")
+            if (dtgpedido["tipox", 0].Value.ToString() == "ARTICULO")
             {
                 for (int i = 0; i < dtgpedido.RowCount; i++)
                 {
                     valor = Convert.ToDecimal(dtgpedido["PrecioUnit", i].Value.ToString());
-                    total = valor * Convert.ToDecimal(dtgpedido["Cant", i].Value.ToString());
+                    total = valor * Convert.ToDecimal(dtgpedido[detallex.Name, i].Value.ToString());
                     dtgpedido["PrecioUnit", i].Value = valor;// decimal.Round(valor, 2);
-                    dtgpedido["Total", i].Value = total;//decimal.Round(total, 2);
+                    dtgpedido["Totalx", i].Value = total;//decimal.Round(total, 2);
                     sumatoria += total;
                 }
                 txtImporte.Text = string.Format("{0:N2}", sumatoria);
@@ -628,7 +755,7 @@ namespace HPReserger
                 {
                     valor = Convert.ToDecimal(dtgpedido["PrecioUnit", i].Value.ToString());
                     dtgpedido["PrecioUnit", i].Value = valor;// decimal.Round(valor, 2);
-                    dtgpedido["Total", i].Value = valor;// decimal.Round(valor, 2);
+                    dtgpedido["Totalx", i].Value = valor;// decimal.Round(valor, 2);
                     sumatoria += valor;
                 }
                 txtImporte.Text = string.Format("{0:N2}", sumatoria);

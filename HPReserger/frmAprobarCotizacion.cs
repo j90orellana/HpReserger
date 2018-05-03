@@ -18,7 +18,6 @@ namespace HPReserger
         public int ItemAprob { get; set; }
         public byte[] Foto { get; set; }
         MemoryStream _memoryStream = new MemoryStream();
-
         DataTable dtCotizaciones;
         DataTable dtCotizacionesAsociadas;
 
@@ -26,9 +25,10 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        DataGridViewCellEventArgs filas;
         private void gridCotizacion_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            filas = e;
             Item = e.RowIndex;
             dtCotizacionesAsociadas = clAprobarCotizacion.ListarCotizacionesAsociadas(Convert.ToInt32(gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2)));
 
@@ -45,16 +45,13 @@ namespace HPReserger
                 TitulosGrid(gridCotizacionesAsociadas, 1);
             }
         }
-
         private void frmAprobarCotizacion_Load(object sender, EventArgs e)
         {
             Mostrar(frmLogin.CodigoUsuario);
             //System.Globalization.CultureInfo CT = new System.Globalization.CultureInfo("EN-US");
             //Application.CurrentCulture = CT;
             pbFoto.Image = null;
-
         }
-
         private void Mostrar(int Usuario)
         {
             dtCotizaciones = clAprobarCotizacion.ListarCotizacionesAsociadasParaAprobar(Usuario);
@@ -305,6 +302,12 @@ namespace HPReserger
                 frmmotrar.txtimporte.Text = gridCotizacionesAsociadas["IMPORTE", e.RowIndex].Value.ToString();
                 frmmotrar.txtruc.Text = gridCotizacionesAsociadas["CODIGOPROVEEDOR", e.RowIndex].Value.ToString();
                 frmmotrar.txtproveedor.Text = gridCotizacionesAsociadas["PROVEEDOR", e.RowIndex].Value.ToString();
+                frmmotrar.Icon = Icon;
+                if (gridCotizacion[TIPO_PEDIDO.Name, filas.RowIndex].Value.ToString() == "ARTICULO")
+                {
+                    frmmotrar.tipo = 0;
+                }
+                else frmmotrar.tipo = 1;
                 //frmmotrar.dateTimePicker1.Value = HPResergerFunciones.Utilitarios.DeStringDiaMesAÑoaDatetime(gridCotizacionesAsociadas["FECHAENTREGA", e.RowIndex].Value.ToString());
                 frmmotrar.dateTimePicker1.Value = DateTime.Parse(gridCotizacionesAsociadas["FECHAENTREGA", e.RowIndex].Value.ToString());
                 frmmotrar.Show();
@@ -314,18 +317,26 @@ namespace HPReserger
         private void btndetalle_Click(object sender, EventArgs e)
         {
             int fila = gridCotizacionesAsociadas.CurrentCell.RowIndex;
-            frmMostrarCotizacionDetalle frmmotrar = new frmMostrarCotizacionDetalle();
-            int len = gridCotizacionesAsociadas["COTIZACION", fila].Value.ToString().Length;
-            int numero = frmmotrar.numero = int.Parse(gridCotizacionesAsociadas["COTIZACION", fila].Value.ToString().Substring(2, len - 2));
-            frmmotrar.txtcotizacion.Text = numero.ToString();
-            frmmotrar.txtimporte.Text = gridCotizacionesAsociadas["IMPORTE", fila].Value.ToString();
-            frmmotrar.txtruc.Text = gridCotizacionesAsociadas["CODIGOPROVEEDOR", fila].Value.ToString();
-            frmmotrar.txtproveedor.Text = gridCotizacionesAsociadas["PROVEEDOR", fila].Value.ToString();
-            //frmmotrar.dateTimePicker1.Value = HPResergerFunciones.Utilitarios.DeStringDiaMesAÑoaDatetime(gridCotizacionesAsociadas["FECHAENTREGA", fila].Value.ToString());
-            frmmotrar.dateTimePicker1.Value = DateTime.Parse(gridCotizacionesAsociadas["FECHAENTREGA", fila].Value.ToString());
-            frmmotrar.Show();
+            if (fila >= 0)
+            {
+                frmMostrarCotizacionDetalle frmmotrar = new frmMostrarCotizacionDetalle();
+                int len = gridCotizacionesAsociadas["COTIZACION", fila].Value.ToString().Length;
+                int numero = frmmotrar.numero = int.Parse(gridCotizacionesAsociadas["COTIZACION", fila].Value.ToString().Substring(2, len - 2));
+                frmmotrar.txtcotizacion.Text = numero.ToString();
+                frmmotrar.txtimporte.Text = gridCotizacionesAsociadas["IMPORTE", fila].Value.ToString();
+                frmmotrar.txtruc.Text = gridCotizacionesAsociadas["CODIGOPROVEEDOR", fila].Value.ToString();
+                frmmotrar.txtproveedor.Text = gridCotizacionesAsociadas["PROVEEDOR", fila].Value.ToString();
+                frmmotrar.Icon = Icon;
+                if (gridCotizacion[TIPO_PEDIDO.Name, filas.RowIndex].Value.ToString() == "ARTICULO")
+                {
+                    frmmotrar.tipo = 0;
+                }
+                else frmmotrar.tipo = 1;
+                //frmmotrar.dateTimePicker1.Value = HPResergerFunciones.Utilitarios.DeStringDiaMesAÑoaDatetime(gridCotizacionesAsociadas["FECHAENTREGA", fila].Value.ToString());
+                frmmotrar.dateTimePicker1.Value = DateTime.Parse(gridCotizacionesAsociadas["FECHAENTREGA", fila].Value.ToString());
+                frmmotrar.Show();
+            }
         }
-
         private void pbFoto_MouseMove(object sender, MouseEventArgs e)
         {
             if (pbFoto.Image != null)
@@ -358,6 +369,11 @@ namespace HPReserger
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
             }
+        }
+
+        private void btnactualizar_Click(object sender, EventArgs e)
+        {
+            Mostrar(frmLogin.CodigoUsuario);
         }
     }
 }

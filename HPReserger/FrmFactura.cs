@@ -46,7 +46,6 @@ namespace HPReserger
             BuscarIgv();
             imgfactura = null;
             dtfechaemision.Value = Dtfechaentregado.Value = DateTime.Now;
-
         }
         Decimal monto = 0.2m;
         public string nrofactura;
@@ -78,7 +77,6 @@ namespace HPReserger
                 txtfoto.Text = "";
                 pbfactura.Image = null;
             }
-
         }
         public void MostrarFoto(PictureBox fotito)
         {
@@ -304,6 +302,14 @@ namespace HPReserger
         {
             if (estado == 1 && validar())
             {
+                foreach (DataGridViewRow item in DtgConten.Rows)
+                {
+                    if (item.Cells[cuentax.Name].Value.ToString() == "")
+                    {
+                        MSG($"El item {item.Cells[DESCRIPCION.Name].Value.ToString() } : No tiene un cuenta Asociada ");
+                        return;
+                    }
+                }
                 decimal detracc = 0;
                 if (cbodetraccion.Text == "NO")
                     detracc = 0;
@@ -337,10 +343,10 @@ namespace HPReserger
                     //provisionada
                     if ((int)DtgConten["provisionada", i].Value != 3)
                     {
-                        //////////////////////
+                        ////////////////////// 
                         ///Insertar-Asiento///
                         //////////////////////
-                        cfactura.InsertarAsientoFactura(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
+                        cfactura.InsertarAsientoFactura(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtnrofactura.Text);
                         cfactura.InsertarAsientoFactura(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                     }
                     else
@@ -687,6 +693,7 @@ namespace HPReserger
                 }
             }
         }
+        string BuscaFic = "";
         public void cargarFics()
         {
             contador = 0;
@@ -694,7 +701,7 @@ namespace HPReserger
             {
                 // string busorden = "0";
                 CalcularGRavaigv();
-                string BuscaMonto = "", BuscaFic = "";
+                string BuscaMonto = "";
                 foreach (DataGridViewRow lista in Dtguias.Rows)
                 {
                     DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
@@ -1082,6 +1089,11 @@ namespace HPReserger
         {
             if (pbfactura.Image != null)
                 btndescargar.Visible = true;
+        }
+
+        private void txtruc_DoubleClick(object sender, EventArgs e)
+        {
+            if (estado == 0) btnmaspro_Click(sender, e);
         }
 
         private void DtgConten_DataError(object sender, DataGridViewDataErrorEventArgs e)

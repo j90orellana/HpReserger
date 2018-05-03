@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargaDatosProveedor));
             this.label1 = new System.Windows.Forms.Label();
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.Ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +55,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 81);
+            this.label1.Location = new System.Drawing.Point(12, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 13);
             this.label1.TabIndex = 0;
@@ -87,13 +88,13 @@
             this.CUENTACCISOLES,
             this.BANCOCUENTASOLES});
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.Dtguias.Location = new System.Drawing.Point(15, 97);
+            this.Dtguias.Location = new System.Drawing.Point(15, 80);
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.RowTemplate.Height = 16;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dtguias.Size = new System.Drawing.Size(998, 210);
+            this.Dtguias.Size = new System.Drawing.Size(998, 233);
             this.Dtguias.TabIndex = 41;
             this.Dtguias.TabStop = false;
             // 
@@ -205,11 +206,13 @@
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnaceptar.Location = new System.Drawing.Point(854, 313);
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(854, 319);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 42;
             this.btnaceptar.Text = "Generar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
@@ -217,18 +220,20 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncancelar.Location = new System.Drawing.Point(935, 313);
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(935, 319);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 43;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 26);
+            this.label2.Location = new System.Drawing.Point(14, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 44;
@@ -236,7 +241,7 @@
             // 
             // txtbanco
             // 
-            this.txtbanco.Location = new System.Drawing.Point(130, 22);
+            this.txtbanco.Location = new System.Drawing.Point(129, 9);
             this.txtbanco.Name = "txtbanco";
             this.txtbanco.ReadOnly = true;
             this.txtbanco.Size = new System.Drawing.Size(227, 20);
@@ -245,7 +250,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 52);
+            this.label3.Location = new System.Drawing.Point(11, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 46;
@@ -253,7 +258,7 @@
             // 
             // txtcuenta
             // 
-            this.txtcuenta.Location = new System.Drawing.Point(130, 48);
+            this.txtcuenta.Location = new System.Drawing.Point(129, 35);
             this.txtcuenta.Name = "txtcuenta";
             this.txtcuenta.ReadOnly = true;
             this.txtcuenta.Size = new System.Drawing.Size(227, 20);

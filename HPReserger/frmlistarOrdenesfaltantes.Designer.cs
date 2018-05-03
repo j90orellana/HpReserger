@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmlistarOrdenesfaltantes));
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.falta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,13 +72,13 @@
             this.mo});
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Enabled = false;
-            this.dtgconten.Location = new System.Drawing.Point(12, 64);
+            this.dtgconten.Location = new System.Drawing.Point(12, 38);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(531, 155);
+            this.dtgconten.Size = new System.Drawing.Size(531, 181);
             this.dtgconten.TabIndex = 25;
             this.dtgconten.TabStop = false;
             // 
@@ -115,7 +116,7 @@
             // txtcotizacion
             // 
             this.txtcotizacion.Enabled = false;
-            this.txtcotizacion.Location = new System.Drawing.Point(110, 12);
+            this.txtcotizacion.Location = new System.Drawing.Point(76, 12);
             this.txtcotizacion.Name = "txtcotizacion";
             this.txtcotizacion.Size = new System.Drawing.Size(100, 20);
             this.txtcotizacion.TabIndex = 26;
@@ -123,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 16);
+            this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 27;
@@ -132,7 +133,7 @@
             // txtorden
             // 
             this.txtorden.Enabled = false;
-            this.txtorden.Location = new System.Drawing.Point(111, 38);
+            this.txtorden.Location = new System.Drawing.Point(287, 12);
             this.txtorden.Name = "txtorden";
             this.txtorden.Size = new System.Drawing.Size(100, 20);
             this.txtorden.TabIndex = 28;
@@ -140,7 +141,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Location = new System.Drawing.Point(188, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 29;
@@ -150,22 +151,28 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncancelar.Location = new System.Drawing.Point(468, 225);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.Size = new System.Drawing.Size(75, 24);
             this.btncancelar.TabIndex = 30;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // btncopiar
             // 
             this.btncopiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncopiar.Image = ((System.Drawing.Image)(resources.GetObject("btncopiar.Image")));
+            this.btncopiar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncopiar.Location = new System.Drawing.Point(387, 225);
             this.btncopiar.Name = "btncopiar";
-            this.btncopiar.Size = new System.Drawing.Size(75, 23);
+            this.btncopiar.Size = new System.Drawing.Size(75, 24);
             this.btncopiar.TabIndex = 31;
             this.btncopiar.Text = "Copiar";
+            this.btncopiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncopiar.UseVisualStyleBackColor = true;
             this.btncopiar.Click += new System.EventHandler(this.btncopiar_Click);
             // 

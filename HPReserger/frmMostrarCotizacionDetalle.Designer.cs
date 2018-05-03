@@ -29,7 +29,21 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMostrarCotizacionDetalle));
             this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numerox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorunitariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btncancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +64,8 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -58,18 +74,35 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idx,
+            this.numerox,
+            this.descripcionx,
+            this.marcax,
+            this.modelox,
+            this.cantidadx,
+            this.valorunitariox,
+            this.totalx});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dtgconten.Location = new System.Drawing.Point(11, 64);
+            this.dtgconten.Location = new System.Drawing.Point(11, 61);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -78,25 +111,104 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(573, 174);
+            this.dtgconten.Size = new System.Drawing.Size(573, 185);
             this.dtgconten.TabIndex = 90;
+            // 
+            // idx
+            // 
+            this.idx.DataPropertyName = "id";
+            this.idx.HeaderText = "ID";
+            this.idx.Name = "idx";
+            this.idx.ReadOnly = true;
+            this.idx.Visible = false;
+            // 
+            // numerox
+            // 
+            this.numerox.DataPropertyName = "número";
+            this.numerox.HeaderText = "NUMERO";
+            this.numerox.Name = "numerox";
+            this.numerox.ReadOnly = true;
+            this.numerox.Visible = false;
+            // 
+            // descripcionx
+            // 
+            this.descripcionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcionx.DataPropertyName = "descripcion";
+            this.descripcionx.HeaderText = "DESCRIPCIÓN";
+            this.descripcionx.MinimumWidth = 90;
+            this.descripcionx.Name = "descripcionx";
+            this.descripcionx.ReadOnly = true;
+            // 
+            // marcax
+            // 
+            this.marcax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.marcax.DataPropertyName = "marca";
+            this.marcax.HeaderText = "MARCA";
+            this.marcax.Name = "marcax";
+            this.marcax.ReadOnly = true;
+            this.marcax.Width = 70;
+            // 
+            // modelox
+            // 
+            this.modelox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.modelox.DataPropertyName = "modelo";
+            this.modelox.HeaderText = "MODELO";
+            this.modelox.Name = "modelox";
+            this.modelox.ReadOnly = true;
+            this.modelox.Width = 78;
+            // 
+            // cantidadx
+            // 
+            this.cantidadx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cantidadx.DataPropertyName = "cantidad";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.cantidadx.DefaultCellStyle = dataGridViewCellStyle3;
+            this.cantidadx.HeaderText = "CANTIDAD";
+            this.cantidadx.Name = "cantidadx";
+            this.cantidadx.ReadOnly = true;
+            this.cantidadx.Width = 87;
+            // 
+            // valorunitariox
+            // 
+            this.valorunitariox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valorunitariox.DataPropertyName = "valorunitario";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.valorunitariox.DefaultCellStyle = dataGridViewCellStyle4;
+            this.valorunitariox.HeaderText = "VALOR UNITARIO";
+            this.valorunitariox.Name = "valorunitariox";
+            this.valorunitariox.ReadOnly = true;
+            this.valorunitariox.Width = 113;
+            // 
+            // totalx
+            // 
+            this.totalx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.totalx.DataPropertyName = "total";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.totalx.DefaultCellStyle = dataGridViewCellStyle5;
+            this.totalx.HeaderText = "TOTAL";
+            this.totalx.Name = "totalx";
+            this.totalx.ReadOnly = true;
+            this.totalx.Width = 67;
             // 
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncancelar.Location = new System.Drawing.Point(503, 244);
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btncancelar.Location = new System.Drawing.Point(503, 252);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 29);
             this.btncancelar.TabIndex = 91;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 16);
+            this.label1.Location = new System.Drawing.Point(11, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 92;
@@ -105,7 +217,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Location = new System.Drawing.Point(11, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 13);
             this.label2.TabIndex = 93;
@@ -114,7 +226,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(220, 42);
+            this.label3.Location = new System.Drawing.Point(220, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 94;
@@ -145,6 +257,7 @@
             this.txtcotizacion.Name = "txtcotizacion";
             this.txtcotizacion.Size = new System.Drawing.Size(100, 20);
             this.txtcotizacion.TabIndex = 97;
+            this.txtcotizacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtimporte
             // 
@@ -153,14 +266,16 @@
             this.txtimporte.Name = "txtimporte";
             this.txtimporte.Size = new System.Drawing.Size(100, 20);
             this.txtimporte.TabIndex = 98;
+            this.txtimporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtruc
             // 
             this.txtruc.Enabled = false;
-            this.txtruc.Location = new System.Drawing.Point(114, 38);
+            this.txtruc.Location = new System.Drawing.Point(114, 35);
             this.txtruc.Name = "txtruc";
             this.txtruc.Size = new System.Drawing.Size(100, 20);
             this.txtruc.TabIndex = 99;
+            this.txtruc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dateTimePicker1
             // 
@@ -174,7 +289,7 @@
             // txtproveedor
             // 
             this.txtproveedor.Enabled = false;
-            this.txtproveedor.Location = new System.Drawing.Point(285, 38);
+            this.txtproveedor.Location = new System.Drawing.Point(285, 35);
             this.txtproveedor.Name = "txtproveedor";
             this.txtproveedor.Size = new System.Drawing.Size(295, 20);
             this.txtproveedor.TabIndex = 101;
@@ -196,7 +311,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.dtgconten);
-            this.MaximumSize = new System.Drawing.Size(612, 325);
             this.MinimumSize = new System.Drawing.Size(612, 325);
             this.Name = "frmMostrarCotizacionDetalle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -222,5 +336,13 @@
         public System.Windows.Forms.TextBox txtruc;
         public System.Windows.Forms.DateTimePicker dateTimePicker1;
         public System.Windows.Forms.TextBox txtproveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numerox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marcax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modelox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorunitariox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalx;
     }
 }

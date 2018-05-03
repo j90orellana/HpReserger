@@ -150,8 +150,8 @@
             this.cboBase.ForeColor = System.Drawing.Color.White;
             this.cboBase.FormattingEnabled = true;
             this.cboBase.Items.AddRange(new object[] {
-            "HpReserger",
-            "SiGE"});
+            "SiGE",
+            "HpReserger"});
             this.cboBase.Location = new System.Drawing.Point(133, 136);
             this.cboBase.Name = "cboBase";
             this.cboBase.Size = new System.Drawing.Size(171, 24);

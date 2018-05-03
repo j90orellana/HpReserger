@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarOCFaltantes));
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.OC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -246,11 +247,14 @@
             // btnaceptar
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Location = new System.Drawing.Point(1141, 473);
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnaceptar.Location = new System.Drawing.Point(1135, 473);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.Size = new System.Drawing.Size(81, 24);
             this.btnaceptar.TabIndex = 1;
             this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.tip.SetToolTip(this.btnaceptar, "Cerrar la Ventana");
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
@@ -258,11 +262,14 @@
             // btnrefres
             // 
             this.btnrefres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnrefres.Location = new System.Drawing.Point(1060, 473);
+            this.btnrefres.Image = ((System.Drawing.Image)(resources.GetObject("btnrefres.Image")));
+            this.btnrefres.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnrefres.Location = new System.Drawing.Point(1048, 473);
             this.btnrefres.Name = "btnrefres";
-            this.btnrefres.Size = new System.Drawing.Size(75, 23);
+            this.btnrefres.Size = new System.Drawing.Size(81, 24);
             this.btnrefres.TabIndex = 1;
             this.btnrefres.Text = "Actualizar";
+            this.btnrefres.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.tip.SetToolTip(this.btnrefres, "Recarga la Grilla");
             this.btnrefres.UseVisualStyleBackColor = true;
             this.btnrefres.Click += new System.EventHandler(this.btnrefres_Click);
@@ -283,11 +290,14 @@
             // btncorreo
             // 
             this.btncorreo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncorreo.Location = new System.Drawing.Point(577, 473);
+            this.btncorreo.Image = ((System.Drawing.Image)(resources.GetObject("btncorreo.Image")));
+            this.btncorreo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btncorreo.Location = new System.Drawing.Point(574, 473);
             this.btncorreo.Name = "btncorreo";
-            this.btncorreo.Size = new System.Drawing.Size(75, 23);
+            this.btncorreo.Size = new System.Drawing.Size(81, 24);
             this.btncorreo.TabIndex = 8;
             this.btncorreo.Text = "Correo";
+            this.btncorreo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.tip.SetToolTip(this.btncorreo, "Envia un Correo al Proveedor");
             this.btncorreo.UseVisualStyleBackColor = true;
             this.btncorreo.Click += new System.EventHandler(this.btncorreo_Click);
@@ -502,11 +512,12 @@
             // 
             // button1
             // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Location = new System.Drawing.Point(337, 10);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(22, 20);
             this.button1.TabIndex = 8;
-            this.button1.Text = "-";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFactura));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtnrofactura = new System.Windows.Forms.TextBox();
             this.txtruc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -80,6 +80,7 @@
             this.numoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.provisionada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numigv = new System.Windows.Forms.NumericUpDown();
             this.cboigv = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -139,6 +140,7 @@
             this.txtruc.TabIndex = 0;
             this.txtruc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtruc.TextChanged += new System.EventHandler(this.txtruc_TextChanged);
+            this.txtruc.DoubleClick += new System.EventHandler(this.txtruc_DoubleClick);
             this.txtruc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtruc_KeyDown);
             this.txtruc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtruc_KeyPress);
             // 
@@ -173,11 +175,13 @@
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(725, 621);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 10;
             this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -185,18 +189,20 @@
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Enabled = false;
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(644, 621);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 10;
             this.btnaceptar.Text = "Guardar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 44);
+            this.label4.Location = new System.Drawing.Point(6, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 3;
@@ -204,7 +210,7 @@
             // 
             // txtfoto
             // 
-            this.txtfoto.Location = new System.Drawing.Point(72, 40);
+            this.txtfoto.Location = new System.Drawing.Point(72, 38);
             this.txtfoto.Name = "txtfoto";
             this.txtfoto.Size = new System.Drawing.Size(285, 20);
             this.txtfoto.TabIndex = 6;
@@ -216,10 +222,11 @@
             this.btnCargarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCargarFoto.FlatAppearance.BorderSize = 0;
             this.btnCargarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCargarFoto.Location = new System.Drawing.Point(363, 40);
+            this.btnCargarFoto.Location = new System.Drawing.Point(363, 38);
             this.btnCargarFoto.Name = "btnCargarFoto";
             this.btnCargarFoto.Size = new System.Drawing.Size(20, 20);
             this.btnCargarFoto.TabIndex = 11;
+            this.tooltip.SetToolTip(this.btnCargarFoto, "Cargar Imagen Factura");
             this.btnCargarFoto.UseVisualStyleBackColor = true;
             this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
             // 
@@ -359,7 +366,7 @@
             // 
             // txtnroconstancia
             // 
-            this.txtnroconstancia.Location = new System.Drawing.Point(517, 93);
+            this.txtnroconstancia.Location = new System.Drawing.Point(493, 87);
             this.txtnroconstancia.MaxLength = 10;
             this.txtnroconstancia.Name = "txtnroconstancia";
             this.txtnroconstancia.Size = new System.Drawing.Size(100, 20);
@@ -371,7 +378,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(429, 97);
+            this.label11.Location = new System.Drawing.Point(411, 91);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(83, 13);
             this.label11.TabIndex = 26;
@@ -380,7 +387,7 @@
             // lbldetracion
             // 
             this.lbldetracion.AutoSize = true;
-            this.lbldetracion.Location = new System.Drawing.Point(258, 97);
+            this.lbldetracion.Location = new System.Drawing.Point(254, 91);
             this.lbldetracion.Name = "lbldetracion";
             this.lbldetracion.Size = new System.Drawing.Size(89, 13);
             this.lbldetracion.TabIndex = 25;
@@ -389,7 +396,7 @@
             // txtdetraccion
             // 
             this.txtdetraccion.Enabled = false;
-            this.txtdetraccion.Location = new System.Drawing.Point(353, 93);
+            this.txtdetraccion.Location = new System.Drawing.Point(344, 87);
             this.txtdetraccion.Name = "txtdetraccion";
             this.txtdetraccion.Size = new System.Drawing.Size(63, 20);
             this.txtdetraccion.TabIndex = 24;
@@ -397,7 +404,7 @@
             // 
             // numdetraccion
             // 
-            this.numdetraccion.Location = new System.Drawing.Point(201, 93);
+            this.numdetraccion.Location = new System.Drawing.Point(201, 87);
             this.numdetraccion.Minimum = new decimal(new int[] {
             1,
             0,
@@ -416,7 +423,7 @@
             // lblporcentajedetraccion
             // 
             this.lblporcentajedetraccion.AutoSize = true;
-            this.lblporcentajedetraccion.Location = new System.Drawing.Point(237, 97);
+            this.lblporcentajedetraccion.Location = new System.Drawing.Point(237, 91);
             this.lblporcentajedetraccion.Name = "lblporcentajedetraccion";
             this.lblporcentajedetraccion.Size = new System.Drawing.Size(15, 13);
             this.lblporcentajedetraccion.TabIndex = 23;
@@ -429,7 +436,7 @@
             this.cbodetraccion.Items.AddRange(new object[] {
             "NO",
             "SI"});
-            this.cbodetraccion.Location = new System.Drawing.Point(72, 93);
+            this.cbodetraccion.Location = new System.Drawing.Point(72, 87);
             this.cbodetraccion.Name = "cbodetraccion";
             this.cbodetraccion.Size = new System.Drawing.Size(123, 21);
             this.cbodetraccion.TabIndex = 21;
@@ -438,7 +445,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 97);
+            this.label10.Location = new System.Drawing.Point(4, 91);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 13);
             this.label10.TabIndex = 20;
@@ -447,14 +454,14 @@
             // DtFechaRecepcion
             // 
             this.DtFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtFechaRecepcion.Location = new System.Drawing.Point(487, 40);
+            this.DtFechaRecepcion.Location = new System.Drawing.Point(487, 38);
             this.DtFechaRecepcion.Name = "DtFechaRecepcion";
             this.DtFechaRecepcion.Size = new System.Drawing.Size(100, 20);
             this.DtFechaRecepcion.TabIndex = 19;
             // 
             // txtmonto
             // 
-            this.txtmonto.Location = new System.Drawing.Point(260, 66);
+            this.txtmonto.Location = new System.Drawing.Point(260, 62);
             this.txtmonto.Name = "txtmonto";
             this.txtmonto.Size = new System.Drawing.Size(78, 20);
             this.txtmonto.TabIndex = 18;
@@ -501,16 +508,17 @@
             this.TOTALFAC,
             this.numoc,
             this.siigv,
-            this.provisionada});
+            this.provisionada,
+            this.cuentax});
             this.DtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgConten.Enabled = false;
-            this.DtgConten.Location = new System.Drawing.Point(6, 120);
+            this.DtgConten.Location = new System.Drawing.Point(6, 112);
             this.DtgConten.MultiSelect = false;
             this.DtgConten.Name = "DtgConten";
             this.DtgConten.RowHeadersVisible = false;
             this.DtgConten.RowTemplate.Height = 16;
             this.DtgConten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DtgConten.Size = new System.Drawing.Size(699, 183);
+            this.DtgConten.Size = new System.Drawing.Size(699, 191);
             this.DtgConten.TabIndex = 16;
             this.DtgConten.TabStop = false;
             this.DtgConten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgConten_CellEndEdit);
@@ -564,8 +572,8 @@
             // 
             this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle6;
             this.CANTIDAD.HeaderText = "Cant.";
             this.CANTIDAD.Name = "CANTIDAD";
             this.CANTIDAD.ReadOnly = true;
@@ -575,9 +583,9 @@
             // 
             this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PRECIOUNIT.DataPropertyName = "preciounit";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle7;
             this.PRECIOUNIT.HeaderText = "PrecioUnit.";
             this.PRECIOUNIT.Name = "PRECIOUNIT";
             this.PRECIOUNIT.Width = 84;
@@ -586,10 +594,10 @@
             // 
             this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.subtotale.DataPropertyName = "subtotal";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            dataGridViewCellStyle3.NullValue = "0.00";
-            this.subtotale.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n2";
+            dataGridViewCellStyle8.NullValue = "0.00";
+            this.subtotale.DefaultCellStyle = dataGridViewCellStyle8;
             this.subtotale.HeaderText = "Subtotal";
             this.subtotale.Name = "subtotale";
             this.subtotale.ReadOnly = true;
@@ -599,10 +607,10 @@
             // 
             this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valueigv.DataPropertyName = "valueigv";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.valueigv.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "n2";
+            dataGridViewCellStyle9.NullValue = "0.00";
+            this.valueigv.DefaultCellStyle = dataGridViewCellStyle9;
             this.valueigv.HeaderText = "Igv";
             this.valueigv.Name = "valueigv";
             this.valueigv.ReadOnly = true;
@@ -612,10 +620,10 @@
             // 
             this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TOTALFAC.DataPropertyName = "total";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0.00";
+            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle10;
             this.TOTALFAC.HeaderText = "Total";
             this.TOTALFAC.Name = "TOTALFAC";
             this.TOTALFAC.ReadOnly = true;
@@ -637,7 +645,6 @@
             this.siigv.Name = "siigv";
             this.siigv.ReadOnly = true;
             this.siigv.Visible = false;
-            this.siigv.Width = 53;
             // 
             // provisionada
             // 
@@ -646,10 +653,17 @@
             this.provisionada.Name = "provisionada";
             this.provisionada.Visible = false;
             // 
+            // cuentax
+            // 
+            this.cuentax.DataPropertyName = "cuenta";
+            this.cuentax.HeaderText = "cuenta";
+            this.cuentax.Name = "cuentax";
+            this.cuentax.Visible = false;
+            // 
             // numigv
             // 
             this.numigv.Enabled = false;
-            this.numigv.Location = new System.Drawing.Point(201, 66);
+            this.numigv.Location = new System.Drawing.Point(201, 62);
             this.numigv.Name = "numigv";
             this.numigv.Size = new System.Drawing.Size(38, 20);
             this.numigv.TabIndex = 15;
@@ -667,7 +681,7 @@
             this.cboigv.Items.AddRange(new object[] {
             "SI (IGV Incluido)",
             "SI (IGV No Incluido)"});
-            this.cboigv.Location = new System.Drawing.Point(72, 66);
+            this.cboigv.Location = new System.Drawing.Point(72, 62);
             this.cboigv.Name = "cboigv";
             this.cboigv.Size = new System.Drawing.Size(123, 21);
             this.cboigv.TabIndex = 14;
@@ -676,7 +690,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(591, 70);
+            this.label15.Location = new System.Drawing.Point(591, 66);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(34, 13);
             this.label15.TabIndex = 3;
@@ -685,7 +699,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(484, 70);
+            this.label14.Location = new System.Drawing.Point(484, 66);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(28, 13);
             this.label14.TabIndex = 3;
@@ -694,7 +708,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(344, 70);
+            this.label13.Location = new System.Drawing.Point(344, 66);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 13);
             this.label13.TabIndex = 3;
@@ -703,7 +717,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(393, 44);
+            this.label9.Location = new System.Drawing.Point(393, 42);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 13);
             this.label9.TabIndex = 3;
@@ -730,7 +744,7 @@
             // lblporcentaje
             // 
             this.lblporcentaje.AutoSize = true;
-            this.lblporcentaje.Location = new System.Drawing.Point(239, 70);
+            this.lblporcentaje.Location = new System.Drawing.Point(239, 66);
             this.lblporcentaje.Name = "lblporcentaje";
             this.lblporcentaje.Size = new System.Drawing.Size(15, 13);
             this.lblporcentaje.TabIndex = 3;
@@ -740,7 +754,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 70);
+            this.label3.Location = new System.Drawing.Point(6, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 3;
@@ -748,7 +762,7 @@
             // 
             // txttotal
             // 
-            this.txttotal.Location = new System.Drawing.Point(627, 66);
+            this.txttotal.Location = new System.Drawing.Point(627, 62);
             this.txttotal.Name = "txttotal";
             this.txttotal.Size = new System.Drawing.Size(78, 20);
             this.txttotal.TabIndex = 6;
@@ -758,18 +772,19 @@
             // txtigv
             // 
             this.txtigv.Enabled = false;
-            this.txtigv.Location = new System.Drawing.Point(517, 66);
+            this.txtigv.Location = new System.Drawing.Point(517, 62);
             this.txtigv.Name = "txtigv";
             this.txtigv.Size = new System.Drawing.Size(70, 20);
             this.txtigv.TabIndex = 6;
             this.txtigv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tooltip.SetToolTip(this.txtigv, "Calcula el IGV en base a la configuración de los Articulos");
             this.txtigv.TextChanged += new System.EventHandler(this.txtigv_TextChanged);
             this.txtigv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtigv_KeyDown);
             this.txtigv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtigv_KeyPress);
             // 
             // txtsubtotal
             // 
-            this.txtsubtotal.Location = new System.Drawing.Point(403, 66);
+            this.txtsubtotal.Location = new System.Drawing.Point(403, 62);
             this.txtsubtotal.Name = "txtsubtotal";
             this.txtsubtotal.Size = new System.Drawing.Size(75, 20);
             this.txtsubtotal.TabIndex = 6;
@@ -803,12 +818,17 @@
             // 
             // btnmaspro
             // 
+            this.btnmaspro.BackColor = System.Drawing.SystemColors.Control;
+            this.btnmaspro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmaspro.BackgroundImage")));
+            this.btnmaspro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmaspro.FlatAppearance.BorderSize = 0;
+            this.btnmaspro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmaspro.Location = new System.Drawing.Point(407, 36);
             this.btnmaspro.Name = "btnmaspro";
-            this.btnmaspro.Size = new System.Drawing.Size(24, 20);
+            this.btnmaspro.Size = new System.Drawing.Size(20, 20);
             this.btnmaspro.TabIndex = 15;
-            this.btnmaspro.Text = "- -";
-            this.btnmaspro.UseVisualStyleBackColor = true;
+            this.tooltip.SetToolTip(this.btnmaspro, "Buscar Proveedor");
+            this.btnmaspro.UseVisualStyleBackColor = false;
             this.btnmaspro.Click += new System.EventHandler(this.btnmaspro_Click);
             // 
             // txtguia
@@ -827,11 +847,13 @@
             // btnagregar
             // 
             this.btnagregar.Enabled = false;
+            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
             this.btnagregar.Location = new System.Drawing.Point(733, 317);
             this.btnagregar.Name = "btnagregar";
             this.btnagregar.Size = new System.Drawing.Size(75, 23);
             this.btnagregar.TabIndex = 17;
             this.btnagregar.Text = "Ingresar";
+            this.btnagregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnagregar.UseVisualStyleBackColor = true;
             this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
@@ -871,7 +893,7 @@
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
-            this.Dtguias.RowTemplate.Height = 16;
+            this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtguias.Size = new System.Drawing.Size(705, 190);
             this.Dtguias.TabIndex = 21;
@@ -977,11 +999,13 @@
             // 
             this.btnprovisionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnprovisionar.Enabled = false;
-            this.btnprovisionar.Location = new System.Drawing.Point(365, 621);
+            this.btnprovisionar.Image = ((System.Drawing.Image)(resources.GetObject("btnprovisionar.Image")));
+            this.btnprovisionar.Location = new System.Drawing.Point(362, 621);
             this.btnprovisionar.Name = "btnprovisionar";
-            this.btnprovisionar.Size = new System.Drawing.Size(75, 23);
+            this.btnprovisionar.Size = new System.Drawing.Size(88, 23);
             this.btnprovisionar.TabIndex = 23;
             this.btnprovisionar.Text = "Provisionar";
+            this.btnprovisionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnprovisionar.UseVisualStyleBackColor = true;
             this.btnprovisionar.Click += new System.EventHandler(this.btnprovisionar_Click);
             // 
@@ -1110,5 +1134,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn siigv;
         private System.Windows.Forms.DataGridViewTextBoxColumn provisionada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuentax;
     }
 }
