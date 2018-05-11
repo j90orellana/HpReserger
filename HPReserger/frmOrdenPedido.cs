@@ -52,7 +52,7 @@ namespace HPReserger
             Activo.Columns.Add("VALOR", typeof(string));
             Activo.Rows.Add(new object[] { "0", "NO" });
             Activo.Rows.Add(new object[] { "1", "SI" });
-                    }
+        }
         private void gridItem_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == Item.Index && e.RowIndex > -1)
@@ -123,7 +123,7 @@ namespace HPReserger
                     int FilaGrabarArticulo = 0;
                     for (FilaGrabarArticulo = 0; FilaGrabarArticulo < gridItem.Rows.Count; FilaGrabarArticulo++)
                     {
-                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Cantidad.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Item.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Marca.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Modelo.Name].Value), "ARTICULO", (int)gridItem[ActFijo.Name, FilaGrabarArticulo].Value);
+                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Cantidad.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Item.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Marca.Name].Value), Convert.ToInt32(gridItem.Rows[FilaGrabarArticulo].Cells[Modelo.Name].Value), "ARTICULO", (int)gridItem[ActFijo.Name, FilaGrabarArticulo].Value, (int)gridItem[CCx.Name, FilaGrabarArticulo].Value);
                     }
                 }
                 else
@@ -136,7 +136,7 @@ namespace HPReserger
                         {
                             cadenita += char.ToUpper(c);
                         }
-                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, 0, Convert.ToInt32(gridItem.Rows[FilaGrabarServicio].Cells[Item.Name].Value), 1, 1, cadenita, 0);
+                        clOrdenPedido.OrdenPedidoDetalleInsertar(IdNumero, 0, Convert.ToInt32(gridItem.Rows[FilaGrabarServicio].Cells[Item.Name].Value), 1, 1, cadenita, 0, (int)gridItem[CCx.Name, FilaGrabarServicio].Value);
                     }
                 }
                 if (IdNumero != 0)
@@ -169,6 +169,11 @@ namespace HPReserger
                     if (Grid.Rows[fila].Cells[Item.Name].Value == null)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Artículo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return false;
+                    }
+                    if (Grid.Rows[fila].Cells[CCx.Name].Value == null)
+                    {
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Centro de Costo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     if (Grid.Rows[fila].Cells[Marca.Name].Value == null)
@@ -251,8 +256,9 @@ namespace HPReserger
                     {
                         if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Item.Name].Value.ToString()) && fila != filaBuscar)
                         {
-                            MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            return false;
+                            //VALIDAR QUE NO REPITA SERVICIOS
+                         //   MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                          //  return false;
                         }
                     }
                 }
@@ -347,6 +353,15 @@ namespace HPReserger
                     txt.KeyPress += new KeyPressEventHandler(txtmayusculas_keypress);
                 }
             }
+            if (gridItem.CurrentCell.ColumnIndex == CCx.Index)
+            {
+                TextBox txt = e.Control as TextBox;
+                if (txt != null)
+                {
+                    txt.KeyPress -= new KeyPressEventHandler(txtmayusculas_keypress);
+                    txt.KeyPress -= new KeyPressEventHandler(txtNumeros_KeyPress);
+                }
+            }
 
         }
         private void txtmayusculas_keypress(object sender, KeyPressEventArgs e)
@@ -404,8 +419,12 @@ namespace HPReserger
 
                     //  gridItem.Columns[3].Width = 100;
                     gridItem.Columns[5].Visible = true;
-                    gridItem.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    gridItem.Columns[5].HeaderText = "Cantidad";
+                    //gridItem.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    gridItem.Columns[5].HeaderText = "CentroCosto";
+
+                    gridItem.Columns[6].Visible = true;
+                    gridItem.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    gridItem.Columns[6].HeaderText = "Cantidad";
 
                 }
                 else
@@ -437,10 +456,12 @@ namespace HPReserger
                     //   gridItem.Columns[2].Width = 0;
                     gridItem.Columns[4].Visible = false;
 
-                    //      gridItem.Columns[3].Width = 340;
                     gridItem.Columns[5].Visible = true;
-                    gridItem.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    gridItem.Columns[5].HeaderText = "Observaciones";
+
+                    //      gridItem.Columns[3].Width = 340;
+                    gridItem.Columns[6].Visible = true;
+                    gridItem.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    gridItem.Columns[6].HeaderText = "Observaciones";
 
                 }
 
@@ -495,9 +516,31 @@ namespace HPReserger
                 ItemColumna.ValueMember = "codigo";
                 ItemColumna.DataSource = Activo;
             }
-
+            ///centro de costo
+            if (e.ColumnIndex == CCx.Index && e.RowIndex >= 0)
+            {
+                CargarCentroCosto();
+                DataGridViewComboBoxColumn ItemColumna = gridItem.Columns[CCx.Name] as DataGridViewComboBoxColumn;
+                ItemColumna.DisplayMember = "descripcion";
+                ItemColumna.ValueMember = "codigo";
+                ItemColumna.DataSource = CentroCosto;
+            }
         }
-
+        DataTable CentroCosto, Centroc;
+        public void CargarCentroCosto()
+        {
+            Centroc = new DataTable();
+            Centroc = clOrdenPedido.ListarCentroCostos();
+            CentroCosto = new DataTable();
+            CentroCosto.Columns.Add("codigo", typeof(int));
+            CentroCosto.Columns.Add("descripcion");
+            CentroCosto.Clear();
+            foreach (DataRow item in Centroc.Rows)
+            {
+                if (item["Id_CtaCtble"].ToString() != "")
+                    CentroCosto.Rows.Add(item["Id_CCosto"], item["Id_CtaCtble"] + "-" + item["CentroCosto"]);
+            }
+        }
         private void btnREfres_Click(object sender, EventArgs e)
         {
             DataGridViewComboBoxColumn ItemColumn = gridItem.Columns["Item"] as DataGridViewComboBoxColumn;

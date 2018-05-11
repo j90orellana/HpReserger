@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmMensajeCorreo : Form
+    public partial class frmMensajeCorreo : FormGradient
     {
         public frmMensajeCorreo()
         {
@@ -31,6 +32,25 @@ namespace HPReserger
             cboprioridad.ValueMember = "codigo";
             cboprioridad.DisplayMember = "valor";
             cboprioridad.SelectedIndex = 0;
+            VerificarAdjuntos();
+        }
+        public void VerificarAdjuntos()
+        {
+            if (Openfiledatos.FileNames.ToString().Length > 0)
+            {
+                string cadena = "";
+                foreach (string ruta in Openfiledatos.FileNames)
+                {
+                    cadena += ruta + " ";
+                }
+                lbldatos.Text = cadena;
+                adjunto = true;
+            }
+            else
+            {
+                lbldatos.Text = "";
+                adjunto = false;
+            }
         }
         private void btnenviar_Click(object sender, EventArgs e)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmprovisionarQuestion : Form
+    public partial class frmprovisionarQuestion : FormGradient
     {
         public frmprovisionarQuestion()
         {
@@ -34,6 +35,11 @@ namespace HPReserger
                 numdetraccion.Enabled = false;
             else
                 numdetraccion.Enabled = true;
+        }
+
+        private void frmprovisionarQuestion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -273,6 +273,12 @@
     <Compile Include="frmFicSinFaactura.Designer.cs">
       <DependentUpon>frmFicSinFaactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFlujodeCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFlujodeCaja.Designer.cs">
+      <DependentUpon>frmFlujodeCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGenerarCartaBancosCTs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -877,6 +883,12 @@
       <DependentUpon>rptConvenioPracticasPreprofesional.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="rptFlujodeCaja.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptFlujodeCaja.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RptGenerarRenta.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1321,6 +1333,9 @@
     <EmbeddedResource Include="frmFicSinFaactura.resx">
       <DependentUpon>frmFicSinFaactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFlujodeCaja.resx">
+      <DependentUpon>frmFlujodeCaja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFoto.resx">
       <DependentUpon>FrmFoto.cs</DependentUpon>
     </EmbeddedResource>
@@ -1578,6 +1593,10 @@
     <EmbeddedResource Include="rptConvenioPracticasPreprofesional.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptConvenioPracticasPreprofesional.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptFlujodeCaja.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptFlujodeCaja.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RptGenerarRenta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

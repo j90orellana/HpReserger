@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmFicModificar : Form
+    public partial class frmFicModificar : FormGradient
     {
         public int ItemDetalle { get; set; }
         public int FIC { get; set; }
@@ -26,7 +27,9 @@ namespace HPReserger
         public string Modelo { get; set; }
         public string CantOC { get; set; }
         public string CantFIC { get; set; }
-
+        public string CentroCosto { get { return txtcentrocosto.Text; } set { txtcentrocosto.Text = value; } }
+        int ccc;
+        public int cc { get { return ccc; } set { ccc = value; } }
         HPResergerCapaLogica.HPResergerCL clModificarFIC = new HPResergerCapaLogica.HPResergerCL();
 
         public frmFicModificar()
@@ -71,7 +74,7 @@ namespace HPReserger
 
             if (Convert.ToInt32(txtGuia.Text) != Convert.ToInt32(GuiaRemision))
             {
-                DataTable dtGuiaRemisionProveedorM = clModificarFIC.OrdenCompraProveedor(Proveedor, Convert.ToInt32(txtGuia.Text), ordencompra,tipo);
+                DataTable dtGuiaRemisionProveedorM = clModificarFIC.OrdenCompraProveedor(Proveedor, Convert.ToInt32(txtGuia.Text), ordencompra, tipo);
                 if (dtGuiaRemisionProveedorM.Rows.Count > 0)
                 {
                     MessageBox.Show(lblguia.Text + " ya existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -89,7 +92,7 @@ namespace HPReserger
 
             clModificarFIC.FICModificarCabecera(Convert.ToInt32(txtFIC.Text), dtpFecha.Value, Convert.ToInt32(txtGuia.Text));
             clModificarFIC.FICEliminarItemDetalle(ItemDetalle, FIC, CodigoArticulo, CodigoMarca, CodigoModelo);
-            clModificarFIC.FICDetalleInsertar(FIC, CodigoArticulo, CodigoMarca, CodigoModelo, Convert.ToInt32(txtCantFIC.Text), "", tipo);
+            clModificarFIC.FICDetalleInsertar(FIC, CodigoArticulo, CodigoMarca, CodigoModelo, Convert.ToInt32(txtCantFIC.Text), "", tipo, ccc);
 
             MessageBox.Show("FIC modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

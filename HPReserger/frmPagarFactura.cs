@@ -318,16 +318,16 @@ namespace HPReserger
             /////////////////////// 
             if (PAsoBanco == DialogResult.OK)
             {
-                int numasiento; string facturar = "";
-                DataTable asientito = cPagarfactura.UltimoAsiento();
-                DataRow asiento = asientito.Rows[0];
-                if (asiento == null) { numasiento = 0; }
-                else
-                {
-                    numasiento = (int)asiento["codigo"];
-                }
+                int numasiento=0; string facturar = "";
                 foreach (FACTURAS fac in Comprobantes)
                 {
+                    DataTable asientito = cPagarfactura.UltimoAsientoFactura(fac.numero, fac.proveedor);
+                    DataRow asiento = asientito.Rows[0];
+                    if (asiento == null) { numasiento = 0; }
+                    else
+                    {
+                        numasiento = (int)asiento["codigo"];
+                    }
                     //Recorremos los comprobantes seleccionados RH / FT
                     //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
                     if (fac.tipo.Substring(0, 2) == "RH")
@@ -364,7 +364,7 @@ namespace HPReserger
                     BanCuenta = "";
                 else
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
-                    cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5);
+                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5);
                 msg("Documento Pagado y se ha Generado su Asiento");
                 btnActualizar_Click(sender, e);
                 txttotaldetrac.Text = txttotal.Text = "0.00";

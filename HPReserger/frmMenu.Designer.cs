@@ -172,6 +172,7 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
+            this.flujoDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             this.panelOre1.SuspendLayout();
@@ -472,7 +473,7 @@
             // 
             this.generaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generaciónToolStripMenuItem.Image")));
             this.generaciónToolStripMenuItem.Name = "generaciónToolStripMenuItem";
-            this.generaciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generaciónToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.generaciónToolStripMenuItem.Tag = "30201";
             this.generaciónToolStripMenuItem.Text = "Generar";
             this.generaciónToolStripMenuItem.Click += new System.EventHandler(this.generaciónToolStripMenuItem_Click);
@@ -481,7 +482,7 @@
             // 
             this.aprobaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aprobaciónToolStripMenuItem.Image")));
             this.aprobaciónToolStripMenuItem.Name = "aprobaciónToolStripMenuItem";
-            this.aprobaciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aprobaciónToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.aprobaciónToolStripMenuItem.Tag = "30202";
             this.aprobaciónToolStripMenuItem.Text = "Aprobación";
             this.aprobaciónToolStripMenuItem.Click += new System.EventHandler(this.aprobaciónToolStripMenuItem_Click);
@@ -514,7 +515,7 @@
             // 
             this.artículosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("artículosToolStripMenuItem.Image")));
             this.artículosToolStripMenuItem.Name = "artículosToolStripMenuItem";
-            this.artículosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.artículosToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.artículosToolStripMenuItem.Tag = "30401";
             this.artículosToolStripMenuItem.Text = "Artículos";
             this.artículosToolStripMenuItem.Click += new System.EventHandler(this.artículosToolStripMenuItem_Click);
@@ -523,7 +524,7 @@
             // 
             this.serviciosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("serviciosToolStripMenuItem.Image")));
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.serviciosToolStripMenuItem.Tag = "30402";
             this.serviciosToolStripMenuItem.Text = "Servicios";
             this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
@@ -695,7 +696,8 @@
             // 
             this.reportesContablesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.estadoDeGanaciasYPerdidasToolStripMenuItem1});
+            this.estadoDeGanaciasYPerdidasToolStripMenuItem1,
+            this.flujoDeCajaToolStripMenuItem});
             this.reportesContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportesContablesToolStripMenuItem.Image")));
             this.reportesContablesToolStripMenuItem.Name = "reportesContablesToolStripMenuItem";
             this.reportesContablesToolStripMenuItem.ShowShortcutKeys = false;
@@ -841,7 +843,7 @@
             // 
             this.empleadoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("empleadoToolStripMenuItem1.Image")));
             this.empleadoToolStripMenuItem1.Name = "empleadoToolStripMenuItem1";
-            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.empleadoToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
             this.empleadoToolStripMenuItem1.Tag = "10801";
             this.empleadoToolStripMenuItem1.Text = "Empleado";
             this.empleadoToolStripMenuItem1.Click += new System.EventHandler(this.empleadoToolStripMenuItem1_Click);
@@ -850,7 +852,7 @@
             // 
             this.boletasToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("boletasToolStripMenuItem1.Image")));
             this.boletasToolStripMenuItem1.Name = "boletasToolStripMenuItem1";
-            this.boletasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.boletasToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
             this.boletasToolStripMenuItem1.Tag = "10802";
             this.boletasToolStripMenuItem1.Text = "Boletas";
             this.boletasToolStripMenuItem1.Click += new System.EventHandler(this.boletasToolStripMenuItem1_Click);
@@ -1569,7 +1571,7 @@
             this.cerrarSesionToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("cerrarSesionToolStripMenuItem1.Image")));
             this.cerrarSesionToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.White;
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
-            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.cerrarSesionToolStripMenuItem1.Text = "&Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem1_Click);
             // 
@@ -1578,14 +1580,14 @@
             this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
             this.salirToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // cargarPdfToolStripMenuItem
             // 
             this.cargarPdfToolStripMenuItem.Name = "cargarPdfToolStripMenuItem";
-            this.cargarPdfToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cargarPdfToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.cargarPdfToolStripMenuItem.Tag = "803";
             this.cargarPdfToolStripMenuItem.Text = "Cargar Pdf";
             this.cargarPdfToolStripMenuItem.Click += new System.EventHandler(this.cargarPdfToolStripMenuItem_Click);
@@ -1603,6 +1605,14 @@
             this.fotoCheck1.Observacion = "Detalle:";
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
+            // 
+            // flujoDeCajaToolStripMenuItem
+            // 
+            this.flujoDeCajaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("flujoDeCajaToolStripMenuItem.Image")));
+            this.flujoDeCajaToolStripMenuItem.Name = "flujoDeCajaToolStripMenuItem";
+            this.flujoDeCajaToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.flujoDeCajaToolStripMenuItem.Text = "Flujo de Caja";
+            this.flujoDeCajaToolStripMenuItem.Click += new System.EventHandler(this.flujoDeCajaToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -1784,5 +1794,6 @@
         private System.Windows.Forms.PictureBox pbesquina;
         private System.Windows.Forms.ToolStripMenuItem configuraciónReporteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem balanceDeSituaciónFinancieraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem flujoDeCajaToolStripMenuItem;
     }
 }

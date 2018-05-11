@@ -29,42 +29,29 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlmacenServicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlmacenServicio));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridDetalle2 = new System.Windows.Forms.DataGridView();
-            this.G2CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.G2ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.G2CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.G2MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.G2CODIGOMODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.G2MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CANTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CANTING = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAcepatr = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gridDetalle1 = new System.Windows.Forms.DataGridView();
-            this.FIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VALORIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SSS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboOC = new System.Windows.Forms.ComboBox();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.txtRUC = new System.Windows.Forms.TextBox();
@@ -72,16 +59,35 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gridDetalle = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnlistar = new System.Windows.Forms.Button();
             this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOMODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centrocosto1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnlistar = new System.Windows.Forms.Button();
+            this.cc1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.G2CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.G2ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.G2CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.G2MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.G2CODIGOMODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.G2MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CANTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CENTROCOSTO3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CANTING = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CC3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VALORIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SSS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle)).BeginInit();
@@ -115,8 +121,10 @@
             this.G2CODIGOMODELO,
             this.G2MODELO,
             this.CANTOC,
+            this.CENTROCOSTO3,
             this.CANTING,
-            this.ItemDetalle});
+            this.ItemDetalle,
+            this.CC3});
             resources.ApplyResources(this.gridDetalle2, "gridDetalle2");
             this.gridDetalle2.Name = "gridDetalle2";
             this.gridDetalle2.ReadOnly = true;
@@ -125,6 +133,240 @@
             this.gridDetalle2.RowTemplate.Height = 16;
             this.gridDetalle2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle2.DoubleClick += new System.EventHandler(this.gridDetalle2_DoubleClick);
+            // 
+            // btnAcepatr
+            // 
+            resources.ApplyResources(this.btnAcepatr, "btnAcepatr");
+            this.btnAcepatr.Name = "btnAcepatr";
+            this.btnAcepatr.UseVisualStyleBackColor = true;
+            this.btnAcepatr.Click += new System.EventHandler(this.btnAcepatr_Click);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // gridDetalle1
+            // 
+            this.gridDetalle1.AllowUserToAddRows = false;
+            this.gridDetalle1.AllowUserToResizeColumns = false;
+            this.gridDetalle1.AllowUserToResizeRows = false;
+            this.gridDetalle1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridDetalle1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridDetalle1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDetalle1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.gridDetalle1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridDetalle1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FIC,
+            this.VALORIZACION,
+            this.ARTOC,
+            this.SSS,
+            this.fecha2});
+            resources.ApplyResources(this.gridDetalle1, "gridDetalle1");
+            this.gridDetalle1.Name = "gridDetalle1";
+            this.gridDetalle1.ReadOnly = true;
+            this.gridDetalle1.RowHeadersVisible = false;
+            this.gridDetalle1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridDetalle1.RowTemplate.Height = 16;
+            this.gridDetalle1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridDetalle1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle1_RowEnter);
+            // 
+            // cboOC
+            // 
+            this.cboOC.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cboOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOC.FormattingEnabled = true;
+            resources.ApplyResources(this.cboOC, "cboOC");
+            this.cboOC.Name = "cboOC";
+            this.cboOC.SelectedIndexChanged += new System.EventHandler(this.cboOC_SelectedIndexChanged);
+            // 
+            // txtValor
+            // 
+            resources.ApplyResources(this.txtValor, "txtValor");
+            this.txtValor.Name = "txtValor";
+            this.txtValor.ReadOnly = true;
+            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
+            // 
+            // txtRUC
+            // 
+            resources.ApplyResources(this.txtRUC, "txtRUC");
+            this.txtRUC.Name = "txtRUC";
+            this.txtRUC.TextChanged += new System.EventHandler(this.txtRUC_TextChanged);
+            this.txtRUC.DoubleClick += new System.EventHandler(this.txtRUC_DoubleClick);
+            this.txtRUC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRUC_KeyDown);
+            this.txtRUC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRUC_KeyPress);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // gridDetalle
+            // 
+            this.gridDetalle.AllowUserToAddRows = false;
+            this.gridDetalle.AllowUserToResizeColumns = false;
+            this.gridDetalle.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.gridDetalle, "gridDetalle");
+            this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CODIGOARTICULO,
+            this.Item,
+            this.CODIGOMARCA,
+            this.Marca,
+            this.CODIGOMODELO,
+            this.Modelo,
+            this.centrocosto1,
+            this.SALDO,
+            this.CANT,
+            this.cc1});
+            this.gridDetalle.Name = "gridDetalle";
+            this.gridDetalle.RowHeadersVisible = false;
+            this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridDetalle.RowTemplate.Height = 16;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnlistar);
+            this.groupBox1.Controls.Add(this.txtValor);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtRUC);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cboOC);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // btnlistar
+            // 
+            resources.ApplyResources(this.btnlistar, "btnlistar");
+            this.btnlistar.Name = "btnlistar";
+            this.btnlistar.UseVisualStyleBackColor = true;
+            this.btnlistar.Click += new System.EventHandler(this.btnlistar_Click);
+            // 
+            // CODIGOARTICULO
+            // 
+            this.CODIGOARTICULO.DataPropertyName = "CODIGOARTICULO";
+            resources.ApplyResources(this.CODIGOARTICULO, "CODIGOARTICULO");
+            this.CODIGOARTICULO.Name = "CODIGOARTICULO";
+            // 
+            // Item
+            // 
+            this.Item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Item.DataPropertyName = "ITEM";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Item.DefaultCellStyle = dataGridViewCellStyle13;
+            resources.ApplyResources(this.Item, "Item");
+            this.Item.Name = "Item";
+            this.Item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // CODIGOMARCA
+            // 
+            this.CODIGOMARCA.DataPropertyName = "CODIGOMARCA";
+            resources.ApplyResources(this.CODIGOMARCA, "CODIGOMARCA");
+            this.CODIGOMARCA.Name = "CODIGOMARCA";
+            // 
+            // Marca
+            // 
+            this.Marca.DataPropertyName = "MARCA";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Marca.DefaultCellStyle = dataGridViewCellStyle14;
+            resources.ApplyResources(this.Marca, "Marca");
+            this.Marca.Name = "Marca";
+            this.Marca.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Marca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CODIGOMODELO
+            // 
+            this.CODIGOMODELO.DataPropertyName = "CODIGOMODELO";
+            resources.ApplyResources(this.CODIGOMODELO, "CODIGOMODELO");
+            this.CODIGOMODELO.Name = "CODIGOMODELO";
+            this.CODIGOMODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CODIGOMODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Modelo
+            // 
+            this.Modelo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Modelo.DataPropertyName = "OBSERVACIONES";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Modelo.DefaultCellStyle = dataGridViewCellStyle15;
+            resources.ApplyResources(this.Modelo, "Modelo");
+            this.Modelo.Name = "Modelo";
+            this.Modelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Modelo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // centrocosto1
+            // 
+            this.centrocosto1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.centrocosto1.DataPropertyName = "centrocosto";
+            resources.ApplyResources(this.centrocosto1, "centrocosto1");
+            this.centrocosto1.Name = "centrocosto1";
+            // 
+            // SALDO
+            // 
+            this.SALDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SALDO.DataPropertyName = "SALDO";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.SALDO.DefaultCellStyle = dataGridViewCellStyle16;
+            resources.ApplyResources(this.SALDO, "SALDO");
+            this.SALDO.Name = "SALDO";
+            // 
+            // CANT
+            // 
+            this.CANT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CANT.DataPropertyName = "CANT";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANT.DefaultCellStyle = dataGridViewCellStyle17;
+            resources.ApplyResources(this.CANT, "CANT");
+            this.CANT.Name = "CANT";
+            // 
+            // cc1
+            // 
+            this.cc1.DataPropertyName = "cc";
+            resources.ApplyResources(this.cc1, "cc1");
+            this.cc1.Name = "cc1";
             // 
             // G2CODIGOARTICULO
             // 
@@ -135,6 +377,7 @@
             // 
             // G2ITEM
             // 
+            this.G2ITEM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2ITEM.DataPropertyName = "ITEM";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -194,8 +437,17 @@
             this.CANTOC.Name = "CANTOC";
             this.CANTOC.ReadOnly = true;
             // 
+            // CENTROCOSTO3
+            // 
+            this.CENTROCOSTO3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CENTROCOSTO3.DataPropertyName = "CENTROCOSTO";
+            resources.ApplyResources(this.CENTROCOSTO3, "CENTROCOSTO3");
+            this.CENTROCOSTO3.Name = "CENTROCOSTO3";
+            this.CENTROCOSTO3.ReadOnly = true;
+            // 
             // CANTING
             // 
+            this.CANTING.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTING.DataPropertyName = "CANTIDADFIC";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.CANTING.DefaultCellStyle = dataGridViewCellStyle6;
@@ -210,58 +462,12 @@
             this.ItemDetalle.Name = "ItemDetalle";
             this.ItemDetalle.ReadOnly = true;
             // 
-            // btnAcepatr
+            // CC3
             // 
-            resources.ApplyResources(this.btnAcepatr, "btnAcepatr");
-            this.btnAcepatr.Name = "btnAcepatr";
-            this.btnAcepatr.UseVisualStyleBackColor = true;
-            this.btnAcepatr.Click += new System.EventHandler(this.btnAcepatr_Click);
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // gridDetalle1
-            // 
-            this.gridDetalle1.AllowUserToAddRows = false;
-            this.gridDetalle1.AllowUserToResizeColumns = false;
-            this.gridDetalle1.AllowUserToResizeRows = false;
-            this.gridDetalle1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDetalle1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.gridDetalle1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.gridDetalle1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDetalle1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FIC,
-            this.VALORIZACION,
-            this.ARTOC,
-            this.SSS});
-            resources.ApplyResources(this.gridDetalle1, "gridDetalle1");
-            this.gridDetalle1.Name = "gridDetalle1";
-            this.gridDetalle1.ReadOnly = true;
-            this.gridDetalle1.RowHeadersVisible = false;
-            this.gridDetalle1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.gridDetalle1.RowTemplate.Height = 16;
-            this.gridDetalle1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDetalle1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle1_RowEnter);
+            this.CC3.DataPropertyName = "CC";
+            resources.ApplyResources(this.CC3, "CC3");
+            this.CC3.Name = "CC3";
+            this.CC3.ReadOnly = true;
             // 
             // FIC
             // 
@@ -301,170 +507,25 @@
             this.SSS.Name = "SSS";
             this.SSS.ReadOnly = true;
             // 
-            // cboOC
+            // fecha2
             // 
-            this.cboOC.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cboOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOC.FormattingEnabled = true;
-            resources.ApplyResources(this.cboOC, "cboOC");
-            this.cboOC.Name = "cboOC";
-            this.cboOC.SelectedIndexChanged += new System.EventHandler(this.cboOC_SelectedIndexChanged);
+            this.fecha2.DataPropertyName = "FECHA";
+            resources.ApplyResources(this.fecha2, "fecha2");
+            this.fecha2.Name = "fecha2";
+            this.fecha2.ReadOnly = true;
             // 
-            // txtValor
+            // button1
             // 
-            resources.ApplyResources(this.txtValor, "txtValor");
-            this.txtValor.Name = "txtValor";
-            this.txtValor.ReadOnly = true;
-            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
-            // 
-            // txtRUC
-            // 
-            resources.ApplyResources(this.txtRUC, "txtRUC");
-            this.txtRUC.Name = "txtRUC";
-            this.txtRUC.TextChanged += new System.EventHandler(this.txtRUC_TextChanged);
-            this.txtRUC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRUC_KeyDown);
-            this.txtRUC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRUC_KeyPress);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // gridDetalle
-            // 
-            this.gridDetalle.AllowUserToAddRows = false;
-            this.gridDetalle.AllowUserToResizeColumns = false;
-            this.gridDetalle.AllowUserToResizeRows = false;
-            this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CODIGOARTICULO,
-            this.Item,
-            this.CODIGOMARCA,
-            this.Marca,
-            this.CODIGOMODELO,
-            this.Modelo,
-            this.SALDO,
-            this.CANT});
-            resources.ApplyResources(this.gridDetalle, "gridDetalle");
-            this.gridDetalle.Name = "gridDetalle";
-            this.gridDetalle.RowHeadersVisible = false;
-            this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.gridDetalle.RowTemplate.Height = 16;
-            // 
-            // CODIGOARTICULO
-            // 
-            this.CODIGOARTICULO.DataPropertyName = "CODIGOARTICULO";
-            resources.ApplyResources(this.CODIGOARTICULO, "CODIGOARTICULO");
-            this.CODIGOARTICULO.Name = "CODIGOARTICULO";
-            // 
-            // Item
-            // 
-            this.Item.DataPropertyName = "ITEM";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Item.DefaultCellStyle = dataGridViewCellStyle13;
-            resources.ApplyResources(this.Item, "Item");
-            this.Item.Name = "Item";
-            this.Item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // CODIGOMARCA
-            // 
-            this.CODIGOMARCA.DataPropertyName = "CODIGOMARCA";
-            resources.ApplyResources(this.CODIGOMARCA, "CODIGOMARCA");
-            this.CODIGOMARCA.Name = "CODIGOMARCA";
-            // 
-            // Marca
-            // 
-            this.Marca.DataPropertyName = "MARCA";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Marca.DefaultCellStyle = dataGridViewCellStyle14;
-            resources.ApplyResources(this.Marca, "Marca");
-            this.Marca.Name = "Marca";
-            this.Marca.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Marca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CODIGOMODELO
-            // 
-            this.CODIGOMODELO.DataPropertyName = "CODIGOMODELO";
-            resources.ApplyResources(this.CODIGOMODELO, "CODIGOMODELO");
-            this.CODIGOMODELO.Name = "CODIGOMODELO";
-            this.CODIGOMODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CODIGOMODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Modelo
-            // 
-            this.Modelo.DataPropertyName = "OBSERVACIONES";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Modelo.DefaultCellStyle = dataGridViewCellStyle15;
-            resources.ApplyResources(this.Modelo, "Modelo");
-            this.Modelo.Name = "Modelo";
-            this.Modelo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Modelo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // SALDO
-            // 
-            this.SALDO.DataPropertyName = "SALDO";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "N0";
-            dataGridViewCellStyle16.NullValue = null;
-            this.SALDO.DefaultCellStyle = dataGridViewCellStyle16;
-            resources.ApplyResources(this.SALDO, "SALDO");
-            this.SALDO.Name = "SALDO";
-            // 
-            // CANT
-            // 
-            this.CANT.DataPropertyName = "CANT";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANT.DefaultCellStyle = dataGridViewCellStyle17;
-            resources.ApplyResources(this.CANT, "CANT");
-            this.CANT.Name = "CANT";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnlistar);
-            this.groupBox1.Controls.Add(this.txtValor);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtRUC);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cboOC);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // btnlistar
-            // 
-            resources.ApplyResources(this.btnlistar, "btnlistar");
-            this.btnlistar.Name = "btnlistar";
-            this.btnlistar.UseVisualStyleBackColor = true;
-            this.btnlistar.Click += new System.EventHandler(this.btnlistar_Click);
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmAlmacenServicio
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gridDetalle);
             this.Controls.Add(this.gridDetalle2);
@@ -500,19 +561,18 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView gridDetalle;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnlistar;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOARTICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMARCA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMODELO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn centrocosto1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SALDO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VALORIZACION;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARTOC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SSS;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cc1;
         private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOARTICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn G2ITEM;
         private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOMARCA;
@@ -520,8 +580,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOMODELO;
         private System.Windows.Forms.DataGridViewTextBoxColumn G2MODELO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTOC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CENTROCOSTO3;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTING;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDetalle;
-        private System.Windows.Forms.Button btnlistar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CC3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VALORIZACION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ARTOC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SSS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha2;
+        private System.Windows.Forms.Button button1;
     }
 }

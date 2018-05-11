@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenPedido));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenPedido));
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,12 +43,6 @@
             this.txtArea = new System.Windows.Forms.TextBox();
             this.cboTipoPedido = new System.Windows.Forms.ComboBox();
             this.gridItem = new System.Windows.Forms.DataGridView();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Item = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ActFijo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -62,6 +56,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.btnREfres = new System.Windows.Forms.Button();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Item = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ActFijo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CCx = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridItem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,6 +147,9 @@
             this.gridItem.AllowUserToAddRows = false;
             this.gridItem.AllowUserToResizeColumns = false;
             this.gridItem.AllowUserToResizeRows = false;
+            this.gridItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridItem.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.gridItem.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -167,13 +171,14 @@
             this.ActFijo,
             this.Marca,
             this.Modelo,
+            this.CCx,
             this.Cantidad});
             this.gridItem.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.gridItem.Location = new System.Drawing.Point(15, 106);
             this.gridItem.Name = "gridItem";
             this.gridItem.RowHeadersVisible = false;
             this.gridItem.RowTemplate.Height = 16;
-            this.gridItem.Size = new System.Drawing.Size(755, 288);
+            this.gridItem.Size = new System.Drawing.Size(833, 267);
             this.gridItem.TabIndex = 0;
             this.gridItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItem_CellClick);
             this.gridItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItem_CellValueChanged);
@@ -183,70 +188,13 @@
             this.gridItem.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItem_RowEnter);
             this.gridItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridItem_KeyDown);
             // 
-            // eliminar
-            // 
-            this.eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.eliminar.HeaderText = "Acción";
-            this.eliminar.Name = "eliminar";
-            this.eliminar.Text = "Borrrar";
-            this.eliminar.UseColumnTextForButtonValue = true;
-            this.eliminar.Width = 46;
-            // 
-            // Item
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Item.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Item.FillWeight = 63.0298F;
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            this.Item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ActFijo
-            // 
-            this.ActFijo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ActFijo.FillWeight = 70F;
-            this.ActFijo.HeaderText = "ActivoFijo";
-            this.ActFijo.MinimumWidth = 70;
-            this.ActFijo.Name = "ActFijo";
-            this.ActFijo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ActFijo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ActFijo.Width = 70;
-            // 
-            // Marca
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Marca.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Marca.FillWeight = 63.0298F;
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
-            // Modelo
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Modelo.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Modelo.FillWeight = 63.0298F;
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
-            // 
-            // Cantidad
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Cantidad.FillWeight = 63.0298F;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
             // btnAceptar
             // 
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(776, 329);
+            this.btnAceptar.Location = new System.Drawing.Point(773, 377);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 12;
@@ -257,10 +205,11 @@
             // 
             // btnListar
             // 
+            this.btnListar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnListar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListar.Image = ((System.Drawing.Image)(resources.GetObject("btnListar.Image")));
             this.btnListar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnListar.Location = new System.Drawing.Point(776, 371);
+            this.btnListar.Location = new System.Drawing.Point(692, 377);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(75, 23);
             this.btnListar.TabIndex = 14;
@@ -273,7 +222,7 @@
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(776, 124);
+            this.btnAgregar.Location = new System.Drawing.Point(773, 78);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(29, 23);
             this.btnAgregar.TabIndex = 15;
@@ -283,7 +232,7 @@
             // txtNumeros
             // 
             this.txtNumeros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNumeros.Location = new System.Drawing.Point(776, 275);
+            this.txtNumeros.Location = new System.Drawing.Point(808, 83);
             this.txtNumeros.Name = "txtNumeros";
             this.txtNumeros.Size = new System.Drawing.Size(75, 20);
             this.txtNumeros.TabIndex = 16;
@@ -293,7 +242,7 @@
             // txtCentroCosto
             // 
             this.txtCentroCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCentroCosto.Location = new System.Drawing.Point(776, 184);
+            this.txtCentroCosto.Location = new System.Drawing.Point(797, 26);
             this.txtCentroCosto.Name = "txtCentroCosto";
             this.txtCentroCosto.ReadOnly = true;
             this.txtCentroCosto.Size = new System.Drawing.Size(82, 20);
@@ -304,7 +253,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(773, 168);
+            this.label2.Location = new System.Drawing.Point(794, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 1;
@@ -383,7 +332,7 @@
             this.btnREfres.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnREfres.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnREfres.Image = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
-            this.btnREfres.Location = new System.Drawing.Point(776, 153);
+            this.btnREfres.Location = new System.Drawing.Point(797, 45);
             this.btnREfres.Name = "btnREfres";
             this.btnREfres.Size = new System.Drawing.Size(29, 23);
             this.btnREfres.TabIndex = 21;
@@ -391,12 +340,89 @@
             this.btnREfres.Visible = false;
             this.btnREfres.Click += new System.EventHandler(this.btnREfres_Click);
             // 
+            // eliminar
+            // 
+            this.eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.eliminar.HeaderText = "Acción";
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Text = "Borrrar";
+            this.eliminar.UseColumnTextForButtonValue = true;
+            this.eliminar.Width = 46;
+            // 
+            // Item
+            // 
+            this.Item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Item.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Item.FillWeight = 63.0298F;
+            this.Item.HeaderText = "Item";
+            this.Item.MinimumWidth = 150;
+            this.Item.Name = "Item";
+            this.Item.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Item.Width = 150;
+            // 
+            // ActFijo
+            // 
+            this.ActFijo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ActFijo.FillWeight = 70F;
+            this.ActFijo.HeaderText = "ActivoFijo";
+            this.ActFijo.MinimumWidth = 70;
+            this.ActFijo.Name = "ActFijo";
+            this.ActFijo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ActFijo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ActFijo.Width = 70;
+            // 
+            // Marca
+            // 
+            this.Marca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Marca.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Marca.FillWeight = 63.0298F;
+            this.Marca.HeaderText = "Marca";
+            this.Marca.MinimumWidth = 80;
+            this.Marca.Name = "Marca";
+            this.Marca.Width = 80;
+            // 
+            // Modelo
+            // 
+            this.Modelo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Modelo.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Modelo.FillWeight = 63.0298F;
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.MinimumWidth = 80;
+            this.Modelo.Name = "Modelo";
+            this.Modelo.Width = 80;
+            // 
+            // CCx
+            // 
+            this.CCx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CCx.HeaderText = "CentroCosto";
+            this.CCx.MinimumWidth = 150;
+            this.CCx.Name = "CCx";
+            this.CCx.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CCx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = "0";
+            this.Cantidad.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Cantidad.FillWeight = 63.0298F;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 50;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 74;
+            // 
             // frmOrdenPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(860, 406);
             this.Controls.Add(this.btnREfres);
             this.Controls.Add(this.label7);
@@ -420,7 +446,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(876, 445);
             this.MinimumSize = new System.Drawing.Size(876, 445);
             this.Name = "frmOrdenPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -462,6 +487,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn ActFijo;
         private System.Windows.Forms.DataGridViewComboBoxColumn Marca;
         private System.Windows.Forms.DataGridViewComboBoxColumn Modelo;
+        private System.Windows.Forms.DataGridViewComboBoxColumn CCx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
     }
 }

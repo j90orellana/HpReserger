@@ -40,7 +40,7 @@
             this.pbfoto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbfoto.Location = new System.Drawing.Point(0, 0);
             this.pbfoto.Name = "pbfoto";
-            this.pbfoto.Size = new System.Drawing.Size(864, 770);
+            this.pbfoto.Size = new System.Drawing.Size(739, 591);
             this.pbfoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbfoto.TabIndex = 0;
             this.pbfoto.TabStop = false;
@@ -55,13 +55,13 @@
             this.btndescargar.Image = ((System.Drawing.Image)(resources.GetObject("btndescargar.Image")));
             this.btndescargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(386, 735);
+            this.btndescargar.Location = new System.Drawing.Point(323, 556);
             this.btndescargar.Name = "btndescargar";
             this.btndescargar.Size = new System.Drawing.Size(108, 24);
             this.btndescargar.TabIndex = 111;
             this.btndescargar.Text = "Descargar";
             this.btndescargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.UseVisualStyleBackColor = true;
             this.btndescargar.Visible = false;
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
             this.btndescargar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmFoto_KeyDown);
@@ -71,7 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(864, 770);
+            this.ClientSize = new System.Drawing.Size(739, 591);
             this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.pbfoto);
             this.Name = "FrmFoto";

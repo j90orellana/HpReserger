@@ -22,6 +22,8 @@ namespace HPReserger
         public int asiento;
         public string cuenta { get { return txtcuenta.Text; } set { txtcuenta.Text = value; } }
         public string descripcion { get { return txtdescripcion.Text; } set { txtdescripcion.Text = value; } }
+        public decimal Total { get { return decimal.Parse(txttotal.Text); } set { txttotal.Text = value.ToString("n2"); } }
+        public DateTime fecha;
 
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
@@ -78,48 +80,84 @@ namespace HPReserger
             Dtgconten.ReadOnly = false;
             btnmodificar.Enabled = false; btnaceptar.Enabled = true;
         }
+        decimal Sumatoria = 0;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (estado == 2)
             {
+                Sumatoria = 0;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
-                    if (item.Cells[numdocx.Name].Value != null)
-                        if (item.Cells[numdocx.Name].Value.ToString() != "")
+                    if (item.Cells[importemnx.Name].Value != null)
+                        if (item.Cells[importemnx.Name].Value.ToString() != "")
+                            Sumatoria += (decimal)item.Cells[importemnx.Name].Value;
+                }
+                if (Sumatoria > Total)
+                {
+                    msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} DEtalle {Sumatoria.ToString("n2")} ");
+                    return;
+                }
+                foreach (DataGridViewRow item in Dtgconten.Rows)
+                {
+                    if (item.Cells[razonsocialx.Name].Value != null)
+                    //if (item.Cells[razonsocialx.Name].Value.ToString() != "")
+                    {
+                        if (item.Cells[tipodocx.Name].Value.ToString() == "")
+                            item.Cells[tipodocx.Name].Value = 1;
+                        if (item.Cells[idcomprobantex.Name].Value.ToString() == "")
+                            item.Cells[idcomprobantex.Name].Value = 1;
+
+                        if (item.Cells[centrocostox.Name].Value == null)
                         {
-                            if (item.Cells[centrocostox.Name].Value == null)
-                            {
-                                msg($"Seleccioné Centro de Costo, Fila {item.Index + 1}");
-                                return;
-                            }
-                            if (item.Cells[centrocostox.Name].Value.ToString() == "")
-                            {
-                                msg($"Seleccioné Centro de Costo, Fila {item.Index + 1}");
-                                return;
-                            }
-                            if (item.Cells[tipodocx.Name].Value.ToString() == "")
-                            {
-                                msg($"Seleccioné Tipo Documento, Fila {item.Index + 1}");
-                                return;
-                            }
-                            if (item.Cells[importemex.Name].Value.ToString() == "")
-                            {
-                                item.Cells[importemex.Name].Value = 0;
-                            }
-                            if (item.Cells[importemnx.Name].Value.ToString() == "")
-                            {
-                                item.Cells[importemnx.Name].Value = 0;
-                            }
-                            if (item.Cells[tipocambiox.Name].Value.ToString() == "")
-                            {
-                                item.Cells[tipocambiox.Name].Value = 0;
-                            }
-                            if (item.Cells[fechaemisionx.Name].Value == null)
-                            {
-                                msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
-                                return;
-                            }
+                            msg($"Seleccioné Centro de Costo, Fila {item.Index + 1}");
+                            return;
                         }
+                        if (item.Cells[centrocostox.Name].Value.ToString() == "")
+                        {
+                            msg($"Seleccioné Centro de Costo, Fila {item.Index + 1}");
+                            return;
+                        }
+                        if (item.Cells[tipodocx.Name].Value.ToString() == "")
+                        {
+                            msg($"Seleccioné Tipo Documento, Fila {item.Index + 1}");
+                            return;
+                        }
+                        if (item.Cells[numdocx.Name].Value.ToString() == "")
+                        {
+                            // msg($"Seleccioné Número Documento, Fila {item.Index + 1}");
+                            item.Cells[numdocx.Name].Value = 0;
+                            // return;
+                        }
+                        if (item.Cells[idcomprobantex.Name].Value.ToString() == "")
+                        {
+                            msg($"Seleccioné Tipo Comprobante, Fila {item.Index + 1}");
+                            return;
+                        }
+                        if (item.Cells[importemex.Name].Value.ToString() == "")
+                        {
+                            item.Cells[importemex.Name].Value = 0;
+                        }
+                        if (item.Cells[importemnx.Name].Value.ToString() == "")
+                        {
+                            item.Cells[importemnx.Name].Value = 0;
+                        }
+                        if (item.Cells[tipocambiox.Name].Value.ToString() == "")
+                        {
+                            item.Cells[tipocambiox.Name].Value = 0;
+                        }
+                        if (item.Cells[fechaemisionx.Name].Value == null)
+                        {
+                            // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
+                            item.Cells[fechaemisionx.Name].Value = fecha;
+                            //return;
+                        }
+                        if (item.Cells[fechaemisionx.Name].Value.ToString() == "")
+                        {
+                            item.Cells[fechaemisionx.Name].Value = fecha;
+                            // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
+                            //return;
+                        }
+                    }
                 }
                 CapaLogica.DetalleAsientos(10, asiento, idasiento);
                 foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -281,11 +319,13 @@ namespace HPReserger
             if (x >= 0)
                 if (y == Dtgconten.Columns[tipocambiox.Name].Index || y == Dtgconten.Columns[importemex.Name].Index)
                 {
-                    if (Dtgconten[tipocambiox.Name, x].Value.ToString() != "" && Dtgconten[importemex.Name, x].Value.ToString() != "")
-                        if ((decimal)Dtgconten[tipocambiox.Name, x].Value > 0)
-                        {
-                            Dtgconten[importemnx.Name, x].Value = (decimal)Dtgconten[importemex.Name, x].Value * (decimal)Dtgconten[tipocambiox.Name, x].Value;
-                        }
+                    if (Dtgconten[tipocambiox.Name, x].Value != null)
+                        if (Dtgconten[importemex.Name, x].Value != null)
+                            if (Dtgconten[tipocambiox.Name, x].Value.ToString() != "" && Dtgconten[importemex.Name, x].Value.ToString() != "")
+                                if ((decimal.Parse(Dtgconten[tipocambiox.Name, x].Value.ToString())) > 0)
+                                {
+                                    Dtgconten[importemnx.Name, x].Value = (decimal)Dtgconten[importemex.Name, x].Value * (decimal)Dtgconten[tipocambiox.Name, x].Value;
+                                }
                 }
         }
 
@@ -311,6 +351,17 @@ namespace HPReserger
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             msj("");
+            int y = e.RowIndex;
+            //Dtgconten[numdocx.Name, y].Value = 0;
+            //Dtgconten[razonsocialx.Name, y].Value = "0";
+            //Dtgconten[numcomprobantex.Name, y].Value = 0;
+            //Dtgconten[codcomprobantex.Name, y].Value = 0;
+            //Dtgconten[importemex.Name, y].Value = 0.00m;
+            //Dtgconten[importemnx.Name, y].Value = 0.00m;
+            //Dtgconten[tipocambiox.Name, y].Value = 0.00m;
+            //Dtgconten[fechaemisionx.Name, y].Value = new DateTime(1990, 1, 1);
+            //Dtgconten[idcomprobantex.Name,y].Value = 1;
+            //Dtgconten[tipodocx.Name, y].Value = 1;
         }
 
         private void Dtgconten_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)

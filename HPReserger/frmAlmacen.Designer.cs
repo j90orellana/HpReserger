@@ -28,40 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlmacen));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridDetalle = new System.Windows.Forms.DataGridView();
-            this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CODIGOMODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CANT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridDetalle1 = new System.Windows.Forms.DataGridView();
-            this.FIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NGR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARTFIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,8 +60,10 @@
             this.G2MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2CODIGOMODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centrocosto3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTING = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CC3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboOC = new System.Windows.Forms.ComboBox();
             this.txtGR = new System.Windows.Forms.TextBox();
@@ -85,6 +74,24 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.txtNumeros = new System.Windows.Forms.TextBox();
             this.btnlistar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.FIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Centrocosto2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARTFIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cc2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CODIGOMODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CENTROCOSTOX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CANT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ccX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle2)).BeginInit();
@@ -97,6 +104,7 @@
             this.gridDetalle.AllowUserToDeleteRows = false;
             this.gridDetalle.AllowUserToResizeColumns = false;
             this.gridDetalle.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.gridDetalle, "gridDetalle");
             this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -116,76 +124,15 @@
             this.MARCA,
             this.CODIGOMODELO,
             this.MODELO,
+            this.CENTROCOSTOX,
             this.SALDO,
-            this.CANT});
-            resources.ApplyResources(this.gridDetalle, "gridDetalle");
+            this.CANT,
+            this.ccX});
             this.gridDetalle.Name = "gridDetalle";
             this.gridDetalle.RowHeadersVisible = false;
             this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle.RowTemplate.Height = 16;
             this.gridDetalle.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridDetalle_EditingControlShowing);
-            // 
-            // CODIGOARTICULO
-            // 
-            this.CODIGOARTICULO.DataPropertyName = "CODIGOARTICULO";
-            resources.ApplyResources(this.CODIGOARTICULO, "CODIGOARTICULO");
-            this.CODIGOARTICULO.Name = "CODIGOARTICULO";
-            // 
-            // ITEM
-            // 
-            this.ITEM.DataPropertyName = "ITEM";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ITEM.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.ITEM, "ITEM");
-            this.ITEM.Name = "ITEM";
-            this.ITEM.ReadOnly = true;
-            // 
-            // CODIGOMARCA
-            // 
-            this.CODIGOMARCA.DataPropertyName = "CODIGOMARCA";
-            resources.ApplyResources(this.CODIGOMARCA, "CODIGOMARCA");
-            this.CODIGOMARCA.Name = "CODIGOMARCA";
-            // 
-            // MARCA
-            // 
-            this.MARCA.DataPropertyName = "MARCA";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.MARCA.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.MARCA, "MARCA");
-            this.MARCA.Name = "MARCA";
-            this.MARCA.ReadOnly = true;
-            // 
-            // CODIGOMODELO
-            // 
-            this.CODIGOMODELO.DataPropertyName = "CODIGOMODELO";
-            resources.ApplyResources(this.CODIGOMODELO, "CODIGOMODELO");
-            this.CODIGOMODELO.Name = "CODIGOMODELO";
-            // 
-            // MODELO
-            // 
-            this.MODELO.DataPropertyName = "MODELO";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.MODELO.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.MODELO, "MODELO");
-            this.MODELO.Name = "MODELO";
-            this.MODELO.ReadOnly = true;
-            // 
-            // SALDO
-            // 
-            this.SALDO.DataPropertyName = "SALDO";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.SALDO.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.SALDO, "SALDO");
-            this.SALDO.Name = "SALDO";
-            this.SALDO.ReadOnly = true;
-            // 
-            // CANT
-            // 
-            this.CANT.DataPropertyName = "CANT";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANT.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.CANT, "CANT");
-            this.CANT.Name = "CANT";
             // 
             // gridDetalle1
             // 
@@ -193,6 +140,7 @@
             this.gridDetalle1.AllowUserToDeleteRows = false;
             this.gridDetalle1.AllowUserToResizeColumns = false;
             this.gridDetalle1.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.gridDetalle1, "gridDetalle1");
             this.gridDetalle1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridDetalle1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -209,9 +157,10 @@
             this.FIC,
             this.FECHA,
             this.NGR,
+            this.Centrocosto2,
             this.ARTOC,
-            this.ARTFIC});
-            resources.ApplyResources(this.gridDetalle1, "gridDetalle1");
+            this.ARTFIC,
+            this.cc2});
             this.gridDetalle1.Name = "gridDetalle1";
             this.gridDetalle1.ReadOnly = true;
             this.gridDetalle1.RowHeadersVisible = false;
@@ -220,53 +169,6 @@
             this.gridDetalle1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetalle1_RowEnter);
             this.gridDetalle1.DoubleClick += new System.EventHandler(this.gridDetalle1_DoubleClick);
-            // 
-            // FIC
-            // 
-            this.FIC.DataPropertyName = "FIC";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.FIC.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.FIC, "FIC");
-            this.FIC.Name = "FIC";
-            this.FIC.ReadOnly = true;
-            // 
-            // FECHA
-            // 
-            this.FECHA.DataPropertyName = "FECHA";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FECHA.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(this.FECHA, "FECHA");
-            this.FECHA.Name = "FECHA";
-            this.FECHA.ReadOnly = true;
-            // 
-            // NGR
-            // 
-            this.NGR.DataPropertyName = "GUIA";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NGR.DefaultCellStyle = dataGridViewCellStyle10;
-            resources.ApplyResources(this.NGR, "NGR");
-            this.NGR.Name = "NGR";
-            this.NGR.ReadOnly = true;
-            // 
-            // ARTOC
-            // 
-            this.ARTOC.DataPropertyName = "ARTOC";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ARTOC.DefaultCellStyle = dataGridViewCellStyle11;
-            resources.ApplyResources(this.ARTOC, "ARTOC");
-            this.ARTOC.Name = "ARTOC";
-            this.ARTOC.ReadOnly = true;
-            // 
-            // ARTFIC
-            // 
-            this.ARTFIC.DataPropertyName = "ARTFIC";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ARTFIC.DefaultCellStyle = dataGridViewCellStyle12;
-            resources.ApplyResources(this.ARTFIC, "ARTFIC");
-            this.ARTFIC.Name = "ARTFIC";
-            this.ARTFIC.ReadOnly = true;
             // 
             // label5
             // 
@@ -289,6 +191,7 @@
             this.gridDetalle2.AllowUserToDeleteRows = false;
             this.gridDetalle2.AllowUserToResizeColumns = false;
             this.gridDetalle2.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.gridDetalle2, "gridDetalle2");
             this.gridDetalle2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridDetalle2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -309,9 +212,10 @@
             this.G2MARCA,
             this.G2CODIGOMODELO,
             this.G2MODELO,
+            this.centrocosto3,
             this.CANTOC,
-            this.CANTING});
-            resources.ApplyResources(this.gridDetalle2, "gridDetalle2");
+            this.CANTING,
+            this.CC3});
             this.gridDetalle2.Name = "gridDetalle2";
             this.gridDetalle2.ReadOnly = true;
             this.gridDetalle2.RowHeadersVisible = false;
@@ -336,6 +240,7 @@
             // 
             // G2ITEM
             // 
+            this.G2ITEM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2ITEM.DataPropertyName = "ITEM";
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -354,6 +259,7 @@
             // 
             // G2MARCA
             // 
+            this.G2MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2MARCA.DataPropertyName = "MARCA";
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -375,6 +281,7 @@
             // 
             // G2MODELO
             // 
+            this.G2MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2MODELO.DataPropertyName = "MODELO";
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.G2MODELO.DefaultCellStyle = dataGridViewCellStyle16;
@@ -384,8 +291,17 @@
             this.G2MODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.G2MODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // centrocosto3
+            // 
+            this.centrocosto3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.centrocosto3.DataPropertyName = "CENTROCOSTO";
+            resources.ApplyResources(this.centrocosto3, "centrocosto3");
+            this.centrocosto3.Name = "centrocosto3";
+            this.centrocosto3.ReadOnly = true;
+            // 
             // CANTOC
             // 
+            this.CANTOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTOC.DataPropertyName = "CANTIDAD";
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle17.Format = "N0";
@@ -397,12 +313,20 @@
             // 
             // CANTING
             // 
+            this.CANTING.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTING.DataPropertyName = "CANTIDADFIC";
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.CANTING.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(this.CANTING, "CANTING");
             this.CANTING.Name = "CANTING";
             this.CANTING.ReadOnly = true;
+            // 
+            // CC3
+            // 
+            this.CC3.DataPropertyName = "CC";
+            resources.ApplyResources(this.CC3, "CC3");
+            this.CC3.Name = "CC3";
+            this.CC3.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -436,6 +360,7 @@
             resources.ApplyResources(this.txtRUC, "txtRUC");
             this.txtRUC.Name = "txtRUC";
             this.txtRUC.TextChanged += new System.EventHandler(this.txtRUC_TextChanged);
+            this.txtRUC.DoubleClick += new System.EventHandler(this.txtRUC_DoubleClick);
             this.txtRUC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRUC_KeyDown);
             this.txtRUC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRUC_KeyPress);
             // 
@@ -475,11 +400,163 @@
             this.btnlistar.UseVisualStyleBackColor = true;
             this.btnlistar.Click += new System.EventHandler(this.btnlistar_Click);
             // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // FIC
+            // 
+            this.FIC.DataPropertyName = "FIC";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = null;
+            this.FIC.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.FIC, "FIC");
+            this.FIC.Name = "FIC";
+            this.FIC.ReadOnly = true;
+            // 
+            // FECHA
+            // 
+            this.FECHA.DataPropertyName = "FECHA";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FECHA.DefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(this.FECHA, "FECHA");
+            this.FECHA.Name = "FECHA";
+            this.FECHA.ReadOnly = true;
+            // 
+            // NGR
+            // 
+            this.NGR.DataPropertyName = "GUIA";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NGR.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(this.NGR, "NGR");
+            this.NGR.Name = "NGR";
+            this.NGR.ReadOnly = true;
+            // 
+            // Centrocosto2
+            // 
+            this.Centrocosto2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Centrocosto2.DataPropertyName = "centrocosto";
+            resources.ApplyResources(this.Centrocosto2, "Centrocosto2");
+            this.Centrocosto2.Name = "Centrocosto2";
+            this.Centrocosto2.ReadOnly = true;
+            // 
+            // ARTOC
+            // 
+            this.ARTOC.DataPropertyName = "ARTOC";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ARTOC.DefaultCellStyle = dataGridViewCellStyle11;
+            resources.ApplyResources(this.ARTOC, "ARTOC");
+            this.ARTOC.Name = "ARTOC";
+            this.ARTOC.ReadOnly = true;
+            // 
+            // ARTFIC
+            // 
+            this.ARTFIC.DataPropertyName = "ARTFIC";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ARTFIC.DefaultCellStyle = dataGridViewCellStyle12;
+            resources.ApplyResources(this.ARTFIC, "ARTFIC");
+            this.ARTFIC.Name = "ARTFIC";
+            this.ARTFIC.ReadOnly = true;
+            // 
+            // cc2
+            // 
+            this.cc2.DataPropertyName = "cc";
+            resources.ApplyResources(this.cc2, "cc2");
+            this.cc2.Name = "cc2";
+            this.cc2.ReadOnly = true;
+            // 
+            // CODIGOARTICULO
+            // 
+            this.CODIGOARTICULO.DataPropertyName = "CODIGOARTICULO";
+            resources.ApplyResources(this.CODIGOARTICULO, "CODIGOARTICULO");
+            this.CODIGOARTICULO.Name = "CODIGOARTICULO";
+            // 
+            // ITEM
+            // 
+            this.ITEM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ITEM.DataPropertyName = "ITEM";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ITEM.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.ITEM, "ITEM");
+            this.ITEM.Name = "ITEM";
+            this.ITEM.ReadOnly = true;
+            // 
+            // CODIGOMARCA
+            // 
+            this.CODIGOMARCA.DataPropertyName = "CODIGOMARCA";
+            resources.ApplyResources(this.CODIGOMARCA, "CODIGOMARCA");
+            this.CODIGOMARCA.Name = "CODIGOMARCA";
+            // 
+            // MARCA
+            // 
+            this.MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MARCA.DataPropertyName = "MARCA";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.MARCA.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.MARCA, "MARCA");
+            this.MARCA.Name = "MARCA";
+            this.MARCA.ReadOnly = true;
+            // 
+            // CODIGOMODELO
+            // 
+            this.CODIGOMODELO.DataPropertyName = "CODIGOMODELO";
+            resources.ApplyResources(this.CODIGOMODELO, "CODIGOMODELO");
+            this.CODIGOMODELO.Name = "CODIGOMODELO";
+            // 
+            // MODELO
+            // 
+            this.MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MODELO.DataPropertyName = "MODELO";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.MODELO.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.MODELO, "MODELO");
+            this.MODELO.Name = "MODELO";
+            this.MODELO.ReadOnly = true;
+            // 
+            // CENTROCOSTOX
+            // 
+            this.CENTROCOSTOX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CENTROCOSTOX.DataPropertyName = "CENTROCOSTO";
+            resources.ApplyResources(this.CENTROCOSTOX, "CENTROCOSTOX");
+            this.CENTROCOSTOX.Name = "CENTROCOSTOX";
+            this.CENTROCOSTOX.ReadOnly = true;
+            // 
+            // SALDO
+            // 
+            this.SALDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SALDO.DataPropertyName = "SALDO";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.SALDO.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.SALDO, "SALDO");
+            this.SALDO.Name = "SALDO";
+            this.SALDO.ReadOnly = true;
+            // 
+            // CANT
+            // 
+            this.CANT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CANT.DataPropertyName = "CANT";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANT.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.CANT, "CANT");
+            this.CANT.Name = "CANT";
+            // 
+            // ccX
+            // 
+            this.ccX.DataPropertyName = "cc";
+            resources.ApplyResources(this.ccX, "ccX");
+            this.ccX.Name = "ccX";
+            this.ccX.ReadOnly = true;
+            // 
             // frmAlmacen
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtNumeros);
             this.Controls.Add(this.btnlistar);
             this.Controls.Add(this.btnAceptar);
@@ -517,20 +594,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NGR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARTOC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARTFIC;
         private System.Windows.Forms.TextBox txtNumeros;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOARTICULO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ITEM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMARCA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MARCA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMODELO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MODELO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SALDO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CANT;
+        private System.Windows.Forms.Button btnlistar;
+        private System.Windows.Forms.TextBox txtRUC;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDetalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOARTICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn G2ITEM;
@@ -538,9 +604,27 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn G2MARCA;
         private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOMODELO;
         private System.Windows.Forms.DataGridViewTextBoxColumn G2MODELO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn centrocosto3;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTOC;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANTING;
-        private System.Windows.Forms.Button btnlistar;
-        private System.Windows.Forms.TextBox txtRUC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CC3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NGR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Centrocosto2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ARTOC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ARTFIC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cc2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOARTICULO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ITEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMARCA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MARCA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMODELO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MODELO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CENTROCOSTOX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SALDO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CANT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ccX;
     }
 }

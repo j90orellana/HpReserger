@@ -598,7 +598,7 @@
             this.pbFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pbFoto.Location = new System.Drawing.Point(637, 5);
             this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(539, 666);
+            this.pbFoto.Size = new System.Drawing.Size(546, 666);
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFoto.TabIndex = 20;
             this.pbFoto.TabStop = false;

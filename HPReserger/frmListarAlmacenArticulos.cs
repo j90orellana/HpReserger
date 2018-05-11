@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +11,10 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmListarAlmacenArticulos : Form
+    public partial class frmListarAlmacenArticulos : FormGradient
     {
+        int IdArticulos = 0;
+        public int IdArticulo { get { return IdArticulos; } set { IdArticulos = value; } }
         public frmListarAlmacenArticulos()
         {
             InitializeComponent();
@@ -180,7 +183,7 @@ namespace HPReserger
                 gridDetalle1.DataSource = clFIG.ListarFIClistar(OC, 0);
                 if (gridDetalle1.Rows.Count > 0 && cboOC.SelectedValue != null)
                 {
-                    Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[ItemFIC].Cells[0].Value.ToString().Substring(3)));
+                    Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[ItemFIC].Cells[FIC.Name].Value.ToString().Substring(3)));
                 }
                 else
                 {
@@ -218,7 +221,7 @@ namespace HPReserger
             ItemFIC = e.RowIndex;
             if (gridDetalle1.Rows.Count > 0 && e.RowIndex > -1 && cboOC.SelectedValue != null)
             {
-                Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(3)));
+                Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[FIC.Name].Value.ToString().Substring(3)));
             }
         }
 

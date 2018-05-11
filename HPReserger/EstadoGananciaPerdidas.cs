@@ -166,34 +166,49 @@ namespace HPReserger
             }
 
         }
-
+        frmProcesando frmproce;
+        String Empresa = "";
+        DateTime ultimodiadelmes, getfecha;
         private void btnexportarexcel_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
             {
                 Cursor = Cursors.WaitCursor;
-                frmProcesando frmproce = new HPReserger.frmProcesando();
+                frmproce = new HPReserger.frmProcesando();
                 frmproce.Show();
-                string _NombreHoja = "ESTADO DE RESULTADO INTEGRAL";
-                List<HPResergerFunciones.Utilitarios.RangoCelda> ListaCeldas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
-                HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", cboempresas.Text, 14);
-                ListaCeldas.Add(Celda1);
-                HPResergerFunciones.Utilitarios.RangoCelda Celda2 = new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "ESTADO DE RESULTADO INTEGRAL", 12);
-                ListaCeldas.Add(Celda2);
-                HPResergerFunciones.Utilitarios.RangoCelda Celda3 = new HPResergerFunciones.Utilitarios.RangoCelda("a3", "b3", $"Al {comboMesAño.UltimoDiaDelMes().ToString("dd")} de {comboMesAño.GetFecha().ToString("MMMM")} del {comboMesAño.GetFecha().Year}");
-                ListaCeldas.Add(Celda3);
-                HPResergerFunciones.Utilitarios.RangoCelda Celda4 = new HPResergerFunciones.Utilitarios.RangoCelda("a4", "b4", $"(Expresado en Soles)");
-                ListaCeldas.Add(Celda4);
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, ListaCeldas, 5, new int[] { 2, 3 }, new int[] { }, new int[] { });
-                Cursor = Cursors.Default;
-                frmproce.Close();
+                Empresa = cboempresas.Text;
+                ultimodiadelmes = comboMesAño.UltimoDiaDelMes();
+                getfecha = comboMesAño.GetFecha();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
             }
             else
             {
                 msg("No hay Datos que Exportar");
             }
         }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string _NombreHoja = "ESTADO DE RESULTADO INTEGRAL";
+            List<HPResergerFunciones.Utilitarios.RangoCelda> ListaCeldas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+            HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", Empresa, 14);
+            ListaCeldas.Add(Celda1);
+            HPResergerFunciones.Utilitarios.RangoCelda Celda2 = new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "ESTADO DE RESULTADO INTEGRAL", 12);
+            ListaCeldas.Add(Celda2);
+            HPResergerFunciones.Utilitarios.RangoCelda Celda3 = new HPResergerFunciones.Utilitarios.RangoCelda("a3", "b3", $"Al {ultimodiadelmes.ToString("dd")} de {getfecha.ToString("MMMM")} del {getfecha.Year}");
+            ListaCeldas.Add(Celda3);
+            HPResergerFunciones.Utilitarios.RangoCelda Celda4 = new HPResergerFunciones.Utilitarios.RangoCelda("a4", "b4", $"(Expresado en Soles)");
+            ListaCeldas.Add(Celda4);
+            HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, ListaCeldas, 5, new int[] { 2, 3 }, new int[] { }, new int[] { });
+        }
 
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
+        }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -253,5 +268,7 @@ namespace HPReserger
         {
             lblfechasReporte.Text = $"Al {comboMesAño.FechaFinMes.ToString("dd")}";
         }
+
+
     }
 }

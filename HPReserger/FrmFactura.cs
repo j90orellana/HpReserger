@@ -117,11 +117,11 @@ namespace HPReserger
 
         private void txtigv_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtigv.Text))
-                if (decimal.Parse(txtigv.Text) > 0)
-                    cbodetraccion.SelectedIndex = 1;
-                else
-                    cbodetraccion.SelectedIndex = -1;
+            //if (!string.IsNullOrWhiteSpace(txtigv.Text))
+            //    if (decimal.Parse(txtigv.Text) > 0)
+            //        cbodetraccion.SelectedIndex = 1;
+            //    else
+            //        cbodetraccion.SelectedIndex = -1;
             txtsubtotal_TextChanged(sender, e);
         }
 
@@ -315,11 +315,11 @@ namespace HPReserger
                     detracc = 0;
                 else
                     detracc = decimal.Parse(txtdetraccion.Text);
-                int next;
+                int next, nextAsiento;
                 if (txtnroconstancia.Text.Length == 0)
                     txtnroconstancia.Text = "0";
-                DataRow siguiente = cfactura.Siguiente("TBL_Asiento_Contable", "Id_Asiento_Contable");
-                next = int.Parse(siguiente["valor"].ToString());
+                DataRow siguienteNum = cfactura.SiguienteAsientoxOrdenCompra((int)DtgConten["numOC", 0].Value);
+                nextAsiento = int.Parse(siguienteNum["id"].ToString());
                 //eliminando las provisionadas para luego actualizar
                 for (int i = 0; i < DtgConten.RowCount; i++)
                 {
@@ -330,6 +330,8 @@ namespace HPReserger
                 }
                 for (int i = 0; i < DtgConten.RowCount; i++)
                 {
+                    DataRow siguiente = cfactura.Siguiente("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                    next = int.Parse(siguiente["valor"].ToString());
                     //cuando no esta provisionada
                     decimal valorigv = 0, valorsubtotal = 0, valortotal = 0;
                     valorsubtotal = (Convert.ToDecimal(DtgConten["subtotale", i].Value));
@@ -339,23 +341,23 @@ namespace HPReserger
                     cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 0,
                       valorsubtotal, valorigv, valortotal,
                          cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario),
-                         int.Parse(txtnroconstancia.Text), detracc);
+                         int.Parse(txtnroconstancia.Text), detracc, (int)DtgConten[cc.Name, i].Value);
                     //provisionada
                     if ((int)DtgConten["provisionada", i].Value != 3)
                     {
                         ////////////////////// 
                         ///Insertar-Asiento///
                         //////////////////////
-                        cfactura.InsertarAsientoFactura(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtnrofactura.Text);
-                        cfactura.InsertarAsientoFactura(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
+                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value);
+                        cfactura.InsertarAsientoFactura(nextAsiento,next + 1, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value);
                     }
                     else
                     {
                         //////////////////////
                         ///Insertar-Asiento///
                         //////////////////////
-                        cfactura.InsertarAsientoFacturaLlegada(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
-                        cfactura.InsertarAsientoFacturaLlegada(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), 0, 0, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
+                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
+                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), 0, 0, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
                     }
                 }
                 MSG("Factura Ingresada Exitosamente");
@@ -389,6 +391,8 @@ namespace HPReserger
             txtsubtotal.Enabled = txtigv.Enabled = false;
             Dtguias.Enabled = false;
             btnprovisionar.Enabled = false;
+            cbodetraccion.SelectedIndex = 0;
+
             //Valido que el boton Provisionar se APague si ya esta una fic provisionada
             for (int i = 0; i < Dtguias.RowCount; i++)
             {
@@ -657,7 +661,7 @@ namespace HPReserger
 
         private void Dtguias_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
+            cbomoneda_Click(sender, e);
         }
         public int contador = 0;
         DataRow DatosFactura;
@@ -681,6 +685,8 @@ namespace HPReserger
                             //busorden +=","+ lista.Cells["oc"].Value.ToString(); 
                             busorden = (int)lista.Cells["oc"].Value;
                             DatosFactura = cfactura.ListarGravaIgvOrdenCompra(busorden);
+                            //carga de la moneda
+                            cbomoneda.SelectedValue = (int)lista.Cells[idmoneda1.Name].Value;
                             if (DatosFactura != null)
                             {
                                 //MSG(busorden.ToString());
@@ -702,6 +708,7 @@ namespace HPReserger
                 // string busorden = "0";
                 CalcularGRavaigv();
                 string BuscaMonto = "";
+                BuscaFic = "";
                 foreach (DataGridViewRow lista in Dtguias.Rows)
                 {
                     DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
@@ -1040,7 +1047,7 @@ namespace HPReserger
                     cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 0,
                       valorsubtotal, valorigv, valortotal,
                          cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 3, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario),
-                        0, detracc);
+                        0, detracc, (int)DtgConten[cc.Name, i].Value);
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////  
@@ -1096,6 +1103,14 @@ namespace HPReserger
             if (estado == 0) btnmaspro_Click(sender, e);
         }
 
+        private void cbomoneda_Click(object sender, EventArgs e)
+        {
+            string txt = cbomoneda.Text;
+            cbomoneda.DataSource = cfactura.getCargoTipoContratacion("id_moneda", "moneda", "tbl_moneda");
+            cbomoneda.DisplayMember = "descripcion";
+            cbomoneda.ValueMember = "codigo";
+            cbomoneda.Text = txt;
+        }
         private void DtgConten_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";

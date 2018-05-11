@@ -28,8 +28,8 @@ namespace HPReserger
             tipobusca = 1;
             RellenarEstado(cboestado);
             System.Globalization.CultureInfo.CreateSpecificCulture("es-ES");
-            dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0);
             cARgarEmpresas();
+            dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
             if (dtgbusca.RowCount > 0)
             {
                 activar();
@@ -52,7 +52,7 @@ namespace HPReserger
         {
             btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled =
                 Txtbusca.Enabled = groupBox1.Enabled = btnlimpiar.Enabled = true;
-            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtfechavalor.Enabled = chkfechavalor.Enabled = cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
+            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtfechavalor.Enabled = chkfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
                 txtdinamica.Enabled = false;
             foreach (DataGridViewColumn col in Dtgconten.Columns)
                 col.ReadOnly = true;
@@ -61,7 +61,7 @@ namespace HPReserger
         {
             btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled = chkfechavalor.Enabled =
                 Txtbusca.Enabled = groupBox1.Enabled = btnlimpiar.Enabled = false;
-            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtfechavalor.Enabled = chkfechavalor.Enabled = cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
+            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtfechavalor.Enabled = chkfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
                 txtdinamica.Enabled = true;
             foreach (DataGridViewColumn col in Dtgconten.Columns)
                 if (col.Name != descripcion.Name)
@@ -154,13 +154,17 @@ namespace HPReserger
                 if (e.RowIndex >= 0 && e.ColumnIndex == Dtgconten.Columns[descripcion.Name].Index && Dtgconten[descripcion.Name, e.RowIndex].Value.ToString() != "" && Dtgconten[EstadoCuen.Name, e.RowIndex].Value.ToString() != "3")
                 {
                     //cuando doy click en el detalle
+                    int y = e.RowIndex;
                     frmdetalle = new frmDetalleAsientos();
                     frmdetalle.MdiParent = this.MdiParent;
                     frmdetalle.Icon = this.Icon;
                     frmdetalle.idasiento = int.Parse(txtcodigo.Text);
+                    if (chkfechavalor.Checked) frmdetalle.fecha = dtfechavalor.Value;
+                    else frmdetalle.fecha = fecha.Value;
                     frmdetalle.asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
                     frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
                     frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
+                    frmdetalle.Total = (decimal)Dtgconten[debe.Name, y].Value + (decimal)Dtgconten[haber.Name, y].Value;
                     frmdetalle.FormClosed += new FormClosedEventHandler(Frmdetalle_FormClosed);
                     frmdetalle.Show();
                 }
@@ -174,12 +178,13 @@ namespace HPReserger
         private void Frmdetalle_FormClosed(object sender, FormClosedEventArgs e)
         {
             //cambia de estado a lo que se ingresa el detalle y cierra la ventana
-            if (frmdetalle.Dtgconten.RowCount > 1)
-            {
-                Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 1;
-            }
-            else
-                Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 0;
+            if (Dtgconten.CurrentRow != null)
+                if (frmdetalle.Dtgconten.RowCount > 1)
+                {
+                    Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 1;
+                }
+                else
+                    Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 0;
             PintardeCOlores();
         }
         public Boolean llamado = true;
@@ -381,7 +386,7 @@ namespace HPReserger
             {
                 if (Dtgconten[e.ColumnIndex, e.RowIndex].Value == null)
                     Dtgconten[e.ColumnIndex, e.RowIndex].Value = "0.00";
-                if (Dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString() =="")
+                if (Dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString() == "")
                     Dtgconten[e.ColumnIndex, e.RowIndex].Value = "0.00";
                 double aux = Convert.ToDouble(Dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString());
                 Dtgconten[e.ColumnIndex, e.RowIndex].Value = string.Format("{0:N2}", aux);
@@ -616,9 +621,9 @@ namespace HPReserger
         {
             if (fechaini.Value < fechafin.Value)
             {
-                dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.Text, tipobusca, fechaini.Value, fechafin.Value.AddDays(1), fechacheck);
+                dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.Text, tipobusca, fechaini.Value, fechafin.Value.AddDays(1), fechacheck, _idempresa);
             }
-            else { dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.Text, tipobusca, fechafin.Value, fechaini.Value.AddDays(1), fechacheck); }
+            else { dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.Text, tipobusca, fechafin.Value, fechaini.Value.AddDays(1), fechacheck, _idempresa); }
             msg2(dtgbusca);
             if (dtgbusca.RowCount < 1)
             {
@@ -660,7 +665,7 @@ namespace HPReserger
             if (e.RowIndex >= 0)
             {
                 int y = e.RowIndex;
-                dtgayuda3.DataSource = CapaLogica.BuscarAsientosContables(dtgbusca[idx.Name, y].Value.ToString(), 4);
+                dtgayuda3.DataSource = CapaLogica.BuscarAsientosContables(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa);
                 if (dtgayuda3.RowCount > 0)
                 {
 
@@ -769,7 +774,7 @@ namespace HPReserger
         public void ultimoasiento()
         {
             DataTable tablita = new DataTable();
-            tablita = CapaLogica.UltimoAsiento();
+            tablita = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue);
             DataRow filas = tablita.Rows[0];
             if (filas.ItemArray[0] != DBNull.Value)
             {
@@ -795,6 +800,7 @@ namespace HPReserger
         public int dinamimodi;
         private void btnmodificar_Click(object sender, EventArgs e)
         {
+            if (Dtgconten.RowCount <= 0) { MSG("No Hay Datos"); return; }
             estado = 2;
             dinamimodi = Convert.ToInt16(dtgayuda3[7, 0].Value.ToString());
             modifico = false;
@@ -933,7 +939,7 @@ namespace HPReserger
                         CapaLogica.InsertarAsiento((int)Dtgconten[IDASIENTOX.Name, i].Value, codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                     }
                     Txtbusca.Text = codigo + "";
-                    dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
+                    dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
                     activar(); estado = 0;
                 }
                 else
@@ -955,7 +961,7 @@ namespace HPReserger
                                 if (Dtgconten[EstadoCuen.Name, i].Value == null)
                                 ESTADO = 1;
                             else
-                                ESTADO =int.Parse(Dtgconten[EstadoCuen.Name, i].Value.ToString());
+                                ESTADO = int.Parse(Dtgconten[EstadoCuen.Name, i].Value.ToString());
                             DateTime? fechitas;
                             if (chkfechavalor.Checked) fechitas = dtfechavalor.Value;
                             else fechitas = null;
@@ -966,7 +972,7 @@ namespace HPReserger
                         }
                         estado = 0;
                         Txtbusca.Text = codigo + "";
-                        dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
+                        dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
                         activar();
                     }
                     else
@@ -979,7 +985,7 @@ namespace HPReserger
                                 CapaLogica.EliminarAsiento(codigo);
                                 MessageBox.Show("Eliminado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Txtbusca.Text = "";
-                                dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
+                                dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
                             }
                         }
                     }
@@ -1004,7 +1010,7 @@ namespace HPReserger
                         estado = 0;
                         activar();
                         //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0);
+                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
                         Txtbusca.Enabled = false;
                         dtgbusca.Focus(); btnActualizar.Enabled = true;
                     }
@@ -1019,7 +1025,7 @@ namespace HPReserger
                             estado = 0;
                             activar();
                             //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
-                            dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0);
+                            dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
                             Txtbusca.Enabled = true;
                             dtgbusca.Focus();
                         }
@@ -1030,7 +1036,7 @@ namespace HPReserger
                         estado = 0;
                         activar();
                         //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0);
+                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
                         Txtbusca.Enabled = true;
                         dtgbusca.Focus(); btnActualizar.Enabled = true;
                     }
@@ -1127,7 +1133,7 @@ namespace HPReserger
             cARgarEmpresas();
             cboempresa.Text = CodText;
         }
-
+        public int _idempresa = 0;
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboempresa.Items.Count > 0)
@@ -1137,6 +1143,19 @@ namespace HPReserger
                     cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
                     cboproyecto.DisplayMember = "proyecto";
                     cboproyecto.ValueMember = "id_proyecto";
+                    //busqueda de Asientos
+                    _idempresa = (int)cboempresa.SelectedValue;
+                    if (estado == 0)
+                    {
+                        txtcodigo.Text = "0";
+                        txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
+                        Txtbusca_TextChanged(sender, e);
+                    }
+                    if (estado == 1)
+                    {
+                        ultimoasiento();
+                        txtcodigo.Text = (codigo).ToString();
+                    }
                 }
             }
             else MSG("No hay Empresas");

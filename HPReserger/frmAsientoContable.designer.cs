@@ -911,7 +911,6 @@
             this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.Enabled = false;
             this.cboempresa.FormattingEnabled = true;
             this.cboempresa.Location = new System.Drawing.Point(16, 66);
             this.cboempresa.Name = "cboempresa";

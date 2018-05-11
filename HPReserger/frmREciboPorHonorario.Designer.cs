@@ -29,26 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmREciboPorHonorario));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmREciboPorHonorario));
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FIC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GUIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moneda1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAENTREGA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnagregar = new System.Windows.Forms.Button();
-            this.btnmaspro = new System.Windows.Forms.Button();
+            this.idmoneda1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbotipo = new System.Windows.Forms.ComboBox();
             this.gp1 = new System.Windows.Forms.GroupBox();
             this.btndescargar = new System.Windows.Forms.Button();
             this.DtFechaRecepcion = new System.Windows.Forms.DateTimePicker();
             this.txtmonto = new System.Windows.Forms.TextBox();
-            this.pbfactura = new System.Windows.Forms.PictureBox();
             this.DtgConten = new System.Windows.Forms.DataGridView();
             this.numfic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +62,7 @@
             this.numoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centrocosto1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numigv = new System.Windows.Forms.NumericUpDown();
             this.cboigv = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -77,14 +77,11 @@
             this.lblporcentaje = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnCargarFoto = new System.Windows.Forms.Button();
             this.txttotal = new System.Windows.Forms.TextBox();
             this.txtigv = new System.Windows.Forms.TextBox();
             this.txtsubtotal = new System.Windows.Forms.TextBox();
             this.txtnrofactura = new System.Windows.Forms.TextBox();
             this.txtfoto = new System.Windows.Forms.TextBox();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.txtruc = new System.Windows.Forms.TextBox();
@@ -96,11 +93,17 @@
             this.txtdireccion = new System.Windows.Forms.TextBox();
             this.Openfd = new System.Windows.Forms.OpenFileDialog();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnagregar = new System.Windows.Forms.Button();
+            this.btnmaspro = new System.Windows.Forms.Button();
+            this.pbfactura = new System.Windows.Forms.PictureBox();
+            this.btnCargarFoto = new System.Windows.Forms.Button();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.gp1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgConten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numigv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).BeginInit();
             this.SuspendLayout();
             // 
             // Dtguias
@@ -118,7 +121,9 @@
             this.FIC1,
             this.OC,
             this.GUIA,
-            this.FECHAENTREGA});
+            this.moneda1,
+            this.FECHAENTREGA,
+            this.idmoneda1});
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.Dtguias.Location = new System.Drawing.Point(16, 115);
             this.Dtguias.MultiSelect = false;
@@ -166,6 +171,12 @@
             this.GUIA.Name = "GUIA";
             this.GUIA.ReadOnly = true;
             // 
+            // moneda1
+            // 
+            this.moneda1.DataPropertyName = "moneda";
+            this.moneda1.HeaderText = "MONEDA";
+            this.moneda1.Name = "moneda1";
+            // 
             // FECHAENTREGA
             // 
             this.FECHAENTREGA.DataPropertyName = "FECHAENTREGA";
@@ -174,32 +185,12 @@
             this.FECHAENTREGA.Name = "FECHAENTREGA";
             this.FECHAENTREGA.ReadOnly = true;
             // 
-            // btnagregar
+            // idmoneda1
             // 
-            this.btnagregar.Enabled = false;
-            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
-            this.btnagregar.Location = new System.Drawing.Point(734, 317);
-            this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(75, 23);
-            this.btnagregar.TabIndex = 39;
-            this.btnagregar.Text = "Ingresar";
-            this.btnagregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnagregar.UseVisualStyleBackColor = true;
-            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
-            // 
-            // btnmaspro
-            // 
-            this.btnmaspro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmaspro.BackgroundImage")));
-            this.btnmaspro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnmaspro.FlatAppearance.BorderSize = 0;
-            this.btnmaspro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnmaspro.Location = new System.Drawing.Point(408, 37);
-            this.btnmaspro.Name = "btnmaspro";
-            this.btnmaspro.Size = new System.Drawing.Size(20, 20);
-            this.btnmaspro.TabIndex = 37;
-            this.tooltip.SetToolTip(this.btnmaspro, "Buscar Proveedor");
-            this.btnmaspro.UseVisualStyleBackColor = true;
-            this.btnmaspro.Click += new System.EventHandler(this.btnmaspro_Click);
+            this.idmoneda1.DataPropertyName = "cmoneda";
+            this.idmoneda1.HeaderText = "idmoneda";
+            this.idmoneda1.Name = "idmoneda1";
+            this.idmoneda1.Visible = false;
             // 
             // cbotipo
             // 
@@ -280,17 +271,6 @@
             this.txtmonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtmonto.TextChanged += new System.EventHandler(this.txtmonto_TextChanged);
             // 
-            // pbfactura
-            // 
-            this.pbfactura.Location = new System.Drawing.Point(594, 14);
-            this.pbfactura.Name = "pbfactura";
-            this.pbfactura.Size = new System.Drawing.Size(111, 41);
-            this.pbfactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbfactura.TabIndex = 17;
-            this.pbfactura.TabStop = false;
-            this.pbfactura.DoubleClick += new System.EventHandler(this.pbfactura_DoubleClick);
-            this.pbfactura.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbfactura_MouseMove);
-            // 
             // DtgConten
             // 
             this.DtgConten.AllowUserToAddRows = false;
@@ -313,7 +293,8 @@
             this.TOTALFAC,
             this.numoc,
             this.siigv,
-            this.cuentax});
+            this.cuentax,
+            this.centrocosto1});
             this.DtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgConten.Enabled = false;
             this.DtgConten.Location = new System.Drawing.Point(6, 93);
@@ -371,6 +352,7 @@
             this.MODELO.Name = "MODELO";
             this.MODELO.ReadOnly = true;
             this.MODELO.Visible = false;
+            this.MODELO.Width = 67;
             // 
             // CANTIDAD
             // 
@@ -450,6 +432,7 @@
             this.siigv.Name = "siigv";
             this.siigv.ReadOnly = true;
             this.siigv.Visible = false;
+            this.siigv.Width = 53;
             // 
             // cuentax
             // 
@@ -457,6 +440,13 @@
             this.cuentax.HeaderText = "cuenta";
             this.cuentax.Name = "cuentax";
             this.cuentax.Visible = false;
+            // 
+            // centrocosto1
+            // 
+            this.centrocosto1.DataPropertyName = "centrocosto";
+            this.centrocosto1.HeaderText = "centrocosto";
+            this.centrocosto1.Name = "centrocosto1";
+            this.centrocosto1.Visible = false;
             // 
             // numigv
             // 
@@ -590,20 +580,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Imagen:";
             // 
-            // btnCargarFoto
-            // 
-            this.btnCargarFoto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCargarFoto.BackgroundImage")));
-            this.btnCargarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCargarFoto.FlatAppearance.BorderSize = 0;
-            this.btnCargarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCargarFoto.Location = new System.Drawing.Point(363, 40);
-            this.btnCargarFoto.Name = "btnCargarFoto";
-            this.btnCargarFoto.Size = new System.Drawing.Size(20, 20);
-            this.btnCargarFoto.TabIndex = 11;
-            this.tooltip.SetToolTip(this.btnCargarFoto, "Cargar Imagen Recibo Honorario");
-            this.btnCargarFoto.UseVisualStyleBackColor = true;
-            this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
-            // 
             // txttotal
             // 
             this.txttotal.Enabled = false;
@@ -645,31 +621,6 @@
             this.txtfoto.Size = new System.Drawing.Size(285, 20);
             this.txtfoto.TabIndex = 6;
             this.txtfoto.Tag = "";
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Enabled = false;
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(653, 614);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 33;
-            this.btnaceptar.Text = "Guardar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(734, 614);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 34;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // txtTelefono
             // 
@@ -765,6 +716,83 @@
             // 
             this.tooltip.IsBalloon = true;
             // 
+            // btnagregar
+            // 
+            this.btnagregar.Enabled = false;
+            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
+            this.btnagregar.Location = new System.Drawing.Point(734, 317);
+            this.btnagregar.Name = "btnagregar";
+            this.btnagregar.Size = new System.Drawing.Size(75, 23);
+            this.btnagregar.TabIndex = 39;
+            this.btnagregar.Text = "Ingresar";
+            this.btnagregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnagregar.UseVisualStyleBackColor = true;
+            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
+            // 
+            // btnmaspro
+            // 
+            this.btnmaspro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmaspro.BackgroundImage")));
+            this.btnmaspro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmaspro.FlatAppearance.BorderSize = 0;
+            this.btnmaspro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnmaspro.Location = new System.Drawing.Point(408, 37);
+            this.btnmaspro.Name = "btnmaspro";
+            this.btnmaspro.Size = new System.Drawing.Size(20, 20);
+            this.btnmaspro.TabIndex = 37;
+            this.tooltip.SetToolTip(this.btnmaspro, "Buscar Proveedor");
+            this.btnmaspro.UseVisualStyleBackColor = true;
+            this.btnmaspro.Click += new System.EventHandler(this.btnmaspro_Click);
+            // 
+            // pbfactura
+            // 
+            this.pbfactura.Location = new System.Drawing.Point(594, 14);
+            this.pbfactura.Name = "pbfactura";
+            this.pbfactura.Size = new System.Drawing.Size(111, 41);
+            this.pbfactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbfactura.TabIndex = 17;
+            this.pbfactura.TabStop = false;
+            this.pbfactura.DoubleClick += new System.EventHandler(this.pbfactura_DoubleClick);
+            this.pbfactura.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbfactura_MouseMove);
+            // 
+            // btnCargarFoto
+            // 
+            this.btnCargarFoto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCargarFoto.BackgroundImage")));
+            this.btnCargarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCargarFoto.FlatAppearance.BorderSize = 0;
+            this.btnCargarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCargarFoto.Location = new System.Drawing.Point(363, 40);
+            this.btnCargarFoto.Name = "btnCargarFoto";
+            this.btnCargarFoto.Size = new System.Drawing.Size(20, 20);
+            this.btnCargarFoto.TabIndex = 11;
+            this.tooltip.SetToolTip(this.btnCargarFoto, "Cargar Imagen Recibo Honorario");
+            this.btnCargarFoto.UseVisualStyleBackColor = true;
+            this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Enabled = false;
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(653, 614);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.TabIndex = 33;
+            this.btnaceptar.Text = "Guardar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(734, 614);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 34;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
             // frmREciboPorHonorario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -795,9 +823,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).EndInit();
             this.gp1.ResumeLayout(false);
             this.gp1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgConten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numigv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -846,11 +874,6 @@
         private System.Windows.Forms.TextBox txtdireccion;
         private System.Windows.Forms.OpenFileDialog Openfd;
         private System.Windows.Forms.ToolTip tooltip;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIC1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAENTREGA;
         private System.Windows.Forms.Button btndescargar;
         private System.Windows.Forms.DataGridViewTextBoxColumn numfic;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
@@ -865,5 +888,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn siigv;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuentax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn centrocosto1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIC1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GUIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moneda1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAENTREGA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idmoneda1;
     }
 }

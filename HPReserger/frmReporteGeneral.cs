@@ -119,28 +119,45 @@ namespace HPReserger
         {
             Close();
         }
+        frmProcesando frmproce;
+        string EMPRESA = "";
+        DateTime ultimodia, getfecha;
         private void btnexportarexcel_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
             {
                 Cursor = Cursors.WaitCursor;
-                frmProcesando frmproce = new HPReserger.frmProcesando();
+                frmproce = new HPReserger.frmProcesando();
                 frmproce.Show();
-                string _NombreHoja = "BALANCE GENERAL";
-                List<HPResergerFunciones.Utilitarios.RangoCelda> ListaCeldas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
-                HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "d1", cboempresas.Text, 14);
-                ListaCeldas.Add(Celda1);
-                HPResergerFunciones.Utilitarios.RangoCelda Celda2 = new HPResergerFunciones.Utilitarios.RangoCelda("a2", "d2", "ESTADO DE SITUACIÓN FINANCIERA", 12);
-                ListaCeldas.Add(Celda2);
-                HPResergerFunciones.Utilitarios.RangoCelda Celda3 = new HPResergerFunciones.Utilitarios.RangoCelda("a3", "d3", $"Al {comboMesAño.UltimoDiaDelMes().ToString("dd")} de {comboMesAño.GetFecha().ToString("MMMM")} del {comboMesAño.GetFecha().Year}");
-                ListaCeldas.Add(Celda3);
-                HPResergerFunciones.Utilitarios.RangoCelda Celda4 = new HPResergerFunciones.Utilitarios.RangoCelda("a4", "d4", $"(Expresado en Soles)");
-                ListaCeldas.Add(Celda4);
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, ListaCeldas, 5, new int[] { 2, 3, 6, 7 }, new int[] { 1 }, new int[] { });
-                Cursor = Cursors.Default;
-                frmproce.Close();
+
+                EMPRESA = cboempresas.Text;
+                ultimodia = comboMesAño.UltimoDiaDelMes();
+                getfecha = comboMesAño.GetFecha();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
             }
             else msg("No hay datos para Exportar");
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string _NombreHoja = "ESTADO SITUACÍON FINANCIERA";
+            List<HPResergerFunciones.Utilitarios.RangoCelda> ListaCeldas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+            HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "d1", EMPRESA, 14);
+            ListaCeldas.Add(Celda1);
+            HPResergerFunciones.Utilitarios.RangoCelda Celda2 = new HPResergerFunciones.Utilitarios.RangoCelda("a2", "d2", "ESTADO DE SITUACIÓN FINANCIERA", 12);
+            ListaCeldas.Add(Celda2);
+            HPResergerFunciones.Utilitarios.RangoCelda Celda3 = new HPResergerFunciones.Utilitarios.RangoCelda("a3", "d3", $"Al {ultimodia.ToString("dd")} de {getfecha.ToString("MMMM")} del {getfecha.Year}");
+            ListaCeldas.Add(Celda3);
+            HPResergerFunciones.Utilitarios.RangoCelda Celda4 = new HPResergerFunciones.Utilitarios.RangoCelda("a4", "d4", $"(Expresado en Soles)");
+            ListaCeldas.Add(Celda4);
+            HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, ListaCeldas, 5, new int[] { 2, 3, 6, 7 }, new int[] { 1 }, new int[] { });
+        }
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
         }
         private void btnexportarpdf_Click(object sender, EventArgs e)
         {
@@ -549,5 +566,6 @@ namespace HPReserger
         {
             lblfechasReporte.Text = $"Al {comboMesAño.FechaFinMes.ToString("dd")}";
         }
+
     }
 }

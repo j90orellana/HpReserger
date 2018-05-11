@@ -38,20 +38,21 @@ namespace HPReserger
             }
             else
             {
-                //   LimpiarGrillas();
+                LimpiarGrillas();
                 //TitulosGrillas();
             }
         }
 
         private void Actualiza(int OC)
         {
+            //usp_get_Articulos_FIC
             gridDetalle.DataSource = clFIG.ListarArticulosFIC(OC, 0);
             if (gridDetalle.Rows.Count > 0 && cboOC.SelectedValue != null)
             {
                 gridDetalle1.DataSource = clFIG.ListarFIC(OC, 0);
                 if (gridDetalle1.Rows.Count > 0 && cboOC.SelectedValue != null)
                 {
-                    Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[ItemFIC].Cells[0].Value.ToString().Substring(3)));
+                    Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[ItemFIC].Cells[FIC.Name].Value.ToString().Substring(3)));
                 }
             }
             else
@@ -74,7 +75,7 @@ namespace HPReserger
             ItemFIC = e.RowIndex;
             if (gridDetalle1.Rows.Count > 0 && e.RowIndex > -1 && cboOC.SelectedValue != null)
             {
-                Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[0].Value.ToString().Substring(3)));
+                Actualiza2(Convert.ToInt32(cboOC.SelectedValue.ToString()), Convert.ToInt32(gridDetalle1.Rows[e.RowIndex].Cells[FIC.Name].Value.ToString().Substring(3)));
             }
         }
 
@@ -115,23 +116,21 @@ namespace HPReserger
                 txtGR.Focus();
                 return;
             }
-
             int fila;
             int FilaContarArticulo = 0;
             for (fila = 0; fila < gridDetalle.Rows.Count; fila++)
             {
-                if (gridDetalle.Rows[fila].Cells[7].Value != null && gridDetalle.Rows[fila].Cells[7].Value.ToString().Length > 0)
+                if (gridDetalle.Rows[fila].Cells[CANT.Name].Value != null && gridDetalle.Rows[fila].Cells[CANT.Name].Value.ToString().Length > 0)
                 {
-                    string NumDecimal = gridDetalle.Rows[fila].Cells[7].Value.ToString();
+                    string NumDecimal = gridDetalle.Rows[fila].Cells[CANT.Name].Value.ToString();
                     decimal Numero = 0;
                     bool Res = decimal.TryParse(NumDecimal, out Numero);
-                    if (Res == false || Convert.ToDecimal(gridDetalle.Rows[fila].Cells[7].Value.ToString()) == 0)
+                    if (Res == false || Convert.ToDecimal(gridDetalle.Rows[fila].Cells[CANT.Name].Value.ToString()) == 0)
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " el Monto ingresado es inválido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return;
                     }
-
-                    if (Convert.ToInt32(gridDetalle.Rows[fila].Cells[6].Value.ToString()) < Convert.ToInt32(gridDetalle.Rows[fila].Cells[7].Value.ToString()))
+                    if (Convert.ToInt32(gridDetalle.Rows[fila].Cells[SALDO.Name].Value.ToString()) < Convert.ToInt32(gridDetalle.Rows[fila].Cells[CANT.Name].Value.ToString()))
                     {
                         MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " el Saldo NO puede ser Menor a la Cantidad Recepcionada", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return;
@@ -142,23 +141,21 @@ namespace HPReserger
                     FilaContarArticulo++;
                 }
             }
-
             if (gridDetalle.Rows.Count == FilaContarArticulo)
             {
                 MessageBox.Show("Ingrese Cantidades", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 gridDetalle.Focus();
                 return;
             }
-
             int FIG = 0;
             clFIG.FICCabeceraInsertar(out FIG, Convert.ToInt32(txtGR.Text.ToString()), Convert.ToInt32(cboOC.SelectedValue.ToString()), 0, frmLogin.CodigoUsuario);
 
             int filaDetalle = 0;
             for (filaDetalle = 0; filaDetalle < gridDetalle.Rows.Count; filaDetalle++)
             {
-                if (gridDetalle.Rows[filaDetalle].Cells[7].Value.ToString().Length > 0)
+                if (gridDetalle.Rows[filaDetalle].Cells[CANT.Name].Value.ToString().Length > 0)
                 {
-                    clFIG.FICDetalleInsertar(FIG, Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[0].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[2].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[4].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[7].Value.ToString()), "", 0);
+                    clFIG.FICDetalleInsertar(FIG, Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[0].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[2].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[4].Value.ToString()), Convert.ToInt32(gridDetalle.Rows[filaDetalle].Cells[CANT.Name].Value.ToString()), "", 0, (int)gridDetalle[ccX.Name, filaDetalle].Value);
                 }
             }
             gridDetalle1.DataSource = clFIG.ListarFIC(Convert.ToInt32(cboOC.SelectedValue.ToString()), 0);
@@ -437,12 +434,13 @@ namespace HPReserger
 
         private void PasarModificar()
         {
-            if (gridDetalle1.Rows.Count > 0 && gridDetalle1.CurrentRow.Cells[0].Value != null)
+            if (gridDetalle1.Rows.Count > 0 && gridDetalle1.CurrentRow.Cells[FIC.Name].Value != null)
             {
+                int x = gridDetalle2.CurrentRow.Index;
                 frmFicModificar FICM = new frmFicModificar();
-                FICM.FIC = Convert.ToInt32(gridDetalle1.CurrentRow.Cells[0].Value.ToString().Substring(3));
-                FICM.Fecha = Convert.ToDateTime(gridDetalle1.CurrentRow.Cells[1].Value.ToString());
-                FICM.GuiaRemision = gridDetalle1.CurrentRow.Cells[2].Value.ToString().Substring(2);
+                FICM.FIC = Convert.ToInt32(gridDetalle1.CurrentRow.Cells[FIC.Name].Value.ToString().Substring(3));
+                FICM.Fecha = Convert.ToDateTime(gridDetalle1.CurrentRow.Cells[FECHA.Name].Value.ToString());
+                FICM.GuiaRemision = gridDetalle1.CurrentRow.Cells[NGR.Name].Value.ToString().Substring(2);
                 FICM.Proveedor = txtRUC.Text;
                 FICM.ordencompra = Convert.ToInt32(cboOC.Text.Substring(2));
                 FICM.ItemDetalle = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[0].Value.ToString());
@@ -453,8 +451,10 @@ namespace HPReserger
                 FICM.CodigoModelo = Convert.ToInt32(gridDetalle2.CurrentRow.Cells[5].Value.ToString());
                 FICM.Modelo = gridDetalle2.CurrentRow.Cells[6].Value.ToString();
                 FICM.CantOC = Convert.ToString(BuscarSaldo(Convert.ToInt32(gridDetalle2.CurrentRow.Cells[1].Value.ToString())));
-                FICM.CantFIC = gridDetalle2.CurrentRow.Cells[8].Value.ToString();
+                FICM.CantFIC = gridDetalle2.CurrentRow.Cells[CANTING.Name].Value.ToString();
 
+                FICM.CentroCosto = gridDetalle2[centrocosto3.Name, x].Value.ToString();
+                FICM.cc = (int)gridDetalle2[CC3.Name, x].Value;
                 if (FICM.ShowDialog() == DialogResult.OK)
                 {
                     Actualiza(Convert.ToInt32(cboOC.SelectedValue.ToString()));
@@ -478,10 +478,11 @@ namespace HPReserger
             int FilaCodigo = 0;
             for (FilaCodigo = 0; FilaCodigo < gridDetalle.Rows.Count; FilaCodigo++)
             {
-                if (CodigoArticulo == Convert.ToInt32(gridDetalle.Rows[FilaCodigo].Cells[0].Value.ToString()))
-                {
-                    return Convert.ToInt32(gridDetalle.Rows[FilaCodigo].Cells[6].Value.ToString());
-                }
+                if (gridDetalle[ccX.Name, FilaCodigo].Value.ToString() == gridDetalle2[CC3.Name, gridDetalle2.CurrentRow.Index].Value.ToString())
+                    if (CodigoArticulo == Convert.ToInt32(gridDetalle.Rows[FilaCodigo].Cells[0].Value.ToString()))
+                    {
+                        return Convert.ToInt32(gridDetalle.Rows[FilaCodigo].Cells[SALDO.Name].Value.ToString());
+                    }
             }
             return 0;
         }
@@ -491,6 +492,7 @@ namespace HPReserger
             if (frmlistar == null)
             {
                 frmlistar = new frmListarAlmacenArticulos();
+                frmlistar.IdArticulo = 0;
                 frmlistar.txtRUC.Text = txtRUC.Text;
                 frmlistar.MdiParent = this.MdiParent;
                 frmlistar.Icon = Icon;
@@ -513,6 +515,21 @@ namespace HPReserger
                 formulario.WindowState = FormWindowState.Normal;
             formulario.Left = (this.MdiParent.Width - formulario.Width) / 2;
             formulario.Top = ((this.MdiParent.Height - formulario.Height) / 2);
+        }
+
+        private void txtRUC_DoubleClick(object sender, EventArgs e)
+        {
+            frmproveedor frmprovee = new frmproveedor();
+            frmprovee.llamada = 1;
+            frmprovee.Txtbusca.Text = txtRUC.Text;
+            frmprovee.Txtbusca_TextChanged(sender, e);
+            frmprovee.ShowDialog();
+            txtRUC.Text = frmprovee.rucito;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gridDetalle2_DoubleClick(sender, e);
         }
     }
 }

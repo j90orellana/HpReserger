@@ -1153,20 +1153,28 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public DataTable ListarAsientosContables(string busca, int opcion, DateTime fechaini, DateTime fechafin, int fecha)
+        public DataTable ListarAsientosContables(string busca, int opcion, DateTime fechaini, DateTime fechafin, int fecha, int empresa)
         {
-            string[] parametros = { "@buscar", "@opcion", "@fechaini", "@fechafin", "@fecha" };
-            object[] valor = { busca, opcion, fechaini, fechafin, fecha };
+            string[] parametros = { "@buscar", "@opcion", "@fechaini", "@fechafin", "@fecha", "@empresa" };
+            object[] valor = { busca, opcion, fechaini, fechafin, fecha, empresa };
             return bd.DataTableFromProcedure("usp_listar_asientos", parametros, valor, null);
         }
-        public DataTable UltimoAsiento()
+        public DataTable UltimoAsiento(int empresa)
         {
-            return bd.DataTableFromProcedure("usp_ultimo_asiento", null, null, null);
+            string[] parametros = { "@empresa" };
+            object[] valores = { empresa };
+            return bd.DataTableFromProcedure("usp_ultimo_asiento", parametros, valores, null);
         }
-        public DataTable BuscarAsientosContables(string busca, int opcion)
+        public DataTable UltimoAsientoFactura(string numfac, string proveedor)
         {
-            string[] parametros = { "@buscar", "@opcion" };
-            object[] valor = { busca, opcion };
+            string[] parametros = { "@numfac", "@prove" };
+            object[] valores = { numfac, proveedor };
+            return bd.DataTableFromProcedure("usp_ultimo_asiento_Factura", parametros, valores, null);
+        }
+        public DataTable BuscarAsientosContables(string busca, int opcion, int empresa)
+        {
+            string[] parametros = { "@buscar", "@opcion", "@empresa" };
+            object[] valor = { busca, opcion, empresa };
             return bd.DataTableFromProcedure("usp_buscar_asientos", parametros, valor, null);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
@@ -1489,7 +1497,7 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones, int ActivoFijo)
+        public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones, int ActivoFijo, int centrocosto)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1507,6 +1515,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@Modelo", SqlDbType.Int).Value = Modelo;
                     cmd.Parameters.Add("@Observaciones", SqlDbType.VarChar, 256).Value = Observaciones;
                     cmd.Parameters.Add("@activofijo", SqlDbType.Int).Value = ActivoFijo;
+                    cmd.Parameters.Add("@cc", SqlDbType.Int).Value = centrocosto;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -1624,7 +1633,7 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_get_proveedor_giro", parametros, valores, null);
         }
 
-        public void CotizacionCabeceraInsertar(out int Numero, DateTime FechaEntrega, int Tipo, int Usuario, decimal Importe, int Pedido, string Proveedor, byte[] Foto, string NombreArchivo,int moneda)
+        public void CotizacionCabeceraInsertar(out int Numero, DateTime FechaEntrega, int Tipo, int Usuario, decimal Importe, int Pedido, string Proveedor, byte[] Foto, string NombreArchivo, int moneda)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1826,7 +1835,7 @@ namespace HPResergerCapaDatos
             }
         }
 
-        public void FICDetalleInsertar(int NumeroFIC, int CodigoArticulo, int CodigoMarca, int CodigoModelo, int Cantidad, string Observaciones, int Tipo)
+        public void FICDetalleInsertar(int NumeroFIC, int CodigoArticulo, int CodigoMarca, int CodigoModelo, int Cantidad, string Observaciones, int Tipo, int centrocosto)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1844,6 +1853,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = Cantidad;
                     cmd.Parameters.Add("@Observaciones", SqlDbType.VarChar, 256).Value = Observaciones;
                     cmd.Parameters.Add("@Tipo", SqlDbType.Int).Value = Tipo;
+                    cmd.Parameters.Add("@cc", SqlDbType.Int).Value = centrocosto;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -1970,7 +1980,7 @@ namespace HPResergerCapaDatos
             object[] valores = { Numero };
             return bd.DatarowFromProcedure("usp_Get_Imagen_Cotizacion", parametros, valores, null);
         }
-        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario, int nroconstancia, decimal detracion)
+        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario, int nroconstancia, decimal detracion, int cc)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1999,6 +2009,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@usuario", SqlDbType.Int).Value = usuario;
                     cmd.Parameters.Add("@detraccion", SqlDbType.Int).Value = detracion;
                     cmd.Parameters.Add("@nroconstancia", SqlDbType.Decimal).Value = nroconstancia;
+                    cmd.Parameters.Add("@cc", SqlDbType.Int).Value = cc;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -2006,7 +2017,7 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-        public void CotizacionModificar(int Numero, DateTime FechaEntrega, decimal Importe, string Proveedor, byte[] Foto, string NombreArchivo,int moneda)
+        public void CotizacionModificar(int Numero, DateTime FechaEntrega, decimal Importe, string Proveedor, byte[] Foto, string NombreArchivo, int moneda)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -3310,10 +3321,10 @@ namespace HPResergerCapaDatos
             object[] valores = { @opcion, @iddep, @presupuesto, @proyecto, etapa, @importe, @ceco, @importececo, @importeflujo, @usuario };
             return bd.DataTableFromProcedure("usp_ProyectoCentrodecostodetalle", parametros, valores, null);
         }
-        public DataTable InsertarAsientoFactura(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
+        public DataTable InsertarAsientoFactura(int num, int nextasiento, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac, int ccs, DateTime fecha)
         {
-            string[] parametros = { "@num", "@opcion", "@oc", "@monto", "@igv", "@total", "@cc", "@numfac" };
-            object[] valores = { num, opcion, oc, monto, igv, total, cc, numfac };
+            string[] parametros = { "@num", "@next", "@opcion", "@oc", "@monto", "@igv", "@total", "@cc", "@numfac", "@ccs", "@fecha" };
+            object[] valores = { num, nextasiento, opcion, oc, monto, igv, total, cc, numfac, ccs, fecha };
             return bd.DataTableFromProcedure("usp_InsertarAsientoFactura", parametros, valores, null);
         }
         public DataTable InsertarAsientoFacturaLlegada(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
@@ -3327,6 +3338,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@num", "@opcion", "@oc", "@monto", "@igv", "@total", "@cc", "@numfac" };
             object[] valores = { num, opcion, oc, monto, igv, total, cc, numfac };
             return bd.DataTableFromProcedure("usp_InsertarAsientoFacturaProvisionada", parametros, valores, null);
+        }
+        public DataRow SiguienteAsientoxOrdenCompra(int num)
+        {
+            string[] parametros = { "@numoc" };
+            object[] valores = { num };
+            return bd.DatarowFromProcedure("usp_SiguienteAsientoxOC", parametros, valores, null);
         }
         public DataTable InsertarAsientoRecibo(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
         {

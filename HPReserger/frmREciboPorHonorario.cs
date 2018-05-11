@@ -298,9 +298,9 @@ namespace HPReserger
                         return;
                     }
                 }
-                int next;
-                DataRow siguiente = cfactura.Siguiente("TBL_Asiento_Contable", "Id_Asiento_Contable");
-                next = int.Parse(siguiente["valor"].ToString());
+                int nextAsiento;
+                DataRow siguienteNum = cfactura.SiguienteAsientoxOrdenCompra((int)DtgConten["numOC", 0].Value);
+                nextAsiento = int.Parse(siguienteNum["id"].ToString());
                 for (int i = 0; i < DtgConten.RowCount; i++)
                 {
                     decimal valorigv = 0, valorsubtotal = 0, valortotal = 0;
@@ -310,12 +310,12 @@ namespace HPReserger
                     //grabando
                     cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 1,
                       valorsubtotal, valorigv, valortotal,
-                         cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario), 0, 0);
+                         cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario), 0, 0,(int)DtgConten[centrocosto1.Name,i].Value);
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////                    
-                    cfactura.InsertarAsientoRecibo(next, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text);
-                    cfactura.InsertarAsientoRecibo(next, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text);
+                    cfactura.InsertarAsientoRecibo(nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text);
+                    cfactura.InsertarAsientoRecibo(nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text);
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////  
@@ -434,7 +434,7 @@ namespace HPReserger
             contador = 0;
             if (Dtguias.RowCount > 0)
             {
-                string BuscaMonto = "";
+                string BuscaMonto = ""; BuscaFic = "";
                 foreach (DataGridViewRow lista in Dtguias.Rows)
                 {
                     DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();

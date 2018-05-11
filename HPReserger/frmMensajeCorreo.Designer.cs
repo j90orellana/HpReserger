@@ -194,6 +194,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 364);
+            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.txtcorreo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtmsg);
@@ -209,7 +210,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(515, 403);
             this.Name = "frmMensajeCorreo";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Envío de e-mail";
             this.Text = "Envío de e-mail";
             this.Load += new System.EventHandler(this.frmMensajeCorreo_Load);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -226,7 +227,6 @@
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox cboprioridad;
         private System.Windows.Forms.Button btnadjuntar;
-        private System.Windows.Forms.OpenFileDialog Openfiledatos;
         private System.Windows.Forms.Label lbldatos;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fuenteToolStripMenuItem;
@@ -234,5 +234,6 @@
         public System.Windows.Forms.RichTextBox txtmsg;
         public System.Windows.Forms.TextBox txtcorreo;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.OpenFileDialog Openfiledatos;
     }
 }

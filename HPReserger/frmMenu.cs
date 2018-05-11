@@ -143,13 +143,13 @@ namespace HPReserger
                 {
                 }
             }
-
             cerrado = 0;
             lblwelcome.Text = "Bienvenido: " + Nombres;
             ConsultarCumpleaños();
             length = FlowPanel.Width;
             ImagenDefault = pbesquina.Image;
             FlowPanel_ControlRemoved_1(sender, new ControlEventArgs(FlowPanel));
+            Mostrado = true;
             //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control
         }
 
@@ -2636,6 +2636,29 @@ namespace HPReserger
                 //  FlowPanel.Visible = true;
                 // pbesquina.Visible = true;
             }
+        }
+        frmFlujodeCaja frmFLujo;
+        private void flujoDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmFLujo == null)
+            {
+                //cargar lo de flujo
+                frmFLujo = new frmFlujodeCaja();
+                frmFLujo.MdiParent = this;
+                frmFLujo.Icon = ICono;
+                frmFLujo.FormClosed += new FormClosedEventHandler(cerrarflujodecaja);
+                frmFLujo.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmFLujo.Activate();
+                ValidarVentanas(frmFLujo);
+            }
+        }
+        private void cerrarflujodecaja(object sender, FormClosedEventArgs e)
+        {
+            frmFLujo = null;
         }
     }
 }

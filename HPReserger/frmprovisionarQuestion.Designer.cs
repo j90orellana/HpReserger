@@ -143,6 +143,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btncancelar;
             this.ClientSize = new System.Drawing.Size(273, 111);
+            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numdetraccion);
             this.Controls.Add(this.lblporcentajedetraccion);
@@ -156,8 +157,9 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(289, 150);
             this.Name = "frmprovisionarQuestion";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "HpReserger";
             this.Text = "HpReserger";
+            this.Load += new System.EventHandler(this.frmprovisionarQuestion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

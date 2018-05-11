@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -51,18 +53,27 @@ namespace HPReserger
             }
         }
         DataRow drCOT;
+        byte[] ImagenC = null;
         private void gridOC_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             Item = e.RowIndex;
-            drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(2)));
+            drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[COTIZACION.Name].Value.ToString().Substring(2)));
 
             if (drCOT != null)
             {
                 txtProveedor.Text = drCOT["PROVEEDOR"].ToString();
                 txtImporte.Text = drCOT["IMPORTE"].ToString();
                 txtFechaEntrega.Text = drCOT["FECHAENTREGA"].ToString();
+                txtmoneda.Text = drCOT["MONEDA"].ToString();
+                string Imagen = drCOT["IMAGEN"].ToString();
+                if (Imagen.Length > 0)
+                {
+                    ImagenC = (byte[])drCOT["IMAGEN"];
+                    MemoryStream sr = new MemoryStream(ImagenC);
+                    pbCotizacion.Image = Bitmap.FromStream(sr);
+                }
 
-                dtDetalle = clOC.ListarOCDetalle(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[2].Value.ToString().Substring(2)));
+                dtDetalle = clOC.ListarOCDetalle(Convert.ToInt32(gridOC.Rows[e.RowIndex].Cells[ORDENPEDIDO.Name].Value.ToString().Substring(2)));
 
                 if (dtDetalle.Rows.Count > 0)
                 {
@@ -89,6 +100,7 @@ namespace HPReserger
         {
             MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+        frmMensajeCorreo mensajito;
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             //Boolean salir = false;
@@ -107,70 +119,38 @@ namespace HPReserger
                             //else
                             return;
                         }
-                    frmMensajeCorreo mensajito = new frmMensajeCorreo();
+                    //proceso de img
+                    string Ruta = Application.StartupPath + @"\Cotizacion.jpeg";
+                    pbCotizacion.Image.Save(Ruta, ImageFormat.Jpeg);
+
+                    mensajito = new frmMensajeCorreo();
                     mensajito.Icon = Icon;
                     mensajito.Text = "Mensaje de Aprobación";
                     mensajito.txtasunto.Text = "Cotización Aprobada";
                     //mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es para nosotros un placer aceptar su cotizacion";
                     mensajito.txtmsg.Text = "Es para nosotros un placer aceptar su cotizacion";
                     mensajito.txtcorreo.Text = drCOT["correo"].ToString().ToLower();
+                    mensajito.Openfiledatos.FileName = Ruta;
+
                     mensajito.ShowDialog();
                     if (mensajito.ok)
                     {
-                        clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 4);
-                        string OC1 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
-                        MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        try
+                        if (!backgroundWorker1.IsBusy)
                         {
-                            MailMessage email = new MailMessage();
-                            //CORREO DE PROVEEDOR
-                            email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
-                            ///
-                            email.From = new MailAddress("j90orellana@hotmail.com");
-                            email.Subject = mensajito.txtasunto.Text;
-                            email.Priority = mensajito.PrioridadCorreo();
-                            email.Body = mensajito.txtmsg.Text;
-                            //ContentType alo = new ContentType();
-                            //alo.MediaType = MediaTypeNames.Text.RichText;
-                            //AlternateView fuente;
-                            //fuente = AlternateView.CreateAlternateViewFromString(mensajito.txtmsg.DocumentText, alo);
-                            //email.AlternateViews.Add(fuente);
-
-                            //ContentType holi= new ContentType(mensajito.txtmsg.Font)
-                            //AlternateView fuente= AlternateView.CreateAlternateViewFromString()
-                            //email.AlternateViews.
-                            if (mensajito.Adjunto())
-                            {
-                                foreach (string ruta in mensajito.ArchivosAdjuntos())
-                                {
-                                    Attachment Archivos = new Attachment(ruta);
-                                    email.Attachments.Add(Archivos);
-                                }
-                            }
-                            else
-                                email.Attachments.Clear();
-                            email.IsBodyHtml = false;
-                            SmtpClient smtp = new SmtpClient();
-                            smtp.Host = "smtp.live.com";
-                            smtp.Port = 25;
-                            smtp.EnableSsl = true;
-                            smtp.UseDefaultCredentials = false;
-                            smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
-                            smtp.Send(email);
-                            email.Dispose();
-                            MSG("Correo electrónico fue enviado a " + mensajito.txtcorreo.Text + " satisfactoriamente.");
+                            clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 4);
+                            backgroundWorker1.RunWorkerAsync();
                         }
-                        catch (Exception ex)
-                        {
-                            MSG("Error enviando correo electrónico: " + ex.Message);
-                        }
-                        Listar(frmLogin.CodigoUsuario);
+                        else return;
                     }
                     else
                     {
                         MSG("Orden De compra no enviada");
                     }
                 }
+            txtFechaEntrega.Text = txtImporte.Text = txtmoneda.Text = txtProveedor.Text = "";
+            pbCotizacion.Image = null;
+            Listar(frmLogin.CodigoUsuario);
+
         }
         private void btnAnular_Click(object sender, EventArgs e)
         {
@@ -369,6 +349,101 @@ namespace HPReserger
 
                 }
             }
+        }
+
+        private void btnactualizar_Click(object sender, EventArgs e)
+        {
+            Listar(frmLogin.CodigoUsuario);
+        }
+
+        private void btndescargar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbCotizacion.Image != null)
+                btndescargar.Visible = true;
+        }
+        private void btndescargar_Click(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.DescargarImagen(pbCotizacion);
+        }
+        public void MostrarFoto(PictureBox fotito)
+        {
+            if (fotito.Image != null)
+            {
+                FrmFoto foto = new FrmFoto($"Cotización de {txtProveedor.Text}");
+                foto.fotito = fotito.Image;
+                foto.Owner = this.MdiParent;
+                foto.ShowDialog();
+            }
+        }
+
+        private void pbCotizacion_DoubleClick(object sender, EventArgs e)
+        {
+            MostrarFoto(pbCotizacion);
+        }
+
+        private void pbCotizacion_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pbCotizacion.Image != null)
+                btndescargar.Visible = true;
+        }
+
+        private void pbCotizacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string OC1 = gridOC.Rows[Item].Cells[ORDENCOMPRA.Name].Value.ToString().Substring(2);
+            MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                MailMessage email = new MailMessage();
+                //CORREO DE PROVEEDOR
+                email.To.Add(new MailAddress(mensajito.txtcorreo.Text));                
+                ///
+                email.From = new MailAddress("j90orellana@hotmail.com");
+                email.Subject = mensajito.txtasunto.Text;
+                email.Priority = mensajito.PrioridadCorreo();
+                email.Body = mensajito.txtmsg.Text;
+                //ContentType alo = new ContentType();
+                //alo.MediaType = MediaTypeNames.Text.RichText;
+                //AlternateView fuente;
+                //fuente = AlternateView.CreateAlternateViewFromString(mensajito.txtmsg.DocumentText, alo);
+                //email.AlternateViews.Add(fuente);
+
+                //ContentType holi= new ContentType(mensajito.txtmsg.Font)
+                //AlternateView fuente= AlternateView.CreateAlternateViewFromString()
+                //email.AlternateViews.
+                if (mensajito.Adjunto())
+                {
+                    foreach (string ruta in mensajito.ArchivosAdjuntos())
+                    {
+                        Attachment Archivos = new Attachment(ruta);
+                        email.Attachments.Add(Archivos);
+                    }
+                }
+                else
+                    email.Attachments.Clear();
+                email.IsBodyHtml = false;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.live.com";
+                smtp.Port = 25;
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
+                smtp.Send(email);
+                email.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MSG("Error enviando correo electrónico: " + ex.Message);
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MSG("Correo electrónico fue enviado a " + mensajito.txtcorreo.Text + " satisfactoriamente.");
         }
     }
 }

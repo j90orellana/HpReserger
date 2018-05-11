@@ -148,7 +148,7 @@ namespace HPReserger
                 ///completar el ultimo dia del mes 
                 //if ((int)filita["mes"] != DateTime.Now.Month && (int)filita["año"] != DateTime.Now.Year)
                 DateTime fechax = new DateTime((int)filita["año"], (int)filita["mes"], 1);
-                if (DateTime.Now > fechax)
+                if (DateTime.Now > fechax && (DateTime.Now.Month != fechax.Month && DateTime.Now.Year != fechax.Year))
                 {
                     int mesio = comboMesAño1.GetFecha().Month;
                     int añio = comboMesAño1.GetFecha().Year;
@@ -200,11 +200,11 @@ namespace HPReserger
                 //        }                        
                 //    }
                 //}
-                //foreach (DataRow filitas in tablita.Rows)
-                //{
-                //    //inserto a la base de datos el tipo de cambio
-                //    CapaLogica.TipodeCambio(1, (int)filitas["año"], (int)filitas["mes"], (int)filitas["dia"], (decimal)filitas["compra"], (decimal)filitas["venta"], ImgVenta);
-                //}
+                foreach (DataRow filitas in tablita.Rows)
+                {
+                    //inserto a la base de datos el tipo de cambio
+                    CapaLogica.TipodeCambio(1, (int)filitas["año"], (int)filitas["mes"], (int)filitas["dia"], (decimal)filitas["compra"], (decimal)filitas["venta"], ImgVenta);
+                }
                 tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
                 dtgconten.DataSource = tablita;
                 CargarImagenes();
@@ -360,29 +360,41 @@ namespace HPReserger
         {
             MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        frmProcesando frmpro;
+        DateTime Fechas;
         private void btnExcel_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
             {
-                frmProcesando frmpro = new frmProcesando();
-                frmpro.Show();
-                Cursor = Cursors.WaitCursor;
-                List<HPResergerFunciones.Utilitarios.RangoCelda> RangosCeldas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
-                HPResergerFunciones.Utilitarios.RangoCelda celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "c1", "TIPO DE CAMBIO", 14);
-                RangosCeldas.Add(celda1);
-                HPResergerFunciones.Utilitarios.RangoCelda celda2 = new HPResergerFunciones.Utilitarios.RangoCelda("a2", "c2", $"Correspondiente a {comboMesAño1.GetFecha().ToString("MMMM") } del {comboMesAño1.GetFecha().Year}", 12);
-                RangosCeldas.Add(celda2);
-
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "TIPO DE CAMBIO", RangosCeldas, 3, new int[] { 1, 2, 3 }, new int[] { }, new int[] { });
-
-
-                Cursor = Cursors.Default;
-                frmpro.Close();
+                frmpro = new frmProcesando();
+                frmpro.Show(); Cursor = Cursors.WaitCursor;
+                Fechas = comboMesAño1.GetFecha();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
             }
             else
             {
                 MSG("No hay Datos que Mostrar");
             }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            List<HPResergerFunciones.Utilitarios.RangoCelda> RangosCeldas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+            HPResergerFunciones.Utilitarios.RangoCelda celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "c1", "TIPO DE CAMBIO", 14);
+            RangosCeldas.Add(celda1);
+            HPResergerFunciones.Utilitarios.RangoCelda celda2 = new HPResergerFunciones.Utilitarios.RangoCelda("a2", "c2", $"Correspondiente a {Fechas.ToString("MMMM") } del {Fechas.Year}", 12);
+            RangosCeldas.Add(celda2);
+
+            HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "TIPO DE CAMBIO", RangosCeldas, 3, new int[] { 1, 2, 3 }, new int[] { }, new int[] { });
+        }
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmpro.Close();
         }
     }
 }

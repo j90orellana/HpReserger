@@ -224,7 +224,7 @@ namespace HPReserger
             cbotipopersona.Enabled = a;
             btnsectormas.Enabled = a; cboctasoles.Enabled = cboctadolares.Enabled = a;
             //cbodocumento.Enabled = a;
-            txtnumeroidentidad.Enabled = a;
+            txtnumeroidentidad.ReadOnly = !a;
             txtnombrerazonsocial.Enabled = a;
             cbosectorcomercial.Enabled = a;
             btnbancosmas.Enabled = a;
@@ -322,8 +322,8 @@ namespace HPReserger
                 }
             }
         }
-        public void DesactivarModi() { cbodocumento.Enabled = txtnumeroidentidad.Enabled = txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = false; }
-        public void ActivarModi() { txtnumeroidentidad.Enabled = txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = true; }
+        public void DesactivarModi() { cbodocumento.Enabled = txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = false; txtnumeroidentidad.ReadOnly = true; }
+        public void ActivarModi() { txtnumeroidentidad.ReadOnly = false; txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = true; }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             estado = 2; anterior = txtnumeroidentidad.Text.Trim();

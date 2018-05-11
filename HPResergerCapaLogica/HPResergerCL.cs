@@ -355,17 +355,17 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.EliminarDinamica(codigo);
         }
-        public DataTable ListarAsientosContables(string busca, int opcion, DateTime fechaini, DateTime fechafin, int fecha)
+        public DataTable ListarAsientosContables(string busca, int opcion, DateTime fechaini, DateTime fechafin, int fecha, int empresa)
         {
-            return cdOrdenPedido.ListarAsientosContables(busca, opcion, fechaini, fechafin, fecha);
+            return cdOrdenPedido.ListarAsientosContables(busca, opcion, fechaini, fechafin, fecha, empresa);
         }
         public void Modificar2asiento(int codigo)
         {
             cdOrdenPedido.Modificar2asiento(codigo);
         }
-        public DataTable BuscarAsientosContables(string busca, int opcion)
+        public DataTable BuscarAsientosContables(string busca, int opcion, int empresa)
         {
-            return cdOrdenPedido.BuscarAsientosContables(busca, opcion);
+            return cdOrdenPedido.BuscarAsientosContables(busca, opcion, empresa);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
          , DateTime fechaemision, decimal importemn, decimal importeme, decimal tipocambio, int usuario)
@@ -376,9 +376,13 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, 0, 0, 0, 0);
         }
-        public DataTable UltimoAsiento()
+        public DataTable UltimoAsiento(int empresa)
         {
-            return cdOrdenPedido.UltimoAsiento();
+            return cdOrdenPedido.UltimoAsiento(empresa);
+        }
+        public DataTable UltimoAsientoFactura(string numfac, string proveedor)
+        {
+            return UltimoAsientoFactura(numfac, proveedor);
         }
         public void InsertarAsiento(int id, int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa)
         {
@@ -454,9 +458,9 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.OrdenPedidoCabeceraInsertar(out Numero, Usuario, Tipo, proyecto, etapa);
         }
 
-        public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones, int ActivoFijo)
+        public void OrdenPedidoDetalleInsertar(int Numero, int Cantidad, int Articulo, int Marca, int Modelo, string Observaciones, int ActivoFijo, int centrocosto)
         {
-            cdOrdenPedido.OrdenPedidoDetalleInsertar(Numero, Cantidad, Articulo, Marca, Modelo, Observaciones, ActivoFijo);
+            cdOrdenPedido.OrdenPedidoDetalleInsertar(Numero, Cantidad, Articulo, Marca, Modelo, Observaciones, ActivoFijo, centrocosto);
         }
 
         public DataTable ListarPedidos(int TipoArticulo, string Articulo, DateTime Desde, DateTime Hasta, int Usuario)
@@ -586,9 +590,9 @@ namespace HPResergerCapaLogica
             cdOrdenPedido.FICCabeceraInsertar(out Numero, GuiaRemision, OrdenCompra, Tipo, Usuario);
         }
 
-        public void FICDetalleInsertar(int NumeroFIC, int CodigoArticulo, int CodigoMarca, int CodigoModelo, int Cantidad, string Observaciones, int Tipo)
+        public void FICDetalleInsertar(int NumeroFIC, int CodigoArticulo, int CodigoMarca, int CodigoModelo, int Cantidad, string Observaciones, int Tipo, int centrocosto)
         {
-            cdOrdenPedido.FICDetalleInsertar(NumeroFIC, CodigoArticulo, CodigoMarca, CodigoModelo, Cantidad, Observaciones, Tipo);
+            cdOrdenPedido.FICDetalleInsertar(NumeroFIC, CodigoArticulo, CodigoMarca, CodigoModelo, Cantidad, Observaciones, Tipo, centrocosto);
         }
 
         public DataTable ListarFIC(int OC, int Tipo)
@@ -636,9 +640,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarAsientoRecibo(num, opcion, oc, monto, igv, total, cc, numfac);
         }
-        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario, int nroconstancia, decimal detraccion)
+        public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario, int nroconstancia, decimal detraccion, int cc)
         {
-            cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, fecharecepcion, estado, moneda, imgfactura, usuario, nroconstancia, detraccion);
+            cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, fecharecepcion, estado, moneda, imgfactura, usuario, nroconstancia, detraccion, cc);
         }
         public DataTable ListarFicsDetalle(string fic)
         {
@@ -1171,9 +1175,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ProyectoCentrodecostodetalle(@opcion, @iddep, @presupuesto, @proyecto, etapa, @importe, @ceco, @importececo, @importeflujo, @usuario);
         }
-        public DataTable InsertarAsientoFactura(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
+        public DataTable InsertarAsientoFactura(int num,int nextasiento, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac, int ccs, DateTime Fecha)
         {
-            return cdOrdenPedido.InsertarAsientoFactura(num, opcion, oc, monto, igv, total, cc, numfac);
+            return cdOrdenPedido.InsertarAsientoFactura(num,nextasiento, opcion, oc, monto, igv, total, cc, numfac, ccs, Fecha);
         }
         public DataTable InsertarAsientoFacturaLlegada(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
         {
@@ -1186,6 +1190,10 @@ namespace HPResergerCapaLogica
         public DataRow Siguiente(string tabla, string campo)
         {
             return cdOrdenPedido.Siguiente(tabla, campo);
+        }
+        public DataRow SiguienteAsientoxOrdenCompra(int num)
+        {
+            return cdOrdenPedido.SiguienteAsientoxOrdenCompra(num);
         }
         public DataTable ListarPresupuestoCentrodeCostoReporte(int proyecto, int @cabecera)
         {

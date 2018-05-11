@@ -469,7 +469,7 @@ namespace HPReserger
                         }
                         else
                         {
-                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[COT.Name].Value.ToString().Substring(2)), Item2);                            
+                            CargarFoto(Convert.ToInt32(gridCotizacionesAsociadas.CurrentRow.Cells[COT.Name].Value.ToString().Substring(2)), Item2);
                         }
                     }
                 }
@@ -726,10 +726,10 @@ namespace HPReserger
 
         private void dtgpedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (dtgpedido.Columns["PrecioUnit"].Index != e.ColumnIndex && e.RowIndex > -1)
-            //{
-            //    dtgpedido[e.ColumnIndex, e.RowIndex].ReadOnly = true;
-            //}
+            if (dtgpedido.Columns["PrecioUnit"].Index != e.ColumnIndex && e.RowIndex > -1)
+            {
+                dtgpedido[e.ColumnIndex, e.RowIndex].ReadOnly = true;
+            }
         }
 
         private void CalcularImporte()

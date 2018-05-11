@@ -33,6 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblguia = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtcentrocosto = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtCantOC = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.txtMarca = new System.Windows.Forms.TextBox();
@@ -54,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 23);
+            this.label1.Location = new System.Drawing.Point(70, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 0;
@@ -63,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 51);
+            this.label2.Location = new System.Drawing.Point(56, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 1;
@@ -72,7 +74,7 @@
             // lblguia
             // 
             this.lblguia.AutoSize = true;
-            this.lblguia.Location = new System.Drawing.Point(15, 79);
+            this.lblguia.Location = new System.Drawing.Point(16, 71);
             this.lblguia.Name = "lblguia";
             this.lblguia.Size = new System.Drawing.Size(77, 13);
             this.lblguia.TabIndex = 2;
@@ -80,6 +82,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtcentrocosto);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtCantOC);
             this.groupBox1.Controls.Add(this.txtModelo);
             this.groupBox1.Controls.Add(this.txtMarca);
@@ -98,13 +102,30 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(303, 250);
+            this.groupBox1.Size = new System.Drawing.Size(359, 250);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
+            // txtcentrocosto
+            // 
+            this.txtcentrocosto.Location = new System.Drawing.Point(99, 165);
+            this.txtcentrocosto.Name = "txtcentrocosto";
+            this.txtcentrocosto.ReadOnly = true;
+            this.txtcentrocosto.Size = new System.Drawing.Size(254, 20);
+            this.txtcentrocosto.TabIndex = 24;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 169);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Centro de Costo";
+            // 
             // txtCantOC
             // 
-            this.txtCantOC.Location = new System.Drawing.Point(105, 187);
+            this.txtCantOC.Location = new System.Drawing.Point(99, 190);
             this.txtCantOC.Name = "txtCantOC";
             this.txtCantOC.ReadOnly = true;
             this.txtCantOC.Size = new System.Drawing.Size(69, 20);
@@ -113,31 +134,31 @@
             // 
             // txtModelo
             // 
-            this.txtModelo.Location = new System.Drawing.Point(105, 159);
+            this.txtModelo.Location = new System.Drawing.Point(99, 140);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.ReadOnly = true;
-            this.txtModelo.Size = new System.Drawing.Size(182, 20);
+            this.txtModelo.Size = new System.Drawing.Size(254, 20);
             this.txtModelo.TabIndex = 21;
             // 
             // txtMarca
             // 
-            this.txtMarca.Location = new System.Drawing.Point(105, 131);
+            this.txtMarca.Location = new System.Drawing.Point(99, 115);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.ReadOnly = true;
-            this.txtMarca.Size = new System.Drawing.Size(182, 20);
+            this.txtMarca.Size = new System.Drawing.Size(254, 20);
             this.txtMarca.TabIndex = 20;
             // 
             // txtArticulo
             // 
-            this.txtArticulo.Location = new System.Drawing.Point(105, 103);
+            this.txtArticulo.Location = new System.Drawing.Point(99, 91);
             this.txtArticulo.Name = "txtArticulo";
             this.txtArticulo.ReadOnly = true;
-            this.txtArticulo.Size = new System.Drawing.Size(182, 20);
+            this.txtArticulo.Size = new System.Drawing.Size(254, 20);
             this.txtArticulo.TabIndex = 19;
             // 
             // txtFIC
             // 
-            this.txtFIC.Location = new System.Drawing.Point(105, 19);
+            this.txtFIC.Location = new System.Drawing.Point(99, 19);
             this.txtFIC.Name = "txtFIC";
             this.txtFIC.ReadOnly = true;
             this.txtFIC.Size = new System.Drawing.Size(94, 20);
@@ -146,7 +167,7 @@
             // 
             // txtCantFIC
             // 
-            this.txtCantFIC.Location = new System.Drawing.Point(105, 215);
+            this.txtCantFIC.Location = new System.Drawing.Point(99, 215);
             this.txtCantFIC.Name = "txtCantFIC";
             this.txtCantFIC.Size = new System.Drawing.Size(69, 20);
             this.txtCantFIC.TabIndex = 1;
@@ -156,7 +177,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 219);
+            this.label8.Location = new System.Drawing.Point(42, 219);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 16;
@@ -165,7 +186,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(40, 191);
+            this.label7.Location = new System.Drawing.Point(41, 194);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 14;
@@ -174,7 +195,7 @@
             // lblmodelo
             // 
             this.lblmodelo.AutoSize = true;
-            this.lblmodelo.Location = new System.Drawing.Point(50, 163);
+            this.lblmodelo.Location = new System.Drawing.Point(51, 144);
             this.lblmodelo.Name = "lblmodelo";
             this.lblmodelo.Size = new System.Drawing.Size(42, 13);
             this.lblmodelo.TabIndex = 12;
@@ -183,7 +204,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 135);
+            this.label5.Location = new System.Drawing.Point(56, 119);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 10;
@@ -192,7 +213,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 107);
+            this.label4.Location = new System.Drawing.Point(49, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 8;
@@ -201,14 +222,14 @@
             // dtpFecha
             // 
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(105, 47);
+            this.dtpFecha.Location = new System.Drawing.Point(99, 43);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(111, 20);
             this.dtpFecha.TabIndex = 7;
             // 
             // txtGuia
             // 
-            this.txtGuia.Location = new System.Drawing.Point(105, 75);
+            this.txtGuia.Location = new System.Drawing.Point(99, 67);
             this.txtGuia.Name = "txtGuia";
             this.txtGuia.Size = new System.Drawing.Size(84, 20);
             this.txtGuia.TabIndex = 5;
@@ -218,7 +239,7 @@
             // btnModificar
             // 
             this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
-            this.btnModificar.Location = new System.Drawing.Point(87, 260);
+            this.btnModificar.Location = new System.Drawing.Point(113, 260);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 5;
@@ -230,7 +251,7 @@
             // btncancelar
             // 
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(168, 260);
+            this.btncancelar.Location = new System.Drawing.Point(194, 260);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 5;
@@ -245,15 +266,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(331, 291);
+            this.ClientSize = new System.Drawing.Size(383, 291);
+            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(347, 330);
-            this.MinimumSize = new System.Drawing.Size(347, 330);
+            this.MaximumSize = new System.Drawing.Size(399, 330);
+            this.MinimumSize = new System.Drawing.Size(399, 330);
             this.Name = "frmFicModificar";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Modificar FIC";
+            this.Nombre = "Modificar FIC";
+            this.Text = "Modificar FIC";
             this.Load += new System.EventHandler(this.frmFicModificar_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -282,5 +304,7 @@
         public System.Windows.Forms.Label lblmodelo;
         private System.Windows.Forms.Button btncancelar;
         public System.Windows.Forms.TextBox txtGuia;
+        private System.Windows.Forms.TextBox txtcentrocosto;
+        public System.Windows.Forms.Label label3;
     }
 }

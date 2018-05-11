@@ -58,6 +58,7 @@
             this.G2MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2CODIGOMODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centrocostox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANTING = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
@@ -201,6 +202,7 @@
             this.G2MARCA,
             this.G2CODIGOMODELO,
             this.G2MODELO,
+            this.centrocostox,
             this.CANTOC,
             this.CANTING});
             this.gridDetalle2.Location = new System.Drawing.Point(9, 301);
@@ -231,14 +233,17 @@
             // 
             // G2ITEM
             // 
+            this.G2ITEM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2ITEM.DataPropertyName = "ITEM";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.G2ITEM.DefaultCellStyle = dataGridViewCellStyle2;
+            this.G2ITEM.FillWeight = 29.82233F;
             this.G2ITEM.HeaderText = "ITEM";
             this.G2ITEM.Name = "G2ITEM";
             this.G2ITEM.ReadOnly = true;
             this.G2ITEM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.G2ITEM.Width = 58;
             // 
             // G2CODIGOMARCA
             // 
@@ -250,15 +255,18 @@
             // 
             // G2MARCA
             // 
+            this.G2MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2MARCA.DataPropertyName = "MARCA";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.G2MARCA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.G2MARCA.FillWeight = 29.82233F;
             this.G2MARCA.HeaderText = "MARCA";
             this.G2MARCA.Name = "G2MARCA";
             this.G2MARCA.ReadOnly = true;
             this.G2MARCA.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.G2MARCA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.G2MARCA.Visible = false;
             // 
             // G2CODIGOMODELO
             // 
@@ -272,14 +280,27 @@
             // 
             // G2MODELO
             // 
+            this.G2MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2MODELO.DataPropertyName = "MODELO";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.G2MODELO.DefaultCellStyle = dataGridViewCellStyle4;
+            this.G2MODELO.FillWeight = 29.82233F;
             this.G2MODELO.HeaderText = "MODELO";
             this.G2MODELO.Name = "G2MODELO";
             this.G2MODELO.ReadOnly = true;
             this.G2MODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.G2MODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.G2MODELO.Width = 59;
+            // 
+            // centrocostox
+            // 
+            this.centrocostox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.centrocostox.DataPropertyName = "CENTRO COSTO";
+            this.centrocostox.FillWeight = 380.7107F;
+            this.centrocostox.HeaderText = "CENTRO COSTO";
+            this.centrocostox.MinimumWidth = 150;
+            this.centrocostox.Name = "centrocostox";
+            this.centrocostox.ReadOnly = true;
             // 
             // CANTOC
             // 
@@ -295,12 +316,15 @@
             // 
             // CANTING
             // 
+            this.CANTING.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTING.DataPropertyName = "CANTIDADFIC";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.CANTING.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CANTING.FillWeight = 29.82233F;
             this.CANTING.HeaderText = "CANT ING";
             this.CANTING.Name = "CANTING";
             this.CANTING.ReadOnly = true;
+            this.CANTING.Width = 83;
             // 
             // label6
             // 
@@ -443,6 +467,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 551);
+            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.txtsuma);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
@@ -455,7 +480,7 @@
             this.MaximumSize = new System.Drawing.Size(624, 590);
             this.MinimumSize = new System.Drawing.Size(624, 590);
             this.Name = "frmListarAlmacenServicios";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Listar Articulos Almacen";
             this.Text = "Listar Articulos Almacen";
             this.Load += new System.EventHandler(this.frmListarAlmacenArticulos_Load);
             this.groupBox1.ResumeLayout(false);
@@ -483,15 +508,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView gridDetalle1;
         public System.Windows.Forms.TextBox txtRUC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOARTICULO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn G2ITEM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOMARCA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn G2MARCA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOMODELO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn G2MODELO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CANTOC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CANTING;
         private System.Windows.Forms.DataGridViewTextBoxColumn FIC;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
         private System.Windows.Forms.DataGridViewTextBoxColumn NGR;
@@ -499,5 +515,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ARTFIC;
         private System.Windows.Forms.TextBox txtsuma;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDetalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOARTICULO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn G2ITEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOMARCA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn G2MARCA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn G2CODIGOMODELO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn G2MODELO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn centrocostox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CANTOC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CANTING;
     }
 }
