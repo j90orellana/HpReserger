@@ -348,8 +348,8 @@ namespace HPReserger
                         ////////////////////// 
                         ///Insertar-Asiento///
                         //////////////////////
-                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value);
-                        cfactura.InsertarAsientoFactura(nextAsiento,next + 1, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value);
+                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value,frmLogin.CodigoUsuario);
+                        cfactura.InsertarAsientoFactura(nextAsiento,next + 1, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value,frmLogin.CodigoUsuario);
                     }
                     else
                     {

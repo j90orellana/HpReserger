@@ -314,8 +314,8 @@ namespace HPReserger
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////                    
-                    cfactura.InsertarAsientoRecibo(nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text);
-                    cfactura.InsertarAsientoRecibo(nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text);
+                    cfactura.InsertarAsientoRecibo(nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value,frmLogin.CodigoUsuario);
+                    cfactura.InsertarAsientoRecibo(nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cuenta", i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, frmLogin.CodigoUsuario);
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////  

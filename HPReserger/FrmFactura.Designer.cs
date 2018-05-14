@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFactura));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtnrofactura = new System.Windows.Forms.TextBox();
             this.txtruc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,6 +54,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dtfechaemision = new System.Windows.Forms.DateTimePicker();
             this.gp1 = new System.Windows.Forms.GroupBox();
+            this.cbomoneda = new System.Windows.Forms.ComboBox();
             this.btndescargar = new System.Windows.Forms.Button();
             this.txtnroconstancia = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,6 +68,21 @@
             this.txtmonto = new System.Windows.Forms.TextBox();
             this.pbfactura = new System.Windows.Forms.PictureBox();
             this.DtgConten = new System.Windows.Forms.DataGridView();
+            this.numfic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CANTIDAD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECIOUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotale = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTALFAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.siigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.provisionada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centrocosto1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numigv = new System.Windows.Forms.NumericUpDown();
             this.cboigv = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -88,26 +104,6 @@
             this.btnagregar = new System.Windows.Forms.Button();
             this.chlbx = new System.Windows.Forms.CheckedListBox();
             this.Dtguias = new System.Windows.Forms.DataGridView();
-            this.gpordenes = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnprovisionar = new System.Windows.Forms.Button();
-            this.numfic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CANTIDAD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRECIOUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotale = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TOTALFAC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siigv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.provisionada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.centrocosto1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FIC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,7 +112,11 @@
             this.moneda1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idmoneda1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbomoneda = new System.Windows.Forms.ComboBox();
+            this.gpordenes = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnprovisionar = new System.Windows.Forms.Button();
             this.gp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).BeginInit();
@@ -298,7 +298,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 13);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Fecha Emision:";
+            this.label8.Text = "Fecha Emisión:";
             // 
             // dtfechaemision
             // 
@@ -354,6 +354,17 @@
             this.gp1.TabIndex = 13;
             this.gp1.TabStop = false;
             this.gp1.Move += new System.EventHandler(this.gp1_Move);
+            // 
+            // cbomoneda
+            // 
+            this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbomoneda.Enabled = false;
+            this.cbomoneda.FormattingEnabled = true;
+            this.cbomoneda.Location = new System.Drawing.Point(593, 86);
+            this.cbomoneda.Name = "cbomoneda";
+            this.cbomoneda.Size = new System.Drawing.Size(112, 21);
+            this.cbomoneda.TabIndex = 30;
+            this.cbomoneda.Click += new System.EventHandler(this.cbomoneda_Click);
             // 
             // btndescargar
             // 
@@ -531,6 +542,147 @@
             this.DtgConten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DtgConten_DataError);
             this.DtgConten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DtgConten_EditingControlShowing);
             this.DtgConten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DtgConten_KeyPress);
+            // 
+            // numfic
+            // 
+            this.numfic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.numfic.DataPropertyName = "fic";
+            this.numfic.HeaderText = "Fic";
+            this.numfic.Name = "numfic";
+            this.numfic.ReadOnly = true;
+            this.numfic.Width = 46;
+            // 
+            // DESCRIPCION
+            // 
+            this.DESCRIPCION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
+            this.DESCRIPCION.HeaderText = "Descripción";
+            this.DESCRIPCION.Name = "DESCRIPCION";
+            this.DESCRIPCION.ReadOnly = true;
+            // 
+            // cc
+            // 
+            this.cc.DataPropertyName = "cc";
+            this.cc.HeaderText = "cc";
+            this.cc.Name = "cc";
+            this.cc.Visible = false;
+            // 
+            // MARCA
+            // 
+            this.MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MARCA.DataPropertyName = "MARCA";
+            this.MARCA.HeaderText = "Marca";
+            this.MARCA.Name = "MARCA";
+            this.MARCA.ReadOnly = true;
+            this.MARCA.Width = 62;
+            // 
+            // MODELO
+            // 
+            this.MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MODELO.DataPropertyName = "MODELO";
+            this.MODELO.HeaderText = "Modelo";
+            this.MODELO.Name = "MODELO";
+            this.MODELO.ReadOnly = true;
+            this.MODELO.Width = 67;
+            // 
+            // CANTIDAD
+            // 
+            this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CANTIDAD.DataPropertyName = "CANTIDAD";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle1;
+            this.CANTIDAD.HeaderText = "Cant.";
+            this.CANTIDAD.Name = "CANTIDAD";
+            this.CANTIDAD.ReadOnly = true;
+            this.CANTIDAD.Width = 57;
+            // 
+            // PRECIOUNIT
+            // 
+            this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PRECIOUNIT.DataPropertyName = "preciounit";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle2;
+            this.PRECIOUNIT.HeaderText = "PrecioUnit.";
+            this.PRECIOUNIT.Name = "PRECIOUNIT";
+            this.PRECIOUNIT.Width = 84;
+            // 
+            // subtotale
+            // 
+            this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.subtotale.DataPropertyName = "subtotal";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "n2";
+            dataGridViewCellStyle3.NullValue = "0.00";
+            this.subtotale.DefaultCellStyle = dataGridViewCellStyle3;
+            this.subtotale.HeaderText = "Subtotal";
+            this.subtotale.Name = "subtotale";
+            this.subtotale.ReadOnly = true;
+            this.subtotale.Width = 71;
+            // 
+            // valueigv
+            // 
+            this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valueigv.DataPropertyName = "valueigv";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            dataGridViewCellStyle4.NullValue = "0.00";
+            this.valueigv.DefaultCellStyle = dataGridViewCellStyle4;
+            this.valueigv.HeaderText = "Igv";
+            this.valueigv.Name = "valueigv";
+            this.valueigv.ReadOnly = true;
+            this.valueigv.Width = 47;
+            // 
+            // TOTALFAC
+            // 
+            this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TOTALFAC.DataPropertyName = "total";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0.00";
+            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle5;
+            this.TOTALFAC.HeaderText = "Total";
+            this.TOTALFAC.Name = "TOTALFAC";
+            this.TOTALFAC.ReadOnly = true;
+            this.TOTALFAC.Width = 56;
+            // 
+            // numoc
+            // 
+            this.numoc.DataPropertyName = "oc";
+            this.numoc.HeaderText = "oc";
+            this.numoc.Name = "numoc";
+            this.numoc.ReadOnly = true;
+            this.numoc.Visible = false;
+            // 
+            // siigv
+            // 
+            this.siigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.siigv.DataPropertyName = "igv";
+            this.siigv.HeaderText = "siigv";
+            this.siigv.Name = "siigv";
+            this.siigv.ReadOnly = true;
+            this.siigv.Visible = false;
+            // 
+            // provisionada
+            // 
+            this.provisionada.DataPropertyName = "estado";
+            this.provisionada.HeaderText = "estado";
+            this.provisionada.Name = "provisionada";
+            this.provisionada.Visible = false;
+            // 
+            // cuentax
+            // 
+            this.cuentax.DataPropertyName = "cuenta";
+            this.cuentax.HeaderText = "cuenta";
+            this.cuentax.Name = "cuentax";
+            this.cuentax.Visible = false;
+            // 
+            // centrocosto1
+            // 
+            this.centrocosto1.DataPropertyName = "centrocosto";
+            this.centrocosto1.HeaderText = "centrocosto";
+            this.centrocosto1.Name = "centrocosto1";
+            this.centrocosto1.Visible = false;
             // 
             // numigv
             // 
@@ -776,204 +928,6 @@
             this.Dtguias.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellEndEdit);
             this.Dtguias.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_RowEnter);
             // 
-            // gpordenes
-            // 
-            this.gpordenes.Controls.Add(this.radioButton2);
-            this.gpordenes.Controls.Add(this.radioButton1);
-            this.gpordenes.Enabled = false;
-            this.gpordenes.Location = new System.Drawing.Point(532, 15);
-            this.gpordenes.Name = "gpordenes";
-            this.gpordenes.Size = new System.Drawing.Size(182, 69);
-            this.gpordenes.TabIndex = 22;
-            this.gpordenes.TabStop = false;
-            this.gpordenes.Text = "Ordenes de Compra";
-            this.gpordenes.Visible = false;
-            this.gpordenes.Enter += new System.EventHandler(this.gpordenes_Enter);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 43);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(97, 17);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Varias Ordenes";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Una Orden";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // tooltip
-            // 
-            this.tooltip.IsBalloon = true;
-            // 
-            // btnprovisionar
-            // 
-            this.btnprovisionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnprovisionar.Enabled = false;
-            this.btnprovisionar.Image = ((System.Drawing.Image)(resources.GetObject("btnprovisionar.Image")));
-            this.btnprovisionar.Location = new System.Drawing.Point(362, 621);
-            this.btnprovisionar.Name = "btnprovisionar";
-            this.btnprovisionar.Size = new System.Drawing.Size(88, 23);
-            this.btnprovisionar.TabIndex = 23;
-            this.btnprovisionar.Text = "Provisionar";
-            this.btnprovisionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnprovisionar.UseVisualStyleBackColor = true;
-            this.btnprovisionar.Click += new System.EventHandler(this.btnprovisionar_Click);
-            // 
-            // numfic
-            // 
-            this.numfic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.numfic.DataPropertyName = "fic";
-            this.numfic.HeaderText = "Fic";
-            this.numfic.Name = "numfic";
-            this.numfic.ReadOnly = true;
-            this.numfic.Width = 46;
-            // 
-            // DESCRIPCION
-            // 
-            this.DESCRIPCION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DESCRIPCION.DataPropertyName = "DESCRIPCION";
-            this.DESCRIPCION.HeaderText = "Descripción";
-            this.DESCRIPCION.Name = "DESCRIPCION";
-            this.DESCRIPCION.ReadOnly = true;
-            // 
-            // cc
-            // 
-            this.cc.DataPropertyName = "cc";
-            this.cc.HeaderText = "cc";
-            this.cc.Name = "cc";
-            this.cc.Visible = false;
-            // 
-            // MARCA
-            // 
-            this.MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MARCA.DataPropertyName = "MARCA";
-            this.MARCA.HeaderText = "Marca";
-            this.MARCA.Name = "MARCA";
-            this.MARCA.ReadOnly = true;
-            this.MARCA.Width = 62;
-            // 
-            // MODELO
-            // 
-            this.MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MODELO.DataPropertyName = "MODELO";
-            this.MODELO.HeaderText = "Modelo";
-            this.MODELO.Name = "MODELO";
-            this.MODELO.ReadOnly = true;
-            this.MODELO.Width = 67;
-            // 
-            // CANTIDAD
-            // 
-            this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle31;
-            this.CANTIDAD.HeaderText = "Cant.";
-            this.CANTIDAD.Name = "CANTIDAD";
-            this.CANTIDAD.ReadOnly = true;
-            this.CANTIDAD.Width = 57;
-            // 
-            // PRECIOUNIT
-            // 
-            this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PRECIOUNIT.DataPropertyName = "preciounit";
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle32.Format = "N2";
-            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle32;
-            this.PRECIOUNIT.HeaderText = "PrecioUnit.";
-            this.PRECIOUNIT.Name = "PRECIOUNIT";
-            this.PRECIOUNIT.Width = 84;
-            // 
-            // subtotale
-            // 
-            this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.subtotale.DataPropertyName = "subtotal";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle33.Format = "n2";
-            dataGridViewCellStyle33.NullValue = "0.00";
-            this.subtotale.DefaultCellStyle = dataGridViewCellStyle33;
-            this.subtotale.HeaderText = "Subtotal";
-            this.subtotale.Name = "subtotale";
-            this.subtotale.ReadOnly = true;
-            this.subtotale.Width = 71;
-            // 
-            // valueigv
-            // 
-            this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valueigv.DataPropertyName = "valueigv";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle34.Format = "n2";
-            dataGridViewCellStyle34.NullValue = "0.00";
-            this.valueigv.DefaultCellStyle = dataGridViewCellStyle34;
-            this.valueigv.HeaderText = "Igv";
-            this.valueigv.Name = "valueigv";
-            this.valueigv.ReadOnly = true;
-            this.valueigv.Width = 47;
-            // 
-            // TOTALFAC
-            // 
-            this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TOTALFAC.DataPropertyName = "total";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle35.Format = "N2";
-            dataGridViewCellStyle35.NullValue = "0.00";
-            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle35;
-            this.TOTALFAC.HeaderText = "Total";
-            this.TOTALFAC.Name = "TOTALFAC";
-            this.TOTALFAC.ReadOnly = true;
-            this.TOTALFAC.Width = 56;
-            // 
-            // numoc
-            // 
-            this.numoc.DataPropertyName = "oc";
-            this.numoc.HeaderText = "oc";
-            this.numoc.Name = "numoc";
-            this.numoc.ReadOnly = true;
-            this.numoc.Visible = false;
-            // 
-            // siigv
-            // 
-            this.siigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.siigv.DataPropertyName = "igv";
-            this.siigv.HeaderText = "siigv";
-            this.siigv.Name = "siigv";
-            this.siigv.ReadOnly = true;
-            this.siigv.Visible = false;
-            this.siigv.Width = 53;
-            // 
-            // provisionada
-            // 
-            this.provisionada.DataPropertyName = "estado";
-            this.provisionada.HeaderText = "estado";
-            this.provisionada.Name = "provisionada";
-            this.provisionada.Visible = false;
-            // 
-            // cuentax
-            // 
-            this.cuentax.DataPropertyName = "cuenta";
-            this.cuentax.HeaderText = "cuenta";
-            this.cuentax.Name = "cuentax";
-            this.cuentax.Visible = false;
-            // 
-            // centrocosto1
-            // 
-            this.centrocosto1.DataPropertyName = "centrocosto";
-            this.centrocosto1.HeaderText = "centrocosto";
-            this.centrocosto1.Name = "centrocosto1";
-            this.centrocosto1.Visible = false;
-            // 
             // OK
             // 
             this.OK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -1038,16 +992,61 @@
             this.idmoneda1.Name = "idmoneda1";
             this.idmoneda1.Visible = false;
             // 
-            // cbomoneda
+            // gpordenes
             // 
-            this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbomoneda.Enabled = false;
-            this.cbomoneda.FormattingEnabled = true;
-            this.cbomoneda.Location = new System.Drawing.Point(593, 86);
-            this.cbomoneda.Name = "cbomoneda";
-            this.cbomoneda.Size = new System.Drawing.Size(112, 21);
-            this.cbomoneda.TabIndex = 30;
-            this.cbomoneda.Click += new System.EventHandler(this.cbomoneda_Click);
+            this.gpordenes.Controls.Add(this.radioButton2);
+            this.gpordenes.Controls.Add(this.radioButton1);
+            this.gpordenes.Enabled = false;
+            this.gpordenes.Location = new System.Drawing.Point(532, 15);
+            this.gpordenes.Name = "gpordenes";
+            this.gpordenes.Size = new System.Drawing.Size(182, 69);
+            this.gpordenes.TabIndex = 22;
+            this.gpordenes.TabStop = false;
+            this.gpordenes.Text = "Ordenes de Compra";
+            this.gpordenes.Visible = false;
+            this.gpordenes.Enter += new System.EventHandler(this.gpordenes_Enter);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(7, 43);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(97, 17);
+            this.radioButton2.TabIndex = 0;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Varias Ordenes";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(7, 20);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(77, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Una Orden";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // tooltip
+            // 
+            this.tooltip.IsBalloon = true;
+            // 
+            // btnprovisionar
+            // 
+            this.btnprovisionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnprovisionar.Enabled = false;
+            this.btnprovisionar.Image = ((System.Drawing.Image)(resources.GetObject("btnprovisionar.Image")));
+            this.btnprovisionar.Location = new System.Drawing.Point(362, 621);
+            this.btnprovisionar.Name = "btnprovisionar";
+            this.btnprovisionar.Size = new System.Drawing.Size(88, 23);
+            this.btnprovisionar.TabIndex = 23;
+            this.btnprovisionar.Text = "Provisionar";
+            this.btnprovisionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnprovisionar.UseVisualStyleBackColor = true;
+            this.btnprovisionar.Click += new System.EventHandler(this.btnprovisionar_Click);
             // 
             // FrmFactura
             // 

@@ -76,6 +76,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.mnopciones.SuspendLayout();
@@ -594,6 +595,11 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // frmListarOCFaltantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -610,6 +616,7 @@
             this.Name = "frmListarOCFaltantes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Orden de Compra - Atención Incompleta.";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmListarOCFaltantes_FormClosing);
             this.Load += new System.EventHandler(this.frmListarOCFaltantes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -671,5 +678,6 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btncorreo;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

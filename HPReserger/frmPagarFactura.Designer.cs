@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPagarFactura));
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -52,11 +52,10 @@
             this.FechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaRecepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaCancelado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nrofic1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbobanco = new System.Windows.Forms.ComboBox();
             this.btnmaspro = new System.Windows.Forms.Button();
             this.cbotipo = new System.Windows.Forms.ComboBox();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.txtruc = new System.Windows.Forms.TextBox();
@@ -76,7 +75,6 @@
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.txttotaldetrac = new System.Windows.Forms.TextBox();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -91,8 +89,11 @@
             this.chkfecha = new System.Windows.Forms.CheckBox();
             this.chkprove = new System.Windows.Forms.CheckBox();
             this.lblmensaje = new System.Windows.Forms.Label();
-            this.btnseleccion = new System.Windows.Forms.Button();
             this.btnReversar = new System.Windows.Forms.Button();
+            this.btnseleccion = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -103,22 +104,22 @@
             this.Dtguias.AllowUserToDeleteRows = false;
             this.Dtguias.AllowUserToResizeColumns = false;
             this.Dtguias.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Dtguias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Dtguias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.Dtguias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Dtguias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dtguias.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Dtguias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dtguias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dtguias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.Dtguias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtguias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OK,
@@ -132,14 +133,15 @@
             this.detraccion,
             this.FechaEmision,
             this.fechaRecepcion,
-            this.FechaCancelado});
+            this.FechaCancelado,
+            this.nrofic1});
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.Dtguias.Location = new System.Drawing.Point(12, 150);
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtguias.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dtguias.RowsDefaultCellStyle = dataGridViewCellStyle30;
             this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtguias.Size = new System.Drawing.Size(1059, 330);
@@ -203,9 +205,9 @@
             // 
             this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.subtotal.DataPropertyName = "subtotal";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            this.subtotal.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle23.Format = "n2";
+            this.subtotal.DefaultCellStyle = dataGridViewCellStyle23;
             this.subtotal.HeaderText = "Subtotal";
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
@@ -215,9 +217,9 @@
             // 
             this.Igv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Igv.DataPropertyName = "Igv";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.Igv.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle24.Format = "n2";
+            this.Igv.DefaultCellStyle = dataGridViewCellStyle24;
             this.Igv.HeaderText = "Igv/Rta";
             this.Igv.Name = "Igv";
             this.Igv.ReadOnly = true;
@@ -227,9 +229,9 @@
             // 
             this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Total.DataPropertyName = "Total";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.Total.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "n2";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle25;
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
@@ -239,9 +241,9 @@
             // 
             this.detraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.detraccion.DataPropertyName = "detrac";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n2";
-            this.detraccion.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle26.Format = "n2";
+            this.detraccion.DefaultCellStyle = dataGridViewCellStyle26;
             this.detraccion.HeaderText = "Detracción";
             this.detraccion.Name = "detraccion";
             this.detraccion.ReadOnly = true;
@@ -251,35 +253,42 @@
             // 
             this.FechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FechaEmision.DataPropertyName = "FechaEmision";
-            dataGridViewCellStyle7.Format = "g";
-            this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle27.Format = "g";
+            this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle27;
             this.FechaEmision.HeaderText = "Fecha Emisión";
             this.FechaEmision.Name = "FechaEmision";
             this.FechaEmision.ReadOnly = true;
-            this.FechaEmision.Width = 94;
+            this.FechaEmision.Width = 102;
             // 
             // fechaRecepcion
             // 
             this.fechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechaRecepcion.DataPropertyName = "fechaRecepcion";
-            dataGridViewCellStyle8.Format = "g";
-            dataGridViewCellStyle8.NullValue = null;
-            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle28.Format = "g";
+            dataGridViewCellStyle28.NullValue = null;
+            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle28;
             this.fechaRecepcion.HeaderText = "Fecha Recepción";
             this.fechaRecepcion.Name = "fechaRecepcion";
             this.fechaRecepcion.ReadOnly = true;
-            this.fechaRecepcion.Width = 105;
+            this.fechaRecepcion.Width = 114;
             // 
             // FechaCancelado
             // 
             this.FechaCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FechaCancelado.DataPropertyName = "FechaCancelado";
-            dataGridViewCellStyle9.Format = "g";
-            this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle29.Format = "g";
+            this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle29;
             this.FechaCancelado.HeaderText = "Fecha Cancelado";
             this.FechaCancelado.Name = "FechaCancelado";
             this.FechaCancelado.ReadOnly = true;
-            this.FechaCancelado.Width = 105;
+            this.FechaCancelado.Width = 114;
+            // 
+            // nrofic1
+            // 
+            this.nrofic1.DataPropertyName = "nrofic";
+            this.nrofic1.HeaderText = "nrofic";
+            this.nrofic1.Name = "nrofic1";
+            this.nrofic1.Visible = false;
             // 
             // cbobanco
             // 
@@ -315,32 +324,6 @@
             this.cbotipo.Size = new System.Drawing.Size(430, 21);
             this.cbotipo.TabIndex = 36;
             this.cbotipo.SelectedIndexChanged += new System.EventHandler(this.cbotipo_SelectedIndexChanged);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(915, 532);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 33;
-            this.btnaceptar.Text = "Pagar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(996, 532);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 34;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // txtTelefono
             // 
@@ -527,18 +510,6 @@
             this.txttotaldetrac.TabIndex = 47;
             this.txttotaldetrac.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(723, 43);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(86, 23);
-            this.btnActualizar.TabIndex = 48;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label10);
@@ -684,18 +655,6 @@
             this.lblmensaje.TabIndex = 50;
             this.lblmensaje.Text = "Número de Registros:";
             // 
-            // btnseleccion
-            // 
-            this.btnseleccion.Image = ((System.Drawing.Image)(resources.GetObject("btnseleccion.Image")));
-            this.btnseleccion.Location = new System.Drawing.Point(12, 125);
-            this.btnseleccion.Name = "btnseleccion";
-            this.btnseleccion.Size = new System.Drawing.Size(151, 23);
-            this.btnseleccion.TabIndex = 51;
-            this.btnseleccion.Text = "Seleccionar Todos";
-            this.btnseleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnseleccion.UseVisualStyleBackColor = true;
-            this.btnseleccion.Click += new System.EventHandler(this.btnseleccion_Click);
-            // 
             // btnReversar
             // 
             this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -708,6 +667,56 @@
             this.btnReversar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReversar.UseVisualStyleBackColor = true;
             this.btnReversar.Click += new System.EventHandler(this.btnReversar_Click);
+            // 
+            // btnseleccion
+            // 
+            this.btnseleccion.Image = ((System.Drawing.Image)(resources.GetObject("btnseleccion.Image")));
+            this.btnseleccion.Location = new System.Drawing.Point(12, 125);
+            this.btnseleccion.Name = "btnseleccion";
+            this.btnseleccion.Size = new System.Drawing.Size(151, 23);
+            this.btnseleccion.TabIndex = 51;
+            this.btnseleccion.Text = "Seleccionar Todos";
+            this.btnseleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnseleccion.UseVisualStyleBackColor = true;
+            this.btnseleccion.Click += new System.EventHandler(this.btnseleccion_Click);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.Location = new System.Drawing.Point(723, 43);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(86, 23);
+            this.btnActualizar.TabIndex = 48;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(915, 532);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.TabIndex = 33;
+            this.btnaceptar.Text = "Pagar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(996, 532);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 34;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // frmPagarFactura
             // 
@@ -811,5 +820,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaEmision;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaRecepcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCancelado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nrofic1;
     }
 }

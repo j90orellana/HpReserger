@@ -48,6 +48,9 @@ namespace HpResergerUserControls
                     e.Graphics.FillRectangle(BrochaGradienteLineal, this.ClientRectangle);
                 }
         }
+        private void FormGradient_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

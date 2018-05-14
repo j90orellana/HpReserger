@@ -16,6 +16,7 @@ namespace HpResergerUserControls
         {
             InitializeComponent();
         }
+        public Image Imagen { get { return pbfoto.Image; }set { pbfoto.Image = value; } }
         public void AsignarPadre(Form father) { Padre = father; }
         string nombre;
         public Form Padre { get; set; }

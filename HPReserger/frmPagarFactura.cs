@@ -318,7 +318,7 @@ namespace HPReserger
             /////////////////////// 
             if (PAsoBanco == DialogResult.OK)
             {
-                int numasiento=0; string facturar = "";
+                int numasiento = 0; string facturar = "";
                 foreach (FACTURAS fac in Comprobantes)
                 {
                     DataTable asientito = cPagarfactura.UltimoAsientoFactura(fac.numero, fac.proveedor);
@@ -335,7 +335,7 @@ namespace HPReserger
                         //actualizo que el recibo este pagado
                         cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                         //cuenta de recibo por honorarios 4241101
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 1);
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 1, fac.FechaEmision, frmLogin.CodigoUsuario, fac.centrocosto);
                         facturar = fac.numero;
                     }
                     else
@@ -345,8 +345,8 @@ namespace HPReserger
                             //actualizo que la factura esta pagada
                             cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                             ///facturas por pagar 4212101
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3);
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 2);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3, fac.FechaEmision, frmLogin.CodigoUsuario, fac.centrocosto);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 2, fac.FechaEmision, frmLogin.CodigoUsuario, fac.centrocosto);
                             facturar = fac.numero;
                         }
                         else
@@ -354,7 +354,7 @@ namespace HPReserger
                             //actualizo que la factura esta pagada
                             cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                             ///facturas por pagar 4212101
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 2);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 2, fac.FechaEmision, frmLogin.CodigoUsuario, fac.centrocosto);
                             facturar = fac.numero;
                         }
                     }
@@ -364,7 +364,7 @@ namespace HPReserger
                     BanCuenta = "";
                 else
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
-                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5);
+                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5, DateTime.Now, frmLogin.CodigoUsuario, 1);
                 msg("Documento Pagado y se ha Generado su Asiento");
                 btnActualizar_Click(sender, e);
                 txttotaldetrac.Text = txttotal.Text = "0.00";
@@ -459,7 +459,6 @@ namespace HPReserger
         {
             msg("Cancelado Por el Usuario");
         }*/
-
         decimal sumatoria;
         decimal detrac;
         public class FACTURAS
@@ -472,7 +471,9 @@ namespace HPReserger
             public decimal total { get; set; }
             public decimal detraccion { get; set; }
             public DateTime fechacancelado { get; set; }
-            public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
+            public int centrocosto { get; set; }
+            public DateTime FechaEmision { get; set; }
+            public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado, int CentroCosto, DateTime fechaemision)
             {
                 numero = Numero;
                 proveedor = Proveedor;
@@ -482,6 +483,8 @@ namespace HPReserger
                 total = Total;
                 detraccion = Detraccion;
                 fechacancelado = FechaCancelado;
+                centrocosto = CentroCosto;
+                FechaEmision = fechaemision;
             }
         }
         List<FACTURAS> Comprobantes = new List<FACTURAS>();
@@ -502,7 +505,7 @@ namespace HPReserger
                                 Busqueda = true;
                         }
                         if (!Busqueda)
-                            Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value));
+                            Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value, (int)Dtguias[nrofic1.Name, e.RowIndex].Value, (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value));
                     }
                     else
                     {
@@ -585,9 +588,7 @@ namespace HPReserger
                 cbotipo.Enabled = true; cbobanco.Enabled = true; cbocuentabanco.Enabled = true;
                 cbotipo.SelectedIndex = 0;// txtnropago.Enabled = true;
             }
-
         }
-
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (txtruc.Text.Length > 8)
@@ -716,7 +717,6 @@ namespace HPReserger
                 }
             }
         }
-
         private void btnseleccion_Click(object sender, EventArgs e)
         {
             Dtguias.EndEdit();

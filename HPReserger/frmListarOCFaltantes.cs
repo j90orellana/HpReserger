@@ -232,6 +232,7 @@ namespace HPReserger
             MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         DataRow drCOT;
+        frmMensajeCorreo mensajitox;
         private void btncorreo_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
@@ -241,55 +242,78 @@ namespace HPReserger
                 if (drCOT != null)
                 {
                     /// MSG(drCOT["correo"].ToString());
-                    frmMensajeCorreo mensajito = new frmMensajeCorreo();
-                    mensajito.Icon = Icon;
-                    mensajito.txtmsg.Text = "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que ";
+                    mensajitox = new frmMensajeCorreo();
+                    mensajitox.Icon = Icon;
+                    mensajitox.txtmsg.Text = "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que ";
                     ///mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
-                    mensajito.Text = "Reenvio de Mensaje de Confirmación";
-                    mensajito.txtasunto.Text = "Ordenes de Compra Faltantes";
-                    mensajito.txtcorreo.Text = drCOT["correo"].ToString().ToLower();
-                    mensajito.ShowDialog();
-                    if (mensajito.ok)
+                    mensajitox.Text = "Reenvio de Mensaje de Confirmación";
+                    mensajitox.txtasunto.Text = "Ordenes de Compra Faltantes";
+                    mensajitox.txtcorreo.Text = drCOT["correo"].ToString().ToLower();
+                    mensajitox.ShowDialog();
+                    if (mensajitox.ok)
                     {
-                        //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        try
+                        if (!backgroundWorker1.IsBusy)
                         {
-                            MailMessage email = new MailMessage();
-                            //CORREO DE PROVEEDOR
-                            email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
-                            ///
-                            email.From = new MailAddress("j90orellana@hotmail.com");
-                            email.Subject = mensajito.txtasunto.Text;
-                            email.Priority = mensajito.PrioridadCorreo();
-                            email.Body = mensajito.txtmsg.Text;
-                            if (mensajito.Adjunto())
-                            {
-                                foreach (string ruta in mensajito.ArchivosAdjuntos())
-                                {
-                                    Attachment Archivos = new Attachment(ruta);
-                                    email.Attachments.Add(Archivos);
-                                }
-                            }
-                            else
-                                email.Attachments.Clear();
-                            ///
-                            email.IsBodyHtml = false;
-                            SmtpClient smtp = new SmtpClient();
-                            smtp.Host = "smtp.live.com";
-                            smtp.Port = 25;
-                            smtp.EnableSsl = true;
-                            smtp.UseDefaultCredentials = false;
-                            smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
-                            smtp.Send(email);
-                            email.Dispose();
-                            MSG("Correo electrónico fue enviado a " + mensajito.txtcorreo.Text.ToLower() + " satisfactoriamente.");
+                            backgroundWorker1.RunWorkerAsync();
                         }
-                        catch (Exception ex)
-                        {
-                            MSG("Error enviando correo electrónico: " + ex.Source + " " + ex.Message);
-                        }
+                        else return;
+                    }
+                    else { MSG("Cancelado"); }
+                }
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                MailMessage email = new MailMessage();
+                //CORREO DE PROVEEDOR
+                email.To.Add(new MailAddress(mensajitox.txtcorreo.Text));
+                ///
+                email.From = new MailAddress("v90reyes@hotmail.com");
+                email.Subject = mensajitox.txtasunto.Text;
+                email.Priority = mensajitox.PrioridadCorreo();
+                email.Body = mensajitox.txtmsg.Text;
+                if (mensajitox.Adjunto())
+                {
+                    foreach (string ruta in mensajitox.ArchivosAdjuntos())
+                    {
+                        Attachment Archivos = new Attachment(ruta);
+                        email.Attachments.Add(Archivos);
                     }
                 }
+                else
+                    email.Attachments.Clear();
+                ///
+                email.IsBodyHtml = false;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.live.com";
+                smtp.Port = 25;
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("v90reyes@hotmail.com", "Victor123");
+                smtp.Send(email);
+                email.Dispose();               
+            }
+            catch (Exception ex)
+            {
+                MSG("Error enviando correo electrónico: " + ex.Source + " " + ex.Message);
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MSG("Correo electrónico fue enviado a " + mensajitox.txtcorreo.Text.ToLower() + " satisfactoriamente.");
+        }
+
+        private void frmListarOCFaltantes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (backgroundWorker1.IsBusy)
+            {
+                e.Cancel = true;
+                MSG("No se Puede Cerrar, Se está Enviando el Correo …");
             }
         }
     }

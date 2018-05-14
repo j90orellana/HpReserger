@@ -118,6 +118,12 @@
     <Compile Include="TextBoxPer.Designer.cs">
       <DependentUpon>TextBoxPer.cs</DependentUpon>
     </Compile>
+    <Compile Include="txtBuscar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="txtBuscar.Designer.cs">
+      <DependentUpon>txtBuscar.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ButtonOre.resx">
@@ -148,6 +154,9 @@
     <EmbeddedResource Include="TextBoxPer.resx">
       <DependentUpon>TextBoxPer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="txtBuscar.resx">
+      <DependentUpon>txtBuscar.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HPResergerCapaLogica\HPResergerCapaLogica.csproj">
@@ -167,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_Search_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Search_16px_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -126,12 +126,13 @@ namespace HPReserger
             //aplicacion.Quit();
             //  }
         }
+        frmMensajeCorreo mensajito;
         private void button1_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
             {
                 /// MSG(drCOT["correo"].ToString());
-                frmMensajeCorreo mensajito = new frmMensajeCorreo();
+                mensajito = new frmMensajeCorreo();
                 mensajito.Icon = Icon;
                 mensajito.txtmsg.Text = "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que";
                 //mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es Un Placer Saludarlos para Recordarles " + (char)13 + "que...";
@@ -142,48 +143,67 @@ namespace HPReserger
                 if (mensajito.ok)
                 {
                     //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    try
+                    if (!backgroundWorker1.IsBusy)
                     {
-                        MailMessage email = new MailMessage();
-                        //CORREO DE PROVEEDOR
-                        email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
-                        ///
-                        email.From = new MailAddress("j90orellana@hotmail.com");
-                        email.Subject = mensajito.txtasunto.Text;
-                        email.Priority = mensajito.PrioridadCorreo();
-                        //email.Body = mensajito.cadena;
-                        //ContentType alo = new ContentType(MediaTypeNames.Text.RichText);
-                        //AlternateView fuente = AlternateView.CreateAlternateViewFromString(mensajito.txtmsg.DocumentText, alo);
-                        //email.AlternateViews.Add(fuente);
-                        if (mensajito.Adjunto())
-                        {
-                            foreach (string ruta in mensajito.ArchivosAdjuntos())
-                            {
-                                Attachment Archivos = new Attachment(ruta);
-                                email.Attachments.Add(Archivos);
-                            }
-                        }
-                        else
-                            email.Attachments.Clear();
-                        email.Body = mensajito.txtmsg.Text;
-                        ///                       
-                        email.IsBodyHtml = false;
-                        SmtpClient smtp = new SmtpClient();
-                        smtp.Host = "smtp.live.com";
-                        smtp.Port = 25;
-                        smtp.EnableSsl = true;
-                        smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
-                        smtp.Send(email);
-                        email.Dispose();
-                        MSG("Correo electrónico a " + mensajito.txtcorreo.Text.ToLower() + " fue enviado satisfactoriamente.");
+                        backgroundWorker1.RunWorkerAsync();
                     }
-                    catch (Exception ex)
-                    {
-                        MSG("Error enviando correo electrónico: " + ex.Message);
-                    }
-
+                    else return;
                 }
+                else { MSG("Cancelado"); }
+            }
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                MailMessage email = new MailMessage();
+                //CORREO DE PROVEEDOR
+                email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
+                ///
+                email.From = new MailAddress("v90reyes@hotmail.com");
+                email.Subject = mensajito.txtasunto.Text;
+                email.Priority = mensajito.PrioridadCorreo();
+                //email.Body = mensajito.cadena;
+                //ContentType alo = new ContentType(MediaTypeNames.Text.RichText);
+                //AlternateView fuente = AlternateView.CreateAlternateViewFromString(mensajito.txtmsg.DocumentText, alo);
+                //email.AlternateViews.Add(fuente);
+                if (mensajito.Adjunto())
+                {
+                    foreach (string ruta in mensajito.ArchivosAdjuntos())
+                    {
+                        Attachment Archivos = new Attachment(ruta);
+                        email.Attachments.Add(Archivos);
+                    }
+                }
+                else
+                    email.Attachments.Clear();
+                email.Body = mensajito.txtmsg.Text;
+                ///                       
+                email.IsBodyHtml = false;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.live.com";
+                smtp.Port = 25;
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("v90reyes@hotmail.com", "Victor123");
+                smtp.Send(email);
+                email.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MSG("Error enviando correo electrónico: " + ex.Message);
+            }
+        }
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MSG("Correo electrónico a " + mensajito.txtcorreo.Text.ToLower() + " fue enviado satisfactoriamente.");
+        }
+        private void frmFicSinFaactura_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (backgroundWorker1.IsBusy)
+            {
+                e.Cancel = true;
+                MSG("No se Puede Cerrar, Se está Enviando el Correo …");
             }
         }
         private void txtbuscar_TextChanged(object sender, EventArgs e)

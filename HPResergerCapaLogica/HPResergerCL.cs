@@ -636,9 +636,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.BuscarFacturas(ruc, nrofac);
         }
-        public DataTable InsertarAsientoRecibo(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
+        public DataTable InsertarAsientoRecibo(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac, int ccs, DateTime fecha, int usuario)
         {
-            return cdOrdenPedido.InsertarAsientoRecibo(num, opcion, oc, monto, igv, total, cc, numfac);
+            return cdOrdenPedido.InsertarAsientoRecibo(num, opcion, oc, monto, igv, total, cc, numfac, ccs, fecha, usuario);
         }
         public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario, int nroconstancia, decimal detraccion, int cc)
         {
@@ -1175,9 +1175,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ProyectoCentrodecostodetalle(@opcion, @iddep, @presupuesto, @proyecto, etapa, @importe, @ceco, @importececo, @importeflujo, @usuario);
         }
-        public DataTable InsertarAsientoFactura(int num,int nextasiento, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac, int ccs, DateTime Fecha)
+        public DataTable InsertarAsientoFactura(int num, int nextasiento, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac, int ccs, DateTime Fecha, int usuario)
         {
-            return cdOrdenPedido.InsertarAsientoFactura(num,nextasiento, opcion, oc, monto, igv, total, cc, numfac, ccs, Fecha);
+            return cdOrdenPedido.InsertarAsientoFactura(num, nextasiento, opcion, oc, monto, igv, total, cc, numfac, ccs, Fecha, usuario);
         }
         public DataTable InsertarAsientoFacturaLlegada(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
         {
@@ -1256,9 +1256,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.insertarPagarfactura(nrofactura, tipo, nropago);
         }
-        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina)
+        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, int usuario, int centro)
         {
-            return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina);
+            return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina, fecha, usuario, centro);
         }
         public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)
         {

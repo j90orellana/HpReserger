@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmREciboPorHonorario));
             this.Dtguias = new System.Windows.Forms.DataGridView();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -45,9 +45,9 @@
             this.idmoneda1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbotipo = new System.Windows.Forms.ComboBox();
             this.gp1 = new System.Windows.Forms.GroupBox();
-            this.btndescargar = new System.Windows.Forms.Button();
             this.DtFechaRecepcion = new System.Windows.Forms.DateTimePicker();
             this.txtmonto = new System.Windows.Forms.TextBox();
+            this.pbfactura = new System.Windows.Forms.PictureBox();
             this.DtgConten = new System.Windows.Forms.DataGridView();
             this.numfic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +77,7 @@
             this.lblporcentaje = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnCargarFoto = new System.Windows.Forms.Button();
             this.txttotal = new System.Windows.Forms.TextBox();
             this.txtigv = new System.Windows.Forms.TextBox();
             this.txtsubtotal = new System.Windows.Forms.TextBox();
@@ -93,17 +94,16 @@
             this.txtdireccion = new System.Windows.Forms.TextBox();
             this.Openfd = new System.Windows.Forms.OpenFileDialog();
             this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnagregar = new System.Windows.Forms.Button();
             this.btnmaspro = new System.Windows.Forms.Button();
-            this.pbfactura = new System.Windows.Forms.PictureBox();
-            this.btnCargarFoto = new System.Windows.Forms.Button();
+            this.btnagregar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
+            this.btndescargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.gp1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgConten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numigv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).BeginInit();
             this.SuspendLayout();
             // 
             // Dtguias
@@ -239,20 +239,6 @@
             this.gp1.TabStop = false;
             this.gp1.Move += new System.EventHandler(this.gp1_Move);
             // 
-            // btndescargar
-            // 
-            this.btndescargar.AutoEllipsis = true;
-            this.btndescargar.ImageKey = "(ninguno)";
-            this.btndescargar.Location = new System.Drawing.Point(612, 29);
-            this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
-            this.btndescargar.TabIndex = 114;
-            this.btndescargar.Text = "Descargar";
-            this.btndescargar.UseVisualStyleBackColor = false;
-            this.btndescargar.Visible = false;
-            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
-            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
-            // 
             // DtFechaRecepcion
             // 
             this.DtFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -270,6 +256,17 @@
             this.txtmonto.TabIndex = 18;
             this.txtmonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtmonto.TextChanged += new System.EventHandler(this.txtmonto_TextChanged);
+            // 
+            // pbfactura
+            // 
+            this.pbfactura.Location = new System.Drawing.Point(594, 13);
+            this.pbfactura.Name = "pbfactura";
+            this.pbfactura.Size = new System.Drawing.Size(111, 49);
+            this.pbfactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbfactura.TabIndex = 17;
+            this.pbfactura.TabStop = false;
+            this.pbfactura.DoubleClick += new System.EventHandler(this.pbfactura_DoubleClick);
+            this.pbfactura.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbfactura_MouseMove);
             // 
             // DtgConten
             // 
@@ -352,14 +349,13 @@
             this.MODELO.Name = "MODELO";
             this.MODELO.ReadOnly = true;
             this.MODELO.Visible = false;
-            this.MODELO.Width = 67;
             // 
             // CANTIDAD
             // 
             this.CANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTIDAD.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTIDAD.DefaultCellStyle = dataGridViewCellStyle11;
             this.CANTIDAD.HeaderText = "Cant.";
             this.CANTIDAD.Name = "CANTIDAD";
             this.CANTIDAD.ReadOnly = true;
@@ -369,10 +365,10 @@
             // 
             this.PRECIOUNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PRECIOUNIT.DataPropertyName = "preciounit";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0.00";
-            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = "0.00";
+            this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle12;
             this.PRECIOUNIT.HeaderText = "PrecioUnit.";
             this.PRECIOUNIT.Name = "PRECIOUNIT";
             this.PRECIOUNIT.Width = 84;
@@ -381,10 +377,10 @@
             // 
             this.subtotale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.subtotale.DataPropertyName = "subtotal";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n2";
-            dataGridViewCellStyle3.NullValue = "0.00";
-            this.subtotale.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "n2";
+            dataGridViewCellStyle13.NullValue = "0.00";
+            this.subtotale.DefaultCellStyle = dataGridViewCellStyle13;
             this.subtotale.HeaderText = "Subtotal";
             this.subtotale.Name = "subtotale";
             this.subtotale.ReadOnly = true;
@@ -394,10 +390,10 @@
             // 
             this.valueigv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valueigv.DataPropertyName = "valueigv";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            dataGridViewCellStyle4.NullValue = "0.00";
-            this.valueigv.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "n2";
+            dataGridViewCellStyle14.NullValue = "0.00";
+            this.valueigv.DefaultCellStyle = dataGridViewCellStyle14;
             this.valueigv.HeaderText = "ImpRta";
             this.valueigv.Name = "valueigv";
             this.valueigv.ReadOnly = true;
@@ -407,10 +403,10 @@
             // 
             this.TOTALFAC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TOTALFAC.DataPropertyName = "total";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0.00";
-            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = "0.00";
+            this.TOTALFAC.DefaultCellStyle = dataGridViewCellStyle15;
             this.TOTALFAC.HeaderText = "Total";
             this.TOTALFAC.Name = "TOTALFAC";
             this.TOTALFAC.ReadOnly = true;
@@ -432,7 +428,6 @@
             this.siigv.Name = "siigv";
             this.siigv.ReadOnly = true;
             this.siigv.Visible = false;
-            this.siigv.Width = 53;
             // 
             // cuentax
             // 
@@ -535,7 +530,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 13);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Fecha Emision:";
+            this.label8.Text = "Fecha Emisión:";
             // 
             // Dtfechaentregado
             // 
@@ -579,6 +574,20 @@
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Imagen:";
+            // 
+            // btnCargarFoto
+            // 
+            this.btnCargarFoto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCargarFoto.BackgroundImage")));
+            this.btnCargarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCargarFoto.FlatAppearance.BorderSize = 0;
+            this.btnCargarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCargarFoto.Location = new System.Drawing.Point(363, 40);
+            this.btnCargarFoto.Name = "btnCargarFoto";
+            this.btnCargarFoto.Size = new System.Drawing.Size(20, 20);
+            this.btnCargarFoto.TabIndex = 11;
+            this.tooltip.SetToolTip(this.btnCargarFoto, "Cargar Imagen Recibo Honorario");
+            this.btnCargarFoto.UseVisualStyleBackColor = true;
+            this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
             // 
             // txttotal
             // 
@@ -716,19 +725,6 @@
             // 
             this.tooltip.IsBalloon = true;
             // 
-            // btnagregar
-            // 
-            this.btnagregar.Enabled = false;
-            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
-            this.btnagregar.Location = new System.Drawing.Point(734, 317);
-            this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(75, 23);
-            this.btnagregar.TabIndex = 39;
-            this.btnagregar.Text = "Ingresar";
-            this.btnagregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnagregar.UseVisualStyleBackColor = true;
-            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
-            // 
             // btnmaspro
             // 
             this.btnmaspro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmaspro.BackgroundImage")));
@@ -743,30 +739,18 @@
             this.btnmaspro.UseVisualStyleBackColor = true;
             this.btnmaspro.Click += new System.EventHandler(this.btnmaspro_Click);
             // 
-            // pbfactura
+            // btnagregar
             // 
-            this.pbfactura.Location = new System.Drawing.Point(594, 14);
-            this.pbfactura.Name = "pbfactura";
-            this.pbfactura.Size = new System.Drawing.Size(111, 41);
-            this.pbfactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbfactura.TabIndex = 17;
-            this.pbfactura.TabStop = false;
-            this.pbfactura.DoubleClick += new System.EventHandler(this.pbfactura_DoubleClick);
-            this.pbfactura.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbfactura_MouseMove);
-            // 
-            // btnCargarFoto
-            // 
-            this.btnCargarFoto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCargarFoto.BackgroundImage")));
-            this.btnCargarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCargarFoto.FlatAppearance.BorderSize = 0;
-            this.btnCargarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCargarFoto.Location = new System.Drawing.Point(363, 40);
-            this.btnCargarFoto.Name = "btnCargarFoto";
-            this.btnCargarFoto.Size = new System.Drawing.Size(20, 20);
-            this.btnCargarFoto.TabIndex = 11;
-            this.tooltip.SetToolTip(this.btnCargarFoto, "Cargar Imagen Recibo Honorario");
-            this.btnCargarFoto.UseVisualStyleBackColor = true;
-            this.btnCargarFoto.Click += new System.EventHandler(this.btnCargarFoto_Click);
+            this.btnagregar.Enabled = false;
+            this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
+            this.btnagregar.Location = new System.Drawing.Point(734, 317);
+            this.btnagregar.Name = "btnagregar";
+            this.btnagregar.Size = new System.Drawing.Size(75, 23);
+            this.btnagregar.TabIndex = 39;
+            this.btnagregar.Text = "Ingresar";
+            this.btnagregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnagregar.UseVisualStyleBackColor = true;
+            this.btnagregar.Click += new System.EventHandler(this.btnagregar_Click);
             // 
             // btnaceptar
             // 
@@ -792,6 +776,20 @@
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
             this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btndescargar
+            // 
+            this.btndescargar.AutoEllipsis = true;
+            this.btndescargar.ImageKey = "(ninguno)";
+            this.btndescargar.Location = new System.Drawing.Point(612, 33);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.TabIndex = 114;
+            this.btndescargar.Text = "Descargar";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Visible = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
             // frmREciboPorHonorario
             // 
@@ -823,9 +821,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).EndInit();
             this.gp1.ResumeLayout(false);
             this.gp1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgConten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numigv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbfactura)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -874,7 +872,6 @@
         private System.Windows.Forms.TextBox txtdireccion;
         private System.Windows.Forms.OpenFileDialog Openfd;
         private System.Windows.Forms.ToolTip tooltip;
-        private System.Windows.Forms.Button btndescargar;
         private System.Windows.Forms.DataGridViewTextBoxColumn numfic;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
         private System.Windows.Forms.DataGridViewTextBoxColumn cc;
@@ -896,5 +893,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn moneda1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAENTREGA;
         private System.Windows.Forms.DataGridViewTextBoxColumn idmoneda1;
+        private System.Windows.Forms.Button btndescargar;
     }
 }

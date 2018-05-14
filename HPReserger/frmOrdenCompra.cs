@@ -402,7 +402,7 @@ namespace HPReserger
                 //CORREO DE PROVEEDOR
                 email.To.Add(new MailAddress(mensajito.txtcorreo.Text));                
                 ///
-                email.From = new MailAddress("j90orellana@hotmail.com");
+                email.From = new MailAddress("v90reyes@hotmail.com");
                 email.Subject = mensajito.txtasunto.Text;
                 email.Priority = mensajito.PrioridadCorreo();
                 email.Body = mensajito.txtmsg.Text;
@@ -431,7 +431,7 @@ namespace HPReserger
                 smtp.Port = 25;
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("j90orellana@hotmail.com", "Jeffer123!");
+                smtp.Credentials = new NetworkCredential("v90reyes@hotmail.com", "Victor123");
                 smtp.Send(email);
                 email.Dispose();
             }
@@ -444,6 +444,14 @@ namespace HPReserger
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MSG("Correo electrónico fue enviado a " + mensajito.txtcorreo.Text + " satisfactoriamente.");
+        }
+        private void frmOrdenCompra_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (backgroundWorker1.IsBusy)
+            {
+                e.Cancel = true;
+                MSG("No se Puede Cerrar, Se está Enviando el Correo …");
+            }
         }
     }
 }
