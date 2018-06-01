@@ -39,7 +39,6 @@ namespace HPReserger
             CargarEmpresa();
         }
         DateTime fechaini, fechafin;
-
         private void btnexcel_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -50,7 +49,7 @@ namespace HPReserger
                     {
                         reporte.ExportToDisk(ExportFormatType.Excel, saveFileDialog1.FileName);
                     }
-                    catch (IOException) { msg("Error: El Archivo esta Abierto o en Uso"); }                    
+                    catch (IOException) { msg("Error: El Archivo esta Abierto o en Uso"); }
                 }
             }
             msg($"Exportado Con Exito en {saveFileDialog1.FileName}");
@@ -60,10 +59,15 @@ namespace HPReserger
             MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         rptFlujodeCaja reporte;
+        private void crvReporte_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
+        {
+            e.Handled = true;
+            btngenerar_Click(source, e);
+        }
         private void btngenerar_Click(object sender, EventArgs e)
         {
             reporte = new rptFlujodeCaja();
-            crvReporte.Refresh();
+            //crvReporte.Refresh();
             if (comboMesAño1.GetFechaPRimerDia() > comboMesAño2.GetFechaPRimerDia())
             {
                 fechafin = comboMesAño1.UltimoDiaDelMes();

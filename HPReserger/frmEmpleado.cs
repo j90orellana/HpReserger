@@ -1140,7 +1140,7 @@ namespace HPReserger
                     byte[] Fotito = new byte[0];
                     conviviente = Fotito = (byte[])convivientes["conviviente"];
                     MemoryStream ms = new MemoryStream(Fotito);
-                    pbconviviente.Image = Bitmap.FromStream(ms);
+                    pbconviviente.Image = Bitmap.FromStream(ms);                    
                     encontrado = 1;
                 }
                 else encontrado = 2;
@@ -1496,7 +1496,7 @@ namespace HPReserger
             btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
             btnfoto.Visible = true;
             FotoEmp = pbfotoempleado.Image;
-            cbopais.SelectedIndex = cbopais.FindString("PERÚ");
+            cbopais.SelectedIndex = cbopais.FindString("PERÚ");            
         }
         private void pbfotoempleado_MouseUp(object sender, MouseEventArgs e)
         {

@@ -37,8 +37,8 @@
             this.comboMesAño2 = new HpResergerUserControls.ComboMesAño();
             this.crvReporte = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btngenerar = new System.Windows.Forms.Button();
             this.btnexcel = new System.Windows.Forms.Button();
+            this.btngenerar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -88,9 +88,9 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 5, 4, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 5, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 5, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 6, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 6, 30, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 6, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(71, 38);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
@@ -101,9 +101,9 @@
             this.comboMesAño2.AutoSize = true;
             this.comboMesAño2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño2.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 5, 4, 0, 0, 0, 0);
-            this.comboMesAño2.FechaFinMes = new System.DateTime(2018, 5, 31, 0, 0, 0, 0);
-            this.comboMesAño2.FechaInicioMes = new System.DateTime(2018, 5, 1, 0, 0, 0, 0);
+            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 6, 1, 0, 0, 0, 0);
+            this.comboMesAño2.FechaFinMes = new System.DateTime(2018, 6, 30, 0, 0, 0, 0);
+            this.comboMesAño2.FechaInicioMes = new System.DateTime(2018, 6, 1, 0, 0, 0, 0);
             this.comboMesAño2.Location = new System.Drawing.Point(318, 38);
             this.comboMesAño2.Name = "comboMesAño2";
             this.comboMesAño2.Size = new System.Drawing.Size(197, 24);
@@ -125,10 +125,11 @@
             this.crvReporte.ShowParameterPanelButton = false;
             this.crvReporte.Size = new System.Drawing.Size(944, 533);
             this.crvReporte.TabIndex = 6;
+            this.crvReporte.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvReporte_ReportRefresh);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.btnexcel);
             this.panel1.Controls.Add(this.btngenerar);
             this.panel1.Controls.Add(this.label1);
@@ -143,18 +144,6 @@
             this.panel1.Size = new System.Drawing.Size(944, 69);
             this.panel1.TabIndex = 7;
             // 
-            // btngenerar
-            // 
-            this.btngenerar.Image = ((System.Drawing.Image)(resources.GetObject("btngenerar.Image")));
-            this.btngenerar.Location = new System.Drawing.Point(527, 37);
-            this.btngenerar.Name = "btngenerar";
-            this.btngenerar.Size = new System.Drawing.Size(85, 23);
-            this.btngenerar.TabIndex = 6;
-            this.btngenerar.Text = "Generar";
-            this.btngenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btngenerar.UseVisualStyleBackColor = true;
-            this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
-            // 
             // btnexcel
             // 
             this.btnexcel.Enabled = false;
@@ -167,6 +156,18 @@
             this.btnexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexcel.UseVisualStyleBackColor = true;
             this.btnexcel.Click += new System.EventHandler(this.btnexcel_Click);
+            // 
+            // btngenerar
+            // 
+            this.btngenerar.Image = ((System.Drawing.Image)(resources.GetObject("btngenerar.Image")));
+            this.btngenerar.Location = new System.Drawing.Point(527, 37);
+            this.btngenerar.Name = "btngenerar";
+            this.btngenerar.Size = new System.Drawing.Size(85, 23);
+            this.btngenerar.TabIndex = 6;
+            this.btngenerar.Text = "Generar";
+            this.btngenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btngenerar.UseVisualStyleBackColor = true;
+            this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
             // 
             // saveFileDialog1
             // 

@@ -34,7 +34,7 @@ namespace HPReserger
             }
         }
         private void FrmFactura_Load(object sender, EventArgs e)
-        {
+        {            
             //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
             // txtruc.Text = "0701046971";
             // radioButton1.Checked = true;
@@ -76,7 +76,7 @@ namespace HPReserger
                 imgfactura = null;
                 txtfoto.Text = "";
                 pbfactura.Image = null;
-            }
+            }            
         }
         public void MostrarFoto(PictureBox fotito)
         {

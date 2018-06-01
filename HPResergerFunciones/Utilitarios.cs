@@ -229,6 +229,13 @@ namespace HPResergerFunciones
 
             }
         }
+        public static string ReversaCadena(string campo)
+        {
+            char[] a = campo.ToCharArray();
+            Array.Reverse(a);
+            campo = new string(a);           
+            return campo;
+        }
         public static KeyPressEventArgs ToUpper(KeyPressEventArgs e)
         {
             e.KeyChar = char.ToUpper(e.KeyChar);

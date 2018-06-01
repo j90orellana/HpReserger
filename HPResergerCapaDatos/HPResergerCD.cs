@@ -3453,7 +3453,6 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber", "@dina", "@fecha", "@usuario", "@ccs" };
             object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina, fecha, usuario, centro };
             return bd.DataTableFromProcedure("usp_guardarfactura", parametros, valores, null);
-
         }
         public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)
         {

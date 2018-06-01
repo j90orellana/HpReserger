@@ -64,6 +64,12 @@
     <Compile Include="ControlDeslizamiento.Designer.cs">
       <DependentUpon>ControlDeslizamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="DtgConten.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DtgConten.Designer.cs">
+      <DependentUpon>DtgConten.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGradient.cs">
       <SubType>Form</SubType>
     </Compile>
