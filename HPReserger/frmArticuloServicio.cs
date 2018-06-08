@@ -277,7 +277,7 @@ namespace HPReserger
                     //CArticulo.InsertarArticulo(concepto, 0, tipo, txtobservacion.Text, IGV, CENTRO, cbocuenta.SelectedText, cbocentrocosto.SelectedValue.ToString());
                 }
                 CArticulo.InsertarArticuloMarca(marcas, GenerarCodigo());
-                MessageBox.Show("Insertado Exitosamente " + concepto + ";" + marcas, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
+                MessageBox.Show("Insertado Exitosamente " + concepto + ";" + marcas, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
             }
             else
             {
@@ -285,17 +285,17 @@ namespace HPReserger
                 {
                     //CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, CENTRO, cbocuenta.SelectedText, cbocentrocosto.SelectedValue.ToString());
                     CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, int.Parse(cuentax), cuentax, cuentax, txtctacble.Text, txtcntctbleact.Text);
-                    MessageBox.Show("Modificado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
+                    MessageBox.Show("Modificado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtdescripcion.Text + " Marca: " + cbomarca.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtdescripcion.Text + " Marca: " + cbomarca.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             CArticulo.EliminarARticuloMarca(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));
                             estado = 0;
-                            MessageBox.Show("Eliminado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
+                            MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
 
                         }
                     }
@@ -316,7 +316,7 @@ namespace HPReserger
                 {
                     if (dtgconten["descripcion", i].Value.ToString() == concepto && dtgconten["idm", i].Value.ToString() == marca.ToString() && i != dtgconten.CurrentCell.RowIndex)
                     {
-                        MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + txtdescripcion.Text, "Hp Reserger", MessageBoxButtons.OK);
+                        MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + txtdescripcion.Text, CompanyName, MessageBoxButtons.OK);
                         return false;
                     }
                 }
@@ -358,14 +358,14 @@ namespace HPReserger
             {
                 if (CArticulo.VerificarArticuloServicio(descripcion, marca).Rows.Count > 0)
                 {
-                    MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + descripcion, "Hp Reserger", MessageBoxButtons.OK);
+                    MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + descripcion, CompanyName, MessageBoxButtons.OK);
                     aux = false;
                 }
             }
             else
             {
                 aux = false;
-                MessageBox.Show("Campo Descripción Vacio", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Campo Descripción Vacio", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             return aux;
         }
@@ -413,7 +413,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btncentro_Click(object sender, EventArgs e)
         {

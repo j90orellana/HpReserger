@@ -51,7 +51,7 @@ namespace HPReserger
                 //    groupBox1.Enabled = true;
                 //    btnCompraVacaciones.Enabled = btnBoletaVacaciones.Enabled = btnAprobarVacaciones.Enabled = btnSeleccionarImagen.Enabled = true;
                 //}
-                
+
                 //if (EmpleadoVacaciones["IDTIPO"].ToString() == "2" || EmpleadoVacaciones["IDTIPO"].ToString() == "3")
                 //{
                 //    btnBoletaVacaciones.Enabled = true;
@@ -89,7 +89,7 @@ namespace HPReserger
                 Acumulados = (habiles + (habiles / 5) * 2);
                 txtDiasUtilizados.Text = Acumulados.ToString("n0");
                 //txtDiasPendientes.Text = (30 - Acumulados).ToString("n0");
-                txtDiasPendientes.Text =Convert.ToDecimal( txtVacaciones.Text).ToString("0");
+                txtDiasPendientes.Text = Convert.ToDecimal(txtVacaciones.Text).ToString("0");
                 //MessageBox.Show($"habiles {habiles } y no habiles { nohabiles} Acumulado { habiles % 5} Division { (habiles/ 5).ToString("n0")} ");
             }
             else
@@ -229,8 +229,8 @@ namespace HPReserger
                 DayAux = DayAux.AddDays(1);
             }
             //txtObservaciones.Text = dif.ToString() + $" = Habiles {Habiles } + No habiles { Nohabiles} = DiasExtras{ Habiles % 5}";
-           // if ((habiles + Habiles) > 22)
-           //     MessageBox.Show("No se Puede Tomar muchos días el Máximo son 30 días", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // if ((habiles + Habiles) > 22)
+            //     MessageBox.Show("No se Puede Tomar muchos días el Máximo son 30 días", CompanyName MessageBoxButtons.OK, MessageBoxIcon.Information);
             DataRow DiasGenerado = clEmpleadoVacaciones.DiasGenerado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value);
             if (DiasGenerado != null)
             {
@@ -255,20 +255,20 @@ namespace HPReserger
         {
             if ((habiles + Habiles) > 22)
             {
-                MessageBox.Show("No se Puede Tomar muchos días el Máximo son 30 días", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No se Puede Tomar muchos días el Máximo son 30 días", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dtpFin.Focus();
                 return;
             }
             if (txtDias.Text.Length == 0 || Convert.ToInt32(txtDias.Text) <= 0)
             {
-                MessageBox.Show("Días Inválido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Días Inválido", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtDias.Focus();
                 return;
             }
 
             if (Convert.ToInt32(txtDias.Text) > Convert.ToInt32(txtDiasPendientes.Text))
             {
-                MessageBox.Show("Solo puedes tomar " + Convert.ToString(txtDiasPendientes.Text) + " días de vacaciones como máximo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Solo puedes tomar " + Convert.ToString(txtDiasPendientes.Text) + " días de vacaciones como máximo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
@@ -281,7 +281,7 @@ namespace HPReserger
                 int Resultado = DateTime.Compare(dtpInicio.Value.Date, FechaMaxima.Date);
                 if (Resultado <= 0)
                 {
-                    MessageBox.Show("Fecha de Inicio debe ser posterior a la última Fecha Fin aprobada", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Fecha de Inicio debe ser posterior a la última Fecha Fin aprobada", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
             }
@@ -289,7 +289,7 @@ namespace HPReserger
             int Numero = 0;
             clEmpleadoVacaciones.EmpleadoVacacionesInsertar(out Numero, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, dtpFin.Value, Convert.ToInt32(txtDias.Text), txtObservaciones.Text);
             MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
-            MessageBox.Show("Vacaciones registradas", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Vacaciones registradas", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             frmBoletaVacaciones frmBV = new frmBoletaVacaciones();
             frmBV.TipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
@@ -397,14 +397,14 @@ namespace HPReserger
             {
                 if (pbFoto.Image == null)
                 {
-                    MessageBox.Show("Seleccione Imagen", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Seleccione Imagen", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnSeleccionarImagen.Focus();
                     return;
                 }
 
                 clEmpleadoVacaciones.AprobarVacaciones(Convert.ToInt32(Grid.CurrentRow.Cells[0].Value.ToString()), Convert.ToInt32(Grid.CurrentRow.Cells[1].Value.ToString()), Grid.CurrentRow.Cells[3].Value.ToString(), Foto, txtRuta.Text);
                 MostrarGrid(Convert.ToInt32(Grid.CurrentRow.Cells[1].Value.ToString()), Grid.CurrentRow.Cells[3].Value.ToString());
-                MessageBox.Show("Aprobación con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Aprobación con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dtpInicio.Value = DateTime.Today.Date;
                 dtpFin.Value = DateTime.Today.Date;
                 DiasInicio(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, "usp_GetDiasVacaciones");
@@ -440,7 +440,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Imagen Asociada a otra Boleta de Vacaciones", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Imagen Asociada a otra Boleta de Vacaciones", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
             }

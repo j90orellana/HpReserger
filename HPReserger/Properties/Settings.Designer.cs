@@ -33,5 +33,17 @@ namespace HPReserger.Properties {
                 return ((string)(this["ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Siger")]
+        public string NombreSistema {
+            get {
+                return ((string)(this["NombreSistema"]));
+            }
+            set {
+                this["NombreSistema"] = value;
+            }
+        }
     }
 }

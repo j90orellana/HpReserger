@@ -171,7 +171,7 @@ namespace HPReserger
         {
             if (txtValor.TextLength == 0)
             {
-                MessageBox.Show("Ingrese Nº Valorización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Valorización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtValor.Focus();
                 return;
             }
@@ -187,13 +187,13 @@ namespace HPReserger
                     bool Res = decimal.TryParse(NumDecimal, out Numero);
                     if (Res == false || Convert.ToDecimal(gridDetalle.Rows[fila].Cells[CANT.Name].Value.ToString()) == 0)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " el Monto ingresado es inválido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " el Monto ingresado es inválido", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return;
                     }
 
                     if (Convert.ToInt32(gridDetalle.Rows[fila].Cells[SALDO.Name].Value.ToString()) < Convert.ToInt32(gridDetalle.Rows[fila].Cells[CANT.Name].Value.ToString()))
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " el Saldo NO puede ser Menor a la Cantidad Recepcionada", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " el Saldo NO puede ser Menor a la Cantidad Recepcionada", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return;
                     }
                 }
@@ -205,7 +205,7 @@ namespace HPReserger
 
             if (gridDetalle.Rows.Count == FilaContarServicio)
             {
-                MessageBox.Show("Ingrese Cantidades", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Cantidades", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 gridDetalle.Focus();
                 return;
             }
@@ -233,7 +233,7 @@ namespace HPReserger
 
             if (FIG != 0)
             {
-                MessageBox.Show("EL FIC Nº " + Convert.ToString(FIG) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("EL FIC Nº " + Convert.ToString(FIG) + " se generó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             string cadenita = txtRUC.Text;
             txtRUC.Text = "";

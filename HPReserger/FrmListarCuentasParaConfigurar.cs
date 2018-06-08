@@ -82,7 +82,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void dtgConten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -189,7 +189,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
         private void dtgConten_KeyDown(object sender, KeyEventArgs e)
         {

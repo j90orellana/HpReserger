@@ -111,20 +111,20 @@ namespace HPReserger
                 if (estado == 1 && ValidarDes(txtcosto.Text) && ValidarCodigo(txtcodigo.Text))
                 {
                     Ccostos.InsertarCentroCostros(txtcodigo.Text, txtcosto.Text, cbotiene.SelectedValue.ToString(), cbocuentas.SelectedValue.ToString());
-                    MessageBox.Show("Centro de Costo, Ingresado", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Centro de Costo, Ingresado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     if (estado == 2 && ValidarDes(txtcosto.Text) && ValidarCodigo(txtcodigo.Text))
                     {
                         Ccostos.ActualizarCentroCostos(txtcosto.Text.ToString(), txtcodigo.Text, int.Parse(dtgconten["idcodigo", dtgconten.CurrentCell.RowIndex].Value.ToString()), cbotiene.SelectedValue.ToString(), cbocuentas.SelectedValue.ToString());
-                        MessageBox.Show("Centro de Costo, Actualizado", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Centro de Costo, Actualizado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
                         if (estado == 3)
                         {
-                            if (MessageBox.Show("Seguró Desea Eliminar " + txtcosto.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                            if (MessageBox.Show("Seguró Desea Eliminar " + txtcosto.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                             {
                                 //Ccostos.EliminarGerencia(Convert.ToInt32(txtcodigo.Text));
                             }
@@ -136,7 +136,7 @@ namespace HPReserger
                 Activar(); gp1.Enabled = true;
                 pnl1.Enabled = false;
             }
-            else { MessageBox.Show("Debe Rellenar el campo Descripción", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            else { MessageBox.Show("Debe Rellenar el campo Descripción", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }
         public Boolean ValidarDes(string valor)
         {
@@ -146,7 +146,7 @@ namespace HPReserger
                 if (dtgconten["descripcion", i].Value.ToString() == valor && dtgconten.CurrentCell.RowIndex != i)
                 {
                     Aux = false;
-                    MessageBox.Show("Este valor:" + txtcosto.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Este valor:" + txtcosto.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return Aux;
                 }
             }
@@ -160,7 +160,7 @@ namespace HPReserger
                 if (dtgconten["codigos", i].Value.ToString() == valor && dtgconten.CurrentCell.RowIndex != i)
                 {
                     Aux = false;
-                    MessageBox.Show("Este Código:" + txtcosto.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Este Código:" + txtcosto.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return Aux;
                 }
             }

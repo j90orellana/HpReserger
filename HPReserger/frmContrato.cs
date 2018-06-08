@@ -371,49 +371,49 @@ namespace HPReserger
         {
             if (cboProyecto.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccioné Proyecto", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccioné Proyecto", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboProyecto.Focus();
                 return false;
             }
             if (cboEmpresa.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccioné Empresa", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccioné Empresa", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboEmpresa.Focus();
                 return false;
             }
             if (txtPeriodoLaboral.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Período Laboral", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Período Laboral", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPeriodoLaboral.Focus();
                 return false;
             }
             if (txtSalario.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Salario", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Salario", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtSalario.Focus();
                 return false;
             }
             if (cboCargo.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccioné Cargo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccioné Cargo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboCargo.Focus();
                 return false;
             }
             //if (cboBono.SelectedIndex != 0 && txtImporteBono.Text.Length == 0)
             //{
-            //    MessageBox.Show("Ingrese Importe Bono", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    MessageBox.Show("Ingrese Importe Bono", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    txtImporteBono.Focus();
             //    return false;
             //}
             //if (txtPeriodicidad.Text.Length == 0 && cboBono.SelectedIndex != 0)
             //{
-            //    MessageBox.Show("Ingrese Periodicidad", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    MessageBox.Show("Ingrese Periodicidad", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    txtPeriodicidad.Focus();
             //    return false;
             //}
             //if (txtContrato.Text.Length == 0)
             //{
-            //    MessageBox.Show("Selecione Imagen de Contrato", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    MessageBox.Show("Selecione Imagen de Contrato", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //    btnBuscarImagenContrato.Focus();
             //    return false;
             //}
@@ -481,19 +481,19 @@ namespace HPReserger
             /*
             if (txtAnexoFunciones.Text.Length == 0)
             {
-                MessageBox.Show("Selecione Imagen de Anexo de Funciones", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Selecione Imagen de Anexo de Funciones", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarImagenAnexoFunciones.Focus();
                 return false;
             }
             if (txtSolicitudPracticas.Text.Length == 0)
             {
-                MessageBox.Show("Selecione Imagen de Solicitud de Practicas", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Selecione Imagen de Solicitud de Practicas", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarImagenSolicitudPracticas.Focus();
                 return false;
             }
             if (txtOtros.Text.Length == 0)
             {
-                MessageBox.Show("Selecione Imagen de Otros", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Selecione Imagen de Otros", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarImagenOtros.Focus();
                 return false;
             }*/
@@ -772,7 +772,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(1);
-                    MessageBox.Show("Contrato generado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Contrato generado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnRegistrar.Enabled = false;
                     btnModificar.Enabled = true;
                     btncancelar_Click(sender, e);
@@ -811,7 +811,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(0);
-                    MessageBox.Show("Contrato modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Contrato modificado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //Limpiar();
                     btncancelar_Click(sender, e);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
@@ -859,7 +859,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(3);
-                    MessageBox.Show("Adenda Agregada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Adenda Agregada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btncancelar_Click(sender, e);
                     PasosAdenda(false);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
@@ -886,7 +886,7 @@ namespace HPReserger
         }
         public void MensajeAlerta(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dtpFechaInicio_CloseUp(object sender, EventArgs e)
@@ -986,7 +986,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void lklanexo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

@@ -217,13 +217,13 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
             if (!txtMotivoCese.EstaLLeno())
             {
-                MessageBox.Show("Ingrese Motivo del Cese", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Motivo del Cese", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtMotivoCese.Focus();
                 return;
             }
@@ -240,7 +240,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -256,7 +256,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -272,7 +272,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -288,7 +288,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -304,7 +304,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -331,7 +331,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -362,7 +362,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -393,7 +393,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -423,7 +423,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -455,7 +455,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -487,7 +487,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -518,7 +518,7 @@ namespace HPReserger
         int respuesta;
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnGrabar_Click(object sender, EventArgs e)
         {
@@ -545,14 +545,14 @@ namespace HPReserger
             }
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoPaterno.Focus();
                 return;
             }
 
             if (pbFoto.Image == null)
             {
-                MessageBox.Show("Seleccione Imagen", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
@@ -587,22 +587,22 @@ namespace HPReserger
             }
             if (respuesta == 1)
             {
-                MessageBox.Show("Desvinculación Insertada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Desvinculación Insertada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 pbFoto.Image = null;
             }
             if (respuesta == 2)
             {
-                MessageBox.Show("Desvinculación Actualizada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Desvinculación Actualizada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 pbFoto.Image = null;
             }
             if (respuesta == 0)
             {
-                MessageBox.Show("Contrato No Encontrado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Contrato No Encontrado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if (respuesta == 3)
             {
-                MessageBox.Show("Contrato Encontrado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Contrato Encontrado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             txtNumeroDocumento_TextChanged(sender, e);
         }
@@ -766,13 +766,13 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
             if (!txtMotivoCese.EstaLLeno())
             {
-                MessageBox.Show("Ingrese Motivo del Cese", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Motivo del Cese", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtMotivoCese.Focus();
                 return;
             }

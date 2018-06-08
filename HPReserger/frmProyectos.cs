@@ -86,7 +86,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {

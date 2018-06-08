@@ -319,7 +319,7 @@ namespace HPReserger
         }
         public DialogResult msg(string cadena)
         {
-            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void dtgconten_MouseDown(object sender, MouseEventArgs e)
         {
@@ -358,7 +358,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         frmProcesando frmpro;
         DateTime Fechas;

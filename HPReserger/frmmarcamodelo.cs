@@ -105,7 +105,7 @@ namespace HPReserger
             Boolean aux = true;
             if (CArticulo.VerificarMarcaModelo(marca, modelo).Rows.Count > 0)
             {
-                MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + cbomodelo.Text + "=" + modelo, "Hp Reserger", MessageBoxButtons.OK);
+                MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + cbomodelo.Text + "=" + modelo, CompanyName, MessageBoxButtons.OK);
                 aux = false;
             }
             return aux;
@@ -168,23 +168,23 @@ namespace HPReserger
             if (estado == 1 && VerificarDatos(marca, modelo))
             {
                 CArticulo.InsertarMarcaModelo(marca, modelo);
-                MessageBox.Show("Relación Insertada Exitosamente "+marca+";"+modelo, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Relación Insertada Exitosamente "+marca+";"+modelo, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 if (estado == 2 && VerificarDatos(marca, modelo))
                 {
                     CArticulo.ActualizarMarcaModelo(marca, modelo, modmarca, modmodelo);estado = 0;
-                    MessageBox.Show("Relación Modificada Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Relación Modificada Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; Marca: " + cbomarca.Text + " Modelo: " + cbomodelo.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar; Marca: " + cbomarca.Text + " Modelo: " + cbomodelo.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             CArticulo.EliminarMarcaModelo(marca, modelo);estado = 0;
-                            MessageBox.Show("Relación Modificada Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Relación Modificada Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         }
                     }

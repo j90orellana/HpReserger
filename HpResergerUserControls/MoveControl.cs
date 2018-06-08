@@ -15,16 +15,22 @@ namespace HpResergerUserControls
     {
         public MoveControl()
         {
-            InitializeComponent();              
+            InitializeComponent();
         }
-        public delegate ControlEventHandler OnCreate();
+        public MoveControl(IContainer container)
+        {
+            container.Add(this);
+            InitializeComponent();            
+            cargar();
+
+        }        
         Boolean mover = false; int x, y;
         public void cargar()
         {
             if (_Control != null)
             {
-                _Control.MouseUp += new MouseEventHandler(MouseUPe);
                 _Control.MouseDown += new MouseEventHandler(MouseDownx);
+                _Control.MouseUp += new MouseEventHandler(MouseUPe);
                 _Control.MouseMove += new MouseEventHandler(MouseMover);
             }
         }

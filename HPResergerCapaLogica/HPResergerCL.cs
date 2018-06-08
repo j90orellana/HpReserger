@@ -368,13 +368,13 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.BuscarAsientosContables(busca, opcion, empresa);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
-         , DateTime fechaemision, decimal importemn, decimal importeme, decimal tipocambio, int usuario)
+         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, importemn, importeme, tipocambio, usuario);
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, 0, 0, 0, 0);
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0);
         }
         public DataTable UltimoAsiento(int empresa)
         {
@@ -382,7 +382,7 @@ namespace HPResergerCapaLogica
         }
         public DataTable UltimoAsientoFactura(string numfac, string proveedor)
         {
-            return UltimoAsientoFactura(numfac, proveedor);
+            return cdOrdenPedido.UltimoAsientoFactura(numfac, proveedor);
         }
         public void InsertarAsiento(int id, int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa)
         {
@@ -860,7 +860,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Loguearse(Login_User, Opcion);
         }
-
+        public DataTable UsuarioConectado(int codigo, string user, int opcion)
+        {
+            return cdOrdenPedido.UsuarioConectado(codigo, user, opcion);
+        }
         public DataTable ListarAreasUsuario(int Usuario)
         {
             return cdOrdenPedido.ListarAreasUsuario(Usuario);
@@ -1256,9 +1259,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.insertarPagarfactura(nrofactura, tipo, nropago);
         }
-        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, int usuario, int centro)
+        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, int usuario, int centro, string tipo, string proveedor)
         {
-            return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina, fecha, usuario, centro);
+            return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina, fecha, fechavence, usuario, centro, tipo, proveedor);
         }
         public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)
         {

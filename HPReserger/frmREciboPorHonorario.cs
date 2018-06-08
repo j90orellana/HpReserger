@@ -227,7 +227,7 @@ namespace HPReserger
         decimal porcentaje, subtotal, total, igv;
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public Boolean validar()
         {

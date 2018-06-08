@@ -51,12 +51,12 @@ namespace HPReserger
                         txtRuta.Text = NombreFoto;
 
                         clAmonestacionesPremio.EmpleadoMemoPremioSustento(Convert.ToInt32(Grid.CurrentRow.Cells[0].Value.ToString()), Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, tab.SelectedIndex, Foto, txtRuta.Text);
-                        MessageBox.Show("Imagen asociada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Imagen asociada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Imagen Asociado a otro Sustento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Imagen Asociado a otro Sustento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
             }
@@ -179,21 +179,21 @@ namespace HPReserger
             {
                 if (txtNumeroDocumento.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtNumeroDocumento.Focus();
                     return;
                 }
 
                 if (tab.SelectedIndex == 0 && txtObservacionesMemo.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Observaciones para el Memorandum", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Ingrese Observaciones para el Memorandum", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtObservacionesMemo.Focus();
                     return;
                 }
 
                 if (tab.SelectedIndex == 1 && txtObservacionesPremio.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Observaciones para la Carta de Premio", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Ingrese Observaciones para la Carta de Premio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtObservacionesPremio.Focus();
                     return;
                 }
@@ -210,7 +210,7 @@ namespace HPReserger
                     txtObservacionesPremio.Text = "";
                 }
 
-                MessageBox.Show("Se procesó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se procesó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -245,7 +245,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void Grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -384,7 +384,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         DataTable tablita;
         private void btneliminar_Click(object sender, EventArgs e)

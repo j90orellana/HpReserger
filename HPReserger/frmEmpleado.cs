@@ -153,13 +153,13 @@ namespace HPReserger
         {
             if (cboTipoDocumento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTipoDocumento.Focus();
                 return;
             }
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -187,7 +187,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Primero Registre al Postulante como Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Primero Registre al Postulante como Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnGuardar.Focus();
                     return;
                 }
@@ -209,14 +209,14 @@ namespace HPReserger
         {
             if (cboTipoDocumento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTipoDocumento.Focus();
                 return;
             }
 
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -244,7 +244,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Primero Registre al Postulante como Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Primero Registre al Postulante como Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnGuardar.Focus();
                     return;
                 }
@@ -259,13 +259,13 @@ namespace HPReserger
         {
             if (cboTipoDocumento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTipoDocumento.Focus();
                 return;
             }
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -292,7 +292,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Primero Registre al Postulante como Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Primero Registre al Postulante como Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnGuardar.Focus();
                     return;
                 }
@@ -307,13 +307,13 @@ namespace HPReserger
         {
             if (cboTipoDocumento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTipoDocumento.Focus();
                 return;
             }
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -341,7 +341,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Primero Registre al Postulante como Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Primero Registre al Postulante como Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnGuardar.Focus();
                     return;
                 }
@@ -391,125 +391,125 @@ namespace HPReserger
             {
                 if (string.IsNullOrWhiteSpace(txtconviviente.Text))
                 {
-                    MessageBox.Show("Falta La foto del Certificado de Convivencia", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Falta La foto del Certificado de Convivencia", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnconviviente.Focus();
                     return;
                 }
             }
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
             if (txtNHijos.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de hijos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de hijos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNHijos.Focus();
                 return;
             }
             if (txtDireccion.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Dirección", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Dirección", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtDireccion.Focus();
                 return;
             }
             /*if (txtTelefonoFijo.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Teléfono Fijo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Teléfono Fijo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtTelefonoFijo.Focus();
                 return;
             }*/
             if (txtTelefonoCelular.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Teléfono Celular", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Teléfono Celular", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtTelefonoCelular.Focus();
                 return;
             }
             if (txtAntecedentesPoliciales.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen Antecedentes Policiales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen Antecedentes Policiales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnAntecedentesPoliciales.Focus();
                 return;
             }
             if (txtAntecedentesPenales.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen Antecedentes Penales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen Antecedentes Penales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnAntecedentesPenales.Focus();
                 return;
             }
             if (txtReciboServicio.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen de Recibo Servicios", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen de Recibo Servicios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnReciboServicios.Focus();
                 return;
             }
 
             if (cboTipoDocumento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTipoDocumento.Focus();
                 return;
             }
 
             if (cboDepartamento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Departamento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Departamento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboDepartamento.Focus();
                 return;
             }
 
             if (cboProvincia.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Provincia", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Provincia", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboProvincia.Focus();
                 return;
             }
 
             if (cboDistrito.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Distrito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Distrito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboDistrito.Focus();
                 return;
             }
 
             if (cboSexo.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Sexo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Sexo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboSexo.Focus();
                 return;
             }
 
             if (cboEstadoCivil.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Estado Civil", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Estado Civil", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboEstadoCivil.Focus();
                 return;
             }
 
             if (cboLugarNacimiento.SelectedIndex == -1 && cbopais.Text.Trim() == "PERÚ")
             {
-                MessageBox.Show("Seleccione Lugar de Nacimiento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboLugarNacimiento.Focus();
                 return;
             }
             if (cbopais.Text.Trim() != "PERÚ" && string.IsNullOrWhiteSpace(txtlugarnacimiento.Text))
             {
-                MessageBox.Show("Ingresé El lugar de Nacimiento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingresé El lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtlugarnacimiento.Focus();
                 return;
             }
 
             if (cboProfesion.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Profesión", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Profesión", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboProfesion.Focus();
                 return;
             }
 
             if (cboGradoInstruccion.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Grado de Instrucción", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Grado de Instrucción", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboGradoInstruccion.Focus();
                 return;
             }
@@ -530,13 +530,13 @@ namespace HPReserger
             if (NewEmpleado == true)
             {
                 clEmpleado.EmpleadoInsertar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, frmLogin.CodigoUsuario, Foto, NombreFoto, FotoFirma, txtfirma.Text);
-                MessageBox.Show("El Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se registró con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se registró con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);
             }
             else
             {
                 clEmpleado.EmpleadoModificar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, CodigoTipoDocumento, NumeroDocumento, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, Foto, NombreFoto, FotoFirma, txtfirma.Text);
-                MessageBox.Show("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NewEmpleado = true;
                 DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);
                 //Actualizar la foto del empleado
@@ -904,14 +904,14 @@ namespace HPReserger
         {
             if (cboTipoDocumento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTipoDocumento.Focus();
                 return;
             }
 
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -939,7 +939,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Primero Registre al Postulante como Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Primero Registre al Postulante como Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnGuardar.Focus();
                     return;
                 }
@@ -954,14 +954,14 @@ namespace HPReserger
         {
             if (cboTipoDocumento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTipoDocumento.Focus();
                 return;
             }
 
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -988,7 +988,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Primero Registre al Postulante como Empleado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Primero Registre al Postulante como Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnGuardar.Focus();
                     return;
                 }
@@ -1095,7 +1095,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Hand);
         }
 
         private void pbfotoempleado_Click(object sender, EventArgs e)
@@ -1221,7 +1221,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length != txtNumeroDocumento.MaxLength && txtNumeroDocumento.Text != "0701046971")
             {
-                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -1232,26 +1232,26 @@ namespace HPReserger
             {
                 if (string.IsNullOrWhiteSpace(txtconviviente.Text))
                 {
-                    MessageBox.Show("Falta La foto del Certificado de Convivencia", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Falta La foto del Certificado de Convivencia", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnconviviente.Focus();
                     return;
                 }
             }
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
             if (txtNHijos.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de hijos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de hijos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNHijos.Focus();
                 return;
             }
             if (txtDireccion.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Dirección", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Dirección", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtDireccion.Focus();
                 return;
             }
@@ -1260,7 +1260,7 @@ namespace HPReserger
             {
                 if ((int)Filita["edad"] < 18)
                 {
-                    MessageBox.Show("El Empleado Debe ser Mayor de Edad", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("El Empleado Debe ser Mayor de Edad", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     dtpFecha.Focus();
                     return;
                 }
@@ -1269,13 +1269,13 @@ namespace HPReserger
 
             /*if (txtTelefonoFijo.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Teléfono Fijo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Teléfono Fijo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtTelefonoFijo.Focus();
                 return;
             }*/
             if (txtTelefonoCelular.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Teléfono Celular", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Teléfono Celular", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtTelefonoCelular.Focus();
                 return;
             }
@@ -1283,74 +1283,74 @@ namespace HPReserger
             {
                 if (txtAntecedentesPoliciales.Text.Length == 0)
                 {
-                    MessageBox.Show("Seleccione Imagen Antecedentes Policiales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Seleccione Imagen Antecedentes Policiales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnAntecedentesPoliciales.Focus();
                     return;
                 }
                 if (txtAntecedentesPenales.Text.Length == 0)
                 {
-                    MessageBox.Show("Seleccione Imagen Antecedentes Penales", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Seleccione Imagen Antecedentes Penales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnAntecedentesPenales.Focus();
                     return;
                 }
                 if (txtReciboServicio.Text.Length == 0)
                 {
-                    MessageBox.Show("Seleccione Imagen de Recibo Servicios", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Seleccione Imagen de Recibo Servicios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnReciboServicios.Focus();
                     return;
                 }
             }
             if (cboTipoDocumento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTipoDocumento.Focus();
                 return;
             }
 
             if (cboDepartamento.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Departamento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Departamento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboDepartamento.Focus();
                 return;
             }
 
             if (cboProvincia.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Provincia", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Provincia", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboProvincia.Focus();
                 return;
             }
 
             if (cboDistrito.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Distrito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Distrito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboDistrito.Focus();
                 return;
             }
 
             if (cboSexo.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Sexo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Sexo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboSexo.Focus();
                 return;
             }
 
             if (cboEstadoCivil.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Estado Civil", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Estado Civil", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboEstadoCivil.Focus();
                 return;
             }
 
             if (cboLugarNacimiento.SelectedIndex == -1 && cbopais.Text.Trim() == "PERÚ")
             {
-                MessageBox.Show("Seleccione Lugar de Nacimiento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboLugarNacimiento.Focus();
                 return;
             }
             if (cbopais.Text.Trim() != "PERÚ" && string.IsNullOrWhiteSpace(txtlugarnacimiento.Text))
             {
-                MessageBox.Show("Ingresé El lugar de Nacimiento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingresé El lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtlugarnacimiento.Focus();
                 return;
             }
@@ -1360,14 +1360,14 @@ namespace HPReserger
             }
             if (cboProfesion.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Profesión", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Profesión", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboProfesion.Focus();
                 return;
             }
 
             if (cboGradoInstruccion.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Grado de Instrucción", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Grado de Instrucción", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboGradoInstruccion.Focus();
                 return;
             }
@@ -1387,13 +1387,13 @@ namespace HPReserger
             if (NewEmpleado == true)
             {
                 clEmpleado.EmpleadoInsertar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, frmLogin.CodigoUsuario, Foto, NombreFoto, FotoFirma, txtfirma.Text);
-                MessageBox.Show("El Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se registró con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se registró con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);
             }
             else
             {
                 clEmpleado.EmpleadoModificar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, CodigoTipoDocumento, NumeroDocumento, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, Foto, NombreFoto, FotoFirma, txtfirma.Text);
-                MessageBox.Show("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NewEmpleado = true;
 
                 DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);

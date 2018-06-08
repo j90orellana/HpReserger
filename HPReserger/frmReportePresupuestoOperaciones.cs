@@ -21,7 +21,7 @@ namespace HPReserger
         public int cabecera; public int empresa;
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void frmReportePresupuestoOperaciones_Load(object sender, EventArgs e)
         {

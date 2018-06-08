@@ -131,7 +131,7 @@ namespace HPReserger
                 DataRow ExisteImagen = clModificarSE.ExisteImagen("NombreFoto", nombreArchivo, "TBL_SolicitaEmpleado");
                 if (ExisteImagen != null)
                 {
-                    MessageBox.Show("La imagen ya esta asociadao a otra Solicitud", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("La imagen ya esta asociadao a otra Solicitud", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
@@ -167,14 +167,14 @@ namespace HPReserger
 
             if (txtPuestos.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Cant. Puestos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Cant. Puestos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPuestos.Focus();
                 return;
             }
 
             if (Convert.ToInt32(txtPuestos.Text) == 0)
             {
-                MessageBox.Show("Cant. Puestos NO puede ser cero", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Cant. Puestos NO puede ser cero", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPuestos.Focus();
                 return;
             }
@@ -189,7 +189,7 @@ namespace HPReserger
             {
                 if (cboOS.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Seleccione Orden de Servicio", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Seleccione Orden de Servicio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     cboOS.Focus();
                     return;
                 }
@@ -200,7 +200,7 @@ namespace HPReserger
             }
 
             clModificarSE.SolicitudEmpleadoModificar(Convert.ToInt32(txtSolicitud.Text.Substring(2)), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text);
-            MessageBox.Show("Solicitud modificada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            MessageBox.Show("Solicitud modificada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }

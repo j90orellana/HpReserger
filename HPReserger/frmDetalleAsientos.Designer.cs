@@ -66,6 +66,7 @@
             this.centrocostox = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.buttonCentroCosto = new System.Windows.Forms.DataGridViewButtonColumn();
             this.fechaemisionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importemnx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importemex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipocambiox = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,6 +112,7 @@
             this.centrocostox,
             this.buttonCentroCosto,
             this.fechaemisionx,
+            this.FechaVencimientox,
             this.importemnx,
             this.importemex,
             this.tipocambiox,
@@ -417,6 +419,15 @@
             this.fechaemisionx.Name = "fechaemisionx";
             this.fechaemisionx.Width = 85;
             // 
+            // FechaVencimientox
+            // 
+            this.FechaVencimientox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.FechaVencimientox.DataPropertyName = "Fecha_Vencimiento";
+            this.FechaVencimientox.HeaderText = "Fecha.Venc.";
+            this.FechaVencimientox.MinimumWidth = 80;
+            this.FechaVencimientox.Name = "FechaVencimientox";
+            this.FechaVencimientox.Width = 80;
+            // 
             // importemnx
             // 
             this.importemnx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -539,6 +550,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn centrocostox;
         private System.Windows.Forms.DataGridViewButtonColumn buttonCentroCosto;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaemisionx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimientox;
         private System.Windows.Forms.DataGridViewTextBoxColumn importemnx;
         private System.Windows.Forms.DataGridViewTextBoxColumn importemex;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipocambiox;

@@ -93,7 +93,7 @@ namespace HPReserger
                 if (dtgconten[1, i].Value.ToString() == valor)
                 {
                     Aux = false;
-                    MessageBox.Show("Este valor: " + txtgerencia.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Este valor: " + txtgerencia.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return Aux;
                 }
             }
@@ -101,7 +101,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -127,7 +127,7 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar: " + txtgerencia.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar: " + txtgerencia.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             cEntiFinanciera.EliminarEntiFinanciera(Convert.ToInt32(txtcodigo.Text));
                         }

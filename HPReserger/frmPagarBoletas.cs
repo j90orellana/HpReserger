@@ -10,7 +10,7 @@ namespace HPReserger
         public frmPagarBoletas()
         {
             InitializeComponent();
-            
+
         }
         HPResergerCapaLogica.HPResergerCL Capalogica = new HPResergerCapaLogica.HPResergerCL();
 
@@ -338,7 +338,7 @@ namespace HPReserger
                 }
                 //proceso de calculos
                 Boolean GenerarTxt = false;
-                DialogResult ResultadoDialogo = MessageBox.Show("Desea Generar TXT del pago?", "HpReserger", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult ResultadoDialogo = MessageBox.Show("Desea Generar TXT del pago?", CompanyName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (ResultadoDialogo == DialogResult.Yes)
                 {
                     GenerarTxt = false;
@@ -351,7 +351,7 @@ namespace HPReserger
                     }
                     else
                     {
-                        if (MessageBox.Show("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (MessageBox.Show("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             GenerarTxt = false;
                         }

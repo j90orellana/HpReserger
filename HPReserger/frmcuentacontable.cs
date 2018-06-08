@@ -216,7 +216,7 @@ namespace HPReserger
             {
                 if (estado == 1)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         estado = 0;
                         Activar();
@@ -250,14 +250,14 @@ namespace HPReserger
             {
                 if (CcuentaContable.VerificarCuentas(codigo, nombre).Rows.Count > 0)
                 {
-                    MessageBox.Show("Ya Existe esta Cuenta: " + nombre + "; Código:" + codigo, "Hp Reserger", MessageBoxButtons.OK);
+                    MessageBox.Show("Ya Existe esta Cuenta: " + nombre + "; Código:" + codigo, CompanyName, MessageBoxButtons.OK);
                     aux = false;
                 }
             }
             else
             {
                 aux = false;
-                MessageBox.Show("Código de Cuenta y Descripción de la Cuenta, No pueden estar Vacios", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Código de Cuenta y Descripción de la Cuenta, No pueden estar Vacios", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             return aux;
         }
@@ -328,7 +328,7 @@ namespace HPReserger
             cboreflejacc.Text + "\n Refleja Debe= " + cboreflejadebe.Text + "\n Refleja Haber= " + cboreflejahaber.Text + "\n Cuenta Cierra= " +
             CuentaCierre + "\n Analitica= " + cboanalitica.Text + "\n Ajuste CAmbio Mensual=" + cboajustemensual.Text + "\n Cierre= " +
             cbocierre.Text + "\n Ajuste Por Traslación= " + cboajustetraslacion.Text + "\n Cuenta Declarante BC= " + cbocuentabc.Text
-            , "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            , CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -341,7 +341,7 @@ namespace HPReserger
             {
                 CargarValoresDeIngreso();
                 //MensajedeDatos();
-                MessageBox.Show("Se Insertó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se Insertó con Exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CcuentaContable.InsertarCuentasContables(CuentaN1, CodCuenta, DesCuentea, TipoCuenta, NatuCuenta, CuentaGene, GrupoCuenta,
                 Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC);
                 PresentarValor(codigo.ToString());
@@ -352,7 +352,7 @@ namespace HPReserger
                 {
                     CargarValoresDeIngreso();
                     //MensajedeDatos();
-                    MessageBox.Show("Se Modificó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CcuentaContable.ActualizarCuentasContables(CodCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
                         Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, cbonaturaleza.SelectedValue.ToString());
                     PresentarValor(codigo.ToString());
@@ -361,10 +361,10 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrecuenta.Text + " Código Cuenta: " + txtcodcuenta.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrecuenta.Text + " Código Cuenta: " + txtcodcuenta.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
-                            MessageBox.Show("Eliminado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Eliminado Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                             //                            PresentarValor("");
 
                         }
@@ -404,7 +404,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 

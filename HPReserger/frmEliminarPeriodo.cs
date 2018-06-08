@@ -52,11 +52,11 @@ namespace HPReserger
         }
         public DialogResult msg(string cadena)
         {
-            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
         public DialogResult msgx(string cadena)
         {
-            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         DataTable tablita;
         private void btngenerar_Click(object sender, EventArgs e)

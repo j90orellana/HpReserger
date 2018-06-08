@@ -179,7 +179,7 @@ namespace HPReserger
             if (cboAFP.Text == "SI")
                 if (txtCUPSS.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Número CUPSS", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Ingrese Número CUPSS", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtCUPSS.Focus();
                     return false;
                 }
@@ -336,7 +336,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "Hp REserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void numdesc_HelpRequested(object sender, HelpEventArgs hlpevent)

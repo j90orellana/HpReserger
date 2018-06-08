@@ -49,7 +49,7 @@ namespace HPReserger
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 e.Handled = true;
-                cboBase.Focus();
+                btnLogueo.Focus();
             }
         }
         private void frmLogin_Load(object sender, EventArgs e)
@@ -73,26 +73,56 @@ namespace HPReserger
         }
         public DialogResult msg(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnLogueo_Click(object sender, EventArgs e)
         {
+            //VERIFICAR LA LICENCIA
+            if (frmMenu.DateLicense.AddYears(1) < DateTime.Now)
+            {
+                frmMensajeLicencia frmmensa = new frmMensajeLicencia();
+                frmmensa.NombreTitulo = "Tu Licencia ha Caducado";
+                frmmensa.Mensaje = "La Licencia ha Caducado " + Environment.NewLine +"Debe Adquirir una Nueva Licencia ";
+                frmmensa.Caducado();
+                frmmensa.ShowDialog();
+                frmLogin.DesconectarUsuario();
+                return;
+            }
             //Asignacion de la base de datos estatica
             Basedatos = cboBase.Text;
             clLogueo.CambiarBase(Basedatos);
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
             if (txtUsuario.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Usuario", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ingrese Usuario", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtUsuario.Focus();
                 return;
             }
 
             if (txtContraseña.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Contraseña", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ingrese Contraseña", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtContraseña.Focus();
                 return;
+            }
+            //VALIDAR SI YA ESTA LOGEADO EL USARIO
+            DataTable TablaAcceso = clLogueo.UsuarioConectado(frmLogin.CodigoUsuario, txtUsuario.Text, 0);
+            if (TablaAcceso.Rows.Count > 0)
+            {
+                DataRow filitaAcceso = TablaAcceso.Rows[0];
+                if (filitaAcceso != null)
+                {
+                    if (filitaAcceso["conectado"].ToString() != "0")
+                    {
+                        msg("Usuario YA está Conectado");
+                        return;
+                    }
+                }
+                else
+                {
+                    msg("No Se Pudo Conectar con la Base de datos");
+                    return;
+                }
             }
             Boolean Prueba = false;
             //verificacion si hay usuarios por defecto
@@ -140,7 +170,7 @@ namespace HPReserger
                 drAcceso = clLogueo.Loguearse(txtUsuario.Text, 2);
                 if (Convert.ToInt32(drAcceso["Estado"].ToString()) == 0)
                 {
-                    MessageBox.Show("Usuario bloqueado, contáctese con el Área de Sistemas", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Usuario bloqueado, contáctese con el Área de Sistemas", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtUsuario.Focus();
                     return;
                 }
@@ -176,6 +206,7 @@ namespace HPReserger
                                 MemoryStream ms = new MemoryStream(Fotito);
                                 frmM.pbfotoempleado.Image = Bitmap.FromStream(ms);
                             }
+                            UsuarioConectado();
                             frmM.Show();
                         }
                         else msg("Usuario no esta Activo");
@@ -187,14 +218,14 @@ namespace HPReserger
                         if (Convert.ToInt32(drAcceso["intentos"].ToString()) == 4)
                         {
                             clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 2);
-                            MessageBox.Show("5 intentos fallidos, se bloqueó al Usuario " + txtUsuario.Text + "", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("5 intentos fallidos, se bloqueó al Usuario " + txtUsuario.Text + "", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return;
                         }
                         else
                         {
                             clLogueo.ActualizarLogin("usp_ActualizarLogin", txtUsuario.Text, 0);
                             drAcceso = clLogueo.Loguearse(txtUsuario.Text, 1);
-                            MessageBox.Show("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("Intento fallido Nº " + drAcceso["intentos"].ToString() + ",  son 5 intentos, le quedan  " + Convert.ToString(5 - Convert.ToInt32(drAcceso["intentos"].ToString())) + "", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             txtUsuario.Text = "";
                             txtContraseña.Text = "";
                             txtUsuario.Focus();
@@ -202,6 +233,16 @@ namespace HPReserger
                     }
                 }
             }
+        }
+        public static void UsuarioConectado()
+        {
+            HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+            CapaLogica.UsuarioConectado(CodigoUsuario, "", 1);
+        }
+        public static void DesconectarUsuario()
+        {
+            HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+            CapaLogica.UsuarioConectado(CodigoUsuario, "", 2);
         }
         private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {

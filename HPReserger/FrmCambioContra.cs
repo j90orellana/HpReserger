@@ -25,7 +25,7 @@ namespace HPReserger
 
         public void Mensajes(string mensaje)
         {
-            MessageBox.Show(mensaje, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(mensaje, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void txtactual_TextChanged(object sender, EventArgs e)

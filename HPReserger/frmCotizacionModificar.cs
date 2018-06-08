@@ -131,7 +131,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Imagen ya asociada a la Cotizaion Nº " + ExisteFoto["Numero"].ToString().Trim() + " y al Pedido Nº " + ExisteFoto["Pedido"].ToString().Trim() + "", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Imagen ya asociada a la Cotizaion Nº " + ExisteFoto["Numero"].ToString().Trim() + " y al Pedido Nº " + ExisteFoto["Pedido"].ToString().Trim() + "", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
             }
@@ -157,18 +157,18 @@ namespace HPReserger
             }
             if (decimal.Parse(txtImporte.Text) <= 0)
             {
-                MessageBox.Show("El Importe de la Cotización No puede ser Cero", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("El Importe de la Cotización No puede ser Cero", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             if (txtProveedor.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Proveedor", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Proveedor", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtRUC.Focus();
                 return;
             }
             if (pbFoto.Image == null)
             {
-                MessageBox.Show("Seleccione Imagen de Cotización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen de Cotización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarPDF.Focus();
                 return;
             }
@@ -200,7 +200,7 @@ namespace HPReserger
             {
                 nombreArchivo = txtAdjunto.Text.Trim();
             }
-            clModificarCotizacion.CotizacionModificar(Convert.ToInt32(txtCotizacion.Text.Substring(2)), dtpFecha.Value, Convert.ToDecimal(txtImporte.Text), txtRUC.Text, Foto, nombreArchivo,(int)cbomoneda.SelectedValue);
+            clModificarCotizacion.CotizacionModificar(Convert.ToInt32(txtCotizacion.Text.Substring(2)), dtpFecha.Value, Convert.ToDecimal(txtImporte.Text), txtRUC.Text, Foto, nombreArchivo, (int)cbomoneda.SelectedValue);
             for (int i = 0; i < dtgpedidoX.RowCount; i++)
             {
                 if (TipoArticulo == 0)
@@ -224,14 +224,14 @@ namespace HPReserger
             txtImporte.Text = "";
             pbFoto.Image = null;
 
-            MessageBox.Show("Cotización Nº " + Convert.ToString(txtCotizacion.Text) + " se actualizó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Cotización Nº " + Convert.ToString(txtCotizacion.Text) + " se actualizó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
 
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         private void txtRUC_TextChanged(object sender, EventArgs e)
         {
@@ -255,7 +255,7 @@ namespace HPReserger
         }
         public DialogResult mensaje(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         TextBox txt;
         private void dtgpedidoY_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

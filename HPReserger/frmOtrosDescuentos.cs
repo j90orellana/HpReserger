@@ -157,7 +157,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -193,7 +193,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, "Hp Reseger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         private void btneliminar_Click(object sender, EventArgs e)
         {

@@ -503,6 +503,12 @@
     <Compile Include="frmMensajeCorreo.Designer.cs">
       <DependentUpon>frmMensajeCorreo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMensajeLicencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMensajeLicencia.Designer.cs">
+      <DependentUpon>frmMensajeLicencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmmodelo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1403,6 +1409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMensajeCorreo.resx">
       <DependentUpon>frmMensajeCorreo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMensajeLicencia.resx">
+      <DependentUpon>frmMensajeLicencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmmodelo.resx">
       <DependentUpon>frmmodelo.cs</DependentUpon>

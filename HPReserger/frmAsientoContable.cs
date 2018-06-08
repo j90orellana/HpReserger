@@ -240,7 +240,7 @@ namespace HPReserger
         }
         public void Mensajes(string text)
         {
-            MessageBox.Show(text, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            MessageBox.Show(text, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
         }
         private void txtdinamica_Leave(object sender, EventArgs e)
         {
@@ -886,7 +886,7 @@ namespace HPReserger
             MessageBox.Show("DATOS:\nEstado: " + cboestado.Text + "\tCodigo: " + codigo
                 + "\nFecha: " + FECHA + "\nDinamica: " + coddinamica + "\nASIENTO CONTABLE\n" + cadena +
                 "Total Debe: " + totaldebe + "\tTotal Haber: " + totalhaber
-                , "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                , CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public string Detalle()
         {
@@ -980,10 +980,10 @@ namespace HPReserger
                         if (estado == 3)
                         {
                             codigo = Convert.ToInt32(txtcodigo.Text.ToString());
-                            if (MessageBox.Show("Seguró Desea Eliminar; Asiento Contable" + codigo, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (MessageBox.Show("Seguró Desea Eliminar; Asiento Contable" + codigo, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 CapaLogica.EliminarAsiento(codigo);
-                                MessageBox.Show("Eliminado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Txtbusca.Text = "";
                                 dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
                             }
@@ -1005,7 +1005,7 @@ namespace HPReserger
             {
                 if (estado == 1 && Dtgconten.RowCount > 0)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         estado = 0;
                         activar();
@@ -1020,7 +1020,7 @@ namespace HPReserger
                 {
                     if (estado == 2 && Dtgconten.RowCount > 0)
                     {
-                        if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
                             estado = 0;
                             activar();
@@ -1052,7 +1052,7 @@ namespace HPReserger
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("Desea Borrar esta fila", "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Desea Borrar esta fila", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Dtgconten.Rows.RemoveAt(Dtgconten.CurrentCell.RowIndex);
                     Sumatoria();
@@ -1173,7 +1173,7 @@ namespace HPReserger
         }
         private void MSG(string v)
         {
-            MessageBox.Show(v, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(v, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void cboproyecto_Enter(object sender, EventArgs e)

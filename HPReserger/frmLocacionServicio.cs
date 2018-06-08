@@ -58,11 +58,11 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public DialogResult Preguntar(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {

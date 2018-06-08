@@ -303,7 +303,7 @@ namespace HPReserger
             {
                 if (estado == 1)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         estado = 0;
                         Activar();
@@ -342,14 +342,14 @@ namespace HPReserger
             {
                 if (CProveedor.VerificarProveedores(DocumentoId, RazonSocial).Rows.Count > 0)
                 {
-                    MessageBox.Show("Ya Existe este Proveedor: " + RazonSocial + "; Identificación:" + DocumentoId, "Hp Reserger", MessageBoxButtons.OK);
+                    MessageBox.Show("Ya Existe este Proveedor: " + RazonSocial + "; Identificación:" + DocumentoId, CompanyName, MessageBoxButtons.OK);
                     aux = false;
                 }
             }
             else
             {
                 aux = false;
-                MessageBox.Show("Número de Identidad y Razón Social No pueden estar Vacios", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Número de Identidad y Razón Social No pueden estar Vacios", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             return aux;
         }
@@ -389,7 +389,7 @@ namespace HPReserger
                  "Teléfono Sucursal = " + telsucursal + "\n" + "Persona Contacto = " + persocontacto + "\n" + "Teléfono Contacto = " + telefonocontacto + "\n" +
                  "Email Contacto = " + emailcontacto + "\n" + "Nro Cuenta Soles = " + nrocuentasoles + "\n" + "Nro Cci Soles = " + nroccisoles + "\n" +
                  "Banco Soles  = " + cbobancosoles.Text + "\n" + "Nro Cuenta Dólares = " + nrocuentadolares + "\n" + "Nro Cci Dólares= " + nroccidolares + "\n" +
-                 "Banco Dolares = " + cbobancodolares.Text + "\n" + "Nro CTa Detracciones = " + nroctadetracciones + "\n" + "Régimen = " + cboregimen.Text + "\n", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 "Banco Dolares = " + cbobancodolares.Text + "\n" + "Nro CTa Detracciones = " + nroctadetracciones + "\n" + "Régimen = " + cboregimen.Text + "\n", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -406,7 +406,7 @@ namespace HPReserger
             {
                 CargarValoresDeIngreso();
                 //MensajedeDatos();
-                MessageBox.Show("Se Insertó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se Insertó con Exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CProveedor.InsertarProveedor(anterior, numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                 persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares);
                 PresentarValor(nombrerazon);
@@ -418,7 +418,7 @@ namespace HPReserger
                 {
                     CargarValoresDeIngreso();
                     //MensajedeDatos();
-                    MessageBox.Show("Se Modificó con Exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se Modificó con Exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CProveedor.ActualizarProveedor(anterior,numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                     persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares);
                     PresentarValor(nombrerazon);
@@ -428,10 +428,10 @@ namespace HPReserger
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrerazonsocial.Text + " Nro Documento: " + txtnumeroidentidad.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrerazonsocial.Text + " Nro Documento: " + txtnumeroidentidad.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
-                            MessageBox.Show("Eliminado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Eliminado Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                             PresentarValor("");
 
                         }

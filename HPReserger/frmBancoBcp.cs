@@ -437,7 +437,7 @@ namespace HPReserger
                 {
                     if (e.KeyCode == Keys.Delete)
                     {
-                        if (MessageBox.Show("Desea Eliminar la Fila", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show("Desea Eliminar la Fila", CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             TablaConsulta.Rows.RemoveAt(x);
                         }
@@ -555,7 +555,7 @@ namespace HPReserger
         }
         public DialogResult msg(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
         public void CalcularTotales()
         {

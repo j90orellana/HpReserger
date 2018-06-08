@@ -46,7 +46,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         decimal importes;
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace HPReserger
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro, Desea Salir", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            if (MessageBox.Show("Seguro, Desea Salir", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 this.Close();
             iniciar(false);
         }

@@ -148,7 +148,7 @@ namespace HPReserger
                 {
                     if (dtgareas[1, i].Value.ToString() == txtdescripcion.Text)
                     {
-                        MessageBox.Show("Ya existe: '" + txtdescripcion.Text + "'", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ya existe: '" + txtdescripcion.Text + "'", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Txtbusca.Text = txtdescripcion.Text;
                         Aux = false;
                         break;
@@ -158,7 +158,7 @@ namespace HPReserger
             else
             {
                 Aux = false;
-                MessageBox.Show("Campo de Descripción Vacio", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo de Descripción Vacio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return Aux;
         }
@@ -168,7 +168,7 @@ namespace HPReserger
             if (estado == 1 && ValidarDes(txtdescripcion.Text))
             {
                 CArea.InsertarArea(txtdescripcion.Text, CodCCosto, Codgerencia);
-                MessageBox.Show("Descripción Insertada Exitosamente " + txtdescripcion.Text, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Descripción Insertada Exitosamente " + txtdescripcion.Text, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Txtbusca.Text = txtdescripcion.Text;
             }
             else
@@ -176,17 +176,17 @@ namespace HPReserger
                 if (estado == 2 && ValidarDes(txtdescripcion.Text))
                 {
                     CArea.ActualizarArea(txtdescripcion.Text, CodCCosto, Codgerencia, Codarea);
-                    MessageBox.Show("Descripción Modificada Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Descripción Modificada Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Txtbusca.Text = txtdescripcion.Text;
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar: " + txtdescripcion.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar: " + txtdescripcion.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             CArea.EliminarArea(CodCCosto, Codgerencia, Codarea);
-                            MessageBox.Show("Descripción Eliminada Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Descripción Eliminada Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             Txtbusca.Text = txtdescripcion.Text;
                         }
                     }

@@ -178,7 +178,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         DialogResult PAsoBanco = DialogResult.Cancel;
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -223,7 +223,7 @@ namespace HPReserger
                 return;
             }
             Boolean GenerarTxt = false;
-            DialogResult ResultadoDialogo = MessageBox.Show("Desea Generar TXT del pago?", "HpReserger", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            DialogResult ResultadoDialogo = MessageBox.Show("Desea Generar TXT del pago?", CompanyName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (ResultadoDialogo == DialogResult.Yes)
             {
                 GenerarTxt = false;
@@ -236,7 +236,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    if (MessageBox.Show("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         GenerarTxt = false;
                     }
@@ -335,7 +335,7 @@ namespace HPReserger
                         //actualizo que el recibo este pagado
                         cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                         //cuenta de recibo por honorarios 4241101
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 1, fac.FechaEmision, frmLogin.CodigoUsuario, fac.centrocosto);
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.subtotal, 0, 1, fac.FechaEmision, fac.fechacancelado, frmLogin.CodigoUsuario, fac.centrocosto,fac.tipo,fac.proveedor);
                         facturar = fac.numero;
                     }
                     else
@@ -345,8 +345,8 @@ namespace HPReserger
                             //actualizo que la factura esta pagada
                             cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                             ///facturas por pagar 4212101
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3, fac.FechaEmision, frmLogin.CodigoUsuario, fac.centrocosto);
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 2, fac.FechaEmision, frmLogin.CodigoUsuario, fac.centrocosto);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3, fac.FechaEmision, fac.fechacancelado, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total - fac.detraccion, 0, 2, fac.FechaEmision, fac.fechacancelado, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
                             facturar = fac.numero;
                         }
                         else
@@ -354,7 +354,7 @@ namespace HPReserger
                             //actualizo que la factura esta pagada
                             cPagarfactura.insertarPagarfactura(fac.numero, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text);
                             ///facturas por pagar 4212101
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 2, fac.FechaEmision, frmLogin.CodigoUsuario, fac.centrocosto);
+                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.total, 0, 2, fac.FechaEmision, fac.fechacancelado, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
                             facturar = fac.numero;
                         }
                     }
@@ -364,7 +364,7 @@ namespace HPReserger
                     BanCuenta = "";
                 else
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
-                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5, DateTime.Now, frmLogin.CodigoUsuario, 1);
+                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5, DateTime.Now,DateTime.Now, frmLogin.CodigoUsuario, 1,"","");
                 msg("Documento Pagado y se ha Generado su Asiento");
                 btnActualizar_Click(sender, e);
                 txttotaldetrac.Text = txttotal.Text = "0.00";
@@ -470,10 +470,10 @@ namespace HPReserger
             public decimal igv { get; set; }
             public decimal total { get; set; }
             public decimal detraccion { get; set; }
-            public DateTime fechacancelado { get; set; }
+            public DateTime? fechacancelado { get; set; }
             public int centrocosto { get; set; }
             public DateTime FechaEmision { get; set; }
-            public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado, int CentroCosto, DateTime fechaemision)
+            public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime? FechaCancelado, int CentroCosto, DateTime fechaemision)
             {
                 numero = Numero;
                 proveedor = Proveedor;
@@ -505,7 +505,7 @@ namespace HPReserger
                                 Busqueda = true;
                         }
                         if (!Busqueda)
-                            Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value, (int)Dtguias[nrofic1.Name, e.RowIndex].Value, (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value));
+                            Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value ,(int)Dtguias[centrocostox.Name, e.RowIndex].Value, (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value));
                     }
                     else
                     {
@@ -527,8 +527,7 @@ namespace HPReserger
                 }
                 //else
             }
-            catch { }
-
+            catch (Exception ex){ msg(ex.Message); }
             FacturasSeleccionas();
         }
         int NumRegistros;
@@ -593,7 +592,7 @@ namespace HPReserger
         {
             if (txtruc.Text.Length > 8)
             {
-                if (MessageBox.Show("¿Desea Salir?", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("¿Desea Salir?", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     this.Close();
                 }
@@ -744,7 +743,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         private void btnReversar_Click(object sender, EventArgs e)
         {

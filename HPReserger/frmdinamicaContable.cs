@@ -111,7 +111,7 @@ namespace HPReserger
         }
         public void Mensajes(string text)
         {
-            MessageBox.Show(text, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            MessageBox.Show(text, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -205,7 +205,7 @@ namespace HPReserger
 
                         if (Dtgconten[0, e.RowIndex].Value.ToString() == Dtgconten[0, i].Value.ToString() && i != e.RowIndex)
                         {
-                            MessageBox.Show("No se pueden Repetir Cuenta", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No se pueden Repetir Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             Dtgconten.Rows.RemoveAt(Dtgconten.CurrentRow.Index); fila--;
                             break;
                         }
@@ -273,7 +273,7 @@ namespace HPReserger
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("Desea Borrar esta fila", "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Desea Borrar esta fila", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     fila--; filamax--;
                 }
@@ -319,7 +319,7 @@ namespace HPReserger
             {
                 if (estado == 1 && fila > 0)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         estado = 0;
                         Activar(); DesactivarModi();
@@ -333,7 +333,7 @@ namespace HPReserger
                 {
                     if (estado == 2 && fila > 0)
                     {
-                        if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
                             estado = 0;
                             Activar(); DesactivarModi();
@@ -475,7 +475,7 @@ namespace HPReserger
         {
             MessageBox.Show("DATOS:\nEjercicio: " + ejercicio + "\tEstado; " + cboestado.Text + "\tCodigo CD_00" + codigo + "\nOperación: " + cbooperacion.Text
                 + "\nSubOperación: " + cbosuboperacion.Text + "\nDINAMICA CONTABLE\n" + cadena
-                , "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                , CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
         public string Detalle()
@@ -566,10 +566,10 @@ namespace HPReserger
                     {
                         if (estado == 3)
                         {
-                            if (MessageBox.Show("Seguró Desea Eliminar; Dinámica Contable: DC_0" + codigo, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (MessageBox.Show("Seguró Desea Eliminar; Dinámica Contable: DC_0" + codigo, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 CDinamica.EliminarDinamica(codigo);
-                                MessageBox.Show("Eliminado Exitosamente ", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Eliminado Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Txtbusca.Text = "";
                                 dtgbusca.DataSource = ListarDinamicas(Txtbusca.Text, 1);
 

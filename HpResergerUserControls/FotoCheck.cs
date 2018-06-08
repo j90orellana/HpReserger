@@ -15,9 +15,14 @@ namespace HpResergerUserControls
         public FotoCheck()
         {
             InitializeComponent();
+            pbFoto.Image = ListaImagenes.Images[0];
             _ImagenDefault = btnclose.Image;
             _ImagenEncima = btnprueba.Image;
             Invalidate();
+        }
+        public void ImagenLicencia()
+        {
+            pbFoto.Image = ListaImagenes.Images[1];
         }
         public string Nombre { get { return lblnombre.Text; } set { lblnombre.Text = value; } }
         public string Cargo { get { return lblcargo.Text; } set { lblcargo.Text = value; } }

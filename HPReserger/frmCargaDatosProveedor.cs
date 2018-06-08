@@ -42,7 +42,7 @@ namespace HPReserger
         }
         public DialogResult msg(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         public DataTable TablaProvedoresBancos;
         private void btnaceptar_Click(object sender, EventArgs e)

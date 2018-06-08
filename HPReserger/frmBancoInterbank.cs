@@ -250,7 +250,7 @@ namespace HPReserger
         }
         public DialogResult msg(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
         DataGridViewComboBoxColumn combo;
         private void Dtguias_RowEnter(object sender, DataGridViewCellEventArgs e)

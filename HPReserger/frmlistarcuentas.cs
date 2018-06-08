@@ -100,7 +100,7 @@ namespace HPReserger
         }
         private void MSG(string v)
         {
-            MessageBox.Show(v, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(v, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void button1_Click(object sender, EventArgs e)
         {

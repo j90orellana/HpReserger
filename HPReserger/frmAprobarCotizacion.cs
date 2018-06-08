@@ -78,23 +78,23 @@ namespace HPReserger
         {
             if (ItemAprob < 0)
             {
-                MessageBox.Show("Seleccione Cotización a Aprobar", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Cotización a Aprobar", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
             if (pbFoto.Image == null)
             {
-                MessageBox.Show("NO existe imagen de Cotización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("NO existe imagen de Cotización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
             if (gridCotizacionesAsociadas.Rows.Count < 3)
             {
-                MessageBox.Show("Mínimo son 3 cotizaciones", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Mínimo son 3 cotizaciones", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
-            if (MessageBox.Show("¿ Desea Aprobar Cotización Nº " + gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString() + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("¿ Desea Aprobar Cotización Nº " + gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString() + " ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 clAprobarCotizacion.AprobacionNOCotizacion(Convert.ToInt32(gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2)), "usp_Set_Aprobacion_Cotizacion");
 
@@ -116,7 +116,7 @@ namespace HPReserger
 
                 string Cot = gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2);
                 Mostrar(frmLogin.CodigoUsuario);
-                MessageBox.Show("Se aprobó la Cotización Nº " + Cot + " y se generó la OC Nº " + Convert.ToString(NumeroCotizacion) + "", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se aprobó la Cotización Nº " + Cot + " y se generó la OC Nº " + Convert.ToString(NumeroCotizacion) + "", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 pbFoto.Image = null;
             }
         }

@@ -120,7 +120,7 @@ namespace HPReserger
             }
             if (institucion == false)
             {
-                if (MessageBox.Show("Institución Educativa no existe, Desea Guardarla ?", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Institución Educativa no existe, Desea Guardarla ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cdatospreprofesionales.InstitucionEducativa(txtrucuni.Text, txtrazonsocialuni.Text, txtdireccionuni.Text, 2, 2);
                     MSGITO("Institución Educativa Guardada!");
@@ -255,7 +255,7 @@ namespace HPReserger
 
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea Salir?", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 acepta = false;
                 this.Close();
@@ -263,7 +263,7 @@ namespace HPReserger
         }
         public void MSGITO(string cadena)
         {
-            MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

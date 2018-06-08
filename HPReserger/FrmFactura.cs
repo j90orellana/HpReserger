@@ -374,7 +374,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         int estado = 0;
         private void btnagregar_Click(object sender, EventArgs e)
@@ -1027,7 +1027,7 @@ namespace HPReserger
             cboigv.SelectedIndex = frmProvi.cboigv.SelectedIndex;
             cbodetraccion.SelectedIndex = frmProvi.cbodetraccion.SelectedIndex;
             numdetraccion.Value = frmProvi.numdetraccion.Value;
-            if (MessageBox.Show("Seguro Desea Provisionar esta Factura", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Seguro Desea Provisionar esta Factura", CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 int detracc = 0;
                 if (cbodetraccion.Text == "NO")

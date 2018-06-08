@@ -1178,11 +1178,11 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_buscar_asientos", parametros, valor, null);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
-           , DateTime fechaemision, decimal importemn, decimal importeme, decimal tipocambio, int usuario)
+           , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario)
         {
             string[] parametros = { "@opcion", "@idaux", "@idasiento", "@cuenta", "@tipodoc", "@numdoc", "@razon", "@idComprobante", "@codcomprobante", "@numcomprobante", "@centrocosto", "@glosa"
-                    , "@fechaemision", "@importemn", "@importeme", "@tipocambio", "@usuario" };
-            object[] valor = { opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, importemn, importeme, tipocambio, usuario };
+                    , "@fechaemision","@fechavence", "@importemn", "@importeme", "@tipocambio", "@usuario" };
+            object[] valor = { opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario };
             return bd.DataTableFromProcedure("usp_DetalleAsientos", parametros, valor, null);
         }
         public void InsertarAsiento(int id, int codigo, DateTime fecha, int cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa)
@@ -2679,15 +2679,21 @@ namespace HPResergerCapaDatos
                 DataRow datoslogueo = bd.DatarowFromProcedure("usp_GetIntentosLogin", parametros, valores, null);
                 if (datoslogueo == null)
                 {
-                    MessageBox.Show("Usuario NO existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Usuario NO existe", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
                 return datoslogueo;
             }
             catch (SqlException)
             {
-                MessageBox.Show("No Hay Conexión a la Base de datos", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Hay Conexión a la Base de datos", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
+        }
+        public DataTable UsuarioConectado(int codigo, string user, int opcion)
+        {
+            string[] parametros = { "@codigo", "@user", "@opcion" };
+            object[] valores = { codigo, user, opcion };
+            return bd.DataTableFromProcedure("usp_UsuariosConectados", parametros, valores, null);
         }
 
         public DataTable ListarAreasUsuario(int Usuario)
@@ -3448,10 +3454,10 @@ namespace HPResergerCapaDatos
             object[] valores = { nrofactura, tipo, nropago };
             return bd.DataTableFromProcedure("usp_insertarPagarfactura", parametros, valores, null);
         }
-        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, int usuario, int centro)
+        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, int usuario, int centro, string tipo, string proveedor)
         {
-            string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber", "@dina", "@fecha", "@usuario", "@ccs" };
-            object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina, fecha, usuario, centro };
+            string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber", "@dina", "@fecha", "@fechavc", "@usuario", "@ccs", "@tipo", "@proveedor" };
+            object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina, fecha, fechavence, usuario, centro, tipo, proveedor };
             return bd.DataTableFromProcedure("usp_guardarfactura", parametros, valores, null);
         }
         public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)

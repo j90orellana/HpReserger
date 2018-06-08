@@ -82,7 +82,7 @@ namespace HPReserger
                     }
                 }
                 Cprovincia.InsertarProvincia(coddep, codpro, cboprovincia.Text);
-                MessageBox.Show("Provincia Ingresada Exitosamente con Id:'" + codpro + "'", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Provincia Ingresada Exitosamente con Id:'" + codpro + "'", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
             }
             else
@@ -90,17 +90,17 @@ namespace HPReserger
                 if (estado == 2 && ValidarDes(cboprovincia.Text))
                 {
                     Cprovincia.ActualizarProvincia(coddep, codpro, cboprovincia.Text);
-                    MessageBox.Show("Provincia Modificada Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Provincia Modificada Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar: " + cboprovincia.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar: " + cboprovincia.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             Cprovincia.EliminarProvincia(coddep, codpro);
-                            MessageBox.Show("Provincia Eliminada Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Provincia Eliminada Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             Txtbusca.Text = cboprovincia.Text; cboprovincia.DropDownStyle = ComboBoxStyle.DropDownList; Txtbusca.Enabled = true;
                         }
                     }
@@ -184,7 +184,7 @@ namespace HPReserger
                 {
                     if (dtgprovincias[2, i].Value.ToString() == cboprovincia.Text)
                     {
-                        MessageBox.Show("Ya existe: '" + cboprovincia.Text + " ' en Departamento:'" + cbodepartamento.Text + "'", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ya existe: '" + cboprovincia.Text + " ' en Departamento:'" + cbodepartamento.Text + "'", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Txtbusca.Text = cboprovincia.Text;
                         Aux = false;
                         break;
@@ -194,7 +194,7 @@ namespace HPReserger
             else
             {
                 Aux = false;
-                MessageBox.Show("Campo de Provincia Vacio", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Campo de Provincia Vacio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return Aux;
         }

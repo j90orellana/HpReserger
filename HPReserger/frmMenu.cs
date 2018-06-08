@@ -20,6 +20,9 @@ namespace HPReserger
             InitializeComponent();
             ICono = this.Icon;
         }
+        public static int Users = 6;
+        public static DateTime DateLicense = new DateTime(2018, 06, 01);
+        public static int DaysCaducatesLicence = 30;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public static Icon ICono;
         public void CargarEpsAdicional()
@@ -128,10 +131,10 @@ namespace HPReserger
         }
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            Application.ApplicationExit += new EventHandler(ExitApplication);
             CapaLogica.CambiarBase(frmLogin.Basedatos);
             RecargarMenu();
             MdiClient mdi;
-
             foreach (Control ctl in this.Controls)
             {
                 try
@@ -145,14 +148,35 @@ namespace HPReserger
             }
             cerrado = 0;
             lblwelcome.Text = "Bienvenido: " + Nombres;
+            ConsultarCaducarLicencia();
             ConsultarCumpleaños();
             length = FlowPanel.Width;
             ImagenDefault = pbesquina.Image;
             FlowPanel_ControlRemoved_1(sender, new ControlEventArgs(FlowPanel));
-            Mostrado = true;
-            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control
+            if (FlowPanel.Controls.Count > 0)
+                Mostrado = true;
+            else Mostrado = false;
+            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control            
         }
 
+        private void ExitApplication(object sender, EventArgs e)
+        {
+            frmLogin.DesconectarUsuario();
+        }
+        private void ConsultarCaducarLicencia()
+        {
+            var resul = (frmMenu.DateLicense.AddYears(1) - DateTime.Now);
+            if (resul.Days < DaysCaducatesLicence)
+            {
+                HpResergerUserControls.FotoCheck fotito = new HpResergerUserControls.FotoCheck();
+                fotito.Nombre = "Mensaje de Licencia";
+                fotito.Cargo = $"Su Licencia Caduca en";
+                fotito.Observacion = $"{resul.Days} Dias";
+                fotito.ImagenLicencia();
+                FlowPanel.Controls.Add(fotito);
+                fotito.Width = FlowPanel.Width;
+            }
+        }
         private void FrmMenu_Paint(object sender, PaintEventArgs e)
         {
             LinearGradientBrush linearGradientBrush = new LinearGradientBrush(FlowPanel.ClientRectangle, Color.Black, Color.Black, 180);
@@ -197,7 +221,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public void ValidarVentanas(Form formulario)
         {
@@ -973,13 +997,15 @@ namespace HPReserger
         {
             if (cerrado == 0 && cerrar == 10)
             {
+                frmLogin.DesconectarUsuario();
                 Application.Exit();
             }
             if (cerrar == 0)
             {
-                if (MessageBox.Show("Seguro Desea Salir del Sistema", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show("Seguro Desea Salir del Sistema", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     cerrado = 0; cerrar = 10;
+                    frmLogin.DesconectarUsuario();
                     Application.Exit();
                 }
                 else
@@ -1119,11 +1145,12 @@ namespace HPReserger
         int cerrado = 0;
         private void cerrarSesionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro Desea Cerrar Sesión", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (MessageBox.Show("Seguro Desea Cerrar Sesión", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 cerrado = 1; cerrar = 5;
                 this.Close();
                 frmLogin logeo = new frmLogin();
+                frmLogin.DesconectarUsuario();
                 logeo.Show();
             }
         }
@@ -2006,7 +2033,7 @@ namespace HPReserger
         }
         private void cerrarTodasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea Cerrar Todas las Ventanas", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Desea Cerrar Todas las Ventanas", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 foreach (Form ventanitas in this.MdiChildren)
                 {
@@ -2455,7 +2482,7 @@ namespace HPReserger
         }
         private void cerrarTodasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea Cerrar Todas las Ventanas", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Desea Cerrar Todas las Ventanas", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 foreach (Form ventanitas in this.MdiChildren)
                     ventanitas.Close();
         }

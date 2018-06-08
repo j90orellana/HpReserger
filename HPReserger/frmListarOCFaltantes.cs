@@ -229,7 +229,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         DataRow drCOT;
         frmMensajeCorreo mensajitox;
@@ -265,7 +265,7 @@ namespace HPReserger
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             try
             {
                 MailMessage email = new MailMessage();

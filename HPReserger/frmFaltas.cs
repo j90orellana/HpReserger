@@ -196,28 +196,28 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
 
             if (txtDias.Text.Length == 0 || Convert.ToInt32(txtDias.Text) <= 0)
             {
-                MessageBox.Show("Días Inválido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Días Inválido", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtDias.Focus();
                 return;
             }
 
             if (txtObservaciones.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Observaciones", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Observaciones", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtObservaciones.Focus();
                 return;
             }
 
             if (Foto == null)//&& chkfaltas.Checked == false)
             {
-                MessageBox.Show("Seleccione Imagen de Sustento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen de Sustento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnAdjuntarSustento.Focus();
                 return;
             }
@@ -234,13 +234,13 @@ namespace HPReserger
                 int Resultado = DateTime.Compare(dtpInicio.Value.Date, FechaMaximaFalta.Date);
                 if (Resultado <= 0)
                 {
-                    MessageBox.Show("Fecha de Inicio debe ser posterior a la última Fecha Fin de Falta", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Fecha de Inicio debe ser posterior a la última Fecha Fin de Falta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
             }
             clEmpleadoFaltas.EmpleadoFaltas(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, dtpInicio.Value, dtpFin.Value, Convert.ToInt32(txtDias.Text), txtObservaciones.Text, Foto, ruta, estado);
             MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
-            MessageBox.Show("Falta registrada con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Falta registrada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             dtpInicio.Value = DateTime.Today.Date;
             dtpFin.Value = DateTime.Today.Date;
             txtObservaciones.Text = "";
@@ -273,7 +273,7 @@ namespace HPReserger
             }
             else
             {
-                MessageBox.Show("Imagen Asociado a otro Sustento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Imagen Asociado a otro Sustento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
         }

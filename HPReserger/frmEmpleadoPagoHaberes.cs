@@ -46,13 +46,13 @@ namespace HPReserger
         {
             if (txtCuenta.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Cuenta", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuenta.Focus();
                 return false;
             }
             if (txtCuentaCCI.Text.Length < 20 && txtCuentaCCI.Text != "0")
             {
-                MessageBox.Show("Ingrese Nº de Cuenta CCI", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº de Cuenta CCI", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuentaCCI.Focus();
                 return false;
             }
@@ -116,7 +116,7 @@ namespace HPReserger
             {
                 if (GrabarEditar(1))
                 {
-                    MessageBox.Show("Pago de Haberes registrado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Pago de Haberes registrado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     estado = 0;
                     btnaceptar.Enabled = false;
@@ -128,7 +128,7 @@ namespace HPReserger
             {
                 if (GrabarEditar(0))
                 {
-                    MessageBox.Show("Pago de Haberes actualizo con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Pago de Haberes actualizo con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     estado = 0;
                     btnaceptar.Enabled = false;
                     pnlconten.Enabled = false; btnModificar.Enabled = true;

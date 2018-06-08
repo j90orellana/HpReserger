@@ -96,7 +96,7 @@ namespace HPReserger
         }
         public void Mensajes(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void buscar()
@@ -243,7 +243,7 @@ namespace HPReserger
         private void btneliminar_Click(object sender, EventArgs e)
         {
             estado = 3;
-            if (MessageBox.Show("Desea dar de Baja a este Usuario", "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Desea dar de Baja a este Usuario", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 btnaceptar_Click(sender, e);
             }
@@ -310,6 +310,28 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            //verifico si el usuario es activo
+            if ((int)cboestado.SelectedValue == 1 || (int)cboestado.SelectedValue == 3)
+            {
+                DataTable table = Cusuario.UsuarioConectado(frmLogin.CodigoUsuario, txtlogin.Text, 10);
+                if (table.Rows.Count > 0)
+                {
+                    DataRow file = table.Rows[0];
+                    int ConUsuarios = (int)file["usuarios"];
+                    if (estado == 1 || estado == 5)
+                    {
+                        ConUsuarios++;
+                    }
+                    //si sobrepasa el limite de usuarios
+                    if (ConUsuarios > frmMenu.Users)
+                    {
+                        //mensaje de Cancelación
+                        frmMensajeLicencia frmmensa = new frmMensajeLicencia();
+                        frmmensa.ShowDialog();
+                        return;
+                    }
+                }
+            }
             //estado 1=nuevo 2=modificar 3=eliminar
             if (estado == 1 || estado == 5)
             {

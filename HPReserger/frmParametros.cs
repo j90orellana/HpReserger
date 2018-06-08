@@ -140,11 +140,11 @@ namespace HPReserger
         }
         private void Msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReseger", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -299,7 +299,7 @@ namespace HPReserger
 
         private void btneliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro Quiere Eliminar", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (MessageBox.Show("Seguro Quiere Eliminar", CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 CapaLogica.ActualizarParametros(10, dtgconten["descripcion", dtgconten.CurrentCell.RowIndex].Value.ToString(), 0, "", (int)dtgconten["id", dtgconten.CurrentCell.RowIndex].Value, dtpfecha.Value);
                 CargarDatos();

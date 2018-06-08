@@ -139,7 +139,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
         int articulo = 0; int señal = 0;
         private void btnAsociar_Click(object sender, EventArgs e)
@@ -159,7 +159,7 @@ namespace HPReserger
             }
             if (txtImporte.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Importe de la Cotización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Importe de la Cotización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtImporte.Focus();
                 return;
             }
@@ -183,7 +183,7 @@ namespace HPReserger
             }
             if (txtProveedor.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Proveedor", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Proveedor", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtRUC.Focus();
                 return;
             }
@@ -191,7 +191,7 @@ namespace HPReserger
             DataRow FechaActual = clCotizacion.FechaActual();
             if (dtpFecha.Value < Convert.ToDateTime(FechaActual["FECHA"].ToString()))
             {
-                MessageBox.Show("Fecha de Entrega NO puede ser menor a Fecha Actual", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Fecha de Entrega NO puede ser menor a Fecha Actual", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
@@ -202,19 +202,19 @@ namespace HPReserger
                 {
                     if (gridCotizacionesAsociadas.Rows[filaBuscar].Cells[2].Value.ToString().Trim() == txtRUC.Text.Trim().ToString())
                     {
-                        MessageBox.Show("Proveedor ya fue Asociado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Proveedor ya fue Asociado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return;
                     }
                     if (gridCotizacionesAsociadas.Rows[filaBuscar].Cells[6].Value.ToString().Trim() == txtAdjunto.Text.Trim().ToString())
                     {
-                        MessageBox.Show("Imagen ya fue Asociada", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Imagen ya fue Asociada", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return;
                     }
                 }
             }
             if (pbFoto.Image == null || txtAdjunto.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen de Cotización", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen de Cotización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarPDF.Focus();
                 return;
             }
@@ -259,7 +259,7 @@ namespace HPReserger
                 if (NumeroCotizacion != 0)
                 {
                     MostrarPedidosAsociados(Item);
-                    MessageBox.Show("Cotización Nº " + Convert.ToString(NumeroCotizacion) + " asociado al Pedido Nº " + gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cotización Nº " + Convert.ToString(NumeroCotizacion) + " asociado al Pedido Nº " + gridCotizacion.Rows[Item].Cells[0].Value.ToString().Substring(2) + " se generó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -641,7 +641,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         decimal sumatoria = 0, valor = 0, total = 0;
 

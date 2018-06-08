@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FotoCheck));
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.lblnombre = new System.Windows.Forms.Label();
@@ -35,6 +36,7 @@
             this.lblObservacion = new System.Windows.Forms.Label();
             this.btnclose = new System.Windows.Forms.Button();
             this.btnprueba = new System.Windows.Forms.Button();
+            this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +44,6 @@
             // 
             this.pbFoto.BackColor = System.Drawing.Color.Transparent;
             this.pbFoto.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbFoto.Image = ((System.Drawing.Image)(resources.GetObject("pbFoto.Image")));
             this.pbFoto.Location = new System.Drawing.Point(0, 0);
             this.pbFoto.Name = "pbFoto";
             this.pbFoto.Size = new System.Drawing.Size(93, 82);
@@ -113,6 +114,13 @@
             this.btnprueba.UseVisualStyleBackColor = true;
             this.btnprueba.Visible = false;
             // 
+            // ListaImagenes
+            // 
+            this.ListaImagenes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ListaImagenes.ImageStream")));
+            this.ListaImagenes.TransparentColor = System.Drawing.Color.Transparent;
+            this.ListaImagenes.Images.SetKeyName(0, "icons8_User_100px.png");
+            this.ListaImagenes.Images.SetKeyName(1, "icons8_Curriculum_100px.png");
+            // 
             // FotoCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,5 +150,6 @@
         private System.Windows.Forms.Label lblObservacion;
         private System.Windows.Forms.Button btnclose;
         private System.Windows.Forms.Button btnprueba;
+        private System.Windows.Forms.ImageList ListaImagenes;
     }
 }

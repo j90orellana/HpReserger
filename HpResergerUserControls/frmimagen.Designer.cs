@@ -40,13 +40,13 @@
             // btnVer
             // 
             this.btnVer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnVer.BackColor = System.Drawing.Color.White;
+            this.btnVer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.btnVer.FlatAppearance.BorderSize = 0;
-            this.btnVer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(250)))));
-            this.btnVer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(250)))));
+            this.btnVer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.btnVer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.btnVer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVer.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVer.ForeColor = System.Drawing.Color.Black;
+            this.btnVer.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVer.ForeColor = System.Drawing.Color.White;
             this.btnVer.ImageKey = "(ninguno)";
             this.btnVer.Location = new System.Drawing.Point(32, 165);
             this.btnVer.Name = "btnVer";
@@ -56,7 +56,7 @@
             this.btnVer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.btnVer, "Ver");
             this.btnVer.UseMnemonic = false;
-            this.btnVer.UseVisualStyleBackColor = true;
+            this.btnVer.UseVisualStyleBackColor = false;
             this.btnVer.Visible = false;
             this.btnVer.Click += new System.EventHandler(this.btnVer_Click);
             this.btnVer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnVer_MouseMove);
@@ -64,13 +64,13 @@
             // btndescargar
             // 
             this.btndescargar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btndescargar.BackColor = System.Drawing.Color.White;
+            this.btndescargar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.btndescargar.FlatAppearance.BorderSize = 0;
-            this.btndescargar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(250)))));
-            this.btndescargar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(175)))), ((int)(((byte)(250)))));
+            this.btndescargar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.btndescargar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.btndescargar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btndescargar.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndescargar.ForeColor = System.Drawing.Color.Black;
+            this.btndescargar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndescargar.ForeColor = System.Drawing.Color.White;
             this.btndescargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btndescargar.ImageKey = "(ninguno)";
             this.btndescargar.Location = new System.Drawing.Point(109, 165);
@@ -81,7 +81,7 @@
             this.btndescargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.btndescargar, "Descargar");
             this.btndescargar.UseMnemonic = false;
-            this.btndescargar.UseVisualStyleBackColor = true;
+            this.btndescargar.UseVisualStyleBackColor = false;
             this.btndescargar.Visible = false;
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
             this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);

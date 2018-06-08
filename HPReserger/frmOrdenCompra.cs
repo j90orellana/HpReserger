@@ -98,21 +98,21 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         frmMensajeCorreo mensajito;
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             //Boolean salir = false;
             if (gridOC.RowCount > 0)
-                if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("¿ Seguro de Marcar la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + " como Enviado ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     drCOT = clOC.ListarDetalleOC(Convert.ToInt32(gridOC["cotizacion", gridOC.CurrentCell.RowIndex].Value.ToString().Substring(2)));
                     if (drCOT != null)
                         if (string.IsNullOrWhiteSpace(drCOT["correo"].ToString()))
                         {
                             MSG("Proveedor " + drCOT["correo"].ToString() + " no tiene correo Electrónico");
-                            //if (MessageBox.Show("Proveedor No tiene Correo Electrónico, Desea igual enviar", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            //if (MessageBox.Show("Proveedor No tiene Correo Electrónico, Desea igual enviar", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                             //{
                             //    salir = true;                               
                             //}
@@ -156,12 +156,12 @@ namespace HPReserger
         {
             if (gridOC.RowCount > 0)
             {
-                if (MessageBox.Show("¿ Seguro de Anular la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + "  ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("¿ Seguro de Anular la OC Nº " + gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2) + "  ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 0);
                     string OC2 = gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2);
                     Listar(frmLogin.CodigoUsuario);
-                    MessageBox.Show("La OC Nº " + OC2 + " se Anuló como éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("La OC Nº " + OC2 + " se Anuló como éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtProveedor.Text = txtImporte.Text = txtFechaEntrega.Text = "";
                 }
 
@@ -395,7 +395,7 @@ namespace HPReserger
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             string OC1 = gridOC.Rows[Item].Cells[ORDENCOMPRA.Name].Value.ToString().Substring(2);
-            MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("La OC Nº " + OC1 + " se marcó como Enviado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             try
             {
                 MailMessage email = new MailMessage();

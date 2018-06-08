@@ -30,7 +30,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -142,7 +142,7 @@ namespace HPReserger
                 mensajito.ShowDialog();
                 if (mensajito.ok)
                 {
-                    //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("La OC Nº " + dtgconten["oc", dtgconten.CurrentCell.RowIndex].Value.ToString() + " se marcó como Enviado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (!backgroundWorker1.IsBusy)
                     {
                         backgroundWorker1.RunWorkerAsync();

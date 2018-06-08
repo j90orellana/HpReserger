@@ -92,38 +92,38 @@ namespace HPReserger
         {
             if (cboBusqueda.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Búsqueda", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Tipo de Búsqueda", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboBusqueda.Focus();
                 return;
             }
             if (cboTerna.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Terna", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Terna", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 cboTerna.Focus();
                 return;
             }
             if (txtPuestos.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Cantidad de Puestos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Cantidad de Puestos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPuestos.Focus();
                 return;
             }
             if (txtAdjunto.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Seleccione Imagen", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtAdjunto.Focus();
                 return;
             }
             DataRow ExisteImagen = clSolicitudEmpleado.ExisteImagen("NombreFoto", txtAdjunto.Text.Trim(), "TBL_SolicitaEmpleado");
             if (ExisteImagen != null)
             {
-                MessageBox.Show("La imagen del requerimiento ya esta asociadao a otra Solicitud", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("La imagen del requerimiento ya esta asociadao a otra Solicitud", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 btnBuscarJPG.Focus();
                 return;
             }
             if (Convert.ToInt32(txtPuestos.Text) == 0)
             {
-                MessageBox.Show("Cant. Puestos NO puede ser cero", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Cant. Puestos NO puede ser cero", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtPuestos.Focus();
                 return;
             }
@@ -148,14 +148,14 @@ namespace HPReserger
             {
                 clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), (int)cboarea.SelectedValue, (int)cbogerencia.SelectedValue, Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
             }
-            MessageBox.Show("La Solicitud de Empleado Nº " + (txtSolicitud.Text.ToString()) + " se generó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("La Solicitud de Empleado Nº " + (txtSolicitud.Text.ToString()) + " se generó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             MostrarGrid(frmLogin.CodigoUsuario);
             Correlativo();
             Limpiar();
         }
         public void msg(string cadenar)
         {
-            MessageBox.Show(cadenar, "Hp Reseger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadenar, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void Grid1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -198,7 +198,7 @@ namespace HPReserger
             DataRow VerificaSE = clSolicitudEmpleado.VerificaEstadoSolicitudEmpleado(Solicitud);
             if (VerificaSE != null)
             {
-                MessageBox.Show("Solicitud ya tiene Postulantes vinculados", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Solicitud ya tiene Postulantes vinculados", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return true;
             }
             return false;
@@ -263,7 +263,7 @@ namespace HPReserger
                 {
                     if (SolicitudTienePostulantes(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2))) == false)
                     {
-                        if (MessageBox.Show("¿ Seguro de eliminar la Solicitud Nº " + Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2) + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        if (MessageBox.Show("¿ Seguro de eliminar la Solicitud Nº " + Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2) + " ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                         {
                             clSolicitudEmpleado.EliminarSolicitudEmpleado(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)));
                             MostrarGrid(frmLogin.CodigoUsuario);
@@ -282,7 +282,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         private void Limpiar()
         {

@@ -62,7 +62,7 @@ namespace HPReserger
         {
             if (Modificado)
             {
-                if (MessageBox.Show("Seguro Desea Salir", "Hp Reserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Seguro Desea Salir", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     this.Close();
                 }
@@ -96,7 +96,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void comboMesAño1_Click(object sender, EventArgs e)

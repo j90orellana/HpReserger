@@ -88,14 +88,14 @@ namespace HPReserger
                     if (dtgperfil[1, i].Value.ToString() == valor)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtdes.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Este valor:" + txtdes.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return Aux;
                     }
                 if (estado == 2)
                     if (dtgperfil[1, i].Value.ToString() == valor && i != cboperfiles.SelectedIndex)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtdes.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Este valor:" + txtdes.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return Aux;
                     }
             }
@@ -152,7 +152,7 @@ namespace HPReserger
                     RecorrerNodos(x, ultimo);
                 Activar(cboperfiles);
                 Desactivar(txtdes);
-                MessageBox.Show("Insertado con exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Insertado con exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -164,13 +164,13 @@ namespace HPReserger
                         RecorrerNodos(x, (int)cboperfiles.SelectedValue);
                     Activar(cboperfiles);
                     Desactivar(txtdes);
-                    MessageBox.Show("Modificado con exito", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Modificado con exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar " + txtdes.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar " + txtdes.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             cperfil.EliminarPerfil(Convert.ToInt32(txtcodigo.Text));
                             cperfil.ListarPerfiles((int)cboperfiles.SelectedValue, 10, 0, frmLogin.CodigoUsuario, DateTime.Now);

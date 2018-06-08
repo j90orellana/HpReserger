@@ -83,7 +83,7 @@ namespace HPReserger
             {
                 if (dtgdistritos[3, i].Value.ToString() == cbodistrito.Text)
                 {
-                    MessageBox.Show("Ya existe: '" + cbodistrito.Text + " '", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ya existe: '" + cbodistrito.Text + " '", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Aux = false;
                     break;
                 }
@@ -124,7 +124,7 @@ namespace HPReserger
                     }
                 }
                 CDistrito.insertardistrito(coddep, codpro, coddis, cbodistrito.Text);
-                MessageBox.Show("Distrito Ingresado Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Distrito Ingresado Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Txtbusca.Text = cbodistrito.Text; cbodistrito.DropDownStyle = ComboBoxStyle.DropDownList;
             }
             else
@@ -132,17 +132,17 @@ namespace HPReserger
                 if (estado == 2 && ValidarDes(cbodistrito.Text))
                 {
                     CDistrito.modificardistrito(coddep, codpro, coddis, cbodistrito.Text);
-                    MessageBox.Show("Distrito Modificado Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Distrito Modificado Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Txtbusca.Text = cbodistrito.Text; cbodistrito.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar: " + cbodistrito.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar: " + cbodistrito.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             CDistrito.eliminardistrito(coddep, codpro, coddis);
-                            MessageBox.Show("Distrito Eliminado Exitosamente", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Distrito Eliminado Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             Txtbusca.Text = "";
                         }
                     }

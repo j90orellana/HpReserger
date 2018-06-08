@@ -79,37 +79,37 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length != txtNumeroDocumento.MaxLength && cboTipoDocumentoIdentidad.Text != "CARNE EXTRANJERIA")
             {
-                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNumeroDocumento.Focus();
                 return;
             }
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Apellido Paterno", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Apellido Paterno", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoPaterno.Focus();
                 return;
             }
             if (txtApellidoMaterno.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Apellido Materno", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Apellido Materno", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtApellidoMaterno.Focus();
                 return;
             }
             if (txtNombres.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nombres", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Nombres", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtNombres.Focus();
                 return;
             }
             if (txtOcupacion.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Ocupación", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Ocupación", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtOcupacion.Focus();
                 return;
             }
@@ -144,7 +144,7 @@ namespace HPReserger
             if (check18.Checked) x = 1;
             else x = 0;
             clEmpleadoFamiliaModificar.EmpleadoFamilia(CodigoDocumentoEmpleado, NumeroDocumentoEmpleado, Convert.ToInt32(cboVinculoFamiliar.SelectedValue.ToString()), CodigoDocumentoFamiliar, NumeroDocumentoFamiliar, Convert.ToInt32(cboTipoDocumentoIdentidad.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, dtpFecha.Value, txtOcupacion.Text, frmLogin.CodigoUsuario, 0, conviviente, nombreconviviente, (int)cbosexo.SelectedValue, x);
-            MessageBox.Show("Vínculo Familiar modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Vínculo Familiar modificado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             IFormEmpleado FormEmpleado = MdiParent as IFormEmpleado;
             if (FormEmpleado != null)
                 FormEmpleado.CargarNroHijos(CodigoDocumentoEmpleado, NumeroDocumentoEmpleado);
@@ -153,7 +153,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void txtApellidoMaterno_TextChanged(object sender, EventArgs e)
         {

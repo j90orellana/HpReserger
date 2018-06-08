@@ -79,7 +79,7 @@ namespace HPReserger
             }
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
-                if (MessageBox.Show("Seguro Desea Eliminar esta fila", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Seguro Desea Eliminar esta fila", CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     gridItem.Rows.RemoveAt(e.RowIndex);
                 }
@@ -87,13 +87,13 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void gridItem_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("¿ Seguro de Eliminar ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                if (MessageBox.Show("¿ Seguro de Eliminar ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
                 {
                     e.Handled = true;
                 }
@@ -144,7 +144,7 @@ namespace HPReserger
                     gridItem.Rows.Clear();
                     gridItem.Refresh();
                     cboTipoPedido.SelectedIndex = 0;
-                    MessageBox.Show("El pedido Nº " + Convert.ToString(IdNumero).Trim() + " se grabó con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El pedido Nº " + Convert.ToString(IdNumero).Trim() + " se grabó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -153,7 +153,7 @@ namespace HPReserger
         {
             if (Grid.Rows.Count == 0)
             {
-                MessageBox.Show("Ingrese Articulos", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Articulos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return false;
             }
             int fila = 0;
@@ -168,38 +168,38 @@ namespace HPReserger
                 {
                     if (Grid.Rows[fila].Cells[Item.Name].Value == null)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Artículo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Artículo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     if (Grid.Rows[fila].Cells[CCx.Name].Value == null)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Centro de Costo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Centro de Costo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     if (Grid.Rows[fila].Cells[Marca.Name].Value == null)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar una Marca", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar una Marca", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     if (Grid.Rows[fila].Cells[Modelo.Name].Value == null)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Modelo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Modelo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     if (Grid.Rows[fila].Cells[Cantidad.Name].Value == null)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     if (string.IsNullOrWhiteSpace(Grid.Rows[fila].Cells[Cantidad.Name].Value.ToString()))
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     else
                         if (Convert.ToInt32(Grid.Rows[fila].Cells[Cantidad.Name].Value.ToString()) <= 0)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     else
@@ -209,7 +209,7 @@ namespace HPReserger
                         bool Res = decimal.TryParse(Cant1, out Cant2);
                         if (Res == false)
                         {
-                            MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " la Cantidad es inválida", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return false;
                         }
                     }
@@ -226,7 +226,7 @@ namespace HPReserger
                     {
                         if (Activofijo == (int)Grid.Rows[filaBuscar].Cells[Item.Name].Value && CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Item.Name].Value.ToString()) && CodigoMarca == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Marca.Name].Value.ToString()) && CodigoModelo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Modelo.Name].Value.ToString()) && fila != filaBuscar)
                         {
-                            MessageBox.Show("El Artículo " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " de Marca " + Grid.Rows[filaBuscar].Cells[Marca.Name].FormattedValue.ToString() + " de Modelo " + Grid.Rows[filaBuscar].Cells[Modelo.Name].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show("El Artículo " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " de Marca " + Grid.Rows[filaBuscar].Cells[Marca.Name].FormattedValue.ToString() + " de Modelo " + Grid.Rows[filaBuscar].Cells[Modelo.Name].FormattedValue.ToString() + " se esta duplicando", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return false;
                         }
                     }
@@ -238,12 +238,12 @@ namespace HPReserger
                 {
                     if (Grid.Rows[fila].Cells[Item.Name].Value == null)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Servicio", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe seleccionar un Servicio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                     if (Grid.Rows[fila].Cells[Cantidad.Name].Value == null)
                     {
-                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe ingresar Observaciones", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("En la Fila " + Convert.ToString(fila + 1).Trim() + " debe ingresar Observaciones", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return false;
                     }
                 }
@@ -257,7 +257,7 @@ namespace HPReserger
                         if (CodigoArticulo == Convert.ToInt32(Grid.Rows[filaBuscar].Cells[Item.Name].Value.ToString()) && fila != filaBuscar)
                         {
                             //VALIDAR QUE NO REPITA SERVICIOS
-                         //   MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " se esta duplicando", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                         //   MessageBox.Show("El Servicio " + Grid.Rows[filaBuscar].Cells[Item.Name].FormattedValue.ToString() + " se esta duplicando", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                           //  return false;
                         }
                     }
@@ -485,7 +485,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)

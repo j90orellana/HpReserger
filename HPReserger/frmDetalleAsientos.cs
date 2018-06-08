@@ -157,6 +157,18 @@ namespace HPReserger
                             // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
                             //return;
                         }
+                        if (item.Cells[FechaVencimientox.Name].Value == null)
+                        {
+                            // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
+                            item.Cells[FechaVencimientox.Name].Value = (fecha.AddMonths(1)).AddDays(-1);
+                            //return;
+                        }
+                        if (item.Cells[FechaVencimientox.Name].Value.ToString() == "")
+                        {
+                            item.Cells[FechaVencimientox.Name].Value = (fecha.AddMonths(1)).AddDays(-1);
+                            // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
+                            //return;
+                        }
                     }
                 }
                 CapaLogica.DetalleAsientos(10, asiento, idasiento);
@@ -167,7 +179,7 @@ namespace HPReserger
                         {
                             CapaLogica.DetalleAsientos(1, asiento, idasiento, cuenta, (int)item.Cells[tipodocx.Name].Value,
                                 item.Cells[numdocx.Name].Value.ToString(), item.Cells[razonsocialx.Name].Value.ToString(), (int)item.Cells[idcomprobantex.Name].Value, item.Cells[codcomprobantex.Name].Value.ToString(), item.Cells[numcomprobantex.Name].Value.ToString(),
-                                int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(), (DateTime)item.Cells[fechaemisionx.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
+                                int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(), (DateTime)item.Cells[fechaemisionx.Name].Value, (DateTime)item.Cells[FechaVencimientox.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
                                  (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario);
                         }
                 }
@@ -190,11 +202,11 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void Dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
@@ -238,7 +250,7 @@ namespace HPReserger
                         txt.KeyPress += new KeyPressEventHandler(Txt_KeyPressSoloNumeros);
                     }
                 }
-                if (y == Dtgconten.Columns[glosax.Name].Index || y == Dtgconten.Columns[fechaemisionx.Name].Index || y == Dtgconten.Columns[razonsocialx.Name].Index)
+                if (y == Dtgconten.Columns[glosax.Name].Index || y == Dtgconten.Columns[fechaemisionx.Name].Index || y == Dtgconten.Columns[FechaVencimientox.Name].Index || y == Dtgconten.Columns[razonsocialx.Name].Index)
                 {
                     txt = e.Control as TextBox;
                     if (txt != null)
@@ -316,7 +328,7 @@ namespace HPReserger
         private void Dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
-            if (x >= 0)
+            if (x >= 0 && x < Dtgconten.RowCount)
                 if (y == Dtgconten.Columns[tipocambiox.Name].Index || y == Dtgconten.Columns[importemex.Name].Index)
                 {
                     if (Dtgconten[tipocambiox.Name, x].Value != null)
@@ -332,7 +344,7 @@ namespace HPReserger
         private void Dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
-            if (x >= 0)
+            if (x >= 0 && x < Dtgconten.RowCount-1)
             {
                 if (y == Dtgconten.Columns[buttonCentroCosto.Name].Index && estado == 2)
                 {

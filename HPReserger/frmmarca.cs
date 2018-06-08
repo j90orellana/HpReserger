@@ -61,23 +61,23 @@ namespace HPReserger
             {
                 codmarca = dtgconten.RowCount + 1;
                 Cmarca.InsertarMarca(txtmarca.Text);
-                MessageBox.Show("Marca Ingresada con Id: " + codmarca, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Marca Ingresada con Id: " + codmarca, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtmarca.Text))
                 {
                     Cmarca.ActualizarMarca(Convert.ToInt32(txtcodigo.Text), txtmarca.Text);
-                    MessageBox.Show("Marca Actualizada con Id: " + txtcodigo.Text, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Marca Actualizada con Id: " + txtcodigo.Text, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     if (estado == 3)
                     {
-                        if (MessageBox.Show("Seguró Desea Eliminar " + txtmarca.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                        if (MessageBox.Show("Seguró Desea Eliminar " + txtmarca.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             Cmarca.EliminarMarca(Convert.ToInt32(txtcodigo.Text));
-                            MessageBox.Show("Marca Eliminada con Id: " + txtcodigo.Text, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Marca Eliminada con Id: " + txtcodigo.Text, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -107,14 +107,14 @@ namespace HPReserger
                     if (dtgconten[1, i].Value.ToString() == valor)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtmarca.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Este valor:" + txtmarca.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return Aux;
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Debe Ingresar Datos", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Debe Ingresar Datos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 Aux = false;
             }
             return Aux;

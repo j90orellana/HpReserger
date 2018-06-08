@@ -82,6 +82,7 @@
             this.reportesContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.flujoDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitudEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postulanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,7 +173,6 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
-            this.flujoDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             this.panelOre1.SuspendLayout();
@@ -719,6 +719,14 @@
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Text = "Estado De Resultado Integral";
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Click += new System.EventHandler(this.estadoDeGanaciasYPerdidasToolStripMenuItem_Click);
+            // 
+            // flujoDeCajaToolStripMenuItem
+            // 
+            this.flujoDeCajaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("flujoDeCajaToolStripMenuItem.Image")));
+            this.flujoDeCajaToolStripMenuItem.Name = "flujoDeCajaToolStripMenuItem";
+            this.flujoDeCajaToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.flujoDeCajaToolStripMenuItem.Text = "Flujo de Caja";
+            this.flujoDeCajaToolStripMenuItem.Click += new System.EventHandler(this.flujoDeCajaToolStripMenuItem_Click);
             // 
             // planillaToolStripMenuItem
             // 
@@ -1606,14 +1614,6 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
-            // flujoDeCajaToolStripMenuItem
-            // 
-            this.flujoDeCajaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("flujoDeCajaToolStripMenuItem.Image")));
-            this.flujoDeCajaToolStripMenuItem.Name = "flujoDeCajaToolStripMenuItem";
-            this.flujoDeCajaToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.flujoDeCajaToolStripMenuItem.Text = "Flujo de Caja";
-            this.flujoDeCajaToolStripMenuItem.Click += new System.EventHandler(this.flujoDeCajaToolStripMenuItem_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1628,7 +1628,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " Sistema de Gestión";
+            this.Text = " Sistema Integral de Gestión Empresarial";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenu_FormClosing);
             this.Load += new System.EventHandler(this.frmMenu_Load);

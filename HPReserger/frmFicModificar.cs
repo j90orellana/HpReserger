@@ -60,14 +60,14 @@ namespace HPReserger
         {
             if (txtGuia.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Guía de Remisión", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ingrese Guía de Remisión", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtGuia.Focus();
                 return;
             }
 
             if (txtCantFIC.Text.Length == 0 || Convert.ToInt32(txtCantFIC.Text) == 0)
             {
-                MessageBox.Show("Cantidad FIC inválida", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Cantidad FIC inválida", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCantFIC.Focus();
                 return;
             }
@@ -77,7 +77,7 @@ namespace HPReserger
                 DataTable dtGuiaRemisionProveedorM = clModificarFIC.OrdenCompraProveedor(Proveedor, Convert.ToInt32(txtGuia.Text), ordencompra, tipo);
                 if (dtGuiaRemisionProveedorM.Rows.Count > 0)
                 {
-                    MessageBox.Show(lblguia.Text + " ya existe", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show(lblguia.Text + " ya existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     txtGuia.Focus();
                     return;
                 }
@@ -85,7 +85,7 @@ namespace HPReserger
 
             if (Convert.ToInt32(txtCantOC.Text) < Convert.ToInt32(txtCantFIC.Text))
             {
-                MessageBox.Show("Cantidad FIC NO puede ser mayor a Cantidad OC", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Cantidad FIC NO puede ser mayor a Cantidad OC", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCantFIC.Focus();
                 return;
             }
@@ -94,7 +94,7 @@ namespace HPReserger
             clModificarFIC.FICEliminarItemDetalle(ItemDetalle, FIC, CodigoArticulo, CodigoMarca, CodigoModelo);
             clModificarFIC.FICDetalleInsertar(FIC, CodigoArticulo, CodigoMarca, CodigoModelo, Convert.ToInt32(txtCantFIC.Text), "", tipo, ccc);
 
-            MessageBox.Show("FIC modificado con éxito", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("FIC modificado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }

@@ -50,7 +50,7 @@ namespace HPReserger
                     if (dtgconten[1, i].Value.ToString() == valor)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtdepartamento.Text + " ya Existe", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show("Este valor:" + txtdepartamento.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return Aux;
                     }
                 }
@@ -99,20 +99,20 @@ namespace HPReserger
                 if (estado == 1 && ValidarDes(txtdepartamento.Text))
                 {
                     Cdepartamento.InsertarDepartamento(txtdepartamento.Text);
-                    MessageBox.Show("Departamento: " + txtdepartamento.Text + " Insertado", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Departamento: " + txtdepartamento.Text + " Insertado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
                     if (estado == 2 && ValidarDes(txtdepartamento.Text))
                     {
                         Cdepartamento.ActualizarDepartamento(txtdepartamento.Text.ToString(), Convert.ToInt32(txtcodigo.Text));
-                        MessageBox.Show("Departamento: " + txtdepartamento.Text + " Actualizado", "Hp Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Departamento: " + txtdepartamento.Text + " Actualizado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
                         if (estado == 3)
                         {
-                            if (MessageBox.Show("Seguró Desea Eliminar " + txtdepartamento.Text, "Hp Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
+                            if (MessageBox.Show("Seguró Desea Eliminar " + txtdepartamento.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                             {
                                 Cdepartamento.EliminarDepartamento(Convert.ToInt32(txtcodigo.Text));
                             }

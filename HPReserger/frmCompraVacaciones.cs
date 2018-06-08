@@ -93,18 +93,18 @@ namespace HPReserger
         {
             if (txtDiasComprar.Text.Length == 0 || Convert.ToInt32(txtDiasComprar.Text) <= 0)
             {
-                MessageBox.Show("Días Inválido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Días Inválido", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtDiasComprar.Focus();
                 return;
             }
             if (Convert.ToInt32(txtDiasComprar.Text) > 15)
             {
-                MessageBox.Show("Solo puedes Comprar 15 Días Como Máximo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Solo puedes Comprar 15 Días Como Máximo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             if (Convert.ToInt32(txtDiasComprar.Text) > Convert.ToInt32(txtMaximoDias.Text))
             {
-                MessageBox.Show("Solo puedes tomar " + Convert.ToString(txtMaximoDias.Text) + " días de vacaciones como máximo", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Solo puedes tomar " + Convert.ToString(txtMaximoDias.Text) + " días de vacaciones como máximo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             DateTime FechaMaxima;
@@ -116,11 +116,11 @@ namespace HPReserger
                 int Resultado = DateTime.Compare(dtpPeriodoComprarDesde.Value.Date, FechaMaxima.Date);
                 if (Resultado <= 0)
                 {
-                    MessageBox.Show("Fecha de Inicio debe ser posterior a la última Fecha Fin aprobada", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Fecha de Inicio debe ser posterior a la última Fecha Fin aprobada", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
             }
-            if (MessageBox.Show("¿ Seguro de Comprar las Vacaciones ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("¿ Seguro de Comprar las Vacaciones ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 clCompraVacaciones.ComprarVacaciones(TipoDocumento, NumeroDocumento, dtpPeriodoComprarDesde.Value, dtpPeriodoComprarHasta.Value, Convert.ToInt32(txtDiasComprar.Text), Convert.ToDecimal(txtMontoPropuesto.Text), Convert.ToDecimal(txtMontoPactado.Text), frmLogin.CodigoUsuario, cbopago.SelectedIndex + 1, txtobservacion.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;

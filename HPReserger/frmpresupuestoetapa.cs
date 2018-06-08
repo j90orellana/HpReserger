@@ -105,7 +105,7 @@ namespace HPReserger
         decimal numero = 0.00m;
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         private void dtgconten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {

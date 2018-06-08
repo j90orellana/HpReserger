@@ -111,7 +111,7 @@ namespace HPReserger
         {
             if (dtpDesde.Value > dtpHasta.Value)
             {
-                MessageBox.Show("La Fecha Desde NO puede ser mayor a la Fecha Hasta", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("La Fecha Desde NO puede ser mayor a la Fecha Hasta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 dtpDesde.Focus();
                 return;
             }
@@ -382,7 +382,7 @@ namespace HPReserger
 
                 if (gridListar.CurrentRow.Cells[3].Value.ToString().Trim() == "COTIZADO" || gridListar.CurrentRow.Cells[3].Value.ToString().Trim() == "ANULADO" || gridListar.CurrentRow.Cells[3].Value.ToString().Trim() == "OC" || gridListar.CurrentRow.Cells[3].Value.ToString().Trim() == "Cotizado OC" || gridListar.CurrentRow.Cells[3].Value.ToString().Trim() == "Cotizado Completo")
                 {
-                    MessageBox.Show("NO se puede Editar o Anular el Pedido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("NO se puede Editar o Anular el Pedido", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
@@ -467,15 +467,15 @@ namespace HPReserger
             {
                 if (gridListar.CurrentRow.Cells[3].Value.ToString() == "" || gridListar.CurrentRow.Cells[3].Value.ToString() == "Cotizado Completo" || gridListar.CurrentRow.Cells[3].Value.ToString().Trim() == "" || gridListar.CurrentRow.Cells[3].Value.ToString() == "Cotizado OC")
                 {
-                    MessageBox.Show("NO se puede Editar o Anular el Pedido", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("NO se puede Editar o Anular el Pedido", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
-                if (MessageBox.Show("¿ Seguro de anular Pedido Nº " + gridListar.CurrentRow.Cells[1].Value.ToString().Trim() + " ?", "HP Reserger", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("¿ Seguro de anular Pedido Nº " + gridListar.CurrentRow.Cells[1].Value.ToString().Trim() + " ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     clListarPedido.AnularOrdenPedido(Convert.ToInt32(gridListar.CurrentRow.Cells[1].Value.ToString()));
                     MostrarPedidos(frmLogin.CodigoUsuario);
-                    MessageBox.Show("Pedido anulado", "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Pedido anulado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -532,7 +532,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void gridDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -540,7 +540,7 @@ namespace HPReserger
             {
                 if (gridListar["estado", gridListar.CurrentCell.RowIndex].Value.ToString() == "PENDIENTE")
                 {
-                    if (MessageBox.Show("Desea Eliminar Item?", "HpReserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Desea Eliminar Item?", CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         clListarPedido.EliminarItemOrdenPedido((int)gridListar["numero", gridListar.CurrentCell.RowIndex].Value, (int)gridDetalle["codigoarticulo", gridDetalle.CurrentCell.RowIndex].Value);
                         msg("Item Eliminado Con Exito"); MostrarPedidos(frmLogin.CodigoUsuario);
