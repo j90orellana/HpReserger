@@ -63,7 +63,6 @@ namespace HPReserger
                 mytable.ApplyLogOnInfo(myTableLogonInfo);
                 //myTable.ApplyLogOnInfo(myTableLogonInfo)
             }
-
             //crvboletas.ReportSource = reporte;
             // Private Sub SetDBLogonForReport(ByVal myConnectionInfo As ConnectionInfo, ByVal myReportDocument As ReportDocument)            
 
@@ -72,6 +71,7 @@ namespace HPReserger
             //reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS,datos.DATASOURCE, "sige");
             //CrystalDecisions.Shared.PdfFormatOptions options = new CrystalDecisions.Shared.PdfFormatOptions();
             //options.CreateBookmarksFromGroupTree = true;
+
             crvboletas.ReportSource = reporte;
             foreach (Control x in crvboletas.Controls)
             {

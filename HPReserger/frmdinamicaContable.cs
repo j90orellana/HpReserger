@@ -651,5 +651,19 @@ namespace HPReserger
                 }
             }
         }
+
+        private void cbooperacion_Click(object sender, EventArgs e)
+        {
+            string text = cbooperacion.Text;
+            CargarOperacion(cbooperacion);
+            cbooperacion.Text = text;
+        }
+
+        private void cbosuboperacion_Click(object sender, EventArgs e)
+        {
+            string text = cbosuboperacion.Text;
+            CargarSubOperacion(cbosuboperacion);
+            cbosuboperacion.Text = text;
+        }
     }
 }

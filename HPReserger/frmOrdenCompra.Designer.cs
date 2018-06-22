@@ -74,6 +74,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pbCotizacion = new System.Windows.Forms.PictureBox();
             this.btndescargar = new System.Windows.Forms.Button();
+            this.btnaprobar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridOC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCotizacion)).BeginInit();
@@ -416,9 +417,9 @@
             this.btnEnviar.Image = ((System.Drawing.Image)(resources.GetObject("btnEnviar.Image")));
             this.btnEnviar.Location = new System.Drawing.Point(727, 557);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(75, 24);
+            this.btnEnviar.Size = new System.Drawing.Size(146, 24);
             this.btnEnviar.TabIndex = 39;
-            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.Text = "Enviar y Aprobar";
             this.btnEnviar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEnviar.UseVisualStyleBackColor = true;
             this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
@@ -427,9 +428,9 @@
             // 
             this.btnAnular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnular.Image = ((System.Drawing.Image)(resources.GetObject("btnAnular.Image")));
-            this.btnAnular.Location = new System.Drawing.Point(727, 587);
+            this.btnAnular.Location = new System.Drawing.Point(803, 587);
             this.btnAnular.Name = "btnAnular";
-            this.btnAnular.Size = new System.Drawing.Size(75, 24);
+            this.btnAnular.Size = new System.Drawing.Size(70, 24);
             this.btnAnular.TabIndex = 40;
             this.btnAnular.Text = "Anular";
             this.btnAnular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -490,6 +491,19 @@
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
             this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);
             // 
+            // btnaprobar
+            // 
+            this.btnaprobar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaprobar.Image = ((System.Drawing.Image)(resources.GetObject("btnaprobar.Image")));
+            this.btnaprobar.Location = new System.Drawing.Point(727, 587);
+            this.btnaprobar.Name = "btnaprobar";
+            this.btnaprobar.Size = new System.Drawing.Size(70, 24);
+            this.btnaprobar.TabIndex = 113;
+            this.btnaprobar.Text = "Aprobar";
+            this.btnaprobar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaprobar.UseVisualStyleBackColor = true;
+            this.btnaprobar.Click += new System.EventHandler(this.btnaprobar_Click);
+            // 
             // frmOrdenCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +511,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(885, 623);
+            this.Controls.Add(this.btnaprobar);
             this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.pbCotizacion);
             this.Controls.Add(this.txtmoneda);
@@ -567,5 +582,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pbCotizacion;
         private System.Windows.Forms.Button btndescargar;
+        private System.Windows.Forms.Button btnaprobar;
     }
 }

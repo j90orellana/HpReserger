@@ -439,10 +439,12 @@ namespace HPReserger
             ItemListar = e.RowIndex;
             DataGridViewComboBoxColumn celdita;
             celdita = gridDetalle.Columns[ActivoFijox.Name] as DataGridViewComboBoxColumn;
-            celdita.DataSource = tablita;
-            celdita.DisplayMember = "valor";
-            celdita.ValueMember = "codigo";
-
+            if (celdita != null)
+            {
+                celdita.DataSource = tablita;
+                celdita.DisplayMember = "valor";
+                celdita.ValueMember = "codigo";
+            }
         }
 
         private void dtpDesde_KeyPress(object sender, KeyPressEventArgs e)
@@ -540,7 +542,7 @@ namespace HPReserger
             {
                 if (gridListar["estado", gridListar.CurrentCell.RowIndex].Value.ToString() == "PENDIENTE")
                 {
-                    if (MessageBox.Show("Desea Eliminar Item?", CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("Desea Eliminar Item?", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         clListarPedido.EliminarItemOrdenPedido((int)gridListar["numero", gridListar.CurrentCell.RowIndex].Value, (int)gridDetalle["codigoarticulo", gridDetalle.CurrentCell.RowIndex].Value);
                         msg("Item Eliminado Con Exito"); MostrarPedidos(frmLogin.CodigoUsuario);

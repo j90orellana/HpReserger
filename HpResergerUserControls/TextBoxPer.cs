@@ -82,8 +82,8 @@ namespace HpResergerUserControls
                 this.Text = TextoPorDefecto;
                 this.ForeColor = ColorTextoDefecto;
             }
-        }
-        
+            base.OnLeave(e);
+        }        
         protected override void OnClick(EventArgs e)
         {
             if (this.Text.ToUpper() == this.TextoPorDefecto.ToUpper())
@@ -91,21 +91,25 @@ namespace HpResergerUserControls
                 this.Text = "";
                 this.ForeColor = ColorLetras;
             }
+            base.OnClick(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (!ColorFondoMouseEncima.IsEmpty)
                 this.BackColor = ColorFondoMouseEncima;
+            base.OnMouseMove(e);
         }
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (!ColorFondoMousePresionado.IsEmpty)
                 this.BackColor = ColorFondoMousePresionado;
+            base.OnMouseDown(e);
         }
         protected override void OnMouseLeave(EventArgs e)
         {
             if (!ColorFondo.IsEmpty)
                 this.BackColor = ColorFondo;
+            base.OnMouseLeave(e);
         }
         public Boolean EstaLLeno()
         {
@@ -118,6 +122,7 @@ namespace HpResergerUserControls
         {
             if (Text != TextoPorDefecto)
                 ForeColor = ColorLetras;
+            base.OnTextChanged(e);
         }
         private Control _NextControlOnEnter;
         protected override void OnKeyPress(KeyPressEventArgs e)
@@ -154,6 +159,7 @@ namespace HpResergerUserControls
             {
                 HPResergerFunciones.Utilitarios.ValidarCuentaBancos(e, this, this.MaxLength);
             }
+            base.OnKeyDown(e);
         }
     }
 }

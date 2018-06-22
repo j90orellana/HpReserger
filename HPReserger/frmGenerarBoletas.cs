@@ -114,6 +114,9 @@ namespace HPReserger
                             DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
                             int ultimo = 1 + (int)Ultimo["ultimo"];
                             DataRow Filita = Tablita.Rows[0];
+                            DataTable Ultimox = CReporteboleta.UltimoAsiento((int)cboempresa.SelectedValue);
+                            Ultimo = Ultimox.Rows[0];
+                            ultimo = 1 + ((int)Ultimo["codigo"]);
                             foreach (DataColumn col in Tablita.Columns)
                             {
                                 CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
@@ -143,6 +146,7 @@ namespace HPReserger
                         boletas.tipo = tipo;
                         boletas.numero = numero;
                         boletas.fecha = 1;
+                        boletas.Icon = Icon;
                         boletas.fechainicial = inicial;
                         boletas.Fechafin = final;
                         boletas.Show();
@@ -178,11 +182,14 @@ namespace HPReserger
                     DataTable Tablita = new DataTable();
                     Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                     if (Tablita.Rows.Count > 0)
-                        if ( (Tablita.Rows[0])[0].ToString().ToUpper() != "")
+                        if ((Tablita.Rows[0])[0].ToString().ToUpper() != "")
                         {
                             DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
                             int ultimo = 1 + (int)Ultimo["ultimo"];
                             DataRow Filita = Tablita.Rows[0];
+                            DataTable Ultimox = CReporteboleta.UltimoAsiento((int)cboempresa.SelectedValue);
+                            Ultimo = Ultimox.Rows[0];
+                            ultimo = 1 + ((int)Ultimo["codigo"]);
                             foreach (DataColumn col in Tablita.Columns)
                             {
                                 CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
@@ -210,6 +217,7 @@ namespace HPReserger
                 boletas.tipo = tipo;
                 boletas.numero = numero;
                 boletas.fecha = 1;
+                boletas.Icon = Icon;
                 boletas.fechainicial = inicial;
                 boletas.Fechafin = final;
                 boletas.Show();

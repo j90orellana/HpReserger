@@ -42,12 +42,10 @@
             this.crvboletas.Location = new System.Drawing.Point(0, 0);
             this.crvboletas.Name = "crvboletas";
             this.crvboletas.ShowCloseButton = false;
-            this.crvboletas.ShowGroupTreeButton = false;
             this.crvboletas.ShowLogo = false;
             this.crvboletas.ShowParameterPanelButton = false;
             this.crvboletas.Size = new System.Drawing.Size(1030, 466);
             this.crvboletas.TabIndex = 0;
-            this.crvboletas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crvboletas.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crvboletas_ReportRefresh);
             // 
             // frmreporteboletasfin

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmrProyectodatos));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -149,6 +149,7 @@
             this.label56 = new System.Windows.Forms.Label();
             this.txtimprevistos = new System.Windows.Forms.TextBox();
             this.btnguardar = new System.Windows.Forms.Button();
+            this.btnnuevo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -203,8 +204,8 @@
             this.Dtgconten.AllowUserToDeleteRows = false;
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -268,9 +269,9 @@
             // 
             this.fechainicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechainicio.DataPropertyName = "fecha_inicio";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.fechainicio.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.fechainicio.DefaultCellStyle = dataGridViewCellStyle6;
             this.fechainicio.HeaderText = "Fecha Inicio";
             this.fechainicio.Name = "fechainicio";
             this.fechainicio.ReadOnly = true;
@@ -280,8 +281,8 @@
             // 
             this.fechafin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechafin.DataPropertyName = "fecha_fin";
-            dataGridViewCellStyle3.Format = "d";
-            this.fechafin.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Format = "d";
+            this.fechafin.DefaultCellStyle = dataGridViewCellStyle7;
             this.fechafin.HeaderText = "Fecha Fin";
             this.fechafin.Name = "fechafin";
             this.fechafin.ReadOnly = true;
@@ -291,8 +292,8 @@
             // 
             this.mesesconstruccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.mesesconstruccion.DataPropertyName = "meses_construccion";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.mesesconstruccion.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.mesesconstruccion.DefaultCellStyle = dataGridViewCellStyle8;
             this.mesesconstruccion.HeaderText = "Meses";
             this.mesesconstruccion.Name = "mesesconstruccion";
             this.mesesconstruccion.ReadOnly = true;
@@ -1369,11 +1370,28 @@
             this.btnguardar.UseVisualStyleBackColor = true;
             this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
             // 
+            // btnnuevo
+            // 
+            this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnnuevo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnnuevo.ForeColor = System.Drawing.Color.Black;
+            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
+            this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnnuevo.Location = new System.Drawing.Point(461, 10);
+            this.btnnuevo.Name = "btnnuevo";
+            this.btnnuevo.Size = new System.Drawing.Size(110, 24);
+            this.btnnuevo.TabIndex = 64;
+            this.btnnuevo.Text = "Productos";
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnnuevo.UseVisualStyleBackColor = true;
+            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
+            // 
             // fmrProyectodatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 779);
+            this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.btnguardar);
             this.Controls.Add(this.groupBox13);
             this.Controls.Add(this.groupBox12);
@@ -1394,6 +1412,8 @@
             this.Name = "fmrProyectodatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalles del Proyecto";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fmrProyectodatos_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fmrProyectodatos_FormClosed);
             this.Load += new System.EventHandler(this.fmrProyectodatos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1545,5 +1565,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.Button btnnuevo;
     }
 }

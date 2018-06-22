@@ -1271,7 +1271,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
        string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-       string traslacion, string bc)
+       string traslacion, string bc, int soli)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1302,6 +1302,7 @@ namespace HPResergerCapaDatos
 
                     cmd.Parameters.Add("@traslacion", SqlDbType.VarChar, 150).Value = traslacion;
                     cmd.Parameters.Add("@bc", SqlDbType.VarChar, 150).Value = bc;
+                    cmd.Parameters.Add("@soli", SqlDbType.Int).Value = soli;
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
@@ -1310,38 +1311,11 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarCuentasContables(string codcuenta, string generica, string grupo,
      string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-     string traslacion, string bc, string naturaleza)
+     string traslacion, string bc, string naturaleza, int soli)
         {
-            using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
-            {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = cn;
-                    cmd.CommandText = "dbo.usp_actualizar_cuentas_contables";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add("@codcuenta", SqlDbType.Int).Value = codcuenta;
-                    cmd.Parameters.Add("@generica", SqlDbType.VarChar, 150).Value = generica;
-                    cmd.Parameters.Add("@grupo", SqlDbType.VarChar, 150).Value = grupo;
-                    cmd.Parameters.Add("@refleja", SqlDbType.VarChar, 150).Value = refleja;
-                    cmd.Parameters.Add("@reflejacc", SqlDbType.VarChar, 150).Value = reflejacc;
-
-                    cmd.Parameters.Add("@reflejadebe", SqlDbType.VarChar, 150).Value = reflejadebe;
-                    cmd.Parameters.Add("@reflejahaber", SqlDbType.VarChar, 150).Value = reflejahaber;
-                    cmd.Parameters.Add("@cuentacierre", SqlDbType.VarChar, 150).Value = cuentacierre;
-                    cmd.Parameters.Add("@analitica", SqlDbType.VarChar, 150).Value = analitica;
-
-                    cmd.Parameters.Add("@mensual", SqlDbType.VarChar, 150).Value = mensual;
-                    cmd.Parameters.Add("@cierre", SqlDbType.VarChar, 150).Value = cierre;
-                    cmd.Parameters.Add("@traslacion", SqlDbType.VarChar, 150).Value = traslacion;
-                    cmd.Parameters.Add("@bc", SqlDbType.VarChar, 150).Value = bc;
-                    cmd.Parameters.Add("@naturaleza", SqlDbType.VarChar, 150).Value = naturaleza;
-                    cmd.ExecuteNonQuery();
-                }
-                cn.Close();
-                cn.Dispose();
-            }
+            string[] parametros = { "@codcuenta", "@generica", "@grupo", "@refleja", "@reflejacc", "@reflejadebe", "@reflejahaber", "@cuentacierre", "@analitica", "@mensual", "@cierre", "@traslacion", "@bc", "@naturaleza", "@soli" };
+            object[] valores = { codcuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli };
+            bd.DataTableFromProcedure("usp_actualizar_cuentas_contables", parametros, valores, null);           
         }
         public void InsertarProveedor(string anterior, string ruc, string razon, string nombre, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
             string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctaasoles, int ctadolares)
@@ -1574,7 +1548,12 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-
+        public DataTable ELiminarCotizacionTotal(int cotizacion)
+        {
+            string[] parametros = { "@Cotizacion" };
+            object[] valores = { cotizacion };
+            return bd.DataTableFromProcedure("usp_EliminarCotizacionTotal", parametros, valores, null);
+        }
         public void AnularOrdenPedido(int Numero)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
@@ -2543,7 +2522,24 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-
+        public DataTable ProductosProyecto(int codigo, int opcion, string cadena, int usuarioo)
+        {
+            string[] parametros = { "@cod", "@opcion", "@descripcion", "@usuario" };
+            object[] valores = { codigo, opcion, cadena, usuarioo };
+            return bd.DataTableFromProcedure("usp_ProductosProyecto", parametros, valores, null);
+        }
+        public DataTable RegistroVentas(int opcion, string tipo, int nrocompra, string tipoid, string nro, string cliente, string producto, string proyecto, int etapa, int cantida, decimal precio, int vendedor, int usuario)
+        {
+            object[] valores = { opcion, tipo, nrocompra, tipoid, nro, cliente, producto, proyecto, etapa, cantida, precio, vendedor, usuario };
+            string[] parametros = { "@opcion", "@tipo", "@nrocompro", "@tipoid", "@nro", "@cliente", "@producto", "@proyecto", "@etapa", "@cantidad", "@precio", "@vendedor", "@usuario" };
+            return bd.DataTableFromProcedure("usp_RegistroVentas", parametros, valores, null);
+        }
+        public DataTable Proyecto_Productos(int codigo, int opcion, int proy, int prod, decimal metros, decimal precio, int piso, string etapa, int estado, string observacion, int usuarioo)
+        {
+            string[] parametros = { "@cod", "@opcion", "@proy", "@prod", "@metros", "@precio", "@piso", "@etapa", "@estado", "@observacion", "@usuario" };
+            object[] valores = { codigo, opcion, proy, prod, metros, precio, piso, etapa, estado, observacion, usuarioo };
+            return bd.DataTableFromProcedure("usp_Proyecto_Productos", parametros, valores, null);
+        }
         public DataRow VerificaEstadoSolicitudEmpleado(int Solicitud)
         {
             string[] parametros = { "@ID_SolicitaEmpleado" };
@@ -3465,6 +3461,21 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@año", "@empresa" };
             object[] valores = { año, empresa };
             return bd.DataTableFromProcedure("usp_EstadodeGanaciasPerdidas", parametros, valores, null);
+        }
+        public DataTable SacarResultadoEjercicio(DateTime anio, int empresa)
+        {
+            string año = $"'{anio.Year.ToString("0000")}{anio.Month.ToString("00")}{anio.Day.ToString("00")}'";
+            string cadena = $"select 59 i,'UTILIDAD (o perdida) NETA'Campo,isnull(sum(Saldo_Haber - Saldo_Debe), 0.00)Total, {empresa} Empresa from TBL_Asiento_Contable ac " +
+            $"inner join TBL_Proyecto pr on pr.Id_Proyecto = ac.id_proyecto and pr.Id_Empresa = {empresa}  where estado!= 0 and year(isnull(Fecha_Asiento_Valor, Fecha_Asiento)) " +
+            $"= year({año}) and MONTH(isnull(Fecha_Asiento_Valor, Fecha_Asiento)) <= month({año}) and MONTH(isnull(Fecha_Asiento_Valor, Fecha_Asiento)) <= month({año}) and MONTH({año}) " +
+            $"< (MONTH(getdate()) + (year(GETDATE()) - year({año})) * 12) and((Cuenta_Contable like '70%') or(Cuenta_Contable like '63%'))";
+            return bd.DataTableFromQuery(cadena);
+        }
+        public DataTable FLujodeCaja(DateTime fechaini, DateTime fechafin, string nombre, int empresa, int tamañoletras)
+        {
+            string[] parametros = { "@fechamin", "@fechamax", "@empresa", "@lenmes" };
+            object[] valores = { fechaini, fechafin, empresa, tamañoletras };
+            return bd.DataTableFromProcedure("usp_FlujodeCajas", parametros, valores, null);
         }
         public DataTable BalanceGenerarlActivoCorriente(DateTime año, int empresa)
         {

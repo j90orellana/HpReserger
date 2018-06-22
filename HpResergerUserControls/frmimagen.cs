@@ -16,7 +16,7 @@ namespace HpResergerUserControls
         {
             InitializeComponent();
         }
-        public Image Imagen { get { return pbfoto.Image; }set { pbfoto.Image = value; } }
+        public Image Imagen { get { return pbfoto.Image; } set { pbfoto.Image = value; } }
         public void AsignarPadre(Form father) { Padre = father; }
         string nombre;
         public Form Padre { get; set; }
@@ -38,7 +38,6 @@ namespace HpResergerUserControls
                 btnVer.Visible = true;
             }
         }
-
         private void pbfoto_DoubleClick(object sender, EventArgs e)
         {
             MostrarFoto(pbfoto);
@@ -53,23 +52,18 @@ namespace HpResergerUserControls
                 foto.ShowDialog();
             }
         }
-
         private void btnVer_MouseMove(object sender, MouseEventArgs e)
         {
             if (pbfoto.Image != null)
                 btnVer.Visible = true;
         }
-
         private void btnVer_Click(object sender, EventArgs e)
         {
             pbfoto_DoubleClick(sender, e);
         }
-
         private void pbfoto_MouseLeave(object sender, EventArgs e)
         {
-
         }
-
         private void frmimagen_MouseMove(object sender, MouseEventArgs e)
         {
             if (pbfoto.Image != null)
@@ -78,7 +72,6 @@ namespace HpResergerUserControls
                 btnVer.Visible = false;
             }
         }
-
         private void frmimagen_MouseLeave(object sender, EventArgs e)
         {
 

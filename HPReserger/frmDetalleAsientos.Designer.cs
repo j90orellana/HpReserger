@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetalleAsientos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,6 +40,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Dtgconten = new System.Windows.Forms.DataGridView();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
@@ -124,8 +128,8 @@
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
             this.Dtgconten.Size = new System.Drawing.Size(1276, 498);
@@ -313,6 +317,8 @@
             // 
             this.tipodocx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.tipodocx.DataPropertyName = "Tipo_Doc";
+            dataGridViewCellStyle3.NullValue = "NINGUNO";
+            this.tipodocx.DefaultCellStyle = dataGridViewCellStyle3;
             this.tipodocx.HeaderText = "Tipo Doc.";
             this.tipodocx.MinimumWidth = 50;
             this.tipodocx.Name = "tipodocx";
@@ -324,8 +330,8 @@
             // 
             this.numdocx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.numdocx.DataPropertyName = "Num_Doc";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.numdocx.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.NullValue = "0";
+            this.numdocx.DefaultCellStyle = dataGridViewCellStyle4;
             this.numdocx.HeaderText = "Num. Doc.";
             this.numdocx.MaxInputLength = 14;
             this.numdocx.MinimumWidth = 65;
@@ -336,8 +342,8 @@
             // 
             this.razonsocialx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.razonsocialx.DataPropertyName = "Razon_Social";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.razonsocialx.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.razonsocialx.DefaultCellStyle = dataGridViewCellStyle5;
             this.razonsocialx.HeaderText = "Razon Social";
             this.razonsocialx.MaxInputLength = 200;
             this.razonsocialx.MinimumWidth = 70;
@@ -348,6 +354,8 @@
             // 
             this.idcomprobantex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.idcomprobantex.DataPropertyName = "Id_Comprobante";
+            dataGridViewCellStyle6.NullValue = "Ninguno";
+            this.idcomprobantex.DefaultCellStyle = dataGridViewCellStyle6;
             this.idcomprobantex.HeaderText = "Comprobante";
             this.idcomprobantex.MinimumWidth = 50;
             this.idcomprobantex.Name = "idcomprobantex";
@@ -359,8 +367,8 @@
             // 
             this.codcomprobantex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.codcomprobantex.DataPropertyName = "Cod_Comprobante";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.codcomprobantex.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.NullValue = "0";
+            this.codcomprobantex.DefaultCellStyle = dataGridViewCellStyle7;
             this.codcomprobantex.FillWeight = 50F;
             this.codcomprobantex.HeaderText = "Cod. Compro.";
             this.codcomprobantex.MaxInputLength = 4;
@@ -372,8 +380,8 @@
             // 
             this.numcomprobantex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.numcomprobantex.DataPropertyName = "Num_Comprobante";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.numcomprobantex.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.NullValue = "0";
+            this.numcomprobantex.DefaultCellStyle = dataGridViewCellStyle8;
             this.numcomprobantex.FillWeight = 70F;
             this.numcomprobantex.HeaderText = "Num. Comprobante";
             this.numcomprobantex.MaxInputLength = 10;
@@ -385,6 +393,8 @@
             // 
             this.centrocostox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.centrocostox.DataPropertyName = "Centro_Costo";
+            dataGridViewCellStyle9.NullValue = "NINGUNO";
+            this.centrocostox.DefaultCellStyle = dataGridViewCellStyle9;
             this.centrocostox.FillWeight = 200F;
             this.centrocostox.HeaderText = "Centro de Costos";
             this.centrocostox.MinimumWidth = 200;
@@ -410,10 +420,9 @@
             // 
             this.fechaemisionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.fechaemisionx.DataPropertyName = "Fecha_Emision";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = "01/01/1990";
-            this.fechaemisionx.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "d";
+            this.fechaemisionx.DefaultCellStyle = dataGridViewCellStyle10;
             this.fechaemisionx.HeaderText = "Fecha Emisión";
             this.fechaemisionx.MinimumWidth = 85;
             this.fechaemisionx.Name = "fechaemisionx";
@@ -423,6 +432,9 @@
             // 
             this.FechaVencimientox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.FechaVencimientox.DataPropertyName = "Fecha_Vencimiento";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "d";
+            this.FechaVencimientox.DefaultCellStyle = dataGridViewCellStyle11;
             this.FechaVencimientox.HeaderText = "Fecha.Venc.";
             this.FechaVencimientox.MinimumWidth = 80;
             this.FechaVencimientox.Name = "FechaVencimientox";
@@ -432,10 +444,10 @@
             // 
             this.importemnx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.importemnx.DataPropertyName = "Importe_MN";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "n2";
-            dataGridViewCellStyle8.NullValue = "0.00";
-            this.importemnx.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "n2";
+            dataGridViewCellStyle12.NullValue = "0.00";
+            this.importemnx.DefaultCellStyle = dataGridViewCellStyle12;
             this.importemnx.HeaderText = "Imp. Mon. Nac.";
             this.importemnx.MinimumWidth = 90;
             this.importemnx.Name = "importemnx";
@@ -445,10 +457,10 @@
             // 
             this.importemex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.importemex.DataPropertyName = "Importe_ME";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "n2";
-            dataGridViewCellStyle9.NullValue = "0.00";
-            this.importemex.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "n2";
+            dataGridViewCellStyle13.NullValue = "0.00";
+            this.importemex.DefaultCellStyle = dataGridViewCellStyle13;
             this.importemex.HeaderText = "Imp. Mon. Extran.";
             this.importemex.MinimumWidth = 100;
             this.importemex.Name = "importemex";
@@ -457,10 +469,10 @@
             // 
             this.tipocambiox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.tipocambiox.DataPropertyName = "tipo_cambio";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "0.0000";
-            dataGridViewCellStyle10.NullValue = "0.0000";
-            this.tipocambiox.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "0.0000";
+            dataGridViewCellStyle14.NullValue = "0.0000";
+            this.tipocambiox.DefaultCellStyle = dataGridViewCellStyle14;
             this.tipocambiox.HeaderText = "T. Cambio";
             this.tipocambiox.MinimumWidth = 60;
             this.tipocambiox.Name = "tipocambiox";

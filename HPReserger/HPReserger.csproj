@@ -197,6 +197,12 @@
     <Compile Include="frmCargarDatosEmpleados.Designer.cs">
       <DependentUpon>frmCargarDatosEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCargasRegVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargasRegVentas.Designer.cs">
+      <DependentUpon>frmCargasRegVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCargos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -623,6 +629,18 @@
     <Compile Include="frmProcesando.Designer.cs">
       <DependentUpon>frmProcesando.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProductos.Designer.cs">
+      <DependentUpon>frmProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProductosProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProductosProyecto.Designer.cs">
+      <DependentUpon>frmProductosProyecto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmprofesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -700,6 +718,12 @@
     </Compile>
     <Compile Include="frmReportedeFlujoOperaciones.Designer.cs">
       <DependentUpon>frmReportedeFlujoOperaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportedeFlujosCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportedeFlujosCaja.Designer.cs">
+      <DependentUpon>frmReportedeFlujosCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="frmreporteempleado.cs">
       <SubType>Form</SubType>
@@ -895,6 +919,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptFlujodeCaja.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptFlujodeCajaNormal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptFlujodeCajaNormal.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RptGenerarRenta.cs">
@@ -1272,6 +1302,9 @@
     <EmbeddedResource Include="frmCargarDatosEmpleados.resx">
       <DependentUpon>frmCargarDatosEmpleados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCargasRegVentas.resx">
+      <DependentUpon>frmCargasRegVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCargos.resx">
       <DependentUpon>frmCargos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1470,6 +1503,12 @@
     <EmbeddedResource Include="frmProcesando.resx">
       <DependentUpon>frmProcesando.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProductos.resx">
+      <DependentUpon>frmProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProductosProyecto.resx">
+      <DependentUpon>frmProductosProyecto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmprofesion.resx">
       <DependentUpon>frmprofesion.cs</DependentUpon>
     </EmbeddedResource>
@@ -1508,6 +1547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportedeFlujoOperaciones.resx">
       <DependentUpon>frmReportedeFlujoOperaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportedeFlujosCaja.resx">
+      <DependentUpon>frmReportedeFlujosCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmreporteempleado.resx">
       <DependentUpon>frmreporteempleado.cs</DependentUpon>
@@ -1608,6 +1650,10 @@
     <EmbeddedResource Include="rptFlujodeCaja.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptFlujodeCaja.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptFlujodeCajaNormal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptFlujodeCajaNormal.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RptGenerarRenta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -111,5 +111,10 @@ namespace HPReserger
             }
 
         }
+
+        private void cbohojas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

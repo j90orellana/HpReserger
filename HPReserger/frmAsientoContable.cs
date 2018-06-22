@@ -125,48 +125,51 @@ namespace HPReserger
             {
                 // string cadenita = Dtgconten[0, e.RowIndex].Value.ToString();
                 btnmas.Focus();
-                if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index)
+                if (e.RowIndex >= 0)
                 {
-                    frmlistarcuentas cuentitas = new frmlistarcuentas();
-                    cuentitas.Icon = Icon;
-                    if (Dtgconten[cuenta.Name, e.RowIndex].Value != null)
+                    if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index)
                     {
-                        cuentitas.Txtbusca.Text = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
-                    }
-                    else
-                    { cuentitas.Txtbusca.Text = ""; }
-                    cuentitas.radioButton1.Checked = true;
-                    cuentitas.ShowDialog();
-                    if (cuentitas.aceptar)
-                    {
-                        if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
+                        frmlistarcuentas cuentitas = new frmlistarcuentas();
+                        cuentitas.Icon = Icon;
+                        if (Dtgconten[cuenta.Name, e.RowIndex].Value != null)
                         {
-                            MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                            cuentitas.Txtbusca.Text = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
                         }
                         else
+                        { cuentitas.Txtbusca.Text = ""; }
+                        cuentitas.radioButton1.Checked = true;
+                        cuentitas.ShowDialog();
+                        if (cuentitas.aceptar)
                         {
-                            Dtgconten[cuenta.Name, e.RowIndex].Value = cuentitas.codigo;
-                            btnmas.Focus();
+                            if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
+                            {
+                                MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                            }
+                            else
+                            {
+                                Dtgconten[cuenta.Name, e.RowIndex].Value = cuentitas.codigo;
+                                btnmas.Focus();
+                            }
                         }
                     }
-                }
-                if (Dtgconten[EstadoCuen.Name, e.RowIndex].Value == null) Dtgconten[EstadoCuen.Name, e.RowIndex].Value = cboestado.SelectedValue;
-                if (e.RowIndex >= 0 && e.ColumnIndex == Dtgconten.Columns[descripcion.Name].Index && Dtgconten[descripcion.Name, e.RowIndex].Value.ToString() != "" && Dtgconten[EstadoCuen.Name, e.RowIndex].Value.ToString() != "3")
-                {
-                    //cuando doy click en el detalle
-                    int y = e.RowIndex;
-                    frmdetalle = new frmDetalleAsientos();
-                    frmdetalle.MdiParent = this.MdiParent;
-                    frmdetalle.Icon = this.Icon;
-                    frmdetalle.idasiento = int.Parse(txtcodigo.Text);
-                    if (chkfechavalor.Checked) frmdetalle.fecha = dtfechavalor.Value;
-                    else frmdetalle.fecha = fecha.Value;
-                    frmdetalle.asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
-                    frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
-                    frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
-                    frmdetalle.Total = (decimal)Dtgconten[debe.Name, y].Value + (decimal)Dtgconten[haber.Name, y].Value;
-                    frmdetalle.FormClosed += new FormClosedEventHandler(Frmdetalle_FormClosed);
-                    frmdetalle.Show();
+                    if (Dtgconten[EstadoCuen.Name, e.RowIndex].Value == null) Dtgconten[EstadoCuen.Name, e.RowIndex].Value = cboestado.SelectedValue;
+                    if (e.RowIndex >= 0 && e.ColumnIndex == Dtgconten.Columns[descripcion.Name].Index && Dtgconten[descripcion.Name, e.RowIndex].Value.ToString() != "" && Dtgconten[EstadoCuen.Name, e.RowIndex].Value.ToString() != "3")
+                    {
+                        //cuando doy click en el detalle
+                        int y = e.RowIndex;
+                        frmdetalle = new frmDetalleAsientos();
+                        frmdetalle.MdiParent = this.MdiParent;
+                        frmdetalle.Icon = this.Icon;
+                        frmdetalle.idasiento = int.Parse(txtcodigo.Text);
+                        if (chkfechavalor.Checked) frmdetalle.fecha = dtfechavalor.Value;
+                        else frmdetalle.fecha = fecha.Value;
+                        frmdetalle.asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
+                        frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
+                        frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
+                        frmdetalle.Total = (decimal)Dtgconten[debe.Name, y].Value + (decimal)Dtgconten[haber.Name, y].Value;
+                        frmdetalle.FormClosed += new FormClosedEventHandler(Frmdetalle_FormClosed);
+                        frmdetalle.Show();
+                    }
                 }
             }
             catch (Exception ex)
@@ -181,7 +184,8 @@ namespace HPReserger
             if (Dtgconten.CurrentRow != null)
                 if (frmdetalle.Dtgconten.RowCount > 1)
                 {
-                    Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 1;
+                    frmdetalle.Dtgconten.AllowUserToAddRows = false;
+                    Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = frmdetalle.Dtgconten.RowCount;
                 }
                 else
                     Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 0;
@@ -296,10 +300,12 @@ namespace HPReserger
             {
                 if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index)
                 { //MODIFICAR LA COLUMNA DE CODIGOS
+                    //usp_buscar_cuenta
                     dtgayuda2.DataSource = CapaLogica.BuscarCuentas(Dtgconten[cuenta.Name, e.RowIndex].Value.ToString(), 1);
                     if (dtgayuda2.RowCount == 1)
                     {
                         Dtgconten[descripcion.Name, e.RowIndex].Value = dtgayuda2[0, 0].Value.ToString();
+                        Dtgconten[SolicitaDetallex.Name, e.RowIndex].Value = dtgayuda2[2, 0].Value.ToString();
                         //Dtgconten[2, e.RowIndex].Value = dtgayuda2[1, 0].Value.ToString();
                         //aux = true;
                     }
@@ -807,7 +813,6 @@ namespace HPReserger
             desactivar();
             btnmas.Focus(); chkfechavalor.Enabled = true; btnActualizar.Enabled = false;
         }
-        public int pos;
         public void validar()
         {
             salida = true;
@@ -820,38 +825,72 @@ namespace HPReserger
                         Dtgconten.Rows.Remove(item);
                     }
                 }
-
-                for (pos = 0; pos < Dtgconten.RowCount; pos++)
+                string cadena = "";
+                foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
-                    if (Dtgconten[cuenta.Name, pos].Value.ToString() == "")
+                    if (item.Cells[cuenta.Name].Value.ToString() == "")
                     {
-                        Mensajes("La Cuenta de la linea:" + (pos + 1) + " Es Incorrecto");
+                        cadena += $"La Cuenta de la linea: { item.Index + 1}  Es Incorrecto\n";
                         salida = false;
-                        break;
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[cuenta.Name]);
                     }
-                    if (Convert.ToDouble(Dtgconten[debe.Name, pos].Value.ToString()) >= 0)
-                    { }
+                    else
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[cuenta.Name]);
+
+                    if (Convert.ToDouble(item.Cells[debe.Name].Value.ToString()) >= 0)
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[debe.Name]);
                     else
                     {
-                        Mensajes("El valor Del Debe:" + (pos + 1) + " Es Incorrecto");
+                        cadena += $"El valor Del Debe:{ item.Index + 1} Es Incorrecto\n";
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[debe.Name]);
                         salida = false;
-                        break;
                     }
-                    if (Convert.ToDouble(Dtgconten[haber.Name, pos].Value.ToString()) >= 0)
-                    { }
+
+                    if (Convert.ToDouble(item.Cells[haber.Name].Value.ToString()) >= 0)
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[haber.Name]);
                     else
                     {
-                        Mensajes("El valor del Haber:" + (pos + 1) + " Es Incorrecto");
+                        cadena += $"El valor del Haber: {item.Index + 1} Es Incorrecto\n";
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[haber.Name]);
                         salida = false;
-                        break;
                     }
-                    if (Convert.ToDouble(Dtgconten[debe.Name, pos].Value.ToString()) == Convert.ToDouble(Dtgconten[haber.Name, pos].Value.ToString()) && 0 != (Convert.ToDouble(Dtgconten[debe.Name, pos].Value.ToString()) + Convert.ToDouble(Dtgconten[haber.Name, pos].Value.ToString())))
+                    if (Convert.ToDouble(item.Cells[debe.Name].Value.ToString()) == Convert.ToDouble(item.Cells[haber.Name].Value.ToString()) && 0 != (Convert.ToDouble(item.Cells[debe.Name].Value.ToString()) + Convert.ToDouble(item.Cells[haber.Name].Value.ToString())))
                     {
-                        Mensajes("El DEBE y HABER son iguales en la Linea: " + (pos + 1));
+                        cadena += $"El DEBE y HABER son iguales en la Linea: {item.Index + 1}\n";
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[haber.Name]);
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[debe.Name]);
                         salida = false;
-                        break;
                     }
+                    else
+                    {
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[debe.Name]);
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[haber.Name]);
+                    }
+                    //validar
+                    if ((Convert.ToDecimal(item.Cells[debe.Name].Value.ToString()) > 0 && Convert.ToDecimal(item.Cells[haber.Name].Value.ToString()) != 0) || ((Convert.ToDecimal(item.Cells[haber.Name].Value.ToString()) > 0 && Convert.ToDecimal(item.Cells[debe.Name].Value.ToString()) != 0)))
+                    {
+                        cadena += $"El DEBE y HABER no deben tener Valores en Fila: {item.Index + 1}\n";
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[haber.Name]);
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[debe.Name]);
+                        salida = false;
+                    }
+                    else
+                    {
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[debe.Name]);
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[haber.Name]);
+                    }
+                    if (int.Parse(item.Cells[SolicitaDetallex.Name].Value.ToString()) > int.Parse(item.Cells[detallex.Name].Value.ToString()))
+                    {
+                        cadena += $"La Cuenta de La fila: {item.Index + 1} Necesita un detalle\n";
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[SolicitaDetallex.Name]);
+                        salida = false;
+                    }
+                    else
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[SolicitaDetallex.Name]);
+
                 }
+                if (!salida)
+                    Mensajes(cadena);
                 if (totaldebe != totalhaber && salida)
                 {
                     salida = false;
@@ -863,7 +902,7 @@ namespace HPReserger
                     Mensajes("El Debe y el Haber estan en cero");
                 }
             }
-            catch (FormatException) { Mensajes("Hay Números Mal Ingresados, en la fila:" + (pos + 1)); salida = false; }
+            catch (FormatException) { Mensajes("Hay Números Mal Ingresados"); salida = false; }
             catch
             {
                 salida = false;
@@ -930,7 +969,6 @@ namespace HPReserger
                     if (txtdinamica.Text.Length <= 0) txtdinamica.Text = "CD_000";
                     CArgarValoresIngreso();
                     // MostrarValores(cadena + Detalle(), codigo);
-                    MSG("Se Insertó con exito");
                     for (int i = 0; i < Dtgconten.RowCount; i++)
                     {
                         DateTime? fechita;
@@ -938,8 +976,10 @@ namespace HPReserger
                         else fechita = null;
                         CapaLogica.InsertarAsiento((int)Dtgconten[IDASIENTOX.Name, i].Value, codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                     }
+                    MSG($"Se Insertó Asiento: {txtcodigo.Text} con Exito");
                     Txtbusca.Text = codigo + "";
-                    dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
+                    //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
+                    btnActualizar_Click(new object { }, new EventArgs());
                     activar(); estado = 0;
                 }
                 else
@@ -950,7 +990,6 @@ namespace HPReserger
                         codigo = Convert.ToInt32(txtcodigo.Text.ToString());
                         CArgarValoresIngreso();
                         //MostrarValores(cadena + Detalle(), codigo);
-                        MSG("Se Modificó con exito");
                         CapaLogica.Modificar2asiento(codigo);
                         //Mensajes("Codigo:" + codigo + " Filas;" + Dtgconten.RowCount);
                         for (int i = 0; i < Dtgconten.RowCount; i++)
@@ -970,9 +1009,11 @@ namespace HPReserger
                             else
                                 CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), dinamimodi, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                         }
+                        MSG($"Se Modificó Asiento: {txtcodigo.Text} con Exito");
                         estado = 0;
                         Txtbusca.Text = codigo + "";
-                        dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
+                        //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
+                        btnActualizar_Click(new object { }, new EventArgs());
                         activar();
                     }
                     else
@@ -985,7 +1026,8 @@ namespace HPReserger
                                 CapaLogica.EliminarAsiento(codigo);
                                 MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Txtbusca.Text = "";
-                                dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
+                                //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
+                                btnActualizar_Click(new object { }, new EventArgs());
                             }
                         }
                     }

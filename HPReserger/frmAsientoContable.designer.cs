@@ -73,13 +73,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.fecha = new System.Windows.Forms.DateTimePicker();
             this.Dtgconten = new System.Windows.Forms.DataGridView();
-            this.IDASIENTOX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.haber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoCuen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detallex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnmas = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -109,6 +102,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.IDASIENTOX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.debe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.haber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoCuen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detallex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SolicitaDetallex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
@@ -306,6 +307,7 @@
             this.txtcodigo.Location = new System.Drawing.Point(405, 6);
             this.txtcodigo.MaxLength = 15;
             this.txtcodigo.Name = "txtcodigo";
+            this.txtcodigo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtcodigo.Size = new System.Drawing.Size(172, 20);
             this.txtcodigo.TabIndex = 141;
             this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
@@ -527,7 +529,8 @@
             this.debe,
             this.haber,
             this.EstadoCuen,
-            this.detallex});
+            this.detallex,
+            this.SolicitaDetallex});
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtgconten.Location = new System.Drawing.Point(12, 118);
             this.Dtgconten.Name = "Dtgconten";
@@ -552,73 +555,6 @@
             this.Dtgconten.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_RowValidated);
             this.Dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dtgconten_KeyDown);
             this.Dtgconten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dtgconten_KeyPress);
-            // 
-            // IDASIENTOX
-            // 
-            this.IDASIENTOX.HeaderText = "IDASIENTO";
-            this.IDASIENTOX.Name = "IDASIENTOX";
-            this.IDASIENTOX.Visible = false;
-            // 
-            // cuenta
-            // 
-            this.cuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cuenta.HeaderText = "CUENTA";
-            this.cuenta.MaxInputLength = 30;
-            this.cuenta.Name = "cuenta";
-            this.cuenta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cuenta.Width = 69;
-            // 
-            // descripcion
-            // 
-            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion.HeaderText = "DESCRIPCION CUENTA CONTABLE";
-            this.descripcion.MaxInputLength = 400;
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            this.descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // debe
-            // 
-            this.debe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0.00";
-            this.debe.DefaultCellStyle = dataGridViewCellStyle10;
-            this.debe.HeaderText = "DEBE";
-            this.debe.MaxInputLength = 30;
-            this.debe.MinimumWidth = 100;
-            this.debe.Name = "debe";
-            this.debe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // haber
-            // 
-            this.haber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = "0.00";
-            this.haber.DefaultCellStyle = dataGridViewCellStyle11;
-            this.haber.HeaderText = "HABER";
-            this.haber.MaxInputLength = 30;
-            this.haber.MinimumWidth = 100;
-            this.haber.Name = "haber";
-            // 
-            // EstadoCuen
-            // 
-            this.EstadoCuen.DataPropertyName = "estado";
-            dataGridViewCellStyle12.NullValue = "1";
-            this.EstadoCuen.DefaultCellStyle = dataGridViewCellStyle12;
-            this.EstadoCuen.HeaderText = "estadocuen";
-            this.EstadoCuen.Name = "EstadoCuen";
-            this.EstadoCuen.Visible = false;
-            // 
-            // detallex
-            // 
-            dataGridViewCellStyle13.Format = "0";
-            dataGridViewCellStyle13.NullValue = "0";
-            this.detallex.DefaultCellStyle = dataGridViewCellStyle13;
-            this.detallex.HeaderText = "detalle";
-            this.detallex.Name = "detallex";
-            this.detallex.Visible = false;
             // 
             // btnmas
             // 
@@ -973,6 +909,83 @@
             this.label11.Text = "Rojo=Asiento Reflejo\r\nAzul=Asiento Con Detalle";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // IDASIENTOX
+            // 
+            this.IDASIENTOX.HeaderText = "IDASIENTO";
+            this.IDASIENTOX.Name = "IDASIENTOX";
+            this.IDASIENTOX.Visible = false;
+            // 
+            // cuenta
+            // 
+            this.cuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cuenta.HeaderText = "CUENTA";
+            this.cuenta.MaxInputLength = 30;
+            this.cuenta.Name = "cuenta";
+            this.cuenta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cuenta.Width = 69;
+            // 
+            // descripcion
+            // 
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion.HeaderText = "DESCRIPCION CUENTA CONTABLE";
+            this.descripcion.MaxInputLength = 400;
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // debe
+            // 
+            this.debe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0.00";
+            this.debe.DefaultCellStyle = dataGridViewCellStyle10;
+            this.debe.HeaderText = "DEBE";
+            this.debe.MaxInputLength = 30;
+            this.debe.MinimumWidth = 100;
+            this.debe.Name = "debe";
+            this.debe.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // haber
+            // 
+            this.haber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = "0.00";
+            this.haber.DefaultCellStyle = dataGridViewCellStyle11;
+            this.haber.HeaderText = "HABER";
+            this.haber.MaxInputLength = 30;
+            this.haber.MinimumWidth = 100;
+            this.haber.Name = "haber";
+            // 
+            // EstadoCuen
+            // 
+            this.EstadoCuen.DataPropertyName = "estado";
+            dataGridViewCellStyle12.NullValue = "1";
+            this.EstadoCuen.DefaultCellStyle = dataGridViewCellStyle12;
+            this.EstadoCuen.HeaderText = "estadocuen";
+            this.EstadoCuen.Name = "EstadoCuen";
+            this.EstadoCuen.Visible = false;
+            // 
+            // detallex
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Format = "0";
+            dataGridViewCellStyle13.NullValue = "0";
+            this.detallex.DefaultCellStyle = dataGridViewCellStyle13;
+            this.detallex.HeaderText = "D";
+            this.detallex.MinimumWidth = 20;
+            this.detallex.Name = "detallex";
+            this.detallex.ReadOnly = true;
+            this.detallex.Width = 20;
+            // 
+            // SolicitaDetallex
+            // 
+            this.SolicitaDetallex.DataPropertyName = "Solicita";
+            this.SolicitaDetallex.HeaderText = "SolicitaDetalle";
+            this.SolicitaDetallex.Name = "SolicitaDetallex";
+            this.SolicitaDetallex.Visible = false;
+            // 
             // frmAsientoContable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1109,5 +1122,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn haber;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCuen;
         private System.Windows.Forms.DataGridViewTextBoxColumn detallex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SolicitaDetallex;
     }
 }

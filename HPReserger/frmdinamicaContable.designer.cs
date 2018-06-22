@@ -176,6 +176,7 @@
             this.cbooperacion.TabIndex = 107;
             this.cbooperacion.SelectedIndexChanged += new System.EventHandler(this.cbooperacion_SelectedIndexChanged);
             this.cbooperacion.TextChanged += new System.EventHandler(this.cbooperacion_TextChanged);
+            this.cbooperacion.Click += new System.EventHandler(this.cbooperacion_Click);
             // 
             // label4
             // 
@@ -196,6 +197,7 @@
             this.cbosuboperacion.Size = new System.Drawing.Size(297, 21);
             this.cbosuboperacion.TabIndex = 109;
             this.cbosuboperacion.SelectedIndexChanged += new System.EventHandler(this.cbosuboperacion_SelectedIndexChanged);
+            this.cbosuboperacion.Click += new System.EventHandler(this.cbosuboperacion_Click);
             // 
             // label19
             // 

@@ -132,13 +132,13 @@ namespace HPReserger
             {
                 //mostrar el formulario
                 Dtgconten.EndEdit();
-                string cadena = Dtgconten[x, y].Value.ToString();
+                string cadena = Dtgconten[x, y].Value.ToString().Trim();
                 FrmListarCuentasParaConfigurar frmliscuentas = new FrmListarCuentasParaConfigurar();
                 frmliscuentas.Icon = this.Icon;
                 frmliscuentas.Cuentas = cadena;
                 if (frmliscuentas.ShowDialog() == DialogResult.OK)
                 {
-                    Dtgconten[Cuentasx.Name, y].Value = frmliscuentas.Cuentas;
+                    Dtgconten[Cuentasx.Name, y].Value = frmliscuentas.Cuentas.Trim();
                     Dtgconten.RefreshEdit();
                 }
 

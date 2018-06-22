@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="BorrarOrdenx.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="OP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -133,6 +136,9 @@
     <value>True</value>
   </metadata>
   <metadata name="TIPO_PEDIDO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="borrarcotizacionesx.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="COT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -236,6 +242,38 @@
 </value>
   </data>
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAHNJREFUOE9j
+        oBrYc/d30a57v1cTg0FqodoQACSx+97v/8RgkFqoNgSAGVC27wcYg9gh676hYJg4bQ0gBuM1AGYbiK04
+        7TMKhonjNWDmuZ9gDGJ3HPuBgmHitDWAYi8Qg/EaQHE0UmwAMRirARRnJvIAAwMAQhoqhwesfLsAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="btnborrarordenes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAACzSURBVDhPYxhcYMu8O1Zb5twO3TjjdszClkvX5jdd+g/Ci1ovXwWJgeRAaqDKMcHmubd/AfF/
+        AvgXVDkmmFZ6JnRq6dn/+DBIDVQ5JoAZ0J9/Eqx4QsFJMEYWI8qA0pDNYMX18XvAGFmMKANK4AbsBmNk
+        sVEDiDSgMmI7WHFj4r7/TUn7wGyYGF4DgAo8QIrw4zNuUOWYoKFhP8vU0nPtQLwKG55WerZ1VegqZqhy
+        agAGBgBCw1bqi7CUBgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="btnborrarcotizaciones.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAACzSURBVDhPYxhcYMu8O1Zb5twO3TjjdszClkvX5jdd+g/Ci1ovXwWJgeRAaqDKMcHmubd/AfF/
+        AvgXVDkmmFZ6JnRq6dn/+DBIDVQ5JoAZ0J9/Eqx4QsFJMEYWI8qA0pDNYMX18XvAGFmMKANK4AbsBmNk
+        sVEDiDSgMmI7WHFj4r7/TUn7wGyYGF4DgAo8QIrw4zNuUOWYoKFhP8vU0nPtQLwKG55WerZ1VegqZqhy
+        agAGBgBCw1bqi7CUBgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAHNJREFUOE9j
         oBrYc/d30a57v1cTg0FqodoQACSx+97v/8RgkFqoNgSAGVC27wcYg9gh676hYJg4bQ0gBuM1AGYbiK04

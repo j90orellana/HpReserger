@@ -7,6 +7,7 @@ using System.Data;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace HPResergerCapaLogica
 {
@@ -36,7 +37,22 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.AgregarPerfil(descripcion);
         }
-
+        public DataTable ProductosProyecto(int codigo, int opcion, string cadena, int usuarioo)
+        {
+            return cdOrdenPedido.ProductosProyecto(codigo, opcion, cadena, usuarioo);
+        }
+        public DataTable RegistroVentas(int opcion, string tipo, int nrocompra, string tipoid, string nro, string cliente, string producto, string proyecto, int etapa, int cantida, decimal precio, int vendedor, int usuario)
+        {
+            return cdOrdenPedido.RegistroVentas(opcion, tipo, nrocompra, tipoid, nro, cliente, producto, proyecto, etapa, cantida, precio, vendedor, usuario);
+        }
+        public DataTable Proyecto_Productos(int codigo, int opcion, int proy, int prod, decimal metros, decimal precio, int piso, string etapa, int estado, string observacion, int usuarioo)
+        {
+            return cdOrdenPedido.Proyecto_Productos(codigo, opcion, proy, prod, metros, precio, piso, etapa, estado, observacion, usuarioo);
+        }
+        public DataTable Proyecto_Productos(int proyecto)
+        {
+            return cdOrdenPedido.Proyecto_Productos(0, 0, proyecto, 0, 0, 0, 0, "", 0, "", 0);
+        }
         public void ActualizarPerfil(int codigo, string descripcion)
         {
             cdOrdenPedido.ActualizarPerfil(codigo, descripcion);
@@ -326,7 +342,7 @@ namespace HPResergerCapaLogica
         public DataTable BuscarCuentas(string buscar, int opcion)
         {
             return cdOrdenPedido.BuscarCuenta(buscar, opcion);
-        }
+        }        
         public DataTable ListarDinamicas(string busca, int opcion)
         {
             return cdOrdenPedido.ListarDinamicaContable(busca, opcion);
@@ -402,17 +418,17 @@ namespace HPResergerCapaLogica
         }
         public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
            string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-           string traslacion, string bc)
+           string traslacion, string bc,int soli)
         {
             cdOrdenPedido.InsertarCuentasContables(cuentan1, codcuenta, nombre, tipo, natu, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
-                cuentacierre, analitica, mensual, cierre, traslacion, bc);
+                cuentacierre, analitica, mensual, cierre, traslacion, bc,soli);
         }
         public void ActualizarCuentasContables(string codcuenta, string generica, string grupo,
           string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-          string traslacion, string bc, string naturaleza)
+          string traslacion, string bc, string naturaleza,int soli)
         {
             cdOrdenPedido.ActualizarCuentasContables(codcuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
-                cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza);
+                cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza,soli);
         }
         public void InsertarProveedor(string anterior, string ruc, string razon, string nombre, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
             string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctasoles, int ctadolares)
@@ -482,7 +498,10 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.AnularOrdenPedido(Numero);
         }
-
+        public DataTable ELiminarCotizacionTotal(int cotizacion)
+        {
+            return cdOrdenPedido.ELiminarCotizacionTotal(cotizacion);
+        }
         public DataTable ListarPedidosCotizacion(int Area, int Usuario)
         {
             return cdOrdenPedido.ListarPedidosCotizacion(Area, Usuario);
@@ -1266,6 +1285,14 @@ namespace HPResergerCapaLogica
         public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)
         {
             return cdOrdenPedido.EstadodeGanaciasPerdidas(año, empresa);
+        }
+        public DataTable SacarResultadoEjercicio(DateTime año, int empresa)
+        {
+            return cdOrdenPedido.SacarResultadoEjercicio(año, empresa);
+        }
+        public DataTable FLujodeCaja(DateTime fechaini, DateTime fechafin, string nombre, int empresa, int tamañoletras)
+        {
+            return cdOrdenPedido.FLujodeCaja(fechaini, fechafin, nombre, empresa, tamañoletras);
         }
         public DataTable BalanceGenerarlActivoCorriente(DateTime año, int empresa)
         {

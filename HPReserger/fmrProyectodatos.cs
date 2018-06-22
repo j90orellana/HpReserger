@@ -23,7 +23,7 @@ namespace HPReserger
             etapas.proyecto = Proyecto;
             etapas.Icon = Icon;
             etapas.FormClosed += new FormClosedEventHandler(CLoseEtapa);
-            etapas.Show();            
+            etapas.Show();
         }
         private void CLoseEtapa(object sender, FormClosedEventArgs e)
         {
@@ -365,6 +365,45 @@ namespace HPReserger
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+        frmProductosProyecto frmproducs;
+        private void btnnuevo_Click(object sender, EventArgs e)
+        {
+            if (frmproducs == null)
+            {
+                frmproducs = new frmProductosProyecto(Proyecto,txtnombre.Text);
+                frmproducs.FormClosed += Frmproducs_FormClosed;
+                frmproducs.MdiParent = this.MdiParent;
+                frmproducs.Show();
+            }
+            else frmproducs.Activate();
+        }
+
+        private void Frmproducs_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmproducs = null;
+        }
+
+        private void fmrProyectodatos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+        }
+        public DialogResult msg(string cadena)
+        {
+           return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+        }
+
+        private void fmrProyectodatos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (frmproducs != null)
+            {
+                if (msg("La Ventada de Productos esta Abierta, Desea Cerrar todo") == DialogResult.Yes)
+                {
+                    frmproducs.Close();
+                }
+                else
+                    e.Cancel = true;
+            }
         }
     }
 }

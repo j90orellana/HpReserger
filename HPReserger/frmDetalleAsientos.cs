@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace HPReserger
 {
@@ -32,6 +33,8 @@ namespace HPReserger
             CargarDatos();
             estado = 0;
             Dtgconten.ReadOnly = true;
+            Dtgconten.Columns[fechaemisionx.Name].DefaultCellStyle.NullValue = fecha.ToShortDateString();
+            Dtgconten.Columns[FechaVencimientox.Name].DefaultCellStyle.NullValue = fecha.ToShortDateString();
         }
         public void SacarDatos()
         {
@@ -45,14 +48,25 @@ namespace HPReserger
         {
             tipoDoc = new DataTable();
             tipoDoc = CapaLogica.getCargoTipoContratacion("Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
+            DataRow rowcito = tipoDoc.NewRow();
+            rowcito[0] = 0;
+            rowcito[1] = "NINGUNO";
+            tipoDoc.Rows.InsertAt(rowcito, 0);
+
             tipoComprobante = new DataTable();
             tipoComprobante = CapaLogica.getCargoTipoContratacion("Id_Comprobante", "Nombre", "TBL_Comprobante_Pago");
+            rowcito = tipoComprobante.NewRow();
+            rowcito[0] = 0;
+            rowcito[1] = "Ninguno";
+            tipoComprobante.Rows.InsertAt(rowcito, 0);
+
             Centroc = new DataTable();
             Centroc = CapaLogica.ListarCentroCostos();
             CentroCosto = new DataTable();
             CentroCosto.Columns.Add("codigo", typeof(int));
             CentroCosto.Columns.Add("descripcion");
             CentroCosto.Clear();
+            CentroCosto.Rows.Add(0, "NINGUNO");
             foreach (DataRow item in Centroc.Rows)
             {
                 if (item["Id_CtaCtble"].ToString() != "")
@@ -94,7 +108,7 @@ namespace HPReserger
                 }
                 if (Sumatoria > Total)
                 {
-                    msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} DEtalle {Sumatoria.ToString("n2")} ");
+                    msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {Sumatoria.ToString("n2")} ");
                     return;
                 }
                 foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -103,19 +117,21 @@ namespace HPReserger
                     //if (item.Cells[razonsocialx.Name].Value.ToString() != "")
                     {
                         if (item.Cells[tipodocx.Name].Value.ToString() == "")
-                            item.Cells[tipodocx.Name].Value = 1;
+                            item.Cells[tipodocx.Name].Value = 0;
                         if (item.Cells[idcomprobantex.Name].Value.ToString() == "")
-                            item.Cells[idcomprobantex.Name].Value = 1;
+                            item.Cells[idcomprobantex.Name].Value = 0;
 
                         if (item.Cells[centrocostox.Name].Value == null)
                         {
-                            msg($"Seleccioné Centro de Costo, Fila {item.Index + 1}");
-                            return;
+                            //msg($"Seleccioné Centro de Costo, Fila {item.Index + 1}");
+                            item.Cells[centrocostox.Name].Value = 0;
+                            //return;
                         }
                         if (item.Cells[centrocostox.Name].Value.ToString() == "")
                         {
-                            msg($"Seleccioné Centro de Costo, Fila {item.Index + 1}");
-                            return;
+                            // msg($"Seleccioné Centro de Costo, Fila {item.Index + 1}");
+                            //return;
+                            item.Cells[centrocostox.Name].Value = 0;
                         }
                         if (item.Cells[tipodocx.Name].Value.ToString() == "")
                         {
@@ -241,7 +257,7 @@ namespace HPReserger
                         txt.KeyPress += new KeyPressEventHandler(Txt_KeyPress);
                     }
                 }
-                if (y == Dtgconten.Columns[codcomprobantex.Name].Index || y == Dtgconten.Columns[numcomprobantex.Name].Index || y == Dtgconten.Columns[numdocx.Name].Index)
+                if (y == Dtgconten.Columns[codcomprobantex.Name].Index || y == Dtgconten.Columns[numdocx.Name].Index)
                 {
                     txt = e.Control as TextBox;
                     if (txt != null)
@@ -250,7 +266,7 @@ namespace HPReserger
                         txt.KeyPress += new KeyPressEventHandler(Txt_KeyPressSoloNumeros);
                     }
                 }
-                if (y == Dtgconten.Columns[glosax.Name].Index || y == Dtgconten.Columns[fechaemisionx.Name].Index || y == Dtgconten.Columns[FechaVencimientox.Name].Index || y == Dtgconten.Columns[razonsocialx.Name].Index)
+                if (y == Dtgconten.Columns[glosax.Name].Index || y == Dtgconten.Columns[numcomprobantex.Name].Index || y == Dtgconten.Columns[fechaemisionx.Name].Index || y == Dtgconten.Columns[FechaVencimientox.Name].Index || y == Dtgconten.Columns[razonsocialx.Name].Index)
                 {
                     txt = e.Control as TextBox;
                     if (txt != null)
@@ -344,7 +360,7 @@ namespace HPReserger
         private void Dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
-            if (x >= 0 && x < Dtgconten.RowCount-1)
+            if (x >= 0 && x < Dtgconten.RowCount - 1)
             {
                 if (y == Dtgconten.Columns[buttonCentroCosto.Name].Index && estado == 2)
                 {
@@ -371,7 +387,8 @@ namespace HPReserger
             //Dtgconten[importemex.Name, y].Value = 0.00m;
             //Dtgconten[importemnx.Name, y].Value = 0.00m;
             //Dtgconten[tipocambiox.Name, y].Value = 0.00m;
-            //Dtgconten[fechaemisionx.Name, y].Value = new DateTime(1990, 1, 1);
+            Dtgconten[fechaemisionx.Name, y].Value = fecha;
+            Dtgconten[FechaVencimientox.Name, y].Value = fecha;
             //Dtgconten[idcomprobantex.Name,y].Value = 1;
             //Dtgconten[tipodocx.Name, y].Value = 1;
         }

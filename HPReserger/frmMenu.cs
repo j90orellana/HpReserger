@@ -2687,5 +2687,55 @@ namespace HPReserger
         {
             frmFLujo = null;
         }
+        frmProductos frmproducs;
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmproducs == null)
+            {
+                //cargar lo de flujo
+                frmproducs = new frmProductos();
+                frmproducs.MdiParent = this;
+                frmproducs.Icon = ICono;
+                frmproducs.FormClosed += new FormClosedEventHandler(cerrarproductos);
+                frmproducs.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmproducs.Activate();
+                ValidarVentanas(frmproducs);
+            }
+        }
+        private void cerrarproductos(object sender, FormClosedEventArgs e)
+        {
+            frmproducs = null;
+        }
+        frmCargasRegVentas frmregVentas;
+        private void cargaRegistroVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmregVentas == null)
+            {
+                frmregVentas = new frmCargasRegVentas();
+                frmregVentas.MdiParent = this;
+                frmregVentas.Icon = ICono;
+                frmregVentas.FormClosed += new FormClosedEventHandler(cerrarregventas);
+                frmregVentas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmregVentas.Activate();
+                ValidarVentanas(frmregVentas);
+            }
+        }
+        private void cerrarregventas(object sender, FormClosedEventArgs e)
+        {
+            frmregVentas = null;
+        }
+
+        private void ganaciasYPerdidasPorFunciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

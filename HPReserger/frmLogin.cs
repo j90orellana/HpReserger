@@ -58,7 +58,8 @@ namespace HPReserger
             clLogueo.CambiarBase(Basedatos);
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
             Intentos = 0;
-            moveControl1.cargar();
+
+            //moveControl1.cargar();
             // OpenFileDialog dias = new OpenFileDialog();
             // dias.ShowDialog();
             //SaveFileDialog save = new SaveFileDialog();
@@ -82,7 +83,7 @@ namespace HPReserger
             {
                 frmMensajeLicencia frmmensa = new frmMensajeLicencia();
                 frmmensa.NombreTitulo = "Tu Licencia ha Caducado";
-                frmmensa.Mensaje = "La Licencia ha Caducado " + Environment.NewLine +"Debe Adquirir una Nueva Licencia ";
+                frmmensa.Mensaje = "La Licencia ha Caducado " + Environment.NewLine + "Debe Adquirir una Nueva Licencia ";
                 frmmensa.Caducado();
                 frmmensa.ShowDialog();
                 frmLogin.DesconectarUsuario();
@@ -343,6 +344,29 @@ namespace HPReserger
             {
                 btnLogueo.Focus();
             }
+        }
+
+        private void frmLogin_Paint(object sender, PaintEventArgs e)
+        {
+
+            //RectangleF myRectangleF = this.DisplayRectangle;
+
+            //// Call the Round method.
+            //Rectangle roundedRectangle = Rectangle.Round(myRectangleF);
+
+            //// Draw the rounded rectangle in red.
+            //Pen redPen = new Pen(Color.Red, 4);
+            //e.Graphics.DrawRectangle(redPen, roundedRectangle);
+            //// Call the Truncate method.
+            //Rectangle truncatedRectangle = Rectangle.Truncate(myRectangleF);
+
+            //// Draw the truncated rectangle in white.
+            //Pen whitePen = new Pen(Color.White, 4);
+            //e.Graphics.DrawRectangle(whitePen, truncatedRectangle);
+
+            //// Dispose of the custom pens.
+            //redPen.Dispose();
+            //whitePen.Dispose();
         }
 
         private void panel_MouseDown(object sender, MouseEventArgs e)

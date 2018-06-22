@@ -268,6 +268,11 @@ namespace HPReserger
         DataTable Reportes = new DataTable();
         DataTable Reporte2 = new DataTable();
         DataTable Consulta = new DataTable();
+        public DataTable SacarResultadoEjercicio(DateTime año, int empresa)
+        {
+            return CapaLogica.SacarResultadoEjercicio(año, empresa);
+        }
+        DataTable Prueba = new DataTable();
         private void btnGenerar_Click(object sender, EventArgs e)
         {
 
@@ -284,6 +289,7 @@ namespace HPReserger
                     Cursor = Cursors.WaitCursor;
 
                     Consulta = CapaLogica.BalanceGeneral(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
+                    Prueba = SacarResultadoEjercicio(comboMesAño.UltimoDiaDelMes(), (int)cboempresas.SelectedValue);
                     Reportes.Clear();
                     Reporte2.Clear();
                     int act = 0, pas = 0;
@@ -328,10 +334,19 @@ namespace HPReserger
                         item["empresax"] = Reporte2.Rows[i].ItemArray[3];
                         i++;
                     }
+                    //Resultado Periodo
+                    foreach (DataRow item in Reportes.Rows)
+                    {
+                        if (item["campox"].ToString() == "Resultados del Período" || item["ix"].ToString() == "3108")
+                        {
+                            item["totalx"] = Convert.ToDecimal((Prueba.Rows[0])["total"].ToString());
+                        }
+                    }
                     ///sacar totales
                     decimal ActivoTotal = 0;
                     decimal PasivoTotal = 0;
                     decimal PatrimonioTotal = 0;
+                    
                     foreach (DataRow item in Reportes.Rows)
                     {
                         int ValorMaximo = 0, ValorMinimo = 0;
@@ -397,7 +412,7 @@ namespace HPReserger
                                 item["totalx"] = Sumar;
                             }
                         }
-                    }
+                    }                 
                     //asignacion de valores
                     foreach (DataRow item in Reportes.Rows)
                     {

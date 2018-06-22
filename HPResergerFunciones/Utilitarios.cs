@@ -841,5 +841,20 @@ namespace HPResergerFunciones
             }
             return caden;
         }
+        public static void ColorCeldaError(DataGridViewCell item)
+        {
+            item.Style.ForeColor = Color.Red;
+            item.Style.BackColor = Color.Yellow;
+        }
+        public static void ColorCeldaNormal(DataGridViewCell item)
+        {
+            item.Style.ForeColor = Color.Green;
+            item.Style.BackColor = Color.Empty;
+        }
+        public static void ColorCeldaDefecto(DataGridViewCell item)
+        {
+            item.Style.ForeColor = Color.Empty;
+            item.Style.BackColor = Color.Empty;
+        }
     }
 }

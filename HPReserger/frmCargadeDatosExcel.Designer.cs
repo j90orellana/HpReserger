@@ -147,6 +147,7 @@
             this.cbohojas.Name = "cbohojas";
             this.cbohojas.Size = new System.Drawing.Size(346, 25);
             this.cbohojas.TabIndex = 147;
+            this.cbohojas.SelectedIndexChanged += new System.EventHandler(this.cbohojas_SelectedIndexChanged);
             // 
             // lblmensaje
             // 

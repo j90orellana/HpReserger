@@ -120,7 +120,7 @@ namespace HPReserger
                             return;
                         }
                     //proceso de img
-                    string Ruta = Application.StartupPath + @"\Cotizacion.jpeg";
+                    string Ruta = Application.CommonAppDataPath + @"\Cotizacion.jpeg";
                     pbCotizacion.Image.Save(Ruta, ImageFormat.Jpeg);
 
                     mensajito = new frmMensajeCorreo();
@@ -128,7 +128,7 @@ namespace HPReserger
                     mensajito.Text = "Mensaje de Aprobación";
                     mensajito.txtasunto.Text = "Cotización Aprobada";
                     //mensajito.txtmsg.Text = "Hp Reserger S.A.C. " + (char)13 + "Es para nosotros un placer aceptar su cotizacion";
-                    mensajito.txtmsg.Text = "Es para nosotros un placer aceptar su cotizacion";
+                    mensajito.txtmsg.Text = "Es para nosotros un placer aceptar su cotización";
                     mensajito.txtcorreo.Text = drCOT["correo"].ToString().ToLower();
                     mensajito.Openfiledatos.FileName = Ruta;
 
@@ -452,6 +452,14 @@ namespace HPReserger
                 e.Cancel = true;
                 MSG("No se Puede Cerrar, Se está Enviando el Correo …");
             }
+        }
+
+        private void btnaprobar_Click(object sender, EventArgs e)
+        {
+            clOC.UpdateEstado(Convert.ToInt32(gridOC.Rows[Item].Cells[0].Value.ToString().Substring(2)), 4);
+            txtFechaEntrega.Text = txtImporte.Text = txtmoneda.Text = txtProveedor.Text = "";
+            pbCotizacion.Image = null;
+            Listar(frmLogin.CodigoUsuario);
         }
     }
 }

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Security.AccessControl;
+using System.Runtime.InteropServices;
 
 namespace HPReserger
 {
@@ -972,16 +974,20 @@ namespace HPReserger
                 int K;
                 K = FotoContrato.Length;
                 frmVerPdf VerPdf = new frmVerPdf();
-                string Ruta = AppDomain.CurrentDomain.BaseDirectory + "temp.pdf";
-                FileStream RutaArchivo = new FileStream(Ruta, FileMode.Create, FileAccess.ReadWrite);
-                RutaArchivo.Write(FotoContrato, 0, K);
-                RutaArchivo.Close();
+                string Ruta = Application.CommonAppDataPath + @"\temp.pdf";
+                try
+                {
+                    FileStream RutaArchivo = new FileStream(Ruta, FileMode.Create, FileAccess.ReadWrite);
+                    RutaArchivo.Write(FotoContrato, 0, K);
+                    RutaArchivo.Close();
 
-                VerPdf.ruta = Ruta;
-                VerPdf.nombreformulario = " Contrato " + dtgconten["documento", dtgconten.CurrentCell.RowIndex].Value.ToString();
-                VerPdf.Show();
+                    VerPdf.ruta = Ruta;
+                    VerPdf.nombreformulario = " Contrato " + dtgconten["documento", dtgconten.CurrentCell.RowIndex].Value.ToString();
+                    VerPdf.Show();
+                    File.Delete(Ruta);
+                }
+                catch (Exception ex) { msg(ex.Message); }
 
-                File.Delete(Ruta);
             }
         }
         public void msg(string cadena)

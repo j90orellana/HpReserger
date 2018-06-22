@@ -48,6 +48,18 @@ namespace HPReserger
             combito.ValueMember = "CODIGO";
             combito.SelectedIndex = 1;
         }
+        public void RellenarCombosSiNo10(ComboBox combito)
+        {
+            DataTable tablita = new DataTable();
+            tablita.Columns.Add("CODIGO");
+            tablita.Columns.Add("VALOR");
+            tablita.Rows.Add(new object[] { "1", "SI" });
+            tablita.Rows.Add(new object[] { "0", "NO" });
+            combito.DataSource = tablita;
+            combito.DisplayMember = "VALOR";
+            combito.ValueMember = "CODIGO";
+            combito.SelectedIndex = 0;
+        }
         public void RellenarCombosNaturaleza(ComboBox combito)
         {
             DataTable tablita = new DataTable();
@@ -102,6 +114,7 @@ namespace HPReserger
             RellenarCombosSiNo(cboreflejacc);
             RellenarCombosSiNo(cboanalitica);
             RellenarCombosSiNo(cbocuentabc);
+            RellenarCombosSiNo10(cbosolicitar);
             RellenarCombosNaturaleza(cbonaturaleza);
             Cargartipocuenta();
             CargartipoGenerica();
@@ -184,6 +197,7 @@ namespace HPReserger
                     cboajustemensual.Text = dtgconten[15, y].Value.ToString();
 
                 cbocuentabc.SelectedValue = dtgconten[16, y].Value.ToString();
+                cbosolicitar.SelectedValue = dtgconten[17, y].Value.ToString();
             }
         }
         public void Activar()
@@ -216,7 +230,7 @@ namespace HPReserger
             {
                 if (estado == 1)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         estado = 0;
                         Activar();
@@ -257,7 +271,7 @@ namespace HPReserger
             else
             {
                 aux = false;
-                MessageBox.Show("Código de Cuenta y Descripción de la Cuenta, No pueden estar Vacios", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Código de Cuenta y Descripción de la Cuenta, No pueden estar Vacios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             return aux;
         }
@@ -341,9 +355,10 @@ namespace HPReserger
             {
                 CargarValoresDeIngreso();
                 //MensajedeDatos();
-                MessageBox.Show("Se Insertó con Exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se Insertó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //usp_insertar_cuentas_contables
                 CcuentaContable.InsertarCuentasContables(CuentaN1, CodCuenta, DesCuentea, TipoCuenta, NatuCuenta, CuentaGene, GrupoCuenta,
-                Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC);
+                Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, int.Parse(cbosolicitar.SelectedValue.ToString()));
                 PresentarValor(codigo.ToString());
             }
             else
@@ -353,8 +368,9 @@ namespace HPReserger
                     CargarValoresDeIngreso();
                     //MensajedeDatos();
                     MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //usp_actualizar_cuentas_contables
                     CcuentaContable.ActualizarCuentasContables(CodCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
-                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, cbonaturaleza.SelectedValue.ToString());
+                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, NatuCuenta, int.Parse(cbosolicitar.SelectedValue.ToString()));
                     PresentarValor(codigo.ToString());
                 }
                 else
@@ -364,7 +380,7 @@ namespace HPReserger
                         if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrecuenta.Text + " Código Cuenta: " + txtcodcuenta.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
-                            MessageBox.Show("Eliminado Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             //                            PresentarValor("");
 
                         }
@@ -404,7 +420,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 

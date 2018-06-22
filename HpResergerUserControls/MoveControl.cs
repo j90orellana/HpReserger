@@ -20,10 +20,8 @@ namespace HpResergerUserControls
         public MoveControl(IContainer container)
         {
             container.Add(this);
-            InitializeComponent();            
-            cargar();
-
-        }        
+            InitializeComponent();
+        }
         Boolean mover = false; int x, y;
         public void cargar()
         {
@@ -40,7 +38,7 @@ namespace HpResergerUserControls
             {
                 _Control.FindForm().Location = new Point(_Control.FindForm().Left + e.X - x, _Control.FindForm().Top + e.Y - y);
                 mover = false;
-            }
+            }            
         }
         private void MouseDownx(object sender, MouseEventArgs e)
         {
@@ -61,7 +59,13 @@ namespace HpResergerUserControls
         public Panel Control
         {
             get { return _Control; }
-            set { _Control = value; }
+            set
+            {
+                _Control = value;
+                _Control.MouseDown += new MouseEventHandler(MouseDownx);
+                _Control.MouseUp += new MouseEventHandler(MouseUPe);
+                _Control.MouseMove += new MouseEventHandler(MouseMover);
+            }
         }
 
     }

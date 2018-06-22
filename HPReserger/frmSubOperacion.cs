@@ -225,5 +225,12 @@ namespace HPReserger
             CargadOperaciones(cbooperacion);
             cbooperacion.Text = cadena;
         }
+
+        private void cbooperacion_Click(object sender, EventArgs e)
+        {
+            string text = cbooperacion.Text;
+            CargadOperaciones(cbooperacion);
+            cbooperacion.Text = text;
+        }
     }
 }

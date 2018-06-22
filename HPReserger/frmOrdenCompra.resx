@@ -218,4 +218,16 @@
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="btnaprobar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFPSURBVDhPtZLNSsNAEMfzAIo+hQh+vYuICB68KxVKPSh6sfgciuJBqV9RvFVa2rSZ3ZZGj1JB
+        sMmmKPgGzTq72ZVsmtz0D39IZuY3O9mM9S8iPlkCBmXCyLkwBPQQBrCo0vny3r1pBK+BEZ7hCF3pfnen
+        VLkpCYfkJQVl+TmzCTB6lVFsuBW04ucQLhQWqz1sL2BCjDgGad/07/j64wa33x7Ee0RDOqdwy3IZPUgD
+        SV++VviyvcoLT0Xu+GoKBnsKx/EDONHF9Y+GPkX6tm/zlfs1vlkt8ObA+Y1DSI8VbjYou0cSEGAunG7g
+        MrKvE6Jwq7otwVxYmu4qHC+RdWcxONJJcdvFein1zYZHuGwzCo+FwbNkUcNv5pyMTo6v5Xw5k5j0xopT
+        xtXu1T5rEwozpZqcorN2IhKXnQsn1Rl25nHbduTfEQ5pyVicv5Nl/QA0PA5VVtwcVAAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
 </root>
