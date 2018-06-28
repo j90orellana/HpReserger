@@ -20,7 +20,20 @@ namespace HPReserger
         private void frmSolicitudes_Load(object sender, EventArgs e)
         {
             REcargardatos();
+            dtgconten.LostFocus += Dtgconten_LostFocus;
+            dtgconten.GotFocus += Dtgconten_GotFocus;
         }
+
+        private void Dtgconten_GotFocus(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
+        }
+
+        private void Dtgconten_LostFocus(object sender, EventArgs e)
+        {
+            timer.Enabled = true;
+        }
+
         public void REcargardatos()
         {
             dtgconten.DataSource = CapaLogica.TablaSolicitudes(0, frmLogin.CodigoUsuario, "", "", 0, 1, "");
@@ -57,5 +70,9 @@ namespace HPReserger
             REcargardatos();
         }
 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            btnrecargar_Click(sender, e);
+        }
     }
 }

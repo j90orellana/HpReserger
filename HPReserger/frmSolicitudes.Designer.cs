@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSolicitudes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -36,6 +37,8 @@
             this.Btncancelar = new System.Windows.Forms.Button();
             this.btnaprovar = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.btnrecargar = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cod_empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,16 +46,16 @@
             this.estados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Solicitaemp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnrecargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "SOLICITUDES";
             // 
@@ -143,14 +146,35 @@
             this.dtgconten.Size = new System.Drawing.Size(675, 410);
             this.dtgconten.TabIndex = 57;
             // 
+            // btnrecargar
+            // 
+            this.btnrecargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnrecargar.Image = ((System.Drawing.Image)(resources.GetObject("btnrecargar.Image")));
+            this.btnrecargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnrecargar.Location = new System.Drawing.Point(606, 17);
+            this.btnrecargar.Name = "btnrecargar";
+            this.btnrecargar.Size = new System.Drawing.Size(81, 24);
+            this.btnrecargar.TabIndex = 58;
+            this.btnrecargar.Text = "Recargar";
+            this.btnrecargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnrecargar.UseVisualStyleBackColor = true;
+            this.btnrecargar.Click += new System.EventHandler(this.btnrecargar_Click);
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 2000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // empleado
             // 
-            this.empleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.empleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.empleado.DataPropertyName = "empleado";
             this.empleado.HeaderText = "Empleado";
-            this.empleado.MinimumWidth = 100;
+            this.empleado.MinimumWidth = 250;
             this.empleado.Name = "empleado";
             this.empleado.ReadOnly = true;
+            this.empleado.Width = 250;
             // 
             // cod_empleado
             // 
@@ -194,27 +218,12 @@
             // 
             // observacion
             // 
-            this.observacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.observacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.observacion.DataPropertyName = "observacion";
             this.observacion.HeaderText = "Solicitud";
             this.observacion.MinimumWidth = 350;
             this.observacion.Name = "observacion";
             this.observacion.ReadOnly = true;
-            this.observacion.Width = 350;
-            // 
-            // btnrecargar
-            // 
-            this.btnrecargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnrecargar.Image = ((System.Drawing.Image)(resources.GetObject("btnrecargar.Image")));
-            this.btnrecargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnrecargar.Location = new System.Drawing.Point(606, 17);
-            this.btnrecargar.Name = "btnrecargar";
-            this.btnrecargar.Size = new System.Drawing.Size(81, 24);
-            this.btnrecargar.TabIndex = 58;
-            this.btnrecargar.Text = "Recargar";
-            this.btnrecargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnrecargar.UseVisualStyleBackColor = true;
-            this.btnrecargar.Click += new System.EventHandler(this.btnrecargar_Click);
             // 
             // frmSolicitudes
             // 
@@ -244,6 +253,7 @@
         private System.Windows.Forms.Button btnaprovar;
         private HpResergerUserControls.Dtgconten dtgconten;
         private System.Windows.Forms.Button btnrecargar;
+        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.DataGridViewTextBoxColumn empleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn cod_empleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Accion;

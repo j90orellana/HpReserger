@@ -34,7 +34,7 @@ namespace HPReserger
             }
         }
         private void FrmFactura_Load(object sender, EventArgs e)
-        {            
+        {
             //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
             // txtruc.Text = "0701046971";
             // radioButton1.Checked = true;
@@ -76,7 +76,7 @@ namespace HPReserger
                 imgfactura = null;
                 txtfoto.Text = "";
                 pbfactura.Image = null;
-            }            
+            }
         }
         public void MostrarFoto(PictureBox fotito)
         {
@@ -88,18 +88,21 @@ namespace HPReserger
                 foto.ShowDialog();
             }
         }
+        int _PlazoPago = 30;
         private void txtruc_TextChanged(object sender, EventArgs e)
         {
-            DataRow razonsocial = cfactura.RUCProveedor(txtruc.Text);
-            if (razonsocial != null)
+            DataRow DatosEmpresa = cfactura.RUCProveedor(txtruc.Text);
+            if (DatosEmpresa != null)
             {
-                txtRazonSocial.Text = razonsocial["razon_social"].ToString();
-                txtdireccion.Text = razonsocial["direccion_oficina"].ToString();
-                txtTelefono.Text = razonsocial["telefono_oficina"].ToString();
+                txtRazonSocial.Text = DatosEmpresa["razon_social"].ToString();
+                txtdireccion.Text = DatosEmpresa["direccion_oficina"].ToString();
+                txtTelefono.Text = DatosEmpresa["telefono_oficina"].ToString();
+                _PlazoPago = int.Parse(DatosEmpresa["plazo"].ToString());
                 cargarguias(txtguia);//txtguia_TextChanged(sender, e);
             }
             else
             {
+                _PlazoPago = 30;
                 txtRazonSocial.Text = txtdireccion.Text = txtTelefono.Text = "";
                 chlbx.Items.Clear();
                 txtguia.DataSource = null;
@@ -348,8 +351,9 @@ namespace HPReserger
                         ////////////////////// 
                         ///Insertar-Asiento///
                         //////////////////////
-                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value,frmLogin.CodigoUsuario);
-                        cfactura.InsertarAsientoFactura(nextAsiento,next + 1, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value,frmLogin.CodigoUsuario);
+                        // usp_InsertarAsientoFactura
+                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
+                        cfactura.InsertarAsientoFactura(nextAsiento, next + 1, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
                     }
                     else
                     {
@@ -392,6 +396,7 @@ namespace HPReserger
             Dtguias.Enabled = false;
             btnprovisionar.Enabled = false;
             cbodetraccion.SelectedIndex = 0;
+            txtcodfactura.Focus();
 
             //Valido que el boton Provisionar se APague si ya esta una fic provisionada
             for (int i = 0; i < Dtguias.RowCount; i++)
@@ -426,6 +431,13 @@ namespace HPReserger
             if (string.IsNullOrWhiteSpace(txtnrofactura.Text))
             {
                 MSG("Ingresé Número de la Factura");
+                txtnrofactura.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtcodfactura.Text))
+            {
+                MSG("Ingresé Codigo de la Factura");
+                txtcodfactura.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(txtmonto.Text))
@@ -435,7 +447,7 @@ namespace HPReserger
             }
             if (!string.IsNullOrWhiteSpace(txtnrofactura.Text))
             {
-                DataRow factura = cfactura.BuscarFacturas(txtruc.Text, txtnrofactura.Text);
+                DataRow factura = cfactura.BuscarFacturas(txtruc.Text, $"{txtcodfactura.Text}-{txtnrofactura.Text}");
                 if (factura != null)
                 {
                     MSG("Nro Factura ya Existe");
@@ -648,10 +660,11 @@ namespace HPReserger
         }
         private void txtnrofactura_Leave(object sender, EventArgs e)
         {
+            HPResergerFunciones.Utilitarios.AjustarTexto(txtnrofactura, 15);
             //buscar si la factura ya existe en el sistema
             if (!string.IsNullOrWhiteSpace(txtnrofactura.Text))
             {
-                DataRow factura = cfactura.BuscarFacturas(txtruc.Text, txtnrofactura.Text);
+                DataRow factura = cfactura.BuscarFacturas(txtruc.Text, $"{txtcodfactura.Text}-{txtnrofactura.Text}");
                 if (factura != null)
                 {
                     MSG("Nro Factura ya Existe");
@@ -1027,7 +1040,7 @@ namespace HPReserger
             cboigv.SelectedIndex = frmProvi.cboigv.SelectedIndex;
             cbodetraccion.SelectedIndex = frmProvi.cbodetraccion.SelectedIndex;
             numdetraccion.Value = frmProvi.numdetraccion.Value;
-            if (MessageBox.Show("Seguro Desea Provisionar esta Factura", CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Seguro Desea Provisionar esta Factura", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 int detracc = 0;
                 if (cbodetraccion.Text == "NO")
@@ -1111,6 +1124,36 @@ namespace HPReserger
             cbomoneda.ValueMember = "codigo";
             cbomoneda.Text = txt;
         }
+
+        private void txtcodfactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '-' || e.KeyChar == '-')
+            {
+                e.Handled = true;
+                txtnrofactura.Focus();
+            }
+        }
+        private void txtcodfactura_Leave(object sender, EventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.AjustarTexto(txtcodfactura, 4);
+        }
+        private void txtnrofactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Back)
+                if (txtnrofactura.Text.Length == 0)
+                    txtcodfactura.Focus();
+        }
+
+        private void DtFechaRecepcion_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DtFechaRecepcion_ValueChanged(object sender, EventArgs e)
+        {
+            Dtfechaentregado.Value = DtFechaRecepcion.Value.AddDays(_PlazoPago);
+        }
+
         private void DtgConten_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";

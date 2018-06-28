@@ -161,6 +161,7 @@ namespace HPReserger
                         frmdetalle.MdiParent = this.MdiParent;
                         frmdetalle.Icon = this.Icon;
                         frmdetalle.idasiento = int.Parse(txtcodigo.Text);
+                        frmdetalle.proyecto = (int)cboproyecto.SelectedValue;
                         if (chkfechavalor.Checked) frmdetalle.fecha = dtfechavalor.Value;
                         else frmdetalle.fecha = fecha.Value;
                         frmdetalle.asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
@@ -185,7 +186,11 @@ namespace HPReserger
                 if (frmdetalle.Dtgconten.RowCount > 1)
                 {
                     frmdetalle.Dtgconten.AllowUserToAddRows = false;
-                    Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = frmdetalle.Dtgconten.RowCount;
+                    frmdetalle.SacarDatos();
+                    if (frmdetalle.ChkDuplicar.Checked)
+                        btnActualizar_Click(sender, new EventArgs());
+                    else
+                        Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = frmdetalle.Dtgconten.RowCount;
                 }
                 else
                     Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 0;
@@ -804,14 +809,37 @@ namespace HPReserger
         }
         public Boolean modifico;
         public int dinamimodi;
+        DataTable TableAux;
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            if (Dtgconten.RowCount <= 0) { MSG("No Hay Datos"); return; }
-            estado = 2;
-            dinamimodi = Convert.ToInt16(dtgayuda3[7, 0].Value.ToString());
-            modifico = false;
-            desactivar();
-            btnmas.Focus(); chkfechavalor.Enabled = true; btnActualizar.Enabled = false;
+            if (cboestado.SelectedValue.ToString() == "1")
+            {
+                if (msgP("Este Asiento NO se puede Modificar, Solicite a su jefe que habilite la Edición del Asiento.\n¿Desea Solicitar Modificación?") == DialogResult.Yes)
+                {
+                    TableAux = CapaLogica.ListarJefeInmediato(frmLogin.CodigoUsuario, "", 10);
+                    if (TableAux.Rows.Count > 0)
+                    {
+                        DataRow filita = TableAux.Rows[0];
+                        filita[codigo].ToString();
+                        //Enviando al Jefe la Acción
+                        string cade = "";
+                        string sql = $"update TBL_Asiento_Contable set Estado=0 where Id_Asiento_Contable={txtcodigo.Text} and id_proyecto={cboproyecto.SelectedValue}";
+                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade, 0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
+                        MSG("Se ha Enviado la Solicitud a su Jefe");
+                    }
+                    else { MSG("No se Encontró Información de su Jefe"); }
+
+                }
+            }
+            else
+            {
+                if (Dtgconten.RowCount <= 0) { MSG("No Hay Datos"); return; }
+                estado = 2;
+                dinamimodi = Convert.ToInt16(dtgayuda3[7, 0].Value.ToString());
+                modifico = false;
+                desactivar();
+                btnmas.Focus(); chkfechavalor.Enabled = true; btnActualizar.Enabled = false;
+            }
         }
         public void validar()
         {
@@ -992,6 +1020,11 @@ namespace HPReserger
                         //MostrarValores(cadena + Detalle(), codigo);
                         CapaLogica.Modificar2asiento(codigo);
                         //Mensajes("Codigo:" + codigo + " Filas;" + Dtgconten.RowCount);
+                        foreach (DataGridViewRow item in Dtgconten.Rows)
+                        {
+                            if (item.Cells[EstadoCuen.Name].Value.ToString() != "3")
+                                item.Cells[EstadoCuen.Name].Value = cboestado.SelectedValue.ToString();
+                        }
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
                             if (int.Parse(cboestado.SelectedValue.ToString()) == 0)
@@ -1217,7 +1250,10 @@ namespace HPReserger
         {
             MessageBox.Show(v, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+        private DialogResult msgP(string v)
+        {
+            return MessageBox.Show(v, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+        }
         private void cboproyecto_Enter(object sender, EventArgs e)
         {
             string cadena = cboproyecto.Text;

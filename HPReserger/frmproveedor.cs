@@ -176,9 +176,9 @@ namespace HPReserger
         {
             tipobusca = 6; Txtbusca_TextChanged(sender, e);
         }
-
         public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
+            // usp_listar_proveedores
             dtgconten.DataSource = CProveedor.ListarProveedores(Txtbusca.Text, tipobusca);
             msg(dtgconten);
         }
@@ -186,7 +186,6 @@ namespace HPReserger
         {
             lblmsg.Text = "Total Registros: " + conteo.RowCount;
         }
-
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             int y = e.RowIndex;
@@ -216,6 +215,7 @@ namespace HPReserger
                 cbotipopersona.SelectedIndex = int.Parse(dtgconten["TIPOPER", y].Value.ToString()) - 1;
                 cboctasoles.SelectedIndex = int.Parse(dtgconten["TIPOCTASOLES", y].Value.ToString()) - 1;
                 cboctadolares.SelectedIndex = int.Parse(dtgconten["TIPOCTADOLARES", y].Value.ToString()) - 1;
+                txtplazofijo.Text = dtgconten[PLAZOPAGOX.Name, y].Value.ToString();
             }
         }
         public void Iniciar(Boolean a)
@@ -252,6 +252,7 @@ namespace HPReserger
             btnnuevo.Enabled = !a;
             btnmodificar.Enabled = !a;
             btneliminar.Enabled = !a;
+            txtplazofijo.Enabled = a;
         }
         public void Activar()
         {
@@ -349,7 +350,7 @@ namespace HPReserger
             else
             {
                 aux = false;
-                MessageBox.Show("Número de Identidad y Razón Social No pueden estar Vacios", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Número de Identidad y Razón Social No pueden estar Vacios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             return aux;
         }
@@ -391,10 +392,13 @@ namespace HPReserger
                  "Banco Soles  = " + cbobancosoles.Text + "\n" + "Nro Cuenta Dólares = " + nrocuentadolares + "\n" + "Nro Cci Dólares= " + nroccidolares + "\n" +
                  "Banco Dolares = " + cbobancodolares.Text + "\n" + "Nro CTa Detracciones = " + nroctadetracciones + "\n" + "Régimen = " + cboregimen.Text + "\n", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        Boolean salida = false;
+
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (llamada != 0)
             {
+                salida = true;
                 rucito = txtnumeroidentidad.Text;
                 this.Close();
             }
@@ -402,27 +406,30 @@ namespace HPReserger
             string Documentoid, nombrerazon;
             Documentoid = txtnumeroidentidad.Text;
             nombrerazon = txtnombrerazonsocial.Text;
+            int plzfijo = int.Parse(txtplazofijo.Text == "" ? "0" : txtplazofijo.Text);
             if (estado == 1 && VerificarDatos(Documentoid, nombrerazon))
             {
                 CargarValoresDeIngreso();
-                //MensajedeDatos();
-                MessageBox.Show("Se Insertó con Exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MensajedeDatos();               
+                //usp_insertar_proveedor
                 CProveedor.InsertarProveedor(anterior, numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
-                persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares);
+                persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares, plzfijo);
                 PresentarValor(nombrerazon);
                 Iniciar(false);
+                MessageBox.Show("Se Insertó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 if (estado == 2)
                 {
                     CargarValoresDeIngreso();
-                    //MensajedeDatos();
-                    MessageBox.Show("Se Modificó con Exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CProveedor.ActualizarProveedor(anterior,numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
-                    persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares);
+                    //MensajedeDatos();                    
+                    //usp_actualizar_proveedor
+                    CProveedor.ActualizarProveedor(anterior, numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
+                    persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares, plzfijo);
                     PresentarValor(nombrerazon);
                     Iniciar(false);
+                    MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -431,7 +438,7 @@ namespace HPReserger
                         if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrerazonsocial.Text + " Nro Documento: " + txtnumeroidentidad.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
-                            MessageBox.Show("Eliminado Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             PresentarValor("");
 
                         }
@@ -520,19 +527,24 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.Validardocumentos(e, txtcuentadetracciones, 20);
         }
-
         private void frmproveedor_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (!salida)
+                llamada = 100;
             if (string.IsNullOrWhiteSpace(rucito))
             {
                 rucito = txtnumeroidentidad.Text;
             }
         }
+        private void txtplazofijo_Leave(object sender, EventArgs e)
+        {
+            if (int.Parse(txtplazofijo.Text) == 0)
+                txtplazofijo.Text = "30";
+        }
         private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ValidarPegarSoloLetras(e, txtpersonacontacto, 40);
         }
-
         private void btnsectormas_Click(object sender, EventArgs e)
         {
             string sector = cbosectorcomercial.Text;

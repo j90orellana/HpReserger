@@ -342,7 +342,7 @@ namespace HPResergerCapaLogica
         public DataTable BuscarCuentas(string buscar, int opcion)
         {
             return cdOrdenPedido.BuscarCuenta(buscar, opcion);
-        }        
+        }
         public DataTable ListarDinamicas(string busca, int opcion)
         {
             return cdOrdenPedido.ListarDinamicaContable(busca, opcion);
@@ -355,13 +355,13 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.SacarDinamicas(busca);
         }
-        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado)
+        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita)
         {
-            cdOrdenPedido.InsertarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado);
+            cdOrdenPedido.InsertarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado, solicita);
         }
-        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado)
+        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita)
         {
-            cdOrdenPedido.ModificarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado);
+            cdOrdenPedido.ModificarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado, solicita);
         }
         public void Modificar2Dinamica(int codigo)
         {
@@ -384,13 +384,21 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.BuscarAsientosContables(busca, opcion, empresa);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
-         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario)
+         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario);
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion);
         }
-        public DataTable DetalleAsientos(int opcion, int idaux, int idasiento)
+        public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, int proyecto)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0);
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now);
+        }
+        public DataTable DuplicarDetalle(int idaux, int idasiento, int idproyecto, int duplicar, string cuenta)
+        {
+            return cdOrdenPedido.DuplicarDetalle(idaux, idasiento, idproyecto, duplicar, cuenta);
+        }
+        public DataTable BuscarSiDuplica(int idaux, int idasiento, int idproyecto, string cuenta)
+        {
+            return cdOrdenPedido.BuscarSiDuplica(idaux, idasiento, idproyecto, cuenta);
         }
         public DataTable UltimoAsiento(int empresa)
         {
@@ -418,29 +426,29 @@ namespace HPResergerCapaLogica
         }
         public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
            string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-           string traslacion, string bc,int soli)
+           string traslacion, string bc, int soli)
         {
             cdOrdenPedido.InsertarCuentasContables(cuentan1, codcuenta, nombre, tipo, natu, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
-                cuentacierre, analitica, mensual, cierre, traslacion, bc,soli);
+                cuentacierre, analitica, mensual, cierre, traslacion, bc, soli);
         }
         public void ActualizarCuentasContables(string codcuenta, string generica, string grupo,
           string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-          string traslacion, string bc, string naturaleza,int soli)
+          string traslacion, string bc, string naturaleza, int soli)
         {
             cdOrdenPedido.ActualizarCuentasContables(codcuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
-                cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza,soli);
+                cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli);
         }
         public void InsertarProveedor(string anterior, string ruc, string razon, string nombre, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
-            string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctasoles, int ctadolares)
+            string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctasoles, int ctadolares, int plazo)
         {
             cdOrdenPedido.InsertarProveedor(anterior, ruc, razon, nombre, sector, dirofi, telofi, diralm, telalm, dirsuc, telsuc, telcon,
-             nomcon, emacon, nctasoles, ccisoles, bancosoles, nroctadolares, ccidolares, bancodolares, detrac, regi, tipoper, ctasoles, ctadolares);
+             nomcon, emacon, nctasoles, ccisoles, bancosoles, nroctadolares, ccidolares, bancodolares, detrac, regi, tipoper, ctasoles, ctadolares, plazo);
         }
         public void ActualizarProveedor(string anterior, string ruc, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
-           string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctaasoles, int ctadolares)
+           string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctaasoles, int ctadolares, int plazofijo)
         {
             cdOrdenPedido.ActualizarProveedor(anterior, ruc, sector, dirofi, telofi, diralm, telalm, dirsuc, telsuc, telcon, nomcon, emacon, nctasoles, ccisoles, bancosoles,
-                nroctadolares, ccidolares, bancodolares, detrac, regi, tipoper, ctaasoles, ctadolares);
+                nroctadolares, ccidolares, bancodolares, detrac, regi, tipoper, ctaasoles, ctadolares, plazofijo);
         }
         /// </summary>
         /// <returns></returns>
@@ -655,10 +663,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.BuscarFacturas(ruc, nrofac);
         }
-        public DataTable InsertarAsientoRecibo(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac, int ccs, DateTime fecha, int usuario)
+        public DataTable InsertarAsientoRecibo(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string ruc, string razon, string cod, string numfac, int ccs, DateTime fecha, DateTime fecharecep, DateTime fechavence, int usuario)
         {
-            return cdOrdenPedido.InsertarAsientoRecibo(num, opcion, oc, monto, igv, total, cc, numfac, ccs, fecha, usuario);
-        }
+            return cdOrdenPedido.InsertarAsientoRecibo(num, opcion, oc, monto, igv, total, cc, ruc, razon, cod, numfac, ccs, fecha, fechavence, fecharecep, usuario);
+        }       
         public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario, int nroconstancia, decimal detraccion, int cc)
         {
             cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, fecharecepcion, estado, moneda, imgfactura, usuario, nroconstancia, detraccion, cc);
@@ -790,6 +798,10 @@ namespace HPResergerCapaLogica
         public DataTable ListarJefeInmediato(int tipo, string documento, int opcion)
         {
             return cdOrdenPedido.ListarJefeInmediato(tipo, documento, opcion);
+        }
+        public DataTable ListarPerfilActualDelUsuario(int CodigoUser)
+        {
+            return cdOrdenPedido.ListarJefeInmediato(CodigoUser, "", 100);
         }
         public DataTable ListarPerfiles(int perfiles, int opcion, int codigo, int usuario, DateTime fecha)
         {
@@ -1197,9 +1209,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ProyectoCentrodecostodetalle(@opcion, @iddep, @presupuesto, @proyecto, etapa, @importe, @ceco, @importececo, @importeflujo, @usuario);
         }
-        public DataTable InsertarAsientoFactura(int num, int nextasiento, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac, int ccs, DateTime Fecha, int usuario)
+        public DataTable InsertarAsientoFactura(int num, int nextasiento, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string ruc, string razon, string codfac, string numfac, int ccs, DateTime fecha, DateTime fechaRecepcion, DateTime FechaVence, int usuario)
         {
-            return cdOrdenPedido.InsertarAsientoFactura(num, nextasiento, opcion, oc, monto, igv, total, cc, numfac, ccs, Fecha, usuario);
+            return cdOrdenPedido.InsertarAsientoFactura(num, nextasiento, opcion, oc, monto, igv, total, cc, ruc, razon, codfac, numfac, ccs, fecha, FechaVence, fechaRecepcion, usuario);
         }
         public DataTable InsertarAsientoFacturaLlegada(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string numfac)
         {
@@ -1278,9 +1290,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.insertarPagarfactura(nrofactura, tipo, nropago);
         }
-        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, int usuario, int centro, string tipo, string proveedor)
+        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor)
         {
-            return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina, fecha, fechavence, usuario, centro, tipo, proveedor);
+            return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina, fecha, fechavence, fecharecepcion, usuario, centro, tipo, proveedor);
         }
         public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)
         {

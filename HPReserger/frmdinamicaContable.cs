@@ -104,10 +104,23 @@ namespace HPReserger
             RellenarEstado(cboestado);
             CargarOperacion(cbooperacion);
             CargarSubOperacion(cbosuboperacion);
+            RellenarCombosSiNo10(cbosolicitar);
             label5.Text = label5.Text.ToUpper();
             dtgbusca.DataSource = ListarDinamicas(Txtbusca.Text, ValorBusqueda);
             msgs(dtgbusca);
             DesactivarModi();
+        }
+        public void RellenarCombosSiNo10(ComboBox combito)
+        {
+            DataTable tablita = new DataTable();
+            tablita.Columns.Add("CODIGO");
+            tablita.Columns.Add("VALOR");
+            tablita.Rows.Add(new object[] { "1", "SI" });
+            tablita.Rows.Add(new object[] { "0", "NO" });
+            combito.DataSource = tablita;
+            combito.DisplayMember = "VALOR";
+            combito.ValueMember = "CODIGO";
+            combito.SelectedIndex = 0;
         }
         public void Mensajes(string text)
         {
@@ -232,7 +245,7 @@ namespace HPReserger
             {
                 // string cadenita = Dtgconten[0, e.RowIndex].Value.ToString();
                 btnmas.Focus();
-                if (e.RowIndex > -1 && e.ColumnIndex == 0 && estado!=0)
+                if (e.RowIndex > -1 && e.ColumnIndex == 0 && estado != 0)
                 {
                     frmlistarcuentas cuentitas = new frmlistarcuentas();
                     if (Dtgconten[0, e.RowIndex].Value != null)
@@ -319,11 +332,11 @@ namespace HPReserger
             {
                 if (estado == 1 && fila > 0)
                 {
-                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         estado = 0;
                         Activar(); DesactivarModi();
-                        ListarDinamicas(" ",ValorBusqueda);
+                        ListarDinamicas(" ", ValorBusqueda);
                         Txtbusca.Enabled = false;
                         dtgbusca.Focus();
                     }
@@ -333,11 +346,11 @@ namespace HPReserger
                 {
                     if (estado == 2 && fila > 0)
                     {
-                        if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        if (MessageBox.Show("Hay datos Ingresados, Desea Salir?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
                             estado = 0;
                             Activar(); DesactivarModi();
-                            ListarDinamicas(" ",ValorBusqueda);
+                            ListarDinamicas(" ", ValorBusqueda);
                             Txtbusca.Enabled = true;
                             dtgbusca.Focus();
                         }
@@ -400,6 +413,7 @@ namespace HPReserger
             cbooperacion.Text = dtgbusca[3, e.RowIndex].Value.ToString();
             cbosuboperacion.Text = dtgbusca[5, e.RowIndex].Value.ToString();
             cboestado.SelectedValue = dtgbusca[9, e.RowIndex].Value.ToString();
+            cbosolicitar.SelectedValue = dtgbusca[solicitax.Name, e.RowIndex].Value.ToString();
             dtgayuda2.DataSource = CDinamica.SacarDinaminas(codigo.ToString());
             if (dtgayuda2.RowCount > 0)
             {
@@ -416,8 +430,8 @@ namespace HPReserger
                     MarcaSColumn.DataSource = tablita;
                     MarcaSColumn.ValueMember = "CODIGO";
                     MarcaSColumn.DisplayMember = "VALOR"; filamax++;
-                    Dtgconten[0, i].Value = dtgayuda2[6, i].Value;
-                    Dtgconten[2, i].Value = dtgayuda2[8, i].Value; fila++;
+                    Dtgconten[cuenta.Name, i].Value = dtgayuda2[6, i].Value;
+                    Dtgconten[debehaber.Name, i].Value = dtgayuda2[8, i].Value; fila++;
                 }
             }
         }
@@ -441,6 +455,7 @@ namespace HPReserger
             ultimadinamica();
             Codigito(codigo + 1); ActivarModi();
             cboestado.SelectedValue = 1;
+            cbosolicitar.SelectedValue = 0;
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
@@ -499,13 +514,13 @@ namespace HPReserger
         public Boolean aux;
         public void ActivarModi()
         {
-            btnmas.Enabled = cboyear.Enabled = cboestado.Enabled = cbooperacion.Enabled = cbosuboperacion.Enabled = true;
+            btnmas.Enabled = cboyear.Enabled = cboestado.Enabled = cbooperacion.Enabled = cbosuboperacion.Enabled = cbosolicitar.Enabled = true;
             foreach (DataGridViewColumn col in Dtgconten.Columns)
                 col.ReadOnly = false;
         }
         public void DesactivarModi()
         {
-            btnmas.Enabled = cboyear.Enabled = cboestado.Enabled = cbooperacion.Enabled = cbosuboperacion.Enabled = false;
+            btnmas.Enabled = cboyear.Enabled = cboestado.Enabled = cbooperacion.Enabled = cbosuboperacion.Enabled = cbosolicitar.Enabled = false;
             foreach (DataGridViewColumn col in Dtgconten.Columns)
                 col.ReadOnly = true;
         }
@@ -530,12 +545,12 @@ namespace HPReserger
                     //string cadena = "";
                     CargarValoresIngreso();
                     //MostrarValores(cadena + Detalle(), codigo + 1);
-                    Mensajes("Se Insertó con Exito");
                     estado = 0;
                     for (int i = 0; i < fila; i++)
                     {
-                        CDinamica.InsertarDinamica(codigo + 1, ejercicio, codope, codsub,(Dtgconten[0, i].Value.ToString()), Dtgconten[2, i].Value.ToString(), activo);
+                        CDinamica.InsertarDinamica(codigo + 1, ejercicio, codope, codsub, (Dtgconten[0, i].Value.ToString()), Dtgconten[2, i].Value.ToString(), activo, int.Parse(cbosolicitar.SelectedValue.ToString()));
                     }
+
                     //INGRESO DE REVERSA
                     //////////////////////////
                     Txtbusca.Text = (codigo + 1) + "";
@@ -548,14 +563,14 @@ namespace HPReserger
                     {
                         //string cadena = "";
                         CargarValoresIngreso();
-                        //MostrarValores(cadena + Detalle2(), codigo);
-                        Mensajes("Se Modificó con Exito");
+                        //MostrarValores(cadena + Detalle2(), codigo);                       
                         estado = 0;
                         CDinamica.Modificar2Dinamica(codigo);
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
-                            CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Dtgconten[0, i].Value.ToString(), Dtgconten[2, i].Value.ToString(), activo);
+                            CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Dtgconten[0, i].Value.ToString(), Dtgconten[2, i].Value.ToString(), activo,int.Parse(cbosolicitar.SelectedValue.ToString()));
                         }
+                        Mensajes("Se Modificó con Exito");
                         //MODIFICAR DE REVERSA
                         //////////////////////////
                         Txtbusca.Text = (codigo) + "";
@@ -569,7 +584,7 @@ namespace HPReserger
                             if (MessageBox.Show("Seguró Desea Eliminar; Dinámica Contable: DC_0" + codigo, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 CDinamica.EliminarDinamica(codigo);
-                                MessageBox.Show("Eliminado Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Txtbusca.Text = "";
                                 dtgbusca.DataSource = ListarDinamicas(Txtbusca.Text, 1);
 

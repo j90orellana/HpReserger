@@ -74,6 +74,10 @@
             this.label22 = new System.Windows.Forms.Label();
             this.Txtbusca = new System.Windows.Forms.TextBox();
             this.dtgbusca = new System.Windows.Forms.DataGridView();
+            this.lblmsg2 = new System.Windows.Forms.Label();
+            this.dtgayuda2 = new System.Windows.Forms.DataGridView();
+            this.cbosolicitar = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.codx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ejerciciox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,8 +88,7 @@
             this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblmsg2 = new System.Windows.Forms.Label();
-            this.dtgayuda2 = new System.Windows.Forms.DataGridView();
+            this.solicitax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -553,7 +556,8 @@
             this.ccx,
             this.cuentax,
             this.partex,
-            this.estadox});
+            this.estadox,
+            this.solicitax});
             this.dtgbusca.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
@@ -587,6 +591,54 @@
             this.dtgbusca.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_CellContentClick);
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
             this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
+            // 
+            // lblmsg2
+            // 
+            this.lblmsg2.AutoSize = true;
+            this.lblmsg2.Location = new System.Drawing.Point(15, 675);
+            this.lblmsg2.Name = "lblmsg2";
+            this.lblmsg2.Size = new System.Drawing.Size(96, 13);
+            this.lblmsg2.TabIndex = 130;
+            this.lblmsg2.Text = "Total de Registros:";
+            this.lblmsg2.Click += new System.EventHandler(this.lblmsg2_Click);
+            // 
+            // dtgayuda2
+            // 
+            this.dtgayuda2.AllowUserToAddRows = false;
+            this.dtgayuda2.AllowUserToDeleteRows = false;
+            this.dtgayuda2.AllowUserToResizeColumns = false;
+            this.dtgayuda2.BackgroundColor = System.Drawing.SystemColors.HighlightText;
+            this.dtgayuda2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgayuda2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dtgayuda2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtgayuda2.Location = new System.Drawing.Point(695, 368);
+            this.dtgayuda2.Name = "dtgayuda2";
+            this.dtgayuda2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtgayuda2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dtgayuda2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgayuda2.Size = new System.Drawing.Size(679, 196);
+            this.dtgayuda2.TabIndex = 139;
+            this.dtgayuda2.Visible = false;
+            this.dtgayuda2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgayuda2_RowEnter);
+            // 
+            // cbosolicitar
+            // 
+            this.cbosolicitar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbosolicitar.FormattingEnabled = true;
+            this.cbosolicitar.Location = new System.Drawing.Point(494, 39);
+            this.cbosolicitar.Name = "cbosolicitar";
+            this.cbosolicitar.Size = new System.Drawing.Size(80, 21);
+            this.cbosolicitar.TabIndex = 141;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(402, 43);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(86, 13);
+            this.label9.TabIndex = 140;
+            this.label9.Text = "Solicitar Detalle?";
             // 
             // codx
             // 
@@ -680,34 +732,14 @@
             this.estadox.Visible = false;
             this.estadox.Width = 64;
             // 
-            // lblmsg2
+            // solicitax
             // 
-            this.lblmsg2.AutoSize = true;
-            this.lblmsg2.Location = new System.Drawing.Point(15, 675);
-            this.lblmsg2.Name = "lblmsg2";
-            this.lblmsg2.Size = new System.Drawing.Size(96, 13);
-            this.lblmsg2.TabIndex = 130;
-            this.lblmsg2.Text = "Total de Registros:";
-            this.lblmsg2.Click += new System.EventHandler(this.lblmsg2_Click);
-            // 
-            // dtgayuda2
-            // 
-            this.dtgayuda2.AllowUserToAddRows = false;
-            this.dtgayuda2.AllowUserToDeleteRows = false;
-            this.dtgayuda2.AllowUserToResizeColumns = false;
-            this.dtgayuda2.BackgroundColor = System.Drawing.SystemColors.HighlightText;
-            this.dtgayuda2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgayuda2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dtgayuda2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtgayuda2.Location = new System.Drawing.Point(695, 368);
-            this.dtgayuda2.Name = "dtgayuda2";
-            this.dtgayuda2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgayuda2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dtgayuda2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgayuda2.Size = new System.Drawing.Size(679, 196);
-            this.dtgayuda2.TabIndex = 139;
-            this.dtgayuda2.Visible = false;
-            this.dtgayuda2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgayuda2_RowEnter);
+            this.solicitax.DataPropertyName = "solicita";
+            this.solicitax.HeaderText = "Solicita";
+            this.solicitax.Name = "solicitax";
+            this.solicitax.ReadOnly = true;
+            this.solicitax.Visible = false;
+            this.solicitax.Width = 67;
             // 
             // frmdinamicaContable
             // 
@@ -716,6 +748,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(673, 698);
+            this.Controls.Add(this.cbosolicitar);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.dtgayuda2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnlimpiar);
@@ -802,6 +836,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewComboBoxColumn debehaber;
+        private System.Windows.Forms.ComboBox cbosolicitar;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn codx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ejerciciox;
         private System.Windows.Forms.DataGridViewTextBoxColumn opx;
@@ -812,5 +848,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuentax;
         private System.Windows.Forms.DataGridViewTextBoxColumn partex;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn solicitax;
     }
 }

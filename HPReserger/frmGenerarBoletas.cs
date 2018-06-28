@@ -108,6 +108,7 @@ namespace HPReserger
                         CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                         //Generar Asiento de Boletas Generadas
                         DataTable Tablita = new DataTable();
+                        //filtrar por lo que ya esta generado
                         Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                         if (Tablita.Rows.Count > 0)
                         {

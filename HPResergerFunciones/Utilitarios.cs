@@ -233,7 +233,7 @@ namespace HPResergerFunciones
         {
             char[] a = campo.ToCharArray();
             Array.Reverse(a);
-            campo = new string(a);           
+            campo = new string(a);
             return campo;
         }
         public static KeyPressEventArgs ToUpper(KeyPressEventArgs e)
@@ -855,6 +855,12 @@ namespace HPResergerFunciones
         {
             item.Style.ForeColor = Color.Empty;
             item.Style.BackColor = Color.Empty;
+        }
+        public static void AjustarTexto(TextBox cajita, int len)
+        {
+            if (cajita.Text.Length > 0)
+                if (cajita.Text.Length > len)
+                    cajita.Text = cajita.Text.Substring(0, len);
         }
     }
 }
