@@ -666,7 +666,7 @@ namespace HPResergerCapaLogica
         public DataTable InsertarAsientoRecibo(int num, int opcion, int oc, decimal monto, decimal igv, decimal total, string cc, string ruc, string razon, string cod, string numfac, int ccs, DateTime fecha, DateTime fecharecep, DateTime fechavence, int usuario)
         {
             return cdOrdenPedido.InsertarAsientoRecibo(num, opcion, oc, monto, igv, total, cc, ruc, razon, cod, numfac, ccs, fecha, fechavence, fecharecep, usuario);
-        }       
+        }
         public void InsertarFactura(string nrofactura, string proveedor, int fic, int oc, int tipo, decimal subtotal, decimal igv, decimal total, int gravaivg, DateTime fechaemision, DateTime fechaentregado, DateTime fecharecepcion, int estado, int moneda, byte[] imgfactura, int usuario, int nroconstancia, decimal detraccion, int cc)
         {
             cdOrdenPedido.InsertarFactura(nrofactura, proveedor, fic, oc, tipo, subtotal, igv, total, gravaivg, fechaemision, fechaentregado, fecharecepcion, estado, moneda, imgfactura, usuario, nroconstancia, detraccion, cc);
@@ -690,6 +690,34 @@ namespace HPResergerCapaLogica
         public DataRow CargarImagenCotizacion(int Numero)
         {
             return cdOrdenPedido.CargarImagenCotizacion(Numero);
+        }
+        public DataTable ListarFacturasProveedor(string ruc, string estado, int tipo)
+        {
+            return cdOrdenPedido.ListarFacturasProveedor(ruc, estado, tipo);
+        }
+        public DataTable NotaCredito(int opcion, string codnc, string nronc, string nrofac, int tipo, string Proveedor, decimal subtotaln, decimal igv, decimal total, string glosa, int usuario)
+        {
+            return cdOrdenPedido.NotaCredito(opcion, codnc, nronc, nrofac, tipo, Proveedor, subtotaln, igv, total, glosa, usuario);
+        }
+        public DataTable NotaCreditoDetalle(int opcion, string codnc, string nronc, string Proveedor, int tipo, int tipocompra, int cantidad, int articulo, int marca, int modelo, decimal precioreg, decimal preciomod, decimal total, int eliminado, int usuario)
+        {
+            return cdOrdenPedido.NotaCreditoDetalle(opcion, codnc, nronc, Proveedor, tipo, tipocompra, cantidad, articulo, marca, modelo, precioreg, preciomod, total, eliminado, usuario);
+        }
+        public DataTable NotaCreditoDetalleEliminar(string codnc, string nronc, string Proveedor, int tipo)
+        {
+            return cdOrdenPedido.NotaCreditoDetalle(10, codnc, nronc, Proveedor, tipo, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        }
+        public DataTable ListarNotaCredito(string CodNumNota, string Proveedor, int tipo)
+        {
+            return cdOrdenPedido.ListarFacturasProveedor(CodNumNota, Proveedor, tipo);
+        }
+        public DataTable ListarFacturaProveedorNota(string codnumfac, string ruc, string estado)
+        {
+            return cdOrdenPedido.ListarFacturaProveedorNota(codnumfac, ruc, estado);
+        }
+        public DataTable ListarFacturasNotas(string codnumfac, string ruc, string estado)
+        {
+            return cdOrdenPedido.ListarFacturasNotas(codnumfac, ruc, estado);
         }
         public void CotizacionModificar(int Numero, DateTime FechaEntrega, decimal Importe, string Proveedor, byte[] Foto, string NombreArchivo, int moneda)
         {

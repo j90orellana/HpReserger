@@ -1279,7 +1279,8 @@ namespace HPReserger
 
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex > 0)
+                lbldetalle.Text = "Detalle: " + Dtgconten[detallex.Name, e.RowIndex].Value.ToString();
         }
 
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

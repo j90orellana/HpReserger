@@ -1968,7 +1968,42 @@ namespace HPResergerCapaDatos
             object[] valores = { RUC };
             return bd.DatarowFromProcedure("usp_Get_Proveedor", parametros, valores, null);
         }
-
+        public DataTable ListarFacturasProveedor(string ruc, string estado, int tipo)
+        {
+            string[] parametros = { "@proveedor", "@estado", "@tipo" };
+            object[] valores = { ruc, estado, tipo };
+            return bd.DataTableFromProcedure("usp_ListarFacturasProveedor", parametros, valores, null);
+        }
+        public DataTable ListarNotaCredito(string CodNumNota, string Proveedor, int tipo)
+        {
+            string[] parametros = { "@codnumnota", "@proveedor", "@tipo" };
+            object[] valores = { CodNumNota, Proveedor, tipo };
+            return bd.DataTableFromProcedure("usp_ListarNotaCredito", parametros, valores, null);
+        }
+        public DataTable NotaCredito(int opcion, string codnc, string nronc, string nrofac, int tipo, string Proveedor, decimal subtotaln, decimal igv, decimal total, string glosa, int usuario)
+        {
+            string[] parametros = { "@opcion", "@codnc", "@nronc", "@nrofac", "@tiponota", "@proveedor", "@subtotal", "@igv", "@total", "@glosa", "@usuario" };
+            object[] valores = { opcion, codnc, nronc, nrofac, tipo, Proveedor, subtotaln, igv, total, glosa, usuario };
+            return bd.DataTableFromProcedure("usp_NotaCredito", parametros, valores, null);
+        }
+        public DataTable NotaCreditoDetalle(int opcion, string codnc, string nronc, string Proveedor, int tipo, int tipocompra, int cantidad, int articulo, int marca, int modelo, decimal precioreg, decimal preciomod, decimal total, int eliminado, int usuario)
+        {
+            string[] parametros = { "@opcion", "@codnc", "@nronc", "@proveedor", "@tiponota", "@tipocompra", "@cantidad", "@idarticulo", "@idmarca", "@idmodelo", "@precioreg", "@preciomod", "@total", "@eliminado", "@usuario" };
+            object[] valores = { opcion, codnc, nronc, Proveedor, tipo, tipocompra, cantidad, articulo, marca, modelo, precioreg, preciomod, total, eliminado, usuario };
+            return bd.DataTableFromProcedure("usp_NotaCreditoDetalle", parametros, valores, null);
+        }
+        public DataTable ListarFacturaProveedorNota(string codnumfac, string ruc, string estado)
+        {
+            string[] parametros = { "@codNumfac", "@proveedor", "@estado" };
+            object[] valores = { codnumfac, ruc, estado };
+            return bd.DataTableFromProcedure("usp_ListarFacturaProveedorNota", parametros, valores, null);
+        }
+        public DataTable ListarFacturasNotas(string codnumfac, string ruc, string estado)
+        {
+            string[] parametros = { "@codNumfac", "@proveedor", "@estado" };
+            object[] valores = { codnumfac, ruc, estado };
+            return bd.DataTableFromProcedure("usp_ListarFacturasNotas", parametros, valores, null);
+        }
         public DataRow CargarImagenCotizacion(int Numero)
         {
             string[] parametros = { "@Numero" };

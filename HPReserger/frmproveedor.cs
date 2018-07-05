@@ -290,6 +290,7 @@ namespace HPReserger
             cboctasoles.SelectedIndex = cboctadolares.SelectedIndex = -1;
             Iniciar(true);
             llamada = 0;
+            txtplazofijo.Text = "30";
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -414,7 +415,7 @@ namespace HPReserger
                 //usp_insertar_proveedor
                 CProveedor.InsertarProveedor(anterior, numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                 persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares, plzfijo);
-                PresentarValor(nombrerazon);
+                PresentarValor("");
                 Iniciar(false);
                 MessageBox.Show("Se Insertó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -427,7 +428,7 @@ namespace HPReserger
                     //usp_actualizar_proveedor
                     CProveedor.ActualizarProveedor(anterior, numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                     persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, regimen, tipoper, ctasoles, ctadolares, plzfijo);
-                    PresentarValor(nombrerazon);
+                    PresentarValor("");
                     Iniciar(false);
                     MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

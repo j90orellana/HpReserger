@@ -2737,5 +2737,49 @@ namespace HPReserger
         {
 
         }
+        frmNotaCredito frmnotita;
+        private void notaCréditoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmnotita == null)
+            {
+                frmnotita = new frmNotaCredito(1);
+                frmnotita.MdiParent = this;
+                frmnotita.Icon = ICono;
+                frmnotita.FormClosed += new FormClosedEventHandler(Cerrarnotita);
+                frmnotita.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmnotita.Activate();
+                ValidarVentanas(frmnotita);
+            }
+        }
+        private void Cerrarnotita(object sender, FormClosedEventArgs e)
+        {
+            frmnotita = null;
+        }
+        frmNotaCredito frmnotita2;
+        private void notaDébitoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmnotita2 == null)
+            {
+                frmnotita2 = new frmNotaCredito(2);
+                frmnotita2.MdiParent = this;
+                frmnotita2.Icon = ICono;
+                frmnotita2.FormClosed += new FormClosedEventHandler(Cerrarnotita2);
+                frmnotita2.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmnotita.Activate();
+                ValidarVentanas(frmnotita2);
+            }
+        }
+        private void Cerrarnotita2(object sender, FormClosedEventArgs e)
+        {
+            frmnotita2 = null;
+        }
     }
 }

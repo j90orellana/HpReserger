@@ -110,6 +110,7 @@
             this.EstadoCuen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detallex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SolicitaDetallex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbldetalle = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
@@ -977,6 +978,7 @@
             this.detallex.MinimumWidth = 20;
             this.detallex.Name = "detallex";
             this.detallex.ReadOnly = true;
+            this.detallex.Visible = false;
             this.detallex.Width = 20;
             // 
             // SolicitaDetallex
@@ -986,11 +988,20 @@
             this.SolicitaDetallex.Name = "SolicitaDetallex";
             this.SolicitaDetallex.Visible = false;
             // 
+            // lbldetalle
+            // 
+            this.lbldetalle.AutoSize = true;
+            this.lbldetalle.Location = new System.Drawing.Point(15, 393);
+            this.lbldetalle.Name = "lbldetalle";
+            this.lbldetalle.Size = new System.Drawing.Size(0, 13);
+            this.lbldetalle.TabIndex = 181;
+            // 
             // frmAsientoContable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 707);
+            this.Controls.Add(this.lbldetalle);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dtgayuda3);
             this.Controls.Add(this.btnlimpiar);
@@ -1123,5 +1134,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCuen;
         private System.Windows.Forms.DataGridViewTextBoxColumn detallex;
         private System.Windows.Forms.DataGridViewTextBoxColumn SolicitaDetallex;
+        private System.Windows.Forms.Label lbldetalle;
     }
 }

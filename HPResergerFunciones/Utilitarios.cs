@@ -41,6 +41,14 @@ namespace HPResergerFunciones
             }
             return P.Handled;
         }
+        public static void msg(string cadena)
+        {
+            MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static DialogResult msgp(string cadena)
+        {
+            return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+        }
         public static Boolean SoloNumerosDecimalesX(KeyPressEventArgs P, string Numero)
         {
             string cadena = "1234567890." + (char)8;
