@@ -37,7 +37,7 @@ namespace HPReserger
                 txtdireccion.Text = razonsocial["direccion_oficina"].ToString();
                 txtTelefono.Text = razonsocial["telefono_oficina"].ToString();
                 //cargarguias(txtguia);//txtguia_TextChanged(sender, e);
-                Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagar(0, "", 0, DateTime.Now, DateTime.Now, 0, DateTime.Now, DateTime.Now);
+                Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagar(0, "", 0, DateTime.Now, DateTime.Now, 0, DateTime.Now, DateTime.Now, 0);
             }
             else
             {
@@ -507,7 +507,7 @@ namespace HPReserger
                                 Busqueda = true;
                         }
                         if (!Busqueda)
-                            Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value, (int)Dtguias[centrocostox.Name, e.RowIndex].Value, (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value, (DateTime)Dtguias[fechaRecepcion.Name, e.RowIndex].Value));
+                            Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value, (int)(Dtguias[centrocostox.Name, e.RowIndex].Value.ToString() == "" ? 0 : Dtguias[centrocostox.Name, e.RowIndex].Value), (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value, (DateTime)Dtguias[fechaRecepcion.Name, e.RowIndex].Value));
                     }
                     else
                     {
@@ -573,9 +573,7 @@ namespace HPReserger
         }
         private void Dtguias_RowErrorTextChanged(object sender, DataGridViewRowEventArgs e)
         {
-
         }
-
         private void Dtguias_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Dtguias.RowCount < 0)
@@ -640,7 +638,7 @@ namespace HPReserger
                 dtpfin.Value = dtpini.Value;
                 dtpini.Value = auxtmp;
             }
-            Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagar(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value);
+            Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagar(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0);
             cbotipo.SelectedIndex = 0;
             txttotaldetrac.Text = txttotal.Text = "0.00";
             btnaceptar.Enabled = false;
@@ -695,7 +693,6 @@ namespace HPReserger
         {
 
         }
-
         private void Dtguias_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Dtguias.EndEdit();
@@ -741,7 +738,6 @@ namespace HPReserger
                     btnseleccion.Text = "Seleccionar Todos";
 
             }
-
         }
         public DialogResult MSG(string cadena)
         {
@@ -766,6 +762,22 @@ namespace HPReserger
                 return;
             }
             txtbuscar_TextChanged(sender, e);
+        }
+
+        private void Dtguias_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.RowIndex, y = e.ColumnIndex;
+            if (x >= 0)
+            {
+                //doble click en proveedores
+                if (y != Dtguias.Columns[OK.Name].Index)
+                {
+                    Clipboard.SetText(Dtguias[y, x].Value.ToString());
+
+                    toolTip1.Show("Copiado", this.MdiParent, MousePosition.X + 20, MousePosition.Y, 500);
+                    //toolTip1.Show("Copiado", this.MdiParent,MousePosition);                   
+                }
+            }
         }
     }
 }

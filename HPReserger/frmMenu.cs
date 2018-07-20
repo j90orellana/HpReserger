@@ -2781,5 +2781,49 @@ namespace HPReserger
         {
             frmnotita2 = null;
         }
+        frmPeriodos frmperiodos;
+        private void periodosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmperiodos == null)
+            {
+                frmperiodos = new frmPeriodos();
+                frmperiodos.MdiParent = this;
+                frmperiodos.Icon = ICono;
+                frmperiodos.FormClosed += new FormClosedEventHandler(cerraperriodos);
+                frmperiodos.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmperiodos.Activate();
+                ValidarVentanas(frmperiodos);
+            }
+        }
+        private void cerraperriodos(object sender, FormClosedEventArgs e)
+        {
+            frmperiodos = null;
+        }
+        frmcierremensual frmcierre;
+        private void asientosAbiertosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcierre == null)
+            {
+                frmcierre = new frmcierremensual();
+                frmcierre.MdiParent = this;
+                frmcierre.Icon = ICono;
+                frmcierre.FormClosed += new FormClosedEventHandler(cerrarcierremensusal);
+                frmcierre.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcierre.Activate();
+                ValidarVentanas(frmcierre);
+            }
+        }
+        private void cerrarcierremensusal(object sender, FormClosedEventArgs e)
+        {
+            frmcierre = null;
+        }
     }
 }

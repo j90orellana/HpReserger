@@ -141,6 +141,7 @@ namespace HpResergerUserControls
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
+                if(_NextControlOnEnter!=null)
                 _NextControlOnEnter.Focus();
             }
             base.OnKeyPress(e);

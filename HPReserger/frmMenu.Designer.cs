@@ -81,11 +81,14 @@
             this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reciboPorHonorariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaCréditoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notaDébitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tipoDeCambioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.flujoDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitudEmpleadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postulanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,7 +198,6 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
-            this.notaDébitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             this.panelOre1.SuspendLayout();
@@ -655,7 +657,9 @@
             this.asientoContableToolStripMenuItem,
             this.facturaToolStripMenuItem,
             this.tipoDeCambioToolStripMenuItem,
-            this.reportesContablesToolStripMenuItem});
+            this.reportesContablesToolStripMenuItem,
+            this.periodosToolStripMenuItem,
+            this.asientosAbiertosToolStripMenuItem});
             this.contabilidadToolStripMenuItem.Name = "contabilidadToolStripMenuItem";
             this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(84, 22);
             this.contabilidadToolStripMenuItem.Tag = "2";
@@ -731,6 +735,14 @@
             this.notaCréditoToolStripMenuItem.Text = "Nota Crédito";
             this.notaCréditoToolStripMenuItem.Click += new System.EventHandler(this.notaCréditoToolStripMenuItem_Click);
             // 
+            // notaDébitoToolStripMenuItem
+            // 
+            this.notaDébitoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("notaDébitoToolStripMenuItem.Image")));
+            this.notaDébitoToolStripMenuItem.Name = "notaDébitoToolStripMenuItem";
+            this.notaDébitoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.notaDébitoToolStripMenuItem.Text = "Nota Débito";
+            this.notaDébitoToolStripMenuItem.Click += new System.EventHandler(this.notaDébitoToolStripMenuItem_Click);
+            // 
             // tipoDeCambioToolStripMenuItem
             // 
             this.tipoDeCambioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tipoDeCambioToolStripMenuItem.Image")));
@@ -777,6 +789,22 @@
             this.flujoDeCajaToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
             this.flujoDeCajaToolStripMenuItem.Text = "Flujo de Caja";
             this.flujoDeCajaToolStripMenuItem.Click += new System.EventHandler(this.flujoDeCajaToolStripMenuItem_Click);
+            // 
+            // periodosToolStripMenuItem
+            // 
+            this.periodosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("periodosToolStripMenuItem.Image")));
+            this.periodosToolStripMenuItem.Name = "periodosToolStripMenuItem";
+            this.periodosToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.periodosToolStripMenuItem.Text = "Periodos";
+            this.periodosToolStripMenuItem.Click += new System.EventHandler(this.periodosToolStripMenuItem_Click);
+            // 
+            // asientosAbiertosToolStripMenuItem
+            // 
+            this.asientosAbiertosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("asientosAbiertosToolStripMenuItem.Image")));
+            this.asientosAbiertosToolStripMenuItem.Name = "asientosAbiertosToolStripMenuItem";
+            this.asientosAbiertosToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.asientosAbiertosToolStripMenuItem.Text = "Cierre Mensual";
+            this.asientosAbiertosToolStripMenuItem.Click += new System.EventHandler(this.asientosAbiertosToolStripMenuItem_Click);
             // 
             // planillaToolStripMenuItem
             // 
@@ -1797,14 +1825,6 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
-            // notaDébitoToolStripMenuItem
-            // 
-            this.notaDébitoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("notaDébitoToolStripMenuItem.Image")));
-            this.notaDébitoToolStripMenuItem.Name = "notaDébitoToolStripMenuItem";
-            this.notaDébitoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.notaDébitoToolStripMenuItem.Text = "Nota Débito";
-            this.notaDébitoToolStripMenuItem.Click += new System.EventHandler(this.notaDébitoToolStripMenuItem_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2010,5 +2030,7 @@
         private System.Windows.Forms.ToolStripMenuItem reporteSunatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notaCréditoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notaDébitoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem periodosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asientosAbiertosToolStripMenuItem;
     }
 }

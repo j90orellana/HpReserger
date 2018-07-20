@@ -396,5 +396,23 @@ namespace HPReserger
             Cursor = Cursors.Default;
             frmpro.Close();
         }
+        frmaddtipoCambio frmaddtipo;
+        private void btnaddtipo_Click(object sender, EventArgs e)
+        {
+            if (frmaddtipo == null)
+            {
+                frmaddtipo = new frmaddtipoCambio();
+                frmaddtipo.MdiParent = this.MdiParent;
+                frmaddtipo.fechatipo = comboMesAño1.GetFecha();
+                frmaddtipo.FormClosed += Frmaddtipo_FormClosed;
+                frmaddtipo.Show();
+            }
+            else { frmaddtipo.Activate(); }
+        }
+        private void Frmaddtipo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Buscar_Click(sender, e);
+            frmaddtipo = null;
+        }
     }
 }

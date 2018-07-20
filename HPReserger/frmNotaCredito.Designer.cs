@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNotaCredito));
             this.txtcodnota = new System.Windows.Forms.TextBox();
             this.lblnota = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cbotiponota = new System.Windows.Forms.ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelOre1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +103,7 @@
             this.btnmaspro.Name = "btnmaspro";
             this.btnmaspro.Size = new System.Drawing.Size(20, 20);
             this.btnmaspro.TabIndex = 31;
+            this.toolTip1.SetToolTip(this.btnmaspro, "Buscar Proveedor");
             this.btnmaspro.UseVisualStyleBackColor = false;
             this.btnmaspro.Click += new System.EventHandler(this.btnmaspro_Click);
             // 
@@ -541,5 +544,6 @@
         private HpResergerUserControls.TextBoxPer txtglosa;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbotiponota;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

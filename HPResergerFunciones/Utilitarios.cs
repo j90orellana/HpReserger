@@ -327,6 +327,9 @@ namespace HPResergerFunciones
                     if (!FilasNoMostrar.Contains(j + 1))
                     {
                         hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = grd.Rows[i].Cells[j].Value;
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(grd.Rows[i].Cells[j].InheritedStyle.BackColor.ToArgb());
+                        //== item.Cells[j - 1].Style.ForeColor ? Color.White : item.Cells[j - 1].InheritedStyle.BackColor;
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = grd.Rows[i].Cells[j].Style.ForeColor;
                         nume++;
                     }
                     //   }
@@ -338,6 +341,9 @@ namespace HPResergerFunciones
                 if (!FilasNoMostrar.Contains(contador + 1))
                 {
                     hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador].HeaderText.ToString();
+                    /////color de las celadas
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
                     hoja_trabajo.Columns[numer + 1].AutoFit();
                     numer++;
                 }
@@ -438,7 +444,6 @@ namespace HPResergerFunciones
             {
                 hoja_trabajo.Cells[Nombres.columna, Nombres.fila] = Nombres.Nombre;
                 // hoja_trabajo.Range[hoja_trabajo.Cells[Nombres.columna, Nombres.fila], hoja_trabajo.Cells[Nombres.columna , Nombres.fila+3]] = Nombres.Nombre;
-
             }
             //Recorremos el DataGridView rellenando la hoja de trabajo
             int Conta = grd.Rows.Count;
@@ -446,27 +451,67 @@ namespace HPResergerFunciones
             foreach (DataGridViewRow item in grd.Rows)
             {
                 nume = 0;
-                foreach (int j in OrdendelasColumnas)
+                if (OrdendelasColumnas.Length == 0)
                 {
-                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = item.Cells[j - 1].Value;
-                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = item.Cells[j - 1].Style.BackColor;
-                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j - 1].Style.ForeColor;
-
-                    nume++;
+                    foreach (DataGridViewColumn j in grd.Columns)
+                    {
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = item.Cells[j.Name].Value;
+                        //if (item.Cells[j - 1].InheritedStyle.BackColor.Name != "Window")
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(item.Cells[j.Name].InheritedStyle.BackColor.ToArgb());
+                        //== item.Cells[j - 1].Style.ForeColor ? Color.White : item.Cells[j - 1].InheritedStyle.BackColor;
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j.Name].Style.ForeColor;
+                        nume++;
+                    }
+                }
+                else
+                {
+                    foreach (int j in OrdendelasColumnas)
+                    {
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1] = item.Cells[j - 1].Value;
+                        //if (item.Cells[j - 1].InheritedStyle.BackColor.Name != "Window")
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(item.Cells[j - 1].InheritedStyle.BackColor.ToArgb());
+                        //== item.Cells[j - 1].Style.ForeColor ? Color.White : item.Cells[j - 1].InheritedStyle.BackColor;
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j - 1].Style.ForeColor;
+                        nume++;
+                    }
                 }
                 i++;
             }
             numer = 0;
-            foreach (int contador in OrdendelasColumnas)
+            if (OrdendelasColumnas.Length == 0)
             {
-                //if (!FilasNoMostrar.Contains(contador + 1))
-                //{
-                hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
-                hoja_trabajo.Columns[numer + 1].AutoFit();
-                if (grd.Rows[0].Cells[contador - 1].ValueType == typeof(decimal))
-                    hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
-                numer++;
-                //}
+                foreach (DataGridViewColumn contador in grd.Columns)
+                {
+                    //if (!FilasNoMostrar.Contains(contador + 1))
+                    //{
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador.Name].HeaderText.ToString().ToUpper();
+                    /////color de las celadas
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
+
+                    hoja_trabajo.Columns[numer + 1].AutoFit();
+                    if (grd.Rows[0].Cells[contador.Name].ValueType == typeof(decimal))
+                        hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
+                    numer++;
+                }
+            }
+            else
+            {
+                foreach (int contador in OrdendelasColumnas)
+                {
+                    //if (!FilasNoMostrar.Contains(contador + 1))
+                    //{
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString().ToUpper();
+                    /////color de las celadas
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
+
+                    hoja_trabajo.Columns[numer + 1].AutoFit();
+                    if (grd.Rows[0].Cells[contador - 1].ValueType == typeof(decimal))
+                        hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
+                    numer++;
+                    //}
+                }
             }
             foreach (int fila in FilasNegritas)
             {
@@ -525,8 +570,7 @@ namespace HPResergerFunciones
                 foreach (int j in OrdendelasColumnas)
                 {
                     hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Value2 = item.Cells[j - 1].Value;
-                    if (item.Cells[j - 1].Style.BackColor.Name != "0")
-                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = item.Cells[j - 1].Style.BackColor;
+                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(item.Cells[j - 1].InheritedStyle.BackColor.ToArgb());
                     hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j - 1].Style.ForeColor;
 
                     nume++;
@@ -539,6 +583,8 @@ namespace HPResergerFunciones
                 //if (!FilasNoMostrar.Contains(contador + 1))
                 //{
                 hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
+                hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
+                hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
                 hoja_trabajo.Columns[numer + 1].AutoFit();
                 if (grd.Rows[0].Cells[contador - 1].ValueType == typeof(decimal))
                     hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";

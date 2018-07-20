@@ -45,5 +45,15 @@ namespace HPReserger.Properties {
                 this["NombreSistema"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.0.102;Initial Catalog=SiGe;User ID=jorellana")]
+        public string SiGeConnectionString {
+            get {
+                return ((string)(this["SiGeConnectionString"]));
+            }
+        }
     }
 }

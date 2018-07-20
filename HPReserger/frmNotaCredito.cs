@@ -23,6 +23,8 @@ namespace HPReserger
             InitializeComponent();
             tipo = _tipo;
         }
+        //por pagar - todos=0,porpagar=1 pagados=2
+        string PorPagar = "0";
         public int tipo { get; set; }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmNotaCredito_Load(object sender, EventArgs e)
@@ -54,19 +56,16 @@ namespace HPReserger
                 txtnronota.Focus();
             }
         }
-
         private void txtcodfactura_Leave(object sender, EventArgs e)
         {
             HPResergerFunciones.Utilitarios.AjustarTexto(txtcodnota, 4);
         }
-
         private void txtnrofactura_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Back)
                 if (txtnronota.Text.Length == 0)
                     txtcodnota.Focus();
         }
-
         private void txtnrofactura_Leave(object sender, EventArgs e)
         {
             HPResergerFunciones.Utilitarios.AjustarTexto(txtnronota, 15);
@@ -80,7 +79,6 @@ namespace HPReserger
                 //}
             }
         }
-
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -112,7 +110,7 @@ namespace HPReserger
                 //si encuentro un proveedor
                 txtRazonSocial.Text = filita["razon_social"].ToString();
                 //Cargar Las Facturas por pagar de ese proveedor
-                Datos = CapaLogica.ListarFacturasProveedor(txtruc.Text, "0", tipo);
+                Datos = CapaLogica.ListarFacturasProveedor(txtruc.Text, PorPagar, tipo);
 
                 if (Datos.Rows.Count > 0)
                 {
@@ -163,7 +161,7 @@ namespace HPReserger
                 txtmoneda.Text = cbofacturas.SelectedValue == null ? "" : cbofacturas.SelectedValue.ToString();
                 btndetalle.Enabled = true;
                 ///Buscar Datos de la Factura
-                DatosFactura = CapaLogica.ListarFacturaProveedorNota(cbofacturas.Text, txtruc.Text, "0");
+                DatosFactura = CapaLogica.ListarFacturaProveedorNota(cbofacturas.Text, txtruc.Text, PorPagar);
                 if (DatosFactura.Rows.Count > 0)
                 {
                     txtsubtotalm.Text = txtsubtotal.Text = (DatosFactura.Rows[0])["subtotal"].ToString();
@@ -190,7 +188,7 @@ namespace HPReserger
         DataTable DatosDetalle;
         private void btnagregar_Click(object sender, EventArgs e)
         {
-            if (txtcodnota.Text == "") { HPResergerFunciones.Utilitarios.msg($"Ingrese Codigo de {this.Text}"); txtcodnota.Focus(); return; }
+            if (txtcodnota.Text == "") { HPResergerFunciones.Utilitarios.msg($"Ingrese Código de {this.Text}"); txtcodnota.Focus(); return; }
             if (txtnronota.Text == "") { HPResergerFunciones.Utilitarios.msg($"Ingrese Número de {this.Text}"); txtnronota.Focus(); return; }
             if (frmnotacreditodet == null)
             {
@@ -210,7 +208,7 @@ namespace HPReserger
         {
             frmnotacreditodet = null;
             txttotalm.Text = DatosDetalle.Rows[DatosDetalle.Rows.Count - 1]["total"].ToString();
-            txttotalm_Leave(sender, new EventArgs());
+            txttotalm_Leave(sender, new EventArgs());            
         }
         decimal porcentaje = 0, sub;
         private void txtsubtotalm_Leave(object sender, EventArgs e)
@@ -246,7 +244,7 @@ namespace HPReserger
             int con = 1;
             foreach (DataRow item in DatosDetalle.Rows)
                 if (item["eliminar"].ToString() == "1" && item["descripcion"].ToString() != "Totales") con++;
-
+            /////
             foreach (DataRow item in DatosDetalle.Rows)
             {
                 if (item["descripcion"].ToString() != "Totales")

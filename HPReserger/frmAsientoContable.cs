@@ -772,6 +772,7 @@ namespace HPReserger
             tablita.Columns.Add("VALOR");
             tablita.Rows.Add(new object[] { "1", "Activo" });
             tablita.Rows.Add(new object[] { "0", "Inactivo" });
+            tablita.Rows.Add(new object[] { "2", "Por Modificar" });
             tablita.Rows.Add(new object[] { "3", "Reflejo" });
             combito.DataSource = tablita;
             combito.DisplayMember = "VALOR";
@@ -779,6 +780,7 @@ namespace HPReserger
         }
         private void cboestado_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cboestado.SelectedValue.ToString() == "3") cboestado.SelectedIndex = -1;
         }
         public int estado { get; set; }
         public int codigo;
@@ -823,8 +825,8 @@ namespace HPReserger
                         filita[codigo].ToString();
                         //Enviando al Jefe la Acción
                         string cade = "";
-                        string sql = $"update TBL_Asiento_Contable set Estado=0 where Id_Asiento_Contable={txtcodigo.Text} and id_proyecto={cboproyecto.SelectedValue}";
-                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade, 0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
+                        string sql = $"update TBL_Asiento_Contable set Estado=2 where Id_Asiento_Contable={txtcodigo.Text} and id_proyecto={cboproyecto.SelectedValue}";
+                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade,0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
                         MSG("Se ha Enviado la Solicitud a su Jefe");
                     }
                     else { MSG("No se Encontró Información de su Jefe"); }
@@ -1069,6 +1071,13 @@ namespace HPReserger
             else { }
             btnActualizar.Enabled = true;
         }
+        public void BuscarAsiento(string cadena,int empresa)
+        {
+            Txtbusca.Text = cadena;
+            cboempresa.SelectedValue = empresa;
+            dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(cadena, 1, empresa);
+        }
+
         private void btncancelar_Click(object sender, EventArgs e)
         {
             aceptar = false;

@@ -1309,10 +1309,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarBancosTiposdePago(banco);
         }
-        public DataTable ListarFacturasPorPagar(int proveedor, string busca, int fecha, DateTime fechaini, DateTime fechafin, int recepcion, DateTime fechaini1, DateTime fechafin1)
+        public DataTable ListarFacturasPorPagar(int proveedor, string busca, int fecha, DateTime fechaini, DateTime fechafin, int recepcion, DateTime fechaini1, DateTime fechafin1, int estado)
         {
-            return cdOrdenPedido.ListarFacturasPorPagar(proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1);
-
+            return cdOrdenPedido.ListarFacturasPorPagar(proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1, estado);
         }
         public DataTable insertarPagarfactura(string nrofactura, int tipo, string nropago)
         {
@@ -1677,6 +1676,19 @@ namespace HPResergerCapaLogica
         public DataRow AprobarPostulantePrevia(int Tipo_ID_Postulante, string Nro_ID_Postulante, int Id_SolicitaEmpleado, int opcion)
         {
             return cdOrdenPedido.AprobarPostulantePrevia(Tipo_ID_Postulante, Nro_ID_Postulante, Id_SolicitaEmpleado, opcion);
+        }
+        public DataTable Periodos(int opcion)
+        {
+            return cdOrdenPedido.Periodos(opcion, 0);
+        }
+        public DataTable Periodos(int opcion, int empresa)
+        {
+            return cdOrdenPedido.Periodos(opcion, empresa);
+        }
+        public DataTable ListarAsientosAbiertos(int opcion, int empresa)
+        {
+            return cdOrdenPedido.ListarAsientosAbiertos(opcion, empresa);
+
         }
     }
 }

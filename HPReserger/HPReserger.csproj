@@ -137,6 +137,12 @@
     <Compile Include="frmAbonoExternoEmpleado.Designer.cs">
       <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmaddtipoCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmaddtipoCambio.Designer.cs">
+      <DependentUpon>frmaddtipoCambio.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmadicionaleps.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,12 @@
     </Compile>
     <Compile Include="frmcede.Designer.cs">
       <DependentUpon>frmcede.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmcierremensual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmcierremensual.Designer.cs">
+      <DependentUpon>frmcierremensual.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConfiguracionBalanceSituacionFinanciera.cs">
       <SubType>Form</SubType>
@@ -443,6 +455,12 @@
     <Compile Include="frmListarAlmacenArticulos.Designer.cs">
       <DependentUpon>frmListarAlmacenArticulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListarAsientosAbiertos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListarAsientosAbiertos.Designer.cs">
+      <DependentUpon>frmListarAsientosAbiertos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmlistarcuentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -604,6 +622,12 @@
     </Compile>
     <Compile Include="frmperiodicidad.Designer.cs">
       <DependentUpon>frmperiodicidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPeriodos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeriodos.Designer.cs">
+      <DependentUpon>frmPeriodos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPLanesEPS.cs">
       <SubType>Form</SubType>
@@ -1235,6 +1259,21 @@
       <DependentUpon>rtpGanaciasPerdidas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SiGeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiGeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SiGeDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiGeDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SiGeListarAsientosAbiertos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiGeListarAsientosAbiertos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TextBoxSoloLetrasMayusculas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1266,6 +1305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbonoExternoEmpleado.resx">
       <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmaddtipoCambio.resx">
+      <DependentUpon>frmaddtipoCambio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmadicionaleps.resx">
       <DependentUpon>frmadicionaleps.cs</DependentUpon>
@@ -1325,6 +1367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmcede.resx">
       <DependentUpon>frmcede.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmcierremensual.resx">
+      <DependentUpon>frmcierremensual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfiguracionBalanceSituacionFinanciera.resx">
       <DependentUpon>FrmConfiguracionBalanceSituacionFinanciera.cs</DependentUpon>
@@ -1422,6 +1467,9 @@
     <EmbeddedResource Include="frmListarAlmacenArticulos.resx">
       <DependentUpon>frmListarAlmacenArticulos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmListarAsientosAbiertos.resx">
+      <DependentUpon>frmListarAsientosAbiertos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmlistarcuentas.resx">
       <DependentUpon>frmlistarcuentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -1502,6 +1550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmperiodicidad.resx">
       <DependentUpon>frmperiodicidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeriodos.resx">
+      <DependentUpon>frmPeriodos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPLanesEPS.resx">
       <DependentUpon>frmPLanesEPS.cs</DependentUpon>
@@ -1855,6 +1906,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTipodeCambio.resx">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
@@ -1868,6 +1920,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SiGeDataSet.xsc">
+      <DependentUpon>SiGeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SiGeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SiGeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SiGeDataSet.xss">
+      <DependentUpon>SiGeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SiGeDataSet1.xsc">
+      <DependentUpon>SiGeDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SiGeDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SiGeDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SiGeDataSet1.xss">
+      <DependentUpon>SiGeDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SiGeListarAsientosAbiertos.xsc">
+      <DependentUpon>SiGeListarAsientosAbiertos.xsd</DependentUpon>
+    </None>
+    <None Include="SiGeListarAsientosAbiertos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SiGeListarAsientosAbiertos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SiGeListarAsientosAbiertos.xss">
+      <DependentUpon>SiGeListarAsientosAbiertos.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -3489,10 +3489,10 @@ namespace HPResergerCapaDatos
             object[] valores = { banco };
             return bd.DataTableFromProcedure("usp_ListarBancosTiposdePago", parametros, valores, null);
         }
-        public DataTable ListarFacturasPorPagar(int proveedor, string busca, int fecha, DateTime fechaini, DateTime fechafin, int recepcion, DateTime fechaini1, DateTime fechafin1)
+        public DataTable ListarFacturasPorPagar(int proveedor, string busca, int fecha, DateTime fechaini, DateTime fechafin, int recepcion, DateTime fechaini1, DateTime fechafin1, int estado)
         {
-            string[] parametros = { "@proveedor", "@busca", "@fecha", "@fechaini", "@fechafin", "@recepcion", "@fechaini1", "@fechafin1" };
-            object[] valores = { proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1 };
+            string[] parametros = { "@proveedor", "@busca", "@fecha", "@fechaini", "@fechafin", "@recepcion", "@fechaini1", "@fechafin1", "@estado" };
+            object[] valores = { proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1, estado };
             return bd.DataTableFromProcedure("usp_ListarFacturasPorPagar", parametros, valores, null);
         }
         public DataTable insertarPagarfactura(string nrofactura, int tipo, string nropago)
@@ -4062,6 +4062,18 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@Tipo_ID_Postulante", "@Nro_ID_Postulante", "@Id_SolicitaEmpleado", "@estado" };
             object[] valores = { Tipo_ID_Postulante, Nro_ID_Postulante, Id_SolicitaEmpleado, opcion };
             return bd.DatarowFromProcedure("usp_AprobarPostulantePrevia", parametros, valores, null); ;
+        }
+        public DataTable Periodos(int opcion, int empresa)
+        {
+            string[] parametros = { "@Opcion", "@empresa" };
+            object[] valores = { opcion, empresa };
+            return bd.DataTableFromProcedure("usp_Periodos", parametros, valores, null);
+        }
+        public DataTable ListarAsientosAbiertos(int opcion, int empresa)
+        {
+            string[] parametros = { "@Opcion", "@empresa" };
+            object[] valores = { opcion, empresa };
+            return bd.DataTableFromProcedure("usp_ListarAsientosAbiertos", parametros, valores, null);
         }
     }
 }
