@@ -33,11 +33,24 @@ namespace HPReserger
                 goto Busqueda;
             }
         }
+        public void CargarDetracciones()
+        {
+            DataTable datos = new DataTable();
+            datos = cfactura.Detraciones(0);
+            DataRow filita = datos.NewRow();
+            filita["Desc_Detraccion"] = "NO";
+            filita["Porcentaje"] = 0.00;
+            datos.Rows.InsertAt(filita, 0);
+            cbodetraccion.DisplayMember = "Desc_Detraccion";
+            cbodetraccion.ValueMember = "Porcentaje";
+            cbodetraccion.DataSource = datos;
+        }
         private void FrmFactura_Load(object sender, EventArgs e)
         {
             //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
             // txtruc.Text = "0701046971";
             // radioButton1.Checked = true;
+            CargarDetracciones();
             Dtguias.DataSource = cfactura.ListarFics(10, "", 0, 0);
             cbotipo.DisplayMember = "Desc_Tipo_compra";
             cbotipo.ValueMember = "Codigo_Tipo_Compra";
@@ -959,19 +972,21 @@ namespace HPReserger
         }
         private void cbodetraccion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbodetraccion.Text == "SI")
+            if (cbodetraccion.Text != "NO")
             {
                 decimal detracion = 0;
                 OcultarDetraccion(true);
+                numdetraccion.Value = cbodetraccion.SelectedValue == null ? 0.0m : (decimal)cbodetraccion.SelectedValue;
                 if (!string.IsNullOrWhiteSpace(txttotal.Text))
                     detracion = decimal.Parse(txttotal.Text.ToString()) * (numdetraccion.Value / 100);
                 //  MSG(detracion + " " + decimal.Round(detracion));
                 txtdetraccion.Text = detracion.ToString("n0");
+                numdetraccion.Enabled = false;
             }
             else
             {
                 OcultarDetraccion(false);
-                txtdetraccion.Text = "0.00";
+                txtdetraccion.Text = "0.00"; numdetraccion.Value = 0;
             }
         }
 
@@ -1152,6 +1167,13 @@ namespace HPReserger
         private void DtFechaRecepcion_ValueChanged(object sender, EventArgs e)
         {
             Dtfechaentregado.Value = DtFechaRecepcion.Value.AddDays(_PlazoPago);
+        }
+
+        private void cbodetraccion_Click(object sender, EventArgs e)
+        {
+            string cade = cbodetraccion.Text;
+            CargarDetracciones();
+            cbodetraccion.Text = cade;
         }
 
         private void DtgConten_DataError(object sender, DataGridViewDataErrorEventArgs e)

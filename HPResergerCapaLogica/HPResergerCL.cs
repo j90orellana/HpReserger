@@ -1313,9 +1313,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarFacturasPorPagar(proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1, estado);
         }
-        public DataTable insertarPagarfactura(string nrofactura, int tipo, string nropago)
+        public DataTable insertarPagarfactura(string nrofactura, string proveedor, int tipo, string nropago, decimal apagar, decimal subtotal, decimal igv, decimal total, int usuario, int opcion)
         {
-            return cdOrdenPedido.insertarPagarfactura(nrofactura, tipo, nropago);
+            return cdOrdenPedido.insertarPagarfactura(nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion);
         }
         public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor)
         {
@@ -1685,10 +1685,17 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Periodos(opcion, empresa);
         }
-        public DataTable ListarAsientosAbiertos(int opcion, int empresa)
+        public DataTable ListarAsientosAbiertos(int opcion, int empresa, DateTime fecha)
         {
-            return cdOrdenPedido.ListarAsientosAbiertos(opcion, empresa);
-
+            return cdOrdenPedido.ListarAsientosAbiertos(opcion, empresa, fecha);
+        }
+        public DataTable Detraciones(int opcion, int id, string descripcion, decimal porcentaje, int usuario, DateTime fechas)
+        {
+            return cdOrdenPedido.Detraciones(opcion, id, descripcion, porcentaje, usuario, fechas);
+        }
+        public DataTable Detraciones(int opcion)
+        {
+            return cdOrdenPedido.Detraciones(opcion, 0, "", 0, 0, DateTime.Now);
         }
     }
 }

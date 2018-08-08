@@ -232,11 +232,13 @@
             // btnocultar
             // 
             this.btnocultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnocultar.Image = ((System.Drawing.Image)(resources.GetObject("btnocultar.Image")));
             this.btnocultar.Location = new System.Drawing.Point(12, 373);
             this.btnocultar.Name = "btnocultar";
-            this.btnocultar.Size = new System.Drawing.Size(82, 21);
+            this.btnocultar.Size = new System.Drawing.Size(118, 24);
             this.btnocultar.TabIndex = 8;
             this.btnocultar.Text = "Ocultar Todo";
+            this.btnocultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnocultar.UseVisualStyleBackColor = true;
             this.btnocultar.Click += new System.EventHandler(this.btnocultar_Click);
             // 

@@ -251,6 +251,12 @@
     <Compile Include="frmDetalleAsientos.Designer.cs">
       <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmdetracciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmdetracciones.Designer.cs">
+      <DependentUpon>frmdetracciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEliminarPeriodo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1388,6 +1394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleAsientos.resx">
       <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmdetracciones.resx">
+      <DependentUpon>frmdetracciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmdinamicaContable.resx">
       <DependentUpon>frmdinamicaContable.cs</DependentUpon>

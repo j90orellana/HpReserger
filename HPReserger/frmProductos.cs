@@ -155,5 +155,10 @@ namespace HPReserger
         {
             txtdescripcion.SelectAll();
         }
+
+        private void btneliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

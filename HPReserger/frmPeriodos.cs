@@ -136,8 +136,8 @@ namespace HPReserger
             if (x >= 0)
                 if (y == dtgconten.Columns[Estadosx.Name].Index)
                 {
-                    if (e.Value.ToString() == "CERRADO") { e.CellStyle.BackColor = Color.FromArgb(255, 199, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(192, 80, 77); }
-                    if (e.Value.ToString() == "ABIERTO") { e.CellStyle.BackColor = Color.FromArgb(198, 239, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(155, 187, 89); }
+                    if (e.Value.ToString() == "CERRADO") { e.CellStyle.BackColor = Color.FromArgb(255, 199, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(165, 171, 209); }
+                    if (e.Value.ToString() == "ABIERTO") { e.CellStyle.BackColor = Color.FromArgb(198, 239, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(128, 197, 209); }
                 }
             
         }

@@ -3495,10 +3495,10 @@ namespace HPResergerCapaDatos
             object[] valores = { proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1, estado };
             return bd.DataTableFromProcedure("usp_ListarFacturasPorPagar", parametros, valores, null);
         }
-        public DataTable insertarPagarfactura(string nrofactura, int tipo, string nropago)
+        public DataTable insertarPagarfactura(string nrofactura, string proveedor, int tipo, string nropago, decimal apagar, decimal subtotal, decimal igv, decimal total, int usuario, int opcion)
         {
-            string[] parametros = { "@nrofactura", "@tipo", "@nropago" };
-            object[] valores = { nrofactura, tipo, nropago };
+            string[] parametros = { "@nrofactura", "@proveedor", "@tipo", "@nropago", "@apagar", "@subtotal", "@igv", "@total", "@usuario", "@opcion" };
+            object[] valores = { nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion };
             return bd.DataTableFromProcedure("usp_insertarPagarfactura", parametros, valores, null);
         }
         public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor)
@@ -4069,11 +4069,17 @@ namespace HPResergerCapaDatos
             object[] valores = { opcion, empresa };
             return bd.DataTableFromProcedure("usp_Periodos", parametros, valores, null);
         }
-        public DataTable ListarAsientosAbiertos(int opcion, int empresa)
+        public DataTable ListarAsientosAbiertos(int opcion, int empresa, DateTime fecha)
         {
-            string[] parametros = { "@Opcion", "@empresa" };
-            object[] valores = { opcion, empresa };
+            string[] parametros = { "@Opcion", "@empresa", "@fecha" };
+            object[] valores = { opcion, empresa, fecha };
             return bd.DataTableFromProcedure("usp_ListarAsientosAbiertos", parametros, valores, null);
+        }
+        public DataTable Detraciones(int opcion, int id, string descripcion, decimal porcentaje, int usuario, DateTime fechas)
+        {
+            string[] parametros = { "@Opcion", "@Id", "@Desc", "@Porcentaje", "@Usuario", "@Fechas" };
+            object[] valores = { opcion, id, descripcion, porcentaje, usuario, fechas };
+            return bd.DataTableFromProcedure("usp_detracciones", parametros, valores, null);
         }
     }
 }

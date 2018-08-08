@@ -58,6 +58,12 @@
     <Compile Include="ButtonPer.Designer.cs">
       <DependentUpon>ButtonPer.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComboBoxPer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBoxPer.Designer.cs">
+      <DependentUpon>ComboBoxPer.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComboMesAño.cs">
       <SubType>UserControl</SubType>
     </Compile>

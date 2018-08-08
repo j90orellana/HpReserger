@@ -120,6 +120,7 @@
             this.ListaImagenes.TransparentColor = System.Drawing.Color.Transparent;
             this.ListaImagenes.Images.SetKeyName(0, "icons8_User_100px.png");
             this.ListaImagenes.Images.SetKeyName(1, "icons8_Curriculum_100px.png");
+            this.ListaImagenes.Images.SetKeyName(2, "icons8_Person_Female_100px.png");
             // 
             // FotoCheck
             // 

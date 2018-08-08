@@ -121,6 +121,7 @@
             this.entidadFinancieraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parámetrosGeneralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.periocidadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.detraccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articuloServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artículosServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -1114,7 +1115,8 @@
             this.generalesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.entidadFinancieraToolStripMenuItem,
             this.parámetrosGeneralesToolStripMenuItem,
-            this.periocidadToolStripMenuItem1});
+            this.periocidadToolStripMenuItem1,
+            this.detraccionesToolStripMenuItem});
             this.generalesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generalesToolStripMenuItem.Image")));
             this.generalesToolStripMenuItem.Name = "generalesToolStripMenuItem";
             this.generalesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
@@ -1149,6 +1151,14 @@
             this.periocidadToolStripMenuItem1.Tag = "70103";
             this.periocidadToolStripMenuItem1.Text = "Periocidad";
             this.periocidadToolStripMenuItem1.Click += new System.EventHandler(this.periocidadToolStripMenuItem_Click);
+            // 
+            // detraccionesToolStripMenuItem
+            // 
+            this.detraccionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("detraccionesToolStripMenuItem.Image")));
+            this.detraccionesToolStripMenuItem.Name = "detraccionesToolStripMenuItem";
+            this.detraccionesToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.detraccionesToolStripMenuItem.Text = "Detracciones";
+            this.detraccionesToolStripMenuItem.Click += new System.EventHandler(this.detraccionesToolStripMenuItem_Click);
             // 
             // articuloServicioToolStripMenuItem
             // 
@@ -2032,5 +2042,6 @@
         private System.Windows.Forms.ToolStripMenuItem notaDébitoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem periodosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asientosAbiertosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detraccionesToolStripMenuItem;
     }
 }

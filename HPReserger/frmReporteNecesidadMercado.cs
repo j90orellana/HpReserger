@@ -36,7 +36,7 @@ namespace HPReserger
             reporte.SetParameterValue(2, numero);
             reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
             crvnecesidadmercado.Zoom(125);
-            crvnecesidadmercado.ReportSource = reporte;
+            //crvnecesidadmercado.ReportSource = reporte;
             
             ConnectionInfo iConnectionInfo = new ConnectionInfo();
             // ' *****************************************************************************************************************
@@ -52,17 +52,13 @@ namespace HPReserger
             CrystalDecisions.CrystalReports.Engine.Tables myTables;
 
             myTables = reporte.Database.Tables;
-
+            
             foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
             {
                 TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
-                //Dim myTableLogonInfo As TableLogOnInfo = myTable.LogOnInfo
                 myTableLogonInfo.ConnectionInfo = iConnectionInfo;
-                //  myTableLogonInfo.ConnectionInfo = myConnectionInfo
                 mytable.ApplyLogOnInfo(myTableLogonInfo);
-                //myTable.ApplyLogOnInfo(myTableLogonInfo)
             }
-
             crvnecesidadmercado.ReportSource = reporte;
             crvnecesidadmercado.AllowedExportFormats = (int)(ExportFormatType.PortableDocFormat | ExportFormatType.Excel | ExportFormatType.ExcelWorkbook);
 

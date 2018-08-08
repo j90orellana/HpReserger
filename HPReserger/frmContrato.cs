@@ -980,7 +980,8 @@ namespace HPReserger
                     FileStream RutaArchivo = new FileStream(Ruta, FileMode.Create, FileAccess.ReadWrite);
                     RutaArchivo.Write(FotoContrato, 0, K);
                     RutaArchivo.Close();
-
+                    VerPdf.MdiParent = MdiParent;
+                    VerPdf.Icon = Icon;
                     VerPdf.ruta = Ruta;
                     VerPdf.nombreformulario = " Contrato " + dtgconten["documento", dtgconten.CurrentCell.RowIndex].Value.ToString();
                     VerPdf.Show();

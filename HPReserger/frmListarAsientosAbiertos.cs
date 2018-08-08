@@ -18,13 +18,26 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public frmListarAsientosAbiertos(int _empresa, DateTime _fecha)
+        {
+            InitializeComponent();
+            idempresa = _empresa;
+            fecha = _fecha;
+        }
         private void frmListarAsientosAbiertos_Load(object sender, EventArgs e)
         {
             CargarDatosAsientos();
+            if (dtgconten.RowCount == 0) { cerrado = 1; btncancelar_Click(sender, e); }
         }
+        public int idempresa { get; set; }
+        public DateTime fecha { get; set; }
+        public int cerrado { get; set; }
         public void CargarDatosAsientos()
         {
-            dtgconten.DataSource = CapaLogica.ListarAsientosAbiertos(0, 0);
+            cerrado = 0;
+            dtgconten.DataSource = CapaLogica.ListarAsientosAbiertos(0, idempresa, fecha);
+            ///si no hay datos
+
         }
         private void btnactualizar_Click(object sender, EventArgs e)
         {
@@ -33,7 +46,7 @@ namespace HPReserger
         public void msg(string cadena)
         {
             HPResergerFunciones.Utilitarios.msg(cadena);
-        }       
+        }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -46,6 +59,7 @@ namespace HPReserger
             {
                 frmAsientoContable asientito = new frmAsientoContable();
                 asientito.FormClosed += Asientito_FormClosed;
+                asientito.MdiParent = MdiParent;
                 asientito.Show();
                 asientito.BuscarAsiento(dtgconten[idAsientoContableDataGridViewTextBoxColumn.Name, x].Value.ToString(), (int)dtgconten[idEmpresaDataGridViewTextBoxColumn.Name, x].Value);
             }

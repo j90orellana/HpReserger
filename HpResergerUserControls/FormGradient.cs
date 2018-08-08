@@ -19,7 +19,7 @@ namespace HpResergerUserControls
             Invalidate();
             InitializeComponent();
         }
-        Color[] _colores = new Color[] { Color.White, Color.Gray, Color.Brown };
+        Color[] _colores = new Color[] { Color.FromArgb(252, 253, 253), Color.FromArgb(224, 229, 237), Color.FromArgb(252, 253, 253) };
         int _angulo = 45;
         public Color[] Colores { get { return _colores; } set { _colores = value; } }
         public int Angulo { get { return _angulo; } set { _angulo = value; } }

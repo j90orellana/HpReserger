@@ -35,31 +35,27 @@ namespace HPReserger
             // ' configuro el acceso a la base de datos
             //   ' *****************************************************************************************************************
             //iConnectionInfo.DatabaseName = datos.BASEDEDATOS;
+            
             iConnectionInfo.DatabaseName = HPResergerCapaDatos.HPResergerCD.BASEDEDATOS;
             iConnectionInfo.UserID = datos.USERID;
             iConnectionInfo.Password = datos.USERPASS;
             iConnectionInfo.ServerName = datos.DATASOURCE;
 
             iConnectionInfo.Type = ConnectionInfoType.SQL;
-            CrystalDecisions.CrystalReports.Engine.Tables myTables;
+            CrystalDecisions.CrystalReports.Engine.Tables myTabless;
 
-            myTables = reporte.Database.Tables;
+            myTabless = reporte.Database.Tables;
 
-            foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)
+            foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTabless)
             {
                 TableLogOnInfo myTableLogonInfo = mytable.LogOnInfo;
-                //Dim myTableLogonInfo As TableLogOnInfo = myTable.LogOnInfo
                 myTableLogonInfo.ConnectionInfo = iConnectionInfo;
-                //  myTableLogonInfo.ConnectionInfo = myConnectionInfo
                 mytable.ApplyLogOnInfo(myTableLogonInfo);
-                //myTable.ApplyLogOnInfo(myTableLogonInfo)
             }
             crvLocacionServicios.ReportSource = reporte;
-
             crvLocacionServicios.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
 
         }
-
         private void crvLocacionServicios_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {
             e.Handled = true;

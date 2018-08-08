@@ -213,6 +213,13 @@ namespace HPReserger
                         MemoryStream ms = new MemoryStream(Fotito);
                         fotito.FotoPerfil = Bitmap.FromStream(ms);
                     }
+                    else
+                    {
+                        //hombre
+                        if (item["sexo"].ToString() == "1") fotito.FotodeHombre();
+                        //mujer
+                        if (item["sexo"].ToString() == "2") fotito.FotodeMujer();
+                    }
                     FlowPanel.Controls.Add(fotito);
                     fotito.Width = FlowPanel.Width;
                 }
@@ -2824,6 +2831,28 @@ namespace HPReserger
         private void cerrarcierremensusal(object sender, FormClosedEventArgs e)
         {
             frmcierre = null;
+        }
+        frmdetracciones frmdetraccion;
+        private void detraccionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmdetraccion == null)
+            {
+                frmdetraccion = new frmdetracciones();
+                frmdetraccion.MdiParent = this;
+                frmdetraccion.Icon = ICono;
+                frmdetraccion.FormClosed += new FormClosedEventHandler(cerrardetracioneos);
+                frmdetraccion.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcierre.Activate();
+                ValidarVentanas(frmcierre);
+            }
+        }
+        private void cerrardetracioneos(object sender, FormClosedEventArgs e)
+        {
+            frmdetraccion = null;
         }
     }
 }

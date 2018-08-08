@@ -826,7 +826,7 @@ namespace HPReserger
                         //Enviando al Jefe la Acción
                         string cade = "";
                         string sql = $"update TBL_Asiento_Contable set Estado=2 where Id_Asiento_Contable={txtcodigo.Text} and id_proyecto={cboproyecto.SelectedValue}";
-                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade,0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
+                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade, 0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
                         MSG("Se ha Enviado la Solicitud a su Jefe");
                     }
                     else { MSG("No se Encontró Información de su Jefe"); }
@@ -909,6 +909,7 @@ namespace HPReserger
                         HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[debe.Name]);
                         HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[haber.Name]);
                     }
+                    if (item.Cells[detallex.Name].Value == null) item.Cells[detallex.Name].Value = 0;
                     if (int.Parse(item.Cells[SolicitaDetallex.Name].Value.ToString()) > int.Parse(item.Cells[detallex.Name].Value.ToString()))
                     {
                         cadena += $"La Cuenta de La fila: {item.Index + 1} Necesita un detalle\n";
@@ -1071,7 +1072,7 @@ namespace HPReserger
             else { }
             btnActualizar.Enabled = true;
         }
-        public void BuscarAsiento(string cadena,int empresa)
+        public void BuscarAsiento(string cadena, int empresa)
         {
             Txtbusca.Text = cadena;
             cboempresa.SelectedValue = empresa;
@@ -1289,7 +1290,8 @@ namespace HPReserger
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > 0)
-                lbldetalle.Text = "Detalle: " + Dtgconten[detallex.Name, e.RowIndex].Value.ToString();
+                if (Dtgconten[detallex.Name, e.RowIndex].Value != null)
+                    lbldetalle.Text = "Detalle: " + Dtgconten[detallex.Name, e.RowIndex].Value.ToString();
         }
 
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

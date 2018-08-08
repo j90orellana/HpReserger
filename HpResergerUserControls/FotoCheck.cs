@@ -56,5 +56,15 @@ namespace HpResergerUserControls
         {
             this.Dispose();
         }
+
+        public void FotodeHombre()
+        {
+            pbFoto.Image = ListaImagenes.Images[0];
+        }
+        public void FotodeMujer()
+        {
+            pbFoto.Image = ListaImagenes.Images[2];
+
+        }
     }
 }

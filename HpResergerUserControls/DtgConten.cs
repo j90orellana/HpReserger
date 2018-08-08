@@ -44,7 +44,6 @@ namespace HpResergerUserControls
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             //GRILLAS
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.NotSet;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -62,6 +61,7 @@ namespace HpResergerUserControls
             RowHeadersVisible = false;
             RowTemplate.Height = 18;
             Size = new System.Drawing.Size(400, 400);
-        }        
+            ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+        }
     }
 }

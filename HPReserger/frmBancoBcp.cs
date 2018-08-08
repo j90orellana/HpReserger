@@ -100,7 +100,7 @@ namespace HPReserger
         public void CargarColores()
         {
             Naranja = Color.FromArgb(244, 124, 46);
-            Azul = Color.FromArgb(0, 75, 140);            
+            Azul = Color.FromArgb(0, 75, 140);
         }
         private void frmBancoBcp_Load(object sender, EventArgs e)
         {
@@ -140,7 +140,8 @@ namespace HPReserger
                 int i = 1;
                 foreach (frmPagarFactura.FACTURAS fac in Comprobantes)
                 {
-                    TablaComprobantes.Rows.Add(new object[] { 1, fac.tipo, fac.numero, fac.proveedor, fac.detraccion, fac.total, fac.fechacancelado });
+                    //TablaComprobantes.Rows.Add(new object[] { 1, fac.tipo, fac.numero, fac.proveedor, fac.detraccion, fac.total, fac.fechacancelado });
+                    TablaComprobantes.Rows.Add(new object[] { 1, fac.tipo, fac.numero, fac.proveedor, fac.detraccion, fac.aPagar, fac.fechacancelado });
                     i++;
                 }
             }
@@ -178,7 +179,8 @@ namespace HPReserger
                                  cuentaccisoles = tblproveedor["nro_cta_cci_soles"],
                                  tipo = tblcomprobante["tipo"],
                                  nro = tblcomprobante["numero"],
-                                 total = decimal.Parse(tblcomprobante["total"].ToString()) - decimal.Parse(tblcomprobante["detraccion"].ToString()),
+                                 //total = decimal.Parse(tblcomprobante["total"].ToString()) - decimal.Parse(tblcomprobante["detraccion"].ToString()),
+                                 total = decimal.Parse(tblcomprobante["total"].ToString()),
                                  fechacancelado = tblcomprobante["fechacancelado"],
                                  banco = tblproveedor["Entidad_Financiera"],
                                  tipocuenta = tblproveedor["tipocuenta"]
@@ -437,7 +439,7 @@ namespace HPReserger
                 {
                     if (e.KeyCode == Keys.Delete)
                     {
-                        if (MessageBox.Show("Desea Eliminar la Fila", CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show("Desea Eliminar la Fila", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             TablaConsulta.Rows.RemoveAt(x);
                         }
@@ -555,7 +557,7 @@ namespace HPReserger
         }
         public DialogResult msg(string cadena)
         {
-            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
         public void CalcularTotales()
         {

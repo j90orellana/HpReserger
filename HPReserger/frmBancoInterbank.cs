@@ -101,7 +101,7 @@ namespace HPReserger
                 int i = 1;
                 foreach (frmPagarFactura.FACTURAS fac in Comprobantes)
                 {
-                    TablaComprobantes.Rows.Add(new object[] { i, fac.tipo, fac.numero, fac.proveedor, fac.subtotal, fac.igv, fac.total, fac.detraccion, fac.fechacancelado });
+                    TablaComprobantes.Rows.Add(new object[] { i, fac.tipo, fac.numero, fac.proveedor, fac.subtotal, fac.igv, fac.aPagar, fac.detraccion, fac.fechacancelado });
                     i++;
                 }
             }
