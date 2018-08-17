@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmREciboPorHonorario
     {
@@ -29,13 +31,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmREciboPorHonorario));
-            this.Dtguias = new System.Windows.Forms.DataGridView();
+            this.Dtguias = new HpResergerUserControls.Dtgconten();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FIC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +58,7 @@
             this.DtFechaRecepcion = new System.Windows.Forms.DateTimePicker();
             this.txtmonto = new System.Windows.Forms.TextBox();
             this.pbfactura = new System.Windows.Forms.PictureBox();
-            this.DtgConten = new System.Windows.Forms.DataGridView();
+            this.DtgConten = new HpResergerUserControls.Dtgconten();
             this.numfic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,12 +119,29 @@
             // 
             this.Dtguias.AllowUserToAddRows = false;
             this.Dtguias.AllowUserToDeleteRows = false;
+            this.Dtguias.AllowUserToOrderColumns = true;
             this.Dtguias.AllowUserToResizeColumns = false;
             this.Dtguias.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.Dtguias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Dtguias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Dtguias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Dtguias.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Dtguias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Dtguias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dtguias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dtguias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.Dtguias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dtguias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.Dtguias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtguias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OK,
             this.FIC1,
@@ -125,10 +150,21 @@
             this.moneda1,
             this.FECHAENTREGA,
             this.idmoneda1});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dtguias.DefaultCellStyle = dataGridViewCellStyle3;
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
+            this.Dtguias.EnableHeadersVisualStyles = false;
+            this.Dtguias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.Dtguias.Location = new System.Drawing.Point(16, 115);
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
+            this.Dtguias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -195,6 +231,7 @@
             // 
             // cbotipo
             // 
+            this.cbotipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipo.Enabled = false;
             this.cbotipo.FormattingEnabled = true;
@@ -267,6 +304,7 @@
             // 
             // DtFechaRecepcion
             // 
+            this.DtFechaRecepcion.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.DtFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DtFechaRecepcion.Location = new System.Drawing.Point(487, 40);
             this.DtFechaRecepcion.Name = "DtFechaRecepcion";
@@ -299,11 +337,29 @@
             // 
             this.DtgConten.AllowUserToAddRows = false;
             this.DtgConten.AllowUserToDeleteRows = false;
+            this.DtgConten.AllowUserToOrderColumns = true;
             this.DtgConten.AllowUserToResizeColumns = false;
             this.DtgConten.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.DtgConten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.DtgConten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DtgConten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DtgConten.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DtgConten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.DtgConten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DtgConten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.DtgConten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DtgConten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.DtgConten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DtgConten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numfic,
             this.DESCRIPCION,
@@ -319,11 +375,22 @@
             this.siigv,
             this.cuentax,
             this.centrocosto1});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DtgConten.DefaultCellStyle = dataGridViewCellStyle11;
             this.DtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgConten.Enabled = false;
+            this.DtgConten.EnableHeadersVisualStyles = false;
+            this.DtgConten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.DtgConten.Location = new System.Drawing.Point(6, 93);
             this.DtgConten.MultiSelect = false;
             this.DtgConten.Name = "DtgConten";
+            this.DtgConten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.DtgConten.RowHeadersVisible = false;
             this.DtgConten.RowTemplate.Height = 16;
             this.DtgConten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -366,7 +433,7 @@
             this.MARCA.HeaderText = "Detalle";
             this.MARCA.Name = "MARCA";
             this.MARCA.ReadOnly = true;
-            this.MARCA.Width = 65;
+            this.MARCA.Width = 67;
             // 
             // MODELO
             // 
@@ -386,7 +453,7 @@
             this.CANTIDAD.HeaderText = "Cant.";
             this.CANTIDAD.Name = "CANTIDAD";
             this.CANTIDAD.ReadOnly = true;
-            this.CANTIDAD.Width = 57;
+            this.CANTIDAD.Width = 59;
             // 
             // PRECIOUNIT
             // 
@@ -398,7 +465,7 @@
             this.PRECIOUNIT.DefaultCellStyle = dataGridViewCellStyle7;
             this.PRECIOUNIT.HeaderText = "PrecioUnit.";
             this.PRECIOUNIT.Name = "PRECIOUNIT";
-            this.PRECIOUNIT.Width = 84;
+            this.PRECIOUNIT.Width = 89;
             // 
             // subtotale
             // 
@@ -411,7 +478,7 @@
             this.subtotale.HeaderText = "Subtotal";
             this.subtotale.Name = "subtotale";
             this.subtotale.ReadOnly = true;
-            this.subtotale.Width = 71;
+            this.subtotale.Width = 75;
             // 
             // valueigv
             // 
@@ -424,7 +491,7 @@
             this.valueigv.HeaderText = "ImpRta";
             this.valueigv.Name = "valueigv";
             this.valueigv.ReadOnly = true;
-            this.valueigv.Width = 66;
+            this.valueigv.Width = 69;
             // 
             // TOTALFAC
             // 
@@ -437,7 +504,7 @@
             this.TOTALFAC.HeaderText = "Total";
             this.TOTALFAC.Name = "TOTALFAC";
             this.TOTALFAC.ReadOnly = true;
-            this.TOTALFAC.Width = 56;
+            this.TOTALFAC.Width = 57;
             // 
             // numoc
             // 
@@ -472,6 +539,7 @@
             // 
             // numigv
             // 
+            this.numigv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.numigv.Enabled = false;
             this.numigv.Location = new System.Drawing.Point(201, 66);
             this.numigv.Name = "numigv";
@@ -485,6 +553,7 @@
             // 
             // cboigv
             // 
+            this.cboigv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboigv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboigv.FormattingEnabled = true;
             this.cboigv.Items.AddRange(new object[] {
@@ -561,6 +630,7 @@
             // 
             // Dtfechaentregado
             // 
+            this.Dtfechaentregado.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Dtfechaentregado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Dtfechaentregado.Location = new System.Drawing.Point(487, 14);
             this.Dtfechaentregado.Name = "Dtfechaentregado";
@@ -569,6 +639,7 @@
             // 
             // dtfechaemision
             // 
+            this.dtfechaemision.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtfechaemision.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtfechaemision.Location = new System.Drawing.Point(287, 14);
             this.dtfechaemision.Name = "dtfechaemision";
@@ -654,6 +725,7 @@
             // 
             // txtfoto
             // 
+            this.txtfoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtfoto.Location = new System.Drawing.Point(72, 40);
             this.txtfoto.Name = "txtfoto";
             this.txtfoto.ReadOnly = true;
@@ -846,7 +918,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView Dtguias;
+        private Dtgconten Dtguias;
         private System.Windows.Forms.Button btnagregar;
         private System.Windows.Forms.Button btnmaspro;
         private System.Windows.Forms.ComboBox cbotipo;
@@ -854,7 +926,7 @@
         private System.Windows.Forms.DateTimePicker DtFechaRecepcion;
         private System.Windows.Forms.TextBox txtmonto;
         private System.Windows.Forms.PictureBox pbfactura;
-        private System.Windows.Forms.DataGridView DtgConten;
+        private Dtgconten DtgConten;
         private System.Windows.Forms.NumericUpDown numigv;
         private System.Windows.Forms.ComboBox cboigv;
         private System.Windows.Forms.Label label15;

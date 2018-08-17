@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmOrdenPedidoCotizacion
     {
@@ -45,7 +47,7 @@
             this.txtPedido = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.gridCotizacionPedido = new System.Windows.Forms.DataGridView();
+            this.gridCotizacionPedido = new Dtgconten();
             this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +82,7 @@
             // 
             // txtGerencia
             // 
+            this.txtGerencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtGerencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtGerencia.Location = new System.Drawing.Point(471, 42);
             this.txtGerencia.Name = "txtGerencia";
@@ -100,6 +103,7 @@
             // 
             // txtArea
             // 
+            this.txtArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtArea.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtArea.Location = new System.Drawing.Point(46, 42);
             this.txtArea.Name = "txtArea";
@@ -120,6 +124,7 @@
             // 
             // txtUsuario
             // 
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUsuario.Location = new System.Drawing.Point(451, 16);
             this.txtUsuario.Name = "txtUsuario";
@@ -140,6 +145,7 @@
             // 
             // txtFecha
             // 
+            this.txtFecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtFecha.Location = new System.Drawing.Point(233, 16);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.ReadOnly = true;
@@ -159,6 +165,7 @@
             // 
             // txtPedido
             // 
+            this.txtPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtPedido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPedido.Location = new System.Drawing.Point(46, 16);
             this.txtPedido.Name = "txtPedido";
@@ -191,8 +198,8 @@
             // gridCotizacionPedido
             // 
             this.gridCotizacionPedido.AllowUserToAddRows = false;
-            this.gridCotizacionPedido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridCotizacionPedido.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridCotizacionPedido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.gridCotizacionPedido.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridCotizacionPedido.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -201,8 +208,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacionPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridCotizacionPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.gridCotizacionPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridCotizacionPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridCotizacionPedido.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGOARTICULO,
             this.Item,
@@ -217,7 +224,7 @@
             this.gridCotizacionPedido.Name = "gridCotizacionPedido";
             this.gridCotizacionPedido.ReadOnly = true;
             this.gridCotizacionPedido.RowHeadersVisible = false;
-            this.gridCotizacionPedido.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            //this.gridCotizacionPedido.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridCotizacionPedido.RowTemplate.Height = 16;
             this.gridCotizacionPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCotizacionPedido.Size = new System.Drawing.Size(789, 283);
@@ -330,7 +337,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtArea;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView gridCotizacionPedido;
+        private Dtgconten gridCotizacionPedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOARTICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOMARCA;

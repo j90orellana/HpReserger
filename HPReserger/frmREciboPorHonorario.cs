@@ -27,7 +27,7 @@ namespace HPReserger
                 txtRazonSocial.Text = DatosProveedor["razon_social"].ToString();
                 txtdireccion.Text = DatosProveedor["direccion_oficina"].ToString();
                 txtTelefono.Text = DatosProveedor["telefono_oficina"].ToString();
-                _PlazoPago= int.Parse(DatosProveedor["plazo"].ToString());
+                _PlazoPago = int.Parse(DatosProveedor["plazo"].ToString());
                 cargarguias();
             }
             else
@@ -154,9 +154,9 @@ namespace HPReserger
             txtruc.Enabled = false;
             txtsubtotal.Enabled = txtigv.Enabled = false;
             Dtguias.Enabled = false;
+            DtFechaRecepcion_ValueChanged(sender, e);
             txtcodfactura.Focus();
         }
-
         private void DtgConten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(DtgConten[e.ColumnIndex, e.RowIndex].Value.ToString()))
@@ -317,13 +317,13 @@ namespace HPReserger
                     valorigv = (Convert.ToDecimal(DtgConten["valueigv", i].Value));
                     valortotal = (Convert.ToDecimal(DtgConten["TOTALFAC", i].Value));
                     //grabando
-                    cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 1,
+                    cfactura.InsertarFactura(txtcodfactura.Text + "-" + txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 1,
                       valorsubtotal, valorigv, valortotal,
                          cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario), 0, 0, (int)DtgConten[centrocosto1.Name, i].Value);
                     ///////////////////////
                     ///Dinamica Contable///
                     ///////////////////////                    
-                    cfactura.InsertarAsientoRecibo(nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cuenta", i].Value.ToString(),txtruc.Text,txtRazonSocial.Text,txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value,DtFechaRecepcion.Value,Dtfechaentregado.Value, frmLogin.CodigoUsuario);
+                    cfactura.InsertarAsientoRecibo(nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten["cuenta", i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
                     cfactura.InsertarAsientoRecibo(nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cuenta", i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
                     ///////////////////////
                     ///Dinamica Contable///
@@ -332,7 +332,7 @@ namespace HPReserger
                 MSG("Recibo por Honorario Ingresado Exitosamente");
                 btncancelar_Click(sender, e);
                 txtnrofactura.Text = ""; txtmonto.Text = ""; txtsubtotal.Text = txtigv.Text = txttotal.Text = ""; pbfactura.Image = null; imgfactura = null;
-                txtruc.Text = "";
+                txtruc.Text = ""; txtcodfactura.Text = "";
                 Dtguias.Enabled = true;
             }
         }

@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class Frmreporteop
     {
@@ -48,7 +50,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.dtgconten = new Dtgconten();
             this.numeropedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +58,7 @@
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btncancelar = new System.Windows.Forms.Button();
-            this.dtgconten1 = new System.Windows.Forms.DataGridView();
+            this.dtgconten1 = new Dtgconten();
             this.lblmsg = new System.Windows.Forms.Label();
             this.btnexcel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -294,9 +296,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numeropedido,
             this.fechaX,
@@ -309,7 +311,7 @@
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
-            this.dtgconten.RowTemplate.Height = 16;
+            this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(734, 387);
             this.dtgconten.TabIndex = 1;
@@ -386,9 +388,9 @@
             this.dtgconten1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtgconten1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dtgconten1.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgconten1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten1.Location = new System.Drawing.Point(0, 546);
             this.dtgconten1.MultiSelect = false;
@@ -463,7 +465,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.DataGridView dtgconten;
+        private Dtgconten dtgconten;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -473,7 +475,7 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.DataGridView dtgconten1;
+        private Dtgconten dtgconten1;
         private System.Windows.Forms.Label lblmsg;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeropedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaX;

@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmAsientoContable
     {
@@ -60,7 +62,7 @@
             this.btnnuevo = new System.Windows.Forms.Button();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.dtgbusca = new System.Windows.Forms.DataGridView();
+            this.dtgbusca = new Dtgconten();
             this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechavalorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,7 +74,7 @@
             this.etapax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label19 = new System.Windows.Forms.Label();
             this.fecha = new System.Windows.Forms.DateTimePicker();
-            this.Dtgconten = new System.Windows.Forms.DataGridView();
+            this.Dtgconten = new Dtgconten();
             this.IDASIENTOX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -330,9 +332,9 @@
             this.dtgbusca.AllowUserToResizeColumns = false;
             this.dtgbusca.AllowUserToResizeRows = false;
             dataGridViewCellStyle15.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgbusca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.dtgbusca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dtgbusca.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgbusca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
+            //this.dtgbusca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //this.dtgbusca.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgbusca.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgbusca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgbusca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -343,8 +345,8 @@
             dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgbusca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.dtgbusca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.dtgbusca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dtgbusca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgbusca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idx,
             this.Fechax,
@@ -363,7 +365,7 @@
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle19;
+            //this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle19;
             this.dtgbusca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgbusca.Location = new System.Drawing.Point(9, 490);
             this.dtgbusca.MultiSelect = false;
@@ -377,10 +379,10 @@
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgbusca.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            //this.dtgbusca.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dtgbusca.RowHeadersVisible = false;
             dataGridViewCellStyle21.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgbusca.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            //this.dtgbusca.RowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dtgbusca.RowTemplate.Height = 16;
             this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgbusca.Size = new System.Drawing.Size(657, 185);
@@ -509,8 +511,8 @@
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
-            this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
+            //this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -521,7 +523,7 @@
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            //this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDASIENTOX,
@@ -538,7 +540,7 @@
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle28.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle28;
+            //this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle28;
             this.Dtgconten.RowTemplate.Height = 16;
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -852,6 +854,7 @@
             // 
             // cboestado
             // 
+            this.cboestado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboestado.Enabled = false;
             this.cboestado.FormattingEnabled = true;
@@ -912,6 +915,7 @@
             // 
             this.cboetapa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboetapa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboetapa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboetapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboetapa.Enabled = false;
             this.cboetapa.FormattingEnabled = true;
@@ -925,7 +929,9 @@
             // 
             this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.DropDownWidth = 250;
             this.cboempresa.FormattingEnabled = true;
             this.cboempresa.Location = new System.Drawing.Point(16, 66);
             this.cboempresa.Name = "cboempresa";
@@ -938,6 +944,7 @@
             // 
             this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboproyecto.Enabled = false;
             this.cboproyecto.FormattingEnabled = true;
@@ -1080,10 +1087,10 @@
         private System.Windows.Forms.Button btnnuevo;
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DataGridView dtgbusca;
+        private Dtgconten dtgbusca;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker fecha;
-        private System.Windows.Forms.DataGridView Dtgconten;
+        private Dtgconten Dtgconten;
         private System.Windows.Forms.Button btnmas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

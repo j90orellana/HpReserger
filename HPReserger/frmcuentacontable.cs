@@ -17,6 +17,25 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CcuentaContable = new HPResergerCapaLogica.HPResergerCL();
+        //////////////////////
+        private string _CodidoCuenta;        
+        public string CodigoCuenta
+        {
+            get { return _CodidoCuenta; }
+            set { _CodidoCuenta = value;  }
+        }
+        private Boolean _Consulta = false;
+        public Boolean Consulta
+        {
+            get { return _Consulta; }
+            set { _Consulta = value; }
+        }
+        private Boolean _Encontrado = false;
+        public Boolean Encontrado
+        {
+            get { return _Encontrado; }
+            set { _Encontrado = value; }
+        }
         public int tipobusca { get; set; }
         public int estado { get; set; }
         public string CuentaN1 { get; set; }
@@ -134,7 +153,8 @@ namespace HPReserger
         }
         public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
-            dtgconten.DataSource = CcuentaContable.ListarCuentasContables(Txtbusca.Text, tipobusca);
+            string caden = Txtbusca.EstaLLeno() ? Txtbusca._Text : "";
+            dtgconten.DataSource = CcuentaContable.ListarCuentasContables(caden, tipobusca);
             msg(dtgconten);
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
@@ -202,11 +222,11 @@ namespace HPReserger
         }
         public void Activar()
         {
-            btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
+            Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
         }
         public void Desactivar()
         {
-            btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
+            Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
@@ -387,6 +407,7 @@ namespace HPReserger
                     }
                 }
             }
+            if (Consulta) { Encontrado = true; this.Close(); }
         }
         public void PresentarValor(string final)
         {
@@ -421,6 +442,18 @@ namespace HPReserger
         public void MSG(string cadena)
         {
             MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Consulta) { Encontrado = true; this.Close(); }
+        }
+        private void txtcodcuenta_TextChanged(object sender, EventArgs e)
+        {
+            CodigoCuenta = txtcodcuenta.Text;
+        }
+        private void Txtbusca_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

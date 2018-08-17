@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmFicSinFaactura
     {
@@ -29,6 +31,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFicSinFaactura));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnexportarexcel = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -39,7 +43,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtbuscar = new System.Windows.Forms.TextBox();
-            this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.button1 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.NUMERO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordencompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,17 +56,14 @@
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
             // btnexportarexcel
             // 
-            this.btnexportarexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnexportarexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarexcel.Image")));
-            this.btnexportarexcel.Location = new System.Drawing.Point(948, 59);
+            this.btnexportarexcel.Location = new System.Drawing.Point(748, 38);
             this.btnexportarexcel.Name = "btnexportarexcel";
             this.btnexportarexcel.Size = new System.Drawing.Size(75, 24);
             this.btnexportarexcel.TabIndex = 27;
@@ -73,7 +76,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(948, 566);
+            this.btncancelar.Location = new System.Drawing.Point(851, 566);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 24);
             this.btncancelar.TabIndex = 26;
@@ -92,14 +95,14 @@
             this.panel1.Controls.Add(this.txtbuscar);
             this.panel1.Location = new System.Drawing.Point(12, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 83);
+            this.panel1.Size = new System.Drawing.Size(730, 55);
             this.panel1.TabIndex = 25;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.Location = new System.Drawing.Point(12, 58);
+            this.checkBox1.Location = new System.Drawing.Point(422, 32);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(47, 17);
             this.checkBox1.TabIndex = 22;
@@ -130,9 +133,9 @@
             this.cbodocumento.Items.AddRange(new object[] {
             "ARTICULO",
             "SERVICIO"});
-            this.cbodocumento.Location = new System.Drawing.Point(76, 54);
+            this.cbodocumento.Location = new System.Drawing.Point(475, 30);
             this.cbodocumento.Name = "cbodocumento";
-            this.cbodocumento.Size = new System.Drawing.Size(328, 21);
+            this.cbodocumento.Size = new System.Drawing.Size(252, 21);
             this.cbodocumento.TabIndex = 3;
             this.cbodocumento.SelectedIndexChanged += new System.EventHandler(this.cbodocumento_SelectedIndexChanged);
             // 
@@ -170,23 +173,29 @@
             // 
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToDeleteRows = false;
+            this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NUMERO,
             this.doc,
@@ -198,102 +207,33 @@
             this.telefono,
             this.tipo,
             this.fecha});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dtgconten.Location = new System.Drawing.Point(12, 86);
+            this.dtgconten.EnableHeadersVisualStyles = false;
+            this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.dtgconten.Location = new System.Drawing.Point(12, 66);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
+            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
-            this.dtgconten.RowTemplate.Height = 16;
+            this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(1011, 474);
+            this.dtgconten.Size = new System.Drawing.Size(914, 494);
             this.dtgconten.TabIndex = 24;
             this.dtgconten.TabStop = false;
-            // 
-            // NUMERO
-            // 
-            this.NUMERO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NUMERO.DataPropertyName = "numero";
-            this.NUMERO.HeaderText = "Número";
-            this.NUMERO.Name = "NUMERO";
-            this.NUMERO.Width = 69;
-            // 
-            // doc
-            // 
-            this.doc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.doc.DataPropertyName = "doc";
-            this.doc.HeaderText = "TipoDoc";
-            this.doc.Name = "doc";
-            this.doc.Width = 73;
-            // 
-            // ordencompra
-            // 
-            this.ordencompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ordencompra.DataPropertyName = "ordencompra";
-            this.ordencompra.HeaderText = "OrdenCompra";
-            this.ordencompra.Name = "ordencompra";
-            this.ordencompra.Width = 97;
-            // 
-            // Cotizacion
-            // 
-            this.Cotizacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Cotizacion.DataPropertyName = "cotizacion";
-            this.Cotizacion.HeaderText = "Cotización";
-            this.Cotizacion.Name = "Cotizacion";
-            this.Cotizacion.Width = 81;
-            // 
-            // Ruc
-            // 
-            this.Ruc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Ruc.DataPropertyName = "ruc";
-            this.Ruc.HeaderText = "Ruc";
-            this.Ruc.Name = "Ruc";
-            this.Ruc.Width = 52;
-            // 
-            // razon_social
-            // 
-            this.razon_social.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.razon_social.DataPropertyName = "razon_social";
-            this.razon_social.HeaderText = "Razon Social";
-            this.razon_social.MinimumWidth = 100;
-            this.razon_social.Name = "razon_social";
-            // 
-            // email
-            // 
-            this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "Email_Proveedor";
-            this.email.Name = "email";
-            this.email.Width = 112;
-            // 
-            // telefono
-            // 
-            this.telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.telefono.DataPropertyName = "telefono";
-            this.telefono.HeaderText = "Telefono";
-            this.telefono.Name = "telefono";
-            this.telefono.Width = 74;
-            // 
-            // tipo
-            // 
-            this.tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tipo.DataPropertyName = "tipo";
-            this.tipo.HeaderText = "Tipo";
-            this.tipo.Name = "tipo";
-            this.tipo.Width = 53;
-            // 
-            // fecha
-            // 
-            this.fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.fecha.DataPropertyName = "fecha";
-            this.fecha.HeaderText = "Fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.Width = 62;
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(484, 566);
+            this.button1.Location = new System.Drawing.Point(436, 566);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 24);
             this.button1.TabIndex = 28;
@@ -307,11 +247,91 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // NUMERO
+            // 
+            this.NUMERO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NUMERO.DataPropertyName = "numero";
+            this.NUMERO.HeaderText = "Número";
+            this.NUMERO.Name = "NUMERO";
+            this.NUMERO.Width = 75;
+            // 
+            // doc
+            // 
+            this.doc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.doc.DataPropertyName = "doc";
+            this.doc.HeaderText = "TipoDoc";
+            this.doc.Name = "doc";
+            this.doc.Width = 76;
+            // 
+            // ordencompra
+            // 
+            this.ordencompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ordencompra.DataPropertyName = "ordencompra";
+            this.ordencompra.HeaderText = "OrdenCompra";
+            this.ordencompra.Name = "ordencompra";
+            this.ordencompra.Width = 107;
+            // 
+            // Cotizacion
+            // 
+            this.Cotizacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Cotizacion.DataPropertyName = "cotizacion";
+            this.Cotizacion.HeaderText = "Cotización";
+            this.Cotizacion.Name = "Cotizacion";
+            this.Cotizacion.Width = 87;
+            // 
+            // Ruc
+            // 
+            this.Ruc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Ruc.DataPropertyName = "ruc";
+            this.Ruc.HeaderText = "Ruc";
+            this.Ruc.Name = "Ruc";
+            this.Ruc.Width = 51;
+            // 
+            // razon_social
+            // 
+            this.razon_social.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.razon_social.DataPropertyName = "razon_social";
+            this.razon_social.HeaderText = "Razon Social";
+            this.razon_social.MinimumWidth = 100;
+            this.razon_social.Name = "razon_social";
+            // 
+            // email
+            // 
+            this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "Email Proveedor";
+            this.email.Name = "email";
+            this.email.Width = 117;
+            // 
+            // telefono
+            // 
+            this.telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.telefono.DataPropertyName = "telefono";
+            this.telefono.HeaderText = "Telefono";
+            this.telefono.Name = "telefono";
+            this.telefono.Width = 77;
+            // 
+            // tipo
+            // 
+            this.tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tipo.DataPropertyName = "tipo";
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.Name = "tipo";
+            this.tipo.Width = 55;
+            // 
+            // fecha
+            // 
+            this.fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fecha.DataPropertyName = "fecha";
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.Width = 62;
+            // 
             // frmFicSinFaactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 601);
+            this.ClientSize = new System.Drawing.Size(946, 601);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnexportarexcel);
             this.Controls.Add(this.btncancelar);
@@ -339,9 +359,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox txtbuscar;
-        private System.Windows.Forms.DataGridView dtgconten;
+        private Dtgconten dtgconten;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbodocumento;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NUMERO;
         private System.Windows.Forms.DataGridViewTextBoxColumn doc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordencompra;
@@ -352,6 +373,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

@@ -33,17 +33,15 @@ namespace HPReserger
                 goto Busqueda;
             }
         }
+        DataTable DatosDetracciones;
         public void CargarDetracciones()
         {
-            DataTable datos = new DataTable();
-            datos = cfactura.Detraciones(0);
-            DataRow filita = datos.NewRow();
+            DatosDetracciones = new DataTable();
+            DatosDetracciones = cfactura.Detraciones(0);
+            DataRow filita = DatosDetracciones.NewRow();
             filita["Desc_Detraccion"] = "NO";
             filita["Porcentaje"] = 0.00;
-            datos.Rows.InsertAt(filita, 0);
-            cbodetraccion.DisplayMember = "Desc_Detraccion";
-            cbodetraccion.ValueMember = "Porcentaje";
-            cbodetraccion.DataSource = datos;
+            DatosDetracciones.Rows.InsertAt(filita, 0);
         }
         private void FrmFactura_Load(object sender, EventArgs e)
         {
@@ -336,6 +334,7 @@ namespace HPReserger
                     txtnroconstancia.Text = "0";
                 DataRow siguienteNum = cfactura.SiguienteAsientoxOrdenCompra((int)DtgConten["numOC", 0].Value);
                 nextAsiento = int.Parse(siguienteNum["id"].ToString());
+                int empresa = int.Parse(siguienteNum["empresa"].ToString());
                 //eliminando las provisionadas para luego actualizar
                 for (int i = 0; i < DtgConten.RowCount; i++)
                 {
@@ -354,7 +353,7 @@ namespace HPReserger
                     valorigv = (Convert.ToDecimal(DtgConten["valueigv", i].Value));
                     valortotal = (Convert.ToDecimal(DtgConten["TOTALFAC", i].Value));
                     //grabando
-                    cfactura.InsertarFactura(txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 0,
+                    cfactura.InsertarFactura(txtcodfactura.Text + "-" + txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 0,
                       valorsubtotal, valorigv, valortotal,
                          cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario),
                          int.Parse(txtnroconstancia.Text), detracc, (int)DtgConten[cc.Name, i].Value);
@@ -373,14 +372,14 @@ namespace HPReserger
                         //////////////////////
                         ///Insertar-Asiento///
                         //////////////////////
-                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, 0, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
-                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), 0, 0, valortotal, DtgConten["cc", i].Value.ToString(), txtnrofactura.Text);
+                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento,empresa, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, 0, DtgConten["cc", i].Value.ToString(), txtcodfactura.Text + "-" + txtnrofactura.Text);
+                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento,empresa, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), 0, 0, valortotal, DtgConten["cc", i].Value.ToString(), txtcodfactura.Text + "-" + txtnrofactura.Text);
                     }
                 }
                 MSG("Factura Ingresada Exitosamente");
                 button1_Click(sender, e);
                 txtnrofactura.Text = ""; txtmonto.Text = ""; txtsubtotal.Text = txtigv.Text = txttotal.Text = ""; pbfactura.Image = null; imgfactura = null;
-                txtruc.Text = ""; busqueda = 0; btnprovisionar.Enabled = false;
+                txtruc.Text = ""; busqueda = 0; btnprovisionar.Enabled = false; txtcodfactura.Text = "";
                 txtnroconstancia.Text = ""; txtfoto.Text = ""; cbodetraccion.SelectedIndex = -1; txtdetraccion.Text = "";
                 Dtguias.Enabled = true; cbotipo.Enabled = true; btnmaspro.Enabled = true;
             }
@@ -409,6 +408,7 @@ namespace HPReserger
             Dtguias.Enabled = false;
             btnprovisionar.Enabled = false;
             cbodetraccion.SelectedIndex = 0;
+            DtFechaRecepcion_ValueChanged(sender, e);
             txtcodfactura.Focus();
 
             //Valido que el boton Provisionar se APague si ya esta una fic provisionada
@@ -970,23 +970,36 @@ namespace HPReserger
             txtnroconstancia.Enabled = a;
             //txtdetraccion.Enabled = a;
         }
+        string detrac = "";
         private void cbodetraccion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbodetraccion.Text != "NO")
             {
                 decimal detracion = 0;
                 OcultarDetraccion(true);
-                numdetraccion.Value = cbodetraccion.SelectedValue == null ? 0.0m : (decimal)cbodetraccion.SelectedValue;
-                if (!string.IsNullOrWhiteSpace(txttotal.Text))
-                    detracion = decimal.Parse(txttotal.Text.ToString()) * (numdetraccion.Value / 100);
+                txtdetracion.Text = detrac;
+                string filtro = $"Desc_Detraccion ='{txtdetracion.Text}'";
+                DataRow[] filaS = DatosDetracciones.Select(filtro);
+                if (filaS.Count() != 0)
+                {
+                    txtdetracion.Text = filaS[0].ItemArray[1].ToString();
+                    //numdetraccion.Value = cbodetraccion.SelectedValue == null ? 0.0m : (decimal)cbodetraccion.SelectedValue;
+                    numdetraccion.Value = Convert.ToDecimal(filaS[0].ItemArray[2].ToString());
+                    if (!string.IsNullOrWhiteSpace(txttotal.Text))
+                        detracion = decimal.Parse(txttotal.Text.ToString()) * (numdetraccion.Value / 100);
+                }
                 //  MSG(detracion + " " + decimal.Round(detracion));
                 txtdetraccion.Text = detracion.ToString("n0");
                 numdetraccion.Enabled = false;
+                btnmasdetracion.Enabled = true;
+
             }
             else
             {
                 OcultarDetraccion(false);
+                btnmasdetracion.Enabled = false;
                 txtdetraccion.Text = "0.00"; numdetraccion.Value = 0;
+                txtdetracion.Text = "NO";
             }
         }
 
@@ -1171,16 +1184,36 @@ namespace HPReserger
 
         private void cbodetraccion_Click(object sender, EventArgs e)
         {
-            string cade = cbodetraccion.Text;
-            CargarDetracciones();
-            cbodetraccion.Text = cade;
+            // string cade = cbodetraccion.Text;
+            //  CargarDetracciones();
+            //cbodetraccion.Text = cade;
+        }
+        frmdetracciones frdetracion;
+        private void btnmasdetracion_Click(object sender, EventArgs e)
+        {
+            frdetracion = new frmdetracciones();
+            frdetracion.FormClosed += Frdetracion_FormClosed;
+            frdetracion.BuscarValor = true; frdetracion.detraccion = txtdetracion.Text;
+            frdetracion.ShowDialog();
+        }
+        private void Frdetracion_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!frdetracion.BuscarValor)
+            {
+                detrac = frdetracion.detraccion;
+                txtdetracion.Text = frdetracion.detraccion;
+            }
+        }
+
+        private void txtdetracion_TextChanged(object sender, EventArgs e)
+        {
+            cbodetraccion_SelectedIndexChanged(sender, e);
         }
 
         private void DtgConten_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";
         }
-
         private void pbfactura_Click(object sender, EventArgs e)
         {
 

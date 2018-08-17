@@ -23,13 +23,17 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL Ccostos = new HPResergerCapaLogica.HPResergerCL();
         private void frmccosto_Load(object sender, EventArgs e)
         {
-            cbocuentas.DataSource = Ccostos.ListarCuentasArticulos();
-            cbocuentas.DisplayMember = "codigo";
-            cbocuentas.ValueMember = "codigo";
+            CargarCuentas();
             estado = 0;
             Cargarsiyno(cbotiene);
             radioButton2.Checked = true; dtgconten.DataSource = Ccostos.ListarCentrosdeCosto(0, 0, null);
             dtgconten.Focus();
+        }
+        public void CargarCuentas()
+        {
+            cbocuentas.DataSource = Ccostos.ListarCuentas();
+            cbocuentas.DisplayMember = "valores";
+            cbocuentas.ValueMember = "cuentas";
         }
         public void Cargarsiyno(ComboBox combito)
         {
@@ -45,11 +49,11 @@ namespace HPReserger
         }
         public void Activar()
         {
-            btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
+            btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true; btnbuscar.Enabled = false;
         }
         public void Desactivar()
         {
-            btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
+            btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false; btnbuscar.Enabled = true;
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -110,14 +114,14 @@ namespace HPReserger
             {
                 if (estado == 1 && ValidarDes(txtcosto.Text) && ValidarCodigo(txtcodigo.Text))
                 {
-                    Ccostos.InsertarCentroCostros(txtcodigo.Text, txtcosto.Text, cbotiene.SelectedValue.ToString(), cbocuentas.SelectedValue.ToString());
+                    Ccostos.InsertarCentroCostros(txtcodigo.Text, txtcosto.Text, cbotiene.SelectedValue.ToString(), cbotiene.Text == "SI" ? cbocuentas.SelectedValue.ToString() : "");
                     MessageBox.Show("Centro de Costo, Ingresado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     if (estado == 2 && ValidarDes(txtcosto.Text) && ValidarCodigo(txtcodigo.Text))
                     {
-                        Ccostos.ActualizarCentroCostos(txtcosto.Text.ToString(), txtcodigo.Text, int.Parse(dtgconten["idcodigo", dtgconten.CurrentCell.RowIndex].Value.ToString()), cbotiene.SelectedValue.ToString(), cbocuentas.SelectedValue.ToString());
+                        Ccostos.ActualizarCentroCostos(txtcosto.Text.ToString(), txtcodigo.Text, int.Parse(dtgconten["idcodigo", dtgconten.CurrentCell.RowIndex].Value.ToString()), cbotiene.SelectedValue.ToString(), cbotiene.Text == "SI" ? cbocuentas.SelectedValue.ToString() : "");
                         MessageBox.Show("Centro de Costo, Actualizado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -175,7 +179,7 @@ namespace HPReserger
                 if (dtgconten["idcuenta", e.RowIndex].Value.ToString() == "")
                     cbocuentas.SelectedIndex = -1;
                 else
-                    cbocuentas.Text = dtgconten["idcuenta", e.RowIndex].Value.ToString();
+                    cbocuentas.SelectedValue = dtgconten["idcuenta", e.RowIndex].Value.ToString();
                 cbotiene.SelectedValue = dtgconten["tienecuenta", e.RowIndex].Value.ToString();
             }
 
@@ -200,11 +204,6 @@ namespace HPReserger
         {
             txtbuscar.Text = "";
         }
-
-        private void txtbuscar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         int CODIGO = 0, CENTRO = 0;
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -213,7 +212,7 @@ namespace HPReserger
 
         private void txtbuscar_TextChanged_1(object sender, EventArgs e)
         {
-            dtgconten.DataSource = Ccostos.ListarCentrosdeCosto(CODIGO, CENTRO, txtbuscar.Text);
+            dtgconten.DataSource = Ccostos.ListarCentrosdeCosto(CODIGO, CENTRO, txtbuscar.EstaLLeno() ? txtbuscar._Text : "");
         }
 
         private void Limpiar_Click_1(object sender, EventArgs e)
@@ -263,6 +262,38 @@ namespace HPReserger
                 ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
                 this.Close();
             }
+        }
+        private void cbotiene_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbotiene.Text == "SI")
+                cbocuentas.Enabled = true;
+
+            else
+                cbocuentas.Enabled = false;
+        }
+        private void cbocuentas_Click(object sender, EventArgs e)
+        {
+            string cadena = cbocuentas.Text;
+            CargarCuentas();
+            cbocuentas.Text = cadena;
+        }
+        frmcuentacontable frmcuentas;
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+            if (frmcuentas == null)
+            {
+                frmcuentas = new frmcuentacontable();
+                frmcuentas.Consulta = true;
+                frmcuentas.FormClosed += Frmcuentas_FormClosed;
+                frmcuentas.Txtbusca._Text = cbocuentas.SelectedValue == null ? "" : cbocuentas.SelectedValue.ToString();
+                frmcuentas.Show();
+            }
+            else frmcuentas.Activate();
+        }
+        private void Frmcuentas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (frmcuentas.Encontrado) cbocuentas.SelectedValue = frmcuentas.CodigoCuenta; cbotiene.Text = "SI";
+            frmcuentas = null;
         }
 
         private void chkcodigo_CheckedChanged(object sender, EventArgs e)

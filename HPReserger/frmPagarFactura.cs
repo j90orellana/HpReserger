@@ -321,23 +321,25 @@ namespace HPReserger
                 int numasiento = 0; string facturar = "";
                 foreach (FACTURAS fac in Comprobantes)
                 {
-                    DataTable asientito = cPagarfactura.UltimoAsientoFactura(fac.numero, fac.proveedor);
-                    DataRow asiento = asientito.Rows[0];
-                    if (asiento == null) { numasiento = 0; }
-                    else
+                    if (numasiento == 0)
                     {
-                        numasiento = (int)asiento["codigo"];
+                        DataTable asientito = cPagarfactura.UltimoAsientoFactura(fac.numero, fac.proveedor);
+                        DataRow asiento = asientito.Rows[0];
+                        if (asiento == null) { numasiento = 0; }
+                        else
+                            numasiento = (int)asiento["codigo"];
                     }
                     //Recorremos los comprobantes seleccionados RH / FT
                     //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
                     if (fac.tipo.Substring(0, 2) == "RH")
                     {
                         //actualizo que el recibo este pagado
-                        if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar,fac.subtotal,fac.igv, fac.total, frmLogin.CodigoUsuario, 0);
+                        if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0);
                         else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1);
                         //cuenta de recibo por honorarios 4241101
                         cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.aPagar, 0, 1, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
                         facturar = fac.numero;
+                        proveer = fac.proveedor;
                     }
                     else
                     {
@@ -349,7 +351,7 @@ namespace HPReserger
                             ///facturas por pagar 4212101
                             cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
                             cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
-                            facturar = fac.numero;
+                            facturar = fac.numero; proveer = fac.proveedor;
                         }
                         else
                         {
@@ -358,7 +360,7 @@ namespace HPReserger
                             else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1);
                             ///facturas por pagar 4212101
                             cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
-                            facturar = fac.numero;
+                            facturar = fac.numero; proveer = fac.proveedor;
                         }
                     }
                 }
@@ -367,7 +369,7 @@ namespace HPReserger
                     BanCuenta = "";
                 else
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
-                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", "");
+                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer);
                 msg("Documento Pagado y se ha Generado su Asiento");
                 btnActualizar_Click(sender, e);
                 txttotaldetrac.Text = txttotal.Text = "0.00";
@@ -537,8 +539,28 @@ namespace HPReserger
                 //else
             }
             catch (Exception ex) { msg(ex.Message); }
+            if (e.ColumnIndex == Dtguias.Columns[btnVer.Name].Index)
+            {
+                if (Dtguias[btnVer.Name, e.RowIndex].Value.ToString() == "Abonos")
+                {
+                    if (frmdetallepago == null)
+                    {
+                        frmdetallepago = new frmDetallePagoFactura(Dtguias[nrofactura.Name, e.RowIndex].Value.ToString(), Dtguias[proveedor.Name, e.RowIndex].Value.ToString());
+                        frmdetallepago.FormClosed += Frmdetallepago_FormClosed;
+                        frmdetallepago.MdiParent = MdiParent;
+                        frmdetallepago.Show();
+                    }
+                    else frmdetallepago.Activate();
+                }
+            }
             FacturasSeleccionas();
         }
+
+        private void Frmdetallepago_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmdetallepago = null;
+        }
+        frmDetallePagoFactura frmdetallepago;
         int NumRegistros;
         public void CalcularTotal()
         {
@@ -777,7 +799,7 @@ namespace HPReserger
             if (x >= 0)
             {
                 //doble click en proveedores
-                if (y != Dtguias.Columns[OK.Name].Index)
+                if (y != Dtguias.Columns[OK.Name].Index && y != Dtguias.Columns[btnVer.Name].Index)
                 {
                     Clipboard.SetText(Dtguias[y, x].Value.ToString());
 
@@ -787,6 +809,8 @@ namespace HPReserger
             }
         }
         TextBox txt;
+        private string proveer;
+
         private void Dtguias_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             int x = Dtguias.CurrentCell.RowIndex, y = Dtguias.CurrentCell.ColumnIndex;
@@ -840,6 +864,16 @@ namespace HPReserger
                 }
             }
             CalcularTotal();
+        }
+        private void Dtguias_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.RowIndex, y = e.ColumnIndex;
+            if (y == Dtguias.Columns[Pagox.Name].Index)
+            {
+                FACTURAS factu = Comprobantes.Find(cust => cust.numero == Dtguias[nrofactura.Name, x].Value.ToString() && cust.proveedor == Dtguias[proveedor.Name, x].Value.ToString());
+                if (factu != null)
+                    factu.aPagar = Convert.ToDecimal(Dtguias[y, x].Value.ToString());
+            }
         }
     }
 }

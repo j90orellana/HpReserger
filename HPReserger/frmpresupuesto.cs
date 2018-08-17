@@ -73,7 +73,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         int estado = 0;
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace HPReserger
             cbotipo.SelectedIndex = -1;
             txtimporte.Text = "";
             txtdescripcion.Text = "";
-            txtnumero.Text = dtgconten.RowCount + 2.ToString();
+            txtnumero.Text = (dtgconten.RowCount + 1).ToString();
             txtdescripcion.Focus();
 
         }

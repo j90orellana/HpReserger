@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmDetalleAsientos
     {
@@ -43,7 +45,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Dtgconten = new System.Windows.Forms.DataGridView();
+            this.Dtgconten = new HpResergerUserControls.Dtgconten();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
@@ -82,6 +84,7 @@
             this.importemnx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importemex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipocambiox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fkAsix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.glosax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,23 +93,26 @@
             // 
             // Dtgconten
             // 
+            this.Dtgconten.AllowUserToOrderColumns = true;
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.Dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -130,16 +136,26 @@
             this.importemnx,
             this.importemex,
             this.tipocambiox,
+            this.fkAsix,
             this.glosax,
             this.usuariox,
             this.fechax});
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dtgconten.DefaultCellStyle = dataGridViewCellStyle14;
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.Dtgconten.EnableHeadersVisualStyles = false;
+            this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.Dtgconten.Location = new System.Drawing.Point(12, 44);
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
             this.Dtgconten.Size = new System.Drawing.Size(1363, 526);
@@ -221,6 +237,7 @@
             // 
             // txtnumasiento
             // 
+            this.txtnumasiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtnumasiento.Location = new System.Drawing.Point(88, 14);
             this.txtnumasiento.Name = "txtnumasiento";
             this.txtnumasiento.ReadOnly = true;
@@ -231,6 +248,7 @@
             // 
             // txtcuenta
             // 
+            this.txtcuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcuenta.Location = new System.Drawing.Point(267, 14);
             this.txtcuenta.Name = "txtcuenta";
             this.txtcuenta.ReadOnly = true;
@@ -242,6 +260,7 @@
             // 
             this.txtdescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtdescripcion.Location = new System.Drawing.Point(439, 14);
             this.txtdescripcion.Name = "txtdescripcion";
             this.txtdescripcion.ReadOnly = true;
@@ -272,6 +291,7 @@
             // txttotal
             // 
             this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotal.Location = new System.Drawing.Point(1135, 14);
             this.txttotal.Name = "txttotal";
             this.txttotal.ReadOnly = true;
@@ -303,6 +323,7 @@
             // txttotalmonextranjera
             // 
             this.txttotalmonextranjera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotalmonextranjera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotalmonextranjera.Location = new System.Drawing.Point(887, 584);
             this.txttotalmonextranjera.Name = "txttotalmonextranjera";
             this.txttotalmonextranjera.ReadOnly = true;
@@ -333,6 +354,7 @@
             // txttotalmonedaNacional
             // 
             this.txttotalmonedaNacional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotalmonedaNacional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotalmonedaNacional.Location = new System.Drawing.Point(770, 584);
             this.txttotalmonedaNacional.Name = "txttotalmonedaNacional";
             this.txttotalmonedaNacional.ReadOnly = true;
@@ -353,6 +375,7 @@
             // txtdiferencia
             // 
             this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdiferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtdiferencia.Location = new System.Drawing.Point(1004, 584);
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
@@ -378,7 +401,7 @@
             this.idauxx.HeaderText = "idaux";
             this.idauxx.Name = "idauxx";
             this.idauxx.Visible = false;
-            this.idauxx.Width = 58;
+            this.idauxx.Width = 59;
             // 
             // idasientox
             // 
@@ -387,7 +410,7 @@
             this.idasientox.HeaderText = "idAsiento";
             this.idasientox.Name = "idasientox";
             this.idasientox.Visible = false;
-            this.idasientox.Width = 76;
+            this.idasientox.Width = 80;
             // 
             // cuentacontablex
             // 
@@ -413,7 +436,7 @@
             this.tipodocx.Name = "tipodocx";
             this.tipodocx.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.tipodocx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.tipodocx.Width = 76;
+            this.tipodocx.Width = 79;
             // 
             // numdocx
             // 
@@ -439,7 +462,7 @@
             this.razonsocialx.MinimumWidth = 70;
             this.razonsocialx.Name = "razonsocialx";
             this.razonsocialx.ReadOnly = true;
-            this.razonsocialx.Width = 94;
+            this.razonsocialx.Width = 96;
             // 
             // idcomprobantex
             // 
@@ -450,7 +473,7 @@
             this.idcomprobantex.Name = "idcomprobantex";
             this.idcomprobantex.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.idcomprobantex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.idcomprobantex.Width = 96;
+            this.idcomprobantex.Width = 102;
             // 
             // codcomprobantex
             // 
@@ -578,10 +601,20 @@
             dataGridViewCellStyle13.Format = "0.0000";
             dataGridViewCellStyle13.NullValue = "0.0000";
             this.tipocambiox.DefaultCellStyle = dataGridViewCellStyle13;
-            this.tipocambiox.HeaderText = "T. Cambio";
+            this.tipocambiox.HeaderText = "T. Camb.";
             this.tipocambiox.MinimumWidth = 60;
             this.tipocambiox.Name = "tipocambiox";
             this.tipocambiox.Width = 60;
+            // 
+            // fkAsix
+            // 
+            this.fkAsix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.fkAsix.DataPropertyName = "fk_asi";
+            this.fkAsix.HeaderText = "NroAsiento";
+            this.fkAsix.MinimumWidth = 65;
+            this.fkAsix.Name = "fkAsix";
+            this.fkAsix.ReadOnly = true;
+            this.fkAsix.Width = 65;
             // 
             // glosax
             // 
@@ -599,7 +632,7 @@
             this.usuariox.HeaderText = "usuario";
             this.usuariox.Name = "usuariox";
             this.usuariox.Visible = false;
-            this.usuariox.Width = 68;
+            this.usuariox.Width = 70;
             // 
             // fechax
             // 
@@ -608,7 +641,7 @@
             this.fechax.HeaderText = "fecha";
             this.fechax.Name = "fechax";
             this.fechax.Visible = false;
-            this.fechax.Width = 58;
+            this.fechax.Width = 59;
             // 
             // frmDetalleAsientos
             // 
@@ -658,7 +691,7 @@
         private System.Windows.Forms.TextBox txtdescripcion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblmsg;
-        public System.Windows.Forms.DataGridView Dtgconten;
+        public Dtgconten Dtgconten;
         private System.Windows.Forms.TextBox txttotal;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.CheckBox ChkDuplicar;
@@ -687,6 +720,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn importemnx;
         private System.Windows.Forms.DataGridViewTextBoxColumn importemex;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipocambiox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fkAsix;
         private System.Windows.Forms.DataGridViewTextBoxColumn glosax;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuariox;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechax;

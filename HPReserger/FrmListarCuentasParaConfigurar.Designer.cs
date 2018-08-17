@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class FrmListarCuentasParaConfigurar
     {
@@ -35,10 +37,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListarCuentasParaConfigurar));
-            this.dtgConten = new System.Windows.Forms.DataGridView();
+            this.dtgConten = new Dtgconten();
             this.Cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Grid = new System.Windows.Forms.DataGridView();
+            this.Grid = new Dtgconten();
             this.codcuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUENTAN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUENTACONTABLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,15 +83,15 @@
             this.dtgConten.AllowUserToResizeColumns = false;
             this.dtgConten.AllowUserToResizeRows = false;
             dataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgConten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            //this.dtgConten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dtgConten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgConten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgConten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgConten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.dtgConten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgConten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgConten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgConten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.dtgConten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            //this.dtgConten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -97,7 +99,7 @@
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgConten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            //this.dtgConten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dtgConten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgConten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cuentax,
@@ -106,10 +108,10 @@
             this.dtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgConten.Location = new System.Drawing.Point(12, 291);
             this.dtgConten.Name = "dtgConten";
-            this.dtgConten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.dtgConten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgConten.RowHeadersVisible = false;
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
-            this.dtgConten.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            //this.dtgConten.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dtgConten.RowTemplate.Height = 16;
             this.dtgConten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgConten.Size = new System.Drawing.Size(738, 340);
@@ -142,14 +144,14 @@
             this.Grid.AllowUserToResizeColumns = false;
             this.Grid.AllowUserToResizeRows = false;
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            //this.Grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.Grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.Grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            //this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle17.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -157,7 +159,7 @@
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            //this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codcuenta,
@@ -181,10 +183,10 @@
             this.Grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.Grid.Location = new System.Drawing.Point(12, 57);
             this.Grid.Name = "Grid";
-            this.Grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.Grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.Grid.RowHeadersVisible = false;
             dataGridViewCellStyle18.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
-            this.Grid.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            //this.Grid.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.Grid.RowTemplate.Height = 16;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(738, 197);
@@ -509,11 +511,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dtgConten;
+        
+        private Dtgconten dtgConten;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuentax;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcionx;
-        private System.Windows.Forms.DataGridView Grid;
+        private Dtgconten Grid;
         private System.Windows.Forms.Button btnaddselected;
         private System.Windows.Forms.Button btnlimpiar;
         private System.Windows.Forms.Label label22;

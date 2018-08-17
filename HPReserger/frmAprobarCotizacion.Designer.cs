@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmAprobarCotizacion
     {
@@ -48,7 +50,7 @@
             this.btnAprobar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.gridCotizacion = new System.Windows.Forms.DataGridView();
+            this.gridCotizacion = new Dtgconten();
             this.OP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +63,7 @@
             this.CENTROCOSTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PARTIDAPRESUPUESTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridCotizacionesAsociadas = new System.Windows.Forms.DataGridView();
+            this.gridCotizacionesAsociadas = new Dtgconten();
             this.btndetalle = new System.Windows.Forms.Button();
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btndescargar = new System.Windows.Forms.Button();
@@ -117,9 +119,9 @@
             this.gridCotizacion.AllowUserToOrderColumns = true;
             this.gridCotizacion.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridCotizacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            //this.gridCotizacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridCotizacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridCotizacion.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridCotizacion.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridCotizacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridCotizacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -129,8 +131,8 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gridCotizacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.gridCotizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gridCotizacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridCotizacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OP,
             this.c,
@@ -151,8 +153,8 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridCotizacion.DefaultCellStyle = dataGridViewCellStyle8;
-            this.gridCotizacion.GridColor = System.Drawing.Color.White;
+            //this.gridCotizacion.DefaultCellStyle = dataGridViewCellStyle8;
+            //this.gridCotizacion.GridColor = System.Drawing.Color.White;
             this.gridCotizacion.Location = new System.Drawing.Point(9, 29);
             this.gridCotizacion.Name = "gridCotizacion";
             this.gridCotizacion.ReadOnly = true;
@@ -284,10 +286,10 @@
             // 
             this.gridCotizacionesAsociadas.AllowUserToAddRows = false;
             this.gridCotizacionesAsociadas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridCotizacionesAsociadas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            //dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
+            //this.gridCotizacionesAsociadas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.gridCotizacionesAsociadas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridCotizacionesAsociadas.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridCotizacionesAsociadas.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridCotizacionesAsociadas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridCotizacionesAsociadas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -297,7 +299,7 @@
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacionesAsociadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            //this.gridCotizacionesAsociadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.gridCotizacionesAsociadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.COTIZACION,
             this.PEDIDO,
@@ -315,7 +317,7 @@
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridCotizacionesAsociadas.DefaultCellStyle = dataGridViewCellStyle15;
+            //this.gridCotizacionesAsociadas.DefaultCellStyle = dataGridViewCellStyle15;
             this.gridCotizacionesAsociadas.Location = new System.Drawing.Point(9, 323);
             this.gridCotizacionesAsociadas.Name = "gridCotizacionesAsociadas";
             this.gridCotizacionesAsociadas.ReadOnly = true;
@@ -326,7 +328,7 @@
             dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridCotizacionesAsociadas.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            //this.gridCotizacionesAsociadas.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.gridCotizacionesAsociadas.RowHeadersVisible = false;
             this.gridCotizacionesAsociadas.RowTemplate.Height = 16;
             this.gridCotizacionesAsociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -512,8 +514,8 @@
         private System.Windows.Forms.Button btnAprobar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView gridCotizacion;
-        private System.Windows.Forms.DataGridView gridCotizacionesAsociadas;
+        private Dtgconten gridCotizacion;
+        private Dtgconten gridCotizacionesAsociadas;
         private System.Windows.Forms.PictureBox pbFoto;
         private System.Windows.Forms.DataGridViewTextBoxColumn OP;
         private System.Windows.Forms.DataGridViewTextBoxColumn c;

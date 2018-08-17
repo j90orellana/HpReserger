@@ -9,13 +9,26 @@ namespace HpResergerUserControls
         public txtBuscar()
         {
             InitializeComponent();
-            btnbuscar.Click += new EventHandler(btnbuscarClick);           
+            btnbuscar.Click += new EventHandler(btnbuscarClick);
+            txtbusca.TextChanged += new EventHandler(btnbuscarTextChanged);
+            _text = Text;
         }
-        public override string Text { get { return txtbusca.Text; } set { txtbusca.Text = value; } }
-        public event EventHandler ClickBotonBuscar;
+        public static string _text;
+        public event EventHandler BuscarClick;
+        public event EventHandler BuscarTextChanged;
+        private void btnbuscarTextChanged(object sender, EventArgs e)
+        {
+            BuscarTextChanged?.Invoke(this, e);
+        }
+        private string Text;
+        public string _Text
+        {
+            get { return txtbusca.Text; }
+            set { txtbusca.Text = value; }
+        }        
         private void btnbuscarClick(object sender, EventArgs e)
         {
-            ClickBotonBuscar?.Invoke(this, e);
+            BuscarClick?.Invoke(this, e);
         }
         public Image FondoBoton { get { return btnbuscar.Image; } set { btnbuscar.Image = value; } }
         private void txtBuscar_BackColorChanged(object sender, EventArgs e)
@@ -26,6 +39,12 @@ namespace HpResergerUserControls
         private void txtBuscar_ForeColorChanged(object sender, EventArgs e)
         {
             txtbusca.ForeColor = this.ForeColor;
+        }
+        public Boolean EstaLLeno()
+        {
+            if (txtbusca.Text == _text || txtbusca.Text.Length == 0)
+                return false;
+            else return true;
         }
         private void txtBuscar_FontChanged(object sender, EventArgs e)
         {
@@ -38,6 +57,6 @@ namespace HpResergerUserControls
         private void txtbusca_DoubleClick(object sender, EventArgs e)
         {
             txtbusca.SelectAll();
-        }       
+        }
     }
 }

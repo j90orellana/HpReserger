@@ -105,14 +105,17 @@
             this.groupBox1.Size = new System.Drawing.Size(359, 250);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtcentrocosto
             // 
+            this.txtcentrocosto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcentrocosto.Location = new System.Drawing.Point(99, 165);
             this.txtcentrocosto.Name = "txtcentrocosto";
             this.txtcentrocosto.ReadOnly = true;
             this.txtcentrocosto.Size = new System.Drawing.Size(254, 20);
             this.txtcentrocosto.TabIndex = 24;
+            this.txtcentrocosto.TextChanged += new System.EventHandler(this.txtcentrocosto_TextChanged);
             // 
             // label3
             // 
@@ -125,6 +128,7 @@
             // 
             // txtCantOC
             // 
+            this.txtCantOC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtCantOC.Location = new System.Drawing.Point(99, 190);
             this.txtCantOC.Name = "txtCantOC";
             this.txtCantOC.ReadOnly = true;
@@ -134,30 +138,37 @@
             // 
             // txtModelo
             // 
+            this.txtModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtModelo.Location = new System.Drawing.Point(99, 140);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.ReadOnly = true;
             this.txtModelo.Size = new System.Drawing.Size(254, 20);
             this.txtModelo.TabIndex = 21;
+            this.txtModelo.TextChanged += new System.EventHandler(this.txtModelo_TextChanged);
             // 
             // txtMarca
             // 
+            this.txtMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtMarca.Location = new System.Drawing.Point(99, 115);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.ReadOnly = true;
             this.txtMarca.Size = new System.Drawing.Size(254, 20);
             this.txtMarca.TabIndex = 20;
+            this.txtMarca.TextChanged += new System.EventHandler(this.txtMarca_TextChanged);
             // 
             // txtArticulo
             // 
+            this.txtArticulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtArticulo.Location = new System.Drawing.Point(99, 91);
             this.txtArticulo.Name = "txtArticulo";
             this.txtArticulo.ReadOnly = true;
             this.txtArticulo.Size = new System.Drawing.Size(254, 20);
             this.txtArticulo.TabIndex = 19;
+            this.txtArticulo.TextChanged += new System.EventHandler(this.txtArticulo_TextChanged);
             // 
             // txtFIC
             // 
+            this.txtFIC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtFIC.Location = new System.Drawing.Point(99, 19);
             this.txtFIC.Name = "txtFIC";
             this.txtFIC.ReadOnly = true;
@@ -221,6 +232,7 @@
             // 
             // dtpFecha
             // 
+            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(99, 43);
             this.dtpFecha.Name = "dtpFecha";

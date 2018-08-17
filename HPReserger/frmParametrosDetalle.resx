@@ -138,23 +138,22 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btncancelar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAECSURBVDhPYxg84IuLWeFXZ7PPX5zN/uPDEDXm+VBtCACU/IKuGA/+BNWGAMgKvkb6IyuGiAW6
-        ofCh2hAArjDI7f+/x8/+/5o1Ba7456Te///u3f//NcCVsAEg/KOq6P//F6///1o49/+vOTP+/3/19v+P
-        jka4PAhDtSEAsiQIgw15+eb//9dAzW31KHIgDNWGAOgKfk2fBLQZaMBLiEu+uJijyEO1IQCyJEzzj9a6
-        /z8qC///f/7q/+/lS1AMgWpDAJjE1zCv//8ePf3/s6sZrvhHXTkkEMO8CRsAwqCYQOaDxXwcUPhQbQgA
-        FKQwIQGTMlDiJ5pCbBioBktSHiDAwAAABDN2EWHfOFsAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAQJJREFUOE9j
+        GDzgi4tZ4Vdns89fnM3+48MQNeb5UG0IAJT8gq4YD/4E1YYAyAq+RvojK4aIBbqh8KHaEACuMMjt/7/H
+        z/7/mjUFrvjnpN7//+7d//81wJWwASD8o6ro//8Xr///Wjj3/685M/7/f/X2/4+ORrg8CEO1IQCyJAiD
+        DXn55v//10DNbfUociAM1YYA6Ap+TZ8EtBlowEuIS764mKPIQ7UhALIkTPOP1rr/PyoL//9//ur/7+VL
+        UAyBakMAmMTXMK///x49/f+zqxmu+EddOSQQw7wJGwDCoJhA5oPFfBxQ+FBtCAAUpDAhAZMyUOInmkJs
+        GKgGS1IeIMDAAAAEM3YRYd84WwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="btnexportarExcel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAEYSURBVDhPYxhcIDQ0lFmvxkRdt844VK/OqEWv1mgjEN+HSuMHurVGp4CKvwLxf3Tssz5gNzL2
-        XR+wFqoNAbBphGGgJgwM1YYAIIUBk0L+J89LA2uKmRX/P3ByKJgNAh2nusA0COA0wK3H8/+XH1/+J81N
-        /f/68xswHyQO0pywIxlMgzBOA0B4zsF5/z98+/h/wq5JYD4IH3l69H/xwTIwDcJ4DZh9cO7/N5/f/p+5
-        fzbpBsTNTvz/+tPr/159vmBXhEwJBxtAtBcCJgX/D4IGXNi0yP/e/X5gNgiANMIAXi9gwyAN6BiqDQGA
-        Ke80UPF3dM0g7LshYBUyBhqwCKoNExg2GEoBDfMF4gag5s3AFPoMKjUoAQMDALsQK951uDfYAAAAAElF
-        TkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAARhJREFUOE9j
+        GFwgNDSUWa/GRF23zjhUr86oRa/WaCMQ34dK4we6tUangIq/AvF/dOyzPmA3MvZdH7AWqg0BsGmEYaAm
+        DAzVhgAghQGTQv4nz0sDa4qZFf8/cHIomA0CHae6wDQI4DTArcfz/5cfX/4nzU39//rzGzAfJA7SnLAj
+        GUyDME4DQHjOwXn/P3z7+H/CrklgPggfeXr0f/HBMjANwngNmH1w7v83n9/+n7l/NukGxM1O/P/60+v/
+        Xn2+YFeETAkHG0C0FwImBf8PggZc2LTI/979fmA2CIA0wgBeL2DDIA3oGKoNAYAp7zRQ8Xd0zSDsuyFg
+        FTIGGrAIqg0TGDYYSgEN8wXiBqDmzcAU+gwqNSgBAwMAuxAr3nW4N9gAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

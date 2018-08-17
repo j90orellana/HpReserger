@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmreporteordencompra
     {
@@ -29,9 +31,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmreporteordencompra));
-            this.dtgconten1 = new System.Windows.Forms.DataGridView();
+            this.dtgconten1 = new Dtgconten();
             this.btncancelar = new System.Windows.Forms.Button();
-            this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.dtgconten = new Dtgconten();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
@@ -88,15 +90,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dtgconten1.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgconten1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten1.Location = new System.Drawing.Point(12, 454);
             this.dtgconten1.MultiSelect = false;
             this.dtgconten1.Name = "dtgconten1";
             this.dtgconten1.RowHeadersVisible = false;
-            this.dtgconten1.RowTemplate.Height = 16;
+            this.dtgconten1.RowTemplate.Height = 18;
             this.dtgconten1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten1.Size = new System.Drawing.Size(765, 148);
             this.dtgconten1.TabIndex = 7;
@@ -127,15 +129,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgconten.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Location = new System.Drawing.Point(12, 143);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersVisible = false;
-            this.dtgconten.RowTemplate.Height = 16;
+            this.dtgconten.RowTemplate.Height = 18                ;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(1013, 274);
             this.dtgconten.TabIndex = 5;
@@ -613,7 +615,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtgconten1;
+        private Dtgconten dtgconten1;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -648,7 +650,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.DataGridView dtgconten;
+        private Dtgconten dtgconten;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtsumatoria;
         private System.Windows.Forms.Label lblmsg;

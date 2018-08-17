@@ -60,6 +60,7 @@
             // 
             // cboEPS
             // 
+            this.cboEPS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboEPS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEPS.FormattingEnabled = true;
             this.cboEPS.Items.AddRange(new object[] {
@@ -138,6 +139,7 @@
             // 
             // cboEPSAdicional
             // 
+            this.cboEPSAdicional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboEPSAdicional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEPSAdicional.FormattingEnabled = true;
             this.cboEPSAdicional.Items.AddRange(new object[] {
@@ -151,6 +153,7 @@
             // 
             // cboAFPEmpresa
             // 
+            this.cboAFPEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboAFPEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAFPEmpresa.FormattingEnabled = true;
             this.cboAFPEmpresa.Items.AddRange(new object[] {
@@ -163,6 +166,7 @@
             // 
             // cboONP
             // 
+            this.cboONP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboONP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboONP.FormattingEnabled = true;
             this.cboONP.Items.AddRange(new object[] {
@@ -175,6 +179,7 @@
             // 
             // cboAFP
             // 
+            this.cboAFP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboAFP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAFP.FormattingEnabled = true;
             this.cboAFP.Items.AddRange(new object[] {
@@ -188,6 +193,7 @@
             // 
             // cboSCTR
             // 
+            this.cboSCTR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboSCTR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSCTR.FormattingEnabled = true;
             this.cboSCTR.Items.AddRange(new object[] {
@@ -256,6 +262,7 @@
             // 
             // cboplan
             // 
+            this.cboplan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboplan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboplan.FormattingEnabled = true;
             this.cboplan.Items.AddRange(new object[] {
@@ -278,6 +285,7 @@
             // 
             // cboaplica
             // 
+            this.cboaplica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboaplica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboaplica.FormattingEnabled = true;
             this.cboaplica.Items.AddRange(new object[] {
@@ -320,6 +328,7 @@
             // 
             // cbodescuento
             // 
+            this.cbodescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbodescuento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodescuento.FormattingEnabled = true;
             this.cbodescuento.Items.AddRange(new object[] {

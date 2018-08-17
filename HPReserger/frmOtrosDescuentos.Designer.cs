@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmOtrosDescuentos
     {
@@ -35,7 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOtrosDescuentos));
             this.panelOre3 = new HpResergerUserControls.PanelOre();
-            this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.dtgconten = new Dtgconten();
             this.desvinculancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo_id_emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,10 +79,10 @@
             this.panelOre3.BackColor = System.Drawing.SystemColors.Control;
             this.panelOre3.Controls.Add(this.dtgconten);
             this.panelOre3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelOre3.Location = new System.Drawing.Point(0, 152);
+            this.panelOre3.Location = new System.Drawing.Point(0, 139);
             this.panelOre3.Movible = false;
             this.panelOre3.Name = "panelOre3";
-            this.panelOre3.Size = new System.Drawing.Size(404, 209);
+            this.panelOre3.Size = new System.Drawing.Size(404, 222);
             this.panelOre3.TabIndex = 154;
             // 
             // dtgconten
@@ -90,16 +92,16 @@
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            //this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgconten.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-            this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.dtgconten.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            //this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -107,7 +109,7 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            //this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.desvinculancion,
@@ -128,7 +130,7 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
+            //this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.Enabled = false;
             this.dtgconten.Location = new System.Drawing.Point(12, 6);
@@ -142,13 +144,13 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            //this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            //this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(386, 191);
+            this.dtgconten.Size = new System.Drawing.Size(386, 204);
             this.dtgconten.TabIndex = 152;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -242,14 +244,14 @@
             this.panelOre2.Location = new System.Drawing.Point(0, 0);
             this.panelOre2.Movible = false;
             this.panelOre2.Name = "panelOre2";
-            this.panelOre2.Size = new System.Drawing.Size(404, 152);
+            this.panelOre2.Size = new System.Drawing.Size(404, 139);
             this.panelOre2.TabIndex = 153;
             this.panelOre2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelOre2_Paint);
             // 
             // lkldescuento
             // 
             this.lkldescuento.AutoSize = true;
-            this.lkldescuento.Location = new System.Drawing.Point(329, 121);
+            this.lkldescuento.Location = new System.Drawing.Point(329, 114);
             this.lkldescuento.Name = "lkldescuento";
             this.lkldescuento.Size = new System.Drawing.Size(61, 13);
             this.lkldescuento.TabIndex = 76;
@@ -270,6 +272,7 @@
             // 
             // cboTipoDocumento
             // 
+            this.cboTipoDocumento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumento.Enabled = false;
             this.cboTipoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
@@ -295,7 +298,7 @@
             this.btnaddfoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnaddfoto.FlatAppearance.BorderSize = 0;
             this.btnaddfoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnaddfoto.Location = new System.Drawing.Point(296, 117);
+            this.btnaddfoto.Location = new System.Drawing.Point(296, 110);
             this.btnaddfoto.Name = "btnaddfoto";
             this.btnaddfoto.Size = new System.Drawing.Size(20, 20);
             this.btnaddfoto.TabIndex = 6;
@@ -311,7 +314,7 @@
             this.txtdescuento.Enabled = false;
             this.txtdescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.txtdescuento.ForeColor = System.Drawing.Color.Blue;
-            this.txtdescuento.Location = new System.Drawing.Point(85, 117);
+            this.txtdescuento.Location = new System.Drawing.Point(85, 110);
             this.txtdescuento.MaxLength = 100;
             this.txtdescuento.Name = "txtdescuento";
             this.txtdescuento.NextControlOnEnter = null;
@@ -325,7 +328,7 @@
             // txtimporte
             // 
             this.txtimporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.txtimporte.Location = new System.Drawing.Point(85, 90);
+            this.txtimporte.Location = new System.Drawing.Point(85, 86);
             this.txtimporte.Name = "txtimporte";
             this.txtimporte.NextControlOnEnter = this.btnaddfoto;
             this.txtimporte.Size = new System.Drawing.Size(124, 24);
@@ -339,7 +342,7 @@
             this.txtmotivo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtmotivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.txtmotivo.ForeColor = System.Drawing.Color.Blue;
-            this.txtmotivo.Location = new System.Drawing.Point(85, 64);
+            this.txtmotivo.Location = new System.Drawing.Point(85, 62);
             this.txtmotivo.MaxLength = 100;
             this.txtmotivo.Name = "txtmotivo";
             this.txtmotivo.NextControlOnEnter = this.txtimporte;
@@ -353,7 +356,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 122);
+            this.label3.Location = new System.Drawing.Point(9, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 2;
@@ -362,7 +365,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 95);
+            this.label2.Location = new System.Drawing.Point(9, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 1;
@@ -371,7 +374,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 68);
+            this.label1.Location = new System.Drawing.Point(9, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 0;
@@ -498,7 +501,7 @@
         private HpResergerUserControls.PanelOre panelOre1;
         private HpResergerUserControls.PanelOre panelOre2;
         private HpResergerUserControls.PanelOre panelOre3;
-        private System.Windows.Forms.DataGridView dtgconten;
+        private Dtgconten dtgconten;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnaddfoto;
         private HpResergerUserControls.TextBoxPer txtdescuento;

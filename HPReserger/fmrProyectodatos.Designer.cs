@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class fmrProyectodatos
     {
@@ -35,7 +37,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmrProyectodatos));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Dtgconten = new System.Windows.Forms.DataGridView();
+            this.Dtgconten = new Dtgconten();
             this.id_etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -205,9 +207,9 @@
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            //this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1554,7 +1556,7 @@
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.TextBox txtareabruta;
-        private System.Windows.Forms.DataGridView Dtgconten;
+        private Dtgconten Dtgconten;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_etapa;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_proyecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;

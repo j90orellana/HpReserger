@@ -194,7 +194,6 @@ namespace HPResergerFunciones
             {
                 Clipboard.SetText(cajita.SelectedText);
             }
-
         }
         public static void ValidarDinero(KeyEventArgs e, TextBox cajita)
         {
@@ -234,7 +233,6 @@ namespace HPResergerFunciones
             if (e.Control && e.KeyCode == Keys.C && !string.IsNullOrWhiteSpace(cajita.Text))
             {
                 Clipboard.SetText(cajita.SelectedText);
-
             }
         }
         public static string ReversaCadena(string campo)
@@ -293,7 +291,7 @@ namespace HPResergerFunciones
                 if (Savesito.ShowDialog() == DialogResult.OK)
                 {
                     Fotos.Image.Save(Savesito.FileName);
-                    MessageBox.Show("Guardado Existosamente!", "HpReserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    msg("Guardado Existosamente!");
                 }
             }
         }
@@ -549,7 +547,6 @@ namespace HPResergerFunciones
             foreach (RangoCelda Nombres in NombresCeldas)
             {
                 //hoja_trabajo.Cells[Nombres.columna, Nombres.fila] = Nombres.Nombre;
-
                 hoja_trabajo.Range[Nombres.fila].Value2 = Nombres.Nombre;
                 hoja_trabajo.Range[Nombres.fila, Nombres.columna].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
                 hoja_trabajo.Range[Nombres.fila, Nombres.columna].VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
@@ -557,9 +554,7 @@ namespace HPResergerFunciones
                 if (Nombres.TamañoFuente != 0)
                     hoja_trabajo.Range[Nombres.fila, Nombres.columna].Font.Size = Nombres.TamañoFuente;
                 hoja_trabajo.Range[Nombres.fila, Nombres.columna].MergeCells = true;
-
                 //hoja_trabajo.Range[hoja_trabajo.Cells[ Nombres.columna,Nombres.fila] = Nombres.Nombre;
-
             }
             //Recorremos el DataGridView rellenando la hoja de trabajo
             int Conta = grd.Rows.Count;
@@ -714,11 +709,7 @@ namespace HPResergerFunciones
                      }
                  }
              }
-             */
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, "HP Reserger", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
+             */        
         public static List<string> ListarHojasDeunExcel(string ruta)
         {
             List<string> NombresHojas = new List<string>();
@@ -916,5 +907,15 @@ namespace HPResergerFunciones
                 if (cajita.Text.Length > len)
                     cajita.Text = cajita.Text.Substring(0, len);
         }
+        public static void Activar(params object[] control)
+        {
+            foreach (object x in control)
+                ((Control)x).Enabled = true;
+        }
+        public static void Desactivar(params object[] control)
+        {
+            foreach (object x in control)
+                ((Control)x).Enabled = false;
+        }       
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmListarOrdenesPedido
     {
@@ -43,7 +45,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.gridListar = new System.Windows.Forms.DataGridView();
+            this.gridListar = new Dtgconten();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +61,7 @@
             this.rbtServicios = new System.Windows.Forms.RadioButton();
             this.rbtArticulo = new System.Windows.Forms.RadioButton();
             this.btnMostrar = new System.Windows.Forms.Button();
-            this.gridDetalle = new System.Windows.Forms.DataGridView();
+            this.gridDetalle = new Dtgconten();
             this.Acción = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,10 +84,10 @@
             this.gridListar.AllowUserToDeleteRows = false;
             this.gridListar.AllowUserToResizeColumns = false;
             this.gridListar.AllowUserToResizeRows = false;
-            this.gridListar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gridListar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.gridListar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridListar.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridListar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.gridListar.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridListar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -94,8 +96,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridListar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.gridListar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridListar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tipo,
             this.Numero,
@@ -108,7 +110,7 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridListar.DefaultCellStyle = dataGridViewCellStyle6;
+            //this.gridListar.DefaultCellStyle = dataGridViewCellStyle6;
             this.gridListar.Location = new System.Drawing.Point(12, 70);
             this.gridListar.Name = "gridListar";
             this.gridListar.ReadOnly = true;
@@ -119,7 +121,7 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridListar.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            //this.gridListar.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridListar.RowHeadersVisible = false;
             this.gridListar.RowTemplate.Height = 16;
             this.gridListar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -249,6 +251,7 @@
             // dtpHasta
             // 
             this.dtpHasta.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHasta.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpHasta.Enabled = false;
             this.dtpHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -261,6 +264,7 @@
             // dtpDesde
             // 
             this.dtpDesde.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDesde.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpDesde.Enabled = false;
             this.dtpDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -315,12 +319,12 @@
             this.gridDetalle.AllowUserToDeleteRows = false;
             this.gridDetalle.AllowUserToResizeColumns = false;
             this.gridDetalle.AllowUserToResizeRows = false;
-            this.gridDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.gridDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            //this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -329,8 +333,8 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Acción,
             this.CODIGOARTICULO,
@@ -348,7 +352,7 @@
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridDetalle.DefaultCellStyle = dataGridViewCellStyle13;
+            //this.gridDetalle.DefaultCellStyle = dataGridViewCellStyle13;
             this.gridDetalle.Location = new System.Drawing.Point(459, 70);
             this.gridDetalle.Name = "gridDetalle";
             this.gridDetalle.ReadOnly = true;
@@ -359,9 +363,9 @@
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            //this.gridDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.gridDetalle.RowHeadersVisible = false;
-            this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            //this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle.RowTemplate.Height = 16;
             this.gridDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridDetalle.Size = new System.Drawing.Size(677, 304);
@@ -518,7 +522,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView gridListar;
+        private Dtgconten gridListar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbtArticulo;
         private System.Windows.Forms.RadioButton rbtServicios;
@@ -530,7 +534,7 @@
         private System.Windows.Forms.TextBox txtServicios;
         private System.Windows.Forms.TextBox txtArticulos;
         private System.Windows.Forms.Button btnMostrar;
-        private System.Windows.Forms.DataGridView gridDetalle;
+        private Dtgconten gridDetalle;
         private System.Windows.Forms.Button btnAnular;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;

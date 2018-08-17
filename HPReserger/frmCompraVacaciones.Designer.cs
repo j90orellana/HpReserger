@@ -169,6 +169,7 @@
             // 
             // cbopago
             // 
+            this.cbopago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbopago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbopago.FormattingEnabled = true;
             this.cbopago.Items.AddRange(new object[] {
@@ -220,6 +221,7 @@
             // 
             // txtMontoPropuesto
             // 
+            this.txtMontoPropuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtMontoPropuesto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMontoPropuesto.Location = new System.Drawing.Point(126, 188);
             this.txtMontoPropuesto.MaxLength = 30;
@@ -249,6 +251,7 @@
             // 
             // txtSueldoDiario
             // 
+            this.txtSueldoDiario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtSueldoDiario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSueldoDiario.Location = new System.Drawing.Point(355, 163);
             this.txtSueldoDiario.MaxLength = 30;
@@ -278,6 +281,7 @@
             // 
             // txtSueldoMensual
             // 
+            this.txtSueldoMensual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtSueldoMensual.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSueldoMensual.Location = new System.Drawing.Point(126, 163);
             this.txtSueldoMensual.MaxLength = 30;
@@ -325,6 +329,7 @@
             // 
             // txtUltimoPeriodoHasta
             // 
+            this.txtUltimoPeriodoHasta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtUltimoPeriodoHasta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUltimoPeriodoHasta.Location = new System.Drawing.Point(316, 38);
             this.txtUltimoPeriodoHasta.MaxLength = 30;
@@ -345,6 +350,7 @@
             // 
             // txtUltimoPeriodoDesde
             // 
+            this.txtUltimoPeriodoDesde.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtUltimoPeriodoDesde.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUltimoPeriodoDesde.Location = new System.Drawing.Point(169, 38);
             this.txtUltimoPeriodoDesde.MaxLength = 30;
@@ -374,6 +380,7 @@
             // 
             // txtDiasComprar
             // 
+            this.txtDiasComprar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtDiasComprar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDiasComprar.Location = new System.Drawing.Point(126, 113);
             this.txtDiasComprar.MaxLength = 30;
@@ -394,6 +401,7 @@
             // 
             // txtDiasUtilizados
             // 
+            this.txtDiasUtilizados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtDiasUtilizados.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDiasUtilizados.Location = new System.Drawing.Point(248, 113);
             this.txtDiasUtilizados.MaxLength = 30;
@@ -414,6 +422,7 @@
             // 
             // txtMaximoDias
             // 
+            this.txtMaximoDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtMaximoDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMaximoDias.Location = new System.Drawing.Point(415, 113);
             this.txtMaximoDias.MaxLength = 30;
@@ -434,6 +443,7 @@
             // 
             // dtpPeriodoComprarHasta
             // 
+            this.dtpPeriodoComprarHasta.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpPeriodoComprarHasta.CalendarTrailingForeColor = System.Drawing.Color.White;
             this.dtpPeriodoComprarHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpPeriodoComprarHasta.Location = new System.Drawing.Point(316, 63);
@@ -444,6 +454,7 @@
             // 
             // dtpPeriodoComprarDesde
             // 
+            this.dtpPeriodoComprarDesde.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpPeriodoComprarDesde.CalendarTitleBackColor = System.Drawing.Color.Yellow;
             this.dtpPeriodoComprarDesde.CalendarTrailingForeColor = System.Drawing.Color.Red;
             this.dtpPeriodoComprarDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -455,6 +466,7 @@
             // 
             // txtFechaInicioLabores
             // 
+            this.txtFechaInicioLabores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtFechaInicioLabores.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtFechaInicioLabores.Location = new System.Drawing.Point(169, 13);
             this.txtFechaInicioLabores.MaxLength = 30;
@@ -493,6 +505,7 @@
             // 
             // txtEquivaleDias
             // 
+            this.txtEquivaleDias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtEquivaleDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEquivaleDias.Location = new System.Drawing.Point(126, 88);
             this.txtEquivaleDias.MaxLength = 2;

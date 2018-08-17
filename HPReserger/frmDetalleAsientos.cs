@@ -465,7 +465,6 @@ namespace HPReserger
         {
             Dtgconten.Rows.Add();
         }
-
         private void Dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
@@ -525,7 +524,6 @@ namespace HPReserger
             }
             txttotalmonextranjera.Text = TotalME.ToString("n2");
             txttotalmonedaNacional.Text = TotalMN.ToString("n2");
-
             txtdiferencia.Text = ((Convert.ToDecimal(txttotal.Text)) - (TotalMN)).ToString("n2");
             VerificarDiferencia();
         }
@@ -586,7 +584,6 @@ namespace HPReserger
             //    Dtgconten[idcomprobantex.Name, y].Value = 0;
             //   Dtgconten[tipodocx.Name, y].Value = 0;
         }
-
         private void Dtgconten_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             msj("");
@@ -655,7 +652,6 @@ namespace HPReserger
                 }
             }
         }
-
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Dtgconten.RowCount > 0)
@@ -678,7 +674,6 @@ namespace HPReserger
                 Combo.DisplayMember = "descripcion";
                 Combo.AutoComplete = true;
                 Combo.DataSource = CentroCosto;
-
                 if (estado == 2)
                 {
                     if ((Dtgconten[tipodocx.Name, x].Value == null ? "" : Dtgconten[tipodocx.Name, x].Value.ToString()) == "")
@@ -686,7 +681,6 @@ namespace HPReserger
                     if ((Dtgconten[idcomprobantex.Name, x].Value == null ? "" : Dtgconten[idcomprobantex.Name, x].Value.ToString()) == "")
                         Dtgconten[idcomprobantex.Name, x].Value = 0;
                 }
-
                 int index = int.Parse((tipoDoc.Select("descripcion='ruc'"))[0].ItemArray[0].ToString());
                 if (Dtgconten[tipodocx.Name, x].Value != null)
                     if ((Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? "0" : Dtgconten[tipodocx.Name, x].Value.ToString()) == "0" || int.Parse((Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? "0" : Dtgconten[tipodocx.Name, x].Value.ToString())) == index)

@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmDistritos
     {
@@ -51,9 +53,9 @@
             this.cbodistrito = new System.Windows.Forms.ComboBox();
             this.btnlimpiar = new System.Windows.Forms.Button();
             this.btndepmas = new System.Windows.Forms.Button();
-            this.dtgdistritos = new System.Windows.Forms.DataGridView();
+            this.dtgdistritos = new Dtgconten();
             this.btnpromas = new System.Windows.Forms.Button();
-            this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.dtgconten = new Dtgconten();
             this.coddepx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departamentox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codprox = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -199,6 +201,7 @@
             // 
             this.cbodepartamento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbodepartamento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbodepartamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbodepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodepartamento.FormattingEnabled = true;
             this.cbodepartamento.Location = new System.Drawing.Point(89, 44);
@@ -212,6 +215,7 @@
             // 
             this.cboprovincia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboprovincia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboprovincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboprovincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboprovincia.FormattingEnabled = true;
             this.cboprovincia.Location = new System.Drawing.Point(89, 69);
@@ -226,6 +230,7 @@
             // 
             this.cbodistrito.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbodistrito.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbodistrito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbodistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodistrito.FormattingEnabled = true;
             this.cbodistrito.Location = new System.Drawing.Point(89, 94);
@@ -265,7 +270,7 @@
             // 
             // dtgdistritos
             // 
-            this.dtgdistritos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgdistritos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgdistritos.Location = new System.Drawing.Point(693, 146);
             this.dtgdistritos.Name = "dtgdistritos";
             this.dtgdistritos.Size = new System.Drawing.Size(240, 150);
@@ -289,15 +294,15 @@
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            //this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            //this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            //this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -305,8 +310,8 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            //this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.coddepx,
             this.departamentox,
@@ -319,10 +324,10 @@
             this.dtgconten.Location = new System.Drawing.Point(12, 146);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
-            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
-            this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            //this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(620, 299);
@@ -430,9 +435,9 @@
         private System.Windows.Forms.ComboBox cbodistrito;
         private System.Windows.Forms.Button btnlimpiar;
         private System.Windows.Forms.Button btndepmas;
-        private System.Windows.Forms.DataGridView dtgdistritos;
+        private Dtgconten dtgdistritos;
         private System.Windows.Forms.Button btnpromas;
-        private System.Windows.Forms.DataGridView dtgconten;
+        private Dtgconten dtgconten;
         private System.Windows.Forms.DataGridViewTextBoxColumn coddepx;
         private System.Windows.Forms.DataGridViewTextBoxColumn departamentox;
         private System.Windows.Forms.DataGridViewTextBoxColumn codprox;

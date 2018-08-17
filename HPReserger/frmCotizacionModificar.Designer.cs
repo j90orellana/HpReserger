@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmCotizacionModificar
     {
@@ -58,7 +60,7 @@
             this.pbFoto = new System.Windows.Forms.PictureBox();
             this.btncancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtgpedidoX = new System.Windows.Forms.DataGridView();
+            this.dtgpedidoX = new Dtgconten();
             this.tipox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrocotx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codX = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +68,7 @@
             this.DetalleX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioUnitx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Totalx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgpedidoY = new System.Windows.Forms.DataGridView();
+            this.dtgpedidoY = new Dtgconten();
             this.tipoy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrocoty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cody = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,6 +130,7 @@
             // 
             // txtProveedor
             // 
+            this.txtProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtProveedor.Location = new System.Drawing.Point(261, 12);
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.ReadOnly = true;
@@ -137,6 +140,7 @@
             // 
             // cbomoneda
             // 
+            this.cbomoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbomoneda.FormattingEnabled = true;
             this.cbomoneda.Location = new System.Drawing.Point(213, 61);
@@ -168,6 +172,7 @@
             // 
             // txtAdjunto
             // 
+            this.txtAdjunto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtAdjunto.Location = new System.Drawing.Point(100, 36);
             this.txtAdjunto.Name = "txtAdjunto";
             this.txtAdjunto.ReadOnly = true;
@@ -199,6 +204,7 @@
             // 
             // dtpFecha
             // 
+            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(587, 61);
             this.dtpFecha.Name = "dtpFecha";
@@ -256,6 +262,7 @@
             // 
             // txtPedido
             // 
+            this.txtPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPedido.Location = new System.Drawing.Point(262, 16);
             this.txtPedido.Name = "txtPedido";
@@ -276,6 +283,7 @@
             // 
             // txtCotizacion
             // 
+            this.txtCotizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtCotizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCotizacion.Location = new System.Drawing.Point(86, 16);
             this.txtCotizacion.Name = "txtCotizacion";
@@ -332,10 +340,10 @@
             this.dtgpedidoX.AllowUserToDeleteRows = false;
             this.dtgpedidoX.AllowUserToResizeColumns = false;
             this.dtgpedidoX.AllowUserToResizeRows = false;
-            this.dtgpedidoX.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dtgpedidoX.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgpedidoX.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //this.dtgpedidoX.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgpedidoX.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgpedidoX.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            //this.dtgpedidoX.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -343,8 +351,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgpedidoX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgpedidoX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.dtgpedidoX.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgpedidoX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgpedidoX.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tipox,
             this.nrocotx,
@@ -354,7 +362,7 @@
             this.PrecioUnitx,
             this.Totalx});
             this.dtgpedidoX.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dtgpedidoX.GridColor = System.Drawing.SystemColors.Control;
+            //this.dtgpedidoX.GridColor = System.Drawing.SystemColors.Control;
             this.dtgpedidoX.Location = new System.Drawing.Point(9, 157);
             this.dtgpedidoX.Name = "dtgpedidoX";
             this.dtgpedidoX.RowHeadersVisible = false;
@@ -435,10 +443,10 @@
             this.dtgpedidoY.AllowUserToDeleteRows = false;
             this.dtgpedidoY.AllowUserToResizeColumns = false;
             this.dtgpedidoY.AllowUserToResizeRows = false;
-            this.dtgpedidoY.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dtgpedidoY.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgpedidoY.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //this.dtgpedidoY.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgpedidoY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgpedidoY.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            //this.dtgpedidoY.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -446,7 +454,7 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgpedidoY.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            //this.dtgpedidoY.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgpedidoY.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgpedidoY.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tipoy,
@@ -459,7 +467,7 @@
             this.preciounity,
             this.totaly});
             this.dtgpedidoY.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dtgpedidoY.GridColor = System.Drawing.SystemColors.Control;
+            //this.dtgpedidoY.GridColor = System.Drawing.SystemColors.Control;
             this.dtgpedidoY.Location = new System.Drawing.Point(9, 166);
             this.dtgpedidoY.Name = "dtgpedidoY";
             this.dtgpedidoY.RowHeadersVisible = false;
@@ -625,8 +633,8 @@
         private System.Windows.Forms.PictureBox pbFoto;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dtgpedidoX;
-        private System.Windows.Forms.DataGridView dtgpedidoY;
+        private Dtgconten dtgpedidoX;
+        private Dtgconten dtgpedidoY;
         private System.Windows.Forms.Button btndescargar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbomoneda;

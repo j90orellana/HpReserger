@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmAlmacen
     {
@@ -47,12 +49,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.gridDetalle = new System.Windows.Forms.DataGridView();
-            this.gridDetalle1 = new System.Windows.Forms.DataGridView();
+            this.gridDetalle = new Dtgconten();
+            this.gridDetalle1 = new Dtgconten();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.gridDetalle2 = new System.Windows.Forms.DataGridView();
+            this.gridDetalle2 = new Dtgconten();
             this.ItemDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,7 +108,7 @@
             this.gridDetalle.AllowUserToResizeRows = false;
             resources.ApplyResources(this.gridDetalle, "gridDetalle");
             this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -115,7 +117,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            //this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGOARTICULO,
@@ -131,7 +133,7 @@
             this.gridDetalle.Name = "gridDetalle";
             this.gridDetalle.RowHeadersVisible = false;
             this.gridDetalle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.gridDetalle.RowTemplate.Height = 16;
+            this.gridDetalle.RowTemplate.Height = 18;
             this.gridDetalle.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridDetalle_EditingControlShowing);
             // 
             // gridDetalle1
@@ -142,7 +144,7 @@
             this.gridDetalle1.AllowUserToResizeRows = false;
             resources.ApplyResources(this.gridDetalle1, "gridDetalle1");
             this.gridDetalle1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDetalle1.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridDetalle1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -151,7 +153,7 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            //this.gridDetalle1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridDetalle1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridDetalle1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FIC,
@@ -193,7 +195,7 @@
             this.gridDetalle2.AllowUserToResizeRows = false;
             resources.ApplyResources(this.gridDetalle2, "gridDetalle2");
             this.gridDetalle2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDetalle2.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridDetalle2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
@@ -202,8 +204,8 @@
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.gridDetalle2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.gridDetalle2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.gridDetalle2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridDetalle2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemDetalle,
             this.G2CODIGOARTICULO,
@@ -581,12 +583,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView gridDetalle;
-        private System.Windows.Forms.DataGridView gridDetalle1;
+        private Dtgconten gridDetalle;
+        private Dtgconten gridDetalle1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView gridDetalle2;
+        private Dtgconten gridDetalle2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cboOC;
         private System.Windows.Forms.TextBox txtGR;

@@ -62,6 +62,7 @@ namespace HPReserger
             Datos = new DataTable();
             Datos.Columns.Add("Proceso");
             Datos.Columns.Add("Resultado");
+            Datos.Columns.Add("ver");
             dtgconten1.DataSource = Datos;
             Datos.Rows.Add("Verificando Asientos Abiertos", "Buscando Asientos Abiertos");
             Datos.Rows.Add("Verificando Saldos Pendientes", "Buscando Saldos Pendientes");
@@ -70,21 +71,42 @@ namespace HPReserger
             btncerrar.Enabled = true;
             if (asientos.Rows.Count != 0)
             {
-                Datos.Rows[0][1] = "Se Encontraron Asientos Abiertos";
-                frmlis = new frmListarAsientosAbiertos((int)cboempresa.SelectedValue, (DateTime)cboperiodo.SelectedValue);
-                frmlis.MdiParent = MdiParent;
-                btncerrar.Enabled = false;
-                frmlis.FormClosed += Frmlis_FormClosed;
-                frmlis.Show();
+        dtgconten1[resultadox.Name,0].Value = "Se Encontraron Asientos Abiertos";
+                dtgconten1[Verx.Name, 0].Value = "Ver";
+                //frmlis = new frmListarAsientosAbiertos((int)cboempresa.SelectedValue, (DateTime)cboperiodo.SelectedValue);
+                //frmlis.MdiParent = MdiParent;
+                //btncerrar.Enabled = false;
+                //frmlis.FormClosed += Frmlis_FormClosed;
+                //frmlis.Show();
             }
             else
-                Datos.Rows[0][1] = "No hay Asientos Abiertos";
+            {
+                dtgconten1[resultadox.Name, 0].Value = "No hay Asientos Abiertos";
+                dtgconten1[Verx.Name, 0].Value = "";
+            }
             //verificando los saldos pendientes
-            Datos.Rows[1][1] = "No hay Saldos Pendientes";
+            dtgconten1[Verx.Name,1].Value = "";
+            dtgconten1[resultadox.Name, 1].Value = "No hay Saldos Pendientes";
         }
         private void Frmlis_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            frmlis = null;
+        }
+        private void dtgconten1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.RowIndex, y = e.ColumnIndex;
+            if (y == dtgconten1.Columns[Verx.Name].Index && dtgconten1[y, x].Value.ToString() == "Ver")
+            {
+                if (frmlis == null)
+                {
+                    frmlis = new frmListarAsientosAbiertos((int)cboempresa.SelectedValue, (DateTime)cboperiodo.SelectedValue);
+                    frmlis.MdiParent = MdiParent;
+                    btncerrar.Enabled = false;
+                    frmlis.FormClosed += Frmlis_FormClosed;
+                    frmlis.Show();
+                }
+                else { frmlis.Focus(); }
+            }
         }
     }
 }

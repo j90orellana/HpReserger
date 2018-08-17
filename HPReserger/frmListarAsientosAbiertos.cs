@@ -59,8 +59,9 @@ namespace HPReserger
             {
                 frmAsientoContable asientito = new frmAsientoContable();
                 asientito.FormClosed += Asientito_FormClosed;
-                asientito.MdiParent = MdiParent;
-                asientito.Show();
+                //asientito.MdiParent = MdiParent;
+                asientito.Icon = Icon;
+                asientito.ShowDialog();
                 asientito.BuscarAsiento(dtgconten[idAsientoContableDataGridViewTextBoxColumn.Name, x].Value.ToString(), (int)dtgconten[idEmpresaDataGridViewTextBoxColumn.Name, x].Value);
             }
         }

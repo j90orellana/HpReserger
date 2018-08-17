@@ -179,6 +179,7 @@
             // 
             // txtcodigo
             // 
+            this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcodigo.Enabled = false;
             this.txtcodigo.Location = new System.Drawing.Point(88, 12);
             this.txtcodigo.Name = "txtcodigo";

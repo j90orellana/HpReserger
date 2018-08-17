@@ -74,6 +74,7 @@
             // 
             // dtpFecha
             // 
+            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(193, 99);
             this.dtpFecha.Name = "dtpFecha";
@@ -132,6 +133,7 @@
             // 
             this.cboVinculoFamiliar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboVinculoFamiliar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboVinculoFamiliar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboVinculoFamiliar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVinculoFamiliar.FormattingEnabled = true;
             this.cboVinculoFamiliar.Location = new System.Drawing.Point(193, 72);
@@ -143,6 +145,7 @@
             // 
             this.cboTipoDocumentoIdentidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboTipoDocumentoIdentidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboTipoDocumentoIdentidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboTipoDocumentoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumentoIdentidad.FormattingEnabled = true;
             this.cboTipoDocumentoIdentidad.Location = new System.Drawing.Point(193, 19);
@@ -288,6 +291,7 @@
             // 
             // cbosexo
             // 
+            this.cbosexo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbosexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbosexo.FormattingEnabled = true;
             this.cbosexo.Location = new System.Drawing.Point(193, 203);

@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmCargaDatosProveedor
     {
@@ -30,7 +32,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargaDatosProveedor));
             this.label1 = new System.Windows.Forms.Label();
-            this.Dtguias = new System.Windows.Forms.DataGridView();
+            this.Dtguias = new Dtgconten();
             this.Ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RAZONSOCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRECOMERCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,9 +72,9 @@
             this.Dtguias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Dtguias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Dtguias.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.Dtguias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            //this.Dtguias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.Dtguias.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.Dtguias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtguias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtguias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ruc,
@@ -241,6 +243,7 @@
             // 
             // txtbanco
             // 
+            this.txtbanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtbanco.Location = new System.Drawing.Point(129, 9);
             this.txtbanco.Name = "txtbanco";
             this.txtbanco.ReadOnly = true;
@@ -258,6 +261,7 @@
             // 
             // txtcuenta
             // 
+            this.txtcuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcuenta.Location = new System.Drawing.Point(129, 35);
             this.txtcuenta.Name = "txtcuenta";
             this.txtcuenta.ReadOnly = true;
@@ -290,7 +294,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView Dtguias;
+        private Dtgconten Dtguias;
         private System.Windows.Forms.Button btnaceptar;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Label label2;

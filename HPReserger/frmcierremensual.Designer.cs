@@ -40,6 +40,9 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.btncerrar = new System.Windows.Forms.Button();
+            this.procesox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Verx = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +99,11 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgconten1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtgconten1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.procesox,
+            this.resultadox,
+            this.Verx});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -115,6 +122,7 @@
             this.dtgconten1.RowTemplate.Height = 18;
             this.dtgconten1.Size = new System.Drawing.Size(457, 186);
             this.dtgconten1.TabIndex = 4;
+            this.dtgconten1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellContentClick);
             // 
             // btnaceptar
             // 
@@ -167,6 +175,31 @@
             this.btncerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncerrar.UseVisualStyleBackColor = true;
             // 
+            // procesox
+            // 
+            this.procesox.DataPropertyName = "proceso";
+            this.procesox.HeaderText = "Proceso";
+            this.procesox.Name = "procesox";
+            this.procesox.ReadOnly = true;
+            // 
+            // resultadox
+            // 
+            this.resultadox.DataPropertyName = "resultado";
+            this.resultadox.HeaderText = "Resultado";
+            this.resultadox.Name = "resultadox";
+            this.resultadox.ReadOnly = true;
+            // 
+            // Verx
+            // 
+            this.Verx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Verx.DataPropertyName = "ver";
+            this.Verx.HeaderText = "Ver";
+            this.Verx.Name = "Verx";
+            this.Verx.ReadOnly = true;
+            this.Verx.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Verx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Verx.Width = 47;
+            // 
             // frmcierremensual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,5 +235,8 @@
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.ComboBox cboempresa;
         private System.Windows.Forms.Button btncerrar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn procesox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultadox;
+        private System.Windows.Forms.DataGridViewButtonColumn Verx;
     }
 }

@@ -52,6 +52,7 @@
             // dtgconten
             // 
             this.dtgconten.AllowUserToAddRows = false;
+            this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
@@ -101,6 +102,8 @@
             this.dtgconten.Size = new System.Drawing.Size(460, 269);
             this.dtgconten.TabIndex = 0;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            this.dtgconten.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtgconten_RowsAdded);
+            this.dtgconten.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dtgconten_RowsRemoved);
             // 
             // codigox
             // 

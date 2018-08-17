@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmFamiliares
     {
@@ -52,7 +54,7 @@
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.txtOcupacion = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.Grid = new System.Windows.Forms.DataGridView();
+            this.Grid = new Dtgconten();
             this.CODIGOTIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NROID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,6 +127,7 @@
             // 
             // cboTipoDocumentoIdentidad
             // 
+            this.cboTipoDocumentoIdentidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboTipoDocumentoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumentoIdentidad.FormattingEnabled = true;
             resources.ApplyResources(this.cboTipoDocumentoIdentidad, "cboTipoDocumentoIdentidad");
@@ -133,6 +136,7 @@
             // 
             // cboVinculoFamiliar
             // 
+            this.cboVinculoFamiliar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboVinculoFamiliar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVinculoFamiliar.FormattingEnabled = true;
             resources.ApplyResources(this.cboVinculoFamiliar, "cboVinculoFamiliar");
@@ -176,6 +180,7 @@
             // 
             // dtpFecha
             // 
+            this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             resources.ApplyResources(this.dtpFecha, "dtpFecha");
             this.dtpFecha.Name = "dtpFecha";
@@ -186,8 +191,8 @@
             this.Grid.AllowUserToDeleteRows = false;
             this.Grid.AllowUserToResizeColumns = false;
             this.Grid.AllowUserToResizeRows = false;
-            this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            //this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -195,7 +200,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            //this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGOTIPOID,
             this.TIPOID,
@@ -219,8 +224,8 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Grid.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Grid.GridColor = System.Drawing.Color.White;
+            //this.Grid.DefaultCellStyle = dataGridViewCellStyle7;
+            //this.Grid.GridColor = System.Drawing.Color.White;
             resources.ApplyResources(this.Grid, "Grid");
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
@@ -395,6 +400,7 @@
             // 
             // txtconviviente
             // 
+            this.txtconviviente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             resources.ApplyResources(this.txtconviviente, "txtconviviente");
             this.txtconviviente.Name = "txtconviviente";
             this.txtconviviente.ReadOnly = true;
@@ -413,6 +419,7 @@
             // 
             // cbosexo
             // 
+            this.cbosexo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbosexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbosexo.FormattingEnabled = true;
             resources.ApplyResources(this.cbosexo, "cbosexo");
@@ -496,7 +503,7 @@
         private System.Windows.Forms.TextBox txtApellidoPaterno;
         private System.Windows.Forms.TextBox txtOcupacion;
         private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.DataGridView Grid;
+        private Dtgconten Grid;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.PictureBox pbconviviente;
         private System.Windows.Forms.LinkLabel lklconviviente;

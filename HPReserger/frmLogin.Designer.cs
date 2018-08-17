@@ -53,7 +53,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(74, 93);
+            this.label1.Location = new System.Drawing.Point(68, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 0;
@@ -65,7 +65,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(44, 122);
+            this.label2.Location = new System.Drawing.Point(38, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 16);
             this.label2.TabIndex = 1;
@@ -79,7 +79,7 @@
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.White;
-            this.txtUsuario.Location = new System.Drawing.Point(133, 90);
+            this.txtUsuario.Location = new System.Drawing.Point(127, 75);
             this.txtUsuario.MaxLength = 20;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(171, 23);
@@ -96,7 +96,7 @@
             this.txtContraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContraseña.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.ForeColor = System.Drawing.Color.White;
-            this.txtContraseña.Location = new System.Drawing.Point(133, 119);
+            this.txtContraseña.Location = new System.Drawing.Point(127, 104);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(171, 23);
@@ -152,12 +152,11 @@
             this.cboBase.FormattingEnabled = true;
             this.cboBase.Items.AddRange(new object[] {
             "SiGE",
-            "HpReserger"});
-            this.cboBase.Location = new System.Drawing.Point(316, 168);
+            "Actual"});
+            this.cboBase.Location = new System.Drawing.Point(127, 133);
             this.cboBase.Name = "cboBase";
             this.cboBase.Size = new System.Drawing.Size(171, 24);
             this.cboBase.TabIndex = 2;
-            this.cboBase.Visible = false;
             this.cboBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboBase_KeyPress);
             // 
             // panel1

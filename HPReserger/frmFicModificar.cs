@@ -108,5 +108,30 @@ namespace HPReserger
         {
             this.Close();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtcentrocosto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtModelo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMarca_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtArticulo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

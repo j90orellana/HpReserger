@@ -796,74 +796,11 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>781, 663</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>  Registro en Almacén  -  Servicios</value>
-  </data>
-  <data name="&gt;&gt;CODIGOARTICULO.Name" xml:space="preserve">
-    <value>CODIGOARTICULO</value>
-  </data>
-  <data name="&gt;&gt;CODIGOARTICULO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Item.Name" xml:space="preserve">
-    <value>Item</value>
-  </data>
-  <data name="&gt;&gt;Item.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CODIGOMARCA.Name" xml:space="preserve">
-    <value>CODIGOMARCA</value>
-  </data>
-  <data name="&gt;&gt;CODIGOMARCA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Marca.Name" xml:space="preserve">
-    <value>Marca</value>
-  </data>
-  <data name="&gt;&gt;Marca.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CODIGOMODELO.Name" xml:space="preserve">
-    <value>CODIGOMODELO</value>
-  </data>
-  <data name="&gt;&gt;CODIGOMODELO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Modelo.Name" xml:space="preserve">
-    <value>Modelo</value>
-  </data>
-  <data name="&gt;&gt;Modelo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;centrocosto1.Name" xml:space="preserve">
-    <value>centrocosto1</value>
-  </data>
-  <data name="&gt;&gt;centrocosto1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SALDO.Name" xml:space="preserve">
-    <value>SALDO</value>
-  </data>
-  <data name="&gt;&gt;SALDO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CANT.Name" xml:space="preserve">
-    <value>CANT</value>
-  </data>
-  <data name="&gt;&gt;CANT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cc1.Name" xml:space="preserve">
-    <value>cc1</value>
-  </data>
-  <data name="&gt;&gt;cc1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;G2CODIGOARTICULO.Name" xml:space="preserve">
     <value>G2CODIGOARTICULO</value>
@@ -959,6 +896,66 @@
     <value>fecha2</value>
   </data>
   <data name="&gt;&gt;fecha2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CODIGOARTICULO.Name" xml:space="preserve">
+    <value>CODIGOARTICULO</value>
+  </data>
+  <data name="&gt;&gt;CODIGOARTICULO.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Item.Name" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="&gt;&gt;Item.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CODIGOMARCA.Name" xml:space="preserve">
+    <value>CODIGOMARCA</value>
+  </data>
+  <data name="&gt;&gt;CODIGOMARCA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Marca.Name" xml:space="preserve">
+    <value>Marca</value>
+  </data>
+  <data name="&gt;&gt;Marca.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CODIGOMODELO.Name" xml:space="preserve">
+    <value>CODIGOMODELO</value>
+  </data>
+  <data name="&gt;&gt;CODIGOMODELO.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Modelo.Name" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="&gt;&gt;Modelo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;centrocosto1.Name" xml:space="preserve">
+    <value>centrocosto1</value>
+  </data>
+  <data name="&gt;&gt;centrocosto1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SALDO.Name" xml:space="preserve">
+    <value>SALDO</value>
+  </data>
+  <data name="&gt;&gt;SALDO.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CANT.Name" xml:space="preserve">
+    <value>CANT</value>
+  </data>
+  <data name="&gt;&gt;CANT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cc1.Name" xml:space="preserve">
+    <value>cc1</value>
+  </data>
+  <data name="&gt;&gt;cc1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

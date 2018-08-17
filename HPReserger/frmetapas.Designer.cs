@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmetapas
     {
@@ -28,12 +30,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmetapas));
-            this.Dtgconten = new System.Windows.Forms.DataGridView();
+            this.Dtgconten = new Dtgconten();
             this.id_etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,10 +73,10 @@
             this.Dtgconten.AllowUserToDeleteRows = false;
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            //this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.Dtgconten.BackgroundCkolor = System.Drawing.SystemColors.Control;
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -89,14 +91,14 @@
             this.usuario,
             this.fecha});
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.Dtgconten.Location = new System.Drawing.Point(12, 157);
+            this.Dtgconten.Location = new System.Drawing.Point(12, 145);
             this.Dtgconten.MultiSelect = false;
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.ReadOnly = true;
             this.Dtgconten.RowHeadersVisible = false;
             this.Dtgconten.RowTemplate.Height = 16;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dtgconten.Size = new System.Drawing.Size(622, 217);
+            this.Dtgconten.Size = new System.Drawing.Size(622, 231);
             this.Dtgconten.TabIndex = 12;
             this.Dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_RowEnter);
             // 
@@ -136,8 +138,8 @@
             // 
             this.fechainicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechainicio.DataPropertyName = "fecha_inicio";
-            dataGridViewCellStyle2.Format = "d";
-            this.fechainicio.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "d";
+            this.fechainicio.DefaultCellStyle = dataGridViewCellStyle6;
             this.fechainicio.HeaderText = "Fecha Inicio";
             this.fechainicio.Name = "fechainicio";
             this.fechainicio.ReadOnly = true;
@@ -147,8 +149,8 @@
             // 
             this.fechafin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechafin.DataPropertyName = "fecha_fin";
-            dataGridViewCellStyle3.Format = "d";
-            this.fechafin.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Format = "d";
+            this.fechafin.DefaultCellStyle = dataGridViewCellStyle7;
             this.fechafin.HeaderText = "Fecha Fin";
             this.fechafin.Name = "fechafin";
             this.fechafin.ReadOnly = true;
@@ -158,8 +160,8 @@
             // 
             this.mesesconstruccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.mesesconstruccion.DataPropertyName = "meses_construccion";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.mesesconstruccion.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.mesesconstruccion.DefaultCellStyle = dataGridViewCellStyle8;
             this.mesesconstruccion.HeaderText = "Duracion Meses";
             this.mesesconstruccion.Name = "mesesconstruccion";
             this.mesesconstruccion.ReadOnly = true;
@@ -207,14 +209,15 @@
             this.pnl1.Enabled = false;
             this.pnl1.Location = new System.Drawing.Point(12, 12);
             this.pnl1.Name = "pnl1";
-            this.pnl1.Size = new System.Drawing.Size(541, 139);
+            this.pnl1.Size = new System.Drawing.Size(541, 128);
             this.pnl1.TabIndex = 13;
             // 
             // cboestado
             // 
+            this.cboestado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboestado.FormattingEnabled = true;
-            this.cboestado.Location = new System.Drawing.Point(305, 62);
+            this.cboestado.Location = new System.Drawing.Point(305, 58);
             this.cboestado.Name = "cboestado";
             this.cboestado.Size = new System.Drawing.Size(138, 21);
             this.cboestado.TabIndex = 11;
@@ -222,7 +225,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(242, 66);
+            this.label6.Location = new System.Drawing.Point(242, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 10;
@@ -230,7 +233,7 @@
             // 
             // txtobserva
             // 
-            this.txtobserva.Location = new System.Drawing.Point(85, 89);
+            this.txtobserva.Location = new System.Drawing.Point(85, 82);
             this.txtobserva.Multiline = true;
             this.txtobserva.Name = "txtobserva";
             this.txtobserva.Size = new System.Drawing.Size(435, 42);
@@ -239,7 +242,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 104);
+            this.label5.Location = new System.Drawing.Point(13, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 8;
@@ -247,7 +250,7 @@
             // 
             // txtmeses
             // 
-            this.txtmeses.Location = new System.Drawing.Point(125, 63);
+            this.txtmeses.Location = new System.Drawing.Point(125, 58);
             this.txtmeses.Name = "txtmeses";
             this.txtmeses.Size = new System.Drawing.Size(100, 20);
             this.txtmeses.TabIndex = 7;
@@ -257,7 +260,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 67);
+            this.label4.Location = new System.Drawing.Point(13, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 6;
@@ -266,7 +269,7 @@
             // dtpfechafin
             // 
             this.dtpfechafin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechafin.Location = new System.Drawing.Point(304, 36);
+            this.dtpfechafin.Location = new System.Drawing.Point(304, 35);
             this.dtpfechafin.Name = "dtpfechafin";
             this.dtpfechafin.Size = new System.Drawing.Size(139, 20);
             this.dtpfechafin.TabIndex = 5;
@@ -274,7 +277,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(241, 40);
+            this.label3.Location = new System.Drawing.Point(241, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 4;
@@ -283,7 +286,7 @@
             // dtpfechainicio
             // 
             this.dtpfechainicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechainicio.Location = new System.Drawing.Point(85, 38);
+            this.dtpfechainicio.Location = new System.Drawing.Point(85, 35);
             this.dtpfechainicio.Name = "dtpfechainicio";
             this.dtpfechainicio.Size = new System.Drawing.Size(140, 20);
             this.dtpfechainicio.TabIndex = 3;
@@ -299,7 +302,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 42);
+            this.label2.Location = new System.Drawing.Point(13, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 1;
@@ -318,7 +321,7 @@
             // 
             this.btnaceptar.Enabled = false;
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(478, 380);
+            this.btnaceptar.Location = new System.Drawing.Point(478, 382);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 17;
@@ -330,7 +333,7 @@
             // btncancelar
             // 
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(559, 380);
+            this.btncancelar.Location = new System.Drawing.Point(559, 382);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 16;
@@ -389,7 +392,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView Dtgconten;
+        private Dtgconten Dtgconten;
         private System.Windows.Forms.Panel pnl1;
         private System.Windows.Forms.TextBox txtobserva;
         private System.Windows.Forms.Label label5;

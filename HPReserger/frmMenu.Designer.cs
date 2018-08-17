@@ -162,7 +162,9 @@
             this.operacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subOperacionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.monedaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.comprobantesPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.impuestoALaRentaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.configurarDinamicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.balanceDeSituaciónFinancieraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -199,6 +201,7 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
+            this.imglist = new System.Windows.Forms.ImageList(this.components);
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             this.panelOre1.SuspendLayout();
@@ -558,7 +561,7 @@
             // 
             this.artículosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("artículosToolStripMenuItem.Image")));
             this.artículosToolStripMenuItem.Name = "artículosToolStripMenuItem";
-            this.artículosToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.artículosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.artículosToolStripMenuItem.Tag = "30401";
             this.artículosToolStripMenuItem.Text = "Artículos";
             this.artículosToolStripMenuItem.Click += new System.EventHandler(this.artículosToolStripMenuItem_Click);
@@ -567,7 +570,7 @@
             // 
             this.serviciosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("serviciosToolStripMenuItem.Image")));
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.serviciosToolStripMenuItem.Tag = "30402";
             this.serviciosToolStripMenuItem.Text = "Servicios";
             this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
@@ -1500,7 +1503,9 @@
             this.operacionesToolStripMenuItem,
             this.subOperacionesToolStripMenuItem1,
             this.monedaToolStripMenuItem1,
+            this.comprobantesPToolStripMenuItem,
             this.impuestoALaRentaToolStripMenuItem1,
+            this.toolStripSeparator10,
             this.configurarDinamicasToolStripMenuItem,
             this.configuraciónReporteToolStripMenuItem});
             this.contableToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("contableToolStripMenuItem.Image")));
@@ -1545,6 +1550,14 @@
             this.monedaToolStripMenuItem1.Text = "Moneda";
             this.monedaToolStripMenuItem1.Click += new System.EventHandler(this.monedaToolStripMenuItem_Click);
             // 
+            // comprobantesPToolStripMenuItem
+            // 
+            this.comprobantesPToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("comprobantesPToolStripMenuItem.Image")));
+            this.comprobantesPToolStripMenuItem.Name = "comprobantesPToolStripMenuItem";
+            this.comprobantesPToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.comprobantesPToolStripMenuItem.Text = "Comprobantes Pago";
+            this.comprobantesPToolStripMenuItem.Click += new System.EventHandler(this.comprobantesPToolStripMenuItem_Click);
+            // 
             // impuestoALaRentaToolStripMenuItem1
             // 
             this.impuestoALaRentaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("impuestoALaRentaToolStripMenuItem1.Image")));
@@ -1553,6 +1566,11 @@
             this.impuestoALaRentaToolStripMenuItem1.Tag = "70805";
             this.impuestoALaRentaToolStripMenuItem1.Text = "Impuesto a la Renta";
             this.impuestoALaRentaToolStripMenuItem1.Click += new System.EventHandler(this.impuestoALaRentaToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(192, 6);
             // 
             // configurarDinamicasToolStripMenuItem
             // 
@@ -1835,6 +1853,12 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
+            // imglist
+            // 
+            this.imglist.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglist.ImageStream")));
+            this.imglist.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglist.Images.SetKeyName(0, "icons8_Collaborator_Male_100px.png");
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2043,5 +2067,8 @@
         private System.Windows.Forms.ToolStripMenuItem periodosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asientosAbiertosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detraccionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comprobantesPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ImageList imglist;
     }
 }

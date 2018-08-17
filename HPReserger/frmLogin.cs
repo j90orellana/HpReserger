@@ -49,7 +49,7 @@ namespace HPReserger
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 e.Handled = true;
-                btnLogueo.Focus();
+                cboBase.Focus();
             }
         }
         private void frmLogin_Load(object sender, EventArgs e)
@@ -210,7 +210,7 @@ namespace HPReserger
                             UsuarioConectado();
                             frmM.Show();
                         }
-                        else msg("Usuario no esta Activo");
+                        else msg("Usuario No esta Activo");
 
                     }
                     else

@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSolicitudEmpleadoModificar));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboOS = new System.Windows.Forms.ComboBox();
             this.chkCambiar = new System.Windows.Forms.CheckBox();
             this.txtOS = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cboOS = new System.Windows.Forms.ComboBox();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnBuscarJPG = new System.Windows.Forms.Button();
             this.txtPuestos = new System.Windows.Forms.TextBox();
@@ -86,6 +86,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // cboOS
+            // 
+            this.cboOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboOS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOS.FormattingEnabled = true;
+            this.cboOS.Items.AddRange(new object[] {
+            "EXTERNA",
+            "INTERNA"});
+            this.cboOS.Location = new System.Drawing.Point(316, 47);
+            this.cboOS.Name = "cboOS";
+            this.cboOS.Size = new System.Drawing.Size(84, 23);
+            this.cboOS.TabIndex = 28;
+            // 
             // chkCambiar
             // 
             this.chkCambiar.AutoSize = true;
@@ -117,21 +130,9 @@
             this.label8.TabIndex = 29;
             this.label8.Text = "Nº Orden de Servicio";
             // 
-            // cboOS
-            // 
-            this.cboOS.BackColor = System.Drawing.Color.White;
-            this.cboOS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOS.FormattingEnabled = true;
-            this.cboOS.Items.AddRange(new object[] {
-            "EXTERNA",
-            "INTERNA"});
-            this.cboOS.Location = new System.Drawing.Point(316, 47);
-            this.cboOS.Name = "cboOS";
-            this.cboOS.Size = new System.Drawing.Size(84, 23);
-            this.cboOS.TabIndex = 28;
-            // 
             // btnModificar
             // 
+            this.btnModificar.BackColor = System.Drawing.SystemColors.Control;
             this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
             this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModificar.Location = new System.Drawing.Point(316, 21);
@@ -204,6 +205,7 @@
             // 
             // cboTipoContratacion
             // 
+            this.cboTipoContratacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboTipoContratacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoContratacion.FormattingEnabled = true;
             this.cboTipoContratacion.Location = new System.Drawing.Point(134, 164);
@@ -240,6 +242,7 @@
             // 
             // cboTerna
             // 
+            this.cboTerna.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboTerna.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTerna.FormattingEnabled = true;
             this.cboTerna.Items.AddRange(new object[] {
@@ -252,6 +255,7 @@
             // 
             // cboCargoPuesto
             // 
+            this.cboCargoPuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboCargoPuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargoPuesto.FormattingEnabled = true;
             this.cboCargoPuesto.Location = new System.Drawing.Point(135, 135);
@@ -261,7 +265,7 @@
             // 
             // cboBusqueda
             // 
-            this.cboBusqueda.BackColor = System.Drawing.Color.White;
+            this.cboBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBusqueda.FormattingEnabled = true;
             this.cboBusqueda.Items.AddRange(new object[] {
@@ -313,7 +317,7 @@
             this.btndescargar.Size = new System.Drawing.Size(76, 27);
             this.btndescargar.TabIndex = 75;
             this.btndescargar.Text = "Descargar";
-            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.UseVisualStyleBackColor = true;
             this.btndescargar.Visible = false;
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
             this.btndescargar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btndescargar_MouseMove);

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="label19.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btneliminar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -181,22 +178,16 @@
         AABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnlimpiar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAkNJREFUSEut
-        lFtv0lAAx/kIanz3wY+lPnpJNGbAXLg4065cVC7bSulGw6VAYdMohTHBJ4xOUfamou7BGDNi4pJBgagj
-        xPXYwjk6unaA7S/5P/Q0/f9yLj0mPVwhyPPXXdQ5+Gg8Fi+TdwZTot3HilZPhIXDxmFxM1tUuiTW6g1Q
-        q++CQLwgznqZTfhaPxYXs+UIpMVy9ROofWiAbSlv3jfA/ShvjEgWyEuUe/YO5J/XQbm6A7al2cii4Yw2
-        9InMbublUQGKUhRMyKJoCX42OVoCLdEiW5xONHuXKdmkE5SrqAtQji1dLA/mfLEHsEab26Hk/A0sLEZz
-        L1SLlXn6euffYZBE80uceOJ/hIU4G8UVhc/fmsDuSwC28Eq1WBkkko83TmZF+YeFlaMQ4awznN3stH79
-        Bt0+AF/32lOJStWPYFnaFzOxUoSVo+ChlGd1vdwWDg4HApTd/S5w+FkQG7N0jytvwdy9uGh2r6rvx19B
-        b1QwqUi3AEVLhAQz7hV1AUFzdnrtSad1MNyDcVGKZMGtgSDCw8pRrP7IWRedFSYVoCAR87AyEMi3Mqw8
-        js1Ln3bRGaH5s69adlK+fBfATZw+tHqYAqzTBieTV5eSfGsaUVM63iS30XQEWCesGc8dKnMpEH/U2ev2
-        VEuPZv9HX7qfeAFbTl2Dn0+OLPKPEekSIKTr5KKWyBABAifTF5QiWRBk+bYhAsRAFJNEnd5wBolcGwsZ
-        KEDgYe7yApXpEFIWaG4GDhsPtpg4ZQ5Gz8DH/8Bk+gOS9u3n2SllSwAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>106, 17</value>
   </metadata>
+  <data name="Txtbusca.FondoBoton" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAM1JREFUOE+t
+        0s0KAVEYgOHJX7EhVpbKSrkGG+UCrFgo9izsKBvZyFY2pPyUhWLhdtyK8n7zjTRm5kyNeevJd2ZxOuaM
+        FXdFrHDEBQec0UBoVTxQt1ffclhibK8CSuMOOUFQM7R09NZBW8fAUpC/5dsOWR2NbZDX0d3J+Q1rjoqO
+        7tYo6WhsD9+TNjHSMbACjCeV+67p6CkJ+SZ+r9iVvJwresjIAyfZ9IYnhvLAVAJdyK18vsQFyujjhSki
+        N4BsMrFXEYtlE3kXWx3/yrLe2jcb46GYgZwAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

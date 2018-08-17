@@ -100,14 +100,27 @@ namespace HPReserger
         }
         private void MSG(string v)
         {
-            MessageBox.Show(v, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(v, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        frmcuentacontable cuentas;
         private void button1_Click(object sender, EventArgs e)
         {
-            frmcuentacontable cuentas = new frmcuentacontable();
-            cuentas.Show();
+            if (cuentas == null)
+            {
+                cuentas = new frmcuentacontable();
+                cuentas.Consulta = true;
+                cuentas.CodigoCuenta = Txtbusca.Text;
+                cuentas.FormClosed += Cuentas_FormClosed;
+                cuentas.Txtbusca._Text = Txtbusca.Text;
+                cuentas.Show();
+            }
+            else cuentas.Activate();
         }
-
+        private void Cuentas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (cuentas.Encontrado) { Txtbusca.Text = cuentas.CodigoCuenta; }
+            cuentas = null;
+        }
         private void dtgconten_DoubleClick(object sender, EventArgs e)
         {
             try

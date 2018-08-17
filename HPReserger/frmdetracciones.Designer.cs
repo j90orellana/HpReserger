@@ -54,6 +54,7 @@
             this.btnactualizar = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.txtBuscar1 = new HpResergerUserControls.txtBuscar();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,16 +100,19 @@
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 70);
+            this.dtgconten.Location = new System.Drawing.Point(12, 94);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(507, 322);
+            this.dtgconten.Size = new System.Drawing.Size(507, 298);
             this.dtgconten.TabIndex = 0;
+            this.dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentDoubleClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            this.dtgconten.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtgconten_RowsAdded);
+            this.dtgconten.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dtgconten_RowsRemoved);
             // 
             // id_detraccionx
             // 
@@ -221,7 +225,7 @@
             this.txtporcentaje.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtporcentaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtporcentaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(145)))), ((int)(((byte)(154)))));
-            this.txtporcentaje.Location = new System.Drawing.Point(95, 42);
+            this.txtporcentaje.Location = new System.Drawing.Point(95, 40);
             this.txtporcentaje.MaxLength = 100;
             this.txtporcentaje.Name = "txtporcentaje";
             this.txtporcentaje.NextControlOnEnter = this.dtpfecha;
@@ -237,7 +241,7 @@
             // 
             this.dtpfecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpfecha.Location = new System.Drawing.Point(282, 42);
+            this.dtpfecha.Location = new System.Drawing.Point(282, 40);
             this.dtpfecha.Name = "dtpfecha";
             this.dtpfecha.Size = new System.Drawing.Size(123, 22);
             this.dtpfecha.TabIndex = 75;
@@ -256,7 +260,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(12, 47);
+            this.label2.Location = new System.Drawing.Point(12, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 72;
@@ -266,7 +270,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(236, 47);
+            this.label3.Location = new System.Drawing.Point(236, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 74;
@@ -357,11 +361,26 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // txtBuscar1
+            // 
+            this.txtBuscar1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.txtBuscar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtBuscar1.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtBuscar1.FondoBoton")));
+            this.txtBuscar1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar1.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscar1.Location = new System.Drawing.Point(15, 66);
+            this.txtBuscar1.Name = "txtBuscar1";
+            this.txtBuscar1.Size = new System.Drawing.Size(390, 22);
+            this.txtBuscar1.TabIndex = 81;
+            this.txtBuscar1.BuscarClick += new System.EventHandler(this.txtBuscar1_ClickBotonBuscar);
+            this.txtBuscar1.BuscarTextChanged += new System.EventHandler(this.txtBuscar1_ClickBotonBuscar);
+            // 
             // frmdetracciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(621, 400);
+            this.Controls.Add(this.txtBuscar1);
             this.Controls.Add(this.btnactualizar);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.button1);
@@ -391,9 +410,7 @@
         #endregion
 
         private HpResergerUserControls.Dtgconten dtgconten;
-        private HpResergerUserControls.ButtonPer btnaceptar;
         private System.Windows.Forms.Button btncancelar;
-        private HpResergerUserControls.TextBoxPer txtdescripcion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private HpResergerUserControls.TextBoxPer txtporcentaje;
@@ -410,5 +427,8 @@
         private System.Windows.Forms.Button btnactualizar;
         private System.Windows.Forms.Button btneliminar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private HpResergerUserControls.txtBuscar txtBuscar1;
+        public HpResergerUserControls.TextBoxPer txtdescripcion;
+        public HpResergerUserControls.ButtonPer btnaceptar;
     }
 }

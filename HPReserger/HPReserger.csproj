@@ -227,6 +227,12 @@
     <Compile Include="frmcierremensual.Designer.cs">
       <DependentUpon>frmcierremensual.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmComprobantePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComprobantePago.Designer.cs">
+      <DependentUpon>frmComprobantePago.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmConfiguracionBalanceSituacionFinanciera.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +256,12 @@
     </Compile>
     <Compile Include="frmDetalleAsientos.Designer.cs">
       <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetallePagoFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetallePagoFactura.Designer.cs">
+      <DependentUpon>frmDetallePagoFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="frmdetracciones.cs">
       <SubType>Form</SubType>
@@ -1377,6 +1389,9 @@
     <EmbeddedResource Include="frmcierremensual.resx">
       <DependentUpon>frmcierremensual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmComprobantePago.resx">
+      <DependentUpon>frmComprobantePago.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmConfiguracionBalanceSituacionFinanciera.resx">
       <DependentUpon>FrmConfiguracionBalanceSituacionFinanciera.cs</DependentUpon>
     </EmbeddedResource>
@@ -1394,6 +1409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleAsientos.resx">
       <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetallePagoFactura.resx">
+      <DependentUpon>frmDetallePagoFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmdetracciones.resx">
       <DependentUpon>frmdetracciones.cs</DependentUpon>

@@ -52,9 +52,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Location = new System.Drawing.Point(10, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 16);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ruta:";
             // 
@@ -66,13 +66,14 @@
             this.txtruta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtruta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtruta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtruta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.txtruta.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtruta.ForeColor = System.Drawing.Color.Black;
-            this.txtruta.Location = new System.Drawing.Point(55, 13);
+            this.txtruta.Location = new System.Drawing.Point(47, 11);
+            this.txtruta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtruta.MaxLength = 100;
             this.txtruta.Name = "txtruta";
             this.txtruta.NextControlOnEnter = this.btncargaexcel;
-            this.txtruta.Size = new System.Drawing.Size(872, 23);
+            this.txtruta.Size = new System.Drawing.Size(847, 25);
             this.txtruta.TabIndex = 1;
             this.txtruta.TextoDefecto = "";
             this.txtruta.TextoDefectoColor = System.Drawing.Color.Black;
@@ -84,9 +85,10 @@
             // 
             this.btncargaexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btncargaexcel.Image = ((System.Drawing.Image)(resources.GetObject("btncargaexcel.Image")));
-            this.btncargaexcel.Location = new System.Drawing.Point(933, 42);
+            this.btncargaexcel.Location = new System.Drawing.Point(900, 41);
+            this.btncargaexcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btncargaexcel.Name = "btncargaexcel";
-            this.btncargaexcel.Size = new System.Drawing.Size(82, 24);
+            this.btncargaexcel.Size = new System.Drawing.Size(92, 23);
             this.btncargaexcel.TabIndex = 150;
             this.btncargaexcel.Text = "Cargar";
             this.btncargaexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -100,9 +102,10 @@
             this.btnbuscar.ForeColor = System.Drawing.Color.Black;
             this.btnbuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnbuscar.Image")));
             this.btnbuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnbuscar.Location = new System.Drawing.Point(933, 12);
+            this.btnbuscar.Location = new System.Drawing.Point(900, 12);
+            this.btnbuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(82, 24);
+            this.btnbuscar.Size = new System.Drawing.Size(92, 23);
             this.btnbuscar.TabIndex = 16;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -128,7 +131,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -137,7 +140,7 @@
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
@@ -145,12 +148,13 @@
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(15, 73);
+            this.dtgconten.Location = new System.Drawing.Point(13, 69);
+            this.dtgconten.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1000, 376);
+            this.dtgconten.Size = new System.Drawing.Size(979, 416);
             this.dtgconten.TabIndex = 17;
             this.dtgconten.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgconten_CellMouseClick);
             this.dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgconten_KeyDown);
@@ -163,9 +167,10 @@
             this.btnprocesar.ForeColor = System.Drawing.Color.Black;
             this.btnprocesar.Image = ((System.Drawing.Image)(resources.GetObject("btnprocesar.Image")));
             this.btnprocesar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnprocesar.Location = new System.Drawing.Point(444, 455);
+            this.btnprocesar.Location = new System.Drawing.Point(442, 490);
+            this.btnprocesar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnprocesar.Name = "btnprocesar";
-            this.btnprocesar.Size = new System.Drawing.Size(138, 24);
+            this.btnprocesar.Size = new System.Drawing.Size(118, 23);
             this.btnprocesar.TabIndex = 18;
             this.btnprocesar.Text = "Procesar Carga";
             this.btnprocesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -179,17 +184,18 @@
             this.cbohojas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbohojas.ForeColor = System.Drawing.Color.Black;
             this.cbohojas.FormattingEnabled = true;
-            this.cbohojas.Location = new System.Drawing.Point(128, 42);
+            this.cbohojas.Location = new System.Drawing.Point(110, 40);
+            this.cbohojas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbohojas.Name = "cbohojas";
-            this.cbohojas.Size = new System.Drawing.Size(376, 25);
+            this.cbohojas.Size = new System.Drawing.Size(323, 25);
             this.cbohojas.TabIndex = 149;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 46);
+            this.label2.Location = new System.Drawing.Point(10, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 16);
+            this.label2.Size = new System.Drawing.Size(103, 13);
             this.label2.TabIndex = 148;
             this.label2.Text = "Nombre de la Hoja";
             // 
@@ -217,9 +223,9 @@
             // 
             // frmCargasRegVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 485);
+            this.ClientSize = new System.Drawing.Size(1002, 514);
             this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.btncargaexcel);
             this.Controls.Add(this.cbohojas);
@@ -229,10 +235,8 @@
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.txtruta);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximumSize = new System.Drawing.Size(1043, 524);
-            this.MinimumSize = new System.Drawing.Size(1043, 524);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(896, 433);
             this.Name = "frmCargasRegVentas";
             this.Nombre = "Carga de Registros de Ventas";
             this.Text = "Carga de Registros de Ventas";

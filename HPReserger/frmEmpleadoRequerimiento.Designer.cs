@@ -65,6 +65,7 @@
             // 
             // cboCelular
             // 
+            this.cboCelular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboCelular.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCelular.FormattingEnabled = true;
             this.cboCelular.Items.AddRange(new object[] {
@@ -78,6 +79,7 @@
             // 
             // cboMaquina
             // 
+            this.cboMaquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboMaquina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMaquina.FormattingEnabled = true;
             this.cboMaquina.Items.AddRange(new object[] {
@@ -176,6 +178,7 @@
             // 
             // cboOtros
             // 
+            this.cboOtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboOtros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOtros.FormattingEnabled = true;
             this.cboOtros.Items.AddRange(new object[] {
@@ -189,6 +192,7 @@
             // 
             // cboCorreo
             // 
+            this.cboCorreo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboCorreo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCorreo.FormattingEnabled = true;
             this.cboCorreo.Items.AddRange(new object[] {

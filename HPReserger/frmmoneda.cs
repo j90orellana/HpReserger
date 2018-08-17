@@ -26,6 +26,7 @@ namespace HPReserger
             dtgconten.Enabled = !a;
             btneliminar.Enabled = !a;
             txtgerencia.Enabled = a;
+            txtname.Enabled = a;
         }
         private void Msg(string cadena)
         {
@@ -33,21 +34,21 @@ namespace HPReserger
         }
         public void CargarDatos()
         {
-            dtgconten.DataSource = CCargos.getCargoTipoContratacion("Id_Moneda", "Moneda", "TBL_Moneda");
+            dtgconten.DataSource = CCargos.InsertarActualizarMoneda(0);
             dtgconten.Focus();
         }
         private void frmmoneda_Load(object sender, EventArgs e)
         {
             CargarDatos();
         }
-
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             estado = 1;
             iniciar(true);
-            txtgerencia.Text = "";
+            txtgerencia.Text = ""; txtname.Text = "";
             DataRow codigo = CCargos.VerUltimoIdentificador("TBL_Moneda", "Id_Moneda");
             txtcodigo.Text = (int.Parse(codigo["ultimo"].ToString()) + 1).ToString();
+            txtname.Enabled = true;
             txtgerencia.Focus();
         }
 
@@ -55,6 +56,7 @@ namespace HPReserger
         {
             estado = 2; btnmodificar.Enabled = false;
             iniciar(true); txtgerencia.Focus();
+            txtname.Enabled = true;
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -82,6 +84,12 @@ namespace HPReserger
                     txtgerencia.Focus();
                     return;
                 }
+                if (string.IsNullOrWhiteSpace(txtname.Text))
+                {
+                    Msg("Ingresé Moneda");
+                    txtname.Focus();
+                    return;
+                }
                 foreach (DataGridViewRow valor in dtgconten.Rows)
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString())
@@ -92,7 +100,7 @@ namespace HPReserger
                     }
                 }
                 //Insertando;
-                CCargos.InsertarActualizarMoneda(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario);
+                CCargos.InsertarActualizarMoneda(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario, txtname.Text);
                 Msg("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -103,6 +111,12 @@ namespace HPReserger
                 {
                     Msg("Ingresé Nombre de la Moneda");
                     txtgerencia.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(txtname.Text))
+                {
+                    Msg("Ingresé Moneda");
+                    txtname.Focus();
                     return;
                 }
                 int fila = 0;
@@ -117,7 +131,7 @@ namespace HPReserger
                     fila++;
                 }
                 //modificando
-                CCargos.InsertarActualizarMoneda(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario);
+                CCargos.InsertarActualizarMoneda(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario, txtname.Text);
                 Msg("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -131,8 +145,9 @@ namespace HPReserger
             if (dtgconten.RowCount > 0)
             {
                 btnmodificar.Enabled = true;
-                txtcodigo.Text = (string)dtgconten[0, e.RowIndex].Value.ToString();
-                txtgerencia.Text = (string)dtgconten[1, e.RowIndex].Value.ToString(); btneliminar.Enabled = true;
+                txtcodigo.Text = (string)dtgconten[Codigos.Name, e.RowIndex].Value.ToString();
+                txtgerencia.Text = (string)dtgconten[Descripcion.Name, e.RowIndex].Value.ToString(); btneliminar.Enabled = true;
+                txtname.Text = dtgconten[namex.Name, e.RowIndex].Value.ToString();
             }
             else
             {

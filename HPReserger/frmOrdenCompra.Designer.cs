@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmOrdenCompra
     {
@@ -36,7 +38,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenCompra));
-            this.gridOC = new System.Windows.Forms.DataGridView();
+            this.gridOC = new Dtgconten();
             this.ORDENCOMPRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COTIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ORDENPEDIDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +60,7 @@
             this.txtProveedor = new System.Windows.Forms.TextBox();
             this.txtImporte = new System.Windows.Forms.TextBox();
             this.txtFechaEntrega = new System.Windows.Forms.TextBox();
-            this.gridDetalle = new System.Windows.Forms.DataGridView();
+            this.gridDetalle = new Dtgconten();
             this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOMARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,11 +87,11 @@
             this.gridOC.AllowUserToAddRows = false;
             this.gridOC.AllowUserToOrderColumns = true;
             this.gridOC.AllowUserToResizeRows = false;
-            this.gridOC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gridOC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridOC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridOC.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.gridOC.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridOC.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridOC.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -98,8 +100,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridOC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridOC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.gridOC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridOC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridOC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ORDENCOMPRA,
             this.COTIZACION,
@@ -115,12 +117,12 @@
             this.CODIGOGERENCIA,
             this.GERENCIA,
             this.TIPO});
-            this.gridOC.GridColor = System.Drawing.Color.White;
+            //this.gridOC.GridColor = System.Drawing.Color.White;
             this.gridOC.Location = new System.Drawing.Point(11, 29);
             this.gridOC.Name = "gridOC";
             this.gridOC.ReadOnly = true;
             this.gridOC.RowHeadersVisible = false;
-            this.gridOC.RowTemplate.Height = 16;
+            this.gridOC.RowTemplate.Height = 18;
             this.gridOC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridOC.Size = new System.Drawing.Size(862, 257);
             this.gridOC.TabIndex = 29;
@@ -316,12 +318,12 @@
             this.gridDetalle.AllowUserToAddRows = false;
             this.gridDetalle.AllowUserToOrderColumns = true;
             this.gridDetalle.AllowUserToResizeRows = false;
-            this.gridDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.gridDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridDetalle.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridDetalle.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridDetalle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -330,8 +332,8 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.gridDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.gridDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGOARTICULO,
             this.ITEM,
@@ -340,7 +342,7 @@
             this.CODIGOMODELO,
             this.MODELO,
             this.CANTIDAD});
-            this.gridDetalle.GridColor = System.Drawing.Color.White;
+            //this.gridDetalle.GridColor = System.Drawing.Color.White;
             this.gridDetalle.Location = new System.Drawing.Point(11, 335);
             this.gridDetalle.Name = "gridDetalle";
             this.gridDetalle.ReadOnly = true;
@@ -544,7 +546,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView gridOC;
+        private Dtgconten gridOC;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -552,7 +554,7 @@
         private System.Windows.Forms.TextBox txtProveedor;
         private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.TextBox txtFechaEntrega;
-        private System.Windows.Forms.DataGridView gridDetalle;
+        private Dtgconten gridDetalle;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn CODIGOARTICULO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ITEM;

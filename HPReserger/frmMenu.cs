@@ -156,9 +156,14 @@ namespace HPReserger
             if (FlowPanel.Controls.Count > 0)
                 Mostrado = true;
             else Mostrado = false;
+            VerFotoAdmin();
             //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control            
         }
-
+        public void VerFotoAdmin()
+        {
+            if (frmLogin.Usuario == "ADMIN")
+                pbfotoempleado.Image = imglist.Images[0];
+        }
         private void ExitApplication(object sender, EventArgs e)
         {
             frmLogin.DesconectarUsuario();
@@ -2853,6 +2858,28 @@ namespace HPReserger
         private void cerrardetracioneos(object sender, FormClosedEventArgs e)
         {
             frmdetraccion = null;
+        }
+        frmComprobantePago frmcomprobantepagito;
+        private void comprobantesPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcomprobantepagito == null)
+            {
+                frmcomprobantepagito = new frmComprobantePago();
+                frmcomprobantepagito.MdiParent = this;
+                frmcomprobantepagito.Icon = ICono;
+                frmcomprobantepagito.FormClosed += new FormClosedEventHandler(cerrarcomprobatepagiot);
+                frmcomprobantepagito.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcomprobantepagito.Activate();
+                ValidarVentanas(frmcomprobantepagito);
+            }
+        }
+        private void cerrarcomprobatepagiot(object sender, FormClosedEventArgs e)
+        {
+            frmcomprobantepagito = null;
         }
     }
 }

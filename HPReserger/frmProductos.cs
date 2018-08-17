@@ -160,5 +160,26 @@ namespace HPReserger
         {
 
         }
+        public void VerSiHayDatos()
+        {
+            if (dtgconten.RowCount > 0)
+            {
+                btnmodificar.Enabled = true;
+                btneliminar.Enabled = true;
+            }
+            else
+            {
+                btnmodificar.Enabled = false;
+                btneliminar.Enabled = false;
+            }
+        }
+        private void dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            VerSiHayDatos();
+        }
+        private void dtgconten_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            VerSiHayDatos();
+        }
     }
 }

@@ -127,7 +127,7 @@ namespace HPReserger
                 btnmas.Focus();
                 if (e.RowIndex >= 0)
                 {
-                    if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index)
+                    if (e.RowIndex > -1 && e.ColumnIndex == Dtgconten.Columns[cuenta.Name].Index && (estado == 1 || estado == 2))
                     {
                         frmlistarcuentas cuentitas = new frmlistarcuentas();
                         cuentitas.Icon = Icon;
@@ -816,21 +816,34 @@ namespace HPReserger
         {
             if (cboestado.SelectedValue.ToString() == "1")
             {
-                if (msgP("Este Asiento NO se puede Modificar, Solicite a su jefe que habilite la Edición del Asiento.\n¿Desea Solicitar Modificación?") == DialogResult.Yes)
+                if (frmLogin.Usuario == "ADMIN")
                 {
-                    TableAux = CapaLogica.ListarJefeInmediato(frmLogin.CodigoUsuario, "", 10);
-                    if (TableAux.Rows.Count > 0)
-                    {
-                        DataRow filita = TableAux.Rows[0];
-                        filita[codigo].ToString();
-                        //Enviando al Jefe la Acción
-                        string cade = "";
-                        string sql = $"update TBL_Asiento_Contable set Estado=2 where Id_Asiento_Contable={txtcodigo.Text} and id_proyecto={cboproyecto.SelectedValue}";
-                        CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade, 0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
-                        MSG("Se ha Enviado la Solicitud a su Jefe");
-                    }
-                    else { MSG("No se Encontró Información de su Jefe"); }
+                    if (Dtgconten.RowCount <= 0) { MSG("No Hay Datos"); return; }
+                    estado = 2;
+                    dinamimodi = Convert.ToInt16(dtgayuda3[7, 0].Value.ToString());
+                    modifico = false;
+                    desactivar();
+                    btnmas.Focus(); chkfechavalor.Enabled = true; btnActualizar.Enabled = false;
+                }
+                else
+                {
 
+                    if (msgP("Este Asiento NO se puede Modificar, Solicite a su jefe que habilite la Edición del Asiento.\n¿Desea Solicitar Modificación?") == DialogResult.Yes)
+                    {
+                        TableAux = CapaLogica.ListarJefeInmediato(frmLogin.CodigoUsuario, "", 10);
+                        if (TableAux.Rows.Count > 0)
+                        {
+                            DataRow filita = TableAux.Rows[0];
+                            filita[codigo].ToString();
+                            //Enviando al Jefe la Acción
+                            string cade = "";
+                            string sql = $"update TBL_Asiento_Contable set Estado=2 where Id_Asiento_Contable={txtcodigo.Text} and id_proyecto={cboproyecto.SelectedValue}";
+                            CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade, 0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
+                            MSG("Se ha Enviado la Solicitud a su Jefe");
+                        }
+                        else { MSG("No se Encontró Información de su Jefe"); }
+
+                    }
                 }
             }
             else
@@ -858,6 +871,15 @@ namespace HPReserger
                 string cadena = "";
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
+                    if (item.Cells[descripcion.Name].Value.ToString() == "")
+                    {
+                        cadena += $"El Nombre de la Cuenta de la linea: { item.Index + 1}  Es Incorrecto\n";
+                        salida = false;
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[descripcion.Name]);
+                    }
+                    else
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[descripcion.Name]);
+
                     if (item.Cells[cuenta.Name].Value.ToString() == "")
                     {
                         cadena += $"La Cuenta de la linea: { item.Index + 1}  Es Incorrecto\n";
@@ -1005,7 +1027,7 @@ namespace HPReserger
                         DateTime? fechita;
                         if (chkfechavalor.Checked) fechita = dtfechavalor.Value;
                         else fechita = null;
-                        CapaLogica.InsertarAsiento((int)Dtgconten[IDASIENTOX.Name, i].Value, codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
+                        CapaLogica.InsertarAsiento((int)Dtgconten[IDASIENTOX.Name, i].Value, codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                     }
                     MSG($"Se Insertó Asiento: {txtcodigo.Text} con Exito");
                     Txtbusca.Text = codigo + "";
@@ -1041,9 +1063,9 @@ namespace HPReserger
                             if (chkfechavalor.Checked) fechitas = dtfechavalor.Value;
                             else fechitas = null;
                             if (modifico)
-                                CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
+                                CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                             else
-                                CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Convert.ToInt32(Dtgconten[cuenta.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), dinamimodi, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
+                                CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), dinamimodi, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue);
                         }
                         MSG($"Se Modificó Asiento: {txtcodigo.Text} con Exito");
                         estado = 0;
@@ -1289,7 +1311,7 @@ namespace HPReserger
 
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
                 if (Dtgconten[detallex.Name, e.RowIndex].Value != null)
                     lbldetalle.Text = "Detalle: " + Dtgconten[detallex.Name, e.RowIndex].Value.ToString();
         }

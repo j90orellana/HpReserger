@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmSolicitudEmpleado
     {
@@ -62,14 +64,14 @@
             this.cboBusqueda = new System.Windows.Forms.ComboBox();
             this.txtSolicitud = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Grid1 = new System.Windows.Forms.DataGridView();
+            this.Grid1 = new Dtgconten();
             this.NOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOAREAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Areas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Servicios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Grid2 = new System.Windows.Forms.DataGridView();
+            this.Grid2 = new Dtgconten();
             this.SOLICITUD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -211,6 +213,7 @@
             // 
             // cboTipoContratacion
             // 
+            this.cboTipoContratacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboTipoContratacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoContratacion.FormattingEnabled = true;
             this.cboTipoContratacion.Location = new System.Drawing.Point(135, 142);
@@ -247,6 +250,7 @@
             // 
             // cboTerna
             // 
+            this.cboTerna.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboTerna.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTerna.FormattingEnabled = true;
             this.cboTerna.Items.AddRange(new object[] {
@@ -259,6 +263,7 @@
             // 
             // cboCargoPuesto
             // 
+            this.cboCargoPuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboCargoPuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargoPuesto.FormattingEnabled = true;
             this.cboCargoPuesto.Location = new System.Drawing.Point(135, 111);
@@ -269,7 +274,7 @@
             // 
             // cboBusqueda
             // 
-            this.cboBusqueda.BackColor = System.Drawing.Color.White;
+            this.cboBusqueda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBusqueda.FormattingEnabled = true;
             this.cboBusqueda.Items.AddRange(new object[] {
@@ -305,7 +310,7 @@
             this.Grid1.AllowUserToAddRows = false;
             this.Grid1.AllowUserToDeleteRows = false;
             this.Grid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Grid1.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.Grid1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Grid1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -313,9 +318,9 @@
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.Grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            //this.Grid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.Grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Grid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NOS,
             this.CODIGOAREAS,
@@ -393,7 +398,7 @@
             this.Grid2.AllowUserToResizeColumns = false;
             this.Grid2.AllowUserToResizeRows = false;
             this.Grid2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Grid2.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.Grid2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Grid2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -402,7 +407,7 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            //this.Grid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.Grid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SOLICITUD,
             this.dataGridViewTextBoxColumn2,
@@ -622,7 +627,7 @@
             // 
             // cbogerencia
             // 
-            this.cbogerencia.BackColor = System.Drawing.Color.White;
+            this.cbogerencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbogerencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbogerencia.FormattingEnabled = true;
             this.cbogerencia.Items.AddRange(new object[] {
@@ -664,7 +669,7 @@
             // 
             // cboarea
             // 
-            this.cboarea.BackColor = System.Drawing.Color.White;
+            this.cboarea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboarea.FormattingEnabled = true;
             this.cboarea.Items.AddRange(new object[] {
@@ -734,9 +739,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPuestos;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView Grid1;
+        private Dtgconten Grid1;
         private System.Windows.Forms.Button btnBuscarJPG;
-        private System.Windows.Forms.DataGridView Grid2;
+        private Dtgconten Grid2;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.PictureBox pbFoto;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOS;

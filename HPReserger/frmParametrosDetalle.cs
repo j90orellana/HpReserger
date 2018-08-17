@@ -54,5 +54,10 @@ namespace HPReserger
             else
                 btnexportarExcel.Enabled = false;           
         }
+
+        private void frmParametrosDetalle_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

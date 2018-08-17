@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmOrdenPedido
     {
@@ -29,11 +31,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenPedido));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrdenPedido));
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,7 +44,14 @@
             this.txtGerencia = new System.Windows.Forms.TextBox();
             this.txtArea = new System.Windows.Forms.TextBox();
             this.cboTipoPedido = new System.Windows.Forms.ComboBox();
-            this.gridItem = new System.Windows.Forms.DataGridView();
+            this.gridItem = new Dtgconten();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Item = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ActFijo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CCx = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -56,13 +65,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.btnREfres = new System.Windows.Forms.Button();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Item = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ActFijo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.CCx = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridItem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +82,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(597, 83);
+            this.label3.Location = new System.Drawing.Point(597, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 2;
@@ -108,6 +110,7 @@
             // 
             // txtUsuario
             // 
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtUsuario.Location = new System.Drawing.Point(15, 26);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.ReadOnly = true;
@@ -116,6 +119,7 @@
             // 
             // txtGerencia
             // 
+            this.txtGerencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtGerencia.Location = new System.Drawing.Point(565, 26);
             this.txtGerencia.Name = "txtGerencia";
             this.txtGerencia.ReadOnly = true;
@@ -124,6 +128,7 @@
             // 
             // txtArea
             // 
+            this.txtArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtArea.Location = new System.Drawing.Point(386, 26);
             this.txtArea.Name = "txtArea";
             this.txtArea.ReadOnly = true;
@@ -134,9 +139,10 @@
             // 
             this.cboTipoPedido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboTipoPedido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboTipoPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboTipoPedido.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoPedido.FormattingEnabled = true;
-            this.cboTipoPedido.Location = new System.Drawing.Point(679, 79);
+            this.cboTipoPedido.Location = new System.Drawing.Point(679, 77);
             this.cboTipoPedido.Name = "cboTipoPedido";
             this.cboTipoPedido.Size = new System.Drawing.Size(88, 21);
             this.cboTipoPedido.TabIndex = 10;
@@ -150,12 +156,12 @@
             this.gridItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridItem.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.gridItem.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.gridItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.gridItem.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            //this.gridItem.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridItem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gridItem.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.gridItem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            //this.gridItem.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            //this.gridItem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -163,8 +169,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.gridItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.eliminar,
             this.Item,
@@ -174,11 +180,11 @@
             this.CCx,
             this.Cantidad});
             this.gridItem.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.gridItem.Location = new System.Drawing.Point(15, 106);
+            this.gridItem.Location = new System.Drawing.Point(15, 103);
             this.gridItem.Name = "gridItem";
             this.gridItem.RowHeadersVisible = false;
             this.gridItem.RowTemplate.Height = 16;
-            this.gridItem.Size = new System.Drawing.Size(833, 267);
+            this.gridItem.Size = new System.Drawing.Size(833, 268);
             this.gridItem.TabIndex = 0;
             this.gridItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItem_CellClick);
             this.gridItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItem_CellValueChanged);
@@ -187,158 +193,6 @@
             this.gridItem.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gridItem_EditingControlShowing);
             this.gridItem.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItem_RowEnter);
             this.gridItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridItem_KeyDown);
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
-            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(773, 377);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 12;
-            this.btnAceptar.Text = "&Aceptar";
-            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            // 
-            // btnListar
-            // 
-            this.btnListar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnListar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListar.Image = ((System.Drawing.Image)(resources.GetObject("btnListar.Image")));
-            this.btnListar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnListar.Location = new System.Drawing.Point(692, 377);
-            this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(75, 23);
-            this.btnListar.TabIndex = 14;
-            this.btnListar.Text = "&Listar";
-            this.btnListar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnListar.UseVisualStyleBackColor = true;
-            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(773, 78);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(29, 23);
-            this.btnAgregar.TabIndex = 15;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // txtNumeros
-            // 
-            this.txtNumeros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNumeros.Location = new System.Drawing.Point(808, 83);
-            this.txtNumeros.Name = "txtNumeros";
-            this.txtNumeros.Size = new System.Drawing.Size(75, 20);
-            this.txtNumeros.TabIndex = 16;
-            this.txtNumeros.Visible = false;
-            this.txtNumeros.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
-            // 
-            // txtCentroCosto
-            // 
-            this.txtCentroCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCentroCosto.Location = new System.Drawing.Point(797, 26);
-            this.txtCentroCosto.Name = "txtCentroCosto";
-            this.txtCentroCosto.ReadOnly = true;
-            this.txtCentroCosto.Size = new System.Drawing.Size(82, 20);
-            this.txtCentroCosto.TabIndex = 9;
-            this.txtCentroCosto.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(794, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Centro de Costo";
-            this.label2.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 83);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Proyecto";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // cboproyecto
-            // 
-            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboproyecto.FormattingEnabled = true;
-            this.cboproyecto.Location = new System.Drawing.Point(67, 79);
-            this.cboproyecto.Name = "cboproyecto";
-            this.cboproyecto.Size = new System.Drawing.Size(291, 21);
-            this.cboproyecto.TabIndex = 18;
-            this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
-            // 
-            // cboetapa
-            // 
-            this.cboetapa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboetapa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboetapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboetapa.FormattingEnabled = true;
-            this.cboetapa.Location = new System.Drawing.Point(405, 79);
-            this.cboetapa.Name = "cboetapa";
-            this.cboetapa.Size = new System.Drawing.Size(186, 21);
-            this.cboetapa.TabIndex = 19;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(364, 83);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Etapa";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(12, 55);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Empresa:";
-            this.label8.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // cboempresa
-            // 
-            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(67, 51);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(291, 21);
-            this.cboempresa.TabIndex = 18;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            // 
-            // btnREfres
-            // 
-            this.btnREfres.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnREfres.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnREfres.Image = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
-            this.btnREfres.Location = new System.Drawing.Point(797, 45);
-            this.btnREfres.Name = "btnREfres";
-            this.btnREfres.Size = new System.Drawing.Size(29, 23);
-            this.btnREfres.TabIndex = 21;
-            this.btnREfres.UseVisualStyleBackColor = true;
-            this.btnREfres.Visible = false;
-            this.btnREfres.Click += new System.EventHandler(this.btnREfres_Click);
             // 
             // eliminar
             // 
@@ -419,6 +273,161 @@
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.Width = 74;
             // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
+            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAceptar.Location = new System.Drawing.Point(773, 377);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 12;
+            this.btnAceptar.Text = "&Aceptar";
+            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // btnListar
+            // 
+            this.btnListar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnListar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListar.Image = ((System.Drawing.Image)(resources.GetObject("btnListar.Image")));
+            this.btnListar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnListar.Location = new System.Drawing.Point(692, 377);
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(75, 23);
+            this.btnListar.TabIndex = 14;
+            this.btnListar.Text = "&Listar";
+            this.btnListar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.Location = new System.Drawing.Point(773, 76);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(29, 23);
+            this.btnAgregar.TabIndex = 15;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // txtNumeros
+            // 
+            this.txtNumeros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNumeros.Location = new System.Drawing.Point(808, 83);
+            this.txtNumeros.Name = "txtNumeros";
+            this.txtNumeros.Size = new System.Drawing.Size(75, 20);
+            this.txtNumeros.TabIndex = 16;
+            this.txtNumeros.Visible = false;
+            this.txtNumeros.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeros_KeyPress);
+            // 
+            // txtCentroCosto
+            // 
+            this.txtCentroCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCentroCosto.Location = new System.Drawing.Point(797, 26);
+            this.txtCentroCosto.Name = "txtCentroCosto";
+            this.txtCentroCosto.ReadOnly = true;
+            this.txtCentroCosto.Size = new System.Drawing.Size(82, 20);
+            this.txtCentroCosto.TabIndex = 9;
+            this.txtCentroCosto.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(794, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Centro de Costo";
+            this.label2.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 81);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Proyecto";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // cboproyecto
+            // 
+            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.Location = new System.Drawing.Point(67, 77);
+            this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.Size = new System.Drawing.Size(291, 21);
+            this.cboproyecto.TabIndex = 18;
+            this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
+            // 
+            // cboetapa
+            // 
+            this.cboetapa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboetapa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboetapa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboetapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboetapa.FormattingEnabled = true;
+            this.cboetapa.Location = new System.Drawing.Point(405, 77);
+            this.cboetapa.Name = "cboetapa";
+            this.cboetapa.Size = new System.Drawing.Size(186, 21);
+            this.cboetapa.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(364, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Etapa";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 55);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Empresa:";
+            this.label8.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // cboempresa
+            // 
+            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(67, 51);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(291, 21);
+            this.cboempresa.TabIndex = 18;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            // 
+            // btnREfres
+            // 
+            this.btnREfres.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnREfres.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnREfres.Image = global::HPReserger.Properties.Resources.sshot_2017_06_13__17_59_46_;
+            this.btnREfres.Location = new System.Drawing.Point(797, 45);
+            this.btnREfres.Name = "btnREfres";
+            this.btnREfres.Size = new System.Drawing.Size(29, 23);
+            this.btnREfres.TabIndex = 21;
+            this.btnREfres.UseVisualStyleBackColor = true;
+            this.btnREfres.Visible = false;
+            this.btnREfres.Click += new System.EventHandler(this.btnREfres_Click);
+            // 
             // frmOrdenPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,7 +480,7 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.DataGridView gridItem;
+        private Dtgconten gridItem;
         private System.Windows.Forms.TextBox txtNumeros;
         private System.Windows.Forms.TextBox txtCentroCosto;
         private System.Windows.Forms.Label label2;

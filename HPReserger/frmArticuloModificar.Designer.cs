@@ -44,6 +44,7 @@
             // 
             // cboMarca
             // 
+            this.cboMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(121, 39);
@@ -127,6 +128,7 @@
             // 
             // cboModelo
             // 
+            this.cboModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboModelo.FormattingEnabled = true;
             this.cboModelo.Location = new System.Drawing.Point(121, 66);
@@ -136,6 +138,7 @@
             // 
             // cboArticuloServicio
             // 
+            this.cboArticuloServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboArticuloServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboArticuloServicio.FormattingEnabled = true;
             this.cboArticuloServicio.Location = new System.Drawing.Point(121, 12);

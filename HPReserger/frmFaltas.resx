@@ -144,23 +144,22 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnRegistrarFalta.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAACxSURBVDhPYxg8wGTG7f+aDTvBeMO+o3C8cN3W/00TpoHZcUuu/DeZfvuA3qKL3FBtCIDLAJBm
-        NSMLhAFAdSBDoNoQgCQDgBiqDQFAglpNe8EGLNx+BG4AzAvr9x37H7DgGn4DSMFQbQiATRE+DNWGACDB
-        H7///ScEQGpwGgACr969/3//6QusGCQHArQ14Mu37//ff/qMFYPkQIB2BmRsevI/a/NTvDgdqAarAQME
-        GBgABnLA87o4eRUAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAALFJREFUOE9j
+        GDzAZMbt/5oNO8F4w76jcLxw3db/TROmgdlxS678N5l++4DeoovcUG0IgMsAkGY1IwuEAUB1IEOg2hCA
+        JAOAGKoNAUCCWk17wQYs3H4EbgDMC+v3HfsfsOAafgNIwVBtCIBNET4M1YYAIMEfv//9JwRAanAaAAKv
+        3r3/f//pC6wYJAcCtDXgy7fv/99/+owVg+RAgHYGZGx68j9r81O8OB2oBqsBAwQYGAAGcsDzujh5FQAA
+        AABJRU5ErkJggg==
 </value>
   </data>
   <data name="btnAdjuntarSustento.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAFQSURBVDhPY6AamHDyZ+iEUz//Y8Mzz//6P/H0z2qoUuwAnwGrb/7+f/z5n/+TzvzqgSrHBIQM
-        ePj1H9iQKad/9UO1oAJ8Biy88uv/sWd/wHjVjd//+0//8IRqQwB8BmBgoFqoNgTAacDJH/87dz/+37Lh
-        8v/eQ29JM6B7/8v/BU0T/ldOW/e/fsnB/8Uds/9XTln1v+/4tzCoNgTAMABoc35D//+uvc9RDK1buO9/
-        XsOEeVBtCIBuQMeO+0Cb16JohuGcsoa3UG0IgG5A89rz/+sW7UPRCMP59T2/odoQAN2AngOvgX6ehaIR
-        hPuOfvqfWVx7G6oNAbAFYsXE5UBX7EfRXNg67X9R24wpUG0IgM2AfmBA1szd+T+vrut/Xm0nOFDrlxz6
-        HxaT+MkzMCwVqhUCsBmAC6c1TJlo4xX4xzMorAyqnXTgHhiW7egX/AwAWVUBlPKTOU8AAAAASUVORK5C
-        YII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAVBJREFUOE9j
+        oBqYcPJn6IRTP/9jwzPP//o/8fTPaqhS7ACfAatv/v5//Pmf/5PO/OqBKscEhAx4+PUf2JApp3/1Q7Wg
+        AnwGLLzy6/+xZ3/AeNWN3//7T//whGpDAHwGYGCgWqg2BMBpwMkf/zt3P/7fsuHy/95Db0kzoHv/y/8F
+        TRP+V05b979+ycH/xR2z/1dOWfW/7/i3MKg2BMAwAGhzfkP//669z1EMrVu4739ew4R5UG0IgG5Ax477
+        QJvXomiG4ZyyhrdQbQiAbkDz2vP/6xbtQ9EIw/n1Pb+h2hAA3YCeA6+Bfp6FohGE+45++p9ZXHsbqg0B
+        sAVixcTlQFfsR9Fc2Drtf1HbjClQbQiAzYB+YEDWzN35P6+u639ebSc4UOuXHPofFpP4yTMwLBWqFQKw
+        GYALpzVMmWjjFfjHMyisDKqddOAeGJbt6Bf8DABZVQGU8pM5TwAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="cachedrptConvenioPracticasPreprofesional1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmArticuloServicio
     {
@@ -37,7 +39,7 @@
             this.btnlimpiar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.Txtbusca = new System.Windows.Forms.TextBox();
-            this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.dtgconten = new Dtgconten();
             this.ida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -172,12 +174,12 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            //this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            //this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ida,
             this.GV,
@@ -198,7 +200,7 @@
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
-            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -366,6 +368,7 @@
             // 
             // txtcodigo
             // 
+            this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcodigo.Enabled = false;
             this.txtcodigo.Location = new System.Drawing.Point(349, 15);
             this.txtcodigo.Name = "txtcodigo";
@@ -412,6 +415,7 @@
             // 
             this.cbomarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbomarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbomarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbomarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbomarca.FormattingEnabled = true;
             this.cbomarca.Location = new System.Drawing.Point(90, 64);
@@ -444,6 +448,7 @@
             // 
             this.cbomodelo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbomodelo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbomodelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbomodelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbomodelo.FormattingEnabled = true;
             this.cbomodelo.Location = new System.Drawing.Point(90, 90);
@@ -565,6 +570,7 @@
             // 
             this.cbocuenta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbocuenta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbocuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuenta.FormattingEnabled = true;
             this.cbocuenta.Location = new System.Drawing.Point(318, 115);
@@ -700,6 +706,7 @@
             // 
             this.cbocentrocosto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbocentrocosto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbocentrocosto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocentrocosto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocentrocosto.FormattingEnabled = true;
             this.cbocentrocosto.Location = new System.Drawing.Point(90, 164);
@@ -749,7 +756,7 @@
         private System.Windows.Forms.Button btnlimpiar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox Txtbusca;
-        private System.Windows.Forms.DataGridView dtgconten;
+        private Dtgconten dtgconten;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnaceptar;
         private System.Windows.Forms.ComboBox cbotipo;
