@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace HpResergerUserControls
 {
@@ -29,18 +30,19 @@ namespace HpResergerUserControls
         public Color ColorMouseSobre;
         public Color ColorMousePresionado;
         public string TextoPorDefecto = "Ingrese Cadena";
+        private Control _NextControlOnEnter;
+        public ListaTipos ListadeTipos;
+        DataTable Controlss = new DataTable();
+        ComboBox Combito = new ComboBox();
+        public enum ListaTipos
+        {
+            Todo, SoloLetras, SoloNumeros, SoloDinero, MayusculaCadaPalabra
+        }
         public string TextoDefecto
         {
             get { return TextoPorDefecto; }
             set { this.TextoPorDefecto = value; }
         }
-        public enum ListaTipos
-        {
-           Todo, SoloLetras, SoloNumeros, SoloDinero
-        }
-        public ListaTipos ListadeTipos;
-        DataTable Controlss = new DataTable();
-        ComboBox Combito = new ComboBox();
         public ListaTipos TiposDatos
         {
             get { return ListadeTipos; }
@@ -67,25 +69,49 @@ namespace HpResergerUserControls
             get { return _NextControlOnEnter; }
             set { _NextControlOnEnter = value; }
         }
+        protected override void OnReadOnlyChanged(EventArgs e)
+        {
+            if (this.ReadOnly)
+                BackColor = Configuraciones.ColordeEnabledReadOnly;
+            else
+                BackColor = Color.White;
+            base.OnReadOnlyChanged(e);
+        }
         protected override void OnCreateControl()
         {
             ColorLetras = ForeColor;
             ColorFondo = BackColor;
             this.Text = TextoPorDefecto;
-            this.ForeColor = ColorTextoDefecto;
+            //this.ForeColor = ColorTextoDefecto;
             Invalidate();
         }
         protected override void OnLeave(EventArgs e)
         {
-            if (this.Text.Length <= 0 || Text == "")
-            {
-                this.Text = TextoPorDefecto;
-                this.ForeColor = ColorTextoDefecto;
-            }
+            if (!ReadOnly)
+                if (this.Text.Length <= 0 || Text == "" || Text == TextoPorDefecto)
+                {
+                    this.Text = TextoPorDefecto;
+                    this.ForeColor = ColorTextoDefecto;
+                }
             base.OnLeave(e);
-        }        
+        }
+        public string TextValido()
+        {
+            string cadena = "";
+            if (this.Text.Length <= 0 || Text == "" || Text == TextoPorDefecto)
+            {
+                cadena = "";
+            }
+            else cadena = Text;
+            return cadena;
+        }
+        public void CargarTextoporDefecto()
+        {
+            OnLeave(new EventArgs());
+        }
         protected override void OnClick(EventArgs e)
         {
+            if(!ReadOnly)
             if (this.Text.ToUpper() == this.TextoPorDefecto.ToUpper())
             {
                 this.Text = "";
@@ -107,7 +133,7 @@ namespace HpResergerUserControls
         }
         protected override void OnMouseLeave(EventArgs e)
         {
-            if (!ColorFondo.IsEmpty)
+            if (!ColorFondoMouseEncima.IsEmpty)
                 this.BackColor = ColorFondo;
             base.OnMouseLeave(e);
         }
@@ -120,11 +146,15 @@ namespace HpResergerUserControls
         }
         protected override void OnTextChanged(EventArgs e)
         {
+            if (TiposDatos == ListaTipos.MayusculaCadaPalabra)
+            {
+                this.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(this.Text);
+                SelectionStart = TextLength;
+            }
             if (Text != TextoPorDefecto)
                 ForeColor = ColorLetras;
             base.OnTextChanged(e);
         }
-        private Control _NextControlOnEnter;
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
             if (TiposDatos == ListaTipos.SoloLetras)
@@ -141,8 +171,8 @@ namespace HpResergerUserControls
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if(_NextControlOnEnter!=null)
-                _NextControlOnEnter.Focus();
+                if (_NextControlOnEnter != null)
+                    _NextControlOnEnter.Focus();
             }
             base.OnKeyPress(e);
         }

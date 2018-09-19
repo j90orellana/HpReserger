@@ -120,6 +120,9 @@
   <metadata name="codRealx.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="posix.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Codigox.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -176,6 +179,14 @@
         agoGewrH8QM40cX1j4Y+Rfq2b/OV+zW+WS3w5sD5jUNIjxVuNii7RxIQYC6cbuAysq8TonCrui3BXFia
         7iocL5F1ZzE40klx28V6KfXNhke4bDMKj4XBs2RRw2/mnIxOjq/lfDmTmPTGilPG1e7VPmsTCjOlmpyi
         s3YiEpedCyfVGXbmcdt25N8RDmnJWJy/k2X9ADQ8DlVW3BxUAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btndetalle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAHNJREFUOE9j
+        oBrYc/d30a57v1cTg0FqodoQACSx+97v/8RgkFqoNgSAGVC27wcYg9gh676hYJg4bQ0gBuM1AGYbiK04
+        7TMKhonjNWDmuZ9gDGJ3HPuBgmHitDWAYi8Qg/EaQHE0UmwAMRirARRnJvIAAwMAQhoqhwesfLsAAAAA
+        SUVORK5CYII=
 </value>
   </data>
 </root>

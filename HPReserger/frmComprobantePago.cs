@@ -19,12 +19,16 @@ namespace HPReserger
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         int estado = 0;
+        private Boolean _BuscarValor = false;
+        public Boolean BuscarValor { get { return _BuscarValor; } set { _BuscarValor = value; } }
+        private int _CodigoSunat = 0;
+        public int CodigoSunat { get { return _CodigoSunat; } set { _CodigoSunat = value; } }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado != 0)
             {
                 estado = 0;
-                HPResergerFunciones.Utilitarios.Activar(btnmodificar, btnnuevo, dtgconten, btnactualizar);
+                HPResergerFunciones.Utilitarios.Activar(btnmodificar, btnnuevo, dtgconten, btnactualizar, txtBuscar);
                 HPResergerFunciones.Utilitarios.Desactivar(btnaceptar, txtdescripcion);
             }
             else
@@ -34,6 +38,8 @@ namespace HPReserger
         private void frmComprobantePago_Load(object sender, EventArgs e)
         {
             CargarComprobantes();
+            Datos = new DataTable();
+            if (BuscarValor) btnaceptar.Enabled = true;
         }
         private int _Codigo;
         public int Codigo
@@ -41,23 +47,24 @@ namespace HPReserger
             get { return _Codigo; }
             set { _Codigo = value; }
         }
+        DataTable Datos;
         public void CargarComprobantes()
         {
             string cadena = txtdescripcion.Text;
-            dtgconten.DataSource = CapaLogica.ComprobanteDePago();
+            dtgconten.DataSource = Datos = CapaLogica.ComprobanteDePago();
             foreach (DataGridViewRow item in dtgconten.Rows)
                 if (item.Cells[nombrex.Name].Value.ToString() == cadena)
                 {
                     dtgconten.ClearSelection();
                     item.Selected = true;
-                    dtgconten_RowEnter(dtgconten, new DataGridViewCellEventArgs(item.Cells[nombrex.Name].ColumnIndex,item.Index));
+                    dtgconten_RowEnter(dtgconten, new DataGridViewCellEventArgs(item.Cells[nombrex.Name].ColumnIndex, item.Index));
                     break;
                 }
         }
         private void btnactualizar_Click(object sender, EventArgs e)
         {
             CargarComprobantes();
-        }        
+        }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex, y = e.RowIndex;
@@ -66,6 +73,7 @@ namespace HPReserger
             {
                 txtdescripcion.Text = dtgconten[nombrex.Name, y].Value.ToString();
                 Codigo = (int)dtgconten[id_comprobantex.Name, y].Value;
+                txtcodigosunat.Text = dtgconten[codiosunatx.Name, y].Value.ToString();
                 txtcodigo.Text = Codigo.ToString();
             }
         }
@@ -94,7 +102,7 @@ namespace HPReserger
         {
             CargarComprobantes();
             LimpiarText();
-            HPResergerFunciones.Utilitarios.Desactivar(btnmodificar, btnnuevo, dtgconten, btnactualizar);
+            HPResergerFunciones.Utilitarios.Desactivar(btnmodificar, btnnuevo, dtgconten, btnactualizar, txtBuscar);
             HPResergerFunciones.Utilitarios.Activar(btnaceptar, txtdescripcion);
             txtdescripcion.Focus();
             estado = 1;
@@ -104,7 +112,7 @@ namespace HPReserger
         {
             Codigo = (int)dtgconten.CurrentRow.Cells[id_comprobantex.Name].Value;
             estado = 2;
-            HPResergerFunciones.Utilitarios.Desactivar(btnmodificar, btnnuevo, dtgconten, btnactualizar);
+            HPResergerFunciones.Utilitarios.Desactivar(btnmodificar, btnnuevo, dtgconten, btnactualizar, txtBuscar);
             HPResergerFunciones.Utilitarios.Activar(btnaceptar, txtdescripcion);
             txtdescripcion.Focus();
         }
@@ -117,12 +125,20 @@ namespace HPReserger
                 HPResergerFunciones.Utilitarios.msg("Ingrese El Nombre del Comprobante");
                 return;
             }
+            if (!txtcodigosunat.EstaLLeno())
+            {
+                txtcodigosunat.Focus();
+                HPResergerFunciones.Utilitarios.msg("Ingrese El Código de la Sunat");
+                return;
+            }
+            int codigosunat = int.Parse(txtcodigosunat.Text);
+            CodigoSunat = codigosunat;
             //NUEVO
             DataRow filita;
             if (estado == 1)
             {
                 //BUSCA SI YA EXISTE
-                DataTable tablita = CapaLogica.ComprobanteDePago(5, 0, txtdescripcion.Text, frmLogin.CodigoUsuario, DateTime.Now);
+                DataTable tablita = CapaLogica.ComprobanteDePago(5, 0, txtdescripcion.Text, frmLogin.CodigoUsuario, codigosunat, DateTime.Now);
                 filita = tablita.Rows[0];
                 if ((int)filita["cantidad"] != 0)
                 {
@@ -130,7 +146,8 @@ namespace HPReserger
                     txtdescripcion.Focus();
                     return;
                 }
-                CapaLogica.ComprobanteDePago(1, Codigo, txtdescripcion.Text, frmLogin.CodigoUsuario, DateTime.Now);
+                CapaLogica.ComprobanteDePago(1, Codigo, txtdescripcion.Text, frmLogin.CodigoUsuario, codigosunat, DateTime.Now);
+                CodigoSunat = codigosunat;
                 CargarComprobantes();
                 HPResergerFunciones.Utilitarios.msg("Comprobante de Pago Guardado");
                 estado = 0;
@@ -139,7 +156,7 @@ namespace HPReserger
             if (estado == 2)
             {
                 //BUSCA SI YA EXISTE
-                DataTable tablita = CapaLogica.ComprobanteDePago(6, Codigo, txtdescripcion.Text, frmLogin.CodigoUsuario, DateTime.Now);
+                DataTable tablita = CapaLogica.ComprobanteDePago(6, Codigo, txtdescripcion.Text, frmLogin.CodigoUsuario, codigosunat, DateTime.Now);
                 filita = tablita.Rows[0];
                 if ((int)filita["cantidad"] != 0)
                 {
@@ -147,13 +164,51 @@ namespace HPReserger
                     txtdescripcion.Focus();
                     return;
                 }
-                CapaLogica.ComprobanteDePago(2, Codigo, txtdescripcion.Text, frmLogin.CodigoUsuario, DateTime.Now);
+                CapaLogica.ComprobanteDePago(2, Codigo, txtdescripcion.Text, frmLogin.CodigoUsuario, codigosunat, DateTime.Now);
+                CodigoSunat = codigosunat;
                 CargarComprobantes();
                 HPResergerFunciones.Utilitarios.msg("Comprobante de Pago Guardado");
                 estado = 0;
             }
-            HPResergerFunciones.Utilitarios.Activar(btnmodificar, btnnuevo, dtgconten, btnactualizar);
+            HPResergerFunciones.Utilitarios.Activar(btnmodificar, btnnuevo, dtgconten, btnactualizar, txtBuscar);
             HPResergerFunciones.Utilitarios.Desactivar(btnaceptar, txtdescripcion);
+            if (BuscarValor) Close();
+        }
+        private void txtBuscar_BuscarClick(object sender, EventArgs e)
+        {
+            //if (dtgconten.RowCount > 0)
+            //{
+            //    string busca = txtBuscar.EstaLLeno() ? txtBuscar.Text : "";
+            //    string filtro = $"nombre like {busca}";
+            //    dtgconten.DataSource = (Datos).Select(filtro).CopyToDataTable();
+
+            //    if (dtgconten.RowCount == 0) dtgconten.DataSource = Datos;
+            //}
+            if (txtBuscar.EstaLLeno())
+            {
+                CargarComprobantes();
+                DataTable datos = (DataTable)dtgconten.DataSource;
+                string columna = txtBuscar.EstaLLeno() ? txtBuscar.Text : "";
+                string filtro = $"nombre like '%{columna}%'";
+                DataRow[] dato = datos.Select(filtro);
+                if (dato.Count() > 0)
+                    dtgconten.DataSource = dato.CopyToDataTable();
+                else dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
+            }
+            else CargarComprobantes();
+        }
+        private void txtBuscar_ClickLimpiarboton(object sender, EventArgs e)
+        {
+            txtBuscar.Text = "";
+        }
+        private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (BuscarValor)
+            {
+                int x = e.RowIndex, y = e.ColumnIndex;
+                CodigoSunat = (int)dtgconten[codiosunatx.Name, x].Value;
+                Close();
+            }
         }
     }
 }

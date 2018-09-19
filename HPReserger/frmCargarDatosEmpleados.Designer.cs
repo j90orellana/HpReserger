@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargarDatosEmpleados));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.frmimagen1 = new HpResergerUserControls.frmimagen();
             this.txtBuscar1 = new HpResergerUserControls.txtBuscar();
             this.dtgconten1 = new HpResergerUserControls.Dtgconten();
@@ -47,8 +48,21 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxPer1 = new HpResergerUserControls.TextBoxPer();
             this.buttonPer2 = new HpResergerUserControls.ButtonPer();
+            this.gb1 = new System.Windows.Forms.GroupBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.opción1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opción2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opción4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opción3ToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.opción3ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.opción5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten2)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // frmimagen1
@@ -68,6 +82,8 @@
             this.txtBuscar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtBuscar1.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtBuscar1.FondoBoton")));
             this.txtBuscar1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar1.ForeColor = System.Drawing.Color.White;
+            this.txtBuscar1.ImgBotonCerrar = null;
             this.txtBuscar1.Location = new System.Drawing.Point(12, 5);
             this.txtBuscar1.Name = "txtBuscar1";
             this.txtBuscar1.Size = new System.Drawing.Size(278, 23);
@@ -78,9 +94,9 @@
             this.dtgconten1.AllowUserToOrderColumns = true;
             this.dtgconten1.AllowUserToResizeColumns = false;
             this.dtgconten1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dtgconten1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -89,27 +105,27 @@
             this.dtgconten1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.ORELLANA});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten1.DefaultCellStyle = dataGridViewCellStyle15;
             this.dtgconten1.EnableHeadersVisualStyles = false;
             this.dtgconten1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten1.Location = new System.Drawing.Point(12, 34);
@@ -140,9 +156,9 @@
             this.dtgconten2.AllowUserToOrderColumns = true;
             this.dtgconten2.AllowUserToResizeColumns = false;
             this.dtgconten2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dtgconten2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -150,26 +166,26 @@
             this.dtgconten2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dtgconten2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column3,
             this.Column4});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten2.DefaultCellStyle = dataGridViewCellStyle18;
             this.dtgconten2.EnableHeadersVisualStyles = false;
             this.dtgconten2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten2.Location = new System.Drawing.Point(12, 390);
@@ -213,7 +229,7 @@
             this.textBoxPer1.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.textBoxPer1.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.textBoxPer1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPer1.ForeColor = System.Drawing.Color.LightGray;
+            this.textBoxPer1.ForeColor = System.Drawing.Color.Gainsboro;
             this.textBoxPer1.Location = new System.Drawing.Point(580, 4);
             this.textBoxPer1.MaxLength = 100;
             this.textBoxPer1.Name = "textBoxPer1";
@@ -242,11 +258,104 @@
             this.buttonPer2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonPer2.UseVisualStyleBackColor = false;
             // 
+            // gb1
+            // 
+            this.gb1.BackColor = System.Drawing.Color.White;
+            this.gb1.Location = new System.Drawing.Point(203, 142);
+            this.gb1.Name = "gb1";
+            this.gb1.Size = new System.Drawing.Size(200, 100);
+            this.gb1.TabIndex = 11;
+            this.gb1.TabStop = false;
+            this.gb1.Text = "aaaaaaaaaaaaaaa";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.notifyIcon1.BalloonTipText = "y que dice";
+            this.notifyIcon1.BalloonTipTitle = "hola que hace";
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "HpReserger";
+            this.notifyIcon1.Visible = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opción1ToolStripMenuItem,
+            this.opción2ToolStripMenuItem,
+            this.opción4ToolStripMenuItem,
+            this.opción3ToolStripMenuItem,
+            this.opción3ToolStripMenuItem1,
+            this.toolStripComboBox1,
+            this.toolStripTextBox1,
+            this.toolStripSeparator1,
+            this.opción5ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 178);
+            // 
+            // opción1ToolStripMenuItem
+            // 
+            this.opción1ToolStripMenuItem.Checked = true;
+            this.opción1ToolStripMenuItem.CheckOnClick = true;
+            this.opción1ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.opción1ToolStripMenuItem.Name = "opción1ToolStripMenuItem";
+            this.opción1ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.opción1ToolStripMenuItem.Text = "Opción1";
+            // 
+            // opción2ToolStripMenuItem
+            // 
+            this.opción2ToolStripMenuItem.Name = "opción2ToolStripMenuItem";
+            this.opción2ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.opción2ToolStripMenuItem.Text = "Opción2";
+            // 
+            // opción4ToolStripMenuItem
+            // 
+            this.opción4ToolStripMenuItem.Name = "opción4ToolStripMenuItem";
+            this.opción4ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.opción4ToolStripMenuItem.Text = "Opción4";
+            // 
+            // opción3ToolStripMenuItem
+            // 
+            this.opción3ToolStripMenuItem.Name = "opción3ToolStripMenuItem";
+            this.opción3ToolStripMenuItem.Size = new System.Drawing.Size(178, 6);
+            // 
+            // opción3ToolStripMenuItem1
+            // 
+            this.opción3ToolStripMenuItem1.Name = "opción3ToolStripMenuItem1";
+            this.opción3ToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.opción3ToolStripMenuItem1.Text = "Opción3";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Items.AddRange(new object[] {
+            "SI",
+            "NO",
+            "NOSE"});
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            // 
+            // opción5ToolStripMenuItem
+            // 
+            this.opción5ToolStripMenuItem.Name = "opción5ToolStripMenuItem";
+            this.opción5ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.opción5ToolStripMenuItem.Text = "Opción5";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            // 
             // frmCargarDatosEmpleados
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(894, 595);
             this.Colores = new System.Drawing.Color[0];
+            this.Controls.Add(this.gb1);
             this.Controls.Add(this.buttonPer2);
             this.Controls.Add(this.textBoxPer1);
             this.Controls.Add(this.button1);
@@ -263,6 +372,8 @@
             this.Load += new System.EventHandler(this.frmCargarDatosEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten2)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +392,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private HpResergerUserControls.ButtonPer buttonPer2;
+        private System.Windows.Forms.GroupBox gb1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem opción1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opción2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opción4ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator opción3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opción3ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem opción5ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

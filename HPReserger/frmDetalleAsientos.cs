@@ -58,21 +58,16 @@ namespace HPReserger
         }
         DataTable tipoDoc;
         DataTable tipoComprobante;
+        DataTable Monedas;
         DataTable Centroc, CentroCosto;
         public void CargarDatos()
         {
-            DataRow rowcito;
-
             CargarTipodoc();
             CargarTipodocLength();
-
-            tipoComprobante = new DataTable();
-            tipoComprobante = CapaLogica.getCargoTipoContratacion("Id_Comprobante", "Nombre", "TBL_Comprobante_Pago");
-            rowcito = tipoComprobante.NewRow();
-            rowcito[0] = 0;
-            rowcito[1] = "Ninguno";
-            tipoComprobante.Rows.InsertAt(rowcito, 0);
-
+            /////////////////
+            CargarMonedas();
+            CargarComprobantes();
+            /////////////////
             Centroc = new DataTable();
             Centroc = CapaLogica.ListarCentroCostos();
             CentroCosto = new DataTable();
@@ -85,6 +80,26 @@ namespace HPReserger
                 if (item["Id_CtaCtble"].ToString() != "")
                     CentroCosto.Rows.Add(item["Id_CCosto"], item["Id_CtaCtble"] + "-" + item["CentroCosto"]);
             }
+        }
+        public void CargarComprobantes()
+        {
+            DataRow rowcito;
+            tipoComprobante = new DataTable();
+            tipoComprobante = CapaLogica.getCargoTipoContratacion("Cod_sunat", "Nombre", "TBL_Comprobante_Pago");
+            rowcito = tipoComprobante.NewRow();
+            rowcito[0] = 0;
+            rowcito[1] = "Ninguno";
+            tipoComprobante.Rows.InsertAt(rowcito, 0);
+        }
+        public void CargarMonedas()
+        {
+            //DataRow rowcito;
+            Monedas = new DataTable();
+            Monedas = CapaLogica.getCargoTipoContratacion("Id_Moneda", "NameCorto", "TBL_Moneda");
+            //rowcito = Monedas.NewRow();
+            //rowcito[0] = 0;
+            //rowcito[1] = "Ninguno";
+            //Monedas.Rows.InsertAt(rowcito, 0);
         }
         public void CargarTipodoc()
         {
@@ -223,6 +238,11 @@ namespace HPReserger
                         {
                             item.Cells[tipocambiox.Name].Value = 0;
                         }
+                        //seleccion de moneda --la de id =1 por defecto
+                        if (item.Cells[fk_Monedax.Name].Value.ToString() == "")
+                        {
+                            item.Cells[fk_Monedax.Name].Value = 1;
+                        }
                         if (item.Cells[fechaemisionx.Name].Value == null)
                         {
                             // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
@@ -275,7 +295,7 @@ namespace HPReserger
                             CapaLogica.DetalleAsientos(1, asiento, idasiento, cuenta, (int)item.Cells[tipodocx.Name].Value,
                                 item.Cells[numdocx.Name].Value.ToString(), item.Cells[razonsocialx.Name].Value.ToString(), (int)item.Cells[idcomprobantex.Name].Value, item.Cells[codcomprobantex.Name].Value.ToString(), item.Cells[numcomprobantex.Name].Value.ToString(),
                                 int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(), (DateTime)item.Cells[fechaemisionx.Name].Value, (DateTime)item.Cells[FechaVencimientox.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
-                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value);
+                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value);
                         }
                 }
                 CapaLogica.DuplicarDetalle(asiento, idasiento, proyecto, ChkDuplicar.Checked ? 1 : 0, cuenta);
@@ -549,11 +569,34 @@ namespace HPReserger
                 txttotalmonextranjera.ForeColor = Color.Green;
             }
         }
+        frmComprobantePago frmcomprobante;
+        int filas = 0;
         private void Dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
             if (x >= 0 && x < Dtgconten.RowCount - 1)
             {
+                if (y == Dtgconten.Columns[idcomprobantex.Name].Index)
+                {
+                    CargarComprobantes();
+                }
+                if (y == Dtgconten.Columns[fk_Monedax.Name].Index)
+                {
+                    CargarMonedas();
+                }
+                if (y == Dtgconten.Columns[butoncomprobantex.Name].Index && estado == 2)
+                {
+                    if (frmcomprobante == null)
+                    {
+                        frmcomprobante = new frmComprobantePago();
+                        frmcomprobante.BuscarValor = true; filas = x;
+                        frmcomprobante.MdiParent = MdiParent;
+                        frmcomprobante.FormClosed += Frmcomprobante_FormClosed;
+                        frmcomprobante.Show();
+                        frmcomprobante.txtBuscar.Text = Dtgconten[idcomprobantex.Name, x].EditedFormattedValue.ToString();
+                    }
+                    else frmcomprobante.Activate();
+                }
                 if (y == Dtgconten.Columns[buttonCentroCosto.Name].Index && estado == 2)
                 {
                     frmccosto ccosto = new frmccosto();
@@ -563,9 +606,15 @@ namespace HPReserger
                 }
                 if (y == Dtgconten.Columns[btnborrar.Name].Index && estado == 2)
                 {
-                    Dtgconten.Rows.Remove(Dtgconten.Rows[Dtgconten.CurrentRow.Index]);
+                    if (HPResergerFunciones.Utilitarios.msgp("Seguro Desea Borrar Fila") == DialogResult.Yes)
+                        Dtgconten.Rows.Remove(Dtgconten.Rows[Dtgconten.CurrentRow.Index]);
                 }
             }
+        }
+        private void Frmcomprobante_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (frmcomprobante.CodigoSunat != 0) Dtgconten[idcomprobantex.Name, filas].Value = frmcomprobante.CodigoSunat;
+            frmcomprobante = null;
         }
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -659,10 +708,15 @@ namespace HPReserger
                 int x = e.RowIndex, y = e.ColumnIndex;
                 //tipodoc
                 Combo = Dtgconten.Columns[tipodocx.Name] as DataGridViewComboBoxColumn;
-                Combo.DataSource = tipoDoc;
+                //Combo.DataSource = tipoDoc;
                 Combo.ValueMember = "codigo";
                 Combo.DisplayMember = "descripcion";
                 Combo.DataSource = tipoDoc;
+                //moneda
+                Combo = Dtgconten.Columns[fk_Monedax.Name] as DataGridViewComboBoxColumn;
+                Combo.ValueMember = "codigo";
+                Combo.DisplayMember = "descripcion";
+                Combo.DataSource = Monedas;
                 //tipocomprobante
                 Combo = Dtgconten.Columns[idcomprobantex.Name] as DataGridViewComboBoxColumn;
                 Combo.ValueMember = "codigo";

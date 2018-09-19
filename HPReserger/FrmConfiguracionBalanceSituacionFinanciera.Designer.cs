@@ -34,8 +34,9 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfiguracionBalanceSituacionFinanciera));
-            this.Dtgconten = new Dtgconten();
+            this.Dtgconten = new HpResergerUserControls.Dtgconten();
             this.codRealx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.posix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuentasx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,54 +53,73 @@ namespace HPReserger
             this.txtdescripcion = new System.Windows.Forms.TextBox();
             this.txtcuentas = new System.Windows.Forms.TextBox();
             this.txtcodigo = new System.Windows.Forms.TextBox();
+            this.btndetalle = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numPos = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPos)).BeginInit();
             this.SuspendLayout();
             // 
             // Dtgconten
             // 
             this.Dtgconten.AllowUserToAddRows = false;
             this.Dtgconten.AllowUserToDeleteRows = false;
+            this.Dtgconten.AllowUserToOrderColumns = true;
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            //this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            //this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
-            //this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            //this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            //this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.Dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codRealx,
+            this.posix,
             this.Codigox,
             this.descripcionx,
             this.Cuentasx,
             this.usuariox,
             this.fechax});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.Dtgconten.EnableHeadersVisualStyles = false;
+            this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.Dtgconten.Location = new System.Drawing.Point(12, 88);
             this.Dtgconten.MultiSelect = false;
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.Dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dtgconten.RowTemplate.Height = 16;
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.Size = new System.Drawing.Size(561, 407);
             this.Dtgconten.TabIndex = 158;
+            this.Dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentClick);
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
+            this.Dtgconten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Dtgconten_DataError);
             this.Dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_RowEnter);
             // 
             // codRealx
@@ -109,6 +129,16 @@ namespace HPReserger
             this.codRealx.Name = "codRealx";
             this.codRealx.Visible = false;
             // 
+            // posix
+            // 
+            this.posix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.posix.DataPropertyName = "posicion";
+            this.posix.HeaderText = "Pos";
+            this.posix.MinimumWidth = 40;
+            this.posix.Name = "posix";
+            this.posix.ReadOnly = true;
+            this.posix.Width = 40;
+            // 
             // Codigox
             // 
             this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -117,7 +147,7 @@ namespace HPReserger
             this.Codigox.MinimumWidth = 50;
             this.Codigox.Name = "Codigox";
             this.Codigox.ReadOnly = true;
-            this.Codigox.Width = 64;
+            this.Codigox.Width = 70;
             // 
             // descripcionx
             // 
@@ -273,12 +303,46 @@ namespace HPReserger
             this.txtcodigo.Size = new System.Drawing.Size(116, 20);
             this.txtcodigo.TabIndex = 1;
             // 
+            // btndetalle
+            // 
+            this.btndetalle.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btndetalle.Image = ((System.Drawing.Image)(resources.GetObject("btndetalle.Image")));
+            this.btndetalle.Location = new System.Drawing.Point(251, 501);
+            this.btndetalle.Name = "btndetalle";
+            this.btndetalle.Size = new System.Drawing.Size(82, 23);
+            this.btndetalle.TabIndex = 163;
+            this.btndetalle.Text = "Detalle";
+            this.btndetalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btndetalle.UseVisualStyleBackColor = true;
+            this.btndetalle.Click += new System.EventHandler(this.btndetalle_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(215, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 164;
+            this.label4.Text = "Posición";
+            // 
+            // numPos
+            // 
+            this.numPos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.numPos.Location = new System.Drawing.Point(268, 12);
+            this.numPos.Name = "numPos";
+            this.numPos.ReadOnly = true;
+            this.numPos.Size = new System.Drawing.Size(52, 20);
+            this.numPos.TabIndex = 165;
+            // 
             // FrmConfiguracionBalanceSituacionFinanciera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 530);
             this.Colores = new System.Drawing.Color[0];
+            this.Controls.Add(this.numPos);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btndetalle);
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.txtcuentas);
             this.Controls.Add(this.txtdescripcion);
@@ -297,6 +361,7 @@ namespace HPReserger
             this.Text = "Configurar Estado de Situación Financiera";
             this.Load += new System.EventHandler(this.FrmConfiguracionBalanceSituacionFinanciera_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,7 +381,11 @@ namespace HPReserger
         private System.Windows.Forms.TextBox txtdescripcion;
         private System.Windows.Forms.TextBox txtcuentas;
         private System.Windows.Forms.TextBox txtcodigo;
+        private System.Windows.Forms.Button btndetalle;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown numPos;
         private System.Windows.Forms.DataGridViewTextBoxColumn codRealx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn posix;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigox;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuentasx;

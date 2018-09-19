@@ -11,30 +11,32 @@ namespace HpResergerUserControls
             InitializeComponent();
             btnbuscar.Click += new EventHandler(btnbuscarClick);
             txtbusca.TextChanged += new EventHandler(btnbuscarTextChanged);
-            _text = Text;
+            btnlimpiar.Click += new EventHandler(Btnlimpiar_Click);
+            _text = txtbusca.Text;
         }
         public static string _text;
         public event EventHandler BuscarClick;
+        public event EventHandler ClickLimpiarboton;
         public event EventHandler BuscarTextChanged;
-        private void btnbuscarTextChanged(object sender, EventArgs e)
+        private Image _ImgBotonCerrar;
+        public Image ImgBotonCerrar { get { return _ImgBotonCerrar; } set { _ImgBotonCerrar = value; } }
+        public Image FondoBoton { get { return btnbuscar.Image; } set { btnbuscar.Image = value; } }
+        public override string Text { get { return txtbusca.Text; } set { txtbusca.Text = value; } }
+        private void Btnlimpiar_Click(object sender, EventArgs e)
         {
-            BuscarTextChanged?.Invoke(this, e);
+            ClickLimpiarboton?.Invoke(sender, e);
         }
-        private string Text;
-        public string _Text
-        {
-            get { return txtbusca.Text; }
-            set { txtbusca.Text = value; }
-        }        
         private void btnbuscarClick(object sender, EventArgs e)
         {
             BuscarClick?.Invoke(this, e);
         }
-        public Image FondoBoton { get { return btnbuscar.Image; } set { btnbuscar.Image = value; } }
+        private void btnbuscarTextChanged(object sender, EventArgs e)
+        {
+            BuscarTextChanged?.Invoke(this, e);
+        }
         private void txtBuscar_BackColorChanged(object sender, EventArgs e)
         {
-            txtbusca.BackColor = this.BackColor;
-            btnbuscar.BackColor = this.BackColor;
+            btnlimpiar.BackColor = txtbusca.BackColor = btnbuscar.BackColor = this.BackColor;
         }
         private void txtBuscar_ForeColorChanged(object sender, EventArgs e)
         {
@@ -42,8 +44,7 @@ namespace HpResergerUserControls
         }
         public Boolean EstaLLeno()
         {
-            if (txtbusca.Text == _text || txtbusca.Text.Length == 0)
-                return false;
+            if (txtbusca.Text == _text || txtbusca.Text.Length == 0) return false;
             else return true;
         }
         private void txtBuscar_FontChanged(object sender, EventArgs e)
@@ -52,11 +53,19 @@ namespace HpResergerUserControls
         }
         private void txtbusca_Click(object sender, EventArgs e)
         {
-            txtbusca.SelectAll();
         }
         private void txtbusca_DoubleClick(object sender, EventArgs e)
         {
             txtbusca.SelectAll();
+        }
+        private void btnlimpiar_Click_1(object sender, EventArgs e)
+        {
+            txtbusca.Text = "";
+            txtbusca.Focus();
+        }
+        private void txtbusca_Leave(object sender, EventArgs e)
+        {
+            if (txtbusca.Text == "") txtbusca.Text = _text;
         }
     }
 }

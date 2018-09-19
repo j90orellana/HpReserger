@@ -198,9 +198,7 @@ namespace HPReserger
         private void btnborrar_Click(object sender, EventArgs e)
         {
             txtbuscar.Text = "";
-        }
-
-        
+        }        
         private void txtdirecion_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.Sololetras(e);

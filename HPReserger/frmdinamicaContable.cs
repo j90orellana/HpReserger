@@ -106,7 +106,7 @@ namespace HPReserger
             CargarSubOperacion(cbosuboperacion);
             RellenarCombosSiNo10(cbosolicitar);
             label5.Text = label5.Text.ToUpper();
-            dtgbusca.DataSource = ListarDinamicas(Txtbusca.Text, ValorBusqueda);
+            dtgbusca.DataSource = ListarDinamicas(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", ValorBusqueda);
             msgs(dtgbusca);
             DesactivarModi();
         }
@@ -369,11 +369,11 @@ namespace HPReserger
         }
         public void Activar()
         {
-            groupBox1.Enabled = btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgbusca.Enabled = true;
+            groupBox1.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgbusca.Enabled = true;
         }
         public void Desactivar()
         {
-            groupBox1.Enabled = btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgbusca.Enabled = false;
+            groupBox1.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgbusca.Enabled = false;
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -397,11 +397,10 @@ namespace HPReserger
         }
         private void label19_Click(object sender, EventArgs e)
         {
-
         }
         private void Txtbusca_TextChanged(object sender, EventArgs e)
         {
-            dtgbusca.DataSource = ListarDinamicas(Txtbusca.Text, busca);
+            dtgbusca.DataSource = ListarDinamicas(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", busca);
             msgs(dtgbusca);
         }
         public int filamax;
@@ -568,7 +567,7 @@ namespace HPReserger
                         CDinamica.Modificar2Dinamica(codigo);
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
-                            CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Dtgconten[0, i].Value.ToString(), Dtgconten[2, i].Value.ToString(), activo,int.Parse(cbosolicitar.SelectedValue.ToString()));
+                            CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Dtgconten[0, i].Value.ToString(), Dtgconten[2, i].Value.ToString(), activo, int.Parse(cbosolicitar.SelectedValue.ToString()));
                         }
                         Mensajes("Se Modificó con Exito");
                         //MODIFICAR DE REVERSA

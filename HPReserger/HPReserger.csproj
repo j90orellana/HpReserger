@@ -227,11 +227,23 @@
     <Compile Include="frmcierremensual.Designer.cs">
       <DependentUpon>frmcierremensual.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmComprobantePago.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmComprobantePago.Designer.cs">
       <DependentUpon>frmComprobantePago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfiguracionBalanceGanacias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfiguracionBalanceGanacias.Designer.cs">
+      <DependentUpon>frmConfiguracionBalanceGanacias.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConfiguracionBalanceSituacionFinanciera.cs">
       <SubType>Form</SubType>
@@ -244,6 +256,12 @@
     </Compile>
     <Compile Include="frmConfigurarDinamicas.Designer.cs">
       <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCotizacionCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCotizacionCliente.Designer.cs">
+      <DependentUpon>frmCotizacionCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDatosExterno.cs">
       <SubType>Form</SubType>
@@ -268,6 +286,12 @@
     </Compile>
     <Compile Include="frmdetracciones.Designer.cs">
       <DependentUpon>frmdetracciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetracionesPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetracionesPago.Designer.cs">
+      <DependentUpon>frmDetracionesPago.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEliminarPeriodo.cs">
       <SubType>Form</SubType>
@@ -1389,14 +1413,23 @@
     <EmbeddedResource Include="frmcierremensual.resx">
       <DependentUpon>frmcierremensual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmComprobantePago.resx">
       <DependentUpon>frmComprobantePago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfiguracionBalanceGanacias.resx">
+      <DependentUpon>frmConfiguracionBalanceGanacias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfiguracionBalanceSituacionFinanciera.resx">
       <DependentUpon>FrmConfiguracionBalanceSituacionFinanciera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfigurarDinamicas.resx">
       <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCotizacionCliente.resx">
+      <DependentUpon>frmCotizacionCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmcuentacontable.resx">
       <DependentUpon>frmcuentacontable.cs</DependentUpon>
@@ -1415,6 +1448,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmdetracciones.resx">
       <DependentUpon>frmdetracciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetracionesPago.resx">
+      <DependentUpon>frmDetracionesPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmdinamicaContable.resx">
       <DependentUpon>frmdinamicaContable.cs</DependentUpon>

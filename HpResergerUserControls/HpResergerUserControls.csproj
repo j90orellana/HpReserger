@@ -70,6 +70,7 @@
     <Compile Include="ComboMesAño.Designer.cs">
       <DependentUpon>ComboMesAño.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configuraciones.cs" />
     <Compile Include="ControlDeslizamiento.cs">
       <SubType>Component</SubType>
     </Compile>

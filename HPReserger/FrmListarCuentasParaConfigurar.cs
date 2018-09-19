@@ -23,7 +23,7 @@ namespace HPReserger
         private void FrmListarCuentasParaConfigurar_Load(object sender, EventArgs e)
         {
             SAcarCuentas();
-            Grid.DataSource = CapaLogica.ListarCuentasContables(Txtbusca.Text, tipobusca);
+            Grid.DataSource = CapaLogica.ListarCuentasContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca);
             msg(Grid);
             tipobusca = 10;
             aceptar = false;
@@ -82,7 +82,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void dtgConten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -100,7 +100,7 @@ namespace HPReserger
         }
         private void Txtbusca_TextChanged(object sender, EventArgs e)
         {
-            Grid.DataSource = CapaLogica.ListarCuentasContables(Txtbusca.Text, tipobusca);
+            Grid.DataSource = CapaLogica.ListarCuentasContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca);
             msg(Grid);
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -113,7 +113,6 @@ namespace HPReserger
             tipobusca = 3;
             Txtbusca_TextChanged(sender, e);
         }
-
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             tipobusca = 2;
@@ -136,7 +135,6 @@ namespace HPReserger
                 }
                 else msj("No Se puede Agregar, Es Titulo");
             }
-
         }
         public void msj(string cadena)
         {
@@ -146,15 +144,11 @@ namespace HPReserger
         {
             AgregarSeleccion();
         }
-
         private void Grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
-            {
                 AgregarSeleccion();
-            }
         }
-
         private void dtgConten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             int y = e.RowIndex;
@@ -170,7 +164,6 @@ namespace HPReserger
             }
             msj("");
         }
-
         private void btnaddgroup_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in Grid.Rows)
@@ -189,7 +182,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
         private void dtgConten_KeyDown(object sender, KeyEventArgs e)
         {
@@ -214,18 +207,30 @@ namespace HPReserger
         {
             this.Close();
         }
-
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            List<string> Lista = new List<string>();
+            foreach (DataGridViewRow item in dtgConten.Rows)
+            {
+                Lista.Add(item.Cells[Cuentax.Name].Value.ToString());
+            }
             Cuentas = string.Join(",", (ListaCuentas.ToArray()));
+            Cuentas = string.Join(",", (Lista.ToArray()));
             //msg(Cuentas);
             DialogResult = DialogResult.OK;
             this.Close();
         }
 
-        private void Txtbusca_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            Txtbusca.SelectAll();
+            string cadena = "999999";
+            if (!ListaCuentas.Exists(cust => cust == cadena))
+            {
+                ListaCuentas.Add(cadena.Trim());
+                tablita.Rows.Add(cadena.Trim());
+                msj("Agregado");
+            }
+            else msj("No Se puede Agregar, Ya Existe");
         }
     }
 }

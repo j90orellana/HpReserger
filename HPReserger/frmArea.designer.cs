@@ -35,8 +35,6 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboarea = new System.Windows.Forms.ComboBox();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,20 +48,18 @@ namespace HPReserger
             this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
-            this.dtgconten = new Dtgconten();
+            this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gerenciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CentroCostox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnlimpiar = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Txtbusca = new System.Windows.Forms.TextBox();
             this.btngermas = new System.Windows.Forms.Button();
             this.cboccosto = new System.Windows.Forms.ComboBox();
             this.btnccostomas = new System.Windows.Forms.Button();
             this.dtgareas = new System.Windows.Forms.DataGridView();
+            this.Txtbusca = new HpResergerUserControls.txtBuscar();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgareas)).BeginInit();
             this.SuspendLayout();
@@ -206,24 +202,25 @@ namespace HPReserger
             this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            //this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            //this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
-            //this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            //this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            //this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigox,
@@ -234,31 +231,22 @@ namespace HPReserger
             this.Codx});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            //this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            //this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.dtgconten.EnableHeadersVisualStyles = false;
+            this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(15, 118);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.dtgconten.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(545, 338);
@@ -272,7 +260,6 @@ namespace HPReserger
             this.codigox.Name = "codigox";
             this.codigox.ReadOnly = true;
             this.codigox.Visible = false;
-            this.codigox.Width = 45;
             // 
             // Gerenciax
             // 
@@ -290,7 +277,7 @@ namespace HPReserger
             this.Descripcionx.HeaderText = "Descripción";
             this.Descripcionx.Name = "Descripcionx";
             this.Descripcionx.ReadOnly = true;
-            this.Descripcionx.Width = 92;
+            this.Descripcionx.Width = 93;
             // 
             // Costox
             // 
@@ -299,7 +286,6 @@ namespace HPReserger
             this.Costox.Name = "Costox";
             this.Costox.ReadOnly = true;
             this.Costox.Visible = false;
-            this.Costox.Width = 58;
             // 
             // CentroCostox
             // 
@@ -317,43 +303,6 @@ namespace HPReserger
             this.Codx.Name = "Codx";
             this.Codx.ReadOnly = true;
             this.Codx.Visible = false;
-            this.Codx.Width = 50;
-            // 
-            // btnlimpiar
-            // 
-            this.btnlimpiar.BackColor = System.Drawing.Color.White;
-            this.btnlimpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnlimpiar.BackgroundImage")));
-            this.btnlimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnlimpiar.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.btnlimpiar.FlatAppearance.BorderSize = 0;
-            this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlimpiar.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(3)));
-            this.btnlimpiar.Location = new System.Drawing.Point(100, 91);
-            this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(20, 21);
-            this.btnlimpiar.TabIndex = 77;
-            this.btnlimpiar.UseVisualStyleBackColor = false;
-            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 94);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
-            this.label5.TabIndex = 76;
-            this.label5.Text = "BUSCAR";
-            // 
-            // Txtbusca
-            // 
-            this.Txtbusca.BackColor = System.Drawing.SystemColors.Info;
-            this.Txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.Txtbusca.Cursor = System.Windows.Forms.Cursors.Help;
-            this.Txtbusca.Location = new System.Drawing.Point(126, 92);
-            this.Txtbusca.Name = "Txtbusca";
-            this.Txtbusca.Size = new System.Drawing.Size(434, 20);
-            this.Txtbusca.TabIndex = 75;
-            this.Txtbusca.TextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
             // 
             // btngermas
             // 
@@ -396,18 +345,30 @@ namespace HPReserger
             this.dtgareas.Size = new System.Drawing.Size(350, 150);
             this.dtgareas.TabIndex = 81;
             // 
+            // Txtbusca
+            // 
+            this.Txtbusca.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Txtbusca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
+            this.Txtbusca.ImgBotonCerrar = null;
+            this.Txtbusca.Location = new System.Drawing.Point(15, 90);
+            this.Txtbusca.Name = "Txtbusca";
+            this.Txtbusca.Size = new System.Drawing.Size(457, 22);
+            this.Txtbusca.TabIndex = 82;
+            this.Txtbusca.BuscarClick += new System.EventHandler(this.Txtbusca_TextChanged);
+            this.Txtbusca.ClickLimpiarboton += new System.EventHandler(this.btnlimpiar_Click);
+            this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
+            // 
             // frmArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(568, 493);
+            this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.dtgareas);
             this.Controls.Add(this.btnccostomas);
             this.Controls.Add(this.cboccosto);
             this.Controls.Add(this.btngermas);
-            this.Controls.Add(this.btnlimpiar);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
@@ -452,9 +413,6 @@ namespace HPReserger
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnaceptar;
         private Dtgconten dtgconten;
-        private System.Windows.Forms.Button btnlimpiar;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox Txtbusca;
         private System.Windows.Forms.Button btngermas;
         private System.Windows.Forms.ComboBox cboccosto;
         private System.Windows.Forms.Button btnccostomas;
@@ -465,5 +423,6 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn Costox;
         private System.Windows.Forms.DataGridViewTextBoxColumn CentroCostox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codx;
+        public txtBuscar Txtbusca;
     }
 }

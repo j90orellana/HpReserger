@@ -157,6 +157,7 @@ namespace HPReserger
                 Mostrado = true;
             else Mostrado = false;
             VerFotoAdmin();
+            Text = Text + $" [{frmLogin.Basedatos}]";
             //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control            
         }
         public void VerFotoAdmin()
@@ -2658,6 +2659,30 @@ namespace HPReserger
         {
             frmconfigsitua = null;
         }
+        frmConfiguracionBalanceGanacias frmconfigbalanganancias;
+        private void estadoDeGananciasYPerdidasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmconfigbalanganancias == null)
+            {
+                frmconfigbalanganancias = new frmConfiguracionBalanceGanacias();
+                frmconfigbalanganancias.MdiParent = this;
+                frmconfigbalanganancias.Icon = ICono;
+                //presus.StartPosition = FormStartPosition.CenterParent;
+                // pbfotoempleado.Visible = false;
+                frmconfigbalanganancias.FormClosed += new FormClosedEventHandler(cerrarconfigudebalanceganancias);
+                frmconfigbalanganancias.Show();
+            }
+            else
+            {
+                frmconfigbalanganancias.Activate();
+                ValidarVentanas(frmconfigbalanganancias);
+            }
+        }
+
+        private void cerrarconfigudebalanceganancias(object sender, FormClosedEventArgs e)
+        {
+            frmconfigbalanganancias = null;
+        }
 
         private void FlowPanel_ControlAdded(object sender, ControlEventArgs e)
         {
@@ -2851,8 +2876,8 @@ namespace HPReserger
             }
             else
             {
-                frmcierre.Activate();
-                ValidarVentanas(frmcierre);
+                frmdetraccion.Activate();
+                ValidarVentanas(frmdetraccion);
             }
         }
         private void cerrardetracioneos(object sender, FormClosedEventArgs e)
@@ -2880,6 +2905,72 @@ namespace HPReserger
         private void cerrarcomprobatepagiot(object sender, FormClosedEventArgs e)
         {
             frmcomprobantepagito = null;
+        }
+        frmDetracionesPago frmdetracionpago;
+        private void pagoDetraccionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmdetracionpago == null)
+            {
+                frmdetracionpago = new frmDetracionesPago();
+                frmdetracionpago.MdiParent = this;
+                frmdetracionpago.Icon = ICono;
+                frmdetracionpago.FormClosed += new FormClosedEventHandler(cerrardetraccionpago);
+                frmdetracionpago.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmdetracionpago.Activate();
+                ValidarVentanas(frmdetracionpago);
+            }
+        }
+        private void cerrardetraccionpago(object sender, FormClosedEventArgs e)
+        {
+            frmdetracionpago = null;
+        }
+        frmClientes frmclien;
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmclien == null)
+            {
+                frmclien = new frmClientes();
+                frmclien.MdiParent = this;
+                frmclien.Icon = ICono;
+                frmclien.FormClosed += new FormClosedEventHandler(cerrafrmcliente);
+                frmclien.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmclien.Activate();
+                ValidarVentanas(frmclien);
+            }
+        }
+        private void cerrafrmcliente(object sender, FormClosedEventArgs e)
+        {
+            frmclien = null;
+        }
+        frmCotizacionCliente frmcotizacioncliente;
+        private void cotizacionesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (frmcotizacioncliente == null)
+            {
+                frmcotizacioncliente = new frmCotizacionCliente();
+                frmcotizacioncliente.MdiParent = this;
+                frmcotizacioncliente.Icon = ICono;
+                frmcotizacioncliente.FormClosed += new FormClosedEventHandler(cerrarCotizacionCLiente);
+                frmcotizacioncliente.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcotizacioncliente.Activate();
+                ValidarVentanas(frmcotizacioncliente);
+            }
+        }
+        private void cerrarCotizacionCLiente(object sender, FormClosedEventArgs e)
+        {
+            frmcotizacioncliente = null;
         }
     }
 }

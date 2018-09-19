@@ -69,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 44);
+            this.label2.Location = new System.Drawing.Point(17, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 0;
@@ -79,7 +79,7 @@
             // 
             this.txtdes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtdes.Enabled = false;
-            this.txtdes.Location = new System.Drawing.Point(86, 40);
+            this.txtdes.Location = new System.Drawing.Point(86, 39);
             this.txtdes.Name = "txtdes";
             this.txtdes.Size = new System.Drawing.Size(236, 20);
             this.txtdes.TabIndex = 3;
@@ -103,7 +103,7 @@
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmodificar.Location = new System.Drawing.Point(328, 38);
+            this.btnmodificar.Location = new System.Drawing.Point(328, 37);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 24);
             this.btnmodificar.TabIndex = 3;
@@ -117,7 +117,7 @@
             this.btneliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
             this.btneliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btneliminar.Location = new System.Drawing.Point(328, 65);
+            this.btneliminar.Location = new System.Drawing.Point(328, 63);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 24);
             this.btneliminar.TabIndex = 3;
@@ -186,7 +186,7 @@
             // 
             this.cboperfiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboperfiles.FormattingEnabled = true;
-            this.cboperfiles.Location = new System.Drawing.Point(86, 67);
+            this.cboperfiles.Location = new System.Drawing.Point(86, 65);
             this.cboperfiles.Name = "cboperfiles";
             this.cboperfiles.Size = new System.Drawing.Size(236, 21);
             this.cboperfiles.TabIndex = 4;
@@ -195,7 +195,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 71);
+            this.label3.Location = new System.Drawing.Point(36, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 5;
@@ -207,9 +207,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treePerfiles.CheckBoxes = true;
-            this.treePerfiles.Location = new System.Drawing.Point(12, 95);
+            this.treePerfiles.Location = new System.Drawing.Point(12, 93);
             this.treePerfiles.Name = "treePerfiles";
-            this.treePerfiles.Size = new System.Drawing.Size(398, 272);
+            this.treePerfiles.Size = new System.Drawing.Size(398, 274);
             this.treePerfiles.TabIndex = 6;
             this.treePerfiles.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treePerfiles_BeforeCheck);
             this.treePerfiles.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treePerfiles_AfterCheck);

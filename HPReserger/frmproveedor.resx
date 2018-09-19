@@ -169,17 +169,6 @@
         7NEIcgmGsxEYNRphgOyEhAyAishPyiBAcWZCBoSzMwMDADs0oPCqFdu0AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnlimpiar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAThJREFUOE9j
-        GPwgrrJSOKyw7k14Ud27lKoJ4lBh4kBSWSdvTHX7hZC86v8heVX/gQZ9ji7rlIFK4wdZDVN54uu6DyfU
-        dv+Pq2r/H5oPM6T2c1x1nzRUGXaQmzuJHahxO0gzDMeCDIG7pPZ9bEmDGFQ5Krh9+zb7vtMX5qQ29n1B
-        NgBmSAjUJVGljROgWhDg4sWL3Oev3z14/sad/6ev3LyW2TLpHTZDwosarjg4NLBAtUHA1atXeWCaYfjU
-        lRvXM1omvkU2ABgu0xgY/jNCtUEANs0IQ27CDcGqGQTO3bjdgU0zDJ+8dP1KZuuk2aGhq5ihWlDB2et3
-        jIEKP6BrROC7i1f9/49dMwycv3XL4PyN228xNd+e9v8/FmdjAxev3TYCanoH03z0/OXHG/Yd2Y0NQ7UM
-        OGBgAAA9LzOqDBK8mAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="RUC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -274,6 +263,15 @@
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAElJREFUOE9j
         wAX8qrb+h2GoEGkApLF7+4dRA4gxAKQAF4YZgAvDDQApJBWjGIALwxTiwmADcAGQAhSbSAWjBkAMgGGo
         EC0AAwMA9Sfa6uuaOloAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="Txtbusca.FondoBoton" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAM1JREFUOE+t
+        0s0KAVEYgOHJX7EhVpbKSrkGG+UCrFgo9izsKBvZyFY2pPyUhWLhdtyK8n7zjTRm5kyNeevJd2ZxOuaM
+        FXdFrHDEBQec0UBoVTxQt1ffclhibK8CSuMOOUFQM7R09NZBW8fAUpC/5dsOWR2NbZDX0d3J+Q1rjoqO
+        7tYo6WhsD9+TNjHSMbACjCeV+67p6CkJ+SZ+r9iVvJwresjIAyfZ9IYnhvLAVAJdyK18vsQFyujjhSki
+        N4BsMrFXEYtlE3kXWx3/yrLe2jcb46GYgZwAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

@@ -48,7 +48,7 @@ namespace HPReserger
             if (gerencia.ShowDialog() == DialogResult.OK)
             {
                 CArgargErencias();
-                cboarea.SelectedValue = gerencia.estado; 
+                cboarea.SelectedValue = gerencia.estado;
             }
         }
 
@@ -86,7 +86,7 @@ namespace HPReserger
         private void Txtbusca_TextChanged(object sender, EventArgs e)
         {
             estado = 0;
-            dtgconten.DataSource = CArea.ListarAreas(Txtbusca.Text);
+            dtgconten.DataSource = CArea.ListarAreas(Txtbusca.EstaLLeno() ? Txtbusca.Text : "");
         }
         public void Desactivar()
         {

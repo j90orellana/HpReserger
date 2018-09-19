@@ -30,13 +30,10 @@ namespace HPReserger
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmlistarcuentas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnlimpiar = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.Txtbusca = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmlistarcuentas));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -46,45 +43,10 @@ namespace HPReserger
             this.btnaceptar = new System.Windows.Forms.Button();
             this.lblmsg = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.Txtbusca = new HpResergerUserControls.txtBuscar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnlimpiar
-            // 
-            this.btnlimpiar.BackColor = System.Drawing.Color.White;
-            this.btnlimpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnlimpiar.BackgroundImage")));
-            this.btnlimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnlimpiar.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.btnlimpiar.FlatAppearance.BorderSize = 0;
-            this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlimpiar.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(3)));
-            this.btnlimpiar.Location = new System.Drawing.Point(88, 12);
-            this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(20, 21);
-            this.btnlimpiar.TabIndex = 143;
-            this.btnlimpiar.UseVisualStyleBackColor = false;
-            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(13, 20);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(51, 13);
-            this.label22.TabIndex = 142;
-            this.label22.Text = "BUSCAR";
-            // 
-            // Txtbusca
-            // 
-            this.Txtbusca.BackColor = System.Drawing.SystemColors.Info;
-            this.Txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.Txtbusca.Cursor = System.Windows.Forms.Cursors.Help;
-            this.Txtbusca.Location = new System.Drawing.Point(114, 12);
-            this.Txtbusca.Name = "Txtbusca";
-            this.Txtbusca.Size = new System.Drawing.Size(525, 20);
-            this.Txtbusca.TabIndex = 141;
-            this.Txtbusca.TextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
             // 
             // groupBox1
             // 
@@ -232,16 +194,29 @@ namespace HPReserger
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Txtbusca
+            // 
+            this.Txtbusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Txtbusca.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Txtbusca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
+            this.Txtbusca.ImgBotonCerrar = null;
+            this.Txtbusca.Location = new System.Drawing.Point(12, 12);
+            this.Txtbusca.Name = "Txtbusca";
+            this.Txtbusca.Size = new System.Drawing.Size(627, 22);
+            this.Txtbusca.TabIndex = 146;
+            this.Txtbusca.BuscarClick += new System.EventHandler(this.Txtbusca_TextChanged);
+            this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
+            // 
             // frmlistarcuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 376);
+            this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblmsg);
-            this.Controls.Add(this.btnlimpiar);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btncancelar);
@@ -261,9 +236,6 @@ namespace HPReserger
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnlimpiar;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton4;
         private Dtgconten dtgconten;
@@ -271,8 +243,8 @@ namespace HPReserger
         private System.Windows.Forms.Button btnaceptar;
         private System.Windows.Forms.Label lblmsg;
         private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.TextBox Txtbusca;
         public System.Windows.Forms.RadioButton radioButton2;
         public System.Windows.Forms.RadioButton radioButton1;
+        public txtBuscar Txtbusca;
     }
 }

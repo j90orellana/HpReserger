@@ -204,6 +204,7 @@
             this.txtdescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtdescripcion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtdescripcion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtdescripcion.Enabled = false;
             this.txtdescripcion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(145)))), ((int)(((byte)(154)))));
             this.txtdescripcion.Location = new System.Drawing.Point(95, 14);
@@ -223,6 +224,7 @@
             this.txtporcentaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtporcentaje.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtporcentaje.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtporcentaje.Enabled = false;
             this.txtporcentaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtporcentaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(145)))), ((int)(((byte)(154)))));
             this.txtporcentaje.Location = new System.Drawing.Point(95, 40);
@@ -366,8 +368,9 @@
             this.txtBuscar1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.txtBuscar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtBuscar1.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtBuscar1.FondoBoton")));
-            this.txtBuscar1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar1.ForeColor = System.Drawing.Color.Black;
+            this.txtBuscar1.ImgBotonCerrar = null;
             this.txtBuscar1.Location = new System.Drawing.Point(15, 66);
             this.txtBuscar1.Name = "txtBuscar1";
             this.txtBuscar1.Size = new System.Drawing.Size(390, 22);
@@ -399,6 +402,7 @@
             this.MinimumSize = new System.Drawing.Size(637, 439);
             this.Name = "frmdetracciones";
             this.Nombre = "Configuración de las Detracciones";
+            this.Tag = "70114";
             this.Text = "Configuración de las Detracciones";
             this.Load += new System.EventHandler(this.frmdetracciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

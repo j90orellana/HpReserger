@@ -24,8 +24,8 @@ namespace HPReserger
         }
         public void CargarDatos()
         {
-            Dtgconten.DataSource = CapaLogica.BalanceParametros(0, "", "", "", "", frmLogin.CodigoUsuario);
-            Dtgconten.Columns[Codigox.Name].ReadOnly = Dtgconten.Columns[Cuentasx.Name].ReadOnly = Dtgconten.Columns[descripcionx.Name].ReadOnly = true;
+            Dtgconten.DataSource = CapaLogica.BalanceParametros(0, 0, "", "", "", "", frmLogin.CodigoUsuario);
+            Dtgconten.Columns[posix.Name].ReadOnly = Dtgconten.Columns[Codigox.Name].ReadOnly = Dtgconten.Columns[Cuentasx.Name].ReadOnly = Dtgconten.Columns[descripcionx.Name].ReadOnly = true;
             lblmsg2.Text = $"Total de Registros: {Dtgconten.RowCount}";
         }
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -36,10 +36,10 @@ namespace HPReserger
                 txtcodigo.Text = Dtgconten[Codigox.Name, y].Value.ToString();
                 txtcuentas.Text = Dtgconten[Cuentasx.Name, y].Value.ToString();
                 txtdescripcion.Text = Dtgconten[descripcionx.Name, y].Value.ToString();
+                numPos.Value = (int)Dtgconten[posix.Name, y].Value;
                 if (estado == 0)
                     btnmodificar.Enabled = true;
                 else btnmodificar.Enabled = false;
-
                 string cade = Dtgconten[Codigox.Name, e.RowIndex].Value.ToString();
                 if (estado == 2)
                 {
@@ -61,11 +61,11 @@ namespace HPReserger
         }
         public void Bloquear()
         {
-            txtcodigo.ReadOnly = txtcuentas.ReadOnly = txtdescripcion.ReadOnly = true;
+            numPos.ReadOnly = txtcodigo.ReadOnly = txtcuentas.ReadOnly = txtdescripcion.ReadOnly = true;
         }
         public void Desbloquear()
         {
-            txtcodigo.ReadOnly = txtdescripcion.ReadOnly = false;
+            numPos.ReadOnly = txtcodigo.ReadOnly = txtdescripcion.ReadOnly = false;
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
@@ -73,7 +73,7 @@ namespace HPReserger
             Activar(btnaceptar, Dtgconten);
             Desactivar(btnnuevo, btnmodificar);
             Bloquear();
-            Dtgconten.Columns[Codigox.Name].ReadOnly = Dtgconten.Columns[descripcionx.Name].ReadOnly = false;
+            Dtgconten.Columns[posix.Name].ReadOnly = Dtgconten.Columns[Codigox.Name].ReadOnly = Dtgconten.Columns[descripcionx.Name].ReadOnly = false;
             Dtgconten.Columns[Cuentasx.Name].ReadOnly = true;
         }
         public void Activar(params object[] control)
@@ -88,7 +88,6 @@ namespace HPReserger
             foreach (object x in control)
                 ((Control)x).Enabled = false;
         }
-
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado != 0)
@@ -106,15 +105,28 @@ namespace HPReserger
         {
             if (estado == 1)
             {
-                CapaLogica.BalanceParametros(1, txtcodigo.Text, txtcodigo.Text, txtdescripcion.Text, txtcuentas.Text, frmLogin.CodigoUsuario);
+                CapaLogica.BalanceParametros(1, int.Parse(numPos.Value.ToString()), txtcodigo.Text, txtcodigo.Text, txtdescripcion.Text, txtcuentas.Text, frmLogin.CodigoUsuario);
                 msg("Agregado con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
             {
+                Boolean prueba = false;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
-                    CapaLogica.BalanceParametros(2, item.Cells[codRealx.Name].Value.ToString(), item.Cells[Codigox.Name].Value.ToString(), item.Cells[descripcionx.Name].Value.ToString(), item.Cells[Cuentasx.Name].Value.ToString(), frmLogin.CodigoUsuario);
+                    int val = 0;
+                    if (!int.TryParse(item.Cells[posix.Name].Value.ToString(), out val))
+                    {
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[posix.Name]);
+                        prueba = true;
+                    }
+                    else
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[posix.Name]);
+                }
+                if (prueba) { msg("Revise las Celdas"); return; }
+                foreach (DataGridViewRow item in Dtgconten.Rows)
+                {
+                    CapaLogica.BalanceParametros(2, (int)item.Cells[posix.Name].Value, item.Cells[codRealx.Name].Value.ToString(), item.Cells[Codigox.Name].Value.ToString(), item.Cells[descripcionx.Name].Value.ToString(), item.Cells[Cuentasx.Name].Value.ToString(), frmLogin.CodigoUsuario);
                 }
                 msg("Modificado con Exito");
                 btncancelar_Click(sender, e);
@@ -122,9 +134,8 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void Dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex, y = e.RowIndex;
@@ -141,7 +152,6 @@ namespace HPReserger
                     Dtgconten[Cuentasx.Name, y].Value = frmliscuentas.Cuentas.Trim();
                     Dtgconten.RefreshEdit();
                 }
-
             }
         }
         private void txtcuentas_DoubleClick(object sender, EventArgs e)
@@ -156,6 +166,25 @@ namespace HPReserger
                     txtcuentas.Text = frmliscuentas.Cuentas;
                 }
             }
+        }
+        private void btndetalle_Click(object sender, EventArgs e)
+        {
+            if (Dtgconten.RowCount > 0)
+            {
+                int x = Dtgconten.CurrentCell.RowIndex;
+                int y = Dtgconten.CurrentCell.ColumnIndex;
+                Dtgconten_CellDoubleClick(sender, new DataGridViewCellEventArgs(y, x));
+            }
+        }
+
+        private void Dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Dtgconten_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            msg(e.Exception.Message);
         }
     }
 }

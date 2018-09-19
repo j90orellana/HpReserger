@@ -166,7 +166,6 @@ namespace HPReserger
                 cbodistrito.DropDownStyle = ComboBoxStyle.DropDownList;
             }
         }
-
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -176,9 +175,6 @@ namespace HPReserger
             estado = 0;
             dtgconten.DataSource = CDistrito.ListarDistritos(Txtbusca.Text);
         }
-
-
-
         private void cboprovincia_SelectedIndexChanged(object sender, EventArgs e)
         {
             try

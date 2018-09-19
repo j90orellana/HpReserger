@@ -179,7 +179,7 @@ namespace HPReserger
         public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
             // usp_listar_proveedores
-            dtgconten.DataSource = CProveedor.ListarProveedores(Txtbusca.Text, tipobusca);
+            dtgconten.DataSource = CProveedor.ListarProveedores(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca);
             msg(dtgconten);
         }
         public void msg(DataGridView conteo)
@@ -213,8 +213,8 @@ namespace HPReserger
                 txtcuentadetracciones.Text = dtgconten["CTADETRACCIONES", y].Value.ToString();
                 cboregimen.SelectedValue = dtgconten["REGIMEN", y].Value.ToString();
                 cbotipopersona.SelectedIndex = int.Parse(dtgconten["TIPOPER", y].Value.ToString()) - 1;
-                cboctasoles.SelectedIndex = int.Parse(dtgconten["TIPOCTASOLES", y].Value.ToString()) - 1;
-                cboctadolares.SelectedIndex = int.Parse(dtgconten["TIPOCTADOLARES", y].Value.ToString()) - 1;
+                cboctasoles.SelectedIndex = int.Parse(dtgconten["TIPOCTASOLES", y].Value.ToString() == "" ? "0" : dtgconten["TIPOCTASOLES", y].Value.ToString()) - 1;
+                cboctadolares.SelectedIndex = int.Parse(dtgconten["TIPOCTADOLARES", y].Value.ToString() == "" ? "0" : dtgconten["TIPOCTADOLARES", y].Value.ToString()) - 1;
                 txtplazofijo.Text = dtgconten[PLAZOPAGOX.Name, y].Value.ToString();
             }
         }
@@ -247,7 +247,6 @@ namespace HPReserger
             cbobancosoles.Enabled = a;
             cboregimen.Enabled = a;
             dtgconten.Enabled = !a;
-            btnlimpiar.Enabled = !a;
             Txtbusca.Enabled = !a;
             btnnuevo.Enabled = !a;
             btnmodificar.Enabled = !a;
@@ -256,11 +255,11 @@ namespace HPReserger
         }
         public void Activar()
         {
-            btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
+            Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
         }
         public void Desactivar()
         {
-            btnlimpiar.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
+            Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
         }
         public void btnnuevo_Click(object sender, EventArgs e)
         {

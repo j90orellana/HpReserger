@@ -21,7 +21,7 @@ namespace HPReserger
         {
             if (estado != 0)
             {
-                Activar(cboarea, btnmodificar, cbogerencia, btnr, btnlimpiar, txtbuscar, cbotipos);
+                Activar(cboarea, btnmodificar, cbogerencia, btnr,  txtbuscar, cbotipos);
                 Desactivar(cboCargoPuesto, btnagregar);
                 estado = 0;
                 dtgconten.DataSource = CapaLogica.CargosAreas(0, 0, 0, "");
@@ -56,7 +56,7 @@ namespace HPReserger
             if (cboarea.SelectedIndex >= 0)
             {
                 estado = 1;
-                Desactivar(btnmodificar, cboarea, cbogerencia, btnr, btnlimpiar, txtbuscar,cbotipos);
+                Desactivar(btnmodificar, cboarea, cbogerencia, btnr,  txtbuscar, cbotipos);
                 Activar(cboCargoPuesto, btnagregar);
                 dtgconten.DataSource = CapaLogica.CargosAreas(10, (int)cboCargoPuesto.SelectedValue, (int)cboarea.SelectedValue, "");
             }
@@ -81,7 +81,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         private void dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
@@ -149,11 +149,10 @@ namespace HPReserger
         {
             txtbuscar.Text = "";
         }
-
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
             //50 filtrar
-            dtgconten.DataSource = CapaLogica.CargosAreas(50, cbotipos.SelectedIndex, 0, txtbuscar.Text);
+            dtgconten.DataSource = CapaLogica.CargosAreas(50, cbotipos.SelectedIndex, 0, txtbuscar.EstaLLeno() ? txtbuscar.Text : "");
         }
     }
 }

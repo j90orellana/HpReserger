@@ -35,7 +35,7 @@ namespace HPReserger
             {
                 estado = 0;
                 Activar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtBuscar1);
-                Desactivar(btnaceptar, txtdescripcion);
+                Desactivar(btnaceptar, txtdescripcion, txtporcentaje);
             }
             else
                 this.Close();
@@ -134,7 +134,7 @@ namespace HPReserger
             CArgarDatosDetraccion();
             LimpiarProductoNuevo();
             Desactivar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtBuscar1);
-            Activar(btnaceptar, txtdescripcion);
+            Activar(btnaceptar, txtdescripcion, txtporcentaje);
             estado = 1;
             txtdescripcion.Focus();
         }
@@ -150,7 +150,7 @@ namespace HPReserger
             CodigoDet = (int)dtgconten.CurrentRow.Cells[id_detraccionx.Name].Value;
             estado = 2;
             Desactivar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtBuscar1);
-            Activar(btnaceptar, txtdescripcion);
+            Activar(btnaceptar, txtdescripcion, txtporcentaje);
             txtdescripcion.Focus();
         }
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -171,14 +171,14 @@ namespace HPReserger
             //NUEVO           
             if (estado == 1)
             {
-                CapaLogica.Detraciones(1, 0, txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);                
+                CapaLogica.Detraciones(1, 0, txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);
                 msg("Guardado Exitosamente");
                 estado = 0;
             }
             //MODIFICAR
             if (estado == 2)
             {
-                CapaLogica.Detraciones(2, CodigoDet, txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);               
+                CapaLogica.Detraciones(2, CodigoDet, txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);
                 msg("Guardado Exitosamente");
                 estado = 0;
             }
@@ -190,8 +190,8 @@ namespace HPReserger
             }
             CArgarDatosDetraccion();
             Activar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtBuscar1);
-            Desactivar(btnaceptar, txtdescripcion);
-            
+            Desactivar(btnaceptar, txtdescripcion, txtporcentaje);
+
         }
         public string detraccion = "No";
         private void btneliminar_Click(object sender, EventArgs e)
@@ -205,11 +205,12 @@ namespace HPReserger
         }
         private void txtBuscar1_ClickBotonBuscar(object sender, EventArgs e)
         {
-            if (txtBuscar1.Text != "")
+            if (txtBuscar1.EstaLLeno())
             {
                 CArgarDatosDetraccion();
                 DataTable datos = (DataTable)dtgconten.DataSource;
-                string filtro = $"Desc_Detraccion like '%{txtBuscar1.Text}%'";
+                string columna = txtBuscar1.EstaLLeno() ? txtBuscar1.Text : "";
+                string filtro = $"Desc_Detraccion like '%{columna}%'";
                 DataRow[] dato = datos.Select(filtro);
                 if (dato.Count() > 0)
                     dtgconten.DataSource = dato.CopyToDataTable();

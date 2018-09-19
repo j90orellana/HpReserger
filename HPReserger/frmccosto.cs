@@ -18,6 +18,7 @@ namespace HPReserger
         }
         public Boolean Consulta = false;
         public int ConsulCodi = 0;
+        public string ConsulCodigo = "";
         public int estado { get; set; }
         public string cadeaux = ""; public string siono = "";
         HPResergerCapaLogica.HPResergerCL Ccostos = new HPResergerCapaLogica.HPResergerCL();
@@ -26,7 +27,8 @@ namespace HPReserger
             CargarCuentas();
             estado = 0;
             Cargarsiyno(cbotiene);
-            radioButton2.Checked = true; dtgconten.DataSource = Ccostos.ListarCentrosdeCosto(0, 0, null);
+            radioButton2.Checked = true;
+            dtgconten.DataSource = Ccostos.ListarCentrosdeCosto(0, 0, null);
             dtgconten.Focus();
         }
         public void CargarCuentas()
@@ -60,7 +62,7 @@ namespace HPReserger
         {
             if (estado == 0)
             {
-                this.Visible = false;
+                this.Close();
             }
             else
             {
@@ -97,17 +99,6 @@ namespace HPReserger
 
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            if (Consulta)
-            {
-                if (dtgconten.RowCount > 0)
-                {
-                    int x = dtgconten.CurrentCell.RowIndex;
-                    ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
-                }
-                DialogResult = DialogResult.OK;
-                this.Close();
-            }
-
             cadeaux = cbocuentas.Text; siono = cbotiene.Text;
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
             if (!string.IsNullOrWhiteSpace(txtcosto.Text))
@@ -134,6 +125,17 @@ namespace HPReserger
                             }
                         }
                     }
+                }
+                if (Consulta)
+                {
+                    if (dtgconten.RowCount > 0)
+                    {
+                        int x = dtgconten.CurrentCell.RowIndex;
+                        ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
+                        ConsulCodigo = dtgconten[Descripcion.Name, x].Value.ToString();
+                    }
+                    DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 estado = 0;
                 frmccosto_Load(sender, e);
@@ -212,7 +214,8 @@ namespace HPReserger
 
         private void txtbuscar_TextChanged_1(object sender, EventArgs e)
         {
-            dtgconten.DataSource = Ccostos.ListarCentrosdeCosto(CODIGO, CENTRO, txtbuscar.EstaLLeno() ? txtbuscar._Text : "");
+            if (txtbuscar.EstaLLeno())
+                dtgconten.DataSource = Ccostos.ListarCentrosdeCosto(CODIGO, CENTRO, txtbuscar.EstaLLeno() ? txtbuscar.Text : "");
         }
 
         private void Limpiar_Click_1(object sender, EventArgs e)
@@ -256,18 +259,12 @@ namespace HPReserger
 
         private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Consulta)
-            {
-                int x = e.RowIndex;
-                ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
-                this.Close();
-            }
+
         }
         private void cbotiene_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbotiene.Text == "SI")
                 cbocuentas.Enabled = true;
-
             else
                 cbocuentas.Enabled = false;
         }
@@ -284,9 +281,10 @@ namespace HPReserger
             {
                 frmcuentas = new frmcuentacontable();
                 frmcuentas.Consulta = true;
+                frmcuentas.Icon = Icon;
                 frmcuentas.FormClosed += Frmcuentas_FormClosed;
-                frmcuentas.Txtbusca._Text = cbocuentas.SelectedValue == null ? "" : cbocuentas.SelectedValue.ToString();
                 frmcuentas.Show();
+                frmcuentas.Txtbusca.Text = cbocuentas.SelectedValue == null ? "" : cbocuentas.SelectedValue.ToString();
             }
             else frmcuentas.Activate();
         }
@@ -294,6 +292,17 @@ namespace HPReserger
         {
             if (frmcuentas.Encontrado) cbocuentas.SelectedValue = frmcuentas.CodigoCuenta; cbotiene.Text = "SI";
             frmcuentas = null;
+        }
+
+        private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Consulta)
+            {
+                int x = e.RowIndex;
+                ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
+                ConsulCodigo = dtgconten[Descripcion.Name, x].Value.ToString();
+                this.Close();
+            }
         }
 
         private void chkcodigo_CheckedChanged(object sender, EventArgs e)

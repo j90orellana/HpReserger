@@ -445,7 +445,7 @@ namespace HPReserger
                         {
                             Capalogica.ActualizarBoletas(int.Parse(filita["tipodoc"].ToString()), (string)filita["nrodoc"], (DateTime)filita["fecha"], 2);
                         }
-                        msg("Facturas Pagadas!");
+                        msg("Boletas Pagadas!");
                     }
                 }
                 if (ResultadoDialogo == DialogResult.No)
@@ -457,7 +457,7 @@ namespace HPReserger
                         {
                             Capalogica.ActualizarBoletas(int.Parse(filita.tipo), filita.nro, filita.fecha, 2);
                         }
-                        msg("Facturas Pagadas!");
+                        msg("Boletas Pagadas!");
                     }
                 }
                 Comprobantes.Clear();

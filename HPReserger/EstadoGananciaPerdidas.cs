@@ -43,7 +43,7 @@ namespace HPReserger
         {
             foreach (DataGridViewRow item in grid.Rows)
             {
-                if (item.Cells[indexx.Name].Value.ToString().Substring(1) == "9")
+                if (item.Cells[indexx.Name].Value.ToString().Substring(2) == "99" || item.Cells[indexx.Name].Value.ToString().Substring(3) == "0")
                 {
                     foreach (DataGridViewCell Celda in item.Cells)
                     {
@@ -67,12 +67,25 @@ namespace HPReserger
         DataTable Reportes;
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            if (comboMesAño.GetFecha().Year >= DateTime.Now.Year && comboMesAño.GetFecha().Month >= DateTime.Now.Month)
+
+            DataTable Datitos = CapaLogica.Periodos(5, (int)cboempresas.SelectedValue, comboMesAño.GetFecha());
+            if (Datitos.Rows.Count == 0)
             {
-                msg("Mes no está Cerrado");
                 Reportes.Clear();
+                HPResergerFunciones.Utilitarios.msg("Periodo no está Creado");
                 return;
             }
+            DataRow filita = Datitos.Rows[0];
+            if ((int)filita["estado"] == 3)
+            {
+                HPResergerFunciones.Utilitarios.msg("Periodo Cerrado");
+            }
+            //if (comboMesAño.GetFecha().Year >= DateTime.Now.Year && comboMesAño.GetFecha().Month >= DateTime.Now.Month)
+            //{
+            //    msg("Mes no está Cerrado");
+            //    Reportes.Clear();
+            //    return;
+            //}
 
             if (cboempresas.Items.Count > 0)
             {

@@ -709,7 +709,7 @@ namespace HPResergerFunciones
                      }
                  }
              }
-             */        
+             */
         public static List<string> ListarHojasDeunExcel(string ruta)
         {
             List<string> NombresHojas = new List<string>();
@@ -916,6 +916,6 @@ namespace HPResergerFunciones
         {
             foreach (object x in control)
                 ((Control)x).Enabled = false;
-        }       
+        }
     }
 }

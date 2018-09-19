@@ -59,7 +59,6 @@ namespace HPReserger
         }
         private void btnaprovar_Click(object sender, EventArgs e)
         {
-
             if (dtgconten.RowCount >= 0)
             {
                 int x = dtgconten.CurrentCell.RowIndex;
@@ -69,7 +68,6 @@ namespace HPReserger
             else msg("No Hay Solicitudes");
             REcargardatos();
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             btnrecargar_Click(sender, e);

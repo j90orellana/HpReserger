@@ -365,7 +365,7 @@ namespace HPReserger
             else
             {
                 aux = false;
-                MessageBox.Show("Campo Descripción Vacio", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Campo Descripción Vacio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             return aux;
         }
@@ -415,14 +415,26 @@ namespace HPReserger
         {
             return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        frmccosto fccentro;
         private void btncentro_Click(object sender, EventArgs e)
         {
-            frmccosto fccentro = new frmccosto();
-            if (fccentro.ShowDialog() == DialogResult.OK)
+            if (fccentro == null)
             {
-                if (fccentro.siono.ToUpper().Trim() == "SI")
-                    cbocentrocosto.SelectedValue = fccentro.cadeaux;
+                fccentro = new frmccosto();
+                fccentro.Icon = Icon;
+                fccentro.Consulta = true;
+                fccentro.MdiParent = MdiParent;
+                fccentro.FormClosed += Fccentro_FormClosed;
+                fccentro.Show();
             }
+            else fccentro.Activate();
+        }
+
+        private void Fccentro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (fccentro.ConsulCodigo != "")
+                cbocentrocosto.Text = fccentro.ConsulCodigo;
+            fccentro = null;
         }
 
         private void btnctaact_Click(object sender, EventArgs e)

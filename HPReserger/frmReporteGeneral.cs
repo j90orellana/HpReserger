@@ -217,7 +217,7 @@ namespace HPReserger
                             Celda.Style.ForeColor = Color.Black;
                         }
                     }
-                    if ((item.Cells[indez.Name].Value.ToString().Length <= 4))
+                    if ((item.Cells[indez.Name].Value.ToString().Length <= 4)&& item.Cells[indez.Name].Value.ToString().Length>0)
                     {
                         if (item.Cells[indez.Name].Value.ToString().Substring(item.Cells[indez.Name].Value.ToString().Length - 2, 2) == "99" || item.Cells[indez.Name].Value.ToString().Substring(item.Cells[indez.Name].Value.ToString().Length - 2, 2) == "00")
                         {
@@ -275,13 +275,24 @@ namespace HPReserger
         DataTable Prueba = new DataTable();
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-
-            if (comboMesAño.GetFecha().Year >= DateTime.Now.Year && comboMesAño.GetFecha().Month >= DateTime.Now.Month)
+            DataTable Datitos = CapaLogica.Periodos(5, (int)cboempresas.SelectedValue, comboMesAño.GetFecha());
+            if (Datitos.Rows.Count == 0)
             {
-                msg("Mes no está Cerrado");
                 Reportes.Clear();
+                HPResergerFunciones.Utilitarios.msg("Periodo no está Creado");
                 return;
             }
+            DataRow filita = Datitos.Rows[0];
+            if ((int)filita["estado"] == 3)
+            {
+                HPResergerFunciones.Utilitarios.msg("Periodo Cerrado");
+            }
+            //if (comboMesAño.GetFecha().Year >= DateTime.Now.Year && comboMesAño.GetFecha().Month >= DateTime.Now.Month)
+            //{
+            //    msg("Mes no está Cerrado");
+            //    Reportes.Clear();
+            //    return;
+            //}
             if (cboempresas.Items.Count > 0)
             {
                 try
@@ -346,7 +357,7 @@ namespace HPReserger
                     decimal ActivoTotal = 0;
                     decimal PasivoTotal = 0;
                     decimal PatrimonioTotal = 0;
-                    
+
                     foreach (DataRow item in Reportes.Rows)
                     {
                         int ValorMaximo = 0, ValorMinimo = 0;
@@ -412,7 +423,7 @@ namespace HPReserger
                                 item["totalx"] = Sumar;
                             }
                         }
-                    }                 
+                    }
                     //asignacion de valores
                     foreach (DataRow item in Reportes.Rows)
                     {

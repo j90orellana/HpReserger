@@ -74,6 +74,7 @@ namespace HPReserger
             this.numdocx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razonsocialx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idcomprobantex = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.butoncomprobantex = new System.Windows.Forms.DataGridViewButtonColumn();
             this.codcomprobantex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numcomprobantex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.centrocostox = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -84,7 +85,9 @@ namespace HPReserger
             this.importemnx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importemex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipocambiox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fk_Monedax = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.fkAsix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fk_asisx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.glosax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,6 +129,7 @@ namespace HPReserger
             this.numdocx,
             this.razonsocialx,
             this.idcomprobantex,
+            this.butoncomprobantex,
             this.codcomprobantex,
             this.numcomprobantex,
             this.centrocostox,
@@ -136,7 +140,9 @@ namespace HPReserger
             this.importemnx,
             this.importemex,
             this.tipocambiox,
+            this.fk_Monedax,
             this.fkAsix,
+            this.fk_asisx,
             this.glosax,
             this.usuariox,
             this.fechax});
@@ -322,7 +328,7 @@ namespace HPReserger
             // 
             // txttotalmonextranjera
             // 
-            this.txttotalmonextranjera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotalmonextranjera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotalmonextranjera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotalmonextranjera.Location = new System.Drawing.Point(887, 584);
             this.txttotalmonextranjera.Name = "txttotalmonextranjera";
@@ -333,7 +339,7 @@ namespace HPReserger
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(887, 571);
             this.label5.Name = "label5";
@@ -343,7 +349,7 @@ namespace HPReserger
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(770, 571);
             this.label6.Name = "label6";
@@ -353,7 +359,7 @@ namespace HPReserger
             // 
             // txttotalmonedaNacional
             // 
-            this.txttotalmonedaNacional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotalmonedaNacional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotalmonedaNacional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txttotalmonedaNacional.Location = new System.Drawing.Point(770, 584);
             this.txttotalmonedaNacional.Name = "txttotalmonedaNacional";
@@ -364,7 +370,7 @@ namespace HPReserger
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(1004, 571);
             this.label7.Name = "label7";
@@ -374,13 +380,14 @@ namespace HPReserger
             // 
             // txtdiferencia
             // 
-            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdiferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtdiferencia.Location = new System.Drawing.Point(1004, 584);
             this.txtdiferencia.Name = "txtdiferencia";
             this.txtdiferencia.ReadOnly = true;
             this.txtdiferencia.Size = new System.Drawing.Size(111, 20);
             this.txtdiferencia.TabIndex = 174;
+            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnborrar
             // 
@@ -466,14 +473,24 @@ namespace HPReserger
             // 
             // idcomprobantex
             // 
-            this.idcomprobantex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idcomprobantex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.idcomprobantex.DataPropertyName = "Id_Comprobante";
             this.idcomprobantex.HeaderText = "Comprobante";
-            this.idcomprobantex.MinimumWidth = 50;
+            this.idcomprobantex.MinimumWidth = 200;
             this.idcomprobantex.Name = "idcomprobantex";
             this.idcomprobantex.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.idcomprobantex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.idcomprobantex.Width = 102;
+            this.idcomprobantex.Width = 200;
+            // 
+            // butoncomprobantex
+            // 
+            this.butoncomprobantex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.butoncomprobantex.HeaderText = "Cb";
+            this.butoncomprobantex.MinimumWidth = 30;
+            this.butoncomprobantex.Name = "butoncomprobantex";
+            this.butoncomprobantex.Text = "...";
+            this.butoncomprobantex.UseColumnTextForButtonValue = true;
+            this.butoncomprobantex.Width = 30;
             // 
             // codcomprobantex
             // 
@@ -606,6 +623,15 @@ namespace HPReserger
             this.tipocambiox.Name = "tipocambiox";
             this.tipocambiox.Width = 60;
             // 
+            // fk_Monedax
+            // 
+            this.fk_Monedax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fk_Monedax.DataPropertyName = "fk_Moneda";
+            this.fk_Monedax.HeaderText = "Mon.";
+            this.fk_Monedax.MinimumWidth = 40;
+            this.fk_Monedax.Name = "fk_Monedax";
+            this.fk_Monedax.Width = 40;
+            // 
             // fkAsix
             // 
             this.fkAsix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -614,7 +640,18 @@ namespace HPReserger
             this.fkAsix.MinimumWidth = 65;
             this.fkAsix.Name = "fkAsix";
             this.fkAsix.ReadOnly = true;
+            this.fkAsix.Visible = false;
             this.fkAsix.Width = 65;
+            // 
+            // fk_asisx
+            // 
+            this.fk_asisx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.fk_asisx.DataPropertyName = "fk_asis";
+            this.fk_asisx.HeaderText = "NroAsiento";
+            this.fk_asisx.MinimumWidth = 65;
+            this.fk_asisx.Name = "fk_asisx";
+            this.fk_asisx.ReadOnly = true;
+            this.fk_asisx.Width = 65;
             // 
             // glosax
             // 
@@ -710,6 +747,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn numdocx;
         private System.Windows.Forms.DataGridViewTextBoxColumn razonsocialx;
         private System.Windows.Forms.DataGridViewComboBoxColumn idcomprobantex;
+        private System.Windows.Forms.DataGridViewButtonColumn butoncomprobantex;
         private System.Windows.Forms.DataGridViewTextBoxColumn codcomprobantex;
         private System.Windows.Forms.DataGridViewTextBoxColumn numcomprobantex;
         private System.Windows.Forms.DataGridViewComboBoxColumn centrocostox;
@@ -720,7 +758,9 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn importemnx;
         private System.Windows.Forms.DataGridViewTextBoxColumn importemex;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipocambiox;
+        private System.Windows.Forms.DataGridViewComboBoxColumn fk_Monedax;
         private System.Windows.Forms.DataGridViewTextBoxColumn fkAsix;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fk_asisx;
         private System.Windows.Forms.DataGridViewTextBoxColumn glosax;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuariox;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechax;

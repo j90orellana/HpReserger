@@ -35,6 +35,9 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
@@ -44,26 +47,24 @@ namespace HPReserger
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
-            this.Txtbusca = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.cbodepartamento = new System.Windows.Forms.ComboBox();
             this.cboprovincia = new System.Windows.Forms.ComboBox();
             this.cbodistrito = new System.Windows.Forms.ComboBox();
-            this.btnlimpiar = new System.Windows.Forms.Button();
             this.btndepmas = new System.Windows.Forms.Button();
-            this.dtgdistritos = new Dtgconten();
             this.btnpromas = new System.Windows.Forms.Button();
-            this.dtgconten = new Dtgconten();
+            this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.coddepx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departamentox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codprox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.provinciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coddisx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Distritox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgdistritos)).BeginInit();
+            this.dtgdistritos = new HpResergerUserControls.Dtgconten();
+            this.Txtbusca = new HpResergerUserControls.txtBuscar();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgdistritos)).BeginInit();
             this.SuspendLayout();
             // 
             // btneliminar
@@ -158,18 +159,6 @@ namespace HPReserger
             // 
             this.tipmsg.IsBalloon = true;
             // 
-            // Txtbusca
-            // 
-            this.Txtbusca.BackColor = System.Drawing.SystemColors.Info;
-            this.Txtbusca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.Txtbusca.Cursor = System.Windows.Forms.Cursors.Help;
-            this.Txtbusca.Location = new System.Drawing.Point(120, 119);
-            this.Txtbusca.Name = "Txtbusca";
-            this.Txtbusca.Size = new System.Drawing.Size(513, 20);
-            this.Txtbusca.TabIndex = 53;
-            this.tipmsg.SetToolTip(this.Txtbusca, "Busca Distrito");
-            this.Txtbusca.TextChanged += new System.EventHandler(this.txtbusca_TextChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -187,15 +176,6 @@ namespace HPReserger
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 46;
             this.label4.Text = "Distrito";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 123);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
-            this.label5.TabIndex = 54;
-            this.label5.Text = "BUSCAR";
             // 
             // cbodepartamento
             // 
@@ -241,22 +221,6 @@ namespace HPReserger
             this.cbodistrito.TextChanged += new System.EventHandler(this.cbodistrito_TextChanged);
             this.cbodistrito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbodistrito_KeyPress);
             // 
-            // btnlimpiar
-            // 
-            this.btnlimpiar.BackColor = System.Drawing.Color.White;
-            this.btnlimpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnlimpiar.BackgroundImage")));
-            this.btnlimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnlimpiar.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.btnlimpiar.FlatAppearance.BorderSize = 0;
-            this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlimpiar.Font = new System.Drawing.Font("Webdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(3)));
-            this.btnlimpiar.Location = new System.Drawing.Point(89, 119);
-            this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(21, 21);
-            this.btnlimpiar.TabIndex = 59;
-            this.btnlimpiar.UseVisualStyleBackColor = false;
-            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
-            // 
             // btndepmas
             // 
             this.btndepmas.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -267,14 +231,6 @@ namespace HPReserger
             this.btndepmas.TabIndex = 60;
             this.btndepmas.UseVisualStyleBackColor = true;
             this.btndepmas.Click += new System.EventHandler(this.btndepmas_Click);
-            // 
-            // dtgdistritos
-            // 
-            this.dtgdistritos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtgdistritos.Location = new System.Drawing.Point(693, 146);
-            this.dtgdistritos.Name = "dtgdistritos";
-            this.dtgdistritos.Size = new System.Drawing.Size(240, 150);
-            this.dtgdistritos.TabIndex = 61;
             // 
             // btnpromas
             // 
@@ -291,27 +247,29 @@ namespace HPReserger
             // 
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToDeleteRows = false;
+            this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            //this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            //this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
-            //this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            //this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            //this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            //this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.coddepx,
             this.departamentox,
@@ -320,14 +278,22 @@ namespace HPReserger
             this.coddisx,
             this.Distritox});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dtgconten.EnableHeadersVisualStyles = false;
+            this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(12, 146);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
-            //this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
-            //this.dtgconten.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgconten.Size = new System.Drawing.Size(620, 299);
@@ -376,21 +342,77 @@ namespace HPReserger
             this.Distritox.HeaderText = "Distrito";
             this.Distritox.Name = "Distritox";
             // 
+            // dtgdistritos
+            // 
+            this.dtgdistritos.AllowUserToOrderColumns = true;
+            this.dtgdistritos.AllowUserToResizeColumns = false;
+            this.dtgdistritos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgdistritos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgdistritos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgdistritos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgdistritos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgdistritos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgdistritos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgdistritos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgdistritos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgdistritos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgdistritos.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dtgdistritos.EnableHeadersVisualStyles = false;
+            this.dtgdistritos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.dtgdistritos.Location = new System.Drawing.Point(693, 146);
+            this.dtgdistritos.Name = "dtgdistritos";
+            this.dtgdistritos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dtgdistritos.RowHeadersVisible = false;
+            this.dtgdistritos.Size = new System.Drawing.Size(240, 150);
+            this.dtgdistritos.TabIndex = 61;
+            // 
+            // Txtbusca
+            // 
+            this.Txtbusca.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Txtbusca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
+            this.Txtbusca.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtbusca.ForeColor = System.Drawing.Color.Black;
+            this.Txtbusca.ImgBotonCerrar = null;
+            this.Txtbusca.Location = new System.Drawing.Point(12, 119);
+            this.Txtbusca.Name = "Txtbusca";
+            this.Txtbusca.Size = new System.Drawing.Size(381, 22);
+            this.Txtbusca.TabIndex = 82;
+            this.Txtbusca.BuscarClick += new System.EventHandler(this.txtbusca_TextChanged);
+            this.Txtbusca.ClickLimpiarboton += new System.EventHandler(this.btnlimpiar_Click);
+            this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.txtbusca_TextChanged);
+            // 
             // frmDistritos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 483);
+            this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btnpromas);
             this.Controls.Add(this.dtgdistritos);
             this.Controls.Add(this.btndepmas);
-            this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.cbodistrito);
             this.Controls.Add(this.cboprovincia);
             this.Controls.Add(this.cbodepartamento);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.txtcodigo);
@@ -408,8 +430,8 @@ namespace HPReserger
             this.Text = "Distritos";
             this.Activated += new System.EventHandler(this.frmDistritos_Activated);
             this.Load += new System.EventHandler(this.frmDistritos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgdistritos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgdistritos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,12 +450,9 @@ namespace HPReserger
         private System.Windows.Forms.ToolTip tipmsg;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox Txtbusca;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbodepartamento;
         private System.Windows.Forms.ComboBox cboprovincia;
         private System.Windows.Forms.ComboBox cbodistrito;
-        private System.Windows.Forms.Button btnlimpiar;
         private System.Windows.Forms.Button btndepmas;
         private Dtgconten dtgdistritos;
         private System.Windows.Forms.Button btnpromas;
@@ -444,5 +463,6 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn provinciax;
         private System.Windows.Forms.DataGridViewTextBoxColumn coddisx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Distritox;
+        private txtBuscar Txtbusca;
     }
 }

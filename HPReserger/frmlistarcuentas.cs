@@ -48,6 +48,7 @@ namespace HPReserger
         }
         public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
+            if(Txtbusca.EstaLLeno())
             dtgconten.DataSource = CcuentaContable.ListarCuentasContables(Txtbusca.Text, tipobusca);
             msg(dtgconten);
         }
@@ -111,7 +112,7 @@ namespace HPReserger
                 cuentas.Consulta = true;
                 cuentas.CodigoCuenta = Txtbusca.Text;
                 cuentas.FormClosed += Cuentas_FormClosed;
-                cuentas.Txtbusca._Text = Txtbusca.Text;
+                cuentas.Txtbusca.Text = Txtbusca.Text;
                 cuentas.Show();
             }
             else cuentas.Activate();

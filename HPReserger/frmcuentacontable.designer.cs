@@ -659,7 +659,7 @@ namespace HPReserger
             // 
             // Txtbusca
             // 
-            this.Txtbusca._Text = "Buscar";
+            this.Txtbusca.Text = "Buscar";
             this.Txtbusca.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Txtbusca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));

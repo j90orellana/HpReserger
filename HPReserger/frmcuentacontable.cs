@@ -18,11 +18,11 @@ namespace HPReserger
         }
         HPResergerCapaLogica.HPResergerCL CcuentaContable = new HPResergerCapaLogica.HPResergerCL();
         //////////////////////
-        private string _CodidoCuenta;        
+        private string _CodidoCuenta;
         public string CodigoCuenta
         {
             get { return _CodidoCuenta; }
-            set { _CodidoCuenta = value;  }
+            set { _CodidoCuenta = value; }
         }
         private Boolean _Consulta = false;
         public Boolean Consulta
@@ -144,7 +144,7 @@ namespace HPReserger
             CargarPorDebeHaber(cboreflejadebe, "D");
             CargarPorDebeHaber(cboreflejahaber, "H");
             Txtbusca_TextChanged(sender, e);
-            ListarCuentasContables(Txtbusca.Text, tipobusca);
+            ListarCuentasContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca);
             msg(dtgconten);
         }
         public void msg(DataGridView conteo)
@@ -153,8 +153,8 @@ namespace HPReserger
         }
         public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
-            string caden = Txtbusca.EstaLLeno() ? Txtbusca._Text : "";
-            dtgconten.DataSource = CcuentaContable.ListarCuentasContables(caden, tipobusca);
+            if (Txtbusca.EstaLLeno())
+                dtgconten.DataSource = CcuentaContable.ListarCuentasContables(Txtbusca.Text, tipobusca);
             msg(dtgconten);
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
