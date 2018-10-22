@@ -34,33 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.Cod_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo_Id_Clix = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dtipoidx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nro_Id_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apepat_RazSoc_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apemat_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombres_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo_Personax = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dtipopersonax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sexox = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dsexox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado_Civilx = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.destadocivilx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Distritox = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ddistritox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Provinciax = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dprovinciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Departamentox = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ddepartamentox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telf_Fijox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telf_Celularx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.E_mailx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ocupacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
@@ -107,6 +80,33 @@
             this.rdEstadoCivil = new System.Windows.Forms.RadioButton();
             this.rdnombre = new System.Windows.Forms.RadioButton();
             this.lblmsg = new System.Windows.Forms.Label();
+            this.Cod_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo_Id_Clix = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dtipoidx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nro_Id_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apepat_RazSoc_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apemat_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombres_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo_Personax = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dtipopersonax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sexox = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dsexox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado_Civilx = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.destadocivilx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Distritox = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ddistritox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provinciax = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dprovinciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Departamentox = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ddepartamentox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telf_Fijox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telf_Celularx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.E_mailx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ocupacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.gp1.SuspendLayout();
             this.SuspendLayout();
@@ -185,261 +185,10 @@
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(935, 392);
             this.dtgconten.TabIndex = 0;
+            this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
             this.dtgconten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtgconten_DataError);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // Cod_Clix
-            // 
-            this.Cod_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Cod_Clix.DataPropertyName = "Cod_Cli";
-            this.Cod_Clix.HeaderText = "Id";
-            this.Cod_Clix.MinimumWidth = 25;
-            this.Cod_Clix.Name = "Cod_Clix";
-            this.Cod_Clix.ReadOnly = true;
-            this.Cod_Clix.Width = 25;
-            // 
-            // Tipo_Id_Clix
-            // 
-            this.Tipo_Id_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Tipo_Id_Clix.DataPropertyName = "Tipo_Id_Cli";
-            this.Tipo_Id_Clix.HeaderText = "TipoDoc";
-            this.Tipo_Id_Clix.MinimumWidth = 70;
-            this.Tipo_Id_Clix.Name = "Tipo_Id_Clix";
-            this.Tipo_Id_Clix.ReadOnly = true;
-            this.Tipo_Id_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Tipo_Id_Clix.Visible = false;
-            // 
-            // dtipoidx
-            // 
-            this.dtipoidx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dtipoidx.DataPropertyName = "dtipoid";
-            this.dtipoidx.HeaderText = "TipoId";
-            this.dtipoidx.MinimumWidth = 70;
-            this.dtipoidx.Name = "dtipoidx";
-            this.dtipoidx.ReadOnly = true;
-            this.dtipoidx.Width = 70;
-            // 
-            // Nro_Id_Clix
-            // 
-            this.Nro_Id_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Nro_Id_Clix.DataPropertyName = "Nro_Id_Cli";
-            this.Nro_Id_Clix.HeaderText = "NroDoc";
-            this.Nro_Id_Clix.MinimumWidth = 70;
-            this.Nro_Id_Clix.Name = "Nro_Id_Clix";
-            this.Nro_Id_Clix.ReadOnly = true;
-            this.Nro_Id_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nro_Id_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nro_Id_Clix.Width = 70;
-            // 
-            // apellidox
-            // 
-            this.apellidox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.apellidox.DataPropertyName = "apellidos";
-            this.apellidox.HeaderText = "Nombres";
-            this.apellidox.MinimumWidth = 100;
-            this.apellidox.Name = "apellidox";
-            this.apellidox.ReadOnly = true;
-            // 
-            // Apepat_RazSoc_Clix
-            // 
-            this.Apepat_RazSoc_Clix.DataPropertyName = "Apepat_RazSoc_Cli";
-            this.Apepat_RazSoc_Clix.HeaderText = "Apellido";
-            this.Apepat_RazSoc_Clix.Name = "Apepat_RazSoc_Clix";
-            this.Apepat_RazSoc_Clix.ReadOnly = true;
-            this.Apepat_RazSoc_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Apepat_RazSoc_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Apepat_RazSoc_Clix.Visible = false;
-            // 
-            // Apemat_Clix
-            // 
-            this.Apemat_Clix.DataPropertyName = "Apemat_Cli";
-            this.Apemat_Clix.HeaderText = "Apellido";
-            this.Apemat_Clix.Name = "Apemat_Clix";
-            this.Apemat_Clix.ReadOnly = true;
-            this.Apemat_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Apemat_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Apemat_Clix.Visible = false;
-            // 
-            // Nombres_Clix
-            // 
-            this.Nombres_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombres_Clix.DataPropertyName = "Nombres_Cli";
-            this.Nombres_Clix.HeaderText = "Nombres";
-            this.Nombres_Clix.MinimumWidth = 100;
-            this.Nombres_Clix.Name = "Nombres_Clix";
-            this.Nombres_Clix.ReadOnly = true;
-            this.Nombres_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nombres_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nombres_Clix.Visible = false;
-            // 
-            // Tipo_Personax
-            // 
-            this.Tipo_Personax.DataPropertyName = "Tipo_Persona";
-            this.Tipo_Personax.HeaderText = "Tipo Persona";
-            this.Tipo_Personax.Name = "Tipo_Personax";
-            this.Tipo_Personax.ReadOnly = true;
-            this.Tipo_Personax.Visible = false;
-            // 
-            // dtipopersonax
-            // 
-            this.dtipopersonax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.dtipopersonax.DataPropertyName = "dtipopersona";
-            this.dtipopersonax.HeaderText = "TipoPersona";
-            this.dtipopersonax.MinimumWidth = 70;
-            this.dtipopersonax.Name = "dtipopersonax";
-            this.dtipopersonax.ReadOnly = true;
-            this.dtipopersonax.Width = 70;
-            // 
-            // Sexox
-            // 
-            this.Sexox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Sexox.DataPropertyName = "sexo";
-            this.Sexox.HeaderText = "Sexo";
-            this.Sexox.MinimumWidth = 70;
-            this.Sexox.Name = "Sexox";
-            this.Sexox.ReadOnly = true;
-            this.Sexox.Visible = false;
-            // 
-            // dsexox
-            // 
-            this.dsexox.DataPropertyName = "dsexo";
-            this.dsexox.HeaderText = "Sexo";
-            this.dsexox.Name = "dsexox";
-            this.dsexox.ReadOnly = true;
-            this.dsexox.Visible = false;
-            // 
-            // Estado_Civilx
-            // 
-            this.Estado_Civilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Estado_Civilx.DataPropertyName = "Estado_Civil";
-            this.Estado_Civilx.HeaderText = "Estado Civil";
-            this.Estado_Civilx.MinimumWidth = 80;
-            this.Estado_Civilx.Name = "Estado_Civilx";
-            this.Estado_Civilx.ReadOnly = true;
-            this.Estado_Civilx.Visible = false;
-            // 
-            // destadocivilx
-            // 
-            this.destadocivilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.destadocivilx.DataPropertyName = "destadocivil";
-            this.destadocivilx.HeaderText = "EstadoCivil";
-            this.destadocivilx.MinimumWidth = 70;
-            this.destadocivilx.Name = "destadocivilx";
-            this.destadocivilx.ReadOnly = true;
-            this.destadocivilx.Width = 70;
-            // 
-            // Direccionx
-            // 
-            this.Direccionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Direccionx.DataPropertyName = "Direccion";
-            this.Direccionx.HeaderText = "Direccion";
-            this.Direccionx.MinimumWidth = 80;
-            this.Direccionx.Name = "Direccionx";
-            this.Direccionx.ReadOnly = true;
-            this.Direccionx.Width = 80;
-            // 
-            // Distritox
-            // 
-            this.Distritox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Distritox.DataPropertyName = "Distrito";
-            this.Distritox.HeaderText = "Distrito";
-            this.Distritox.MinimumWidth = 80;
-            this.Distritox.Name = "Distritox";
-            this.Distritox.ReadOnly = true;
-            this.Distritox.Visible = false;
-            // 
-            // ddistritox
-            // 
-            this.ddistritox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ddistritox.DataPropertyName = "ddistrito";
-            this.ddistritox.HeaderText = "Distrito";
-            this.ddistritox.MinimumWidth = 70;
-            this.ddistritox.Name = "ddistritox";
-            this.ddistritox.ReadOnly = true;
-            this.ddistritox.Width = 70;
-            // 
-            // Provinciax
-            // 
-            this.Provinciax.DataPropertyName = "Provincia";
-            this.Provinciax.HeaderText = "Provincia";
-            this.Provinciax.Name = "Provinciax";
-            this.Provinciax.ReadOnly = true;
-            this.Provinciax.Visible = false;
-            // 
-            // dprovinciax
-            // 
-            this.dprovinciax.DataPropertyName = "dprovincia";
-            this.dprovinciax.HeaderText = "Provincia";
-            this.dprovinciax.Name = "dprovinciax";
-            this.dprovinciax.ReadOnly = true;
-            this.dprovinciax.Visible = false;
-            // 
-            // Departamentox
-            // 
-            this.Departamentox.DataPropertyName = "Departamento";
-            this.Departamentox.HeaderText = "Departamento";
-            this.Departamentox.Name = "Departamentox";
-            this.Departamentox.ReadOnly = true;
-            this.Departamentox.Visible = false;
-            // 
-            // ddepartamentox
-            // 
-            this.ddepartamentox.DataPropertyName = "ddepartamento";
-            this.ddepartamentox.HeaderText = "Departamento";
-            this.ddepartamentox.Name = "ddepartamentox";
-            this.ddepartamentox.ReadOnly = true;
-            this.ddepartamentox.Visible = false;
-            // 
-            // Telf_Fijox
-            // 
-            this.Telf_Fijox.DataPropertyName = "Telf_Fijo";
-            this.Telf_Fijox.HeaderText = "Telf_Fijo";
-            this.Telf_Fijox.Name = "Telf_Fijox";
-            this.Telf_Fijox.ReadOnly = true;
-            this.Telf_Fijox.Visible = false;
-            // 
-            // Telf_Celularx
-            // 
-            this.Telf_Celularx.DataPropertyName = "Telf_Celular";
-            this.Telf_Celularx.HeaderText = "Telf_Celular";
-            this.Telf_Celularx.Name = "Telf_Celularx";
-            this.Telf_Celularx.ReadOnly = true;
-            this.Telf_Celularx.Visible = false;
-            // 
-            // E_mailx
-            // 
-            this.E_mailx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.E_mailx.DataPropertyName = "E_mail";
-            this.E_mailx.HeaderText = "Email";
-            this.E_mailx.MinimumWidth = 80;
-            this.E_mailx.Name = "E_mailx";
-            this.E_mailx.ReadOnly = true;
-            this.E_mailx.Width = 80;
-            // 
-            // Ocupacionx
-            // 
-            this.Ocupacionx.DataPropertyName = "Ocupacion";
-            this.Ocupacionx.HeaderText = "Ocupacion";
-            this.Ocupacionx.Name = "Ocupacionx";
-            this.Ocupacionx.ReadOnly = true;
-            this.Ocupacionx.Visible = false;
-            // 
-            // Usuariox
-            // 
-            this.Usuariox.DataPropertyName = "Usuario";
-            this.Usuariox.HeaderText = "Usuario";
-            this.Usuariox.Name = "Usuariox";
-            this.Usuariox.ReadOnly = true;
-            this.Usuariox.Visible = false;
-            // 
-            // Fechax
-            // 
-            this.Fechax.DataPropertyName = "Fecha";
-            this.Fechax.HeaderText = "Fecha";
-            this.Fechax.Name = "Fechax";
-            this.Fechax.ReadOnly = true;
-            this.Fechax.Visible = false;
             // 
             // btneliminar
             // 
@@ -1037,6 +786,262 @@
             this.lblmsg.TabIndex = 97;
             this.lblmsg.Text = "Total de Registros : 0";
             // 
+            // Cod_Clix
+            // 
+            this.Cod_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Cod_Clix.DataPropertyName = "Cod_Cli";
+            this.Cod_Clix.HeaderText = "Id";
+            this.Cod_Clix.MinimumWidth = 25;
+            this.Cod_Clix.Name = "Cod_Clix";
+            this.Cod_Clix.ReadOnly = true;
+            this.Cod_Clix.Width = 25;
+            // 
+            // Tipo_Id_Clix
+            // 
+            this.Tipo_Id_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Tipo_Id_Clix.DataPropertyName = "Tipo_Id_Cli";
+            this.Tipo_Id_Clix.HeaderText = "TipoDoc";
+            this.Tipo_Id_Clix.MinimumWidth = 70;
+            this.Tipo_Id_Clix.Name = "Tipo_Id_Clix";
+            this.Tipo_Id_Clix.ReadOnly = true;
+            this.Tipo_Id_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tipo_Id_Clix.Visible = false;
+            this.Tipo_Id_Clix.Width = 70;
+            // 
+            // dtipoidx
+            // 
+            this.dtipoidx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dtipoidx.DataPropertyName = "dtipoid";
+            this.dtipoidx.HeaderText = "TipoId";
+            this.dtipoidx.MinimumWidth = 70;
+            this.dtipoidx.Name = "dtipoidx";
+            this.dtipoidx.ReadOnly = true;
+            this.dtipoidx.Width = 70;
+            // 
+            // Nro_Id_Clix
+            // 
+            this.Nro_Id_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Nro_Id_Clix.DataPropertyName = "Nro_Id_Cli";
+            this.Nro_Id_Clix.HeaderText = "NroDoc";
+            this.Nro_Id_Clix.MinimumWidth = 70;
+            this.Nro_Id_Clix.Name = "Nro_Id_Clix";
+            this.Nro_Id_Clix.ReadOnly = true;
+            this.Nro_Id_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nro_Id_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nro_Id_Clix.Width = 70;
+            // 
+            // apellidox
+            // 
+            this.apellidox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apellidox.DataPropertyName = "apellidos";
+            this.apellidox.HeaderText = "Nombres";
+            this.apellidox.MinimumWidth = 100;
+            this.apellidox.Name = "apellidox";
+            this.apellidox.ReadOnly = true;
+            // 
+            // Apepat_RazSoc_Clix
+            // 
+            this.Apepat_RazSoc_Clix.DataPropertyName = "Apepat_RazSoc_Cli";
+            this.Apepat_RazSoc_Clix.HeaderText = "Apellido";
+            this.Apepat_RazSoc_Clix.Name = "Apepat_RazSoc_Clix";
+            this.Apepat_RazSoc_Clix.ReadOnly = true;
+            this.Apepat_RazSoc_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Apepat_RazSoc_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Apepat_RazSoc_Clix.Visible = false;
+            // 
+            // Apemat_Clix
+            // 
+            this.Apemat_Clix.DataPropertyName = "Apemat_Cli";
+            this.Apemat_Clix.HeaderText = "Apellido";
+            this.Apemat_Clix.Name = "Apemat_Clix";
+            this.Apemat_Clix.ReadOnly = true;
+            this.Apemat_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Apemat_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Apemat_Clix.Visible = false;
+            // 
+            // Nombres_Clix
+            // 
+            this.Nombres_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombres_Clix.DataPropertyName = "Nombres_Cli";
+            this.Nombres_Clix.HeaderText = "Nombres";
+            this.Nombres_Clix.MinimumWidth = 100;
+            this.Nombres_Clix.Name = "Nombres_Clix";
+            this.Nombres_Clix.ReadOnly = true;
+            this.Nombres_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nombres_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nombres_Clix.Visible = false;
+            // 
+            // Tipo_Personax
+            // 
+            this.Tipo_Personax.DataPropertyName = "Tipo_Persona";
+            this.Tipo_Personax.HeaderText = "Tipo Persona";
+            this.Tipo_Personax.Name = "Tipo_Personax";
+            this.Tipo_Personax.ReadOnly = true;
+            this.Tipo_Personax.Visible = false;
+            // 
+            // dtipopersonax
+            // 
+            this.dtipopersonax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.dtipopersonax.DataPropertyName = "dtipopersona";
+            this.dtipopersonax.HeaderText = "TipoPersona";
+            this.dtipopersonax.MinimumWidth = 70;
+            this.dtipopersonax.Name = "dtipopersonax";
+            this.dtipopersonax.ReadOnly = true;
+            this.dtipopersonax.Width = 70;
+            // 
+            // Sexox
+            // 
+            this.Sexox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Sexox.DataPropertyName = "sexo";
+            this.Sexox.HeaderText = "Sexo";
+            this.Sexox.MinimumWidth = 70;
+            this.Sexox.Name = "Sexox";
+            this.Sexox.ReadOnly = true;
+            this.Sexox.Visible = false;
+            this.Sexox.Width = 70;
+            // 
+            // dsexox
+            // 
+            this.dsexox.DataPropertyName = "dsexo";
+            this.dsexox.HeaderText = "Sexo";
+            this.dsexox.Name = "dsexox";
+            this.dsexox.ReadOnly = true;
+            this.dsexox.Visible = false;
+            // 
+            // Estado_Civilx
+            // 
+            this.Estado_Civilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Estado_Civilx.DataPropertyName = "Estado_Civil";
+            this.Estado_Civilx.HeaderText = "Estado Civil";
+            this.Estado_Civilx.MinimumWidth = 80;
+            this.Estado_Civilx.Name = "Estado_Civilx";
+            this.Estado_Civilx.ReadOnly = true;
+            this.Estado_Civilx.Visible = false;
+            this.Estado_Civilx.Width = 80;
+            // 
+            // destadocivilx
+            // 
+            this.destadocivilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.destadocivilx.DataPropertyName = "destadocivil";
+            this.destadocivilx.HeaderText = "EstadoCivil";
+            this.destadocivilx.MinimumWidth = 70;
+            this.destadocivilx.Name = "destadocivilx";
+            this.destadocivilx.ReadOnly = true;
+            this.destadocivilx.Width = 70;
+            // 
+            // Direccionx
+            // 
+            this.Direccionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Direccionx.DataPropertyName = "Direccion";
+            this.Direccionx.HeaderText = "Dirección";
+            this.Direccionx.MinimumWidth = 80;
+            this.Direccionx.Name = "Direccionx";
+            this.Direccionx.ReadOnly = true;
+            this.Direccionx.Width = 80;
+            // 
+            // Distritox
+            // 
+            this.Distritox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Distritox.DataPropertyName = "Distrito";
+            this.Distritox.HeaderText = "Distrito";
+            this.Distritox.MinimumWidth = 80;
+            this.Distritox.Name = "Distritox";
+            this.Distritox.ReadOnly = true;
+            this.Distritox.Visible = false;
+            this.Distritox.Width = 80;
+            // 
+            // ddistritox
+            // 
+            this.ddistritox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ddistritox.DataPropertyName = "ddistrito";
+            this.ddistritox.HeaderText = "Distrito";
+            this.ddistritox.MinimumWidth = 70;
+            this.ddistritox.Name = "ddistritox";
+            this.ddistritox.ReadOnly = true;
+            this.ddistritox.Width = 70;
+            // 
+            // Provinciax
+            // 
+            this.Provinciax.DataPropertyName = "Provincia";
+            this.Provinciax.HeaderText = "Provincia";
+            this.Provinciax.Name = "Provinciax";
+            this.Provinciax.ReadOnly = true;
+            this.Provinciax.Visible = false;
+            // 
+            // dprovinciax
+            // 
+            this.dprovinciax.DataPropertyName = "dprovincia";
+            this.dprovinciax.HeaderText = "Provincia";
+            this.dprovinciax.Name = "dprovinciax";
+            this.dprovinciax.ReadOnly = true;
+            this.dprovinciax.Visible = false;
+            // 
+            // Departamentox
+            // 
+            this.Departamentox.DataPropertyName = "Departamento";
+            this.Departamentox.HeaderText = "Departamento";
+            this.Departamentox.Name = "Departamentox";
+            this.Departamentox.ReadOnly = true;
+            this.Departamentox.Visible = false;
+            // 
+            // ddepartamentox
+            // 
+            this.ddepartamentox.DataPropertyName = "ddepartamento";
+            this.ddepartamentox.HeaderText = "Departamento";
+            this.ddepartamentox.Name = "ddepartamentox";
+            this.ddepartamentox.ReadOnly = true;
+            this.ddepartamentox.Visible = false;
+            // 
+            // Telf_Fijox
+            // 
+            this.Telf_Fijox.DataPropertyName = "Telf_Fijo";
+            this.Telf_Fijox.HeaderText = "Telf_Fijo";
+            this.Telf_Fijox.Name = "Telf_Fijox";
+            this.Telf_Fijox.ReadOnly = true;
+            this.Telf_Fijox.Visible = false;
+            // 
+            // Telf_Celularx
+            // 
+            this.Telf_Celularx.DataPropertyName = "Telf_Celular";
+            this.Telf_Celularx.HeaderText = "Telf_Celular";
+            this.Telf_Celularx.Name = "Telf_Celularx";
+            this.Telf_Celularx.ReadOnly = true;
+            this.Telf_Celularx.Visible = false;
+            // 
+            // E_mailx
+            // 
+            this.E_mailx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.E_mailx.DataPropertyName = "E_mail";
+            this.E_mailx.HeaderText = "Email";
+            this.E_mailx.MinimumWidth = 80;
+            this.E_mailx.Name = "E_mailx";
+            this.E_mailx.ReadOnly = true;
+            this.E_mailx.Width = 80;
+            // 
+            // Ocupacionx
+            // 
+            this.Ocupacionx.DataPropertyName = "Ocupacion";
+            this.Ocupacionx.HeaderText = "Ocupacion";
+            this.Ocupacionx.Name = "Ocupacionx";
+            this.Ocupacionx.ReadOnly = true;
+            this.Ocupacionx.Visible = false;
+            // 
+            // Usuariox
+            // 
+            this.Usuariox.DataPropertyName = "Usuario";
+            this.Usuariox.HeaderText = "Usuario";
+            this.Usuariox.Name = "Usuariox";
+            this.Usuariox.ReadOnly = true;
+            this.Usuariox.Visible = false;
+            // 
+            // Fechax
+            // 
+            this.Fechax.DataPropertyName = "Fecha";
+            this.Fechax.HeaderText = "Fecha";
+            this.Fechax.Name = "Fechax";
+            this.Fechax.ReadOnly = true;
+            this.Fechax.Visible = false;
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1147,6 +1152,7 @@
         private System.Windows.Forms.RadioButton rdEstadoCivil;
         private System.Windows.Forms.RadioButton rdnombre;
         private System.Windows.Forms.Label lblmsg;
+        public System.Windows.Forms.RadioButton rdnrodoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Clix;
         private System.Windows.Forms.DataGridViewComboBoxColumn Tipo_Id_Clix;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtipoidx;
@@ -1174,6 +1180,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ocupacionx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuariox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fechax;
-        public System.Windows.Forms.RadioButton rdnrodoc;
     }
 }

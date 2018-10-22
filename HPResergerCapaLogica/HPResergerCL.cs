@@ -45,13 +45,29 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.RegistroVentas(opcion, tipo, nrocompra, tipoid, nro, cliente, producto, proyecto, etapa, cantida, precio, vendedor, usuario);
         }
-        public DataTable Proyecto_Productos(int codigo, int opcion, int proy, int prod, decimal metros, decimal precio, int piso, string etapa, int estado, string observacion, int usuarioo)
+        public DataTable Proyecto_Productos(int codigo, int opcion, int proy, int prod, decimal cantidad, int unidad, int moneda, decimal precipre, decimal precio, string etapa, int estado, string observacion, int usuarioo, int tipoinicial, decimal vinicial)
         {
-            return cdOrdenPedido.Proyecto_Productos(codigo, opcion, proy, prod, metros, precio, piso, etapa, estado, observacion, usuarioo);
+            return cdOrdenPedido.Proyecto_Productos(codigo, opcion, proy, prod, moneda, unidad, cantidad, precipre, precio, etapa, estado, observacion, usuarioo, tipoinicial, vinicial);
         }
         public DataTable Proyecto_Productos(int proyecto)
         {
-            return cdOrdenPedido.Proyecto_Productos(0, 0, proyecto, 0, 0, 0, 0, "", 0, "", 0);
+            return cdOrdenPedido.Proyecto_Productos(0, 0, proyecto, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0);
+        }
+        public DataTable Proyecto_ProductosxCod(int CodigoProducto)
+        {
+            return cdOrdenPedido.Proyecto_Productos(CodigoProducto, 20, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0);
+        }
+        public DataTable Proyecto_ProductosxCod(int CodigoProducto, string etapa)
+        {
+            return cdOrdenPedido.Proyecto_Productos(CodigoProducto, 40, 0, 0, 0, 0, 0, 0, 0, etapa, 0, "", 0, 0, 0);
+        }
+        public DataTable Proyecto_ProductosxProyecto(int CodigoProyecto)
+        {
+            return cdOrdenPedido.Proyecto_Productos(0, 30, CodigoProyecto, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0);
+        }
+        public DataTable DetalleProducto(int idproducto)
+        {
+            return cdOrdenPedido.Proyecto_Productos(idproducto, 50, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0);
         }
         public void ActualizarPerfil(int codigo, string descripcion)
         {
@@ -383,9 +399,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.BuscarAsientosContables(busca, opcion, empresa);
         }
-        public DataTable BuscarAsientosContablesconTodo(string busca, int opcion, int empresa)
+        public DataTable BuscarAsientosContablesconTodo(string busca, int opcion, int empresa, DateTime fechon)
         {
-            return cdOrdenPedido.BuscarAsientosContablesconTodo(busca, opcion, empresa);
+            return cdOrdenPedido.BuscarAsientosContablesconTodo(busca, opcion, empresa, fechon);
         }
         public DataTable ListarCuentas()
         {
@@ -770,6 +786,10 @@ namespace HPResergerCapaLogica
         public DataTable EntidadFinanciera(int opcion, int codigo, string valor, string leng)
         {
             return cdOrdenPedido.EntidadFinanciera(opcion, codigo, valor, leng);
+        }
+        public DataTable EntidadFinanciera()
+        {
+            return cdOrdenPedido.EntidadFinanciera(0, 0, "", "");
         }
         public DataRow CargarImagenSolicitudEmpleado(int Numero)
         {
@@ -1211,6 +1231,7 @@ namespace HPResergerCapaLogica
         }
         public DataTable ListarProyectosEmpresa(string empresa)
         {
+            //Id_Proyecto Proyecto    Id_Empresa
             return cdOrdenPedido.ListarProyectosEmpresa(empresa);
         }
         public DataTable ListarProyectosEmpresa(string empresa, int cabecera)
@@ -1325,9 +1346,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarFacturasPorPagar(proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1, estado);
         }
-        public DataTable insertarPagarfactura(string nrofactura, string proveedor, int tipo, string nropago, decimal apagar, decimal subtotal, decimal igv, decimal total, int usuario, int opcion)
+        public DataTable insertarPagarfactura(string nrofactura, string proveedor, int tipo, string nropago, decimal apagar, decimal subtotal, decimal igv, decimal total, int usuario, int opcion, int banco, string nrocuenta, DateTime fechapago)
         {
-            return cdOrdenPedido.insertarPagarfactura(nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion);
+            return cdOrdenPedido.insertarPagarfactura(nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion, banco, nrocuenta, fechapago);
         }
         public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor)
         {
@@ -1455,9 +1476,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarActualizarMoneda(cod, opcion, cargo, usuario, names);
         }
-        public DataTable InsertarActualizarMoneda(int @opcion)
+        public DataTable InsertarActualizarMoneda()
         {
-            return cdOrdenPedido.InsertarActualizarMoneda(0, opcion, "", 0, "");
+            return cdOrdenPedido.InsertarActualizarMoneda(0, 0, "", 0, "");
         }
         public DataTable InsertarActualizarPeriodicidad(int @cod, int @opcion, string @cargo, int @usuario)
         {
@@ -1514,6 +1535,11 @@ namespace HPResergerCapaLogica
         public DataTable InsertarActualizarListarEmpresas(string @id, int @opcion, string @campo1, string @campo2, int @sector, string @direccion, int @dep, int @prov, int @dis, int @tipo, string @repre, int @cia, int usuario)
         {
             return cdOrdenPedido.InsertarActualizarListarEmpresas(@id, @opcion, @campo1, @campo2, @sector, @direccion, @dep, @prov, @dis, @tipo, @repre, @cia, usuario);
+        }
+        public DataTable ListarEmpresas()
+        {
+            //id_empresa    empresa
+            return cdOrdenPedido.InsertarActualizarListarEmpresas("", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0);
         }
         public DataTable BuscarEmpleadoActivo()
         {
@@ -1777,6 +1803,93 @@ namespace HPResergerCapaLogica
         public DataTable BuscarCliente(int tipoid, string nroid)
         {
             return cdOrdenPedido.Clientes(10, 0, tipoid, nroid, "", "", "", 0, 0, 0, "", 0, 0, 0, "", "", "", "", 0, DateTime.Now);
+        }
+        public DataTable UnidadMedida(int opcion, int codigo, string descripcion, int usuario)
+        {
+            return cdOrdenPedido.UnidadMedida(opcion, codigo, descripcion, usuario);
+        }
+        public DataTable UnidadMedida()
+        {
+            return cdOrdenPedido.UnidadMedida(0, 0, "", 0);
+        }
+        public DataTable ListarProductosVender(string valor)
+        {
+            return cdOrdenPedido.ListarProductosVender(valor);
+        }
+
+        public DataTable ListarNroOpBancaria(int banco, string nrocuenta, string ruc, string razon, string nroop, DateTime fecha1, DateTime fecha2)
+        {
+            return cdOrdenPedido.ListarNroOpBancaria(banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2);
+        }
+        public DataTable ActualizarNroOperacion(int codigo, string valor)
+        {
+            return cdOrdenPedido.ActualizarNroOperacion(codigo, valor);
+        }
+        public DataTable Vendedor(int opcion, int codigo, string nrocod, int estado, int usuario)
+        {
+            return cdOrdenPedido.Vendedor(0, opcion, codigo, nrocod, estado, usuario);
+        }
+        public DataTable Vendedor(int codvende, int opcion, int codigo, string nrocod, int estado, int usuario)
+        {
+            return cdOrdenPedido.Vendedor(codvende, opcion, codigo, nrocod, estado, usuario);
+        }
+        public DataTable Vendedor()
+        {
+            return cdOrdenPedido.Vendedor(0, 0, 0, "", 0, 0);
+        }
+        public DataTable Vendedor(int Codigo)
+        {
+            return cdOrdenPedido.Vendedor(Codigo, 100, 0, "", 0, 0);
+        }
+        public DataTable CotizacionDetalle(out int num, int opcion)
+        {
+            return cdOrdenPedido.CotizacionDetalle(out num, opcion);
+        }
+        public DataTable CotizacionDetalleNroCod(out int num)
+        {
+            return CotizacionDetalle(out num, 100);
+        }
+        public void CotizacionesCLienteCabecera(out int nume, int Opcion, int @Codvend, DateTime @Fechavence, decimal @Importemn, decimal @Importeme, int @Tipoidcliente, string @Nroidcliente, int @Estado, string @Observacion, int @Usuario, decimal inicial)
+        {
+            cdOrdenPedido.CotizacionesCLienteCabecera(out nume, Opcion, @Codvend, @Fechavence, @Importemn, @Importeme, @Tipoidcliente, @Nroidcliente, @Estado, @Observacion, @Usuario, inicial);
+        }
+        public DataTable CotizacionesCLienteCabecera(int Opcion, int @Codvend, DateTime @Fechavence, decimal @Importemn, decimal @Importeme, int @Tipoidcliente, string @Nroidcliente, int @Estado, string @Observacion, int @Usuario)
+        {
+            return cdOrdenPedido.CotizacionesCLienteCabecera(Opcion, @Codvend, @Fechavence, @Importemn, @Importeme, @Tipoidcliente, @Nroidcliente, @Estado, @Observacion, @Usuario);
+        }
+        public DataTable CotizacionesCLienteCabeceraDetalle(int Opcion, int cod, int empresa, int proyecto, string etapa, int idarticulo, decimal cantidad, decimal preciobase, decimal tc, int tipodesc, decimal valordesc, decimal preciofinmn, decimal preciofinme, int moneda, decimal inicial, int tipoinicial, decimal valorinicial)
+        {
+            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(Opcion, cod, empresa, proyecto, etapa, idarticulo, cantidad, preciobase, tc, tipodesc, valordesc, preciofinmn, preciofinme, moneda, inicial, tipoinicial, valorinicial);
+        }
+        public DataTable CotizacionesCLienteCabeceraDetalle(int cod)
+        {
+            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(0, cod, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        }
+        public DataTable CotizacionesCLienteCabeceraDetalleBorrar(int cod)
+        {
+            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(5, cod, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        }
+        //busqueda de cotizaciones de cliente
+        public DataTable CotizacionCLiente(string nrocot, string tipoid, string nroid, string nombre)
+        {
+            return cdOrdenPedido.CotizacionCLiente(nrocot, tipoid, nroid, nombre);
+        }
+        public DataTable SeparacionVenta(int opcion, int numcot)
+        {
+            return cdOrdenPedido.SeparacionVenta(opcion, numcot, 0, 0, 0, 0, null, "", DateTime.Now, 0);
+        }
+        public DataTable SeparacionVentaDarBajaAbono(int numRegistro)
+        {
+            return cdOrdenPedido.SeparacionVenta(3, numRegistro, 0, 0, 0, 0, null, "", DateTime.Now, 0);
+        }
+        public DataTable SeparacionVenta(int numcot)
+        {
+            return cdOrdenPedido.SeparacionVenta(0, numcot, 0, 0, 0, 0, null, "", DateTime.Now, 0);
+        }
+        public DataTable SeparacionVenta(int opcion, int numcot, decimal importemn, decimal importeme, decimal tipocambio, int moneda, byte[] img, string nombre, DateTime fecha, int usuario)
+        {
+            return cdOrdenPedido.SeparacionVenta(opcion, numcot, importemn, importeme, tipocambio, moneda, img, nombre, fecha, usuario);
+
         }
     }
 }

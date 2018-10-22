@@ -137,6 +137,12 @@
     <Compile Include="frmAbonoExternoEmpleado.Designer.cs">
       <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAbonosVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbonosVentas.Designer.cs">
+      <DependentUpon>frmAbonosVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmaddtipoCambio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +221,12 @@
     <Compile Include="frmCargos.Designer.cs">
       <DependentUpon>frmCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCargosVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargosVentas.Designer.cs">
+      <DependentUpon>frmCargosVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmcede.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +275,12 @@
     <Compile Include="frmCotizacionCliente.Designer.cs">
       <DependentUpon>frmCotizacionCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCronogramaPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCronogramaPagos.Designer.cs">
+      <DependentUpon>frmCronogramaPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDatosExterno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,6 +292,12 @@
     </Compile>
     <Compile Include="frmDetalleAsientos.Designer.cs">
       <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleNroOp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleNroOp.Designer.cs">
+      <DependentUpon>frmDetalleNroOp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDetallePagoFactura.cs">
       <SubType>Form</SubType>
@@ -503,6 +527,12 @@
     <Compile Include="frmListarAsientosAbiertos.Designer.cs">
       <DependentUpon>frmListarAsientosAbiertos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmlistarCotizacionesCLienteDEtalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmlistarCotizacionesCLienteDEtalle.Designer.cs">
+      <DependentUpon>frmlistarCotizacionesCLienteDEtalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmlistarcuentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -532,6 +562,18 @@
     </Compile>
     <Compile Include="frmlistarOrdenesfaltantes.Designer.cs">
       <DependentUpon>frmlistarOrdenesfaltantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmListarProductosVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListarProductosVenta.Designer.cs">
+      <DependentUpon>frmListarProductosVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmlistarSeparacionVta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmlistarSeparacionVta.Designer.cs">
+      <DependentUpon>frmlistarSeparacionVta.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLocacionServicio.cs">
       <SubType>Form</SubType>
@@ -604,6 +646,12 @@
     </Compile>
     <Compile Include="frmNotaCreditoDetalle.Designer.cs">
       <DependentUpon>frmNotaCreditoDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNroOpBancacia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNroOpBancacia.Designer.cs">
+      <DependentUpon>frmNroOpBancacia.cs</DependentUpon>
     </Compile>
     <Compile Include="frmOperacion.cs">
       <SubType>Form</SubType>
@@ -881,6 +929,12 @@
     <Compile Include="frmRPTExportarRequerimiento.Designer.cs">
       <DependentUpon>frmRPTExportarRequerimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSeparacionVta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeparacionVta.Designer.cs">
+      <DependentUpon>frmSeparacionVta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSexo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -917,11 +971,23 @@
     <Compile Include="frmTipoId.designer.cs">
       <DependentUpon>frmTipoId.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUnidadMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUnidadMedida.Designer.cs">
+      <DependentUpon>frmUnidadMedida.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmUsuarios.designer.cs">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVendedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVendedores.Designer.cs">
+      <DependentUpon>frmVendedores.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVerDetallePresuspuestoOperaciones.cs">
       <SubType>Form</SubType>
@@ -1348,6 +1414,9 @@
     <EmbeddedResource Include="frmAbonoExternoEmpleado.resx">
       <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAbonosVentas.resx">
+      <DependentUpon>frmAbonosVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmaddtipoCambio.resx">
       <DependentUpon>frmaddtipoCambio.cs</DependentUpon>
     </EmbeddedResource>
@@ -1404,6 +1473,9 @@
     <EmbeddedResource Include="frmCargos.resx">
       <DependentUpon>frmCargos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCargosVentas.resx">
+      <DependentUpon>frmCargosVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmccosto.resx">
       <DependentUpon>frmccosto.cs</DependentUpon>
     </EmbeddedResource>
@@ -1431,6 +1503,9 @@
     <EmbeddedResource Include="frmCotizacionCliente.resx">
       <DependentUpon>frmCotizacionCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCronogramaPagos.resx">
+      <DependentUpon>frmCronogramaPagos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmcuentacontable.resx">
       <DependentUpon>frmcuentacontable.cs</DependentUpon>
     </EmbeddedResource>
@@ -1442,6 +1517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleAsientos.resx">
       <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleNroOp.resx">
+      <DependentUpon>frmDetalleNroOp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetallePagoFactura.resx">
       <DependentUpon>frmDetallePagoFactura.cs</DependentUpon>
@@ -1533,6 +1611,9 @@
     <EmbeddedResource Include="frmListarAsientosAbiertos.resx">
       <DependentUpon>frmListarAsientosAbiertos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmlistarCotizacionesCLienteDEtalle.resx">
+      <DependentUpon>frmlistarCotizacionesCLienteDEtalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmlistarcuentas.resx">
       <DependentUpon>frmlistarcuentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -1547,6 +1628,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmlistarOrdenesfaltantes.resx">
       <DependentUpon>frmlistarOrdenesfaltantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListarProductosVenta.resx">
+      <DependentUpon>frmListarProductosVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmlistarSeparacionVta.resx">
+      <DependentUpon>frmlistarSeparacionVta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLocacionServicio.resx">
       <DependentUpon>frmLocacionServicio.cs</DependentUpon>
@@ -1583,6 +1670,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNotaCreditoDetalle.resx">
       <DependentUpon>frmNotaCreditoDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNroOpBancacia.resx">
+      <DependentUpon>frmNroOpBancacia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOperacion.resx">
       <DependentUpon>frmOperacion.cs</DependentUpon>
@@ -1722,6 +1812,9 @@
     <EmbeddedResource Include="frmRPTExportarRequerimiento.resx">
       <DependentUpon>frmRPTExportarRequerimiento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSeparacionVta.resx">
+      <DependentUpon>frmSeparacionVta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSexo.resx">
       <DependentUpon>frmSexo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1740,8 +1833,14 @@
     <EmbeddedResource Include="frmTipoId.resx">
       <DependentUpon>frmTipoId.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmUnidadMedida.resx">
+      <DependentUpon>frmUnidadMedida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVendedores.resx">
+      <DependentUpon>frmVendedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVerDetallePresuspuestoOperaciones.resx">
       <DependentUpon>frmVerDetallePresuspuestoOperaciones.cs</DependentUpon>

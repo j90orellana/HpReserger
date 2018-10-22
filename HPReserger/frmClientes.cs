@@ -461,7 +461,6 @@ namespace HPReserger
             cbotipoid.Enabled = false; txtnroid.ReadOnly = true;
             LimpiarControlesEdicion(txtdireccion, txtemail, txtnombre, txtnroid, txtocupacion, txttelcelular, txttelfijo, txtapemat, txtapetpat);
         }
-
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (!txtnroid.EstaLLeno())
@@ -482,17 +481,20 @@ namespace HPReserger
                 cbopersona.Focus();
                 return;
             }
-            if (cbosexo.SelectedIndex < 0)
+            if (cbotipoid.Text.ToUpper() != "RUC")
             {
-                msg("Seleccione Sexo");
-                cbosexo.Focus();
-                return;
-            }
-            if (cbocivil.SelectedIndex < 0)
-            {
-                msg("Seleccione Estado Civil");
-                cbocivil.Focus();
-                return;
+                if (cbosexo.SelectedIndex < 0)
+                {
+                    msg("Seleccione Sexo");
+                    cbosexo.Focus();
+                    return;
+                }
+                if (cbocivil.SelectedIndex < 0)
+                {
+                    msg("Seleccione Estado Civil");
+                    cbocivil.Focus();
+                    return;
+                }
             }
             if (!txtnombre.EstaLLeno())
             {
@@ -506,14 +508,19 @@ namespace HPReserger
                 cbodepartamento.Focus();
                 return;
             }
-
             if (txtnroid.TextLength != LengthTipoId)
             {
                 txtnroid.Focus();
                 msg($"El tamaño del Nro Documento debe ser: {LengthTipoId}");
                 return;
             }
+            int sexo = 0, civil = 0;
             ///insertar;
+            if (cbotipoid.Text.ToUpper() != "RUC")
+            {
+                sexo = (int)cbosexo.SelectedValue;
+                civil = (int)cbocivil.SelectedValue;
+            }
             if (estado == 1)
             {
                 DataRow filita = (CapaLogica.ClienteBuscarExiste((int)cbotipoid.SelectedValue, txtnroid.Text)).Rows[0];
@@ -522,7 +529,7 @@ namespace HPReserger
                     msg("El Cliente Ya Existe");
                     return;
                 }
-                CapaLogica.Clientes(1, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, (int)cbosexo.SelectedValue, (int)cbocivil.SelectedValue, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
+                CapaLogica.Clientes(1, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
                 msg("Cliente Agregado Exitosamente");
             }
             //actualizar
@@ -534,7 +541,7 @@ namespace HPReserger
                     msg("El Cliente Ya Existe");
                     return;
                 }
-                CapaLogica.Clientes(2, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, (int)cbosexo.SelectedValue, (int)cbocivil.SelectedValue, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
+                CapaLogica.Clientes(2, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
                 msg("Cliente Actualizado Exitosamente");
             }
             estado = 0;
@@ -562,12 +569,24 @@ namespace HPReserger
             {
                 TiposId = (CapaLogica.TiposID((int)cbotipoid.SelectedValue)).Rows[0]; ////Length
                 LengthTipoId = (int)TiposId["Length"];
+                if (cbotipoid.Text.ToUpper() == "RUC")
+                    label5.Visible = label6.Visible = txtapemat.Visible = txtapetpat.Visible = label9.Visible = label8.Visible = cbosexo.Visible = cbocivil.Visible = false;
+                else
+                    label5.Visible = label6.Visible = txtapemat.Visible = txtapetpat.Visible = label9.Visible = label8.Visible = cbosexo.Visible = cbocivil.Visible = true;
             }
         }
-
         private void txtcodigo_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.RowIndex, y = e.ColumnIndex;
+            if (x >= 0)
+            {
+                btnaceptar_Click(sender, new EventArgs());
+            }
         }
     }
 }

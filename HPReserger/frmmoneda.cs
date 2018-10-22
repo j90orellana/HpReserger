@@ -34,7 +34,7 @@ namespace HPReserger
         }
         public void CargarDatos()
         {
-            dtgconten.DataSource = CCargos.InsertarActualizarMoneda(0);
+            dtgconten.DataSource = CCargos.InsertarActualizarMoneda();
             dtgconten.Focus();
         }
         private void frmmoneda_Load(object sender, EventArgs e)

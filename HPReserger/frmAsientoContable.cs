@@ -28,7 +28,9 @@ namespace HPReserger
             RellenarEstado(cboestado);
             System.Globalization.CultureInfo.CreateSpecificCulture("es-ES");
             cARgarEmpresas();
-            Dtgconten.DataSource = CapaLogica.BuscarAsientosContablesconTodo("0", 4, 1);
+            DateTime fechita;
+            if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = fecha.Value;
+            Dtgconten.DataSource = CapaLogica.BuscarAsientosContablesconTodo("0", 4, 1, fechita);
             dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
             if (dtgbusca.RowCount > 0)
             {
@@ -277,14 +279,19 @@ namespace HPReserger
         {
             if (dtgayuda.RowCount > 0)
             {
-                Dtgconten.Rows.Clear();
+                DataTable aux = ((DataTable)Dtgconten.DataSource).Clone();
+                Dtgconten.DataSource = aux;
                 for (int i = 0; i < dtgayuda.RowCount; i++)
                 {//6=CodigoCuenta 7=DescripcionCuenta 8=Debe/Haber //0=CodigoCuenta 1=Descripcion 2=debe 3=haber
-                    Dtgconten.Rows.Add();
-                    Dtgconten[cuenta.Name, i].Value = dtgayuda[6, i].Value;
-                    Dtgconten[descripcion.Name, i].Value = dtgayuda[7, i].Value;
-                    Dtgconten[debe.Name, i].Value = "0.00";
-                    Dtgconten[haber.Name, i].Value = "0.00";
+                    DataRow filita = aux.NewRow();
+                    filita["cod"] = dtgayuda[6, i].Value;
+                    filita["cuenta"] = dtgayuda[7, i].Value;
+                    filita["detalle"] = 0;
+                    filita["solicita"] = 0;
+                    filita["id"] = Dtgconten.RowCount + 1;
+                    filita[debe.Name] = 0.00m;
+                    filita[haber.Name] = 0.00m;
+                    aux.Rows.Add(filita);
                 }
                 txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
                 totaldebe = totalhaber = 0;
@@ -294,7 +301,7 @@ namespace HPReserger
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                coddinamica = Convert.ToInt32(txtdinamica.Text);
+                coddinamica = HPResergerFunciones.Utilitarios.ExtraeEnterodeCadena(txtdinamica.Text);
                 dtgayuda.DataSource = CapaLogica.ListarDinamicas(coddinamica + "", 1);
                 CargaDinamicas();
                 btndina.Focus();
@@ -695,7 +702,8 @@ namespace HPReserger
                 if (dtgayuda3.RowCount > 0)
                 {
 
-                    fecha.Value = Convert.ToDateTime(dtgayuda3[1, 0].Value);
+                    fecha.Value = Convert.ToDateTime(dtgbusca[1, e.RowIndex].Value);
+                    dtfechavalor.Value = Convert.ToDateTime(dtgbusca[8, e.RowIndex].Value);
                     txtcodigo.Text = dtgayuda3[0, 0].Value.ToString();
                     dinamica = Convert.ToInt32(dtgayuda3[7, 0].Value.ToString());
                     cboestado.SelectedValue = dtgayuda3[8, 0].Value;
@@ -720,7 +728,9 @@ namespace HPReserger
                     //Dtgconten.Rows.Clear();
                     activo = pasivo = 0;
                     //int i = 0;
-                    DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa);
+                    DateTime fechita;
+                    if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = fecha.Value;
+                    DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa, fechita);
                     Dtgconten.DataSource = Datos;
                     foreach (DataGridViewRow item in Dtgconten.Rows)
                     {
@@ -802,13 +812,13 @@ namespace HPReserger
         }
         private void cboestado_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // if ((cboestado.SelectedValue==null?"0":cboestado.SelectedValue.ToString()) == "3") cboestado.SelectedIndex = -1;
+            // if ((cboestado.SelectedValue==null?"0":cboestado.SelectedValue.ToString()) == "3") cboestado.SelectedIndex = -1;
         }
         public int estado { get; set; }
         public int codigo;
         public void ultimoasiento()
         {
-            DataTable tablita = new DataTable();
+            DataTable tablita = new DataTable();      
             tablita = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue);
             DataRow filas = tablita.Rows[0];
             if (filas.ItemArray[0] != DBNull.Value)
@@ -817,6 +827,7 @@ namespace HPReserger
                 codigo++;
             }
             else { codigo = 1; }
+            txtcodigo.Text = codigo + "";
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
@@ -865,7 +876,7 @@ namespace HPReserger
                             CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade, 0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
                             MSG("Se ha Enviado la Solicitud a su Jefe");
                         }
-                        else { MSG("No se Encontró Información de su Jefe"); }                        
+                        else { MSG("No se Encontró Información de su Jefe"); }
                     }
                 }
             }
@@ -1256,6 +1267,7 @@ namespace HPReserger
                     dtfechavalor.Enabled = true;
                 else
                     dtfechavalor.Enabled = false;
+            ultimoasiento();
         }
         private void cboempresa_Enter(object sender, EventArgs e)
         {
@@ -1357,6 +1369,16 @@ namespace HPReserger
             btnActualizar_Click(sender, e);
             //else
             //HPResergerFunciones.Utilitarios.msg("Ahorita no joven");
+        }
+        private void cboestado_TextChanged(object sender, EventArgs e)
+        {
+            if (cboestado.Text == "Activo") btneliminar.Text = "Desactivar"; else btneliminar.Text = "Activar";
+        }
+        private void fecha_ValueChanged(object sender, EventArgs e)
+        {         
+        }
+        private void dtfechavalor_ValueChanged(object sender, EventArgs e)
+        {        
         }
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {

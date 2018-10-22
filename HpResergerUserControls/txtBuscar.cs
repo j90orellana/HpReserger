@@ -67,5 +67,11 @@ namespace HpResergerUserControls
         {
             if (txtbusca.Text == "") txtbusca.Text = _text;
         }
+        public string TextoValido()
+        {
+            string cadena = "";
+            if (EstaLLeno()) cadena = Text; else cadena = "";
+            return cadena;
+        }
     }
 }

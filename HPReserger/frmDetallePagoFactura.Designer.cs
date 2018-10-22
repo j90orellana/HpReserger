@@ -31,23 +31,28 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetallePagoFactura));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetallePagoFactura));
             this.dtgconten1 = new HpResergerUserControls.Dtgconten();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtproveedor = new System.Windows.Forms.TextBox();
             this.nrofacturadetx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrofacturax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroOPBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.proveedorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razonsocialx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotalx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.igvx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Entidad_Financiera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CtaBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtproveedor = new System.Windows.Forms.TextBox();
+            this.Banco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,23 +75,28 @@
             this.dtgconten1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgconten1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nrofacturadetx,
             this.nrofacturax,
+            this.NroOPBanco,
             this.proveedorx,
             this.razonsocialx,
             this.subtotalx,
             this.igvx,
             this.totalx,
+            this.Entidad_Financiera,
+            this.CtaBanco,
+            this.FechaPago,
             this.usuariox,
-            this.fecha});
+            this.fecha,
+            this.Banco});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,8 +113,41 @@
             this.dtgconten1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten1.RowHeadersVisible = false;
             this.dtgconten1.RowTemplate.Height = 18;
-            this.dtgconten1.Size = new System.Drawing.Size(804, 320);
+            this.dtgconten1.Size = new System.Drawing.Size(1020, 320);
             this.dtgconten1.TabIndex = 0;
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(939, 365);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 35;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(12, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Proveedor:";
+            // 
+            // txtproveedor
+            // 
+            this.txtproveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtproveedor.Location = new System.Drawing.Point(77, 13);
+            this.txtproveedor.Name = "txtproveedor";
+            this.txtproveedor.ReadOnly = true;
+            this.txtproveedor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtproveedor.Size = new System.Drawing.Size(138, 22);
+            this.txtproveedor.TabIndex = 39;
             // 
             // nrofacturadetx
             // 
@@ -123,6 +166,16 @@
             this.nrofacturax.Name = "nrofacturax";
             this.nrofacturax.ReadOnly = true;
             // 
+            // NroOPBanco
+            // 
+            this.NroOPBanco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NroOPBanco.DataPropertyName = "NroOPBanco";
+            this.NroOPBanco.HeaderText = "NroOPBanco";
+            this.NroOPBanco.MinimumWidth = 70;
+            this.NroOPBanco.Name = "NroOPBanco";
+            this.NroOPBanco.ReadOnly = true;
+            this.NroOPBanco.Width = 97;
+            // 
             // proveedorx
             // 
             this.proveedorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -131,7 +184,7 @@
             this.proveedorx.MinimumWidth = 80;
             this.proveedorx.Name = "proveedorx";
             this.proveedorx.ReadOnly = true;
-            this.proveedorx.Width = 85;
+            this.proveedorx.Width = 83;
             // 
             // razonsocialx
             // 
@@ -181,6 +234,36 @@
             this.totalx.ReadOnly = true;
             this.totalx.Width = 80;
             // 
+            // Entidad_Financiera
+            // 
+            this.Entidad_Financiera.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Entidad_Financiera.DataPropertyName = "Entidad_Financiera";
+            this.Entidad_Financiera.HeaderText = "Banco";
+            this.Entidad_Financiera.MinimumWidth = 70;
+            this.Entidad_Financiera.Name = "Entidad_Financiera";
+            this.Entidad_Financiera.ReadOnly = true;
+            this.Entidad_Financiera.Width = 70;
+            // 
+            // CtaBanco
+            // 
+            this.CtaBanco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CtaBanco.DataPropertyName = "CtaBanco";
+            this.CtaBanco.HeaderText = "CtaBanco";
+            this.CtaBanco.MinimumWidth = 70;
+            this.CtaBanco.Name = "CtaBanco";
+            this.CtaBanco.ReadOnly = true;
+            this.CtaBanco.Width = 80;
+            // 
+            // FechaPago
+            // 
+            this.FechaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.FechaPago.DataPropertyName = "FechaPago";
+            this.FechaPago.HeaderText = "FechaPago";
+            this.FechaPago.MinimumWidth = 70;
+            this.FechaPago.Name = "FechaPago";
+            this.FechaPago.ReadOnly = true;
+            this.FechaPago.Width = 87;
+            // 
             // usuariox
             // 
             this.usuariox.DataPropertyName = "usuario";
@@ -197,50 +280,27 @@
             this.fecha.MinimumWidth = 80;
             this.fecha.Name = "fecha";
             this.fecha.ReadOnly = true;
+            this.fecha.Visible = false;
             this.fecha.Width = 80;
             // 
-            // btncancelar
+            // Banco
             // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(723, 365);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 35;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(12, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "Proveedor:";
-            // 
-            // txtproveedor
-            // 
-            this.txtproveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtproveedor.Location = new System.Drawing.Point(77, 13);
-            this.txtproveedor.Name = "txtproveedor";
-            this.txtproveedor.ReadOnly = true;
-            this.txtproveedor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtproveedor.Size = new System.Drawing.Size(138, 20);
-            this.txtproveedor.TabIndex = 39;
+            this.Banco.DataPropertyName = "Banco";
+            this.Banco.HeaderText = "Banco";
+            this.Banco.Name = "Banco";
+            this.Banco.ReadOnly = true;
+            this.Banco.Visible = false;
             // 
             // frmDetallePagoFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 394);
+            this.ClientSize = new System.Drawing.Size(1026, 394);
             this.Controls.Add(this.txtproveedor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.dtgconten1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmDetallePagoFactura";
             this.Nombre = "Detalle de Abono de Facturas";
             this.Text = "Detalle de Abono de Facturas";
@@ -259,12 +319,17 @@
         private System.Windows.Forms.TextBox txtproveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrofacturadetx;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrofacturax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NroOPBanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn proveedorx;
         private System.Windows.Forms.DataGridViewTextBoxColumn razonsocialx;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotalx;
         private System.Windows.Forms.DataGridViewTextBoxColumn igvx;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Entidad_Financiera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CtaBanco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuariox;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Banco;
     }
 }

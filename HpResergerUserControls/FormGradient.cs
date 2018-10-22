@@ -19,6 +19,7 @@ namespace HpResergerUserControls
             Invalidate();
             InitializeComponent();
         }
+        public DateTime Hoy = DateTime.Now;
         Color[] _colores = new Color[] { Color.FromArgb(252, 253, 253), Color.FromArgb(224, 229, 237), Color.FromArgb(252, 253, 253) };
         int _angulo = 45;
         public Color[] Colores { get { return _colores; } set { _colores = value; } }
@@ -47,10 +48,6 @@ namespace HpResergerUserControls
                     BrochaGradienteLineal.InterpolationColors = BlendColor;
                     e.Graphics.FillRectangle(BrochaGradienteLineal, this.ClientRectangle);
                 }
-        }
-        private void FormGradient_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

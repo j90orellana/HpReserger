@@ -137,6 +137,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SeparadorOre.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SeparadorOre.Designer.cs">
+      <DependentUpon>SeparadorOre.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextBoxPer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeparadorOre.resx">
+      <DependentUpon>SeparadorOre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TextBoxPer.resx">
       <DependentUpon>TextBoxPer.cs</DependentUpon>

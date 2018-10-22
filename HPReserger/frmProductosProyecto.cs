@@ -30,16 +30,6 @@ namespace HPReserger
         {
             dtgconten.DataSource = Datos = CapaLogica.Proyecto_Productos(codProyecto);
         }
-        public void Activar(params object[] control)
-        {
-            foreach (object x in control)
-                ((Control)x).Enabled = true;
-        }
-        public void Desactivar(params object[] control)
-        {
-            foreach (object x in control)
-                ((Control)x).Enabled = false;
-        }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex, y = e.RowIndex;
@@ -52,11 +42,15 @@ namespace HPReserger
             {
                 cboproducto.SelectedValue = (int)dtgconten[Id_Prodx.Name, y].Value;
                 txtprecio.Text = dtgconten[preciobasex.Name, y].Value.ToString();
-                txtmetros.Text = dtgconten[metrosx.Name, y].Value.ToString();
-                txtpiso.Text = dtgconten[pisox.Name, y].Value.ToString();
-                txtetapa.Text = dtgconten[etapax.Name, y].Value.ToString();
+                txtpreciopre.Text = dtgconten[precioprex.Name, y].Value.ToString();
+                cbounidad.SelectedValue = (int)dtgconten[idunidadmedidax.Name, y].Value;
+                cbomoneda.SelectedValue = (int)dtgconten[monedax.Name, y].Value;
+                cboetapa.Text = dtgconten[etapax.Name, y].Value.ToString();
                 txtobservacion.Text = dtgconten[observacionx.Name, y].Value.ToString();
                 cboestado.SelectedValue = (int)dtgconten[Estadox.Name, y].Value;
+                txtcantidad.Text = dtgconten[cantidadx.Name, y].Value.ToString();
+                cbotipopago.Text = dtgconten[Tipo_Inicial.Name, y].Value.ToString();
+                txtvinicial.Text = dtgconten[Valor_Inicial.Name, y].Value.ToString();
             }
         }
         DataTable Estados = new DataTable();
@@ -74,13 +68,38 @@ namespace HPReserger
             cboestado.ValueMember = "codigo";
             cboestado.DataSource = Estados;
         }
+        public void CargarEtapas()
+        {
+            DataTable TEtapas = new DataTable();
+            TEtapas.Columns.Add("Valor");
+            TEtapas.Rows.Add("Venta");
+            TEtapas.Rows.Add("PreVenta");
+            cboetapa.ValueMember = "valor";
+            cboetapa.DisplayMember = "valor";
+            cboetapa.DataSource = TEtapas;
+        }
+        public void CargarTipos()
+        {
+            DataTable TTipos = new DataTable();
+            TTipos.Columns.Add("Valor");
+            TTipos.Rows.Add("Monto");
+            TTipos.Rows.Add("Porcentaje");
+            cbotipopago.ValueMember = "valor";
+            cbotipopago.DisplayMember = "valor";
+            cbotipopago.DataSource = TTipos;
+        }
         private void frmProductosProyecto_Load(object sender, EventArgs e)
         {
+            CargarTipos();
+            CargarEtapas();
+            CargarMoneda();
+            CargarUnidad();
             CargarEstados();
             CargarProductos();
             CargarDatos();
             dtgconten.Location = new Point(dtgconten.Location.X, 96);
             dtgconten.Height += 64;
+            DesactivarEdicion();
         }
         private void btnactualizar_Click(object sender, EventArgs e)
         {
@@ -96,18 +115,20 @@ namespace HPReserger
             else
                 cboproducto.SelectedIndex = -1;
             cboestado.SelectedIndex = 0;
-            txtetapa.Text = txtobservacion.Text = "";
-            txtmetros.Text = txtpiso.Text = txtprecio.Text = "0";
+            cboetapa.Text = txtobservacion.Text = "";
+            txtpreciopre.Text = txtcantidad.Text = txtprecio.Text = "0";
         }
         public void ActivarEdicion()
         {
-            Activar(txtetapa, txtmetros, txtobservacion, txtpiso, txtprecio, btnaceptar);//,cboproducto,cboestado);
-            Desactivar(btnnuevo, btnmodificar, btneliminar, btnbuscar, btnactualizar, dtgconten);
+            Configuraciones.Activar(cboetapa, txtpreciopre, txtobservacion, txtcantidad, txtprecio, btnaceptar, cboestado, cboproducto, cbotipopago, txtvinicial);
+            Configuraciones.Desactivar(btnnuevo, btnmodificar, btneliminar, btnbuscar, btnactualizar, dtgconten);
+            cbounidad.Enabled = cbomoneda.Enabled = true;
         }
         public void DesactivarEdicion()
         {
-            Desactivar(txtetapa, txtmetros, txtobservacion, txtpiso, txtprecio, btnaceptar);//, cboproducto, cboestado);
-            Activar(btnnuevo, btnmodificar, btneliminar, btnbuscar, btnactualizar, dtgconten);
+            Configuraciones.Desactivar(cboetapa, txtpreciopre, txtobservacion, txtprecio, btnaceptar, txtcantidad, cboestado, cboproducto, cbotipopago, txtvinicial);
+            Configuraciones.Activar(btnnuevo, btnmodificar, btneliminar, btnbuscar, btnactualizar, dtgconten);
+            cbounidad.Enabled = cbomoneda.Enabled = false;
         }
         int estado = 0;
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -121,12 +142,11 @@ namespace HPReserger
             }
             else
             {
-                if (msg("No Hay Productos, Desea Ingresar Nuevos") == DialogResult.Yes)
+                if (msgyESnO("No Hay Productos, Desea Ingresar Nuevos") == DialogResult.Yes)
                 {
                     frmProductos frmpro = new frmProductos();
                     frmpro.Show();
                 }
-
             }
         }
         public void BotonBuscar()
@@ -134,13 +154,13 @@ namespace HPReserger
             if (find)
                 btnbuscar_Click(new object { }, new EventArgs());
         }
-        public DialogResult msg(string cadena)
+        public void msg(string cadena)
         {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public DialogResult msgyESnO(string cadena)
         {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            return HPResergerFunciones.Utilitarios.msgp(cadena);
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -162,6 +182,22 @@ namespace HPReserger
             cboproducto.ValueMember = "id_prod";
             cboproducto.DataSource = Productos;
             cboproducto.Text = text;
+        }
+        public void CargarMoneda()
+        {
+            string text = cbomoneda.Text;
+            cbomoneda.DisplayMember = "descripcion";
+            cbomoneda.ValueMember = "codigo";
+            cbomoneda.DataSource = CapaLogica.getCargoTipoContratacion2("Id_Moneda", "Moneda", "TBL_Moneda");
+            cbomoneda.Text = text;
+        }
+        public void CargarUnidad()
+        {
+            string text = cbounidad.Text;
+            cbounidad.DisplayMember = "descripcion";
+            cbounidad.ValueMember = "codigo";
+            cbounidad.DataSource = CapaLogica.getCargoTipoContratacion("Id_UnidMedida", "UnidadMedida", "TBL_UnidadMedida");
+            cbounidad.Text = text;
         }
         private void cboproducto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -212,22 +248,40 @@ namespace HPReserger
                 msg("No Hay Productos");
                 return;
             }
-            if (!txtetapa.EstaLLeno())
+            if (cboestado.SelectedIndex < 0)
             {
-                txtetapa.Focus();
-                msg("Ingrese Etapa");
+                cboestado.Focus();
+                msg("Seleccione un Estado");
                 return;
             }
-            if (!txtmetros.EstaLLeno())
+            if (cbomoneda.SelectedIndex < 0)
             {
-                txtmetros.Focus();
-                msg("Ingrese Metros");
+                cbomoneda.Focus();
+                msg("Seleccione Moneda");
                 return;
             }
-            if (!txtpiso.EstaLLeno())
+            if (cbounidad.SelectedIndex < 0)
             {
-                txtpiso.Focus();
-                msg("Ingrese Piso");
+                cbounidad.Focus();
+                msg("Seleccione Unidad de Medida");
+                return;
+            }
+            if (cboetapa.SelectedIndex < 0)
+            {
+                cboetapa.Focus();
+                msg("Seleccione Etapa");
+                return;
+            }
+            if (!txtpreciopre.EstaLLeno())
+            {
+                txtpreciopre.Focus();
+                msg("Ingrese Precio-Preventa");
+                return;
+            }
+            if (!txtcantidad.EstaLLeno())
+            {
+                txtcantidad.Focus();
+                msg("Ingrese Cantidad");
                 return;
             }
             if (!txtprecio.EstaLLeno())
@@ -236,10 +290,37 @@ namespace HPReserger
                 msg("Ingrese Precio");
                 return;
             }
+            if (cbotipopago.SelectedIndex < 0)
+            {
+                cbotipopago.Focus();
+                msg("Selecione Tipo de Inicial");
+            }
+            if (decimal.Parse(txtvinicial.Text) < 0)
+            {
+                txtvinicial.Focus();
+                msg("El Monto Inicial no puede ser menor a Cero");
+            }
+            //verificar si esta esta bien el monto           
+            if (cbotipopago.Text == "Monto")
+            {
+                if (decimal.Parse(txtvinicial.Text) > decimal.Parse(txtpreciopre.Text))
+                {
+                    txtvinicial.Focus();
+                    msg("El Monto Inicial no debe ser Mayor al Precio Base");
+                }
+            }
+            if (cbotipopago.Text == "Porcentaje")
+            {
+                if (decimal.Parse(txtvinicial.Text) > 100)
+                {
+                    txtvinicial.Focus();
+                    msg("El Monto Inicial no debe ser Mayor de 100");
+                }
+            }
             //NUEVO            
             if (estado == 1)
             {
-                CapaLogica.Proyecto_Productos(0, 1, codProyecto, (int)cboproducto.SelectedValue, Convert.ToDecimal(txtmetros.Text), Convert.ToDecimal(txtprecio.Text), Convert.ToInt32(txtpiso.Text), txtetapa.Text, (int)cboestado.SelectedValue, txtobservacion.Text, frmLogin.CodigoUsuario);
+                CapaLogica.Proyecto_Productos(0, 1, codProyecto, (int)cboproducto.SelectedValue, decimal.Parse(txtcantidad.TextValido()), (int)cbounidad.SelectedValue, (int)cbomoneda.SelectedValue, Convert.ToDecimal(txtpreciopre.Text), Convert.ToDecimal(txtprecio.Text), cboetapa.Text, (int)cboestado.SelectedValue, txtobservacion.Text, frmLogin.CodigoUsuario, cbotipopago.SelectedIndex + 1, decimal.Parse(txtvinicial.Text));
                 CargarDatos();
                 msg("Producto del Proyecto Guardado");
                 estado = 0;
@@ -248,36 +329,41 @@ namespace HPReserger
             if (estado == 2)
             {
                 //BUSCA SI YA EXISTE               
-                CapaLogica.Proyecto_Productos(Codregistro, 2, codProyecto, (int)cboproducto.SelectedValue, Convert.ToDecimal(txtmetros.Text), Convert.ToDecimal(txtprecio.Text), Convert.ToInt32(txtpiso.Text), txtetapa.Text, (int)cboestado.SelectedValue, txtobservacion.Text, frmLogin.CodigoUsuario);
-
+                CapaLogica.Proyecto_Productos(Codregistro, 2, codProyecto, (int)cboproducto.SelectedValue, decimal.Parse(txtcantidad.TextValido()), (int)cbounidad.SelectedValue, (int)cbomoneda.SelectedValue, Convert.ToDecimal(txtpreciopre.Text), Convert.ToDecimal(txtprecio.Text), cboetapa.Text, (int)cboestado.SelectedValue, txtobservacion.Text, frmLogin.CodigoUsuario, cbotipopago.SelectedIndex + 1, decimal.Parse(txtvinicial.Text));
                 CargarDatos();
                 msg("Producto del Proyecto Guardado");
                 estado = 0;
             }
             DesactivarEdicion();
         }
-
         private void cboproducto_Click(object sender, EventArgs e)
         {
             CargarProductos();
         }
+        private void cbomoneda_Click(object sender, EventArgs e)
+        {
+            CargarMoneda();
+        }
+        private void cbounidad_Click(object sender, EventArgs e)
+        {
+            CargarUnidad();
+        }
         Boolean find = false;
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            if (dtgconten.Location.Y != 96)
+            if (dtgconten.Location.Y != 93)
             {
-                dtgconten.Location = new Point(dtgconten.Location.X, 96);
-                dtgconten.Height += 64;
+                dtgconten.Location = new Point(dtgconten.Location.X, 93);
+                dtgconten.Height += 67;
                 find = false;
             }
             else
             {
                 dtgconten.Location = new Point(dtgconten.Location.X, 160);
-                dtgconten.Height -= 64;
+                dtgconten.Height -= 37;
                 find = true;
             }
         }
-
         private void txtfproduc_TextChanged(object sender, EventArgs e)
         {
             buscar();
@@ -293,20 +379,20 @@ namespace HPReserger
                 {
                     decimal max = Math.Max(Convert.ToDecimal(txtmetrosmin.Text), Convert.ToDecimal(txtmetrosmax.Text));
                     decimal min = Math.Min(Convert.ToDecimal(txtmetrosmin.Text), Convert.ToDecimal(txtmetrosmax.Text));
-                    filtro += $" and metros >= {min} and metros <= {max} ";
-                } 
+                    filtro += $" and Precio_PreVenta >= {min} and Precio_PreVenta <= {max} ";
+                }
                 if (txtprecimin.EstaLLeno() && txtpreciomax.EstaLLeno())
                 {
                     decimal max = Math.Max(Convert.ToDecimal(txtprecimin.Text), Convert.ToDecimal(txtpreciomax.Text));
                     decimal min = Math.Min(Convert.ToDecimal(txtprecimin.Text), Convert.ToDecimal(txtpreciomax.Text));
                     filtro += $" and precio_base >= {min} and precio_base <= {max} ";
                 }
-                if (txtpisosmin.EstaLLeno() && txtpisosmax.EstaLLeno())
-                {
-                    decimal max = Math.Max(Convert.ToDecimal(txtpisosmin.Text), Convert.ToDecimal(txtpisosmax.Text));
-                    decimal min = Math.Min(Convert.ToDecimal(txtpisosmin.Text), Convert.ToDecimal(txtpisosmax.Text));
-                    filtro += $" and piso >= {min} and piso <= {max} ";
-                }
+                //if (txtpisosmin.EstaLLeno() && txtpisosmax.EstaLLeno())
+                //{
+                //    decimal max = Math.Max(Convert.ToDecimal(txtpisosmin.Text), Convert.ToDecimal(txtpisosmax.Text));
+                //    decimal min = Math.Min(Convert.ToDecimal(txtpisosmin.Text), Convert.ToDecimal(txtpisosmax.Text));
+                //    filtro += $" and piso >= {min} and piso <= {max} ";
+                //}
                 DataRow[] filitas = filtrado.Select(filtro);
                 if (filitas.Length > 0)
                 {
@@ -323,9 +409,8 @@ namespace HPReserger
 
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
-            txtfestado.Text = txtfobservacion.Text = txtfproduc.Text = txtmetrosmin.Text = txtmetrosmax.Text = txtpisosmin.Text = txtpisosmax.Text = txtprecimin.Text = txtpreciomax.Text = txtfetapa.Text = "";
+            txtfestado.Text = txtfobservacion.Text = txtfproduc.Text = txtmetrosmin.Text = txtmetrosmax.Text = txtprecimin.Text = txtpreciomax.Text = txtfetapa.Text = "";
         }
-
         private void dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             ContadorRegistros();
@@ -346,5 +431,7 @@ namespace HPReserger
         {
             ContadorRegistros();
         }
+
+
     }
 }

@@ -71,6 +71,17 @@ namespace HPResergerFunciones
             }
             return P.Handled;
         }
+        public static int ExtraeEnterodeCadena(string cadena)
+        {
+            int a;
+            string matriz = "1234567890" + (char)8;
+            string resul = "";
+            foreach (char item in cadena)
+                if (matriz.Contains(item))
+                    resul += item;
+            a = int.Parse(resul);
+            return a;
+        }
         public static Boolean Sololetras(KeyPressEventArgs P)
         {
             string cadena = "abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVWXYZÑñ " + (char)8;
@@ -890,6 +901,7 @@ namespace HPResergerFunciones
         {
             item.Style.ForeColor = Color.Red;
             item.Style.BackColor = Color.Yellow;
+            item.Style.SelectionBackColor = Color.FromArgb(165, 207, 75);
         }
         public static void ColorCeldaNormal(DataGridViewCell item)
         {
@@ -900,6 +912,7 @@ namespace HPResergerFunciones
         {
             item.Style.ForeColor = Color.Empty;
             item.Style.BackColor = Color.Empty;
+            item.Style.SelectionBackColor = Color.Empty;
         }
         public static void AjustarTexto(TextBox cajita, int len)
         {

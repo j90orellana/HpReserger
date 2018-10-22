@@ -15,6 +15,10 @@ namespace HpResergerUserControls
         {
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cadena.ToLower());
         }
+        public static string ReturnDecimal(string cadena)
+        {
+            return decimal.Parse(cadena).ToString("n2");
+        }
         public static void Activar(params object[] control)
         {
             foreach (object x in control)

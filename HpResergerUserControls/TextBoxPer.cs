@@ -36,7 +36,7 @@ namespace HpResergerUserControls
         ComboBox Combito = new ComboBox();
         public enum ListaTipos
         {
-            Todo, SoloLetras, SoloNumeros, SoloDinero, MayusculaCadaPalabra
+            Todo, SoloLetras, SoloNumeros, SoloNumerosConCero, SoloDinero, MayusculaCadaPalabra
         }
         public string TextoDefecto
         {
@@ -69,6 +69,11 @@ namespace HpResergerUserControls
             get { return _NextControlOnEnter; }
             set { _NextControlOnEnter = value; }
         }
+        public override void ResetText()
+        {
+            base.ResetText();
+            this.Text = TextoDefecto;
+        }
         protected override void OnReadOnlyChanged(EventArgs e)
         {
             if (this.ReadOnly)
@@ -81,18 +86,23 @@ namespace HpResergerUserControls
         {
             ColorLetras = ForeColor;
             ColorFondo = BackColor;
-            this.Text = TextoPorDefecto;
+            if (!EstaLLeno())
+                this.Text = TextoPorDefecto;
             //this.ForeColor = ColorTextoDefecto;
             Invalidate();
         }
         protected override void OnLeave(EventArgs e)
         {
-            if (!ReadOnly)
-                if (this.Text.Length <= 0 || Text == "" || Text == TextoPorDefecto)
-                {
-                    this.Text = TextoPorDefecto;
-                    this.ForeColor = ColorTextoDefecto;
-                }
+            if (this.Text.Length <= 0 || Text == "" || Text == TextoPorDefecto)
+            {
+                this.Text = TextoPorDefecto;
+                this.ForeColor = ColorTextoDefecto;
+            }
+            else
+            {
+                if (TiposDatos == ListaTipos.SoloDinero) Text = decimal.Parse(Text).ToString("n2");
+                if (TiposDatos == ListaTipos.SoloNumeros) Text = decimal.Parse(Text).ToString(TextoDefecto);
+            }
             base.OnLeave(e);
         }
         public string TextValido()
@@ -100,23 +110,43 @@ namespace HpResergerUserControls
             string cadena = "";
             if (this.Text.Length <= 0 || Text == "" || Text == TextoPorDefecto)
             {
-                cadena = "";
+                if (TiposDatos == ListaTipos.MayusculaCadaPalabra || TiposDatos == ListaTipos.SoloLetras || TiposDatos == ListaTipos.Todo)
+                    cadena = "";
+                if (TiposDatos == ListaTipos.SoloDinero) cadena = TextoDefecto;
+                if (TiposDatos == ListaTipos.SoloNumeros) cadena = TextoDefecto;
+            }
+            else cadena = Text;
+            return cadena;
+        }
+        public string TextValidoNumeros()
+        {
+            string cadena = "";
+            if (this.Text.Length <= 0 || Text == "" || Text == TextoPorDefecto)
+            {
+                if (TiposDatos == ListaTipos.MayusculaCadaPalabra || TiposDatos == ListaTipos.SoloLetras || TiposDatos == ListaTipos.Todo)
+                    cadena = "";
+                if (TiposDatos == ListaTipos.SoloDinero) cadena = TextoDefecto;
+                if (TiposDatos == ListaTipos.SoloNumeros) cadena = TextoDefecto;
             }
             else cadena = Text;
             return cadena;
         }
         public void CargarTextoporDefecto()
         {
+            //if (TiposDatos == ListaTipos.MayusculaCadaPalabra || TiposDatos == ListaTipos.SoloLetras || TiposDatos == ListaTipos.Todo)
+            Text = TextoDefecto;
+            //if (TiposDatos == ListaTipos.SoloDinero) Text = TextoDefecto;
+            //if (TiposDatos == ListaTipos.SoloNumeros) Text = TextoDefecto;
             OnLeave(new EventArgs());
         }
         protected override void OnClick(EventArgs e)
         {
-            if(!ReadOnly)
-            if (this.Text.ToUpper() == this.TextoPorDefecto.ToUpper())
-            {
-                this.Text = "";
-                this.ForeColor = ColorLetras;
-            }
+            if (!ReadOnly)
+                if (this.Text.ToUpper() == this.TextoPorDefecto.ToUpper())
+                {
+                    this.Text = "";
+                    this.ForeColor = ColorLetras;
+                }
             base.OnClick(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -142,6 +172,7 @@ namespace HpResergerUserControls
             if (this.Text.ToUpper() == TextoPorDefecto.ToUpper()) return false;
             if (this.Text.Length <= 0) return false;
             if (TiposDatos == ListaTipos.SoloNumeros && Text == "0.00") return false;
+            if (TiposDatos == ListaTipos.SoloNumerosConCero && Text == "0.00") return false;
             return true;
         }
         protected override void OnTextChanged(EventArgs e)
@@ -169,6 +200,10 @@ namespace HpResergerUserControls
             {
                 HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
             }
+            if (TiposDatos == ListaTipos.SoloNumerosConCero)
+            {
+                HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
+            }
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if (_NextControlOnEnter != null)
@@ -187,6 +222,10 @@ namespace HpResergerUserControls
                 HPResergerFunciones.Utilitarios.ValidarDinero(e, this);
             }
             if (TiposDatos == ListaTipos.SoloNumeros)
+            {
+                HPResergerFunciones.Utilitarios.ValidarCuentaBancos(e, this, this.MaxLength);
+            }
+            if (TiposDatos == ListaTipos.SoloNumerosConCero)
             {
                 HPResergerFunciones.Utilitarios.ValidarCuentaBancos(e, this, this.MaxLength);
             }

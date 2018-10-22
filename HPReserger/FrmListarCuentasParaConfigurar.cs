@@ -199,7 +199,8 @@ namespace HPReserger
                         }
                         msj("Items Eliminados");
                     }
-                    msj("Cancelado Por el Usuario");
+                    else
+                        msj("Cancelado Por el Usuario");
                 }
             }
         }

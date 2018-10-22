@@ -2972,5 +2972,138 @@ namespace HPReserger
         {
             frmcotizacioncliente = null;
         }
+        frmUnidadMedida frmunit;
+        private void unidadDeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmunit == null)
+            {
+                frmunit = new frmUnidadMedida();
+                frmunit.MdiParent = this;
+                frmunit.Icon = ICono;
+                frmunit.FormClosed += new FormClosedEventHandler(cerrarunidadmedida);
+                frmunit.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmunit.Activate();
+                ValidarVentanas(frmunit);
+            }
+        }
+        private void cerrarunidadmedida(object sender, FormClosedEventArgs e)
+        {
+            frmunit = null;
+        }
+        frmCargosVentas frmcarventa;
+        private void cargosVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcarventa == null)
+            {
+                frmcarventa = new frmCargosVentas();
+                frmcarventa.MdiParent = this;
+                frmcarventa.Icon = ICono;
+                frmcarventa.FormClosed += new FormClosedEventHandler(cerrarcargoventas);
+                frmcarventa.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcarventa.Activate();
+                ValidarVentanas(frmcarventa);
+            }
+        }
+        private void cerrarcargoventas(object sender, FormClosedEventArgs e)
+        {
+            frmcarventa = null;
+        }
+        frmNroOpBancacia frmrnoopera;
+        private void operacionesBancariasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmrnoopera == null)
+            {
+                frmrnoopera = new frmNroOpBancacia();
+                frmrnoopera.MdiParent = this;
+                frmrnoopera.Icon = ICono;
+                frmrnoopera.FormClosed += new FormClosedEventHandler(cerrarnropera);
+                frmrnoopera.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmrnoopera.Activate();
+                ValidarVentanas(frmrnoopera);
+            }
+        }
+        private void cerrarnropera(object sender, FormClosedEventArgs e)
+        {
+            frmrnoopera = null;
+        }
+        frmVendedores frmven;
+        private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmven == null)
+            {
+                frmven = new frmVendedores();
+                frmven.MdiParent = this;
+                frmven.Icon = ICono;
+                frmven.FormClosed += new FormClosedEventHandler(cerrarvendedor);
+                frmven.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmven.Activate();
+                ValidarVentanas(frmven);
+            }
+        }
+        private void cerrarvendedor(object sender, FormClosedEventArgs e)
+        {
+            frmven = null;
+        }
+        frmCronogramaPagos frmcronopa;
+        private void cronogramaDePagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcronopa == null)
+            {
+                frmcronopa = new frmCronogramaPagos();
+                frmcronopa.MdiParent = this;
+                frmcronopa.Icon = ICono;
+                frmcronopa.FormClosed += new FormClosedEventHandler(cerrarcronopago);
+                frmcronopa.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcronopa.Activate();
+                ValidarVentanas(frmcronopa);
+            }
+        }
+        private void cerrarcronopago(object sender, FormClosedEventArgs e)
+        {
+            frmcronopa = null;
+        }
+        frmSeparacionVta frmseparacion;
+        private void separaciónVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmseparacion == null)
+            {
+                frmseparacion = new frmSeparacionVta();
+                frmseparacion.MdiParent = this;
+                frmseparacion.Icon = ICono;
+                frmseparacion.FormClosed += new FormClosedEventHandler(cerrarseparacionvta);
+                frmseparacion.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmseparacion.Activate();
+                ValidarVentanas(frmseparacion);
+            }
+        }
+
+        private void cerrarseparacionvta(object sender, FormClosedEventArgs e)
+        {
+            frmseparacion = null;
+        }
     }
 }

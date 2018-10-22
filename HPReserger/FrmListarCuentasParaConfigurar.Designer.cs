@@ -115,7 +115,7 @@ namespace HPReserger
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgConten.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dtgConten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgConten.EnableHeadersVisualStyles = false;
             this.dtgConten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgConten.Location = new System.Drawing.Point(12, 289);
