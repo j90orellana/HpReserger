@@ -28,17 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeparacionVta));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtnumcot = new HpResergerUserControls.TextBoxPer();
             this.label13 = new System.Windows.Forms.Label();
             this.txtcodvendedor = new HpResergerUserControls.TextBoxPer();
@@ -50,9 +48,7 @@
             this.txtValorInicial = new HpResergerUserControls.TextBoxPer();
             this.txttipocambioref = new HpResergerUserControls.TextBoxPer();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtmn = new HpResergerUserControls.TextBoxPer();
-            this.txtme = new HpResergerUserControls.TextBoxPer();
-            this.label17 = new System.Windows.Forms.Label();
+            this.txttotal = new HpResergerUserControls.TextBoxPer();
             this.label15 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.btnprocesar = new System.Windows.Forms.Button();
@@ -62,8 +58,7 @@
             this.btneliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IdSepVta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FkCtoVta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importeme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importemn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipocambio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,15 +68,13 @@
             this.FechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnbuscoti = new System.Windows.Forms.Button();
-            this.txtvalorinicialsoles = new HpResergerUserControls.TextBoxPer();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelllenado = new HpResergerUserControls.PanelOre();
+            this.txtmoneda = new HpResergerUserControls.TextBoxPer();
             this.txtdocpago = new HpResergerUserControls.TextBoxPer();
             this.dtpfecha = new System.Windows.Forms.DateTimePicker();
             this.label21 = new System.Windows.Forms.Label();
             this.btnimagendoc = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
-            this.cbomoneda = new HpResergerUserControls.ComboBoxPer(this.components);
             this.txtimporte = new HpResergerUserControls.TextBoxPer();
             this.txttipocambio = new HpResergerUserControls.TextBoxPer();
             this.label18 = new System.Windows.Forms.Label();
@@ -89,18 +82,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lkldocpago = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtabonome = new HpResergerUserControls.TextBoxPer();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtabonomn = new HpResergerUserControls.TextBoxPer();
+            this.txtabonado = new HpResergerUserControls.TextBoxPer();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
             this.lblmsg = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.lbldias = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtsaldomn = new HpResergerUserControls.TextBoxPer();
-            this.txtsaldome = new HpResergerUserControls.TextBoxPer();
+            this.txtsaldo = new HpResergerUserControls.TextBoxPer();
             this.label26 = new System.Windows.Forms.Label();
             this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
@@ -125,6 +114,8 @@
             this.lbldato = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.txtobservacion = new HpResergerUserControls.TextBoxPer();
+            this.btncontrato = new System.Windows.Forms.Button();
+            this.btnminuta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.panelllenado.SuspendLayout();
             this.SuspendLayout();
@@ -145,7 +136,7 @@
             this.txtnumcot.TabIndex = 1;
             this.txtnumcot.Text = "000";
             this.txtnumcot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnumcot.TextoDefecto = "000";
+            this.txtnumcot.TextoDefecto = "0";
             this.txtnumcot.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtnumcot.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
             this.txtnumcot.TextChanged += new System.EventHandler(this.txtcodvendedor_TextChanged);
@@ -260,12 +251,12 @@
             this.txtValorInicial.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtValorInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorInicial.ForeColor = System.Drawing.Color.Black;
-            this.txtValorInicial.Location = new System.Drawing.Point(76, 147);
+            this.txtValorInicial.Location = new System.Drawing.Point(232, 147);
             this.txtValorInicial.MaxLength = 20;
             this.txtValorInicial.Name = "txtValorInicial";
             this.txtValorInicial.NextControlOnEnter = null;
             this.txtValorInicial.ReadOnly = true;
-            this.txtValorInicial.Size = new System.Drawing.Size(102, 21);
+            this.txtValorInicial.Size = new System.Drawing.Size(109, 21);
             this.txtValorInicial.TabIndex = 183;
             this.txtValorInicial.Text = "0.00";
             this.txtValorInicial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -281,7 +272,7 @@
             this.txttipocambioref.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txttipocambioref.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttipocambioref.ForeColor = System.Drawing.Color.Black;
-            this.txttipocambioref.Location = new System.Drawing.Point(722, 147);
+            this.txttipocambioref.Location = new System.Drawing.Point(710, 218);
             this.txttipocambioref.MaxLength = 10;
             this.txttipocambioref.Name = "txttipocambioref";
             this.txttipocambioref.NextControlOnEnter = null;
@@ -293,95 +284,66 @@
             this.txttipocambioref.TextoDefecto = "3.30";
             this.txttipocambioref.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txttipocambioref.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            this.txttipocambioref.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(681, 151);
+            this.label7.Location = new System.Drawing.Point(669, 222);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 181;
             this.label7.Text = "T.C.R.";
+            this.label7.Visible = false;
             // 
-            // txtmn
+            // txttotal
             // 
-            this.txtmn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtmn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtmn.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtmn.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtmn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtmn.ForeColor = System.Drawing.Color.Black;
-            this.txtmn.Location = new System.Drawing.Point(401, 147);
-            this.txtmn.MaxLength = 20;
-            this.txtmn.Name = "txtmn";
-            this.txtmn.NextControlOnEnter = null;
-            this.txtmn.ReadOnly = true;
-            this.txtmn.Size = new System.Drawing.Size(112, 21);
-            this.txtmn.TabIndex = 178;
-            this.txtmn.Text = "0.00";
-            this.txtmn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtmn.TextoDefecto = "0.00";
-            this.txtmn.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtmn.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // txtme
-            // 
-            this.txtme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtme.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtme.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtme.ForeColor = System.Drawing.Color.Black;
-            this.txtme.Location = new System.Drawing.Point(565, 147);
-            this.txtme.MaxLength = 20;
-            this.txtme.Name = "txtme";
-            this.txtme.NextControlOnEnter = null;
-            this.txtme.ReadOnly = true;
-            this.txtme.Size = new System.Drawing.Size(112, 21);
-            this.txtme.TabIndex = 179;
-            this.txtme.Text = "0.00";
-            this.txtme.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtme.TextoDefecto = "0.00";
-            this.txtme.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtme.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Location = new System.Drawing.Point(340, 151);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(58, 13);
-            this.label17.TabIndex = 176;
-            this.label17.Text = "Total M.N.";
+            this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txttotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotal.ForeColor = System.Drawing.Color.Black;
+            this.txttotal.Location = new System.Drawing.Point(76, 147);
+            this.txttotal.MaxLength = 20;
+            this.txttotal.Name = "txttotal";
+            this.txttotal.NextControlOnEnter = null;
+            this.txttotal.ReadOnly = true;
+            this.txttotal.Size = new System.Drawing.Size(109, 21);
+            this.txttotal.TabIndex = 179;
+            this.txttotal.Text = "0.00";
+            this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttotal.TextoDefecto = "0.00";
+            this.txttotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Location = new System.Drawing.Point(512, 151);
+            this.label15.Location = new System.Drawing.Point(45, 151);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 13);
+            this.label15.Size = new System.Drawing.Size(34, 13);
             this.label15.TabIndex = 177;
-            this.label15.Text = "Total M.E.";
+            this.label15.Text = "Total:";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Location = new System.Drawing.Point(18, 151);
+            this.label23.Location = new System.Drawing.Point(191, 151);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(60, 13);
+            this.label23.Size = new System.Drawing.Size(40, 13);
             this.label23.TabIndex = 182;
-            this.label23.Text = "M.Inic.ME:";
+            this.label23.Text = "Inicial:";
             // 
             // btnprocesar
             // 
             this.btnprocesar.Enabled = false;
             this.btnprocesar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnprocesar.Image = ((System.Drawing.Image)(resources.GetObject("btnprocesar.Image")));
-            this.btnprocesar.Location = new System.Drawing.Point(652, 237);
+            this.btnprocesar.Location = new System.Drawing.Point(652, 191);
             this.btnprocesar.Name = "btnprocesar";
             this.btnprocesar.Size = new System.Drawing.Size(84, 23);
             this.btnprocesar.TabIndex = 184;
@@ -454,8 +416,7 @@
             this.btneliminar,
             this.IdSepVta,
             this.FkCtoVta,
-            this.importeme,
-            this.Importemn,
+            this.Importe,
             this.tipocambio,
             this.Moneda,
             this.idmoneda,
@@ -464,24 +425,24 @@
             this.Fecha,
             this.FechaPago,
             this.Usuario});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(8, 307);
+            this.dtgconten.Location = new System.Drawing.Point(8, 260);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(863, 307);
+            this.dtgconten.Size = new System.Drawing.Size(863, 354);
             this.dtgconten.TabIndex = 187;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
@@ -516,49 +477,36 @@
             this.FkCtoVta.Name = "FkCtoVta";
             this.FkCtoVta.Visible = false;
             // 
-            // importeme
+            // Importe
             // 
-            this.importeme.DataPropertyName = "importeme";
+            this.Importe.DataPropertyName = "importe";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle4.Format = "n2";
-            this.importeme.DefaultCellStyle = dataGridViewCellStyle4;
-            this.importeme.HeaderText = "Abono Moneda Extranjera";
-            this.importeme.Name = "importeme";
-            this.importeme.ReadOnly = true;
-            // 
-            // Importemn
-            // 
-            this.Importemn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Importemn.DataPropertyName = "Importemn";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.Importemn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Importemn.HeaderText = "Abono Moneda Nacional";
-            this.Importemn.Name = "Importemn";
-            this.Importemn.ReadOnly = true;
+            this.Importe.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Importe.HeaderText = "Importe Abonado";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
             // 
             // tipocambio
             // 
-            this.tipocambio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.tipocambio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.tipocambio.DataPropertyName = "tipocambio";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n4";
-            this.tipocambio.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n4";
+            this.tipocambio.DefaultCellStyle = dataGridViewCellStyle5;
             this.tipocambio.HeaderText = "Tipo Cambio";
             this.tipocambio.Name = "tipocambio";
             this.tipocambio.ReadOnly = true;
-            this.tipocambio.Width = 95;
             // 
             // Moneda
             // 
-            this.Moneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Moneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Moneda.DataPropertyName = "namemoneda";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Moneda.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Moneda.DefaultCellStyle = dataGridViewCellStyle6;
             this.Moneda.HeaderText = "Moneda";
             this.Moneda.Name = "Moneda";
             this.Moneda.ReadOnly = true;
-            this.Moneda.Width = 74;
             // 
             // idmoneda
             // 
@@ -592,9 +540,9 @@
             // 
             this.FechaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.FechaPago.DataPropertyName = "FechaPago";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "d";
-            this.FechaPago.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "d";
+            this.FechaPago.DefaultCellStyle = dataGridViewCellStyle7;
             this.FechaPago.HeaderText = "Fecha del Pago";
             this.FechaPago.Name = "FechaPago";
             this.FechaPago.ReadOnly = true;
@@ -618,59 +566,48 @@
             this.btnbuscoti.UseVisualStyleBackColor = true;
             this.btnbuscoti.Click += new System.EventHandler(this.btnaddproducto_Click);
             // 
-            // txtvalorinicialsoles
-            // 
-            this.txtvalorinicialsoles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtvalorinicialsoles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtvalorinicialsoles.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtvalorinicialsoles.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtvalorinicialsoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtvalorinicialsoles.ForeColor = System.Drawing.Color.Black;
-            this.txtvalorinicialsoles.Location = new System.Drawing.Point(232, 147);
-            this.txtvalorinicialsoles.MaxLength = 20;
-            this.txtvalorinicialsoles.Name = "txtvalorinicialsoles";
-            this.txtvalorinicialsoles.NextControlOnEnter = null;
-            this.txtvalorinicialsoles.ReadOnly = true;
-            this.txtvalorinicialsoles.Size = new System.Drawing.Size(102, 21);
-            this.txtvalorinicialsoles.TabIndex = 183;
-            this.txtvalorinicialsoles.Text = "0.00";
-            this.txtvalorinicialsoles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtvalorinicialsoles.TextoDefecto = "0.00";
-            this.txtvalorinicialsoles.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtvalorinicialsoles.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(175, 151);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 182;
-            this.label2.Text = "M.Inic.MN:";
-            // 
             // panelllenado
             // 
             this.panelllenado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelllenado.BackColor = System.Drawing.Color.Transparent;
+            this.panelllenado.Controls.Add(this.txtmoneda);
             this.panelllenado.Controls.Add(this.txtdocpago);
             this.panelllenado.Controls.Add(this.dtpfecha);
             this.panelllenado.Controls.Add(this.label21);
             this.panelllenado.Controls.Add(this.btnimagendoc);
             this.panelllenado.Controls.Add(this.label20);
-            this.panelllenado.Controls.Add(this.cbomoneda);
             this.panelllenado.Controls.Add(this.txtimporte);
             this.panelllenado.Controls.Add(this.txttipocambio);
             this.panelllenado.Controls.Add(this.label18);
             this.panelllenado.Controls.Add(this.label8);
             this.panelllenado.Controls.Add(this.label9);
             this.panelllenado.Enabled = false;
-            this.panelllenado.Location = new System.Drawing.Point(0, 238);
+            this.panelllenado.Location = new System.Drawing.Point(0, 192);
             this.panelllenado.Movible = false;
             this.panelllenado.Name = "panelllenado";
             this.panelllenado.Size = new System.Drawing.Size(608, 50);
             this.panelllenado.TabIndex = 189;
+            // 
+            // txtmoneda
+            // 
+            this.txtmoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtmoneda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtmoneda.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtmoneda.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtmoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtmoneda.ForeColor = System.Drawing.Color.Black;
+            this.txtmoneda.Location = new System.Drawing.Point(241, 1);
+            this.txtmoneda.MaxLength = 100;
+            this.txtmoneda.Name = "txtmoneda";
+            this.txtmoneda.NextControlOnEnter = null;
+            this.txtmoneda.ReadOnly = true;
+            this.txtmoneda.Size = new System.Drawing.Size(100, 21);
+            this.txtmoneda.TabIndex = 239;
+            this.txtmoneda.Text = "Moneda";
+            this.txtmoneda.TextoDefecto = "Moneda";
+            this.txtmoneda.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtmoneda.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             // 
             // txtdocpago
             // 
@@ -735,17 +672,6 @@
             this.label20.TabIndex = 185;
             this.label20.Text = "Doc.Pago:";
             // 
-            // cbomoneda
-            // 
-            this.cbomoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbomoneda.FormattingEnabled = true;
-            this.cbomoneda.Location = new System.Drawing.Point(232, 1);
-            this.cbomoneda.Name = "cbomoneda";
-            this.cbomoneda.Size = new System.Drawing.Size(102, 21);
-            this.cbomoneda.TabIndex = 6;
-            this.cbomoneda.Click += new System.EventHandler(this.cbomoneda_Click);
-            // 
             // txtimporte
             // 
             this.txtimporte.BackColor = System.Drawing.Color.White;
@@ -757,7 +683,7 @@
             this.txtimporte.Location = new System.Drawing.Point(76, 1);
             this.txtimporte.MaxLength = 20;
             this.txtimporte.Name = "txtimporte";
-            this.txtimporte.NextControlOnEnter = this.cbomoneda;
+            this.txtimporte.NextControlOnEnter = null;
             this.txtimporte.Size = new System.Drawing.Size(102, 21);
             this.txtimporte.TabIndex = 5;
             this.txtimporte.Text = "0.00";
@@ -820,7 +746,7 @@
             // 
             this.lkldocpago.AutoSize = true;
             this.lkldocpago.BackColor = System.Drawing.Color.Transparent;
-            this.lkldocpago.Location = new System.Drawing.Point(614, 268);
+            this.lkldocpago.Location = new System.Drawing.Point(614, 222);
             this.lkldocpago.Name = "lkldocpago";
             this.lkldocpago.Size = new System.Drawing.Size(43, 13);
             this.lkldocpago.TabIndex = 186;
@@ -832,69 +758,38 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(18, 174);
+            this.label5.Location = new System.Drawing.Point(346, 151);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 182;
-            this.label5.Text = "AbonaME:";
+            this.label5.Text = "Abonado:";
             // 
-            // txtabonome
+            // txtabonado
             // 
-            this.txtabonome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtabonome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabonome.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtabonome.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtabonome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtabonome.ForeColor = System.Drawing.Color.Black;
-            this.txtabonome.Location = new System.Drawing.Point(76, 170);
-            this.txtabonome.MaxLength = 20;
-            this.txtabonome.Name = "txtabonome";
-            this.txtabonome.NextControlOnEnter = null;
-            this.txtabonome.ReadOnly = true;
-            this.txtabonome.Size = new System.Drawing.Size(102, 21);
-            this.txtabonome.TabIndex = 183;
-            this.txtabonome.Text = "0.00";
-            this.txtabonome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtabonome.TextoDefecto = "0.00";
-            this.txtabonome.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtabonome.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(175, 174);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
-            this.label6.TabIndex = 182;
-            this.label6.Text = "AbonaMN:";
-            // 
-            // txtabonomn
-            // 
-            this.txtabonomn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtabonomn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabonomn.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtabonomn.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtabonomn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtabonomn.ForeColor = System.Drawing.Color.Black;
-            this.txtabonomn.Location = new System.Drawing.Point(232, 170);
-            this.txtabonomn.MaxLength = 20;
-            this.txtabonomn.Name = "txtabonomn";
-            this.txtabonomn.NextControlOnEnter = null;
-            this.txtabonomn.ReadOnly = true;
-            this.txtabonomn.Size = new System.Drawing.Size(102, 21);
-            this.txtabonomn.TabIndex = 183;
-            this.txtabonomn.Text = "0.00";
-            this.txtabonomn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtabonomn.TextoDefecto = "0.00";
-            this.txtabonomn.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtabonomn.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtabonado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtabonado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtabonado.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtabonado.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtabonado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtabonado.ForeColor = System.Drawing.Color.Black;
+            this.txtabonado.Location = new System.Drawing.Point(401, 147);
+            this.txtabonado.MaxLength = 20;
+            this.txtabonado.Name = "txtabonado";
+            this.txtabonado.NextControlOnEnter = null;
+            this.txtabonado.ReadOnly = true;
+            this.txtabonado.Size = new System.Drawing.Size(102, 21);
+            this.txtabonado.TabIndex = 183;
+            this.txtabonado.Text = "0.00";
+            this.txtabonado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtabonado.TextoDefecto = "0.00";
+            this.txtabonado.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtabonado.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
             // btnmodificar
             // 
             this.btnmodificar.Enabled = false;
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(789, 262);
+            this.btnmodificar.Location = new System.Drawing.Point(789, 216);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 23);
             this.btnmodificar.TabIndex = 192;
@@ -907,7 +802,7 @@
             // 
             this.btnnuevo.Enabled = false;
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
-            this.btnnuevo.Location = new System.Drawing.Point(789, 238);
+            this.btnnuevo.Location = new System.Drawing.Point(789, 192);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 23);
             this.btnnuevo.TabIndex = 10;
@@ -930,7 +825,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Location = new System.Drawing.Point(340, 174);
+            this.label22.Location = new System.Drawing.Point(660, 136);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(151, 13);
             this.label22.TabIndex = 182;
@@ -940,11 +835,11 @@
             // 
             this.lbldias.AutoSize = true;
             this.lbldias.BackColor = System.Drawing.Color.Transparent;
-            this.lbldias.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.lbldias.Location = new System.Drawing.Point(492, 171);
+            this.lbldias.Location = new System.Drawing.Point(811, 136);
             this.lbldias.Name = "lbldias";
-            this.lbldias.Size = new System.Drawing.Size(56, 26);
+            this.lbldias.Size = new System.Drawing.Size(41, 20);
             this.lbldias.TabIndex = 194;
             this.lbldias.Text = "Días";
             // 
@@ -952,63 +847,32 @@
             // 
             this.label24.AutoSize = true;
             this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Location = new System.Drawing.Point(23, 197);
+            this.label24.Location = new System.Drawing.Point(514, 151);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(55, 13);
+            this.label24.Size = new System.Drawing.Size(39, 13);
             this.label24.TabIndex = 182;
-            this.label24.Text = "SaldoME:";
+            this.label24.Text = "Saldo:";
             // 
-            // label25
+            // txtsaldo
             // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Location = new System.Drawing.Point(180, 197);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(57, 13);
-            this.label25.TabIndex = 182;
-            this.label25.Text = "SaldoMN:";
-            // 
-            // txtsaldomn
-            // 
-            this.txtsaldomn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtsaldomn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtsaldomn.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtsaldomn.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtsaldomn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsaldomn.ForeColor = System.Drawing.Color.Black;
-            this.txtsaldomn.Location = new System.Drawing.Point(232, 193);
-            this.txtsaldomn.MaxLength = 20;
-            this.txtsaldomn.Name = "txtsaldomn";
-            this.txtsaldomn.NextControlOnEnter = null;
-            this.txtsaldomn.ReadOnly = true;
-            this.txtsaldomn.Size = new System.Drawing.Size(102, 21);
-            this.txtsaldomn.TabIndex = 183;
-            this.txtsaldomn.Text = "0.00";
-            this.txtsaldomn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtsaldomn.TextoDefecto = "0.00";
-            this.txtsaldomn.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtsaldomn.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // txtsaldome
-            // 
-            this.txtsaldome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtsaldome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtsaldome.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtsaldome.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtsaldome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsaldome.ForeColor = System.Drawing.Color.Black;
-            this.txtsaldome.Location = new System.Drawing.Point(76, 193);
-            this.txtsaldome.MaxLength = 20;
-            this.txtsaldome.Name = "txtsaldome";
-            this.txtsaldome.NextControlOnEnter = null;
-            this.txtsaldome.ReadOnly = true;
-            this.txtsaldome.Size = new System.Drawing.Size(102, 21);
-            this.txtsaldome.TabIndex = 183;
-            this.txtsaldome.Text = "0.00";
-            this.txtsaldome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtsaldome.TextoDefecto = "0.00";
-            this.txtsaldome.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtsaldome.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtsaldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtsaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtsaldo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtsaldo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtsaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsaldo.ForeColor = System.Drawing.Color.Black;
+            this.txtsaldo.Location = new System.Drawing.Point(554, 147);
+            this.txtsaldo.MaxLength = 20;
+            this.txtsaldo.Name = "txtsaldo";
+            this.txtsaldo.NextControlOnEnter = null;
+            this.txtsaldo.ReadOnly = true;
+            this.txtsaldo.Size = new System.Drawing.Size(102, 21);
+            this.txtsaldo.TabIndex = 183;
+            this.txtsaldo.Text = "0.00";
+            this.txtsaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtsaldo.TextoDefecto = "0.00";
+            this.txtsaldo.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtsaldo.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
             // label26
             // 
@@ -1025,7 +889,7 @@
             // 
             this.separadorOre3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre3.Location = new System.Drawing.Point(-24, 218);
+            this.separadorOre3.Location = new System.Drawing.Point(-24, 172);
             this.separadorOre3.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre3.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre3.Name = "separadorOre3";
@@ -1283,7 +1147,7 @@
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(8, 223);
+            this.label28.Location = new System.Drawing.Point(8, 177);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(104, 13);
             this.label28.TabIndex = 196;
@@ -1294,7 +1158,7 @@
             this.label29.AutoSize = true;
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(8, 291);
+            this.label29.Location = new System.Drawing.Point(8, 245);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(124, 13);
             this.label29.TabIndex = 196;
@@ -1306,7 +1170,7 @@
             this.lbldato.BackColor = System.Drawing.Color.Transparent;
             this.lbldato.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldato.ForeColor = System.Drawing.Color.Red;
-            this.lbldato.Location = new System.Drawing.Point(340, 194);
+            this.lbldato.Location = new System.Drawing.Point(660, 148);
             this.lbldato.Name = "lbldato";
             this.lbldato.Size = new System.Drawing.Size(125, 19);
             this.lbldato.TabIndex = 197;
@@ -1342,47 +1206,69 @@
             this.txtobservacion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtobservacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             // 
+            // btncontrato
+            // 
+            this.btncontrato.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btncontrato.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncontrato.Image = ((System.Drawing.Image)(resources.GetObject("btncontrato.Image")));
+            this.btncontrato.Location = new System.Drawing.Point(442, 620);
+            this.btncontrato.Name = "btncontrato";
+            this.btncontrato.Size = new System.Drawing.Size(82, 25);
+            this.btncontrato.TabIndex = 238;
+            this.btncontrato.Text = "Contrato";
+            this.btncontrato.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncontrato.UseVisualStyleBackColor = true;
+            this.btncontrato.Visible = false;
+            this.btncontrato.Click += new System.EventHandler(this.btncontrato_Click);
+            // 
+            // btnminuta
+            // 
+            this.btnminuta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnminuta.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnminuta.Image = ((System.Drawing.Image)(resources.GetObject("btnminuta.Image")));
+            this.btnminuta.Location = new System.Drawing.Point(355, 620);
+            this.btnminuta.Name = "btnminuta";
+            this.btnminuta.Size = new System.Drawing.Size(82, 25);
+            this.btnminuta.TabIndex = 237;
+            this.btnminuta.Text = "Minuta";
+            this.btnminuta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnminuta.UseVisualStyleBackColor = true;
+            this.btnminuta.Visible = false;
+            this.btnminuta.Click += new System.EventHandler(this.btnminuta_Click);
+            // 
             // frmSeparacionVta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 652);
-            this.Controls.Add(this.lbldato);
+            this.Controls.Add(this.lbldias);
+            this.Controls.Add(this.btncontrato);
+            this.Controls.Add(this.btnminuta);
             this.Controls.Add(this.txtocupacion);
             this.Controls.Add(this.txtemail);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.separadorOre3);
-            this.Controls.Add(this.lbldias);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.lkldocpago);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.panelllenado);
-            this.Controls.Add(this.txtsaldome);
-            this.Controls.Add(this.txtabonome);
-            this.Controls.Add(this.txtsaldomn);
-            this.Controls.Add(this.txtabonomn);
+            this.Controls.Add(this.txtsaldo);
+            this.Controls.Add(this.txtabonado);
             this.Controls.Add(this.btnbuscoti);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnprocesar);
-            this.Controls.Add(this.txtme);
-            this.Controls.Add(this.txtvalorinicialsoles);
+            this.Controls.Add(this.txttotal);
             this.Controls.Add(this.txtValorInicial);
             this.Controls.Add(this.txttipocambioref);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtmn);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.txtnroid);
             this.Controls.Add(this.separadorOre2);
@@ -1409,6 +1295,8 @@
             this.Controls.Add(this.txtnumcot);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.separadorOre1);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.lbldato);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(895, 691);
             this.Name = "frmSeparacionVta";
@@ -1434,9 +1322,7 @@
         private HpResergerUserControls.TextBoxPer txtValorInicial;
         private HpResergerUserControls.TextBoxPer txttipocambioref;
         private System.Windows.Forms.Label label7;
-        private HpResergerUserControls.TextBoxPer txtmn;
-        private HpResergerUserControls.TextBoxPer txtme;
-        private System.Windows.Forms.Label label17;
+        private HpResergerUserControls.TextBoxPer txttotal;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button btnprocesar;
@@ -1444,15 +1330,10 @@
         private System.Windows.Forms.Button btncancelar;
         private HpResergerUserControls.Dtgconten dtgconten;
         private System.Windows.Forms.Button btnbuscoti;
-        private HpResergerUserControls.TextBoxPer txtvalorinicialsoles;
-        private System.Windows.Forms.Label label2;
         private HpResergerUserControls.PanelOre panelllenado;
-        private HpResergerUserControls.TextBoxPer txtabonome;
-        private HpResergerUserControls.TextBoxPer txtabonomn;
-        private System.Windows.Forms.Label label6;
+        private HpResergerUserControls.TextBoxPer txtabonado;
         private System.Windows.Forms.Label label5;
         private HpResergerUserControls.TextBoxPer txttipocambio;
-        private HpResergerUserControls.ComboBoxPer cbomoneda;
         private HpResergerUserControls.TextBoxPer txtimporte;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label8;
@@ -1469,9 +1350,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label lbldias;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private HpResergerUserControls.TextBoxPer txtsaldomn;
-        private HpResergerUserControls.TextBoxPer txtsaldome;
+        private HpResergerUserControls.TextBoxPer txtsaldo;
         private HpResergerUserControls.TextBoxPer txtnombre;
         private System.Windows.Forms.Label label26;
         private HpResergerUserControls.SeparadorOre separadorOre3;
@@ -1494,11 +1373,16 @@
         private HpResergerUserControls.TextBoxPer txtnroid;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label lbldato;
+        private System.Windows.Forms.Label label30;
+        private HpResergerUserControls.TextBoxPer txtobservacion;
+        private System.Windows.Forms.Button btncontrato;
+        private System.Windows.Forms.Button btnminuta;
+        private HpResergerUserControls.TextBoxPer txtmoneda;
         private System.Windows.Forms.DataGridViewButtonColumn btneliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdSepVta;
         private System.Windows.Forms.DataGridViewTextBoxColumn FkCtoVta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn importeme;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Importemn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipocambio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Moneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn idmoneda;
@@ -1507,8 +1391,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
-        private System.Windows.Forms.Label lbldato;
-        private System.Windows.Forms.Label label30;
-        private HpResergerUserControls.TextBoxPer txtobservacion;
     }
 }

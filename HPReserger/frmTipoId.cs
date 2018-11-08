@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmTipoId : Form
+    public partial class frmTipoId : FormGradient
     {
         public frmTipoId()
         {
@@ -25,23 +26,20 @@ namespace HPReserger
             dtgconten.Focus();
             Activar();
         }
-
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-
             tipmsg.Show("Ingrese Tipo de Id", txtgerencia, 1000);
-            txtcodigo.Text = txtgerencia.Text = "";
+            txtcodigo.Text = txtgerencia.Text = ""; txtcodsunat.CargarTextoporDefecto();
+            numup.Value = 0;
             estado = 1;
             Desactivar();
         }
-
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             tipmsg.Show("Ingrese Tipo de Id", txtgerencia, 700);
             Desactivar();
             estado = 2;
         }
-
         private void btneliminar_Click(object sender, EventArgs e)
         {
             estado = 3;
@@ -50,12 +48,12 @@ namespace HPReserger
         public void Desactivar()
         {
             btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = false;
-            numup.ReadOnly = txtgerencia.ReadOnly = false;
+            numup.ReadOnly = txtgerencia.ReadOnly = txtcodsunat.ReadOnly = false;
         }
         public void Activar()
         {
             btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgconten.Enabled = true;
-            numup.ReadOnly = txtgerencia.ReadOnly = true;
+            numup.ReadOnly = txtgerencia.ReadOnly = txtcodsunat.ReadOnly = true;
         }
         public Boolean ValidarDes(string valor)
         {
@@ -87,27 +85,28 @@ namespace HPReserger
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            int x = e.RowIndex, y = e.ColumnIndex;
+            if (x >= 0)
             {
-                txtcodigo.Text = dtgconten[0, e.RowIndex].Value.ToString();
-                txtgerencia.Text = dtgconten[1, e.RowIndex].Value.ToString();
+                txtcodigo.Text = dtgconten[Codigox.Name, e.RowIndex].Value.ToString();
+                txtgerencia.Text = dtgconten[Valorx.Name, e.RowIndex].Value.ToString();
+                txtcodsunat.Text = dtgconten[Codsunatx.Name, e.RowIndex].Value.ToString();
                 numup.Value = (int)dtgconten[Tamañox.Name, e.RowIndex].Value;
             }
-            catch { }
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
             if (estado == 1 && ValidarDes(txtgerencia.Text))
             {
-                cTipoId.TiposID(1, 0, txtgerencia.Text, Convert.ToInt32(numup.Value));
+                cTipoId.TiposID(1, 0, txtgerencia.Text, Convert.ToInt32(numup.Value), txtcodsunat.Text);
                 msg("Ingresado Con Exito");
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtgerencia.Text))
                 {
-                    cTipoId.TiposID(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, Convert.ToInt32(numup.Value));
+                    cTipoId.TiposID(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, Convert.ToInt32(numup.Value), txtcodsunat.Text);
                     msg("Actualizado Con Exito");
                 }
                 else
@@ -128,7 +127,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

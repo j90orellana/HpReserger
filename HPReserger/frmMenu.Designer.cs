@@ -60,6 +60,7 @@
             this.cargaRegistroVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cotizacionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.separaciónVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cronogramaDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -213,7 +214,7 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
-            this.separaciónVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             this.panelOre1.SuspendLayout();
@@ -505,6 +506,7 @@
             this.cotizacionesToolStripMenuItem1,
             this.separaciónVentaToolStripMenuItem,
             this.cronogramaDePagosToolStripMenuItem,
+            this.abonosToolStripMenuItem,
             this.toolStripSeparator9,
             this.vendedoresToolStripMenuItem});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
@@ -536,6 +538,14 @@
             this.cotizacionesToolStripMenuItem1.Size = new System.Drawing.Size(194, 22);
             this.cotizacionesToolStripMenuItem1.Text = "Cotizaciones";
             this.cotizacionesToolStripMenuItem1.Click += new System.EventHandler(this.cotizacionesToolStripMenuItem1_Click);
+            // 
+            // separaciónVentaToolStripMenuItem
+            // 
+            this.separaciónVentaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("separaciónVentaToolStripMenuItem.Image")));
+            this.separaciónVentaToolStripMenuItem.Name = "separaciónVentaToolStripMenuItem";
+            this.separaciónVentaToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.separaciónVentaToolStripMenuItem.Text = "Separación Venta";
+            this.separaciónVentaToolStripMenuItem.Click += new System.EventHandler(this.separaciónVentaToolStripMenuItem_Click);
             // 
             // cronogramaDePagosToolStripMenuItem
             // 
@@ -1984,13 +1994,13 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
-            // separaciónVentaToolStripMenuItem
+            // abonosToolStripMenuItem
             // 
-            this.separaciónVentaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("separaciónVentaToolStripMenuItem.Image")));
-            this.separaciónVentaToolStripMenuItem.Name = "separaciónVentaToolStripMenuItem";
-            this.separaciónVentaToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.separaciónVentaToolStripMenuItem.Text = "Separación Venta";
-            this.separaciónVentaToolStripMenuItem.Click += new System.EventHandler(this.separaciónVentaToolStripMenuItem_Click);
+            this.abonosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("abonosToolStripMenuItem.Image")));
+            this.abonosToolStripMenuItem.Name = "abonosToolStripMenuItem";
+            this.abonosToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.abonosToolStripMenuItem.Text = "Abonos de Clientes";
+            this.abonosToolStripMenuItem.Click += new System.EventHandler(this.abonosToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -2215,5 +2225,6 @@
         private System.Windows.Forms.ToolStripMenuItem cronogramaDePagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem separaciónVentaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abonosToolStripMenuItem;
     }
 }

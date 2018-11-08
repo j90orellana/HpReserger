@@ -320,7 +320,7 @@ namespace HPReserger
                 {
                     if (item.Cells[cuentax.Name].Value.ToString() == "")
                     {
-                        MSG($"El item {item.Cells[DESCRIPCION.Name].Value.ToString() } : No tiene un cuenta Asociada ");
+                        MSG($"El item {item.Cells[DESCRIPCION.Name].Value.ToString() } : No tiene una cuenta Asociada ");
                         return;
                     }
                 }
@@ -365,7 +365,7 @@ namespace HPReserger
                         //////////////////////
                         // usp_InsertarAsientoFactura
                         cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
-                        cfactura.InsertarAsientoFactura(nextAsiento, next + 1, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
+                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
                     }
                     else
                     {

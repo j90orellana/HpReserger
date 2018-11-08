@@ -199,8 +199,9 @@ namespace HPReserger
         }
         public void LimpiarCabecera()
         {
-            txtme.CargarTextoporDefecto();
-            txtmn.CargarTextoporDefecto();
+            txtsubtotal.CargarTextoporDefecto();
+            txtigv.CargarTextoporDefecto();
+            txttotal.CargarTextoporDefecto();
             txttipocambioref.Text = "3.30";
             txtobservacion.CargarTextoporDefecto();
         }
@@ -249,6 +250,7 @@ namespace HPReserger
                     {
                         Lista.Add(item);
                         DataRow filita = (CapaLogica.Proyecto_ProductosxCod(item)).Rows[0];
+                        filita["cantidad"] = 1;
                         Tproductos.ImportRow(filita);
                     }
                 }
@@ -289,6 +291,10 @@ namespace HPReserger
             if (!txtnroid.EstaLLeno()) { txtnroid.Focus(); msg("Ingrese Numero Documento del Cliente"); return; }
             if (cbotipoid.SelectedIndex < 0) { cbotipoid.Focus(); msg("Seleccione Tipo de Documento del Cliente"); return; }
             Boolean prueba = false;
+            Boolean _moneda = false;
+            Boolean _empresa = false;
+            string ValMoneda = dtgconten[monedon.Name, 0].Value.ToString();
+            string ValEmpresa = dtgconten[idempresa.Name, 0].Value.ToString();
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 //CANTIDAD
@@ -312,17 +318,26 @@ namespace HPReserger
                 //PRODUCTO
                 if (item.Cells[Producto.Name].Value.ToString() == "") { prueba = true; HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[idarticulo.Name]); }
                 else { HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[idarticulo.Name]); }
+                //Moneda
+                if (item.Cells[monedon.Name].Value.ToString() != ValMoneda) { prueba = true; _moneda = true; HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[monedon.Name]); }
+                else { HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[monedon.Name]); }
+                //empresa
+                if (item.Cells[idmoneda.Name].Value.ToString() != ValEmpresa) { prueba = true; _empresa = true; HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[idmoneda.Name]); }
+                else { HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[idmoneda.Name]); }
             }
-            if (prueba) { msg("Hay Errores en la Grilla"); return; }
+            string cade1 = "", cade2 = "";
+            if (_moneda) cade1 = "\nLos Productos deben tener una sola Moneda";
+            if (_empresa) cade2 = "\nSolo puede Vender de una sola Empresa";
+            if (prueba) { msg($"Hay Errores en la Grilla {cade1 + cade2}"); return; }
             if (VerificarStock()) { return; }
             if (!txtNombreVendedor.EstaLLeno()) { txtcodvendedor.Focus(); msg("Ingrese el Código del Vendedor Valido!"); return; }
             //PROCESO DE GRABACION EN LA BASE DE DATOS 
             ////LA CABECERA
-            CapaLogica.CotizacionesCLienteCabecera(out numero, 1, int.Parse(txtcodvendedor.Text), dtfechaVen.Value, decimal.Parse(txtmn.Text), decimal.Parse(txtme.Text), (int)cbotipoid.SelectedValue, txtnroid.Text, 1, txtobservacion.Text, frmLogin.CodigoUsuario, decimal.Parse(txtValorInicial.Text));
+            CapaLogica.CotizacionesCLienteCabecera(out numero, 1, int.Parse(txtcodvendedor.Text), dtfechaVen.Value, decimal.Parse(txtsubtotal.Text), decimal.Parse(txtigv.Text), decimal.Parse(txttotal.Text), (int)cbotipoid.SelectedValue, txtnroid.Text, 1, txtobservacion.Text, frmLogin.CodigoUsuario, decimal.Parse(txtValorInicial.Text));
             //DETALLE
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                CapaLogica.CotizacionesCLienteCabeceraDetalle(1, numero, (int)item.Cells[idempresa.Name].Value, (int)item.Cells[idproyecto.Name].Value, item.Cells[Etapa.Name].Value.ToString(), (int)item.Cells[Producto.Name].Value, (decimal)item.Cells[Cantidad.Name].Value, (decimal)item.Cells[Precio_Base.Name].Value, decimal.Parse(txttipocambioref.Text), (int)item.Cells[TDesc.Name].Value, (decimal)item.Cells[VDesc.Name].Value, (decimal)item.Cells[T_MN.Name].Value, (decimal)item.Cells[T_ME.Name].Value, (int)item.Cells[idmoneda.Name].Value, (decimal)item.Cells[PInicial.Name].Value, (int)item.Cells[tipo_inicial.Name].Value, (decimal)item.Cells[valor_inicial.Name].Value);
+                CapaLogica.CotizacionesCLienteCabeceraDetalle(1, numero, (int)item.Cells[idempresa.Name].Value, (int)item.Cells[idproyecto.Name].Value, item.Cells[Etapa.Name].Value.ToString(), (int)item.Cells[Producto.Name].Value, (decimal)item.Cells[Cantidad.Name].Value, (decimal)item.Cells[Precio_Base.Name].Value, decimal.Parse(txttipocambioref.Text), (int)item.Cells[TDesc.Name].Value, (decimal)item.Cells[VDesc.Name].Value, (decimal)item.Cells[P_Coti.Name].Value, (decimal)item.Cells[xsubtotal.Name].Value, (decimal)item.Cells[xigv.Name].Value, (int)item.Cells[idmoneda.Name].Value, (decimal)item.Cells[PInicial.Name].Value, (int)item.Cells[tipo_inicial.Name].Value, (decimal)item.Cells[valor_inicial.Name].Value);
             }
             msg($"Cotización Nro: {numero.ToString("00000")}, Asociado Exitosamente ");
             //CIERRE
@@ -503,8 +518,9 @@ namespace HPReserger
                         if (item.Cells[TDesc.Name].Value.ToString() == "") { item.Cells[TDesc.Name].Value = 0; }
                         if (item.Cells[VDesc.Name].Value.ToString() == "") { item.Cells[VDesc.Name].Value = 0; }
                         item.Cells[idmoneda.Name].Value = filita["idmoneda"];
-                        item.Cells[Cantidad.Name].Value = item.Cells[Cantidad.Name].Value.ToString() == "" ? filita["cantidad"] : (decimal)item.Cells[Cantidad.Name].Value;
-                        item.Cells[CantValido.Name].Value = filita["cantidadvalida"];
+                        item.Cells[monedon.Name].Value = filita["moneda"];
+                        item.Cells[Cantidad.Name].Value = 1;// item.Cells[Cantidad.Name].Value.ToString() == "" ? filita["cantidad"] : (decimal)item.Cells[Cantidad.Name].Value;
+                        item.Cells[CantValido.Name].Value = 1;// filita["cantidadvalida"];
                         item.Cells[tipo_inicial.Name].Value = filita["tipo_inicial"];
                         item.Cells[valor_inicial.Name].Value = filita["valor_inicial"];
                         DataGridViewRow items = dtgconten.Rows[x];
@@ -528,29 +544,37 @@ namespace HPReserger
                 if ((int)item.Cells[tipo_inicial.Name].Value == 1)
                 {
                     //soles=1
-                    if ((int)item.Cells[idmoneda.Name].Value == 1) { item.Cells[PInicial.Name].Value = ((decimal)item.Cells[T_MN.Name].Value - (decimal)item.Cells[valor_inicial.Name].Value) / (decimal.Parse(txttipocambioref.Text)); }
-                    if ((int)item.Cells[idmoneda.Name].Value == 2) { item.Cells[PInicial.Name].Value = (decimal)item.Cells[T_ME.Name].Value - (decimal)item.Cells[valor_inicial.Name].Value; }
+                    item.Cells[PInicial.Name].Value = ((decimal)item.Cells[P_Coti.Name].Value - (decimal)item.Cells[valor_inicial.Name].Value);
+                    //if ((int)item.Cells[idmoneda.Name].Value == 2) { item.Cells[PInicial.Name].Value = (decimal)item.Cells[T_ME.Name].Value - (decimal)item.Cells[valor_inicial.Name].Value; }
                 }
                 if ((int)item.Cells[tipo_inicial.Name].Value == 2)
                 {
                     //soles=1
-                    if ((int)item.Cells[idmoneda.Name].Value == 1) { item.Cells[PInicial.Name].Value = ((decimal)item.Cells[T_MN.Name].Value * (decimal)item.Cells[valor_inicial.Name].Value / 100) / (decimal.Parse(txttipocambioref.Text)); }
-                    if ((int)item.Cells[idmoneda.Name].Value == 2) { item.Cells[PInicial.Name].Value = (decimal)item.Cells[T_ME.Name].Value * (decimal)item.Cells[valor_inicial.Name].Value / 100; }
+                    item.Cells[PInicial.Name].Value = ((decimal)item.Cells[P_Coti.Name].Value * (decimal)item.Cells[valor_inicial.Name].Value / 100);
+                    //if ((int)item.Cells[idmoneda.Name].Value == 2) { item.Cells[PInicial.Name].Value = (decimal)item.Cells[T_ME.Name].Value * (decimal)item.Cells[valor_inicial.Name].Value / 100; }
                 }
             }
         }
         public void SacarTotales()
         {
-            decimal totalmn = 0, totalme = 0, totalin = 0;
+            decimal totalmm = 0, totalin = 0;
+            decimal totalsub = 0, totaligv = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                totalme += item.Cells[T_ME.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[T_ME.Name].Value;
-                totalmn += item.Cells[T_MN.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[T_MN.Name].Value;
+                //calculo de subtotal e igv
+                item.Cells[xsubtotal.Name].Value = (item.Cells[P_Coti.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[P_Coti.Name].Value) / (1 + CapaLogica.Igv(DateTime.Now));
+                item.Cells[xigv.Name].Value = (item.Cells[P_Coti.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[P_Coti.Name].Value) - (item.Cells[xsubtotal.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xsubtotal.Name].Value);
+                ////
+                totalmm += item.Cells[P_Coti.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[P_Coti.Name].Value;
+                //totalmn += item.Cells[T_MN.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[T_MN.Name].Value;
                 totalin += item.Cells[PInicial.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[PInicial.Name].Value;
+                totalsub += item.Cells[xsubtotal.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xsubtotal.Name].Value;
+                totaligv += item.Cells[xigv.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xigv.Name].Value;
             }
-            txtme.Text = totalme.ToString("n2");
-            txtmn.Text = totalmn.ToString("n2");
             txtValorInicial.Text = totalin.ToString("n2");
+            txttotal.Text = totalmm.ToString("n2");
+            txtigv.Text = totaligv.ToString("n2");
+            txtsubtotal.Text = totalsub.ToString("n2");
         }
         public void CalcularMontos(DataGridViewRow item)
         {
@@ -570,18 +594,6 @@ namespace HPReserger
                     item.Cells[P_Coti.Name].Value = ((decimal)item.Cells[Cantidad.Name].Value * (decimal)item.Cells[Precio_Base.Name].Value) - (decimal)item.Cells[VDesc.Name].Value;
                 }
                 decimal TipoCambio = decimal.Parse(txttipocambioref.Text == "" ? "3.30" : txttipocambioref.Text);
-                //soles
-                if (mon == 1)
-                {
-                    item.Cells[T_MN.Name].Value = item.Cells[P_Coti.Name].Value;
-                    item.Cells[T_ME.Name].Value = (decimal)item.Cells[P_Coti.Name].Value / TipoCambio;
-                }
-                //dolares
-                else if (mon == 2)
-                {
-                    item.Cells[T_MN.Name].Value = (decimal)item.Cells[P_Coti.Name].Value * TipoCambio;
-                    item.Cells[T_ME.Name].Value = item.Cells[P_Coti.Name].Value;
-                }
             }
             CalculoDeInicial(item);
         }
@@ -630,7 +642,10 @@ namespace HPReserger
         {
             if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
                 if (msgp("Desea Quitar Producto") == DialogResult.Yes)
+                {
                     dtgconten.Rows.RemoveAt(dtgconten.CurrentRow.Index);
+                    SacarTotales();
+                }
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
@@ -691,7 +706,7 @@ namespace HPReserger
                     int ValorCot = (int)dtgbuscare[xnrocot.Name, x].Value;
                     if (frmlisclidet == null)
                     {
-                        frmlisclidet = new frmlistarCotizacionesCLienteDEtalle(ValorCot, (int)cbotipoid.SelectedValue, dtgbuscare[xTipoDoc.Name, x].Value.ToString(), dtgbuscare[xnrodoc.Name, x].Value.ToString(), dtgbuscare[xCliente.Name, x].Value.ToString(), dtgbuscare[xtotalme.Name, x].Value.ToString(), dtgbuscare[xtotalmn.Name, x].Value.ToString());
+                        frmlisclidet = new frmlistarCotizacionesCLienteDEtalle(ValorCot, (int)cbotipoid.SelectedValue, dtgbuscare[xTipoDoc.Name, x].Value.ToString(), dtgbuscare[xnrodoc.Name, x].Value.ToString(), dtgbuscare[xCliente.Name, x].Value.ToString(), dtgbuscare[ytotal.Name, x].Value.ToString(), dtgbuscare[ysubtotal.Name, x].Value.ToString(), dtgbuscare[yigv.Name, x].Value.ToString());
                         frmlisclidet.NumCot = ValorCot;
                         frmlisclidet.inicial = dtgbuscare[ValorInicial.Name, x].Value.ToString();
                         frmlisclidet.CodVen = (int)dtgbuscare[xidvend.Name, x].Value;
@@ -705,6 +720,7 @@ namespace HPReserger
         private void Frmlisclidet_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmlisclidet = null;
+            CArgarBusqueda();
         }
         private void txttipocambioref_Leave(object sender, EventArgs e)
         {
@@ -717,6 +733,36 @@ namespace HPReserger
         private void btnsalir_Click(object sender, EventArgs e)
         {
             if (estado == 0) this.Close();
+        }
+
+        private void txtmn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValorInicial_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtsubtotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtobservacion_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

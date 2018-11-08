@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmAsientoContable : Form
+    public partial class frmAsientoContable : FormGradient
     {
         public frmAsientoContable()
         {
@@ -21,6 +21,7 @@ namespace HPReserger
         public decimal totalhaber { get; set; }
         int fechacheck = 0;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+
         private void frmAsientoContable_Load(object sender, EventArgs e)
         {
             estado = 0; fechacheck = 0;
@@ -29,18 +30,22 @@ namespace HPReserger
             System.Globalization.CultureInfo.CreateSpecificCulture("es-ES");
             cARgarEmpresas();
             DateTime fechita;
-            if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = fecha.Value;
+            if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = dtpfecha.Value;
             Dtgconten.DataSource = CapaLogica.BuscarAsientosContablesconTodo("0", 4, 1, fechita);
             dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
+            ///Mensajitos
+            //Dtgconten.Columns[debe.Name].CellTemplate.ToolTipText = "Presione D para Rellenar";
+            //Dtgconten.Columns[haber.Name].CellTemplate.ToolTipText = "Presione D para Rellenar";
+            ///
             if (dtgbusca.RowCount > 0)
             {
                 activar();
                 // dtgbusca.CurrentCell = dtgbusca[0, 0];
                 dtgbusca_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
             }
-            if (fecha.Value == null)
+            if (dtpfecha.Value == null)
             {
-                fechaini.Value = fecha.Value = DateTime.Today;
+                fechaini.Value = dtpfecha.Value = DateTime.Today;
                 fechafin.Value = DateTime.Today.AddDays(1);
             }
         }
@@ -66,8 +71,9 @@ namespace HPReserger
             btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtfechavalor.Enabled = chkfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
                 txtdinamica.Enabled = true;
             foreach (DataGridViewColumn col in Dtgconten.Columns)
-                if (col.Name != descripcion.Name)
-                    col.ReadOnly = false;
+                if (col.Name == descripcion.Name || col.Name == IDASIENTOX.Name)
+                    col.ReadOnly = true;
+                else col.ReadOnly = false;
         }
         private void txtcodigo_TextChanged(object sender, EventArgs e)
         {
@@ -87,7 +93,7 @@ namespace HPReserger
             txttotalhaber.Text = txttotaldebe.Text = "0.00";
             if (Dtgconten.RowCount > 0)
             {
-                Dtgconten.CurrentCell = Dtgconten[cuenta.Name, Dtgconten.RowCount - 1];
+                //Dtgconten.CurrentCell = Dtgconten[cuenta.Name, Dtgconten.RowCount - 1];
                 if (Dtgconten[cuenta.Name, Dtgconten.CurrentCell.RowIndex].Value.ToString() != "" && Dtgconten[descripcion.Name, Dtgconten.CurrentCell.RowIndex].Value.ToString() != "")
                 {
                     //Con = Dtgconten.RowCount + 1;
@@ -100,13 +106,18 @@ namespace HPReserger
                         }
                         else f++;
                     }
-                    ((DataTable)Dtgconten.DataSource).Rows.InsertAt(((DataTable)Dtgconten.DataSource).NewRow(), f - 1);
+                    DataRow filax = ((DataTable)Dtgconten.DataSource).NewRow();
+                    filax[IDASIENTOX.DataPropertyName] = f;
+                    filax[cuenta.DataPropertyName] = "";
+                    filax[debe.DataPropertyName] = 0.00;
+                    filax["haber"] = 0.00;
+                    filax["estado"] = 1;
+                    ((DataTable)Dtgconten.DataSource).Rows.InsertAt(filax, f - 1);
                     //Dtgconten.Rows.Insert(f - 1, 1);
-                    Dtgconten[IDASIENTOX.Name, f - 1].Value = f;
-                    Dtgconten[cuenta.Name, f - 1].Value = Dtgconten[cuenta.Name, f - 1].Value = "";
-                    Dtgconten[debe.Name, f - 1].Value = Dtgconten[haber.Name, f - 1].Value = "0.00";
-                    Dtgconten[EstadoCuen.Name, f - 1].Value = 1;
-                    Dtgconten.CurrentCell = Dtgconten[cuenta.Name, f - 1];
+                    //Dtgconten[IDASIENTOX.Name, f - 1].Value = f;
+                    //Dtgconten[cuenta.Name, f - 1].Value = Dtgconten[cuenta.Name, f - 1].Value = "";
+                    //Dtgconten[debe.Name, f - 1].Value = Dtgconten[haber.Name, f - 1].Value = "0.00";
+                    //Dtgconten[EstadoCuen.Name, f - 1].Value = 1;
                 }
             }
             else
@@ -121,7 +132,7 @@ namespace HPReserger
                 Dtgconten.CurrentCell = Dtgconten[cuenta.Name, Dtgconten.RowCount - 1];
             }
             //Sumatoria();
-            Dtgconten.Focus();
+            //Dtgconten.Focus();
         }
         private void Dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -169,7 +180,7 @@ namespace HPReserger
                             frmdetalle.idasiento = int.Parse(txtcodigo.Text);
                             frmdetalle.proyecto = (int)cboproyecto.SelectedValue;
                             if (chkfechavalor.Checked) frmdetalle.fecha = dtfechavalor.Value;
-                            else frmdetalle.fecha = fecha.Value;
+                            else frmdetalle.fecha = dtpfecha.Value;
                             frmdetalle.asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
                             frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
                             frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
@@ -204,7 +215,7 @@ namespace HPReserger
                 else
                     Dtgconten[detallex.Name, Dtgconten.CurrentRow.Index].Value = 0;
             PintardeCOlores();
-            dtgbusca.CurrentCell = dtgbusca[0, fit == null ? (int)fit : 0];
+            dtgbusca.CurrentCell = dtgbusca[0, fit != null ? (int)fit : 0];
             frmdetalle = null;
         }
         private void frmAsientoContable_FormClosing(object sender, FormClosingEventArgs e)
@@ -288,6 +299,7 @@ namespace HPReserger
                     filita["cuenta"] = dtgayuda[7, i].Value;
                     filita["detalle"] = 0;
                     filita["solicita"] = 0;
+                    filita["estado"] = 1;
                     filita["id"] = Dtgconten.RowCount + 1;
                     filita[debe.Name] = 0.00m;
                     filita[haber.Name] = 0.00m;
@@ -379,7 +391,19 @@ namespace HPReserger
             //else
             //{
             //    e.Handled = true;
-            //}
+            //} 
+            if ((Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[debe.Name].Index) || (Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[haber.Name].Index))
+                if (e.KeyChar == 'D' || e.KeyChar == 'd')
+                {
+                    if (HPResergerFunciones.Utilitarios.msgp("Desea Rellenar Automáticamente") == DialogResult.Yes)
+                    {
+                        if (Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[debe.Name].Index)
+                            Configuraciones.RellenarGrillasAutomatico(Dtgconten, haber, debe);
+                        if (Dtgconten.CurrentCell.ColumnIndex == Dtgconten.Columns[haber.Name].Index)
+                            Configuraciones.RellenarGrillasAutomatico(Dtgconten, debe, haber);
+
+                    }
+                }
             HPResergerFunciones.Utilitarios.SoloNumerosDecimalesX(e, txt.Text);
         }
         private void dataGridview_KeyDownCajita(object sender, KeyEventArgs e)
@@ -702,9 +726,9 @@ namespace HPReserger
                 if (dtgayuda3.RowCount > 0)
                 {
 
-                    fecha.Value = Convert.ToDateTime(dtgbusca[1, e.RowIndex].Value);
-                    dtfechavalor.Value = Convert.ToDateTime(dtgbusca[8, e.RowIndex].Value);
-                    txtcodigo.Text = dtgayuda3[0, 0].Value.ToString();
+                    dtpfecha.Value = Convert.ToDateTime(dtgbusca[Fechax.Name, e.RowIndex].Value);
+                    //dtfechavalor.Value = Convert.ToDateTime(dtgbusca[8, e.RowIndex].Value.ToString() == "" ? fecha.Value : dtgbusca[8, e.RowIndex].Value);
+
                     dinamica = Convert.ToInt32(dtgayuda3[7, 0].Value.ToString());
                     cboestado.SelectedValue = dtgayuda3[8, 0].Value;
                     txtdinamica.Text = "DC_00" + dinamica;
@@ -724,12 +748,13 @@ namespace HPReserger
                         dtfechavalor.Value = (DateTime)dtgbusca[Fechax.Name, y].Value;
                     }
                     else { chkfechavalor.Checked = true; dtfechavalor.Value = (DateTime)dtgbusca[fechavalorx.Name, y].Value; }
-
                     //Dtgconten.Rows.Clear();
                     activo = pasivo = 0;
                     //int i = 0;
                     DateTime fechita;
-                    if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = fecha.Value;
+                    if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = dtpfecha.Value;
+                    txtcuo.Text = dtgbusca[Codidasiento.Name, y].Value.ToString();
+                    txtcodigo.Text = dtgayuda3[0, 0].Value.ToString();
                     DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa, fechita);
                     Dtgconten.DataSource = Datos;
                     foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -781,7 +806,7 @@ namespace HPReserger
                         item.DefaultCellStyle.ForeColor = Color.Red;
                     }
                 if (item.Cells[detallex.Name].Value != null)
-                    if (int.Parse(item.Cells[detallex.Name].Value.ToString()) > 0)
+                    if (int.Parse(item.Cells[detallex.Name].Value.ToString() == "" ? "0" : item.Cells[detallex.Name].Value.ToString()) > 0)
                     {
                         item.DefaultCellStyle.ForeColor = Color.Blue;
                     }
@@ -818,35 +843,54 @@ namespace HPReserger
         public int codigo;
         public void ultimoasiento()
         {
-            DataTable tablita = new DataTable();      
-            tablita = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue);
+            DataTable tablita = new DataTable();
+            DateTime _FechaValida;
+            if (chkfechavalor.Checked)
+                _FechaValida = dtfechavalor.Value;
+            else _FechaValida = dtpfecha.Value;
+            tablita = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, _FechaValida);
             DataRow filas = tablita.Rows[0];
             if (filas.ItemArray[0] != DBNull.Value)
             {
                 codigo = Convert.ToInt32(filas.ItemArray[0]);
-                codigo++;
             }
             else { codigo = 1; }
-            txtcodigo.Text = codigo + "";
+            ////Asignacion de codigos
+            txtcodigo.Text = codigo.ToString("000");
+            txtcuo.Text = ValorCuo(_FechaValida, codigo);
+        }
+        public string ValorCuo(DateTime _Fecha, int _codigo)
+        {
+            string valor = "";
+            valor = _Fecha.Month.ToString("000") + "-" + _codigo.ToString("00000");
+            return valor;
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             estado = 1;
             desactivar();
             Dtgconten.DataSource = ((DataTable)Dtgconten.DataSource).Clone();
-            ultimoasiento();
             txtdinamica.Text = "";
             txtcodigo.Text = codigo + "";
             txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
-            fecha.Value = DateTime.Now;
+            dtpfecha.Value = DateTime.Now;
             btnActualizar.Enabled = false; chkfechavalor.Enabled = true;
             cboestado.SelectedIndex = 0;
+            ultimoasiento();
         }
         public Boolean modifico;
         public int dinamimodi;
         DataTable TableAux;
+        DateTime _FechaAModificar;
+        int _CodigoModificar;
+        int _ProyectoModificar;
         private void btnmodificar_Click(object sender, EventArgs e)
         {
+            if (chkfechavalor.Checked)
+                _FechaAModificar = dtfechavalor.Value;
+            else _FechaAModificar = dtpfecha.Value;
+            _CodigoModificar = int.Parse(txtcodigo.Text);
+            _ProyectoModificar = (int)cboproyecto.SelectedValue;
             if (cboestado.SelectedValue.ToString() == "1")
             {
                 if (frmLogin.Usuario == "ADMIN")
@@ -869,10 +913,11 @@ namespace HPReserger
                             filita[codigo].ToString();
                             //Enviando al Jefe la Acción
                             string cade = "";
-                            string sql = $"update TBL_Asiento_Contable set Estado=2 where Id_Asiento_Contable={txtcodigo.Text} and id_proyecto={cboproyecto.SelectedValue}   UPDATE x SET  x.Saldo_Debe = x.Saldo_Debe - v.debe, x.Saldo_Haber = x.Saldo_Haber - v.haber, x.Saldo_Fin = x.Saldo_Inicio + x.Saldo_Debe - v.debe - (x.Saldo_Haber - v.haber) FROM TBL_Saldos_Contable x " +
-                                " INNER JOIN  ( SELECT SUM(i.Saldo_Debe) AS debe, SUM(i.Saldo_Haber) AS haber, i.Fecha_Asiento_Valor, i.Fecha_Asiento, i.Cuenta_Contable, i.id_proyecto, p.Id_Empresa FROM TBL_Asiento_Contable AS i  INNER JOIN TBL_Proyecto AS p ON i.id_proyecto = p.Id_Proyecto " +
-                                " WHERE i.Id_Asiento_Contable = @Codigo AND i.id_proyecto = @Proyecto GROUP BY Cuenta_Contable, Fecha_Asiento_Valor, Fecha_Asiento, i.id_proyecto, p.Id_Empresa) v ON x.Anio = YEAR(isnull(v.Fecha_Asiento_Valor, v.Fecha_Asiento)) " +
-                                " AND x.Mes = MONTH(isnull(v.Fecha_Asiento_Valor, v.Fecha_Asiento)) AND x.Cuenta_Contable = v.Cuenta_Contable AND x.EMPRESA = v.Id_Empresa ";
+                            string sql = $"update TBL_Asiento_Contable set Estado=2 where Id_Asiento_Contable={txtcodigo.Text} and id_proyecto={cboproyecto.SelectedValue} and cast(ISNULL(Fecha_Asiento_Valor,Fecha_Asiento) as date)='{Configuraciones.ToFechaSql(_FechaAModificar)} '";
+                            //"UPDATE x SET  x.Saldo_Debe = x.Saldo_Debe - v.debe, x.Saldo_Haber = x.Saldo_Haber - v.haber, x.Saldo_Fin = x.Saldo_Inicio + x.Saldo_Debe - v.debe - (x.Saldo_Haber - v.haber) FROM TBL_Saldos_Contable x " +
+                            //" INNER JOIN  ( SELECT SUM(i.Saldo_Debe) AS debe, SUM(i.Saldo_Haber) AS haber, i.Fecha_Asiento_Valor, i.Fecha_Asiento, i.Cuenta_Contable, i.id_proyecto, p.Id_Empresa FROM TBL_Asiento_Contable AS i  INNER JOIN TBL_Proyecto AS p ON i.id_proyecto = p.Id_Proyecto " +
+                            //" WHERE i.Id_Asiento_Contable = @Codigo AND i.id_proyecto = @Proyecto GROUP BY Cuenta_Contable, Fecha_Asiento_Valor, Fecha_Asiento, i.id_proyecto, p.Id_Empresa) v ON x.Anio = YEAR(isnull(v.Fecha_Asiento_Valor, v.Fecha_Asiento)) " +
+                            //" AND x.Mes = MONTH(isnull(v.Fecha_Asiento_Valor, v.Fecha_Asiento)) AND x.Cuenta_Contable = v.Cuenta_Contable AND x.EMPRESA = v.Id_Empresa ";
                             CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade, 0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
                             MSG("Se ha Enviado la Solicitud a su Jefe");
                         }
@@ -1004,7 +1049,7 @@ namespace HPReserger
         public void CArgarValoresIngreso()
         {
             ESTADO = Convert.ToInt32(cboestado.SelectedValue.ToString());
-            FECHA = fecha.Value;
+            FECHA = dtpfecha.Value;
             DINAMICA = coddinamica;
         }
         public void MostrarValores(string cadena, int codigo)
@@ -1077,13 +1122,18 @@ namespace HPReserger
                         codigo = Convert.ToInt32(txtcodigo.Text.ToString());
                         CArgarValoresIngreso();
                         //MostrarValores(cadena + Detalle(), codigo);
-                        CapaLogica.Modificar2asiento(codigo, (int)cboproyecto.SelectedValue);
+                        CapaLogica.Modificar2asiento(_CodigoModificar, _ProyectoModificar, _FechaAModificar);
                         //Mensajes("Codigo:" + codigo + " Filas;" + Dtgconten.RowCount);
                         foreach (DataGridViewRow item in Dtgconten.Rows)
                         {
                             if (item.Cells[EstadoCuen.Name].Value.ToString() != "3")
                                 item.Cells[EstadoCuen.Name].Value = cboestado.SelectedValue.ToString();
                         }
+                        ///Actualizar el cambio de id -proyecto - fechas
+                        DateTime FechaAsiento;
+                        if (chkfechavalor.Checked) FechaAsiento = dtfechavalor.Value; else FechaAsiento = dtpfecha.Value;
+                        CapaLogica.ActualizarDetalleAsiento(_CodigoModificar, _ProyectoModificar, _FechaAModificar, codigo, (int)cboproyecto.SelectedValue, FechaAsiento);
+                        //PROCESO DE GUARDADO 
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
                             if (int.Parse(cboestado.SelectedValue.ToString()) == 0)
@@ -1115,7 +1165,9 @@ namespace HPReserger
                             codigo = Convert.ToInt32(txtcodigo.Text.ToString());
                             if (MessageBox.Show("Seguró Desea Eliminar; Asiento Contable" + codigo, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                CapaLogica.EliminarAsiento(codigo, (int)cboproyecto.SelectedValue);
+                                DateTime FechaAsiento;
+                                if (chkfechavalor.Checked) FechaAsiento = dtfechavalor.Value; else FechaAsiento = dtpfecha.Value;
+                                CapaLogica.EliminarAsiento(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, FechaAsiento);
                                 MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Txtbusca.Text = "";
                                 //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
@@ -1129,13 +1181,15 @@ namespace HPReserger
             else { }
             btnActualizar.Enabled = true;
         }
-        public void BuscarAsiento(string cadena, int empresa)
+        public void BuscarAsiento(string cadena, int empresa, DateTime Fecha)
         {
             Txtbusca.Text = cadena;
             cboempresa.SelectedValue = empresa;
-            dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(cadena, 1, empresa);
+            chkfecha.Checked = true;
+            fechaini.Value = fechafin.Value = Fecha;
+            //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(cadena, 1, empresa);
+            chkfecha_CheckedChanged(new object { }, new EventArgs());
         }
-
         private void btncancelar_Click(object sender, EventArgs e)
         {
             aceptar = false;
@@ -1363,7 +1417,9 @@ namespace HPReserger
             if (HPResergerFunciones.Utilitarios.msgp($"Seguro Desea Reversar Este Asiento Nro {txtcodigo.Text}") == DialogResult.Yes)
             {
                 //PROCESO DE REVERSA DEL ASIENTO
-                CapaLogica.ReversarAsientos(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario);
+                DateTime _Fechon;
+                if (chkfechavalor.Checked) _Fechon = dtfechavalor.Value; else _Fechon = dtpfecha.Value;
+                CapaLogica.ReversarAsientos(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, _Fechon);
                 HPResergerFunciones.Utilitarios.msg("Asiento Reversado!");
             }
             btnActualizar_Click(sender, e);
@@ -1375,14 +1431,16 @@ namespace HPReserger
             if (cboestado.Text == "Activo") btneliminar.Text = "Desactivar"; else btneliminar.Text = "Activar";
         }
         private void fecha_ValueChanged(object sender, EventArgs e)
-        {         
+        {
         }
         private void dtfechavalor_ValueChanged(object sender, EventArgs e)
-        {        
+        {
+            ultimoasiento();
         }
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();
+            Dtgconten.CurrentCell = Dtgconten[cuenta.Name, e.RowIndex];
             msg(Dtgconten);
         }
     }

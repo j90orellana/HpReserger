@@ -34,12 +34,9 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTipoId));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.Codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tamañox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -52,6 +49,12 @@ namespace HPReserger
             this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
             this.numup = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtcodsunat = new HpResergerUserControls.TextBoxPer();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codsunatx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tamañox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numup)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +88,7 @@ namespace HPReserger
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigox,
+            this.Codsunatx,
             this.Valorx,
             this.Tamañox});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
@@ -109,36 +113,6 @@ namespace HPReserger
             this.dtgconten.Size = new System.Drawing.Size(361, 140);
             this.dtgconten.TabIndex = 26;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // Codigox
-            // 
-            this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Codigox.DataPropertyName = "codigo";
-            this.Codigox.HeaderText = "Codigo";
-            this.Codigox.Name = "Codigox";
-            this.Codigox.ReadOnly = true;
-            this.Codigox.Width = 70;
-            // 
-            // Valorx
-            // 
-            this.Valorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Valorx.DataPropertyName = "valor";
-            this.Valorx.HeaderText = "Descripción";
-            this.Valorx.Name = "Valorx";
-            this.Valorx.ReadOnly = true;
-            // 
-            // Tamañox
-            // 
-            this.Tamañox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Tamañox.DataPropertyName = "leng";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Tamañox.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Tamañox.FillWeight = 50F;
-            this.Tamañox.HeaderText = "Tamaño";
-            this.Tamañox.MinimumWidth = 50;
-            this.Tamañox.Name = "Tamañox";
-            this.Tamañox.ReadOnly = true;
-            this.Tamañox.Width = 74;
             // 
             // btneliminar
             // 
@@ -208,24 +182,25 @@ namespace HPReserger
             // txtgerencia
             // 
             this.txtgerencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtgerencia.Location = new System.Drawing.Point(100, 34);
+            this.txtgerencia.Location = new System.Drawing.Point(83, 34);
             this.txtgerencia.Name = "txtgerencia";
-            this.txtgerencia.Size = new System.Drawing.Size(188, 20);
+            this.txtgerencia.Size = new System.Drawing.Size(205, 20);
             this.txtgerencia.TabIndex = 33;
             // 
             // txtcodigo
             // 
             this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcodigo.Enabled = false;
-            this.txtcodigo.Location = new System.Drawing.Point(100, 10);
+            this.txtcodigo.Location = new System.Drawing.Point(83, 10);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(188, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(205, 20);
             this.txtcodigo.TabIndex = 30;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 38);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(18, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 24;
@@ -234,7 +209,8 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 14);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(41, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 25;
@@ -246,26 +222,101 @@ namespace HPReserger
             // 
             // numup
             // 
-            this.numup.Location = new System.Drawing.Point(100, 58);
+            this.numup.Location = new System.Drawing.Point(83, 58);
             this.numup.Name = "numup";
-            this.numup.Size = new System.Drawing.Size(188, 20);
+            this.numup.Size = new System.Drawing.Size(92, 20);
             this.numup.TabIndex = 34;
             this.numup.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 62);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(35, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 35;
             this.label3.Text = "Tamaño";
+            // 
+            // txtcodsunat
+            // 
+            this.txtcodsunat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtcodsunat.BackColor = System.Drawing.Color.White;
+            this.txtcodsunat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcodsunat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtcodsunat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtcodsunat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcodsunat.ForeColor = System.Drawing.Color.Black;
+            this.txtcodsunat.Location = new System.Drawing.Point(252, 58);
+            this.txtcodsunat.MaxLength = 2;
+            this.txtcodsunat.Name = "txtcodsunat";
+            this.txtcodsunat.NextControlOnEnter = null;
+            this.txtcodsunat.Size = new System.Drawing.Size(36, 21);
+            this.txtcodsunat.TabIndex = 36;
+            this.txtcodsunat.Text = "00";
+            this.txtcodsunat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtcodsunat.TextoDefecto = "00";
+            this.txtcodsunat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtcodsunat.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(181, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Código Sunat:";
+            // 
+            // Codigox
+            // 
+            this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Codigox.DataPropertyName = "codigo";
+            this.Codigox.HeaderText = "Id";
+            this.Codigox.MinimumWidth = 50;
+            this.Codigox.Name = "Codigox";
+            this.Codigox.ReadOnly = true;
+            this.Codigox.Width = 50;
+            // 
+            // Codsunatx
+            // 
+            this.Codsunatx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Codsunatx.DataPropertyName = "Cod_Sunat";
+            this.Codsunatx.HeaderText = "Id.Sunat";
+            this.Codsunatx.MinimumWidth = 20;
+            this.Codsunatx.Name = "Codsunatx";
+            this.Codsunatx.ReadOnly = true;
+            this.Codsunatx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Codsunatx.Width = 55;
+            // 
+            // Valorx
+            // 
+            this.Valorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Valorx.DataPropertyName = "valor";
+            this.Valorx.HeaderText = "Descripción";
+            this.Valorx.Name = "Valorx";
+            this.Valorx.ReadOnly = true;
+            // 
+            // Tamañox
+            // 
+            this.Tamañox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Tamañox.DataPropertyName = "leng";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Tamañox.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Tamañox.FillWeight = 50F;
+            this.Tamañox.HeaderText = "Tamaño";
+            this.Tamañox.MinimumWidth = 50;
+            this.Tamañox.Name = "Tamañox";
+            this.Tamañox.ReadOnly = true;
+            this.Tamañox.Width = 74;
             // 
             // frmTipoId
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(387, 261);
+            this.Controls.Add(this.txtcodsunat);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numup);
             this.Controls.Add(this.dtgconten);
@@ -277,11 +328,12 @@ namespace HPReserger
             this.Controls.Add(this.txtgerencia);
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(403, 300);
             this.MinimumSize = new System.Drawing.Size(403, 300);
             this.Name = "frmTipoId";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Tipo de Documento de Identidad";
             this.Text = "Tipo de Documento de Identidad";
             this.Load += new System.EventHandler(this.frmTipoId_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
@@ -304,10 +356,13 @@ namespace HPReserger
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip tipmsg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valorx;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tamañox;
         private System.Windows.Forms.NumericUpDown numup;
         private System.Windows.Forms.Label label3;
+        private TextBoxPer txtcodsunat;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codsunatx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valorx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tamañox;
     }
 }

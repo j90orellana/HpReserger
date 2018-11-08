@@ -23,9 +23,10 @@ namespace HPReserger
             CargarDatos();
         }
         public int NumCot { get; set; }
+        public int Estado { get; set; }
         public void CargarDatos()
         {
-            dtgconten.DataSource = CapaLogica.SeparacionVenta(20, int.Parse(txtnumcot.Text == "" ? "0" : txtnumcot.Text), 0, 0, 0, 0, null, txtBuscar.TextoValido(), DateTime.Now, 0);
+            dtgconten.DataSource = CapaLogica.SeparacionVenta(20, int.Parse(txtnumcot.Text == "" ? "0" : txtnumcot.Text), 0, 0, 0, null, txtBuscar.TextoValido(), DateTime.Now, Estado);
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

@@ -35,9 +35,7 @@ namespace HPReserger
         public void CargarDatosAsientos()
         {
             cerrado = 0;
-            dtgconten.DataSource = CapaLogica.ListarAsientosAbiertos(0, idempresa, fecha);
-            ///si no hay datos
-
+            dtgconten.DataSource = CapaLogica.ListarAsientosAbiertos(0, idempresa, fecha);           
         }
         private void btnactualizar_Click(object sender, EventArgs e)
         {
@@ -51,7 +49,6 @@ namespace HPReserger
         {
             this.Close();
         }
-
         private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
@@ -62,10 +59,9 @@ namespace HPReserger
                 //asientito.MdiParent = MdiParent;
                 asientito.Icon = Icon;
                 asientito.ShowDialog();
-                asientito.BuscarAsiento(dtgconten[idAsientoContableDataGridViewTextBoxColumn.Name, x].Value.ToString(), (int)dtgconten[idEmpresaDataGridViewTextBoxColumn.Name, x].Value);
+                asientito.BuscarAsiento(dtgconten[idAsientoContableDataGridViewTextBoxColumn.Name, x].Value.ToString(), (int)dtgconten[idEmpresaDataGridViewTextBoxColumn.Name, x].Value, (DateTime)dtgconten[Fechax.Name, x].Value);
             }
         }
-
         private void Asientito_FormClosed(object sender, FormClosedEventArgs e)
         {
             btnactualizar_Click(sender, e);

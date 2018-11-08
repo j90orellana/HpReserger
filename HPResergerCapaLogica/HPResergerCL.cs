@@ -57,6 +57,14 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Proyecto_Productos(CodigoProducto, 20, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0);
         }
+        public decimal Igv(DateTime Fecha)
+        {
+            return (decimal)ValorIGVactual(Fecha)["valor"];
+        }
+        public DataRow ValorIGVactual(DateTime Fecha)
+        {
+            return cdOrdenPedido.ValorIGVactual(Fecha);
+        }
         public DataTable Proyecto_ProductosxCod(int CodigoProducto, string etapa)
         {
             return cdOrdenPedido.Proyecto_Productos(CodigoProducto, 40, 0, 0, 0, 0, 0, 0, 0, etapa, 0, "", 0, 0, 0);
@@ -391,9 +399,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarAsientosContables(busca, opcion, fechaini, fechafin, fecha, empresa);
         }
-        public void Modificar2asiento(int codigo, int proyecto)
+        public void Modificar2asiento(int codigo, int proyecto, DateTime Fechas)
         {
-            cdOrdenPedido.Modificar2asiento(codigo, proyecto);
+            cdOrdenPedido.Modificar2asiento(codigo, proyecto, Fechas);
         }
         public DataTable BuscarAsientosContables(string busca, int opcion, int empresa)
         {
@@ -408,37 +416,41 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarCuentas();
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
-         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda)
+         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime fechaasiento)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion, moneda);
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion, moneda, fechaasiento);
         }
-        public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, int proyecto)
+        public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, int proyecto, DateTime FechaAsiento)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now, 0);
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now, 0, FechaAsiento);
         }
-        public DataTable DuplicarDetalle(int idaux, int idasiento, int idproyecto, int duplicar, string cuenta)
+        public DataTable DuplicarDetalle(int idaux, int idasiento, int idproyecto, int duplicar, string cuenta, DateTime _Fechas)
         {
-            return cdOrdenPedido.DuplicarDetalle(idaux, idasiento, idproyecto, duplicar, cuenta);
+            return cdOrdenPedido.DuplicarDetalle(idaux, idasiento, idproyecto, duplicar, cuenta, _Fechas);
         }
-        public DataTable BuscarSiDuplica(int idaux, int idasiento, int idproyecto, string cuenta)
+        public DataTable BuscarSiDuplica(int idaux, int idasiento, int idproyecto, string cuenta, DateTime Fecha)
         {
-            return cdOrdenPedido.BuscarSiDuplica(idaux, idasiento, idproyecto, cuenta);
+            return cdOrdenPedido.BuscarSiDuplica(idaux, idasiento, idproyecto, cuenta, Fecha);
         }
-        public DataTable UltimoAsiento(int empresa)
+        public DataTable UltimoAsiento(int empresa, DateTime FEcha)
         {
-            return cdOrdenPedido.UltimoAsiento(empresa);
+            return cdOrdenPedido.UltimoAsiento(empresa, FEcha);
         }
-        public DataTable UltimoAsientoFactura(string numfac, string proveedor)
+        public DataTable UltimoAsientoFactura(string numfac, string proveedor, DateTime fechh)
         {
-            return cdOrdenPedido.UltimoAsientoFactura(numfac, proveedor);
+            return cdOrdenPedido.UltimoAsientoFactura(numfac, proveedor, fechh);
         }
         public void InsertarAsiento(int id, int codigo, DateTime fecha, string cuenta, double debe, double haber, int dina, int estado, DateTime? fechavalor, int proyecto, int etapa)
         {
             cdOrdenPedido.InsertarAsiento(id, codigo, fecha, cuenta, debe, haber, dina, estado, fechavalor, proyecto, etapa);
         }
-        public void EliminarAsiento(int codigo, int proyecto)
+        public void ActualizarDetalleAsiento(int oldasiento, int oldproyecto, DateTime oldfecha, int newasiento, int newproyecto, DateTime newfecha)
         {
-            cdOrdenPedido.EliminarASiento(codigo, proyecto);
+            cdOrdenPedido.ActualizarDetalleAsiento(oldasiento, oldproyecto, oldfecha, newasiento, newproyecto, newfecha);
+        }
+        public void EliminarAsiento(int codigo, int proyecto, DateTime fecha)
+        {
+            cdOrdenPedido.EliminarASiento(codigo, proyecto, fecha);
         }
         public DataTable VerificarProveedores(string codigo, string razon)
         {
@@ -775,13 +787,17 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarSE(Usuario);
         }
+        public DataTable TiposID(int opcion, int codigo, string valor, int leng, string codsunat)
+        {
+            return cdOrdenPedido.TiposID(opcion, codigo, valor, leng, codsunat);
+        }
         public DataTable TiposID(int opcion, int codigo, string valor, int leng)
         {
-            return cdOrdenPedido.TiposID(opcion, codigo, valor, leng);
+            return cdOrdenPedido.TiposID(opcion, codigo, valor, leng, "");
         }
         public DataTable TiposID(int codigo)
         {
-            return cdOrdenPedido.TiposID(10, codigo, "", 0);
+            return cdOrdenPedido.TiposID(10, codigo, "", 0, "");
         }
         public DataTable EntidadFinanciera(int opcion, int codigo, string valor, string leng)
         {
@@ -1619,9 +1635,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarAsientosdeBoletas(empresasx, cuentas, codigo, monto);
         }
-        public DataTable CuentasReflejo(int asiento)
+        public DataTable CuentasReflejo(int asiento, int empresa, DateTime fecha)
         {
-            return cdOrdenPedido.CuentasReflejo(asiento);
+            return cdOrdenPedido.CuentasReflejo(asiento, empresa, fecha);
         }
         public DataTable StoreProcedures(int opcion, int codigo, string store, int cadena)
         {
@@ -1772,9 +1788,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Detracciones(opcion, nrofac, proveedor, importe, usuario);
         }
-        public DataTable ReversarAsientos(int idasiento, int proyecto, int usuario)
+        public DataTable ReversarAsientos(int idasiento, int proyecto, int usuario, DateTime Fecha)
         {
-            return cdOrdenPedido.ReversarAsientos(idasiento, proyecto, usuario);
+            return cdOrdenPedido.ReversarAsientos(idasiento, proyecto, usuario, Fecha);
         }
         public DataTable Clientes(int Opcion, int Codigo, int Tipoid, string Nroid, string Apepat, string Apemat, string Nombres, int Tipo, int Sexo, int Civil, string Direcion, int Distrito, int Provincia, int Departamento, string Telfijo, string Telcelular, string Email, string Ocupacion, int Usuario, DateTime Fecha)
         {
@@ -1812,9 +1828,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.UnidadMedida(0, 0, "", 0);
         }
-        public DataTable ListarProductosVender(string valor)
+        public DataTable ListarProductosVender(string valor, int empresa, int proyecto)
         {
-            return cdOrdenPedido.ListarProductosVender(valor);
+            return cdOrdenPedido.ListarProductosVender(valor, empresa, proyecto);
         }
 
         public DataTable ListarNroOpBancaria(int banco, string nrocuenta, string ruc, string razon, string nroop, DateTime fecha1, DateTime fecha2)
@@ -1849,25 +1865,25 @@ namespace HPResergerCapaLogica
         {
             return CotizacionDetalle(out num, 100);
         }
-        public void CotizacionesCLienteCabecera(out int nume, int Opcion, int @Codvend, DateTime @Fechavence, decimal @Importemn, decimal @Importeme, int @Tipoidcliente, string @Nroidcliente, int @Estado, string @Observacion, int @Usuario, decimal inicial)
+        public void CotizacionesCLienteCabecera(out int nume, int Opcion, int @Codvend, DateTime @Fechavence, decimal subtotal, decimal igv, decimal total, int @Tipoidcliente, string @Nroidcliente, int @Estado, string @Observacion, int @Usuario, decimal inicial)
         {
-            cdOrdenPedido.CotizacionesCLienteCabecera(out nume, Opcion, @Codvend, @Fechavence, @Importemn, @Importeme, @Tipoidcliente, @Nroidcliente, @Estado, @Observacion, @Usuario, inicial);
+            cdOrdenPedido.CotizacionesCLienteCabecera(out nume, Opcion, @Codvend, @Fechavence, subtotal, igv, total, @Tipoidcliente, @Nroidcliente, @Estado, @Observacion, @Usuario, inicial);
         }
-        public DataTable CotizacionesCLienteCabecera(int Opcion, int @Codvend, DateTime @Fechavence, decimal @Importemn, decimal @Importeme, int @Tipoidcliente, string @Nroidcliente, int @Estado, string @Observacion, int @Usuario)
+        public DataTable CotizacionesCLienteCabecera(int Opcion, int @Codvend, DateTime @Fechavence, decimal subtotal, decimal igv, decimal total, int @Tipoidcliente, string @Nroidcliente, int @Estado, string @Observacion, int @Usuario)
         {
-            return cdOrdenPedido.CotizacionesCLienteCabecera(Opcion, @Codvend, @Fechavence, @Importemn, @Importeme, @Tipoidcliente, @Nroidcliente, @Estado, @Observacion, @Usuario);
+            return cdOrdenPedido.CotizacionesCLienteCabecera(Opcion, @Codvend, @Fechavence, subtotal, igv, total, @Tipoidcliente, @Nroidcliente, @Estado, @Observacion, @Usuario);
         }
-        public DataTable CotizacionesCLienteCabeceraDetalle(int Opcion, int cod, int empresa, int proyecto, string etapa, int idarticulo, decimal cantidad, decimal preciobase, decimal tc, int tipodesc, decimal valordesc, decimal preciofinmn, decimal preciofinme, int moneda, decimal inicial, int tipoinicial, decimal valorinicial)
+        public DataTable CotizacionesCLienteCabeceraDetalle(int Opcion, int cod, int empresa, int proyecto, string etapa, int idarticulo, decimal cantidad, decimal preciobase, decimal tc, int tipodesc, decimal valordesc, decimal preciofina, decimal subtotal, decimal igv, int moneda, decimal inicial, int tipoinicial, decimal valorinicial)
         {
-            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(Opcion, cod, empresa, proyecto, etapa, idarticulo, cantidad, preciobase, tc, tipodesc, valordesc, preciofinmn, preciofinme, moneda, inicial, tipoinicial, valorinicial);
+            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(Opcion, cod, empresa, proyecto, etapa, idarticulo, cantidad, preciobase, tc, tipodesc, valordesc, preciofina, subtotal, igv, moneda, inicial, tipoinicial, valorinicial);
         }
         public DataTable CotizacionesCLienteCabeceraDetalle(int cod)
         {
-            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(0, cod, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(0, cod, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
         public DataTable CotizacionesCLienteCabeceraDetalleBorrar(int cod)
         {
-            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(5, cod, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            return cdOrdenPedido.CotizacionesCLienteCabeceraDetalle(5, cod, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
         //busqueda de cotizaciones de cliente
         public DataTable CotizacionCLiente(string nrocot, string tipoid, string nroid, string nombre)
@@ -1876,20 +1892,23 @@ namespace HPResergerCapaLogica
         }
         public DataTable SeparacionVenta(int opcion, int numcot)
         {
-            return cdOrdenPedido.SeparacionVenta(opcion, numcot, 0, 0, 0, 0, null, "", DateTime.Now, 0);
+            return cdOrdenPedido.SeparacionVenta(opcion, numcot, 0, 0, 0, null, "", DateTime.Now, 0);
         }
         public DataTable SeparacionVentaDarBajaAbono(int numRegistro)
         {
-            return cdOrdenPedido.SeparacionVenta(3, numRegistro, 0, 0, 0, 0, null, "", DateTime.Now, 0);
+            return cdOrdenPedido.SeparacionVenta(3, numRegistro, 0, 0, 0, null, "", DateTime.Now, 0);
         }
         public DataTable SeparacionVenta(int numcot)
         {
-            return cdOrdenPedido.SeparacionVenta(0, numcot, 0, 0, 0, 0, null, "", DateTime.Now, 0);
+            return cdOrdenPedido.SeparacionVenta(0, numcot, 0, 0, 0, null, "", DateTime.Now, 0);
         }
-        public DataTable SeparacionVenta(int opcion, int numcot, decimal importemn, decimal importeme, decimal tipocambio, int moneda, byte[] img, string nombre, DateTime fecha, int usuario)
+        public DataTable SeparacionVenta(int opcion, int numcot, decimal importe, decimal tipocambio, int moneda, byte[] img, string nombre, DateTime fecha, int usuario)
         {
-            return cdOrdenPedido.SeparacionVenta(opcion, numcot, importemn, importeme, tipocambio, moneda, img, nombre, fecha, usuario);
-
+            return cdOrdenPedido.SeparacionVenta(opcion, numcot, importe, tipocambio, moneda, img, nombre, fecha, usuario);
+        }
+        public DataTable VerificarStockProductosDeCotizacion(int numcot)
+        {
+            return cdOrdenPedido.VerificarStockProductosDeCotizacion(numcot);
         }
     }
 }

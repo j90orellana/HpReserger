@@ -323,15 +323,16 @@ namespace HPReserger
                 {
                     if (numasiento == 0)
                     {
-                        DataTable asientito = cPagarfactura.UltimoAsientoFactura(fac.numero, fac.proveedor);
+                        DataTable asientito = cPagarfactura.UltimoAsientoFactura(fac.numero, fac.proveedor, DateTime.Now);
                         DataRow asiento = asientito.Rows[0];
                         if (asiento == null) { numasiento = 0; }
                         else
                             numasiento = (int)asiento["codigo"];
                     }
+                    numasiento--;
                     DataTable TBanco = new DataTable();
                     TBanco = cPagarfactura.EntidadFinanciera();
-                    DataRow[] filita = TBanco.Select($"sufijo='{cbobanco.SelectedValue.ToString()}'");                    
+                    DataRow[] filita = TBanco.Select($"sufijo='{cbobanco.SelectedValue.ToString()}'");
                     int banko = int.Parse((filita[0])["codigo"].ToString());
                     string nroKuenta = cbocuentabanco.Text;
                     DateTime hoy = DateTime.Now;

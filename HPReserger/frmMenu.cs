@@ -3100,10 +3100,31 @@ namespace HPReserger
                 ValidarVentanas(frmseparacion);
             }
         }
-
         private void cerrarseparacionvta(object sender, FormClosedEventArgs e)
         {
             frmseparacion = null;
+        }
+        frmAbonoClientes frmabonocliente;
+        private void abonosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmabonocliente == null)
+            {
+                frmabonocliente = new frmAbonoClientes();
+                frmabonocliente.MdiParent = this;
+                frmabonocliente.Icon = ICono;
+                frmabonocliente.FormClosed += new FormClosedEventHandler(cerrarabonocliente);
+                frmabonocliente.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmabonocliente.Activate();
+                ValidarVentanas(frmabonocliente);
+            }
+        }
+        private void cerrarabonocliente(object sender, FormClosedEventArgs e)
+        {
+            frmabonocliente = null;
         }
     }
 }

@@ -20,8 +20,20 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmListarProductosVenta_Load(object sender, EventArgs e)
         {
-            CargarDatos();
             Codigos = new List<int>();
+            CargarEmpresa();
+            cboempresa.SelectedIndex = cboproyecto.SelectedIndex = 0;
+            CargarDatos("");
+        }
+        public void CargarEmpresa()
+        {
+            DataTable TEmpresa = CapaLogica.ListarEmpresas();
+            DataRow fila = TEmpresa.NewRow();
+            fila[0] = 0; fila[1] = "Todas";
+            TEmpresa.Rows.InsertAt(fila, 0);
+            cboempresa.DisplayMember = "empresa";
+            cboempresa.ValueMember = "id_empresa";
+            cboempresa.DataSource = TEmpresa;
         }
         private int? codProd = null;
         public int? CodigoProducto
@@ -32,7 +44,11 @@ namespace HPReserger
         public List<int> Codigos;
         public void CargarDatos()
         {
-            dtgconten1.DataSource = CapaLogica.ListarProductosVender(txtBuscar.TextoValido());
+            dtgconten1.DataSource = CapaLogica.ListarProductosVender(txtBuscar.TextoValido(), (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue);
+        }
+        public void CargarDatos(string cadena)
+        {
+            dtgconten1.DataSource = CapaLogica.ListarProductosVender(txtBuscar.TextoValido(), 0, 0);
         }
         private void txtBuscar_BuscarTextChanged(object sender, EventArgs e)
         {
@@ -63,6 +79,33 @@ namespace HPReserger
         private void txtBuscar_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboempresa_Click(object sender, EventArgs e)
+        {
+            string cadena = cboempresa.Text;
+            CargarEmpresa();
+            cboempresa.Text = cadena;
+        }
+        private void cboproyecto_Click(object sender, EventArgs e)
+        {
+            string cadena = cboproyecto.Text;
+            cboempresa_SelectedIndexChanged(sender, e);
+            cboproyecto.Text = cadena;
+        }
+        private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable TProyecto = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
+            DataRow fila = TProyecto.NewRow();
+            fila[0] = 0; fila[1] = "Todos";
+            TProyecto.Rows.InsertAt(fila, 0);
+            cboproyecto.DisplayMember = "proyecto";
+            cboproyecto.ValueMember = "id_proyecto";
+            cboproyecto.DataSource = TProyecto;
+        }
+        private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarDatos();
         }
     }
 }

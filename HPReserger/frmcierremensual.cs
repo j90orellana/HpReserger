@@ -71,7 +71,7 @@ namespace HPReserger
             btncerrar.Enabled = true;
             if (asientos.Rows.Count != 0)
             {
-        dtgconten1[resultadox.Name,0].Value = "Se Encontraron Asientos Abiertos";
+                dtgconten1[resultadox.Name, 0].Value = "Se Encontraron Asientos Abiertos";
                 dtgconten1[Verx.Name, 0].Value = "Ver";
                 //frmlis = new frmListarAsientosAbiertos((int)cboempresa.SelectedValue, (DateTime)cboperiodo.SelectedValue);
                 //frmlis.MdiParent = MdiParent;
@@ -85,7 +85,7 @@ namespace HPReserger
                 dtgconten1[Verx.Name, 0].Value = "";
             }
             //verificando los saldos pendientes
-            dtgconten1[Verx.Name,1].Value = "";
+            dtgconten1[Verx.Name, 1].Value = "";
             dtgconten1[resultadox.Name, 1].Value = "No hay Saldos Pendientes";
         }
         private void Frmlis_FormClosed(object sender, FormClosedEventArgs e)

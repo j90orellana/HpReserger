@@ -25,6 +25,7 @@ namespace HPReserger
         public string cuenta { get { return txtcuenta.Text; } set { txtcuenta.Text = value; } }
         public string descripcion { get { return txtdescripcion.Text; } set { txtdescripcion.Text = value; } }
         public decimal Total { get { return decimal.Parse(txttotal.Text); } set { txttotal.Text = value.ToString("n2"); } }
+        ///Recibe la fecha del asiento
         public DateTime fecha;
         public Boolean CheckDuplicar { get { return ChkDuplicar.Checked; } set { ChkDuplicar.Checked = value; } }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
@@ -40,11 +41,11 @@ namespace HPReserger
             Dtgconten.Columns[FechaRecepcionx.Name].DefaultCellStyle.NullValue = fecha.ToShortDateString();
             BuscarSiDuplica();
             SacarTotales();
-            Dtgconten.Columns[importemnx.Name].CellTemplate.ToolTipText = "Presione A para Igualar";
+            Dtgconten.Columns[importemnx.Name].CellTemplate.ToolTipText = "Presione A para Igualar\nPresione D para RellenarTodo";
         }
         public void BuscarSiDuplica()
         {
-            if (((CapaLogica.BuscarSiDuplica(asiento, idasiento, proyecto, cuenta)).Rows[0])["duplica"].ToString() != "0")
+            if (((CapaLogica.BuscarSiDuplica(asiento, idasiento, proyecto, cuenta, fecha)).Rows[0])["duplica"].ToString() != "0")
             {
                 CheckDuplicar = true;
                 ChkDuplicar.Enabled = false;
@@ -53,7 +54,7 @@ namespace HPReserger
         DataTable Datos = new DataTable();
         public void SacarDatos()
         {
-            Dtgconten.DataSource = Datos = CapaLogica.DetalleAsientos(0, asiento, idasiento, proyecto);
+            Dtgconten.DataSource = Datos = CapaLogica.DetalleAsientos(0, asiento, idasiento, proyecto, fecha);
             msj("");
         }
         DataTable tipoDoc;
@@ -286,19 +287,22 @@ namespace HPReserger
                     msg(cadena);
                     return;
                 }
-                CapaLogica.DetalleAsientos(10, asiento, idasiento, proyecto);
+                CapaLogica.DetalleAsientos(10, asiento, idasiento, proyecto, fecha);
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     if (item.Cells[numdocx.Name].Value != null)
+                    {
+                        if (item.Cells[numdocx.Name].Value.ToString() == "") item.Cells[numdocx.Name].Value = "0";
                         if (item.Cells[numdocx.Name].Value.ToString() != "")
                         {
                             CapaLogica.DetalleAsientos(1, asiento, idasiento, cuenta, (int)item.Cells[tipodocx.Name].Value,
                                 item.Cells[numdocx.Name].Value.ToString(), item.Cells[razonsocialx.Name].Value.ToString(), (int)item.Cells[idcomprobantex.Name].Value, item.Cells[codcomprobantex.Name].Value.ToString(), item.Cells[numcomprobantex.Name].Value.ToString(),
                                 int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(), (DateTime)item.Cells[fechaemisionx.Name].Value, (DateTime)item.Cells[FechaVencimientox.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
-                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value);
+                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, fecha);
                         }
+                    }
                 }
-                CapaLogica.DuplicarDetalle(asiento, idasiento, proyecto, ChkDuplicar.Checked ? 1 : 0, cuenta);
+                CapaLogica.DuplicarDetalle(asiento, idasiento, proyecto, ChkDuplicar.Checked ? 1 : 0, cuenta, fecha);
                 estado = 0;
                 btnmodificar.Enabled = true;
                 btnaceptar.Enabled = false;
@@ -403,7 +407,7 @@ namespace HPReserger
         private void Txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             int x = Dtgconten.CurrentCell.RowIndex, y = Dtgconten.CurrentCell.ColumnIndex;
-            if (x > 0)
+            if (x >= 0)
             {
                 //moneda nacional
                 if (Dtgconten.Columns[importemnx.Name].Index == y)
@@ -411,8 +415,12 @@ namespace HPReserger
                     if (e.KeyChar == 'A' || e.KeyChar == 'a')
                     {
                         Dtgconten.EndEdit();
-                        Dtgconten[y, x].Value = Convert.ToDecimal(txtdiferencia.Text) + Convert.ToDecimal(Dtgconten[y, x].Value.ToString());
+                        Dtgconten[y, x].Value = Convert.ToDecimal(txtdiferencia.Text) + Convert.ToDecimal(Dtgconten[y, x].Value.ToString() == "" ? "0" : Dtgconten[y, x].Value.ToString());
                         Dtgconten.RefreshEdit();
+                    }
+                    if (e.KeyChar == 'D' || e.KeyChar == 'd')
+                    {
+                        Configuraciones.RellenarGrillasAutomatico(Dtgconten, importemnx, Configuraciones.Decimal(txttotal.Text));
                     }
                 }//moneda extranjera
                 if (Dtgconten.Columns[importemex.Name].Index == y)
@@ -420,7 +428,7 @@ namespace HPReserger
                     if (e.KeyChar == 'A' || e.KeyChar == 'a')
                     {
                         Dtgconten.EndEdit();
-                        Dtgconten[y, x].Value = Convert.ToDecimal(txtdiferencia.Text) + Convert.ToDecimal(Dtgconten[y, x].Value.ToString());
+                        Dtgconten[y, x].Value = Convert.ToDecimal(txtdiferencia.Text) + Convert.ToDecimal(Dtgconten[y, x].Value.ToString() == "" ? "0" : Dtgconten[y, x].Value.ToString());
                         Dtgconten.RefreshEdit();
                     }
                 }
@@ -539,8 +547,8 @@ namespace HPReserger
             decimal TotalMN = 0, TotalME = 0;
             foreach (DataGridViewRow item in Dtgconten.Rows)
             {
-                TotalME += item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString());
-                TotalMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString());
+                TotalME += item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString());
+                TotalMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString());
             }
             txttotalmonextranjera.Text = TotalME.ToString("n2");
             txttotalmonedaNacional.Text = TotalMN.ToString("n2");
@@ -673,6 +681,7 @@ namespace HPReserger
                 Dtgconten[numdocx.Name, fila].Value = frmprovee.rucito;
                 Dtgconten[tipodocx.Name, fila].Value = 5;
             }
+            frmprovee = null;
         }
         private void Dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -688,6 +697,8 @@ namespace HPReserger
                     {
                         if (y == Dtgconten.Columns[razonsocialx.Name].Index || y == Dtgconten.Columns[numdocx.Name].Index)
                         {
+                            //if (frmprovee == null)
+                            //{
                             frmprovee = new frmproveedor();
                             frmprovee.Txtbusca.Text = Dtgconten[numdocx.Name, x].Value.ToString();
                             fila = x;
@@ -696,6 +707,8 @@ namespace HPReserger
                             frmprovee.MdiParent = ParentForm;
                             frmprovee.FormClosed += Frmprovee_FormClosed;
                             frmprovee.Show();
+                            //}
+                            //else frmprovee.Activate();
                         }
                     }
                 }

@@ -277,6 +277,10 @@ namespace HPResergerFunciones
             public string columna { get; set; }
             public string Nombre { get; set; }
             public int TamañoFuente = 0;
+            public Boolean _Negrita = false;
+            public Boolean _Centrar = false;
+            public Color? BackColor = null;
+            public Color? ForeColor = null;
             public RangoCelda() { }
             public RangoCelda(string _fila, string _columna, string _nombre)
             {
@@ -291,6 +295,44 @@ namespace HPResergerFunciones
                 columna = _columna;
                 Nombre = _nombre;
                 TamañoFuente = tamaño;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
+                _Negrita = Negrita;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Color? _BackColor, Color? _ForeColor)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
+                _Negrita = Negrita;
+                BackColor = _BackColor;
+                ForeColor = _ForeColor;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
+            }
+            public RangoCelda(string _fila, string _columna, string _nombre, int tamaño, Boolean Negrita, Boolean Centrar, Color? _BackColor, Color? _ForeColor)
+            {
+                fila = _fila;
+                columna = _columna;
+                Nombre = _nombre;
+                TamañoFuente = tamaño;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
+                _Negrita = Negrita;
+                _Centrar = Centrar;
             }
         }
         public static void DescargarImagen(PictureBox Fotos)
@@ -561,11 +603,22 @@ namespace HPResergerFunciones
                 hoja_trabajo.Range[Nombres.fila].Value2 = Nombres.Nombre;
                 hoja_trabajo.Range[Nombres.fila, Nombres.columna].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
                 hoja_trabajo.Range[Nombres.fila, Nombres.columna].VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
-                hoja_trabajo.Range[Nombres.fila, Nombres.columna].Font.Bold = true;
+                hoja_trabajo.Range[Nombres.fila, Nombres.columna].Font.Bold = Nombres._Negrita;
                 if (Nombres.TamañoFuente != 0)
                     hoja_trabajo.Range[Nombres.fila, Nombres.columna].Font.Size = Nombres.TamañoFuente;
                 hoja_trabajo.Range[Nombres.fila, Nombres.columna].MergeCells = true;
-                //hoja_trabajo.Range[hoja_trabajo.Cells[ Nombres.columna,Nombres.fila] = Nombres.Nombre;
+                if (!Nombres._Centrar)
+                {
+                    //.HorizontalAlignment = xlLeft
+                    //.VerticalAlignment = xlBottom
+                    hoja_trabajo.Range[Nombres.fila, Nombres.columna].HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+                    hoja_trabajo.Range[Nombres.fila, Nombres.columna].VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
+                }
+                //backcolor
+                if (Nombres.BackColor != null)
+                    hoja_trabajo.Range[Nombres.fila, Nombres.columna].Interior.Color = Nombres.BackColor;
+                if (Nombres.ForeColor != null)
+                    hoja_trabajo.Range[Nombres.fila, Nombres.columna].Font.Color = Nombres.ForeColor;
             }
             //Recorremos el DataGridView rellenando la hoja de trabajo
             int Conta = grd.Rows.Count;
@@ -575,10 +628,17 @@ namespace HPResergerFunciones
                 nume = 0;
                 foreach (int j in OrdendelasColumnas)
                 {
-                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Value2 = item.Cells[j - 1].Value;
-                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(item.Cells[j - 1].InheritedStyle.BackColor.ToArgb());
-                    hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j - 1].Style.ForeColor;
-
+                    if (j != 0)
+                    {
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Value2 = item.Cells[j - 1].Value;
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(item.Cells[j - 1].InheritedStyle.BackColor.ToArgb());
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[j - 1].Style.ForeColor;
+                    }
+                    else
+                    {
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Interior.Color = Color.FromArgb(item.Cells[0].InheritedStyle.BackColor.ToArgb());
+                        hoja_trabajo.Cells[i + 2 + PosInicialGrilla, nume + 1].Font.Color = item.Cells[0].Style.ForeColor;
+                    }
                     nume++;
                 }
                 i++;
@@ -588,12 +648,23 @@ namespace HPResergerFunciones
             {
                 //if (!FilasNoMostrar.Contains(contador + 1))
                 //{
-                hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
-                hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
-                hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
-                hoja_trabajo.Columns[numer + 1].AutoFit();
-                if (grd.Rows[0].Cells[contador - 1].ValueType == typeof(decimal))
-                    hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
+                if (contador != 0)
+                {
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1] = grd.Columns[contador - 1].HeaderText.ToString();
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
+                    hoja_trabajo.Columns[numer + 1].AutoFit();
+                    if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(decimal))
+                        hoja_trabajo.Columns[numer + 1].NumberFormat = "#,##0.00";
+                    if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(DateTime))
+                        hoja_trabajo.Columns[numer + 1].NumberFormat = "dd/mm/aaaa";
+                    //if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(int))
+                    //    hoja_trabajo.Columns[numer + 1].NumberFormat = grd.Columns[contador-1].DefaultCellStyle.Format;
+                }else
+                {
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
+                    hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
+                }
                 numer++;
                 //}
             }

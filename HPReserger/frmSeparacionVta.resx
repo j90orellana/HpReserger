@@ -158,10 +158,7 @@
   <metadata name="FkCtoVta.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="importeme.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Importemn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Importe.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="tipocambio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -238,6 +235,25 @@
         /6GrCjmhWiEA2QCYjeU9s/4nz6j7HzenDAsuP5E2s4ELqh27C9ae3YmiCQSQ+bFzSuug2rG7IHFWNYoG
         EEDmA/FtqHbsLkiaVwnXiA6gBvyAasduQPHKDphCuEHIfCDG7wKSwwAZN01Z+n/v+ev/S1b0oGhCYLRY
         wAVAiuLmltUDNd0G4r9AfAtkMyQdMDAAAFaGWoTpecRMAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btncontrato.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANFJREFUOE9j
+        oBr435UW+r8r9f+/mdVv/i1qe4wVA+VAakBqodoQACT4b1n3/9+P7////fI5dgyU+7e0C7cBf07uwa4R
+        CYPUEDTg36oJWDH9DADR2DD9DIDhP1dP//9z7QyqGLEG/D2y9f/fLfP+/9087/+fo9vJMGAlMNAe3QPi
+        u///rppImgG/zh76/z3d8v+/yUX//04q+v89zRIsRrwBp/b9/1YdCkmVQAxig8QIGoCSlJ8+gtDIbEJJ
+        GZxRppW9/ze37iU2DJLDmZnIAwwMALpoJMbwP0twAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnminuta.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAPNJREFUOE9j
+        oBqYcPJn6IRTP/9jwzPP//o/8fTPaqhS7ACfAatv/v5//Pmf/5PO/OqBKscEMANKd3z47zDpPgoGGfDw
+        6z+wIVNO/+qHakEF+AxYeOXX/2PP/oDxqhu///ef/uEJ1YYA+AyAYZAc2FtAtVBtCAAzoPng1/8Z695g
+        xSA52htAsRdguP3wl/99J3/A+SiYkAE1uz78j5hz/3/myuf/249AnY2MCRkQv+jR/4L1r/57TLj+33vi
+        jf8FG179b9z7iXgDCja8/m/acP6/54Qb/2PnPwIbCNdMjAF1ez6CwwBFEzImZABBjM0A8gADAwCE6/HK
+        0b7SiQAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

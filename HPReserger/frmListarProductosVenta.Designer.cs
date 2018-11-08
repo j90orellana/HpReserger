@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarProductosVenta));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarProductosVenta));
             this.dtgconten1 = new HpResergerUserControls.Dtgconten();
-            this.txtBuscar = new HpResergerUserControls.txtBuscar();
-            this.btnaceptar = new System.Windows.Forms.Button();
             this.Id_Proy_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_Proy = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +57,10 @@
             this.EstadoLetras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtBuscar = new HpResergerUserControls.txtBuscar();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.cboempresa = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.cboproyecto = new HpResergerUserControls.ComboBoxPer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,35 +132,6 @@
             this.dtgconten1.Size = new System.Drawing.Size(1040, 382);
             this.dtgconten1.TabIndex = 0;
             this.dtgconten1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellDoubleClick);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtBuscar.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtBuscar.FondoBoton")));
-            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.ImgBotonCerrar = null;
-            this.txtBuscar.Location = new System.Drawing.Point(12, 12);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(543, 22);
-            this.txtBuscar.TabIndex = 1;
-            this.txtBuscar.BuscarClick += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
-            this.txtBuscar.BuscarTextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
-            this.txtBuscar.Load += new System.EventHandler(this.txtBuscar_Load);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(970, 428);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
-            this.btnaceptar.TabIndex = 135;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // Id_Proy_Prod
             // 
@@ -245,7 +219,6 @@
             this.UnidadMedida.Name = "UnidadMedida";
             this.UnidadMedida.ReadOnly = true;
             this.UnidadMedida.Visible = false;
-            this.UnidadMedida.Width = 81;
             // 
             // Cantidad
             // 
@@ -287,11 +260,12 @@
             // 
             this.NameCorto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.NameCorto.DataPropertyName = "NameCorto";
-            this.NameCorto.HeaderText = "Mon";
-            this.NameCorto.MinimumWidth = 40;
+            this.NameCorto.HeaderText = "M";
+            this.NameCorto.MinimumWidth = 20;
             this.NameCorto.Name = "NameCorto";
             this.NameCorto.ReadOnly = true;
-            this.NameCorto.Width = 55;
+            this.NameCorto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameCorto.Width = 22;
             // 
             // Observacion
             // 
@@ -312,7 +286,6 @@
             this.Etapa.Name = "Etapa";
             this.Etapa.ReadOnly = true;
             this.Etapa.Visible = false;
-            this.Etapa.Width = 60;
             // 
             // Estado
             // 
@@ -348,11 +321,66 @@
             this.fecha.ReadOnly = true;
             this.fecha.Visible = false;
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtBuscar.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtBuscar.FondoBoton")));
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.ImgBotonCerrar = null;
+            this.txtBuscar.Location = new System.Drawing.Point(12, 12);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(476, 22);
+            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.BuscarClick += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
+            this.txtBuscar.BuscarTextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
+            this.txtBuscar.Load += new System.EventHandler(this.txtBuscar_Load);
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(970, 428);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
+            this.btnaceptar.TabIndex = 135;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // cboempresa
+            // 
+            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(494, 12);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(213, 21);
+            this.cboempresa.TabIndex = 136;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
+            // 
+            // cboproyecto
+            // 
+            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.Location = new System.Drawing.Point(713, 12);
+            this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.Size = new System.Drawing.Size(213, 21);
+            this.cboproyecto.TabIndex = 137;
+            this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
+            this.cboproyecto.Click += new System.EventHandler(this.cboproyecto_Click);
+            // 
             // frmListarProductosVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 461);
+            this.Controls.Add(this.cboproyecto);
+            this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dtgconten1);
@@ -392,5 +420,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoLetras;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private HpResergerUserControls.ComboBoxPer cboempresa;
+        private HpResergerUserControls.ComboBoxPer cboproyecto;
     }
 }
