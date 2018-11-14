@@ -20,13 +20,18 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmlistarSeparacionVta_Load(object sender, EventArgs e)
         {
+            if (Estado == 2 || Estado == 200) dtgconten.Columns[dias.Name].Visible = false;
+            else dtgconten.Columns[dias.Name].Visible = true;
             CargarDatos();
         }
         public int NumCot { get; set; }
         public int Estado { get; set; }
         public void CargarDatos()
         {
-            dtgconten.DataSource = CapaLogica.SeparacionVenta(20, int.Parse(txtnumcot.Text == "" ? "0" : txtnumcot.Text), 0, 0, 0, null, txtBuscar.TextoValido(), DateTime.Now, Estado);
+            if (Estado == 200)
+                dtgconten.DataSource = CapaLogica.SeparacionVenta(200, int.Parse(txtnumcot.Text == "" ? "0" : txtnumcot.Text), 0, 0, 0, null, txtBuscar.TextoValido(), DateTime.Now, Estado);
+            else
+                dtgconten.DataSource = CapaLogica.SeparacionVenta(20, int.Parse(txtnumcot.Text == "" ? "0" : txtnumcot.Text), 0, 0, 0, null, txtBuscar.TextoValido(), DateTime.Now, Estado);
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

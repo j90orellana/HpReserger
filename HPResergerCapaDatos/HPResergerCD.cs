@@ -4241,5 +4241,17 @@ namespace HPResergerCapaDatos
             object[] valores = { numcot };
             return bd.DataTableFromProcedure("usp_VerificarStockProductos", parametros, valores, null);
         }
+        public DataTable CronogramaVtaCabecera(int @Opcion, int @Fkcoti, decimal @Saldo, int @Moneda, decimal @Tc, int @Nrocuota, int @Usuario)
+        {
+            string[] parametros = { "@Opcion", "@Fkcoti", "@Saldo", "@Moneda", "@Tc", "@Nrocuota", "@Usuario" };
+            object[] valores = { @Opcion, @Fkcoti, @Saldo, @Moneda, @Tc, @Nrocuota, @Usuario };
+            return bd.DataTableFromProcedure("usp_CronogramaVtaCabecera", parametros, valores, null);
+        }
+        public DataTable CronogramaVtaDetalle(int @Opcion, int @Fkcronocab, int @Fkcoti, int @Nrocuota, DateTime @Fechavencecuota, decimal @Valorcuotas, int @Monedas, DateTime? @Fechapago, byte[] @Imgpago, string @Nombrepago, DateTime @Fecha, int @Usuario)
+        {
+            string[] parametros = { "@Opcion", "@Fkcronocab", "@Fkcoti", "@Nrocuota", "@Fechavencecuota", "@Valorcuotas", "@Monedas", "@Fechapago", "@Imgpago", "@Nombrepago", "@Fecha", "@Usuario" };
+            object[] valores = { @Opcion, @Fkcronocab, @Fkcoti, @Nrocuota, @Fechavencecuota, @Valorcuotas, @Monedas, @Fechapago, @Imgpago, @Nombrepago, @Fecha, @Usuario };
+            return bd.DataTableFromProcedure("usp_CronogramaVtaDetalle", parametros, valores, null);
+        }
     }
 }

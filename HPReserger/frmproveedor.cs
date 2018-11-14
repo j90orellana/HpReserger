@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmproveedor : Form
+    public partial class frmproveedor : FormGradient
     {
         public frmproveedor()
         {
@@ -90,9 +91,8 @@ namespace HPReserger
             Iniciar(false);
             radioButton2.Checked = true;
             Txtbusca_TextChanged(sender, e);
-            msg(dtgconten);
-        }
-
+            msg(dtgconten);        
+        }        
         public void ListarProveedores(string busca, int opcion)
         {
             dtgconten.DataSource = CProveedor.ListarProveedores(busca, opcion);

@@ -131,10 +131,10 @@
     <Compile Include="fmrProyectodatos.Designer.cs">
       <DependentUpon>fmrProyectodatos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAbonoClientes.cs">
+    <Compile Include="ModuloVentas\frmAbonoClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAbonoClientes.Designer.cs">
+    <Compile Include="ModuloVentas\frmAbonoClientes.Designer.cs">
       <DependentUpon>frmAbonoClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAbonoExternoEmpleado.cs">
@@ -275,16 +275,16 @@
     <Compile Include="frmConfigurarDinamicas.Designer.cs">
       <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCotizacionCliente.cs">
+    <Compile Include="ModuloVentas\frmCotizacionCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCotizacionCliente.Designer.cs">
+    <Compile Include="ModuloVentas\frmCotizacionCliente.Designer.cs">
       <DependentUpon>frmCotizacionCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCronogramaPagos.cs">
+    <Compile Include="ModuloVentas\frmCronogramaPagos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCronogramaPagos.Designer.cs">
+    <Compile Include="ModuloVentas\frmCronogramaPagos.Designer.cs">
       <DependentUpon>frmCronogramaPagos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDatosExterno.cs">
@@ -533,10 +533,10 @@
     <Compile Include="frmListarAsientosAbiertos.Designer.cs">
       <DependentUpon>frmListarAsientosAbiertos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmlistarCotizacionesCLienteDEtalle.cs">
+    <Compile Include="ModuloVentas\frmlistarCotizacionesCLienteDEtalle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmlistarCotizacionesCLienteDEtalle.Designer.cs">
+    <Compile Include="ModuloVentas\frmlistarCotizacionesCLienteDEtalle.Designer.cs">
       <DependentUpon>frmlistarCotizacionesCLienteDEtalle.cs</DependentUpon>
     </Compile>
     <Compile Include="frmlistarcuentas.cs">
@@ -575,10 +575,10 @@
     <Compile Include="frmListarProductosVenta.Designer.cs">
       <DependentUpon>frmListarProductosVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmlistarSeparacionVta.cs">
+    <Compile Include="ModuloVentas\frmlistarSeparacionVta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmlistarSeparacionVta.Designer.cs">
+    <Compile Include="ModuloVentas\frmlistarSeparacionVta.Designer.cs">
       <DependentUpon>frmlistarSeparacionVta.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLocacionServicio.cs">
@@ -935,10 +935,10 @@
     <Compile Include="frmRPTExportarRequerimiento.Designer.cs">
       <DependentUpon>frmRPTExportarRequerimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSeparacionVta.cs">
+    <Compile Include="ModuloVentas\frmSeparacionVta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSeparacionVta.Designer.cs">
+    <Compile Include="ModuloVentas\frmSeparacionVta.Designer.cs">
       <DependentUpon>frmSeparacionVta.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSexo.cs">
@@ -989,10 +989,10 @@
     <Compile Include="FrmUsuarios.designer.cs">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVendedores.cs">
+    <Compile Include="ModuloVentas\frmVendedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVendedores.Designer.cs">
+    <Compile Include="ModuloVentas\frmVendedores.Designer.cs">
       <DependentUpon>frmVendedores.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVerDetallePresuspuestoOperaciones.cs">
@@ -1417,7 +1417,7 @@
       <DependentUpon>fmrProyectodatos.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAbonoClientes.resx">
+    <EmbeddedResource Include="ModuloVentas\frmAbonoClientes.resx">
       <DependentUpon>frmAbonoClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbonoExternoEmpleado.resx">
@@ -1509,10 +1509,10 @@
     <EmbeddedResource Include="frmConfigurarDinamicas.resx">
       <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCotizacionCliente.resx">
+    <EmbeddedResource Include="ModuloVentas\frmCotizacionCliente.resx">
       <DependentUpon>frmCotizacionCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCronogramaPagos.resx">
+    <EmbeddedResource Include="ModuloVentas\frmCronogramaPagos.resx">
       <DependentUpon>frmCronogramaPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmcuentacontable.resx">
@@ -1620,7 +1620,7 @@
     <EmbeddedResource Include="frmListarAsientosAbiertos.resx">
       <DependentUpon>frmListarAsientosAbiertos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmlistarCotizacionesCLienteDEtalle.resx">
+    <EmbeddedResource Include="ModuloVentas\frmlistarCotizacionesCLienteDEtalle.resx">
       <DependentUpon>frmlistarCotizacionesCLienteDEtalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmlistarcuentas.resx">
@@ -1641,7 +1641,7 @@
     <EmbeddedResource Include="frmListarProductosVenta.resx">
       <DependentUpon>frmListarProductosVenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmlistarSeparacionVta.resx">
+    <EmbeddedResource Include="ModuloVentas\frmlistarSeparacionVta.resx">
       <DependentUpon>frmlistarSeparacionVta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLocacionServicio.resx">
@@ -1821,7 +1821,7 @@
     <EmbeddedResource Include="frmRPTExportarRequerimiento.resx">
       <DependentUpon>frmRPTExportarRequerimiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSeparacionVta.resx">
+    <EmbeddedResource Include="ModuloVentas\frmSeparacionVta.resx">
       <DependentUpon>frmSeparacionVta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSexo.resx">
@@ -1848,7 +1848,7 @@
     <EmbeddedResource Include="FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVendedores.resx">
+    <EmbeddedResource Include="ModuloVentas\frmVendedores.resx">
       <DependentUpon>frmVendedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVerDetallePresuspuestoOperaciones.resx">

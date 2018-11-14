@@ -1910,5 +1910,29 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerificarStockProductosDeCotizacion(numcot);
         }
+        public DataTable CronogramaVtaCabecera(int @Opcion, int @Fkcoti, decimal @Saldo, int @Moneda, decimal @Tc, int @Nrocuota, int @Usuario)
+        {
+            return cdOrdenPedido.CronogramaVtaCabecera(@Opcion, @Fkcoti, @Saldo, @Moneda, @Tc, @Nrocuota, @Usuario);
+        }
+        public DataTable CronogramaVtaCabecera(int @Fkcoti)
+        {
+            return cdOrdenPedido.CronogramaVtaCabecera(10, @Fkcoti, 0, 0, 0, 0, 0);
+        }
+        public DataTable CronogramaVtaDetalle(int @Opcion, int @Fkcronocab, int @Fkcoti, int @Nrocuota, DateTime @Fechavencecuota, decimal @Valorcuotas, int @Monedas, DateTime? @Fechapago, byte[] @Imgpago, string @Nombrepago, DateTime @Fecha, int @Usuario)
+        {
+            return cdOrdenPedido.CronogramaVtaDetalle(@Opcion, @Fkcronocab, @Fkcoti, @Nrocuota, @Fechavencecuota, @Valorcuotas, @Monedas, @Fechapago, @Imgpago, @Nombrepago, @Fecha, @Usuario);
+        }
+        public DataTable CronogramaVtaDetalle(int @Fkcoti)
+        {
+            return cdOrdenPedido.CronogramaVtaDetalle(10, 0, @Fkcoti, 0, DateTime.Now, 0, 0, DateTime.Now, null, "", DateTime.Now, 0);
+        }
+        public DataTable CronogramaVtaDetalleCotizacion(int @Fkcoti)
+        {
+            return cdOrdenPedido.CronogramaVtaDetalle(0, 0, @Fkcoti, 0, DateTime.Now, 0, 0, DateTime.Now, null, "", DateTime.Now, 0);
+        }
+        public DataTable CronogramaVtaDetalleResumen(int @Fkcoti)
+        {
+            return cdOrdenPedido.CronogramaVtaDetalle(5, 0, @Fkcoti, 0, DateTime.Now, 0, 0, DateTime.Now, null, "", DateTime.Now, 0);
+        }
     }
 }

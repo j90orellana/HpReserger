@@ -22,7 +22,10 @@ namespace HPReserger
         private void frmCronogramaPagos_Load(object sender, EventArgs e)
         {
             //ModoEdicion(false);
-            estado = 0;
+            DataTable TDatos = CapaLogica.CronogramaVtaDetalle(0);
+
+            dtgconten.DataSource = TDatos;
+            Estado = 0;
             txtnumcot.CargarTextoporDefecto();
             dtpabono.Value = DateTime.Now;
             dtpfecha.Value = DateTime.Now.AddMonths(1);
@@ -40,7 +43,8 @@ namespace HPReserger
         {
             frmlistarSeparacionVta frmlissep = new frmlistarSeparacionVta();
             frmlissep.NumCot = int.Parse(txtnumcot.Text);
-            frmlissep.Estado = 2;
+            frmlissep.Nombre = "Lista Cotizaciones para el Cronograma de Pagos";
+            frmlissep.Estado = 2;////Estado 2 para no mostrar los dias a caducar
             frmlissep.ShowDialog();
             if (frmlissep.NumCot != 0) { txtnumcot.Text = frmlissep.NumCot.ToString(); }
         }
@@ -52,26 +56,47 @@ namespace HPReserger
             txtvalnrocuotas.ReadOnly = !a;
             btnlimpiar.Enabled = a;
         }
+        int estado = 0;
         Boolean Encontrado = false;
         public int _moneda { get; set; }
+
+        public int Estado
+        {
+            get { return estado; }
+            set
+            {
+                if (value == 1)
+                {
+                    btnaceptar.Enabled = btnprocesar.Enabled = btnlimpiar.Enabled = true;
+                }
+                else
+                {
+                    btnprocesar.Enabled = btnaceptar.Enabled = btnlimpiar.Enabled = false;
+                }
+                estado = value;
+            }
+        }
         private void txtnumcot_TextChanged(object sender, EventArgs e)
         {
+            lbldato.Text = "";
+            Estado = 0;
             Encontrado = false;
             LimpiarControles(txtdireccion, txtemail, txtnombre, txtobservacion, txtocupacion, txttelcelular, txttelfijo, txttipoid, txtnroid, txtNombreVendedor, txtcodvendedor, txtimporte, txtdocpago, txttipocambio, txtvalinicial, txtvalorcuota, txtabonado, txtvaltotal, txtvalnrocuotas, txtsaldo, txtvalorcuota, txtvalnrocuotas);
             btnminuta.Visible = btncontrato.Visible = false;
             LimpiarControles(txtdiferencia, txtcuotapagar);
             LimpiarControles(txttipocambioabonado);
             ModoEdicion(false);
-            lkldocpago.Enabled = false;
-            dtgconten.Rows.Clear();
-            //FotoDocpago = null;           
+            lkldocpago.Enabled = false; txttiporef.ReadOnly = false;
+            ((DataTable)(dtgconten.DataSource)).Clear();
+            ////FotoDocpago = null;   
+            dtpfecha.Enabled = true;
             dtpabono.Value = DateTime.Now;
             dtpfecha.Value = DateTime.Now.AddMonths(1);
             btnminuta.Visible = btncontrato.Visible = false;
-            ///dtgconten.DataSource = CapaLogica.SeparacionVenta(0).Clone();
+            ////dtgconten.DataSource = CapaLogica.SeparacionVenta(0).Clone();
             if (txtnumcot.EstaLLeno())
             {
-                //datos de la cotizacion, cliente y tipoid
+                ////datos de la cotizacion, cliente y tipoid
                 DataTable Tdatos = CapaLogica.SeparacionVenta(50, int.Parse(txtnumcot.Text));
                 if (Tdatos.Rows.Count != 0)
                 {
@@ -94,17 +119,34 @@ namespace HPReserger
                     txtdeudatotal.Text = txtsaldo.Text = Configuraciones.ReturnDecimal(filita["saldo"].ToString());
                     txtmonedaabono.Text = txtmoneda.Text = filita["moneda"].ToString();
                     _moneda = (int)filita["idmoneda"];
-                    ////////
                     txttipocambioabonado.Text = Configuraciones.ReturnDecimal(filita["TC_Referencial"].ToString());
                     ModoEdicion(true);
                     if (Decimal(txtabonado.Text) >= Decimal(txtvalinicial.Text)) { btnminuta.Visible = btncontrato.Visible = true; }
+                    Estado = (int)filita["TieneCronograma"];
+                    ////Cargamos el Cronograma de Pago
+                    if (estado == 0)
+                    {
+                        lbldato.Text = "Ya tiene un Cronograma de Pago";
+                        DataTable TDatos = CapaLogica.CronogramaVtaDetalle(int.Parse(txtnumcot.Text));
+                        dtgconten.DataSource = TDatos;
+                        txtvalnrocuotas.Text = (dtgconten.RowCount).ToString();
+                        txtvalorcuota.Text = ((decimal)(TDatos.Rows[dtgconten.RowCount - 1])["valor"]).ToString("n2");
+                        decimal total = 0;
+                        foreach (DataRow item in TDatos.Rows)
+                            total += (decimal)item["valor"];
+                        txtcuotapagar.Text = total.ToString("n2");
+                        dtpfecha.Value = (DateTime)TDatos.Rows[0]["vence"];
+                        dtpfecha.Enabled = false;
+                        txttiporef.ReadOnly = true;
+                        txtvalnrocuotas.ReadOnly = txtvalorcuota.ReadOnly = true;
+                    }
                 }
             }
         }
         public void CargarDatos()
         {
-            dtgconten.Rows.Clear();
-            if (int.Parse(txtvalnrocuotas.Text) > 0)
+            ((DataTable)(dtgconten.DataSource)).Clear();
+            if (decimal.Parse(txtvalnrocuotas.Text) > 0 && txtvalnrocuotas.TextLength <= 4)
             {
                 dtgconten.Rows.Add(int.Parse(txtvalnrocuotas.Text));
                 foreach (DataGridViewRow item in dtgconten.Rows)
@@ -114,35 +156,22 @@ namespace HPReserger
                     item.Cells[NroCuota.Name].Value = item.Index + 1;
                     item.Cells[VencimientoPago.Name].Value = dtpfecha.Value.AddMonths(item.Index);
                     if (item.Index == 0)
-                    {
+                    { /////nro cuotas   
                         if (!txtvalorcuota.ReadOnly)
-                        {
-                            //nro cuotas   
                             item.Cells[importe.Name].Value = Decimal(txtvalorcuota.Text);
-                        }
                         else
-                        {
                             //monto
                             item.Cells[importe.Name].Value = Decimal(txtvalorcuota.Text) + Decimal(txtdiferencia.Text);
-                        }
                     }
                     else if (item.Index == int.Parse(txtvalnrocuotas.Text) - 1)
                     {
                         if (!txtvalorcuota.ReadOnly)
-                        {
                             if (Decimal(txtdiferencia.Text) > 0)
-                            {
                                 item.Cells[importe.Name].Value = Decimal(txtdiferencia.Text);
-                            }
                             else
-                            {
                                 item.Cells[importe.Name].Value = Decimal(txtvalorcuota.Text) + Decimal(txtdiferencia.Text);
-                            }
-                        }
                         else
-                        {
                             item.Cells[importe.Name].Value = Decimal(txtvalorcuota.Text);
-                        }
                     }
                     else
                     {
@@ -164,15 +193,14 @@ namespace HPReserger
                 }
             }
         }
-        int estado = 0;
         public static decimal Decimal(string cadena)
         {
             try
             {
-                if (cadena == "" || cadena == ".") cadena = "0";
+                if (cadena == "" || cadena == "." || cadena == ",") cadena = "0";
                 return decimal.Parse(cadena);
             }
-            catch (Exception e) { return 0; }
+            catch (Exception) { return 0; }
         }
         private void txtsaldo_TextChanged(object sender, EventArgs e)
         {
@@ -181,7 +209,7 @@ namespace HPReserger
             if (deuda < 0)
             {
                 msg("No se Puede Abonar más de la Deuda");
-                txtimporte.Text = txtsaldo.Text;               
+                txtimporte.Text = txtsaldo.Text;
                 txtimporte.Focus();
                 deuda = 0;
             }
@@ -204,7 +232,7 @@ namespace HPReserger
                         txtdiferencia.Text = (Decimal(txtdeudatotal.Text) - Decimal(txtcuotapagar.Text)).ToString("n2");
                         if (Decimal(txtdiferencia.Text) > 0)
                         {
-                            txtvalnrocuotas.Text = (int.Parse(txtvalnrocuotas.Text) + 1).ToString("n0");
+                            txtvalnrocuotas.Text = (decimal.Parse(txtvalnrocuotas.Text) + 1).ToString("n0");
                         }
                     }
                 }
@@ -227,7 +255,7 @@ namespace HPReserger
                 //if (Encontrado)
                 //    btnminuta.Visible = btncontrato.Visible = true;
             }
-
+            if (Decimal(txtvalnrocuotas.Text) > 999) msg("No Puede Haber más de 1000 Cuotas");
         }
         public void msg(string cadena)
         {
@@ -235,16 +263,15 @@ namespace HPReserger
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
-            dtgconten.Rows.Clear();
+            ((DataTable)(dtgconten.DataSource)).Clear();
             txtvalnrocuotas.CargarTextoporDefecto();
             txtvalorcuota.CargarTextoporDefecto();
             txtdiferencia.Text = txtcuotapagar.Text = "0.00";
             btnprocesar_Click(sender, e);
         }
-
         private void txtvalorcuota_Click(object sender, EventArgs e)
         {
-            if (Decimal(txtdeudatotal.Text) > 0)
+            if (Decimal(txtdeudatotal.Text) > 0 && estado == 1)
             {
                 txtvalnrocuotas.ReadOnly = true;
                 txtvalorcuota.ReadOnly = false;
@@ -252,7 +279,7 @@ namespace HPReserger
         }
         private void txtvalnrocuotas_Click(object sender, EventArgs e)
         {
-            if (Decimal(txtdeudatotal.Text) > 0)
+            if (Decimal(txtdeudatotal.Text) > 0 && estado == 1)
             {
                 txtvalnrocuotas.ReadOnly = false;
                 txtvalorcuota.ReadOnly = true;
@@ -262,7 +289,6 @@ namespace HPReserger
         byte[] FotoDocpago;
         private void btnimagendoc_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog dialogoAbrirArchivoContrato = new OpenFileDialog();
             dialogoAbrirArchivoContrato.Filter = "Pdf Files|*.pdf";
             dialogoAbrirArchivoContrato.DefaultExt = ".pdf";
@@ -384,14 +410,94 @@ namespace HPReserger
             }
             else msg("No hay Registros en la Grilla");
         }
-        private void label5_Click(object sender, EventArgs e)
+        private void btncontrato_Click(object sender, EventArgs e)
         {
-
+            msg("Proceso del Contrato de Venta");
         }
-
-        private void label15_Click(object sender, EventArgs e)
+        private void btnminuta_Click(object sender, EventArgs e)
         {
+            msg("Proceso de la Minuta");
+        }
+        private void btnlimpiarabono_Click(object sender, EventArgs e)
+        {
+            FotoDocpago = null;
+            txtimporte.CargarTextoporDefecto();
+            txtdocpago.CargarTextoporDefecto();
+            lkldocpago.Enabled = false;
+        }
+        private void btnaceptar_Click(object sender, EventArgs e)
+        {
+            if (Estado == 1)
+            {
+                if (Decimal(txtimporte.Text) < 0)
+                {
+                    txtimporte.Focus();
+                    msg("No Se puede Ingresar Valores Menores a Cero");
+                    return;
+                }
+                if (txtimporte.EstaLLeno())
+                {
+                    if (!txtdocpago.EstaLLeno() || FotoDocpago == null)
+                    {
+                        btnimagendoc.Focus();
+                        msg("Ingrese El Documento de pago");
+                        return;
+                    }
+                }
+                if (txtdocpago.EstaLLeno() || FotoDocpago != null)
+                {
+                    if (!txtimporte.EstaLLeno())
+                    {
+                        txtimporte.Focus();
+                        msg("Ingrese el Monto del Importe");
+                        return;
+                    }
+                }
+                if (Decimal(txtdeudatotal.Text) != 0)
+                {
+                    if (Decimal(txtvalnrocuotas.Text) > 999)
+                    {
+                        txtvalnrocuotas.Focus();
+                        msg("No Puede Haber más de 1000 Cuotas");
+                        return;
+                    }
+                    if (!txtvalorcuota.EstaLLeno())
+                    {
+                        txtvalorcuota.Focus();
+                        msg("Ingrese Valor de la Cuota");
+                        return;
+                    }
+                    if (!txtvalnrocuotas.EstaLLeno())
+                    {
+                        txtvalnrocuotas.Focus();
+                        msg("Ingrese El Número de Cuotas");
+                        return;
+                    }
+                }
+                if (HPResergerFunciones.Utilitarios.msgp("Seguro Desea Grabar el Cronograma de Pagos") == DialogResult.Yes)
+                {
+                    string cadena = "";
+                    var NumCot = int.Parse(txtnumcot.Text);
+                    if (Decimal(txtimporte.Text) > 0)
+                    {
+                        //proceso de guardar el abono extra
+                        CapaLogica.SeparacionVenta(11, NumCot, decimal.Parse(txtimporte.Text), Decimal(txttipocambio.Text), _moneda, FotoDocpago, txtdocpago.Text, dtpabono.Value, frmLogin.CodigoUsuario);
+                        cadena = "Abono Extra Guardado";
+                    }//proceso de Grabar el Cronograma de pagos cabecera
+                    CapaLogica.CronogramaVtaCabecera(1, NumCot, Decimal(txtdeudatotal.Text), _moneda, Decimal(txttiporef.Text), int.Parse(txtvalnrocuotas.Text), frmLogin.CodigoUsuario);
+                    ////Cambio El estado de la Cotizacion a Vendido
 
+                    DataRow fila = CapaLogica.CronogramaVtaCabecera(NumCot).Rows[0];
+                    int idCronograma = (int)fila["Id_Cron_Cab"];
+                    //proceso de Grabar el Cronograma de pagos detalle
+                    foreach (DataGridViewRow item in dtgconten.Rows)
+                        CapaLogica.CronogramaVtaDetalle(1, idCronograma, NumCot, (int)item.Cells[NroCuota.Name].Value, (DateTime)item.Cells[VencimientoPago.Name].Value, (decimal)item.Cells[importe.Name].Value, _moneda, null, FotoDocpago, txtdocpago.Text, DateTime.Now, frmLogin.CodigoUsuario);
+                    msg(cadena + "\nCronograma de Pagos Guardado");
+                    ////Actualizo el numcot
+                    txtnumcot_TextChanged(sender, e);
+                }
+            }
+            else msg("No hay que Guardar");
         }
     }
 }

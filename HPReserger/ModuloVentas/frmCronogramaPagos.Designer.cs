@@ -77,6 +77,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtdiferencia = new HpResergerUserControls.TextBoxPer();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.idregistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroCotizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VencimientoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoCambio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblmsg = new System.Windows.Forms.Label();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -89,6 +95,7 @@
             this.txtdocpago = new HpResergerUserControls.TextBoxPer();
             this.label21 = new System.Windows.Forms.Label();
             this.btnimagendoc = new System.Windows.Forms.Button();
+            this.btnlimpiarabono = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.txtimporte = new HpResergerUserControls.TextBoxPer();
             this.label9 = new System.Windows.Forms.Label();
@@ -118,12 +125,7 @@
             this.label36 = new System.Windows.Forms.Label();
             this.txttiporef = new HpResergerUserControls.TextBoxPer();
             this.txtmonedaabono = new HpResergerUserControls.TextBoxPer();
-            this.idregistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroCotizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VencimientoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoCambio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbldato = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.panelllenado.SuspendLayout();
             this.SuspendLayout();
@@ -509,7 +511,7 @@
             this.txtnumcot.Name = "txtnumcot";
             this.txtnumcot.NextControlOnEnter = null;
             this.txtnumcot.Size = new System.Drawing.Size(84, 21);
-            this.txtnumcot.TabIndex = 189;
+            this.txtnumcot.TabIndex = 1;
             this.txtnumcot.Text = "000";
             this.txtnumcot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnumcot.TextoDefecto = "0";
@@ -552,7 +554,7 @@
             // dtpfecha
             // 
             this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfecha.Location = new System.Drawing.Point(232, 255);
+            this.dtpfecha.Location = new System.Drawing.Point(232, 257);
             this.dtpfecha.Name = "dtpfecha";
             this.dtpfecha.Size = new System.Drawing.Size(109, 22);
             this.dtpfecha.TabIndex = 218;
@@ -561,12 +563,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(190, 260);
+            this.label5.Location = new System.Drawing.Point(190, 262);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 219;
             this.label5.Text = "F.Pago:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtvalorcuota
             // 
@@ -735,20 +736,87 @@
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 306);
+            this.dtgconten.Location = new System.Drawing.Point(8, 306);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(863, 329);
+            this.dtgconten.Size = new System.Drawing.Size(867, 329);
             this.dtgconten.TabIndex = 224;
+            // 
+            // idregistro
+            // 
+            this.idregistro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.idregistro.DataPropertyName = "id";
+            this.idregistro.HeaderText = "IdRegistro";
+            this.idregistro.Name = "idregistro";
+            this.idregistro.ReadOnly = true;
+            this.idregistro.Visible = false;
+            // 
+            // NroCuota
+            // 
+            this.NroCuota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NroCuota.DataPropertyName = "nro";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "0000";
+            this.NroCuota.DefaultCellStyle = dataGridViewCellStyle3;
+            this.NroCuota.HeaderText = "NroCuota";
+            this.NroCuota.Name = "NroCuota";
+            this.NroCuota.ReadOnly = true;
+            this.NroCuota.Width = 81;
+            // 
+            // NroCotizacion
+            // 
+            this.NroCotizacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NroCotizacion.DataPropertyName = "coti";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "0000";
+            this.NroCotizacion.DefaultCellStyle = dataGridViewCellStyle4;
+            this.NroCotizacion.HeaderText = "NroCotización";
+            this.NroCotizacion.Name = "NroCotizacion";
+            this.NroCotizacion.ReadOnly = true;
+            this.NroCotizacion.Width = 104;
+            // 
+            // VencimientoPago
+            // 
+            this.VencimientoPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.VencimientoPago.DataPropertyName = "vence";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "d";
+            this.VencimientoPago.DefaultCellStyle = dataGridViewCellStyle5;
+            this.VencimientoPago.HeaderText = "Vencimiento Pago";
+            this.VencimientoPago.Name = "VencimientoPago";
+            this.VencimientoPago.ReadOnly = true;
+            // 
+            // importe
+            // 
+            this.importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.importe.DataPropertyName = "valor";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.importe.DefaultCellStyle = dataGridViewCellStyle6;
+            this.importe.HeaderText = "Valor de Cuota";
+            this.importe.Name = "importe";
+            this.importe.ReadOnly = true;
+            // 
+            // TipoCambio
+            // 
+            this.TipoCambio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TipoCambio.DataPropertyName = "tc";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "n4";
+            this.TipoCambio.DefaultCellStyle = dataGridViewCellStyle7;
+            this.TipoCambio.HeaderText = "TipoCambio";
+            this.TipoCambio.Name = "TipoCambio";
+            this.TipoCambio.ReadOnly = true;
+            this.TipoCambio.Visible = false;
             // 
             // lblmsg
             // 
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Location = new System.Drawing.Point(12, 645);
+            this.lblmsg.Location = new System.Drawing.Point(8, 645);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(133, 16);
             this.lblmsg.TabIndex = 227;
@@ -770,6 +838,7 @@
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = false;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // btncancelar
             // 
@@ -800,7 +869,7 @@
             // 
             this.lkldocpago.AutoSize = true;
             this.lkldocpago.BackColor = System.Drawing.Color.Transparent;
-            this.lkldocpago.Location = new System.Drawing.Point(620, 220);
+            this.lkldocpago.Location = new System.Drawing.Point(640, 220);
             this.lkldocpago.Name = "lkldocpago";
             this.lkldocpago.Size = new System.Drawing.Size(43, 13);
             this.lkldocpago.TabIndex = 228;
@@ -810,8 +879,6 @@
             // 
             // panelllenado
             // 
-            this.panelllenado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelllenado.BackColor = System.Drawing.Color.Transparent;
             this.panelllenado.Controls.Add(this.txtmoneda);
             this.panelllenado.Controls.Add(this.dtpabono);
@@ -819,6 +886,7 @@
             this.panelllenado.Controls.Add(this.txtdocpago);
             this.panelllenado.Controls.Add(this.label21);
             this.panelllenado.Controls.Add(this.btnimagendoc);
+            this.panelllenado.Controls.Add(this.btnlimpiarabono);
             this.panelllenado.Controls.Add(this.label20);
             this.panelllenado.Controls.Add(this.txtimporte);
             this.panelllenado.Controls.Add(this.label9);
@@ -827,7 +895,7 @@
             this.panelllenado.Location = new System.Drawing.Point(0, 191);
             this.panelllenado.Movible = false;
             this.panelllenado.Name = "panelllenado";
-            this.panelllenado.Size = new System.Drawing.Size(610, 50);
+            this.panelllenado.Size = new System.Drawing.Size(640, 50);
             this.panelllenado.TabIndex = 229;
             // 
             // txtmoneda
@@ -877,7 +945,6 @@
             this.txttipocambio.TextoDefecto = "3.30";
             this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            this.txttipocambio.Visible = false;
             this.txttipocambio.TextChanged += new System.EventHandler(this.txtsaldo_TextChanged);
             // 
             // txtdocpago
@@ -917,12 +984,24 @@
             this.btnimagendoc.FlatAppearance.BorderSize = 0;
             this.btnimagendoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnimagendoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnimagendoc.Location = new System.Drawing.Point(584, 25);
+            this.btnimagendoc.Location = new System.Drawing.Point(601, 25);
             this.btnimagendoc.Name = "btnimagendoc";
             this.btnimagendoc.Size = new System.Drawing.Size(20, 20);
             this.btnimagendoc.TabIndex = 9;
             this.btnimagendoc.UseVisualStyleBackColor = true;
             this.btnimagendoc.Click += new System.EventHandler(this.btnimagendoc_Click);
+            // 
+            // btnlimpiarabono
+            // 
+            this.btnlimpiarabono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlimpiarabono.Image = ((System.Drawing.Image)(resources.GetObject("btnlimpiarabono.Image")));
+            this.btnlimpiarabono.Location = new System.Drawing.Point(569, 24);
+            this.btnlimpiarabono.Name = "btnlimpiarabono";
+            this.btnlimpiarabono.Size = new System.Drawing.Size(31, 23);
+            this.btnlimpiarabono.TabIndex = 233;
+            this.btnlimpiarabono.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnlimpiarabono.UseVisualStyleBackColor = true;
+            this.btnlimpiarabono.Click += new System.EventHandler(this.btnlimpiarabono_Click);
             // 
             // label20
             // 
@@ -974,7 +1053,6 @@
             this.label15.Size = new System.Drawing.Size(53, 13);
             this.label15.TabIndex = 182;
             this.label15.Text = "Moneda:";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // label17
             // 
@@ -985,7 +1063,6 @@
             this.label17.Size = new System.Drawing.Size(57, 13);
             this.label17.TabIndex = 181;
             this.label17.Text = "T.Cambio:";
-            this.label17.Visible = false;
             // 
             // separadorOre3
             // 
@@ -1130,7 +1207,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Location = new System.Drawing.Point(520, 152);
+            this.label27.Location = new System.Drawing.Point(543, 152);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(39, 13);
             this.label27.TabIndex = 221;
@@ -1144,7 +1221,7 @@
             this.txtsaldo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtsaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsaldo.ForeColor = System.Drawing.Color.Black;
-            this.txtsaldo.Location = new System.Drawing.Point(565, 148);
+            this.txtsaldo.Location = new System.Drawing.Point(582, 148);
             this.txtsaldo.MaxLength = 20;
             this.txtsaldo.Name = "txtsaldo";
             this.txtsaldo.NextControlOnEnter = null;
@@ -1194,9 +1271,9 @@
             // 
             this.btnlimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnlimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnlimpiar.Image")));
-            this.btnlimpiar.Location = new System.Drawing.Point(842, 280);
+            this.btnlimpiar.Location = new System.Drawing.Point(844, 280);
             this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(23, 23);
+            this.btnlimpiar.Size = new System.Drawing.Size(31, 23);
             this.btnlimpiar.TabIndex = 233;
             this.btnlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnlimpiar.UseVisualStyleBackColor = true;
@@ -1234,6 +1311,7 @@
             this.btnminuta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnminuta.UseVisualStyleBackColor = true;
             this.btnminuta.Visible = false;
+            this.btnminuta.Click += new System.EventHandler(this.btnminuta_Click);
             // 
             // btncontrato
             // 
@@ -1248,6 +1326,7 @@
             this.btncontrato.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncontrato.UseVisualStyleBackColor = true;
             this.btncontrato.Visible = false;
+            this.btncontrato.Click += new System.EventHandler(this.btncontrato_Click);
             // 
             // txttipocambioabonado
             // 
@@ -1289,9 +1368,8 @@
             this.label36.Location = new System.Drawing.Point(350, 262);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(57, 13);
-            this.label36.TabIndex = 181;
+            this.label36.TabIndex = 13;
             this.label36.Text = "T.Cambio:";
-            this.label36.Visible = false;
             // 
             // txttiporef
             // 
@@ -1306,13 +1384,12 @@
             this.txttiporef.Name = "txttiporef";
             this.txttiporef.NextControlOnEnter = null;
             this.txttiporef.Size = new System.Drawing.Size(50, 21);
-            this.txttiporef.TabIndex = 7;
+            this.txttiporef.TabIndex = 200;
             this.txttiporef.Text = "3.30";
             this.txttiporef.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttiporef.TextoDefecto = "3.30";
             this.txttiporef.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txttiporef.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            this.txttiporef.Visible = false;
             this.txttiporef.TextChanged += new System.EventHandler(this.txtsaldo_TextChanged);
             // 
             // txtmonedaabono
@@ -1335,73 +1412,24 @@
             this.txtmonedaabono.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtmonedaabono.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             // 
-            // idregistro
+            // lbldato
             // 
-            this.idregistro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.idregistro.HeaderText = "IdRegistro";
-            this.idregistro.Name = "idregistro";
-            this.idregistro.ReadOnly = true;
-            this.idregistro.Visible = false;
-            this.idregistro.Width = 84;
-            // 
-            // NroCuota
-            // 
-            this.NroCuota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "0000";
-            this.NroCuota.DefaultCellStyle = dataGridViewCellStyle3;
-            this.NroCuota.HeaderText = "NroCuota";
-            this.NroCuota.Name = "NroCuota";
-            this.NroCuota.ReadOnly = true;
-            this.NroCuota.Width = 81;
-            // 
-            // NroCotizacion
-            // 
-            this.NroCotizacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NroCotizacion.DefaultCellStyle = dataGridViewCellStyle4;
-            this.NroCotizacion.HeaderText = "NroCotización";
-            this.NroCotizacion.Name = "NroCotizacion";
-            this.NroCotizacion.ReadOnly = true;
-            this.NroCotizacion.Width = 104;
-            // 
-            // VencimientoPago
-            // 
-            this.VencimientoPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "d";
-            this.VencimientoPago.DefaultCellStyle = dataGridViewCellStyle5;
-            this.VencimientoPago.HeaderText = "Vencimiento Pago";
-            this.VencimientoPago.Name = "VencimientoPago";
-            this.VencimientoPago.ReadOnly = true;
-            // 
-            // importe
-            // 
-            this.importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n2";
-            this.importe.DefaultCellStyle = dataGridViewCellStyle6;
-            this.importe.HeaderText = "Valor de Cuota";
-            this.importe.Name = "importe";
-            this.importe.ReadOnly = true;
-            // 
-            // TipoCambio
-            // 
-            this.TipoCambio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "n4";
-            this.TipoCambio.DefaultCellStyle = dataGridViewCellStyle7;
-            this.TipoCambio.HeaderText = "TipoCambio";
-            this.TipoCambio.Name = "TipoCambio";
-            this.TipoCambio.ReadOnly = true;
-            this.TipoCambio.Visible = false;
-            this.TipoCambio.Width = 92;
+            this.lbldato.AutoSize = true;
+            this.lbldato.BackColor = System.Drawing.Color.Transparent;
+            this.lbldato.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldato.ForeColor = System.Drawing.Color.Blue;
+            this.lbldato.Location = new System.Drawing.Point(640, 190);
+            this.lbldato.Name = "lbldato";
+            this.lbldato.Size = new System.Drawing.Size(231, 19);
+            this.lbldato.TabIndex = 242;
+            this.lbldato.Text = "Ya tiene un Cronograma de Pago";
             // 
             // frmCronogramaPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 673);
+            this.Controls.Add(this.lbldato);
             this.Controls.Add(this.txtmonedaabono);
             this.Controls.Add(this.txttipocambioabonado);
             this.Controls.Add(this.txttiporef);
@@ -1568,6 +1596,8 @@
         private HpResergerUserControls.TextBoxPer txttiporef;
         private HpResergerUserControls.TextBoxPer txtmoneda;
         private HpResergerUserControls.TextBoxPer txtmonedaabono;
+        private System.Windows.Forms.Button btnlimpiarabono;
+        private System.Windows.Forms.Label lbldato;
         private System.Windows.Forms.DataGridViewTextBoxColumn idregistro;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroCuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroCotizacion;

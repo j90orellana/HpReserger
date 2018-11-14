@@ -89,12 +89,14 @@ namespace HPReserger
             estado = 1;
             btnaceptar.Enabled = true;
             ModoEdicion(true);
+            txtnroid.CargarTextoporDefecto();
+            txtnroid.Focus();
         }
         public void ModoEdicion(Boolean a)
         {
             btnaceptar.Enabled = a;
             btnnuevo.Enabled = btnmodificar.Enabled = !a;
-            //dtgconten.ReadOnly = a;
+            dtgconten.Enabled = !a;
             cbotipoid.Enabled = btnbuscar.Enabled = cboestado.Enabled = a;
             txtnroid.ReadOnly = !a;
             txtnroid.Focus();

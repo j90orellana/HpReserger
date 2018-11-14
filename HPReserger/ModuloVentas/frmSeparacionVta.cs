@@ -30,8 +30,7 @@ namespace HPReserger
         public int _idmoneda { get; set; }
         private void txtcodvendedor_TextChanged(object sender, EventArgs e)
         {
-            LimpiarControles(txtdireccion, txtemail, txtnombre, txtocupacion, txttelcelular, txttelfijo, txttipoid, txtnroid, txtNombreVendedor, txtcodvendedor, txttipocambioref, txtValorInicial, txttotal, txtimporte, txtdocpago, txtabonado, txttipocambio, txtsaldo
-                , txtmoneda);
+            LimpiarControles(txtdireccion, txtemail, txtnombre, txtocupacion, txttelcelular, txttelfijo, txttipoid, txtnroid, txtNombreVendedor, txtcodvendedor, txttipocambioref, txtValorInicial, txttotal, txtimporte, txtdocpago, txtabonado, txttipocambio, txtsaldo, txtmoneda);
             lbldato.Text = "";
             btncontrato.Visible = btnminuta.Visible = false;
             LimpiarControles(txtimporte, txtdocpago, txtobservacion);
@@ -77,7 +76,7 @@ namespace HPReserger
                     if (decimal.Parse(txtsaldo.Text) <= 0)
                     {
                         btnnuevo.Enabled = false;
-                        lbldato.Text = "Ir a Cronograma de Pago";
+                        lbldato.Text = "Ir al Cronograma de Pago";
                         btncontrato.Visible = true;
                         btnminuta.Visible = true;
                     }
