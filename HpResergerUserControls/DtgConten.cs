@@ -19,7 +19,7 @@ namespace HpResergerUserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 
             //AllowUserToAddRows = false;
-            AllowUserToOrderColumns = true;
+            AllowUserToOrderColumns = false;
             AllowUserToResizeColumns = false;
             AllowUserToResizeRows = false;
             //GRILLAS ALTERNATIVAS

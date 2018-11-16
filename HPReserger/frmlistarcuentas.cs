@@ -48,8 +48,8 @@ namespace HPReserger
         }
         public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
-            if(Txtbusca.EstaLLeno())
-            dtgconten.DataSource = CcuentaContable.ListarCuentasContables(Txtbusca.Text, tipobusca);
+            if (Txtbusca.EstaLLeno())
+                dtgconten.DataSource = CcuentaContable.ListarCuentasContables(Txtbusca.Text, tipobusca);
             msg(dtgconten);
         }
 
@@ -70,7 +70,7 @@ namespace HPReserger
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            tipobusca = 1;
+            tipobusca = 4;
             Txtbusca_TextChanged(sender, e);
         }
 
@@ -138,6 +138,11 @@ namespace HPReserger
                 }
             }
             catch { }
+        }
+
+        private void Txtbusca_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -69,7 +69,6 @@
             this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
             this.btnproductos = new System.Windows.Forms.Button();
             this.btnbuscar = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
             this.btncotizar = new System.Windows.Forms.Button();
             this.cbotipoid = new HpResergerUserControls.ComboBoxPer(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
@@ -80,6 +79,8 @@
             this.txtNombreVendedor = new HpResergerUserControls.TextBoxPer();
             this.btnsalir = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
@@ -141,6 +142,7 @@
             this.ytotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorInicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xdetalle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.xSeparado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label20 = new System.Windows.Forms.Label();
             this.txtbustipoid = new HpResergerUserControls.TextBoxPer();
             this.label19 = new System.Windows.Forms.Label();
@@ -149,7 +151,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.separadorOre2 = new HpResergerUserControls.SeparadorOre();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
             this.PanelClienteVendedor.SuspendLayout();
             this.panel3.SuspendLayout();
             this.PanelObservaciones.SuspendLayout();
@@ -505,16 +506,6 @@
             this.btnbuscar.UseVisualStyleBackColor = true;
             this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Location = new System.Drawing.Point(10, 54);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(54, 13);
-            this.label22.TabIndex = 143;
-            this.label22.Text = "Tipo Doc:";
-            // 
             // btncotizar
             // 
             this.btncotizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -668,6 +659,28 @@
             this.label14.Size = new System.Drawing.Size(49, 13);
             this.label14.TabIndex = 109;
             this.label14.Text = "Nombres";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(12, 35);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(110, 13);
+            this.label15.TabIndex = 144;
+            this.label15.Text = "Datos Del Cliente:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Location = new System.Drawing.Point(10, 54);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(54, 13);
+            this.label22.TabIndex = 143;
+            this.label22.Text = "Tipo Doc:";
             // 
             // label2
             // 
@@ -1019,7 +1032,6 @@
             // 
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToDeleteRows = false;
-            this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
@@ -1390,7 +1402,6 @@
             // 
             this.dtgbuscare.AllowUserToAddRows = false;
             this.dtgbuscare.AllowUserToDeleteRows = false;
-            this.dtgbuscare.AllowUserToOrderColumns = true;
             this.dtgbuscare.AllowUserToResizeColumns = false;
             this.dtgbuscare.AllowUserToResizeRows = false;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
@@ -1424,7 +1435,8 @@
             this.yigv,
             this.ytotal,
             this.ValorInicial,
-            this.xdetalle});
+            this.xdetalle,
+            this.xSeparado});
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1565,6 +1577,14 @@
             this.xdetalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.xdetalle.Width = 67;
             // 
+            // xSeparado
+            // 
+            this.xSeparado.DataPropertyName = "Separado";
+            this.xSeparado.HeaderText = "Separado";
+            this.xSeparado.Name = "xSeparado";
+            this.xSeparado.ReadOnly = true;
+            this.xSeparado.Visible = false;
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -1668,18 +1688,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(856, 253);
             this.panel1.TabIndex = 141;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(12, 35);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(110, 13);
-            this.label15.TabIndex = 144;
-            this.label15.Text = "Datos Del Cliente:";
             // 
             // frmCotizacionCliente
             // 
@@ -1804,6 +1812,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_inicial;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_inicial;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoLetras;
+        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridViewTextBoxColumn xnrocot;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTipoDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidvend;
@@ -1815,6 +1824,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ytotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorInicial;
         private System.Windows.Forms.DataGridViewButtonColumn xdetalle;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xSeparado;
     }
 }

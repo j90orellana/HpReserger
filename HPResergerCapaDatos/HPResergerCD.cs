@@ -18,7 +18,7 @@ namespace HPResergerCapaDatos
         abcBaseDatos.Database bd;
         // public string DATASOURCE = "HPLAPTOP";
         public string DATASOURCE = "192.168.0.102";
-        public static string BASEDEDATOS = "SIGE";
+        public static string BASEDEDATOS = "sige";
         public string USERID = "jorellana";
         public string USERPASS = "456";
         public HPResergerCD()
@@ -1189,11 +1189,11 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_ListarCuentas", null, null, null);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
-           , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime FechaAsiento)
+           , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime FechaAsiento, int ctabancaria, int fkasi)
         {
             string[] parametros = { "@opcion", "@idaux", "@idasiento", "@cuenta", "@tipodoc", "@numdoc", "@razon", "@idComprobante", "@codcomprobante", "@numcomprobante", "@centrocosto", "@glosa"
-                    , "@fechaemision","@fechavence", "@importemn", "@importeme", "@tipocambio", "@usuario","@fkproyecto","@fecharecepcion","@fkmoneda","@Fechaasiento" };
-            object[] valor = { opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion, moneda, FechaAsiento };
+                    , "@fechaemision","@fechavence", "@importemn", "@importeme", "@tipocambio", "@usuario","@fkproyecto","@fecharecepcion","@fkmoneda","@Fechaasiento","@Ctabancaria","@Fkasi" };
+            object[] valor = { opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion, moneda, FechaAsiento, ctabancaria, fkasi };
             return bd.DataTableFromProcedure("usp_DetalleAsientos", parametros, valor, null);
         }
         public DataTable DuplicarDetalle(int idaux, int idasiento, int idproyecto, int duplicar, string cuenta, DateTime _FEchas)
@@ -4252,6 +4252,18 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@Opcion", "@Fkcronocab", "@Fkcoti", "@Nrocuota", "@Fechavencecuota", "@Valorcuotas", "@Monedas", "@Fechapago", "@Imgpago", "@Nombrepago", "@Fecha", "@Usuario" };
             object[] valores = { @Opcion, @Fkcronocab, @Fkcoti, @Nrocuota, @Fechavencecuota, @Valorcuotas, @Monedas, @Fechapago, @Imgpago, @Nombrepago, @Fecha, @Usuario };
             return bd.DataTableFromProcedure("usp_CronogramaVtaDetalle", parametros, valores, null);
+        }
+        public DataTable CuentaBancaria(int @Opcion, int @Id, int @Empresa, int @Banco, int @Moneda, int @Tipo, string @Nrocuenta, string @Nrocuentacci, int @Usuario)
+        {
+            string[] parametros = { "@Opcion", "@Id", "@Empresa", "@Banco", "@Moneda", "@Tipo", "@Nrocuenta", "@Nrocuentacci", "@Usuario" };
+            object[] valores = { @Opcion, @Id, @Empresa, @Banco, @Moneda, @Tipo, @Nrocuenta, @Nrocuentacci, @Usuario };
+            return bd.DataTableFromProcedure("usp_CuentaBancaria", parametros, valores, null);
+        }
+        public DataTable TipoCuentaBancaria(int @Opcion, int @Id, string @Descripcion, int @usuario)
+        {
+            string[] parametros = { "@Opcion", "@Id", "@Descripcion", "@usuario" };
+            object[] valores = { @Opcion, @Id, Descripcion, usuario };
+            return bd.DataTableFromProcedure("ups_TipoCuentaBancaria", parametros, valores, null);
         }
     }
 }

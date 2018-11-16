@@ -208,6 +208,7 @@ namespace HPReserger
             this.Txtbusca.TabIndex = 146;
             this.Txtbusca.BuscarClick += new System.EventHandler(this.Txtbusca_TextChanged);
             this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
+            this.Txtbusca.Load += new System.EventHandler(this.Txtbusca_Load);
             // 
             // frmlistarcuentas
             // 

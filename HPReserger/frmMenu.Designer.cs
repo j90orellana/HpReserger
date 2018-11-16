@@ -62,6 +62,7 @@
             this.cotizacionesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.separaciónVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cronogramaDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,7 +128,6 @@
             this.solicitudesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entidadFinancieraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parámetrosGeneralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.periocidadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.detraccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -199,6 +199,10 @@
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unidadDeMedidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargosVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entidadFinancierasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuentasBancariasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventanasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.organizarVentanasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -214,7 +218,6 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
-            this.abonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             this.panelOre1.SuspendLayout();
@@ -554,6 +557,14 @@
             this.cronogramaDePagosToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.cronogramaDePagosToolStripMenuItem.Text = "Cronograma de Pagos";
             this.cronogramaDePagosToolStripMenuItem.Click += new System.EventHandler(this.cronogramaDePagosToolStripMenuItem_Click);
+            // 
+            // abonosToolStripMenuItem
+            // 
+            this.abonosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("abonosToolStripMenuItem.Image")));
+            this.abonosToolStripMenuItem.Name = "abonosToolStripMenuItem";
+            this.abonosToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.abonosToolStripMenuItem.Text = "Abonos de Clientes";
+            this.abonosToolStripMenuItem.Click += new System.EventHandler(this.abonosToolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
@@ -1207,7 +1218,8 @@
             this.institucionesToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
             this.contableToolStripMenuItem,
-            this.ventasToolStripMenuItem1});
+            this.ventasToolStripMenuItem1,
+            this.entidadFinancierasToolStripMenuItem});
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.mantenimientoToolStripMenuItem.Tag = "7";
@@ -1216,26 +1228,15 @@
             // generalesToolStripMenuItem
             // 
             this.generalesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.entidadFinancieraToolStripMenuItem,
             this.parámetrosGeneralesToolStripMenuItem,
             this.periocidadToolStripMenuItem1,
             this.detraccionesToolStripMenuItem});
             this.generalesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generalesToolStripMenuItem.Image")));
             this.generalesToolStripMenuItem.Name = "generalesToolStripMenuItem";
-            this.generalesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.generalesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.generalesToolStripMenuItem.Tag = "701";
             this.generalesToolStripMenuItem.Text = "Generales";
             this.generalesToolStripMenuItem.Click += new System.EventHandler(this.generalesToolStripMenuItem_Click);
-            // 
-            // entidadFinancieraToolStripMenuItem
-            // 
-            this.entidadFinancieraToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("entidadFinancieraToolStripMenuItem.Image")));
-            this.entidadFinancieraToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.entidadFinancieraToolStripMenuItem.Name = "entidadFinancieraToolStripMenuItem";
-            this.entidadFinancieraToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.entidadFinancieraToolStripMenuItem.Tag = "70101";
-            this.entidadFinancieraToolStripMenuItem.Text = "Entidades Financieras";
-            this.entidadFinancieraToolStripMenuItem.Click += new System.EventHandler(this.entidadesFinancierasToolStripMenuItem_Click);
             // 
             // parámetrosGeneralesToolStripMenuItem
             // 
@@ -1274,7 +1275,7 @@
             this.articuloServicioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("articuloServicioToolStripMenuItem.Image")));
             this.articuloServicioToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.articuloServicioToolStripMenuItem.Name = "articuloServicioToolStripMenuItem";
-            this.articuloServicioToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.articuloServicioToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.articuloServicioToolStripMenuItem.Tag = "702";
             this.articuloServicioToolStripMenuItem.Text = "&Articulo/Servicio";
             // 
@@ -1324,7 +1325,7 @@
             this.departamentosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("departamentosToolStripMenuItem.Image")));
             this.departamentosToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.departamentosToolStripMenuItem.Name = "departamentosToolStripMenuItem";
-            this.departamentosToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.departamentosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.departamentosToolStripMenuItem.Tag = "703";
             this.departamentosToolStripMenuItem.Text = "&Ubicación";
             this.departamentosToolStripMenuItem.Click += new System.EventHandler(this.departamentosToolStripMenuItem_Click);
@@ -1378,7 +1379,7 @@
             this.áreaCargoToolStripMenuItem});
             this.empresaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("empresaToolStripMenuItem1.Image")));
             this.empresaToolStripMenuItem1.Name = "empresaToolStripMenuItem1";
-            this.empresaToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
+            this.empresaToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
             this.empresaToolStripMenuItem1.Tag = "704";
             this.empresaToolStripMenuItem1.Text = "Empresa";
             // 
@@ -1457,7 +1458,7 @@
             this.gradoInstitucionalToolStripMenuItem1});
             this.usuariosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("usuariosToolStripMenuItem1.Image")));
             this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
-            this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
+            this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
             this.usuariosToolStripMenuItem1.Tag = "705";
             this.usuariosToolStripMenuItem1.Text = "Usuarios";
             // 
@@ -1524,7 +1525,7 @@
             this.aFPToolStripMenuItem});
             this.institucionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("institucionesToolStripMenuItem.Image")));
             this.institucionesToolStripMenuItem.Name = "institucionesToolStripMenuItem";
-            this.institucionesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.institucionesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.institucionesToolStripMenuItem.Tag = "706";
             this.institucionesToolStripMenuItem.Text = "Instituciones";
             // 
@@ -1568,7 +1569,7 @@
             this.proveedoresToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("proveedoresToolStripMenuItem.Image")));
             this.proveedoresToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.proveedoresToolStripMenuItem.Tag = "707";
             this.proveedoresToolStripMenuItem.Text = "&Proveedor";
             // 
@@ -1602,7 +1603,7 @@
             this.configuraciónReporteToolStripMenuItem});
             this.contableToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("contableToolStripMenuItem.Image")));
             this.contableToolStripMenuItem.Name = "contableToolStripMenuItem";
-            this.contableToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.contableToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.contableToolStripMenuItem.Tag = "708";
             this.contableToolStripMenuItem.Text = "Contable";
             // 
@@ -1830,7 +1831,7 @@
             this.cargosVentasToolStripMenuItem});
             this.ventasToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("ventasToolStripMenuItem1.Image")));
             this.ventasToolStripMenuItem1.Name = "ventasToolStripMenuItem1";
-            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
+            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
             this.ventasToolStripMenuItem1.Text = "Ventas";
             // 
             // productosToolStripMenuItem
@@ -1858,6 +1859,46 @@
             this.cargosVentasToolStripMenuItem.Text = "Cargos Ventas";
             this.cargosVentasToolStripMenuItem.Visible = false;
             this.cargosVentasToolStripMenuItem.Click += new System.EventHandler(this.cargosVentasToolStripMenuItem_Click);
+            // 
+            // entidadFinancierasToolStripMenuItem
+            // 
+            this.entidadFinancierasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.tipoDeCuentasToolStripMenuItem,
+            this.cuentasBancariasToolStripMenuItem});
+            this.entidadFinancierasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("entidadFinancierasToolStripMenuItem.Image")));
+            this.entidadFinancierasToolStripMenuItem.Name = "entidadFinancierasToolStripMenuItem";
+            this.entidadFinancierasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.entidadFinancierasToolStripMenuItem.Tag = "709";
+            this.entidadFinancierasToolStripMenuItem.Text = "Entidad Financieras";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
+            this.toolStripMenuItem2.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItem2.Tag = "70901";
+            this.toolStripMenuItem2.Text = "Entidades Financieras";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.entidadesFinancierasToolStripMenuItem_Click);
+            // 
+            // tipoDeCuentasToolStripMenuItem
+            // 
+            this.tipoDeCuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tipoDeCuentasToolStripMenuItem.Image")));
+            this.tipoDeCuentasToolStripMenuItem.Name = "tipoDeCuentasToolStripMenuItem";
+            this.tipoDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.tipoDeCuentasToolStripMenuItem.Tag = "70902";
+            this.tipoDeCuentasToolStripMenuItem.Text = "Tipo de Cuentas";
+            this.tipoDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.tipoDeCuentasToolStripMenuItem_Click);
+            // 
+            // cuentasBancariasToolStripMenuItem
+            // 
+            this.cuentasBancariasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cuentasBancariasToolStripMenuItem.Image")));
+            this.cuentasBancariasToolStripMenuItem.Name = "cuentasBancariasToolStripMenuItem";
+            this.cuentasBancariasToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.cuentasBancariasToolStripMenuItem.Tag = "70903";
+            this.cuentasBancariasToolStripMenuItem.Text = "Cuentas Bancarias";
+            this.cuentasBancariasToolStripMenuItem.Click += new System.EventHandler(this.cuentasBancariasToolStripMenuItem_Click);
             // 
             // ventanasToolStripMenuItem
             // 
@@ -1994,14 +2035,6 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
-            // abonosToolStripMenuItem
-            // 
-            this.abonosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("abonosToolStripMenuItem.Image")));
-            this.abonosToolStripMenuItem.Name = "abonosToolStripMenuItem";
-            this.abonosToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.abonosToolStripMenuItem.Text = "Abonos de Clientes";
-            this.abonosToolStripMenuItem.Click += new System.EventHandler(this.abonosToolStripMenuItem_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2101,7 +2134,6 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem paìsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generalesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem entidadFinancieraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parámetrosGeneralesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem periocidadToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem artículosServiciosToolStripMenuItem;
@@ -2226,5 +2258,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem separaciónVentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abonosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entidadFinancierasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeCuentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cuentasBancariasToolStripMenuItem;
     }
 }

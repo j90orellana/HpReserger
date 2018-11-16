@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmlistarCotizacionesCLienteDEtalle));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -60,12 +61,6 @@
             this.txtValorInicial = new HpResergerUserControls.TextBoxPer();
             this.label23 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.txtsubtotal = new HpResergerUserControls.TextBoxPer();
-            this.txtigv = new HpResergerUserControls.TextBoxPer();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txttotal = new HpResergerUserControls.TextBoxPer();
-            this.label1 = new System.Windows.Forms.Label();
             this.idempresa = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.idproyecto = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Etapa = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -87,6 +82,14 @@
             this.tipo_inicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_inicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoLetras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtsubtotal = new HpResergerUserControls.TextBoxPer();
+            this.txtigv = new HpResergerUserControls.TextBoxPer();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txttotal = new HpResergerUserControls.TextBoxPer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lbldato = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -496,105 +499,6 @@
             this.dtgconten.Sorted += new System.EventHandler(this.dtgconten_Sorted_1);
             this.dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgconten_KeyDown_1);
             // 
-            // txtsubtotal
-            // 
-            this.txtsubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtsubtotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtsubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtsubtotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtsubtotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtsubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsubtotal.ForeColor = System.Drawing.Color.Black;
-            this.txtsubtotal.Location = new System.Drawing.Point(497, 37);
-            this.txtsubtotal.MaxLength = 15;
-            this.txtsubtotal.Name = "txtsubtotal";
-            this.txtsubtotal.NextControlOnEnter = null;
-            this.txtsubtotal.ReadOnly = true;
-            this.txtsubtotal.Size = new System.Drawing.Size(93, 21);
-            this.txtsubtotal.TabIndex = 174;
-            this.txtsubtotal.Text = "0.00";
-            this.txtsubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtsubtotal.TextoDefecto = "0.00";
-            this.txtsubtotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtsubtotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // txtigv
-            // 
-            this.txtigv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtigv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtigv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtigv.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtigv.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtigv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtigv.ForeColor = System.Drawing.Color.Black;
-            this.txtigv.Location = new System.Drawing.Point(622, 37);
-            this.txtigv.MaxLength = 15;
-            this.txtigv.Name = "txtigv";
-            this.txtigv.NextControlOnEnter = null;
-            this.txtigv.ReadOnly = true;
-            this.txtigv.Size = new System.Drawing.Size(93, 21);
-            this.txtigv.TabIndex = 175;
-            this.txtigv.Text = "0.00";
-            this.txtigv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtigv.TextoDefecto = "0.00";
-            this.txtigv.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtigv.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // label24
-            // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Location = new System.Drawing.Point(448, 41);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(49, 13);
-            this.label24.TabIndex = 172;
-            this.label24.Text = "Subtotal:";
-            // 
-            // label25
-            // 
-            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Location = new System.Drawing.Point(595, 41);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(28, 13);
-            this.label25.TabIndex = 173;
-            this.label25.Text = "IGV:";
-            // 
-            // txttotal
-            // 
-            this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txttotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txttotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txttotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotal.ForeColor = System.Drawing.Color.Black;
-            this.txttotal.Location = new System.Drawing.Point(750, 37);
-            this.txttotal.MaxLength = 15;
-            this.txttotal.Name = "txttotal";
-            this.txttotal.NextControlOnEnter = null;
-            this.txttotal.ReadOnly = true;
-            this.txttotal.Size = new System.Drawing.Size(93, 21);
-            this.txttotal.TabIndex = 171;
-            this.txttotal.Text = "0.00";
-            this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txttotal.TextoDefecto = "0.00";
-            this.txttotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txttotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(718, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 170;
-            this.label1.Text = "Total:";
-            // 
             // idempresa
             // 
             this.idempresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -798,13 +702,124 @@
             this.EstadoLetras.Name = "EstadoLetras";
             this.EstadoLetras.ReadOnly = true;
             this.EstadoLetras.Visible = false;
-            this.EstadoLetras.Width = 66;
+            // 
+            // txtsubtotal
+            // 
+            this.txtsubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtsubtotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtsubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtsubtotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtsubtotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtsubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsubtotal.ForeColor = System.Drawing.Color.Black;
+            this.txtsubtotal.Location = new System.Drawing.Point(497, 37);
+            this.txtsubtotal.MaxLength = 15;
+            this.txtsubtotal.Name = "txtsubtotal";
+            this.txtsubtotal.NextControlOnEnter = null;
+            this.txtsubtotal.ReadOnly = true;
+            this.txtsubtotal.Size = new System.Drawing.Size(93, 21);
+            this.txtsubtotal.TabIndex = 174;
+            this.txtsubtotal.Text = "0.00";
+            this.txtsubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtsubtotal.TextoDefecto = "0.00";
+            this.txtsubtotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtsubtotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // txtigv
+            // 
+            this.txtigv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtigv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtigv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtigv.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtigv.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtigv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtigv.ForeColor = System.Drawing.Color.Black;
+            this.txtigv.Location = new System.Drawing.Point(622, 37);
+            this.txtigv.MaxLength = 15;
+            this.txtigv.Name = "txtigv";
+            this.txtigv.NextControlOnEnter = null;
+            this.txtigv.ReadOnly = true;
+            this.txtigv.Size = new System.Drawing.Size(93, 21);
+            this.txtigv.TabIndex = 175;
+            this.txtigv.Text = "0.00";
+            this.txtigv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtigv.TextoDefecto = "0.00";
+            this.txtigv.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtigv.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // label24
+            // 
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Location = new System.Drawing.Point(448, 41);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(49, 13);
+            this.label24.TabIndex = 172;
+            this.label24.Text = "Subtotal:";
+            // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Location = new System.Drawing.Point(595, 41);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(28, 13);
+            this.label25.TabIndex = 173;
+            this.label25.Text = "IGV:";
+            // 
+            // txttotal
+            // 
+            this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txttotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttotal.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotal.ForeColor = System.Drawing.Color.Black;
+            this.txttotal.Location = new System.Drawing.Point(750, 37);
+            this.txttotal.MaxLength = 15;
+            this.txttotal.Name = "txttotal";
+            this.txttotal.NextControlOnEnter = null;
+            this.txttotal.ReadOnly = true;
+            this.txttotal.Size = new System.Drawing.Size(93, 21);
+            this.txttotal.TabIndex = 171;
+            this.txttotal.Text = "0.00";
+            this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttotal.TextoDefecto = "0.00";
+            this.txttotal.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttotal.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(718, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 170;
+            this.label1.Text = "Total:";
+            // 
+            // lbldato
+            // 
+            this.lbldato.AutoSize = true;
+            this.lbldato.BackColor = System.Drawing.Color.Transparent;
+            this.lbldato.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldato.ForeColor = System.Drawing.Color.Blue;
+            this.lbldato.Location = new System.Drawing.Point(705, 362);
+            this.lbldato.Name = "lbldato";
+            this.lbldato.Size = new System.Drawing.Size(288, 15);
+            this.lbldato.TabIndex = 243;
+            this.lbldato.Text = "No se puede Modificar, Ya tiene un abono separado";
             // 
             // frmlistarCotizacionesCLienteDEtalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1140, 389);
+            this.Controls.Add(this.lbldato);
             this.Controls.Add(this.txtsubtotal);
             this.Controls.Add(this.txtigv);
             this.Controls.Add(this.label24);
@@ -896,5 +911,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_inicial;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_inicial;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoLetras;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lbldato;
     }
 }

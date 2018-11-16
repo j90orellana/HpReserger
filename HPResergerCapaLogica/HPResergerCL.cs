@@ -416,13 +416,13 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarCuentas();
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
-         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime fechaasiento)
+         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime fechaasiento, int ctabancaria, int fkasi)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion, moneda, fechaasiento);
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion, moneda, fechaasiento, ctabancaria, fkasi);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, int proyecto, DateTime FechaAsiento)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now, 0, FechaAsiento);
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now, 0, FechaAsiento, 0, 0);
         }
         public DataTable DuplicarDetalle(int idaux, int idasiento, int idproyecto, int duplicar, string cuenta, DateTime _Fechas)
         {
@@ -1557,6 +1557,38 @@ namespace HPResergerCapaLogica
             //id_empresa    empresa
             return cdOrdenPedido.InsertarActualizarListarEmpresas("", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0);
         }
+        public void Empresas(ComboBox combo)
+        {
+            combo.DisplayMember = "descripcion";
+            combo.ValueMember = "codigo";
+            combo.DataSource = cdOrdenPedido.getCargoTipoContratacion("id_empresa", "empresa", "TBL_Empresa");
+        }
+        public void Monedas(ComboBox combo)
+        {
+            ////codigo  descripcion
+            combo.DisplayMember = "descripcion";
+            combo.ValueMember = "codigo";
+            combo.DataSource = cdOrdenPedido.getCargoTipoContratacion("Id_Moneda", "Moneda", "TBL_Moneda");
+        }
+        public void TipoCuentas(ComboBox combo)
+        {
+            ////codigo  descripcion
+            combo.DisplayMember = "descripcion";
+            combo.ValueMember = "codigo";
+            combo.DataSource = cdOrdenPedido.getCargoTipoContratacion2("id_tipo_cta", "descripcion", "TBL_Tipo_CtaBancaria");
+        }
+        public void EntidadesFinancieras(ComboBox combo)
+        {
+            ////codigo  descripcion
+            combo.DisplayMember = "descripcion";
+            combo.ValueMember = "codigo";
+            combo.DataSource = cdOrdenPedido.getCargoTipoContratacion2("id_entidad", "entidad_financiera", "TBL_Entidad_Financiera");
+        }
+        public DataTable Monedas()
+        {
+            ////codigo  descripcion
+            return cdOrdenPedido.getCargoTipoContratacion("Id_Moneda", "Moneda", "TBL_Moneda");
+        }
         public DataTable BuscarEmpleadoActivo()
         {
             return cdOrdenPedido.BuscarEmpleadoActivo();
@@ -1933,6 +1965,26 @@ namespace HPResergerCapaLogica
         public DataTable CronogramaVtaDetalleResumen(int @Fkcoti)
         {
             return cdOrdenPedido.CronogramaVtaDetalle(5, 0, @Fkcoti, 0, DateTime.Now, 0, 0, DateTime.Now, null, "", DateTime.Now, 0);
+        }
+        public DataTable CuentaBancaria(int @Opcion, int @Id, int @Empresa, int @Banco, int @Moneda, int @Tipo, string @Nrocuenta, string @Nrocuentacci, int @Usuario)
+        {
+            return cdOrdenPedido.CuentaBancaria(@Opcion, @Id, @Empresa, @Banco, @Moneda, @Tipo, @Nrocuenta, @Nrocuentacci, @Usuario);
+        }
+        public DataTable CuentaBancaria(int empresa, string cuenta)
+        {
+            return cdOrdenPedido.CuentaBancaria(8, 0, empresa, 0, 0, 0, cuenta, "", 0);
+        }
+        public DataTable CuentaBancaria()
+        {
+            return cdOrdenPedido.CuentaBancaria(0, 0, 0, 0, 0, 0, "", "", 0);
+        }
+        public DataTable TipoCuentaBancaria(int @Opcion, int @Id, string @Descripcion, int @usuario)
+        {
+            return cdOrdenPedido.TipoCuentaBancaria(@Opcion, @Id, Descripcion, usuario);
+        }
+        public DataTable TipoCuentaBancaria()
+        {
+            return cdOrdenPedido.TipoCuentaBancaria(0, 0, "", 0);
         }
     }
 }

@@ -101,6 +101,7 @@ namespace HPReserger
                 if (Tdatos.Rows.Count != 0)
                 {
                     Encontrado = true;
+                    btnimagendoc.Enabled = true;
                     DataRow filita = Tdatos.Rows[0];
                     txttipoid.Text = filita["Desc_Tipo_ID"].ToString();
                     txtnroid.Text = filita["Nro_Id_Cli"].ToString();
@@ -139,6 +140,8 @@ namespace HPReserger
                         dtpfecha.Enabled = false;
                         txttiporef.ReadOnly = true;
                         txtvalnrocuotas.ReadOnly = txtvalorcuota.ReadOnly = true;
+                        btnimagendoc.Enabled = false;
+                        lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
                     }
                 }
             }
@@ -178,8 +181,8 @@ namespace HPReserger
                         item.Cells[importe.Name].Value = Decimal(txtvalorcuota.Text);
                     }
                 }
-                lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
             }
+            lblmsg.Text = $"Total de Registros: {dtgconten.RowCount}";
         }
         private void LimpiarControles(params object[] control)
         {

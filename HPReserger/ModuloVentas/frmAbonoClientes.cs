@@ -175,6 +175,17 @@ namespace HPReserger
             frmlissep.ShowDialog();
             if (frmlissep.NumCot != 0) { txtnumcot.Text = frmlissep.NumCot.ToString(); }
         }
+        private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dtgconten.Columns[importe.Name].Index)
+            {
+                var item = dtgconten[importe.Name, e.RowIndex];
+                if ((decimal)item.Value <= 0)
+                    dtgconten.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.FromArgb(192, 80, 77);
+                else
+                    dtgconten.Rows[e.RowIndex].DefaultCellStyle.ForeColor = item.InheritedStyle.ForeColor;
+            }
+        }
     }
 }
 

@@ -19,14 +19,15 @@ namespace HPReserger
             InitializeComponent();
         }
         int estado = 0;
-        public int idasiento { get { return int.Parse(txtnumasiento.Text); } set { txtnumasiento.Text = value.ToString(); } }
-        public int asiento;
-        public int proyecto;
+        public int _idasiento { get { return int.Parse(txtnumasiento.Text); } set { txtnumasiento.Text = value.ToString(); } }
+        public int _asiento;
+        public int _proyecto;
+        public int _empresa;
         public string cuenta { get { return txtcuenta.Text; } set { txtcuenta.Text = value; } }
         public string descripcion { get { return txtdescripcion.Text; } set { txtdescripcion.Text = value; } }
         public decimal Total { get { return decimal.Parse(txttotal.Text); } set { txttotal.Text = value.ToString("n2"); } }
         ///Recibe la fecha del asiento
-        public DateTime fecha;
+        public DateTime _fecha;
         public Boolean CheckDuplicar { get { return ChkDuplicar.Checked; } set { ChkDuplicar.Checked = value; } }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
@@ -36,16 +37,16 @@ namespace HPReserger
             SacarDatos();
             estado = 0;
             Dtgconten.ReadOnly = true;
-            Dtgconten.Columns[fechaemisionx.Name].DefaultCellStyle.NullValue = fecha.ToShortDateString();
-            Dtgconten.Columns[FechaVencimientox.Name].DefaultCellStyle.NullValue = fecha.ToShortDateString();
-            Dtgconten.Columns[FechaRecepcionx.Name].DefaultCellStyle.NullValue = fecha.ToShortDateString();
+            Dtgconten.Columns[fechaemisionx.Name].DefaultCellStyle.NullValue = _fecha.ToShortDateString();
+            Dtgconten.Columns[FechaVencimientox.Name].DefaultCellStyle.NullValue = _fecha.ToShortDateString();
+            Dtgconten.Columns[FechaRecepcionx.Name].DefaultCellStyle.NullValue = _fecha.ToShortDateString();
             BuscarSiDuplica();
             SacarTotales();
             Dtgconten.Columns[importemnx.Name].CellTemplate.ToolTipText = "Presione A para Igualar\nPresione D para RellenarTodo";
         }
         public void BuscarSiDuplica()
         {
-            if (((CapaLogica.BuscarSiDuplica(asiento, idasiento, proyecto, cuenta, fecha)).Rows[0])["duplica"].ToString() != "0")
+            if (((CapaLogica.BuscarSiDuplica(_asiento, _idasiento, _proyecto, cuenta, _fecha)).Rows[0])["duplica"].ToString() != "0")
             {
                 CheckDuplicar = true;
                 ChkDuplicar.Enabled = false;
@@ -54,13 +55,14 @@ namespace HPReserger
         DataTable Datos = new DataTable();
         public void SacarDatos()
         {
-            Dtgconten.DataSource = Datos = CapaLogica.DetalleAsientos(0, asiento, idasiento, proyecto, fecha);
+            Dtgconten.DataSource = Datos = CapaLogica.DetalleAsientos(0, _asiento, _idasiento, _proyecto, _fecha);
             msj("");
         }
         DataTable tipoDoc;
         DataTable tipoComprobante;
         DataTable Monedas;
         DataTable Centroc, CentroCosto;
+        DataTable TcuentasBancarias;
         public void CargarDatos()
         {
             CargarTipodoc();
@@ -81,6 +83,8 @@ namespace HPReserger
                 if (item["Id_CtaCtble"].ToString() != "")
                     CentroCosto.Rows.Add(item["Id_CCosto"], item["Id_CtaCtble"] + "-" + item["CentroCosto"]);
             }
+            ////CargarDatosdelas Cuentas
+            TcuentasBancarias = CapaLogica.CuentaBancaria(_empresa, cuenta);
         }
         public void CargarComprobantes()
         {
@@ -141,6 +145,7 @@ namespace HPReserger
             estado = 2;
             Dtgconten.ReadOnly = false;
             Dtgconten.Columns[razonsocialx.Name].ReadOnly = true;
+            Dtgconten.Columns[fkAsix.Name].ReadOnly = true;
             btnmodificar.Enabled = false; btnaceptar.Enabled = true;
         }
         decimal Sumatoria = 0;
@@ -247,36 +252,36 @@ namespace HPReserger
                         if (item.Cells[fechaemisionx.Name].Value == null)
                         {
                             // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
-                            item.Cells[fechaemisionx.Name].Value = fecha;
+                            item.Cells[fechaemisionx.Name].Value = _fecha;
                             //return;
                         }
                         if (item.Cells[fechaemisionx.Name].Value.ToString() == "")
                         {
-                            item.Cells[fechaemisionx.Name].Value = fecha;
+                            item.Cells[fechaemisionx.Name].Value = _fecha;
                             // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
                             //return;
                         }
                         if (item.Cells[FechaRecepcionx.Name].Value == null)
                         {
                             // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
-                            item.Cells[FechaRecepcionx.Name].Value = fecha;
+                            item.Cells[FechaRecepcionx.Name].Value = _fecha;
                             //return;
                         }
                         if (item.Cells[FechaRecepcionx.Name].Value.ToString() == "")
                         {
-                            item.Cells[FechaRecepcionx.Name].Value = fecha;
+                            item.Cells[FechaRecepcionx.Name].Value = _fecha;
                             // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
                             //return;
                         }
                         if (item.Cells[FechaVencimientox.Name].Value == null)
                         {
                             // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
-                            item.Cells[FechaVencimientox.Name].Value = (fecha.AddMonths(1)).AddDays(-1);
+                            item.Cells[FechaVencimientox.Name].Value = (_fecha.AddMonths(1)).AddDays(-1);
                             //return;
                         }
                         if (item.Cells[FechaVencimientox.Name].Value.ToString() == "")
                         {
-                            item.Cells[FechaVencimientox.Name].Value = (fecha.AddMonths(1)).AddDays(-1);
+                            item.Cells[FechaVencimientox.Name].Value = (_fecha.AddMonths(1)).AddDays(-1);
                             // msg($"Ingresé Fecha Emisión del Documento, Fila {item.Index + 1}");
                             //return;
                         }
@@ -287,7 +292,7 @@ namespace HPReserger
                     msg(cadena);
                     return;
                 }
-                CapaLogica.DetalleAsientos(10, asiento, idasiento, proyecto, fecha);
+                CapaLogica.DetalleAsientos(10, _asiento, _idasiento, _proyecto, _fecha);
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     if (item.Cells[numdocx.Name].Value != null)
@@ -295,14 +300,14 @@ namespace HPReserger
                         if (item.Cells[numdocx.Name].Value.ToString() == "") item.Cells[numdocx.Name].Value = "0";
                         if (item.Cells[numdocx.Name].Value.ToString() != "")
                         {
-                            CapaLogica.DetalleAsientos(1, asiento, idasiento, cuenta, (int)item.Cells[tipodocx.Name].Value,
+                            CapaLogica.DetalleAsientos(1, _asiento, _idasiento, cuenta, (int)item.Cells[tipodocx.Name].Value,
                                 item.Cells[numdocx.Name].Value.ToString(), item.Cells[razonsocialx.Name].Value.ToString(), (int)item.Cells[idcomprobantex.Name].Value, item.Cells[codcomprobantex.Name].Value.ToString(), item.Cells[numcomprobantex.Name].Value.ToString(),
                                 int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(), (DateTime)item.Cells[fechaemisionx.Name].Value, (DateTime)item.Cells[FechaVencimientox.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
-                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, fecha);
+                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, _proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, _fecha, (int)(item.Cells[xCtaBancaria.Name].Value.ToString() == "" ? 0 : item.Cells[xCtaBancaria.Name].Value), int.Parse(item.Cells[fkAsix.Name].Value.ToString() == "" ? "0" : item.Cells[fkAsix.Name].Value.ToString()));
                         }
                     }
                 }
-                CapaLogica.DuplicarDetalle(asiento, idasiento, proyecto, ChkDuplicar.Checked ? 1 : 0, cuenta, fecha);
+                CapaLogica.DuplicarDetalle(_asiento, _idasiento, _proyecto, ChkDuplicar.Checked ? 1 : 0, cuenta, _fecha);
                 estado = 0;
                 btnmodificar.Enabled = true;
                 btnaceptar.Enabled = false;
@@ -635,9 +640,9 @@ namespace HPReserger
             //Dtgconten[importemex.Name, y].Value = 0.00m;
             //Dtgconten[importemnx.Name, y].Value = 0.00m;
             //Dtgconten[tipocambiox.Name, y].Value = 0.00m;
-            Dtgconten[fechaemisionx.Name, y].Value = fecha;
-            Dtgconten[FechaVencimientox.Name, y].Value = fecha;
-            Dtgconten[FechaRecepcionx.Name, y].Value = fecha;
+            Dtgconten[fechaemisionx.Name, y].Value = _fecha;
+            Dtgconten[FechaVencimientox.Name, y].Value = _fecha;
+            Dtgconten[FechaRecepcionx.Name, y].Value = _fecha;
             //    Dtgconten[idcomprobantex.Name, y].Value = 0;
             //   Dtgconten[tipodocx.Name, y].Value = 0;
         }
@@ -741,6 +746,12 @@ namespace HPReserger
                 Combo.DisplayMember = "descripcion";
                 Combo.AutoComplete = true;
                 Combo.DataSource = CentroCosto;
+                ///cuentas bancarias
+                Combo = Dtgconten.Columns[xCtaBancaria.Name] as DataGridViewComboBoxColumn;
+                Combo.ValueMember = "codigo";
+                Combo.DisplayMember = "descripcion";
+                Combo.AutoComplete = true;
+                Combo.DataSource = TcuentasBancarias;
                 if (estado == 2)
                 {
                     if ((Dtgconten[tipodocx.Name, x].Value == null ? "" : Dtgconten[tipodocx.Name, x].Value.ToString()) == "")

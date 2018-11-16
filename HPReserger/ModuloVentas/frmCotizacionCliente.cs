@@ -710,6 +710,7 @@ namespace HPReserger
                         frmlisclidet.NumCot = ValorCot;
                         frmlisclidet.inicial = dtgbuscare[ValorInicial.Name, x].Value.ToString();
                         frmlisclidet.CodVen = (int)dtgbuscare[xidvend.Name, x].Value;
+                        frmlisclidet.Separado = (int)dtgbuscare[xSeparado.Name, x].Value;
                         frmlisclidet.FormClosed += Frmlisclidet_FormClosed;
                         frmlisclidet.Show();
                     }

@@ -522,6 +522,7 @@
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(867, 371);
             this.dtgconten.TabIndex = 243;
+            this.dtgconten.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgconten_CellFormatting);
             // 
             // idregistro
             // 

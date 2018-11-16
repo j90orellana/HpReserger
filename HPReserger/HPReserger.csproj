@@ -131,6 +131,18 @@
     <Compile Include="fmrProyectodatos.Designer.cs">
       <DependentUpon>fmrProyectodatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloBancario\frmCuentasBancarias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloBancario\frmCuentasBancarias.Designer.cs">
+      <DependentUpon>frmCuentasBancarias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloBancario\frmTiposdeCuentasBancarias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloBancario\frmTiposdeCuentasBancarias.Designer.cs">
+      <DependentUpon>frmTiposdeCuentasBancarias.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloVentas\frmAbonoClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -455,10 +467,10 @@
     <Compile Include="frmDistritos.designer.cs">
       <DependentUpon>frmDistritos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEntiFinanciera.cs">
+    <Compile Include="ModuloBancario\frmEntiFinanciera.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEntiFinanciera.designer.cs">
+    <Compile Include="ModuloBancario\frmEntiFinanciera.designer.cs">
       <DependentUpon>frmEntiFinanciera.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEntrevistaSalida.cs">
@@ -1417,6 +1429,12 @@
       <DependentUpon>fmrProyectodatos.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloBancario\frmCuentasBancarias.resx">
+      <DependentUpon>frmCuentasBancarias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloBancario\frmTiposdeCuentasBancarias.resx">
+      <DependentUpon>frmTiposdeCuentasBancarias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloVentas\frmAbonoClientes.resx">
       <DependentUpon>frmAbonoClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -1554,7 +1572,7 @@
     <EmbeddedResource Include="frmEmpresas.resx">
       <DependentUpon>frmEmpresas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEntiFinanciera.resx">
+    <EmbeddedResource Include="ModuloBancario\frmEntiFinanciera.resx">
       <DependentUpon>frmEntiFinanciera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEntrevistaSalida.resx">

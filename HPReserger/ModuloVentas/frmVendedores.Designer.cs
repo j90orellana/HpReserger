@@ -347,7 +347,6 @@
             // 
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToDeleteRows = false;
-            this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));

@@ -61,6 +61,8 @@ namespace HPReserger
             HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public int estado { get; set; }
+        public int Separado { get; set; }
+
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             estado = 2;
@@ -91,6 +93,12 @@ namespace HPReserger
             estado = 0;
             CArgarDatos();
             dtgconten.ReadOnly = true;
+            lbldato.Text = "";
+            if (Separado > 0)
+            {
+                btnmodificar.Enabled = false;
+                lbldato.Text = "No se puede Modificar, Ya Tiene un Abono Separado";
+            }
         }
         public void CArgarDatos()
         {

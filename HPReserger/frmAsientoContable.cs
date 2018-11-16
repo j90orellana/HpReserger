@@ -168,7 +168,7 @@ namespace HPReserger
                         }
                     }
                     if (Dtgconten[EstadoCuen.Name, e.RowIndex].Value == null) Dtgconten[EstadoCuen.Name, e.RowIndex].Value = cboestado.SelectedValue;
-                    if (e.RowIndex >= 0 && e.ColumnIndex == Dtgconten.Columns[descripcion.Name].Index && Dtgconten[descripcion.Name, e.RowIndex].Value.ToString() != "" && Dtgconten[EstadoCuen.Name, e.RowIndex].Value.ToString() != "3")
+                    if (e.RowIndex >= 0 && e.ColumnIndex == Dtgconten.Columns[descripcion.Name].Index && Dtgconten[descripcion.Name, e.RowIndex].Value.ToString() != "" && Dtgconten[EstadoCuen.Name, e.RowIndex].Value.ToString() != "3" && estado == 0)
                     {
                         //cuando doy click en el detalle
                         int y = e.RowIndex;
@@ -177,11 +177,12 @@ namespace HPReserger
                             frmdetalle = new frmDetalleAsientos();
                             frmdetalle.MdiParent = this.MdiParent;
                             frmdetalle.Icon = this.Icon;
-                            frmdetalle.idasiento = int.Parse(txtcodigo.Text);
-                            frmdetalle.proyecto = (int)cboproyecto.SelectedValue;
-                            if (chkfechavalor.Checked) frmdetalle.fecha = dtfechavalor.Value;
-                            else frmdetalle.fecha = dtpfecha.Value;
-                            frmdetalle.asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
+                            frmdetalle._idasiento = int.Parse(txtcodigo.Text);
+                            frmdetalle._proyecto = (int)cboproyecto.SelectedValue;
+                            frmdetalle._empresa = (int)cboempresa.SelectedValue;
+                            if (chkfechavalor.Checked) frmdetalle._fecha = dtfechavalor.Value;
+                            else frmdetalle._fecha = dtpfecha.Value;
+                            frmdetalle._asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
                             frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
                             frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
                             frmdetalle.Total = (decimal)Dtgconten[debe.Name, y].Value + (decimal)Dtgconten[haber.Name, y].Value;
@@ -1011,7 +1012,7 @@ namespace HPReserger
                         HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[haber.Name]);
                     }
                     if (item.Cells[detallex.Name].Value == null) item.Cells[detallex.Name].Value = 0;
-                    if (int.Parse(item.Cells[SolicitaDetallex.Name].Value.ToString()) > int.Parse(item.Cells[detallex.Name].Value.ToString()))
+                    if (int.Parse(item.Cells[SolicitaDetallex.Name].Value.ToString()) > int.Parse(item.Cells[detallex.Name].Value.ToString() == "" ? "0" : item.Cells[detallex.Name].Value.ToString()))
                     {
                         cadena += $"La Cuenta de La fila: {item.Index + 1} Necesita un detalle\n";
                         HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[SolicitaDetallex.Name]);

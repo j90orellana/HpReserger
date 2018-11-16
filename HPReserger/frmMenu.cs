@@ -3126,5 +3126,49 @@ namespace HPReserger
         {
             frmabonocliente = null;
         }
+        ModuloBancario.frmCuentasBancarias frmcuentasbancarias;
+        private void tipoDeCuentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcuentasbancarias == null)
+            {
+                frmcuentasbancarias = new ModuloBancario.frmCuentasBancarias();
+                frmcuentasbancarias.MdiParent = this;
+                frmcuentasbancarias.Icon = ICono;
+                frmcuentasbancarias.FormClosed += new FormClosedEventHandler(cerrarcuentasbancarias);
+                frmcuentasbancarias.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcuentasbancarias.Activate();
+                ValidarVentanas(frmcuentasbancarias);
+            }
+        }
+        private void cerrarcuentasbancarias(object sender, FormClosedEventArgs e)
+        {
+            frmcuentasbancarias = null;
+        }
+        ModuloBancario.frmTiposdeCuentasBancarias frmallcuentasbancarias;
+        private void cuentasBancariasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmallcuentasbancarias == null)
+            {
+                frmallcuentasbancarias = new ModuloBancario.frmTiposdeCuentasBancarias();
+                frmallcuentasbancarias.MdiParent = this;
+                frmallcuentasbancarias.Icon = ICono;
+                frmallcuentasbancarias.FormClosed += new FormClosedEventHandler(cerrartiposcuentasbancarias);
+                frmallcuentasbancarias.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmallcuentasbancarias.Activate();
+                ValidarVentanas(frmallcuentasbancarias);
+            }
+        }
+        private void cerrartiposcuentasbancarias(object sender, FormClosedEventArgs e)
+        {
+            frmallcuentasbancarias = null;
+        }
     }
 }

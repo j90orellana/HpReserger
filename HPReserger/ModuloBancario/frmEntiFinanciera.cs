@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmEntiFinanciera : Form
+    public partial class frmEntiFinanciera : FormGradient
     {
         public frmEntiFinanciera()
         {
@@ -31,8 +32,8 @@ namespace HPReserger
             tipmsg.Show("Ingrese Nueva Entidad Financiera", txtgerencia, 700);
             txtcodigo.Text = txtgerencia.Text = "";
             estado = 1;
-            Desactivar();            
-            txtsufijo.Text = "";       
+            Desactivar();
+            txtsufijo.Text = "";
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
@@ -61,7 +62,6 @@ namespace HPReserger
             }
             catch { }
         }
-
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado == 0)
@@ -99,9 +99,27 @@ namespace HPReserger
             }
             return Aux;
         }
+        public Boolean ValidarDes(string valor, int id)
+        {
+            Boolean Aux = true;
+            for (int i = 0; i < dtgconten.RowCount; i++)
+            {
+                if (dtgconten[1, i].Value.ToString() == valor && id != (int)dtgconten[codigox.Name, i].Value)
+                {
+                    Aux = false;
+                    MessageBox.Show("Este valor: " + txtgerencia.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return Aux;
+                }
+            }
+            return Aux;
+        }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void MSG(string cadena)
+        {
+            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -112,16 +130,18 @@ namespace HPReserger
                 msg("Esta Vacio el sufijo");
                 return;
             }
-            
+
             if (estado == 1 && ValidarDes(txtgerencia.Text))
             {
                 cEntiFinanciera.EntidadFinanciera(1, 0, txtgerencia.Text, txtsufijo.Text);
+                MSG("Insertado Exitosamente");
             }
             else
             {
-                if (estado == 2 && ValidarDes(txtgerencia.Text))
+                if (estado == 2 && ValidarDes(txtgerencia.Text, (int)dtgconten[codigox.Name, dtgconten.CurrentRow.Index].Value))
                 {
                     cEntiFinanciera.EntidadFinanciera(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, txtsufijo.Text);
+                    MSG("Actualizado Exitosamente");
                 }
                 else
                 {

@@ -33,6 +33,7 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetalleAsientos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,8 +45,26 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetalleAsientos));
             this.Dtgconten = new HpResergerUserControls.Dtgconten();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.btnmodificar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtnumasiento = new System.Windows.Forms.TextBox();
+            this.txtcuenta = new System.Windows.Forms.TextBox();
+            this.txtdescripcion = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.txttotal = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ChkDuplicar = new System.Windows.Forms.CheckBox();
+            this.txttotalmonextranjera = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txttotalmonedaNacional = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtdiferencia = new System.Windows.Forms.TextBox();
             this.btnborrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idauxx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idasientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,28 +89,10 @@ namespace HPReserger
             this.fkAsix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fk_asisx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.glosax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCtaBancaria = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Asiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.btnmodificar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtnumasiento = new System.Windows.Forms.TextBox();
-            this.txtcuenta = new System.Windows.Forms.TextBox();
-            this.txtdescripcion = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.txttotal = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ChkDuplicar = new System.Windows.Forms.CheckBox();
-            this.txttotalmonextranjera = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txttotalmonedaNacional = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtdiferencia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,6 +146,7 @@ namespace HPReserger
             this.fkAsix,
             this.fk_asisx,
             this.glosax,
+            this.xCtaBancaria,
             this.usuariox,
             this.fechax,
             this.Fecha_Asiento});
@@ -180,6 +182,233 @@ namespace HPReserger
             this.Dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dtgconten_KeyDown);
             this.Dtgconten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dtgconten_KeyPress);
             // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(1252, 576);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(123, 28);
+            this.btncancelar.TabIndex = 158;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Enabled = false;
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(1123, 576);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(123, 28);
+            this.btnaceptar.TabIndex = 157;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btnmodificar
+            // 
+            this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
+            this.btnmodificar.Location = new System.Drawing.Point(1252, 10);
+            this.btnmodificar.Name = "btnmodificar";
+            this.btnmodificar.Size = new System.Drawing.Size(123, 28);
+            this.btnmodificar.TabIndex = 1;
+            this.btnmodificar.Text = "Modificar";
+            this.btnmodificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 160;
+            this.label1.Text = "Num. Asiento:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(171, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 13);
+            this.label2.TabIndex = 161;
+            this.label2.Text = "Cuenta Contable:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // txtnumasiento
+            // 
+            this.txtnumasiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtnumasiento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnumasiento.Location = new System.Drawing.Point(88, 13);
+            this.txtnumasiento.Name = "txtnumasiento";
+            this.txtnumasiento.ReadOnly = true;
+            this.txtnumasiento.Size = new System.Drawing.Size(81, 22);
+            this.txtnumasiento.TabIndex = 162;
+            this.txtnumasiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnumasiento.TextChanged += new System.EventHandler(this.txtnumasiento_TextChanged);
+            // 
+            // txtcuenta
+            // 
+            this.txtcuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtcuenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcuenta.Location = new System.Drawing.Point(267, 13);
+            this.txtcuenta.Name = "txtcuenta";
+            this.txtcuenta.ReadOnly = true;
+            this.txtcuenta.Size = new System.Drawing.Size(97, 22);
+            this.txtcuenta.TabIndex = 163;
+            this.txtcuenta.TextChanged += new System.EventHandler(this.txtcuenta_TextChanged);
+            // 
+            // txtdescripcion
+            // 
+            this.txtdescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtdescripcion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdescripcion.Location = new System.Drawing.Point(439, 13);
+            this.txtdescripcion.Name = "txtdescripcion";
+            this.txtdescripcion.ReadOnly = true;
+            this.txtdescripcion.Size = new System.Drawing.Size(422, 22);
+            this.txtdescripcion.TabIndex = 165;
+            this.txtdescripcion.TextChanged += new System.EventHandler(this.txtdescripcion_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(367, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.TabIndex = 164;
+            this.label3.Text = "Descripción:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsg.Location = new System.Drawing.Point(12, 584);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(82, 13);
+            this.lblmsg.TabIndex = 166;
+            this.lblmsg.Text = "Total Registros";
+            // 
+            // txttotal
+            // 
+            this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txttotal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotal.Location = new System.Drawing.Point(1135, 13);
+            this.txttotal.Name = "txttotal";
+            this.txttotal.ReadOnly = true;
+            this.txttotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txttotal.Size = new System.Drawing.Size(111, 22);
+            this.txttotal.TabIndex = 168;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1098, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 167;
+            this.label4.Text = "Total:";
+            // 
+            // ChkDuplicar
+            // 
+            this.ChkDuplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChkDuplicar.AutoSize = true;
+            this.ChkDuplicar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChkDuplicar.Location = new System.Drawing.Point(867, 16);
+            this.ChkDuplicar.Name = "ChkDuplicar";
+            this.ChkDuplicar.Size = new System.Drawing.Size(230, 17);
+            this.ChkDuplicar.TabIndex = 169;
+            this.ChkDuplicar.Text = "Este Detalle se Duplicará en las Cuentas";
+            this.ChkDuplicar.UseVisualStyleBackColor = true;
+            // 
+            // txttotalmonextranjera
+            // 
+            this.txttotalmonextranjera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotalmonextranjera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txttotalmonextranjera.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalmonextranjera.Location = new System.Drawing.Point(887, 579);
+            this.txttotalmonextranjera.Name = "txttotalmonextranjera";
+            this.txttotalmonextranjera.ReadOnly = true;
+            this.txttotalmonextranjera.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txttotalmonextranjera.Size = new System.Drawing.Size(111, 22);
+            this.txttotalmonextranjera.TabIndex = 170;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(885, 567);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 13);
+            this.label5.TabIndex = 171;
+            this.label5.Text = "Total Moneda.Extranj.";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(769, 567);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 13);
+            this.label6.TabIndex = 173;
+            this.label6.Text = "TotalMonedaNacional";
+            // 
+            // txttotalmonedaNacional
+            // 
+            this.txttotalmonedaNacional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotalmonedaNacional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txttotalmonedaNacional.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotalmonedaNacional.Location = new System.Drawing.Point(770, 579);
+            this.txttotalmonedaNacional.Name = "txttotalmonedaNacional";
+            this.txttotalmonedaNacional.ReadOnly = true;
+            this.txttotalmonedaNacional.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txttotalmonedaNacional.Size = new System.Drawing.Size(111, 22);
+            this.txttotalmonedaNacional.TabIndex = 172;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(1004, 567);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.TabIndex = 175;
+            this.label7.Text = "Diferencia";
+            // 
+            // txtdiferencia
+            // 
+            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdiferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtdiferencia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdiferencia.Location = new System.Drawing.Point(1004, 579);
+            this.txtdiferencia.Name = "txtdiferencia";
+            this.txtdiferencia.ReadOnly = true;
+            this.txtdiferencia.Size = new System.Drawing.Size(111, 22);
+            this.txtdiferencia.TabIndex = 174;
+            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // btnborrar
             // 
             this.btnborrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -199,6 +428,7 @@ namespace HPReserger
             this.idauxx.HeaderText = "idaux";
             this.idauxx.Name = "idauxx";
             this.idauxx.Visible = false;
+            this.idauxx.Width = 56;
             // 
             // idasientox
             // 
@@ -207,6 +437,7 @@ namespace HPReserger
             this.idasientox.HeaderText = "idAsiento";
             this.idasientox.Name = "idasientox";
             this.idasientox.Visible = false;
+            this.idasientox.Width = 74;
             // 
             // cuentacontablex
             // 
@@ -438,6 +669,7 @@ namespace HPReserger
             this.fkAsix.Name = "fkAsix";
             this.fkAsix.ReadOnly = true;
             this.fkAsix.Visible = false;
+            this.fkAsix.Width = 65;
             // 
             // fk_asisx
             // 
@@ -458,6 +690,16 @@ namespace HPReserger
             this.glosax.MinimumWidth = 100;
             this.glosax.Name = "glosax";
             // 
+            // xCtaBancaria
+            // 
+            this.xCtaBancaria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xCtaBancaria.DataPropertyName = "cta_Banco";
+            this.xCtaBancaria.HeaderText = "CtaBancaria";
+            this.xCtaBancaria.Name = "xCtaBancaria";
+            this.xCtaBancaria.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.xCtaBancaria.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.xCtaBancaria.Width = 89;
+            // 
             // usuariox
             // 
             this.usuariox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -465,6 +707,7 @@ namespace HPReserger
             this.usuariox.HeaderText = "usuario";
             this.usuariox.Name = "usuariox";
             this.usuariox.Visible = false;
+            this.usuariox.Width = 65;
             // 
             // fechax
             // 
@@ -473,6 +716,7 @@ namespace HPReserger
             this.fechax.HeaderText = "fecha";
             this.fechax.Name = "fechax";
             this.fechax.Visible = false;
+            this.fechax.Width = 58;
             // 
             // Fecha_Asiento
             // 
@@ -480,233 +724,6 @@ namespace HPReserger
             this.Fecha_Asiento.HeaderText = "Fecha_Asiento";
             this.Fecha_Asiento.Name = "Fecha_Asiento";
             this.Fecha_Asiento.Visible = false;
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(1252, 576);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(123, 28);
-            this.btncancelar.TabIndex = 158;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Enabled = false;
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(1123, 576);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(123, 28);
-            this.btnaceptar.TabIndex = 157;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btnmodificar
-            // 
-            this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(1252, 10);
-            this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(123, 28);
-            this.btnmodificar.TabIndex = 1;
-            this.btnmodificar.Text = "Modificar";
-            this.btnmodificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 160;
-            this.label1.Text = "Num. Asiento:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(171, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
-            this.label2.TabIndex = 161;
-            this.label2.Text = "Cuenta Contable:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // txtnumasiento
-            // 
-            this.txtnumasiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtnumasiento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnumasiento.Location = new System.Drawing.Point(88, 13);
-            this.txtnumasiento.Name = "txtnumasiento";
-            this.txtnumasiento.ReadOnly = true;
-            this.txtnumasiento.Size = new System.Drawing.Size(81, 22);
-            this.txtnumasiento.TabIndex = 162;
-            this.txtnumasiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnumasiento.TextChanged += new System.EventHandler(this.txtnumasiento_TextChanged);
-            // 
-            // txtcuenta
-            // 
-            this.txtcuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtcuenta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcuenta.Location = new System.Drawing.Point(267, 13);
-            this.txtcuenta.Name = "txtcuenta";
-            this.txtcuenta.ReadOnly = true;
-            this.txtcuenta.Size = new System.Drawing.Size(97, 22);
-            this.txtcuenta.TabIndex = 163;
-            this.txtcuenta.TextChanged += new System.EventHandler(this.txtcuenta_TextChanged);
-            // 
-            // txtdescripcion
-            // 
-            this.txtdescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtdescripcion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdescripcion.Location = new System.Drawing.Point(439, 13);
-            this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.ReadOnly = true;
-            this.txtdescripcion.Size = new System.Drawing.Size(422, 22);
-            this.txtdescripcion.TabIndex = 165;
-            this.txtdescripcion.TextChanged += new System.EventHandler(this.txtdescripcion_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(367, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
-            this.label3.TabIndex = 164;
-            this.label3.Text = "Descripción:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmsg.Location = new System.Drawing.Point(12, 584);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(82, 13);
-            this.lblmsg.TabIndex = 166;
-            this.lblmsg.Text = "Total Registros";
-            // 
-            // txttotal
-            // 
-            this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txttotal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotal.Location = new System.Drawing.Point(1135, 13);
-            this.txttotal.Name = "txttotal";
-            this.txttotal.ReadOnly = true;
-            this.txttotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txttotal.Size = new System.Drawing.Size(111, 22);
-            this.txttotal.TabIndex = 168;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1098, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 167;
-            this.label4.Text = "Total:";
-            // 
-            // ChkDuplicar
-            // 
-            this.ChkDuplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChkDuplicar.AutoSize = true;
-            this.ChkDuplicar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChkDuplicar.Location = new System.Drawing.Point(867, 16);
-            this.ChkDuplicar.Name = "ChkDuplicar";
-            this.ChkDuplicar.Size = new System.Drawing.Size(230, 17);
-            this.ChkDuplicar.TabIndex = 169;
-            this.ChkDuplicar.Text = "Este Detalle se Duplicará en las Cuentas";
-            this.ChkDuplicar.UseVisualStyleBackColor = true;
-            // 
-            // txttotalmonextranjera
-            // 
-            this.txttotalmonextranjera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txttotalmonextranjera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txttotalmonextranjera.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalmonextranjera.Location = new System.Drawing.Point(887, 579);
-            this.txttotalmonextranjera.Name = "txttotalmonextranjera";
-            this.txttotalmonextranjera.ReadOnly = true;
-            this.txttotalmonextranjera.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txttotalmonextranjera.Size = new System.Drawing.Size(111, 22);
-            this.txttotalmonextranjera.TabIndex = 170;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(885, 567);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 13);
-            this.label5.TabIndex = 171;
-            this.label5.Text = "Total Moneda.Extranj.";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(769, 567);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(119, 13);
-            this.label6.TabIndex = 173;
-            this.label6.Text = "TotalMonedaNacional";
-            // 
-            // txttotalmonedaNacional
-            // 
-            this.txttotalmonedaNacional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txttotalmonedaNacional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txttotalmonedaNacional.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotalmonedaNacional.Location = new System.Drawing.Point(770, 579);
-            this.txttotalmonedaNacional.Name = "txttotalmonedaNacional";
-            this.txttotalmonedaNacional.ReadOnly = true;
-            this.txttotalmonedaNacional.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txttotalmonedaNacional.Size = new System.Drawing.Size(111, 22);
-            this.txttotalmonedaNacional.TabIndex = 172;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1004, 567);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 13);
-            this.label7.TabIndex = 175;
-            this.label7.Text = "Diferencia";
-            // 
-            // txtdiferencia
-            // 
-            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdiferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtdiferencia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdiferencia.Location = new System.Drawing.Point(1004, 579);
-            this.txtdiferencia.Name = "txtdiferencia";
-            this.txtdiferencia.ReadOnly = true;
-            this.txtdiferencia.Size = new System.Drawing.Size(111, 22);
-            this.txtdiferencia.TabIndex = 174;
-            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frmDetalleAsientos
             // 
@@ -790,6 +807,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn fkAsix;
         private System.Windows.Forms.DataGridViewTextBoxColumn fk_asisx;
         private System.Windows.Forms.DataGridViewTextBoxColumn glosax;
+        private System.Windows.Forms.DataGridViewComboBoxColumn xCtaBancaria;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuariox;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechax;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Asiento;
