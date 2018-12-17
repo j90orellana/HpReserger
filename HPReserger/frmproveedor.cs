@@ -91,8 +91,8 @@ namespace HPReserger
             Iniciar(false);
             radioButton2.Checked = true;
             Txtbusca_TextChanged(sender, e);
-            msg(dtgconten);        
-        }        
+            msg(dtgconten);
+        }
         public void ListarProveedores(string busca, int opcion)
         {
             dtgconten.DataSource = CProveedor.ListarProveedores(busca, opcion);
@@ -204,15 +204,15 @@ namespace HPReserger
                 txtpersonacontacto.Text = dtgconten["NOMCONTACTO", y].Value.ToString();
                 txttelefonocontacto.Text = dtgconten["TELCONTACTO", y].Value.ToString();
                 txtemailcontacto.Text = dtgconten["EMAILCONTACTO", y].Value.ToString();
-                txtcuentasoles.Text = dtgconten["CTASOLES", y].Value.ToString();
+                txtcuentasoles.Text = dtgconten[xctasoles.Name, y].Value.ToString();
                 txtccisoles.Text = dtgconten["CCISOLES", y].Value.ToString();
                 cbobancosoles.Text = dtgconten["BANCOSOLES", y].Value.ToString();
-                txtcuentadolares.Text = dtgconten["CTADOLARES", y].Value.ToString();
+                txtcuentadolares.Text = dtgconten[xctadolares.Name, y].Value.ToString();
                 txtccidolares.Text = dtgconten["CCIDOLARES", y].Value.ToString();
                 cbobancodolares.Text = dtgconten["BANCODOLARES", y].Value.ToString();
                 txtcuentadetracciones.Text = dtgconten["CTADETRACCIONES", y].Value.ToString();
                 cboregimen.SelectedValue = dtgconten["REGIMEN", y].Value.ToString();
-                cbotipopersona.SelectedIndex = int.Parse(dtgconten["TIPOPER", y].Value.ToString()) - 1;
+                cbotipopersona.SelectedIndex = int.Parse(dtgconten[xTipoper.Name, y].Value.ToString()) - 1;
                 cboctasoles.SelectedIndex = int.Parse(dtgconten["TIPOCTASOLES", y].Value.ToString() == "" ? "0" : dtgconten["TIPOCTASOLES", y].Value.ToString()) - 1;
                 cboctadolares.SelectedIndex = int.Parse(dtgconten["TIPOCTADOLARES", y].Value.ToString() == "" ? "0" : dtgconten["TIPOCTADOLARES", y].Value.ToString()) - 1;
                 txtplazofijo.Text = dtgconten[PLAZOPAGOX.Name, y].Value.ToString();
@@ -541,6 +541,22 @@ namespace HPReserger
             if (int.Parse(txtplazofijo.Text) == 0)
                 txtplazofijo.Text = "30";
         }
+        public void Mensaje(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
+        private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (llamada == 1)
+            {
+                salida = true;
+                rucito = dtgconten[RUC.Name, e.RowIndex].Value.ToString();
+                this.Close();
+            }
+        }
+
+        private void txtnumeroidentidad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ValidarPegarSoloLetras(e, txtpersonacontacto, 40);

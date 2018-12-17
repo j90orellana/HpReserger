@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmEmpleado : Form, IProfesion, IFormEmpleado
+    public partial class frmEmpleado : FormGradient, IProfesion, IFormEmpleado
     {
         HPResergerCapaLogica.HPResergerCL clEmpleado = new HPResergerCapaLogica.HPResergerCL();
         public byte[] FotoAntecedentesPoliciales { get; set; }

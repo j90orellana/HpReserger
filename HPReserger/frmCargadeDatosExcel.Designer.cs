@@ -84,6 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(12, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
@@ -93,6 +94,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(12, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 13);
@@ -101,6 +103,7 @@
             // 
             // btncargar
             // 
+            this.btncargar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncargar.Image = ((System.Drawing.Image)(resources.GetObject("btncargar.Image")));
             this.btncargar.Location = new System.Drawing.Point(470, 11);
             this.btncargar.Name = "btncargar";
@@ -114,6 +117,7 @@
             // btncargaexcel
             // 
             this.btncargaexcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncargaexcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncargaexcel.Image = ((System.Drawing.Image)(resources.GetObject("btncargaexcel.Image")));
             this.btncargaexcel.Location = new System.Drawing.Point(712, 41);
             this.btncargaexcel.Name = "btncargaexcel";
@@ -127,6 +131,7 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(320, 612);
             this.button1.Name = "button1";
@@ -153,6 +158,7 @@
             // 
             this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmensaje.AutoSize = true;
+            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
             this.lblmensaje.Location = new System.Drawing.Point(9, 617);
             this.lblmensaje.Name = "lblmensaje";
             this.lblmensaje.Size = new System.Drawing.Size(77, 13);
@@ -161,12 +167,12 @@
             // 
             // txtRuta
             // 
-            this.txtRuta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            this.txtRuta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtRuta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRuta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtRuta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.txtRuta.ForeColor = System.Drawing.Color.White;
+            this.txtRuta.ForeColor = System.Drawing.Color.Black;
             this.txtRuta.Location = new System.Drawing.Point(118, 12);
             this.txtRuta.MaxLength = 100;
             this.txtRuta.Name = "txtRuta";
@@ -197,7 +203,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(573, 630);
             this.Name = "frmCargadeDatosExcel";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Datos de Carga";
             this.Text = "Datos de Carga";
             this.Load += new System.EventHandler(this.frmCargadeDatosExcel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();

@@ -30,14 +30,16 @@ namespace HPReserger
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmrProyectodatos));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Dtgconten = new Dtgconten();
+            this.Dtgconten = new HpResergerUserControls.Dtgconten();
             this.id_etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -171,14 +173,17 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 15);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.Size = new System.Drawing.Size(117, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre del Proyecto:";
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.Dtgconten);
             this.groupBox1.Controls.Add(this.txtitf);
             this.groupBox1.Controls.Add(this.label55);
@@ -193,6 +198,7 @@ namespace HPReserger
             this.groupBox1.Controls.Add(this.txttasac);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(17, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(438, 333);
@@ -206,11 +212,25 @@ namespace HPReserger
             this.Dtgconten.AllowUserToDeleteRows = false;
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            //this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            //this.Dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_etapa,
@@ -223,11 +243,22 @@ namespace HPReserger
             this.Observacion,
             this.usuario,
             this.fecha});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dtgconten.DefaultCellStyle = dataGridViewCellStyle6;
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.Dtgconten.EnableHeadersVisualStyles = false;
+            this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.Dtgconten.Location = new System.Drawing.Point(6, 97);
             this.Dtgconten.MultiSelect = false;
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.ReadOnly = true;
+            this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Dtgconten.RowHeadersVisible = false;
             this.Dtgconten.RowTemplate.Height = 16;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -271,31 +302,31 @@ namespace HPReserger
             // 
             this.fechainicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechainicio.DataPropertyName = "fecha_inicio";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.fechainicio.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.fechainicio.DefaultCellStyle = dataGridViewCellStyle3;
             this.fechainicio.HeaderText = "Fecha Inicio";
             this.fechainicio.Name = "fechainicio";
             this.fechainicio.ReadOnly = true;
-            this.fechainicio.Width = 90;
+            this.fechainicio.Width = 92;
             // 
             // fechafin
             // 
             this.fechafin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechafin.DataPropertyName = "fecha_fin";
-            dataGridViewCellStyle7.Format = "d";
-            this.fechafin.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Format = "d";
+            this.fechafin.DefaultCellStyle = dataGridViewCellStyle4;
             this.fechafin.HeaderText = "Fecha Fin";
             this.fechafin.Name = "fechafin";
             this.fechafin.ReadOnly = true;
-            this.fechafin.Width = 79;
+            this.fechafin.Width = 80;
             // 
             // mesesconstruccion
             // 
             this.mesesconstruccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.mesesconstruccion.DataPropertyName = "meses_construccion";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.mesesconstruccion.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.mesesconstruccion.DefaultCellStyle = dataGridViewCellStyle5;
             this.mesesconstruccion.HeaderText = "Meses";
             this.mesesconstruccion.Name = "mesesconstruccion";
             this.mesesconstruccion.ReadOnly = true;
@@ -330,9 +361,10 @@ namespace HPReserger
             // 
             this.txtitf.BackColor = System.Drawing.SystemColors.HighlightText;
             this.txtitf.Enabled = false;
-            this.txtitf.Location = new System.Drawing.Point(247, 71);
+            this.txtitf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtitf.Location = new System.Drawing.Point(247, 70);
             this.txtitf.Name = "txtitf";
-            this.txtitf.Size = new System.Drawing.Size(69, 20);
+            this.txtitf.Size = new System.Drawing.Size(69, 21);
             this.txtitf.TabIndex = 14;
             // 
             // label55
@@ -340,14 +372,15 @@ namespace HPReserger
             this.label55.AutoSize = true;
             this.label55.Location = new System.Drawing.Point(225, 74);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(23, 13);
+            this.label55.Size = new System.Drawing.Size(21, 13);
             this.label55.TabIndex = 13;
             this.label55.Text = "ITF";
             // 
             // btetapas
             // 
+            this.btetapas.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btetapas.Image = ((System.Drawing.Image)(resources.GetObject("btetapas.Image")));
-            this.btetapas.Location = new System.Drawing.Point(322, 70);
+            this.btetapas.Location = new System.Drawing.Point(322, 69);
             this.btetapas.Name = "btetapas";
             this.btetapas.Size = new System.Drawing.Size(110, 23);
             this.btetapas.TabIndex = 12;
@@ -360,9 +393,10 @@ namespace HPReserger
             // 
             this.txtplazo.BackColor = System.Drawing.SystemColors.HighlightText;
             this.txtplazo.Enabled = false;
-            this.txtplazo.Location = new System.Drawing.Point(128, 71);
+            this.txtplazo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtplazo.Location = new System.Drawing.Point(128, 70);
             this.txtplazo.Name = "txtplazo";
-            this.txtplazo.Size = new System.Drawing.Size(93, 20);
+            this.txtplazo.Size = new System.Drawing.Size(93, 21);
             this.txtplazo.TabIndex = 10;
             // 
             // label6
@@ -370,23 +404,24 @@ namespace HPReserger
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 74);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(116, 13);
+            this.label6.Size = new System.Drawing.Size(124, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Plazo de Construcción:";
             // 
             // txtubicacion
             // 
-            this.txtubicacion.Location = new System.Drawing.Point(84, 45);
+            this.txtubicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtubicacion.Location = new System.Drawing.Point(84, 44);
             this.txtubicacion.Name = "txtubicacion";
-            this.txtubicacion.Size = new System.Drawing.Size(348, 20);
+            this.txtubicacion.Size = new System.Drawing.Size(348, 21);
             this.txtubicacion.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 48);
+            this.label5.Location = new System.Drawing.Point(19, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 7;
             this.label5.Text = "Ubicación:";
             // 
@@ -394,17 +429,18 @@ namespace HPReserger
             // 
             this.txtetapas.BackColor = System.Drawing.SystemColors.HighlightText;
             this.txtetapas.Enabled = false;
+            this.txtetapas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtetapas.Location = new System.Drawing.Point(368, 19);
             this.txtetapas.Name = "txtetapas";
-            this.txtetapas.Size = new System.Drawing.Size(64, 20);
+            this.txtetapas.Size = new System.Drawing.Size(64, 21);
             this.txtetapas.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(319, 22);
+            this.label4.Location = new System.Drawing.Point(319, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Etapas:";
             // 
@@ -412,35 +448,37 @@ namespace HPReserger
             // 
             this.txtuit.BackColor = System.Drawing.SystemColors.HighlightText;
             this.txtuit.Enabled = false;
+            this.txtuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtuit.Location = new System.Drawing.Point(232, 19);
             this.txtuit.Name = "txtuit";
-            this.txtuit.Size = new System.Drawing.Size(81, 20);
+            this.txtuit.Size = new System.Drawing.Size(81, 21);
             this.txtuit.TabIndex = 4;
             // 
             // txttasac
             // 
             this.txttasac.BackColor = System.Drawing.SystemColors.HighlightText;
             this.txttasac.Enabled = false;
+            this.txttasac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttasac.Location = new System.Drawing.Point(84, 19);
             this.txttasac.Name = "txttasac";
-            this.txttasac.Size = new System.Drawing.Size(111, 20);
+            this.txttasac.Size = new System.Drawing.Size(111, 21);
             this.txttasac.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(201, 22);
+            this.label3.Location = new System.Drawing.Point(201, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
+            this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "UIT";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 21);
+            this.label2.Location = new System.Drawing.Point(6, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tipo Cambio:";
             // 
@@ -448,13 +486,15 @@ namespace HPReserger
             // 
             this.txtnombre.BackColor = System.Drawing.SystemColors.HighlightText;
             this.txtnombre.Enabled = false;
+            this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnombre.Location = new System.Drawing.Point(129, 12);
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(326, 20);
+            this.txtnombre.Size = new System.Drawing.Size(326, 21);
             this.txtnombre.TabIndex = 2;
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.cbomoneda);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(461, 40);
@@ -479,14 +519,16 @@ namespace HPReserger
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(6, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 6;
             this.label7.Text = "Moneda:";
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label20);
@@ -508,6 +550,7 @@ namespace HPReserger
             this.groupBox3.Controls.Add(this.txtpreciom2);
             this.groupBox3.Controls.Add(this.txtareabruta);
             this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(461, 98);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(345, 222);
@@ -520,7 +563,7 @@ namespace HPReserger
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(296, 160);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(26, 13);
+            this.label22.Size = new System.Drawing.Size(27, 13);
             this.label22.TabIndex = 32;
             this.label22.Text = "mes";
             // 
@@ -529,7 +572,7 @@ namespace HPReserger
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(296, 186);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(46, 13);
+            this.label21.Size = new System.Drawing.Size(50, 13);
             this.label21.TabIndex = 31;
             this.label21.Text = "mensual";
             // 
@@ -538,7 +581,7 @@ namespace HPReserger
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(296, 108);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(22, 13);
+            this.label20.Size = new System.Drawing.Size(20, 13);
             this.label20.TabIndex = 30;
             this.label20.Text = "S/.";
             // 
@@ -547,7 +590,7 @@ namespace HPReserger
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(296, 134);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(21, 13);
+            this.label19.Size = new System.Drawing.Size(22, 13);
             this.label19.TabIndex = 29;
             this.label19.Text = "m2";
             // 
@@ -556,7 +599,7 @@ namespace HPReserger
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(296, 82);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(28, 13);
+            this.label18.Size = new System.Drawing.Size(27, 13);
             this.label18.TabIndex = 28;
             this.label18.Text = "US$";
             // 
@@ -565,7 +608,7 @@ namespace HPReserger
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(296, 56);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(28, 13);
+            this.label17.Size = new System.Drawing.Size(27, 13);
             this.label17.TabIndex = 27;
             this.label17.Text = "US$";
             // 
@@ -574,16 +617,16 @@ namespace HPReserger
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(296, 30);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(21, 13);
+            this.label16.Size = new System.Drawing.Size(22, 13);
             this.label16.TabIndex = 26;
             this.label16.Text = "m2";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 186);
+            this.label15.Location = new System.Drawing.Point(62, 186);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(55, 13);
+            this.label15.Size = new System.Drawing.Size(60, 13);
             this.label15.TabIndex = 25;
             this.label15.Text = "Vigilancia:";
             // 
@@ -592,32 +635,32 @@ namespace HPReserger
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(9, 160);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(110, 13);
+            this.label14.Size = new System.Drawing.Size(113, 13);
             this.label14.TabIndex = 24;
             this.label14.Text = "Revaluación Terreno:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 134);
+            this.label13.Location = new System.Drawing.Point(53, 134);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 13);
+            this.label13.Size = new System.Drawing.Size(69, 13);
             this.label13.TabIndex = 23;
             this.label13.Text = "Autoavalúo:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 108);
+            this.label12.Location = new System.Drawing.Point(38, 108);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 13);
+            this.label12.Size = new System.Drawing.Size(84, 13);
             this.label12.TabIndex = 22;
             this.label12.Text = "Precio Total S/.:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 82);
+            this.label11.Location = new System.Drawing.Point(31, 82);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(91, 13);
             this.label11.TabIndex = 21;
@@ -626,17 +669,18 @@ namespace HPReserger
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 56);
+            this.label10.Location = new System.Drawing.Point(42, 56);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 13);
+            this.label10.Size = new System.Drawing.Size(80, 13);
             this.label10.TabIndex = 20;
             this.label10.Text = "Precio por m2:";
             // 
             // txtvigilancia
             // 
+            this.txtvigilancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtvigilancia.Location = new System.Drawing.Point(125, 183);
             this.txtvigilancia.Name = "txtvigilancia";
-            this.txtvigilancia.Size = new System.Drawing.Size(165, 20);
+            this.txtvigilancia.Size = new System.Drawing.Size(165, 21);
             this.txtvigilancia.TabIndex = 9;
             this.txtvigilancia.Text = "0.00";
             this.txtvigilancia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -644,9 +688,10 @@ namespace HPReserger
             // 
             // txtrevaluacion
             // 
+            this.txtrevaluacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtrevaluacion.Location = new System.Drawing.Point(125, 157);
             this.txtrevaluacion.Name = "txtrevaluacion";
-            this.txtrevaluacion.Size = new System.Drawing.Size(165, 20);
+            this.txtrevaluacion.Size = new System.Drawing.Size(165, 21);
             this.txtrevaluacion.TabIndex = 8;
             this.txtrevaluacion.Text = "0.00";
             this.txtrevaluacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -654,9 +699,10 @@ namespace HPReserger
             // 
             // txttotalavaluo
             // 
+            this.txttotalavaluo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotalavaluo.Location = new System.Drawing.Point(125, 131);
             this.txttotalavaluo.Name = "txttotalavaluo";
-            this.txttotalavaluo.Size = new System.Drawing.Size(165, 20);
+            this.txttotalavaluo.Size = new System.Drawing.Size(165, 21);
             this.txttotalavaluo.TabIndex = 7;
             this.txttotalavaluo.Text = "0.00";
             this.txttotalavaluo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -665,9 +711,10 @@ namespace HPReserger
             // txttoralsoles
             // 
             this.txttoralsoles.Enabled = false;
+            this.txttoralsoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttoralsoles.Location = new System.Drawing.Point(125, 105);
             this.txttoralsoles.Name = "txttoralsoles";
-            this.txttoralsoles.Size = new System.Drawing.Size(165, 20);
+            this.txttoralsoles.Size = new System.Drawing.Size(165, 21);
             this.txttoralsoles.TabIndex = 6;
             this.txttoralsoles.Text = "0.00";
             this.txttoralsoles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -676,9 +723,10 @@ namespace HPReserger
             // txttotaldolar
             // 
             this.txttotaldolar.Enabled = false;
+            this.txttotaldolar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotaldolar.Location = new System.Drawing.Point(125, 79);
             this.txttotaldolar.Name = "txttotaldolar";
-            this.txttotaldolar.Size = new System.Drawing.Size(165, 20);
+            this.txttotaldolar.Size = new System.Drawing.Size(165, 21);
             this.txttotaldolar.TabIndex = 5;
             this.txttotaldolar.Text = "0.00";
             this.txttotaldolar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -686,9 +734,10 @@ namespace HPReserger
             // 
             // txtpreciom2
             // 
+            this.txtpreciom2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpreciom2.Location = new System.Drawing.Point(125, 53);
             this.txtpreciom2.Name = "txtpreciom2";
-            this.txtpreciom2.Size = new System.Drawing.Size(165, 20);
+            this.txtpreciom2.Size = new System.Drawing.Size(165, 21);
             this.txtpreciom2.TabIndex = 4;
             this.txtpreciom2.Text = "0.00";
             this.txtpreciom2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -697,9 +746,10 @@ namespace HPReserger
             // 
             // txtareabruta
             // 
+            this.txtareabruta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtareabruta.Location = new System.Drawing.Point(125, 27);
             this.txtareabruta.Name = "txtareabruta";
-            this.txtareabruta.Size = new System.Drawing.Size(165, 20);
+            this.txtareabruta.Size = new System.Drawing.Size(165, 21);
             this.txtareabruta.TabIndex = 3;
             this.txtareabruta.Text = "0.00";
             this.txtareabruta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -709,20 +759,22 @@ namespace HPReserger
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 30);
+            this.label9.Location = new System.Drawing.Point(58, 30);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 13);
+            this.label9.Size = new System.Drawing.Size(64, 13);
             this.label9.TabIndex = 8;
             this.label9.Text = "Área Bruta:";
             // 
             // groupBox4
             // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
             this.groupBox4.Controls.Add(this.label26);
             this.groupBox4.Controls.Add(this.label25);
             this.groupBox4.Controls.Add(this.label24);
             this.groupBox4.Controls.Add(this.txtventas);
             this.groupBox4.Controls.Add(this.txtmarketing);
             this.groupBox4.Controls.Add(this.label23);
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(461, 326);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(345, 81);
@@ -733,35 +785,36 @@ namespace HPReserger
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(208, 48);
+            this.label26.Location = new System.Drawing.Point(203, 49);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(129, 13);
+            this.label26.Size = new System.Drawing.Size(141, 13);
             this.label26.TabIndex = 34;
             this.label26.Text = "de ingreso total de ventas";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(210, 22);
+            this.label25.Location = new System.Drawing.Point(203, 23);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(129, 13);
+            this.label25.Size = new System.Drawing.Size(141, 13);
             this.label25.TabIndex = 33;
             this.label25.Text = "de ingreso total de ventas";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(9, 48);
+            this.label24.Location = new System.Drawing.Point(9, 49);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(43, 13);
+            this.label24.Size = new System.Drawing.Size(44, 13);
             this.label24.TabIndex = 17;
             this.label24.Text = "Ventas:";
             // 
             // txtventas
             // 
+            this.txtventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtventas.Location = new System.Drawing.Point(72, 45);
             this.txtventas.Name = "txtventas";
-            this.txtventas.Size = new System.Drawing.Size(130, 20);
+            this.txtventas.Size = new System.Drawing.Size(130, 21);
             this.txtventas.TabIndex = 11;
             this.txtventas.Text = "0.00";
             this.txtventas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -769,9 +822,10 @@ namespace HPReserger
             // 
             // txtmarketing
             // 
+            this.txtmarketing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtmarketing.Location = new System.Drawing.Point(72, 19);
             this.txtmarketing.Name = "txtmarketing";
-            this.txtmarketing.Size = new System.Drawing.Size(130, 20);
+            this.txtmarketing.Size = new System.Drawing.Size(130, 21);
             this.txtmarketing.TabIndex = 10;
             this.txtmarketing.Text = "0.00";
             this.txtmarketing.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -780,14 +834,15 @@ namespace HPReserger
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(9, 22);
+            this.label23.Location = new System.Drawing.Point(9, 23);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(57, 13);
+            this.label23.Size = new System.Drawing.Size(63, 13);
             this.label23.TabIndex = 6;
             this.label23.Text = "Marketing:";
             // 
             // groupBox5
             // 
+            this.groupBox5.BackColor = System.Drawing.Color.Transparent;
             this.groupBox5.Controls.Add(this.label34);
             this.groupBox5.Controls.Add(this.label33);
             this.groupBox5.Controls.Add(this.txtfindefee);
@@ -800,6 +855,7 @@ namespace HPReserger
             this.groupBox5.Controls.Add(this.txtgerencia);
             this.groupBox5.Controls.Add(this.txtadminobra);
             this.groupBox5.Controls.Add(this.label30);
+            this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(17, 379);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(438, 121);
@@ -810,26 +866,27 @@ namespace HPReserger
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(303, 94);
+            this.label34.Location = new System.Drawing.Point(297, 94);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(57, 13);
+            this.label34.Size = new System.Drawing.Size(64, 13);
             this.label34.TabIndex = 40;
             this.label34.Text = "del terreno";
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(303, 68);
+            this.label33.Location = new System.Drawing.Point(297, 68);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(26, 13);
+            this.label33.Size = new System.Drawing.Size(27, 13);
             this.label33.TabIndex = 39;
             this.label33.Text = "mes";
             // 
             // txtfindefee
             // 
-            this.txtfindefee.Location = new System.Drawing.Point(128, 91);
+            this.txtfindefee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfindefee.Location = new System.Drawing.Point(135, 90);
             this.txtfindefee.Name = "txtfindefee";
-            this.txtfindefee.Size = new System.Drawing.Size(171, 20);
+            this.txtfindefee.Size = new System.Drawing.Size(158, 21);
             this.txtfindefee.TabIndex = 15;
             this.txtfindefee.Text = "0.00";
             this.txtfindefee.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -837,9 +894,10 @@ namespace HPReserger
             // 
             // txtcdaf
             // 
-            this.txtcdaf.Location = new System.Drawing.Point(128, 65);
+            this.txtcdaf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcdaf.Location = new System.Drawing.Point(135, 64);
             this.txtcdaf.Name = "txtcdaf";
-            this.txtcdaf.Size = new System.Drawing.Size(171, 20);
+            this.txtcdaf.Size = new System.Drawing.Size(158, 21);
             this.txtcdaf.TabIndex = 14;
             this.txtcdaf.Text = "0.00";
             this.txtcdaf.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -849,16 +907,16 @@ namespace HPReserger
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(9, 94);
+            this.label32.Location = new System.Drawing.Point(71, 94);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(60, 13);
+            this.label32.Size = new System.Drawing.Size(64, 13);
             this.label32.TabIndex = 36;
             this.label32.Text = "Finder Fee:";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(9, 68);
+            this.label31.Location = new System.Drawing.Point(97, 68);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(38, 13);
             this.label31.TabIndex = 35;
@@ -867,35 +925,36 @@ namespace HPReserger
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(303, 43);
+            this.label27.Location = new System.Drawing.Point(297, 43);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(129, 13);
+            this.label27.Size = new System.Drawing.Size(141, 13);
             this.label27.TabIndex = 34;
             this.label27.Text = "de ingreso total de ventas";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(305, 17);
+            this.label28.Location = new System.Drawing.Point(299, 18);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(61, 13);
+            this.label28.Size = new System.Drawing.Size(63, 13);
             this.label28.TabIndex = 33;
             this.label28.Text = "del CD e CI";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(6, 43);
+            this.label29.Location = new System.Drawing.Point(44, 43);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(84, 13);
+            this.label29.Size = new System.Drawing.Size(91, 13);
             this.label29.TabIndex = 17;
             this.label29.Text = "Gerenciamiento:";
             // 
             // txtgerencia
             // 
-            this.txtgerencia.Location = new System.Drawing.Point(128, 40);
+            this.txtgerencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtgerencia.Location = new System.Drawing.Point(135, 39);
             this.txtgerencia.Name = "txtgerencia";
-            this.txtgerencia.Size = new System.Drawing.Size(171, 20);
+            this.txtgerencia.Size = new System.Drawing.Size(158, 21);
             this.txtgerencia.TabIndex = 13;
             this.txtgerencia.Text = "0.00";
             this.txtgerencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -904,9 +963,10 @@ namespace HPReserger
             // 
             // txtadminobra
             // 
-            this.txtadminobra.Location = new System.Drawing.Point(128, 14);
+            this.txtadminobra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtadminobra.Location = new System.Drawing.Point(135, 14);
             this.txtadminobra.Name = "txtadminobra";
-            this.txtadminobra.Size = new System.Drawing.Size(171, 20);
+            this.txtadminobra.Size = new System.Drawing.Size(158, 21);
             this.txtadminobra.TabIndex = 12;
             this.txtadminobra.Text = "0.00";
             this.txtadminobra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -915,17 +975,19 @@ namespace HPReserger
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(5, 17);
+            this.label30.Location = new System.Drawing.Point(5, 18);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(117, 13);
+            this.label30.Size = new System.Drawing.Size(130, 13);
             this.label30.TabIndex = 6;
             this.label30.Text = "Administración de obra:";
             // 
             // groupBox6
             // 
+            this.groupBox6.BackColor = System.Drawing.Color.Transparent;
             this.groupBox6.Controls.Add(this.label35);
             this.groupBox6.Controls.Add(this.label36);
             this.groupBox6.Controls.Add(this.txtcostosuper);
+            this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(461, 413);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(345, 52);
@@ -936,26 +998,27 @@ namespace HPReserger
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(295, 22);
+            this.label35.Location = new System.Drawing.Point(295, 23);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(26, 13);
+            this.label35.Size = new System.Drawing.Size(27, 13);
             this.label35.TabIndex = 35;
             this.label35.Text = "mes";
             // 
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(6, 22);
+            this.label36.Location = new System.Drawing.Point(6, 23);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(110, 13);
+            this.label36.Size = new System.Drawing.Size(119, 13);
             this.label36.TabIndex = 34;
             this.label36.Text = "Costo de Supervisión:";
             // 
             // txtcostosuper
             // 
-            this.txtcostosuper.Location = new System.Drawing.Point(122, 19);
+            this.txtcostosuper.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcostosuper.Location = new System.Drawing.Point(125, 19);
             this.txtcostosuper.Name = "txtcostosuper";
-            this.txtcostosuper.Size = new System.Drawing.Size(165, 20);
+            this.txtcostosuper.Size = new System.Drawing.Size(162, 21);
             this.txtcostosuper.TabIndex = 22;
             this.txtcostosuper.Text = "0.00";
             this.txtcostosuper.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -963,9 +1026,11 @@ namespace HPReserger
             // 
             // groupBox7
             // 
+            this.groupBox7.BackColor = System.Drawing.Color.Transparent;
             this.groupBox7.Controls.Add(this.label37);
             this.groupBox7.Controls.Add(this.label38);
             this.groupBox7.Controls.Add(this.txtcomision);
+            this.groupBox7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(461, 471);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(345, 52);
@@ -976,26 +1041,27 @@ namespace HPReserger
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(295, 22);
+            this.label37.Location = new System.Drawing.Point(295, 23);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(34, 13);
+            this.label37.Size = new System.Drawing.Size(36, 13);
             this.label37.TabIndex = 35;
             this.label37.Text = "etapa";
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(6, 22);
+            this.label38.Location = new System.Drawing.Point(6, 23);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(52, 13);
+            this.label38.Size = new System.Drawing.Size(58, 13);
             this.label38.TabIndex = 34;
             this.label38.Text = "Comisión:";
             // 
             // txtcomision
             // 
+            this.txtcomision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcomision.Location = new System.Drawing.Point(72, 19);
             this.txtcomision.Name = "txtcomision";
-            this.txtcomision.Size = new System.Drawing.Size(215, 20);
+            this.txtcomision.Size = new System.Drawing.Size(215, 21);
             this.txtcomision.TabIndex = 23;
             this.txtcomision.Text = "0.00";
             this.txtcomision.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1003,9 +1069,11 @@ namespace HPReserger
             // 
             // groupBox8
             // 
+            this.groupBox8.BackColor = System.Drawing.Color.Transparent;
             this.groupBox8.Controls.Add(this.label39);
             this.groupBox8.Controls.Add(this.label40);
             this.groupBox8.Controls.Add(this.txtcomisionsuper);
+            this.groupBox8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(461, 529);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(345, 52);
@@ -1016,26 +1084,27 @@ namespace HPReserger
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(295, 22);
+            this.label39.Location = new System.Drawing.Point(295, 23);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(34, 13);
+            this.label39.Size = new System.Drawing.Size(36, 13);
             this.label39.TabIndex = 35;
             this.label39.Text = "etapa";
             // 
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(6, 22);
+            this.label40.Location = new System.Drawing.Point(6, 23);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(52, 13);
+            this.label40.Size = new System.Drawing.Size(58, 13);
             this.label40.TabIndex = 34;
             this.label40.Text = "Comisión:";
             // 
             // txtcomisionsuper
             // 
+            this.txtcomisionsuper.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcomisionsuper.Location = new System.Drawing.Point(72, 19);
             this.txtcomisionsuper.Name = "txtcomisionsuper";
-            this.txtcomisionsuper.Size = new System.Drawing.Size(215, 20);
+            this.txtcomisionsuper.Size = new System.Drawing.Size(215, 21);
             this.txtcomisionsuper.TabIndex = 24;
             this.txtcomisionsuper.Text = "0.00";
             this.txtcomisionsuper.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1043,6 +1112,7 @@ namespace HPReserger
             // 
             // groupBox9
             // 
+            this.groupBox9.BackColor = System.Drawing.Color.Transparent;
             this.groupBox9.Controls.Add(this.label42);
             this.groupBox9.Controls.Add(this.txtmantenimiento);
             this.groupBox9.Controls.Add(this.label44);
@@ -1051,27 +1121,30 @@ namespace HPReserger
             this.groupBox9.Controls.Add(this.txtregalos);
             this.groupBox9.Controls.Add(this.txtceremonia);
             this.groupBox9.Controls.Add(this.label48);
+            this.groupBox9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(17, 506);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(438, 111);
             this.groupBox9.TabIndex = 41;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Implementación Post-Venta";
+            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(386, 70);
+            this.label42.Location = new System.Drawing.Point(377, 69);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(46, 13);
+            this.label42.Size = new System.Drawing.Size(53, 13);
             this.label42.TabIndex = 39;
             this.label42.Text = "por dpto";
             // 
             // txtmantenimiento
             // 
-            this.txtmantenimiento.Location = new System.Drawing.Point(166, 65);
+            this.txtmantenimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtmantenimiento.Location = new System.Drawing.Point(175, 65);
             this.txtmantenimiento.Name = "txtmantenimiento";
-            this.txtmantenimiento.Size = new System.Drawing.Size(209, 20);
+            this.txtmantenimiento.Size = new System.Drawing.Size(200, 21);
             this.txtmantenimiento.TabIndex = 18;
             this.txtmantenimiento.Text = "0.00";
             this.txtmantenimiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1080,35 +1153,36 @@ namespace HPReserger
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(9, 68);
+            this.label44.Location = new System.Drawing.Point(33, 69);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(122, 13);
+            this.label44.Size = new System.Drawing.Size(136, 13);
             this.label44.TabIndex = 35;
             this.label44.Text = "Mantenimiento Mensual:";
             // 
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(386, 45);
+            this.label45.Location = new System.Drawing.Point(377, 44);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(46, 13);
+            this.label45.Size = new System.Drawing.Size(53, 13);
             this.label45.TabIndex = 34;
             this.label45.Text = "por dpto";
             // 
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(9, 43);
+            this.label47.Location = new System.Drawing.Point(9, 44);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(150, 13);
+            this.label47.Size = new System.Drawing.Size(160, 13);
             this.label47.TabIndex = 17;
             this.label47.Text = "Regalos al entregar dpto (S/.):";
             // 
             // txtregalos
             // 
-            this.txtregalos.Location = new System.Drawing.Point(166, 40);
+            this.txtregalos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtregalos.Location = new System.Drawing.Point(175, 40);
             this.txtregalos.Name = "txtregalos";
-            this.txtregalos.Size = new System.Drawing.Size(209, 20);
+            this.txtregalos.Size = new System.Drawing.Size(200, 21);
             this.txtregalos.TabIndex = 17;
             this.txtregalos.Text = "0.00";
             this.txtregalos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1116,9 +1190,10 @@ namespace HPReserger
             // 
             // txtceremonia
             // 
-            this.txtceremonia.Location = new System.Drawing.Point(166, 14);
+            this.txtceremonia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtceremonia.Location = new System.Drawing.Point(175, 14);
             this.txtceremonia.Name = "txtceremonia";
-            this.txtceremonia.Size = new System.Drawing.Size(209, 20);
+            this.txtceremonia.Size = new System.Drawing.Size(200, 21);
             this.txtceremonia.TabIndex = 16;
             this.txtceremonia.Text = "0.00";
             this.txtceremonia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1128,20 +1203,22 @@ namespace HPReserger
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(9, 17);
+            this.label48.Location = new System.Drawing.Point(104, 18);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(60, 13);
+            this.label48.Size = new System.Drawing.Size(65, 13);
             this.label48.TabIndex = 6;
             this.label48.Text = "Ceremonia:";
             // 
             // groupBox10
             // 
+            this.groupBox10.BackColor = System.Drawing.Color.Transparent;
             this.groupBox10.Controls.Add(this.label41);
             this.groupBox10.Controls.Add(this.label46);
             this.groupBox10.Controls.Add(this.label49);
             this.groupBox10.Controls.Add(this.txtcostoprevio);
             this.groupBox10.Controls.Add(this.txtatencion);
             this.groupBox10.Controls.Add(this.label50);
+            this.groupBox10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(17, 623);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(438, 73);
@@ -1152,35 +1229,36 @@ namespace HPReserger
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(347, 43);
+            this.label41.Location = new System.Drawing.Point(347, 44);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(46, 13);
+            this.label41.Size = new System.Drawing.Size(50, 13);
             this.label41.TabIndex = 39;
             this.label41.Text = "mensual";
             // 
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(343, 16);
+            this.label46.Location = new System.Drawing.Point(343, 18);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(89, 13);
+            this.label46.Size = new System.Drawing.Size(97, 13);
             this.label46.TabIndex = 34;
             this.label46.Text = "del costo de obra";
             // 
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(9, 43);
+            this.label49.Location = new System.Drawing.Point(9, 44);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(146, 13);
+            this.label49.Size = new System.Drawing.Size(154, 13);
             this.label49.TabIndex = 17;
             this.label49.Text = "Costo previo a Transferencia:";
             // 
             // txtcostoprevio
             // 
+            this.txtcostoprevio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcostoprevio.Location = new System.Drawing.Point(166, 40);
             this.txtcostoprevio.Name = "txtcostoprevio";
-            this.txtcostoprevio.Size = new System.Drawing.Size(175, 20);
+            this.txtcostoprevio.Size = new System.Drawing.Size(175, 21);
             this.txtcostoprevio.TabIndex = 20;
             this.txtcostoprevio.Text = "0.00";
             this.txtcostoprevio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1188,9 +1266,10 @@ namespace HPReserger
             // 
             // txtatencion
             // 
+            this.txtatencion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtatencion.Location = new System.Drawing.Point(166, 14);
             this.txtatencion.Name = "txtatencion";
-            this.txtatencion.Size = new System.Drawing.Size(175, 20);
+            this.txtatencion.Size = new System.Drawing.Size(175, 21);
             this.txtatencion.TabIndex = 19;
             this.txtatencion.Text = "0.00";
             this.txtatencion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1200,16 +1279,18 @@ namespace HPReserger
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(9, 17);
+            this.label50.Location = new System.Drawing.Point(9, 18);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(52, 13);
+            this.label50.Size = new System.Drawing.Size(56, 13);
             this.label50.TabIndex = 6;
             this.label50.Text = "Atención:";
             // 
             // groupBox11
             // 
+            this.groupBox11.BackColor = System.Drawing.Color.Transparent;
             this.groupBox11.Controls.Add(this.label51);
             this.groupBox11.Controls.Add(this.txtgestioncomuni);
+            this.groupBox11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox11.Location = new System.Drawing.Point(461, 587);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(345, 52);
@@ -1220,17 +1301,18 @@ namespace HPReserger
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(6, 22);
+            this.label51.Location = new System.Drawing.Point(6, 23);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(104, 13);
+            this.label51.Size = new System.Drawing.Size(116, 13);
             this.label51.TabIndex = 34;
             this.label51.Text = "Gestión Comunitaria:";
             // 
             // txtgestioncomuni
             // 
-            this.txtgestioncomuni.Location = new System.Drawing.Point(122, 19);
+            this.txtgestioncomuni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtgestioncomuni.Location = new System.Drawing.Point(125, 19);
             this.txtgestioncomuni.Name = "txtgestioncomuni";
-            this.txtgestioncomuni.Size = new System.Drawing.Size(165, 20);
+            this.txtgestioncomuni.Size = new System.Drawing.Size(162, 21);
             this.txtgestioncomuni.TabIndex = 25;
             this.txtgestioncomuni.Text = "0.00";
             this.txtgestioncomuni.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1238,6 +1320,7 @@ namespace HPReserger
             // 
             // groupBox12
             // 
+            this.groupBox12.BackColor = System.Drawing.Color.Transparent;
             this.groupBox12.Controls.Add(this.txtconfianzamensual);
             this.groupBox12.Controls.Add(this.label52);
             this.groupBox12.Controls.Add(this.label43);
@@ -1245,6 +1328,7 @@ namespace HPReserger
             this.groupBox12.Controls.Add(this.txtconfianzaanual);
             this.groupBox12.Controls.Add(this.txtporcentacredito);
             this.groupBox12.Controls.Add(this.label54);
+            this.groupBox12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox12.Location = new System.Drawing.Point(461, 645);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(345, 108);
@@ -1255,9 +1339,10 @@ namespace HPReserger
             // txtconfianzamensual
             // 
             this.txtconfianzamensual.Enabled = false;
-            this.txtconfianzamensual.Location = new System.Drawing.Point(122, 68);
+            this.txtconfianzamensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtconfianzamensual.Location = new System.Drawing.Point(125, 68);
             this.txtconfianzamensual.Name = "txtconfianzamensual";
-            this.txtconfianzamensual.Size = new System.Drawing.Size(160, 20);
+            this.txtconfianzamensual.Size = new System.Drawing.Size(162, 21);
             this.txtconfianzamensual.TabIndex = 28;
             this.txtconfianzamensual.Text = "0.00";
             this.txtconfianzamensual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1266,18 +1351,18 @@ namespace HPReserger
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(288, 71);
+            this.label52.Location = new System.Drawing.Point(291, 71);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(46, 13);
+            this.label52.Size = new System.Drawing.Size(50, 13);
             this.label52.TabIndex = 35;
             this.label52.Text = "mensual";
             // 
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(286, 45);
+            this.label43.Location = new System.Drawing.Point(291, 45);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(33, 13);
+            this.label43.Size = new System.Drawing.Size(36, 13);
             this.label43.TabIndex = 34;
             this.label43.Text = "anual";
             // 
@@ -1291,9 +1376,10 @@ namespace HPReserger
             // 
             // txtconfianzaanual
             // 
-            this.txtconfianzaanual.Location = new System.Drawing.Point(122, 42);
+            this.txtconfianzaanual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtconfianzaanual.Location = new System.Drawing.Point(125, 42);
             this.txtconfianzaanual.Name = "txtconfianzaanual";
-            this.txtconfianzaanual.Size = new System.Drawing.Size(160, 20);
+            this.txtconfianzaanual.Size = new System.Drawing.Size(162, 21);
             this.txtconfianzaanual.TabIndex = 27;
             this.txtconfianzaanual.Text = "0.00";
             this.txtconfianzaanual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1302,9 +1388,10 @@ namespace HPReserger
             // 
             // txtporcentacredito
             // 
-            this.txtporcentacredito.Location = new System.Drawing.Point(122, 14);
+            this.txtporcentacredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtporcentacredito.Location = new System.Drawing.Point(125, 14);
             this.txtporcentacredito.Name = "txtporcentacredito";
-            this.txtporcentacredito.Size = new System.Drawing.Size(160, 20);
+            this.txtporcentacredito.Size = new System.Drawing.Size(162, 21);
             this.txtporcentacredito.TabIndex = 26;
             this.txtporcentacredito.Text = "0.00";
             this.txtporcentacredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1321,9 +1408,11 @@ namespace HPReserger
             // 
             // groupBox13
             // 
+            this.groupBox13.BackColor = System.Drawing.Color.Transparent;
             this.groupBox13.Controls.Add(this.label8);
             this.groupBox13.Controls.Add(this.label56);
             this.groupBox13.Controls.Add(this.txtimprevistos);
+            this.groupBox13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox13.Location = new System.Drawing.Point(17, 702);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(438, 52);
@@ -1334,26 +1423,27 @@ namespace HPReserger
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(347, 22);
+            this.label8.Location = new System.Drawing.Point(347, 23);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 13);
+            this.label8.Size = new System.Drawing.Size(16, 13);
             this.label8.TabIndex = 40;
             this.label8.Text = "%";
             // 
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(6, 22);
+            this.label56.Location = new System.Drawing.Point(95, 23);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(63, 13);
+            this.label56.Size = new System.Drawing.Size(68, 13);
             this.label56.TabIndex = 34;
             this.label56.Text = "Imprevistos:";
             // 
             // txtimprevistos
             // 
+            this.txtimprevistos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtimprevistos.Location = new System.Drawing.Point(166, 19);
             this.txtimprevistos.Name = "txtimprevistos";
-            this.txtimprevistos.Size = new System.Drawing.Size(175, 20);
+            this.txtimprevistos.Size = new System.Drawing.Size(175, 21);
             this.txtimprevistos.TabIndex = 21;
             this.txtimprevistos.Text = "0.00";
             this.txtimprevistos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1362,6 +1452,7 @@ namespace HPReserger
             // 
             // btnguardar
             // 
+            this.btnguardar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnguardar.Image = ((System.Drawing.Image)(resources.GetObject("btnguardar.Image")));
             this.btnguardar.Location = new System.Drawing.Point(696, 10);
             this.btnguardar.Name = "btnguardar";
@@ -1376,6 +1467,7 @@ namespace HPReserger
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnnuevo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.ForeColor = System.Drawing.Color.Black;
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1412,7 +1504,7 @@ namespace HPReserger
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "fmrProyectodatos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Detalles del Proyecto";
             this.Text = "Detalles del Proyecto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fmrProyectodatos_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fmrProyectodatos_FormClosed);

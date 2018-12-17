@@ -65,7 +65,7 @@
             // 
             this.btndetalle.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btndetalle.Image = ((System.Drawing.Image)(resources.GetObject("btndetalle.Image")));
-            this.btndetalle.Location = new System.Drawing.Point(251, 495);
+            this.btndetalle.Location = new System.Drawing.Point(251, 500);
             this.btndetalle.Name = "btndetalle";
             this.btndetalle.Size = new System.Drawing.Size(82, 23);
             this.btndetalle.TabIndex = 176;
@@ -77,10 +77,11 @@
             // txtcodigo
             // 
             this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.Location = new System.Drawing.Point(81, 12);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.ReadOnly = true;
-            this.txtcodigo.Size = new System.Drawing.Size(116, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(116, 21);
             this.txtcodigo.TabIndex = 164;
             // 
             // txtcuentas
@@ -88,10 +89,11 @@
             this.txtcuentas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtcuentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtcuentas.Location = new System.Drawing.Point(81, 62);
+            this.txtcuentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcuentas.Location = new System.Drawing.Point(81, 59);
             this.txtcuentas.Name = "txtcuentas";
             this.txtcuentas.ReadOnly = true;
-            this.txtcuentas.Size = new System.Drawing.Size(492, 20);
+            this.txtcuentas.Size = new System.Drawing.Size(492, 21);
             this.txtcuentas.TabIndex = 166;
             // 
             // txtdescripcion
@@ -99,19 +101,21 @@
             this.txtdescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtdescripcion.Location = new System.Drawing.Point(81, 36);
+            this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdescripcion.Location = new System.Drawing.Point(81, 35);
             this.txtdescripcion.Name = "txtdescripcion";
             this.txtdescripcion.ReadOnly = true;
-            this.txtdescripcion.Size = new System.Drawing.Size(404, 20);
+            this.txtdescripcion.Size = new System.Drawing.Size(404, 21);
             this.txtdescripcion.TabIndex = 165;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(29, 66);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(29, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 173;
             this.label3.Text = "Cuentas";
             // 
@@ -119,9 +123,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(12, 40);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 174;
             this.label2.Text = "Descripción";
             // 
@@ -129,9 +134,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(35, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 175;
             this.label1.Text = "Código";
             // 
@@ -140,9 +146,10 @@
             this.lblmsg2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg2.AutoSize = true;
             this.lblmsg2.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg2.Location = new System.Drawing.Point(9, 500);
+            this.lblmsg2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsg2.Location = new System.Drawing.Point(9, 505);
             this.lblmsg2.Name = "lblmsg2";
-            this.lblmsg2.Size = new System.Drawing.Size(96, 13);
+            this.lblmsg2.Size = new System.Drawing.Size(101, 13);
             this.lblmsg2.TabIndex = 172;
             this.lblmsg2.Text = "Total de Registros:";
             // 
@@ -150,7 +157,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(491, 495);
+            this.btncancelar.Location = new System.Drawing.Point(491, 500);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 23);
             this.btncancelar.TabIndex = 170;
@@ -163,7 +170,7 @@
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(403, 495);
+            this.btnaceptar.Location = new System.Drawing.Point(403, 500);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 23);
             this.btnaceptar.TabIndex = 169;
@@ -219,7 +226,7 @@
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtgconten.EnableHeadersVisualStyles = false;
             this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.Dtgconten.Location = new System.Drawing.Point(12, 88);
+            this.Dtgconten.Location = new System.Drawing.Point(12, 86);
             this.Dtgconten.MultiSelect = false;
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -228,7 +235,7 @@
             this.Dtgconten.RowTemplate.Height = 16;
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.Dtgconten.Size = new System.Drawing.Size(561, 401);
+            this.Dtgconten.Size = new System.Drawing.Size(561, 408);
             this.Dtgconten.TabIndex = 171;
             this.Dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentDoubleClick);
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentDoubleClick);
@@ -310,7 +317,7 @@
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnmodificar.Enabled = false;
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(491, 35);
+            this.btnmodificar.Location = new System.Drawing.Point(491, 34);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 23);
             this.btnmodificar.TabIndex = 168;
@@ -336,37 +343,41 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(225, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 177;
             this.label4.Text = "Signo";
             // 
             // txtsigno
             // 
             this.txtsigno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtsigno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsigno.Location = new System.Drawing.Point(265, 12);
             this.txtsigno.MaxLength = 1;
             this.txtsigno.Name = "txtsigno";
             this.txtsigno.ReadOnly = true;
-            this.txtsigno.Size = new System.Drawing.Size(68, 20);
+            this.txtsigno.Size = new System.Drawing.Size(68, 21);
             this.txtsigno.TabIndex = 178;
             // 
             // numPos
             // 
             this.numPos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.numPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numPos.Location = new System.Drawing.Point(403, 12);
             this.numPos.Name = "numPos";
             this.numPos.ReadOnly = true;
-            this.numPos.Size = new System.Drawing.Size(52, 20);
+            this.numPos.Size = new System.Drawing.Size(52, 21);
             this.numPos.TabIndex = 180;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(350, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 179;
             this.label5.Text = "Posición";
             // 

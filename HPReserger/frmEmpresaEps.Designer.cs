@@ -50,7 +50,7 @@ namespace HPReserger
             this.fechas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgconten = new Dtgconten();
+            this.dtgconten = new HpResergerUserControls.Dtgconten();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,9 +109,10 @@ namespace HPReserger
             // txtgerencia
             // 
             this.txtgerencia.Enabled = false;
+            this.txtgerencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtgerencia.Location = new System.Drawing.Point(90, 39);
             this.txtgerencia.Name = "txtgerencia";
-            this.txtgerencia.Size = new System.Drawing.Size(240, 20);
+            this.txtgerencia.Size = new System.Drawing.Size(240, 21);
             this.txtgerencia.TabIndex = 63;
             this.txtgerencia.TextChanged += new System.EventHandler(this.txtgerencia_TextChanged);
             // 
@@ -119,16 +120,18 @@ namespace HPReserger
             // 
             this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcodigo.Enabled = false;
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.Location = new System.Drawing.Point(90, 14);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(117, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(117, 21);
             this.txtcodigo.TabIndex = 60;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 42);
+            this.label2.Location = new System.Drawing.Point(21, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 54;
@@ -137,6 +140,7 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(44, 18);
             this.label1.Name = "label1";
@@ -147,6 +151,7 @@ namespace HPReserger
             // checkActivo
             // 
             this.checkActivo.Enabled = false;
+            this.checkActivo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkActivo.Location = new System.Drawing.Point(213, 14);
             this.checkActivo.Name = "checkActivo";
             this.checkActivo.Size = new System.Drawing.Size(117, 20);
@@ -219,7 +224,7 @@ namespace HPReserger
             this.Estadox.HeaderText = "Emp. Activa";
             this.Estadox.Name = "Estadox";
             this.Estadox.ReadOnly = true;
-            this.Estadox.Width = 87;
+            this.Estadox.Width = 94;
             // 
             // dtgconten
             // 
@@ -227,18 +232,26 @@ namespace HPReserger
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            //this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
-            //this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ideps,
             this.empresaeps,
@@ -247,17 +260,19 @@ namespace HPReserger
             this.activo,
             this.Estadox});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            //this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.White;
             this.dtgconten.Location = new System.Drawing.Point(12, 65);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
+            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -284,7 +299,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(444, 400);
             this.MinimumSize = new System.Drawing.Size(444, 400);
             this.Name = "frmEmpresaEps";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Empresas Eps";
             this.Text = "Empresas Eps";
             this.Load += new System.EventHandler(this.frmEmpresaEps_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

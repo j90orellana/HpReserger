@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmEmpleadoCTS : Form
+    public partial class frmEmpleadoCTS : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clCTS = new HPResergerCapaLogica.HPResergerCL();
 
@@ -74,21 +75,21 @@ namespace HPReserger
             pnlconten.Enabled = true;
         }
 
-        private void GrabarEditar(int Opcion)
+        private Boolean GrabarEditar(int Opcion)
         {
             if (txtCuenta.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Nº de Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuenta.Focus();
-                return;
+                return false;
             }
-            if (txtCuentaCCI.Text.Length < 20)
+            if (txtCuentaCCI.Text.Length < 20 && txtCuentaCCI.Text != "0")
             {
-                MessageBox.Show("Ingrese Nº de Cuenta CCI", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Número de Cuenta CCI Mayor a 20 digitos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuentaCCI.Focus();
-                return;
+                return false;
             }
-            clCTS.EmpleadoCTS(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboBanco.SelectedValue.ToString()), Convert.ToInt32(cboMoneda.SelectedValue.ToString()), txtCuenta.Text, txtCuentaCCI.Text, frmLogin.CodigoUsuario, Opcion);
+            return true;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -134,26 +135,29 @@ namespace HPReserger
             }
             estado = 0;
         }
-
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (estado == 1)
             {
-                GrabarEditar(1);
-                MessageBox.Show("CTS registrado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                estado = 0;
-                btnaceptar.Enabled = false;
-                pnlconten.Enabled = false; btnModificar.Enabled = true;
+                if (GrabarEditar(1))
+                {
+                    MessageBox.Show("CTS registrado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    estado = 0;
+                    btnaceptar.Enabled = false;
+                    pnlconten.Enabled = false; btnModificar.Enabled = true;
+                    clCTS.EmpleadoCTS(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboBanco.SelectedValue.ToString()), Convert.ToInt32(cboMoneda.SelectedValue.ToString()), txtCuenta.Text, txtCuentaCCI.Text, frmLogin.CodigoUsuario, 1);
+                }
             }
             if (estado == 2)
             {
-                GrabarEditar(0);
-                MessageBox.Show("CTS Modificada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                estado = 0;
-                btnaceptar.Enabled = false;
-                pnlconten.Enabled = false; btnModificar.Enabled = true;
+                if (GrabarEditar(0))
+                {
+                    MessageBox.Show("CTS Modificada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clCTS.EmpleadoCTS(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboBanco.SelectedValue.ToString()), Convert.ToInt32(cboMoneda.SelectedValue.ToString()), txtCuenta.Text, txtCuentaCCI.Text, frmLogin.CodigoUsuario, 2);
+                    estado = 0;
+                    btnaceptar.Enabled = false;
+                    pnlconten.Enabled = false; btnModificar.Enabled = true;
+                }
             }
         }
     }

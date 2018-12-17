@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmAmonestacionesPremio : Form
+    public partial class frmAmonestacionesPremio : FormGradient
     {
 
         HPResergerCapaLogica.HPResergerCL clAmonestacionesPremio = new HPResergerCapaLogica.HPResergerCL();

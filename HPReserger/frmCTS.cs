@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmCTS : Form
+    public partial class frmCTS : FormGradient
     {
 
         public int TipoDocumento { get; set; }

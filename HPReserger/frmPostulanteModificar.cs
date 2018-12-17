@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmPostulanteModificar : Form
+    public partial class frmPostulanteModificar : FormGradient
     {
 
         DataTable ListaSolCombo;

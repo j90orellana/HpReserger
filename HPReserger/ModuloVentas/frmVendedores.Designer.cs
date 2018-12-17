@@ -122,8 +122,10 @@
             this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboestado.Enabled = false;
             this.cboestado.FormattingEnabled = true;
+            this.cboestado.IndexText = null;
             this.cboestado.Location = new System.Drawing.Point(613, 37);
             this.cboestado.Name = "cboestado";
+            this.cboestado.ReadOnly = false;
             this.cboestado.Size = new System.Drawing.Size(122, 21);
             this.cboestado.TabIndex = 144;
             // 
@@ -143,8 +145,10 @@
             this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipoid.Enabled = false;
             this.cbotipoid.FormattingEnabled = true;
+            this.cbotipoid.IndexText = null;
             this.cbotipoid.Location = new System.Drawing.Point(71, 37);
             this.cbotipoid.Name = "cbotipoid";
+            this.cbotipoid.ReadOnly = false;
             this.cbotipoid.Size = new System.Drawing.Size(223, 21);
             this.cbotipoid.TabIndex = 148;
             this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
@@ -509,6 +513,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(741, 423);
             this.btncancelar.Name = "btncancelar";
@@ -524,8 +529,9 @@
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnaceptar.Enabled = false;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(650, 423);
+            this.btnaceptar.Location = new System.Drawing.Point(654, 423);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 23);
             this.btnaceptar.TabIndex = 163;
@@ -539,6 +545,7 @@
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnmodificar.BackColor = System.Drawing.SystemColors.Control;
             this.btnmodificar.Enabled = false;
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.ForeColor = System.Drawing.Color.Black;
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -555,6 +562,7 @@
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnnuevo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.ForeColor = System.Drawing.Color.Black;
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -569,7 +577,6 @@
             // 
             // btnbuscar
             // 
-            this.btnbuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnbuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnbuscar.BackgroundImage")));
             this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnbuscar.Enabled = false;
@@ -582,7 +589,6 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -594,7 +600,6 @@
             // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -32,10 +32,11 @@ namespace HPReserger
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbonoExternoEmpleado));
-            this.dtgconten = new Dtgconten();
+            this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.nroregistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diaactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rucempres = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,24 +64,26 @@ namespace HPReserger
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            //this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            //this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nroregistro,
             this.diaactual,
@@ -94,11 +97,21 @@ namespace HPReserger
             this.Ruc_Empresa,
             this.importeabono});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dtgconten.EnableHeadersVisualStyles = false;
+            this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(12, 69);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
-            //this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -153,7 +166,7 @@ namespace HPReserger
             this.tipodoc.MinimumWidth = 50;
             this.tipodoc.Name = "tipodoc";
             this.tipodoc.ReadOnly = true;
-            this.tipodoc.Width = 75;
+            this.tipodoc.Width = 78;
             // 
             // documento
             // 
@@ -164,7 +177,7 @@ namespace HPReserger
             this.documento.MinimumWidth = 70;
             this.documento.Name = "documento";
             this.documento.ReadOnly = true;
-            this.documento.Width = 107;
+            this.documento.Width = 117;
             // 
             // Empleado
             // 
@@ -213,7 +226,7 @@ namespace HPReserger
             this.importeabono.HeaderText = "Importe Abono";
             this.importeabono.MinimumWidth = 90;
             this.importeabono.Name = "importeabono";
-            this.importeabono.Width = 101;
+            this.importeabono.Width = 112;
             // 
             // cboempresa
             // 
@@ -221,7 +234,7 @@ namespace HPReserger
             this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(127, 12);
+            this.cboempresa.Location = new System.Drawing.Point(128, 12);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(241, 21);
             this.cboempresa.TabIndex = 58;
@@ -230,15 +243,18 @@ namespace HPReserger
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(70, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 61;
             this.label1.Text = "Empresa:";
             // 
             // btngrabar
             // 
             this.btngrabar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btngrabar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btngrabar.Image = ((System.Drawing.Image)(resources.GetObject("btngrabar.Image")));
             this.btngrabar.Location = new System.Drawing.Point(297, 309);
             this.btngrabar.Name = "btngrabar";
@@ -252,6 +268,7 @@ namespace HPReserger
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(381, 309);
             this.btncancelar.Name = "btncancelar";
@@ -265,6 +282,7 @@ namespace HPReserger
             // btncargar
             // 
             this.btncargar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btncargar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncargar.Image = ((System.Drawing.Image)(resources.GetObject("btncargar.Image")));
             this.btncargar.Location = new System.Drawing.Point(303, 39);
             this.btncargar.Name = "btncargar";
@@ -293,12 +311,14 @@ namespace HPReserger
             this.comboMesAño1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 8, 15, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 8, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 8, 1, 0, 0, 0, 0);
+            this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 12, 3, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboMesAño1.Location = new System.Drawing.Point(89, 38);
             this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.Size = new System.Drawing.Size(201, 24);
             this.comboMesAño1.TabIndex = 60;
             this.comboMesAño1.Click += new System.EventHandler(this.comboMesAño1_Click);
             this.comboMesAño1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboMesAño1_MouseClick);
@@ -318,7 +338,7 @@ namespace HPReserger
             this.Controls.Add(this.dtgconten);
             this.MinimumSize = new System.Drawing.Size(487, 378);
             this.Name = "frmAbonoExternoEmpleado";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Planilla Externa De Empleado";
             this.Text = "Planilla Externa De Empleado";
             this.Load += new System.EventHandler(this.frmAbonoExternoEmpleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

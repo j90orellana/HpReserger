@@ -91,7 +91,6 @@
             this.panelllenado = new HpResergerUserControls.PanelOre();
             this.txtmoneda = new HpResergerUserControls.TextBoxPer();
             this.dtpabono = new System.Windows.Forms.DateTimePicker();
-            this.txttipocambio = new HpResergerUserControls.TextBoxPer();
             this.txtdocpago = new HpResergerUserControls.TextBoxPer();
             this.label21 = new System.Windows.Forms.Label();
             this.btnimagendoc = new System.Windows.Forms.Button();
@@ -100,6 +99,7 @@
             this.txtimporte = new HpResergerUserControls.TextBoxPer();
             this.label9 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.txttipocambio = new HpResergerUserControls.TextBoxPer();
             this.label17 = new System.Windows.Forms.Label();
             this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
             this.label22 = new System.Windows.Forms.Label();
@@ -242,7 +242,7 @@
             this.txtcodvendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodvendedor.ForeColor = System.Drawing.Color.Black;
             this.txtcodvendedor.Location = new System.Drawing.Point(405, 12);
-            this.txtcodvendedor.MaxLength = 10;
+            this.txtcodvendedor.MaxLength = 8;
             this.txtcodvendedor.Name = "txtcodvendedor";
             this.txtcodvendedor.NextControlOnEnter = this.txtnombre;
             this.txtcodvendedor.ReadOnly = true;
@@ -828,6 +828,7 @@
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnaceptar.Enabled = false;
             this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.ForeColor = System.Drawing.Color.White;
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(705, 641);
@@ -843,6 +844,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(793, 641);
             this.btncancelar.Name = "btncancelar";
@@ -868,7 +870,7 @@
             // 
             this.lkldocpago.AutoSize = true;
             this.lkldocpago.BackColor = System.Drawing.Color.Transparent;
-            this.lkldocpago.Location = new System.Drawing.Point(640, 220);
+            this.lkldocpago.Location = new System.Drawing.Point(614, 220);
             this.lkldocpago.Name = "lkldocpago";
             this.lkldocpago.Size = new System.Drawing.Size(43, 13);
             this.lkldocpago.TabIndex = 228;
@@ -881,7 +883,6 @@
             this.panelllenado.BackColor = System.Drawing.Color.Transparent;
             this.panelllenado.Controls.Add(this.txtmoneda);
             this.panelllenado.Controls.Add(this.dtpabono);
-            this.panelllenado.Controls.Add(this.txttipocambio);
             this.panelllenado.Controls.Add(this.txtdocpago);
             this.panelllenado.Controls.Add(this.label21);
             this.panelllenado.Controls.Add(this.btnimagendoc);
@@ -890,11 +891,10 @@
             this.panelllenado.Controls.Add(this.txtimporte);
             this.panelllenado.Controls.Add(this.label9);
             this.panelllenado.Controls.Add(this.label15);
-            this.panelllenado.Controls.Add(this.label17);
             this.panelllenado.Location = new System.Drawing.Point(0, 191);
             this.panelllenado.Movible = false;
             this.panelllenado.Name = "panelllenado";
-            this.panelllenado.Size = new System.Drawing.Size(640, 50);
+            this.panelllenado.Size = new System.Drawing.Size(609, 50);
             this.panelllenado.TabIndex = 229;
             // 
             // txtmoneda
@@ -919,32 +919,12 @@
             // 
             // dtpabono
             // 
+            this.dtpabono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpabono.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpabono.Location = new System.Drawing.Point(507, 1);
+            this.dtpabono.Location = new System.Drawing.Point(405, 1);
             this.dtpabono.Name = "dtpabono";
-            this.dtpabono.Size = new System.Drawing.Size(97, 22);
+            this.dtpabono.Size = new System.Drawing.Size(109, 21);
             this.dtpabono.TabIndex = 8;
-            // 
-            // txttipocambio
-            // 
-            this.txttipocambio.BackColor = System.Drawing.Color.White;
-            this.txttipocambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttipocambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txttipocambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttipocambio.ForeColor = System.Drawing.Color.Black;
-            this.txttipocambio.Location = new System.Drawing.Point(405, 1);
-            this.txttipocambio.MaxLength = 10;
-            this.txttipocambio.Name = "txttipocambio";
-            this.txttipocambio.NextControlOnEnter = this.dtpabono;
-            this.txttipocambio.Size = new System.Drawing.Size(50, 21);
-            this.txttipocambio.TabIndex = 7;
-            this.txttipocambio.Text = "3.30";
-            this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txttipocambio.TextoDefecto = "3.30";
-            this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            this.txttipocambio.TextChanged += new System.EventHandler(this.txtsaldo_TextChanged);
             // 
             // txtdocpago
             // 
@@ -970,7 +950,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Location = new System.Drawing.Point(454, 5);
+            this.label21.Location = new System.Drawing.Point(352, 5);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(56, 13);
             this.label21.TabIndex = 189;
@@ -983,7 +963,7 @@
             this.btnimagendoc.FlatAppearance.BorderSize = 0;
             this.btnimagendoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnimagendoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnimagendoc.Location = new System.Drawing.Point(601, 25);
+            this.btnimagendoc.Location = new System.Drawing.Point(580, 25);
             this.btnimagendoc.Name = "btnimagendoc";
             this.btnimagendoc.Size = new System.Drawing.Size(20, 20);
             this.btnimagendoc.TabIndex = 9;
@@ -994,7 +974,7 @@
             // 
             this.btnlimpiarabono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnlimpiarabono.Image = ((System.Drawing.Image)(resources.GetObject("btnlimpiarabono.Image")));
-            this.btnlimpiarabono.Location = new System.Drawing.Point(569, 24);
+            this.btnlimpiarabono.Location = new System.Drawing.Point(543, 0);
             this.btnlimpiarabono.Name = "btnlimpiarabono";
             this.btnlimpiarabono.Size = new System.Drawing.Size(31, 23);
             this.btnlimpiarabono.TabIndex = 233;
@@ -1053,15 +1033,38 @@
             this.label15.TabIndex = 182;
             this.label15.Text = "Moneda:";
             // 
+            // txttipocambio
+            // 
+            this.txttipocambio.BackColor = System.Drawing.Color.White;
+            this.txttipocambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttipocambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttipocambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttipocambio.ForeColor = System.Drawing.Color.Black;
+            this.txttipocambio.Location = new System.Drawing.Point(527, 257);
+            this.txttipocambio.MaxLength = 10;
+            this.txttipocambio.Name = "txttipocambio";
+            this.txttipocambio.NextControlOnEnter = this.dtpabono;
+            this.txttipocambio.Size = new System.Drawing.Size(50, 21);
+            this.txttipocambio.TabIndex = 7;
+            this.txttipocambio.Text = "3.30";
+            this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttipocambio.TextoDefecto = "3.30";
+            this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            this.txttipocambio.Visible = false;
+            this.txttipocambio.TextChanged += new System.EventHandler(this.txtsaldo_TextChanged);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Location = new System.Drawing.Point(350, 5);
+            this.label17.Location = new System.Drawing.Point(472, 261);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 13);
             this.label17.TabIndex = 181;
             this.label17.Text = "T.Cambio:";
+            this.label17.Visible = false;
             // 
             // separadorOre3
             // 
@@ -1191,11 +1194,11 @@
             // 
             // btnprocesar
             // 
-            this.btnprocesar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnprocesar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnprocesar.Image = ((System.Drawing.Image)(resources.GetObject("btnprocesar.Image")));
             this.btnprocesar.Location = new System.Drawing.Point(753, 280);
             this.btnprocesar.Name = "btnprocesar";
-            this.btnprocesar.Size = new System.Drawing.Size(84, 23);
+            this.btnprocesar.Size = new System.Drawing.Size(84, 25);
             this.btnprocesar.TabIndex = 232;
             this.btnprocesar.Text = "Calcular";
             this.btnprocesar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1282,6 +1285,7 @@
             // 
             this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
             this.btnpdf.Location = new System.Drawing.Point(401, 641);
             this.btnpdf.Name = "btnpdf";
@@ -1301,6 +1305,7 @@
             // 
             this.btnminuta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnminuta.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnminuta.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnminuta.Image = ((System.Drawing.Image)(resources.GetObject("btnminuta.Image")));
             this.btnminuta.Location = new System.Drawing.Point(706, 214);
             this.btnminuta.Name = "btnminuta";
@@ -1316,6 +1321,7 @@
             // 
             this.btncontrato.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btncontrato.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncontrato.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncontrato.Image = ((System.Drawing.Image)(resources.GetObject("btncontrato.Image")));
             this.btncontrato.Location = new System.Drawing.Point(793, 214);
             this.btncontrato.Name = "btncontrato";
@@ -1364,11 +1370,12 @@
             // 
             this.label36.AutoSize = true;
             this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Location = new System.Drawing.Point(350, 262);
+            this.label36.Location = new System.Drawing.Point(818, 262);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(57, 13);
             this.label36.TabIndex = 13;
             this.label36.Text = "T.Cambio:";
+            this.label36.Visible = false;
             // 
             // txttiporef
             // 
@@ -1378,7 +1385,7 @@
             this.txttiporef.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txttiporef.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttiporef.ForeColor = System.Drawing.Color.Black;
-            this.txttiporef.Location = new System.Drawing.Point(405, 258);
+            this.txttiporef.Location = new System.Drawing.Point(825, 258);
             this.txttiporef.MaxLength = 10;
             this.txttiporef.Name = "txttiporef";
             this.txttiporef.NextControlOnEnter = null;
@@ -1389,6 +1396,7 @@
             this.txttiporef.TextoDefecto = "3.30";
             this.txttiporef.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txttiporef.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            this.txttiporef.Visible = false;
             this.txttiporef.TextChanged += new System.EventHandler(this.txtsaldo_TextChanged);
             // 
             // txtmonedaabono
@@ -1417,7 +1425,7 @@
             this.lbldato.BackColor = System.Drawing.Color.Transparent;
             this.lbldato.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldato.ForeColor = System.Drawing.Color.Blue;
-            this.lbldato.Location = new System.Drawing.Point(640, 190);
+            this.lbldato.Location = new System.Drawing.Point(614, 190);
             this.lbldato.Name = "lbldato";
             this.lbldato.Size = new System.Drawing.Size(231, 19);
             this.lbldato.TabIndex = 242;
@@ -1430,6 +1438,7 @@
             this.ClientSize = new System.Drawing.Size(885, 673);
             this.Controls.Add(this.lbldato);
             this.Controls.Add(this.txtmonedaabono);
+            this.Controls.Add(this.txttipocambio);
             this.Controls.Add(this.txttipocambioabonado);
             this.Controls.Add(this.txttiporef);
             this.Controls.Add(this.btncontrato);
@@ -1438,6 +1447,7 @@
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.btnprocesar);
             this.Controls.Add(this.separadorOre3);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label36);

@@ -299,82 +299,95 @@ namespace HPReserger
             // txttipoid
             // 
             this.txttipoid.BackColor = System.Drawing.Color.White;
+            this.txttipoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttipoid.Location = new System.Drawing.Point(149, 9);
             this.txttipoid.Name = "txttipoid";
             this.txttipoid.ReadOnly = true;
-            this.txttipoid.Size = new System.Drawing.Size(144, 20);
+            this.txttipoid.Size = new System.Drawing.Size(144, 21);
             this.txttipoid.TabIndex = 152;
             // 
             // txtnombre
             // 
             this.txtnombre.BackColor = System.Drawing.Color.White;
+            this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnombre.Location = new System.Drawing.Point(149, 33);
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.ReadOnly = true;
-            this.txtnombre.Size = new System.Drawing.Size(337, 20);
+            this.txtnombre.Size = new System.Drawing.Size(337, 21);
             this.txtnombre.TabIndex = 153;
             // 
             // txtapellido
             // 
             this.txtapellido.BackColor = System.Drawing.Color.White;
+            this.txtapellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtapellido.Location = new System.Drawing.Point(149, 56);
             this.txtapellido.Name = "txtapellido";
             this.txtapellido.ReadOnly = true;
-            this.txtapellido.Size = new System.Drawing.Size(337, 20);
+            this.txtapellido.Size = new System.Drawing.Size(337, 21);
             this.txtapellido.TabIndex = 154;
             // 
             // txtestado
             // 
             this.txtestado.BackColor = System.Drawing.Color.White;
+            this.txtestado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtestado.Location = new System.Drawing.Point(149, 79);
             this.txtestado.Name = "txtestado";
             this.txtestado.ReadOnly = true;
-            this.txtestado.Size = new System.Drawing.Size(337, 20);
+            this.txtestado.Size = new System.Drawing.Size(337, 21);
             this.txtestado.TabIndex = 155;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(49, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 156;
             this.label1.Text = "Tipo Documento:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(36, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.Size = new System.Drawing.Size(110, 13);
             this.label2.TabIndex = 156;
             this.label2.Text = "Nombres Empleado:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(36, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 13);
+            this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 156;
             this.label3.Text = "Apellidos Empleado:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 83);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 13);
+            this.label4.Size = new System.Drawing.Size(134, 13);
             this.label4.TabIndex = 156;
             this.label4.Text = "Estado Actual Empleado:";
             // 
             // txtnroid
             // 
             this.txtnroid.BackColor = System.Drawing.Color.White;
+            this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnroid.Location = new System.Drawing.Point(299, 9);
             this.txtnroid.Name = "txtnroid";
             this.txtnroid.ReadOnly = true;
-            this.txtnroid.Size = new System.Drawing.Size(187, 20);
+            this.txtnroid.Size = new System.Drawing.Size(187, 21);
             this.txtnroid.TabIndex = 157;
             // 
             // frmListarEmpleadosDesvinculados
@@ -395,7 +408,7 @@ namespace HPReserger
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btncancelar);
             this.Name = "frmListarEmpleadosDesvinculados";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Empleados Desvinculados";
             this.Text = "Empleados Desvinculados";
             this.Load += new System.EventHandler(this.frmListarEmpleadosDesvinculados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

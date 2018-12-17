@@ -31,13 +31,14 @@ namespace HPReserger
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFamiliares));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,7 +55,7 @@ namespace HPReserger
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.txtOcupacion = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.Grid = new Dtgconten();
+            this.Grid = new HpResergerUserControls.Dtgconten();
             this.CODIGOTIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NROID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,41 +89,49 @@ namespace HPReserger
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Name = "label1";
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Name = "label2";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Name = "label3";
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Name = "label4";
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Name = "label5";
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Name = "label6";
             // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Name = "label7";
             // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Name = "label8";
             // 
             // cboTipoDocumentoIdentidad
@@ -181,8 +190,8 @@ namespace HPReserger
             // dtpFecha
             // 
             this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             resources.ApplyResources(this.dtpFecha, "dtpFecha");
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Name = "dtpFecha";
             // 
             // Grid
@@ -191,16 +200,24 @@ namespace HPReserger
             this.Grid.AllowUserToDeleteRows = false;
             this.Grid.AllowUserToResizeColumns = false;
             this.Grid.AllowUserToResizeRows = false;
-            //this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
-            //this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.Grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(this.Grid, "Grid");
+            this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CODIGOTIPOID,
             this.TIPOID,
@@ -217,18 +234,19 @@ namespace HPReserger
             this.nombreimagen,
             this.sexo,
             this.estudia});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            //this.Grid.DefaultCellStyle = dataGridViewCellStyle7;
-            //this.Grid.GridColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.Grid, "Grid");
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Grid.DefaultCellStyle = dataGridViewCellStyle16;
+            this.Grid.EnableHeadersVisualStyles = false;
+            this.Grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
+            this.Grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Grid.RowHeadersVisible = false;
             this.Grid.RowTemplate.Height = 16;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -247,8 +265,8 @@ namespace HPReserger
             // 
             this.TIPOID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TIPOID.DataPropertyName = "TIPODOCUMENTO";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(this.TIPOID, "TIPOID");
             this.TIPOID.Name = "TIPOID";
             this.TIPOID.ReadOnly = true;
@@ -281,9 +299,9 @@ namespace HPReserger
             // 
             this.APEPAT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.APEPAT.DataPropertyName = "APELLIDOPATERNO";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.APEPAT.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.APEPAT.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(this.APEPAT, "APEPAT");
             this.APEPAT.Name = "APEPAT";
             this.APEPAT.ReadOnly = true;
@@ -294,9 +312,9 @@ namespace HPReserger
             // 
             this.APEMAT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.APEMAT.DataPropertyName = "APELLIDOMATERNO";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.APEMAT.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.APEMAT.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.APEMAT, "APEMAT");
             this.APEMAT.Name = "APEMAT";
             this.APEMAT.ReadOnly = true;
@@ -307,8 +325,8 @@ namespace HPReserger
             // 
             this.NOMBRES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.NOMBRES.DataPropertyName = "NOMBRES";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.NOMBRES.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.NOMBRES.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.NOMBRES, "NOMBRES");
             this.NOMBRES.Name = "NOMBRES";
             this.NOMBRES.ReadOnly = true;
@@ -319,9 +337,9 @@ namespace HPReserger
             // 
             this.FECHANACIMIENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.FECHANACIMIENTO.DataPropertyName = "FECHA";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FECHANACIMIENTO.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FECHANACIMIENTO.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.FECHANACIMIENTO, "FECHANACIMIENTO");
             this.FECHANACIMIENTO.Name = "FECHANACIMIENTO";
             this.FECHANACIMIENTO.ReadOnly = true;
@@ -378,6 +396,7 @@ namespace HPReserger
             // 
             // pbconviviente
             // 
+            this.pbconviviente.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.pbconviviente, "pbconviviente");
             this.pbconviviente.Name = "pbconviviente";
             this.pbconviviente.TabStop = false;
@@ -386,6 +405,7 @@ namespace HPReserger
             // lklconviviente
             // 
             resources.ApplyResources(this.lklconviviente, "lklconviviente");
+            this.lklconviviente.BackColor = System.Drawing.Color.Transparent;
             this.lklconviviente.Name = "lklconviviente";
             this.lklconviviente.TabStop = true;
             this.lklconviviente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklconviviente_LinkClicked);
@@ -408,6 +428,7 @@ namespace HPReserger
             // lblconviviente
             // 
             resources.ApplyResources(this.lblconviviente, "lblconviviente");
+            this.lblconviviente.BackColor = System.Drawing.Color.Transparent;
             this.lblconviviente.Name = "lblconviviente";
             // 
             // btnModificar
@@ -428,13 +449,15 @@ namespace HPReserger
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Name = "label9";
             // 
             // check18
             // 
             resources.ApplyResources(this.check18, "check18");
+            this.check18.BackColor = System.Drawing.Color.Transparent;
             this.check18.Name = "check18";
-            this.check18.UseVisualStyleBackColor = true;
+            this.check18.UseVisualStyleBackColor = false;
             // 
             // btncancelar
             // 
@@ -449,14 +472,12 @@ namespace HPReserger
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.check18);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.cbosexo);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.pbconviviente);
             this.Controls.Add(this.lklconviviente);
             this.Controls.Add(this.btnconviviente);
             this.Controls.Add(this.txtconviviente);
-            this.Controls.Add(this.lblconviviente);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.Grid);
             this.Controls.Add(this.dtpFecha);
@@ -472,10 +493,13 @@ namespace HPReserger
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblconviviente);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmFamiliares";
+            this.Nombre = "  Empleado Familiares";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFamiliares_FormClosing);
             this.Load += new System.EventHandler(this.frmFamiliares_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();

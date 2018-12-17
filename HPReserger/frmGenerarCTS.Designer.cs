@@ -58,6 +58,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.comboMesAño1);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
@@ -67,6 +68,7 @@
             this.groupBox1.Controls.Add(this.cbotipoid);
             this.groupBox1.Controls.Add(this.btnrecempresa);
             this.groupBox1.Controls.Add(this.cboempresa);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(382, 132);
@@ -78,12 +80,12 @@
             // 
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 4, 24, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 4, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 4, 1, 0, 0, 0, 0);
-            this.comboMesAño1.Location = new System.Drawing.Point(89, 99);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 12, 5, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño1.Location = new System.Drawing.Point(87, 99);
             this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.Size = new System.Drawing.Size(209, 24);
             this.comboMesAño1.TabIndex = 13;
             // 
             // radioButton2
@@ -91,7 +93,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(11, 47);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(83, 17);
+            this.radioButton2.Size = new System.Drawing.Size(86, 17);
             this.radioButton2.TabIndex = 9;
             this.radioButton2.Text = "Por Persona";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -103,7 +105,7 @@
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(11, 21);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.Size = new System.Drawing.Size(88, 17);
             this.radioButton1.TabIndex = 9;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Por Empresa";
@@ -126,9 +128,10 @@
             // txtnumero
             // 
             this.txtnumero.Enabled = false;
+            this.txtnumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnumero.Location = new System.Drawing.Point(102, 73);
             this.txtnumero.Name = "txtnumero";
-            this.txtnumero.Size = new System.Drawing.Size(241, 20);
+            this.txtnumero.Size = new System.Drawing.Size(241, 21);
             this.txtnumero.TabIndex = 7;
             // 
             // btnrectipo
@@ -185,7 +188,7 @@
             this.MaximumSize = new System.Drawing.Size(423, 224);
             this.MinimumSize = new System.Drawing.Size(423, 224);
             this.Name = "frmGenerarCTS";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Generar CTS";
             this.Text = "Generar CTS";
             this.Load += new System.EventHandler(this.frmGenerarCTS_Load);
             this.groupBox1.ResumeLayout(false);

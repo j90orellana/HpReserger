@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmreporteempleado : Form
+    public partial class frmreporteempleado : FormGradient
     {
         public frmreporteempleado()
         {

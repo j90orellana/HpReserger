@@ -61,11 +61,12 @@
             // 
             // btnModificar
             // 
+            this.btnModificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
             this.btnModificar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnModificar.Location = new System.Drawing.Point(432, 18);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.Size = new System.Drawing.Size(84, 23);
             this.btnModificar.TabIndex = 12;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -75,55 +76,61 @@
             // dtpFecha
             // 
             this.dtpFecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(193, 99);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(231, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(231, 21);
             this.dtpFecha.TabIndex = 4;
             // 
             // txtOcupacion
             // 
             this.txtOcupacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtOcupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOcupacion.Location = new System.Drawing.Point(193, 230);
             this.txtOcupacion.MaxLength = 30;
             this.txtOcupacion.Name = "txtOcupacion";
-            this.txtOcupacion.Size = new System.Drawing.Size(311, 20);
+            this.txtOcupacion.Size = new System.Drawing.Size(325, 21);
             this.txtOcupacion.TabIndex = 10;
             // 
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtApellidoPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidoPaterno.Location = new System.Drawing.Point(193, 125);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(309, 20);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(323, 21);
             this.txtApellidoPaterno.TabIndex = 5;
             // 
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombres.Location = new System.Drawing.Point(193, 177);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(309, 20);
+            this.txtNombres.Size = new System.Drawing.Size(323, 21);
             this.txtNombres.TabIndex = 7;
             // 
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtApellidoMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidoMaterno.Location = new System.Drawing.Point(193, 151);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(309, 20);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(323, 21);
             this.txtApellidoMaterno.TabIndex = 6;
             this.txtApellidoMaterno.TextChanged += new System.EventHandler(this.txtApellidoMaterno_TextChanged);
             // 
             // txtNumeroDocumento
             // 
+            this.txtNumeroDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumeroDocumento.Location = new System.Drawing.Point(193, 46);
             this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(231, 20);
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(231, 21);
             this.txtNumeroDocumento.TabIndex = 2;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumeroDocumento_KeyDown);
@@ -157,107 +164,116 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label8.Location = new System.Drawing.Point(81, 103);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(108, 13);
+            this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 25;
             this.label8.Text = "Fecha de Nacimiento";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(130, 234);
+            this.label7.Location = new System.Drawing.Point(132, 234);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 24;
             this.label7.Text = "Ocupación";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(140, 181);
+            this.label6.Location = new System.Drawing.Point(142, 181);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 23;
             this.label6.Text = "Nombres";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(105, 129);
+            this.label5.Location = new System.Drawing.Point(102, 129);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 13);
+            this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 22;
             this.label5.Text = "Apellido Paterno";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(103, 155);
+            this.label4.Location = new System.Drawing.Point(98, 155);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.Size = new System.Drawing.Size(97, 13);
             this.label4.TabIndex = 21;
             this.label4.Text = "Apellido Materno";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(110, 76);
+            this.label3.Location = new System.Drawing.Point(108, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 20;
             this.label3.Text = "Vínculo familiar";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(10, 50);
+            this.label2.Location = new System.Drawing.Point(-1, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 13);
+            this.label2.Size = new System.Drawing.Size(196, 13);
             this.label2.TabIndex = 19;
             this.label2.Text = "Número de Documento de Identidad";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(26, 23);
+            this.label1.Location = new System.Drawing.Point(18, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 13);
+            this.label1.Size = new System.Drawing.Size(177, 13);
             this.label1.TabIndex = 18;
             this.label1.Text = "Tipo de Documento de Identidad";
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.check18);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cbosexo);
             this.groupBox1.Controls.Add(this.pbconviviente);
             this.groupBox1.Controls.Add(this.lklconviviente);
             this.groupBox1.Controls.Add(this.btnconviviente);
             this.groupBox1.Controls.Add(this.txtconviviente);
-            this.groupBox1.Controls.Add(this.lblconviviente);
             this.groupBox1.Controls.Add(this.cboVinculoFamiliar);
             this.groupBox1.Controls.Add(this.dtpFecha);
             this.groupBox1.Controls.Add(this.btnModificar);
             this.groupBox1.Controls.Add(this.txtOcupacion);
+            this.groupBox1.Controls.Add(this.txtApellidoPaterno);
+            this.groupBox1.Controls.Add(this.txtNombres);
+            this.groupBox1.Controls.Add(this.txtApellidoMaterno);
+            this.groupBox1.Controls.Add(this.cboTipoDocumentoIdentidad);
+            this.groupBox1.Controls.Add(this.txtNumeroDocumento);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.lblconviviente);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtApellidoPaterno);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtNombres);
-            this.groupBox1.Controls.Add(this.txtApellidoMaterno);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.cboTipoDocumentoIdentidad);
-            this.groupBox1.Controls.Add(this.txtNumeroDocumento);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
@@ -271,10 +287,11 @@
             // 
             this.check18.AutoSize = true;
             this.check18.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.check18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.check18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.check18.Location = new System.Drawing.Point(319, 205);
+            this.check18.Location = new System.Drawing.Point(323, 205);
             this.check18.Name = "check18";
-            this.check18.Size = new System.Drawing.Size(185, 17);
+            this.check18.Size = new System.Drawing.Size(195, 17);
             this.check18.TabIndex = 9;
             this.check18.Text = "Esta Estudiando Antes de los 18?";
             this.check18.UseVisualStyleBackColor = true;
@@ -282,10 +299,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(100, 207);
+            this.label9.Location = new System.Drawing.Point(99, 207);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 13);
+            this.label9.Size = new System.Drawing.Size(96, 13);
             this.label9.TabIndex = 75;
             this.label9.Text = "Sexo del Familiar:";
             // 
@@ -338,19 +356,21 @@
             // 
             // txtconviviente
             // 
+            this.txtconviviente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtconviviente.Location = new System.Drawing.Point(193, 256);
             this.txtconviviente.Name = "txtconviviente";
             this.txtconviviente.ReadOnly = true;
-            this.txtconviviente.Size = new System.Drawing.Size(213, 20);
+            this.txtconviviente.Size = new System.Drawing.Size(213, 21);
             this.txtconviviente.TabIndex = 70;
             // 
             // lblconviviente
             // 
             this.lblconviviente.AutoSize = true;
+            this.lblconviviente.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblconviviente.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblconviviente.Location = new System.Drawing.Point(144, 260);
+            this.lblconviviente.Location = new System.Drawing.Point(147, 260);
             this.lblconviviente.Name = "lblconviviente";
-            this.lblconviviente.Size = new System.Drawing.Size(45, 13);
+            this.lblconviviente.Size = new System.Drawing.Size(48, 13);
             this.lblconviviente.TabIndex = 69;
             this.lblconviviente.Text = "Imagen:";
             // 
@@ -365,7 +385,7 @@
             this.MaximumSize = new System.Drawing.Size(558, 348);
             this.MinimumSize = new System.Drawing.Size(558, 348);
             this.Name = "frmEmpleadosFamiliaresModificar";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "  Familiares Empleado Modificar";
             this.Text = "  Familiares Empleado Modificar";
             this.Load += new System.EventHandler(this.frmEmpleadosFamiliaresModificar_Load);
             this.groupBox1.ResumeLayout(false);

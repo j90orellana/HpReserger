@@ -354,7 +354,6 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(894, 595);
-            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.gb1);
             this.Controls.Add(this.buttonPer2);
             this.Controls.Add(this.textBoxPer1);

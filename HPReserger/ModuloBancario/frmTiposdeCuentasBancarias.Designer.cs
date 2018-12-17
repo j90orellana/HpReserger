@@ -71,6 +71,13 @@
             this.txtnrocuenta = new HpResergerUserControls.TextBoxPer();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
+            this.txtbusempresa = new HpResergerUserControls.TextBoxPer();
+            this.txtbusBanco = new HpResergerUserControls.TextBoxPer();
+            this.txtbusmoneda = new HpResergerUserControls.TextBoxPer();
+            this.txtbusnrocuenta = new HpResergerUserControls.TextBoxPer();
+            this.txtbuscci = new HpResergerUserControls.TextBoxPer();
+            this.btnlimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.gppanel.SuspendLayout();
             this.SuspendLayout();
@@ -82,12 +89,13 @@
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnaceptar.Enabled = false;
             this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.ForeColor = System.Drawing.Color.White;
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(759, 493);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 25);
-            this.btnaceptar.TabIndex = 229;
+            this.btnaceptar.TabIndex = 3;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = false;
@@ -97,6 +105,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(847, 493);
             this.btncancelar.Name = "btncancelar";
@@ -111,6 +120,7 @@
             // 
             this.btneliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btneliminar.Enabled = false;
+            this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
             this.btneliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btneliminar.Location = new System.Drawing.Point(847, 56);
@@ -125,6 +135,7 @@
             // 
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnmodificar.Enabled = false;
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnmodificar.Location = new System.Drawing.Point(847, 31);
@@ -139,12 +150,13 @@
             // btnnuevo
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnnuevo.Location = new System.Drawing.Point(847, 7);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 24);
-            this.btnnuevo.TabIndex = 231;
+            this.btnnuevo.TabIndex = 0;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -200,13 +212,13 @@
             this.dtgconten.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 86);
+            this.dtgconten.Location = new System.Drawing.Point(12, 115);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(917, 401);
+            this.dtgconten.Size = new System.Drawing.Size(917, 372);
             this.dtgconten.TabIndex = 234;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -369,8 +381,10 @@
             this.cbomoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbomoneda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbomoneda.FormattingEnabled = true;
+            this.cbomoneda.IndexText = null;
             this.cbomoneda.Location = new System.Drawing.Point(396, 22);
             this.cbomoneda.Name = "cbomoneda";
+            this.cbomoneda.ReadOnly = false;
             this.cbomoneda.Size = new System.Drawing.Size(133, 21);
             this.cbomoneda.TabIndex = 263;
             this.cbomoneda.Click += new System.EventHandler(this.cbomoneda_Click);
@@ -380,8 +394,10 @@
             this.cbotipocuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipocuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipocuenta.FormattingEnabled = true;
+            this.cbotipocuenta.IndexText = null;
             this.cbotipocuenta.Location = new System.Drawing.Point(340, 46);
             this.cbotipocuenta.Name = "cbotipocuenta";
+            this.cbotipocuenta.ReadOnly = false;
             this.cbotipocuenta.Size = new System.Drawing.Size(189, 21);
             this.cbotipocuenta.TabIndex = 264;
             this.cbotipocuenta.Click += new System.EventHandler(this.cbotipocuenta_Click);
@@ -422,8 +438,10 @@
             this.cbobanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobanco.FormattingEnabled = true;
+            this.cbobanco.IndexText = null;
             this.cbobanco.Location = new System.Drawing.Point(78, 46);
             this.cbobanco.Name = "cbobanco";
+            this.cbobanco.ReadOnly = false;
             this.cbobanco.Size = new System.Drawing.Size(189, 21);
             this.cbobanco.TabIndex = 0;
             this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
@@ -433,8 +451,10 @@
             this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.IndexText = null;
             this.cboempresa.Location = new System.Drawing.Point(78, 22);
             this.cboempresa.Name = "cboempresa";
+            this.cboempresa.ReadOnly = false;
             this.cboempresa.Size = new System.Drawing.Size(262, 21);
             this.cboempresa.TabIndex = 0;
             this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
@@ -470,10 +490,10 @@
             this.txtnrocci.Location = new System.Drawing.Point(598, 57);
             this.txtnrocci.MaxLength = 30;
             this.txtnrocci.Name = "txtnrocci";
-            this.txtnrocci.NextControlOnEnter = null;
+            this.txtnrocci.NextControlOnEnter = this.btnaceptar;
             this.txtnrocci.ReadOnly = true;
             this.txtnrocci.Size = new System.Drawing.Size(243, 21);
-            this.txtnrocci.TabIndex = 270;
+            this.txtnrocci.TabIndex = 2;
             this.txtnrocci.Text = "0000000000";
             this.txtnrocci.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrocci.TextoDefecto = "0000000000";
@@ -491,10 +511,10 @@
             this.txtnrocuenta.Location = new System.Drawing.Point(598, 33);
             this.txtnrocuenta.MaxLength = 30;
             this.txtnrocuenta.Name = "txtnrocuenta";
-            this.txtnrocuenta.NextControlOnEnter = null;
+            this.txtnrocuenta.NextControlOnEnter = this.txtnrocci;
             this.txtnrocuenta.ReadOnly = true;
             this.txtnrocuenta.Size = new System.Drawing.Size(243, 21);
-            this.txtnrocuenta.TabIndex = 269;
+            this.txtnrocuenta.TabIndex = 1;
             this.txtnrocuenta.Text = "0000000000";
             this.txtnrocuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrocuenta.TextoDefecto = "0000000000";
@@ -521,16 +541,152 @@
             this.label5.TabIndex = 268;
             this.label5.Text = "NroCuenta:";
             // 
+            // separadorOre1
+            // 
+            this.separadorOre1.Location = new System.Drawing.Point(0, 82);
+            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre1.Name = "separadorOre1";
+            this.separadorOre1.Size = new System.Drawing.Size(945, 2);
+            this.separadorOre1.TabIndex = 271;
+            // 
+            // txtbusempresa
+            // 
+            this.txtbusempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtbusempresa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusempresa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusempresa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusempresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusempresa.ForeColor = System.Drawing.Color.Black;
+            this.txtbusempresa.Location = new System.Drawing.Point(15, 90);
+            this.txtbusempresa.MaxLength = 30;
+            this.txtbusempresa.Name = "txtbusempresa";
+            this.txtbusempresa.NextControlOnEnter = this.txtbusBanco;
+            this.txtbusempresa.ReadOnly = true;
+            this.txtbusempresa.Size = new System.Drawing.Size(192, 21);
+            this.txtbusempresa.TabIndex = 10;
+            this.txtbusempresa.Text = "Buscar Empresa";
+            this.txtbusempresa.TextoDefecto = "Buscar Empresa";
+            this.txtbusempresa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusempresa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusempresa.TextChanged += new System.EventHandler(this.txtbusempresa_TextChanged);
+            // 
+            // txtbusBanco
+            // 
+            this.txtbusBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtbusBanco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusBanco.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusBanco.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusBanco.ForeColor = System.Drawing.Color.Black;
+            this.txtbusBanco.Location = new System.Drawing.Point(213, 90);
+            this.txtbusBanco.MaxLength = 30;
+            this.txtbusBanco.Name = "txtbusBanco";
+            this.txtbusBanco.NextControlOnEnter = this.txtbusmoneda;
+            this.txtbusBanco.ReadOnly = true;
+            this.txtbusBanco.Size = new System.Drawing.Size(182, 21);
+            this.txtbusBanco.TabIndex = 11;
+            this.txtbusBanco.Text = "Buscar Banco";
+            this.txtbusBanco.TextoDefecto = "Buscar Banco";
+            this.txtbusBanco.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusBanco.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusBanco.TextChanged += new System.EventHandler(this.txtbusempresa_TextChanged);
+            // 
+            // txtbusmoneda
+            // 
+            this.txtbusmoneda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtbusmoneda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusmoneda.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusmoneda.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusmoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusmoneda.ForeColor = System.Drawing.Color.Black;
+            this.txtbusmoneda.Location = new System.Drawing.Point(401, 90);
+            this.txtbusmoneda.MaxLength = 30;
+            this.txtbusmoneda.Name = "txtbusmoneda";
+            this.txtbusmoneda.NextControlOnEnter = this.txtbusnrocuenta;
+            this.txtbusmoneda.ReadOnly = true;
+            this.txtbusmoneda.Size = new System.Drawing.Size(134, 21);
+            this.txtbusmoneda.TabIndex = 12;
+            this.txtbusmoneda.Text = "Buscar Moneda";
+            this.txtbusmoneda.TextoDefecto = "Buscar Moneda";
+            this.txtbusmoneda.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusmoneda.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusmoneda.TextChanged += new System.EventHandler(this.txtbusempresa_TextChanged);
+            // 
+            // txtbusnrocuenta
+            // 
+            this.txtbusnrocuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtbusnrocuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusnrocuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusnrocuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusnrocuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusnrocuenta.ForeColor = System.Drawing.Color.Black;
+            this.txtbusnrocuenta.Location = new System.Drawing.Point(541, 90);
+            this.txtbusnrocuenta.MaxLength = 30;
+            this.txtbusnrocuenta.Name = "txtbusnrocuenta";
+            this.txtbusnrocuenta.NextControlOnEnter = this.txtbuscci;
+            this.txtbusnrocuenta.ReadOnly = true;
+            this.txtbusnrocuenta.Size = new System.Drawing.Size(136, 21);
+            this.txtbusnrocuenta.TabIndex = 13;
+            this.txtbusnrocuenta.Text = "Buscar Número Cuenta";
+            this.txtbusnrocuenta.TextoDefecto = "Buscar Número Cuenta";
+            this.txtbusnrocuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusnrocuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusnrocuenta.TextChanged += new System.EventHandler(this.txtbusempresa_TextChanged);
+            // 
+            // txtbuscci
+            // 
+            this.txtbuscci.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtbuscci.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbuscci.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbuscci.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbuscci.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbuscci.ForeColor = System.Drawing.Color.Black;
+            this.txtbuscci.Location = new System.Drawing.Point(683, 90);
+            this.txtbuscci.MaxLength = 30;
+            this.txtbuscci.Name = "txtbuscci";
+            this.txtbuscci.NextControlOnEnter = this.btnlimpiar;
+            this.txtbuscci.ReadOnly = true;
+            this.txtbuscci.Size = new System.Drawing.Size(158, 21);
+            this.txtbuscci.TabIndex = 14;
+            this.txtbuscci.Text = "Buscar Número CCI";
+            this.txtbuscci.TextoDefecto = "Buscar Número CCI";
+            this.txtbuscci.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbuscci.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbuscci.TextChanged += new System.EventHandler(this.txtbusempresa_TextChanged);
+            // 
+            // btnlimpiar
+            // 
+            this.btnlimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnlimpiar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnlimpiar.Image")));
+            this.btnlimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnlimpiar.Location = new System.Drawing.Point(847, 87);
+            this.btnlimpiar.Name = "btnlimpiar";
+            this.btnlimpiar.Size = new System.Drawing.Size(82, 24);
+            this.btnlimpiar.TabIndex = 15;
+            this.btnlimpiar.Text = "Limpiar";
+            this.btnlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnlimpiar.UseVisualStyleBackColor = true;
+            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
+            // 
             // frmTiposdeCuentasBancarias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 526);
+            this.Controls.Add(this.txtbuscci);
+            this.Controls.Add(this.txtbusmoneda);
+            this.Controls.Add(this.txtbusnrocuenta);
+            this.Controls.Add(this.txtbusBanco);
+            this.Controls.Add(this.txtbusempresa);
+            this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.txtnrocci);
             this.Controls.Add(this.gppanel);
             this.Controls.Add(this.txtnrocuenta);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblmsg);
+            this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btnnuevo);
@@ -588,5 +744,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xNro_Cta_Cci;
         private System.Windows.Forms.DataGridViewTextBoxColumn xUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFecha;
+        private HpResergerUserControls.SeparadorOre separadorOre1;
+        private HpResergerUserControls.TextBoxPer txtbusempresa;
+        private HpResergerUserControls.TextBoxPer txtbusBanco;
+        private HpResergerUserControls.TextBoxPer txtbusnrocuenta;
+        private HpResergerUserControls.TextBoxPer txtbusmoneda;
+        private HpResergerUserControls.TextBoxPer txtbuscci;
+        private System.Windows.Forms.Button btnlimpiar;
     }
 }

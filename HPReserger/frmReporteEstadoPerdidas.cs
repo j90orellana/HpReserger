@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.Shared;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmReporteEstadoPerdidas : Form
+    public partial class frmReporteEstadoPerdidas : FormGradient
     {
         public frmReporteEstadoPerdidas()
         {

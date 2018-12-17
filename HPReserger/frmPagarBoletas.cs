@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 namespace HPReserger
 {
-    public partial class frmPagarBoletas : Form
+    public partial class frmPagarBoletas : FormGradient
     {
         public frmPagarBoletas()
         {
@@ -136,9 +137,16 @@ namespace HPReserger
             if (cbobanco.SelectedIndex >= 0)
             {
                 cbocuentabanco.Text = "";
+                CargarCuentasBancos();
+            }
+        }
+        public void CargarCuentasBancos()
+        {
+            if (cbobanco.SelectedValue != null)
+            {
                 cbocuentabanco.ValueMember = "Id_Cuenta_Contable";
                 cbocuentabanco.DisplayMember = "banco";
-                cbocuentabanco.DataSource = Capalogica.ListarBancosTiposdePago(cbobanco.SelectedValue.ToString());
+                cbocuentabanco.DataSource = Capalogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
             }
         }
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -148,7 +156,11 @@ namespace HPReserger
         int EMPRESA = 0;
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EMPRESA = (int)cboempresa.SelectedValue;
+            if (cboempresa.Items.Count > 0)
+            {
+                EMPRESA = (int)cboempresa.SelectedValue;
+                CargarCuentasBancos();
+            }
         }
         int TIPO = 0;
         private void cbotipoid_SelectedIndexChanged(object sender, EventArgs e)
@@ -338,20 +350,20 @@ namespace HPReserger
                 }
                 //proceso de calculos
                 Boolean GenerarTxt = false;
-                DialogResult ResultadoDialogo = MessageBox.Show("Desea Generar TXT del pago?", CompanyName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult ResultadoDialogo = HPResergerFunciones.Utilitarios.msgYesNoCancel("Desea Generar TXT del pago?");
                 if (ResultadoDialogo == DialogResult.Yes)
                 {
                     GenerarTxt = false;
                     ///Verificar si el esta el Generador de txt de ese banco 
                     string bancox = cbobanco.SelectedValue.ToString().Trim();
-                    if (bancox == "BCP" || bancox == "IBK" || bancox == "BIF")
+                    if (bancox == "CREDITO" || bancox == "INTERBANK" || bancox == "BIF")
                     {
                         //bancos que generan el txt bcp ibk bif
                         GenerarTxt = true;
                     }
                     else
                     {
-                        if (MessageBox.Show("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        if (HPResergerFunciones.Utilitarios.msgOkCancel("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?") == DialogResult.OK)
                         {
                             GenerarTxt = false;
                         }
@@ -387,7 +399,7 @@ namespace HPReserger
                     string consulta = string.Join(",", Proveedores);
                     TablaCuentas = Capalogica.BuscarCuentasBancoPagarBoletas(cbobanco.SelectedValue.ToString(), consulta);
                     PasoFactura = false;
-                    if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "BCP")
+                    if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "CREDITO")
                     {
                         //Abrimos eL formulario del banco de credito
                         //msg("FORMULARIO DEL BCP");
@@ -403,7 +415,7 @@ namespace HPReserger
                         PAsoBancos = bancobcp.DialogResult;
                         TablaConsulta = bancobcp.TablaConsulta;
                     }
-                    if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "IBK")
+                    if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "INTERBANK")
                     {
                         //abrimos el formulario del banco interbank
                         // msg("FORMULARIO DEL IBK");
@@ -470,11 +482,11 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, "HpREserger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public DialogResult msgM(string cadena)
         {
-            return MessageBox.Show(cadena, "HpREserger", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -487,6 +499,20 @@ namespace HPReserger
         private void dtgconten_Sorted(object sender, EventArgs e)
         {
             PintardeCOloresSinCuenta();
+        }
+        private void cboempresa_Click(object sender, EventArgs e)
+        {
+            string cadena = cboempresa.Text;
+            Capalogica.TablaEmpresas(cboempresa);
+            cboempresa.Text = cadena;
+        }
+        private void cbobanco_Click(object sender, EventArgs e)
+        {
+            string cadena = cbobanco.Text;
+            cbobanco.ValueMember = "codigo";
+            cbobanco.DisplayMember = "descripcion";
+            cbobanco.DataSource = Capalogica.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
+            cbobanco.Text = cadena;
         }
     }
 }

@@ -133,14 +133,14 @@ namespace HPReserger
 
             if (estado == 1 && ValidarDes(txtgerencia.Text))
             {
-                cEntiFinanciera.EntidadFinanciera(1, 0, txtgerencia.Text, txtsufijo.Text);
+                cEntiFinanciera.EntidadFinanciera(1, 0, txtgerencia.Text, txtsufijo.TextValido());
                 MSG("Insertado Exitosamente");
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtgerencia.Text, (int)dtgconten[codigox.Name, dtgconten.CurrentRow.Index].Value))
                 {
-                    cEntiFinanciera.EntidadFinanciera(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, txtsufijo.Text);
+                    cEntiFinanciera.EntidadFinanciera(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, txtsufijo.TextValido());
                     MSG("Actualizado Exitosamente");
                 }
                 else

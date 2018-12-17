@@ -180,14 +180,14 @@
             this.txtcodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtcodigo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtcodigo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.ForeColor = System.Drawing.Color.Black;
             this.txtcodigo.Location = new System.Drawing.Point(87, 12);
             this.txtcodigo.MaxLength = 100;
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.NextControlOnEnter = null;
             this.txtcodigo.ReadOnly = true;
-            this.txtcodigo.Size = new System.Drawing.Size(74, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(74, 21);
             this.txtcodigo.TabIndex = 2;
             this.txtcodigo.Text = "0";
             this.txtcodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -204,13 +204,13 @@
             this.txtdescripcion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtdescripcion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtdescripcion.Enabled = false;
-            this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdescripcion.ForeColor = System.Drawing.Color.Black;
             this.txtdescripcion.Location = new System.Drawing.Point(87, 37);
             this.txtdescripcion.MaxLength = 100;
             this.txtdescripcion.Name = "txtdescripcion";
             this.txtdescripcion.NextControlOnEnter = this.btnaceptar;
-            this.txtdescripcion.Size = new System.Drawing.Size(468, 20);
+            this.txtdescripcion.Size = new System.Drawing.Size(468, 21);
             this.txtdescripcion.TabIndex = 3;
             this.txtdescripcion.Text = "Ingrese Descripción";
             this.txtdescripcion.TextoDefecto = "Ingrese Descripción";
@@ -224,6 +224,7 @@
             this.btnaceptar.Enabled = false;
             this.btnaceptar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnaceptar.Location = new System.Drawing.Point(561, 388);
@@ -239,6 +240,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncancelar.Location = new System.Drawing.Point(561, 413);
@@ -255,6 +257,7 @@
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnmodificar.BackColor = System.Drawing.SystemColors.Control;
             this.btnmodificar.Enabled = false;
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.ForeColor = System.Drawing.Color.Black;
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -271,6 +274,7 @@
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnnuevo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.ForeColor = System.Drawing.Color.Black;
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -287,6 +291,7 @@
             // 
             this.btnactualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnactualizar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnactualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnactualizar.ForeColor = System.Drawing.Color.Black;
             this.btnactualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnactualizar.Image")));
             this.btnactualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -316,14 +321,14 @@
             this.txtcodigosunat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtcodigosunat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtcodigosunat.Enabled = false;
-            this.txtcodigosunat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtcodigosunat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigosunat.ForeColor = System.Drawing.Color.Black;
             this.txtcodigosunat.Location = new System.Drawing.Point(254, 12);
             this.txtcodigosunat.MaxLength = 100;
             this.txtcodigosunat.Name = "txtcodigosunat";
             this.txtcodigosunat.NextControlOnEnter = null;
             this.txtcodigosunat.ReadOnly = true;
-            this.txtcodigosunat.Size = new System.Drawing.Size(128, 20);
+            this.txtcodigosunat.Size = new System.Drawing.Size(128, 21);
             this.txtcodigosunat.TabIndex = 74;
             this.txtcodigosunat.Text = "0";
             this.txtcodigosunat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

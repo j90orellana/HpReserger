@@ -151,7 +151,10 @@ namespace HPReserger
             ((DataTable)(dtgconten.DataSource)).Clear();
             if (decimal.Parse(txtvalnrocuotas.Text) > 0 && txtvalnrocuotas.TextLength <= 4)
             {
-                dtgconten.Rows.Add(int.Parse(txtvalnrocuotas.Text));
+                ////Agrego filas a la tabla
+                for (int i = 0; i < int.Parse(txtvalnrocuotas.Text); i++)
+                    ((DataTable)dtgconten.DataSource).Rows.Add();
+                /////agego valores
                 foreach (DataGridViewRow item in dtgconten.Rows)
                 {
                     item.Cells[idregistro.Name].Value = item.Index + 1;
@@ -270,6 +273,7 @@ namespace HPReserger
             txtvalnrocuotas.CargarTextoporDefecto();
             txtvalorcuota.CargarTextoporDefecto();
             txtdiferencia.Text = txtcuotapagar.Text = "0.00";
+            dtpfecha.Value = DateTime.Now;
             btnprocesar_Click(sender, e);
         }
         private void txtvalorcuota_Click(object sender, EventArgs e)
@@ -426,6 +430,7 @@ namespace HPReserger
             FotoDocpago = null;
             txtimporte.CargarTextoporDefecto();
             txtdocpago.CargarTextoporDefecto();
+            dtpabono.Value = DateTime.Now;
             lkldocpago.Enabled = false;
         }
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -477,7 +482,7 @@ namespace HPReserger
                         return;
                     }
                 }
-                if (HPResergerFunciones.Utilitarios.msgp("Seguro Desea Grabar el Cronograma de Pagos") == DialogResult.Yes)
+                if (HPResergerFunciones.Utilitarios.msgYesNo("Seguro Desea Grabar el Cronograma de Pagos") == DialogResult.Yes)
                 {
                     string cadena = "";
                     var NumCot = int.Parse(txtnumcot.Text);
@@ -494,7 +499,7 @@ namespace HPReserger
                     int idCronograma = (int)fila["Id_Cron_Cab"];
                     //proceso de Grabar el Cronograma de pagos detalle
                     foreach (DataGridViewRow item in dtgconten.Rows)
-                        CapaLogica.CronogramaVtaDetalle(1, idCronograma, NumCot, (int)item.Cells[NroCuota.Name].Value, (DateTime)item.Cells[VencimientoPago.Name].Value, (decimal)item.Cells[importe.Name].Value, _moneda, null, FotoDocpago, txtdocpago.Text, DateTime.Now, frmLogin.CodigoUsuario);
+                        CapaLogica.CronogramaVtaDetalle(1, idCronograma, NumCot, (int)item.Cells[NroCuota.Name].Value, (DateTime)item.Cells[VencimientoPago.Name].Value, (decimal)item.Cells[importe.Name].Value, _moneda, null, null, "", DateTime.Now, frmLogin.CodigoUsuario);
                     msg(cadena + "\nCronograma de Pagos Guardado");
                     ////Actualizo el numcot
                     txtnumcot_TextChanged(sender, e);

@@ -1,4 +1,5 @@
 ﻿
+using HpResergerUserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmEmpleadoRequerimiento : Form
+    public partial class frmEmpleadoRequerimiento : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clEmpleadoRequerimiento = new HPResergerCapaLogica.HPResergerCL();
 

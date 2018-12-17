@@ -145,9 +145,15 @@ namespace HPReserger
                 if (msgyESnO("No Hay Productos, Desea Ingresar Nuevos") == DialogResult.Yes)
                 {
                     frmProductos frmpro = new frmProductos();
+                    frmpro.FormClosed += Frmpro_FormClosed;
                     frmpro.Show();
                 }
             }
+        }
+
+        private void Frmpro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CargarProductos();
         }
         public void BotonBuscar()
         {
@@ -160,7 +166,7 @@ namespace HPReserger
         }
         public DialogResult msgyESnO(string cadena)
         {
-            return HPResergerFunciones.Utilitarios.msgp(cadena);
+            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {

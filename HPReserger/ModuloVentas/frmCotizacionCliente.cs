@@ -196,6 +196,7 @@ namespace HPReserger
             PanelObservaciones.Enabled = true;
             LimpiarCabecera();
             numValidesdias_ValueChanged(sender, new EventArgs());
+            MostrarColumnas(true);
         }
         public void LimpiarCabecera()
         {
@@ -204,6 +205,7 @@ namespace HPReserger
             txttotal.CargarTextoporDefecto();
             txttipocambioref.Text = "3.30";
             txtobservacion.CargarTextoporDefecto();
+            txtValorInicial.CargarTextoporDefecto();
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -322,7 +324,7 @@ namespace HPReserger
                 if (item.Cells[monedon.Name].Value.ToString() != ValMoneda) { prueba = true; _moneda = true; HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[monedon.Name]); }
                 else { HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[monedon.Name]); }
                 //empresa
-                if (item.Cells[idmoneda.Name].Value.ToString() != ValEmpresa) { prueba = true; _empresa = true; HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[idmoneda.Name]); }
+                if (item.Cells[idempresa.Name].Value.ToString() != ValEmpresa) { prueba = true; _empresa = true; HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[idempresa.Name]); }
                 else { HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[idmoneda.Name]); }
             }
             string cade1 = "", cade2 = "";
@@ -347,6 +349,15 @@ namespace HPReserger
             btnproductos.Enabled = false;
             LimpiarCabecera();
             CArgarBusqueda();
+            MostrarColumnas(true);
+        }
+        public void MostrarColumnas(Boolean a)
+        {
+            foreach (DataGridViewColumn item in dtgconten.Columns)
+            {
+                if (item.DataPropertyName == PInicial.DataPropertyName || item.DataPropertyName == Observacion.DataPropertyName || item.DataPropertyName == Precio_Base.DataPropertyName || item.DataPropertyName == P_Coti.DataPropertyName || item.DataPropertyName == xsubtotal.DataPropertyName || item.DataPropertyName == xigv.DataPropertyName || item.DataPropertyName == EstadoLetras.DataPropertyName || monedon.DataPropertyName == item.DataPropertyName)
+                    item.ReadOnly = a;
+            }
         }
         public Boolean VerificarStock()
         {
@@ -514,6 +525,7 @@ namespace HPReserger
                         item.Cells[idarticulo.Name].Value = filita["idarticulo"];
                         item.Cells[Observacion.Name].Value = Configuraciones.MayusculaCadaPalabra(filita["Observacion"].ToString());
                         item.Cells[Precio_Base.Name].Value = filita["PVta"];
+                        item.Cells[Etapa.Name].Value = filita["Etapa"];
                         item.Cells[EstadoLetras.Name].Value = filita["EstadoLetras"];
                         if (item.Cells[TDesc.Name].Value.ToString() == "") { item.Cells[TDesc.Name].Value = 0; }
                         if (item.Cells[VDesc.Name].Value.ToString() == "") { item.Cells[VDesc.Name].Value = 0; }
@@ -544,7 +556,7 @@ namespace HPReserger
                 if ((int)item.Cells[tipo_inicial.Name].Value == 1)
                 {
                     //soles=1
-                    item.Cells[PInicial.Name].Value = ((decimal)item.Cells[P_Coti.Name].Value - (decimal)item.Cells[valor_inicial.Name].Value);
+                    item.Cells[PInicial.Name].Value = /*((decimal)item.Cells[P_Coti.Name].Value -*/ (decimal)item.Cells[valor_inicial.Name].Value;
                     //if ((int)item.Cells[idmoneda.Name].Value == 2) { item.Cells[PInicial.Name].Value = (decimal)item.Cells[T_ME.Name].Value - (decimal)item.Cells[valor_inicial.Name].Value; }
                 }
                 if ((int)item.Cells[tipo_inicial.Name].Value == 2)
@@ -636,7 +648,7 @@ namespace HPReserger
         }
         public DialogResult msgp(string cadena)
         {
-            return HPResergerFunciones.Utilitarios.msgp(cadena);
+            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
         }
         private void dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
@@ -708,7 +720,7 @@ namespace HPReserger
                     {
                         frmlisclidet = new frmlistarCotizacionesCLienteDEtalle(ValorCot, (int)cbotipoid.SelectedValue, dtgbuscare[xTipoDoc.Name, x].Value.ToString(), dtgbuscare[xnrodoc.Name, x].Value.ToString(), dtgbuscare[xCliente.Name, x].Value.ToString(), dtgbuscare[ytotal.Name, x].Value.ToString(), dtgbuscare[ysubtotal.Name, x].Value.ToString(), dtgbuscare[yigv.Name, x].Value.ToString());
                         frmlisclidet.NumCot = ValorCot;
-                        frmlisclidet.inicial = dtgbuscare[ValorInicial.Name, x].Value.ToString();
+                        frmlisclidet.inicial = ((decimal)dtgbuscare[ValorInicial.Name, x].Value).ToString("n2");
                         frmlisclidet.CodVen = (int)dtgbuscare[xidvend.Name, x].Value;
                         frmlisclidet.Separado = (int)dtgbuscare[xSeparado.Name, x].Value;
                         frmlisclidet.FormClosed += Frmlisclidet_FormClosed;

@@ -238,36 +238,44 @@ namespace HPReserger
             // 
             this.lblmsg2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg2.AutoSize = true;
+            this.lblmsg2.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmsg2.Location = new System.Drawing.Point(9, 505);
             this.lblmsg2.Name = "lblmsg2";
-            this.lblmsg2.Size = new System.Drawing.Size(96, 13);
+            this.lblmsg2.Size = new System.Drawing.Size(101, 13);
             this.lblmsg2.TabIndex = 161;
             this.lblmsg2.Text = "Total de Registros:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(35, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 162;
             this.label1.Text = "Código";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 162;
             this.label2.Text = "Descripción";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(29, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 162;
             this.label3.Text = "Cuentas";
             // 
@@ -276,10 +284,11 @@ namespace HPReserger
             this.txtdescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtdescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdescripcion.Location = new System.Drawing.Point(81, 36);
             this.txtdescripcion.Name = "txtdescripcion";
             this.txtdescripcion.ReadOnly = true;
-            this.txtdescripcion.Size = new System.Drawing.Size(404, 20);
+            this.txtdescripcion.Size = new System.Drawing.Size(404, 21);
             this.txtdescripcion.TabIndex = 2;
             // 
             // txtcuentas
@@ -287,20 +296,22 @@ namespace HPReserger
             this.txtcuentas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtcuentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtcuentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcuentas.Location = new System.Drawing.Point(81, 62);
             this.txtcuentas.Name = "txtcuentas";
             this.txtcuentas.ReadOnly = true;
-            this.txtcuentas.Size = new System.Drawing.Size(492, 20);
+            this.txtcuentas.Size = new System.Drawing.Size(492, 21);
             this.txtcuentas.TabIndex = 3;
             this.txtcuentas.DoubleClick += new System.EventHandler(this.txtcuentas_DoubleClick);
             // 
             // txtcodigo
             // 
             this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.Location = new System.Drawing.Point(81, 12);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.ReadOnly = true;
-            this.txtcodigo.Size = new System.Drawing.Size(116, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(116, 21);
             this.txtcodigo.TabIndex = 1;
             // 
             // btndetalle
@@ -319,19 +330,22 @@ namespace HPReserger
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(215, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 164;
             this.label4.Text = "Posición";
             // 
             // numPos
             // 
             this.numPos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.numPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numPos.Location = new System.Drawing.Point(268, 12);
             this.numPos.Name = "numPos";
             this.numPos.ReadOnly = true;
-            this.numPos.Size = new System.Drawing.Size(52, 20);
+            this.numPos.Size = new System.Drawing.Size(52, 21);
             this.numPos.TabIndex = 165;
             // 
             // FrmConfiguracionBalanceSituacionFinanciera
@@ -339,7 +353,6 @@ namespace HPReserger
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 530);
-            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.numPos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btndetalle);

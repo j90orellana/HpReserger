@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmEmpleadoPagoHaberes : Form
+    public partial class frmEmpleadoPagoHaberes : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clPagoHaberes = new HPResergerCapaLogica.HPResergerCL();
 
@@ -44,20 +45,24 @@ namespace HPReserger
 
         private Boolean GrabarEditar(int Opcion)
         {
+            Boolean a = true;
             if (txtCuenta.Text.Length == 0)
             {
                 MessageBox.Show("Ingrese Nº de Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuenta.Focus();
-                return false;
+                a = false;
             }
             if (txtCuentaCCI.Text.Length < 20 && txtCuentaCCI.Text != "0")
             {
-                MessageBox.Show("Ingrese Nº de Cuenta CCI", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Número de Cuenta CCI debe tener 20 digitos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 txtCuentaCCI.Focus();
-                return false;
+                a = false;
+            }           
+            if (txtCuentaCCI.Text == "0")
+            {
+                a = true;
             }
-            clPagoHaberes.EmpleadoPagoHaberes(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboBanco.SelectedValue.ToString()), Convert.ToInt32(cboMoneda.SelectedValue.ToString()), txtCuenta.Text, txtCuentaCCI.Text, frmLogin.CodigoUsuario, Opcion);
-            return true;
+            return a;
         }
 
         private void frmEmpleadoPagoHaberes_Load(object sender, EventArgs e)
@@ -117,11 +122,11 @@ namespace HPReserger
                 if (GrabarEditar(1))
                 {
                     MessageBox.Show("Pago de Haberes registrado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     estado = 0;
                     btnaceptar.Enabled = false;
                     pnlconten.Enabled = false;
                     btnModificar.Enabled = true;
+                    clPagoHaberes.EmpleadoPagoHaberes(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboBanco.SelectedValue.ToString()), Convert.ToInt32(cboMoneda.SelectedValue.ToString()), txtCuenta.Text, txtCuentaCCI.Text, frmLogin.CodigoUsuario, 1);
                 }
             }
             if (estado == 2)
@@ -132,6 +137,7 @@ namespace HPReserger
                     estado = 0;
                     btnaceptar.Enabled = false;
                     pnlconten.Enabled = false; btnModificar.Enabled = true;
+                    clPagoHaberes.EmpleadoPagoHaberes(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboBanco.SelectedValue.ToString()), Convert.ToInt32(cboMoneda.SelectedValue.ToString()), txtCuenta.Text, txtCuentaCCI.Text, frmLogin.CodigoUsuario, 2);
                 }
             }
         }

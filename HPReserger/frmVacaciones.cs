@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmVacaciones : Form
+    public partial class frmVacaciones : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clEmpleadoVacaciones = new HPResergerCapaLogica.HPResergerCL();
         DataRow DiasVaca;

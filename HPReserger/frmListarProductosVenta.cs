@@ -49,6 +49,7 @@ namespace HPReserger
         public void CargarDatos(string cadena)
         {
             dtgconten1.DataSource = CapaLogica.ListarProductosVender(txtBuscar.TextoValido(), 0, 0);
+            lblmsg.Text = $"Total de Registros : {dtgconten1.RowCount}";
         }
         private void txtBuscar_BuscarTextChanged(object sender, EventArgs e)
         {

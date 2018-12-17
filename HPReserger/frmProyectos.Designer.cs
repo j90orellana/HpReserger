@@ -57,7 +57,7 @@ namespace HPReserger
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Empresa:";
             // 
@@ -66,7 +66,7 @@ namespace HPReserger
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Proyecto:";
             // 
@@ -147,18 +147,19 @@ namespace HPReserger
             // txtproyecto
             // 
             this.txtproyecto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtproyecto.Location = new System.Drawing.Point(58, 45);
+            this.txtproyecto.Location = new System.Drawing.Point(66, 45);
             this.txtproyecto.Name = "txtproyecto";
-            this.txtproyecto.Size = new System.Drawing.Size(221, 20);
+            this.txtproyecto.Size = new System.Drawing.Size(213, 22);
             this.txtproyecto.TabIndex = 4;
             // 
             // btnnuevo
             // 
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnnuevo.Location = new System.Drawing.Point(310, 11);
+            this.btnnuevo.Location = new System.Drawing.Point(307, 11);
             this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(75, 24);
+            this.btnnuevo.Size = new System.Drawing.Size(78, 24);
             this.btnnuevo.TabIndex = 5;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -167,11 +168,12 @@ namespace HPReserger
             // 
             // btnmodificar
             // 
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmodificar.Location = new System.Drawing.Point(310, 37);
+            this.btnmodificar.Location = new System.Drawing.Point(307, 37);
             this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(75, 24);
+            this.btnmodificar.Size = new System.Drawing.Size(78, 24);
             this.btnmodificar.TabIndex = 6;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -181,11 +183,12 @@ namespace HPReserger
             // btncancelar
             // 
             this.btncancelar.Enabled = false;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btncancelar.Location = new System.Drawing.Point(306, 253);
+            this.btncancelar.Location = new System.Drawing.Point(303, 253);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 24);
+            this.btncancelar.Size = new System.Drawing.Size(78, 24);
             this.btncancelar.TabIndex = 7;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -195,11 +198,12 @@ namespace HPReserger
             // btnaceptar
             // 
             this.btnaceptar.Enabled = false;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaceptar.Location = new System.Drawing.Point(225, 253);
+            this.btnaceptar.Location = new System.Drawing.Point(222, 253);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 24);
+            this.btnaceptar.Size = new System.Drawing.Size(78, 24);
             this.btnaceptar.TabIndex = 8;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -208,14 +212,16 @@ namespace HPReserger
             // 
             // gp1
             // 
+            this.gp1.BackColor = System.Drawing.Color.Transparent;
             this.gp1.Controls.Add(this.cboempresa);
             this.gp1.Controls.Add(this.label1);
             this.gp1.Controls.Add(this.label2);
             this.gp1.Controls.Add(this.txtproyecto);
             this.gp1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gp1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gp1.Location = new System.Drawing.Point(12, 3);
             this.gp1.Name = "gp1";
-            this.gp1.Size = new System.Drawing.Size(292, 79);
+            this.gp1.Size = new System.Drawing.Size(288, 79);
             this.gp1.TabIndex = 9;
             this.gp1.TabStop = false;
             this.gp1.Enter += new System.EventHandler(this.gp1_Enter);
@@ -225,19 +231,20 @@ namespace HPReserger
             this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(58, 18);
+            this.cboempresa.Location = new System.Drawing.Point(66, 18);
             this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(221, 21);
+            this.cboempresa.Size = new System.Drawing.Size(213, 21);
             this.cboempresa.TabIndex = 5;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(310, 63);
+            this.button1.Location = new System.Drawing.Point(307, 63);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
+            this.button1.Size = new System.Drawing.Size(78, 24);
             this.button1.TabIndex = 10;
             this.button1.Text = "Detalle";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -259,7 +266,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(406, 322);
             this.MinimumSize = new System.Drawing.Size(406, 322);
             this.Name = "frmProyectos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Proyectos";
             this.Text = "Proyectos";
             this.Load += new System.EventHandler(this.frmProyectos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

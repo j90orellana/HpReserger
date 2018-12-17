@@ -50,9 +50,11 @@ namespace HPReserger
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 39);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(712, 28);
@@ -65,7 +67,7 @@ namespace HPReserger
             this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioButton4.Location = new System.Drawing.Point(114, 10);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(82, 18);
+            this.radioButton4.Size = new System.Drawing.Size(85, 18);
             this.radioButton4.TabIndex = 130;
             this.radioButton4.Text = "Cuenta N1";
             this.radioButton4.UseVisualStyleBackColor = true;
@@ -77,7 +79,7 @@ namespace HPReserger
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioButton2.Location = new System.Drawing.Point(202, 10);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(110, 18);
+            this.radioButton2.Size = new System.Drawing.Size(118, 18);
             this.radioButton2.TabIndex = 130;
             this.radioButton2.Text = "Cuenta Contable";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -90,7 +92,7 @@ namespace HPReserger
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioButton1.Location = new System.Drawing.Point(18, 10);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(101, 18);
+            this.radioButton1.Size = new System.Drawing.Size(109, 18);
             this.radioButton1.TabIndex = 130;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Código Cuenta";
@@ -176,9 +178,11 @@ namespace HPReserger
             // lblmsg
             // 
             this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmsg.Location = new System.Drawing.Point(9, 351);
             this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(96, 13);
+            this.lblmsg.Size = new System.Drawing.Size(101, 13);
             this.lblmsg.TabIndex = 144;
             this.lblmsg.Text = "Total de Registros:";
             // 
@@ -225,7 +229,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(761, 415);
             this.MinimumSize = new System.Drawing.Size(761, 415);
             this.Name = "frmlistarcuentas";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Buscar Cuentas";
             this.Text = "Buscar Cuentas";
             this.Load += new System.EventHandler(this.frmlistarcuentas_Load);
             this.groupBox1.ResumeLayout(false);

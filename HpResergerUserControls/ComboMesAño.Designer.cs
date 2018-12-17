@@ -47,6 +47,7 @@
             // 
             // comboaño
             // 
+            this.comboaño.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboaño.BackColor = System.Drawing.Color.White;
             this.comboaño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboaño.FormattingEnabled = true;

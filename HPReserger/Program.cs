@@ -16,7 +16,7 @@ namespace HPReserger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmEntiFinanciera());
+            Application.Run(new frmLogin());
         }
     }
 }

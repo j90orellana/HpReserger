@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmMemoPremio : Form
+    public partial class frmMemoPremio : FormGradient
     {
 
         public int Registro { get; set; }

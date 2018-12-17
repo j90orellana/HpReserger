@@ -34,6 +34,7 @@
             // txtObservaciones
             // 
             this.txtObservaciones.Enabled = false;
+            this.txtObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservaciones.Location = new System.Drawing.Point(12, 12);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
@@ -52,7 +53,7 @@
             this.MaximumSize = new System.Drawing.Size(497, 433);
             this.MinimumSize = new System.Drawing.Size(497, 433);
             this.Name = "frmMemoPremioObservaciones";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "  Observaciones";
             this.Text = "  Observaciones";
             this.Load += new System.EventHandler(this.frmMemoPremioObservaciones_Load);
             this.ResumeLayout(false);

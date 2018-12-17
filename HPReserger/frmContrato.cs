@@ -11,10 +11,11 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Security.AccessControl;
 using System.Runtime.InteropServices;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmContrato : Form
+    public partial class frmContrato : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clContrato = new HPResergerCapaLogica.HPResergerCL();
         public int CodigoDocumento { get; set; }

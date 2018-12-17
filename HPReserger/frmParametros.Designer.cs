@@ -57,15 +57,17 @@ namespace HPReserger
             this.dtpfecha = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.txtvalor = new HPReserger.TextboxSoloNumeros();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
             // btnmodificar
             // 
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmodificar.Location = new System.Drawing.Point(587, 38);
+            this.btnmodificar.Location = new System.Drawing.Point(587, 36);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 24);
             this.btnmodificar.TabIndex = 135;
@@ -78,6 +80,7 @@ namespace HPReserger
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncancelar.Location = new System.Drawing.Point(587, 370);
@@ -93,9 +96,10 @@ namespace HPReserger
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Enabled = false;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaceptar.Location = new System.Drawing.Point(587, 340);
+            this.btnaceptar.Location = new System.Drawing.Point(587, 345);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 24);
             this.btnaceptar.TabIndex = 132;
@@ -150,7 +154,7 @@ namespace HPReserger
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 64);
+            this.dtgconten.Location = new System.Drawing.Point(12, 83);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -159,7 +163,7 @@ namespace HPReserger
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(569, 330);
+            this.dtgconten.Size = new System.Drawing.Size(569, 311);
             this.dtgconten.TabIndex = 136;
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellEndEdit);
@@ -227,6 +231,7 @@ namespace HPReserger
             // 
             this.btnexportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnexportarExcel.Enabled = false;
+            this.btnexportarExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarExcel.Image")));
             this.btnexportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnexportarExcel.Location = new System.Drawing.Point(587, 189);
@@ -241,9 +246,10 @@ namespace HPReserger
             // btneliminar
             // 
             this.btneliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
             this.btneliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btneliminar.Location = new System.Drawing.Point(587, 66);
+            this.btneliminar.Location = new System.Drawing.Point(587, 61);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 24);
             this.btneliminar.TabIndex = 138;
@@ -255,6 +261,7 @@ namespace HPReserger
             // btnnuevo
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnnuevo.Location = new System.Drawing.Point(587, 12);
@@ -269,59 +276,70 @@ namespace HPReserger
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(12, 18);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(63, 13);
+            this.label23.Size = new System.Drawing.Size(67, 13);
             this.label23.TabIndex = 139;
             this.label23.Text = "Descripción";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(402, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 140;
             this.label1.Text = "Valor";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 141;
             this.label2.Text = "Observación";
             // 
             // txtdescripcion
             // 
             this.txtdescripcion.Enabled = false;
-            this.txtdescripcion.Location = new System.Drawing.Point(81, 14);
+            this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdescripcion.Location = new System.Drawing.Point(89, 14);
             this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.Size = new System.Drawing.Size(315, 20);
+            this.txtdescripcion.Size = new System.Drawing.Size(307, 21);
             this.txtdescripcion.TabIndex = 142;
             // 
             // txtobservacion
             // 
             this.txtobservacion.Enabled = false;
-            this.txtobservacion.Location = new System.Drawing.Point(81, 38);
+            this.txtobservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtobservacion.Location = new System.Drawing.Point(89, 38);
             this.txtobservacion.Name = "txtobservacion";
-            this.txtobservacion.Size = new System.Drawing.Size(354, 20);
+            this.txtobservacion.Size = new System.Drawing.Size(346, 21);
             this.txtobservacion.TabIndex = 143;
             // 
             // dtpfecha
             // 
             this.dtpfecha.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtpfecha.Enabled = false;
+            this.dtpfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpfecha.Location = new System.Drawing.Point(484, 38);
             this.dtpfecha.Name = "dtpfecha";
-            this.dtpfecha.Size = new System.Drawing.Size(97, 20);
+            this.dtpfecha.Size = new System.Drawing.Size(97, 21);
             this.dtpfecha.TabIndex = 145;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(441, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
@@ -332,12 +350,24 @@ namespace HPReserger
             // 
             this.txtvalor.AutoSize = true;
             this.txtvalor.Enabled = false;
+            this.txtvalor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtvalor.FuenteDelTxt = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtvalor.Location = new System.Drawing.Point(439, 13);
             this.txtvalor.MaxLengthTxt = 32767;
             this.txtvalor.Name = "txtvalor";
             this.txtvalor.Size = new System.Drawing.Size(142, 22);
             this.txtvalor.TabIndex = 144;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 13);
+            this.label4.TabIndex = 141;
+            this.label4.Text = "Listado de Parametros:";
             // 
             // frmParametros
             // 
@@ -349,6 +379,7 @@ namespace HPReserger
             this.Controls.Add(this.txtvalor);
             this.Controls.Add(this.txtobservacion);
             this.Controls.Add(this.txtdescripcion);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label23);
@@ -361,7 +392,7 @@ namespace HPReserger
             this.Controls.Add(this.btnaceptar);
             this.MinimumSize = new System.Drawing.Size(690, 370);
             this.Name = "frmParametros";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Parametros Generales";
             this.Text = "Parametros Generales";
             this.Load += new System.EventHandler(this.frmParametros_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
@@ -392,5 +423,6 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn usuari;
         private System.Windows.Forms.DateTimePicker dtpfecha;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

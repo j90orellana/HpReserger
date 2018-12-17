@@ -170,8 +170,10 @@ namespace HPReserger
             txtrazon.CargarTextoporDefecto();
             cbobanco.SelectedIndex = 0;
         }
+        public DialogResult msgp(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)
         {
+            if (msgp("Desea Cerrar Ventana") == DialogResult.Yes) { this.Close(); }
         }
         private void txtruc_TextChanged(object sender, EventArgs e)
         {

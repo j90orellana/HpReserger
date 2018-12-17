@@ -20,6 +20,7 @@ namespace HPReserger.ModuloBancario
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmTiposdeCuentasBancarias_Load(object sender, EventArgs e)
         {
+            Estado = 0;
             CargarCombos();
             CargarDatos();
             ModoEdicion(false);
@@ -43,19 +44,19 @@ namespace HPReserger.ModuloBancario
         }
         public void CargarEmpresa()
         {
-            CapaLogica.Empresas(cboempresa);
+            CapaLogica.TablaEmpresas(cboempresa);
         }
         public void CargarMoneda()
         {
-            CapaLogica.Monedas(cbomoneda);
+            CapaLogica.TablaMonedas(cbomoneda);
         }
         public void CargarTiposCuentas()
         {
-            CapaLogica.TipoCuentas(cbotipocuenta);
+            CapaLogica.TablaTipoCuentas(cbotipocuenta);
         }
         public void CargarEntidades()
         {
-            CapaLogica.EntidadesFinancieras(cbobanco);
+            CapaLogica.TablaBancos(cbobanco);
         }
         private void cboempresa_Click(object sender, EventArgs e)
         {
@@ -83,7 +84,21 @@ namespace HPReserger.ModuloBancario
         public int Estado
         {
             get { return estado; }
-            set { estado = value; }
+            set
+            {
+                if (value > 0)
+                {
+                    btnlimpiar.Enabled = false;
+                    BloquearBusqueda(true);
+                    Limpiar();
+                }
+                else
+                {
+                    btnlimpiar.Enabled = true;
+                    BloquearBusqueda(false);
+                }
+                estado = value;
+            }
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -112,7 +127,7 @@ namespace HPReserger.ModuloBancario
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-            estado = 1;
+            Estado = 1;
             btnaceptar.Enabled = true;
             ModoEdicion(true);
             txtnrocci.CargarTextoporDefecto(); txtnrocuenta.CargarTextoporDefecto();
@@ -122,7 +137,7 @@ namespace HPReserger.ModuloBancario
         int _idcuenta = 0;
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            estado = 2;
+            Estado = 2;
             ModoEdicion(true);
             btnaceptar.Enabled = true;
             BloquearControles(true);
@@ -171,12 +186,34 @@ namespace HPReserger.ModuloBancario
                 CapaLogica.CuentaBancaria(2, _idcuenta, (int)cboempresa.SelectedValue, (int)cbobanco.SelectedValue, (int)cbomoneda.SelectedValue, (int)cbotipocuenta.SelectedValue, txtnrocuenta.TextValido(), txtnrocci.TextValido(), frmLogin.CodigoUsuario);
                 msg("Número de Cuenta Actualizado");
             }
-            estado = 0;
+            Estado = 0;
             ModoEdicion(false);
             BloquearControles(false);
             btnaceptar.Enabled = false;
             CargarDatos();
         }
-
+        public void BloquearBusqueda(Boolean a)
+        {
+            txtbusBanco.ReadOnly = txtbuscci.ReadOnly = txtbusempresa.ReadOnly = txtbusmoneda.ReadOnly = txtbusnrocuenta.ReadOnly = a;
+        }
+        public void Limpiar()
+        {
+            txtbusBanco.CargarTextoporDefecto();
+            txtbuscci.CargarTextoporDefecto();
+            txtbusempresa.CargarTextoporDefecto();
+            txtbusmoneda.CargarTextoporDefecto();
+            txtbusmoneda.CargarTextoporDefecto();
+            txtbusnrocuenta.CargarTextoporDefecto();
+        }
+        private void btnlimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+        private void txtbusempresa_TextChanged(object sender, EventArgs e)
+        {
+            dtgconten.DataSource = CapaLogica.CuentasBancariasBusqueda(txtbusempresa.TextValido(), txtbusBanco.TextValido(), txtbusmoneda.TextValido(), txtbusnrocuenta.TextValido(), txtbuscci.TextValido());
+            lblmsg.Text = $"Total de Registros : {dtgconten.RowCount}";
+            if (dtgconten.RowCount > 0) btnmodificar.Enabled = true; else btnmodificar.Enabled = false;
+        }
     }
 }

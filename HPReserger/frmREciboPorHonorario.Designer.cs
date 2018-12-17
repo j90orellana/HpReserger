@@ -161,14 +161,14 @@ namespace HPReserger
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.Dtguias.EnableHeadersVisualStyles = false;
             this.Dtguias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.Dtguias.Location = new System.Drawing.Point(16, 115);
+            this.Dtguias.Location = new System.Drawing.Point(16, 110);
             this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dtguias.Size = new System.Drawing.Size(701, 185);
+            this.Dtguias.Size = new System.Drawing.Size(710, 190);
             this.Dtguias.TabIndex = 40;
             this.Dtguias.TabStop = false;
             this.Dtguias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellContentClick);
@@ -244,6 +244,7 @@ namespace HPReserger
             // 
             // gp1
             // 
+            this.gp1.BackColor = System.Drawing.Color.Transparent;
             this.gp1.Controls.Add(this.txtcodfactura);
             this.gp1.Controls.Add(this.btndescargar);
             this.gp1.Controls.Add(this.DtFechaRecepcion);
@@ -252,6 +253,14 @@ namespace HPReserger
             this.gp1.Controls.Add(this.DtgConten);
             this.gp1.Controls.Add(this.numigv);
             this.gp1.Controls.Add(this.cboigv);
+            this.gp1.Controls.Add(this.Dtfechaentregado);
+            this.gp1.Controls.Add(this.dtfechaemision);
+            this.gp1.Controls.Add(this.btnCargarFoto);
+            this.gp1.Controls.Add(this.txttotal);
+            this.gp1.Controls.Add(this.txtigv);
+            this.gp1.Controls.Add(this.txtsubtotal);
+            this.gp1.Controls.Add(this.txtnrofactura);
+            this.gp1.Controls.Add(this.txtfoto);
             this.gp1.Controls.Add(this.label15);
             this.gp1.Controls.Add(this.label14);
             this.gp1.Controls.Add(this.label13);
@@ -259,21 +268,13 @@ namespace HPReserger
             this.gp1.Controls.Add(this.label9);
             this.gp1.Controls.Add(this.label17);
             this.gp1.Controls.Add(this.label8);
-            this.gp1.Controls.Add(this.Dtfechaentregado);
-            this.gp1.Controls.Add(this.dtfechaemision);
             this.gp1.Controls.Add(this.lblporcentaje);
             this.gp1.Controls.Add(this.label3);
             this.gp1.Controls.Add(this.label4);
-            this.gp1.Controls.Add(this.btnCargarFoto);
-            this.gp1.Controls.Add(this.txttotal);
-            this.gp1.Controls.Add(this.txtigv);
-            this.gp1.Controls.Add(this.txtsubtotal);
-            this.gp1.Controls.Add(this.txtnrofactura);
-            this.gp1.Controls.Add(this.txtfoto);
             this.gp1.Enabled = false;
             this.gp1.Location = new System.Drawing.Point(12, 306);
             this.gp1.Name = "gp1";
-            this.gp1.Size = new System.Drawing.Size(716, 302);
+            this.gp1.Size = new System.Drawing.Size(716, 306);
             this.gp1.TabIndex = 35;
             this.gp1.TabStop = false;
             this.gp1.Move += new System.EventHandler(this.gp1_Move);
@@ -281,9 +282,10 @@ namespace HPReserger
             // txtcodfactura
             // 
             this.txtcodfactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtcodfactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodfactura.Location = new System.Drawing.Point(73, 14);
             this.txtcodfactura.Name = "txtcodfactura";
-            this.txtcodfactura.Size = new System.Drawing.Size(37, 20);
+            this.txtcodfactura.Size = new System.Drawing.Size(37, 21);
             this.txtcodfactura.TabIndex = 2;
             this.txtcodfactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcodfactura_KeyPress);
             this.txtcodfactura.Leave += new System.EventHandler(this.txtcodfactura_Leave);
@@ -305,19 +307,21 @@ namespace HPReserger
             // DtFechaRecepcion
             // 
             this.DtFechaRecepcion.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.DtFechaRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DtFechaRecepcion.Location = new System.Drawing.Point(487, 40);
             this.DtFechaRecepcion.Name = "DtFechaRecepcion";
-            this.DtFechaRecepcion.Size = new System.Drawing.Size(100, 20);
+            this.DtFechaRecepcion.Size = new System.Drawing.Size(100, 21);
             this.DtFechaRecepcion.TabIndex = 6;
             this.DtFechaRecepcion.ValueChanged += new System.EventHandler(this.DtFechaRecepcion_ValueChanged);
             // 
             // txtmonto
             // 
             this.txtmonto.Enabled = false;
+            this.txtmonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtmonto.Location = new System.Drawing.Point(260, 66);
             this.txtmonto.Name = "txtmonto";
-            this.txtmonto.Size = new System.Drawing.Size(78, 20);
+            this.txtmonto.Size = new System.Drawing.Size(78, 21);
             this.txtmonto.TabIndex = 18;
             this.txtmonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtmonto.TextChanged += new System.EventHandler(this.txtmonto_TextChanged);
@@ -394,7 +398,7 @@ namespace HPReserger
             this.DtgConten.RowHeadersVisible = false;
             this.DtgConten.RowTemplate.Height = 16;
             this.DtgConten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DtgConten.Size = new System.Drawing.Size(699, 196);
+            this.DtgConten.Size = new System.Drawing.Size(699, 200);
             this.DtgConten.TabIndex = 16;
             this.DtgConten.TabStop = false;
             this.DtgConten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgConten_CellEndEdit);
@@ -541,9 +545,10 @@ namespace HPReserger
             // 
             this.numigv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.numigv.Enabled = false;
+            this.numigv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numigv.Location = new System.Drawing.Point(201, 66);
             this.numigv.Name = "numigv";
-            this.numigv.Size = new System.Drawing.Size(38, 20);
+            this.numigv.Size = new System.Drawing.Size(38, 21);
             this.numigv.TabIndex = 15;
             this.numigv.Value = new decimal(new int[] {
             8,
@@ -568,6 +573,7 @@ namespace HPReserger
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(593, 70);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(34, 13);
@@ -577,99 +583,110 @@ namespace HPReserger
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(477, 70);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 13);
+            this.label14.Size = new System.Drawing.Size(46, 13);
             this.label14.TabIndex = 3;
             this.label14.Text = "ImpRta:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(344, 70);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 13);
+            this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 3;
             this.label13.Text = "SubTotal:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 18);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(10, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Nro Recibo";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(393, 44);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 13);
+            this.label9.Size = new System.Drawing.Size(96, 13);
             this.label9.TabIndex = 3;
             this.label9.Text = "Fecha Recepción:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(393, 18);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(94, 13);
+            this.label17.Size = new System.Drawing.Size(97, 13);
             this.label17.TabIndex = 3;
             this.label17.Text = "Fecha Cancelado:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(206, 18);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.Size = new System.Drawing.Size(83, 13);
             this.label8.TabIndex = 3;
             this.label8.Text = "Fecha Emisión:";
             // 
             // Dtfechaentregado
             // 
             this.Dtfechaentregado.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.Dtfechaentregado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtfechaentregado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Dtfechaentregado.Location = new System.Drawing.Point(487, 14);
             this.Dtfechaentregado.Name = "Dtfechaentregado";
-            this.Dtfechaentregado.Size = new System.Drawing.Size(100, 20);
+            this.Dtfechaentregado.Size = new System.Drawing.Size(100, 21);
             this.Dtfechaentregado.TabIndex = 5;
             // 
             // dtfechaemision
             // 
             this.dtfechaemision.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtfechaemision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtfechaemision.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtfechaemision.Location = new System.Drawing.Point(287, 14);
             this.dtfechaemision.Name = "dtfechaemision";
-            this.dtfechaemision.Size = new System.Drawing.Size(100, 20);
+            this.dtfechaemision.Size = new System.Drawing.Size(100, 21);
             this.dtfechaemision.TabIndex = 4;
             // 
             // lblporcentaje
             // 
             this.lblporcentaje.AutoSize = true;
+            this.lblporcentaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblporcentaje.Location = new System.Drawing.Point(239, 70);
             this.lblporcentaje.Name = "lblporcentaje";
-            this.lblporcentaje.Size = new System.Drawing.Size(15, 13);
+            this.lblporcentaje.Size = new System.Drawing.Size(16, 13);
             this.lblporcentaje.TabIndex = 3;
             this.lblporcentaje.Text = "%";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 70);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(5, 70);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Grava Renta";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 44);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(26, 44);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Imagen:";
             // 
@@ -690,35 +707,39 @@ namespace HPReserger
             // txttotal
             // 
             this.txttotal.Enabled = false;
+            this.txttotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotal.Location = new System.Drawing.Point(627, 66);
             this.txttotal.Name = "txttotal";
-            this.txttotal.Size = new System.Drawing.Size(78, 20);
+            this.txttotal.Size = new System.Drawing.Size(78, 21);
             this.txttotal.TabIndex = 6;
             this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtigv
             // 
             this.txtigv.Enabled = false;
+            this.txtigv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtigv.Location = new System.Drawing.Point(523, 66);
             this.txtigv.Name = "txtigv";
-            this.txtigv.Size = new System.Drawing.Size(70, 20);
+            this.txtigv.Size = new System.Drawing.Size(70, 21);
             this.txtigv.TabIndex = 6;
             this.txtigv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtsubtotal
             // 
             this.txtsubtotal.Enabled = false;
+            this.txtsubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsubtotal.Location = new System.Drawing.Point(402, 66);
             this.txtsubtotal.Name = "txtsubtotal";
-            this.txtsubtotal.Size = new System.Drawing.Size(75, 20);
+            this.txtsubtotal.Size = new System.Drawing.Size(75, 21);
             this.txtsubtotal.TabIndex = 6;
             this.txtsubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtnrofactura
             // 
+            this.txtnrofactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnrofactura.Location = new System.Drawing.Point(116, 14);
             this.txtnrofactura.Name = "txtnrofactura";
-            this.txtnrofactura.Size = new System.Drawing.Size(84, 20);
+            this.txtnrofactura.Size = new System.Drawing.Size(84, 21);
             this.txtnrofactura.TabIndex = 3;
             this.txtnrofactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnrofactura_KeyPress);
             this.txtnrofactura.Leave += new System.EventHandler(this.txtnrofactura_Leave);
@@ -726,10 +747,11 @@ namespace HPReserger
             // txtfoto
             // 
             this.txtfoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtfoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtfoto.Location = new System.Drawing.Point(72, 40);
             this.txtfoto.Name = "txtfoto";
             this.txtfoto.ReadOnly = true;
-            this.txtfoto.Size = new System.Drawing.Size(285, 20);
+            this.txtfoto.Size = new System.Drawing.Size(285, 21);
             this.txtfoto.TabIndex = 6;
             this.txtfoto.Tag = "";
             // 
@@ -737,9 +759,10 @@ namespace HPReserger
             // 
             this.txtTelefono.BackColor = System.Drawing.SystemColors.Control;
             this.txtTelefono.Enabled = false;
-            this.txtTelefono.Location = new System.Drawing.Point(107, 89);
+            this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefono.Location = new System.Drawing.Point(107, 83);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(295, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(295, 21);
             this.txtTelefono.TabIndex = 23;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -747,18 +770,20 @@ namespace HPReserger
             // 
             this.txtRazonSocial.BackColor = System.Drawing.SystemColors.Control;
             this.txtRazonSocial.Enabled = false;
-            this.txtRazonSocial.Location = new System.Drawing.Point(107, 37);
+            this.txtRazonSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRazonSocial.Location = new System.Drawing.Point(107, 35);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(295, 20);
+            this.txtRazonSocial.Size = new System.Drawing.Size(295, 21);
             this.txtRazonSocial.TabIndex = 25;
             this.txtRazonSocial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtruc
             // 
+            this.txtruc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtruc.Location = new System.Drawing.Point(107, 11);
             this.txtruc.MaxLength = 11;
             this.txtruc.Name = "txtruc";
-            this.txtruc.Size = new System.Drawing.Size(100, 20);
+            this.txtruc.Size = new System.Drawing.Size(100, 21);
             this.txtruc.TabIndex = 0;
             this.txtruc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtruc.TextChanged += new System.EventHandler(this.txtruc_TextChanged);
@@ -767,45 +792,55 @@ namespace HPReserger
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(213, 15);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(28, 13);
+            this.label16.Size = new System.Drawing.Size(29, 13);
             this.label16.TabIndex = 27;
             this.label16.Text = "Tipo";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 93);
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 87);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 13);
+            this.label7.Size = new System.Drawing.Size(94, 13);
             this.label7.TabIndex = 30;
             this.label7.Text = "Telefono Oficina:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 67);
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(9, 63);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.Size = new System.Drawing.Size(98, 13);
             this.label6.TabIndex = 31;
             this.label6.Text = "Dirección Oficina:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 41);
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(32, 39);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 32;
             this.label5.Text = "Razon Social:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 15);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 29;
             this.label1.Text = "Ruc Proveedor:";
             // 
@@ -813,9 +848,10 @@ namespace HPReserger
             // 
             this.txtdireccion.BackColor = System.Drawing.SystemColors.Control;
             this.txtdireccion.Enabled = false;
-            this.txtdireccion.Location = new System.Drawing.Point(107, 63);
+            this.txtdireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdireccion.Location = new System.Drawing.Point(107, 59);
             this.txtdireccion.Name = "txtdireccion";
-            this.txtdireccion.Size = new System.Drawing.Size(418, 20);
+            this.txtdireccion.Size = new System.Drawing.Size(418, 21);
             this.txtdireccion.TabIndex = 26;
             this.txtdireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -833,9 +869,9 @@ namespace HPReserger
             this.btnmaspro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnmaspro.FlatAppearance.BorderSize = 0;
             this.btnmaspro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnmaspro.Location = new System.Drawing.Point(408, 37);
+            this.btnmaspro.Location = new System.Drawing.Point(408, 35);
             this.btnmaspro.Name = "btnmaspro";
-            this.btnmaspro.Size = new System.Drawing.Size(20, 20);
+            this.btnmaspro.Size = new System.Drawing.Size(20, 21);
             this.btnmaspro.TabIndex = 37;
             this.tooltip.SetToolTip(this.btnmaspro, "Buscar Proveedor");
             this.btnmaspro.UseVisualStyleBackColor = true;
@@ -844,10 +880,11 @@ namespace HPReserger
             // btnagregar
             // 
             this.btnagregar.Enabled = false;
+            this.btnagregar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
-            this.btnagregar.Location = new System.Drawing.Point(734, 317);
+            this.btnagregar.Location = new System.Drawing.Point(645, 82);
             this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(75, 23);
+            this.btnagregar.Size = new System.Drawing.Size(81, 23);
             this.btnagregar.TabIndex = 39;
             this.btnagregar.Text = "Ingresar";
             this.btnagregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -857,10 +894,11 @@ namespace HPReserger
             // btnaceptar
             // 
             this.btnaceptar.Enabled = false;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(653, 614);
+            this.btnaceptar.Location = new System.Drawing.Point(564, 618);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.Size = new System.Drawing.Size(81, 23);
             this.btnaceptar.TabIndex = 33;
             this.btnaceptar.Text = "Guardar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -869,10 +907,11 @@ namespace HPReserger
             // 
             // btncancelar
             // 
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(734, 614);
+            this.btncancelar.Location = new System.Drawing.Point(647, 618);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.Size = new System.Drawing.Size(81, 23);
             this.btncancelar.TabIndex = 34;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -883,7 +922,7 @@ namespace HPReserger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 651);
+            this.ClientSize = new System.Drawing.Size(738, 651);
             this.Controls.Add(this.Dtguias);
             this.Controls.Add(this.btnagregar);
             this.Controls.Add(this.btnmaspro);
@@ -895,15 +934,15 @@ namespace HPReserger
             this.Controls.Add(this.txtRazonSocial);
             this.Controls.Add(this.txtruc);
             this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtdireccion);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtdireccion);
-            this.MaximumSize = new System.Drawing.Size(835, 690);
-            this.MinimumSize = new System.Drawing.Size(835, 690);
+            this.MaximumSize = new System.Drawing.Size(754, 690);
+            this.MinimumSize = new System.Drawing.Size(754, 690);
             this.Name = "frmREciboPorHonorario";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Recibo Por Honorarios";
             this.Text = "Recibo Por Honorarios";
             this.Load += new System.EventHandler(this.frmREciboPorHonorario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).EndInit();

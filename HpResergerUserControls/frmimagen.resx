@@ -120,6 +120,9 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="pbfoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pbfoto.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -149,6 +152,25 @@
         Fh2mkB0Ai6vIYvZZiS06aJH9cHEVuU9iiw5TdO8BC6tQ926JLTqWXp1nJ72Lq1VOxvaq3eQzPbTgZ2Q7
         /KrWr2X6PnuSM5K44mPpx+7u/TRNPKCSnEWa3o2iKIqiKIqiKIqiKIqiKIqiKIoSO5nMf0rP/KqaFB7T
         AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnVer1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAY9JREFUOE9j
+        oDpISEjQTUpKak1MTFwBZE8Hsv0aGhqYoNK4QVpaGitQ08ykrMJ/SR3L/yfPOPQ/qX/z/8Tipv9A8fMp
+        KSmKUKXYAVDRtKTqCf9TNn38n7n9+//K/d//5+369j9l67f/SZN3/09MSroVHR3NB1WOCoCajRKzi/6l
+        bPrwv/7wj//zLv7833L0+/8pZ37+nwbEqSBDGmeDXNIM1YIKQH5O6loNtq1g9zewBhAbxgezl90GGXAd
+        qgUVAANrSfL0g3BNWDHQa0ADvkO1oAKgC6YmT9yGXSMMr3kGMuA5VAsqAEqEJJa2YtcIxckTtoIMWAbV
+        ggpCQ0OZgZLnkoCKsGpeevt/Qmrmz+TkZB2oFkwAimegIXeTGmYANdz8n7Lly/+U1U//J/dt/J+Ylv0T
+        KPc5Pj6+GqocO4iKihIEKmwE4ltA/BeI3wDxYlDqjE1IyLDzDvrvGRS2C6qcdOAeGLbQ3N3/v0dg2AGo
+        EOnA1T90K8gQz6DwmVAh0oF7YPhCT/9QLSiXEsDAAADc0R4Mc/R6TwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnDescargar1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAE9JREFUOE9j
+        wAf8qrb+B2Eol3QwasBAGeBfta0DphEdg+SgyvADoOIGdM0gMag0cQCkgWzNMAA1hDzN9ANI/iQLgw3o
+        3v6BLAw3gHy89T8ADr/Ru4+MtV0AAAAASUVORK5CYII=
 </value>
   </data>
 </root>

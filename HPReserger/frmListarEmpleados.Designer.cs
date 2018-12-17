@@ -66,9 +66,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Listar por:";
             // 
@@ -89,24 +90,27 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(211, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "label2";
             // 
             // txtBuscar
             // 
             this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(296, 16);
             this.txtBuscar.MaxLength = 30;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(256, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(256, 21);
             this.txtBuscar.TabIndex = 0;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.checkpos);
             this.groupBox1.Controls.Add(this.checkemp);
             this.groupBox1.Controls.Add(this.label4);
@@ -120,16 +124,17 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(795, 75);
+            this.groupBox1.Size = new System.Drawing.Size(795, 69);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
             // checkpos
             // 
             this.checkpos.AutoSize = true;
-            this.checkpos.Location = new System.Drawing.Point(648, 45);
+            this.checkpos.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkpos.Location = new System.Drawing.Point(648, 42);
             this.checkpos.Name = "checkpos";
-            this.checkpos.Size = new System.Drawing.Size(76, 17);
+            this.checkpos.Size = new System.Drawing.Size(81, 17);
             this.checkpos.TabIndex = 5;
             this.checkpos.Text = "Postulante";
             this.checkpos.UseVisualStyleBackColor = true;
@@ -138,9 +143,10 @@
             // checkemp
             // 
             this.checkemp.AutoSize = true;
-            this.checkemp.Location = new System.Drawing.Point(569, 45);
+            this.checkemp.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkemp.Location = new System.Drawing.Point(569, 42);
             this.checkemp.Name = "checkemp";
-            this.checkemp.Size = new System.Drawing.Size(73, 17);
+            this.checkemp.Size = new System.Drawing.Size(77, 17);
             this.checkemp.TabIndex = 4;
             this.checkemp.Text = "Empleado";
             this.checkemp.UseVisualStyleBackColor = true;
@@ -149,19 +155,21 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(293, 47);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(293, 44);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "NroDoc:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(346, 43);
+            this.txtDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocumento.Location = new System.Drawing.Point(346, 40);
             this.txtDocumento.MaxLength = 10;
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(206, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(206, 21);
             this.txtDocumento.TabIndex = 3;
             this.txtDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDocumento.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
@@ -169,9 +177,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 47);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "TipoDoc:";
             // 
@@ -179,7 +188,7 @@
             // 
             this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(71, 43);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(71, 40);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
             this.cboTipoDocumento.TabIndex = 2;
@@ -230,7 +239,7 @@
             this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Grid.EnableHeadersVisualStyles = false;
             this.Grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.Grid.Location = new System.Drawing.Point(0, 75);
+            this.Grid.Location = new System.Drawing.Point(0, 69);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
             this.Grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -238,7 +247,7 @@
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid.RowTemplate.Height = 16;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Grid.Size = new System.Drawing.Size(795, 453);
+            this.Grid.Size = new System.Drawing.Size(795, 459);
             this.Grid.TabIndex = 36;
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
             // 
@@ -349,7 +358,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(811, 567);
             this.Name = "frmListarEmpleados";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "  Listar Empleados";
             this.Text = "  Listar Empleados";
             this.Load += new System.EventHandler(this.frmListarEmpleados_Load);
             this.groupBox1.ResumeLayout(false);

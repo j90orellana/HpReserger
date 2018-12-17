@@ -44,8 +44,6 @@ namespace HPReserger
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.button1 = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.NUMERO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordencompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +54,8 @@ namespace HPReserger
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -87,12 +87,14 @@ namespace HPReserger
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.cbodocumento);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.txtbuscar);
+            this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(12, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(730, 55);
@@ -104,7 +106,7 @@ namespace HPReserger
             this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox1.Location = new System.Drawing.Point(422, 32);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(47, 17);
+            this.checkBox1.Size = new System.Drawing.Size(48, 17);
             this.checkBox1.TabIndex = 22;
             this.checkBox1.Text = "Tipo";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -115,7 +117,7 @@ namespace HPReserger
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(76, 7);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(74, 17);
+            this.radioButton2.Size = new System.Drawing.Size(77, 17);
             this.radioButton2.TabIndex = 21;
             this.radioButton2.Text = "Proveedor";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -144,7 +146,7 @@ namespace HPReserger
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 19;
             this.label2.Text = "Buscar:";
             // 
@@ -165,7 +167,7 @@ namespace HPReserger
             // 
             this.txtbuscar.Location = new System.Drawing.Point(76, 30);
             this.txtbuscar.Name = "txtbuscar";
-            this.txtbuscar.Size = new System.Drawing.Size(328, 20);
+            this.txtbuscar.Size = new System.Drawing.Size(328, 22);
             this.txtbuscar.TabIndex = 18;
             this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
             // 
@@ -228,24 +230,6 @@ namespace HPReserger
             this.dtgconten.Size = new System.Drawing.Size(914, 494);
             this.dtgconten.TabIndex = 24;
             this.dtgconten.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(436, 566);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Correo";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // NUMERO
             // 
@@ -327,6 +311,24 @@ namespace HPReserger
             this.fecha.Name = "fecha";
             this.fecha.Width = 62;
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(436, 566);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 24);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Correo";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // frmFicSinFaactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,7 +340,7 @@ namespace HPReserger
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtgconten);
             this.Name = "frmFicSinFaactura";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Fic sin Factura";
             this.Text = "Fic sin Factura";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFicSinFaactura_FormClosing);
             this.Load += new System.EventHandler(this.frmFicSinFaactura_Load);

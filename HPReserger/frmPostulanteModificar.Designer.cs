@@ -58,6 +58,7 @@
             // 
             // pbFoto
             // 
+            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
             this.pbFoto.Location = new System.Drawing.Point(538, 9);
             this.pbFoto.Name = "pbFoto";
             this.pbFoto.Size = new System.Drawing.Size(232, 275);
@@ -69,16 +70,21 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(222, 241);
+            this.btnModificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
+            this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnModificar.Location = new System.Drawing.Point(259, 241);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.Size = new System.Drawing.Size(97, 24);
             this.btnModificar.TabIndex = 27;
             this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.txtedad);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtpFechaNacimiento);
@@ -99,6 +105,7 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtApellidoPaterno);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(518, 281);
@@ -110,10 +117,11 @@
             // 
             this.txtedad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtedad.Enabled = false;
-            this.txtedad.Location = new System.Drawing.Point(342, 150);
+            this.txtedad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtedad.Location = new System.Drawing.Point(361, 150);
             this.txtedad.MaxLength = 30;
             this.txtedad.Name = "txtedad";
-            this.txtedad.Size = new System.Drawing.Size(35, 20);
+            this.txtedad.Size = new System.Drawing.Size(35, 21);
             this.txtedad.TabIndex = 120;
             this.txtedad.Text = "0";
             this.txtedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -121,28 +129,31 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(301, 154);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(320, 154);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 119;
             this.label1.Text = "Edad:";
             // 
             // dtpFechaNacimiento
             // 
             this.dtpFechaNacimiento.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpFechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(195, 150);
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(214, 150);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(100, 20);
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(100, 21);
             this.dtpFechaNacimiento.TabIndex = 117;
             this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 154);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(107, 154);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.Size = new System.Drawing.Size(101, 13);
             this.label2.TabIndex = 118;
             this.label2.Text = "Fecha Nacimiento:";
             // 
@@ -151,7 +162,7 @@
             this.cboReasignarSolicitud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboReasignarSolicitud.Enabled = false;
             this.cboReasignarSolicitud.FormattingEnabled = true;
-            this.cboReasignarSolicitud.Location = new System.Drawing.Point(195, 203);
+            this.cboReasignarSolicitud.Location = new System.Drawing.Point(214, 203);
             this.cboReasignarSolicitud.Name = "cboReasignarSolicitud";
             this.cboReasignarSolicitud.Size = new System.Drawing.Size(113, 21);
             this.cboReasignarSolicitud.TabIndex = 53;
@@ -159,9 +170,10 @@
             // chkReasignarSolicitud
             // 
             this.chkReasignarSolicitud.AutoSize = true;
-            this.chkReasignarSolicitud.Location = new System.Drawing.Point(9, 205);
+            this.chkReasignarSolicitud.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkReasignarSolicitud.Location = new System.Drawing.Point(77, 205);
             this.chkReasignarSolicitud.Name = "chkReasignarSolicitud";
-            this.chkReasignarSolicitud.Size = new System.Drawing.Size(123, 17);
+            this.chkReasignarSolicitud.Size = new System.Drawing.Size(131, 17);
             this.chkReasignarSolicitud.TabIndex = 52;
             this.chkReasignarSolicitud.Text = "  Reasignar Solicitud";
             this.chkReasignarSolicitud.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,9 +183,10 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 22);
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(28, 22);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(166, 13);
+            this.label14.Size = new System.Drawing.Size(180, 13);
             this.label14.TabIndex = 39;
             this.label14.Text = "Tipo de Documento de Identidad:";
             // 
@@ -195,7 +208,7 @@
             // 
             this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(195, 18);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(214, 18);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(203, 21);
             this.cboTipoDocumento.TabIndex = 40;
@@ -203,10 +216,11 @@
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(195, 46);
+            this.txtDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocumento.Location = new System.Drawing.Point(214, 46);
             this.txtDocumento.MaxLength = 14;
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(167, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(167, 21);
             this.txtDocumento.TabIndex = 42;
             this.txtDocumento.TabStop = false;
             this.txtDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -216,36 +230,40 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 180);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(136, 180);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(66, 13);
+            this.label9.Size = new System.Drawing.Size(72, 13);
             this.label9.TabIndex = 46;
             this.label9.Text = "Adjuntar CV:";
             // 
             // txtAdjuntarCV
             // 
-            this.txtAdjuntarCV.Location = new System.Drawing.Point(195, 176);
+            this.txtAdjuntarCV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdjuntarCV.Location = new System.Drawing.Point(214, 176);
             this.txtAdjuntarCV.Name = "txtAdjuntarCV";
             this.txtAdjuntarCV.ReadOnly = true;
-            this.txtAdjuntarCV.Size = new System.Drawing.Size(280, 20);
+            this.txtAdjuntarCV.Size = new System.Drawing.Size(261, 21);
             this.txtAdjuntarCV.TabIndex = 48;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 126);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(152, 126);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.Size = new System.Drawing.Size(56, 13);
             this.label10.TabIndex = 45;
             this.label10.Text = "Nombres:";
             // 
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombres.Location = new System.Drawing.Point(195, 122);
+            this.txtNombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombres.Location = new System.Drawing.Point(214, 122);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(280, 20);
+            this.txtNombres.Size = new System.Drawing.Size(280, 21);
             this.txtNombres.TabIndex = 50;
             this.txtNombres.TabStop = false;
             this.txtNombres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombres_KeyPress);
@@ -253,19 +271,21 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(9, 50);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(182, 13);
+            this.label13.Size = new System.Drawing.Size(199, 13);
             this.label13.TabIndex = 41;
             this.label13.Text = "Número de Documento de Identidad:";
             // 
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoMaterno.Location = new System.Drawing.Point(195, 98);
+            this.txtApellidoMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(214, 95);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(280, 20);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(280, 21);
             this.txtApellidoMaterno.TabIndex = 49;
             this.txtApellidoMaterno.TabStop = false;
             this.txtApellidoMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoMaterno_KeyPress);
@@ -273,28 +293,31 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 74);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(112, 74);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 13);
+            this.label12.Size = new System.Drawing.Size(96, 13);
             this.label12.TabIndex = 43;
             this.label12.Text = "Apellido Paterno:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 102);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(108, 99);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 13);
+            this.label11.Size = new System.Drawing.Size(100, 13);
             this.label11.TabIndex = 44;
             this.label11.Text = "Apellido Materno:";
             // 
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 70);
+            this.txtApellidoPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(214, 70);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(280, 20);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(280, 21);
             this.txtApellidoPaterno.TabIndex = 47;
             this.txtApellidoPaterno.TabStop = false;
             this.txtApellidoPaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoPaterno_KeyPress);
@@ -305,7 +328,7 @@
             this.btndescargar.ImageKey = "(ninguno)";
             this.btndescargar.Location = new System.Drawing.Point(623, 254);
             this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(76, 23);
+            this.btndescargar.Size = new System.Drawing.Size(76, 24);
             this.btndescargar.TabIndex = 113;
             this.btndescargar.Text = "Descargar";
             this.btndescargar.UseVisualStyleBackColor = false;
@@ -327,7 +350,7 @@
             this.MaximumSize = new System.Drawing.Size(798, 332);
             this.MinimumSize = new System.Drawing.Size(798, 332);
             this.Name = "frmPostulanteModificar";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "  Modificar Postulante";
             this.Text = "  Modificar Postulante";
             this.Load += new System.EventHandler(this.frmPostulanteModificar_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPostulanteModificar_MouseMove);

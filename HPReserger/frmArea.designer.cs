@@ -88,51 +88,61 @@ namespace HPReserger
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 16);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(49, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 60;
             this.label2.Text = "Gerencia";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(326, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 61;
             this.label1.Text = "Código";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 40);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(34, 40);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 64;
             this.label3.Text = "Descripción";
             // 
             // txtdescripcion
             // 
             this.txtdescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdescripcion.Location = new System.Drawing.Point(101, 36);
             this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.Size = new System.Drawing.Size(371, 20);
+            this.txtdescripcion.Size = new System.Drawing.Size(371, 21);
             this.txtdescripcion.TabIndex = 62;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 67);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(10, 64);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.Size = new System.Drawing.Size(91, 13);
             this.label4.TabIndex = 64;
             this.label4.Text = "Centro de Costo";
             // 
             // btneliminar
             // 
+            this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(478, 62);
+            this.btneliminar.Location = new System.Drawing.Point(478, 59);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 23);
             this.btneliminar.TabIndex = 70;
@@ -143,6 +153,7 @@ namespace HPReserger
             // 
             // btnmodificar
             // 
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.Location = new System.Drawing.Point(478, 35);
             this.btnmodificar.Name = "btnmodificar";
@@ -155,6 +166,7 @@ namespace HPReserger
             // 
             // btnnuevo
             // 
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.Location = new System.Drawing.Point(478, 11);
             this.btnnuevo.Name = "btnnuevo";
@@ -172,6 +184,7 @@ namespace HPReserger
             // btncancelar
             // 
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(478, 462);
             this.btncancelar.Name = "btncancelar";
@@ -185,6 +198,7 @@ namespace HPReserger
             // btnaceptar
             // 
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(390, 462);
             this.btnaceptar.Name = "btnaceptar";
@@ -320,7 +334,7 @@ namespace HPReserger
             this.cboccosto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboccosto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboccosto.FormattingEnabled = true;
-            this.cboccosto.Location = new System.Drawing.Point(101, 63);
+            this.cboccosto.Location = new System.Drawing.Point(101, 60);
             this.cboccosto.Name = "cboccosto";
             this.cboccosto.Size = new System.Drawing.Size(345, 21);
             this.cboccosto.TabIndex = 79;
@@ -330,7 +344,7 @@ namespace HPReserger
             // 
             this.btnccostomas.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnccostomas.Image = ((System.Drawing.Image)(resources.GetObject("btnccostomas.Image")));
-            this.btnccostomas.Location = new System.Drawing.Point(452, 63);
+            this.btnccostomas.Location = new System.Drawing.Point(452, 60);
             this.btnccostomas.Name = "btnccostomas";
             this.btnccostomas.Size = new System.Drawing.Size(20, 21);
             this.btnccostomas.TabIndex = 80;
@@ -386,7 +400,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(584, 532);
             this.MinimumSize = new System.Drawing.Size(584, 532);
             this.Name = "frmArea";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Area";
             this.Text = "Area";
             this.Activated += new System.EventHandler(this.frmArea_Activated_1);
             this.Load += new System.EventHandler(this.frmArea_Load);

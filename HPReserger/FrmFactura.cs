@@ -9,15 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class FrmFactura : Form
+    public partial class FrmFactura : FormGradient
     {
         public FrmFactura()
         {
             InitializeComponent();
         }
+        DataTable TGravados;
         HPResergerCapaLogica.HPResergerCL cfactura = new HPResergerCapaLogica.HPResergerCL();
         public void BuscarIgv()
         {
@@ -43,8 +45,18 @@ namespace HPReserger
             filita["Porcentaje"] = 0.00;
             DatosDetracciones.Rows.InsertAt(filita, 0);
         }
+        public void CargarGravados()
+        {
+            TGravados = new DataTable();
+            TGravados.Columns.Add("Codigo", typeof(int));
+            TGravados.Columns.Add("descripcion");
+            TGravados.Rows.Add(1, "OP.GRAV.");
+            TGravados.Rows.Add(2, "OP.GRAV./NO GRAV.");
+            TGravados.Rows.Add(3, "OP.NO GRAV.");
+        }
         private void FrmFactura_Load(object sender, EventArgs e)
         {
+            CargarGravados();
             //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
             // txtruc.Text = "0701046971";
             // radioButton1.Checked = true;
@@ -95,6 +107,7 @@ namespace HPReserger
             {
                 FrmFoto foto = new FrmFoto($"Imagen de Comprobantes");
                 foto.fotito = fotito.Image;
+                foto.Nombre = "Imagen de Comprobantes";
                 foto.Owner = this.MdiParent;
                 foto.ShowDialog();
             }
@@ -305,6 +318,12 @@ namespace HPReserger
                 Dtguias.Enabled = true;
                 cbotipo.Enabled = true; btnmaspro.Enabled = true;
                 cbodetraccion.SelectedIndex = -1;
+                LimpiarDespues();
+                imgfactura = null;
+                txtmonto.Text = txtigv.Text = txttotal.Text = txtsubtotal.Text = txtdetraccion.Text = txtnroconstancia.Text = "";
+                txtdetracion.Text = "";
+                if (DtgConten.DataSource != null)
+                    DtgConten.DataSource = ((DataTable)DtgConten.DataSource).Clone();
             }
             if (estado == 0)
             {
@@ -312,10 +331,43 @@ namespace HPReserger
             }
             estado = 0;
         }
+        public void LimpiarDespues()
+        {
+            txtruc_TextChanged(new object(), new EventArgs());
+            txtcodfactura.Text = txtnrofactura.Text = txtfoto.Text = "";
+            dtfechaemision.Value = Dtfechaentregado.Value = DtFechaRecepcion.Value = DateTime.Now;
+            pbfactura.Image = null;
+            detrac = ""; numdetraccion.Value = 0;
+        }
+        public DialogResult msgp(string cadena)
+        {
+            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
+        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (estado == 1 && validar())
             {
+                if (cbodetraccion.Text.ToUpper() == "SI")
+                {
+                    if (numdetraccion.Value <= 0)
+                    {
+                        cbodetraccion.Focus();
+                        MSG("Seleccione Tipo de Detracción");
+                        return;
+                    }
+                    if (decimal.Parse(txtdetraccion.Text) <= 0)
+                    {
+                        MSG("El Monto de la Detracción esta en Cero");
+                        return;
+                    }
+                }
+                if (imgfactura == null)
+                {
+                    if (msgp("No ha subido la Imagen de la Factura, Desea Continuar") != DialogResult.Yes)
+                    {
+                        return;
+                    }
+                }
                 foreach (DataGridViewRow item in DtgConten.Rows)
                 {
                     if (item.Cells[cuentax.Name].Value.ToString() == "")
@@ -355,7 +407,7 @@ namespace HPReserger
                     //grabando
                     cfactura.InsertarFactura(txtcodfactura.Text + "-" + txtnrofactura.Text, txtruc.Text, Convert.ToInt32(DtgConten["numFIC", i].Value), Convert.ToInt32(DtgConten["numOC", i].Value), 0,
                       valorsubtotal, valorigv, valortotal,
-                         cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, 1, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario),
+                         cboigv.SelectedIndex + 1, dtfechaemision.Value, Dtfechaentregado.Value, DtFechaRecepcion.Value, 1, (int)cbomoneda.SelectedValue, imgfactura, Convert.ToInt32(frmLogin.CodigoUsuario),
                          int.Parse(txtnroconstancia.Text), detracc, (int)DtgConten[cc.Name, i].Value);
                     //provisionada
                     if ((int)DtgConten["provisionada", i].Value != 3)
@@ -364,24 +416,32 @@ namespace HPReserger
                         ///Insertar-Asiento///
                         //////////////////////
                         // usp_InsertarAsientoFactura
-                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
-                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario);
+                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, 0, 0, DtgConten[cuentax.Name, i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario, (int)cbomoneda.SelectedValue);
+                        cfactura.InsertarAsientoFactura(nextAsiento, nextAsiento, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, valortotal, DtgConten["cc", i].Value.ToString(), txtruc.Text, txtRazonSocial.Text, txtcodfactura.Text, txtnrofactura.Text, (int)DtgConten[centrocosto1.Name, i].Value, dtfechaemision.Value, DtFechaRecepcion.Value, Dtfechaentregado.Value, frmLogin.CodigoUsuario, (int)cbomoneda.SelectedValue);
                     }
                     else
                     {
                         //////////////////////
                         ///Insertar-Asiento///
                         //////////////////////
-                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento,empresa, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, 0, DtgConten["cc", i].Value.ToString(), txtcodfactura.Text + "-" + txtnrofactura.Text);
-                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento,empresa, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), 0, 0, valortotal, DtgConten["cc", i].Value.ToString(), txtcodfactura.Text + "-" + txtnrofactura.Text);
+                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento, empresa, 2, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), valorsubtotal, valorigv, 0, DtgConten["cc", i].Value.ToString(), txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbomoneda.SelectedValue);
+                        cfactura.InsertarAsientoFacturaLlegada(nextAsiento, empresa, 1, Convert.ToInt32(DtgConten["numOC", i].Value.ToString()), 0, 0, valortotal, DtgConten["cc", i].Value.ToString(), txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbomoneda.SelectedValue);
                     }
                 }
-                MSG("Factura Ingresada Exitosamente");
+                ////proceso de la detraccion
+                if (decimal.Parse(txtdetraccion.Text) > 0)
+                {
+                    ///Procedimiento Almacenado Para el grabado automatico de las Detracciones
+                    ///Soles
+                    cfactura.RegistrarDetraccion(nextAsiento, empresa, decimal.Parse(txtdetraccion.Text));
+                }
+                MSG($"Factura Ingresada Exitosamente con Asiento: {HPResergerFunciones.Utilitarios.Cuo(nextAsiento, DateTime.Now)}");
                 button1_Click(sender, e);
                 txtnrofactura.Text = ""; txtmonto.Text = ""; txtsubtotal.Text = txtigv.Text = txttotal.Text = ""; pbfactura.Image = null; imgfactura = null;
                 txtruc.Text = ""; busqueda = 0; btnprovisionar.Enabled = false; txtcodfactura.Text = "";
                 txtnroconstancia.Text = ""; txtfoto.Text = ""; cbodetraccion.SelectedIndex = -1; txtdetraccion.Text = "";
                 Dtguias.Enabled = true; cbotipo.Enabled = true; btnmaspro.Enabled = true;
+                LimpiarDespues();
             }
         }
         private void pbfactura_DoubleClick(object sender, EventArgs e)
@@ -390,7 +450,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         int estado = 0;
         private void btnagregar_Click(object sender, EventArgs e)
@@ -434,12 +494,12 @@ namespace HPReserger
         {
             if (cbodetraccion.Text == "SI")
             {
-                if (string.IsNullOrWhiteSpace(txtnroconstancia.Text))
-                {
-                    MSG("Ingresé Nro de Constancia de la Detracción");
-                    txtnroconstancia.Focus();
-                    return false;
-                }
+                //if (string.IsNullOrWhiteSpace(txtnroconstancia.Text))
+                //{
+                //    MSG("Ingresé Nro de Constancia de la Detracción");
+                //    txtnroconstancia.Focus();
+                //    return false;
+                //}
             }
             if (string.IsNullOrWhiteSpace(txtnrofactura.Text))
             {
@@ -684,7 +744,6 @@ namespace HPReserger
                 }
             }
         }
-
         private void Dtguias_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             cbomoneda_Click(sender, e);
@@ -935,9 +994,12 @@ namespace HPReserger
         }
         private void DtgConten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(DtgConten[e.ColumnIndex, e.RowIndex].Value.ToString()))
-                DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";
-            Calculando();
+            if (DtgConten[e.ColumnIndex, e.RowIndex].Value != null)
+            {
+                if (string.IsNullOrWhiteSpace(DtgConten[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                    DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";
+                Calculando();
+            }
         }
 
         private void DtgConten_KeyPress(object sender, KeyPressEventArgs e)
@@ -965,7 +1027,7 @@ namespace HPReserger
         public void OcultarDetraccion(Boolean a)
         {
             lbldetracion.Enabled = a;
-            lblporcentajedetraccion.Enabled = a;
+            //lblporcentajedetraccion.Enabled = a;
             numdetraccion.Enabled = a;
             txtnroconstancia.Enabled = a;
             //txtdetraccion.Enabled = a;
@@ -1171,7 +1233,6 @@ namespace HPReserger
                 if (txtnrofactura.Text.Length == 0)
                     txtcodfactura.Focus();
         }
-
         private void DtFechaRecepcion_Leave(object sender, EventArgs e)
         {
 
@@ -1200,6 +1261,7 @@ namespace HPReserger
         {
             if (!frdetracion.BuscarValor)
             {
+                CargarDetracciones();
                 detrac = frdetracion.detraccion;
                 txtdetracion.Text = frdetracion.detraccion;
             }
@@ -1209,10 +1271,26 @@ namespace HPReserger
         {
             cbodetraccion_SelectedIndexChanged(sender, e);
         }
-
+        DataGridViewComboBoxColumn Combo;
+        private void DtgConten_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Combo = DtgConten.Columns[xOpGrava.Name] as DataGridViewComboBoxColumn;
+                //Combo.DataSource = tipoDoc;
+                Combo.ValueMember = "codigo";
+                Combo.DisplayMember = "descripcion";
+                Combo.DataSource = TGravados;
+            }
+        }
         private void DtgConten_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";
+            if (DtgConten.Columns[xOpGrava.Name].Index == e.ColumnIndex)
+            {
+                DtgConten[e.ColumnIndex, e.RowIndex].Value = 1;
+            }
+            else
+                DtgConten[e.ColumnIndex, e.RowIndex].Value = 0.00;
         }
         private void pbfactura_Click(object sender, EventArgs e)
         {

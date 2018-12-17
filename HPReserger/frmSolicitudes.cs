@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmSolicitudes : Form
+    public partial class frmSolicitudes : FormGradient
     {
         public frmSolicitudes()
         {
@@ -71,6 +72,11 @@ namespace HPReserger
         private void timer_Tick(object sender, EventArgs e)
         {
             btnrecargar_Click(sender, e);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

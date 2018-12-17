@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmDesvinculacion : Form
+    public partial class frmDesvinculacion : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clDesvinculacion = new HPResergerCapaLogica.HPResergerCL();
 

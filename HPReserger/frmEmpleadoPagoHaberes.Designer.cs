@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpleadoPagoHaberes));
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,8 +41,9 @@
             this.pnlconten = new System.Windows.Forms.Panel();
             this.cboBanco = new System.Windows.Forms.ComboBox();
             this.cboMoneda = new System.Windows.Forms.ComboBox();
-            this.txtCuenta = new System.Windows.Forms.TextBox();
-            this.txtCuentaCCI = new System.Windows.Forms.TextBox();
+            this.txtCuentaCCI = new HpResergerUserControls.TextBoxPer();
+            this.txtCuenta = new HpResergerUserControls.TextBoxPer();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlconten.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,36 +62,44 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(75, 40);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(77, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 17;
             this.label4.Text = "Moneda";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 93);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 13);
+            this.label3.Size = new System.Drawing.Size(124, 13);
             this.label3.TabIndex = 16;
             this.label3.Text = "Número de Cuenta CCI";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 67);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(23, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.Size = new System.Drawing.Size(104, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "Número de Cuenta";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(83, 13);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(88, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 14;
             this.label1.Text = "Banco";
             // 
@@ -131,10 +141,11 @@
             // 
             // pnlconten
             // 
+            this.pnlconten.BackColor = System.Drawing.Color.Transparent;
+            this.pnlconten.Controls.Add(this.txtCuentaCCI);
+            this.pnlconten.Controls.Add(this.txtCuenta);
             this.pnlconten.Controls.Add(this.cboBanco);
             this.pnlconten.Controls.Add(this.cboMoneda);
-            this.pnlconten.Controls.Add(this.txtCuenta);
-            this.pnlconten.Controls.Add(this.txtCuentaCCI);
             this.pnlconten.Controls.Add(this.label4);
             this.pnlconten.Controls.Add(this.label3);
             this.pnlconten.Controls.Add(this.label1);
@@ -164,25 +175,46 @@
             this.cboMoneda.Size = new System.Drawing.Size(209, 21);
             this.cboMoneda.TabIndex = 11;
             // 
-            // txtCuenta
-            // 
-            this.txtCuenta.Location = new System.Drawing.Point(127, 63);
-            this.txtCuenta.MaxLength = 20;
-            this.txtCuenta.Name = "txtCuenta";
-            this.txtCuenta.Size = new System.Drawing.Size(209, 20);
-            this.txtCuenta.TabIndex = 12;
-            this.txtCuenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCuenta_KeyDown);
-            this.txtCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuenta_KeyPress);
-            // 
             // txtCuentaCCI
             // 
+            this.txtCuentaCCI.BackColor = System.Drawing.Color.White;
+            this.txtCuentaCCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCuentaCCI.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtCuentaCCI.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtCuentaCCI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCuentaCCI.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtCuentaCCI.Location = new System.Drawing.Point(127, 89);
-            this.txtCuentaCCI.MaxLength = 20;
+            this.txtCuentaCCI.MaxLength = 10;
             this.txtCuentaCCI.Name = "txtCuentaCCI";
-            this.txtCuentaCCI.Size = new System.Drawing.Size(209, 20);
-            this.txtCuentaCCI.TabIndex = 13;
-            this.txtCuentaCCI.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCuentaCCI_KeyDown);
-            this.txtCuentaCCI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuentaCCI_KeyPress);
+            this.txtCuentaCCI.NextControlOnEnter = this.btnaceptar;
+            this.txtCuentaCCI.Size = new System.Drawing.Size(209, 21);
+            this.txtCuentaCCI.TabIndex = 237;
+            this.txtCuentaCCI.Text = "0";
+            this.txtCuentaCCI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCuentaCCI.TextoDefecto = "0";
+            this.txtCuentaCCI.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtCuentaCCI.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.toolTip1.SetToolTip(this.txtCuentaCCI, "Tamaño 20 Digitos\r\npor defecto \"0\"");
+            // 
+            // txtCuenta
+            // 
+            this.txtCuenta.BackColor = System.Drawing.Color.White;
+            this.txtCuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtCuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCuenta.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtCuenta.Location = new System.Drawing.Point(127, 63);
+            this.txtCuenta.MaxLength = 10;
+            this.txtCuenta.Name = "txtCuenta";
+            this.txtCuenta.NextControlOnEnter = this.txtCuentaCCI;
+            this.txtCuenta.Size = new System.Drawing.Size(209, 21);
+            this.txtCuenta.TabIndex = 238;
+            this.txtCuenta.Text = "0";
+            this.txtCuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCuenta.TextoDefecto = "0";
+            this.txtCuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtCuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
             // frmEmpleadoPagoHaberes
             // 
@@ -199,7 +231,7 @@
             this.MaximumSize = new System.Drawing.Size(464, 200);
             this.MinimumSize = new System.Drawing.Size(464, 200);
             this.Name = "frmEmpleadoPagoHaberes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "  Empleado Pago de Haberes";
             this.Text = "  Empleado Pago de Haberes";
             this.Load += new System.EventHandler(this.frmEmpleadoPagoHaberes_Load);
             this.pnlconten.ResumeLayout(false);
@@ -220,7 +252,8 @@
         private System.Windows.Forms.Panel pnlconten;
         private System.Windows.Forms.ComboBox cboBanco;
         private System.Windows.Forms.ComboBox cboMoneda;
-        private System.Windows.Forms.TextBox txtCuenta;
-        private System.Windows.Forms.TextBox txtCuentaCCI;
+        private HpResergerUserControls.TextBoxPer txtCuentaCCI;
+        private HpResergerUserControls.TextBoxPer txtCuenta;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

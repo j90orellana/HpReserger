@@ -46,11 +46,12 @@
             // 
             // btngenerar
             // 
+            this.btngenerar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btngenerar.Image = ((System.Drawing.Image)(resources.GetObject("btngenerar.Image")));
             this.btngenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btngenerar.Location = new System.Drawing.Point(190, 136);
+            this.btngenerar.Location = new System.Drawing.Point(176, 136);
             this.btngenerar.Name = "btngenerar";
-            this.btngenerar.Size = new System.Drawing.Size(103, 29);
+            this.btngenerar.Size = new System.Drawing.Size(103, 25);
             this.btngenerar.TabIndex = 3;
             this.btngenerar.Text = "Generar";
             this.btngenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -59,6 +60,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btngenerar);
             this.groupBox1.Controls.Add(this.comboMesAño1);
             this.groupBox1.Controls.Add(this.label1);
@@ -71,6 +73,7 @@
             this.groupBox1.Controls.Add(this.btnrecempresa);
             this.groupBox1.Controls.Add(this.cboempresa);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(454, 178);
@@ -82,20 +85,20 @@
             // 
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 4, 24, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 4, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 4, 1, 0, 0, 0, 0);
-            this.comboMesAño1.Location = new System.Drawing.Point(153, 21);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 12, 5, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño1.Location = new System.Drawing.Point(148, 21);
             this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.Size = new System.Drawing.Size(207, 24);
             this.comboMesAño1.TabIndex = 12;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(104, 27);
+            this.label1.Location = new System.Drawing.Point(99, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Periodo";
             // 
@@ -104,7 +107,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(8, 84);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(83, 17);
+            this.radioButton2.Size = new System.Drawing.Size(86, 17);
             this.radioButton2.TabIndex = 9;
             this.radioButton2.Text = "Por Persona";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -116,7 +119,7 @@
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(6, 57);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.Size = new System.Drawing.Size(88, 17);
             this.radioButton1.TabIndex = 9;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Por Empresa";
@@ -141,7 +144,7 @@
             this.txtnumero.Enabled = false;
             this.txtnumero.Location = new System.Drawing.Point(97, 110);
             this.txtnumero.Name = "txtnumero";
-            this.txtnumero.Size = new System.Drawing.Size(296, 20);
+            this.txtnumero.Size = new System.Drawing.Size(296, 22);
             this.txtnumero.TabIndex = 7;
             // 
             // btnrectipo
@@ -199,7 +202,7 @@
             this.MaximumSize = new System.Drawing.Size(470, 217);
             this.MinimumSize = new System.Drawing.Size(470, 217);
             this.Name = "FrmGenerarRemuneracionRenta";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Generar Certificado de Remuneracion y Renta de Quinta Categoria";
             this.Text = "Generar Certificado de Remuneracion y Renta de Quinta Categoria";
             this.Load += new System.EventHandler(this.FrmGenerarRemuneracionRenta_Load);
             this.groupBox1.ResumeLayout(false);

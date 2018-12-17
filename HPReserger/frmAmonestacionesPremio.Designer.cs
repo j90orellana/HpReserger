@@ -32,8 +32,10 @@ namespace HPReserger
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAmonestacionesPremio));
             this.tab = new System.Windows.Forms.TabControl();
             this.Memo = new System.Windows.Forms.TabPage();
@@ -47,16 +49,16 @@ namespace HPReserger
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblmensajito = new System.Windows.Forms.TextBox();
             this.txtNumeroDocumento = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Grid = new Dtgconten();
+            this.Grid = new HpResergerUserControls.Dtgconten();
             this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CODIGOTIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +86,7 @@ namespace HPReserger
             this.tab.Controls.Add(this.Memo);
             this.tab.Controls.Add(this.Premio);
             this.tab.Enabled = false;
+            this.tab.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab.ItemSize = new System.Drawing.Size(100, 18);
             this.tab.Location = new System.Drawing.Point(11, 231);
             this.tab.Name = "tab";
@@ -97,6 +100,7 @@ namespace HPReserger
             this.Memo.Controls.Add(this.lblMemo);
             this.Memo.Controls.Add(this.txtObservacionesMemo);
             this.Memo.Controls.Add(this.label6);
+            this.Memo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Memo.Location = new System.Drawing.Point(4, 22);
             this.Memo.Name = "Memo";
             this.Memo.Padding = new System.Windows.Forms.Padding(3);
@@ -108,15 +112,17 @@ namespace HPReserger
             // lblMemo
             // 
             this.lblMemo.AutoSize = true;
+            this.lblMemo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMemo.Location = new System.Drawing.Point(263, 353);
             this.lblMemo.Name = "lblMemo";
-            this.lblMemo.Size = new System.Drawing.Size(85, 13);
+            this.lblMemo.Size = new System.Drawing.Size(87, 13);
             this.lblMemo.TabIndex = 81;
             this.lblMemo.Text = "8000 Caracteres";
             this.lblMemo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtObservacionesMemo
             // 
+            this.txtObservacionesMemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservacionesMemo.Location = new System.Drawing.Point(15, 32);
             this.txtObservacionesMemo.MaxLength = 8000;
             this.txtObservacionesMemo.Multiline = true;
@@ -128,9 +134,10 @@ namespace HPReserger
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(12, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.Size = new System.Drawing.Size(82, 13);
             this.label6.TabIndex = 79;
             this.label6.Text = "Observaciones";
             // 
@@ -152,7 +159,7 @@ namespace HPReserger
             this.lblPremio.AutoSize = true;
             this.lblPremio.Location = new System.Drawing.Point(263, 353);
             this.lblPremio.Name = "lblPremio";
-            this.lblPremio.Size = new System.Drawing.Size(85, 13);
+            this.lblPremio.Size = new System.Drawing.Size(87, 13);
             this.lblPremio.TabIndex = 83;
             this.lblPremio.Text = "8000 Caracteres";
             this.lblPremio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -172,19 +179,20 @@ namespace HPReserger
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(12, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.Size = new System.Drawing.Size(82, 13);
             this.label7.TabIndex = 81;
             this.label7.Text = "Observaciones";
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.lblmensajito);
             this.groupBox2.Controls.Add(this.txtNumeroDocumento);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtApellidoPaterno);
             this.groupBox2.Controls.Add(this.txtApellidoMaterno);
             this.groupBox2.Controls.Add(this.txtNombres);
             this.groupBox2.Controls.Add(this.cboTipoDocumento);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
@@ -199,65 +207,61 @@ namespace HPReserger
             // 
             this.lblmensajito.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.lblmensajito.Enabled = false;
+            this.lblmensajito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensajito.Location = new System.Drawing.Point(13, 149);
             this.lblmensajito.MaxLength = 30;
             this.lblmensajito.Name = "lblmensajito";
             this.lblmensajito.ReadOnly = true;
             this.lblmensajito.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblmensajito.ShortcutsEnabled = false;
-            this.lblmensajito.Size = new System.Drawing.Size(343, 20);
+            this.lblmensajito.Size = new System.Drawing.Size(343, 21);
             this.lblmensajito.TabIndex = 79;
             // 
             // txtNumeroDocumento
             // 
+            this.txtNumeroDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 46);
             this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(161, 20);
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(161, 21);
             this.txtNumeroDocumento.TabIndex = 1;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
             this.txtNumeroDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumeroDocumento_KeyDown);
             this.txtNumeroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroDocumento_KeyPress);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(179, 13);
-            this.label5.TabIndex = 77;
-            this.label5.Text = "Número de Documento de Identidad";
-            // 
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtApellidoPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 72);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.ReadOnly = true;
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(161, 20);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(161, 21);
             this.txtApellidoPaterno.TabIndex = 76;
             // 
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtApellidoMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidoMaterno.Location = new System.Drawing.Point(194, 98);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.ReadOnly = true;
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(161, 20);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(161, 21);
             this.txtApellidoMaterno.TabIndex = 75;
             // 
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombres.Location = new System.Drawing.Point(195, 124);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.ReadOnly = true;
             this.txtNombres.ShortcutsEnabled = false;
-            this.txtNombres.Size = new System.Drawing.Size(161, 20);
+            this.txtNombres.Size = new System.Drawing.Size(161, 21);
             this.txtNombres.TabIndex = 74;
             // 
             // cboTipoDocumento
@@ -271,39 +275,53 @@ namespace HPReserger
             this.cboTipoDocumento.TabIndex = 73;
             this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(-1, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(196, 13);
+            this.label5.TabIndex = 77;
+            this.label5.Text = "Número de Documento de Identidad";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(140, 128);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(142, 128);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 72;
             this.label4.Text = "Nombres";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(103, 102);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(98, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.Size = new System.Drawing.Size(97, 13);
             this.label3.TabIndex = 71;
             this.label3.Text = "Apellido Materno";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(105, 76);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(102, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 70;
             this.label2.Text = "Apellido Paterno";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 23);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(18, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 13);
+            this.label1.Size = new System.Drawing.Size(177, 13);
             this.label1.TabIndex = 69;
             this.label1.Text = "Tipo de Documento de Identidad";
             // 
@@ -311,17 +329,27 @@ namespace HPReserger
             // 
             this.Grid.AllowUserToAddRows = false;
             this.Grid.AllowUserToDeleteRows = false;
+            this.Grid.AllowUserToResizeColumns = false;
+            this.Grid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.Grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Grid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.Grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.Grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Registro,
@@ -330,9 +358,20 @@ namespace HPReserger
             this.NDI,
             this.APELLIDOSNOMBRES,
             this.OBSERVACIONES});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Grid.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Grid.EnableHeadersVisualStyles = false;
+            this.Grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.Grid.Location = new System.Drawing.Point(402, 12);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
+            this.Grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Grid.RowHeadersVisible = false;
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid.RowTemplate.Height = 16;
@@ -354,8 +393,8 @@ namespace HPReserger
             // CODIGOTIPO
             // 
             this.CODIGOTIPO.DataPropertyName = "CODIGOTIPO";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CODIGOTIPO.DefaultCellStyle = dataGridViewCellStyle3;
             this.CODIGOTIPO.HeaderText = "CODIGOTIPO";
             this.CODIGOTIPO.Name = "CODIGOTIPO";
             this.CODIGOTIPO.ReadOnly = true;
@@ -364,9 +403,9 @@ namespace HPReserger
             // TIPOID
             // 
             this.TIPOID.DataPropertyName = "TIPOID";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TIPOID.DefaultCellStyle = dataGridViewCellStyle4;
             this.TIPOID.HeaderText = "TIPO ID";
             this.TIPOID.Name = "TIPOID";
             this.TIPOID.ReadOnly = true;
@@ -377,8 +416,8 @@ namespace HPReserger
             // NDI
             // 
             this.NDI.DataPropertyName = "NID";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.NDI.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NDI.DefaultCellStyle = dataGridViewCellStyle5;
             this.NDI.HeaderText = "Nº ID";
             this.NDI.Name = "NDI";
             this.NDI.ReadOnly = true;
@@ -403,6 +442,9 @@ namespace HPReserger
             // 
             // pbFoto
             // 
+            this.pbFoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
             this.pbFoto.Location = new System.Drawing.Point(402, 196);
             this.pbFoto.Name = "pbFoto";
             this.pbFoto.Size = new System.Drawing.Size(418, 436);
@@ -414,6 +456,7 @@ namespace HPReserger
             // 
             // btnGenerar
             // 
+            this.btnGenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGenerar.Enabled = false;
             this.btnGenerar.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerar.Image")));
             this.btnGenerar.Location = new System.Drawing.Point(11, 638);
@@ -443,13 +486,15 @@ namespace HPReserger
             // txtRuta
             // 
             this.txtRuta.Enabled = false;
+            this.txtRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRuta.Location = new System.Drawing.Point(139, 196);
             this.txtRuta.Name = "txtRuta";
-            this.txtRuta.Size = new System.Drawing.Size(245, 20);
+            this.txtRuta.Size = new System.Drawing.Size(245, 21);
             this.txtRuta.TabIndex = 109;
             // 
             // btndescargar
             // 
+            this.btndescargar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btndescargar.AutoEllipsis = true;
             this.btndescargar.ImageKey = "(ninguno)";
             this.btndescargar.Location = new System.Drawing.Point(583, 601);
@@ -464,6 +509,7 @@ namespace HPReserger
             // 
             // btnmodificiar
             // 
+            this.btnmodificiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnmodificiar.Enabled = false;
             this.btnmodificiar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificiar.Image")));
             this.btnmodificiar.Location = new System.Drawing.Point(402, 638);
@@ -477,6 +523,7 @@ namespace HPReserger
             // 
             // btneliminar
             // 
+            this.btneliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btneliminar.Enabled = false;
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
             this.btneliminar.Location = new System.Drawing.Point(502, 638);
@@ -490,6 +537,7 @@ namespace HPReserger
             // 
             // btncancelar
             // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(726, 638);
             this.btncancelar.Name = "btncancelar";
@@ -504,7 +552,6 @@ namespace HPReserger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(832, 670);
             this.Controls.Add(this.btncancelar);
@@ -519,10 +566,9 @@ namespace HPReserger
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.tab);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(848, 709);
             this.MinimumSize = new System.Drawing.Size(848, 709);
             this.Name = "frmAmonestacionesPremio";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Registro de Amonestaciones y Premios";
             this.Text = "Registro de Amonestaciones y Premios";
             this.Load += new System.EventHandler(this.frmAmonestacionesPremio_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmAmonestacionesPremio_MouseMove);

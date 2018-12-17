@@ -113,7 +113,7 @@ namespace HPReserger
             {
                 if (dtgconten.SelectedRows.Count > 0)
                 {
-                    if (HPResergerFunciones.Utilitarios.msgp("Desea Eliminar Fila") == DialogResult.Yes)
+                    if (HPResergerFunciones.Utilitarios.msgYesNo("Desea Eliminar Fila") == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow item in dtgconten.SelectedRows)
                         {

@@ -20,6 +20,7 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmdetracciones_Load(object sender, EventArgs e)
         {
+            LimpiarBusquedas();
             CArgarDatosDetraccion();
         }
         private Boolean _prueba;
@@ -34,8 +35,8 @@ namespace HPReserger
             if (estado != 0)
             {
                 estado = 0;
-                Activar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtBuscar1);
-                Desactivar(btnaceptar, txtdescripcion, txtporcentaje);
+                Activar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtbusid, txtbusanexo, txtbusdesc, btnlimpiar);
+                Desactivar(btnaceptar, txtdescripcion, txtporcentaje, txtAnexo, txtsunat, dtpfecha);
             }
             else
                 this.Close();
@@ -48,6 +49,12 @@ namespace HPReserger
         public void CArgarDatosDetraccion()
         {
             dtgconten.DataSource = CapaLogica.Detraciones(0);
+            lblmsg2.Text = $"Total de Registros : {dtgconten.RowCount}";
+            btnmodificar.Enabled = false;
+            if (dtgconten.RowCount > 0)
+            {
+                btnmodificar.Enabled = true;
+            }
         }
         frmProcesando frmproce;
         private void button1_Click(object sender, EventArgs e)
@@ -82,7 +89,7 @@ namespace HPReserger
                 Celditas.Add(Celdita);
                 //HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Empresas", Celditas, 1, new int[] {  }, new int[] { 1 }, new int[] { });
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Periodos", Celditas, 2, new int[] { }, new int[] { 1 }, new int[] { });
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Detracción", Celditas, 2, new int[] { 2, 3, 5 }, new int[] { 1 }, new int[] { });
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Detracción", Celditas, 2, new int[] { 2, 3, 4, 5 }, new int[] { 1 }, new int[] { });
             }
             else
             {
@@ -97,12 +104,16 @@ namespace HPReserger
         public void Activar(params object[] control)
         {
             foreach (object x in control)
-                ((Control)x).Enabled = true;
+                if (((Control)x).AccessibilityObject.Role == AccessibleRole.Text)
+                    ((TextBoxPer)x).ReadOnly = false;
+                else ((Control)x).Enabled = true;
         }
         public void Desactivar(params object[] control)
         {
             foreach (object x in control)
-                ((Control)x).Enabled = false;
+                if (((Control)x).AccessibilityObject.Role == AccessibleRole.Text)
+                    ((TextBoxPer)x).ReadOnly = true;
+                else ((Control)x).Enabled = false;
         }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -112,6 +123,8 @@ namespace HPReserger
             {
                 txtdescripcion.Text = dtgconten[descripcionx.Name, y].Value.ToString();
                 txtporcentaje.Text = dtgconten[porcentajex.Name, y].Value.ToString();
+                txtAnexo.Text = dtgconten[xAnexo.Name, y].Value.ToString();
+                txtsunat.Text = dtgconten[xCod_Detraccion.Name, y].Value.ToString();
                 CodigoDet = (int)dtgconten[id_detraccionx.Name, y].Value;
                 dtpfecha.Value = (DateTime)dtgconten[fechax.Name, y].Value;
             }
@@ -133,24 +146,25 @@ namespace HPReserger
         {
             CArgarDatosDetraccion();
             LimpiarProductoNuevo();
-            Desactivar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtBuscar1);
-            Activar(btnaceptar, txtdescripcion, txtporcentaje);
+            Desactivar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtbusid, txtbusanexo, txtbusdesc, btnlimpiar);
+            Activar(btnaceptar, txtdescripcion, txtporcentaje, txtAnexo, txtsunat, dtpfecha);
             estado = 1;
             txtdescripcion.Focus();
         }
         private void LimpiarProductoNuevo()
         {
-            txtdescripcion.Text = "";
-            txtporcentaje.Text = "";
-
+            txtdescripcion.CargarTextoporDefecto();
+            txtporcentaje.CargarTextoporDefecto();
+            txtsunat.CargarTextoporDefecto();
+            txtAnexo.CargarTextoporDefecto();
         }
         int CodigoDet;
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             CodigoDet = (int)dtgconten.CurrentRow.Cells[id_detraccionx.Name].Value;
             estado = 2;
-            Desactivar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtBuscar1);
-            Activar(btnaceptar, txtdescripcion, txtporcentaje);
+            Desactivar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtbusid, txtbusanexo, txtbusdesc, btnlimpiar);
+            Activar(btnaceptar, txtdescripcion, txtporcentaje, txtAnexo, txtsunat, dtpfecha);
             txtdescripcion.Focus();
         }
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -171,14 +185,14 @@ namespace HPReserger
             //NUEVO           
             if (estado == 1)
             {
-                CapaLogica.Detraciones(1, 0, txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);
+                CapaLogica.Detraciones(1, 0, txtsunat.Text, txtAnexo.TextValido(), txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);
                 msg("Guardado Exitosamente");
                 estado = 0;
             }
             //MODIFICAR
             if (estado == 2)
             {
-                CapaLogica.Detraciones(2, CodigoDet, txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);
+                CapaLogica.Detraciones(2, CodigoDet, txtsunat.Text, txtAnexo.TextValido(), txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);
                 msg("Guardado Exitosamente");
                 estado = 0;
             }
@@ -189,34 +203,34 @@ namespace HPReserger
                 this.Close();
             }
             CArgarDatosDetraccion();
-            Activar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtBuscar1);
-            Desactivar(btnaceptar, txtdescripcion, txtporcentaje);
+            Activar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, txtbusid, txtbusanexo, txtbusdesc, btnlimpiar);
+            Desactivar(btnaceptar, txtdescripcion, txtporcentaje, txtAnexo, txtsunat, dtpfecha);
 
         }
         public string detraccion = "No";
         private void btneliminar_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
-                if (HPResergerFunciones.Utilitarios.msgp("Desea Eliminar Registro") == DialogResult.Yes)
+                if (HPResergerFunciones.Utilitarios.msgYesNo("Desea Eliminar Registro") == DialogResult.Yes)
                 {
-                    CapaLogica.Detraciones(5, CodigoDet, txtdescripcion.Text, 0, frmLogin.CodigoUsuario, DateTime.Now);
+                    CapaLogica.Detraciones(5, CodigoDet, txtsunat.Text, txtAnexo.TextValido(), txtdescripcion.Text, 0, frmLogin.CodigoUsuario, DateTime.Now);
                     CArgarDatosDetraccion();
                 }
         }
         private void txtBuscar1_ClickBotonBuscar(object sender, EventArgs e)
         {
-            if (txtBuscar1.EstaLLeno())
-            {
-                CArgarDatosDetraccion();
-                DataTable datos = (DataTable)dtgconten.DataSource;
-                string columna = txtBuscar1.EstaLLeno() ? txtBuscar1.Text : "";
-                string filtro = $"Desc_Detraccion like '%{columna}%'";
-                DataRow[] dato = datos.Select(filtro);
-                if (dato.Count() > 0)
-                    dtgconten.DataSource = dato.CopyToDataTable();
-                else dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
-            }
-            else CArgarDatosDetraccion();
+            //if (txtBuscar1.EstaLLeno())
+            //{
+            //    CArgarDatosDetraccion();
+            //    DataTable datos = (DataTable)dtgconten.DataSource;
+            //    string columna = txtBuscar1.EstaLLeno() ? txtBuscar1.Text : "";
+            //    string filtro = $"Desc_Detraccion like '%{columna}%'";
+            //    DataRow[] dato = datos.Select(filtro);
+            //    if (dato.Count() > 0)
+            //        dtgconten.DataSource = dato.CopyToDataTable();
+            //    else dtgconten.DataSource = ((DataTable)dtgconten.DataSource).Clone();
+            //}
+            //else CArgarDatosDetraccion();
         }
         private void dtgconten_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
@@ -238,6 +252,28 @@ namespace HPReserger
                     this.Close();
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LimpiarBusquedas();
+        }
+        public void LimpiarBusquedas()
+        {
+            txtbusid.CargarTextoporDefecto();
+            txtbusanexo.CargarTextoporDefecto();
+            txtbusdesc.CargarTextoporDefecto();
+        }
+        private void txtbusdesc_TextChanged(object sender, EventArgs e)
+        {
+            dtgconten.DataSource = CapaLogica.DetraccionesFiltrar(txtbusid.TextValido(), txtbusanexo.TextValido(), txtbusdesc.TextValido());
+            lblmsg2.Text = $"Total de Registros : {dtgconten.RowCount}";
+            btnmodificar.Enabled = false;
+            if (dtgconten.RowCount > 0)
+            {
+                btnmodificar.Enabled = true;
+            }
+
         }
     }
 }

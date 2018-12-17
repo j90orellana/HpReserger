@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarAsientosAbiertos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.btnAbrirx = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idAsientoContableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idEmpresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uspListarAsientosAbiertosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.siGeDataSet1 = new HPReserger.SiGeDataSet1();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,11 +48,6 @@
             this.usp_ListarAsientosAbiertosTableAdapter = new HPReserger.SiGeDataSet1TableAdapters.usp_ListarAsientosAbiertosTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnAbrirx = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.idAsientoContableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idEmpresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uspListarAsientosAbiertosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siGeDataSet1)).BeginInit();
@@ -59,9 +59,9 @@
             this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -71,14 +71,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnAbrirx,
@@ -87,14 +87,14 @@
             this.empresaDataGridViewTextBoxColumn,
             this.idEmpresaDataGridViewTextBoxColumn});
             this.dtgconten.DataSource = this.uspListarAsientosAbiertosBindingSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(12, 30);
@@ -109,6 +109,55 @@
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentDoubleClick);
             // 
+            // btnAbrirx
+            // 
+            this.btnAbrirx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.btnAbrirx.HeaderText = "";
+            this.btnAbrirx.MinimumWidth = 50;
+            this.btnAbrirx.Name = "btnAbrirx";
+            this.btnAbrirx.ReadOnly = true;
+            this.btnAbrirx.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnAbrirx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnAbrirx.Text = "Abrir";
+            this.btnAbrirx.UseColumnTextForButtonValue = true;
+            this.btnAbrirx.Width = 50;
+            // 
+            // idAsientoContableDataGridViewTextBoxColumn
+            // 
+            this.idAsientoContableDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idAsientoContableDataGridViewTextBoxColumn.DataPropertyName = "Id_Asiento_Contable";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.idAsientoContableDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.idAsientoContableDataGridViewTextBoxColumn.HeaderText = "Nro Asiento";
+            this.idAsientoContableDataGridViewTextBoxColumn.Name = "idAsientoContableDataGridViewTextBoxColumn";
+            this.idAsientoContableDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idAsientoContableDataGridViewTextBoxColumn.Width = 94;
+            // 
+            // Fechax
+            // 
+            this.Fechax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Fechax.DataPropertyName = "Fechon";
+            this.Fechax.HeaderText = "Fecha";
+            this.Fechax.Name = "Fechax";
+            this.Fechax.ReadOnly = true;
+            this.Fechax.Width = 62;
+            // 
+            // empresaDataGridViewTextBoxColumn
+            // 
+            this.empresaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.empresaDataGridViewTextBoxColumn.DataPropertyName = "Empresa";
+            this.empresaDataGridViewTextBoxColumn.HeaderText = "Empresa";
+            this.empresaDataGridViewTextBoxColumn.Name = "empresaDataGridViewTextBoxColumn";
+            this.empresaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idEmpresaDataGridViewTextBoxColumn
+            // 
+            this.idEmpresaDataGridViewTextBoxColumn.DataPropertyName = "Id_Empresa";
+            this.idEmpresaDataGridViewTextBoxColumn.HeaderText = "Id_Empresa";
+            this.idEmpresaDataGridViewTextBoxColumn.Name = "idEmpresaDataGridViewTextBoxColumn";
+            this.idEmpresaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idEmpresaDataGridViewTextBoxColumn.Visible = false;
+            // 
             // uspListarAsientosAbiertosBindingSource
             // 
             this.uspListarAsientosAbiertosBindingSource.DataMember = "usp_ListarAsientosAbiertos";
@@ -122,11 +171,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 13);
+            this.label1.Size = new System.Drawing.Size(153, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "LISTADO DE ASIENTOS ABIERTOS\r\n";
+            this.label1.Text = "Listado de Asientos Abiertos";
             // 
             // btncancelar
             // 
@@ -176,61 +227,11 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // btnAbrirx
-            // 
-            this.btnAbrirx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.btnAbrirx.HeaderText = "";
-            this.btnAbrirx.MinimumWidth = 50;
-            this.btnAbrirx.Name = "btnAbrirx";
-            this.btnAbrirx.ReadOnly = true;
-            this.btnAbrirx.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnAbrirx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnAbrirx.Text = "Abrir";
-            this.btnAbrirx.UseColumnTextForButtonValue = true;
-            this.btnAbrirx.Width = 50;
-            // 
-            // idAsientoContableDataGridViewTextBoxColumn
-            // 
-            this.idAsientoContableDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idAsientoContableDataGridViewTextBoxColumn.DataPropertyName = "Id_Asiento_Contable";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.idAsientoContableDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.idAsientoContableDataGridViewTextBoxColumn.HeaderText = "Nro Asiento";
-            this.idAsientoContableDataGridViewTextBoxColumn.Name = "idAsientoContableDataGridViewTextBoxColumn";
-            this.idAsientoContableDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idAsientoContableDataGridViewTextBoxColumn.Width = 94;
-            // 
-            // Fechax
-            // 
-            this.Fechax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Fechax.DataPropertyName = "Fechon";
-            this.Fechax.HeaderText = "Fecha";
-            this.Fechax.Name = "Fechax";
-            this.Fechax.ReadOnly = true;
-            this.Fechax.Width = 62;
-            // 
-            // empresaDataGridViewTextBoxColumn
-            // 
-            this.empresaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.empresaDataGridViewTextBoxColumn.DataPropertyName = "Empresa";
-            this.empresaDataGridViewTextBoxColumn.HeaderText = "Empresa";
-            this.empresaDataGridViewTextBoxColumn.Name = "empresaDataGridViewTextBoxColumn";
-            this.empresaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idEmpresaDataGridViewTextBoxColumn
-            // 
-            this.idEmpresaDataGridViewTextBoxColumn.DataPropertyName = "Id_Empresa";
-            this.idEmpresaDataGridViewTextBoxColumn.HeaderText = "Id_Empresa";
-            this.idEmpresaDataGridViewTextBoxColumn.Name = "idEmpresaDataGridViewTextBoxColumn";
-            this.idEmpresaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idEmpresaDataGridViewTextBoxColumn.Visible = false;
-            // 
             // frmListarAsientosAbiertos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 497);
-            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnactualizar);
             this.Controls.Add(this.btncancelar);

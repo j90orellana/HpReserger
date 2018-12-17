@@ -36,31 +36,35 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboperiodo = new System.Windows.Forms.ComboBox();
             this.dtgconten1 = new HpResergerUserControls.Dtgconten();
+            this.procesox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Verx = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.btncerrar = new System.Windows.Forms.Button();
-            this.procesox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resultadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Verx = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Empresa";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(17, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Periodo";
             // 
@@ -124,6 +128,31 @@
             this.dtgconten1.TabIndex = 4;
             this.dtgconten1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten1_CellContentClick);
             // 
+            // procesox
+            // 
+            this.procesox.DataPropertyName = "proceso";
+            this.procesox.HeaderText = "Proceso";
+            this.procesox.Name = "procesox";
+            this.procesox.ReadOnly = true;
+            // 
+            // resultadox
+            // 
+            this.resultadox.DataPropertyName = "resultado";
+            this.resultadox.HeaderText = "Resultado";
+            this.resultadox.Name = "resultadox";
+            this.resultadox.ReadOnly = true;
+            // 
+            // Verx
+            // 
+            this.Verx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Verx.DataPropertyName = "ver";
+            this.Verx.HeaderText = "Ver";
+            this.Verx.Name = "Verx";
+            this.Verx.ReadOnly = true;
+            this.Verx.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Verx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Verx.Width = 47;
+            // 
             // btnaceptar
             // 
             this.btnaceptar.Enabled = false;
@@ -175,37 +204,11 @@
             this.btncerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncerrar.UseVisualStyleBackColor = true;
             // 
-            // procesox
-            // 
-            this.procesox.DataPropertyName = "proceso";
-            this.procesox.HeaderText = "Proceso";
-            this.procesox.Name = "procesox";
-            this.procesox.ReadOnly = true;
-            // 
-            // resultadox
-            // 
-            this.resultadox.DataPropertyName = "resultado";
-            this.resultadox.HeaderText = "Resultado";
-            this.resultadox.Name = "resultadox";
-            this.resultadox.ReadOnly = true;
-            // 
-            // Verx
-            // 
-            this.Verx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Verx.DataPropertyName = "ver";
-            this.Verx.HeaderText = "Ver";
-            this.Verx.Name = "Verx";
-            this.Verx.ReadOnly = true;
-            this.Verx.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Verx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Verx.Width = 47;
-            // 
             // frmcierremensual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 294);
-            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.btncerrar);
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.btnaceptar);

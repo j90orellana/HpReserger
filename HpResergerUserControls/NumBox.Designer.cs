@@ -56,9 +56,10 @@
             // NumBox
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.Num);
             this.Name = "NumBox";
-            this.Size = new System.Drawing.Size(148, 20);
+            this.Size = new System.Drawing.Size(148, 21);
             this.ResumeLayout(false);
             this.PerformLayout();
 

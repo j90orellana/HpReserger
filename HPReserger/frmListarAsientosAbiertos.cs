@@ -35,7 +35,7 @@ namespace HPReserger
         public void CargarDatosAsientos()
         {
             cerrado = 0;
-            dtgconten.DataSource = CapaLogica.ListarAsientosAbiertos(0, idempresa, fecha);           
+            dtgconten.DataSource = CapaLogica.ListarAsientosAbiertos(0, idempresa, fecha);
         }
         private void btnactualizar_Click(object sender, EventArgs e)
         {
@@ -49,24 +49,29 @@ namespace HPReserger
         {
             this.Close();
         }
+        frmAsientoContable asientito;
         private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
             if (x >= 0)
             {
-                frmAsientoContable asientito = new frmAsientoContable();
-                asientito.FormClosed += Asientito_FormClosed;
-                //asientito.MdiParent = MdiParent;
-                asientito.Icon = Icon;
-                asientito.ShowDialog();
-                asientito.BuscarAsiento(dtgconten[idAsientoContableDataGridViewTextBoxColumn.Name, x].Value.ToString(), (int)dtgconten[idEmpresaDataGridViewTextBoxColumn.Name, x].Value, (DateTime)dtgconten[Fechax.Name, x].Value);
+                if (asientito == null)
+                {
+                    asientito = new frmAsientoContable();
+                    asientito.FormClosed += Asientito_FormClosed;
+                    asientito.MdiParent = MdiParent;
+                    asientito.Icon = Icon;
+                    asientito.Show();
+                    asientito.BuscarAsiento(dtgconten[idAsientoContableDataGridViewTextBoxColumn.Name, x].Value.ToString(), (int)dtgconten[idEmpresaDataGridViewTextBoxColumn.Name, x].Value, (DateTime)dtgconten[Fechax.Name, x].Value);
+                }
+                else asientito.Activate();
             }
         }
         private void Asientito_FormClosed(object sender, FormClosedEventArgs e)
         {
             btnactualizar_Click(sender, e);
+            asientito = null;
         }
-
         private void dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;

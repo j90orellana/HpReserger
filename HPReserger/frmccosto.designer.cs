@@ -138,9 +138,9 @@ namespace HPReserger
             this.txtcosto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtcosto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcosto.Location = new System.Drawing.Point(96, 27);
+            this.txtcosto.Location = new System.Drawing.Point(101, 27);
             this.txtcosto.Name = "txtcosto";
-            this.txtcosto.Size = new System.Drawing.Size(275, 20);
+            this.txtcosto.Size = new System.Drawing.Size(270, 22);
             this.txtcosto.TabIndex = 2;
             this.txtcosto.TextChanged += new System.EventHandler(this.txtcosto_TextChanged);
             this.txtcosto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcosto_KeyDown);
@@ -148,9 +148,9 @@ namespace HPReserger
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 7);
+            this.label2.Location = new System.Drawing.Point(4, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = "Código de Costo:";
             // 
@@ -162,16 +162,18 @@ namespace HPReserger
             // 
             this.pnl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl1.BackColor = System.Drawing.Color.Transparent;
             this.pnl1.Controls.Add(this.btnbuscar);
             this.pnl1.Controls.Add(this.cbocuentas);
             this.pnl1.Controls.Add(this.cbotiene);
             this.pnl1.Controls.Add(this.txtcodigo);
+            this.pnl1.Controls.Add(this.txtcosto);
             this.pnl1.Controls.Add(this.lblcuenta);
             this.pnl1.Controls.Add(this.label1);
             this.pnl1.Controls.Add(this.label3);
             this.pnl1.Controls.Add(this.label2);
-            this.pnl1.Controls.Add(this.txtcosto);
             this.pnl1.Enabled = false;
+            this.pnl1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnl1.Location = new System.Drawing.Point(12, 12);
             this.pnl1.Name = "pnl1";
             this.pnl1.Size = new System.Drawing.Size(374, 100);
@@ -199,9 +201,9 @@ namespace HPReserger
             this.cbocuentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocuentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuentas.FormattingEnabled = true;
-            this.cbocuentas.Location = new System.Drawing.Point(96, 77);
+            this.cbocuentas.Location = new System.Drawing.Point(101, 77);
             this.cbocuentas.Name = "cbocuentas";
-            this.cbocuentas.Size = new System.Drawing.Size(248, 21);
+            this.cbocuentas.Size = new System.Drawing.Size(243, 21);
             this.cbocuentas.TabIndex = 25;
             this.cbocuentas.TextChanged += new System.EventHandler(this.cbocuentas_TextChanged);
             this.cbocuentas.Click += new System.EventHandler(this.cbocuentas_Click);
@@ -213,9 +215,9 @@ namespace HPReserger
             this.cbotiene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotiene.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotiene.FormattingEnabled = true;
-            this.cbotiene.Location = new System.Drawing.Point(96, 51);
+            this.cbotiene.Location = new System.Drawing.Point(101, 51);
             this.cbotiene.Name = "cbotiene";
-            this.cbotiene.Size = new System.Drawing.Size(275, 21);
+            this.cbotiene.Size = new System.Drawing.Size(270, 21);
             this.cbotiene.TabIndex = 25;
             this.cbotiene.SelectedIndexChanged += new System.EventHandler(this.cbotiene_SelectedIndexChanged);
             // 
@@ -225,36 +227,36 @@ namespace HPReserger
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcodigo.Location = new System.Drawing.Point(96, 3);
+            this.txtcodigo.Location = new System.Drawing.Point(101, 3);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(275, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(270, 22);
             this.txtcodigo.TabIndex = 1;
             this.txtcodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcodigo_KeyDown);
             // 
             // lblcuenta
             // 
             this.lblcuenta.AutoSize = true;
-            this.lblcuenta.Location = new System.Drawing.Point(49, 81);
+            this.lblcuenta.Location = new System.Drawing.Point(48, 81);
             this.lblcuenta.Name = "lblcuenta";
-            this.lblcuenta.Size = new System.Drawing.Size(44, 13);
+            this.lblcuenta.Size = new System.Drawing.Size(47, 13);
             this.lblcuenta.TabIndex = 14;
             this.lblcuenta.Text = "Cuenta:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 55);
+            this.label1.Location = new System.Drawing.Point(18, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 14;
             this.label1.Text = "Tiene Cuenta:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 31);
+            this.label3.Location = new System.Drawing.Point(4, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 14;
             this.label3.Text = "Centro De Costo:";
             // 
@@ -262,9 +264,11 @@ namespace HPReserger
             // 
             this.gp1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gp1.BackColor = System.Drawing.Color.Transparent;
             this.gp1.Controls.Add(this.txtbuscar);
             this.gp1.Controls.Add(this.radioButton2);
             this.gp1.Controls.Add(this.radioButton1);
+            this.gp1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gp1.Location = new System.Drawing.Point(12, 114);
             this.gp1.Name = "gp1";
             this.gp1.Size = new System.Drawing.Size(463, 71);
@@ -274,13 +278,14 @@ namespace HPReserger
             // 
             // txtbuscar
             // 
-            this.txtbuscar.Text = "Buscar";
             this.txtbuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.txtbuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtbuscar.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtbuscar.FondoBoton")));
+            this.txtbuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscar.ForeColor = System.Drawing.Color.Black;
+            this.txtbuscar.ImgBotonCerrar = null;
             this.txtbuscar.Location = new System.Drawing.Point(8, 41);
             this.txtbuscar.Name = "txtbuscar";
             this.txtbuscar.Size = new System.Drawing.Size(449, 20);
@@ -293,7 +298,7 @@ namespace HPReserger
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(71, 21);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(86, 17);
+            this.radioButton2.Size = new System.Drawing.Size(93, 17);
             this.radioButton2.TabIndex = 31;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Centro Costo";
@@ -305,7 +310,7 @@ namespace HPReserger
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(7, 20);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 17);
+            this.radioButton1.Size = new System.Drawing.Size(63, 17);
             this.radioButton1.TabIndex = 31;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Código";
@@ -430,7 +435,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(845, 529);
             this.MinimumSize = new System.Drawing.Size(505, 529);
             this.Name = "frmccosto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Centro de Costos";
             this.Text = "Centro de Costos";
             this.Load += new System.EventHandler(this.frmccosto_Load);
             this.pnl1.ResumeLayout(false);

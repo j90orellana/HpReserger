@@ -221,6 +221,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(12, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
@@ -235,13 +236,13 @@
             this.txtdescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtdescripcion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtdescripcion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtdescripcion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdescripcion.ForeColor = System.Drawing.Color.White;
-            this.txtdescripcion.Location = new System.Drawing.Point(85, 13);
+            this.txtdescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdescripcion.ForeColor = System.Drawing.Color.Black;
+            this.txtdescripcion.Location = new System.Drawing.Point(85, 14);
             this.txtdescripcion.MaxLength = 100;
             this.txtdescripcion.Name = "txtdescripcion";
             this.txtdescripcion.NextControlOnEnter = this.btnaceptar;
-            this.txtdescripcion.Size = new System.Drawing.Size(299, 22);
+            this.txtdescripcion.Size = new System.Drawing.Size(299, 21);
             this.txtdescripcion.TabIndex = 69;
             this.txtdescripcion.Text = "Ingrese Descripción";
             this.txtdescripcion.TextoDefecto = "Ingrese Descripción";
@@ -286,7 +287,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 321);
-            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.btnactualizar);
             this.Controls.Add(this.txtdescripcion);

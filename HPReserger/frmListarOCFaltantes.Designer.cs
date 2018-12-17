@@ -32,8 +32,10 @@ namespace HPReserger
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarOCFaltantes));
-            this.dtgconten = new Dtgconten();
+            this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.OC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PED = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,11 +94,25 @@ namespace HPReserger
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgconten.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OC,
@@ -111,17 +127,20 @@ namespace HPReserger
             this.RUC,
             this.NOMBRESEMPLEADO,
             this.APELLIDOS});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            //this.dtgconten.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgconten.EnableHeadersVisualStyles = false;
+            this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(10, 138);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
+            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(1206, 329);
@@ -140,7 +159,7 @@ namespace HPReserger
             this.OC.Name = "OC";
             this.OC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.OC.ToolTipText = "Orden de Compra";
-            this.OC.Width = 47;
+            this.OC.Width = 48;
             // 
             // COT
             // 
@@ -160,7 +179,7 @@ namespace HPReserger
             this.PED.Name = "PED";
             this.PED.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.PED.ToolTipText = "Orden de Pedido";
-            this.PED.Width = 54;
+            this.PED.Width = 52;
             // 
             // TIPO
             // 
@@ -181,7 +200,7 @@ namespace HPReserger
             this.MONTO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.MONTO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.MONTO.ToolTipText = "Importe";
-            this.MONTO.Width = 53;
+            this.MONTO.Width = 56;
             // 
             // ENTREGA
             // 
@@ -192,7 +211,7 @@ namespace HPReserger
             this.ENTREGA.Name = "ENTREGA";
             this.ENTREGA.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ENTREGA.ToolTipText = "Fecha Entrega";
-            this.ENTREGA.Width = 84;
+            this.ENTREGA.Width = 82;
             // 
             // GERENCIA
             // 
@@ -201,7 +220,7 @@ namespace HPReserger
             this.GERENCIA.FillWeight = 85.10638F;
             this.GERENCIA.HeaderText = "GERENCIA";
             this.GERENCIA.Name = "GERENCIA";
-            this.GERENCIA.Width = 87;
+            this.GERENCIA.Width = 86;
             // 
             // AREA
             // 
@@ -210,7 +229,7 @@ namespace HPReserger
             this.AREA.FillWeight = 85.10638F;
             this.AREA.HeaderText = "AREA";
             this.AREA.Name = "AREA";
-            this.AREA.Width = 61;
+            this.AREA.Width = 60;
             // 
             // EMPRESA
             // 
@@ -219,7 +238,7 @@ namespace HPReserger
             this.EMPRESA.FillWeight = 85.10638F;
             this.EMPRESA.HeaderText = "EMPRESA";
             this.EMPRESA.Name = "EMPRESA";
-            this.EMPRESA.Width = 84;
+            this.EMPRESA.Width = 82;
             // 
             // RUC
             // 
@@ -228,7 +247,7 @@ namespace HPReserger
             this.RUC.FillWeight = 85.10638F;
             this.RUC.HeaderText = "RUC";
             this.RUC.Name = "RUC";
-            this.RUC.Width = 55;
+            this.RUC.Width = 54;
             // 
             // NOMBRESEMPLEADO
             // 
@@ -245,7 +264,7 @@ namespace HPReserger
             this.APELLIDOS.FillWeight = 85.10638F;
             this.APELLIDOS.HeaderText = "APELLIDOS";
             this.APELLIDOS.Name = "APELLIDOS";
-            this.APELLIDOS.Width = 91;
+            this.APELLIDOS.Width = 90;
             // 
             // btnaceptar
             // 
@@ -280,6 +299,7 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(15, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(199, 13);
@@ -307,6 +327,7 @@ namespace HPReserger
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Transparent;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblmsg});
             this.statusStrip1.Location = new System.Drawing.Point(0, 503);
@@ -353,6 +374,7 @@ namespace HPReserger
             // 
             // gb1
             // 
+            this.gb1.BackColor = System.Drawing.Color.Transparent;
             this.gb1.Controls.Add(this.radioButton9);
             this.gb1.Controls.Add(this.radioButton10);
             this.gb1.Controls.Add(this.radioButton3);
@@ -496,6 +518,7 @@ namespace HPReserger
             // 
             // gb2
             // 
+            this.gb2.BackColor = System.Drawing.Color.Transparent;
             this.gb2.Controls.Add(this.button1);
             this.gb2.Controls.Add(this.label4);
             this.gb2.Controls.Add(this.label3);
@@ -616,7 +639,7 @@ namespace HPReserger
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.dtgconten);
             this.Name = "frmListarOCFaltantes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Orden de Compra - Atención Incompleta.";
             this.Text = "Orden de Compra - Atención Incompleta.";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmListarOCFaltantes_FormClosing);
             this.Load += new System.EventHandler(this.frmListarOCFaltantes_Load);

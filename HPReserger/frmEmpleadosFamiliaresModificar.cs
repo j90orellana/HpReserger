@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmEmpleadosFamiliaresModificar : Form
+    public partial class frmEmpleadosFamiliaresModificar : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clEmpleadoFamiliaModificar = new HPResergerCapaLogica.HPResergerCL();
         private string nombreconviviente;

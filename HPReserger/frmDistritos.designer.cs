@@ -132,26 +132,31 @@ namespace HPReserger
             // txtcodigo
             // 
             this.txtcodigo.Enabled = false;
-            this.txtcodigo.Location = new System.Drawing.Point(89, 20);
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcodigo.Location = new System.Drawing.Point(96, 20);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(273, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(273, 21);
             this.txtcodigo.TabIndex = 51;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 46;
             this.label2.Text = "Departamento";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 24);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(48, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 47;
             this.label1.Text = "Código";
             // 
@@ -162,18 +167,22 @@ namespace HPReserger
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 73);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(40, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 46;
             this.label3.Text = "Provincia";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 98);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(48, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 46;
             this.label4.Text = "Distrito";
             // 
@@ -184,7 +193,7 @@ namespace HPReserger
             this.cbodepartamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbodepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodepartamento.FormattingEnabled = true;
-            this.cbodepartamento.Location = new System.Drawing.Point(89, 44);
+            this.cbodepartamento.Location = new System.Drawing.Point(96, 44);
             this.cbodepartamento.Name = "cbodepartamento";
             this.cbodepartamento.Size = new System.Drawing.Size(273, 21);
             this.cbodepartamento.TabIndex = 55;
@@ -198,7 +207,7 @@ namespace HPReserger
             this.cboprovincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboprovincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboprovincia.FormattingEnabled = true;
-            this.cboprovincia.Location = new System.Drawing.Point(89, 69);
+            this.cboprovincia.Location = new System.Drawing.Point(96, 69);
             this.cboprovincia.Name = "cboprovincia";
             this.cboprovincia.Size = new System.Drawing.Size(273, 21);
             this.cboprovincia.TabIndex = 56;
@@ -213,7 +222,7 @@ namespace HPReserger
             this.cbodistrito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbodistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodistrito.FormattingEnabled = true;
-            this.cbodistrito.Location = new System.Drawing.Point(89, 94);
+            this.cbodistrito.Location = new System.Drawing.Point(96, 94);
             this.cbodistrito.Name = "cbodistrito";
             this.cbodistrito.Size = new System.Drawing.Size(273, 21);
             this.cbodistrito.TabIndex = 57;
@@ -225,7 +234,7 @@ namespace HPReserger
             // 
             this.btndepmas.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndepmas.Image = ((System.Drawing.Image)(resources.GetObject("btndepmas.Image")));
-            this.btndepmas.Location = new System.Drawing.Point(369, 42);
+            this.btndepmas.Location = new System.Drawing.Point(376, 42);
             this.btndepmas.Name = "btndepmas";
             this.btndepmas.Size = new System.Drawing.Size(24, 24);
             this.btndepmas.TabIndex = 60;
@@ -236,7 +245,7 @@ namespace HPReserger
             // 
             this.btnpromas.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnpromas.Image = ((System.Drawing.Image)(resources.GetObject("btnpromas.Image")));
-            this.btnpromas.Location = new System.Drawing.Point(369, 67);
+            this.btnpromas.Location = new System.Drawing.Point(376, 67);
             this.btnpromas.Name = "btnpromas";
             this.btnpromas.Size = new System.Drawing.Size(24, 24);
             this.btnpromas.TabIndex = 62;
@@ -394,7 +403,7 @@ namespace HPReserger
             this.Txtbusca.ImgBotonCerrar = null;
             this.Txtbusca.Location = new System.Drawing.Point(12, 119);
             this.Txtbusca.Name = "Txtbusca";
-            this.Txtbusca.Size = new System.Drawing.Size(381, 22);
+            this.Txtbusca.Size = new System.Drawing.Size(388, 22);
             this.Txtbusca.TabIndex = 82;
             this.Txtbusca.BuscarClick += new System.EventHandler(this.txtbusca_TextChanged);
             this.Txtbusca.ClickLimpiarboton += new System.EventHandler(this.btnlimpiar_Click);
@@ -426,7 +435,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(660, 522);
             this.MinimumSize = new System.Drawing.Size(660, 522);
             this.Name = "frmDistritos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Distritos";
             this.Text = "Distritos";
             this.Activated += new System.EventHandler(this.frmDistritos_Activated);
             this.Load += new System.EventHandler(this.frmDistritos_Load);

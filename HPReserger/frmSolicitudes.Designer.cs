@@ -37,8 +37,6 @@
             this.Btncancelar = new System.Windows.Forms.Button();
             this.btnaprovar = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.btnrecargar = new System.Windows.Forms.Button();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cod_empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,27 +44,32 @@
             this.estados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Solicitaemp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnrecargar = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.Size = new System.Drawing.Size(123, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "SOLICITUDES";
+            this.label1.Text = "Listado de Solicitudes:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Btncancelar
             // 
-            this.Btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btncancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btncancelar.Image")));
             this.Btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btncancelar.Location = new System.Drawing.Point(350, 462);
+            this.Btncancelar.Location = new System.Drawing.Point(275, 264);
             this.Btncancelar.Name = "Btncancelar";
-            this.Btncancelar.Size = new System.Drawing.Size(114, 24);
+            this.Btncancelar.Size = new System.Drawing.Size(125, 24);
             this.Btncancelar.TabIndex = 1;
             this.Btncancelar.Text = "Eliminar Solicitud";
             this.Btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -75,12 +78,13 @@
             // 
             // btnaprovar
             // 
-            this.btnaprovar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaprovar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnaprovar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaprovar.Image = ((System.Drawing.Image)(resources.GetObject("btnaprovar.Image")));
             this.btnaprovar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaprovar.Location = new System.Drawing.Point(231, 462);
+            this.btnaprovar.Location = new System.Drawing.Point(146, 264);
             this.btnaprovar.Name = "btnaprovar";
-            this.btnaprovar.Size = new System.Drawing.Size(113, 24);
+            this.btnaprovar.Size = new System.Drawing.Size(125, 24);
             this.btnaprovar.TabIndex = 2;
             this.btnaprovar.Text = "Aprobar Solicitud";
             this.btnaprovar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -134,7 +138,7 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 46);
+            this.dtgconten.Location = new System.Drawing.Point(12, 38);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -143,28 +147,8 @@
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(675, 410);
+            this.dtgconten.Size = new System.Drawing.Size(535, 220);
             this.dtgconten.TabIndex = 57;
-            // 
-            // btnrecargar
-            // 
-            this.btnrecargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnrecargar.Image = ((System.Drawing.Image)(resources.GetObject("btnrecargar.Image")));
-            this.btnrecargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnrecargar.Location = new System.Drawing.Point(606, 17);
-            this.btnrecargar.Name = "btnrecargar";
-            this.btnrecargar.Size = new System.Drawing.Size(81, 24);
-            this.btnrecargar.TabIndex = 58;
-            this.btnrecargar.Text = "Recargar";
-            this.btnrecargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnrecargar.UseVisualStyleBackColor = true;
-            this.btnrecargar.Click += new System.EventHandler(this.btnrecargar_Click);
-            // 
-            // timer
-            // 
-            this.timer.Enabled = true;
-            this.timer.Interval = 2000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // empleado
             // 
@@ -225,11 +209,32 @@
             this.observacion.Name = "observacion";
             this.observacion.ReadOnly = true;
             // 
+            // btnrecargar
+            // 
+            this.btnrecargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnrecargar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnrecargar.Image = ((System.Drawing.Image)(resources.GetObject("btnrecargar.Image")));
+            this.btnrecargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnrecargar.Location = new System.Drawing.Point(466, 12);
+            this.btnrecargar.Name = "btnrecargar";
+            this.btnrecargar.Size = new System.Drawing.Size(81, 24);
+            this.btnrecargar.TabIndex = 58;
+            this.btnrecargar.Text = "Recargar";
+            this.btnrecargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnrecargar.UseVisualStyleBackColor = true;
+            this.btnrecargar.Click += new System.EventHandler(this.btnrecargar_Click);
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 2000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // frmSolicitudes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 497);
+            this.ClientSize = new System.Drawing.Size(555, 296);
             this.Controls.Add(this.btnrecargar);
             this.Controls.Add(this.dtgconten);
             this.Controls.Add(this.btnaprovar);
@@ -237,7 +242,7 @@
             this.Controls.Add(this.label1);
             this.MinimumSize = new System.Drawing.Size(571, 335);
             this.Name = "frmSolicitudes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Solicitudes ";
             this.Text = "Solicitudes ";
             this.Load += new System.EventHandler(this.frmSolicitudes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

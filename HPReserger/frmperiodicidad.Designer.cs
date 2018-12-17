@@ -1,4 +1,6 @@
-﻿namespace HPReserger
+﻿using HpResergerUserControls;
+
+namespace HPReserger
 {
     partial class frmperiodicidad
     {
@@ -30,7 +32,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmperiodicidad));
-            this.dtgconten = new System.Windows.Forms.DataGridView();
+            this.dtgconten = new Dtgconten();
             this.Codigos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
@@ -51,11 +53,11 @@
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.dtgconten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            //this.dtgconten.BackgroundColor = System.Drawing.SystemColors.Control;
+            //this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            //this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            //this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -63,18 +65,18 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            //this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigos,
             this.Descripcion});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
+            //this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.dtgconten.Location = new System.Drawing.Point(9, 65);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
-            this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            //this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -118,7 +120,7 @@
             this.btnmodificar.Enabled = false;
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmodificar.Location = new System.Drawing.Point(292, 36);
+            this.btnmodificar.Location = new System.Drawing.Point(292, 35);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 24);
             this.btnmodificar.TabIndex = 62;
@@ -146,7 +148,7 @@
             this.btnaceptar.Enabled = false;
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaceptar.Location = new System.Drawing.Point(292, 178);
+            this.btnaceptar.Location = new System.Drawing.Point(292, 183);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 24);
             this.btnaceptar.TabIndex = 58;
@@ -172,34 +174,40 @@
             // 
             this.txtgerencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtgerencia.Enabled = false;
-            this.txtgerencia.Location = new System.Drawing.Point(78, 38);
+            this.txtgerencia.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtgerencia.Location = new System.Drawing.Point(78, 36);
             this.txtgerencia.Name = "txtgerencia";
-            this.txtgerencia.Size = new System.Drawing.Size(208, 20);
+            this.txtgerencia.Size = new System.Drawing.Size(208, 22);
             this.txtgerencia.TabIndex = 63;
             // 
             // txtcodigo
             // 
             this.txtcodigo.Enabled = false;
-            this.txtcodigo.Location = new System.Drawing.Point(78, 12);
+            this.txtcodigo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcodigo.Location = new System.Drawing.Point(78, 11);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(208, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(208, 22);
             this.txtcodigo.TabIndex = 60;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 42);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(9, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 54;
             this.label2.Text = "Descripción";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(32, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 55;
             this.label1.Text = "Código";
             // 
@@ -221,7 +229,7 @@
             this.MaximumSize = new System.Drawing.Size(400, 280);
             this.MinimumSize = new System.Drawing.Size(400, 280);
             this.Name = "frmperiodicidad";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Periocidad";
             this.Text = "Periocidad";
             this.Load += new System.EventHandler(this.frmperiodicidad_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
@@ -232,7 +240,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtgconten;
+        private Dtgconten dtgconten;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.Button btneliminar;

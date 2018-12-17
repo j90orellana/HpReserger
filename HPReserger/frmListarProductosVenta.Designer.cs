@@ -61,6 +61,7 @@
             this.btnaceptar = new System.Windows.Forms.Button();
             this.cboempresa = new HpResergerUserControls.ComboBoxPer(this.components);
             this.cboproyecto = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.lblmsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -355,8 +356,10 @@
             this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.IndexText = null;
             this.cboempresa.Location = new System.Drawing.Point(494, 12);
             this.cboempresa.Name = "cboempresa";
+            this.cboempresa.ReadOnly = false;
             this.cboempresa.Size = new System.Drawing.Size(213, 21);
             this.cboempresa.TabIndex = 136;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
@@ -367,18 +370,32 @@
             this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.IndexText = null;
             this.cboproyecto.Location = new System.Drawing.Point(713, 12);
             this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.ReadOnly = false;
             this.cboproyecto.Size = new System.Drawing.Size(213, 21);
             this.cboproyecto.TabIndex = 137;
             this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
             this.cboproyecto.Click += new System.EventHandler(this.cboproyecto_Click);
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Location = new System.Drawing.Point(12, 433);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(113, 13);
+            this.lblmsg.TabIndex = 138;
+            this.lblmsg.Text = "Total de Registros : 0";
             // 
             // frmListarProductosVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 461);
+            this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.cboproyecto);
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.btnaceptar);
@@ -392,6 +409,7 @@
             this.Load += new System.EventHandler(this.frmListarProductosVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -422,5 +440,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private HpResergerUserControls.ComboBoxPer cboempresa;
         private HpResergerUserControls.ComboBoxPer cboproyecto;
+        private System.Windows.Forms.Label lblmsg;
     }
 }

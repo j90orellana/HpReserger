@@ -122,11 +122,14 @@
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 20</value>
+    <value>25, 20</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 13</value>
+    <value>108, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -149,11 +152,14 @@
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 47</value>
+    <value>6, 47</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 13</value>
+    <value>127, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -176,11 +182,14 @@
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 73</value>
+    <value>41, 73</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 13</value>
+    <value>92, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -203,11 +212,14 @@
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>334, 47</value>
+    <value>331, 47</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
+    <value>97, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -225,16 +237,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>22</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>334, 20</value>
+    <value>335, 20</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 13</value>
+    <value>93, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -252,16 +267,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>21</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 73</value>
+    <value>375, 73</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 13</value>
+    <value>53, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -279,16 +297,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>20</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>670, 47</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
+    <value>63, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -306,16 +327,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>19</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>669, 20</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 13</value>
+    <value>114, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -333,7 +357,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>18</value>
   </data>
   <data name="cboTipoDocumentoIdentidad.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 16</value>
@@ -354,7 +378,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboTipoDocumentoIdentidad.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>17</value>
   </data>
   <data name="cboVinculoFamiliar.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 69</value>
@@ -375,7 +399,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cboVinculoFamiliar.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>16</value>
+  </data>
+  <data name="txtNumeroDocumento.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtNumeroDocumento.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 43</value>
@@ -384,7 +411,7 @@
     <value>10</value>
   </data>
   <data name="txtNumeroDocumento.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 20</value>
+    <value>198, 21</value>
   </data>
   <data name="txtNumeroDocumento.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -403,7 +430,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtNumeroDocumento.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>15</value>
+  </data>
+  <data name="txtApellidoMaterno.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtApellidoMaterno.Location" type="System.Drawing.Point, System.Drawing">
     <value>426, 43</value>
@@ -412,7 +442,7 @@
     <value>30</value>
   </data>
   <data name="txtApellidoMaterno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 20</value>
+    <value>237, 21</value>
   </data>
   <data name="txtApellidoMaterno.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -427,7 +457,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtApellidoMaterno.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>14</value>
+  </data>
+  <data name="txtNombres.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtNombres.Location" type="System.Drawing.Point, System.Drawing">
     <value>426, 69</value>
@@ -436,7 +469,7 @@
     <value>30</value>
   </data>
   <data name="txtNombres.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 20</value>
+    <value>237, 21</value>
   </data>
   <data name="txtNombres.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -451,7 +484,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtNombres.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>13</value>
+  </data>
+  <data name="txtApellidoPaterno.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtApellidoPaterno.Location" type="System.Drawing.Point, System.Drawing">
     <value>426, 16</value>
@@ -460,7 +496,7 @@
     <value>30</value>
   </data>
   <data name="txtApellidoPaterno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 20</value>
+    <value>237, 21</value>
   </data>
   <data name="txtApellidoPaterno.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -475,7 +511,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtApellidoPaterno.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>12</value>
+  </data>
+  <data name="txtOcupacion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtOcupacion.Location" type="System.Drawing.Point, System.Drawing">
     <value>735, 43</value>
@@ -484,7 +523,7 @@
     <value>30</value>
   </data>
   <data name="txtOcupacion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 20</value>
+    <value>149, 21</value>
   </data>
   <data name="txtOcupacion.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -499,13 +538,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtOcupacion.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>11</value>
+  </data>
+  <data name="dtpFecha.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="dtpFecha.Location" type="System.Drawing.Point, System.Drawing">
     <value>783, 16</value>
   </data>
   <data name="dtpFecha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>100, 21</value>
   </data>
   <data name="dtpFecha.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -520,7 +562,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dtpFecha.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>10</value>
+  </data>
+  <data name="Grid.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <metadata name="CODIGOTIPOID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -538,7 +583,7 @@
     <value>Tipo ID</value>
   </data>
   <data name="TIPOID.Width" type="System.Int32, mscorlib">
-    <value>65</value>
+    <value>69</value>
   </data>
   <metadata name="NROID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -547,7 +592,7 @@
     <value>Nro ID</value>
   </data>
   <data name="NROID.Width" type="System.Int32, mscorlib">
-    <value>62</value>
+    <value>65</value>
   </data>
   <metadata name="CODIGOVINCULOFAMILIAR.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -565,16 +610,13 @@
     <value>Vínculo Familiar</value>
   </data>
   <data name="VINCULOFAMILIAR.Width" type="System.Int32, mscorlib">
-    <value>110</value>
+    <value>116</value>
   </data>
   <metadata name="APEPAT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="APEPAT.HeaderText" xml:space="preserve">
     <value>Apellido Paterno</value>
-  </data>
-  <data name="APEPAT.Width" type="System.Int32, mscorlib">
-    <value>92</value>
   </data>
   <metadata name="APEMAT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -583,7 +625,7 @@
     <value>Apellido Materno</value>
   </data>
   <data name="APEMAT.Width" type="System.Int32, mscorlib">
-    <value>95</value>
+    <value>104</value>
   </data>
   <metadata name="NOMBRES.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -598,7 +640,7 @@
     <value>Fecha Nacimiento</value>
   </data>
   <data name="FECHANACIMIENTO.Width" type="System.Int32, mscorlib">
-    <value>118</value>
+    <value>127</value>
   </data>
   <metadata name="EDAD.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -607,16 +649,13 @@
     <value>Edad</value>
   </data>
   <data name="EDAD.Width" type="System.Int32, mscorlib">
-    <value>56</value>
+    <value>57</value>
   </data>
   <metadata name="OCUPACION.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="OCUPACION.HeaderText" xml:space="preserve">
     <value>Ocupación</value>
-  </data>
-  <data name="OCUPACION.Width" type="System.Int32, mscorlib">
-    <value>84</value>
   </data>
   <metadata name="imagen.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -667,13 +706,16 @@
     <value>Grid</value>
   </data>
   <data name="&gt;&gt;Grid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>HpResergerUserControls.Dtgconten, HpResergerUserControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Grid.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Grid.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
+  </data>
+  <data name="btnRegistrar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
   </data>
   <data name="btnRegistrar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -709,13 +751,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnRegistrar.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="pbconviviente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>709, 69</value>
+    <value>673, 69</value>
   </data>
   <data name="pbconviviente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 26</value>
+    <value>104, 55</value>
   </data>
   <data name="pbconviviente.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -733,16 +775,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pbconviviente.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="lklconviviente.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lklconviviente.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="lklconviviente.Location" type="System.Drawing.Point, System.Drawing">
     <value>669, 127</value>
   </data>
   <data name="lklconviviente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
+    <value>64, 13</value>
   </data>
   <data name="lklconviviente.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
@@ -760,7 +805,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lklconviviente.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="btnconviviente.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -817,13 +862,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnconviviente.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
+  </data>
+  <data name="txtconviviente.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="txtconviviente.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 123</value>
   </data>
   <data name="txtconviviente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 20</value>
+    <value>500, 21</value>
   </data>
   <data name="txtconviviente.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
@@ -838,16 +886,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtconviviente.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="lblconviviente.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblconviviente.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
   <data name="lblconviviente.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 127</value>
+    <value>85, 127</value>
   </data>
   <data name="lblconviviente.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
+    <value>48, 13</value>
   </data>
   <data name="lblconviviente.TabIndex" type="System.Int32, mscorlib">
     <value>65</value>
@@ -865,7 +916,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblconviviente.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>24</value>
+  </data>
+  <data name="btnModificar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
   </data>
   <data name="btnModificar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -906,7 +960,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnModificar.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="cbosexo.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 96</value>
@@ -927,19 +981,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbosexo.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 100</value>
+    <value>37, 100</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
+    <value>96, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>72</value>
@@ -957,7 +1014,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>23</value>
   </data>
   <data name="check18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -965,11 +1022,14 @@
   <data name="check18.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="check18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
   <data name="check18.Location" type="System.Drawing.Point, System.Drawing">
     <value>336, 98</value>
   </data>
   <data name="check18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 17</value>
+    <value>195, 17</value>
   </data>
   <data name="check18.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -988,6 +1048,9 @@
   </data>
   <data name="&gt;&gt;check18.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="btncancelar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
   </data>
   <data name="btncancelar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1049,9 +1112,6 @@
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>912, 422</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>  Empleado Familiares</value>
@@ -1150,6 +1210,6 @@
     <value>frmFamiliares</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>HpResergerUserControls.FormGradient, HpResergerUserControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

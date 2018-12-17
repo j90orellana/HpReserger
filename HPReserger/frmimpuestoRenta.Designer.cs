@@ -59,6 +59,7 @@ namespace HPReserger
             // 
             this.btnexportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnexportarExcel.Enabled = false;
+            this.btnexportarExcel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexportarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexportarExcel.Image")));
             this.btnexportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnexportarExcel.Location = new System.Drawing.Point(670, 130);
@@ -195,9 +196,10 @@ namespace HPReserger
             // btnmodificar
             // 
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmodificar.Location = new System.Drawing.Point(670, 68);
+            this.btnmodificar.Location = new System.Drawing.Point(670, 63);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 24);
             this.btnmodificar.TabIndex = 103;
@@ -210,6 +212,7 @@ namespace HPReserger
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btncancelar.Location = new System.Drawing.Point(670, 253);
@@ -225,9 +228,10 @@ namespace HPReserger
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Enabled = false;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaceptar.Location = new System.Drawing.Point(670, 224);
+            this.btnaceptar.Location = new System.Drawing.Point(670, 228);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 24);
             this.btnaceptar.TabIndex = 101;
@@ -239,6 +243,7 @@ namespace HPReserger
             // btnnuevo
             // 
             this.btnnuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnnuevo.Location = new System.Drawing.Point(670, 38);
@@ -258,9 +263,11 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 105;
             this.label1.Text = "UIT:";
             // 
@@ -289,7 +296,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(780, 323);
             this.MinimumSize = new System.Drawing.Size(780, 323);
             this.Name = "frmimpuestoRenta";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "ImpuestoRenta";
             this.Text = "ImpuestoRenta";
             this.Load += new System.EventHandler(this.ImpuestoRenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

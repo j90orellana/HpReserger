@@ -22,6 +22,11 @@ namespace HPResergerFunciones
 {
     public class Utilitarios
     {
+        public static string Cuo(int Asiento, DateTime Fecha)
+        {
+            string cuo = $"{Fecha.Year.ToString().Substring(2, 2) + Fecha.Month.ToString("00")}-{Asiento.ToString("00000")}";
+            return cuo;            
+        }
         public static DateTime DeStringDiaMesAÑoaDatetime(string cadena)
         {
             string valor = "";
@@ -44,10 +49,21 @@ namespace HPResergerFunciones
         public static void msg(string cadena)
         {
             MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        public static DialogResult msgp(string cadena)
+        }/// <summary>        
+         /// </summary>
+         /// <param name="cadena"></param>
+         /// <returns>Regresa el Yes</returns>
+        public static DialogResult msgYesNo(string cadena)
         {
             return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+        }
+        public static DialogResult msgOkCancel(string cadena)
+        {
+            return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        }
+        public static DialogResult msgYesNoCancel(string cadena)
+        {
+            return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
         }
         public static Boolean SoloNumerosDecimalesX(KeyPressEventArgs P, string Numero)
         {
@@ -660,7 +676,8 @@ namespace HPResergerFunciones
                         hoja_trabajo.Columns[numer + 1].NumberFormat = "dd/mm/aaaa";
                     //if (grd.Rows[0].Cells[contador - 1].Value.GetType() == typeof(int))
                     //    hoja_trabajo.Columns[numer + 1].NumberFormat = grd.Columns[contador-1].DefaultCellStyle.Format;
-                }else
+                }
+                else
                 {
                     hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Interior.Color = Color.FromArgb(grd.ColumnHeadersDefaultCellStyle.BackColor.ToArgb());
                     hoja_trabajo.Cells[1 + PosInicialGrilla, numer + 1].Font.Color = grd.ColumnHeadersDefaultCellStyle.ForeColor;
@@ -945,19 +962,36 @@ namespace HPResergerFunciones
         }
         public static string ExtraerCuenta(string cuenta)
         {
-            Boolean numero = false;
-            string caden = "";
-            foreach (char txt in cuenta)
+            int posI = -1, posF = 0, con = 0;
+            foreach (var c in cuenta)
             {
-                if ((char.IsLetter(txt) || txt == '-') && numero == false)
-                    numero = true;
-                if ((char.IsNumber(txt) || txt == '-') && numero == true)
-                    caden += txt;
-                if (char.IsLetter(txt) && numero == true && caden.Length > 9)
-                    return caden.Trim('-');
+                if (char.IsDigit(c))
+                {
+                    if (posI < 0)
+                    {
+                        posI = con;
+                    }
+                    posF = con;
+                }
+                con++;
             }
-            return caden.Trim('-');
+            return cuenta.Substring(posI, posF + 1);
         }
+        //public static string ExtraerCuenta(string cuenta)
+        //{
+        //    Boolean numero = false;
+        //    string caden = "";
+        //    foreach (char txt in cuenta)
+        //    {
+        //        if ((char.IsLetter(txt) || txt == '-') && numero == false)
+        //            numero = true;
+        //        if ((char.IsNumber(txt) || txt == '-') && numero == true)
+        //            caden += txt;
+        //        if (char.IsLetter(txt) && numero == true && caden.Length > 9)
+        //            return caden.Trim('-');
+        //    }
+        //    return caden.Trim('-');
+        //}
         public static string QuitarCaracterCuenta(string cuenta, char caracter)
         {
             string caden = "";

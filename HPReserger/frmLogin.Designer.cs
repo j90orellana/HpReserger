@@ -151,6 +151,7 @@
             this.cboBase.ForeColor = System.Drawing.Color.White;
             this.cboBase.FormattingEnabled = true;
             this.cboBase.Items.AddRange(new object[] {
+            "Actual_Beta",
             "SiGE",
             "Actual"});
             this.cboBase.Location = new System.Drawing.Point(127, 133);
@@ -232,7 +233,7 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HpReserger";
+            this.Text = "SIGE";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmLogin_Paint);

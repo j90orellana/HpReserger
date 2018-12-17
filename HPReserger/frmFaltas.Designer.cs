@@ -88,6 +88,7 @@ namespace HPReserger
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.txtNumeroDocumento);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtApellidoPaterno);
@@ -107,10 +108,11 @@ namespace HPReserger
             // 
             // txtNumeroDocumento
             // 
+            this.txtNumeroDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumeroDocumento.Location = new System.Drawing.Point(195, 45);
             this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(161, 20);
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(161, 21);
             this.txtNumeroDocumento.TabIndex = 0;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
@@ -120,54 +122,59 @@ namespace HPReserger
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 49);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1, 49);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(179, 13);
+            this.label5.Size = new System.Drawing.Size(196, 13);
             this.label5.TabIndex = 77;
             this.label5.Text = "Número de Documento de Identidad";
             // 
             // txtApellidoPaterno
             // 
             this.txtApellidoPaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtApellidoPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidoPaterno.Location = new System.Drawing.Point(195, 70);
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.ReadOnly = true;
-            this.txtApellidoPaterno.Size = new System.Drawing.Size(161, 20);
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(161, 21);
             this.txtApellidoPaterno.TabIndex = 76;
             // 
             // txtApellidoMaterno
             // 
             this.txtApellidoMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtApellidoMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidoMaterno.Location = new System.Drawing.Point(195, 95);
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.ReadOnly = true;
-            this.txtApellidoMaterno.Size = new System.Drawing.Size(161, 20);
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(161, 21);
             this.txtApellidoMaterno.TabIndex = 75;
             // 
             // lblmensajito
             // 
             this.lblmensajito.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.lblmensajito.Enabled = false;
+            this.lblmensajito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmensajito.Location = new System.Drawing.Point(13, 148);
             this.lblmensajito.MaxLength = 30;
             this.lblmensajito.Name = "lblmensajito";
             this.lblmensajito.ReadOnly = true;
             this.lblmensajito.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblmensajito.ShortcutsEnabled = false;
-            this.lblmensajito.Size = new System.Drawing.Size(343, 20);
+            this.lblmensajito.Size = new System.Drawing.Size(343, 21);
             this.lblmensajito.TabIndex = 74;
             // 
             // txtNombres
             // 
             this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombres.Location = new System.Drawing.Point(195, 120);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.ReadOnly = true;
             this.txtNombres.ShortcutsEnabled = false;
-            this.txtNombres.Size = new System.Drawing.Size(161, 20);
+            this.txtNombres.Size = new System.Drawing.Size(161, 21);
             this.txtNombres.TabIndex = 74;
             // 
             // cboTipoDocumento
@@ -184,36 +191,40 @@ namespace HPReserger
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(140, 124);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(144, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 72;
             this.label4.Text = "Nombres";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(103, 99);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(100, 99);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.Size = new System.Drawing.Size(97, 13);
             this.label3.TabIndex = 71;
             this.label3.Text = "Apellido Materno";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(105, 74);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(104, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 70;
             this.label2.Text = "Apellido Paterno";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 23);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 13);
+            this.label1.Size = new System.Drawing.Size(177, 13);
             this.label1.TabIndex = 69;
             this.label1.Text = "Tipo de Documento de Identidad";
             // 
@@ -221,73 +232,85 @@ namespace HPReserger
             // 
             this.dtpInicio.CalendarTitleBackColor = System.Drawing.Color.Yellow;
             this.dtpInicio.CalendarTrailingForeColor = System.Drawing.Color.Red;
+            this.dtpInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInicio.Location = new System.Drawing.Point(83, 10);
+            this.dtpInicio.Location = new System.Drawing.Point(94, 10);
             this.dtpInicio.Name = "dtpInicio";
-            this.dtpInicio.Size = new System.Drawing.Size(90, 20);
+            this.dtpInicio.Size = new System.Drawing.Size(90, 21);
             this.dtpInicio.TabIndex = 1;
             this.dtpInicio.ValueChanged += new System.EventHandler(this.dtpInicio_ValueChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 14);
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(24, 14);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 13);
+            this.label9.Size = new System.Drawing.Size(68, 13);
             this.label9.TabIndex = 96;
             this.label9.Text = "Fecha Inicio";
             // 
             // dtpFin
             // 
             this.dtpFin.CalendarTrailingForeColor = System.Drawing.Color.White;
+            this.dtpFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFin.Location = new System.Drawing.Point(266, 10);
             this.dtpFin.Name = "dtpFin";
-            this.dtpFin.Size = new System.Drawing.Size(90, 20);
+            this.dtpFin.Size = new System.Drawing.Size(90, 21);
             this.dtpFin.TabIndex = 2;
             this.dtpFin.ValueChanged += new System.EventHandler(this.dtpFin_ValueChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(206, 14);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.Size = new System.Drawing.Size(56, 13);
             this.label10.TabIndex = 98;
             this.label10.Text = "Fecha Fin";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 40);
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(18, 40);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 13);
+            this.label11.Size = new System.Drawing.Size(74, 13);
             this.label11.TabIndex = 99;
             this.label11.Text = "Días faltados";
             // 
             // txtDias
             // 
             this.txtDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDias.Location = new System.Drawing.Point(95, 36);
+            this.txtDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDias.Location = new System.Drawing.Point(94, 36);
             this.txtDias.MaxLength = 30;
             this.txtDias.Name = "txtDias";
             this.txtDias.ReadOnly = true;
-            this.txtDias.Size = new System.Drawing.Size(25, 20);
+            this.txtDias.Size = new System.Drawing.Size(25, 21);
             this.txtDias.TabIndex = 100;
             this.txtDias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(10, 64);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(78, 13);
+            this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 102;
             this.label12.Text = "Observaciones";
             // 
             // txtObservaciones
             // 
             this.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservaciones.Location = new System.Drawing.Point(94, 61);
             this.txtObservaciones.MaxLength = 0;
             this.txtObservaciones.Multiline = true;
@@ -298,6 +321,7 @@ namespace HPReserger
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.pbFaltas);
             this.groupBox1.Controls.Add(this.chkfaltas);
             this.groupBox1.Controls.Add(this.txtObservaciones);
@@ -316,6 +340,7 @@ namespace HPReserger
             // 
             // pbFaltas
             // 
+            this.pbFaltas.BackColor = System.Drawing.Color.Transparent;
             this.pbFaltas.Image = global::HPReserger.Properties.Resources.NoRegistrarFaltas;
             this.pbFaltas.Location = new System.Drawing.Point(0, 0);
             this.pbFaltas.Name = "pbFaltas";
@@ -328,12 +353,14 @@ namespace HPReserger
             // chkfaltas
             // 
             this.chkfaltas.AutoSize = true;
+            this.chkfaltas.BackColor = System.Drawing.Color.Transparent;
+            this.chkfaltas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkfaltas.Location = new System.Drawing.Point(195, 38);
             this.chkfaltas.Name = "chkfaltas";
-            this.chkfaltas.Size = new System.Drawing.Size(113, 17);
+            this.chkfaltas.Size = new System.Drawing.Size(119, 17);
             this.chkfaltas.TabIndex = 3;
             this.chkfaltas.Text = "Aplicar Descuento";
-            this.chkfaltas.UseVisualStyleBackColor = true;
+            this.chkfaltas.UseVisualStyleBackColor = false;
             this.chkfaltas.CheckedChanged += new System.EventHandler(this.chkfaltas_CheckedChanged);
             // 
             // Grid
@@ -346,9 +373,8 @@ namespace HPReserger
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.Grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.Grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -505,6 +531,7 @@ namespace HPReserger
             // 
             // btnRegistrarFalta
             // 
+            this.btnRegistrarFalta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRegistrarFalta.Image = ((System.Drawing.Image)(resources.GetObject("btnRegistrarFalta.Image")));
             this.btnRegistrarFalta.Location = new System.Drawing.Point(401, 433);
             this.btnRegistrarFalta.Name = "btnRegistrarFalta";
@@ -517,6 +544,7 @@ namespace HPReserger
             // 
             // btnAdjuntarSustento
             // 
+            this.btnAdjuntarSustento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAdjuntarSustento.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarSustento.Image")));
             this.btnAdjuntarSustento.Location = new System.Drawing.Point(1159, 433);
             this.btnAdjuntarSustento.Name = "btnAdjuntarSustento";
@@ -539,6 +567,10 @@ namespace HPReserger
             // 
             // pbFoto
             // 
+            this.pbFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
             this.pbFoto.Location = new System.Drawing.Point(1159, 12);
             this.pbFoto.Name = "pbFoto";
             this.pbFoto.Size = new System.Drawing.Size(376, 412);
@@ -550,6 +582,7 @@ namespace HPReserger
             // 
             // btndescargar
             // 
+            this.btndescargar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btndescargar.AutoEllipsis = true;
             this.btndescargar.ImageKey = "(ninguno)";
             this.btndescargar.Location = new System.Drawing.Point(1320, 395);
@@ -566,7 +599,6 @@ namespace HPReserger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1541, 468);
             this.Controls.Add(this.btndescargar);
@@ -579,7 +611,7 @@ namespace HPReserger
             this.Controls.Add(this.groupBox2);
             this.MinimumSize = new System.Drawing.Size(1557, 507);
             this.Name = "frmFaltas";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Registro de Faltas";
             this.Text = "Registro de Faltas";
             this.Load += new System.EventHandler(this.frmFaltas_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmFaltas_MouseMove);

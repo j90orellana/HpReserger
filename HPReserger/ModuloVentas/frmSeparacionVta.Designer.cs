@@ -76,9 +76,9 @@
             this.btnimagendoc = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.txtimporte = new HpResergerUserControls.TextBoxPer();
-            this.txttipocambio = new HpResergerUserControls.TextBoxPer();
             this.label18 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.txttipocambio = new HpResergerUserControls.TextBoxPer();
             this.label9 = new System.Windows.Forms.Label();
             this.lkldocpago = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
@@ -360,9 +360,10 @@
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnaceptar.Enabled = false;
             this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.ForeColor = System.Drawing.Color.White;
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(701, 620);
+            this.btnaceptar.Location = new System.Drawing.Point(702, 620);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 25);
             this.btnaceptar.TabIndex = 185;
@@ -375,6 +376,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(789, 620);
             this.btncancelar.Name = "btncancelar";
@@ -577,10 +579,8 @@
             this.panelllenado.Controls.Add(this.btnimagendoc);
             this.panelllenado.Controls.Add(this.label20);
             this.panelllenado.Controls.Add(this.txtimporte);
-            this.panelllenado.Controls.Add(this.txttipocambio);
             this.panelllenado.Controls.Add(this.label18);
             this.panelllenado.Controls.Add(this.label8);
-            this.panelllenado.Controls.Add(this.label9);
             this.panelllenado.Enabled = false;
             this.panelllenado.Location = new System.Drawing.Point(0, 192);
             this.panelllenado.Movible = false;
@@ -632,16 +632,16 @@
             // dtpfecha
             // 
             this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfecha.Location = new System.Drawing.Point(505, 1);
+            this.dtpfecha.Location = new System.Drawing.Point(401, 0);
             this.dtpfecha.Name = "dtpfecha";
-            this.dtpfecha.Size = new System.Drawing.Size(100, 22);
+            this.dtpfecha.Size = new System.Drawing.Size(102, 22);
             this.dtpfecha.TabIndex = 8;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Location = new System.Drawing.Point(450, 5);
+            this.label21.Location = new System.Drawing.Point(346, 5);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(56, 13);
             this.label21.TabIndex = 189;
@@ -691,26 +691,6 @@
             this.txtimporte.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtimporte.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
             // 
-            // txttipocambio
-            // 
-            this.txttipocambio.BackColor = System.Drawing.Color.White;
-            this.txttipocambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttipocambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txttipocambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttipocambio.ForeColor = System.Drawing.Color.Black;
-            this.txttipocambio.Location = new System.Drawing.Point(401, 1);
-            this.txttipocambio.MaxLength = 10;
-            this.txttipocambio.Name = "txttipocambio";
-            this.txttipocambio.NextControlOnEnter = this.dtpfecha;
-            this.txttipocambio.Size = new System.Drawing.Size(43, 21);
-            this.txttipocambio.TabIndex = 7;
-            this.txttipocambio.Text = "3.30";
-            this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txttipocambio.TextoDefecto = "3.30";
-            this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -731,15 +711,37 @@
             this.label8.TabIndex = 182;
             this.label8.Text = "Moneda:";
             // 
+            // txttipocambio
+            // 
+            this.txttipocambio.BackColor = System.Drawing.Color.White;
+            this.txttipocambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttipocambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttipocambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttipocambio.ForeColor = System.Drawing.Color.Black;
+            this.txttipocambio.Location = new System.Drawing.Point(728, 177);
+            this.txttipocambio.MaxLength = 10;
+            this.txttipocambio.Name = "txttipocambio";
+            this.txttipocambio.NextControlOnEnter = this.dtpfecha;
+            this.txttipocambio.Size = new System.Drawing.Size(43, 21);
+            this.txttipocambio.TabIndex = 7;
+            this.txttipocambio.Text = "3.30";
+            this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttipocambio.TextoDefecto = "3.30";
+            this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            this.txttipocambio.Visible = false;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Location = new System.Drawing.Point(343, 5);
+            this.label9.Location = new System.Drawing.Point(670, 181);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
             this.label9.TabIndex = 181;
             this.label9.Text = "T.Cambio:";
+            this.label9.Visible = false;
             // 
             // lkldocpago
             // 
@@ -787,6 +789,7 @@
             // btnmodificar
             // 
             this.btnmodificar.Enabled = false;
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.Location = new System.Drawing.Point(789, 216);
             this.btnmodificar.Name = "btnmodificar";
@@ -800,6 +803,7 @@
             // btnnuevo
             // 
             this.btnnuevo.Enabled = false;
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.Location = new System.Drawing.Point(789, 192);
             this.btnnuevo.Name = "btnnuevo";
@@ -1209,8 +1213,9 @@
             // 
             this.btncontrato.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btncontrato.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncontrato.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncontrato.Image = ((System.Drawing.Image)(resources.GetObject("btncontrato.Image")));
-            this.btncontrato.Location = new System.Drawing.Point(442, 620);
+            this.btncontrato.Location = new System.Drawing.Point(441, 620);
             this.btncontrato.Name = "btncontrato";
             this.btncontrato.Size = new System.Drawing.Size(82, 25);
             this.btncontrato.TabIndex = 238;
@@ -1224,6 +1229,7 @@
             // 
             this.btnminuta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnminuta.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnminuta.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnminuta.Image = ((System.Drawing.Image)(resources.GetObject("btnminuta.Image")));
             this.btnminuta.Location = new System.Drawing.Point(355, 620);
             this.btnminuta.Name = "btnminuta";
@@ -1251,8 +1257,10 @@
             this.Controls.Add(this.txtemail);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label28);
+            this.Controls.Add(this.txttipocambio);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.separadorOre3);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.lkldocpago);
             this.Controls.Add(this.btnmodificar);

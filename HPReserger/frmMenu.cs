@@ -93,7 +93,7 @@ namespace HPReserger
             {
                 filita = datos.Rows[0];
                 datos = CapaLogica.ListarPerfiles((int)filita["CODIGOPERFIL"], 99, 0, 1, DateTime.Now);
-                foreach (ToolStripMenuItem x in menuStrip1.Items)
+                foreach (ToolStripMenuItem x in menuStrip2.Items)
                 {
                     foreach (ToolStripItem xx in x.DropDownItems)
                     {
@@ -112,7 +112,7 @@ namespace HPReserger
                 {
                     Lista.Add(a["titulo"].ToString());
                 }
-                foreach (ToolStripMenuItem x in menuStrip1.Items)
+                foreach (ToolStripMenuItem x in menuStrip2.Items)
                 {
                     Boolean prueba = false;
                     foreach (ToolStripItem xx in x.DropDownItems)
@@ -158,7 +158,7 @@ namespace HPReserger
             else Mostrado = false;
             VerFotoAdmin();
             Text = Text + $" [{frmLogin.Basedatos}]";
-            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control            
+            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   
         }
         public void VerFotoAdmin()
         {
@@ -3169,6 +3169,41 @@ namespace HPReserger
         private void cerrartiposcuentasbancarias(object sender, FormClosedEventArgs e)
         {
             frmallcuentasbancarias = null;
+        }
+
+        private void pbfotoempleado_Click(object sender, EventArgs e)
+        {
+            //menuStrip2.SuspendLayout();
+            //menuStrip2.Visible = false;
+            //menuStrip2.Visible = true;
+            //menuStrip2.ResumeLayout();
+        }
+
+        private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+        FrmFacturaManual frmfactumanual;
+        private void facturaManualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmfactumanual == null)
+            {
+                frmfactumanual = new FrmFacturaManual();
+                frmfactumanual.MdiParent = this;
+                frmfactumanual.Icon = ICono;
+                frmfactumanual.FormClosed += new FormClosedEventHandler(cerrarfacturamanual);
+                frmfactumanual.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmfactumanual.Activate();
+                ValidarVentanas(frmfactumanual);
+            }
+        }
+        private void cerrarfacturamanual(object sender, FormClosedEventArgs e)
+        {
+            frmfactumanual = null;
         }
     }
 }

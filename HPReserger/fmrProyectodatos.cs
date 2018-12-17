@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class fmrProyectodatos : Form
+    public partial class fmrProyectodatos : FormGradient
     {
         public fmrProyectodatos()
         {
@@ -404,6 +405,11 @@ namespace HPReserger
                 else
                     e.Cancel = true;
             }
+        }
+
+        private void groupBox9_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

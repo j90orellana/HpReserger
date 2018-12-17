@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmCargaDatosProveedor : Form
+    public partial class frmCargaDatosProveedor : FormGradient
     {
         public frmCargaDatosProveedor()
         {
@@ -26,7 +27,6 @@ namespace HPReserger
         {
             this.Close();
         }
-
         private void frmCargaDatosProveedor_Load(object sender, EventArgs e)
         {
             string cadenas = ""; string consulta = "";
@@ -42,7 +42,7 @@ namespace HPReserger
         }
         public DialogResult msg(string cadena)
         {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
         }
         public DataTable TablaProvedoresBancos;
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -65,6 +65,10 @@ namespace HPReserger
                 msg("No hay Filas para Avanzar");
             }
             TablaProvedoresBancos = (DataTable)Dtguias.DataSource;
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

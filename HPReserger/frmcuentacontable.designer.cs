@@ -68,7 +68,6 @@ namespace HPReserger
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.txtnombrecuenta = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
@@ -94,20 +93,22 @@ namespace HPReserger
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.Size = new System.Drawing.Size(114, 13);
             this.label2.TabIndex = 94;
             this.label2.Text = "Cuenta Contable N1:";
             // 
             // txtcodcuenta
             // 
             this.txtcodcuenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtcodcuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodcuenta.Location = new System.Drawing.Point(458, 12);
             this.txtcodcuenta.MaxLength = 15;
             this.txtcodcuenta.Name = "txtcodcuenta";
-            this.txtcodcuenta.Size = new System.Drawing.Size(172, 20);
+            this.txtcodcuenta.Size = new System.Drawing.Size(172, 21);
             this.txtcodcuenta.TabIndex = 2;
             this.txtcodcuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtcodcuenta.TextChanged += new System.EventHandler(this.txtcodcuenta_TextChanged);
@@ -116,10 +117,11 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(372, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 96;
             this.label1.Text = "Código Cuenta:";
             // 
@@ -135,10 +137,11 @@ namespace HPReserger
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 191);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 98;
             this.label3.Text = "Cuenta Cierre:";
             // 
@@ -149,7 +152,7 @@ namespace HPReserger
             this.cbotipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipo.FormattingEnabled = true;
-            this.cbotipo.Location = new System.Drawing.Point(106, 62);
+            this.cbotipo.Location = new System.Drawing.Point(106, 61);
             this.cbotipo.Name = "cbotipo";
             this.cbotipo.Size = new System.Drawing.Size(291, 21);
             this.cbotipo.TabIndex = 4;
@@ -158,20 +161,22 @@ namespace HPReserger
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 66);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 65);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 94;
             this.label4.Text = "Tipo Cuenta:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(403, 66);
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(401, 65);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.Size = new System.Drawing.Size(105, 13);
             this.label5.TabIndex = 100;
             this.label5.Text = "Naturaleza Cuenta:";
             // 
@@ -182,7 +187,7 @@ namespace HPReserger
             this.cbonaturaleza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbonaturaleza.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbonaturaleza.FormattingEnabled = true;
-            this.cbonaturaleza.Location = new System.Drawing.Point(507, 62);
+            this.cbonaturaleza.Location = new System.Drawing.Point(507, 61);
             this.cbonaturaleza.Name = "cbonaturaleza";
             this.cbonaturaleza.Size = new System.Drawing.Size(123, 21);
             this.cbonaturaleza.TabIndex = 5;
@@ -194,7 +199,7 @@ namespace HPReserger
             this.cbogenerica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbogenerica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbogenerica.FormattingEnabled = true;
-            this.cbogenerica.Location = new System.Drawing.Point(105, 87);
+            this.cbogenerica.Location = new System.Drawing.Point(105, 86);
             this.cbogenerica.Name = "cbogenerica";
             this.cbogenerica.Size = new System.Drawing.Size(305, 21);
             this.cbogenerica.TabIndex = 6;
@@ -202,10 +207,11 @@ namespace HPReserger
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 91);
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 90);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 13);
+            this.label6.Size = new System.Drawing.Size(92, 13);
             this.label6.TabIndex = 94;
             this.label6.Text = "Cuenta Genérica";
             // 
@@ -216,7 +222,7 @@ namespace HPReserger
             this.cbogrupo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbogrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbogrupo.FormattingEnabled = true;
-            this.cbogrupo.Location = new System.Drawing.Point(458, 87);
+            this.cbogrupo.Location = new System.Drawing.Point(458, 86);
             this.cbogrupo.Name = "cbogrupo";
             this.cbogrupo.Size = new System.Drawing.Size(172, 21);
             this.cbogrupo.TabIndex = 7;
@@ -224,17 +230,19 @@ namespace HPReserger
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(416, 91);
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(416, 90);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 100;
             this.label7.Text = "Grupo";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(205, 116);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 13);
@@ -264,10 +272,11 @@ namespace HPReserger
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(12, 116);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 13);
+            this.label10.Size = new System.Drawing.Size(109, 13);
             this.label10.TabIndex = 100;
             this.label10.Text = "Refleja Depende CC";
             // 
@@ -284,10 +293,11 @@ namespace HPReserger
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(12, 141);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 13);
+            this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 94;
             this.label11.Text = "Releja Debe:";
             // 
@@ -304,10 +314,11 @@ namespace HPReserger
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(12, 166);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 13);
+            this.label12.Size = new System.Drawing.Size(75, 13);
             this.label12.TabIndex = 94;
             this.label12.Text = "Releja Haber:";
             // 
@@ -324,10 +335,11 @@ namespace HPReserger
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(12, 215);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.Size = new System.Drawing.Size(61, 13);
             this.label13.TabIndex = 100;
             this.label13.Text = "¿Analitica?";
             // 
@@ -336,7 +348,7 @@ namespace HPReserger
             this.cboajustemensual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboajustemensual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboajustemensual.FormattingEnabled = true;
-            this.cboajustemensual.Location = new System.Drawing.Point(334, 211);
+            this.cboajustemensual.Location = new System.Drawing.Point(346, 211);
             this.cboajustemensual.Name = "cboajustemensual";
             this.cboajustemensual.Size = new System.Drawing.Size(185, 21);
             this.cboajustemensual.TabIndex = 13;
@@ -344,10 +356,11 @@ namespace HPReserger
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(160, 215);
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(158, 215);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(168, 13);
+            this.label14.Size = new System.Drawing.Size(183, 13);
             this.label14.TabIndex = 100;
             this.label14.Text = "Ajuste Diferencia Cambio Mensual";
             // 
@@ -364,10 +377,11 @@ namespace HPReserger
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(567, 215);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.Size = new System.Drawing.Size(40, 13);
             this.label15.TabIndex = 100;
             this.label15.Text = "Cierre:";
             // 
@@ -384,10 +398,11 @@ namespace HPReserger
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(12, 241);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(106, 13);
+            this.label17.Size = new System.Drawing.Size(113, 13);
             this.label17.TabIndex = 100;
             this.label17.Text = "Ajuste por Traslación";
             // 
@@ -396,7 +411,7 @@ namespace HPReserger
             this.cbocuentabc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocuentabc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuentabc.FormattingEnabled = true;
-            this.cbocuentabc.Location = new System.Drawing.Point(458, 237);
+            this.cbocuentabc.Location = new System.Drawing.Point(470, 237);
             this.cbocuentabc.Name = "cbocuentabc";
             this.cbocuentabc.Size = new System.Drawing.Size(61, 21);
             this.cbocuentabc.TabIndex = 16;
@@ -404,48 +419,38 @@ namespace HPReserger
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(339, 241);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(113, 13);
+            this.label16.Size = new System.Drawing.Size(119, 13);
             this.label16.TabIndex = 100;
             this.label16.Text = "Cuenta Declarante BC";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(12, 41);
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(12, 39);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(148, 13);
+            this.label18.Size = new System.Drawing.Size(160, 13);
             this.label18.TabIndex = 98;
             this.label18.Text = "Cuenta Contable Descripción:";
             // 
             // txtnombrecuenta
             // 
             this.txtnombrecuenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtnombrecuenta.Location = new System.Drawing.Point(163, 37);
+            this.txtnombrecuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnombrecuenta.Location = new System.Drawing.Point(178, 35);
             this.txtnombrecuenta.Name = "txtnombrecuenta";
-            this.txtnombrecuenta.Size = new System.Drawing.Size(467, 20);
+            this.txtnombrecuenta.Size = new System.Drawing.Size(452, 21);
             this.txtnombrecuenta.TabIndex = 3;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.SystemColors.Control;
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.label19.Location = new System.Drawing.Point(-56, 250);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(817, 13);
-            this.label19.TabIndex = 110;
-            this.label19.Text = "_________________________________________________________________________________" +
-    "______________________________________________________";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btneliminar
             // 
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(636, 61);
+            this.btneliminar.Location = new System.Drawing.Point(636, 60);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(96, 23);
             this.btneliminar.TabIndex = 21;
@@ -456,7 +461,7 @@ namespace HPReserger
             // btnmodificar
             // 
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(636, 36);
+            this.btnmodificar.Location = new System.Drawing.Point(636, 34);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(96, 23);
             this.btnmodificar.TabIndex = 20;
@@ -479,10 +484,13 @@ namespace HPReserger
             // 
             // lblmsg
             // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmsg.Location = new System.Drawing.Point(14, 621);
             this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(96, 13);
+            this.lblmsg.Size = new System.Drawing.Size(101, 13);
             this.lblmsg.TabIndex = 129;
             this.lblmsg.Text = "Total de Registros:";
             // 
@@ -492,6 +500,7 @@ namespace HPReserger
             // 
             // btncargarcuentas
             // 
+            this.btncargarcuentas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btncargarcuentas.Image = ((System.Drawing.Image)(resources.GetObject("btncargarcuentas.Image")));
             this.btncargarcuentas.Location = new System.Drawing.Point(319, 615);
             this.btncargarcuentas.Name = "btncargarcuentas";
@@ -505,6 +514,7 @@ namespace HPReserger
             // 
             // btncancelar
             // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(650, 615);
             this.btncancelar.Name = "btncancelar";
@@ -517,6 +527,7 @@ namespace HPReserger
             // 
             // btnaceptar
             // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(562, 615);
             this.btnaceptar.Name = "btnaceptar";
@@ -530,13 +541,15 @@ namespace HPReserger
             // txtcuentan1
             // 
             this.txtcuentan1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcuentan1.Location = new System.Drawing.Point(119, 12);
+            this.txtcuentan1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcuentan1.Location = new System.Drawing.Point(132, 12);
             this.txtcuentan1.Name = "txtcuentan1";
-            this.txtcuentan1.Size = new System.Drawing.Size(223, 20);
+            this.txtcuentan1.Size = new System.Drawing.Size(210, 21);
             this.txtcuentan1.TabIndex = 1;
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
@@ -549,39 +562,45 @@ namespace HPReserger
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
+            this.radioButton4.BackColor = System.Drawing.Color.Transparent;
             this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton4.Location = new System.Drawing.Point(110, 10);
+            this.radioButton4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton4.Location = new System.Drawing.Point(119, 10);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(82, 18);
+            this.radioButton4.Size = new System.Drawing.Size(85, 18);
             this.radioButton4.TabIndex = 130;
             this.radioButton4.Text = "Cuenta N1";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.UseVisualStyleBackColor = false;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton2.Location = new System.Drawing.Point(198, 10);
+            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(211, 10);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(110, 18);
+            this.radioButton2.Size = new System.Drawing.Size(118, 18);
             this.radioButton2.TabIndex = 130;
             this.radioButton2.Text = "Cuenta Contable";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.UseVisualStyleBackColor = false;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
             this.radioButton1.Checked = true;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(18, 10);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(101, 18);
+            this.radioButton1.Size = new System.Drawing.Size(109, 18);
             this.radioButton1.TabIndex = 130;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Código Cuenta";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.UseVisualStyleBackColor = false;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // dtgconten
@@ -640,10 +659,11 @@ namespace HPReserger
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(366, 116);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 13);
+            this.label9.Size = new System.Drawing.Size(92, 13);
             this.label9.TabIndex = 138;
             this.label9.Text = "Solicitar Detalle?";
             // 
@@ -659,11 +679,11 @@ namespace HPReserger
             // 
             // Txtbusca
             // 
-            this.Txtbusca.Text = "Buscar";
             this.Txtbusca.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Txtbusca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
             this.Txtbusca.ForeColor = System.Drawing.Color.Black;
+            this.Txtbusca.ImgBotonCerrar = null;
             this.Txtbusca.Location = new System.Drawing.Point(15, 266);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(715, 22);
@@ -724,10 +744,9 @@ namespace HPReserger
             this.Controls.Add(this.cboreflejahaber);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboreflejadebe);
-            this.Controls.Add(this.label19);
             this.MinimumSize = new System.Drawing.Size(763, 686);
             this.Name = "frmcuentacontable";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = " Cuenta Contable";
             this.Text = " Cuenta Contable";
             this.Load += new System.EventHandler(this.frmcuentacontable_Load);
             this.groupBox1.ResumeLayout(false);
@@ -772,7 +791,6 @@ namespace HPReserger
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtnombrecuenta;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btneliminar;
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Label lblmsg;

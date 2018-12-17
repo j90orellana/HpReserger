@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmccosto : Form
+    public partial class frmccosto : FormGradient
     {
         public frmccosto()
         {
@@ -19,6 +20,7 @@ namespace HPReserger
         public Boolean Consulta = false;
         public int ConsulCodi = 0;
         public string ConsulCodigo = "";
+        public string CodigoCentro = "";
         public int estado { get; set; }
         public string cadeaux = ""; public string siono = "";
         HPResergerCapaLogica.HPResergerCL Ccostos = new HPResergerCapaLogica.HPResergerCL();
@@ -133,6 +135,7 @@ namespace HPReserger
                         int x = dtgconten.CurrentCell.RowIndex;
                         ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
                         ConsulCodigo = dtgconten[Descripcion.Name, x].Value.ToString();
+                        CodigoCentro = dtgconten[codigos.Name, x].Value.ToString();
                     }
                     DialogResult = DialogResult.OK;
                     this.Close();
@@ -301,6 +304,7 @@ namespace HPReserger
                 int x = e.RowIndex;
                 ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
                 ConsulCodigo = dtgconten[Descripcion.Name, x].Value.ToString();
+                CodigoCentro = dtgconten[codigos.Name, x].Value.ToString();
                 this.Close();
             }
         }

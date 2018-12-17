@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmGenerarBoletas : Form
+    public partial class frmGenerarBoletas : FormGradient
     {
         public frmGenerarBoletas()
         {
@@ -109,7 +110,7 @@ namespace HPReserger
                         //Generar Asiento de Boletas Generadas
                         DataTable Tablita = new DataTable();
                         //filtrar por lo que ya esta generado
-                        Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                        Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero,1, inicial, final, frmLogin.CodigoUsuario);
                         if (Tablita.Rows.Count > 0)
                         {
                             DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");

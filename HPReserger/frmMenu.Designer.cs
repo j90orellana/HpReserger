@@ -41,10 +41,7 @@
             this.FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.pbesquina = new System.Windows.Forms.PictureBox();
             this.imglist = new System.Windows.Forms.ImageList(this.components);
-            this.panelOre1 = new HpResergerUserControls.PanelOre();
             this.pbfotoempleado = new System.Windows.Forms.PictureBox();
-            this.lblwelcome = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguimientoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,7 +85,6 @@
             this.dinamicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientoContableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reciboPorHonorariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaCréditoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaDébitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -217,12 +213,21 @@
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.queToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.haceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelOre1 = new HpResergerUserControls.PanelOre();
+            this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
+            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
-            this.panelOre1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
+            this.panelOre1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmenuclick
@@ -286,9 +291,9 @@
             // 
             this.FlowPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.FlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.FlowPanel.Location = new System.Drawing.Point(934, 69);
+            this.FlowPanel.Location = new System.Drawing.Point(934, 64);
             this.FlowPanel.Name = "FlowPanel";
-            this.FlowPanel.Size = new System.Drawing.Size(327, 492);
+            this.FlowPanel.Size = new System.Drawing.Size(327, 497);
             this.FlowPanel.TabIndex = 58;
             this.FlowPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.FlowPanel_ControlAdded);
             this.FlowPanel.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.FlowPanel_ControlRemoved_1);
@@ -312,75 +317,18 @@
             this.imglist.TransparentColor = System.Drawing.Color.Transparent;
             this.imglist.Images.SetKeyName(0, "icons8_Collaborator_Male_100px.png");
             // 
-            // panelOre1
-            // 
-            this.panelOre1.AutoSize = true;
-            this.panelOre1.BackColor = System.Drawing.SystemColors.Control;
-            this.panelOre1.Controls.Add(this.pbfotoempleado);
-            this.panelOre1.Controls.Add(this.lblwelcome);
-            this.panelOre1.Controls.Add(this.menuStrip1);
-            this.panelOre1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelOre1.Location = new System.Drawing.Point(0, 0);
-            this.panelOre1.Movible = false;
-            this.panelOre1.Name = "panelOre1";
-            this.panelOre1.Size = new System.Drawing.Size(1261, 69);
-            this.panelOre1.TabIndex = 56;
-            // 
             // pbfotoempleado
             // 
             this.pbfotoempleado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbfotoempleado.ContextMenuStrip = this.cmenuclick;
             this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
-            this.pbfotoempleado.Location = new System.Drawing.Point(1187, 0);
+            this.pbfotoempleado.Location = new System.Drawing.Point(1111, 0);
             this.pbfotoempleado.Name = "pbfotoempleado";
-            this.pbfotoempleado.Size = new System.Drawing.Size(74, 66);
+            this.pbfotoempleado.Size = new System.Drawing.Size(74, 63);
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfotoempleado.TabIndex = 54;
             this.pbfotoempleado.TabStop = false;
-            // 
-            // lblwelcome
-            // 
-            this.lblwelcome.BackColor = System.Drawing.SystemColors.Control;
-            this.lblwelcome.ContextMenuStrip = this.cmenuclick;
-            this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblwelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblwelcome.ImageIndex = 0;
-            this.lblwelcome.Location = new System.Drawing.Point(0, 24);
-            this.lblwelcome.Name = "lblwelcome";
-            this.lblwelcome.Padding = new System.Windows.Forms.Padding(0, 0, 70, 0);
-            this.lblwelcome.Size = new System.Drawing.Size(1261, 42);
-            this.lblwelcome.TabIndex = 20;
-            this.lblwelcome.Text = "Bienvenidos";
-            this.lblwelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblwelcome.UseMnemonic = false;
-            this.lblwelcome.Click += new System.EventHandler(this.lblwelcome_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.menuStrip1.ContextMenuStrip = this.cmenuclick;
-            this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arToolStripMenuItem,
-            this.proyectosToolStripMenuItem1,
-            this.ventasToolStripMenuItem,
-            this.verToolStripMenuItem,
-            this.contabilidadToolStripMenuItem,
-            this.planillaToolStripMenuItem,
-            this.seguridadToolStripMenuItem,
-            this.mantenimientoToolStripMenuItem,
-            this.ventanasToolStripMenuItem,
-            this.cerrarSesionToolStripMenuItem});
-            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MdiWindowListItem = this.ventanasToolStripMenuItem;
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1261, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            this.pbfotoempleado.Click += new System.EventHandler(this.pbfotoempleado_Click);
             // 
             // arToolStripMenuItem
             // 
@@ -394,7 +342,7 @@
             this.operacionesBancariasToolStripMenuItem});
             this.arToolStripMenuItem.Image = global::HPReserger.Properties.Resources.Orden_Pedido;
             this.arToolStripMenuItem.Name = "arToolStripMenuItem";
-            this.arToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.arToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
             this.arToolStripMenuItem.Tag = "4";
             this.arToolStripMenuItem.Text = "&Finanzas/Tesorería";
             this.arToolStripMenuItem.Click += new System.EventHandler(this.arToolStripMenuItem_Click);
@@ -487,7 +435,7 @@
             this.proyectosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.proyectosToolStripMenuItem});
             this.proyectosToolStripMenuItem1.Name = "proyectosToolStripMenuItem1";
-            this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(73, 22);
+            this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(73, 20);
             this.proyectosToolStripMenuItem1.Tag = "5";
             this.proyectosToolStripMenuItem1.Text = "Pro&yectos";
             // 
@@ -513,7 +461,7 @@
             this.toolStripSeparator9,
             this.vendedoresToolStripMenuItem});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(57, 22);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.ventasToolStripMenuItem.Tag = "8";
             this.ventasToolStripMenuItem.Text = "Ventas";
             // 
@@ -522,8 +470,9 @@
             this.cargaRegistroVentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cargaRegistroVentasToolStripMenuItem.Image")));
             this.cargaRegistroVentasToolStripMenuItem.Name = "cargaRegistroVentasToolStripMenuItem";
             this.cargaRegistroVentasToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.cargaRegistroVentasToolStripMenuItem.Tag = "801";
+            this.cargaRegistroVentasToolStripMenuItem.Tag = "";
             this.cargaRegistroVentasToolStripMenuItem.Text = "Carga Registro Ventas";
+            this.cargaRegistroVentasToolStripMenuItem.Visible = false;
             this.cargaRegistroVentasToolStripMenuItem.Click += new System.EventHandler(this.cargaRegistroVentasToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
@@ -589,7 +538,7 @@
             this.toolStripSeparator5,
             this.seguimientoToolStripMenuItem});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(77, 22);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.verToolStripMenuItem.Tag = "3";
             this.verToolStripMenuItem.Text = "&Almacenes";
             this.verToolStripMenuItem.Click += new System.EventHandler(this.verToolStripMenuItem_Click);
@@ -768,7 +717,7 @@
             this.periodosToolStripMenuItem,
             this.asientosAbiertosToolStripMenuItem});
             this.contabilidadToolStripMenuItem.Name = "contabilidadToolStripMenuItem";
-            this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(84, 22);
+            this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.contabilidadToolStripMenuItem.Tag = "2";
             this.contabilidadToolStripMenuItem.Text = "&Contabilidad";
             // 
@@ -805,7 +754,7 @@
             // facturaToolStripMenuItem
             // 
             this.facturaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.facturaToolStripMenuItem1,
+            this.facturasToolStripMenuItem,
             this.reciboPorHonorariosToolStripMenuItem,
             this.notaCréditoToolStripMenuItem,
             this.notaDébitoToolStripMenuItem});
@@ -815,15 +764,6 @@
             this.facturaToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.facturaToolStripMenuItem.Tag = "204";
             this.facturaToolStripMenuItem.Text = "Comprobantes de &Pago";
-            // 
-            // facturaToolStripMenuItem1
-            // 
-            this.facturaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("facturaToolStripMenuItem1.Image")));
-            this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
-            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
-            this.facturaToolStripMenuItem1.Tag = "20401";
-            this.facturaToolStripMenuItem1.Text = "&Factura";
-            this.facturaToolStripMenuItem1.Click += new System.EventHandler(this.facturaToolStripMenuItem1_Click);
             // 
             // reciboPorHonorariosToolStripMenuItem
             // 
@@ -935,7 +875,7 @@
             this.certificadoDeRetencionesToolStripMenuItem,
             this.abonosExternosEmpleadosToolStripMenuItem});
             this.planillaToolStripMenuItem.Name = "planillaToolStripMenuItem";
-            this.planillaToolStripMenuItem.Size = new System.Drawing.Size(53, 22);
+            this.planillaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.planillaToolStripMenuItem.Tag = "1";
             this.planillaToolStripMenuItem.Text = "&Planilla";
             // 
@@ -1165,7 +1105,7 @@
             this.perfilesToolStripMenuItem,
             this.solicitudesToolStripMenuItem});
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
-            this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(73, 22);
+            this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.seguridadToolStripMenuItem.Tag = "6";
             this.seguridadToolStripMenuItem.Text = "&Seguridad";
             // 
@@ -1221,7 +1161,7 @@
             this.ventasToolStripMenuItem1,
             this.entidadFinancierasToolStripMenuItem});
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
-            this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.mantenimientoToolStripMenuItem.Tag = "7";
             this.mantenimientoToolStripMenuItem.Text = "&Mantenimiento";
             // 
@@ -1461,6 +1401,7 @@
             this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(177, 22);
             this.usuariosToolStripMenuItem1.Tag = "705";
             this.usuariosToolStripMenuItem1.Text = "Usuarios";
+            this.usuariosToolStripMenuItem1.Click += new System.EventHandler(this.usuariosToolStripMenuItem1_Click);
             // 
             // tipoIdentificaciónToolStripMenuItem
             // 
@@ -1910,7 +1851,7 @@
             this.ventanasToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.ventanasToolStripMenuItem.MergeIndex = 1;
             this.ventanasToolStripMenuItem.Name = "ventanasToolStripMenuItem";
-            this.ventanasToolStripMenuItem.Size = new System.Drawing.Size(70, 22);
+            this.ventanasToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.ventanasToolStripMenuItem.Text = "Ventanas";
             this.ventanasToolStripMenuItem.Click += new System.EventHandler(this.ventanasToolStripMenuItem_Click);
             // 
@@ -1991,7 +1932,7 @@
             this.salirToolStripMenuItem,
             this.cargarPdfToolStripMenuItem});
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(54, 22);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.cerrarSesionToolStripMenuItem.Tag = "8";
             this.cerrarSesionToolStripMenuItem.Text = "Sesio&n";
             // 
@@ -2021,6 +1962,75 @@
             this.cargarPdfToolStripMenuItem.Text = "Cargar Pdf";
             this.cargarPdfToolStripMenuItem.Click += new System.EventHandler(this.cargarPdfToolStripMenuItem_Click);
             // 
+            // menuStrip2
+            // 
+            this.menuStrip2.AutoSize = false;
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.menuStrip2.ContextMenuStrip = this.cmenuclick;
+            this.menuStrip2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arToolStripMenuItem,
+            this.proyectosToolStripMenuItem1,
+            this.ventasToolStripMenuItem,
+            this.verToolStripMenuItem,
+            this.contabilidadToolStripMenuItem,
+            this.planillaToolStripMenuItem,
+            this.seguridadToolStripMenuItem,
+            this.mantenimientoToolStripMenuItem,
+            this.ventanasToolStripMenuItem,
+            this.cerrarSesionToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.MdiWindowListItem = this.ventanasToolStripMenuItem;
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(1261, 24);
+            this.menuStrip2.TabIndex = 60;
+            this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            // 
+            // holaToolStripMenuItem
+            // 
+            this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
+            this.holaToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // queToolStripMenuItem
+            // 
+            this.queToolStripMenuItem.Name = "queToolStripMenuItem";
+            this.queToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // haceToolStripMenuItem
+            // 
+            this.haceToolStripMenuItem.Name = "haceToolStripMenuItem";
+            this.haceToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // panelOre1
+            // 
+            this.panelOre1.AutoSize = true;
+            this.panelOre1.BackColor = System.Drawing.SystemColors.Control;
+            this.panelOre1.Controls.Add(this.lblwelcome);
+            this.panelOre1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelOre1.Location = new System.Drawing.Point(0, 24);
+            this.panelOre1.Movible = false;
+            this.panelOre1.Name = "panelOre1";
+            this.panelOre1.Size = new System.Drawing.Size(1261, 40);
+            this.panelOre1.TabIndex = 56;
+            // 
+            // lblwelcome
+            // 
+            this.lblwelcome.BackColor = System.Drawing.SystemColors.Control;
+            this.lblwelcome.ContextMenuStrip = this.cmenuclick;
+            this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblwelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblwelcome.ImageIndex = 0;
+            this.lblwelcome.Location = new System.Drawing.Point(0, 0);
+            this.lblwelcome.Name = "lblwelcome";
+            this.lblwelcome.Padding = new System.Windows.Forms.Padding(0, 0, 150, 0);
+            this.lblwelcome.Size = new System.Drawing.Size(1261, 40);
+            this.lblwelcome.TabIndex = 20;
+            this.lblwelcome.Text = "Bienvenidos";
+            this.lblwelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblwelcome.UseMnemonic = false;
+            this.lblwelcome.Click += new System.EventHandler(this.lblwelcome_Click);
+            // 
             // fotoCheck1
             // 
             this.fotoCheck1.Cargo = "Cargo:";
@@ -2035,17 +2045,47 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
+            // facturasToolStripMenuItem
+            // 
+            this.facturasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.facturaToolStripMenuItem1,
+            this.facturaManualToolStripMenuItem});
+            this.facturasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturasToolStripMenuItem.Image")));
+            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
+            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.facturasToolStripMenuItem.Text = "Facturas";
+            // 
+            // facturaManualToolStripMenuItem
+            // 
+            this.facturaManualToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturaManualToolStripMenuItem.Image")));
+            this.facturaManualToolStripMenuItem.Name = "facturaManualToolStripMenuItem";
+            this.facturaManualToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.facturaManualToolStripMenuItem.Text = "Factura Manual";
+            this.facturaManualToolStripMenuItem.Click += new System.EventHandler(this.facturaManualToolStripMenuItem_Click);
+            // 
+            // facturaToolStripMenuItem1
+            // 
+            this.facturaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("facturaToolStripMenuItem1.Image")));
+            this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
+            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.facturaToolStripMenuItem1.Tag = "20401";
+            this.facturaToolStripMenuItem1.Text = "&Factura";
+            this.facturaToolStripMenuItem1.Click += new System.EventHandler(this.facturaToolStripMenuItem1_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1261, 561);
+            this.Controls.Add(this.pbfotoempleado);
             this.Controls.Add(this.pbesquina);
             this.Controls.Add(this.FlowPanel);
             this.Controls.Add(this.panelOre1);
+            this.Controls.Add(this.menuStrip2);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip2;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2062,36 +2102,84 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMenu_MouseDown);
             this.cmenuclick.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).EndInit();
-            this.panelOre1.ResumeLayout(false);
-            this.panelOre1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
+            this.panelOre1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion      
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ContextMenuStrip cmenuclick;
+        private System.Windows.Forms.ToolStripMenuItem cascadaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarTodasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem minimizarTodasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem maximizarTodasToolStripMenuItem;
+        public System.Windows.Forms.Label lblwelcome;
+        public System.Windows.Forms.PictureBox pbfotoempleado;
+        private HpResergerUserControls.PanelOre panelOre1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private HpResergerUserControls.FotoCheck fotoCheck1;
+        private System.Windows.Forms.FlowLayoutPanel FlowPanel;
+        private System.Windows.Forms.PictureBox pbesquina;
+        private System.Windows.Forms.ImageList imglist;
         private System.Windows.Forms.ToolStripMenuItem arToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seguimientoToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem presupuestoOperacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem presupuestoOperacionesCuentaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem flujoDeOperacionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pagosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pagoDetraccionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operacionesBancariasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem proyectosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem proyectosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargaRegistroVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cotizacionesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem separaciónVentaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cronogramaDePagosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abonosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem vendedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem almacenesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seguimientoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contabilidadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seguridadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cambioDeClaveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem perfilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cotizacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aprobaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenDeCompraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem almacenesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem artículosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviciosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem seguimientoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordenesPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordenesDeCompraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem facturasSinPagarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ficSinComprobantesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem listarOCFaltantesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contabilidadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cuentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dinamicaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asientoContableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reciboPorHonorariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notaCréditoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notaDébitoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeCambioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportesContablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem estadoDeGanaciasYPerdidasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem flujoDeCajaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem periodosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asientosAbiertosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planillaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem solicitudEmpleadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem postulanteToolStripMenuItem;
@@ -2100,46 +2188,40 @@
         private System.Windows.Forms.ToolStripMenuItem desvinculaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem faltasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem amonestacionesPremiosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem articuloServicioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem departamentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem departamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem provinciaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem distritoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cuentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dinamicaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem asientoContableToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ordenesPedidoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ordenesDeCompraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem seguimientoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem empleadoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem boletasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem boletasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pagarBoletasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarPeriodoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generarGratificacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarGratificacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generarCTSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarCTSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem certificadoDeRetencionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seguimientoToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem presupuestoOperacionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem presupuestoOperacionesCuentaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pagosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem facturasSinPagarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ficSinComprobantesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem listarOCFaltantesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cargarPdfToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem paìsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abonosExternosEmpleadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seguridadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cambioDeClaveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem perfilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem solicitudesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parámetrosGeneralesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem periocidadToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem detraccionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem articuloServicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem artículosServiciosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem modeloToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem marcaModeloToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem departamentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem paìsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem departamentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem provinciaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem distritoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empresaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem empresasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sedesToolStripMenuItem1;
@@ -2148,6 +2230,7 @@
         private System.Windows.Forms.ToolStripMenuItem gerenciaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem áreaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem áreaCargoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tipoIdentificaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estadoCivilToolStripMenuItem1;
@@ -2160,6 +2243,7 @@
         private System.Windows.Forms.ToolStripMenuItem empresasEPSToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ePSAdicionalToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aFPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem sectorEmpresarialToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem contableToolStripMenuItem;
@@ -2167,57 +2251,13 @@
         private System.Windows.Forms.ToolStripMenuItem operacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem subOperacionesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem monedaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem comprobantesPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem impuestoALaRentaToolStripMenuItem1;
-        private System.Windows.Forms.ContextMenuStrip cmenuclick;
-        private System.Windows.Forms.ToolStripMenuItem cascadaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cerrarTodasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem minimizarTodasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem maximizarTodasToolStripMenuItem;
-        public System.Windows.Forms.Label lblwelcome;
-        public System.Windows.Forms.PictureBox pbfotoempleado;
-        private System.Windows.Forms.ToolStripMenuItem flujoDeOperacionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarPeriodoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem generarGratificacionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem generarCTSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarGratificacionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarCTSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abonosExternosEmpleadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem boletasToolStripMenuItem1;
-        private HpResergerUserControls.PanelOre panelOre1;
-        private System.Windows.Forms.ToolStripMenuItem áreaCargoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem reciboPorHonorariosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem proyectosToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem proyectosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem solicitudesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tipoDeCambioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ventanasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pagarBoletasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem configurarDinamicasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cerrarTodasToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem organizarVentanasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem cascadaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem minimizarTodasToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem maximizarTodasToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem normalTodasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportesContablesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem estadoDeGanaciasYPerdidasToolStripMenuItem1;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private HpResergerUserControls.FotoCheck fotoCheck1;
-        private System.Windows.Forms.FlowLayoutPanel FlowPanel;
-        private System.Windows.Forms.PictureBox pbesquina;
         private System.Windows.Forms.ToolStripMenuItem configuraciónReporteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem balanceDeSituaciónFinancieraToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem flujoDeCajaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cargaRegistroVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadoDeGananciasYPerdidasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroDiarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroDiaroSimplificadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroMayorToolStripMenuItem;
@@ -2236,31 +2276,34 @@
         private System.Windows.Forms.ToolStripMenuItem gananciasYPerdidasPorNaturalezaToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem reporteSunatToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem notaCréditoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem notaDébitoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem periodosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem asientosAbiertosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem detraccionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem comprobantesPToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ImageList imglist;
-        private System.Windows.Forms.ToolStripMenuItem pagoDetraccionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem estadoDeGananciasYPerdidasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cotizacionesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unidadDeMedidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargosVentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem operacionesBancariasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem vendedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cronogramaDePagosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripMenuItem separaciónVentaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abonosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entidadFinancierasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem tipoDeCuentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cuentasBancariasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ventanasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem organizarVentanasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cascadaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem minimizarTodasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem maximizarTodasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem normalTodasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarTodasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargarPdfToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem holaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem queToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem haceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem facturaManualToolStripMenuItem;
     }
 }

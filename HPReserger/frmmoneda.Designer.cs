@@ -56,7 +56,6 @@ namespace HPReserger
             // 
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToDeleteRows = false;
-            this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
@@ -206,44 +205,52 @@ namespace HPReserger
             // 
             this.txtgerencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtgerencia.Enabled = false;
+            this.txtgerencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtgerencia.Location = new System.Drawing.Point(91, 38);
             this.txtgerencia.Name = "txtgerencia";
-            this.txtgerencia.Size = new System.Drawing.Size(203, 20);
+            this.txtgerencia.Size = new System.Drawing.Size(203, 21);
             this.txtgerencia.TabIndex = 63;
             // 
             // txtcodigo
             // 
             this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtcodigo.Enabled = false;
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.Location = new System.Drawing.Point(91, 12);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(59, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(59, 21);
             this.txtcodigo.TabIndex = 60;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(17, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 54;
             this.label2.Text = "Descripción";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(40, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 55;
             this.label1.Text = "Código";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(156, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 64;
             this.label3.Text = "Moneda:";
             // 
@@ -251,10 +258,11 @@ namespace HPReserger
             // 
             this.txtname.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtname.Enabled = false;
+            this.txtname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtname.Location = new System.Drawing.Point(211, 12);
             this.txtname.MaxLength = 3;
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(83, 20);
+            this.txtname.Size = new System.Drawing.Size(83, 21);
             this.txtname.TabIndex = 64;
             // 
             // frmmoneda
@@ -277,7 +285,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(406, 286);
             this.MinimumSize = new System.Drawing.Size(406, 286);
             this.Name = "frmmoneda";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Moneda ";
             this.Text = "Moneda ";
             this.Load += new System.EventHandler(this.frmmoneda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

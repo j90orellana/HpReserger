@@ -21,9 +21,9 @@ namespace HPReserger
             TipoId = tipoid;
             nrodoc = nrodoca;
             nombre = nombbres;
-            total = totals;
-            subtotal = subtotals;
-            igv = igvs;
+            total = decimal.Parse(totals).ToString("n2");
+            subtotal = decimal.Parse(subtotals).ToString("n2");
+            igv = decimal.Parse(igvs).ToString("n2");
         }
         public int NumCot { get { return int.Parse(txtnumcot.TextValidoNumeros()); } set { txtnumcot.Text = value.ToString("00000"); } }
         private int CodVendedor;
@@ -81,7 +81,7 @@ namespace HPReserger
         {
             foreach (DataGridViewColumn item in dtgconten.Columns)
             {
-                if (item.DataPropertyName == PInicial.DataPropertyName || item.DataPropertyName == Observacion.DataPropertyName || item.DataPropertyName == Precio_Base.DataPropertyName || item.DataPropertyName == P_Coti.DataPropertyName || item.DataPropertyName == xsubtotal.DataPropertyName || item.DataPropertyName == xigv.DataPropertyName || item.DataPropertyName == EstadoLetras.DataPropertyName)
+                if (item.DataPropertyName == PInicial.DataPropertyName || item.DataPropertyName == Observacion.DataPropertyName || item.DataPropertyName == Precio_Base.DataPropertyName || item.DataPropertyName == P_Coti.DataPropertyName || item.DataPropertyName == xsubtotal.DataPropertyName || item.DataPropertyName == xigv.DataPropertyName || item.DataPropertyName == EstadoLetras.DataPropertyName || monedon.DataPropertyName == item.DataPropertyName)
                     item.ReadOnly = a;
             }
         }
@@ -264,7 +264,7 @@ namespace HPReserger
                 if ((int)item.Cells[tipo_inicial.Name].Value == 1)
                 {
                     //soles=1
-                    item.Cells[PInicial.Name].Value = ((decimal)item.Cells[P_Coti.Name].Value - (decimal)item.Cells[valor_inicial.Name].Value);
+                    item.Cells[PInicial.Name].Value = /*((decimal)item.Cells[P_Coti.Name].Value - */(decimal)item.Cells[valor_inicial.Name].Value;
                     //if ((int)item.Cells[idmoneda.Name].Value == 2) { item.Cells[PInicial.Name].Value = (decimal)item.Cells[T_ME.Name].Value - (decimal)item.Cells[valor_inicial.Name].Value; }
                 }
                 if ((int)item.Cells[tipo_inicial.Name].Value == 2)
@@ -328,7 +328,7 @@ namespace HPReserger
         }
         public DialogResult msgp(string cadena)
         {
-            return HPResergerFunciones.Utilitarios.msgp(cadena);
+            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
         }
         private void btnaddproducto_Click(object sender, EventArgs e)
         {

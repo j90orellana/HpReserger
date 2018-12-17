@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFoto));
             this.pbfoto = new System.Windows.Forms.PictureBox();
             this.btndescargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbfoto)).BeginInit();
@@ -36,6 +35,7 @@
             // 
             // pbfoto
             // 
+            this.pbfoto.BackColor = System.Drawing.Color.Transparent;
             this.pbfoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbfoto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbfoto.Location = new System.Drawing.Point(0, 0);
@@ -52,7 +52,6 @@
             // 
             this.btndescargar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btndescargar.AutoEllipsis = true;
-            this.btndescargar.Image = ((System.Drawing.Image)(resources.GetObject("btndescargar.Image")));
             this.btndescargar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btndescargar.ImageKey = "(ninguno)";
             this.btndescargar.Location = new System.Drawing.Point(323, 556);

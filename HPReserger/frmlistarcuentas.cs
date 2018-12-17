@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmlistarcuentas : Form
+    public partial class frmlistarcuentas : FormGradient
     {
         public frmlistarcuentas()
         {

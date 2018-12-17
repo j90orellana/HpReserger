@@ -71,6 +71,7 @@
             this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.pbfoto);
             this.Name = "frmImagenes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FrmFoto_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmImagenes_KeyDown);
             this.Leave += new System.EventHandler(this.FrmFoto_Leave);

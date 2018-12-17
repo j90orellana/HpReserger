@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmSolicitudEmpleadoModificar : Form
+    public partial class frmSolicitudEmpleadoModificar : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clModificarSE = new HPResergerCapaLogica.HPResergerCL();
         MemoryStream _memoryStream = new MemoryStream();

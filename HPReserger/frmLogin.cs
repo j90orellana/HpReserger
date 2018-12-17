@@ -53,11 +53,14 @@ namespace HPReserger
             }
         }
         private void frmLogin_Load(object sender, EventArgs e)
-        {
+        {           
             cboBase.SelectedIndex = 0;
             clLogueo.CambiarBase(Basedatos);
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;
             Intentos = 0;
+            //int con = 0, stoc = 0;
+            //clLogueo.delproducto(2, out con, out stoc);
+            //msg($"con {con} stock {stoc}");
 
             //moveControl1.cargar();
             // OpenFileDialog dias = new OpenFileDialog();

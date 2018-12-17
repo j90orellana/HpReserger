@@ -53,6 +53,7 @@ namespace HPReserger
             LimpiarControles(txtdireccion, txtemail, txtnombre, txtobservacion, txtocupacion, txttelcelular, txttelfijo, txttipoid, txtnroid, txtNombreVendedor, txtcodvendedor, txtimporte, txtdocpago, txttipocambio, txtvaltotal, txtvalnrocuotas, txtvalnrocuotas);
             ModoEdicion(false);
             lkldocpago.Enabled = false;
+            txtimporte.ReadOnly = true; dtpabono.Enabled = false; btnimagendoc.Enabled = false;
             VaciarDataGrid(); btnaceptar.Enabled = false;
             if (txtnumcot.EstaLLeno())
             {
@@ -81,12 +82,24 @@ namespace HPReserger
                     btnaceptar.Enabled = true;
                     ////Sacamos los Datos de resumen
                     DataRow Tdatitos = (CapaLogica.CronogramaVtaDetalleResumen(int.Parse(txtnumcot.Text))).Rows[0];
-                    txtporpagar.Text = Configuraciones.ReturnDecimal(Tdatitos["PorPagar"].ToString());
+                    if ((decimal)Tdatitos["PorPagar"] > 0)
+                        txtporpagar.Text = ((decimal)Tdatitos["PorPagar"]).ToString("n2");
+                    else txtporpagar.Text = "0.00";
                     txtvalnrocuotas.Text = ((decimal)Tdatitos["NroCuotas"]).ToString("0");
                     ModoEdicion(true);
                     CargarDatos();
                     if (int.Parse(txtvalnrocuotas.Text) > 0) lbldato.Text = "Tienes Abonos Pendientes";
                     else lbldato.Text = "No Tienes Abonos Pendientes";
+                    if (decimal.Parse(txtvaltotal.Text) > decimal.Parse(txttotalpagado.Text))
+                    {
+                        btnnuevo.Enabled = true;
+                        btnaceptar.Enabled = true;
+                    }
+                    else
+                    {
+                        btnaceptar.Enabled = false;
+                        btnnuevo.Enabled = false;
+                    }
                 }
             }
         }
@@ -106,6 +119,7 @@ namespace HPReserger
             txtimporte.CargarTextoporDefecto();
             txtdocpago.CargarTextoporDefecto();
             lkldocpago.Enabled = false;
+            dtpabono.Value = DateTime.Now;
         }
         MemoryStream _memoryStream = new MemoryStream();
         byte[] FotoDocpago;
@@ -126,9 +140,18 @@ namespace HPReserger
                 FotoDocpago = File.ReadAllBytes(dialogoAbrirArchivoContrato.FileName);
             }
         }
+        public int estado = 0;
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (estado == 0)
+            {
+                this.Close();
+
+            }
+            estado = 0;
+            btnnuevo.Enabled = true;
+            txtimporte.ReadOnly = true; dtpabono.Enabled = false; btnimagendoc.Enabled = false;
+            btnaceptar.Enabled = false;
         }
         public void msg(string cadena)
         {
@@ -136,33 +159,39 @@ namespace HPReserger
         }
         public DialogResult msgP(string cadena)
         {
-            return HPResergerFunciones.Utilitarios.msgp(cadena);
+            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            if (decimal.Parse(txtvaltotal.Text) - decimal.Parse(txttotalpagado.Text) == 0)
+            if (estado == 1)
             {
-                msg("No Se Puede Abonar mas");
-                return;
-            }
-            if (decimal.Parse(txtimporte.Text) <= 0)
-            {
-                txtimporte.Focus();
-                msg("Ingrese un Monto Mayor a Cero");
-                return;
-            }
-            if (FotoDocpago == null)
-            {
-                btnimagendoc.Focus();
-                msg("Seleccione Documento de Pago");
-                return;
-            }
-            if (msgP("Seguro desea Grabar Abono") == DialogResult.Yes)
-            {
-                CapaLogica.CronogramaVtaDetalle(1, _idCabecera, int.Parse(txtnumcot.Text), int.Parse(txtvalnrocuotas.Text), dtpabono.Value, -1 * decimal.Parse(txtimporte.Text), _moneda, dtpabono.Value, FotoDocpago, txtdocpago.Text, dtpabono.Value, frmLogin.CodigoUsuario);
-                msg("Abono Guardado");
-                btnlimpiarabono_Click(sender, e);
-                txtnumcot_TextChanged(sender, e);
+                if (decimal.Parse(txtvaltotal.Text) - decimal.Parse(txttotalpagado.Text) == 0)
+                {
+                    msg("No Se Puede Abonar mas");
+                    return;
+                }
+                if (decimal.Parse(txtimporte.Text) <= 0)
+                {
+                    txtimporte.Focus();
+                    msg("Ingrese un Monto Mayor a Cero");
+                    return;
+                }
+                if (FotoDocpago == null)
+                {
+                    btnimagendoc.Focus();
+                    msg("Seleccione Documento de Pago");
+                    return;
+                }
+                if (msgP("Seguro desea Grabar Abono") == DialogResult.Yes)
+                {
+                    CapaLogica.CronogramaVtaDetalle(1, _idCabecera, int.Parse(txtnumcot.Text), int.Parse(txtvalnrocuotas.Text), dtpabono.Value, -1 * decimal.Parse(txtimporte.Text), _moneda, dtpabono.Value, FotoDocpago, txtdocpago.Text, dtpabono.Value, frmLogin.CodigoUsuario);
+                    msg("Abono Guardado");
+                    btnlimpiarabono_Click(sender, e);
+                    txtnumcot_TextChanged(sender, e);
+                    estado = 0;
+                    btnaceptar.Enabled = false;
+                    btnnuevo.Enabled = true;
+                }
             }
         }
 
@@ -185,6 +214,63 @@ namespace HPReserger
                 else
                     dtgconten.Rows[e.RowIndex].DefaultCellStyle.ForeColor = item.InheritedStyle.ForeColor;
             }
+        }
+        private void lkldocpago_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (FotoDocpago != null)
+            {
+                int K = FotoDocpago.Length;
+                frmVerPdf VerPdf = new frmVerPdf();
+                string Ruta = Application.CommonAppDataPath + @"\temp.pdf";
+                try
+                {
+                    FileStream RutaArchivo = new FileStream(Ruta, FileMode.Create, FileAccess.ReadWrite);
+                    RutaArchivo.Write(FotoDocpago, 0, K);
+                    RutaArchivo.Close();
+                    VerPdf.MdiParent = MdiParent;
+                    VerPdf.Icon = Icon;
+                    VerPdf.ruta = Ruta;
+                    VerPdf.nombreformulario = " Documento de Pago -" + txtnombre.Text;
+                    VerPdf.Show();
+                    File.Delete(Ruta);
+                }
+                catch (Exception ex) { msg(ex.Message); }
+            }
+        }
+        private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.RowIndex, y = e.ColumnIndex;
+            if (x >= 0)
+            {
+                DataRow Filita = (CapaLogica.CronogramaVtaDetalleResumenPago((int)dtgconten[idregistro.Name, x].Value)).Rows[0];
+                if (Filita["img_pago"].ToString() != "")
+                {
+                    FotoDocpago = (byte[])Filita["img_pago"];
+                    txtdocpago.Text = Filita["nombre_pago"].ToString();
+                    lkldocpago.Enabled = true;
+                }
+                else
+                {
+                    txtdocpago.Text = ""; FotoDocpago = null;
+                    lkldocpago.Enabled = false;
+                }
+                dtpabono.Value = (DateTime)Filita["Vencimiento_Cuota"];
+                if ((decimal)Filita["valor_cuota"] < 0)
+                {
+                    txtimporte.Text = (-1 * (decimal)Filita["valor_cuota"]).ToString("n2");
+                }
+                txtimporte.Text = "0.00";
+
+            }
+        }
+        private void btnnuevo_Click(object sender, EventArgs e)
+        {
+            txtimporte.ReadOnly = false; dtpabono.Enabled = true; btnimagendoc.Enabled = true;
+            btnnuevo.Enabled = false;
+            estado = 1;
+            btnlimpiarabono_Click(sender, e);
+            btnaceptar.Enabled = true;
+
         }
     }
 }

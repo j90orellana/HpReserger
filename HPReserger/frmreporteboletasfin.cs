@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.Windows.Forms;
 using CrystalDecisions.Shared;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmreporteboletasfin : Form
+    public partial class frmreporteboletasfin : FormGradient
     {
         public frmreporteboletasfin()
         {

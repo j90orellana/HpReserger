@@ -52,26 +52,31 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(40, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Código";
             // 
             // txtcodigo
             // 
             this.txtcodigo.Enabled = false;
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.Location = new System.Drawing.Point(86, 14);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(236, 20);
+            this.txtcodigo.Size = new System.Drawing.Size(236, 21);
             this.txtcodigo.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(17, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Descripción";
             // 
@@ -79,9 +84,10 @@
             // 
             this.txtdes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtdes.Enabled = false;
+            this.txtdes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdes.Location = new System.Drawing.Point(86, 39);
             this.txtdes.Name = "txtdes";
-            this.txtdes.Size = new System.Drawing.Size(236, 20);
+            this.txtdes.Size = new System.Drawing.Size(236, 21);
             this.txtdes.TabIndex = 3;
             // 
             // btnnuevo
@@ -195,9 +201,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(36, 69);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Perfiles:";
             // 
@@ -264,7 +272,7 @@
             this.Controls.Add(this.btnocultar);
             this.MinimumSize = new System.Drawing.Size(438, 444);
             this.Name = "FrmPerfil";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Perfiles";
             this.Text = "Perfiles";
             this.Load += new System.EventHandler(this.FrmPerfil_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgperfil)).EndInit();

@@ -33,16 +33,20 @@ namespace HPReserger
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarAlmacenServicios));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNumeros = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,7 +56,7 @@ namespace HPReserger
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.gridDetalle2 = new Dtgconten();
+            this.gridDetalle2 = new HpResergerUserControls.Dtgconten();
             this.ItemDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2CODIGOARTICULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.G2ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +70,7 @@ namespace HPReserger
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.gridDetalle1 = new Dtgconten();
+            this.gridDetalle1 = new HpResergerUserControls.Dtgconten();
             this.FIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NGR = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,6 +108,7 @@ namespace HPReserger
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.cboOC);
             this.groupBox1.Controls.Add(this.txtNumeros);
             this.groupBox1.Controls.Add(this.txtGR);
@@ -130,7 +135,7 @@ namespace HPReserger
             // 
             // txtGR
             // 
-            this.txtGR.Location = new System.Drawing.Point(442, 16);
+            this.txtGR.Location = new System.Drawing.Point(449, 16);
             this.txtGR.Name = "txtGR";
             this.txtGR.Size = new System.Drawing.Size(52, 20);
             this.txtGR.TabIndex = 11;
@@ -139,10 +144,11 @@ namespace HPReserger
             // 
             // txtRUC
             // 
+            this.txtRUC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRUC.Location = new System.Drawing.Point(90, 16);
             this.txtRUC.MaxLength = 11;
             this.txtRUC.Name = "txtRUC";
-            this.txtRUC.Size = new System.Drawing.Size(92, 20);
+            this.txtRUC.Size = new System.Drawing.Size(92, 21);
             this.txtRUC.TabIndex = 10;
             this.txtRUC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtRUC.TextChanged += new System.EventHandler(this.txtRUC_TextChanged);
@@ -150,10 +156,12 @@ namespace HPReserger
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label3.Location = new System.Drawing.Point(333, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 13);
+            this.label3.Size = new System.Drawing.Size(113, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Nº Guía de Remisión";
             this.label3.Visible = false;
@@ -161,20 +169,24 @@ namespace HPReserger
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(192, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Nº OC";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label1.Location = new System.Drawing.Point(6, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "RUC Proveedor";
             // 
@@ -184,17 +196,25 @@ namespace HPReserger
             this.gridDetalle2.AllowUserToDeleteRows = false;
             this.gridDetalle2.AllowUserToResizeColumns = false;
             this.gridDetalle2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.gridDetalle2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridDetalle2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDetalle2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            //this.gridDetalle2.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridDetalle2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.gridDetalle2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.gridDetalle2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridDetalle2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.gridDetalle2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDetalle2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridDetalle2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridDetalle2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemDetalle,
@@ -207,14 +227,25 @@ namespace HPReserger
             this.centrocostox,
             this.CANTOC,
             this.CANTING});
-            this.gridDetalle2.Location = new System.Drawing.Point(9, 301);
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDetalle2.DefaultCellStyle = dataGridViewCellStyle8;
+            this.gridDetalle2.EnableHeadersVisualStyles = false;
+            this.gridDetalle2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
+            this.gridDetalle2.Location = new System.Drawing.Point(9, 295);
             this.gridDetalle2.Name = "gridDetalle2";
             this.gridDetalle2.ReadOnly = true;
+            this.gridDetalle2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.gridDetalle2.RowHeadersVisible = false;
             this.gridDetalle2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle2.RowTemplate.Height = 16;
             this.gridDetalle2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDetalle2.Size = new System.Drawing.Size(587, 218);
+            this.gridDetalle2.Size = new System.Drawing.Size(587, 222);
             this.gridDetalle2.TabIndex = 33;
             // 
             // ItemDetalle
@@ -237,9 +268,9 @@ namespace HPReserger
             // 
             this.G2ITEM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2ITEM.DataPropertyName = "ITEM";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.G2ITEM.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.G2ITEM.DefaultCellStyle = dataGridViewCellStyle3;
             this.G2ITEM.FillWeight = 29.82233F;
             this.G2ITEM.HeaderText = "ITEM";
             this.G2ITEM.Name = "G2ITEM";
@@ -259,9 +290,9 @@ namespace HPReserger
             // 
             this.G2MARCA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2MARCA.DataPropertyName = "MARCA";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.G2MARCA.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.G2MARCA.DefaultCellStyle = dataGridViewCellStyle4;
             this.G2MARCA.FillWeight = 29.82233F;
             this.G2MARCA.HeaderText = "MARCA";
             this.G2MARCA.Name = "G2MARCA";
@@ -284,15 +315,15 @@ namespace HPReserger
             // 
             this.G2MODELO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.G2MODELO.DataPropertyName = "MODELO";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.G2MODELO.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.G2MODELO.DefaultCellStyle = dataGridViewCellStyle5;
             this.G2MODELO.FillWeight = 29.82233F;
             this.G2MODELO.HeaderText = "MODELO";
             this.G2MODELO.Name = "G2MODELO";
             this.G2MODELO.ReadOnly = true;
             this.G2MODELO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.G2MODELO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.G2MODELO.Width = 59;
+            this.G2MODELO.Width = 61;
             // 
             // centrocostox
             // 
@@ -307,10 +338,10 @@ namespace HPReserger
             // CANTOC
             // 
             this.CANTOC.DataPropertyName = "CANTIDAD";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.CANTOC.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.CANTOC.DefaultCellStyle = dataGridViewCellStyle6;
             this.CANTOC.HeaderText = "CANT OC";
             this.CANTOC.Name = "CANTOC";
             this.CANTOC.ReadOnly = true;
@@ -320,21 +351,23 @@ namespace HPReserger
             // 
             this.CANTING.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.CANTING.DataPropertyName = "CANTIDADFIC";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.CANTING.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.CANTING.DefaultCellStyle = dataGridViewCellStyle7;
             this.CANTING.FillWeight = 29.82233F;
             this.CANTING.HeaderText = "CANT ING";
             this.CANTING.Name = "CANTING";
             this.CANTING.ReadOnly = true;
-            this.CANTING.Width = 83;
+            this.CANTING.Width = 86;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(6, 279);
+            this.label6.Location = new System.Drawing.Point(6, 280);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 13);
+            this.label6.Size = new System.Drawing.Size(104, 13);
             this.label6.TabIndex = 32;
             this.label6.Text = "Servicios de La OC:";
             // 
@@ -350,10 +383,12 @@ namespace HPReserger
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label5.Location = new System.Drawing.Point(6, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 13);
+            this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 30;
             this.label5.Text = "Registro de FICs:";
             // 
@@ -363,17 +398,25 @@ namespace HPReserger
             this.gridDetalle1.AllowUserToDeleteRows = false;
             this.gridDetalle1.AllowUserToResizeColumns = false;
             this.gridDetalle1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.gridDetalle1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.gridDetalle1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDetalle1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            //this.gridDetalle1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridDetalle1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.gridDetalle1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            //this.gridDetalle1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.gridDetalle1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.gridDetalle1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDetalle1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.gridDetalle1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridDetalle1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FIC,
@@ -381,9 +424,20 @@ namespace HPReserger
             this.NGR,
             this.ARTOC,
             this.ARTFIC});
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDetalle1.DefaultCellStyle = dataGridViewCellStyle16;
+            this.gridDetalle1.EnableHeadersVisualStyles = false;
+            this.gridDetalle1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.gridDetalle1.Location = new System.Drawing.Point(9, 69);
             this.gridDetalle1.Name = "gridDetalle1";
             this.gridDetalle1.ReadOnly = true;
+            this.gridDetalle1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.gridDetalle1.RowHeadersVisible = false;
             this.gridDetalle1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridDetalle1.RowTemplate.Height = 16;
@@ -397,10 +451,10 @@ namespace HPReserger
             // FIC
             // 
             this.FIC.DataPropertyName = "FIC";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.FIC.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = null;
+            this.FIC.DefaultCellStyle = dataGridViewCellStyle11;
             this.FIC.HeaderText = " Nº FIC";
             this.FIC.Name = "FIC";
             this.FIC.ReadOnly = true;
@@ -408,8 +462,8 @@ namespace HPReserger
             // FECHA
             // 
             this.FECHA.DataPropertyName = "FECHA";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FECHA.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FECHA.DefaultCellStyle = dataGridViewCellStyle12;
             this.FECHA.HeaderText = "FECHA";
             this.FECHA.Name = "FECHA";
             this.FECHA.ReadOnly = true;
@@ -417,8 +471,8 @@ namespace HPReserger
             // NGR
             // 
             this.NGR.DataPropertyName = "GUIA";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NGR.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NGR.DefaultCellStyle = dataGridViewCellStyle13;
             this.NGR.HeaderText = "VALORIZACION";
             this.NGR.Name = "NGR";
             this.NGR.ReadOnly = true;
@@ -426,8 +480,8 @@ namespace HPReserger
             // ARTOC
             // 
             this.ARTOC.DataPropertyName = "ARTOC";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ARTOC.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ARTOC.DefaultCellStyle = dataGridViewCellStyle14;
             this.ARTOC.HeaderText = "ART OC";
             this.ARTOC.Name = "ARTOC";
             this.ARTOC.ReadOnly = true;
@@ -436,10 +490,10 @@ namespace HPReserger
             // ARTFIC
             // 
             this.ARTFIC.DataPropertyName = "ARTFIC";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "0\'%\'";
-            dataGridViewCellStyle12.NullValue = null;
-            this.ARTFIC.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "0\'%\'";
+            dataGridViewCellStyle15.NullValue = null;
+            this.ARTFIC.DefaultCellStyle = dataGridViewCellStyle15;
             this.ARTFIC.HeaderText = "ART FIC";
             this.ARTFIC.Name = "ARTFIC";
             this.ARTFIC.ReadOnly = true;
@@ -448,19 +502,22 @@ namespace HPReserger
             // 
             this.txtsuma.BackColor = System.Drawing.SystemColors.Window;
             this.txtsuma.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtsuma.Location = new System.Drawing.Point(506, 275);
+            this.txtsuma.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsuma.Location = new System.Drawing.Point(506, 272);
             this.txtsuma.Name = "txtsuma";
-            this.txtsuma.Size = new System.Drawing.Size(90, 20);
+            this.txtsuma.Size = new System.Drawing.Size(90, 21);
             this.txtsuma.TabIndex = 36;
             this.txtsuma.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(439, 279);
+            this.label7.Location = new System.Drawing.Point(439, 276);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 32;
             this.label7.Text = "Suma Total";
             // 
@@ -469,7 +526,6 @@ namespace HPReserger
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 551);
-            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.txtsuma);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);

@@ -1,4 +1,5 @@
 ﻿using CrystalDecisions.Shared;
+using HpResergerUserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmReporteGratificacion : Form
+    public partial class frmReporteGratificacion : FormGradient
     {
         public frmReporteGratificacion()
         {

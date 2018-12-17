@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,14 +12,24 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmPagarFactura : Form
+    public partial class frmPagarFactura : FormGradient
     {
         public frmPagarFactura()
         {
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL cPagarfactura = new HPResergerCapaLogica.HPResergerCL();
-
+        private string _NameEmpresa;
+        public string NameEmpresa
+        {
+            get { return _NameEmpresa; }
+            set
+            {
+                if (value != NameEmpresa)
+                    Comprobantes.Clear();
+                _NameEmpresa = value;
+            }
+        }
         private void txtruc_TextChanged(object sender, EventArgs e)
         {
             if (txtruc.Text.Length > 9)
@@ -37,7 +48,7 @@ namespace HPReserger
                 txtdireccion.Text = razonsocial["direccion_oficina"].ToString();
                 txtTelefono.Text = razonsocial["telefono_oficina"].ToString();
                 //cargarguias(txtguia);//txtguia_TextChanged(sender, e);
-                Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagar(0, "", 0, DateTime.Now, DateTime.Now, 0, DateTime.Now, DateTime.Now, 0);
+                Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagarxEmpresa(0, "", 0, DateTime.Now, DateTime.Now, 0, DateTime.Now, DateTime.Now, 0, (int)cboempresa.SelectedValue);
             }
             else
             {
@@ -54,6 +65,7 @@ namespace HPReserger
             //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
             // txtruc.Text = "0701046971";
             //    radioButton1.Checked = true;
+            cboempresa_Click_1(sender, e);
             txtbuscar_TextChanged(sender, e);
 
             DataRow Filita = cPagarfactura.VerUltimoIdentificador("TBL_Factura", "Nro_DocPago");
@@ -159,10 +171,34 @@ namespace HPReserger
             if (cbobanco.SelectedIndex >= 0)
             {
                 cbocuentabanco.Text = "";
+                CargarCuentasBancos();
+            }
+        }
+        private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbobanco.SelectedValue != null)
+            {
+                CargarCuentasBancos();
+                txtbuscar_TextChanged(sender, e);
+                NameEmpresa = cboempresa.Text;
+            }
+        }
+        public void CargarCuentasBancos()
+        {
+            if (cboempresa.SelectedValue != null)
+            {
                 cbocuentabanco.ValueMember = "Id_Cuenta_Contable";
                 cbocuentabanco.DisplayMember = "banco";
-                cbocuentabanco.DataSource = cPagarfactura.ListarBancosTiposdePago(cbobanco.SelectedValue.ToString());
+                cbocuentabanco.DataSource = cPagarfactura.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
             }
+        }
+        private void cbobanco_Click(object sender, EventArgs e)
+        {
+            string cadenar = cbobanco.Text;
+            cbobanco.ValueMember = "codigo";
+            cbobanco.DisplayMember = "descripcion";
+            cbobanco.DataSource = cPagarfactura.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
+            cbobanco.Text = cadenar;
         }
         private void txtruc_KeyUp(object sender, KeyEventArgs e)
         {
@@ -178,7 +214,15 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            HPResergerFunciones.Utilitarios.msg(cadena);
+        }
+        public DialogResult msgp(string cadena)
+        {
+            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
+        }
+        public DialogResult msgOkCancel(string cadena)
+        {
+            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
         }
         DialogResult PAsoBanco = DialogResult.Cancel;
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -223,20 +267,20 @@ namespace HPReserger
                 return;
             }
             Boolean GenerarTxt = false;
-            DialogResult ResultadoDialogo = MessageBox.Show("Desea Generar TXT del pago?", CompanyName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            DialogResult ResultadoDialogo = HPResergerFunciones.Utilitarios.msgYesNoCancel("Desea Generar TXT del pago?");
             if (ResultadoDialogo == DialogResult.Yes)
             {
                 GenerarTxt = false;
                 ///Verificar si el esta el Generador de txt de ese banco 
                 string bancox = cbobanco.SelectedValue.ToString().Trim();
-                if (bancox == "BCP" || bancox == "IBK" || bancox == "BIF")
+                if (bancox == "CREDITO" || bancox == "INTERBANK" || bancox == "BIF")
                 {
                     //bancos que generan el txt bcp ibk bif
                     GenerarTxt = true;
                 }
                 else
                 {
-                    if (MessageBox.Show("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (msgOkCancel("El Banco Seleccionado no tiene para exportar a TXT, Desea Continuar?") == DialogResult.OK)
                     {
                         GenerarTxt = false;
                     }
@@ -268,7 +312,7 @@ namespace HPReserger
                     return;
                 //msg("vamos a pagar la factura");
                 PasoFactura = false;
-                if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "BCP")
+                if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "CREDITO")
                 {
                     //Abrimos eL formulario del banco de credito
                     //msg("FORMULARIO DEL BCP");
@@ -282,7 +326,7 @@ namespace HPReserger
                     bancobcp.ShowDialog();
                     PAsoBanco = bancobcp.DialogResult;
                 }
-                if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "IBK")
+                if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "INTERBANK")
                 {
                     //abrimos el formulario del banco interbank
                     // msg("FORMULARIO DEL IBK");
@@ -316,25 +360,27 @@ namespace HPReserger
             ///////////////////////
             ///Dinamica Contable///
             /////////////////////// 
+            string nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
             if (PAsoBanco == DialogResult.OK)
             {
-                int numasiento = 0; string facturar = "";
+                int numasiento = 0;
+                string facturar = "";
                 foreach (FACTURAS fac in Comprobantes)
                 {
+
                     if (numasiento == 0)
                     {
                         DataTable asientito = cPagarfactura.UltimoAsientoFactura(fac.numero, fac.proveedor, DateTime.Now);
                         DataRow asiento = asientito.Rows[0];
-                        if (asiento == null) { numasiento = 0; }
+                        if (asiento == null) { numasiento = 1; }
                         else
                             numasiento = (int)asiento["codigo"];
+                        numasiento--;
                     }
-                    numasiento--;
                     DataTable TBanco = new DataTable();
                     TBanco = cPagarfactura.EntidadFinanciera();
                     DataRow[] filita = TBanco.Select($"sufijo='{cbobanco.SelectedValue.ToString()}'");
                     int banko = int.Parse((filita[0])["codigo"].ToString());
-                    string nroKuenta = cbocuentabanco.Text;
                     DateTime hoy = DateTime.Now;
                     //Recorremos los comprobantes seleccionados RH / FT
                     //Public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, DateTime FechaCancelado)
@@ -344,31 +390,34 @@ namespace HPReserger
                         if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
                         else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
                         //cuenta de recibo por honorarios 4241101
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.aPagar, 0, 1, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.aPagar, 0, 1, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
                         facturar = fac.numero;
                         proveer = fac.proveedor;
+                        idmoneda = fac.Moneda;
                     }
                     else
                     {
-                        if (fac.detraccion > 0)
-                        {
-                            //actualizo que la factura esta pagada
-                            if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
-                            else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
-                            ///facturas por pagar 4212101
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
-                            facturar = fac.numero; proveer = fac.proveedor;
-                        }
-                        else
-                        {
-                            //actualizo que la factura esta pagada
-                            if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
-                            else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
-                            ///facturas por pagar 4212101
-                            cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor);
-                            facturar = fac.numero; proveer = fac.proveedor;
-                        }
+                        //if (fac.detraccion > 0)
+                        //{
+                        //actualizo que la factura esta pagada
+                        //if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
+                        //else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
+                        /////facturas por pagar 4212101
+                        //cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4011110", 0, fac.detraccion, 3, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
+                        //cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
+                        //facturar = fac.numero; proveer = fac.proveedor;
+                        //idmoneda = fac.Moneda;
+                        //}
+                        //else
+                        //{
+                        //actualizo que la factura esta pagada
+                        if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
+                        else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
+                        ///facturas por pagar 4212101
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
+                        facturar = fac.numero; proveer = fac.proveedor;
+                        idmoneda = fac.Moneda;
+                        //}
                     }
                 }
                 string BanCuenta;
@@ -376,7 +425,7 @@ namespace HPReserger
                     BanCuenta = "";
                 else
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
-                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text) - decimal.Parse(txttotaldetrac.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer);
+                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer, idmoneda, nroKuenta);
                 msg("Documento Pagado y se ha Generado su Asiento");
                 btnActualizar_Click(sender, e);
                 txttotaldetrac.Text = txttotal.Text = "0.00";
@@ -488,7 +537,8 @@ namespace HPReserger
             public int centrocosto { get; set; }
             public DateTime FechaEmision { get; set; }
             public DateTime FechaRecepcion { get; set; }
-            public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, decimal saldo, decimal APagar, DateTime? FechaCancelado, int CentroCosto, DateTime fechaemision, DateTime fecharecepcion)
+            public int Moneda { get; set; }
+            public FACTURAS(string Numero, string Proveedor, string Tipo, decimal Subtotal, decimal Igv, decimal Total, decimal Detraccion, decimal saldo, decimal APagar, DateTime? FechaCancelado, int CentroCosto, DateTime fechaemision, DateTime fecharecepcion, int moneda)
             {
                 numero = Numero;
                 proveedor = Proveedor;
@@ -503,6 +553,7 @@ namespace HPReserger
                 centrocosto = CentroCosto;
                 FechaEmision = fechaemision;
                 FechaRecepcion = fecharecepcion;
+                Moneda = moneda;
             }
         }
         List<FACTURAS> Comprobantes = new List<FACTURAS>();
@@ -519,11 +570,11 @@ namespace HPReserger
                         Boolean Busqueda = false;
                         foreach (FACTURAS xfac in Comprobantes)
                         {
-                            if (xfac.numero == Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd() && xfac.proveedor == Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd())
+                            if (xfac.numero == Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd() && xfac.proveedor == Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd() && xfac.centrocosto == (int)Dtguias[centrocostox.Name, e.RowIndex].Value)
                                 Busqueda = true;
                         }
                         if (!Busqueda)
-                            Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (decimal)Dtguias[Saldox.Name, e.RowIndex].Value, (decimal)Dtguias[Pagox.Name, e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value, (int)(Dtguias[centrocostox.Name, e.RowIndex].Value.ToString() == "" ? 0 : Dtguias[centrocostox.Name, e.RowIndex].Value), (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value, (DateTime)Dtguias[fechaRecepcion.Name, e.RowIndex].Value));
+                            Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (decimal)Dtguias[Saldox.Name, e.RowIndex].Value, (decimal)Dtguias[Pagox.Name, e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value, (int)(Dtguias[centrocostox.Name, e.RowIndex].Value.ToString() == "" ? 0 : Dtguias[centrocostox.Name, e.RowIndex].Value), (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value, (DateTime)Dtguias[fechaRecepcion.Name, e.RowIndex].Value, (int)Dtguias[xidmoneda.Name, e.RowIndex].Value));
                     }
                     else
                     {
@@ -599,7 +650,7 @@ namespace HPReserger
                     }
                 }
                 txttotaldetrac.Text = detrac.ToString("n2");
-                txttotal.Text = (sumatoria - detrac).ToString("n2");
+                txttotal.Text = sumatoria.ToString("n2");
             }
             if (sumatoria == 0)
                 btnaceptar.Enabled = false;
@@ -674,12 +725,15 @@ namespace HPReserger
                 dtpfin.Value = dtpini.Value;
                 dtpini.Value = auxtmp;
             }
-            Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagar(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0);
-            cbotipo.SelectedIndex = 0;
-            txttotaldetrac.Text = txttotal.Text = "0.00";
-            btnaceptar.Enabled = false;
-            FacturasSeleccionas();
-            CalcularTotal();
+            if (cboempresa.SelectedValue != null)
+            {
+                Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagarxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+                cbotipo.SelectedIndex = 0;
+                txttotaldetrac.Text = txttotal.Text = "0.00";
+                btnaceptar.Enabled = false;
+                FacturasSeleccionas();
+                CalcularTotal();
+            }
         }
         public void FacturasSeleccionas()
         {
@@ -688,7 +742,7 @@ namespace HPReserger
             {
                 for (int i = 0; i < conta; i++)
                 {
-                    if (Dtguias["nrofactura", i].Value.ToString().TrimStart().TrimEnd() == fac.numero && Dtguias["proveedor", i].Value.ToString().TrimStart().TrimEnd() == fac.proveedor)
+                    if (Dtguias["nrofactura", i].Value.ToString().TrimStart().TrimEnd() == fac.numero && Dtguias["proveedor", i].Value.ToString().TrimStart().TrimEnd() == fac.proveedor && fac.centrocosto == (int)Dtguias[centrocostox.Name, i].Value)
                     {
                         Dtguias["ok", i].Value = true;
                     }
@@ -816,7 +870,7 @@ namespace HPReserger
         }
         TextBox txt;
         private string proveer;
-
+        private int idmoneda;
         private void Dtguias_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             int x = Dtguias.CurrentCell.RowIndex, y = Dtguias.CurrentCell.ColumnIndex;
@@ -876,10 +930,30 @@ namespace HPReserger
             int x = e.RowIndex, y = e.ColumnIndex;
             if (y == Dtguias.Columns[Pagox.Name].Index)
             {
-                FACTURAS factu = Comprobantes.Find(cust => cust.numero == Dtguias[nrofactura.Name, x].Value.ToString() && cust.proveedor == Dtguias[proveedor.Name, x].Value.ToString());
+                FACTURAS factu = Comprobantes.Find(cust => cust.numero == Dtguias[nrofactura.Name, x].Value.ToString() && cust.proveedor == Dtguias[proveedor.Name, x].Value.ToString() && cust.centrocosto == (int)Dtguias[centrocostox.Name, x].Value);
                 if (factu != null)
                     factu.aPagar = Convert.ToDecimal(Dtguias[y, x].Value.ToString());
             }
+        }
+        private void cboempresa_Click_1(object sender, EventArgs e)
+        {
+            string cadena = cboempresa.Text;
+            cPagarfactura.TablaEmpresas(cboempresa);
+            cboempresa.Text = cadena;
+        }
+        private void cboempresa_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblmensaje_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txttotal_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

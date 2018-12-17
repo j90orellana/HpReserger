@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmArticuloServicio : Form
+    public partial class frmArticuloServicio : FormGradient
     {
         public frmArticuloServicio()
         {
@@ -74,6 +75,7 @@ namespace HPReserger
             btncentro.Enabled = a;
             btnctaact.Enabled = a;
             btnctactble.Enabled = a;
+            txtdescripcion.Text = "";
         }
         public DataTable listarArticulos(string busca)
         {
@@ -383,9 +385,12 @@ namespace HPReserger
 
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            label12.Visible = txtcntctbleact.Visible = btnctaact.Visible = true;
+            if (cbotipo.Text.ToUpper() == "SERVICIO")
+            {
+                txtcntctbleact.Text = ""; label12.Visible = txtcntctbleact.Visible = btnctaact.Visible = false;
+            }
         }
-
         private void cbomarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbomarca.SelectedIndex > 0)
@@ -474,6 +479,25 @@ namespace HPReserger
                     txtctacble.Text = cuentitas.codigo;
                 }
             }
+        }
+
+        private void btnctaact_EnabledChanged(object sender, EventArgs e)
+        {
+            btnlimpiarCtactivo.Enabled = btnctaact.Enabled;
+        }
+
+        private void btnctactble_EnabledChanged(object sender, EventArgs e)
+        {
+            btnlimpiarcta.Enabled = btnctactble.Enabled;
+        }
+        private void btnlimpiarCtactivo_Click(object sender, EventArgs e)
+        {
+            txtcntctbleact.Text = "";
+        }
+
+        private void btnlimpiarcta_Click(object sender, EventArgs e)
+        {
+            txtctacble.Text = "";
         }
     }
 }

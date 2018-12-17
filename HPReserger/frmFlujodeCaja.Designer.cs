@@ -46,7 +46,6 @@
             this.btngenerar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dtgconten1 = new HpResergerUserControls.Dtgconten();
-            this.btnaceptar = new System.Windows.Forms.Button();
             this.fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detallex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +56,7 @@
             this.glosasx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaasientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Movimientosx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnaceptar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
@@ -65,9 +65,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(17, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Empresa:";
             // 
@@ -85,9 +86,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(17, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Desde:";
             // 
@@ -95,9 +97,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(274, 42);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(287, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Hasta:";
             // 
@@ -106,12 +109,13 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 6, 21, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 6, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 6, 1, 0, 0, 0, 0);
-            this.comboMesAño1.Location = new System.Drawing.Point(71, 38);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 12, 5, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboMesAño1.Location = new System.Drawing.Point(71, 36);
             this.comboMesAño1.Name = "comboMesAño1";
-            this.comboMesAño1.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño1.Size = new System.Drawing.Size(210, 24);
             this.comboMesAño1.TabIndex = 4;
             // 
             // comboMesAño2
@@ -119,12 +123,13 @@
             this.comboMesAño2.AutoSize = true;
             this.comboMesAño2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño2.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 6, 21, 0, 0, 0, 0);
-            this.comboMesAño2.FechaFinMes = new System.DateTime(2018, 6, 30, 0, 0, 0, 0);
-            this.comboMesAño2.FechaInicioMes = new System.DateTime(2018, 6, 1, 0, 0, 0, 0);
-            this.comboMesAño2.Location = new System.Drawing.Point(318, 38);
+            this.comboMesAño2.FechaConDiaActual = new System.DateTime(2018, 12, 5, 0, 0, 0, 0);
+            this.comboMesAño2.FechaFinMes = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
+            this.comboMesAño2.FechaInicioMes = new System.DateTime(2018, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboMesAño2.Location = new System.Drawing.Point(331, 36);
             this.comboMesAño2.Name = "comboMesAño2";
-            this.comboMesAño2.Size = new System.Drawing.Size(197, 24);
+            this.comboMesAño2.Size = new System.Drawing.Size(203, 24);
             this.comboMesAño2.TabIndex = 5;
             // 
             // crvReporte
@@ -149,7 +154,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.crvReporte);
             this.panel1.Controls.Add(this.btnpdf);
             this.panel1.Controls.Add(this.btnexcel);
@@ -170,7 +175,7 @@
             // 
             this.btnpdf.Enabled = false;
             this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
-            this.btnpdf.Location = new System.Drawing.Point(700, 37);
+            this.btnpdf.Location = new System.Drawing.Point(729, 37);
             this.btnpdf.Name = "btnpdf";
             this.btnpdf.Size = new System.Drawing.Size(85, 23);
             this.btnpdf.TabIndex = 8;
@@ -183,7 +188,7 @@
             // 
             this.btnexcel.Enabled = false;
             this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
-            this.btnexcel.Location = new System.Drawing.Point(610, 37);
+            this.btnexcel.Location = new System.Drawing.Point(639, 37);
             this.btnexcel.Name = "btnexcel";
             this.btnexcel.Size = new System.Drawing.Size(85, 23);
             this.btnexcel.TabIndex = 7;
@@ -195,7 +200,7 @@
             // btngenerar
             // 
             this.btngenerar.Image = ((System.Drawing.Image)(resources.GetObject("btngenerar.Image")));
-            this.btngenerar.Location = new System.Drawing.Point(520, 37);
+            this.btngenerar.Location = new System.Drawing.Point(549, 37);
             this.btngenerar.Name = "btngenerar";
             this.btngenerar.Size = new System.Drawing.Size(85, 23);
             this.btngenerar.TabIndex = 6;
@@ -233,6 +238,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtgconten1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgconten1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fechax,
             this.cuentax,
@@ -261,18 +267,6 @@
             this.dtgconten1.RowTemplate.Height = 18;
             this.dtgconten1.Size = new System.Drawing.Size(944, 497);
             this.dtgconten1.TabIndex = 8;
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(850, 571);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
-            this.btnaceptar.TabIndex = 60;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
             // 
             // fechax
             // 
@@ -345,7 +339,6 @@
             this.glosasx.MinimumWidth = 50;
             this.glosasx.Name = "glosasx";
             this.glosasx.Visible = false;
-            this.glosasx.Width = 50;
             // 
             // fechaasientox
             // 
@@ -370,12 +363,24 @@
             this.Movimientosx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Movimientosx.Width = 200;
             // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(850, 571);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
+            this.btnaceptar.TabIndex = 60;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
             // frmFlujodeCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 601);
-            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.dtgconten1);
             this.Controls.Add(this.panel1);

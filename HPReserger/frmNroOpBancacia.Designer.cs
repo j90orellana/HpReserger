@@ -353,7 +353,7 @@
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(955, 397);
+            this.dtgconten.Size = new System.Drawing.Size(977, 397);
             this.dtgconten.TabIndex = 112;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
@@ -496,7 +496,7 @@
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(890, 562);
+            this.btncancelar.Location = new System.Drawing.Point(912, 562);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 23);
             this.btncancelar.TabIndex = 137;
@@ -510,7 +510,7 @@
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(803, 562);
+            this.btnaceptar.Location = new System.Drawing.Point(825, 562);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 23);
             this.btnaceptar.TabIndex = 136;
@@ -559,7 +559,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 592);
+            this.ClientSize = new System.Drawing.Size(1006, 592);
             this.Controls.Add(this.btnclear);
             this.Controls.Add(this.btnseleccion);
             this.Controls.Add(this.lblmsg);
@@ -570,7 +570,7 @@
             this.Controls.Add(this.txtnroid);
             this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(1000, 631);
+            this.MinimumSize = new System.Drawing.Size(1022, 631);
             this.Name = "frmNroOpBancacia";
             this.Nombre = "Número Operación Bancaria";
             this.Text = "Número Operación Bancaria";

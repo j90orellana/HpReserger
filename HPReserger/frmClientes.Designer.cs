@@ -31,9 +31,37 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.Cod_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo_Id_Clix = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dtipoidx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nro_Id_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apepat_RazSoc_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apemat_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombres_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo_Personax = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dtipopersonax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sexox = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dsexox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado_Civilx = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.destadocivilx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Distritox = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ddistritox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Provinciax = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dprovinciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Departamentox = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ddepartamentox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telf_Fijox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telf_Celularx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.E_mailx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ocupacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
@@ -80,33 +108,6 @@
             this.rdEstadoCivil = new System.Windows.Forms.RadioButton();
             this.rdnombre = new System.Windows.Forms.RadioButton();
             this.lblmsg = new System.Windows.Forms.Label();
-            this.Cod_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo_Id_Clix = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dtipoidx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nro_Id_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apepat_RazSoc_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apemat_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombres_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo_Personax = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dtipopersonax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sexox = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dsexox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado_Civilx = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.destadocivilx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Distritox = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ddistritox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Provinciax = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dprovinciax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Departamentox = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ddepartamentox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telf_Fijox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telf_Celularx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.E_mailx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ocupacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.gp1.SuspendLayout();
             this.SuspendLayout();
@@ -115,7 +116,6 @@
             // 
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToDeleteRows = false;
-            this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
@@ -166,14 +166,14 @@
             this.Ocupacionx,
             this.Usuariox,
             this.Fechax});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -190,9 +190,264 @@
             this.dtgconten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dtgconten_DataError);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
+            // Cod_Clix
+            // 
+            this.Cod_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Cod_Clix.DataPropertyName = "Cod_Cli";
+            this.Cod_Clix.HeaderText = "Id";
+            this.Cod_Clix.MinimumWidth = 25;
+            this.Cod_Clix.Name = "Cod_Clix";
+            this.Cod_Clix.ReadOnly = true;
+            this.Cod_Clix.Width = 25;
+            // 
+            // Tipo_Id_Clix
+            // 
+            this.Tipo_Id_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Tipo_Id_Clix.DataPropertyName = "Tipo_Id_Cli";
+            this.Tipo_Id_Clix.HeaderText = "TipoDoc";
+            this.Tipo_Id_Clix.MinimumWidth = 70;
+            this.Tipo_Id_Clix.Name = "Tipo_Id_Clix";
+            this.Tipo_Id_Clix.ReadOnly = true;
+            this.Tipo_Id_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tipo_Id_Clix.Visible = false;
+            // 
+            // dtipoidx
+            // 
+            this.dtipoidx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dtipoidx.DataPropertyName = "dtipoid";
+            this.dtipoidx.HeaderText = "TipoId";
+            this.dtipoidx.MinimumWidth = 70;
+            this.dtipoidx.Name = "dtipoidx";
+            this.dtipoidx.ReadOnly = true;
+            this.dtipoidx.Width = 70;
+            // 
+            // Nro_Id_Clix
+            // 
+            this.Nro_Id_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Nro_Id_Clix.DataPropertyName = "Nro_Id_Cli";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Nro_Id_Clix.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Nro_Id_Clix.HeaderText = "NroDoc";
+            this.Nro_Id_Clix.MinimumWidth = 70;
+            this.Nro_Id_Clix.Name = "Nro_Id_Clix";
+            this.Nro_Id_Clix.ReadOnly = true;
+            this.Nro_Id_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nro_Id_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nro_Id_Clix.Width = 70;
+            // 
+            // apellidox
+            // 
+            this.apellidox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apellidox.DataPropertyName = "apellidos";
+            this.apellidox.HeaderText = "Nombres";
+            this.apellidox.MinimumWidth = 100;
+            this.apellidox.Name = "apellidox";
+            this.apellidox.ReadOnly = true;
+            // 
+            // Apepat_RazSoc_Clix
+            // 
+            this.Apepat_RazSoc_Clix.DataPropertyName = "Apepat_RazSoc_Cli";
+            this.Apepat_RazSoc_Clix.HeaderText = "Apellido";
+            this.Apepat_RazSoc_Clix.Name = "Apepat_RazSoc_Clix";
+            this.Apepat_RazSoc_Clix.ReadOnly = true;
+            this.Apepat_RazSoc_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Apepat_RazSoc_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Apepat_RazSoc_Clix.Visible = false;
+            // 
+            // Apemat_Clix
+            // 
+            this.Apemat_Clix.DataPropertyName = "Apemat_Cli";
+            this.Apemat_Clix.HeaderText = "Apellido";
+            this.Apemat_Clix.Name = "Apemat_Clix";
+            this.Apemat_Clix.ReadOnly = true;
+            this.Apemat_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Apemat_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Apemat_Clix.Visible = false;
+            // 
+            // Nombres_Clix
+            // 
+            this.Nombres_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombres_Clix.DataPropertyName = "Nombres_Cli";
+            this.Nombres_Clix.HeaderText = "Nombres";
+            this.Nombres_Clix.MinimumWidth = 100;
+            this.Nombres_Clix.Name = "Nombres_Clix";
+            this.Nombres_Clix.ReadOnly = true;
+            this.Nombres_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nombres_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nombres_Clix.Visible = false;
+            // 
+            // Tipo_Personax
+            // 
+            this.Tipo_Personax.DataPropertyName = "Tipo_Persona";
+            this.Tipo_Personax.HeaderText = "Tipo Persona";
+            this.Tipo_Personax.Name = "Tipo_Personax";
+            this.Tipo_Personax.ReadOnly = true;
+            this.Tipo_Personax.Visible = false;
+            // 
+            // dtipopersonax
+            // 
+            this.dtipopersonax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.dtipopersonax.DataPropertyName = "dtipopersona";
+            this.dtipopersonax.HeaderText = "TipoPersona";
+            this.dtipopersonax.MinimumWidth = 70;
+            this.dtipopersonax.Name = "dtipopersonax";
+            this.dtipopersonax.ReadOnly = true;
+            this.dtipopersonax.Width = 70;
+            // 
+            // Sexox
+            // 
+            this.Sexox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Sexox.DataPropertyName = "sexo";
+            this.Sexox.HeaderText = "Sexo";
+            this.Sexox.MinimumWidth = 70;
+            this.Sexox.Name = "Sexox";
+            this.Sexox.ReadOnly = true;
+            this.Sexox.Visible = false;
+            // 
+            // dsexox
+            // 
+            this.dsexox.DataPropertyName = "dsexo";
+            this.dsexox.HeaderText = "Sexo";
+            this.dsexox.Name = "dsexox";
+            this.dsexox.ReadOnly = true;
+            this.dsexox.Visible = false;
+            // 
+            // Estado_Civilx
+            // 
+            this.Estado_Civilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Estado_Civilx.DataPropertyName = "Estado_Civil";
+            this.Estado_Civilx.HeaderText = "Estado Civil";
+            this.Estado_Civilx.MinimumWidth = 80;
+            this.Estado_Civilx.Name = "Estado_Civilx";
+            this.Estado_Civilx.ReadOnly = true;
+            this.Estado_Civilx.Visible = false;
+            // 
+            // destadocivilx
+            // 
+            this.destadocivilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.destadocivilx.DataPropertyName = "destadocivil";
+            this.destadocivilx.HeaderText = "EstadoCivil";
+            this.destadocivilx.MinimumWidth = 70;
+            this.destadocivilx.Name = "destadocivilx";
+            this.destadocivilx.ReadOnly = true;
+            this.destadocivilx.Width = 70;
+            // 
+            // Direccionx
+            // 
+            this.Direccionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Direccionx.DataPropertyName = "Direccion";
+            this.Direccionx.HeaderText = "Dirección";
+            this.Direccionx.MinimumWidth = 80;
+            this.Direccionx.Name = "Direccionx";
+            this.Direccionx.ReadOnly = true;
+            this.Direccionx.Width = 80;
+            // 
+            // Distritox
+            // 
+            this.Distritox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Distritox.DataPropertyName = "Distrito";
+            this.Distritox.HeaderText = "Distrito";
+            this.Distritox.MinimumWidth = 80;
+            this.Distritox.Name = "Distritox";
+            this.Distritox.ReadOnly = true;
+            this.Distritox.Visible = false;
+            // 
+            // ddistritox
+            // 
+            this.ddistritox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ddistritox.DataPropertyName = "ddistrito";
+            this.ddistritox.HeaderText = "Distrito";
+            this.ddistritox.MinimumWidth = 70;
+            this.ddistritox.Name = "ddistritox";
+            this.ddistritox.ReadOnly = true;
+            this.ddistritox.Width = 70;
+            // 
+            // Provinciax
+            // 
+            this.Provinciax.DataPropertyName = "Provincia";
+            this.Provinciax.HeaderText = "Provincia";
+            this.Provinciax.Name = "Provinciax";
+            this.Provinciax.ReadOnly = true;
+            this.Provinciax.Visible = false;
+            // 
+            // dprovinciax
+            // 
+            this.dprovinciax.DataPropertyName = "dprovincia";
+            this.dprovinciax.HeaderText = "Provincia";
+            this.dprovinciax.Name = "dprovinciax";
+            this.dprovinciax.ReadOnly = true;
+            this.dprovinciax.Visible = false;
+            // 
+            // Departamentox
+            // 
+            this.Departamentox.DataPropertyName = "Departamento";
+            this.Departamentox.HeaderText = "Departamento";
+            this.Departamentox.Name = "Departamentox";
+            this.Departamentox.ReadOnly = true;
+            this.Departamentox.Visible = false;
+            // 
+            // ddepartamentox
+            // 
+            this.ddepartamentox.DataPropertyName = "ddepartamento";
+            this.ddepartamentox.HeaderText = "Departamento";
+            this.ddepartamentox.Name = "ddepartamentox";
+            this.ddepartamentox.ReadOnly = true;
+            this.ddepartamentox.Visible = false;
+            // 
+            // Telf_Fijox
+            // 
+            this.Telf_Fijox.DataPropertyName = "Telf_Fijo";
+            this.Telf_Fijox.HeaderText = "Telf_Fijo";
+            this.Telf_Fijox.Name = "Telf_Fijox";
+            this.Telf_Fijox.ReadOnly = true;
+            this.Telf_Fijox.Visible = false;
+            // 
+            // Telf_Celularx
+            // 
+            this.Telf_Celularx.DataPropertyName = "Telf_Celular";
+            this.Telf_Celularx.HeaderText = "Telf_Celular";
+            this.Telf_Celularx.Name = "Telf_Celularx";
+            this.Telf_Celularx.ReadOnly = true;
+            this.Telf_Celularx.Visible = false;
+            // 
+            // E_mailx
+            // 
+            this.E_mailx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.E_mailx.DataPropertyName = "E_mail";
+            this.E_mailx.HeaderText = "Email";
+            this.E_mailx.MinimumWidth = 80;
+            this.E_mailx.Name = "E_mailx";
+            this.E_mailx.ReadOnly = true;
+            this.E_mailx.Width = 80;
+            // 
+            // Ocupacionx
+            // 
+            this.Ocupacionx.DataPropertyName = "Ocupacion";
+            this.Ocupacionx.HeaderText = "Ocupacion";
+            this.Ocupacionx.Name = "Ocupacionx";
+            this.Ocupacionx.ReadOnly = true;
+            this.Ocupacionx.Visible = false;
+            // 
+            // Usuariox
+            // 
+            this.Usuariox.DataPropertyName = "Usuario";
+            this.Usuariox.HeaderText = "Usuario";
+            this.Usuariox.Name = "Usuariox";
+            this.Usuariox.ReadOnly = true;
+            this.Usuariox.Visible = false;
+            // 
+            // Fechax
+            // 
+            this.Fechax.DataPropertyName = "Fecha";
+            this.Fechax.HeaderText = "Fecha";
+            this.Fechax.Name = "Fechax";
+            this.Fechax.ReadOnly = true;
+            this.Fechax.Visible = false;
+            // 
             // btneliminar
             // 
             this.btneliminar.Enabled = false;
+            this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
             this.btneliminar.Location = new System.Drawing.Point(865, 60);
             this.btneliminar.Name = "btneliminar";
@@ -205,6 +460,7 @@
             // btnmodificar
             // 
             this.btnmodificar.Enabled = false;
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.Location = new System.Drawing.Point(865, 36);
             this.btnmodificar.Name = "btnmodificar";
@@ -217,6 +473,7 @@
             // 
             // btnnuevo
             // 
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.Location = new System.Drawing.Point(865, 12);
             this.btnnuevo.Name = "btnnuevo";
@@ -231,6 +488,7 @@
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.Location = new System.Drawing.Point(865, 630);
             this.btncancelar.Name = "btncancelar";
@@ -245,6 +503,7 @@
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(777, 630);
             this.btnaceptar.Name = "btnaceptar";
@@ -457,17 +716,19 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(28, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 80;
-            this.label1.Text = "Código";
+            this.label1.Text = "Código:";
             // 
             // cbotipoid
             // 
             this.cbotipoid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipoid.FormattingEnabled = true;
+            this.cbotipoid.IndexText = null;
             this.cbotipoid.Location = new System.Drawing.Point(391, 13);
             this.cbotipoid.Name = "cbotipoid";
+            this.cbotipoid.ReadOnly = false;
             this.cbotipoid.Size = new System.Drawing.Size(177, 21);
             this.cbotipoid.TabIndex = 1;
             this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
@@ -479,19 +740,19 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(347, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 82;
-            this.label2.Text = "Tipo Id";
+            this.label2.Text = "Tipo Id:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(611, 17);
+            this.label3.Location = new System.Drawing.Point(612, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 84;
-            this.label3.Text = "Nro Id";
+            this.label3.Text = "Nro Id:";
             // 
             // label4
             // 
@@ -499,9 +760,9 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Location = new System.Drawing.Point(20, 41);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 86;
-            this.label4.Text = "Nombres";
+            this.label4.Text = "Nombres:";
             // 
             // label5
             // 
@@ -509,19 +770,19 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Location = new System.Drawing.Point(320, 41);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.Size = new System.Drawing.Size(72, 13);
             this.label5.TabIndex = 88;
-            this.label5.Text = "Apellido Pat";
+            this.label5.Text = "Apellido Pat:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(577, 41);
+            this.label6.Location = new System.Drawing.Point(578, 41);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 88;
-            this.label6.Text = "Apellido Mat";
+            this.label6.Text = "Apellido Mat:";
             // 
             // label7
             // 
@@ -529,17 +790,19 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Location = new System.Drawing.Point(25, 65);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 90;
-            this.label7.Text = "Persona";
+            this.label7.Text = "Persona:";
             // 
             // cbopersona
             // 
             this.cbopersona.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbopersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbopersona.FormattingEnabled = true;
+            this.cbopersona.IndexText = null;
             this.cbopersona.Location = new System.Drawing.Point(75, 61);
             this.cbopersona.Name = "cbopersona";
+            this.cbopersona.ReadOnly = false;
             this.cbopersona.Size = new System.Drawing.Size(235, 21);
             this.cbopersona.TabIndex = 89;
             // 
@@ -548,8 +811,10 @@
             this.cbosexo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbosexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbosexo.FormattingEnabled = true;
+            this.cbosexo.IndexText = null;
             this.cbosexo.Location = new System.Drawing.Point(391, 61);
             this.cbosexo.Name = "cbosexo";
+            this.cbosexo.ReadOnly = false;
             this.cbosexo.Size = new System.Drawing.Size(177, 21);
             this.cbosexo.TabIndex = 89;
             this.cbosexo.Click += new System.EventHandler(this.cbosexo_Click);
@@ -560,17 +825,19 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Location = new System.Drawing.Point(358, 65);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 90;
-            this.label8.Text = "Sexo";
+            this.label8.Text = "Sexo:";
             // 
             // cbocivil
             // 
             this.cbocivil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocivil.FormattingEnabled = true;
+            this.cbocivil.IndexText = null;
             this.cbocivil.Location = new System.Drawing.Point(653, 61);
             this.cbocivil.Name = "cbocivil";
+            this.cbocivil.ReadOnly = false;
             this.cbocivil.Size = new System.Drawing.Size(206, 21);
             this.cbocivil.TabIndex = 89;
             this.cbocivil.Click += new System.EventHandler(this.cbocivil_Click);
@@ -579,11 +846,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Location = new System.Drawing.Point(584, 65);
+            this.label9.Location = new System.Drawing.Point(585, 65);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(66, 13);
+            this.label9.Size = new System.Drawing.Size(69, 13);
             this.label9.TabIndex = 90;
-            this.label9.Text = "Estado Civil";
+            this.label9.Text = "Estado Civil:";
             // 
             // label10
             // 
@@ -591,19 +858,19 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Location = new System.Drawing.Point(18, 89);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 13);
+            this.label10.Size = new System.Drawing.Size(58, 13);
             this.label10.TabIndex = 86;
-            this.label10.Text = "Dirección";
+            this.label10.Text = "Dirección:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Location = new System.Drawing.Point(497, 89);
+            this.label11.Location = new System.Drawing.Point(498, 89);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(45, 13);
+            this.label11.Size = new System.Drawing.Size(48, 13);
             this.label11.TabIndex = 88;
-            this.label11.Text = "Tel. Fijo";
+            this.label11.Text = "Tel. Fijo:";
             // 
             // label12
             // 
@@ -611,17 +878,19 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Location = new System.Drawing.Point(660, 89);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 13);
+            this.label12.Size = new System.Drawing.Size(65, 13);
             this.label12.TabIndex = 88;
-            this.label12.Text = "Tel. Celular";
+            this.label12.Text = "Tel. Celular:";
             // 
             // cbodepartamento
             // 
             this.cbodepartamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbodepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodepartamento.FormattingEnabled = true;
+            this.cbodepartamento.IndexText = null;
             this.cbodepartamento.Location = new System.Drawing.Point(75, 109);
             this.cbodepartamento.Name = "cbodepartamento";
+            this.cbodepartamento.ReadOnly = false;
             this.cbodepartamento.Size = new System.Drawing.Size(175, 21);
             this.cbodepartamento.TabIndex = 89;
             this.cbodepartamento.SelectedIndexChanged += new System.EventHandler(this.cbodepartamento_SelectedIndexChanged);
@@ -633,17 +902,19 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Location = new System.Drawing.Point(13, 113);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 13);
+            this.label13.Size = new System.Drawing.Size(63, 13);
             this.label13.TabIndex = 90;
-            this.label13.Text = "Departam.";
+            this.label13.Text = "Departam.:";
             // 
             // cboprovincia
             // 
             this.cboprovincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboprovincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboprovincia.FormattingEnabled = true;
+            this.cboprovincia.IndexText = null;
             this.cboprovincia.Location = new System.Drawing.Point(311, 109);
             this.cboprovincia.Name = "cboprovincia";
+            this.cboprovincia.ReadOnly = false;
             this.cboprovincia.Size = new System.Drawing.Size(177, 21);
             this.cboprovincia.TabIndex = 89;
             this.cboprovincia.SelectedIndexChanged += new System.EventHandler(this.cboprovincia_SelectedIndexChanged);
@@ -655,17 +926,19 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Location = new System.Drawing.Point(256, 113);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 13);
+            this.label14.Size = new System.Drawing.Size(56, 13);
             this.label14.TabIndex = 90;
-            this.label14.Text = "Provincia";
+            this.label14.Text = "Provincia:";
             // 
             // cbodistrito
             // 
             this.cbodistrito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbodistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbodistrito.FormattingEnabled = true;
+            this.cbodistrito.IndexText = null;
             this.cbodistrito.Location = new System.Drawing.Point(545, 109);
             this.cbodistrito.Name = "cbodistrito";
+            this.cbodistrito.ReadOnly = false;
             this.cbodistrito.Size = new System.Drawing.Size(314, 21);
             this.cbodistrito.TabIndex = 89;
             this.cbodistrito.SelectedIndexChanged += new System.EventHandler(this.cbodistrito_SelectedIndexChanged);
@@ -677,9 +950,9 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Location = new System.Drawing.Point(498, 113);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 13);
+            this.label15.Size = new System.Drawing.Size(48, 13);
             this.label15.TabIndex = 90;
-            this.label15.Text = "Distrito";
+            this.label15.Text = "Distrito:";
             // 
             // Email
             // 
@@ -687,9 +960,9 @@
             this.Email.BackColor = System.Drawing.Color.Transparent;
             this.Email.Location = new System.Drawing.Point(39, 137);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(34, 13);
+            this.Email.Size = new System.Drawing.Size(37, 13);
             this.Email.TabIndex = 92;
-            this.Email.Text = "Email";
+            this.Email.Text = "Email:";
             // 
             // label16
             // 
@@ -697,9 +970,9 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Location = new System.Drawing.Point(326, 137);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 13);
+            this.label16.Size = new System.Drawing.Size(66, 13);
             this.label16.TabIndex = 94;
-            this.label16.Text = "Ocupación";
+            this.label16.Text = "Ocupación:";
             // 
             // txtBuscar
             // 
@@ -714,6 +987,7 @@
             this.txtBuscar.TabIndex = 95;
             this.txtBuscar.BuscarClick += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
             this.txtBuscar.BuscarTextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
+           
             // 
             // gp1
             // 
@@ -786,262 +1060,6 @@
             this.lblmsg.TabIndex = 97;
             this.lblmsg.Text = "Total de Registros : 0";
             // 
-            // Cod_Clix
-            // 
-            this.Cod_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Cod_Clix.DataPropertyName = "Cod_Cli";
-            this.Cod_Clix.HeaderText = "Id";
-            this.Cod_Clix.MinimumWidth = 25;
-            this.Cod_Clix.Name = "Cod_Clix";
-            this.Cod_Clix.ReadOnly = true;
-            this.Cod_Clix.Width = 25;
-            // 
-            // Tipo_Id_Clix
-            // 
-            this.Tipo_Id_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Tipo_Id_Clix.DataPropertyName = "Tipo_Id_Cli";
-            this.Tipo_Id_Clix.HeaderText = "TipoDoc";
-            this.Tipo_Id_Clix.MinimumWidth = 70;
-            this.Tipo_Id_Clix.Name = "Tipo_Id_Clix";
-            this.Tipo_Id_Clix.ReadOnly = true;
-            this.Tipo_Id_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Tipo_Id_Clix.Visible = false;
-            this.Tipo_Id_Clix.Width = 70;
-            // 
-            // dtipoidx
-            // 
-            this.dtipoidx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dtipoidx.DataPropertyName = "dtipoid";
-            this.dtipoidx.HeaderText = "TipoId";
-            this.dtipoidx.MinimumWidth = 70;
-            this.dtipoidx.Name = "dtipoidx";
-            this.dtipoidx.ReadOnly = true;
-            this.dtipoidx.Width = 70;
-            // 
-            // Nro_Id_Clix
-            // 
-            this.Nro_Id_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Nro_Id_Clix.DataPropertyName = "Nro_Id_Cli";
-            this.Nro_Id_Clix.HeaderText = "NroDoc";
-            this.Nro_Id_Clix.MinimumWidth = 70;
-            this.Nro_Id_Clix.Name = "Nro_Id_Clix";
-            this.Nro_Id_Clix.ReadOnly = true;
-            this.Nro_Id_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nro_Id_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nro_Id_Clix.Width = 70;
-            // 
-            // apellidox
-            // 
-            this.apellidox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.apellidox.DataPropertyName = "apellidos";
-            this.apellidox.HeaderText = "Nombres";
-            this.apellidox.MinimumWidth = 100;
-            this.apellidox.Name = "apellidox";
-            this.apellidox.ReadOnly = true;
-            // 
-            // Apepat_RazSoc_Clix
-            // 
-            this.Apepat_RazSoc_Clix.DataPropertyName = "Apepat_RazSoc_Cli";
-            this.Apepat_RazSoc_Clix.HeaderText = "Apellido";
-            this.Apepat_RazSoc_Clix.Name = "Apepat_RazSoc_Clix";
-            this.Apepat_RazSoc_Clix.ReadOnly = true;
-            this.Apepat_RazSoc_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Apepat_RazSoc_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Apepat_RazSoc_Clix.Visible = false;
-            // 
-            // Apemat_Clix
-            // 
-            this.Apemat_Clix.DataPropertyName = "Apemat_Cli";
-            this.Apemat_Clix.HeaderText = "Apellido";
-            this.Apemat_Clix.Name = "Apemat_Clix";
-            this.Apemat_Clix.ReadOnly = true;
-            this.Apemat_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Apemat_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Apemat_Clix.Visible = false;
-            // 
-            // Nombres_Clix
-            // 
-            this.Nombres_Clix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombres_Clix.DataPropertyName = "Nombres_Cli";
-            this.Nombres_Clix.HeaderText = "Nombres";
-            this.Nombres_Clix.MinimumWidth = 100;
-            this.Nombres_Clix.Name = "Nombres_Clix";
-            this.Nombres_Clix.ReadOnly = true;
-            this.Nombres_Clix.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nombres_Clix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Nombres_Clix.Visible = false;
-            // 
-            // Tipo_Personax
-            // 
-            this.Tipo_Personax.DataPropertyName = "Tipo_Persona";
-            this.Tipo_Personax.HeaderText = "Tipo Persona";
-            this.Tipo_Personax.Name = "Tipo_Personax";
-            this.Tipo_Personax.ReadOnly = true;
-            this.Tipo_Personax.Visible = false;
-            // 
-            // dtipopersonax
-            // 
-            this.dtipopersonax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.dtipopersonax.DataPropertyName = "dtipopersona";
-            this.dtipopersonax.HeaderText = "TipoPersona";
-            this.dtipopersonax.MinimumWidth = 70;
-            this.dtipopersonax.Name = "dtipopersonax";
-            this.dtipopersonax.ReadOnly = true;
-            this.dtipopersonax.Width = 70;
-            // 
-            // Sexox
-            // 
-            this.Sexox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Sexox.DataPropertyName = "sexo";
-            this.Sexox.HeaderText = "Sexo";
-            this.Sexox.MinimumWidth = 70;
-            this.Sexox.Name = "Sexox";
-            this.Sexox.ReadOnly = true;
-            this.Sexox.Visible = false;
-            this.Sexox.Width = 70;
-            // 
-            // dsexox
-            // 
-            this.dsexox.DataPropertyName = "dsexo";
-            this.dsexox.HeaderText = "Sexo";
-            this.dsexox.Name = "dsexox";
-            this.dsexox.ReadOnly = true;
-            this.dsexox.Visible = false;
-            // 
-            // Estado_Civilx
-            // 
-            this.Estado_Civilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Estado_Civilx.DataPropertyName = "Estado_Civil";
-            this.Estado_Civilx.HeaderText = "Estado Civil";
-            this.Estado_Civilx.MinimumWidth = 80;
-            this.Estado_Civilx.Name = "Estado_Civilx";
-            this.Estado_Civilx.ReadOnly = true;
-            this.Estado_Civilx.Visible = false;
-            this.Estado_Civilx.Width = 80;
-            // 
-            // destadocivilx
-            // 
-            this.destadocivilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.destadocivilx.DataPropertyName = "destadocivil";
-            this.destadocivilx.HeaderText = "EstadoCivil";
-            this.destadocivilx.MinimumWidth = 70;
-            this.destadocivilx.Name = "destadocivilx";
-            this.destadocivilx.ReadOnly = true;
-            this.destadocivilx.Width = 70;
-            // 
-            // Direccionx
-            // 
-            this.Direccionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Direccionx.DataPropertyName = "Direccion";
-            this.Direccionx.HeaderText = "Dirección";
-            this.Direccionx.MinimumWidth = 80;
-            this.Direccionx.Name = "Direccionx";
-            this.Direccionx.ReadOnly = true;
-            this.Direccionx.Width = 80;
-            // 
-            // Distritox
-            // 
-            this.Distritox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Distritox.DataPropertyName = "Distrito";
-            this.Distritox.HeaderText = "Distrito";
-            this.Distritox.MinimumWidth = 80;
-            this.Distritox.Name = "Distritox";
-            this.Distritox.ReadOnly = true;
-            this.Distritox.Visible = false;
-            this.Distritox.Width = 80;
-            // 
-            // ddistritox
-            // 
-            this.ddistritox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ddistritox.DataPropertyName = "ddistrito";
-            this.ddistritox.HeaderText = "Distrito";
-            this.ddistritox.MinimumWidth = 70;
-            this.ddistritox.Name = "ddistritox";
-            this.ddistritox.ReadOnly = true;
-            this.ddistritox.Width = 70;
-            // 
-            // Provinciax
-            // 
-            this.Provinciax.DataPropertyName = "Provincia";
-            this.Provinciax.HeaderText = "Provincia";
-            this.Provinciax.Name = "Provinciax";
-            this.Provinciax.ReadOnly = true;
-            this.Provinciax.Visible = false;
-            // 
-            // dprovinciax
-            // 
-            this.dprovinciax.DataPropertyName = "dprovincia";
-            this.dprovinciax.HeaderText = "Provincia";
-            this.dprovinciax.Name = "dprovinciax";
-            this.dprovinciax.ReadOnly = true;
-            this.dprovinciax.Visible = false;
-            // 
-            // Departamentox
-            // 
-            this.Departamentox.DataPropertyName = "Departamento";
-            this.Departamentox.HeaderText = "Departamento";
-            this.Departamentox.Name = "Departamentox";
-            this.Departamentox.ReadOnly = true;
-            this.Departamentox.Visible = false;
-            // 
-            // ddepartamentox
-            // 
-            this.ddepartamentox.DataPropertyName = "ddepartamento";
-            this.ddepartamentox.HeaderText = "Departamento";
-            this.ddepartamentox.Name = "ddepartamentox";
-            this.ddepartamentox.ReadOnly = true;
-            this.ddepartamentox.Visible = false;
-            // 
-            // Telf_Fijox
-            // 
-            this.Telf_Fijox.DataPropertyName = "Telf_Fijo";
-            this.Telf_Fijox.HeaderText = "Telf_Fijo";
-            this.Telf_Fijox.Name = "Telf_Fijox";
-            this.Telf_Fijox.ReadOnly = true;
-            this.Telf_Fijox.Visible = false;
-            // 
-            // Telf_Celularx
-            // 
-            this.Telf_Celularx.DataPropertyName = "Telf_Celular";
-            this.Telf_Celularx.HeaderText = "Telf_Celular";
-            this.Telf_Celularx.Name = "Telf_Celularx";
-            this.Telf_Celularx.ReadOnly = true;
-            this.Telf_Celularx.Visible = false;
-            // 
-            // E_mailx
-            // 
-            this.E_mailx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.E_mailx.DataPropertyName = "E_mail";
-            this.E_mailx.HeaderText = "Email";
-            this.E_mailx.MinimumWidth = 80;
-            this.E_mailx.Name = "E_mailx";
-            this.E_mailx.ReadOnly = true;
-            this.E_mailx.Width = 80;
-            // 
-            // Ocupacionx
-            // 
-            this.Ocupacionx.DataPropertyName = "Ocupacion";
-            this.Ocupacionx.HeaderText = "Ocupacion";
-            this.Ocupacionx.Name = "Ocupacionx";
-            this.Ocupacionx.ReadOnly = true;
-            this.Ocupacionx.Visible = false;
-            // 
-            // Usuariox
-            // 
-            this.Usuariox.DataPropertyName = "Usuario";
-            this.Usuariox.HeaderText = "Usuario";
-            this.Usuariox.Name = "Usuariox";
-            this.Usuariox.ReadOnly = true;
-            this.Usuariox.Visible = false;
-            // 
-            // Fechax
-            // 
-            this.Fechax.DataPropertyName = "Fecha";
-            this.Fechax.HeaderText = "Fecha";
-            this.Fechax.Name = "Fechax";
-            this.Fechax.ReadOnly = true;
-            this.Fechax.Visible = false;
-            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1050,39 +1068,22 @@
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.gp1);
             this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.txtocupacion);
-            this.Controls.Add(this.Email);
             this.Controls.Add(this.txtemail);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.cbodistrito);
             this.Controls.Add(this.cboprovincia);
             this.Controls.Add(this.cbodepartamento);
             this.Controls.Add(this.cbocivil);
             this.Controls.Add(this.cbosexo);
             this.Controls.Add(this.cbopersona);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtapemat);
             this.Controls.Add(this.txttelcelular);
             this.Controls.Add(this.txttelfijo);
             this.Controls.Add(this.txtapetpat);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtdireccion);
             this.Controls.Add(this.txtnombre);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtnroid);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.cbotipoid);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
@@ -1090,6 +1091,23 @@
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.dtgconten);
+            this.Controls.Add(this.Email);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label12);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(975, 700);
             this.Name = "frmClientes";

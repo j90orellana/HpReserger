@@ -53,7 +53,7 @@
             this.btnenviar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnenviar.Image = ((System.Drawing.Image)(resources.GetObject("btnenviar.Image")));
             this.btnenviar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnenviar.Location = new System.Drawing.Point(164, 326);
+            this.btnenviar.Location = new System.Drawing.Point(165, 332);
             this.btnenviar.Name = "btnenviar";
             this.btnenviar.Size = new System.Drawing.Size(82, 24);
             this.btnenviar.TabIndex = 2;
@@ -67,7 +67,7 @@
             this.btncancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btncancelar.Location = new System.Drawing.Point(252, 326);
+            this.btncancelar.Location = new System.Drawing.Point(251, 332);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 24);
             this.btncancelar.TabIndex = 3;
@@ -80,9 +80,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(12, 32);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.label2.Location = new System.Drawing.Point(20, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Asunto:";
             // 
@@ -90,18 +91,19 @@
             // 
             this.txtasunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtasunto.Location = new System.Drawing.Point(69, 29);
+            this.txtasunto.Location = new System.Drawing.Point(66, 28);
             this.txtasunto.Name = "txtasunto";
-            this.txtasunto.Size = new System.Drawing.Size(418, 20);
+            this.txtasunto.Size = new System.Drawing.Size(421, 20);
             this.txtasunto.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 55);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Prioridad:";
             // 
@@ -109,16 +111,16 @@
             // 
             this.cboprioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboprioridad.FormattingEnabled = true;
-            this.cboprioridad.Location = new System.Drawing.Point(69, 52);
+            this.cboprioridad.Location = new System.Drawing.Point(66, 51);
             this.cboprioridad.Name = "cboprioridad";
-            this.cboprioridad.Size = new System.Drawing.Size(129, 21);
+            this.cboprioridad.Size = new System.Drawing.Size(128, 21);
             this.cboprioridad.TabIndex = 5;
             // 
             // btnadjuntar
             // 
             this.btnadjuntar.Image = ((System.Drawing.Image)(resources.GetObject("btnadjuntar.Image")));
             this.btnadjuntar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnadjuntar.Location = new System.Drawing.Point(204, 52);
+            this.btnadjuntar.Location = new System.Drawing.Point(199, 49);
             this.btnadjuntar.Name = "btnadjuntar";
             this.btnadjuntar.Size = new System.Drawing.Size(82, 24);
             this.btnadjuntar.TabIndex = 8;
@@ -131,7 +133,8 @@
             // 
             this.lbldatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbldatos.Location = new System.Drawing.Point(292, 54);
+            this.lbldatos.BackColor = System.Drawing.Color.Transparent;
+            this.lbldatos.Location = new System.Drawing.Point(292, 51);
             this.lbldatos.Name = "lbldatos";
             this.lbldatos.Size = new System.Drawing.Size(195, 21);
             this.lbldatos.TabIndex = 9;
@@ -165,11 +168,11 @@
             this.txtmsg.AutoWordSelection = true;
             this.txtmsg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtmsg.EnableAutoDragDrop = true;
-            this.txtmsg.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtmsg.Location = new System.Drawing.Point(12, 78);
+            this.txtmsg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtmsg.Location = new System.Drawing.Point(12, 75);
             this.txtmsg.Name = "txtmsg";
             this.txtmsg.ShowSelectionMargin = true;
-            this.txtmsg.Size = new System.Drawing.Size(472, 242);
+            this.txtmsg.Size = new System.Drawing.Size(475, 251);
             this.txtmsg.TabIndex = 59;
             this.txtmsg.Text = "";
             // 
@@ -177,18 +180,19 @@
             // 
             this.txtcorreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtcorreo.Location = new System.Drawing.Point(69, 6);
+            this.txtcorreo.Location = new System.Drawing.Point(66, 6);
             this.txtcorreo.Name = "txtcorreo";
-            this.txtcorreo.Size = new System.Drawing.Size(418, 20);
+            this.txtcorreo.Size = new System.Drawing.Size(421, 20);
             this.txtcorreo.TabIndex = 60;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.label1.Location = new System.Drawing.Point(22, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 61;
             this.label1.Text = "Correo:";
             // 

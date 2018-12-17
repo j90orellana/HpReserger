@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -66,6 +66,8 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="abcBaseDatos">
       <HintPath>..\Referencias\abcBaseDatos.dll</HintPath>
@@ -74,7 +76,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ejecutable\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -113,10 +117,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EstadoGananciaPerdidas.cs">
+    <Compile Include="FrmFacturaManual.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EstadoGananciaPerdidas.Designer.cs">
+    <Compile Include="FrmFacturaManual.Designer.cs">
+      <DependentUpon>FrmFacturaManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloContable\EstadoGananciaPerdidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\EstadoGananciaPerdidas.Designer.cs">
       <DependentUpon>EstadoGananciaPerdidas.cs</DependentUpon>
     </Compile>
     <Compile Include="fmReporteRemuneracionRenta.cs">
@@ -161,10 +171,10 @@
     <Compile Include="frmAbonosVentas.Designer.cs">
       <DependentUpon>frmAbonosVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmaddtipoCambio.cs">
+    <Compile Include="ModuloContable\frmaddtipoCambio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmaddtipoCambio.Designer.cs">
+    <Compile Include="ModuloContable\frmaddtipoCambio.Designer.cs">
       <DependentUpon>frmaddtipoCambio.cs</DependentUpon>
     </Compile>
     <Compile Include="frmadicionaleps.cs">
@@ -185,22 +195,22 @@
     <Compile Include="frmAreaCargo.Designer.cs">
       <DependentUpon>frmAreaCargo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBancoBcp.cs">
+    <Compile Include="ModuloBancario\frmBancoBcp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBancoBcp.Designer.cs">
+    <Compile Include="ModuloBancario\frmBancoBcp.Designer.cs">
       <DependentUpon>frmBancoBcp.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBancoInterAmericano.cs">
+    <Compile Include="ModuloBancario\frmBancoInterAmericano.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBancoInterAmericano.Designer.cs">
+    <Compile Include="ModuloBancario\frmBancoInterAmericano.Designer.cs">
       <DependentUpon>frmBancoInterAmericano.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBancoInterbank.cs">
+    <Compile Include="ModuloBancario\frmBancoInterbank.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBancoInterbank.Designer.cs">
+    <Compile Include="ModuloBancario\frmBancoInterbank.Designer.cs">
       <DependentUpon>frmBancoInterbank.cs</DependentUpon>
     </Compile>
     <Compile Include="frmbonos.cs">
@@ -281,10 +291,10 @@
     <Compile Include="FrmConfiguracionBalanceSituacionFinanciera.Designer.cs">
       <DependentUpon>FrmConfiguracionBalanceSituacionFinanciera.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmConfigurarDinamicas.cs">
+    <Compile Include="ModuloContable\frmConfigurarDinamicas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmConfigurarDinamicas.Designer.cs">
+    <Compile Include="ModuloContable\frmConfigurarDinamicas.Designer.cs">
       <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloVentas\frmCotizacionCliente.cs">
@@ -305,10 +315,10 @@
     <Compile Include="frmDatosExterno.Designer.cs">
       <DependentUpon>frmDatosExterno.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDetalleAsientos.cs">
+    <Compile Include="ModuloContable\frmDetalleAsientos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDetalleAsientos.Designer.cs">
+    <Compile Include="ModuloContable\frmDetalleAsientos.Designer.cs">
       <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDetalleNroOp.cs">
@@ -425,16 +435,16 @@
     <Compile Include="frmArticuloServicio.designer.cs">
       <DependentUpon>frmArticuloServicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAsientoContable.cs">
+    <Compile Include="ModuloContable\frmAsientoContable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAsientoContable.designer.cs">
+    <Compile Include="ModuloContable\frmAsientoContable.designer.cs">
       <DependentUpon>frmAsientoContable.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCambioContra.cs">
+    <Compile Include="ModuloSeguridad\FrmCambioContra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCambioContra.designer.cs">
+    <Compile Include="ModuloSeguridad\FrmCambioContra.designer.cs">
       <DependentUpon>FrmCambioContra.cs</DependentUpon>
     </Compile>
     <Compile Include="frmccosto.cs">
@@ -455,10 +465,10 @@
     <Compile Include="frmdepartamento.designer.cs">
       <DependentUpon>frmdepartamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmdinamicaContable.cs">
+    <Compile Include="ModuloContable\frmdinamicaContable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmdinamicaContable.designer.cs">
+    <Compile Include="ModuloContable\frmdinamicaContable.designer.cs">
       <DependentUpon>frmdinamicaContable.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDistritos.cs">
@@ -671,10 +681,10 @@
     <Compile Include="frmNroOpBancacia.Designer.cs">
       <DependentUpon>frmNroOpBancacia.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOperacion.cs">
+    <Compile Include="ModuloContable\frmOperacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOperacion.Designer.cs">
+    <Compile Include="ModuloContable\frmOperacion.Designer.cs">
       <DependentUpon>frmOperacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmOtrosDescuentos.cs">
@@ -965,10 +975,10 @@
     <Compile Include="frmSolicitudes.Designer.cs">
       <DependentUpon>frmSolicitudes.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSubOperacion.cs">
+    <Compile Include="ModuloContable\frmSubOperacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSubOperacion.Designer.cs">
+    <Compile Include="ModuloContable\frmSubOperacion.Designer.cs">
       <DependentUpon>frmSubOperacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmtipocontratacion.cs">
@@ -1149,22 +1159,22 @@
       <DependentUpon>rptConstanciaTrabajo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frmAlmacen.cs">
+    <Compile Include="ModuloAlmacen\frmAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAlmacen.Designer.cs">
+    <Compile Include="ModuloAlmacen\frmAlmacen.Designer.cs">
       <DependentUpon>frmAlmacen.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAlmacenServicio.cs">
+    <Compile Include="ModuloAlmacen\frmAlmacenServicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAlmacenServicio.Designer.cs">
+    <Compile Include="ModuloAlmacen\frmAlmacenServicio.Designer.cs">
       <DependentUpon>frmAlmacenServicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAprobarCotizacion.cs">
+    <Compile Include="ModuloAlmacen\frmAprobarCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAprobarCotizacion.Designer.cs">
+    <Compile Include="ModuloAlmacen\frmAprobarCotizacion.Designer.cs">
       <DependentUpon>frmAprobarCotizacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBoletaVacaciones.cs">
@@ -1185,10 +1195,10 @@
     <Compile Include="frmContrato.Designer.cs">
       <DependentUpon>frmContrato.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCotizacionModificar.cs">
+    <Compile Include="ModuloAlmacen\frmCotizacionModificar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCotizacionModificar.Designer.cs">
+    <Compile Include="ModuloAlmacen\frmCotizacionModificar.Designer.cs">
       <DependentUpon>frmCotizacionModificar.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCTS.cs">
@@ -1269,16 +1279,16 @@
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOrdenCompra.cs">
+    <Compile Include="ModuloAlmacen\frmOrdenCompra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOrdenCompra.Designer.cs">
+    <Compile Include="ModuloAlmacen\frmOrdenCompra.Designer.cs">
       <DependentUpon>frmOrdenCompra.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOrdenPedidoCotizacion.cs">
+    <Compile Include="ModuloAlmacen\frmOrdenPedidoCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOrdenPedidoCotizacion.Designer.cs">
+    <Compile Include="ModuloAlmacen\frmOrdenPedidoCotizacion.Designer.cs">
       <DependentUpon>frmOrdenPedidoCotizacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmArticuloModificar.cs">
@@ -1287,10 +1297,10 @@
     <Compile Include="frmArticuloModificar.Designer.cs">
       <DependentUpon>frmArticuloModificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCotizacion.cs">
+    <Compile Include="ModuloAlmacen\frmCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCotizacion.Designer.cs">
+    <Compile Include="ModuloAlmacen\frmCotizacion.Designer.cs">
       <DependentUpon>frmCotizacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmListarOrdenesPedido.cs">
@@ -1299,10 +1309,10 @@
     <Compile Include="frmListarOrdenesPedido.Designer.cs">
       <DependentUpon>frmListarOrdenesPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOrdenPedido.cs">
+    <Compile Include="ModuloAlmacen\frmOrdenPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOrdenPedido.Designer.cs">
+    <Compile Include="ModuloAlmacen\frmOrdenPedido.Designer.cs">
       <DependentUpon>frmOrdenPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPostulante.cs">
@@ -1385,6 +1395,7 @@
       <DependentUpon>rtpGanaciasPerdidas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="SiGeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1412,13 +1423,16 @@
     <Compile Include="TextboxSoloNumeros.Designer.cs">
       <DependentUpon>TextboxSoloNumeros.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTipodeCambio.cs">
+    <Compile Include="ModuloContable\frmTipodeCambio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTipodeCambio.Designer.cs">
+    <Compile Include="ModuloContable\frmTipodeCambio.Designer.cs">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EstadoGananciaPerdidas.resx">
+    <EmbeddedResource Include="FrmFacturaManual.resx">
+      <DependentUpon>FrmFacturaManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\EstadoGananciaPerdidas.resx">
       <DependentUpon>EstadoGananciaPerdidas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmReporteRemuneracionRenta.resx">
@@ -1440,11 +1454,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbonoExternoEmpleado.resx">
       <DependentUpon>frmAbonoExternoEmpleado.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbonosVentas.resx">
       <DependentUpon>frmAbonosVentas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmaddtipoCambio.resx">
+    <EmbeddedResource Include="ModuloContable\frmaddtipoCambio.resx">
       <DependentUpon>frmaddtipoCambio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmadicionaleps.resx">
@@ -1467,22 +1482,22 @@
     <EmbeddedResource Include="frmArticuloServicio.resx">
       <DependentUpon>frmArticuloServicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAsientoContable.resx">
+    <EmbeddedResource Include="ModuloContable\frmAsientoContable.resx">
       <DependentUpon>frmAsientoContable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBancoBcp.resx">
+    <EmbeddedResource Include="ModuloBancario\frmBancoBcp.resx">
       <DependentUpon>frmBancoBcp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBancoInterAmericano.resx">
+    <EmbeddedResource Include="ModuloBancario\frmBancoInterAmericano.resx">
       <DependentUpon>frmBancoInterAmericano.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBancoInterbank.resx">
+    <EmbeddedResource Include="ModuloBancario\frmBancoInterbank.resx">
       <DependentUpon>frmBancoInterbank.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmbonos.resx">
       <DependentUpon>frmbonos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCambioContra.resx">
+    <EmbeddedResource Include="ModuloSeguridad\FrmCambioContra.resx">
       <DependentUpon>FrmCambioContra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCargaDatosProveedor.resx">
@@ -1524,7 +1539,7 @@
     <EmbeddedResource Include="FrmConfiguracionBalanceSituacionFinanciera.resx">
       <DependentUpon>FrmConfiguracionBalanceSituacionFinanciera.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmConfigurarDinamicas.resx">
+    <EmbeddedResource Include="ModuloContable\frmConfigurarDinamicas.resx">
       <DependentUpon>frmConfigurarDinamicas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloVentas\frmCotizacionCliente.resx">
@@ -1542,7 +1557,7 @@
     <EmbeddedResource Include="frmdepartamento.resx">
       <DependentUpon>frmdepartamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDetalleAsientos.resx">
+    <EmbeddedResource Include="ModuloContable\frmDetalleAsientos.resx">
       <DependentUpon>frmDetalleAsientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleNroOp.resx">
@@ -1557,7 +1572,7 @@
     <EmbeddedResource Include="frmDetracionesPago.resx">
       <DependentUpon>frmDetracionesPago.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmdinamicaContable.resx">
+    <EmbeddedResource Include="ModuloContable\frmdinamicaContable.resx">
       <DependentUpon>frmdinamicaContable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDistritos.resx">
@@ -1701,7 +1716,7 @@
     <EmbeddedResource Include="frmNroOpBancacia.resx">
       <DependentUpon>frmNroOpBancacia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOperacion.resx">
+    <EmbeddedResource Include="ModuloContable\frmOperacion.resx">
       <DependentUpon>frmOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOtrosDescuentos.resx">
@@ -1848,7 +1863,7 @@
     <EmbeddedResource Include="frmSolicitudes.resx">
       <DependentUpon>frmSolicitudes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSubOperacion.resx">
+    <EmbeddedResource Include="ModuloContable\frmSubOperacion.resx">
       <DependentUpon>frmSubOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmtipocontratacion.resx">
@@ -1951,17 +1966,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptConstanciaTrabajo.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAlmacen.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmAlmacen.resx">
       <DependentUpon>frmAlmacen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAlmacenServicio.en-US.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmAlmacenServicio.en-US.resx">
       <DependentUpon>frmAlmacenServicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAlmacenServicio.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmAlmacenServicio.resx">
       <DependentUpon>frmAlmacenServicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAprobarCotizacion.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmAprobarCotizacion.resx">
       <DependentUpon>frmAprobarCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBoletaVacaciones.resx">
@@ -1973,7 +1988,7 @@
     <EmbeddedResource Include="frmContrato.resx">
       <DependentUpon>frmContrato.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCotizacionModificar.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmCotizacionModificar.resx">
       <DependentUpon>frmCotizacionModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCTS.resx">
@@ -2018,22 +2033,22 @@
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOrdenCompra.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmOrdenCompra.resx">
       <DependentUpon>frmOrdenCompra.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOrdenPedidoCotizacion.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmOrdenPedidoCotizacion.resx">
       <DependentUpon>frmOrdenPedidoCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmArticuloModificar.resx">
       <DependentUpon>frmArticuloModificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCotizacion.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmCotizacion.resx">
       <DependentUpon>frmCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListarOrdenesPedido.resx">
       <DependentUpon>frmListarOrdenesPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOrdenPedido.resx">
+    <EmbeddedResource Include="ModuloAlmacen\frmOrdenPedido.resx">
       <DependentUpon>frmOrdenPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPostulante.resx">
@@ -2093,7 +2108,7 @@
     <EmbeddedResource Include="TextboxSoloNumeros.resx">
       <DependentUpon>TextboxSoloNumeros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTipodeCambio.resx">
+    <EmbeddedResource Include="ModuloContable\frmTipodeCambio.resx">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

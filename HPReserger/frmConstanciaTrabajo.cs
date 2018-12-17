@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Data.OleDb;
+using HpResergerUserControls;
 
 namespace HPReserger
 {
-    public partial class frmConstanciaTrabajo : Form
+    public partial class frmConstanciaTrabajo : FormGradient
     {
         public int TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }

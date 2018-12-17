@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HpResergerUserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HPReserger
 {
-    public partial class frmAbonoExternoEmpleado : Form
+    public partial class frmAbonoExternoEmpleado : FormGradient
     {
         public frmAbonoExternoEmpleado()
         {

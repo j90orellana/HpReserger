@@ -24,6 +24,7 @@ namespace HpResergerUserControls
             Font = x;
             Invalidate();
         }
+        public string Format { get; set; }
         public Color ColorTextoDefecto = Color.Black;
         public Color ColorLetras = Color.Black;
         public Color ColorFondo = Color.White;
@@ -100,15 +101,27 @@ namespace HpResergerUserControls
             }
             else
             {
-                if (TiposDatos == ListaTipos.SoloDinero) Text = decimal.Parse(Text).ToString("n2");
-                if (TiposDatos == ListaTipos.SoloNumeros) Text = decimal.Parse(Text).ToString(TextoDefecto);
+                if (TiposDatos == ListaTipos.SoloDinero)
+                {
+                    if (Format == "")
+                        Text = decimal.Parse(Text).ToString("n2");
+                    else
+                        Text = decimal.Parse(Text).ToString(Format);
+                }
+                if (TiposDatos == ListaTipos.SoloNumeros)
+                {
+                    if (Format == "")
+                        Text = decimal.Parse(Text).ToString(TextoDefecto);
+                    else
+                        Text = decimal.Parse(Text).ToString(Format);
+                }
             }
             base.OnLeave(e);
         }
         public string TextValido()
         {
             string cadena = "";
-            if (this.Text.Length <= 0 || Text == "" || Text == TextoPorDefecto)
+            if (this.Text.Length <= 0 || Text == "" || Text.ToUpper() == TextoPorDefecto.ToUpper())
             {
                 if (TiposDatos == ListaTipos.MayusculaCadaPalabra || TiposDatos == ListaTipos.SoloLetras || TiposDatos == ListaTipos.Todo)
                     cadena = "";

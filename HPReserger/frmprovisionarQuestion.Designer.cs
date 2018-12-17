@@ -81,6 +81,7 @@
             // 
             // numdetraccion
             // 
+            this.numdetraccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numdetraccion.Location = new System.Drawing.Point(208, 42);
             this.numdetraccion.Minimum = new decimal(new int[] {
             1,
@@ -88,7 +89,7 @@
             0,
             0});
             this.numdetraccion.Name = "numdetraccion";
-            this.numdetraccion.Size = new System.Drawing.Size(38, 20);
+            this.numdetraccion.Size = new System.Drawing.Size(38, 21);
             this.numdetraccion.TabIndex = 26;
             this.numdetraccion.Value = new decimal(new int[] {
             10,
@@ -99,9 +100,11 @@
             // lblporcentajedetraccion
             // 
             this.lblporcentajedetraccion.AutoSize = true;
+            this.lblporcentajedetraccion.BackColor = System.Drawing.Color.Transparent;
+            this.lblporcentajedetraccion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblporcentajedetraccion.Location = new System.Drawing.Point(248, 47);
             this.lblporcentajedetraccion.Name = "lblporcentajedetraccion";
-            this.lblporcentajedetraccion.Size = new System.Drawing.Size(15, 13);
+            this.lblporcentajedetraccion.Size = new System.Drawing.Size(17, 15);
             this.lblporcentajedetraccion.TabIndex = 27;
             this.lblporcentajedetraccion.Text = "%";
             // 
@@ -121,18 +124,22 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(13, 46);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.Size = new System.Drawing.Size(67, 15);
             this.label10.TabIndex = 24;
             this.label10.Text = "Detracción:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(15, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.Size = new System.Drawing.Size(61, 15);
             this.label3.TabIndex = 28;
             this.label3.Text = "Grava IGV:";
             // 
@@ -143,7 +150,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btncancelar;
             this.ClientSize = new System.Drawing.Size(273, 111);
-            this.Colores = new System.Drawing.Color[0];
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numdetraccion);
             this.Controls.Add(this.lblporcentajedetraccion);
@@ -157,8 +163,8 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(289, 150);
             this.Name = "frmprovisionarQuestion";
-            this.Nombre = "HpReserger";
-            this.Text = "HpReserger";
+            this.Nombre = "Provisionar";
+            this.Text = "Provisionar";
             this.Load += new System.EventHandler(this.frmprovisionarQuestion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).EndInit();
             this.ResumeLayout(false);

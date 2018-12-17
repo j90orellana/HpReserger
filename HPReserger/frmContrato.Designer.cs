@@ -55,57 +55,6 @@ namespace HPReserger
             this.btnBuscarImagenContrato = new System.Windows.Forms.Button();
             this.btnBuscarImagenAnexoFunciones = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.grpcontrato = new System.Windows.Forms.Panel();
-            this.cboCargo = new System.Windows.Forms.ComboBox();
-            this.btnEmpresaExt = new System.Windows.Forms.Button();
-            this.btnbonos = new System.Windows.Forms.Button();
-            this.lbladenda = new System.Windows.Forms.Label();
-            this.btnobradeterminada = new System.Windows.Forms.Button();
-            this.cbotipocontratacion = new System.Windows.Forms.ComboBox();
-            this.cboTipoContrato = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cboEmpresa = new System.Windows.Forms.ComboBox();
-            this.cboGerencia = new System.Windows.Forms.ComboBox();
-            this.cboJefeInmediato = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.lblfechacese = new System.Windows.Forms.Label();
-            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.txtPeriodoLaboral = new System.Windows.Forms.TextBox();
-            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
-            this.dtpfechacese = new System.Windows.Forms.DateTimePicker();
-            this.txtSalario = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cboSede = new System.Windows.Forms.ComboBox();
-            this.cboProyecto = new System.Windows.Forms.ComboBox();
-            this.cboArea = new System.Windows.Forms.ComboBox();
-            this.btnmercado = new System.Windows.Forms.Button();
-            this.btnlocacion = new System.Windows.Forms.Button();
-            this.btnpracticas = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtContrato = new System.Windows.Forms.TextBox();
-            this.txtAnexoFunciones = new System.Windows.Forms.TextBox();
-            this.txtSolicitudPracticas = new System.Windows.Forms.TextBox();
-            this.txtOtros = new System.Windows.Forms.TextBox();
-            this.grpcontra = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.lklcontrato = new System.Windows.Forms.LinkLabel();
-            this.lklanexo = new System.Windows.Forms.LinkLabel();
-            this.lklpracticas = new System.Windows.Forms.LinkLabel();
-            this.lklotros = new System.Windows.Forms.LinkLabel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.btnExportapdf = new System.Windows.Forms.Button();
-            this.btnadenda = new System.Windows.Forms.Button();
-            this.pbFotoSolicitudPracticas = new System.Windows.Forms.PictureBox();
-            this.pbFotoAnexoFunciones = new System.Windows.Forms.PictureBox();
-            this.pbFotoOtros = new System.Windows.Forms.PictureBox();
-            this.pbFotoContrato = new System.Windows.Forms.PictureBox();
             this.NRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mercadoobra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -143,6 +92,59 @@ namespace HPReserger
             this.NOMBREOTROSIMG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.grpcontrato = new System.Windows.Forms.Panel();
+            this.cbotipocontratacion = new System.Windows.Forms.ComboBox();
+            this.cboJefeInmediato = new System.Windows.Forms.ComboBox();
+            this.cboCargo = new System.Windows.Forms.ComboBox();
+            this.btnEmpresaExt = new System.Windows.Forms.Button();
+            this.btnbonos = new System.Windows.Forms.Button();
+            this.lbladenda = new System.Windows.Forms.Label();
+            this.btnobradeterminada = new System.Windows.Forms.Button();
+            this.cboTipoContrato = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboEmpresa = new System.Windows.Forms.ComboBox();
+            this.cboGerencia = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblfechacese = new System.Windows.Forms.Label();
+            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.txtPeriodoLaboral = new System.Windows.Forms.TextBox();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpfechacese = new System.Windows.Forms.DateTimePicker();
+            this.txtSalario = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cboSede = new System.Windows.Forms.ComboBox();
+            this.cboProyecto = new System.Windows.Forms.ComboBox();
+            this.cboArea = new System.Windows.Forms.ComboBox();
+            this.btnmercado = new System.Windows.Forms.Button();
+            this.btnlocacion = new System.Windows.Forms.Button();
+            this.btnpracticas = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtContrato = new System.Windows.Forms.TextBox();
+            this.txtAnexoFunciones = new System.Windows.Forms.TextBox();
+            this.txtSolicitudPracticas = new System.Windows.Forms.TextBox();
+            this.txtOtros = new System.Windows.Forms.TextBox();
+            this.grpcontra = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lklcontrato = new System.Windows.Forms.LinkLabel();
+            this.lklanexo = new System.Windows.Forms.LinkLabel();
+            this.lklpracticas = new System.Windows.Forms.LinkLabel();
+            this.lklotros = new System.Windows.Forms.LinkLabel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.btnExportapdf = new System.Windows.Forms.Button();
+            this.btnadenda = new System.Windows.Forms.Button();
+            this.pbFotoSolicitudPracticas = new System.Windows.Forms.PictureBox();
+            this.pbFotoAnexoFunciones = new System.Windows.Forms.PictureBox();
+            this.pbFotoOtros = new System.Windows.Forms.PictureBox();
+            this.pbFotoContrato = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.grpcontrato.SuspendLayout();
             this.grpcontra.SuspendLayout();
@@ -155,90 +157,110 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 215);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(54, 196);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fecha Inicio";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 249);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(80, 221);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Salario";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 281);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(69, 254);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Contrato";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 359);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(81, 326);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Otros*";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 307);
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(22, 278);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.Size = new System.Drawing.Size(100, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Anexo Funciones*";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 333);
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(2, 302);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 13);
+            this.label6.Size = new System.Drawing.Size(120, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Solicitud de Prácticas*";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(235, 11);
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(235, 22);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 13);
+            this.label8.Size = new System.Drawing.Size(94, 13);
             this.label8.TabIndex = 7;
             this.label8.Text = "Tipo de Contrato";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(279, 94);
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(279, 97);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 8;
             this.label9.Text = "Cargo";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 159);
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(72, 147);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 9;
             this.label10.Text = "Empresa";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 185);
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(71, 172);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 13);
+            this.label11.Size = new System.Drawing.Size(51, 13);
             this.label11.TabIndex = 16;
             this.label11.Text = "Proyecto";
             // 
@@ -257,7 +279,7 @@ namespace HPReserger
             // btnModificar
             // 
             this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
-            this.btnModificar.Location = new System.Drawing.Point(652, 46);
+            this.btnModificar.Location = new System.Drawing.Point(652, 41);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 55;
@@ -274,7 +296,8 @@ namespace HPReserger
             // chkjefe
             // 
             this.chkjefe.AutoSize = true;
-            this.chkjefe.Location = new System.Drawing.Point(18, 119);
+            this.chkjefe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkjefe.Location = new System.Drawing.Point(0, 121);
             this.chkjefe.Name = "chkjefe";
             this.chkjefe.Size = new System.Drawing.Size(15, 14);
             this.chkjefe.TabIndex = 94;
@@ -418,572 +441,16 @@ namespace HPReserger
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(17, 383);
+            this.dtgconten.Location = new System.Drawing.Point(12, 363);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(710, 232);
+            this.dtgconten.Size = new System.Drawing.Size(715, 252);
             this.dtgconten.TabIndex = 149;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.Location = new System.Drawing.Point(14, 626);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(96, 13);
-            this.lblmsg.TabIndex = 150;
-            this.lblmsg.Text = "Total de Registros:";
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(571, 621);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 35;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(653, 621);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 55;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // grpcontrato
-            // 
-            this.grpcontrato.Controls.Add(this.cboCargo);
-            this.grpcontrato.Controls.Add(this.btnEmpresaExt);
-            this.grpcontrato.Controls.Add(this.btnbonos);
-            this.grpcontrato.Controls.Add(this.lbladenda);
-            this.grpcontrato.Controls.Add(this.btnobradeterminada);
-            this.grpcontrato.Controls.Add(this.cbotipocontratacion);
-            this.grpcontrato.Controls.Add(this.cboTipoContrato);
-            this.grpcontrato.Controls.Add(this.label7);
-            this.grpcontrato.Controls.Add(this.chkjefe);
-            this.grpcontrato.Controls.Add(this.cboEmpresa);
-            this.grpcontrato.Controls.Add(this.cboGerencia);
-            this.grpcontrato.Controls.Add(this.cboJefeInmediato);
-            this.grpcontrato.Controls.Add(this.label12);
-            this.grpcontrato.Controls.Add(this.label14);
-            this.grpcontrato.Controls.Add(this.label15);
-            this.grpcontrato.Controls.Add(this.lblfechacese);
-            this.grpcontrato.Controls.Add(this.dtpFechaInicio);
-            this.grpcontrato.Controls.Add(this.txtPeriodoLaboral);
-            this.grpcontrato.Controls.Add(this.dtpFechaFin);
-            this.grpcontrato.Controls.Add(this.dtpfechacese);
-            this.grpcontrato.Controls.Add(this.txtSalario);
-            this.grpcontrato.Controls.Add(this.label9);
-            this.grpcontrato.Controls.Add(this.label8);
-            this.grpcontrato.Controls.Add(this.label18);
-            this.grpcontrato.Controls.Add(this.cboSede);
-            this.grpcontrato.Controls.Add(this.cboProyecto);
-            this.grpcontrato.Controls.Add(this.cboArea);
-            this.grpcontrato.Controls.Add(this.btnmercado);
-            this.grpcontrato.Controls.Add(this.btnlocacion);
-            this.grpcontrato.Controls.Add(this.btnpracticas);
-            this.grpcontrato.Location = new System.Drawing.Point(111, 12);
-            this.grpcontrato.Name = "grpcontrato";
-            this.grpcontrato.Size = new System.Drawing.Size(541, 259);
-            this.grpcontrato.TabIndex = 152;
-            // 
-            // cboCargo
-            // 
-            this.cboCargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCargo.FormattingEnabled = true;
-            this.cboCargo.Location = new System.Drawing.Point(327, 90);
-            this.cboCargo.Name = "cboCargo";
-            this.cboCargo.Size = new System.Drawing.Size(195, 21);
-            this.cboCargo.TabIndex = 159;
-            // 
-            // btnEmpresaExt
-            // 
-            this.btnEmpresaExt.Location = new System.Drawing.Point(327, 63);
-            this.btnEmpresaExt.Name = "btnEmpresaExt";
-            this.btnEmpresaExt.Size = new System.Drawing.Size(195, 23);
-            this.btnEmpresaExt.TabIndex = 160;
-            this.btnEmpresaExt.Text = "Empresa Externa";
-            this.btnEmpresaExt.UseVisualStyleBackColor = true;
-            this.btnEmpresaExt.Click += new System.EventHandler(this.btnEmpresaExt_Click);
-            // 
-            // btnbonos
-            // 
-            this.btnbonos.Image = ((System.Drawing.Image)(resources.GetObject("btnbonos.Image")));
-            this.btnbonos.Location = new System.Drawing.Point(111, 235);
-            this.btnbonos.Name = "btnbonos";
-            this.btnbonos.Size = new System.Drawing.Size(75, 23);
-            this.btnbonos.TabIndex = 159;
-            this.btnbonos.Text = "&Bonos";
-            this.btnbonos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnbonos.UseVisualStyleBackColor = true;
-            this.btnbonos.Click += new System.EventHandler(this.btnbonos_Click);
-            // 
-            // lbladenda
-            // 
-            this.lbladenda.AutoSize = true;
-            this.lbladenda.Location = new System.Drawing.Point(324, 39);
-            this.lbladenda.Name = "lbladenda";
-            this.lbladenda.Size = new System.Drawing.Size(0, 13);
-            this.lbladenda.TabIndex = 100;
-            // 
-            // btnobradeterminada
-            // 
-            this.btnobradeterminada.Location = new System.Drawing.Point(160, 34);
-            this.btnobradeterminada.Name = "btnobradeterminada";
-            this.btnobradeterminada.Size = new System.Drawing.Size(140, 23);
-            this.btnobradeterminada.TabIndex = 99;
-            this.btnobradeterminada.Text = "Obra Determinada";
-            this.btnobradeterminada.UseVisualStyleBackColor = true;
-            this.btnobradeterminada.Visible = false;
-            this.btnobradeterminada.Click += new System.EventHandler(this.btnobradeterminada_Click);
-            // 
-            // cbotipocontratacion
-            // 
-            this.cbotipocontratacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbotipocontratacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbotipocontratacion.FormattingEnabled = true;
-            this.cbotipocontratacion.Location = new System.Drawing.Point(14, 7);
-            this.cbotipocontratacion.Name = "cbotipocontratacion";
-            this.cbotipocontratacion.Size = new System.Drawing.Size(215, 21);
-            this.cbotipocontratacion.TabIndex = 95;
-            this.cbotipocontratacion.SelectedIndexChanged += new System.EventHandler(this.cbotipocontratacion_SelectedIndexChanged);
-            // 
-            // cboTipoContrato
-            // 
-            this.cboTipoContrato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboTipoContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoContrato.FormattingEnabled = true;
-            this.cboTipoContrato.Location = new System.Drawing.Point(327, 7);
-            this.cboTipoContrato.Name = "cboTipoContrato";
-            this.cboTipoContrato.Size = new System.Drawing.Size(195, 21);
-            this.cboTipoContrato.TabIndex = 60;
-            this.cboTipoContrato.SelectedIndexChanged += new System.EventHandler(this.cboTipoContrato_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 120);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 13);
-            this.label7.TabIndex = 59;
-            this.label7.Text = "Jefe Inmediato";
-            // 
-            // cboEmpresa
-            // 
-            this.cboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEmpresa.FormattingEnabled = true;
-            this.cboEmpresa.Location = new System.Drawing.Point(13, 144);
-            this.cboEmpresa.Name = "cboEmpresa";
-            this.cboEmpresa.Size = new System.Drawing.Size(320, 21);
-            this.cboEmpresa.TabIndex = 62;
-            this.cboEmpresa.SelectedIndexChanged += new System.EventHandler(this.cboEmpresa_SelectedIndexChanged);
-            // 
-            // cboGerencia
-            // 
-            this.cboGerencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboGerencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboGerencia.FormattingEnabled = true;
-            this.cboGerencia.Location = new System.Drawing.Point(14, 64);
-            this.cboGerencia.Name = "cboGerencia";
-            this.cboGerencia.Size = new System.Drawing.Size(215, 21);
-            this.cboGerencia.TabIndex = 93;
-            this.cboGerencia.SelectedIndexChanged += new System.EventHandler(this.cboGerencia_SelectedIndexChanged);
-            // 
-            // cboJefeInmediato
-            // 
-            this.cboJefeInmediato.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboJefeInmediato.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboJefeInmediato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboJefeInmediato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboJefeInmediato.FormattingEnabled = true;
-            this.cboJefeInmediato.Location = new System.Drawing.Point(116, 116);
-            this.cboJefeInmediato.Name = "cboJefeInmediato";
-            this.cboJefeInmediato.Size = new System.Drawing.Size(406, 21);
-            this.cboJefeInmediato.TabIndex = 63;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(339, 148);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 13);
-            this.label12.TabIndex = 64;
-            this.label12.Text = "Sede";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(103, 206);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(83, 13);
-            this.label14.TabIndex = 66;
-            this.label14.Text = "Período Laboral";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(279, 206);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(54, 13);
-            this.label15.TabIndex = 68;
-            this.label15.Text = "Fecha Fin";
-            // 
-            // lblfechacese
-            // 
-            this.lblfechacese.AutoSize = true;
-            this.lblfechacese.Location = new System.Drawing.Point(423, 206);
-            this.lblfechacese.Name = "lblfechacese";
-            this.lblfechacese.Size = new System.Drawing.Size(31, 13);
-            this.lblfechacese.TabIndex = 67;
-            this.lblfechacese.Text = "Cese";
-            this.lblfechacese.Visible = false;
-            // 
-            // dtpFechaInicio
-            // 
-            this.dtpFechaInicio.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(14, 202);
-            this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(83, 20);
-            this.dtpFechaInicio.TabIndex = 69;
-            this.dtpFechaInicio.CloseUp += new System.EventHandler(this.dtpFechaInicio_CloseUp);
-            this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.dtpFechaInicio_ValueChanged);
-            // 
-            // txtPeriodoLaboral
-            // 
-            this.txtPeriodoLaboral.Location = new System.Drawing.Point(192, 202);
-            this.txtPeriodoLaboral.MaxLength = 2;
-            this.txtPeriodoLaboral.Name = "txtPeriodoLaboral";
-            this.txtPeriodoLaboral.Size = new System.Drawing.Size(37, 20);
-            this.txtPeriodoLaboral.TabIndex = 70;
-            this.txtPeriodoLaboral.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPeriodoLaboral.TextChanged += new System.EventHandler(this.txtPeriodoLaboral_TextChanged);
-            this.txtPeriodoLaboral.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPeriodoLaboral_KeyPress);
-            this.txtPeriodoLaboral.Leave += new System.EventHandler(this.txtPeriodoLaboral_Leave);
-            // 
-            // dtpFechaFin
-            // 
-            this.dtpFechaFin.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(339, 202);
-            this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(78, 20);
-            this.dtpFechaFin.TabIndex = 72;
-            this.dtpFechaFin.CloseUp += new System.EventHandler(this.dtpFechaFin_CloseUp);
-            this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechaFin_ValueChanged);
-            this.dtpFechaFin.Leave += new System.EventHandler(this.dtpFechaFin_Leave);
-            // 
-            // dtpfechacese
-            // 
-            this.dtpfechacese.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.dtpfechacese.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechacese.Location = new System.Drawing.Point(460, 202);
-            this.dtpfechacese.Name = "dtpfechacese";
-            this.dtpfechacese.Size = new System.Drawing.Size(78, 20);
-            this.dtpfechacese.TabIndex = 71;
-            this.dtpfechacese.Visible = false;
-            // 
-            // txtSalario
-            // 
-            this.txtSalario.Location = new System.Drawing.Point(14, 236);
-            this.txtSalario.Name = "txtSalario";
-            this.txtSalario.Size = new System.Drawing.Size(91, 20);
-            this.txtSalario.TabIndex = 73;
-            this.txtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtSalario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalario_KeyPress);
-            this.txtSalario.Leave += new System.EventHandler(this.txtSalario_Leave);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.Blue;
-            this.label18.Location = new System.Drawing.Point(235, 206);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(38, 13);
-            this.label18.TabIndex = 85;
-            this.label18.Text = "Meses";
-            // 
-            // cboSede
-            // 
-            this.cboSede.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSede.FormattingEnabled = true;
-            this.cboSede.Location = new System.Drawing.Point(377, 144);
-            this.cboSede.Name = "cboSede";
-            this.cboSede.Size = new System.Drawing.Size(145, 21);
-            this.cboSede.TabIndex = 83;
-            // 
-            // cboProyecto
-            // 
-            this.cboProyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboProyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboProyecto.FormattingEnabled = true;
-            this.cboProyecto.Location = new System.Drawing.Point(13, 171);
-            this.cboProyecto.Name = "cboProyecto";
-            this.cboProyecto.Size = new System.Drawing.Size(509, 21);
-            this.cboProyecto.TabIndex = 82;
-            // 
-            // cboArea
-            // 
-            this.cboArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboArea.FormattingEnabled = true;
-            this.cboArea.Location = new System.Drawing.Point(14, 90);
-            this.cboArea.Name = "cboArea";
-            this.cboArea.Size = new System.Drawing.Size(215, 21);
-            this.cboArea.TabIndex = 81;
-            this.cboArea.SelectedIndexChanged += new System.EventHandler(this.cboArea_SelectedIndexChanged);
-            // 
-            // btnmercado
-            // 
-            this.btnmercado.Location = new System.Drawing.Point(14, 34);
-            this.btnmercado.Name = "btnmercado";
-            this.btnmercado.Size = new System.Drawing.Size(140, 23);
-            this.btnmercado.TabIndex = 98;
-            this.btnmercado.Text = "Necesidad de Mercado";
-            this.btnmercado.UseVisualStyleBackColor = true;
-            this.btnmercado.Visible = false;
-            this.btnmercado.Click += new System.EventHandler(this.btnmercado_Click);
-            // 
-            // btnlocacion
-            // 
-            this.btnlocacion.Location = new System.Drawing.Point(14, 34);
-            this.btnlocacion.Name = "btnlocacion";
-            this.btnlocacion.Size = new System.Drawing.Size(140, 23);
-            this.btnlocacion.TabIndex = 97;
-            this.btnlocacion.Text = "Locación de Servicios";
-            this.btnlocacion.UseVisualStyleBackColor = true;
-            this.btnlocacion.Visible = false;
-            this.btnlocacion.Click += new System.EventHandler(this.btnlocacion_Click);
-            // 
-            // btnpracticas
-            // 
-            this.btnpracticas.Location = new System.Drawing.Point(14, 34);
-            this.btnpracticas.Name = "btnpracticas";
-            this.btnpracticas.Size = new System.Drawing.Size(140, 23);
-            this.btnpracticas.TabIndex = 96;
-            this.btnpracticas.Text = "Practica PreProfesionales";
-            this.btnpracticas.UseVisualStyleBackColor = true;
-            this.btnpracticas.Visible = false;
-            this.btnpracticas.Click += new System.EventHandler(this.btnpracticas_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(16, 78);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(50, 13);
-            this.label20.TabIndex = 92;
-            this.label20.Text = "Gerencia";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(16, 105);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(29, 13);
-            this.label13.TabIndex = 65;
-            this.label13.Text = "Area";
-            // 
-            // txtContrato
-            // 
-            this.txtContrato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtContrato.Location = new System.Drawing.Point(124, 277);
-            this.txtContrato.Name = "txtContrato";
-            this.txtContrato.ReadOnly = true;
-            this.txtContrato.Size = new System.Drawing.Size(474, 20);
-            this.txtContrato.TabIndex = 77;
-            this.txtContrato.TextChanged += new System.EventHandler(this.txtContrato_TextChanged);
-            this.txtContrato.DoubleClick += new System.EventHandler(this.txtContrato_DoubleClick);
-            // 
-            // txtAnexoFunciones
-            // 
-            this.txtAnexoFunciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtAnexoFunciones.Location = new System.Drawing.Point(124, 303);
-            this.txtAnexoFunciones.Name = "txtAnexoFunciones";
-            this.txtAnexoFunciones.ReadOnly = true;
-            this.txtAnexoFunciones.Size = new System.Drawing.Size(474, 20);
-            this.txtAnexoFunciones.TabIndex = 78;
-            this.txtAnexoFunciones.TextChanged += new System.EventHandler(this.txtAnexoFunciones_TextChanged);
-            this.txtAnexoFunciones.DoubleClick += new System.EventHandler(this.txtAnexoFunciones_DoubleClick);
-            // 
-            // txtSolicitudPracticas
-            // 
-            this.txtSolicitudPracticas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtSolicitudPracticas.Location = new System.Drawing.Point(124, 329);
-            this.txtSolicitudPracticas.Name = "txtSolicitudPracticas";
-            this.txtSolicitudPracticas.ReadOnly = true;
-            this.txtSolicitudPracticas.Size = new System.Drawing.Size(474, 20);
-            this.txtSolicitudPracticas.TabIndex = 79;
-            this.txtSolicitudPracticas.TextChanged += new System.EventHandler(this.txtSolicitudPracticas_TextChanged);
-            this.txtSolicitudPracticas.DoubleClick += new System.EventHandler(this.txtSolicitudPracticas_DoubleClick);
-            // 
-            // txtOtros
-            // 
-            this.txtOtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtOtros.Location = new System.Drawing.Point(124, 355);
-            this.txtOtros.Name = "txtOtros";
-            this.txtOtros.ReadOnly = true;
-            this.txtOtros.Size = new System.Drawing.Size(474, 20);
-            this.txtOtros.TabIndex = 80;
-            this.txtOtros.TextChanged += new System.EventHandler(this.txtOtros_TextChanged);
-            this.txtOtros.DoubleClick += new System.EventHandler(this.txtOtros_DoubleClick);
-            // 
-            // grpcontra
-            // 
-            this.grpcontra.Controls.Add(this.btnBuscarImagenContrato);
-            this.grpcontra.Controls.Add(this.btnBuscarImagenAnexoFunciones);
-            this.grpcontra.Controls.Add(this.btnBuscarImagenSolicitudPracticas);
-            this.grpcontra.Controls.Add(this.btnBuscarImagenOtros);
-            this.grpcontra.Location = new System.Drawing.Point(600, 267);
-            this.grpcontra.Name = "grpcontra";
-            this.grpcontra.Size = new System.Drawing.Size(33, 110);
-            this.grpcontra.TabIndex = 153;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(12, 133);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(109, 13);
-            this.label21.TabIndex = 154;
-            this.label21.Text = "Tiene Cargo de Jefe?";
-            // 
-            // lklcontrato
-            // 
-            this.lklcontrato.AutoSize = true;
-            this.lklcontrato.Location = new System.Drawing.Point(639, 281);
-            this.lklcontrato.Name = "lklcontrato";
-            this.lklcontrato.Size = new System.Drawing.Size(42, 13);
-            this.lklcontrato.TabIndex = 91;
-            this.lklcontrato.TabStop = true;
-            this.lklcontrato.Text = "Ver Pdf";
-            this.lklcontrato.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklcontrato_LinkClicked);
-            // 
-            // lklanexo
-            // 
-            this.lklanexo.AutoSize = true;
-            this.lklanexo.Location = new System.Drawing.Point(639, 307);
-            this.lklanexo.Name = "lklanexo";
-            this.lklanexo.Size = new System.Drawing.Size(61, 13);
-            this.lklanexo.TabIndex = 91;
-            this.lklanexo.TabStop = true;
-            this.lklanexo.Text = "Ver Imagen";
-            this.lklanexo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklanexo_LinkClicked);
-            // 
-            // lklpracticas
-            // 
-            this.lklpracticas.AutoSize = true;
-            this.lklpracticas.Location = new System.Drawing.Point(639, 333);
-            this.lklpracticas.Name = "lklpracticas";
-            this.lklpracticas.Size = new System.Drawing.Size(61, 13);
-            this.lklpracticas.TabIndex = 91;
-            this.lklpracticas.TabStop = true;
-            this.lklpracticas.Text = "Ver Imagen";
-            this.lklpracticas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklpracticas_LinkClicked);
-            // 
-            // lklotros
-            // 
-            this.lklotros.AutoSize = true;
-            this.lklotros.Location = new System.Drawing.Point(639, 359);
-            this.lklotros.Name = "lklotros";
-            this.lklotros.Size = new System.Drawing.Size(61, 13);
-            this.lklotros.TabIndex = 91;
-            this.lklotros.TabStop = true;
-            this.lklotros.Text = "Ver Imagen";
-            this.lklotros.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklotros_LinkClicked);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(12, 22);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(106, 13);
-            this.label22.TabIndex = 155;
-            this.label22.Text = "Tipo de Contratación";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(14, 51);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(52, 13);
-            this.label23.TabIndex = 156;
-            this.label23.Text = "Contratos";
-            // 
-            // btnExportapdf
-            // 
-            this.btnExportapdf.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnExportapdf.Image = ((System.Drawing.Image)(resources.GetObject("btnExportapdf.Image")));
-            this.btnExportapdf.Location = new System.Drawing.Point(652, 248);
-            this.btnExportapdf.Name = "btnExportapdf";
-            this.btnExportapdf.Size = new System.Drawing.Size(75, 23);
-            this.btnExportapdf.TabIndex = 157;
-            this.btnExportapdf.Text = "PDF";
-            this.btnExportapdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExportapdf.UseVisualStyleBackColor = true;
-            this.btnExportapdf.Click += new System.EventHandler(this.btnExportapdf_Click);
-            // 
-            // btnadenda
-            // 
-            this.btnadenda.Image = ((System.Drawing.Image)(resources.GetObject("btnadenda.Image")));
-            this.btnadenda.Location = new System.Drawing.Point(652, 80);
-            this.btnadenda.Name = "btnadenda";
-            this.btnadenda.Size = new System.Drawing.Size(75, 23);
-            this.btnadenda.TabIndex = 158;
-            this.btnadenda.Text = "Adenda";
-            this.btnadenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnadenda.UseVisualStyleBackColor = true;
-            this.btnadenda.Click += new System.EventHandler(this.btnadenda_Click);
-            // 
-            // pbFotoSolicitudPracticas
-            // 
-            this.pbFotoSolicitudPracticas.Location = new System.Drawing.Point(686, 102);
-            this.pbFotoSolicitudPracticas.Name = "pbFotoSolicitudPracticas";
-            this.pbFotoSolicitudPracticas.Size = new System.Drawing.Size(83, 20);
-            this.pbFotoSolicitudPracticas.TabIndex = 53;
-            this.pbFotoSolicitudPracticas.TabStop = false;
-            this.pbFotoSolicitudPracticas.Visible = false;
-            // 
-            // pbFotoAnexoFunciones
-            // 
-            this.pbFotoAnexoFunciones.Location = new System.Drawing.Point(744, 102);
-            this.pbFotoAnexoFunciones.Name = "pbFotoAnexoFunciones";
-            this.pbFotoAnexoFunciones.Size = new System.Drawing.Size(83, 16);
-            this.pbFotoAnexoFunciones.TabIndex = 52;
-            this.pbFotoAnexoFunciones.TabStop = false;
-            this.pbFotoAnexoFunciones.Visible = false;
-            // 
-            // pbFotoOtros
-            // 
-            this.pbFotoOtros.Location = new System.Drawing.Point(797, 102);
-            this.pbFotoOtros.Name = "pbFotoOtros";
-            this.pbFotoOtros.Size = new System.Drawing.Size(83, 23);
-            this.pbFotoOtros.TabIndex = 51;
-            this.pbFotoOtros.TabStop = false;
-            this.pbFotoOtros.Visible = false;
-            // 
-            // pbFotoContrato
-            // 
-            this.pbFotoContrato.Location = new System.Drawing.Point(723, 104);
-            this.pbFotoContrato.Name = "pbFotoContrato";
-            this.pbFotoContrato.Size = new System.Drawing.Size(83, 21);
-            this.pbFotoContrato.TabIndex = 50;
-            this.pbFotoContrato.TabStop = false;
-            this.pbFotoContrato.Visible = false;
             // 
             // NRO
             // 
@@ -1273,15 +740,623 @@ namespace HPReserger
             this.FECHA.Name = "FECHA";
             this.FECHA.Visible = false;
             // 
+            // lblmsg
+            // 
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsg.Location = new System.Drawing.Point(12, 626);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(101, 13);
+            this.lblmsg.TabIndex = 150;
+            this.lblmsg.Text = "Total de Registros:";
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(571, 621);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnaceptar.TabIndex = 35;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(653, 621);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 55;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // grpcontrato
+            // 
+            this.grpcontrato.BackColor = System.Drawing.Color.Transparent;
+            this.grpcontrato.Controls.Add(this.cbotipocontratacion);
+            this.grpcontrato.Controls.Add(this.cboJefeInmediato);
+            this.grpcontrato.Controls.Add(this.cboCargo);
+            this.grpcontrato.Controls.Add(this.btnEmpresaExt);
+            this.grpcontrato.Controls.Add(this.btnbonos);
+            this.grpcontrato.Controls.Add(this.lbladenda);
+            this.grpcontrato.Controls.Add(this.btnobradeterminada);
+            this.grpcontrato.Controls.Add(this.cboTipoContrato);
+            this.grpcontrato.Controls.Add(this.label7);
+            this.grpcontrato.Controls.Add(this.chkjefe);
+            this.grpcontrato.Controls.Add(this.cboEmpresa);
+            this.grpcontrato.Controls.Add(this.cboGerencia);
+            this.grpcontrato.Controls.Add(this.label12);
+            this.grpcontrato.Controls.Add(this.label14);
+            this.grpcontrato.Controls.Add(this.label15);
+            this.grpcontrato.Controls.Add(this.lblfechacese);
+            this.grpcontrato.Controls.Add(this.dtpFechaInicio);
+            this.grpcontrato.Controls.Add(this.txtPeriodoLaboral);
+            this.grpcontrato.Controls.Add(this.dtpFechaFin);
+            this.grpcontrato.Controls.Add(this.dtpfechacese);
+            this.grpcontrato.Controls.Add(this.txtSalario);
+            this.grpcontrato.Controls.Add(this.label9);
+            this.grpcontrato.Controls.Add(this.label8);
+            this.grpcontrato.Controls.Add(this.label18);
+            this.grpcontrato.Controls.Add(this.cboSede);
+            this.grpcontrato.Controls.Add(this.cboProyecto);
+            this.grpcontrato.Controls.Add(this.cboArea);
+            this.grpcontrato.Controls.Add(this.btnmercado);
+            this.grpcontrato.Controls.Add(this.btnlocacion);
+            this.grpcontrato.Controls.Add(this.btnpracticas);
+            this.grpcontrato.Location = new System.Drawing.Point(124, 1);
+            this.grpcontrato.Name = "grpcontrato";
+            this.grpcontrato.Size = new System.Drawing.Size(528, 242);
+            this.grpcontrato.TabIndex = 152;
+            // 
+            // cbotipocontratacion
+            // 
+            this.cbotipocontratacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbotipocontratacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipocontratacion.FormattingEnabled = true;
+            this.cbotipocontratacion.Location = new System.Drawing.Point(0, 18);
+            this.cbotipocontratacion.Name = "cbotipocontratacion";
+            this.cbotipocontratacion.Size = new System.Drawing.Size(215, 21);
+            this.cbotipocontratacion.TabIndex = 95;
+            this.cbotipocontratacion.SelectedIndexChanged += new System.EventHandler(this.cbotipocontratacion_SelectedIndexChanged);
+            // 
+            // cboJefeInmediato
+            // 
+            this.cboJefeInmediato.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboJefeInmediato.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboJefeInmediato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboJefeInmediato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboJefeInmediato.FormattingEnabled = true;
+            this.cboJefeInmediato.Location = new System.Drawing.Point(116, 118);
+            this.cboJefeInmediato.Name = "cboJefeInmediato";
+            this.cboJefeInmediato.Size = new System.Drawing.Size(406, 21);
+            this.cboJefeInmediato.TabIndex = 63;
+            // 
+            // cboCargo
+            // 
+            this.cboCargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCargo.FormattingEnabled = true;
+            this.cboCargo.Location = new System.Drawing.Point(327, 93);
+            this.cboCargo.Name = "cboCargo";
+            this.cboCargo.Size = new System.Drawing.Size(195, 21);
+            this.cboCargo.TabIndex = 159;
+            // 
+            // btnEmpresaExt
+            // 
+            this.btnEmpresaExt.Location = new System.Drawing.Point(327, 67);
+            this.btnEmpresaExt.Name = "btnEmpresaExt";
+            this.btnEmpresaExt.Size = new System.Drawing.Size(195, 23);
+            this.btnEmpresaExt.TabIndex = 160;
+            this.btnEmpresaExt.Text = "Empresa Externa";
+            this.btnEmpresaExt.UseVisualStyleBackColor = true;
+            this.btnEmpresaExt.Click += new System.EventHandler(this.btnEmpresaExt_Click);
+            // 
+            // btnbonos
+            // 
+            this.btnbonos.Image = ((System.Drawing.Image)(resources.GetObject("btnbonos.Image")));
+            this.btnbonos.Location = new System.Drawing.Point(106, 215);
+            this.btnbonos.Name = "btnbonos";
+            this.btnbonos.Size = new System.Drawing.Size(75, 23);
+            this.btnbonos.TabIndex = 159;
+            this.btnbonos.Text = "&Bonos";
+            this.btnbonos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbonos.UseVisualStyleBackColor = true;
+            this.btnbonos.Click += new System.EventHandler(this.btnbonos_Click);
+            // 
+            // lbladenda
+            // 
+            this.lbladenda.AutoSize = true;
+            this.lbladenda.Location = new System.Drawing.Point(324, 47);
+            this.lbladenda.Name = "lbladenda";
+            this.lbladenda.Size = new System.Drawing.Size(0, 13);
+            this.lbladenda.TabIndex = 100;
+            // 
+            // btnobradeterminada
+            // 
+            this.btnobradeterminada.Location = new System.Drawing.Point(160, 42);
+            this.btnobradeterminada.Name = "btnobradeterminada";
+            this.btnobradeterminada.Size = new System.Drawing.Size(140, 23);
+            this.btnobradeterminada.TabIndex = 99;
+            this.btnobradeterminada.Text = "Obra Determinada";
+            this.btnobradeterminada.UseVisualStyleBackColor = true;
+            this.btnobradeterminada.Visible = false;
+            this.btnobradeterminada.Click += new System.EventHandler(this.btnobradeterminada_Click);
+            // 
+            // cboTipoContrato
+            // 
+            this.cboTipoContrato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboTipoContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoContrato.FormattingEnabled = true;
+            this.cboTipoContrato.Location = new System.Drawing.Point(327, 18);
+            this.cboTipoContrato.Name = "cboTipoContrato";
+            this.cboTipoContrato.Size = new System.Drawing.Size(195, 21);
+            this.cboTipoContrato.TabIndex = 60;
+            this.cboTipoContrato.SelectedIndexChanged += new System.EventHandler(this.cboTipoContrato_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(36, 122);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 13);
+            this.label7.TabIndex = 59;
+            this.label7.Text = "Jefe Inmediato";
+            // 
+            // cboEmpresa
+            // 
+            this.cboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEmpresa.FormattingEnabled = true;
+            this.cboEmpresa.Location = new System.Drawing.Point(0, 143);
+            this.cboEmpresa.Name = "cboEmpresa";
+            this.cboEmpresa.Size = new System.Drawing.Size(320, 21);
+            this.cboEmpresa.TabIndex = 62;
+            this.cboEmpresa.SelectedIndexChanged += new System.EventHandler(this.cboEmpresa_SelectedIndexChanged);
+            // 
+            // cboGerencia
+            // 
+            this.cboGerencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboGerencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGerencia.FormattingEnabled = true;
+            this.cboGerencia.Location = new System.Drawing.Point(0, 68);
+            this.cboGerencia.Name = "cboGerencia";
+            this.cboGerencia.Size = new System.Drawing.Size(215, 21);
+            this.cboGerencia.TabIndex = 93;
+            this.cboGerencia.SelectedIndexChanged += new System.EventHandler(this.cboGerencia_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(339, 147);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(32, 13);
+            this.label12.TabIndex = 64;
+            this.label12.Text = "Sede";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(86, 196);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(88, 13);
+            this.label14.TabIndex = 66;
+            this.label14.Text = "Período Laboral";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(263, 196);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 15);
+            this.label15.TabIndex = 68;
+            this.label15.Text = "Fecha Fin";
+            // 
+            // lblfechacese
+            // 
+            this.lblfechacese.AutoSize = true;
+            this.lblfechacese.BackColor = System.Drawing.Color.Transparent;
+            this.lblfechacese.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfechacese.Location = new System.Drawing.Point(408, 196);
+            this.lblfechacese.Name = "lblfechacese";
+            this.lblfechacese.Size = new System.Drawing.Size(31, 13);
+            this.lblfechacese.TabIndex = 67;
+            this.lblfechacese.Text = "Cese";
+            this.lblfechacese.Visible = false;
+            // 
+            // dtpFechaInicio
+            // 
+            this.dtpFechaInicio.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtpFechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicio.Location = new System.Drawing.Point(0, 192);
+            this.dtpFechaInicio.Name = "dtpFechaInicio";
+            this.dtpFechaInicio.Size = new System.Drawing.Size(83, 21);
+            this.dtpFechaInicio.TabIndex = 69;
+            this.dtpFechaInicio.CloseUp += new System.EventHandler(this.dtpFechaInicio_CloseUp);
+            this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.dtpFechaInicio_ValueChanged);
+            // 
+            // txtPeriodoLaboral
+            // 
+            this.txtPeriodoLaboral.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPeriodoLaboral.Location = new System.Drawing.Point(176, 192);
+            this.txtPeriodoLaboral.MaxLength = 2;
+            this.txtPeriodoLaboral.Name = "txtPeriodoLaboral";
+            this.txtPeriodoLaboral.Size = new System.Drawing.Size(37, 21);
+            this.txtPeriodoLaboral.TabIndex = 70;
+            this.txtPeriodoLaboral.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPeriodoLaboral.TextChanged += new System.EventHandler(this.txtPeriodoLaboral_TextChanged);
+            this.txtPeriodoLaboral.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPeriodoLaboral_KeyPress);
+            this.txtPeriodoLaboral.Leave += new System.EventHandler(this.txtPeriodoLaboral_Leave);
+            // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtpFechaFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFin.Location = new System.Drawing.Point(324, 192);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.Size = new System.Drawing.Size(83, 21);
+            this.dtpFechaFin.TabIndex = 72;
+            this.dtpFechaFin.CloseUp += new System.EventHandler(this.dtpFechaFin_CloseUp);
+            this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechaFin_ValueChanged);
+            this.dtpFechaFin.Leave += new System.EventHandler(this.dtpFechaFin_Leave);
+            // 
+            // dtpfechacese
+            // 
+            this.dtpfechacese.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.dtpfechacese.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpfechacese.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpfechacese.Location = new System.Drawing.Point(445, 192);
+            this.dtpfechacese.Name = "dtpfechacese";
+            this.dtpfechacese.Size = new System.Drawing.Size(83, 21);
+            this.dtpfechacese.TabIndex = 71;
+            this.dtpfechacese.Visible = false;
+            // 
+            // txtSalario
+            // 
+            this.txtSalario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalario.Location = new System.Drawing.Point(0, 217);
+            this.txtSalario.Name = "txtSalario";
+            this.txtSalario.Size = new System.Drawing.Size(100, 21);
+            this.txtSalario.TabIndex = 73;
+            this.txtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSalario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalario_KeyPress);
+            this.txtSalario.Leave += new System.EventHandler(this.txtSalario_Leave);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Blue;
+            this.label18.Location = new System.Drawing.Point(216, 196);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(44, 15);
+            this.label18.TabIndex = 85;
+            this.label18.Text = "Meses";
+            // 
+            // cboSede
+            // 
+            this.cboSede.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSede.FormattingEnabled = true;
+            this.cboSede.Location = new System.Drawing.Point(377, 143);
+            this.cboSede.Name = "cboSede";
+            this.cboSede.Size = new System.Drawing.Size(145, 21);
+            this.cboSede.TabIndex = 83;
+            // 
+            // cboProyecto
+            // 
+            this.cboProyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboProyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProyecto.FormattingEnabled = true;
+            this.cboProyecto.Location = new System.Drawing.Point(0, 168);
+            this.cboProyecto.Name = "cboProyecto";
+            this.cboProyecto.Size = new System.Drawing.Size(509, 21);
+            this.cboProyecto.TabIndex = 82;
+            // 
+            // cboArea
+            // 
+            this.cboArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboArea.FormattingEnabled = true;
+            this.cboArea.Location = new System.Drawing.Point(0, 93);
+            this.cboArea.Name = "cboArea";
+            this.cboArea.Size = new System.Drawing.Size(215, 21);
+            this.cboArea.TabIndex = 81;
+            this.cboArea.SelectedIndexChanged += new System.EventHandler(this.cboArea_SelectedIndexChanged);
+            // 
+            // btnmercado
+            // 
+            this.btnmercado.Location = new System.Drawing.Point(0, 42);
+            this.btnmercado.Name = "btnmercado";
+            this.btnmercado.Size = new System.Drawing.Size(140, 23);
+            this.btnmercado.TabIndex = 98;
+            this.btnmercado.Text = "Necesidad de Mercado";
+            this.btnmercado.UseVisualStyleBackColor = true;
+            this.btnmercado.Visible = false;
+            this.btnmercado.Click += new System.EventHandler(this.btnmercado_Click);
+            // 
+            // btnlocacion
+            // 
+            this.btnlocacion.Location = new System.Drawing.Point(0, 42);
+            this.btnlocacion.Name = "btnlocacion";
+            this.btnlocacion.Size = new System.Drawing.Size(140, 23);
+            this.btnlocacion.TabIndex = 97;
+            this.btnlocacion.Text = "Locación de Servicios";
+            this.btnlocacion.UseVisualStyleBackColor = true;
+            this.btnlocacion.Visible = false;
+            this.btnlocacion.Click += new System.EventHandler(this.btnlocacion_Click);
+            // 
+            // btnpracticas
+            // 
+            this.btnpracticas.Location = new System.Drawing.Point(0, 42);
+            this.btnpracticas.Name = "btnpracticas";
+            this.btnpracticas.Size = new System.Drawing.Size(140, 23);
+            this.btnpracticas.TabIndex = 96;
+            this.btnpracticas.Text = "Practica PreProfesionales";
+            this.btnpracticas.UseVisualStyleBackColor = true;
+            this.btnpracticas.Visible = false;
+            this.btnpracticas.Click += new System.EventHandler(this.btnpracticas_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(70, 72);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(52, 13);
+            this.label20.TabIndex = 92;
+            this.label20.Text = "Gerencia";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(92, 97);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 13);
+            this.label13.TabIndex = 65;
+            this.label13.Text = "Area";
+            // 
+            // txtContrato
+            // 
+            this.txtContrato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtContrato.Location = new System.Drawing.Point(124, 250);
+            this.txtContrato.Name = "txtContrato";
+            this.txtContrato.ReadOnly = true;
+            this.txtContrato.Size = new System.Drawing.Size(474, 20);
+            this.txtContrato.TabIndex = 77;
+            this.txtContrato.TextChanged += new System.EventHandler(this.txtContrato_TextChanged);
+            this.txtContrato.DoubleClick += new System.EventHandler(this.txtContrato_DoubleClick);
+            // 
+            // txtAnexoFunciones
+            // 
+            this.txtAnexoFunciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtAnexoFunciones.Location = new System.Drawing.Point(124, 274);
+            this.txtAnexoFunciones.Name = "txtAnexoFunciones";
+            this.txtAnexoFunciones.ReadOnly = true;
+            this.txtAnexoFunciones.Size = new System.Drawing.Size(474, 20);
+            this.txtAnexoFunciones.TabIndex = 78;
+            this.txtAnexoFunciones.TextChanged += new System.EventHandler(this.txtAnexoFunciones_TextChanged);
+            this.txtAnexoFunciones.DoubleClick += new System.EventHandler(this.txtAnexoFunciones_DoubleClick);
+            // 
+            // txtSolicitudPracticas
+            // 
+            this.txtSolicitudPracticas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtSolicitudPracticas.Location = new System.Drawing.Point(124, 298);
+            this.txtSolicitudPracticas.Name = "txtSolicitudPracticas";
+            this.txtSolicitudPracticas.ReadOnly = true;
+            this.txtSolicitudPracticas.Size = new System.Drawing.Size(474, 20);
+            this.txtSolicitudPracticas.TabIndex = 79;
+            this.txtSolicitudPracticas.TextChanged += new System.EventHandler(this.txtSolicitudPracticas_TextChanged);
+            this.txtSolicitudPracticas.DoubleClick += new System.EventHandler(this.txtSolicitudPracticas_DoubleClick);
+            // 
+            // txtOtros
+            // 
+            this.txtOtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtOtros.Location = new System.Drawing.Point(124, 322);
+            this.txtOtros.Name = "txtOtros";
+            this.txtOtros.ReadOnly = true;
+            this.txtOtros.Size = new System.Drawing.Size(474, 20);
+            this.txtOtros.TabIndex = 80;
+            this.txtOtros.TextChanged += new System.EventHandler(this.txtOtros_TextChanged);
+            this.txtOtros.DoubleClick += new System.EventHandler(this.txtOtros_DoubleClick);
+            // 
+            // grpcontra
+            // 
+            this.grpcontra.BackColor = System.Drawing.Color.Transparent;
+            this.grpcontra.Controls.Add(this.btnBuscarImagenContrato);
+            this.grpcontra.Controls.Add(this.btnBuscarImagenAnexoFunciones);
+            this.grpcontra.Controls.Add(this.btnBuscarImagenSolicitudPracticas);
+            this.grpcontra.Controls.Add(this.btnBuscarImagenOtros);
+            this.grpcontra.Location = new System.Drawing.Point(600, 240);
+            this.grpcontra.Name = "grpcontra";
+            this.grpcontra.Size = new System.Drawing.Size(33, 110);
+            this.grpcontra.TabIndex = 153;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(10, 122);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(112, 13);
+            this.label21.TabIndex = 154;
+            this.label21.Text = "Tiene Cargo de Jefe?";
+            // 
+            // lklcontrato
+            // 
+            this.lklcontrato.AutoSize = true;
+            this.lklcontrato.Location = new System.Drawing.Point(639, 254);
+            this.lklcontrato.Name = "lklcontrato";
+            this.lklcontrato.Size = new System.Drawing.Size(42, 13);
+            this.lklcontrato.TabIndex = 91;
+            this.lklcontrato.TabStop = true;
+            this.lklcontrato.Text = "Ver Pdf";
+            this.lklcontrato.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklcontrato_LinkClicked);
+            // 
+            // lklanexo
+            // 
+            this.lklanexo.AutoSize = true;
+            this.lklanexo.Location = new System.Drawing.Point(639, 278);
+            this.lklanexo.Name = "lklanexo";
+            this.lklanexo.Size = new System.Drawing.Size(61, 13);
+            this.lklanexo.TabIndex = 91;
+            this.lklanexo.TabStop = true;
+            this.lklanexo.Text = "Ver Imagen";
+            this.lklanexo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklanexo_LinkClicked);
+            // 
+            // lklpracticas
+            // 
+            this.lklpracticas.AutoSize = true;
+            this.lklpracticas.Location = new System.Drawing.Point(639, 302);
+            this.lklpracticas.Name = "lklpracticas";
+            this.lklpracticas.Size = new System.Drawing.Size(61, 13);
+            this.lklpracticas.TabIndex = 91;
+            this.lklpracticas.TabStop = true;
+            this.lklpracticas.Text = "Ver Imagen";
+            this.lklpracticas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklpracticas_LinkClicked);
+            // 
+            // lklotros
+            // 
+            this.lklotros.AutoSize = true;
+            this.lklotros.Location = new System.Drawing.Point(639, 326);
+            this.lklotros.Name = "lklotros";
+            this.lklotros.Size = new System.Drawing.Size(61, 13);
+            this.lklotros.TabIndex = 91;
+            this.lklotros.TabStop = true;
+            this.lklotros.Text = "Ver Imagen";
+            this.lklotros.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklotros_LinkClicked);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(7, 22);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(115, 13);
+            this.label22.TabIndex = 155;
+            this.label22.Text = "Tipo de Contratación";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(64, 47);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 13);
+            this.label23.TabIndex = 156;
+            this.label23.Text = "Contratos";
+            // 
+            // btnExportapdf
+            // 
+            this.btnExportapdf.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnExportapdf.Image = ((System.Drawing.Image)(resources.GetObject("btnExportapdf.Image")));
+            this.btnExportapdf.Location = new System.Drawing.Point(652, 220);
+            this.btnExportapdf.Name = "btnExportapdf";
+            this.btnExportapdf.Size = new System.Drawing.Size(75, 23);
+            this.btnExportapdf.TabIndex = 157;
+            this.btnExportapdf.Text = "PDF";
+            this.btnExportapdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportapdf.UseVisualStyleBackColor = true;
+            this.btnExportapdf.Click += new System.EventHandler(this.btnExportapdf_Click);
+            // 
+            // btnadenda
+            // 
+            this.btnadenda.Image = ((System.Drawing.Image)(resources.GetObject("btnadenda.Image")));
+            this.btnadenda.Location = new System.Drawing.Point(652, 79);
+            this.btnadenda.Name = "btnadenda";
+            this.btnadenda.Size = new System.Drawing.Size(75, 23);
+            this.btnadenda.TabIndex = 158;
+            this.btnadenda.Text = "Adenda";
+            this.btnadenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnadenda.UseVisualStyleBackColor = true;
+            this.btnadenda.Click += new System.EventHandler(this.btnadenda_Click);
+            // 
+            // pbFotoSolicitudPracticas
+            // 
+            this.pbFotoSolicitudPracticas.Location = new System.Drawing.Point(686, 102);
+            this.pbFotoSolicitudPracticas.Name = "pbFotoSolicitudPracticas";
+            this.pbFotoSolicitudPracticas.Size = new System.Drawing.Size(83, 20);
+            this.pbFotoSolicitudPracticas.TabIndex = 53;
+            this.pbFotoSolicitudPracticas.TabStop = false;
+            this.pbFotoSolicitudPracticas.Visible = false;
+            // 
+            // pbFotoAnexoFunciones
+            // 
+            this.pbFotoAnexoFunciones.Location = new System.Drawing.Point(744, 102);
+            this.pbFotoAnexoFunciones.Name = "pbFotoAnexoFunciones";
+            this.pbFotoAnexoFunciones.Size = new System.Drawing.Size(83, 16);
+            this.pbFotoAnexoFunciones.TabIndex = 52;
+            this.pbFotoAnexoFunciones.TabStop = false;
+            this.pbFotoAnexoFunciones.Visible = false;
+            // 
+            // pbFotoOtros
+            // 
+            this.pbFotoOtros.Location = new System.Drawing.Point(797, 102);
+            this.pbFotoOtros.Name = "pbFotoOtros";
+            this.pbFotoOtros.Size = new System.Drawing.Size(83, 23);
+            this.pbFotoOtros.TabIndex = 51;
+            this.pbFotoOtros.TabStop = false;
+            this.pbFotoOtros.Visible = false;
+            // 
+            // pbFotoContrato
+            // 
+            this.pbFotoContrato.Location = new System.Drawing.Point(723, 104);
+            this.pbFotoContrato.Name = "pbFotoContrato";
+            this.pbFotoContrato.Size = new System.Drawing.Size(83, 21);
+            this.pbFotoContrato.TabIndex = 50;
+            this.pbFotoContrato.TabStop = false;
+            this.pbFotoContrato.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(12, 347);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(118, 13);
+            this.label16.TabIndex = 150;
+            this.label16.Text = "Listado de Contratos:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(12, 5);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(115, 13);
+            this.label17.TabIndex = 150;
+            this.label17.Text = "Detalle Del Contrato:";
+            // 
             // frmContrato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 649);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.btnadenda);
             this.Controls.Add(this.btnExportapdf);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.label22);
             this.Controls.Add(this.lklotros);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.lklpracticas);
@@ -1291,6 +1366,8 @@ namespace HPReserger
             this.Controls.Add(this.lklcontrato);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.txtSolicitudPracticas);
             this.Controls.Add(this.dtgconten);
@@ -1316,7 +1393,7 @@ namespace HPReserger
             this.MaximumSize = new System.Drawing.Size(750, 688);
             this.MinimumSize = new System.Drawing.Size(750, 688);
             this.Name = "frmContrato";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Empleado Contrato";
             this.Text = "Empleado Contrato";
             this.Load += new System.EventHandler(this.frmContrato_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
@@ -1441,5 +1518,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBREOTROSIMG;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
     }
 }

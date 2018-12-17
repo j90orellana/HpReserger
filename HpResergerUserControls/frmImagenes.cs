@@ -21,7 +21,7 @@ namespace HpResergerUserControls
         public string Nombre = "";
         private void FrmFoto_Load(object sender, EventArgs e)
         {
-            Text = Nombre;
+            //Text = Nombre;
             if (fotito != null)
             {
                 pbfoto.Image = fotito;
@@ -34,10 +34,10 @@ namespace HpResergerUserControls
                 }
                 else
                 {
-                    this.StartPosition = FormStartPosition.CenterScreen;
+                    this.StartPosition = FormStartPosition.CenterParent;                   
                 }
             }
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.CenterParent;
         }
         private void FrmFoto_KeyDown(object sender, KeyEventArgs e)
         {

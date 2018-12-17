@@ -62,6 +62,7 @@ namespace HpResergerUserControls
             RowTemplate.Height = 18;
             Size = new System.Drawing.Size(400, 400);
             ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            AllowUserToOrderColumns = false;
         }
     }
 }

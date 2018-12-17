@@ -146,6 +146,7 @@ namespace HPReserger
                 FotoDocpago = null;
                 btnmodificar.Enabled = false; dtpfecha.Value = DateTime.Now;
                 dtgconten.Enabled = true;
+                btnnuevo.Enabled = true;
             }
             estado = 0;
             CargarDatos();
@@ -352,7 +353,7 @@ namespace HPReserger
             {
                 if (y == dtgconten.Columns[btneliminar.Name].Index && estado == 0)
                 {
-                    if (HPResergerFunciones.Utilitarios.msgp("Seguro Desea Eliminar Registro de Abono") == DialogResult.Yes)
+                    if (HPResergerFunciones.Utilitarios.msgYesNo("Seguro Desea Eliminar Registro de Abono") == DialogResult.Yes)
                     {
                         //cambiamos a estado anulado en el nombre de la imagen
                         CapaLogica.SeparacionVentaDarBajaAbono((int)dtgconten[IdSepVta.Name, x].Value);

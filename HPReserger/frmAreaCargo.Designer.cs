@@ -103,14 +103,14 @@ namespace HPReserger
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 120);
+            this.dtgconten.Location = new System.Drawing.Point(12, 116);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(469, 267);
+            this.dtgconten.Size = new System.Drawing.Size(469, 271);
             this.dtgconten.TabIndex = 59;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             this.dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgconten_KeyDown);
@@ -160,11 +160,11 @@ namespace HPReserger
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(378, 393);
+            this.btncancelar.Location = new System.Drawing.Point(391, 393);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(103, 24);
+            this.btncancelar.Size = new System.Drawing.Size(90, 24);
             this.btncancelar.TabIndex = 76;
             this.btncancelar.Text = "&Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -177,14 +177,14 @@ namespace HPReserger
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboarea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboarea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboarea.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboarea.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboarea.FormattingEnabled = true;
             this.cboarea.Items.AddRange(new object[] {
             "EXTERNA",
             "INTERNA"});
             this.cboarea.Location = new System.Drawing.Point(70, 37);
             this.cboarea.Name = "cboarea";
-            this.cboarea.Size = new System.Drawing.Size(301, 23);
+            this.cboarea.Size = new System.Drawing.Size(318, 21);
             this.cboarea.TabIndex = 78;
             this.cboarea.SelectedIndexChanged += new System.EventHandler(this.cboarea_SelectedIndexChanged);
             // 
@@ -192,10 +192,10 @@ namespace HPReserger
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 41);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(36, 41);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 15);
+            this.label8.Size = new System.Drawing.Size(33, 13);
             this.label8.TabIndex = 77;
             this.label8.Text = "Área:";
             // 
@@ -206,32 +206,32 @@ namespace HPReserger
             this.cboCargoPuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboCargoPuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargoPuesto.Enabled = false;
-            this.cboCargoPuesto.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCargoPuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCargoPuesto.FormattingEnabled = true;
             this.cboCargoPuesto.Location = new System.Drawing.Point(70, 64);
             this.cboCargoPuesto.Name = "cboCargoPuesto";
-            this.cboCargoPuesto.Size = new System.Drawing.Size(269, 23);
+            this.cboCargoPuesto.Size = new System.Drawing.Size(286, 21);
             this.cboCargoPuesto.TabIndex = 79;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 68);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(30, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 80;
             this.label1.Text = "Cargo:";
             // 
             // btnmodificar
             // 
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnmodificar.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(377, 36);
+            this.btnmodificar.Location = new System.Drawing.Point(390, 35);
             this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(103, 24);
+            this.btnmodificar.Size = new System.Drawing.Size(90, 24);
             this.btnmodificar.TabIndex = 81;
             this.btnmodificar.Text = "&Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -241,11 +241,11 @@ namespace HPReserger
             // btnagregar
             // 
             this.btnagregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnagregar.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnagregar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnagregar.Image = ((System.Drawing.Image)(resources.GetObject("btnagregar.Image")));
-            this.btnagregar.Location = new System.Drawing.Point(377, 63);
+            this.btnagregar.Location = new System.Drawing.Point(390, 62);
             this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(103, 24);
+            this.btnagregar.Size = new System.Drawing.Size(90, 24);
             this.btnagregar.TabIndex = 82;
             this.btnagregar.Text = "&Agregar";
             this.btnagregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -258,14 +258,14 @@ namespace HPReserger
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbogerencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbogerencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbogerencia.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbogerencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbogerencia.FormattingEnabled = true;
             this.cbogerencia.Items.AddRange(new object[] {
             "EXTERNA",
             "INTERNA"});
             this.cbogerencia.Location = new System.Drawing.Point(70, 11);
             this.cbogerencia.Name = "cbogerencia";
-            this.cbogerencia.Size = new System.Drawing.Size(269, 23);
+            this.cbogerencia.Size = new System.Drawing.Size(286, 21);
             this.cbogerencia.TabIndex = 84;
             this.cbogerencia.SelectedIndexChanged += new System.EventHandler(this.cbogerencia_SelectedIndexChanged);
             // 
@@ -273,10 +273,10 @@ namespace HPReserger
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 15);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 15);
+            this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 83;
             this.label3.Text = "Gerencia:";
             // 
@@ -287,7 +287,7 @@ namespace HPReserger
             this.btnr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnr.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnr.Location = new System.Drawing.Point(345, 12);
+            this.btnr.Location = new System.Drawing.Point(362, 11);
             this.btnr.Name = "btnr";
             this.btnr.Size = new System.Drawing.Size(26, 21);
             this.btnr.TabIndex = 85;
@@ -303,7 +303,7 @@ namespace HPReserger
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(345, 65);
+            this.button1.Location = new System.Drawing.Point(362, 64);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(26, 21);
             this.button1.TabIndex = 86;
@@ -318,16 +318,16 @@ namespace HPReserger
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbotipos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbotipos.Font = new System.Drawing.Font("Franklin Gothic Book", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbotipos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbotipos.FormattingEnabled = true;
             this.cbotipos.Items.AddRange(new object[] {
             "Todos",
             "Gerencia",
             "Área",
             "Cargo"});
-            this.cbotipos.Location = new System.Drawing.Point(296, 92);
+            this.cbotipos.Location = new System.Drawing.Point(296, 90);
             this.cbotipos.Name = "cbotipos";
-            this.cbotipos.Size = new System.Drawing.Size(75, 23);
+            this.cbotipos.Size = new System.Drawing.Size(92, 21);
             this.cbotipos.TabIndex = 90;
             // 
             // txtbuscar
@@ -336,7 +336,7 @@ namespace HPReserger
             this.txtbuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtbuscar.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtbuscar.FondoBoton")));
             this.txtbuscar.ImgBotonCerrar = null;
-            this.txtbuscar.Location = new System.Drawing.Point(14, 92);
+            this.txtbuscar.Location = new System.Drawing.Point(14, 89);
             this.txtbuscar.Name = "txtbuscar";
             this.txtbuscar.Size = new System.Drawing.Size(276, 22);
             this.txtbuscar.TabIndex = 91;
@@ -353,18 +353,18 @@ namespace HPReserger
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnr);
             this.Controls.Add(this.cbogerencia);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnagregar);
             this.Controls.Add(this.btnmodificar);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cboCargoPuesto);
             this.Controls.Add(this.cboarea);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.dtgconten);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label8);
             this.MinimumSize = new System.Drawing.Size(509, 388);
             this.Name = "frmAreaCargo";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Area - Cargo";
             this.Text = "Area - Cargo";
             this.Load += new System.EventHandler(this.frmAreaCargo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();

@@ -41,6 +41,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtdetalle);
@@ -55,33 +56,37 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(6, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 13);
+            this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Detalle del Servicio:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(6, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ocupación Principal:";
             // 
             // txtdetalle
             // 
+            this.txtdetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdetalle.Location = new System.Drawing.Point(117, 45);
             this.txtdetalle.Name = "txtdetalle";
-            this.txtdetalle.Size = new System.Drawing.Size(418, 20);
+            this.txtdetalle.Size = new System.Drawing.Size(418, 21);
             this.txtdetalle.TabIndex = 1;
             // 
             // txtocupacion
             // 
+            this.txtocupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtocupacion.Location = new System.Drawing.Point(117, 19);
             this.txtocupacion.Name = "txtocupacion";
-            this.txtocupacion.Size = new System.Drawing.Size(418, 20);
+            this.txtocupacion.Size = new System.Drawing.Size(418, 21);
             this.txtocupacion.TabIndex = 0;
             // 
             // btncancelar
@@ -121,7 +126,7 @@
             this.MaximumSize = new System.Drawing.Size(587, 165);
             this.MinimumSize = new System.Drawing.Size(587, 165);
             this.Name = "frmLocacionServicio";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Contrato De Locacion de Servicios";
             this.Text = "Contrato De Locacion de Servicios";
             this.Load += new System.EventHandler(this.frmLocacionServicio_Load);
             this.groupBox1.ResumeLayout(false);
