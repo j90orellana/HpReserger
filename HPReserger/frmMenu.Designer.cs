@@ -50,6 +50,8 @@
             this.flujoDeOperacionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pagoDetraccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detraccionesComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detraccionesVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacionesBancariasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +63,8 @@
             this.cronogramaDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abonosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordenesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +89,9 @@
             this.dinamicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientoContableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reciboPorHonorariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaCréditoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaDébitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -220,9 +227,6 @@
             this.panelOre1 = new HpResergerUserControls.PanelOre();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
-            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -415,12 +419,30 @@
             // 
             // pagoDetraccionesToolStripMenuItem
             // 
+            this.pagoDetraccionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detraccionesComprasToolStripMenuItem,
+            this.detraccionesVentasToolStripMenuItem});
             this.pagoDetraccionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagoDetraccionesToolStripMenuItem.Image")));
             this.pagoDetraccionesToolStripMenuItem.Name = "pagoDetraccionesToolStripMenuItem";
             this.pagoDetraccionesToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.pagoDetraccionesToolStripMenuItem.Tag = "404";
             this.pagoDetraccionesToolStripMenuItem.Text = "Pago Detracciones";
-            this.pagoDetraccionesToolStripMenuItem.Click += new System.EventHandler(this.pagoDetraccionesToolStripMenuItem_Click);
+            // 
+            // detraccionesComprasToolStripMenuItem
+            // 
+            this.detraccionesComprasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("detraccionesComprasToolStripMenuItem.Image")));
+            this.detraccionesComprasToolStripMenuItem.Name = "detraccionesComprasToolStripMenuItem";
+            this.detraccionesComprasToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.detraccionesComprasToolStripMenuItem.Text = "Detracciones Compras";
+            this.detraccionesComprasToolStripMenuItem.Click += new System.EventHandler(this.pagoDetraccionesToolStripMenuItem_Click);
+            // 
+            // detraccionesVentasToolStripMenuItem
+            // 
+            this.detraccionesVentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("detraccionesVentasToolStripMenuItem.Image")));
+            this.detraccionesVentasToolStripMenuItem.Name = "detraccionesVentasToolStripMenuItem";
+            this.detraccionesVentasToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.detraccionesVentasToolStripMenuItem.Text = "Detracciones Ventas";
+            this.detraccionesVentasToolStripMenuItem.Click += new System.EventHandler(this.detraccionesVentasToolStripMenuItem_Click);
             // 
             // operacionesBancariasToolStripMenuItem
             // 
@@ -459,6 +481,8 @@
             this.cronogramaDePagosToolStripMenuItem,
             this.abonosToolStripMenuItem,
             this.toolStripSeparator9,
+            this.toolStripMenuItem3,
+            this.toolStripSeparator11,
             this.vendedoresToolStripMenuItem});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
@@ -519,6 +543,19 @@
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(191, 6);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem3.Image")));
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(194, 22);
+            this.toolStripMenuItem3.Text = "Factura Venta Manual";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(191, 6);
             // 
             // vendedoresToolStripMenuItem
             // 
@@ -765,20 +802,47 @@
             this.facturaToolStripMenuItem.Tag = "204";
             this.facturaToolStripMenuItem.Text = "Comprobantes de &Pago";
             // 
+            // facturasToolStripMenuItem
+            // 
+            this.facturasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.facturaToolStripMenuItem1,
+            this.facturaManualToolStripMenuItem});
+            this.facturasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturasToolStripMenuItem.Image")));
+            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
+            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.facturasToolStripMenuItem.Text = "Facturas Compras";
+            // 
+            // facturaToolStripMenuItem1
+            // 
+            this.facturaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("facturaToolStripMenuItem1.Image")));
+            this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
+            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.facturaToolStripMenuItem1.Tag = "20401";
+            this.facturaToolStripMenuItem1.Text = "&Factura";
+            this.facturaToolStripMenuItem1.Click += new System.EventHandler(this.facturaToolStripMenuItem1_Click);
+            // 
+            // facturaManualToolStripMenuItem
+            // 
+            this.facturaManualToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturaManualToolStripMenuItem.Image")));
+            this.facturaManualToolStripMenuItem.Name = "facturaManualToolStripMenuItem";
+            this.facturaManualToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.facturaManualToolStripMenuItem.Text = "Factura Manual";
+            this.facturaManualToolStripMenuItem.Click += new System.EventHandler(this.facturaManualToolStripMenuItem_Click);
+            // 
             // reciboPorHonorariosToolStripMenuItem
             // 
             this.reciboPorHonorariosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reciboPorHonorariosToolStripMenuItem.Image")));
             this.reciboPorHonorariosToolStripMenuItem.Name = "reciboPorHonorariosToolStripMenuItem";
-            this.reciboPorHonorariosToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.reciboPorHonorariosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.reciboPorHonorariosToolStripMenuItem.Tag = "20402";
-            this.reciboPorHonorariosToolStripMenuItem.Text = "&Recibo por honorarios";
+            this.reciboPorHonorariosToolStripMenuItem.Text = "&Recibo Por Honorarios";
             this.reciboPorHonorariosToolStripMenuItem.Click += new System.EventHandler(this.reciboPorHonorariosToolStripMenuItem_Click);
             // 
             // notaCréditoToolStripMenuItem
             // 
             this.notaCréditoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("notaCréditoToolStripMenuItem.Image")));
             this.notaCréditoToolStripMenuItem.Name = "notaCréditoToolStripMenuItem";
-            this.notaCréditoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.notaCréditoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.notaCréditoToolStripMenuItem.Text = "Nota Crédito";
             this.notaCréditoToolStripMenuItem.Click += new System.EventHandler(this.notaCréditoToolStripMenuItem_Click);
             // 
@@ -786,7 +850,7 @@
             // 
             this.notaDébitoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("notaDébitoToolStripMenuItem.Image")));
             this.notaDébitoToolStripMenuItem.Name = "notaDébitoToolStripMenuItem";
-            this.notaDébitoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.notaDébitoToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.notaDébitoToolStripMenuItem.Text = "Nota Débito";
             this.notaDébitoToolStripMenuItem.Click += new System.EventHandler(this.notaDébitoToolStripMenuItem_Click);
             // 
@@ -2045,33 +2109,6 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
-            // facturasToolStripMenuItem
-            // 
-            this.facturasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.facturaToolStripMenuItem1,
-            this.facturaManualToolStripMenuItem});
-            this.facturasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturasToolStripMenuItem.Image")));
-            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
-            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.facturasToolStripMenuItem.Text = "Facturas";
-            // 
-            // facturaManualToolStripMenuItem
-            // 
-            this.facturaManualToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facturaManualToolStripMenuItem.Image")));
-            this.facturaManualToolStripMenuItem.Name = "facturaManualToolStripMenuItem";
-            this.facturaManualToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.facturaManualToolStripMenuItem.Text = "Factura Manual";
-            this.facturaManualToolStripMenuItem.Click += new System.EventHandler(this.facturaManualToolStripMenuItem_Click);
-            // 
-            // facturaToolStripMenuItem1
-            // 
-            this.facturaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("facturaToolStripMenuItem1.Image")));
-            this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
-            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
-            this.facturaToolStripMenuItem1.Tag = "20401";
-            this.facturaToolStripMenuItem1.Text = "&Factura";
-            this.facturaToolStripMenuItem1.Click += new System.EventHandler(this.facturaToolStripMenuItem1_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2305,5 +2342,9 @@
         private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem facturaManualToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem detraccionesComprasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detraccionesVentasToolStripMenuItem;
     }
 }

@@ -29,6 +29,7 @@ namespace HPReserger
             cbotipo.SelectedIndex = 0;
             Detracion = new List<Detracciones>();
             CargarDAtos();
+            dtpFechaContable.Value = DateTime.Now;
         }
         public void cargarempresas()
         {
@@ -129,10 +130,10 @@ namespace HPReserger
             int x = e.RowIndex, y = e.ColumnIndex;
             if (dtgconten.RowCount > 0)
             {
-                if ((decimal)dtgconten[porpagarx.Name, x].Value > (decimal)dtgconten[Detraccionx.Name, x].Value)
-                {
-                    dtgconten[porpagarx.Name, x].Value = (decimal)dtgconten[Detraccionx.Name, x].Value;
-                }
+                //if ((decimal)dtgconten[porpagarx.Name, x].Value > (decimal)dtgconten[Detraccionx.Name, x].Value)
+                //{
+                //    dtgconten[porpagarx.Name, x].Value = (decimal)dtgconten[Detraccionx.Name, x].Value;
+                //}
                 CalcularTotal();
             }
         }
@@ -206,6 +207,8 @@ namespace HPReserger
                     if (Verificar) { HPResergerFunciones.Utilitarios.msg("No se Puede Pagar Valores en Cero"); return; }
                     //PROCESO DE PAGO
                     string nrofac = "", ruc = "";
+                    int posSelec = cbocuentabanco.SelectedIndex;
+                    string NroCuenta = ((DataTable)cbocuentabanco.DataSource).Rows[posSelec]["NroCta"].ToString();
                     foreach (DataGridViewRow item in dtgconten.Rows)
                     {
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -215,16 +218,17 @@ namespace HPReserger
                             {
                                 nrofac = item.Cells[nrofacturax.Name].Value.ToString();
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
-                                CapaLogica.Detracciones(1, item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[porpagarx.Name].Value, frmLogin.CodigoUsuario);
+                                CapaLogica.Detracciones(1, item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[Detraccionx.Name].Value, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xtc.Name].Value
+                                     , "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaContable.Value, frmLogin.CodigoUsuario);
                             }
                         }
                     }
-                    DataRow FilaDato = (CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now)).Rows[0];
+                    DataRow FilaDato = (CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue,dtpFechaContable.Value)).Rows[0];
                     int codigo = (int)FilaDato["codigo"];
                     string cuo = FilaDato["cuo"].ToString();
                     int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesCabecera(codigo, cuo, (int)cboempresa.SelectedValue, decimal.Parse(txttotal.Text), ruc, nrofac, cbocuentabanco.SelectedValue.ToString());
+                    CapaLogica.PagarDetracionesCabecera(codigo, cuo, (int)cboempresa.SelectedValue, decimal.Parse(txttotal.Text), ruc, nrofac, cbocuentabanco.SelectedValue.ToString(), dtpFechaContable.Value, txtglosa.Text);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -236,7 +240,7 @@ namespace HPReserger
                                 string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 CapaLogica.PagarDetracionesDetalle(codigo, cuo, (int)cboempresa.SelectedValue, (decimal)item.Cells[porpagarx.Name].Value, ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value
-                                    , idCta, cbocuentabanco.SelectedValue.ToString(), frmLogin.CodigoUsuario);
+                                 , (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(), dtpFechaContable.Value, txtglosa.Text, frmLogin.CodigoUsuario);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
                     HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! con Asiento {cuo}");
@@ -291,7 +295,6 @@ namespace HPReserger
             {
                 cbocuentabanco.Text = "";
                 CargarCuentasBancos();
-
             }
         }
         private string _NameEmpresa;
@@ -308,7 +311,7 @@ namespace HPReserger
         private void cboempresa_Click(object sender, EventArgs e)
         {
             string cadena = cboempresa.Text;
-            CapaLogica.TablaEmpresas(cboempresa);
+            CapaLogica.TablaEmpresa(cboempresa);
             cboempresa.Text = cadena;
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -319,6 +322,11 @@ namespace HPReserger
                 NameEmpresa = cboempresa.Text;
                 CargarDAtos();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

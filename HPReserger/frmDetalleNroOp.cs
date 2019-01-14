@@ -28,7 +28,7 @@ namespace HPReserger
             txtnrobanco.Text = nrooperacion;
             txtnrobanco.Focus();
         }
-        public frmDetalleNroOp(string ruc,string razon,string nrocomp,string banco)
+        public frmDetalleNroOp(string ruc, string razon, string nrocomp, string banco)
         {
             InitializeComponent();
             Ruc = ruc;
@@ -56,13 +56,20 @@ namespace HPReserger
             get { return txtruc.TextValido(); }
             set { txtruc.Text = value; }
         }
+
+        public int Tipodet { get; set; }
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido());
+            if (Tipodet == 1)
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(),Tipodet);
+            if (Tipodet == 2)
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(),Tipodet);
+            if (Tipodet == 3)
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(),Tipodet);
             this.Close();
         }
         private void frmDetalleNroOp_MouseMove(object sender, MouseEventArgs e)

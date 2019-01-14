@@ -89,7 +89,7 @@ namespace HPReserger
             this.txtccisoles = new System.Windows.Forms.TextBox();
             this.txtccidolares = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.cboregimen = new System.Windows.Forms.ComboBox();
+            this.cbocondicion = new System.Windows.Forms.ComboBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -131,11 +131,23 @@ namespace HPReserger
             this.BANCODOLARES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOCTADOLARES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CTADETRACCIONES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REGIMEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONDICION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PLAZOPAGOX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xTipoper = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xctasoles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xctadolares = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xAFECTONVORUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xBUENCONTRIB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xAGENTERETENCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xAGENTEPERCEPVTAINT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboestado = new System.Windows.Forms.ComboBox();
+            this.chknuevorus = new System.Windows.Forms.CheckBox();
+            this.chkbuenContribuyente = new System.Windows.Forms.CheckBox();
+            this.chkretencion = new System.Windows.Forms.CheckBox();
+            this.chkAgentePercepcion = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -181,6 +193,7 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(357, 16);
             this.label1.Name = "label1";
@@ -674,11 +687,16 @@ namespace HPReserger
             this.BANCODOLARES,
             this.TIPOCTADOLARES,
             this.CTADETRACCIONES,
-            this.REGIMEN,
+            this.CONDICION,
             this.PLAZOPAGOX,
             this.xTipoper,
             this.xctasoles,
-            this.xctadolares});
+            this.xctadolares,
+            this.xEstado,
+            this.xAFECTONVORUS,
+            this.xBUENCONTRIB,
+            this.xAGENTERETENCION,
+            this.xAGENTEPERCEPVTAINT});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
@@ -691,7 +709,7 @@ namespace HPReserger
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 354);
+            this.dtgconten.Location = new System.Drawing.Point(12, 377);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -699,7 +717,7 @@ namespace HPReserger
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(782, 190);
+            this.dtgconten.Size = new System.Drawing.Size(782, 167);
             this.dtgconten.TabIndex = 122;
             this.dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentDoubleClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
@@ -712,7 +730,7 @@ namespace HPReserger
             // 
             this.btntipoidmas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btntipoidmas.Image = ((System.Drawing.Image)(resources.GetObject("btntipoidmas.Image")));
-            this.btntipoidmas.Location = new System.Drawing.Point(338, 12);
+            this.btntipoidmas.Location = new System.Drawing.Point(334, 12);
             this.btntipoidmas.Name = "btntipoidmas";
             this.btntipoidmas.Size = new System.Drawing.Size(21, 21);
             this.btntipoidmas.TabIndex = 127;
@@ -796,28 +814,27 @@ namespace HPReserger
             // 
             // label25
             // 
-            this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(453, 279);
+            this.label25.Location = new System.Drawing.Point(29, 297);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(99, 13);
+            this.label25.Size = new System.Drawing.Size(85, 28);
             this.label25.TabIndex = 104;
-            this.label25.Text = "Régimen Especial:";
+            this.label25.Text = "Condición Contribuyente:";
             // 
-            // cboregimen
+            // cbocondicion
             // 
-            this.cboregimen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboregimen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboregimen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboregimen.DisplayMember = "dfsd";
-            this.cboregimen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboregimen.FormattingEnabled = true;
-            this.cboregimen.Location = new System.Drawing.Point(555, 275);
-            this.cboregimen.Name = "cboregimen";
-            this.cboregimen.Size = new System.Drawing.Size(233, 21);
-            this.cboregimen.TabIndex = 21;
-            this.cboregimen.TextChanged += new System.EventHandler(this.cboregimen_TextChanged);
+            this.cbocondicion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbocondicion.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbocondicion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbocondicion.DisplayMember = "dfsd";
+            this.cbocondicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbocondicion.FormattingEnabled = true;
+            this.cbocondicion.Location = new System.Drawing.Point(115, 300);
+            this.cbocondicion.Name = "cbocondicion";
+            this.cbocondicion.Size = new System.Drawing.Size(144, 21);
+            this.cbocondicion.TabIndex = 21;
+            this.cbocondicion.TextChanged += new System.EventHandler(this.cboregimen_TextChanged);
             // 
             // radioButton1
             // 
@@ -856,7 +873,7 @@ namespace HPReserger
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 320);
+            this.groupBox1.Location = new System.Drawing.Point(12, 345);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(782, 30);
             this.groupBox1.TabIndex = 131;
@@ -935,7 +952,8 @@ namespace HPReserger
             this.cbotipopersona.FormattingEnabled = true;
             this.cbotipopersona.Items.AddRange(new object[] {
             "1. JURÍDICA",
-            "2. NATURAL"});
+            "2. NATURAL",
+            "3. NO DOMICILIADO"});
             this.cbotipopersona.Location = new System.Drawing.Point(566, 81);
             this.cbotipopersona.Name = "cbotipopersona";
             this.cbotipopersona.Size = new System.Drawing.Size(134, 21);
@@ -1012,6 +1030,7 @@ namespace HPReserger
             this.txtplazofijo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtplazofijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtplazofijo.ForeColor = System.Drawing.Color.Black;
+            this.txtplazofijo.Format = null;
             this.txtplazofijo.Location = new System.Drawing.Point(566, 196);
             this.txtplazofijo.MaxLength = 100;
             this.txtplazofijo.Name = "txtplazofijo";
@@ -1043,7 +1062,7 @@ namespace HPReserger
             this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
             this.Txtbusca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbusca.ImgBotonCerrar = null;
-            this.Txtbusca.Location = new System.Drawing.Point(15, 303);
+            this.Txtbusca.Location = new System.Drawing.Point(15, 328);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(431, 22);
             this.Txtbusca.TabIndex = 139;
@@ -1066,7 +1085,7 @@ namespace HPReserger
             // 
             this.separadorOre2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre2.Location = new System.Drawing.Point(0, 298);
+            this.separadorOre2.Location = new System.Drawing.Point(0, 296);
             this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre2.Name = "separadorOre2";
@@ -1197,7 +1216,7 @@ namespace HPReserger
             this.EMAILCONTACTO.HeaderText = "Email Contacto";
             this.EMAILCONTACTO.Name = "EMAILCONTACTO";
             this.EMAILCONTACTO.ReadOnly = true;
-            this.EMAILCONTACTO.Width = 108;
+            this.EMAILCONTACTO.Width = 99;
             // 
             // CCISOLES
             // 
@@ -1207,7 +1226,7 @@ namespace HPReserger
             this.CCISOLES.Name = "CCISOLES";
             this.CCISOLES.ReadOnly = true;
             this.CCISOLES.Visible = false;
-            this.CCISOLES.Width = 83;
+            this.CCISOLES.Width = 77;
             // 
             // IDS
             // 
@@ -1226,7 +1245,7 @@ namespace HPReserger
             this.BANCOSOLES.Name = "BANCOSOLES";
             this.BANCOSOLES.ReadOnly = true;
             this.BANCOSOLES.Visible = false;
-            this.BANCOSOLES.Width = 104;
+            this.BANCOSOLES.Width = 95;
             // 
             // TIPOCTASOLES
             // 
@@ -1264,7 +1283,7 @@ namespace HPReserger
             this.BANCODOLARES.Name = "BANCODOLARES";
             this.BANCODOLARES.ReadOnly = true;
             this.BANCODOLARES.Visible = false;
-            this.BANCODOLARES.Width = 120;
+            this.BANCODOLARES.Width = 110;
             // 
             // TIPOCTADOLARES
             // 
@@ -1285,14 +1304,14 @@ namespace HPReserger
             this.CTADETRACCIONES.Visible = false;
             this.CTADETRACCIONES.Width = 128;
             // 
-            // REGIMEN
+            // CONDICION
             // 
-            this.REGIMEN.DataPropertyName = "REGIMEN";
-            this.REGIMEN.HeaderText = "REGIMEN";
-            this.REGIMEN.Name = "REGIMEN";
-            this.REGIMEN.ReadOnly = true;
-            this.REGIMEN.Visible = false;
-            this.REGIMEN.Width = 79;
+            this.CONDICION.DataPropertyName = "CONDICION";
+            this.CONDICION.HeaderText = "REGIMEN";
+            this.CONDICION.Name = "CONDICION";
+            this.CONDICION.ReadOnly = true;
+            this.CONDICION.Visible = false;
+            this.CONDICION.Width = 79;
             // 
             // PLAZOPAGOX
             // 
@@ -1334,11 +1353,145 @@ namespace HPReserger
             this.xctadolares.Visible = false;
             this.xctadolares.Width = 84;
             // 
+            // xEstado
+            // 
+            this.xEstado.DataPropertyName = "ESTADO";
+            this.xEstado.HeaderText = "ESTADO";
+            this.xEstado.Name = "xEstado";
+            this.xEstado.ReadOnly = true;
+            this.xEstado.Visible = false;
+            this.xEstado.Width = 71;
+            // 
+            // xAFECTONVORUS
+            // 
+            this.xAFECTONVORUS.DataPropertyName = "AFECTONVORUS";
+            this.xAFECTONVORUS.HeaderText = "AFECTONVORUS";
+            this.xAFECTONVORUS.Name = "xAFECTONVORUS";
+            this.xAFECTONVORUS.ReadOnly = true;
+            this.xAFECTONVORUS.Visible = false;
+            this.xAFECTONVORUS.Width = 115;
+            // 
+            // xBUENCONTRIB
+            // 
+            this.xBUENCONTRIB.DataPropertyName = "BUENCONTRIB";
+            this.xBUENCONTRIB.HeaderText = "BUENCONTRIB";
+            this.xBUENCONTRIB.Name = "xBUENCONTRIB";
+            this.xBUENCONTRIB.ReadOnly = true;
+            this.xBUENCONTRIB.Visible = false;
+            this.xBUENCONTRIB.Width = 106;
+            // 
+            // xAGENTERETENCION
+            // 
+            this.xAGENTERETENCION.DataPropertyName = "AGENTERETENCION";
+            this.xAGENTERETENCION.HeaderText = "AGENTERETENCION";
+            this.xAGENTERETENCION.Name = "xAGENTERETENCION";
+            this.xAGENTERETENCION.ReadOnly = true;
+            this.xAGENTERETENCION.Visible = false;
+            this.xAGENTERETENCION.Width = 130;
+            // 
+            // xAGENTEPERCEPVTAINT
+            // 
+            this.xAGENTEPERCEPVTAINT.DataPropertyName = "AGENTEPERCEPVTAINT";
+            this.xAGENTEPERCEPVTAINT.HeaderText = "AGENTEPERCEPVTAINT";
+            this.xAGENTEPERCEPVTAINT.Name = "xAGENTEPERCEPVTAINT";
+            this.xAGENTEPERCEPVTAINT.ReadOnly = true;
+            this.xAGENTEPERCEPVTAINT.Visible = false;
+            this.xAGENTEPERCEPVTAINT.Width = 143;
+            // 
+            // separadorOre3
+            // 
+            this.separadorOre3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre3.Location = new System.Drawing.Point(-2, 322);
+            this.separadorOre3.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre3.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre3.Name = "separadorOre3";
+            this.separadorOre3.Size = new System.Drawing.Size(805, 2);
+            this.separadorOre3.TabIndex = 142;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(443, 277);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 13);
+            this.label10.TabIndex = 104;
+            this.label10.Text = "Estado Contribuyente:";
+            // 
+            // cboestado
+            // 
+            this.cboestado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboestado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboestado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboestado.DisplayMember = "dfsd";
+            this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboestado.FormattingEnabled = true;
+            this.cboestado.Location = new System.Drawing.Point(566, 273);
+            this.cboestado.Name = "cboestado";
+            this.cboestado.Size = new System.Drawing.Size(134, 21);
+            this.cboestado.TabIndex = 21;
+            this.cboestado.TextChanged += new System.EventHandler(this.cboregimen_TextChanged);
+            // 
+            // chknuevorus
+            // 
+            this.chknuevorus.AutoSize = true;
+            this.chknuevorus.BackColor = System.Drawing.Color.Transparent;
+            this.chknuevorus.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chknuevorus.Location = new System.Drawing.Point(265, 302);
+            this.chknuevorus.Name = "chknuevorus";
+            this.chknuevorus.Size = new System.Drawing.Size(98, 17);
+            this.chknuevorus.TabIndex = 143;
+            this.chknuevorus.Text = "AfectoNvoRus";
+            this.chknuevorus.UseVisualStyleBackColor = false;
+            // 
+            // chkbuenContribuyente
+            // 
+            this.chkbuenContribuyente.AutoSize = true;
+            this.chkbuenContribuyente.BackColor = System.Drawing.Color.Transparent;
+            this.chkbuenContribuyente.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkbuenContribuyente.Location = new System.Drawing.Point(371, 302);
+            this.chkbuenContribuyente.Name = "chkbuenContribuyente";
+            this.chkbuenContribuyente.Size = new System.Drawing.Size(130, 17);
+            this.chkbuenContribuyente.TabIndex = 143;
+            this.chkbuenContribuyente.Text = "Buen Contribuyente";
+            this.chkbuenContribuyente.UseVisualStyleBackColor = false;
+            // 
+            // chkretencion
+            // 
+            this.chkretencion.AutoSize = true;
+            this.chkretencion.BackColor = System.Drawing.Color.Transparent;
+            this.chkretencion.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkretencion.Location = new System.Drawing.Point(507, 302);
+            this.chkretencion.Name = "chkretencion";
+            this.chkretencion.Size = new System.Drawing.Size(118, 17);
+            this.chkretencion.TabIndex = 143;
+            this.chkretencion.Text = "Agente Retención";
+            this.chkretencion.UseVisualStyleBackColor = false;
+            // 
+            // chkAgentePercepcion
+            // 
+            this.chkAgentePercepcion.AutoSize = true;
+            this.chkAgentePercepcion.BackColor = System.Drawing.Color.Transparent;
+            this.chkAgentePercepcion.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkAgentePercepcion.Location = new System.Drawing.Point(632, 302);
+            this.chkAgentePercepcion.Name = "chkAgentePercepcion";
+            this.chkAgentePercepcion.Size = new System.Drawing.Size(156, 17);
+            this.chkAgentePercepcion.TabIndex = 143;
+            this.chkAgentePercepcion.Text = "Agente Percepción VtaInt";
+            this.chkAgentePercepcion.UseVisualStyleBackColor = false;
+            // 
             // frmproveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 579);
+            this.Controls.Add(this.chkAgentePercepcion);
+            this.Controls.Add(this.chkretencion);
+            this.Controls.Add(this.chkbuenContribuyente);
+            this.Controls.Add(this.chknuevorus);
+            this.Controls.Add(this.separadorOre3);
             this.Controls.Add(this.separadorOre2);
             this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.Txtbusca);
@@ -1357,7 +1510,8 @@ namespace HPReserger
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.btnnuevo);
-            this.Controls.Add(this.cboregimen);
+            this.Controls.Add(this.cboestado);
+            this.Controls.Add(this.cbocondicion);
             this.Controls.Add(this.cbobancodolares);
             this.Controls.Add(this.cbobancosoles);
             this.Controls.Add(this.txtcuentadetracciones);
@@ -1370,6 +1524,7 @@ namespace HPReserger
             this.Controls.Add(this.txttelefonocontacto);
             this.Controls.Add(this.txttelefonosucursal);
             this.Controls.Add(this.txttelefonoalmacen);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.txttelefonooficina);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label19);
@@ -1466,7 +1621,7 @@ namespace HPReserger
         private System.Windows.Forms.TextBox txtccisoles;
         private System.Windows.Forms.TextBox txtccidolares;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox cboregimen;
+        private System.Windows.Forms.ComboBox cbocondicion;
         private System.Windows.Forms.Button btntipoidmas;
         private System.Windows.Forms.Button btnsectormas;
         private System.Windows.Forms.Button btnbancosmas;
@@ -1514,10 +1669,22 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn BANCODOLARES;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPOCTADOLARES;
         private System.Windows.Forms.DataGridViewTextBoxColumn CTADETRACCIONES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn REGIMEN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CONDICION;
         private System.Windows.Forms.DataGridViewTextBoxColumn PLAZOPAGOX;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTipoper;
         private System.Windows.Forms.DataGridViewTextBoxColumn xctasoles;
         private System.Windows.Forms.DataGridViewTextBoxColumn xctadolares;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xAFECTONVORUS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xBUENCONTRIB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xAGENTERETENCION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xAGENTEPERCEPVTAINT;
+        private SeparadorOre separadorOre3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cboestado;
+        private System.Windows.Forms.CheckBox chknuevorus;
+        private System.Windows.Forms.CheckBox chkbuenContribuyente;
+        private System.Windows.Forms.CheckBox chkretencion;
+        private System.Windows.Forms.CheckBox chkAgentePercepcion;
     }
 }

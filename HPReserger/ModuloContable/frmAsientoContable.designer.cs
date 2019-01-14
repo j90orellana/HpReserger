@@ -252,7 +252,7 @@ namespace HPReserger
             this.cboempresa.Size = new System.Drawing.Size(215, 21);
             this.cboempresa.TabIndex = 174;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            this.cboempresa.Enter += new System.EventHandler(this.cboempresa_Enter);
+            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click_1);
             // 
             // cboproyecto
             // 
@@ -274,11 +274,11 @@ namespace HPReserger
             this.dtfechavalor.Enabled = false;
             this.dtfechavalor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtfechavalor.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtfechavalor.Location = new System.Drawing.Point(257, 29);
+            this.dtfechavalor.Location = new System.Drawing.Point(296, 29);
             this.dtfechavalor.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtfechavalor.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtfechavalor.Name = "dtfechavalor";
-            this.dtfechavalor.Size = new System.Drawing.Size(106, 22);
+            this.dtfechavalor.Size = new System.Drawing.Size(97, 22);
             this.dtfechavalor.TabIndex = 173;
             this.dtfechavalor.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtfechavalor.ValueChanged += new System.EventHandler(this.dtfechavalor_ValueChanged);
@@ -304,9 +304,9 @@ namespace HPReserger
             this.cboestado.Enabled = false;
             this.cboestado.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboestado.FormattingEnabled = true;
-            this.cboestado.Location = new System.Drawing.Point(60, 6);
+            this.cboestado.Location = new System.Drawing.Point(89, 6);
             this.cboestado.Name = "cboestado";
-            this.cboestado.Size = new System.Drawing.Size(105, 21);
+            this.cboestado.Size = new System.Drawing.Size(97, 21);
             this.cboestado.TabIndex = 168;
             this.cboestado.SelectedIndexChanged += new System.EventHandler(this.cboestado_SelectedIndexChanged);
             this.cboestado.TextChanged += new System.EventHandler(this.cboestado_TextChanged);
@@ -403,7 +403,7 @@ namespace HPReserger
             this.btndina.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btndina.BackgroundImage")));
             this.btndina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btndina.Enabled = false;
-            this.btndina.Location = new System.Drawing.Point(424, 30);
+            this.btndina.Location = new System.Drawing.Point(447, 30);
             this.btndina.Name = "btndina";
             this.btndina.Size = new System.Drawing.Size(21, 20);
             this.btndina.TabIndex = 1;
@@ -429,11 +429,11 @@ namespace HPReserger
             this.dtpfecha.Enabled = false;
             this.dtpfecha.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpfecha.Location = new System.Drawing.Point(60, 29);
+            this.dtpfecha.Location = new System.Drawing.Point(89, 29);
             this.dtpfecha.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpfecha.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpfecha.Name = "dtpfecha";
-            this.dtpfecha.Size = new System.Drawing.Size(105, 22);
+            this.dtpfecha.Size = new System.Drawing.Size(97, 22);
             this.dtpfecha.TabIndex = 154;
             this.dtpfecha.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpfecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
@@ -509,10 +509,10 @@ namespace HPReserger
             this.txtdinamica.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtdinamica.Enabled = false;
             this.txtdinamica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdinamica.Location = new System.Drawing.Point(447, 30);
+            this.txtdinamica.Location = new System.Drawing.Point(471, 30);
             this.txtdinamica.MaxLength = 15;
             this.txtdinamica.Name = "txtdinamica";
-            this.txtdinamica.Size = new System.Drawing.Size(131, 21);
+            this.txtdinamica.Size = new System.Drawing.Size(107, 21);
             this.txtdinamica.TabIndex = 141;
             this.txtdinamica.Click += new System.EventHandler(this.txtdinamica_Click);
             this.txtdinamica.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
@@ -526,11 +526,11 @@ namespace HPReserger
             this.txtcuo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtcuo.Enabled = false;
             this.txtcuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcuo.Location = new System.Drawing.Point(424, 6);
+            this.txtcuo.Location = new System.Drawing.Point(447, 6);
             this.txtcuo.MaxLength = 15;
             this.txtcuo.Name = "txtcuo";
             this.txtcuo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtcuo.Size = new System.Drawing.Size(154, 21);
+            this.txtcuo.Size = new System.Drawing.Size(131, 21);
             this.txtcuo.TabIndex = 141;
             this.txtcuo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             // 
@@ -539,11 +539,11 @@ namespace HPReserger
             this.txtcodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtcodigo.Enabled = false;
             this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcodigo.Location = new System.Drawing.Point(257, 6);
+            this.txtcodigo.Location = new System.Drawing.Point(296, 6);
             this.txtcodigo.MaxLength = 15;
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtcodigo.Size = new System.Drawing.Size(106, 21);
+            this.txtcodigo.Size = new System.Drawing.Size(97, 21);
             this.txtcodigo.TabIndex = 141;
             this.txtcodigo.Visible = false;
             this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
@@ -553,7 +553,7 @@ namespace HPReserger
             this.Dinamica.AutoSize = true;
             this.Dinamica.BackColor = System.Drawing.Color.Transparent;
             this.Dinamica.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dinamica.Location = new System.Drawing.Point(369, 34);
+            this.Dinamica.Location = new System.Drawing.Point(392, 34);
             this.Dinamica.Name = "Dinamica";
             this.Dinamica.Size = new System.Drawing.Size(57, 13);
             this.Dinamica.TabIndex = 140;
@@ -564,7 +564,7 @@ namespace HPReserger
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(395, 10);
+            this.label14.Location = new System.Drawing.Point(418, 10);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
             this.label14.TabIndex = 140;
@@ -575,7 +575,7 @@ namespace HPReserger
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(208, 10);
+            this.label13.Location = new System.Drawing.Point(238, 10);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 13);
             this.label13.TabIndex = 140;
@@ -687,11 +687,11 @@ namespace HPReserger
             this.chkfechavalor.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkfechavalor.Enabled = false;
             this.chkfechavalor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkfechavalor.Location = new System.Drawing.Point(171, 32);
+            this.chkfechavalor.Location = new System.Drawing.Point(188, 32);
             this.chkfechavalor.Name = "chkfechavalor";
-            this.chkfechavalor.Size = new System.Drawing.Size(85, 17);
+            this.chkfechavalor.Size = new System.Drawing.Size(106, 17);
             this.chkfechavalor.TabIndex = 172;
-            this.chkfechavalor.Text = "FechaValor:";
+            this.chkfechavalor.Text = "FechaContable:";
             this.chkfechavalor.UseVisualStyleBackColor = false;
             this.chkfechavalor.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -758,7 +758,7 @@ namespace HPReserger
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 10);
+            this.label6.Location = new System.Drawing.Point(44, 10);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 169;
@@ -769,11 +769,11 @@ namespace HPReserger
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 34);
+            this.label2.Location = new System.Drawing.Point(9, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 140;
-            this.label2.Text = "Fecha:";
+            this.label2.Text = "FechaEmisión:";
             // 
             // label8
             // 

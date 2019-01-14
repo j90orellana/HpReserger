@@ -154,8 +154,8 @@ namespace HPReserger
         }
         public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
-            if (Txtbusca.EstaLLeno())
-                dtgconten.DataSource = CcuentaContable.ListarCuentasContables(Txtbusca.Text, tipobusca);
+            //if (Txtbusca.EstaLLeno())
+                dtgconten.DataSource = CcuentaContable.ListarCuentasContables(Txtbusca.TextoValido(), tipobusca);
             msg(dtgconten);
         }
         private void btnlimpiar_Click(object sender, EventArgs e)
@@ -219,6 +219,7 @@ namespace HPReserger
 
                 cbocuentabc.SelectedValue = dtgconten[16, y].Value.ToString();
                 cbosolicitar.SelectedValue = dtgconten[17, y].Value.ToString();
+                chkcabecera.Checked = dtgconten["CtaDetalle", y].Value.ToString() == "1" ? false : true;
             }
         }
         public void Activar()
@@ -379,7 +380,7 @@ namespace HPReserger
                 MessageBox.Show("Se Insertó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //usp_insertar_cuentas_contables
                 CcuentaContable.InsertarCuentasContables(CuentaN1, CodCuenta, DesCuentea, TipoCuenta, NatuCuenta, CuentaGene, GrupoCuenta,
-                Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, int.Parse(cbosolicitar.SelectedValue.ToString()));
+                Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1);
                 PresentarValor(codigo.ToString());
             }
             else
@@ -391,7 +392,7 @@ namespace HPReserger
                     MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //usp_actualizar_cuentas_contables
                     CcuentaContable.ActualizarCuentasContables(CodCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
-                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, NatuCuenta, int.Parse(cbosolicitar.SelectedValue.ToString()));
+                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, NatuCuenta, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1);
                     PresentarValor(codigo.ToString());
                 }
                 else
@@ -453,6 +454,11 @@ namespace HPReserger
             CodigoCuenta = txtcodcuenta.Text;
         }
         private void Txtbusca_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

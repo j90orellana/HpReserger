@@ -40,11 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtnrobanco = new HpResergerUserControls.TextBoxPer();
-            this.label7 = new System.Windows.Forms.Label();
             this.cbocuenta = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.label6 = new System.Windows.Forms.Label();
             this.txtrazon = new HpResergerUserControls.TextBoxPer();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtruc = new HpResergerUserControls.TextBoxPer();
             this.label4 = new System.Windows.Forms.Label();
             this.cbobanco = new HpResergerUserControls.ComboBoxPer(this.components);
@@ -52,10 +49,14 @@
             this.dtpfecha1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.okx = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xdet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NroFacturax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedorx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Razonx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +72,8 @@
             this.lblmsg = new System.Windows.Forms.Label();
             this.btnseleccion = new System.Windows.Forms.Button();
             this.btnclear = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnpdf = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -83,8 +86,9 @@
             this.txtnroid.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnroid.ForeColor = System.Drawing.Color.Black;
+            this.txtnroid.Format = null;
             this.txtnroid.Location = new System.Drawing.Point(115, 12);
-            this.txtnroid.MaxLength = 10;
+            this.txtnroid.MaxLength = 20;
             this.txtnroid.Name = "txtnroid";
             this.txtnroid.NextControlOnEnter = null;
             this.txtnroid.Size = new System.Drawing.Size(192, 21);
@@ -109,11 +113,8 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.txtnrobanco);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.cbocuenta);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtrazon);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtruc);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cbobanco);
@@ -121,6 +122,9 @@
             this.groupBox1.Controls.Add(this.dtpfecha1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(17, 35);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(635, 97);
@@ -136,6 +140,7 @@
             this.txtnrobanco.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnrobanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnrobanco.ForeColor = System.Drawing.Color.Black;
+            this.txtnrobanco.Format = null;
             this.txtnrobanco.Location = new System.Drawing.Point(394, 46);
             this.txtnrobanco.MaxLength = 100;
             this.txtnrobanco.Name = "txtnrobanco";
@@ -149,36 +154,18 @@
             this.txtnrobanco.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             this.txtnrobanco.TextChanged += new System.EventHandler(this.txtnrobanco_TextChanged);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(294, 50);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 13);
-            this.label7.TabIndex = 122;
-            this.label7.Text = "Nro Op. Bancaria:";
-            // 
             // cbocuenta
             // 
             this.cbocuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuenta.FormattingEnabled = true;
+            this.cbocuenta.IndexText = null;
             this.cbocuenta.Location = new System.Drawing.Point(394, 70);
             this.cbocuenta.Name = "cbocuenta";
+            this.cbocuenta.ReadOnly = false;
             this.cbocuenta.Size = new System.Drawing.Size(228, 21);
             this.cbocuenta.TabIndex = 8;
             this.cbocuenta.SelectedIndexChanged += new System.EventHandler(this.cbocuenta_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(323, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 120;
-            this.label6.Text = "Nro Cuenta:";
             // 
             // txtrazon
             // 
@@ -188,28 +175,19 @@
             this.txtrazon.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtrazon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtrazon.ForeColor = System.Drawing.Color.Black;
+            this.txtrazon.Format = null;
             this.txtrazon.Location = new System.Drawing.Point(394, 21);
             this.txtrazon.MaxLength = 100;
             this.txtrazon.Name = "txtrazon";
             this.txtrazon.NextControlOnEnter = null;
             this.txtrazon.Size = new System.Drawing.Size(228, 21);
             this.txtrazon.TabIndex = 3;
-            this.txtrazon.Text = "Ingrese Razón Social";
+            this.txtrazon.Text = "Ingrese Razón Social/Cliente";
             this.txtrazon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtrazon.TextoDefecto = "Ingrese Razón Social";
+            this.txtrazon.TextoDefecto = "Ingrese Razón Social/Cliente";
             this.txtrazon.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtrazon.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             this.txtrazon.TextChanged += new System.EventHandler(this.txtrazon_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(317, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 118;
-            this.label5.Text = "Razon Social:";
             // 
             // txtruc
             // 
@@ -219,6 +197,7 @@
             this.txtruc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtruc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtruc.ForeColor = System.Drawing.Color.Black;
+            this.txtruc.Format = null;
             this.txtruc.Location = new System.Drawing.Point(98, 21);
             this.txtruc.MaxLength = 12;
             this.txtruc.Name = "txtruc";
@@ -236,19 +215,21 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(11, 25);
+            this.label4.Location = new System.Drawing.Point(10, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.Size = new System.Drawing.Size(89, 13);
             this.label4.TabIndex = 117;
-            this.label4.Text = "Proveedor Ruc:";
+            this.label4.Text = "NroDocumento:";
             // 
             // cbobanco
             // 
             this.cbobanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobanco.FormattingEnabled = true;
+            this.cbobanco.IndexText = null;
             this.cbobanco.Location = new System.Drawing.Point(98, 70);
             this.cbobanco.Name = "cbobanco";
+            this.cbobanco.ReadOnly = false;
             this.cbobanco.Size = new System.Drawing.Size(192, 21);
             this.cbobanco.TabIndex = 7;
             this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
@@ -280,7 +261,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(26, 50);
+            this.label2.Location = new System.Drawing.Point(30, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 113;
@@ -290,11 +271,41 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(53, 74);
+            this.label1.Location = new System.Drawing.Point(57, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 112;
             this.label1.Text = "Banco:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Location = new System.Drawing.Point(297, 50);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.TabIndex = 122;
+            this.label7.Text = "Nro Op. Bancaria:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Location = new System.Drawing.Point(326, 74);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 120;
+            this.label6.Text = "Nro Cuenta:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Location = new System.Drawing.Point(313, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.TabIndex = 118;
+            this.label5.Text = "Razon/Cliente:";
             // 
             // dtgconten
             // 
@@ -327,6 +338,7 @@
             this.okx,
             this.idx,
             this.tipox,
+            this.xdet,
             this.NroFacturax,
             this.Proveedorx,
             this.Razonx,
@@ -386,6 +398,13 @@
             this.tipox.ReadOnly = true;
             this.tipox.Width = 53;
             // 
+            // xdet
+            // 
+            this.xdet.DataPropertyName = "det";
+            this.xdet.HeaderText = "det";
+            this.xdet.Name = "xdet";
+            this.xdet.Visible = false;
+            // 
             // NroFacturax
             // 
             this.NroFacturax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -399,17 +418,17 @@
             // 
             this.Proveedorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Proveedorx.DataPropertyName = "Proveedor";
-            this.Proveedorx.HeaderText = "Proveedor";
+            this.Proveedorx.HeaderText = "NroDoc";
             this.Proveedorx.MinimumWidth = 50;
             this.Proveedorx.Name = "Proveedorx";
             this.Proveedorx.ReadOnly = true;
-            this.Proveedorx.Width = 83;
+            this.Proveedorx.Width = 70;
             // 
             // Razonx
             // 
             this.Razonx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Razonx.DataPropertyName = "razon";
-            this.Razonx.HeaderText = "Razon Social";
+            this.Razonx.HeaderText = "Razon/Cliente";
             this.Razonx.MinimumWidth = 100;
             this.Razonx.Name = "Razonx";
             this.Razonx.ReadOnly = true;
@@ -555,11 +574,32 @@
             this.btnclear.UseVisualStyleBackColor = true;
             this.btnclear.Click += new System.EventHandler(this.btnclear_Click);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // btnpdf
+            // 
+            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
+            this.btnpdf.Location = new System.Drawing.Point(462, 561);
+            this.btnpdf.Name = "btnpdf";
+            this.btnpdf.Size = new System.Drawing.Size(82, 25);
+            this.btnpdf.TabIndex = 235;
+            this.btnpdf.Text = "Excel";
+            this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnpdf.UseVisualStyleBackColor = true;
+            this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
+            // 
             // frmNroOpBancacia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 592);
+            this.Controls.Add(this.btnpdf);
             this.Controls.Add(this.btnclear);
             this.Controls.Add(this.btnseleccion);
             this.Controls.Add(this.lblmsg);
@@ -610,6 +650,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn okx;
         private System.Windows.Forms.DataGridViewTextBoxColumn idx;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xdet;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroFacturax;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proveedorx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Razonx;
@@ -620,5 +661,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CtaBancox;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroOPBancox;
         private System.Windows.Forms.DataGridViewButtonColumn botonx;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnpdf;
     }
 }

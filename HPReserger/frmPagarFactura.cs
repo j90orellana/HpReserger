@@ -72,6 +72,7 @@ namespace HPReserger
             if (Filita != null)
                 txtnropago.Text = (decimal.Parse(Filita["ultimo"].ToString()) + 1).ToString();
             else txtnropago.Text = "1";
+            cbotipo.SelectedIndex = 0;
             //List<Persona> personas = new List<Persona>();
             //Persona person1 = new Persona(1, "jefferson", 27);
             //personas.Add(person1);
@@ -151,9 +152,12 @@ namespace HPReserger
             public int minutos;
             public int segundos;
         }
+        string CodigoPago;
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbotipo.SelectedIndex == 0 || cbotipo.SelectedIndex == 1)
+            CodigoPago = cbotipo.Text.Substring(0, 3);
+            string[] ValoresBancoCheques = { "003", "007" };///003 Banco  /// 007 cheque
+            if (ValoresBancoCheques.Contains(CodigoPago))
             {
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = true;
                 lblguia.Text = "Banco";
@@ -165,6 +169,7 @@ namespace HPReserger
             {
                 cbobanco.Visible = lblguia1.Visible = lblguia.Visible = cbocuentabanco.Visible = false;
             }
+            if (CodigoPago == "007") txtnrocheque.Visible = true; else txtnrocheque.Visible = false;
         }
         private void cbobanco_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -227,15 +232,7 @@ namespace HPReserger
         DialogResult PAsoBanco = DialogResult.Cancel;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-            if (cbotipo.SelectedIndex != 2)
-            {
-                // // if (string.IsNullOrWhiteSpace(txtnropago.Text))
-                //  {
-                //      msg("Ingrese Nro de pago");
-                //      txtnropago.Focus();
-                //      return;
-                //  }
-            }
+
             if (cbobanco.Items.Count == 0)
             {
                 msg("No hay Bancos");
@@ -266,8 +263,17 @@ namespace HPReserger
                 Dtguias.Focus();
                 return;
             }
+            if (CodigoPago == "007")
+            {
+                if (!txtnrocheque.EstaLLeno())
+                {
+                    msg("Ingrese Nro de Cheque"); txtnrocheque.Focus(); return;
+                }
+                DataTable Tdatos = cPagarfactura.ValidarChequeExiste(cbobanco.SelectedValue.ToString(), HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.Text);
+                if (Tdatos.Rows.Count > 0) { msg("Número de Cheque Ya Existe"); return; }
+            }
             Boolean GenerarTxt = false;
-            DialogResult ResultadoDialogo = HPResergerFunciones.Utilitarios.msgYesNoCancel("Desea Generar TXT del pago?");
+            DialogResult ResultadoDialogo = CodigoPago == "007" ? DialogResult.No : HPResergerFunciones.Utilitarios.msgYesNoCancel("Desea Generar TXT del pago?");
             if (ResultadoDialogo == DialogResult.Yes)
             {
                 GenerarTxt = false;
@@ -365,18 +371,18 @@ namespace HPReserger
             {
                 int numasiento = 0;
                 string facturar = "";
+                if (numasiento == 0)
+                {
+                    DataTable asientito = cPagarfactura.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
+                    DataRow asiento = asientito.Rows[0];
+                    if (asiento == null) { numasiento = 1; }
+                    else
+                        numasiento = (int)asiento["codigo"];
+                    numasiento--;
+                }
                 foreach (FACTURAS fac in Comprobantes)
                 {
 
-                    if (numasiento == 0)
-                    {
-                        DataTable asientito = cPagarfactura.UltimoAsientoFactura(fac.numero, fac.proveedor, DateTime.Now);
-                        DataRow asiento = asientito.Rows[0];
-                        if (asiento == null) { numasiento = 1; }
-                        else
-                            numasiento = (int)asiento["codigo"];
-                        numasiento--;
-                    }
                     DataTable TBanco = new DataTable();
                     TBanco = cPagarfactura.EntidadFinanciera();
                     DataRow[] filita = TBanco.Select($"sufijo='{cbobanco.SelectedValue.ToString()}'");
@@ -387,10 +393,10 @@ namespace HPReserger
                     if (fac.tipo.Substring(0, 2) == "RH")
                     {
                         //actualizo que el recibo este pagado
-                        if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
-                        else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
+                        if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
+                        else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
                         //cuenta de recibo por honorarios 4241101
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.aPagar, 0, 1, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4241101", fac.aPagar, 0, 1, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta, "");
                         facturar = fac.numero;
                         proveer = fac.proveedor;
                         idmoneda = fac.Moneda;
@@ -411,10 +417,10 @@ namespace HPReserger
                         //else
                         //{
                         //actualizo que la factura esta pagada
-                        if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
-                        else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), txtnropago.Text, fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
+                        if (fac.Saldo == fac.aPagar) cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, hoy);
+                        else cPagarfactura.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, hoy);
                         ///facturas por pagar 4212101
-                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta);
+                        cPagarfactura.guardarfactura(1, numasiento + 1, fac.numero, "4212101", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta, "");
                         facturar = fac.numero; proveer = fac.proveedor;
                         idmoneda = fac.Moneda;
                         //}
@@ -425,11 +431,12 @@ namespace HPReserger
                     BanCuenta = "";
                 else
                     BanCuenta = cbocuentabanco.SelectedValue.ToString();
-                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer, idmoneda, nroKuenta);
-                msg("Documento Pagado y se ha Generado su Asiento");
+                cPagarfactura.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer, idmoneda, nroKuenta, CodigoPago == "007" ? txtnrocheque.Text : "");
+                msg($"Documento Pagado \nGenerado su Asiento {HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, DateTime.Now)}");
                 btnActualizar_Click(sender, e);
                 txttotaldetrac.Text = txttotal.Text = "0.00";
                 Comprobantes.Clear();
+                txtnrocheque.CargarTextoporDefecto();
             }
         }
         public Boolean PasoFactura = false;
@@ -583,7 +590,7 @@ namespace HPReserger
                         {
                             if (xfac.numero == Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd() && xfac.proveedor == Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd())
                             {
-                                Busqueda = true; Y = X;
+                                Busqueda = true; Y = X; break;
                             }
                             X++;
                         }
@@ -666,13 +673,13 @@ namespace HPReserger
             if (Dtguias.RowCount < 0)
             {
                 cbotipo.Enabled = cbobanco.Enabled = cbocuentabanco.Enabled = btnaceptar.Enabled = false;
-                cbotipo.SelectedIndex = 0;// txtnropago.Enabled = false;
+                //   cbotipo.SelectedIndex = 0;// txtnropago.Enabled = false;
 
             }
             else
             {
                 cbotipo.Enabled = true; cbobanco.Enabled = true; cbocuentabanco.Enabled = true;
-                cbotipo.SelectedIndex = 0;// txtnropago.Enabled = true;
+                // cbotipo.SelectedIndex = 0;// txtnropago.Enabled = true;
             }
         }
         private void btncancelar_Click(object sender, EventArgs e)
@@ -728,7 +735,7 @@ namespace HPReserger
             if (cboempresa.SelectedValue != null)
             {
                 Dtguias.DataSource = cPagarfactura.ListarFacturasPorPagarxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
-                cbotipo.SelectedIndex = 0;
+                //cbotipo.SelectedIndex = 0;
                 txttotaldetrac.Text = txttotal.Text = "0.00";
                 btnaceptar.Enabled = false;
                 FacturasSeleccionas();
@@ -742,7 +749,7 @@ namespace HPReserger
             {
                 for (int i = 0; i < conta; i++)
                 {
-                    if (Dtguias["nrofactura", i].Value.ToString().TrimStart().TrimEnd() == fac.numero && Dtguias["proveedor", i].Value.ToString().TrimStart().TrimEnd() == fac.proveedor && fac.centrocosto == (int)Dtguias[centrocostox.Name, i].Value)
+                    if (Dtguias["nrofactura", i].Value.ToString().TrimStart().TrimEnd() == fac.numero && Dtguias["proveedor", i].Value.ToString().TrimStart().TrimEnd() == fac.proveedor && fac.centrocosto == (Dtguias[centrocostox.Name, i].Value.ToString() == "" ? 0 : (int)Dtguias[centrocostox.Name, i].Value))
                     {
                         Dtguias["ok", i].Value = true;
                     }
@@ -938,7 +945,7 @@ namespace HPReserger
         private void cboempresa_Click_1(object sender, EventArgs e)
         {
             string cadena = cboempresa.Text;
-            cPagarfactura.TablaEmpresas(cboempresa);
+            cPagarfactura.TablaEmpresa(cboempresa);
             cboempresa.Text = cadena;
         }
         private void cboempresa_SelectedValueChanged(object sender, EventArgs e)

@@ -1044,9 +1044,9 @@ namespace HPReserger
                 DataRow[] filaS = DatosDetracciones.Select(filtro);
                 if (filaS.Count() != 0)
                 {
-                    txtdetracion.Text = filaS[0].ItemArray[1].ToString();
+                    txtdetracion.Text = (filaS[0])["Desc_Detraccion"].ToString();
                     //numdetraccion.Value = cbodetraccion.SelectedValue == null ? 0.0m : (decimal)cbodetraccion.SelectedValue;
-                    numdetraccion.Value = Convert.ToDecimal(filaS[0].ItemArray[2].ToString());
+                    numdetraccion.Value = Convert.ToDecimal(filaS[0]["Porcentaje"].ToString());
                     if (!string.IsNullOrWhiteSpace(txttotal.Text))
                         detracion = decimal.Parse(txttotal.Text.ToString()) * (numdetraccion.Value / 100);
                 }

@@ -3205,5 +3205,51 @@ namespace HPReserger
         {
             frmfactumanual = null;
         }
+        frmFacturaManualVentas frmfacventamanual;
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (frmfacventamanual == null)
+            {
+                frmfacventamanual = new frmFacturaManualVentas();
+                frmfacventamanual.MdiParent = this;
+                frmfacventamanual.Icon = ICono;
+                frmfacventamanual.FormClosed += new FormClosedEventHandler(cerrarfacventamanual);
+                frmfacventamanual.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmfacventamanual.Activate();
+                ValidarVentanas(frmfacventamanual);
+            }
+        }
+
+        private void cerrarfacventamanual(object sender, FormClosedEventArgs e)
+        {
+            frmfacventamanual = null;
+        }
+        frmPagoDetraccionesVentas frmdetventa;
+        private void detraccionesVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmdetventa == null)
+            {
+                frmdetventa = new frmPagoDetraccionesVentas();
+                frmdetventa.MdiParent = this;
+                frmdetventa.Icon = ICono;
+                frmdetventa.FormClosed += new FormClosedEventHandler(cerrardetracventa);
+                frmdetventa.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmdetventa.Activate();
+                ValidarVentanas(frmdetventa);
+            }
+        }
+
+        private void cerrardetracventa(object sender, FormClosedEventArgs e)
+        {
+            frmdetventa = null;
+        }
     }
 }

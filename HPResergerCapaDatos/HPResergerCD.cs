@@ -17,7 +17,7 @@ namespace HPResergerCapaDatos
     {
         abcBaseDatos.Database bd;
         //public string DATASOURCE = "HPLAPTOP";
-        //public string DATASOURCE = @"192.168.1.6\SQLEXPRESS"; 
+        //public string DATASOURCE = @"192.168.1.6\SQLEXPRESS";
         //public static string BASEDEDATOS = "Actual_beta";
         public static string BASEDEDATOS = "sige";
         public string DATASOURCE = "192.168.0.102";
@@ -1296,6 +1296,12 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
+        public void EliminarASiento(string Cuo, int empresa, DateTime fechacontable)
+        {
+            string[] parametros = { "@cuo", "@empresa", "@fechacontable" };
+            object[] valores = { Cuo, empresa, fechacontable };
+            bd.DataTableFromProcedure("usp_EliminarAsientoxCuo", parametros, valores, null);
+        }
         public DataTable BuscarCuenta(string buscar, int opcion)
         {
             string[] parametros = { "@buscar", "@opcion" };
@@ -1316,7 +1322,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
        string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-       string traslacion, string bc, int soli)
+       string traslacion, string bc, int soli, int cabecera)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1348,6 +1354,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@traslacion", SqlDbType.VarChar, 150).Value = traslacion;
                     cmd.Parameters.Add("@bc", SqlDbType.VarChar, 150).Value = bc;
                     cmd.Parameters.Add("@soli", SqlDbType.Int).Value = soli;
+                    cmd.Parameters.Add("@Cabecera", SqlDbType.Int).Value = cabecera;
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
@@ -1356,14 +1363,15 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarCuentasContables(string codcuenta, string generica, string grupo,
      string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-     string traslacion, string bc, string naturaleza, int soli)
+     string traslacion, string bc, string naturaleza, int soli, int cabecera)
         {
-            string[] parametros = { "@codcuenta", "@generica", "@grupo", "@refleja", "@reflejacc", "@reflejadebe", "@reflejahaber", "@cuentacierre", "@analitica", "@mensual", "@cierre", "@traslacion", "@bc", "@naturaleza", "@soli" };
-            object[] valores = { codcuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber, cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli };
+            string[] parametros = { "@codcuenta", "@generica", "@grupo", "@refleja", "@reflejacc", "@reflejadebe", "@reflejahaber", "@cuentacierre", "@analitica", "@mensual", "@cierre", "@traslacion", "@bc", "@naturaleza", "@soli", "@cabecera" };
+            object[] valores = { codcuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber, cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli, cabecera };
             bd.DataTableFromProcedure("usp_actualizar_cuentas_contables", parametros, valores, null);
         }
         public void InsertarProveedor(string anterior, string ruc, string razon, string nombre, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
-            string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctaasoles, int ctadolares, int plazo)
+            string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int tipoper, int ctaasoles, int ctadolares, int plazo,
+            int condicion, int estado, Boolean nuevorus, Boolean retencion, Boolean buencontribuyente, Boolean percepcion)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1398,11 +1406,17 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@ccidolares", SqlDbType.VarChar, 150).Value = ccidolares;
                     cmd.Parameters.Add("@bancodolares", SqlDbType.Int).Value = bancodolares;
                     cmd.Parameters.Add("@detrac", SqlDbType.VarChar, 150).Value = detrac;
-                    cmd.Parameters.Add("@regi", SqlDbType.Int).Value = regi;
                     cmd.Parameters.Add("@tipoper", SqlDbType.Int).Value = tipoper;
                     cmd.Parameters.Add("@ctasoles", SqlDbType.Int).Value = ctaasoles;
                     cmd.Parameters.Add("@ctadolares", SqlDbType.Int).Value = ctadolares;
-                    cmd.Parameters.Add("@ctadolares", SqlDbType.Int).Value = ctadolares;
+
+                    cmd.Parameters.Add("@condicion", SqlDbType.Int).Value = condicion;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
+                    cmd.Parameters.Add("@nuevorus", SqlDbType.Bit).Value = nuevorus;
+                    cmd.Parameters.Add("@retencion", SqlDbType.Bit).Value = retencion;
+                    cmd.Parameters.Add("@buencontribuyente", SqlDbType.Bit).Value = buencontribuyente;
+                    cmd.Parameters.Add("@percepcion", SqlDbType.Bit).Value = percepcion;
+
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
@@ -1410,7 +1424,8 @@ namespace HPResergerCapaDatos
             }
         }
         public void ActualizarProveedor(string anterior, string ruc, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
-           string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int regi, int tipoper, int ctaasoles, int ctadolares, int plazofijo)
+           string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int tipoper, int ctaasoles, int ctadolares, int plazofijo
+            , int condicion, int estado, Boolean nuevorus, Boolean retencion, Boolean buencontribuyente, Boolean percepcion)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1443,11 +1458,18 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@ccidolares", SqlDbType.VarChar, 150).Value = ccidolares;
                     cmd.Parameters.Add("@bancodolares", SqlDbType.Int).Value = bancodolares;
                     cmd.Parameters.Add("@detrac", SqlDbType.VarChar, 150).Value = detrac;
-                    cmd.Parameters.Add("@regi", SqlDbType.Int).Value = regi;
                     cmd.Parameters.Add("@tipoper", SqlDbType.Int).Value = tipoper;
                     cmd.Parameters.Add("@ctasoles", SqlDbType.Int).Value = ctaasoles;
                     cmd.Parameters.Add("@ctadolares", SqlDbType.Int).Value = ctadolares;
                     cmd.Parameters.Add("@plazopago", SqlDbType.Int).Value = plazofijo;
+
+                    cmd.Parameters.Add("@condicion", SqlDbType.Int).Value = condicion;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
+                    cmd.Parameters.Add("@nuevorus", SqlDbType.Bit).Value = nuevorus;
+                    cmd.Parameters.Add("@retencion", SqlDbType.Bit).Value = retencion;
+                    cmd.Parameters.Add("@buencontribuyente", SqlDbType.Bit).Value = buencontribuyente;
+                    cmd.Parameters.Add("@percepcion", SqlDbType.Bit).Value = percepcion;
+
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
@@ -1963,6 +1985,12 @@ namespace HPResergerCapaDatos
             object[] valores = { ruc, nrofac };
             return bd.DatarowFromProcedure("dbo.usp_Facturas", parametros, valores, null);
         }
+        public DataRow BuscarFacturasVentas(string ruc, string nrofac)
+        {
+            string[] parametros = { "@ruc", "@nrofac" };
+            object[] valores = { ruc, nrofac };
+            return bd.DatarowFromProcedure("usp_FacturasVentas", parametros, valores, null);
+        }
         public DataTable ListarFicsDetalle(string fic)
         {
             string[] parametros = { "@fic" };
@@ -1998,6 +2026,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@RUC" };
             object[] valores = { RUC };
             return bd.DatarowFromProcedure("usp_Get_Proveedor", parametros, valores, null);
+        }
+        public DataTable BusquedaProveedorClienteEmpleado(int tipoid, string numdoc)
+        {
+            string[] parametros = { "@tipoid", "@numdoc" };
+            object[] valores = { tipoid, numdoc };
+            return bd.DataTableFromProcedure("usp_busquedaProveedorClienteEmpleado", parametros, valores, null);
         }
         public DataTable ListarFacturasProveedor(string ruc, string estado, int tipo)
         {
@@ -3556,11 +3590,17 @@ namespace HPResergerCapaDatos
             object[] valores = { nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion, banco, nrocuenta, fechapago };
             return bd.DataTableFromProcedure("usp_insertarPagarfactura", parametros, valores, null);
         }
-        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor, int moneda, string idcuenta)
+        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor, int moneda, string idcuenta, string nropago)
         {
-            string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber", "@dina", "@fecha", "@fechavc", "@fecharecep", "@usuario", "@ccs", "@tipo", "@proveedor", "@fkmoneda", "@Idcuenta" };
-            object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina, fecha, fechavence, fecharecepcion, usuario, centro, tipo, proveedor, moneda, idcuenta };
+            string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber", "@dina", "@fecha", "@fechavc", "@fecharecep", "@usuario", "@ccs", "@tipo", "@proveedor", "@fkmoneda", "@Idcuenta", "@nropago" };
+            object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina, fecha, fechavence, fecharecepcion, usuario, centro, tipo, proveedor, moneda, idcuenta, nropago };
             return bd.DataTableFromProcedure("usp_guardarfactura", parametros, valores, null);
+        }
+        public DataTable ValidarChequeExiste(string banco, string cuenta, string cheque)
+        {
+            string[] parametros = { "@banco", "@cuenta", "@cheque" };
+            object[] valores = { banco, cuenta, cheque };
+            return bd.DataTableFromProcedure("usp_ValidarChequeExiste", parametros, valores, null);
         }
         public DataTable EstadodeGanaciasPerdidas(DateTime año, int empresa)
         {
@@ -4163,23 +4203,47 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa };
             return bd.DataTableFromProcedure("usp_ListarDetraccionesPorPagar", parametros, valores, null);
         }
-        public DataTable Detracciones(int opcion, string nrofac, string proveedor, decimal importe, int usuario)
+        public DataTable DetraccionesPorPAgarVentas(int empresa)
         {
-            string[] parametros = { "@Opcion", "@Nrofac", "@Proveedor", "@Importe", "@Usuario" };
-            object[] valores = { opcion, nrofac, proveedor, importe, usuario };
+            string[] parametros = { "@empresa" };
+            object[] valores = { empresa };
+            return bd.DataTableFromProcedure("usp_ListarDetraccionesPorPagarVentas", parametros, valores, null);
+        }
+        public DataTable Detracciones(int @Opcion, string @Nrofac, string @Proveedor, decimal @ImporteMo, decimal @ImportePEN, decimal @tc, string @nroopbanco, string @banco, string @ctabanco, DateTime @fechapago, int @Usuario)
+        {
+            string[] parametros = { "@Opcion", "@Nrofac", "@Proveedor", "@ImporteMo", "@ImportePEN", "@tc", "@nroopbanco", "@banco", "@ctabanco", "@fechapago", "@Usuario" };
+            object[] valores = { @Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario };
             return bd.DataTableFromProcedure("usp_DetraccionPago", parametros, valores, null);
         }
-        public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, decimal monto, string ruc, string nrofac, string cuenta)
+        public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, string nropago, string banco, string nrocuenta, DateTime fechapago, int usuario)
         {
-            string[] parametros = { "@Asiento", "@Cuo", "@Empresa", "@Monto", "@Ruc", "@Nrofac", "@cuenta" };
-            object[] valores = { asiento, cuo, empresa, monto, ruc, nrofac, cuenta };
+            string[] parametros = { "@Opcion", "@nroboleta", "@tipo", "@idcliente", "@ImporteMo", "@ImportePEN", "@TC", "@nropago", "@banco", "@ctabanco", "@fechapago", "@Usuario" };
+            object[] valores = { opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, nropago, banco, nrocuenta, fechapago, usuario };
+            return bd.DataTableFromProcedure("usp_DetraccionPagoVenta", parametros, valores, null);
+        }
+        public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, decimal monto, string ruc, string nrofac, string cuenta, DateTime Fechacontable, string glosa)
+        {
+            string[] parametros = { "@Asiento", "@Cuo", "@Empresa", "@Monto", "@Ruc", "@Nrofac", "@cuenta", "@FechaContable", "@glosa" };
+            object[] valores = { asiento, cuo, empresa, monto, ruc, nrofac, cuenta, Fechacontable, glosa };
             return bd.DataTableFromProcedure("usp_PagarDetracionesCabecera", parametros, valores, null);
         }
-        public DataTable PagarDetracionesDetalle(int @Asiento, string @Cuo, int @Empresa, decimal @Monto, string @Ruc, string @Codfac, string @Numfac, decimal @Total, int @Idcuenta, string @Cuentacontablebanco, int @Usuario)
+        public DataTable PagarDetracionesVentaCabecera(int asiento, string cuo, decimal monto, string nroboleta, string cuentaContableNacion, string cuentacontablebanco, DateTime fechacontable, string glosa)
         {
-            string[] parametros = { "@Asiento", "@Cuo", "@Empresa", "@Monto", "@Ruc", "@Codfac", "@Numfac", "@Total", "@Idcuenta", "@Cuentacontablebanco", "@Usuario" };
-            object[] valores = { @Asiento, @Cuo, @Empresa, @Monto, @Ruc, @Codfac, @Numfac, @Total, @Idcuenta, @Cuentacontablebanco, @Usuario };
+            string[] parametros = { "@Asiento", "@Cuo", "@Monto", "@nroBoleta", "@CuentaContableNacion", "@CuentaContableBanco", "@fechaContable", "@glosa" };
+            object[] valores = { asiento, cuo, monto, nroboleta, cuentaContableNacion, cuentacontablebanco, fechacontable, glosa };
+            return bd.DataTableFromProcedure("usp_PagarDetracionesVentaCabecera", parametros, valores, null);
+        }
+        public DataTable PagarDetracionesDetalle(int @Asiento, string @Cuo, int @Empresa, decimal @Monto, string @Ruc, string @Codfac, string @Numfac, decimal @Total, decimal @tc, int @Idcuenta, string @Cuentacontablebanco, DateTime @fechaContable, string @glosa, int @Usuario)
+        {
+            string[] parametros = { "@Asiento", "@Cuo", "@Empresa", "@Monto", "@Ruc", "@Codfac", "@Numfac", "@Total", "@tc", "@Idcuenta", "@Cuentacontablebanco", "@fechaContable", "@glosa", "@Usuario" };
+            object[] valores = { @Asiento, @Cuo, @Empresa, @Monto, @Ruc, @Codfac, @Numfac, @Total, @tc, @Idcuenta, @Cuentacontablebanco, @fechaContable, @glosa, @Usuario };
             return bd.DataTableFromProcedure("usp_PagarDetracionesDetalle", parametros, valores, null);
+        }
+        public DataTable PagarDetracionesVentaDetalle(int @Asiento, int @tipodoc, string @numdoc, string @nombreCliente, int @idcomprobante, string @Codfac, string @Numfac, string @nroBoleta, decimal @montomn, decimal @montome, decimal @tc, string @CuentaContableNacion, string @CuentaContableBanco, int @cuentaBanco, DateTime @fechaContable, string @glosa, int @Usuario)
+        {
+            string[] parametros = { "@Asiento", "@tipodoc", "@numdoc", "@nombreCliente", "@idcomprobante", "@Codfac", "@Numfac", "@nroBoleta", "@montomn", "@montome", "@tc", "@CuentaContableNacion", "@CuentaContableBanco", "@cuentaBanco", "@fechaContable", "@glosa", "@Usuario" };
+            object[] valores = { @Asiento, @tipodoc, @numdoc, @nombreCliente, @idcomprobante, @Codfac, @Numfac, @nroBoleta, @montomn, @montome, @tc, @CuentaContableNacion, @CuentaContableBanco, @cuentaBanco, @fechaContable, @glosa, @Usuario };
+            return bd.DataTableFromProcedure("usp_PagarDetracionesVentaDetalle", parametros, valores, null);
         }
         public DataTable ReversarAsientos(int idasiento, int proyecto, int usuario, DateTime Fecha)
         {
@@ -4211,10 +4275,10 @@ namespace HPResergerCapaDatos
             object[] valores = { banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2 };
             return bd.DataTableFromProcedure("usp_ListarNroOpBancaria", parametros, valores, null);
         }
-        public DataTable ActualizarNroOperacion(int codigo, string valor)
+        public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet)
         {
-            string[] parametros = { "@Codigo", "@Nroop" };
-            object[] valores = { codigo, valor };
+            string[] parametros = { "@Codigo", "@Nroop", "@TipoDet" };
+            object[] valores = { codigo, valor, tipodet };
             return bd.DataTableFromProcedure("[usp_ActualizarNroOperacion]", parametros, valores, null);
         }
         public DataTable Vendedor(int cod, int opcion, int codigo, string nrocod, int estado, int usuario)
@@ -4338,11 +4402,17 @@ namespace HPResergerCapaDatos
             object[] valores = { Fecha };
             return bd.DataTableFromProcedure("usp_TipodeCambioxDia", parametros, valores, null);
         }
-        public DataTable FacturaManualCabecera(int @opcion, int @idfac, int @id, string @nro, string @ruc, int @empresa, int @proyecto, int @etapa, int @compensa, int @moneda, decimal @tc, decimal @total, int @gravaigv, DateTime @fechaemision, DateTime @fecharecepcion, DateTime @fechavence, int @estado, int @tipopago, string @nrodocpago, string coddet, decimal porcentaje, decimal @detracion, byte[] @imgfac, string @glosa, int @usuario)
+        public DataTable FacturaManualCabecera(int @opcion, int @idfac, int @id, string @nro, string @ruc, int @empresa, int @proyecto, int @etapa, int @compensa, int @moneda, decimal @tc, decimal @total, decimal @igv, int @gravaigv, DateTime @fechaemision, DateTime @fecharecepcion, DateTime @fechavence, DateTime @fechacontable, int @estado, int @tipopago, string @nrodocpago, string coddet, decimal porcentaje, decimal @detracion, byte[] @imgfac, string @glosa, int @usuario)
         {
-            string[] parametros = { "@opcion", "@idfac", "@id", "@nro", "@ruc", "@empresa", "@proyecto", "@etapa", "@compensa", "@moneda", "@tc", "@total", "@gravaigv", "@fechaemision", "@fecharecepcion", "@fechavence", "@estado", "@tipopago", "@nrodocpago", "@coddet", "@porcentaje", "@detracion", "@imgfac", "@glosa", "@usuario" };
-            object[] valores = { @opcion, @idfac, @id, @nro, @ruc, @empresa, @proyecto, @etapa, @compensa, @moneda, @tc, @total, @gravaigv, @fechaemision, @fecharecepcion, @fechavence, @estado, @tipopago, @nrodocpago, coddet, porcentaje, @detracion, @imgfac, @glosa, @usuario };
+            string[] parametros = { "@opcion", "@idfac", "@id", "@nro", "@ruc", "@empresa", "@proyecto", "@etapa", "@compensa", "@moneda", "@tc", "@total", "@igv", "@gravaigv", "@fechaemision", "@fecharecepcion", "@fechavence", "@fechacontable", "@estado", "@tipopago", "@nrodocpago", "@coddet", "@porcentaje", "@detracion", "@imgfac", "@glosa", "@usuario" };
+            object[] valores = { @opcion, @idfac, @id, @nro, @ruc, @empresa, @proyecto, @etapa, @compensa, @moneda, @tc, @total, @igv, @gravaigv, @fechaemision, @fecharecepcion, @fechavence, fechacontable, @estado, @tipopago, @nrodocpago, coddet, porcentaje, @detracion, @imgfac, @glosa, @usuario };
             return bd.DataTableFromProcedure("usp_FacturaManualCabecera", parametros, valores, null);
+        }
+        public DataTable FacturaManualVentaCabecera(int @opcion, int @idfac, int @id, string @nro, int @tipoid, string @nroid, int @empresa, int @proyecto, int @etapa, int @moneda, decimal @tc, decimal @total, decimal @igv, DateTime @fechaemision, DateTime @fechavence, DateTime @fechacontable, int @estado, int @tipopago, string @nrodocpago, string coddet, decimal porcentaje, decimal @detracion, byte[] @imgfac, string @glosa, int @usuario)
+        {
+            string[] parametros = { "@opcion", "@idfac", "@id", "@nro", "@tipoid", "@nroid", "@empresa", "@proyecto", "@etapa", "@moneda", "@tc", "@total", "@igv", "@fechaemision", "@fechavence", "@fechacontable", "@estado", "@tipopago", "@nrodocpago", "@coddet", "@porcentaje", "@detracion", "@imgfac", "@glosa", "@usuario" };
+            object[] valores = { @opcion, @idfac, @id, @nro, @tipoid, @nroid, @empresa, @proyecto, @etapa, @moneda, @tc, @total, @igv, @fechaemision, @fechavence, fechacontable, @estado, @tipopago, @nrodocpago, coddet, porcentaje, @detracion, @imgfac, @glosa, @usuario };
+            return bd.DataTableFromProcedure("usp_FacturaManualVentaCabecera", parametros, valores, null);
         }
         public DataTable FacturaManualDetalle(int @opcion, int @idfac, int @id, string @nro, string @ruc, string @debehaber, string @cuenta, string @ceco, int @tipoigv, decimal @importemn, decimal @importeme, string @glosa, string @cuo, int @usuario)
         {
@@ -4350,11 +4420,23 @@ namespace HPResergerCapaDatos
             object[] valores = { @opcion, @idfac, @id, @nro, @ruc, @debehaber, @cuenta, @ceco, @tipoigv, @importemn, @importeme, @glosa, @cuo, @usuario };
             return bd.DataTableFromProcedure("usp_FacturaManualDetalle", parametros, valores, null);
         }
+        public DataTable FacturaManualVentaDetalle(int @opcion, int @idfac, int @id, string @nro, int @tipoid, string @nroid, string @debehaber, string @cuenta, int @tipoigv, decimal @importemn, decimal @importeme, string @glosa, string @cuo, int @usuario)
+        {
+            string[] parametros = { "@opcion", "@idfac", "@id", "@nro", "@tipoid", "@nroid", "@debehaber", "@cuenta", "@tipoigv", "@importemn", "@importeme", "@glosa", "@cuo", "@usuario" };
+            object[] valores = { @opcion, @idfac, @id, @nro, @tipoid, @nroid, @debehaber, @cuenta, @tipoigv, @importemn, @importeme, @glosa, @cuo, @usuario };
+            return bd.DataTableFromProcedure("usp_FacturaManualVentaDetalle", parametros, valores, null);
+        }
         public DataTable FacturaManualBusqueda(string proveedor, string nrodoc, string empresa)
         {
             string[] parametros = { "@proveedor", "@nrodoc", "@empresa" };
             object[] valores = { proveedor, nrodoc, empresa };
             return bd.DataTableFromProcedure("usp_FacturaManualBusqueda", parametros, valores, null);
+        }
+        public DataTable FacturaManualVentaBusqueda(string proveedor, string nrodoc, string empresa)
+        {
+            string[] parametros = { "@proveedor", "@nrodoc", "@empresa" };
+            object[] valores = { proveedor, nrodoc, empresa };
+            return bd.DataTableFromProcedure("usp_FacturaManualVentaBusqueda", parametros, valores, null);
         }
         public DataTable FacturaManualDetalleBusqueda(string proveedor, string nrodoc)
         {
@@ -4362,5 +4444,24 @@ namespace HPResergerCapaDatos
             object[] valores = { proveedor, nrodoc };
             return bd.DataTableFromProcedure("usp_FacturaManualDetalleBusqueda", parametros, valores, null);
         }
+        public DataTable FacturaManualVentaDetalleBusqueda(string proveedor, string nrodoc)
+        {
+            string[] parametros = { "@proveedor", "@nrodoc" };
+            object[] valores = { proveedor, nrodoc };
+            return bd.DataTableFromProcedure("usp_FacturaManualVentaDetalleBusqueda", parametros, valores, null);
+        }
+        public DataTable VerFacturasPagadasCompras(string proveedor, string nrofac)
+        {
+            string[] parametros = { "@proveedor", "@nrofac" };
+            object[] valores = { proveedor, nrofac };
+            return bd.DataTableFromProcedure("usp_VerFacturasPagadasCompras", parametros, valores, null);
+        }
+        public DataTable VerPeriodoAbierto(int empresa, DateTime Fecha)
+        {
+            string[] parametros = { "@empresa", "@fecha" };
+            object[] valores = { empresa, Fecha };
+            return bd.DataTableFromProcedure("usp_VerPeriodoAbierto", parametros, valores, null);
+        }
+
     }
 }

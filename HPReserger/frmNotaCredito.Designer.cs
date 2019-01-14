@@ -89,9 +89,9 @@
             // txtnronota
             // 
             this.txtnronota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnronota.Location = new System.Drawing.Point(137, 9);
+            this.txtnronota.Location = new System.Drawing.Point(134, 9);
             this.txtnronota.Name = "txtnronota";
-            this.txtnronota.Size = new System.Drawing.Size(84, 21);
+            this.txtnronota.Size = new System.Drawing.Size(87, 21);
             this.txtnronota.TabIndex = 2;
             this.txtnronota.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnrofactura_KeyPress);
             this.txtnronota.Leave += new System.EventHandler(this.txtnrofactura_Leave);
@@ -200,6 +200,7 @@
             this.txtruc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtruc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtruc.ForeColor = System.Drawing.Color.Black;
+            this.txtruc.Format = null;
             this.txtruc.Location = new System.Drawing.Point(315, 9);
             this.txtruc.MaxLength = 11;
             this.txtruc.Name = "txtruc";
@@ -294,6 +295,7 @@
             this.txtsubtotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtsubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsubtotal.ForeColor = System.Drawing.Color.Black;
+            this.txtsubtotal.Format = null;
             this.txtsubtotal.Location = new System.Drawing.Point(100, 24);
             this.txtsubtotal.MaxLength = 100;
             this.txtsubtotal.Name = "txtsubtotal";
@@ -315,6 +317,7 @@
             this.txtigv.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtigv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtigv.ForeColor = System.Drawing.Color.Black;
+            this.txtigv.Format = null;
             this.txtigv.Location = new System.Drawing.Point(100, 47);
             this.txtigv.MaxLength = 100;
             this.txtigv.Name = "txtigv";
@@ -336,6 +339,7 @@
             this.txttotal.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txttotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotal.ForeColor = System.Drawing.Color.Black;
+            this.txttotal.Format = null;
             this.txttotal.Location = new System.Drawing.Point(100, 70);
             this.txttotal.MaxLength = 100;
             this.txttotal.Name = "txttotal";
@@ -357,6 +361,7 @@
             this.txttotalm.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txttotalm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotalm.ForeColor = System.Drawing.Color.Black;
+            this.txttotalm.Format = null;
             this.txttotalm.Location = new System.Drawing.Point(270, 70);
             this.txttotalm.MaxLength = 100;
             this.txttotalm.Name = "txttotalm";
@@ -378,6 +383,7 @@
             this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtglosa.ForeColor = System.Drawing.Color.Black;
+            this.txtglosa.Format = null;
             this.txtglosa.Location = new System.Drawing.Point(100, 93);
             this.txtglosa.MaxLength = 100;
             this.txtglosa.Name = "txtglosa";
@@ -397,6 +403,7 @@
             this.txtigvm.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtigvm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtigvm.ForeColor = System.Drawing.Color.Black;
+            this.txtigvm.Format = null;
             this.txtigvm.Location = new System.Drawing.Point(270, 47);
             this.txtigvm.MaxLength = 100;
             this.txtigvm.Name = "txtigvm";
@@ -418,6 +425,7 @@
             this.txtsubtotalm.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtsubtotalm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsubtotalm.ForeColor = System.Drawing.Color.Black;
+            this.txtsubtotalm.Format = null;
             this.txtsubtotalm.Location = new System.Drawing.Point(270, 24);
             this.txtsubtotalm.MaxLength = 100;
             this.txtsubtotalm.Name = "txtsubtotalm";

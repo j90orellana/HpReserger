@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HPReserger</RootNamespace>
-    <AssemblyName>SIGE</AssemblyName>
+    <AssemblyName>SISGEM</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -117,11 +117,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmFacturaManualVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFacturaManualVentas.Designer.cs">
+      <DependentUpon>frmFacturaManualVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFacturaManual.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmFacturaManual.Designer.cs">
       <DependentUpon>FrmFacturaManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPagoDetraccionesVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPagoDetraccionesVentas.Designer.cs">
+      <DependentUpon>frmPagoDetraccionesVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\EstadoGananciaPerdidas.cs">
       <SubType>Form</SubType>
@@ -453,10 +465,10 @@
     <Compile Include="frmccosto.designer.cs">
       <DependentUpon>frmccosto.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmcuentacontable.cs">
+    <Compile Include="ModuloContable\frmcuentacontable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmcuentacontable.designer.cs">
+    <Compile Include="ModuloContable\frmcuentacontable.designer.cs">
       <DependentUpon>frmcuentacontable.cs</DependentUpon>
     </Compile>
     <Compile Include="frmdepartamento.cs">
@@ -1429,8 +1441,14 @@
     <Compile Include="ModuloContable\frmTipodeCambio.Designer.cs">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmFacturaManualVentas.resx">
+      <DependentUpon>frmFacturaManualVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFacturaManual.resx">
       <DependentUpon>FrmFacturaManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPagoDetraccionesVentas.resx">
+      <DependentUpon>frmPagoDetraccionesVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\EstadoGananciaPerdidas.resx">
       <DependentUpon>EstadoGananciaPerdidas.cs</DependentUpon>
@@ -1548,7 +1566,7 @@
     <EmbeddedResource Include="ModuloVentas\frmCronogramaPagos.resx">
       <DependentUpon>frmCronogramaPagos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmcuentacontable.resx">
+    <EmbeddedResource Include="ModuloContable\frmcuentacontable.resx">
       <DependentUpon>frmcuentacontable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDatosExterno.resx">

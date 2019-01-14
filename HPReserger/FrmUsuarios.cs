@@ -58,15 +58,18 @@ namespace HPReserger
         public void limpiar()
         {
             txtapepat.Text = txtapetmat.Text = txtcontra.Text = txtlogin.Text = txtnombre.Text = "";
-            cboarea.DataSource = cboestado.DataSource = cboperfil.DataSource = null;
+            cboarea.SelectedIndex = cboestado.SelectedIndex = cboperfil.SelectedIndex = -1;
         }
         public void CargarUsuarios()
         {
             GridUser.DataSource = Cusuario.usuarios("0", 0, 0);
-            lblmsg.Text = $"Total de Registros : {dtgconten.RowCount}";
+            lblmsg.Text = $"Total de Registros : {GridUser.RowCount}";
         }
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
+            CargarArea(cboarea);
+            CargarPerfil(cboperfil);
+            CargarEstado(cboestado);
             btnlimpiar_Click(sender, e);
             estado = 0; CargarTipoDocumento(cbotipoid);
             txtid.Focus();
@@ -101,6 +104,20 @@ namespace HPReserger
         {
 
         }
+        public void Cargar()
+        {
+            CargarCombos();
+            ////////////////
+            cbotipoid.SelectedValue = dtgconten[0, 0].Value;
+            txtnombre.Text = dtgconten[2, 0].Value.ToString();
+            txtapepat.Text = dtgconten[3, 0].Value.ToString();
+            txtapetmat.Text = dtgconten[4, 0].Value.ToString();
+            cboarea.SelectedValue = dtgconten[5, 0].Value;
+            cboperfil.SelectedValue = dtgconten[7, 0].Value;
+            txtlogin.Text = dtgconten[9, 0].Value.ToString();
+            txtcontra.Text = dtgconten[10, 0].Value.ToString();
+            cboestado.SelectedValue = dtgconten[11, 0].Value;
+        }
         private void txtid_TextChanged(object sender, EventArgs e)
         {
             try
@@ -117,7 +134,7 @@ namespace HPReserger
                             btnmodificar.Enabled = btneliminar.Enabled = true;
                             cboperfil.Enabled = cboestado.Enabled = false;
                             txtlogin.Enabled = false; txtcontra.Enabled = false;
-
+                            Cargar();
                         }
                         else
                         {
@@ -140,8 +157,9 @@ namespace HPReserger
                             txtlogin.Enabled = true; txtcontra.Enabled = true;
                             txtnombre.Enabled = txtapepat.Enabled = txtapetmat.Enabled = cboarea.Enabled = false;
                             btnnuevo.Enabled = false;
-                            txtid.Enabled = false;
-                            cbotipoid.Enabled = false;
+                            //txtid.Enabled = false;
+                            // cbotipoid.Enabled = false;
+                            Cargar();
                         }
                         else
                         {
@@ -162,6 +180,7 @@ namespace HPReserger
                             checkBox1.Enabled = true; btnnuevo.Enabled = true;
                             btnmodificar.Enabled = btneliminar.Enabled = true;
                             estado = 0;
+                            Cargar();
                         }
                         else
                         {
@@ -508,6 +527,14 @@ namespace HPReserger
                 txtid.Text = GridUser[docx.Name, x].Value.ToString();
                 txtlogin.Text = GridUser[loginx.Name, x].Value.ToString();
                 txtcontra.Text = GridUser[passx.Name, x].Value.ToString();
+                ///// 
+                CargarPerfil(cboperfil);
+                txtnombre.Text = GridUser[nombresx.Name, x].Value.ToString();
+                txtapepat.Text = GridUser[Apellidopatx.Name, x].Value.ToString();
+                txtapetmat.Text = GridUser[apellidomatx.Name, x].Value.ToString();
+                cboarea.Text = GridUser[gerenciax.Name, x].Value.ToString();
+                cboperfil.Text = GridUser[perfilx.Name, x].Value.ToString();
+                cboestado.SelectedValue = (int)GridUser[codestadox.Name, x].Value;
                 if (GridUser[codestadox.Name, x].Value.ToString() == "3")
                 {
                     CargarEstado(cboestado);
@@ -517,8 +544,8 @@ namespace HPReserger
                     cboestado.SelectedValue = (int)GridUser[codestadox.Name, x].Value;
                 }
                 btnnuevoTemporal.Enabled = true;
+                btnmodificar.Enabled = true;
             }
-
         }
         public void Activar(params object[] control)
         {
@@ -543,6 +570,7 @@ namespace HPReserger
             cboestado.Text = "TEMPORAL";
             estado = 5;
             ModoEdicion(false);
+            txtid.Enabled = cbotipoid.Enabled = true;
         }
         private void cbotipoid_Click(object sender, EventArgs e)
         {
@@ -566,7 +594,23 @@ namespace HPReserger
         public void BuscarUsuarios()
         {
             GridUser.DataSource = Cusuario.BusquedaUsuarios(txtbusnro.TextValido() == txtbusnro.TextoDefecto ? "" : txtbusnro.TextValido(), txtbustipodoc.TextValido(), txtbusnombre.TextValido(), txtbusareagerencia.TextValido(), txtbuslogin.TextValido());
-            lblmsg.Text = $"Total de Registros : {dtgconten.RowCount}";
+            lblmsg.Text = $"Total de Registros : {GridUser.RowCount}";
+        }
+
+        private void btnmodificar_EnabledChanged(object sender, EventArgs e)
+        {
+            btndesconectar.Enabled = btnmodificar.Enabled;
+        }
+        public DialogResult msgyes(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        private void btndesconectar_Click(object sender, EventArgs e)
+        {
+            //desconectado al usuario
+            string cadeusua = GridUser[loginx.Name, GridUser.CurrentRow.Index].Value.ToString();
+            if (msgyes($"Seguro desea Desconectar al Usuario: {cadeusua}") == DialogResult.Yes)
+            {
+                Cusuario.UsuarioConectado((int)GridUser[Codigox.Name, GridUser.CurrentRow.Index].Value, "", 2);
+                Mensajes($"Usuario {cadeusua} Desconectado..");
+            }
         }
     }
 }

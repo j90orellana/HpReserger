@@ -17,7 +17,16 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        List<int> lista;
+        public class Listado
+        {
+            public int index;
+            public int tipo;
+            public Listado(int _index, int _tipo)
+            {
+                index = _index; tipo = _tipo;
+            }
+        }
+        List<Listado> lista;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmNroOpBancacia_Load(object sender, EventArgs e)
         {
@@ -25,18 +34,23 @@ namespace HPReserger
             CargarBancos();
             LimpiarDatos();
             CargarGrilla();
-            lista = new List<int>();
+            lista = new List<Listado>();
         }
         DataTable TDatos;
         public void CargarGrilla()
         {
             int c = 0;
-            TDatos = CapaLogica.ListarNroOpBancaria(CodigoBanco, cbocuenta.SelectedValue.ToString(), txtruc.TextValido(), txtrazon.TextValido(), txtnrobanco.TextValido(), dtpfecha1.Value, dtpfecha2.Value);
+            ///usp_ListarNroOpBancaria
+            string cuenta = cbocuenta.Text.Split(' ')[0];
+            if (cuenta == "NINGUNA") cuenta = "";
+            TDatos = CapaLogica.ListarNroOpBancaria(CodigoBanco, cuenta, txtruc.TextValido(), txtrazon.TextValido(), txtnrobanco.TextValido(), dtpfecha1.Value, dtpfecha2.Value);
             foreach (DataRow item in TDatos.Rows)//id   ok
             {
-                int valor = (int)item["id"];
+                int valor = (int)item[idx.DataPropertyName];
+                int tipor = (int)item[xdet.DataPropertyName];
+                Listado lis = new Listado(valor, tipor);
                 if (lista != null)
-                    if (lista.Find(cust => cust == valor) > 0)
+                    if (lista.Find(cust => cust == lis) != null)
                     {
                         c++;
                         item["ok"] = 1;
@@ -87,9 +101,19 @@ namespace HPReserger
                 {
                     if (xx.Cells[NroOPBancox.Name].Value.ToString() == "")
                     {
-                        if ((int)xx.Cells[okx.Name].Value == val && val == 0) lista.Remove((int)xx.Cells[idx.Name].Value);
+                        if ((int)xx.Cells[okx.Name].Value == val && val == 0)
+                        {
+                            int tipo = (int)xx.Cells[xdet.Name].Value;
+                            int id = (int)xx.Cells[idx.Name].Value;
+                            Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id);
+                            lista.Remove(List);
+                        }
                         else
                         {
+                            int tipo = (int)xx.Cells[xdet.Name].Value;
+                            int id = (int)xx.Cells[idx.Name].Value;
+                            if (lista.Find(cust => cust.index == id && cust.tipo == tipo) == null)
+                                lista.Add(new Listado(id, tipo));
                             xx.Cells[okx.Name].Value = val;
                             dtgconten_CellContentClick(sender, new DataGridViewCellEventArgs(0, y));
                             y++;
@@ -120,6 +144,7 @@ namespace HPReserger
                         frmDetalleNroOp frmnroop = new frmDetalleNroOp(dtgconten[Proveedorx.Name, x].Value.ToString(), dtgconten[Razonx.Name, x].Value.ToString(), dtgconten[NroFacturax.Name, x].Value.ToString(), dtgconten[Bancox.Name, x].Value.ToString());
                         frmnroop.Codigo = (int)dtgconten[idx.Name, x].Value;
                         frmnroop.nrooperacion = dtgconten[NroOPBancox.Name, x].Value.ToString();
+                        frmnroop.Tipodet = (int)dtgconten[xdet.Name, x].Value;
                         frmnroop.ShowDialog();
                         CargarGrilla();
                     }
@@ -132,7 +157,7 @@ namespace HPReserger
         }
         private void cbobanco_Click(object sender, EventArgs e)
         {
-            CargarBancos();
+            //CargarBancos();
         }
         public int CodigoBanco { get; set; }
         private void cbobanco_SelectedIndexChanged(object sender, EventArgs e)
@@ -201,20 +226,22 @@ namespace HPReserger
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            if (lista.Count == 0) return;
             if (!txtnroid.EstaLLeno())
             {
                 txtnroid.Focus();
                 msg("Ingrese Número de Operación");
                 return;
             }
-            foreach (int item in lista)
+            foreach (Listado item in lista)
             {
-                CapaLogica.ActualizarNroOperacion(item, txtnroid.TextValido());
+                CapaLogica.ActualizarNroOperacion(item.index, txtnroid.TextValido(), item.tipo);
             }
             msg("Actualizado Número de Operación");
             txtnroid.CargarTextoporDefecto();
             lista.Clear();
             LimpiarDatos();
+            CargarGrilla();
         }
         private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -229,19 +256,27 @@ namespace HPReserger
                     }
                 }
                 //Proceso de Cambio
+                int tipo = (int)dtgconten[xdet.Name, x].Value;
+                int id = (int)dtgconten[idx.Name, x].Value;
                 if (dtgconten[okx.Name, x].Value.ToString() == "")
                 {
-                    lista.Remove((int)dtgconten[idx.Name, x].Value);
+
+                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id);
+                    lista.Remove(List);
+                    dtgconten[okx.Name, x].Value = 0;
                 }
                 else if (dtgconten[okx.Name, x].Value.ToString() == "0")
                 {
-                    lista.Remove((int)dtgconten[idx.Name, x].Value);
+                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id);
+                    lista.Remove(List);
                 }
                 else if ((int)dtgconten[okx.Name, x].Value == 1)
                 {
-                    lista.Add((int)dtgconten[idx.Name, x].Value);
+                    if (lista.Find(cust => cust.tipo == tipo && cust.index == id) == null)
+                        lista.Add(new Listado(id, tipo));
                 }
             }
+
             int c = lista == null ? 0 : lista.Count;
             lblmsg.Text = $"Total de Registros : {dtgconten.RowCount}  Seleccionados : {c}";
             //OrdernarDatos();
@@ -274,6 +309,49 @@ namespace HPReserger
             //    //Combo.DataSource = tipoDoc;
             //    if (Combo.Value.ToString() == "")                
             //}
+        }
+        frmProcesando frmproce;
+        private void btnpdf_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.RowCount > 0)
+            {
+                dtgconten.SuspendLayout();
+                Cursor = Cursors.WaitCursor;
+                frmproce = new HPReserger.frmProcesando();
+                frmproce.Show();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                msg("No hay Datos que Exportar");
+            }
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (dtgconten.RowCount > 0)
+            {
+                string _NombreHoja = "Comprobantes Pagados";
+                List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+                //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
+                Color Back = Color.FromArgb(78, 129, 189);
+                Color Fore = Color.FromArgb(255, 255, 255);
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "j1", "Comprobantes Pagados".ToUpper(), 16, true, true, Back, Fore));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "j2", $"Fecha de Pago: de {dtpfecha1.Value.ToShortDateString()} a {dtpfecha2.Value.ToShortDateString()}", 12, false, true, Back, Fore));
+                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "Nombre Vendedor:", 11));
+
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 2, new int[] { 3, 5, 6, 7, 8, 9, 10, 11, 12, 13 }, new int[] { }, new int[] { });
+                //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
+            }
+            else msg("No hay Registros en la Grilla");
+        }
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
+            dtgconten.ResumeLayout();
         }
     }
 }

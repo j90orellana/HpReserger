@@ -189,11 +189,10 @@
             // pbfoto
             // 
             this.pbfoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbfoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbfoto.Image = global::HPReserger.Properties.Resources.MainFrame;
-            this.pbfoto.Location = new System.Drawing.Point(0, 0);
+            this.pbfoto.Image = ((System.Drawing.Image)(resources.GetObject("pbfoto.Image")));
+            this.pbfoto.Location = new System.Drawing.Point(7, 1);
             this.pbfoto.Name = "pbfoto";
-            this.pbfoto.Size = new System.Drawing.Size(349, 61);
+            this.pbfoto.Size = new System.Drawing.Size(318, 58);
             this.pbfoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbfoto.TabIndex = 7;
             this.pbfoto.TabStop = false;
@@ -233,7 +232,7 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SIGE";
+            this.Text = "SISGEM";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmLogin_Paint);

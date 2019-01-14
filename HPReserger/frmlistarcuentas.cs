@@ -89,7 +89,7 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             codigo = dtgconten[0, dtgconten.CurrentRow.Index].Value.ToString();
-            if (codigo.Substring(codigo.Length - 1, 1) == "0")
+            if (dtgconten["CtaDetalle", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
             {
                 MSG("No se Puede Seleccionar una cuenta de Cabecera");
             }
@@ -127,7 +127,7 @@ namespace HPReserger
             try
             {
                 codigo = dtgconten[0, dtgconten.CurrentCell.RowIndex].Value.ToString();
-                if (codigo.Substring(codigo.Length - 1, 1) == "0")
+                if (dtgconten["CtaDetalle", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
                 {
                     MSG("No se Puede Seleccionar una cuenta de Cabecera");
                 }

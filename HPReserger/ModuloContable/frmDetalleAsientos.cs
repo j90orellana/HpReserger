@@ -30,6 +30,9 @@ namespace HPReserger
         ///Recibe la fecha del asiento
         public DateTime _fecha;
         public Boolean CheckDuplicar { get { return ChkDuplicar.Checked; } set { ChkDuplicar.Checked = value; } }
+
+        public decimal _TipoCambio { get; internal set; }
+
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
         {
@@ -43,7 +46,9 @@ namespace HPReserger
             Dtgconten.Columns[FechaRecepcionx.Name].DefaultCellStyle.NullValue = _fecha.ToShortDateString();
             BuscarSiDuplica();
             SacarTotales();
-            Dtgconten.Columns[importemnx.Name].CellTemplate.ToolTipText = "Presione A para Igualar\nPresione D para RellenarTodo";
+            Dtgconten.Columns[importemnx.Name].CellTemplate.ToolTipText = "Presione A para Cuadrar\nPresione D para Igualar Todo";
+            Dtgconten.Columns[importemex.Name].CellTemplate.ToolTipText = "Presione A para Cuadrar\nPresione D para Igualar Todo";
+            Dtgconten.Columns[tipocambiox.Name].CellTemplate.ToolTipText = "Presione D para LLenarlo";
         }
         public void BuscarSiDuplica()
         {
@@ -437,7 +442,32 @@ namespace HPReserger
                     if (e.KeyChar == 'A' || e.KeyChar == 'a')
                     {
                         Dtgconten.EndEdit();
-                        Dtgconten[y, x].Value = Convert.ToDecimal(txtdiferencia.Text) + Convert.ToDecimal(Dtgconten[y, x].Value.ToString() == "" ? "0" : Dtgconten[y, x].Value.ToString());
+                        Dtgconten[importemnx.Name, x].Value = Convert.ToDecimal(txtdiferencia.Text) + Convert.ToDecimal(Dtgconten[y, x].Value.ToString() == "" ? "0" : Dtgconten[y, x].Value.ToString());
+                        Dtgconten.RefreshEdit();
+                    }
+                    if (e.KeyChar == 'D' || e.KeyChar == 'd')
+                    {
+                        Configuraciones.RellenarGrillasAutomatico(Dtgconten, importemnx, Configuraciones.Decimal(txttotal.Text));
+                    }
+                }
+                if (Dtgconten.Columns[tipocambiox.Name].Index == y)
+                {
+                    if (e.KeyChar == 'D' || e.KeyChar == 'd')
+                    {
+                        foreach (DataGridViewRow item in Dtgconten.Rows)
+                        {
+                            if (item.Cells[tipocambiox.Name].Value != null)
+                                if ((decimal)item.Cells[tipocambiox.Name].Value > 0)
+                                {
+                                    Dtgconten.EndEdit();
+                                    Dtgconten[tipocambiox.Name, x].Value = item.Cells[tipocambiox.Name].Value;
+                                    Dtgconten.RefreshEdit();
+                                    HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txt.Text);
+                                    return;
+                                }
+                        }
+                        Dtgconten.EndEdit();
+                        Dtgconten[tipocambiox.Name, x].Value = _TipoCambio;
                         Dtgconten.RefreshEdit();
                     }
                 }
@@ -506,16 +536,24 @@ namespace HPReserger
         {
             int x = e.RowIndex, y = e.ColumnIndex;
             if (x >= 0 && x < Dtgconten.RowCount)
+            {
                 if (y == Dtgconten.Columns[tipocambiox.Name].Index || y == Dtgconten.Columns[importemex.Name].Index)
                 {
                     if (Dtgconten[tipocambiox.Name, x].Value != null)
                         if (Dtgconten[importemex.Name, x].Value != null)
                             if (Dtgconten[tipocambiox.Name, x].Value.ToString() != "" && Dtgconten[importemex.Name, x].Value.ToString() != "")
                                 if ((decimal.Parse(Dtgconten[tipocambiox.Name, x].Value.ToString())) > 0)
-                                {
                                     Dtgconten[importemnx.Name, x].Value = (decimal)Dtgconten[importemex.Name, x].Value * (decimal)Dtgconten[tipocambiox.Name, x].Value;
-                                }
                 }
+                if (y == Dtgconten.Columns[tipocambiox.Name].Index || y == Dtgconten.Columns[importemnx.Name].Index)
+                {
+                    if (Dtgconten[tipocambiox.Name, x].Value != null)
+                        if (Dtgconten[importemnx.Name, x].Value != null)
+                            if (Dtgconten[tipocambiox.Name, x].Value.ToString() != "" && Dtgconten[importemnx.Name, x].Value.ToString() != "")
+                                if ((decimal.Parse(Dtgconten[tipocambiox.Name, x].Value.ToString())) > 0)
+                                    Dtgconten[importemex.Name, x].Value = (decimal)Dtgconten[importemnx.Name, x].Value / (decimal)Dtgconten[tipocambiox.Name, x].Value;
+                }
+            }
             //si se edita la columna ruc
             if (x >= 0)
             {
@@ -532,17 +570,21 @@ namespace HPReserger
                             Dtgconten[razonsocialx.Name, x].ReadOnly = false;
                 }
                 //se modifica el numero del ruc
-                if (y == Dtgconten.Columns[numdocx.Name].Index && int.Parse(Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? index.ToString() : Dtgconten[tipodocx.Name, x].Value.ToString()) == index)
+                if (y == Dtgconten.Columns[numdocx.Name].Index || y == Dtgconten.Columns[tipodocx.Name].Index)// && int.Parse(Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? index.ToString() : Dtgconten[tipodocx.Name, x].Value.ToString()) == index)
                 {
-                    DataRow filita = CapaLogica.RUCProveedor((Dtgconten[y, x].Value == null) ? "0" : Dtgconten[y, x].Value.ToString());
-                    if (filita != null)
+                    DataTable filo = CapaLogica.BusquedaProveedorClienteEmpleado((int)(Dtgconten[tipodocx.Name, x].Value ?? 0), (Dtgconten[numdocx.Name, x].Value ?? "").ToString());
+                    if (filo.Rows.Count > 0)
                     {
-                        fila = x;
-                        //if (x == Dtgconten.RowCount - 1) { Datos.Rows.Add(); }
-                        Dtgconten[razonsocialx.Name, fila].Value = filita["razon_social"].ToString();
+                        DataRow filita = filo.Rows[0];
+                        if (filita != null)
+                        {
+                            fila = x;
+                            //if (x == Dtgconten.RowCount - 1) { Datos.Rows.Add(); }
+                            Dtgconten[razonsocialx.Name, x].Value = filita["Nombre"].ToString();
+                        }
+                        else Dtgconten[razonsocialx.Name, x].Value = "";
+                        Dtgconten.EndEdit();
                     }
-                    else Dtgconten[razonsocialx.Name, fila].Value = "";
-                    Dtgconten.EndEdit();
                 }
                 if (y == Dtgconten.Columns[importemnx.Name].Index || y == Dtgconten.Columns[importemex.Name].Index)
                 {
@@ -636,15 +678,21 @@ namespace HPReserger
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             msj("");
-            int y = e.RowIndex;
-
+            int x = e.RowIndex;
             //if (Dtgconten[fechaemisionx.Name, y].Value == null)
             //{
             //    Dtgconten[fechaemisionx.Name, y].Value = _fecha;
             //    Dtgconten[FechaVencimientox.Name, y].Value = _fecha;
             //    Dtgconten[FechaRecepcionx.Name, y].Value = _fecha;
-
             //}
+            if (Dtgconten[tipocambiox.Name, x].Value != null)
+                if ((decimal)Dtgconten[tipocambiox.Name, x].Value == 0)
+                {
+                    if (x == 0)
+                        Dtgconten[tipocambiox.Name, x].Value = _TipoCambio;
+                    else
+                        Dtgconten[tipocambiox.Name, x - 1].Value = _TipoCambio;
+                }
         }
         private void Dtgconten_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {

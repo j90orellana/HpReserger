@@ -33,7 +33,12 @@ namespace HPReserger
             cbocuenta.DataSource = CArticulo.ListarCuentasArticulos();
             cbocuenta.DisplayMember = "codigo";
             cbocuenta.ValueMember = "codigo";
-            cbocentrocosto.DataSource = CArticulo.ListarCentroCostoTieneCuenta();
+            DataTable Tdatos = CArticulo.ListarCentroCostoTieneCuenta();
+            DataRow Filon = Tdatos.NewRow();
+            Filon[4] = 0;
+            Filon[2] = "NINGUN CENTRO";
+            Tdatos.Rows.InsertAt(Filon, 0);
+            cbocentrocosto.DataSource = Tdatos;
             cbocentrocosto.DisplayMember = "CentroCosto";
             cbocentrocosto.ValueMember = "Id_CtaCtble";
             dtgconten.DataSource = listarArticulos("");
@@ -75,7 +80,7 @@ namespace HPReserger
             btncentro.Enabled = a;
             btnctaact.Enabled = a;
             btnctactble.Enabled = a;
-            txtdescripcion.Text = "";
+
         }
         public DataTable listarArticulos(string busca)
         {
@@ -385,10 +390,11 @@ namespace HPReserger
 
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label12.Visible = txtcntctbleact.Visible = btnctaact.Visible = true;
+            label12.Visible = txtcntctbleact.Visible = btnctaact.Visible = true; btnlimpiarCtactivo.Visible = true;
             if (cbotipo.Text.ToUpper() == "SERVICIO")
             {
                 txtcntctbleact.Text = ""; label12.Visible = txtcntctbleact.Visible = btnctaact.Visible = false;
+                btnlimpiarCtactivo.Visible = false;
             }
         }
         private void cbomarca_SelectedIndexChanged(object sender, EventArgs e)
@@ -406,12 +412,16 @@ namespace HPReserger
         private void chkcentro_CheckedChanged(object sender, EventArgs e)
         {
             if (chkcentro.Checked)
+            {
                 cbocentrocosto.Enabled = true;
+                btncentro.Enabled = true;
+            }
             else
+            {
                 cbocentrocosto.Enabled = false;
-
+                btncentro.Enabled = false;
+            }
         }
-
         private void txtdescripcion_TextChanged(object sender, EventArgs e)
         {
 
@@ -470,14 +480,14 @@ namespace HPReserger
             cuentitas.ShowDialog();
             if (cuentitas.aceptar)
             {
-                if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
-                {
-                    MSG("No se Puede Seleccionar una cuenta de Cabecera");
-                }
-                else
-                {
+                //if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
+                //{
+                    //MSG("No se Puede Seleccionar una cuenta de Cabeceras");
+                //}
+                //else
+                //{
                     txtctacble.Text = cuentitas.codigo;
-                }
+                //}
             }
         }
 

@@ -655,7 +655,7 @@ namespace HPReserger
             this.tipocambiox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.tipocambiox.DataPropertyName = "tipo_cambio";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "0.0000";
+            dataGridViewCellStyle13.Format = "n3";
             dataGridViewCellStyle13.NullValue = "0.0000";
             this.tipocambiox.DefaultCellStyle = dataGridViewCellStyle13;
             this.tipocambiox.HeaderText = "T. C.";

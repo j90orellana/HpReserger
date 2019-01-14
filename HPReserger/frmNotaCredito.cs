@@ -156,10 +156,12 @@ namespace HPReserger
         DataTable DatosFactura;
         private void cbofacturas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbofacturas.Items.Count > 0)
+            if (cbofacturas.SelectedIndex > 0)
             {
                 txtmoneda.Text = cbofacturas.SelectedValue == null ? "" : cbofacturas.SelectedValue.ToString();
-                btndetalle.Enabled = true;
+                if (((DataTable)cbofacturas.DataSource).Rows[cbofacturas.SelectedIndex]["T"].ToString() == "A")
+                    btndetalle.Enabled = true;
+                else btndetalle.Enabled = false;
                 ///Buscar Datos de la Factura
                 DatosFactura = CapaLogica.ListarFacturaProveedorNota(cbofacturas.Text, txtruc.Text, PorPagar);
                 if (DatosFactura.Rows.Count > 0)
@@ -208,7 +210,7 @@ namespace HPReserger
         {
             frmnotacreditodet = null;
             txttotalm.Text = DatosDetalle.Rows[DatosDetalle.Rows.Count - 1]["total"].ToString();
-            txttotalm_Leave(sender, new EventArgs());            
+            txttotalm_Leave(sender, new EventArgs());
         }
         decimal porcentaje = 0, sub;
         private void txtsubtotalm_Leave(object sender, EventArgs e)
@@ -225,7 +227,7 @@ namespace HPReserger
         {
             txtigvm.Text = Convert.ToDecimal(txtigvm.Text == "" ? "0" : txtigvm.Text).ToString("n2");
             //modifica el igv
-            porcentaje = Convert.ToDecimal(txtigvm.Text) / Convert.ToDecimal(txtigv.Text);
+            porcentaje = Convert.ToDecimal(txtigvm.Text) / (Convert.ToDecimal(txtigv.Text) == 0 ? 1 : Convert.ToDecimal(txtigv.Text));
             txtsubtotalm.Text = (Convert.ToDecimal(txtsubtotal.Text) * porcentaje).ToString("n2");
             txttotalm.Text = (Convert.ToDecimal(txttotal.Text) * porcentaje).ToString("n2");
             AjustarModificacion();
