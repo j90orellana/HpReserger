@@ -76,7 +76,7 @@ namespace HPReserger
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(851, 566);
+            this.btncancelar.Location = new System.Drawing.Point(889, 426);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 24);
             this.btncancelar.TabIndex = 26;
@@ -223,11 +223,12 @@ namespace HPReserger
             this.dtgconten.Location = new System.Drawing.Point(12, 66);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
+            this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(914, 494);
+            this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dtgconten.Size = new System.Drawing.Size(952, 354);
             this.dtgconten.TabIndex = 24;
             this.dtgconten.TabStop = false;
             // 
@@ -237,6 +238,7 @@ namespace HPReserger
             this.NUMERO.DataPropertyName = "numero";
             this.NUMERO.HeaderText = "Número";
             this.NUMERO.Name = "NUMERO";
+            this.NUMERO.ReadOnly = true;
             this.NUMERO.Width = 75;
             // 
             // doc
@@ -245,6 +247,7 @@ namespace HPReserger
             this.doc.DataPropertyName = "doc";
             this.doc.HeaderText = "TipoDoc";
             this.doc.Name = "doc";
+            this.doc.ReadOnly = true;
             this.doc.Width = 76;
             // 
             // ordencompra
@@ -253,6 +256,7 @@ namespace HPReserger
             this.ordencompra.DataPropertyName = "ordencompra";
             this.ordencompra.HeaderText = "OrdenCompra";
             this.ordencompra.Name = "ordencompra";
+            this.ordencompra.ReadOnly = true;
             this.ordencompra.Width = 107;
             // 
             // Cotizacion
@@ -261,6 +265,7 @@ namespace HPReserger
             this.Cotizacion.DataPropertyName = "cotizacion";
             this.Cotizacion.HeaderText = "Cotización";
             this.Cotizacion.Name = "Cotizacion";
+            this.Cotizacion.ReadOnly = true;
             this.Cotizacion.Width = 87;
             // 
             // Ruc
@@ -269,6 +274,7 @@ namespace HPReserger
             this.Ruc.DataPropertyName = "ruc";
             this.Ruc.HeaderText = "Ruc";
             this.Ruc.Name = "Ruc";
+            this.Ruc.ReadOnly = true;
             this.Ruc.Width = 51;
             // 
             // razon_social
@@ -278,6 +284,7 @@ namespace HPReserger
             this.razon_social.HeaderText = "Razon Social";
             this.razon_social.MinimumWidth = 100;
             this.razon_social.Name = "razon_social";
+            this.razon_social.ReadOnly = true;
             // 
             // email
             // 
@@ -285,6 +292,7 @@ namespace HPReserger
             this.email.DataPropertyName = "email";
             this.email.HeaderText = "Email Proveedor";
             this.email.Name = "email";
+            this.email.ReadOnly = true;
             this.email.Width = 117;
             // 
             // telefono
@@ -293,6 +301,7 @@ namespace HPReserger
             this.telefono.DataPropertyName = "telefono";
             this.telefono.HeaderText = "Telefono";
             this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
             this.telefono.Width = 77;
             // 
             // tipo
@@ -301,6 +310,7 @@ namespace HPReserger
             this.tipo.DataPropertyName = "tipo";
             this.tipo.HeaderText = "Tipo";
             this.tipo.Name = "tipo";
+            this.tipo.ReadOnly = true;
             this.tipo.Width = 55;
             // 
             // fecha
@@ -309,13 +319,14 @@ namespace HPReserger
             this.fecha.DataPropertyName = "fecha";
             this.fecha.HeaderText = "Fecha";
             this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
             this.fecha.Width = 62;
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(436, 566);
+            this.button1.Location = new System.Drawing.Point(455, 426);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 24);
             this.button1.TabIndex = 28;
@@ -327,18 +338,20 @@ namespace HPReserger
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // frmFicSinFaactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 601);
+            this.ClientSize = new System.Drawing.Size(984, 461);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnexportarexcel);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtgconten);
+            this.MinimumSize = new System.Drawing.Size(1000, 500);
             this.Name = "frmFicSinFaactura";
             this.Nombre = "Fic sin Factura";
             this.Text = "Fic sin Factura";

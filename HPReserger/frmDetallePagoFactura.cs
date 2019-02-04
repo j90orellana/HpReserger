@@ -17,11 +17,13 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        public frmDetallePagoFactura(string numero,string proveedors)
+        public frmDetallePagoFactura(int opcion, string numero, int tipoid, string proveedors)
         {
             InitializeComponent();
             numfac = numero;
-            proveedor = proveedors;           
+            proveedor = proveedors;
+            Opcion = opcion;
+            Tipoid = tipoid;
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void btncancelar_Click(object sender, EventArgs e)
@@ -29,13 +31,21 @@ namespace HPReserger
             Close();
         }
         private string _numfac;
+        private int _tipoid;
 
         public string numfac
         {
             get { return _numfac; }
-            set { _numfac = value;  }
+            set { _numfac = value; }
+        }
+
+        public int Tipoid
+        {
+            get { return _tipoid; }
+            set { _tipoid = value; }
         }
         private string _proveedor;
+        public int Opcion;
 
         public string proveedor
         {
@@ -44,7 +54,16 @@ namespace HPReserger
         }
         private void frmDetallePagoFactura_Load(object sender, EventArgs e)
         {
-            dtgconten1.DataSource = CapaLogica.ListarAbonosFacturas(_numfac, _proveedor);
+            dtgconten1.DataSource = CapaLogica.ListarAbonosFacturas(Opcion, _numfac, _tipoid, _proveedor);
+            if (Opcion != 1)
+            {
+                label2.Text = "Cliente";
+                dtgconten1.Columns[proveedorx.Name].HeaderText = "Numdoc";
+                dtgconten1.Columns[razonsocialx.Name].HeaderText = "Nombres";
+                Text = "Detalle de Abono de Clientes";
+                dtgconten1.Columns[subtotalx.Name].Visible = false;
+                dtgconten1.Columns[igvx.Name].Visible = false;
+            }
         }
     }
 }

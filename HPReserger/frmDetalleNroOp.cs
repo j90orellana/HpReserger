@@ -56,7 +56,6 @@ namespace HPReserger
             get { return txtruc.TextValido(); }
             set { txtruc.Text = value; }
         }
-
         public int Tipodet { get; set; }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -65,11 +64,13 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (Tipodet == 1)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(),Tipodet);
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet);
             if (Tipodet == 2)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(),Tipodet);
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet);
             if (Tipodet == 3)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(),Tipodet);
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet);
+            if (Tipodet == 5)
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet);
             this.Close();
         }
         private void frmDetalleNroOp_MouseMove(object sender, MouseEventArgs e)

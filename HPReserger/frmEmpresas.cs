@@ -17,7 +17,7 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
+        HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         int estado = 0;
         string tabla = "TBL_Cargo";
         string campo = "Cargo";
@@ -63,7 +63,7 @@ namespace HPReserger
         }
         public void CargarDatos()
         {
-            dtgconten.DataSource = CCargos.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0);
+            dtgconten.DataSource = CapaLogica.InsertarActualizarListarEmpresas("1", 0, "", "", 0, "", 0, 0, 0, 0, "", 0, 0);
             dtgconten.Focus();
         }
         private void frmEmpresas_Load(object sender, EventArgs e)
@@ -74,43 +74,41 @@ namespace HPReserger
         {
             combito.DisplayMember = "descripcion";
             combito.ValueMember = "codigo";
-            combito.DataSource = CCargos.getCargoTipoContratacion("Codigo_Sector_Empresarial", "Desc_Sector_Empresarial", "TBL_Sector_Empresarial");
+            combito.DataSource = CapaLogica.getCargoTipoContratacion("Codigo_Sector_Empresarial", "Desc_Sector_Empresarial", "TBL_Sector_Empresarial");
         }
         public void CargarSeguros(ComboBox combito)
         {
             combito.DisplayMember = "descripcion";
             combito.ValueMember = "codigo";
-            combito.DataSource = CCargos.getCargoTipoContratacion("ID_Eps", "Empresa_Eps", "TBL_Empresa_Eps");
+            combito.DataSource = CapaLogica.getCargoTipoContratacion("ID_Eps", "Empresa_Eps", "TBL_Empresa_Eps");
         }
         public void CargarTipoid(ComboBox combito)
         {
-            combito.DisplayMember = "descripcion";
-            combito.ValueMember = "codigo";
-            combito.DataSource = CCargos.getCargoTipoContratacion("Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
+            CapaLogica.TablaTipoID(cbotipo);
         }
         public void CargarDepartamento(ComboBox combito)
         {
             combito.DisplayMember = "descripcion";
             combito.ValueMember = "codigo";
-            combito.DataSource = CCargos.getCargoTipoContratacion("Cod_Dept", "Departamento", "TBL_Departamento");
+            combito.DataSource = CapaLogica.getCargoTipoContratacion("Cod_Dept", "Departamento", "TBL_Departamento");
         }
         public void CargarProvincia(ComboBox combito, int valor)
         {
             combito.DisplayMember = "PROVINCIA";
             combito.ValueMember = "CODIGOPROVINCIA";
-            combito.DataSource = CCargos.ListarProvincia(valor);
+            combito.DataSource = CapaLogica.ListarProvincia(valor);
         }
         public void CargarDistrito(ComboBox combito, int valor, int valor2)
         {
             combito.DisplayMember = "DISTRITO";
             combito.ValueMember = "CODIGODISTRITO";
-            combito.DataSource = CCargos.ListarDistrito(valor, valor2);
+            combito.DataSource = CapaLogica.ListarDistrito(valor, valor2);
         }
         public void CargarEmpleado(ComboBox combito)
         {
             combito.DisplayMember = "empleado";
             combito.ValueMember = "tipo";
-            combito.DataSource = CCargos.BuscarEmpleadoActivo();
+            combito.DataSource = CapaLogica.BuscarEmpleadoActivo();
         }
 
         private void cbodep_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,7 +137,7 @@ namespace HPReserger
                 txtruc.Text = dtgconten["ruc", e.RowIndex].Value.ToString();
                 txtnombre.Text = dtgconten["empresa", e.RowIndex].Value.ToString();
                 txtdireccion.Text = dtgconten["direccion", e.RowIndex].Value.ToString();
-                cbotipo.Text = dtgconten["tipoid", e.RowIndex].Value.ToString();
+                cbotipo.Text = dtgconten[tipodni.Name, e.RowIndex].Value.ToString();
                 txtnroid.Text = dtgconten["nroid", e.RowIndex].Value.ToString();
                 cbonombre.Text = dtgconten["representante", e.RowIndex].Value.ToString();
                 cbodep.Text = dtgconten["dep", e.RowIndex].Value.ToString();
@@ -215,6 +213,7 @@ namespace HPReserger
             if (cbotipo.SelectedIndex >= 0)
             {
                 cbonombre.SelectedValue = cbotipo.SelectedValue.ToString() + "/" + txtnroid.Text;
+                txtnroid.MaxLength = (int)((DataTable)cbotipo.DataSource).Rows[cbotipo.SelectedIndex]["leng"];
             }
         }
 
@@ -266,12 +265,12 @@ namespace HPReserger
                 txtnroid.Focus();
                 return;
             }
-            if (cbonombre.SelectedIndex < 0)
-            {
-                Msg("Ingresé Id Del Representante");
-                txtnroid.Focus();
-                return;
-            }
+            //if (cbonombre.SelectedIndex < 0)
+            //{
+            //    Msg("Ingresé Id Del Representante");
+            //    txtnroid.Focus();
+            //    return;
+            //}
             if (cboseguro.SelectedIndex < 0)
             {
                 Msg("Seleccione Compañia de Seguro");
@@ -301,7 +300,7 @@ namespace HPReserger
                     }
                 }
                 //Insertando;
-                CCargos.InsertarActualizarListarEmpresas(txtruc.Text, 1, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
+                CapaLogica.InsertarActualizarListarEmpresas(txtruc.Text, 1, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
                 Msg("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -327,7 +326,7 @@ namespace HPReserger
                     fila++;
                 }
                 //modificando
-                CCargos.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
+                CapaLogica.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
                 Msg("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
@@ -344,7 +343,7 @@ namespace HPReserger
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
-            dtgconten.DataSource = CCargos.InsertarActualizarListarEmpresas("1", 10, txtbuscar.Text, "", 0, "", 0, 0, 0, 0, "", 0, 0);
+            dtgconten.DataSource = CapaLogica.InsertarActualizarListarEmpresas("1", 10, txtbuscar.Text, "", 0, "", 0, 0, 0, 0, "", 0, 0);
         }
 
         private void dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)

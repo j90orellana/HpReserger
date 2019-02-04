@@ -150,10 +150,6 @@
             this.cboBase.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboBase.ForeColor = System.Drawing.Color.White;
             this.cboBase.FormattingEnabled = true;
-            this.cboBase.Items.AddRange(new object[] {
-            "Actual_Beta",
-            "SiGE",
-            "Actual"});
             this.cboBase.Location = new System.Drawing.Point(127, 133);
             this.cboBase.Name = "cboBase";
             this.cboBase.Size = new System.Drawing.Size(171, 24);

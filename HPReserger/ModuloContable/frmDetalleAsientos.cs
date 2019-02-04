@@ -30,9 +30,8 @@ namespace HPReserger
         ///Recibe la fecha del asiento
         public DateTime _fecha;
         public Boolean CheckDuplicar { get { return ChkDuplicar.Checked; } set { ChkDuplicar.Checked = value; } }
-
         public decimal _TipoCambio { get; internal set; }
-
+        public int _Moneda { get; set; }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
         {
@@ -45,10 +44,10 @@ namespace HPReserger
             Dtgconten.Columns[FechaVencimientox.Name].DefaultCellStyle.NullValue = _fecha.ToShortDateString();
             Dtgconten.Columns[FechaRecepcionx.Name].DefaultCellStyle.NullValue = _fecha.ToShortDateString();
             BuscarSiDuplica();
-            SacarTotales();
             Dtgconten.Columns[importemnx.Name].CellTemplate.ToolTipText = "Presione A para Cuadrar\nPresione D para Igualar Todo";
             Dtgconten.Columns[importemex.Name].CellTemplate.ToolTipText = "Presione A para Cuadrar\nPresione D para Igualar Todo";
             Dtgconten.Columns[tipocambiox.Name].CellTemplate.ToolTipText = "Presione D para LLenarlo";
+            SacarTotales();
         }
         public void BuscarSiDuplica()
         {
@@ -157,22 +156,36 @@ namespace HPReserger
             Dtgconten.Columns[xNroOPBanco.Name].ReadOnly = true;
             btnmodificar.Enabled = false; btnaceptar.Enabled = true;
         }
-        decimal Sumatoria = 0;
+        decimal SumatoriaMN = 0, SumatoriaME = 0;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (estado == 2)
             {
-                Sumatoria = 0;
+                SumatoriaMN = SumatoriaME = 0;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     if (item.Cells[importemnx.Name].Value != null)
                         if (item.Cells[importemnx.Name].Value.ToString() != "")
-                            Sumatoria += (decimal)item.Cells[importemnx.Name].Value;
+                            SumatoriaMN += (decimal)item.Cells[importemnx.Name].Value;
+                    if (item.Cells[importemex.Name].Value != null)
+                        if (item.Cells[importemex.Name].Value.ToString() != "")
+                            SumatoriaME += (decimal)item.Cells[importemex.Name].Value;
                 }
-                if (Sumatoria > Total)
+                if (_Moneda == 1)
                 {
-                    msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {Sumatoria.ToString("n2")} ");
-                    return;
+                    if (SumatoriaMN > Total)
+                    {
+                        msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {SumatoriaMN.ToString("n2")} ");
+                        return;
+                    }
+                }
+                else
+                {
+                    if (SumatoriaME > Total)
+                    {
+                        msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {SumatoriaMN.ToString("n2")} ");
+                        return;
+                    }
                 }
                 Boolean result = true;
                 string cadena = "";
@@ -434,7 +447,10 @@ namespace HPReserger
                     }
                     if (e.KeyChar == 'D' || e.KeyChar == 'd')
                     {
-                        Configuraciones.RellenarGrillasAutomatico(Dtgconten, importemnx, Configuraciones.Decimal(txttotal.Text));
+                        if (_Moneda == 1)
+                            Configuraciones.RellenarGrillasAutomatico(Dtgconten, importemnx, Configuraciones.Decimal(txttotal.Text));
+                        else
+                            Configuraciones.RellenarGrillasAutomatico(Dtgconten, importemex, Configuraciones.Decimal(txttotal.Text));
                     }
                 }//moneda extranjera
                 if (Dtgconten.Columns[importemex.Name].Index == y)
@@ -447,7 +463,10 @@ namespace HPReserger
                     }
                     if (e.KeyChar == 'D' || e.KeyChar == 'd')
                     {
-                        Configuraciones.RellenarGrillasAutomatico(Dtgconten, importemnx, Configuraciones.Decimal(txttotal.Text));
+                        if (_Moneda == 1)
+                            Configuraciones.RellenarGrillasAutomatico(Dtgconten, importemnx, Configuraciones.Decimal(txttotal.Text));
+                        else
+                            Configuraciones.RellenarGrillasAutomatico(Dtgconten, importemex, Configuraciones.Decimal(txttotal.Text));
                     }
                 }
                 if (Dtgconten.Columns[tipocambiox.Name].Index == y)
@@ -593,17 +612,35 @@ namespace HPReserger
                 }
             }
         }
+        decimal SumMN, SumME;
         public void SacarTotales()
         {
             decimal TotalMN = 0, TotalME = 0;
+            SumME = SumMN = 0;
             foreach (DataGridViewRow item in Dtgconten.Rows)
             {
-                TotalME += item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString());
-                TotalMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString());
+                if (_Moneda == 1)
+                {
+                    SumME += (item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString()));
+                    SumMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString());
+                    TotalME += (item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString())) *
+                     (item.Cells[tipocambiox.Name].Value == null ? 1 : decimal.Parse(item.Cells[tipocambiox.Name].Value.ToString() == "" ? "1" : item.Cells[tipocambiox.Name].Value.ToString()));
+                    TotalMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString());
+                }
+                else
+                {
+                    TotalME += item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString());
+                    TotalMN += (item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString())) /
+                        (item.Cells[tipocambiox.Name].Value == null ? 1 : decimal.Parse(item.Cells[tipocambiox.Name].Value.ToString() == "" ? "1" : item.Cells[tipocambiox.Name].Value.ToString()));
+                    SumME += (item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString()));
+                    SumMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString());
+                }
             }
-            txttotalmonextranjera.Text = TotalME.ToString("n2");
-            txttotalmonedaNacional.Text = TotalMN.ToString("n2");
-            txtdiferencia.Text = ((Convert.ToDecimal(txttotal.Text)) - (TotalMN)).ToString("n2");
+            txttotalmonextranjera.Text = Math.Abs(TotalME).ToString("n2");
+            txttotalmonedaNacional.Text = Math.Abs(TotalMN).ToString("n2");
+            txttotalme.Text = SumME.ToString("n2");
+            txttotalmn.Text = SumMN.ToString("n2");
+            txtdiferencia.Text = Math.Abs((decimal.Parse(txttotal.Text)) - (_Moneda == 1 ? Math.Abs(TotalMN) : Math.Abs(TotalME))).ToString("n2");
             VerificarDiferencia();
         }
         public void VerificarDiferencia()
@@ -686,16 +723,36 @@ namespace HPReserger
             //    Dtgconten[FechaRecepcionx.Name, y].Value = _fecha;
             //}
             if (Dtgconten[tipocambiox.Name, x].Value != null)
+            //  if (Dtgconten[tipocambiox.Name, x].Value.ToString() != "")
+            {
+
                 if ((decimal)Dtgconten[tipocambiox.Name, x].Value == 0)
                 {
                     if (x == 0)
+                    {
                         Dtgconten[tipocambiox.Name, x].Value = _TipoCambio;
+                        Dtgconten[fk_Monedax.Name, x].Value = _Moneda;
+                    }
                     else
+                    {
                         Dtgconten[tipocambiox.Name, x - 1].Value = _TipoCambio;
+                        Dtgconten[fk_Monedax.Name, x - 1].Value = _Moneda;
+                    }
                 }
+            }
+            else
+            {
+                if (x > 0)
+                {
+                    Dtgconten[tipocambiox.Name, x - 1].Value = _TipoCambio;
+                    Dtgconten[fk_Monedax.Name, x - 1].Value = _Moneda;
+                }
+            }
+            SacarTotales();
         }
         private void Dtgconten_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
+            SacarTotales();
             msj("");
         }
         private void Dtgconten_KeyPress(object sender, KeyPressEventArgs e)

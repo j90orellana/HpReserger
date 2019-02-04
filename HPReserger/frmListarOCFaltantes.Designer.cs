@@ -143,7 +143,7 @@ namespace HPReserger
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1206, 329);
+            this.dtgconten.Size = new System.Drawing.Size(1062, 265);
             this.dtgconten.TabIndex = 0;
             this.dtgconten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
@@ -271,7 +271,7 @@ namespace HPReserger
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaceptar.Location = new System.Drawing.Point(1135, 473);
+            this.btnaceptar.Location = new System.Drawing.Point(991, 409);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(81, 24);
             this.btnaceptar.TabIndex = 1;
@@ -286,7 +286,7 @@ namespace HPReserger
             this.btnrefres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnrefres.Image = ((System.Drawing.Image)(resources.GetObject("btnrefres.Image")));
             this.btnrefres.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnrefres.Location = new System.Drawing.Point(1048, 473);
+            this.btnrefres.Location = new System.Drawing.Point(904, 409);
             this.btnrefres.Name = "btnrefres";
             this.btnrefres.Size = new System.Drawing.Size(81, 24);
             this.btnrefres.TabIndex = 1;
@@ -300,7 +300,7 @@ namespace HPReserger
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(15, 9);
+            this.label1.Location = new System.Drawing.Point(15, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(199, 13);
             this.label1.TabIndex = 2;
@@ -315,7 +315,7 @@ namespace HPReserger
             this.btncorreo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncorreo.Image = ((System.Drawing.Image)(resources.GetObject("btncorreo.Image")));
             this.btncorreo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btncorreo.Location = new System.Drawing.Point(574, 473);
+            this.btncorreo.Location = new System.Drawing.Point(430, 409);
             this.btncorreo.Name = "btncorreo";
             this.btncorreo.Size = new System.Drawing.Size(81, 24);
             this.btncorreo.TabIndex = 8;
@@ -330,9 +330,9 @@ namespace HPReserger
             this.statusStrip1.BackColor = System.Drawing.Color.Transparent;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblmsg});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 503);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1228, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1084, 22);
             this.statusStrip1.TabIndex = 3;
             // 
             // lblmsg
@@ -629,7 +629,7 @@ namespace HPReserger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 525);
+            this.ClientSize = new System.Drawing.Size(1084, 461);
             this.Controls.Add(this.btncorreo);
             this.Controls.Add(this.gb2);
             this.Controls.Add(this.gb1);
@@ -638,6 +638,7 @@ namespace HPReserger
             this.Controls.Add(this.btnrefres);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.dtgconten);
+            this.MinimumSize = new System.Drawing.Size(1100, 500);
             this.Name = "frmListarOCFaltantes";
             this.Nombre = "Orden de Compra - Atención Incompleta.";
             this.Text = "Orden de Compra - Atención Incompleta.";

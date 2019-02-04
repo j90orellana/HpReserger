@@ -33,7 +33,6 @@
             this.btnenviar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtasunto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cboprioridad = new System.Windows.Forms.ComboBox();
             this.btnadjuntar = new System.Windows.Forms.Button();
@@ -43,8 +42,10 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fuenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtmsg = new System.Windows.Forms.RichTextBox();
-            this.txtcorreo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.txtcorreo = new HpResergerUserControls.TextBoxPer();
+            this.txtasunto = new HpResergerUserControls.TextBoxPer();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,27 +82,18 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.label2.Location = new System.Drawing.Point(20, 32);
+            this.label2.Location = new System.Drawing.Point(20, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Asunto:";
-            // 
-            // txtasunto
-            // 
-            this.txtasunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtasunto.Location = new System.Drawing.Point(66, 28);
-            this.txtasunto.Name = "txtasunto";
-            this.txtasunto.Size = new System.Drawing.Size(421, 20);
-            this.txtasunto.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 55);
+            this.label3.Location = new System.Drawing.Point(12, 57);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 6;
@@ -111,7 +103,7 @@
             // 
             this.cboprioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboprioridad.FormattingEnabled = true;
-            this.cboprioridad.Location = new System.Drawing.Point(66, 51);
+            this.cboprioridad.Location = new System.Drawing.Point(66, 53);
             this.cboprioridad.Name = "cboprioridad";
             this.cboprioridad.Size = new System.Drawing.Size(128, 21);
             this.cboprioridad.TabIndex = 5;
@@ -120,7 +112,7 @@
             // 
             this.btnadjuntar.Image = ((System.Drawing.Image)(resources.GetObject("btnadjuntar.Image")));
             this.btnadjuntar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnadjuntar.Location = new System.Drawing.Point(199, 49);
+            this.btnadjuntar.Location = new System.Drawing.Point(199, 51);
             this.btnadjuntar.Name = "btnadjuntar";
             this.btnadjuntar.Size = new System.Drawing.Size(82, 24);
             this.btnadjuntar.TabIndex = 8;
@@ -134,7 +126,7 @@
             this.lbldatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbldatos.BackColor = System.Drawing.Color.Transparent;
-            this.lbldatos.Location = new System.Drawing.Point(292, 51);
+            this.lbldatos.Location = new System.Drawing.Point(292, 53);
             this.lbldatos.Name = "lbldatos";
             this.lbldatos.Size = new System.Drawing.Size(195, 21);
             this.lbldatos.TabIndex = 9;
@@ -169,21 +161,12 @@
             this.txtmsg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtmsg.EnableAutoDragDrop = true;
             this.txtmsg.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtmsg.Location = new System.Drawing.Point(12, 75);
+            this.txtmsg.Location = new System.Drawing.Point(12, 77);
             this.txtmsg.Name = "txtmsg";
             this.txtmsg.ShowSelectionMargin = true;
-            this.txtmsg.Size = new System.Drawing.Size(475, 251);
+            this.txtmsg.Size = new System.Drawing.Size(475, 249);
             this.txtmsg.TabIndex = 59;
             this.txtmsg.Text = "";
-            // 
-            // txtcorreo
-            // 
-            this.txtcorreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtcorreo.Location = new System.Drawing.Point(66, 6);
-            this.txtcorreo.Name = "txtcorreo";
-            this.txtcorreo.Size = new System.Drawing.Size(421, 20);
-            this.txtcorreo.TabIndex = 60;
             // 
             // label1
             // 
@@ -196,11 +179,57 @@
             this.label1.TabIndex = 61;
             this.label1.Text = "Correo:";
             // 
+            // txtcorreo
+            // 
+            this.txtcorreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtcorreo.BackColor = System.Drawing.Color.White;
+            this.txtcorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcorreo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtcorreo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtcorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcorreo.ForeColor = System.Drawing.Color.Black;
+            this.txtcorreo.Format = null;
+            this.txtcorreo.Location = new System.Drawing.Point(66, 6);
+            this.txtcorreo.MaxLength = 5000;
+            this.txtcorreo.Name = "txtcorreo";
+            this.txtcorreo.NextControlOnEnter = null;
+            this.txtcorreo.Size = new System.Drawing.Size(421, 21);
+            this.txtcorreo.TabIndex = 247;
+            this.txtcorreo.Text = "Ingrese Correo";
+            this.txtcorreo.TextoDefecto = "Ingrese Correo";
+            this.txtcorreo.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtcorreo.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.toolTip1.SetToolTip(this.txtcorreo, "Ingrese Correos Separados de: ;");
+            // 
+            // txtasunto
+            // 
+            this.txtasunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtasunto.BackColor = System.Drawing.Color.White;
+            this.txtasunto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtasunto.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtasunto.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtasunto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtasunto.ForeColor = System.Drawing.Color.Black;
+            this.txtasunto.Format = null;
+            this.txtasunto.Location = new System.Drawing.Point(66, 29);
+            this.txtasunto.MaxLength = 5000;
+            this.txtasunto.Name = "txtasunto";
+            this.txtasunto.NextControlOnEnter = null;
+            this.txtasunto.Size = new System.Drawing.Size(421, 21);
+            this.txtasunto.TabIndex = 247;
+            this.txtasunto.Text = "Ingrese Asunto Del Correo";
+            this.txtasunto.TextoDefecto = "Ingrese Asunto del Correo";
+            this.txtasunto.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtasunto.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
             // frmMensajeCorreo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 364);
+            this.Controls.Add(this.txtasunto);
             this.Controls.Add(this.txtcorreo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtmsg);
@@ -208,7 +237,6 @@
             this.Controls.Add(this.btnadjuntar);
             this.Controls.Add(this.cboprioridad);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtasunto);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnenviar);
@@ -216,8 +244,8 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(515, 403);
             this.Name = "frmMensajeCorreo";
-            this.Nombre = "Envío de e-mail";
-            this.Text = "Envío de e-mail";
+            this.Nombre = "Envío de Correo Electrónico";
+            this.Text = "Envío de Correo Electrónico";
             this.Load += new System.EventHandler(this.frmMensajeCorreo_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -229,7 +257,6 @@
         private System.Windows.Forms.Button btnenviar;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.TextBox txtasunto;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox cboprioridad;
         private System.Windows.Forms.Button btnadjuntar;
@@ -238,8 +265,10 @@
         private System.Windows.Forms.ToolStripMenuItem fuenteToolStripMenuItem;
         public System.Windows.Forms.FontDialog fontDialog1;
         public System.Windows.Forms.RichTextBox txtmsg;
-        public System.Windows.Forms.TextBox txtcorreo;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.OpenFileDialog Openfiledatos;
+        private System.Windows.Forms.ToolTip toolTip1;
+        public HpResergerUserControls.TextBoxPer txtcorreo;
+        public HpResergerUserControls.TextBoxPer txtasunto;
     }
 }

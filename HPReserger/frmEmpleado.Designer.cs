@@ -178,7 +178,7 @@
             this.cboTipoDocumento.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(207, 21);
-            this.cboTipoDocumento.TabIndex = 4;
+            this.cboTipoDocumento.TabIndex = 1;
             this.cboTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cboTipoDocumento_SelectedIndexChanged);
             // 
             // txtNombres
@@ -201,7 +201,7 @@
             this.txtApellidoMaterno.MaxLength = 30;
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.Size = new System.Drawing.Size(241, 21);
-            this.txtApellidoMaterno.TabIndex = 6;
+            this.txtApellidoMaterno.TabIndex = 4;
             // 
             // txtApellidoPaterno
             // 
@@ -212,7 +212,7 @@
             this.txtApellidoPaterno.MaxLength = 30;
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(241, 21);
-            this.txtApellidoPaterno.TabIndex = 7;
+            this.txtApellidoPaterno.TabIndex = 3;
             // 
             // txtNumeroDocumento
             // 
@@ -222,7 +222,7 @@
             this.txtNumeroDocumento.MaxLength = 10;
             this.txtNumeroDocumento.Name = "txtNumeroDocumento";
             this.txtNumeroDocumento.Size = new System.Drawing.Size(110, 21);
-            this.txtNumeroDocumento.TabIndex = 1;
+            this.txtNumeroDocumento.TabIndex = 2;
             this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumeroDocumento.TextChanged += new System.EventHandler(this.txtNumeroDocumento_TextChanged);
             this.txtNumeroDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumeroDocumento_KeyDown);
@@ -357,7 +357,7 @@
             this.cboSexo.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cboSexo.Name = "cboSexo";
             this.cboSexo.Size = new System.Drawing.Size(139, 21);
-            this.cboSexo.TabIndex = 19;
+            this.cboSexo.TabIndex = 6;
             // 
             // dtpFecha
             // 
@@ -366,7 +366,7 @@
             this.dtpFecha.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(139, 20);
-            this.dtpFecha.TabIndex = 20;
+            this.dtpFecha.TabIndex = 8;
             // 
             // txtDireccion
             // 
@@ -377,7 +377,7 @@
             this.txtDireccion.MaxLength = 80;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(331, 21);
-            this.txtDireccion.TabIndex = 21;
+            this.txtDireccion.TabIndex = 10;
             // 
             // cboDepartamento
             // 
@@ -388,7 +388,7 @@
             this.cboDepartamento.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cboDepartamento.Name = "cboDepartamento";
             this.cboDepartamento.Size = new System.Drawing.Size(157, 21);
-            this.cboDepartamento.TabIndex = 22;
+            this.cboDepartamento.TabIndex = 11;
             this.cboDepartamento.SelectedIndexChanged += new System.EventHandler(this.cboDepartamento_SelectedIndexChanged);
             // 
             // cboLugarNacimiento
@@ -410,7 +410,7 @@
             this.txtTelefonoFijo.MaxLength = 10;
             this.txtTelefonoFijo.Name = "txtTelefonoFijo";
             this.txtTelefonoFijo.Size = new System.Drawing.Size(157, 21);
-            this.txtTelefonoFijo.TabIndex = 24;
+            this.txtTelefonoFijo.TabIndex = 14;
             this.txtTelefonoFijo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefonoFijo_KeyDown);
             this.txtTelefonoFijo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoFijo_KeyPress);
             // 
@@ -436,7 +436,7 @@
             this.cboProfesion.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cboProfesion.Name = "cboProfesion";
             this.cboProfesion.Size = new System.Drawing.Size(314, 21);
-            this.cboProfesion.TabIndex = 26;
+            this.cboProfesion.TabIndex = 16;
             // 
             // txtReciboServicio
             // 
@@ -481,7 +481,7 @@
             this.cboEstadoCivil.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cboEstadoCivil.Name = "cboEstadoCivil";
             this.cboEstadoCivil.Size = new System.Drawing.Size(118, 21);
-            this.cboEstadoCivil.TabIndex = 32;
+            this.cboEstadoCivil.TabIndex = 7;
             this.cboEstadoCivil.SelectedIndexChanged += new System.EventHandler(this.cboEstadoCivil_SelectedIndexChanged);
             // 
             // label15
@@ -541,7 +541,7 @@
             this.cboDistrito.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cboDistrito.Name = "cboDistrito";
             this.cboDistrito.Size = new System.Drawing.Size(190, 21);
-            this.cboDistrito.TabIndex = 36;
+            this.cboDistrito.TabIndex = 13;
             // 
             // cboProvincia
             // 
@@ -552,7 +552,7 @@
             this.cboProvincia.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.Size = new System.Drawing.Size(118, 21);
-            this.cboProvincia.TabIndex = 37;
+            this.cboProvincia.TabIndex = 12;
             this.cboProvincia.SelectedIndexChanged += new System.EventHandler(this.cboProvincia_SelectedIndexChanged);
             // 
             // label19
@@ -575,7 +575,7 @@
             this.txtTelefonoCelular.MaxLength = 15;
             this.txtTelefonoCelular.Name = "txtTelefonoCelular";
             this.txtTelefonoCelular.Size = new System.Drawing.Size(112, 21);
-            this.txtTelefonoCelular.TabIndex = 40;
+            this.txtTelefonoCelular.TabIndex = 15;
             this.txtTelefonoCelular.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefonoCelular_KeyDown);
             this.txtTelefonoCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoCelular_KeyPress);
             // 
@@ -600,7 +600,7 @@
             this.cboGradoInstruccion.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cboGradoInstruccion.Name = "cboGradoInstruccion";
             this.cboGradoInstruccion.Size = new System.Drawing.Size(158, 21);
-            this.cboGradoInstruccion.TabIndex = 42;
+            this.cboGradoInstruccion.TabIndex = 17;
             // 
             // label21
             // 
@@ -816,7 +816,7 @@
             this.cbopais.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.cbopais.Name = "cbopais";
             this.cbopais.Size = new System.Drawing.Size(148, 21);
-            this.cbopais.TabIndex = 61;
+            this.cbopais.TabIndex = 9;
             this.cbopais.SelectedIndexChanged += new System.EventHandler(this.cbopais_SelectedIndexChanged);
             // 
             // txtlugarnacimiento

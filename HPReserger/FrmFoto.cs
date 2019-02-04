@@ -17,6 +17,8 @@ namespace HPReserger
         {
             InitializeComponent();
             Text = nombres.Trim();
+            pbfoto.Image = fotito;
+
         }
         public Image fotito;
         public string Nombre;
@@ -25,12 +27,12 @@ namespace HPReserger
             Text = Nombre;
             if (fotito != null)
             {
-                pbfoto.Image = fotito;
+                //  pbfoto.Image = fotito;
                 this.Size = pbfoto.Image.Size;
                 this.Size = new Size(pbfoto.Image.Size.Width + 25, pbfoto.Image.Size.Height + 50);
                 if (Owner != null)
                 {
-                    this.Top = (this.Owner.Height - pbfoto.Height)/2 ;
+                    this.Top = (this.Owner.Height - pbfoto.Height) / 2;
                     this.Left = (this.Owner.Width - pbfoto.Width) / 2;
                 }
                 else

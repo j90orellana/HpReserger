@@ -60,8 +60,8 @@ namespace HpResergerUserControls
         {
             if (fotito.Image != null)
             {
-                frmImagenes foto = new frmImagenes($"Imagen de {nombre}");
-                foto.fotito = fotito.Image;
+                frmImagenes foto = new frmImagenes($"Imagen de {nombre}",fotito.Image);
+               // foto.fotito = fotito.Image;
                 foto.Owner = Padre;
                 foto.ShowDialog();
             }

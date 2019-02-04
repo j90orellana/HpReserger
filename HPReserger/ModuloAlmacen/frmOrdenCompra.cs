@@ -406,10 +406,12 @@ namespace HPReserger
                 Verificar = true;
                 MailMessage email = new MailMessage();
                 //CORREO DE PROVEEDOR
-                email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
+                string[] CorreosSeparados = mensajito.txtcorreo.Text.Split(';');
+                string CorreoJuntos = string.Join(",", CorreosSeparados);
+                email.To.Add(CorreoJuntos);
                 ///
                 email.From = new MailAddress("v90reyes@hotmail.com");
-                email.Subject = mensajito.txtasunto.Text;
+                email.Subject = mensajito.txtasunto.TextValido();
                 email.Priority = mensajito.PrioridadCorreo();
                 email.Body = mensajito.txtmsg.Text;
                 //ContentType alo = new ContentType();

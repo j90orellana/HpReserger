@@ -31,7 +31,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -159,10 +159,12 @@ namespace HPReserger
             {
                 MailMessage email = new MailMessage();
                 //CORREO DE PROVEEDOR
-                email.To.Add(new MailAddress(mensajito.txtcorreo.Text));
+                string[] CorreosSeparados = mensajito.txtcorreo.Text.Split(';');
+                string CorreoJuntos = string.Join(",", CorreosSeparados);
+                email.To.Add(CorreoJuntos);
                 ///
                 email.From = new MailAddress("v90reyes@hotmail.com");
-                email.Subject = mensajito.txtasunto.Text;
+                email.Subject = mensajito.txtasunto.TextValido();
                 email.Priority = mensajito.PrioridadCorreo();
                 //email.Body = mensajito.cadena;
                 //ContentType alo = new ContentType(MediaTypeNames.Text.RichText);
@@ -207,6 +209,12 @@ namespace HPReserger
                 MSG("No se Puede Cerrar, Se está Enviando el Correo …");
             }
         }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
             dtgconten.DataSource = CLFicFacturas.ListarFicSinFactura(txtbuscar.Text, fic, proveedor, check, cbodocumento.SelectedIndex.ToString());

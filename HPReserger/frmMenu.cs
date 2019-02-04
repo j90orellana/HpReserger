@@ -3251,5 +3251,28 @@ namespace HPReserger
         {
             frmdetventa = null;
         }
+        frmAbonosVentas frmabonoventa;
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            if (frmabonoventa == null)
+            {
+                frmabonoventa = new frmAbonosVentas();
+                frmabonoventa.MdiParent = this;
+                frmabonoventa.Icon = ICono;
+                frmabonoventa.FormClosed += new FormClosedEventHandler(cerrarabonoventa);
+                frmabonoventa.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmabonoventa.Activate();
+                ValidarVentanas(frmabonoventa);
+            }
+        }
+
+        private void cerrarabonoventa(object sender, FormClosedEventArgs e)
+        {
+            frmabonoventa = null;
+        }
     }
 }

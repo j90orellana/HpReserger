@@ -21,21 +21,19 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL Cdepartamento = new HPResergerCapaLogica.HPResergerCL();
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-
-
-            tipmsg.Show("Ingrese Departamento", txtdepartamento, 1000);
+                        tipmsg.Show("Ingrese Departamento", txtdepartamento, 1000);
             txtcodigo.Text = txtdepartamento.Text = "";
             estado = 1;
             Desactivar();
+            txtdepartamento.ReadOnly = false;
         }
-
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             tipmsg.Show("Ingrese departamento", txtdepartamento, 700);
             Desactivar();
             estado = 2;
+            txtdepartamento.ReadOnly = false;
         }
-
         private void btneliminar_Click(object sender, EventArgs e)
         {
             estado = 3;
@@ -88,6 +86,7 @@ namespace HPReserger
                 Activar();
                 frmdepartamento_Load(sender, e);
             }
+            txtdepartamento.ReadOnly = true;
         }
         public Boolean Acepta = false;
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -123,6 +122,7 @@ namespace HPReserger
                 estado = 0;
                 frmdepartamento_Load(sender, e);
                 Activar();
+                txtdepartamento.ReadOnly = true;
             }
         }
 

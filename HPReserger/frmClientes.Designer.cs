@@ -502,7 +502,6 @@
             // btnaceptar
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.Location = new System.Drawing.Point(777, 630);
@@ -522,6 +521,7 @@
             this.txtcodigo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.ForeColor = System.Drawing.Color.Black;
+            this.txtcodigo.Format = null;
             this.txtcodigo.Location = new System.Drawing.Point(75, 13);
             this.txtcodigo.MaxLength = 100;
             this.txtcodigo.Name = "txtcodigo";
@@ -544,6 +544,7 @@
             this.txtnroid.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnroid.ForeColor = System.Drawing.Color.Black;
+            this.txtnroid.Format = null;
             this.txtnroid.Location = new System.Drawing.Point(653, 13);
             this.txtnroid.MaxLength = 10;
             this.txtnroid.Name = "txtnroid";
@@ -554,7 +555,7 @@
             this.txtnroid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnroid.TextoDefecto = "000000";
             this.txtnroid.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
+            this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumerosConCero;
             // 
             // txtnombre
             // 
@@ -564,6 +565,7 @@
             this.txtnombre.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnombre.ForeColor = System.Drawing.Color.Black;
+            this.txtnombre.Format = null;
             this.txtnombre.Location = new System.Drawing.Point(75, 37);
             this.txtnombre.MaxLength = 100;
             this.txtnombre.Name = "txtnombre";
@@ -583,6 +585,7 @@
             this.txtapetpat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtapetpat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtapetpat.ForeColor = System.Drawing.Color.Black;
+            this.txtapetpat.Format = null;
             this.txtapetpat.Location = new System.Drawing.Point(391, 37);
             this.txtapetpat.MaxLength = 30;
             this.txtapetpat.Name = "txtapetpat";
@@ -602,6 +605,7 @@
             this.txtapemat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtapemat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtapemat.ForeColor = System.Drawing.Color.Black;
+            this.txtapemat.Format = null;
             this.txtapemat.Location = new System.Drawing.Point(653, 37);
             this.txtapemat.MaxLength = 30;
             this.txtapemat.Name = "txtapemat";
@@ -621,6 +625,7 @@
             this.txtdireccion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtdireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdireccion.ForeColor = System.Drawing.Color.Black;
+            this.txtdireccion.Format = null;
             this.txtdireccion.Location = new System.Drawing.Point(75, 85);
             this.txtdireccion.MaxLength = 100;
             this.txtdireccion.Name = "txtdireccion";
@@ -640,6 +645,7 @@
             this.txttelfijo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txttelfijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttelfijo.ForeColor = System.Drawing.Color.Black;
+            this.txttelfijo.Format = null;
             this.txttelfijo.Location = new System.Drawing.Point(545, 85);
             this.txttelfijo.MaxLength = 10;
             this.txttelfijo.Name = "txttelfijo";
@@ -660,6 +666,7 @@
             this.txttelcelular.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txttelcelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttelcelular.ForeColor = System.Drawing.Color.Black;
+            this.txttelcelular.Format = null;
             this.txttelcelular.Location = new System.Drawing.Point(724, 85);
             this.txttelcelular.MaxLength = 15;
             this.txttelcelular.Name = "txttelcelular";
@@ -680,6 +687,7 @@
             this.txtemail.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtemail.ForeColor = System.Drawing.Color.Black;
+            this.txtemail.Format = null;
             this.txtemail.Location = new System.Drawing.Point(75, 133);
             this.txtemail.MaxLength = 50;
             this.txtemail.Name = "txtemail";
@@ -699,6 +707,7 @@
             this.txtocupacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtocupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtocupacion.ForeColor = System.Drawing.Color.Black;
+            this.txtocupacion.Format = null;
             this.txtocupacion.Location = new System.Drawing.Point(391, 133);
             this.txtocupacion.MaxLength = 50;
             this.txtocupacion.Name = "txtocupacion";
@@ -987,7 +996,6 @@
             this.txtBuscar.TabIndex = 95;
             this.txtBuscar.BuscarClick += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
             this.txtBuscar.BuscarTextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
-           
             // 
             // gp1
             // 

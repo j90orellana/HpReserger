@@ -45,16 +45,14 @@ namespace HPReserger
 
         public void CargarDocumentoIdentidad()
         {
-            cbodocumento.DataSource = CProveedor.getCargoTipoContratacion("Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
-            cbodocumento.DisplayMember = "DESCRIPCION";
-            cbodocumento.ValueMember = "CODIGO";
+            CProveedor.TablaTipoID(cbodocumento);
             cbodocumento.Text = "RUC";
             /////VALORES POR DEFECTO
             DataTable TDoc = (DataTable)cbodocumento.DataSource;
             int length = TDoc.Rows.Count;
             for (int i = 0; i < length; i++)
             {
-                if (TDoc.Rows[i]["DESCRIPCION"].ToString().ToUpper() == "RUC" || TDoc.Rows[i]["DESCRIPCION"].ToString().ToUpper() == "OTROS TIPOS") { }
+                if (TDoc.Rows[i]["valor"].ToString().ToUpper() == "RUC" || TDoc.Rows[i]["valor"].ToString().ToUpper() == "OTROS") { }
                 else { TDoc.Rows.RemoveAt(i); i--; length--; }
             }
         }
@@ -210,6 +208,7 @@ namespace HPReserger
             int y = e.RowIndex;
             if (y >= 0)
             {
+                cbodocumento.SelectedValue = (int)dtgconten[xtipoid.Name, y].Value;
                 txtnumeroidentidad.Text = dtgconten["RUC", y].Value.ToString();
                 txtnombrerazonsocial.Text = dtgconten["RAZONSOCIAL", y].Value.ToString();
                 txtnombrecomercial.Text = dtgconten["nombrecomercial", y].Value.ToString();
@@ -236,7 +235,7 @@ namespace HPReserger
                 cboctadolares.SelectedIndex = int.Parse(dtgconten["TIPOCTADOLARES", y].Value.ToString() == "" ? "0" : dtgconten["TIPOCTADOLARES", y].Value.ToString()) - 1;
                 txtplazofijo.Text = dtgconten[PLAZOPAGOX.Name, y].Value.ToString();
                 cboestado.SelectedValue = (int)dtgconten[xEstado.Name, y].Value;
-                cbocondicion.SelectedValue = (int)dtgconten[CONDICION.Name, y].Value;
+                cbocondicion.SelectedValue = dtgconten[CONDICION.Name, y].Value.ToString() == "" ? 0 : (int)dtgconten[CONDICION.Name, y].Value;
                 chknuevorus.Checked = dtgconten[xAFECTONVORUS.Name, y].Value.ToString() == "" ? false : (Boolean)(dtgconten[xAFECTONVORUS.Name, y].Value);
                 chkAgentePercepcion.Checked = dtgconten[xAGENTEPERCEPVTAINT.Name, y].Value.ToString() == "" ? false : (Boolean)(dtgconten[xAGENTEPERCEPVTAINT.Name, y].Value);
                 chkbuenContribuyente.Checked = dtgconten[xBUENCONTRIB.Name, y].Value.ToString() == "" ? false : (Boolean)(dtgconten[xBUENCONTRIB.Name, y].Value);
@@ -312,14 +311,14 @@ namespace HPReserger
             txtcuentasoles.Text =
             txtcuentadolares.Text =
             txtccisoles.Text =
-            txtccidolares.Text =
-         txtnombrecomercial.Text = txtcuentadetracciones.Text = "";
+            txtccidolares.Text = txtnombrecomercial.Text = txtcuentadetracciones.Text = "";
             cboctasoles.SelectedIndex = cboctadolares.SelectedIndex = -1;
             Iniciar(true);
             llamada = 0;
             txtplazofijo.Text = "30";
             cboestado.SelectedIndex = 0; cbocondicion.SelectedIndex = 0;
             chknuevorus.Checked = chkAgentePercepcion.Checked = chkbuenContribuyente.Checked = chkretencion.Checked = false;
+            cbodocumento_SelectedIndexChanged(sender, e);
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -422,7 +421,10 @@ namespace HPReserger
                  "Banco Dolares = " + cbobancodolares.Text + "\n" + "Nro CTa Detracciones = " + nroctadetracciones + "\n" + "Régimen = " + cbocondicion.Text + "\n", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         Boolean salida = false;
-
+        public void msg(string cadena)
+        {
+            HPResergerFunciones.Utilitarios.msg(cadena);
+        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (llamada != 0)
@@ -435,13 +437,15 @@ namespace HPReserger
             string Documentoid, nombrerazon;
             Documentoid = txtnumeroidentidad.Text;
             nombrerazon = txtnombrerazonsocial.Text;
-            int plzfijo = int.Parse(txtplazofijo.Text == "" ? "0" : txtplazofijo.Text);
+            int plzfijo = int.Parse(txtplazofijo.Text == "" ? "0" : txtplazofijo.Text);          
             if (estado == 1 && VerificarDatos(Documentoid, nombrerazon))
             {
                 CargarValoresDeIngreso();
+                cbodocumento_SelectedIndexChanged(sender, e);
+                if (txtnumeroidentidad.MaxLength != txtnumeroidentidad.TextLength) { txtnumeroidentidad.Focus(); msg($"El Tamaño del Numero de Documento debe ser de {txtnumeroidentidad.MaxLength}"); return; }
                 //MensajedeDatos();               
                 //usp_insertar_proveedor
-                CProveedor.InsertarProveedor(anterior, numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
+                CProveedor.InsertarProveedor((int)cbodocumento.SelectedValue, anterior, numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                 persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, tipoper, ctasoles, ctadolares, plzfijo
                 , int.Parse(cbocondicion.SelectedValue.ToString()), int.Parse(cboestado.SelectedValue.ToString()), chknuevorus.Checked, chkretencion.Checked, chkbuenContribuyente.Checked, chkAgentePercepcion.Checked);
                 PresentarValor("");
@@ -453,9 +457,11 @@ namespace HPReserger
                 if (estado == 2)
                 {
                     CargarValoresDeIngreso();
+                    cbodocumento_SelectedIndexChanged(sender, e);
+                    if (txtnumeroidentidad.MaxLength != txtnumeroidentidad.TextLength) { txtnumeroidentidad.Focus(); msg($"El Tamaño del Numero de Documento debe ser de {txtnumeroidentidad.MaxLength}"); return; }
                     //MensajedeDatos();                    
                     //usp_actualizar_proveedor
-                    CProveedor.ActualizarProveedor(anterior, numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
+                    CProveedor.ActualizarProveedor((int)cbodocumento.SelectedValue, anterior, numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                     persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, tipoper, ctasoles, ctadolares, plzfijo
                       , int.Parse(cbocondicion.SelectedValue.ToString()), int.Parse(cboestado.SelectedValue.ToString()), chknuevorus.Checked, chkretencion.Checked, chkbuenContribuyente.Checked, chkAgentePercepcion.Checked);
                     PresentarValor("");
@@ -588,6 +594,16 @@ namespace HPReserger
 
         }
 
+        private void cbodocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int x = cbodocumento.SelectedIndex;
+            try
+            {
+                if (cbodocumento.DataSource != null)
+                    txtnumeroidentidad.MaxLength = (int)((DataTable)cbodocumento.DataSource).Rows[x]["Leng"];
+            }
+            catch (Exception) { }
+        }
         private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ValidarPegarSoloLetras(e, txtpersonacontacto, 40);

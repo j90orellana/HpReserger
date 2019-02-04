@@ -40,6 +40,15 @@ namespace HPReserger
             dtgconten.DataSource = CapaLogica.DetraccionesPorPAgarVentas((int)cboempresa.SelectedValue);
             NumRegistrosdtg();
             SeleccionarDetracionesSeleccionadas();
+            CalcularValoresRedondeoyDiferencia();
+        }
+        public void CalcularValoresRedondeoyDiferencia()
+        {
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                item.Cells[xredondeo.Name].Value = Math.Round((decimal)item.Cells[ImportePEN.Name].Value);
+                //  item.Cells[xDiferencia.Name].Value = (decimal)item.Cells[porpagarx.Name].Value - (decimal)item.Cells[xRedondeo.Name].Value;
+            }
         }
         public void CargarCuentasBancos()
         {
@@ -184,6 +193,13 @@ namespace HPReserger
             int x = e.RowIndex, y = e.ColumnIndex;
             if (dtgconten.RowCount > 0)
             {
+                if (y == dtgconten.Columns[xredondeo.Name].Index)
+                {
+                    /////si el valor de la detracciones es menor que 1 sol
+                    if (decimal.Parse(dtgconten[xredondeo.Name, x].Value.ToString()) < 1)
+                        dtgconten[xredondeo.Name, x].Value = 1;
+                    dtgconten[xdiferencia.Name, x].Value = (decimal)dtgconten[ImportePEN.Name, x].Value - decimal.Parse(dtgconten[xredondeo.Name, x].Value.ToString());
+                }
                 //if ((decimal)dtgconten[porpagarx.Name, x].Value > (decimal)dtgconten[Detraccionx.Name, x].Value)
                 //{
                 //    dtgconten[porpagarx.Name, x].Value = (decimal)dtgconten[Detraccionx.Name, x].Value;
@@ -191,8 +207,10 @@ namespace HPReserger
                 CalcularTotal();
             }
         }
+        decimal SumDiferencia = 0, SumRedondeo = 0;
         public void CalcularTotal()
         {
+            SumDiferencia = SumRedondeo = 0;
             sumatoria = 0;
             int Seleccionados = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
@@ -201,13 +219,49 @@ namespace HPReserger
                 //Valores Seleccionados
                 {
                     sumatoria += (decimal)item.Cells[ImportePEN.Name].Value;
+                    SumDiferencia += (decimal)item.Cells[xdiferencia.Name].Value;
+                    SumRedondeo += (decimal)item.Cells[xredondeo.Name].Value;
                     Seleccionados++;
                 }
             }
             txttotal.Text = sumatoria.ToString("n2");
+            txtredondeo.Text = SumRedondeo.ToString("n2");
+            txtdiferencia.Text = SumDiferencia.ToString("n2");
             if (Seleccionados > 0) btnaceptar.Enabled = true;
             else btnaceptar.Enabled = false;
         }
+        public Boolean VerificarErrorDiferencia()
+        {
+            Boolean Prueba = true;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                if ((int)item.Cells[opcionx.Name].Value == 1)
+                {
+                    if (Math.Abs((decimal)item.Cells[xdiferencia.Name].Value) >= 1)
+                    {
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xredondeo.Name]);
+                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xdiferencia.Name]);
+                        Prueba = false;
+                    }
+                    else
+                    {
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xredondeo.Name]);
+                        HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xdiferencia.Name]);
+                    }
+                }
+                else
+                {
+                    HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xredondeo.Name]);
+                    HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xdiferencia.Name]);
+                }
+            }
+            if (!Prueba)
+            {
+                msg("El Redondeo no puede Superar a : S/ 1");
+            }
+            return Prueba;
+        }
+        public DialogResult msgP(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNoCancel(cadena); }
         public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -254,7 +308,26 @@ namespace HPReserger
                                 HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[ImportePEN.Name]);
                         }
                     }
+                    if (!VerificarErrorDiferencia()) return;
                     if (Verificar) { HPResergerFunciones.Utilitarios.msg("No se Puede Pagar Valores en Cero"); return; }
+                    ///PROCESO DEL TXT
+                    DialogResult Result = msgP("Desea Generar el TXT de Pago");
+                    if (Result == DialogResult.Cancel) return;
+                    if (Result == DialogResult.Yes)
+                    {
+                        frmDetraccionVentaPagoBancoNacion frmpagoventa = new frmDetraccionVentaPagoBancoNacion();
+                        frmpagoventa.IdEmpresa = (int)cboempresa.SelectedValue;
+                        ////datos de la tabla
+                        //frmpagoventa.TDetracciones = new DataTable();
+                        dtgconten.EndEdit();
+                        dtgconten.RefreshEdit();
+                        //frmpagoventa.TDetracciones = new DataTable();
+                        frmpagoventa.TDetracciones = ((DataTable)dtgconten.DataSource).Clone();
+                        foreach (DataRow item in ((DataTable)dtgconten.DataSource).Rows)
+                            frmpagoventa.TDetracciones.Rows.Add(item.ItemArray);
+
+                        if (frmpagoventa.ShowDialog() != DialogResult.Yes) return;
+                    }
                     //PROCESO DE PAGO
                     string NroBoleta = "", Idcliente = "";
                     int Tipoid = 0;
@@ -271,7 +344,7 @@ namespace HPReserger
                                 Idcliente = item.Cells[Clientex.Name].Value.ToString();
                                 Tipoid = (int)item.Cells[tipoidx.Name].Value;
                                 CapaLogica.DetraccionesVenta(1, NroBoleta, Tipoid, Idcliente, (decimal)item.Cells[ImporteMOx.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value
-                                    , (decimal)item.Cells[xtc.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaContable.Value, frmLogin.CodigoUsuario);
+                                    , (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaContable.Value, frmLogin.CodigoUsuario);
                             }
                         }
                     }
@@ -282,7 +355,7 @@ namespace HPReserger
                     string CuentaContableBanco = cbocuentabanco.SelectedValue.ToString();
                     string CuentaDetracciones = txtcuentadetracciones.Text;
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesVentaCabecera(codigo, cuo, decimal.Parse(txttotal.Text), NroBoleta, CuentaDetracciones, CuentaContableBanco, dtpFechaContable.Value, txtglosa.Text);
+                    CapaLogica.PagarDetracionesVentaCabecera(codigo, cuo, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones, CuentaContableBanco, "9559501", dtpFechaContable.Value, txtglosa.Text);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -294,14 +367,16 @@ namespace HPReserger
                                 string numfac = fac[1];
                                 Idcliente = item.Cells[Clientex.Name].Value.ToString();
                                 CapaLogica.PagarDetracionesVentaDetalle(codigo, (int)item.Cells[tipoidx.Name].Value, item.Cells[Clientex.Name].Value.ToString(), item.Cells[razonx.Name].Value.ToString()
-                                , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[ImportePEN.Name].Value, item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value /
-                                (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value, (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta,
-                                dtpFechaContable.Value, txtglosa.Text, frmLogin.CodigoUsuario);
+                                , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value
+                                //item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value / (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value
+                                , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, dtpFechaContable.Value, "9559501", txtglosa.Text, frmLogin.CodigoUsuario);
 
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
                     HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! \nCon Asiento {cuo}");
                     btnActualizar_Click(sender, e);
+                    txttotal.Text = txtdiferencia.Text = txtredondeo.Text = "0.00";
+
                 }
                 else HPResergerFunciones.Utilitarios.msg("Total de Detracciones en Cero");
             }
@@ -322,6 +397,30 @@ namespace HPReserger
         {
             BuscarCuentaDetracicones();
         }
-
+        TextBox txt;
+        private void dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            int x = dtgconten.CurrentRow.Index, y = dtgconten.CurrentCell.ColumnIndex;
+            if (y == dtgconten.Columns[xredondeo.Name].Index)
+            {
+                txt = e.Control as TextBox;
+                txt.KeyPress -= Txt_KeyPress;
+                txt.KeyDown -= Txt_KeyDown;
+                txt.KeyPress += Txt_KeyPress;
+                txt.KeyDown += Txt_KeyDown;
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CargarDAtos();
+        }
+        private void Txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.Validardocumentos(e, txt, 10);
+        }
+        private void Txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
+        }
     }
 }

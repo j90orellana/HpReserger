@@ -20,6 +20,7 @@ namespace HpResergerUserControls
             this.MaximumSize = new Size(2000, 2);
             this.MinimumSize = new Size(0, 2);
             this.Width = 350;
+            this.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
         }
         //private Pen _primario = Pens.Black;
         //public Pen ColorPrimario { get { return _primario; } set { _primario = value; } }

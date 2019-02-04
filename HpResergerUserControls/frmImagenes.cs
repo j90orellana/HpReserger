@@ -16,6 +16,16 @@ namespace HpResergerUserControls
         {
             InitializeComponent();
             Text = nombres.Trim();
+            pbfoto.Image = fotito;
+        }
+        public frmImagenes(string nombres, Image fotito)
+        {
+            InitializeComponent();
+            Text = nombres.Trim();
+            pbfoto.Image = fotito;
+            this.Size = pbfoto.Image.Size;
+            Size = new Size(pbfoto.Image.Size.Width + 25, pbfoto.Image.Size.Height + 50);
+            pbfoto.SizeMode = PictureBoxSizeMode.Zoom;
         }
         public Image fotito;
         public string Nombre = "";
@@ -24,9 +34,9 @@ namespace HpResergerUserControls
             //Text = Nombre;
             if (fotito != null)
             {
-                pbfoto.Image = fotito;
-                this.Size = pbfoto.Image.Size;
-                this.Size = new Size(pbfoto.Image.Size.Width + 25, pbfoto.Image.Size.Height + 50);
+                //pbfoto.Image = fotito;
+                //this.Size = pbfoto.Image.Size;
+                //this.Size = new Size(pbfoto.Image.Size.Width + 25, pbfoto.Image.Size.Height + 50);
                 if (Owner != null)
                 {
                     this.Top = (this.Owner.Height - pbfoto.Height) / 2;
@@ -34,7 +44,7 @@ namespace HpResergerUserControls
                 }
                 else
                 {
-                    this.StartPosition = FormStartPosition.CenterParent;                   
+                    this.StartPosition = FormStartPosition.CenterParent;
                 }
             }
             this.StartPosition = FormStartPosition.CenterParent;

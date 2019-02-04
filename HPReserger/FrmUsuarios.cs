@@ -232,6 +232,7 @@ namespace HPReserger
             txtbusnombre.ReadOnly = !a;
             txtbusnro.ReadOnly = !a;
             txtbustipodoc.ReadOnly = !a;
+            dtgconten.ReadOnly = !a;
         }
         public int estado = 0;
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -262,10 +263,15 @@ namespace HPReserger
             if ((int)cboestado.SelectedValue == 3)
             {
                 cboestado.Enabled = false;
+                txtid.Enabled = cbotipoid.Enabled = true;
+            }
+            if (txtnombre.Text.Length == 0)
+            {
+                cboestado.SelectedIndex = 2;
+                cboestado.Enabled = false;
             }
             ModoEdicion(false);
         }
-
         private void btneliminar_Click(object sender, EventArgs e)
         {
             estado = 3;
@@ -559,7 +565,7 @@ namespace HPReserger
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Desactivar(btnnuevo, btnmodificar, btnnuevoTemporal, btneliminar, btnlimpiar);
+            Desactivar(btnnuevo, btnmodificar, btnnuevoTemporal, btneliminar, btnlimpiar, GridUser);
             Activar(cboperfil, txtlogin, txtcontra, checkBox1);
             limpiar();
             txtid.Text = "";

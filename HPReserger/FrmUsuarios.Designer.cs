@@ -31,9 +31,9 @@ namespace HPReserger
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuarios));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,17 +63,6 @@ namespace HPReserger
             this.dtgconten = new System.Windows.Forms.DataGridView();
             this.lblmensaje = new System.Windows.Forms.Label();
             this.GridUser = new HpResergerUserControls.Dtgconten();
-            this.btnnuevoTemporal = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
-            this.txtbusnombre = new HpResergerUserControls.TextBoxPer();
-            this.txtbusnro = new HpResergerUserControls.TextBoxPer();
-            this.txtbustipodoc = new HpResergerUserControls.TextBoxPer();
-            this.txtbusareagerencia = new HpResergerUserControls.TextBoxPer();
-            this.txtbuslogin = new HpResergerUserControls.TextBoxPer();
-            this.btnlimpiar = new System.Windows.Forms.Button();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.btndesconectar = new System.Windows.Forms.Button();
             this.Codigox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipox = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,6 +78,17 @@ namespace HPReserger
             this.codestadox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xconectado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnnuevoTemporal = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
+            this.txtbusnombre = new HpResergerUserControls.TextBoxPer();
+            this.txtbusnro = new HpResergerUserControls.TextBoxPer();
+            this.txtbustipodoc = new HpResergerUserControls.TextBoxPer();
+            this.txtbusareagerencia = new HpResergerUserControls.TextBoxPer();
+            this.txtbuslogin = new HpResergerUserControls.TextBoxPer();
+            this.btnlimpiar = new System.Windows.Forms.Button();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.btndesconectar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridUser)).BeginInit();
             this.SuspendLayout();
@@ -443,9 +443,9 @@ namespace HPReserger
             this.GridUser.AllowUserToOrderColumns = true;
             this.GridUser.AllowUserToResizeColumns = false;
             this.GridUser.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.GridUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.GridUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.GridUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -454,14 +454,14 @@ namespace HPReserger
             this.GridUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.GridUser.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.GridUser.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.GridUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigox,
@@ -480,14 +480,14 @@ namespace HPReserger
             this.passx,
             this.xconectado});
             this.GridUser.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridUser.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridUser.DefaultCellStyle = dataGridViewCellStyle3;
             this.GridUser.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.GridUser.EnableHeadersVisualStyles = false;
             this.GridUser.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -501,6 +501,124 @@ namespace HPReserger
             this.GridUser.Size = new System.Drawing.Size(892, 255);
             this.GridUser.TabIndex = 136;
             this.GridUser.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridUser_RowEnter);
+            // 
+            // Codigox
+            // 
+            this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Codigox.DataPropertyName = "cod";
+            this.Codigox.HeaderText = "cod";
+            this.Codigox.Name = "Codigox";
+            this.Codigox.Visible = false;
+            // 
+            // IDX
+            // 
+            this.IDX.DataPropertyName = "id";
+            this.IDX.HeaderText = "id";
+            this.IDX.Name = "IDX";
+            this.IDX.Visible = false;
+            // 
+            // tipox
+            // 
+            this.tipox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.tipox.DataPropertyName = "tipo";
+            this.tipox.HeaderText = "Tipo";
+            this.tipox.Name = "tipox";
+            this.tipox.Width = 54;
+            // 
+            // docx
+            // 
+            this.docx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.docx.DataPropertyName = "doc";
+            this.docx.HeaderText = "NroDoc";
+            this.docx.Name = "docx";
+            this.docx.Width = 71;
+            // 
+            // nombresx
+            // 
+            this.nombresx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombresx.DataPropertyName = "nombres";
+            this.nombresx.HeaderText = "Nombres";
+            this.nombresx.MinimumWidth = 60;
+            this.nombresx.Name = "nombresx";
+            // 
+            // Apellidopatx
+            // 
+            this.Apellidopatx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Apellidopatx.DataPropertyName = "paterno";
+            this.Apellidopatx.HeaderText = "Apellido P.";
+            this.Apellidopatx.Name = "Apellidopatx";
+            this.Apellidopatx.Width = 87;
+            // 
+            // apellidomatx
+            // 
+            this.apellidomatx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.apellidomatx.DataPropertyName = "materno";
+            this.apellidomatx.HeaderText = "Apellido M.";
+            this.apellidomatx.Name = "apellidomatx";
+            this.apellidomatx.Width = 91;
+            // 
+            // gerenciax
+            // 
+            this.gerenciax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gerenciax.DataPropertyName = "gerencia";
+            this.gerenciax.HeaderText = "Gerencia";
+            this.gerenciax.MinimumWidth = 150;
+            this.gerenciax.Name = "gerenciax";
+            this.gerenciax.Width = 150;
+            // 
+            // perfilx
+            // 
+            this.perfilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.perfilx.DataPropertyName = "perfil";
+            this.perfilx.HeaderText = "Perfil";
+            this.perfilx.Name = "perfilx";
+            this.perfilx.Width = 57;
+            // 
+            // loginx
+            // 
+            this.loginx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.loginx.DataPropertyName = "loginuser";
+            this.loginx.HeaderText = "Login";
+            this.loginx.Name = "loginx";
+            this.loginx.Width = 60;
+            // 
+            // estadox
+            // 
+            this.estadox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.estadox.DataPropertyName = "estado";
+            this.estadox.HeaderText = "Estado";
+            this.estadox.Name = "estadox";
+            this.estadox.Width = 65;
+            // 
+            // codperfilx
+            // 
+            this.codperfilx.DataPropertyName = "codperfil";
+            this.codperfilx.HeaderText = "codperfil";
+            this.codperfilx.Name = "codperfilx";
+            this.codperfilx.Visible = false;
+            // 
+            // codestadox
+            // 
+            this.codestadox.DataPropertyName = "codestado";
+            this.codestadox.HeaderText = "codestado";
+            this.codestadox.Name = "codestadox";
+            this.codestadox.Visible = false;
+            // 
+            // passx
+            // 
+            this.passx.DataPropertyName = "pass";
+            this.passx.HeaderText = "Pasxx";
+            this.passx.Name = "passx";
+            this.passx.Visible = false;
+            // 
+            // xconectado
+            // 
+            this.xconectado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xconectado.DataPropertyName = "conectado";
+            this.xconectado.HeaderText = "Conectado";
+            this.xconectado.MinimumWidth = 70;
+            this.xconectado.Name = "xconectado";
+            this.xconectado.Width = 70;
             // 
             // btnnuevoTemporal
             // 
@@ -680,125 +798,6 @@ namespace HPReserger
             this.btndesconectar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btndesconectar.UseVisualStyleBackColor = true;
             this.btndesconectar.Click += new System.EventHandler(this.btndesconectar_Click);
-            // 
-            // Codigox
-            // 
-            this.Codigox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Codigox.DataPropertyName = "cod";
-            this.Codigox.HeaderText = "cod";
-            this.Codigox.Name = "Codigox";
-            this.Codigox.Visible = false;
-            this.Codigox.Width = 50;
-            // 
-            // IDX
-            // 
-            this.IDX.DataPropertyName = "id";
-            this.IDX.HeaderText = "id";
-            this.IDX.Name = "IDX";
-            this.IDX.Visible = false;
-            // 
-            // tipox
-            // 
-            this.tipox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.tipox.DataPropertyName = "tipo";
-            this.tipox.HeaderText = "Tipo";
-            this.tipox.Name = "tipox";
-            this.tipox.Width = 54;
-            // 
-            // docx
-            // 
-            this.docx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.docx.DataPropertyName = "doc";
-            this.docx.HeaderText = "NroDoc";
-            this.docx.Name = "docx";
-            this.docx.Width = 71;
-            // 
-            // nombresx
-            // 
-            this.nombresx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombresx.DataPropertyName = "nombres";
-            this.nombresx.HeaderText = "Nombres";
-            this.nombresx.MinimumWidth = 60;
-            this.nombresx.Name = "nombresx";
-            // 
-            // Apellidopatx
-            // 
-            this.Apellidopatx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Apellidopatx.DataPropertyName = "paterno";
-            this.Apellidopatx.HeaderText = "Apellido P.";
-            this.Apellidopatx.Name = "Apellidopatx";
-            this.Apellidopatx.Width = 87;
-            // 
-            // apellidomatx
-            // 
-            this.apellidomatx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.apellidomatx.DataPropertyName = "materno";
-            this.apellidomatx.HeaderText = "Apellido M.";
-            this.apellidomatx.Name = "apellidomatx";
-            this.apellidomatx.Width = 91;
-            // 
-            // gerenciax
-            // 
-            this.gerenciax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gerenciax.DataPropertyName = "gerencia";
-            this.gerenciax.HeaderText = "Gerencia";
-            this.gerenciax.MinimumWidth = 150;
-            this.gerenciax.Name = "gerenciax";
-            this.gerenciax.Width = 150;
-            // 
-            // perfilx
-            // 
-            this.perfilx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.perfilx.DataPropertyName = "perfil";
-            this.perfilx.HeaderText = "Perfil";
-            this.perfilx.Name = "perfilx";
-            this.perfilx.Width = 57;
-            // 
-            // loginx
-            // 
-            this.loginx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.loginx.DataPropertyName = "loginuser";
-            this.loginx.HeaderText = "Login";
-            this.loginx.Name = "loginx";
-            this.loginx.Width = 60;
-            // 
-            // estadox
-            // 
-            this.estadox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.estadox.DataPropertyName = "estado";
-            this.estadox.HeaderText = "Estado";
-            this.estadox.Name = "estadox";
-            this.estadox.Width = 65;
-            // 
-            // codperfilx
-            // 
-            this.codperfilx.DataPropertyName = "codperfil";
-            this.codperfilx.HeaderText = "codperfil";
-            this.codperfilx.Name = "codperfilx";
-            this.codperfilx.Visible = false;
-            // 
-            // codestadox
-            // 
-            this.codestadox.DataPropertyName = "codestado";
-            this.codestadox.HeaderText = "codestado";
-            this.codestadox.Name = "codestadox";
-            this.codestadox.Visible = false;
-            // 
-            // passx
-            // 
-            this.passx.DataPropertyName = "pass";
-            this.passx.HeaderText = "Pasxx";
-            this.passx.Name = "passx";
-            this.passx.Visible = false;
-            // 
-            // xconectado
-            // 
-            this.xconectado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.xconectado.DataPropertyName = "conectado";
-            this.xconectado.HeaderText = "Conectado";
-            this.xconectado.MinimumWidth = 70;
-            this.xconectado.Name = "xconectado";
-            this.xconectado.Width = 70;
             // 
             // FrmUsuarios
             // 

@@ -32,11 +32,11 @@ namespace HPReserger
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmproveedor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.cbodocumento = new System.Windows.Forms.ComboBox();
             this.txtnumeroidentidad = new System.Windows.Forms.TextBox();
@@ -80,35 +80,7 @@ namespace HPReserger
             this.btnaceptar = new System.Windows.Forms.Button();
             this.lblmsg = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
-            this.btntipoidmas = new System.Windows.Forms.Button();
-            this.btnsectormas = new System.Windows.Forms.Button();
-            this.btnbancosmas = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtccisoles = new System.Windows.Forms.TextBox();
-            this.txtccidolares = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cbocondicion = new System.Windows.Forms.ComboBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.label26 = new System.Windows.Forms.Label();
-            this.cbotipopersona = new System.Windows.Forms.ComboBox();
-            this.txtnombrecomercial = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.cboctadolares = new System.Windows.Forms.ComboBox();
-            this.cboctasoles = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtplazofijo = new HpResergerUserControls.TextBoxPer();
-            this.label29 = new System.Windows.Forms.Label();
-            this.Txtbusca = new HpResergerUserControls.txtBuscar();
-            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
-            this.separadorOre2 = new HpResergerUserControls.SeparadorOre();
+            this.xtipoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RAZONSOCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRECOMERCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -141,6 +113,35 @@ namespace HPReserger
             this.xBUENCONTRIB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAGENTERETENCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAGENTEPERCEPVTAINT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
+            this.btntipoidmas = new System.Windows.Forms.Button();
+            this.btnsectormas = new System.Windows.Forms.Button();
+            this.btnbancosmas = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtccisoles = new System.Windows.Forms.TextBox();
+            this.txtccidolares = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cbocondicion = new System.Windows.Forms.ComboBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label26 = new System.Windows.Forms.Label();
+            this.cbotipopersona = new System.Windows.Forms.ComboBox();
+            this.txtnombrecomercial = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.cboctadolares = new System.Windows.Forms.ComboBox();
+            this.cboctasoles = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtplazofijo = new HpResergerUserControls.TextBoxPer();
+            this.label29 = new System.Windows.Forms.Label();
+            this.Txtbusca = new HpResergerUserControls.txtBuscar();
+            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
+            this.separadorOre2 = new HpResergerUserControls.SeparadorOre();
             this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
             this.label10 = new System.Windows.Forms.Label();
             this.cboestado = new System.Windows.Forms.ComboBox();
@@ -175,6 +176,7 @@ namespace HPReserger
             this.cbodocumento.Name = "cbodocumento";
             this.cbodocumento.Size = new System.Drawing.Size(175, 21);
             this.cbodocumento.TabIndex = 1;
+            this.cbodocumento.SelectedIndexChanged += new System.EventHandler(this.cbodocumento_SelectedIndexChanged);
             // 
             // txtnumeroidentidad
             // 
@@ -644,9 +646,9 @@ namespace HPReserger
             this.dtgconten.AllowUserToDeleteRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -655,16 +657,17 @@ namespace HPReserger
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.xtipoid,
             this.RUC,
             this.RAZONSOCIAL,
             this.NOMBRECOMERCIAL,
@@ -698,18 +701,18 @@ namespace HPReserger
             this.xAGENTERETENCION,
             this.xAGENTEPERCEPVTAINT});
             this.dtgconten.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle10;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 377);
+            this.dtgconten.Location = new System.Drawing.Point(12, 394);
             this.dtgconten.MultiSelect = false;
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
@@ -717,10 +720,314 @@ namespace HPReserger
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(782, 167);
+            this.dtgconten.Size = new System.Drawing.Size(782, 154);
             this.dtgconten.TabIndex = 122;
             this.dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentDoubleClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // xtipoid
+            // 
+            this.xtipoid.DataPropertyName = "tipoid";
+            this.xtipoid.HeaderText = "tipoid";
+            this.xtipoid.Name = "xtipoid";
+            this.xtipoid.ReadOnly = true;
+            this.xtipoid.Visible = false;
+            this.xtipoid.Width = 43;
+            // 
+            // RUC
+            // 
+            this.RUC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.RUC.DataPropertyName = "RUC";
+            this.RUC.HeaderText = "RUC";
+            this.RUC.Name = "RUC";
+            this.RUC.ReadOnly = true;
+            this.RUC.Width = 53;
+            // 
+            // RAZONSOCIAL
+            // 
+            this.RAZONSOCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RAZONSOCIAL.DataPropertyName = "RAZONSOCIAL";
+            this.RAZONSOCIAL.HeaderText = "Razón Social";
+            this.RAZONSOCIAL.Name = "RAZONSOCIAL";
+            this.RAZONSOCIAL.ReadOnly = true;
+            // 
+            // NOMBRECOMERCIAL
+            // 
+            this.NOMBRECOMERCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NOMBRECOMERCIAL.DataPropertyName = "NOMBRE COMERCIAL";
+            this.NOMBRECOMERCIAL.HeaderText = "NOMBRE COMERCIAL";
+            this.NOMBRECOMERCIAL.Name = "NOMBRECOMERCIAL";
+            this.NOMBRECOMERCIAL.ReadOnly = true;
+            this.NOMBRECOMERCIAL.Visible = false;
+            // 
+            // SECTOREMPRESACIAL
+            // 
+            this.SECTOREMPRESACIAL.DataPropertyName = "SECTOREMPRESARIAL";
+            this.SECTOREMPRESACIAL.HeaderText = "SECTOREMPRESARIAL";
+            this.SECTOREMPRESACIAL.Name = "SECTOREMPRESACIAL";
+            this.SECTOREMPRESACIAL.ReadOnly = true;
+            this.SECTOREMPRESACIAL.Visible = false;
+            this.SECTOREMPRESACIAL.Width = 140;
+            // 
+            // DIROFICINA
+            // 
+            this.DIROFICINA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.DIROFICINA.DataPropertyName = "DIROFICINA";
+            this.DIROFICINA.HeaderText = "Dir.Oficina";
+            this.DIROFICINA.MinimumWidth = 120;
+            this.DIROFICINA.Name = "DIROFICINA";
+            this.DIROFICINA.ReadOnly = true;
+            this.DIROFICINA.Width = 120;
+            // 
+            // TELOFICINA
+            // 
+            this.TELOFICINA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TELOFICINA.DataPropertyName = "TELOFICINA";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.TELOFICINA.DefaultCellStyle = dataGridViewCellStyle8;
+            this.TELOFICINA.HeaderText = "Tel.Oficina";
+            this.TELOFICINA.Name = "TELOFICINA";
+            this.TELOFICINA.ReadOnly = true;
+            this.TELOFICINA.Width = 84;
+            // 
+            // DIRALMACEN
+            // 
+            this.DIRALMACEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DIRALMACEN.DataPropertyName = "DIRALMACEN";
+            this.DIRALMACEN.HeaderText = "DIR. ALMACEN";
+            this.DIRALMACEN.Name = "DIRALMACEN";
+            this.DIRALMACEN.ReadOnly = true;
+            this.DIRALMACEN.Visible = false;
+            // 
+            // TELALMACEN
+            // 
+            this.TELALMACEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TELALMACEN.DataPropertyName = "TELALMACEN";
+            this.TELALMACEN.HeaderText = "TEL. ALMACEN";
+            this.TELALMACEN.Name = "TELALMACEN";
+            this.TELALMACEN.ReadOnly = true;
+            this.TELALMACEN.Visible = false;
+            // 
+            // DIRSUCURSAL
+            // 
+            this.DIRSUCURSAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DIRSUCURSAL.DataPropertyName = "DIRSUCURSAL";
+            this.DIRSUCURSAL.HeaderText = "DIR. SUCURSAL";
+            this.DIRSUCURSAL.Name = "DIRSUCURSAL";
+            this.DIRSUCURSAL.ReadOnly = true;
+            this.DIRSUCURSAL.Visible = false;
+            // 
+            // TELSUCURSAL
+            // 
+            this.TELSUCURSAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TELSUCURSAL.DataPropertyName = "TELSUCURSAL";
+            this.TELSUCURSAL.HeaderText = "TEL. SUCURSAL";
+            this.TELSUCURSAL.Name = "TELSUCURSAL";
+            this.TELSUCURSAL.ReadOnly = true;
+            this.TELSUCURSAL.Visible = false;
+            // 
+            // NOMCONTACTO
+            // 
+            this.NOMCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NOMCONTACTO.DataPropertyName = "NOMCONTACTO";
+            this.NOMCONTACTO.HeaderText = "NOM. CONTACTO";
+            this.NOMCONTACTO.Name = "NOMCONTACTO";
+            this.NOMCONTACTO.ReadOnly = true;
+            this.NOMCONTACTO.Visible = false;
+            // 
+            // TELCONTACTO
+            // 
+            this.TELCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TELCONTACTO.DataPropertyName = "TELCONTACTO";
+            this.TELCONTACTO.HeaderText = "TEL. CONTACTO";
+            this.TELCONTACTO.Name = "TELCONTACTO";
+            this.TELCONTACTO.ReadOnly = true;
+            this.TELCONTACTO.Visible = false;
+            // 
+            // EMAILCONTACTO
+            // 
+            this.EMAILCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.EMAILCONTACTO.DataPropertyName = "EMAILCONTACTO";
+            this.EMAILCONTACTO.HeaderText = "Email Contacto";
+            this.EMAILCONTACTO.MinimumWidth = 200;
+            this.EMAILCONTACTO.Name = "EMAILCONTACTO";
+            this.EMAILCONTACTO.ReadOnly = true;
+            this.EMAILCONTACTO.Width = 200;
+            // 
+            // CCISOLES
+            // 
+            this.CCISOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CCISOLES.DataPropertyName = "CCISOLES";
+            this.CCISOLES.HeaderText = "CCI SOLES";
+            this.CCISOLES.Name = "CCISOLES";
+            this.CCISOLES.ReadOnly = true;
+            this.CCISOLES.Visible = false;
+            // 
+            // IDS
+            // 
+            this.IDS.DataPropertyName = "IDS";
+            this.IDS.HeaderText = "IDS";
+            this.IDS.Name = "IDS";
+            this.IDS.ReadOnly = true;
+            this.IDS.Visible = false;
+            this.IDS.Width = 48;
+            // 
+            // BANCOSOLES
+            // 
+            this.BANCOSOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BANCOSOLES.DataPropertyName = "BANCOSOLES";
+            this.BANCOSOLES.HeaderText = "BANCO SOLES";
+            this.BANCOSOLES.Name = "BANCOSOLES";
+            this.BANCOSOLES.ReadOnly = true;
+            this.BANCOSOLES.Visible = false;
+            // 
+            // TIPOCTASOLES
+            // 
+            this.TIPOCTASOLES.DataPropertyName = "TIPOCTASOLES";
+            this.TIPOCTASOLES.HeaderText = "TIPOCTASOLES";
+            this.TIPOCTASOLES.Name = "TIPOCTASOLES";
+            this.TIPOCTASOLES.ReadOnly = true;
+            this.TIPOCTASOLES.Visible = false;
+            this.TIPOCTASOLES.Width = 104;
+            // 
+            // CCIDOLARES
+            // 
+            this.CCIDOLARES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CCIDOLARES.DataPropertyName = "CCIDOLARES";
+            this.CCIDOLARES.HeaderText = "CCIDOLARES";
+            this.CCIDOLARES.Name = "CCIDOLARES";
+            this.CCIDOLARES.ReadOnly = true;
+            this.CCIDOLARES.Visible = false;
+            // 
+            // IDD
+            // 
+            this.IDD.DataPropertyName = "IDD";
+            this.IDD.HeaderText = "IDD";
+            this.IDD.Name = "IDD";
+            this.IDD.ReadOnly = true;
+            this.IDD.Visible = false;
+            this.IDD.Width = 50;
+            // 
+            // BANCODOLARES
+            // 
+            this.BANCODOLARES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BANCODOLARES.DataPropertyName = "BANCODOLARES";
+            this.BANCODOLARES.HeaderText = "BANCO DOLARES";
+            this.BANCODOLARES.Name = "BANCODOLARES";
+            this.BANCODOLARES.ReadOnly = true;
+            this.BANCODOLARES.Visible = false;
+            // 
+            // TIPOCTADOLARES
+            // 
+            this.TIPOCTADOLARES.DataPropertyName = "TIPOCTADOLARES";
+            this.TIPOCTADOLARES.HeaderText = "TIPOCTADOLARES";
+            this.TIPOCTADOLARES.Name = "TIPOCTADOLARES";
+            this.TIPOCTADOLARES.ReadOnly = true;
+            this.TIPOCTADOLARES.Visible = false;
+            this.TIPOCTADOLARES.Width = 120;
+            // 
+            // CTADETRACCIONES
+            // 
+            this.CTADETRACCIONES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CTADETRACCIONES.DataPropertyName = "CTADETRACCIONES";
+            this.CTADETRACCIONES.HeaderText = "CTADETRACCIONES";
+            this.CTADETRACCIONES.Name = "CTADETRACCIONES";
+            this.CTADETRACCIONES.ReadOnly = true;
+            this.CTADETRACCIONES.Visible = false;
+            // 
+            // CONDICION
+            // 
+            this.CONDICION.DataPropertyName = "CONDICION";
+            this.CONDICION.HeaderText = "REGIMEN";
+            this.CONDICION.Name = "CONDICION";
+            this.CONDICION.ReadOnly = true;
+            this.CONDICION.Visible = false;
+            this.CONDICION.Width = 79;
+            // 
+            // PLAZOPAGOX
+            // 
+            this.PLAZOPAGOX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.PLAZOPAGOX.DataPropertyName = "PLAZOPAGO";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "00 Días";
+            this.PLAZOPAGOX.DefaultCellStyle = dataGridViewCellStyle9;
+            this.PLAZOPAGOX.HeaderText = "Plazo Pago";
+            this.PLAZOPAGOX.MinimumWidth = 50;
+            this.PLAZOPAGOX.Name = "PLAZOPAGOX";
+            this.PLAZOPAGOX.ReadOnly = true;
+            this.PLAZOPAGOX.Width = 55;
+            // 
+            // xTipoper
+            // 
+            this.xTipoper.DataPropertyName = "tipoper";
+            this.xTipoper.HeaderText = "Tipoper";
+            this.xTipoper.Name = "xTipoper";
+            this.xTipoper.ReadOnly = true;
+            this.xTipoper.Visible = false;
+            this.xTipoper.Width = 70;
+            // 
+            // xctasoles
+            // 
+            this.xctasoles.DataPropertyName = "ctasoles";
+            this.xctasoles.HeaderText = "ctasoles";
+            this.xctasoles.Name = "xctasoles";
+            this.xctasoles.ReadOnly = true;
+            this.xctasoles.Visible = false;
+            this.xctasoles.Width = 72;
+            // 
+            // xctadolares
+            // 
+            this.xctadolares.DataPropertyName = "ctadolares";
+            this.xctadolares.HeaderText = "ctadolares";
+            this.xctadolares.Name = "xctadolares";
+            this.xctadolares.ReadOnly = true;
+            this.xctadolares.Visible = false;
+            this.xctadolares.Width = 84;
+            // 
+            // xEstado
+            // 
+            this.xEstado.DataPropertyName = "ESTADO";
+            this.xEstado.HeaderText = "ESTADO";
+            this.xEstado.Name = "xEstado";
+            this.xEstado.ReadOnly = true;
+            this.xEstado.Visible = false;
+            this.xEstado.Width = 71;
+            // 
+            // xAFECTONVORUS
+            // 
+            this.xAFECTONVORUS.DataPropertyName = "AFECTONVORUS";
+            this.xAFECTONVORUS.HeaderText = "AFECTONVORUS";
+            this.xAFECTONVORUS.Name = "xAFECTONVORUS";
+            this.xAFECTONVORUS.ReadOnly = true;
+            this.xAFECTONVORUS.Visible = false;
+            this.xAFECTONVORUS.Width = 115;
+            // 
+            // xBUENCONTRIB
+            // 
+            this.xBUENCONTRIB.DataPropertyName = "BUENCONTRIB";
+            this.xBUENCONTRIB.HeaderText = "BUENCONTRIB";
+            this.xBUENCONTRIB.Name = "xBUENCONTRIB";
+            this.xBUENCONTRIB.ReadOnly = true;
+            this.xBUENCONTRIB.Visible = false;
+            this.xBUENCONTRIB.Width = 106;
+            // 
+            // xAGENTERETENCION
+            // 
+            this.xAGENTERETENCION.DataPropertyName = "AGENTERETENCION";
+            this.xAGENTERETENCION.HeaderText = "AGENTERETENCION";
+            this.xAGENTERETENCION.Name = "xAGENTERETENCION";
+            this.xAGENTERETENCION.ReadOnly = true;
+            this.xAGENTERETENCION.Visible = false;
+            this.xAGENTERETENCION.Width = 130;
+            // 
+            // xAGENTEPERCEPVTAINT
+            // 
+            this.xAGENTEPERCEPVTAINT.DataPropertyName = "AGENTEPERCEPVTAINT";
+            this.xAGENTEPERCEPVTAINT.HeaderText = "AGENTEPERCEPVTAINT";
+            this.xAGENTEPERCEPVTAINT.Name = "xAGENTEPERCEPVTAINT";
+            this.xAGENTEPERCEPVTAINT.ReadOnly = true;
+            this.xAGENTEPERCEPVTAINT.Visible = false;
+            this.xAGENTEPERCEPVTAINT.Width = 143;
             // 
             // tipmsg
             // 
@@ -832,7 +1139,7 @@ namespace HPReserger
             this.cbocondicion.FormattingEnabled = true;
             this.cbocondicion.Location = new System.Drawing.Point(115, 300);
             this.cbocondicion.Name = "cbocondicion";
-            this.cbocondicion.Size = new System.Drawing.Size(144, 21);
+            this.cbocondicion.Size = new System.Drawing.Size(331, 21);
             this.cbocondicion.TabIndex = 21;
             this.cbocondicion.TextChanged += new System.EventHandler(this.cboregimen_TextChanged);
             // 
@@ -873,7 +1180,7 @@ namespace HPReserger
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 345);
+            this.groupBox1.Location = new System.Drawing.Point(12, 363);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(782, 30);
             this.groupBox1.TabIndex = 131;
@@ -1062,7 +1369,7 @@ namespace HPReserger
             this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
             this.Txtbusca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbusca.ImgBotonCerrar = null;
-            this.Txtbusca.Location = new System.Drawing.Point(15, 328);
+            this.Txtbusca.Location = new System.Drawing.Point(12, 345);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(431, 22);
             this.Txtbusca.TabIndex = 139;
@@ -1092,317 +1399,11 @@ namespace HPReserger
             this.separadorOre2.Size = new System.Drawing.Size(805, 2);
             this.separadorOre2.TabIndex = 141;
             // 
-            // RUC
-            // 
-            this.RUC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.RUC.DataPropertyName = "RUC";
-            this.RUC.HeaderText = "RUC";
-            this.RUC.Name = "RUC";
-            this.RUC.ReadOnly = true;
-            this.RUC.Width = 53;
-            // 
-            // RAZONSOCIAL
-            // 
-            this.RAZONSOCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RAZONSOCIAL.DataPropertyName = "RAZONSOCIAL";
-            this.RAZONSOCIAL.HeaderText = "Razón Social";
-            this.RAZONSOCIAL.Name = "RAZONSOCIAL";
-            this.RAZONSOCIAL.ReadOnly = true;
-            // 
-            // NOMBRECOMERCIAL
-            // 
-            this.NOMBRECOMERCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NOMBRECOMERCIAL.DataPropertyName = "NOMBRE COMERCIAL";
-            this.NOMBRECOMERCIAL.HeaderText = "NOMBRE COMERCIAL";
-            this.NOMBRECOMERCIAL.Name = "NOMBRECOMERCIAL";
-            this.NOMBRECOMERCIAL.ReadOnly = true;
-            this.NOMBRECOMERCIAL.Visible = false;
-            this.NOMBRECOMERCIAL.Width = 142;
-            // 
-            // SECTOREMPRESACIAL
-            // 
-            this.SECTOREMPRESACIAL.DataPropertyName = "SECTOREMPRESARIAL";
-            this.SECTOREMPRESACIAL.HeaderText = "SECTOREMPRESARIAL";
-            this.SECTOREMPRESACIAL.Name = "SECTOREMPRESACIAL";
-            this.SECTOREMPRESACIAL.ReadOnly = true;
-            this.SECTOREMPRESACIAL.Visible = false;
-            this.SECTOREMPRESACIAL.Width = 140;
-            // 
-            // DIROFICINA
-            // 
-            this.DIROFICINA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.DIROFICINA.DataPropertyName = "DIROFICINA";
-            this.DIROFICINA.HeaderText = "Dir.Oficina";
-            this.DIROFICINA.MinimumWidth = 120;
-            this.DIROFICINA.Name = "DIROFICINA";
-            this.DIROFICINA.ReadOnly = true;
-            this.DIROFICINA.Width = 120;
-            // 
-            // TELOFICINA
-            // 
-            this.TELOFICINA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TELOFICINA.DataPropertyName = "TELOFICINA";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.TELOFICINA.DefaultCellStyle = dataGridViewCellStyle3;
-            this.TELOFICINA.HeaderText = "Tel.Oficina";
-            this.TELOFICINA.Name = "TELOFICINA";
-            this.TELOFICINA.ReadOnly = true;
-            this.TELOFICINA.Width = 84;
-            // 
-            // DIRALMACEN
-            // 
-            this.DIRALMACEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DIRALMACEN.DataPropertyName = "DIRALMACEN";
-            this.DIRALMACEN.HeaderText = "DIR. ALMACEN";
-            this.DIRALMACEN.Name = "DIRALMACEN";
-            this.DIRALMACEN.ReadOnly = true;
-            this.DIRALMACEN.Visible = false;
-            this.DIRALMACEN.Width = 105;
-            // 
-            // TELALMACEN
-            // 
-            this.TELALMACEN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TELALMACEN.DataPropertyName = "TELALMACEN";
-            this.TELALMACEN.HeaderText = "TEL. ALMACEN";
-            this.TELALMACEN.Name = "TELALMACEN";
-            this.TELALMACEN.ReadOnly = true;
-            this.TELALMACEN.Visible = false;
-            this.TELALMACEN.Width = 103;
-            // 
-            // DIRSUCURSAL
-            // 
-            this.DIRSUCURSAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DIRSUCURSAL.DataPropertyName = "DIRSUCURSAL";
-            this.DIRSUCURSAL.HeaderText = "DIR. SUCURSAL";
-            this.DIRSUCURSAL.Name = "DIRSUCURSAL";
-            this.DIRSUCURSAL.ReadOnly = true;
-            this.DIRSUCURSAL.Visible = false;
-            this.DIRSUCURSAL.Width = 109;
-            // 
-            // TELSUCURSAL
-            // 
-            this.TELSUCURSAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TELSUCURSAL.DataPropertyName = "TELSUCURSAL";
-            this.TELSUCURSAL.HeaderText = "TEL. SUCURSAL";
-            this.TELSUCURSAL.Name = "TELSUCURSAL";
-            this.TELSUCURSAL.ReadOnly = true;
-            this.TELSUCURSAL.Visible = false;
-            this.TELSUCURSAL.Width = 107;
-            // 
-            // NOMCONTACTO
-            // 
-            this.NOMCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NOMCONTACTO.DataPropertyName = "NOMCONTACTO";
-            this.NOMCONTACTO.HeaderText = "NOM. CONTACTO";
-            this.NOMCONTACTO.Name = "NOMCONTACTO";
-            this.NOMCONTACTO.ReadOnly = true;
-            this.NOMCONTACTO.Visible = false;
-            this.NOMCONTACTO.Width = 119;
-            // 
-            // TELCONTACTO
-            // 
-            this.TELCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TELCONTACTO.DataPropertyName = "TELCONTACTO";
-            this.TELCONTACTO.HeaderText = "TEL. CONTACTO";
-            this.TELCONTACTO.Name = "TELCONTACTO";
-            this.TELCONTACTO.ReadOnly = true;
-            this.TELCONTACTO.Visible = false;
-            this.TELCONTACTO.Width = 108;
-            // 
-            // EMAILCONTACTO
-            // 
-            this.EMAILCONTACTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EMAILCONTACTO.DataPropertyName = "EMAILCONTACTO";
-            this.EMAILCONTACTO.HeaderText = "Email Contacto";
-            this.EMAILCONTACTO.Name = "EMAILCONTACTO";
-            this.EMAILCONTACTO.ReadOnly = true;
-            this.EMAILCONTACTO.Width = 99;
-            // 
-            // CCISOLES
-            // 
-            this.CCISOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CCISOLES.DataPropertyName = "CCISOLES";
-            this.CCISOLES.HeaderText = "CCI SOLES";
-            this.CCISOLES.Name = "CCISOLES";
-            this.CCISOLES.ReadOnly = true;
-            this.CCISOLES.Visible = false;
-            this.CCISOLES.Width = 77;
-            // 
-            // IDS
-            // 
-            this.IDS.DataPropertyName = "IDS";
-            this.IDS.HeaderText = "IDS";
-            this.IDS.Name = "IDS";
-            this.IDS.ReadOnly = true;
-            this.IDS.Visible = false;
-            this.IDS.Width = 48;
-            // 
-            // BANCOSOLES
-            // 
-            this.BANCOSOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BANCOSOLES.DataPropertyName = "BANCOSOLES";
-            this.BANCOSOLES.HeaderText = "BANCO SOLES";
-            this.BANCOSOLES.Name = "BANCOSOLES";
-            this.BANCOSOLES.ReadOnly = true;
-            this.BANCOSOLES.Visible = false;
-            this.BANCOSOLES.Width = 95;
-            // 
-            // TIPOCTASOLES
-            // 
-            this.TIPOCTASOLES.DataPropertyName = "TIPOCTASOLES";
-            this.TIPOCTASOLES.HeaderText = "TIPOCTASOLES";
-            this.TIPOCTASOLES.Name = "TIPOCTASOLES";
-            this.TIPOCTASOLES.ReadOnly = true;
-            this.TIPOCTASOLES.Visible = false;
-            this.TIPOCTASOLES.Width = 104;
-            // 
-            // CCIDOLARES
-            // 
-            this.CCIDOLARES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CCIDOLARES.DataPropertyName = "CCIDOLARES";
-            this.CCIDOLARES.HeaderText = "CCIDOLARES";
-            this.CCIDOLARES.Name = "CCIDOLARES";
-            this.CCIDOLARES.ReadOnly = true;
-            this.CCIDOLARES.Visible = false;
-            this.CCIDOLARES.Width = 96;
-            // 
-            // IDD
-            // 
-            this.IDD.DataPropertyName = "IDD";
-            this.IDD.HeaderText = "IDD";
-            this.IDD.Name = "IDD";
-            this.IDD.ReadOnly = true;
-            this.IDD.Visible = false;
-            this.IDD.Width = 50;
-            // 
-            // BANCODOLARES
-            // 
-            this.BANCODOLARES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BANCODOLARES.DataPropertyName = "BANCODOLARES";
-            this.BANCODOLARES.HeaderText = "BANCO DOLARES";
-            this.BANCODOLARES.Name = "BANCODOLARES";
-            this.BANCODOLARES.ReadOnly = true;
-            this.BANCODOLARES.Visible = false;
-            this.BANCODOLARES.Width = 110;
-            // 
-            // TIPOCTADOLARES
-            // 
-            this.TIPOCTADOLARES.DataPropertyName = "TIPOCTADOLARES";
-            this.TIPOCTADOLARES.HeaderText = "TIPOCTADOLARES";
-            this.TIPOCTADOLARES.Name = "TIPOCTADOLARES";
-            this.TIPOCTADOLARES.ReadOnly = true;
-            this.TIPOCTADOLARES.Visible = false;
-            this.TIPOCTADOLARES.Width = 120;
-            // 
-            // CTADETRACCIONES
-            // 
-            this.CTADETRACCIONES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CTADETRACCIONES.DataPropertyName = "CTADETRACCIONES";
-            this.CTADETRACCIONES.HeaderText = "CTADETRACCIONES";
-            this.CTADETRACCIONES.Name = "CTADETRACCIONES";
-            this.CTADETRACCIONES.ReadOnly = true;
-            this.CTADETRACCIONES.Visible = false;
-            this.CTADETRACCIONES.Width = 128;
-            // 
-            // CONDICION
-            // 
-            this.CONDICION.DataPropertyName = "CONDICION";
-            this.CONDICION.HeaderText = "REGIMEN";
-            this.CONDICION.Name = "CONDICION";
-            this.CONDICION.ReadOnly = true;
-            this.CONDICION.Visible = false;
-            this.CONDICION.Width = 79;
-            // 
-            // PLAZOPAGOX
-            // 
-            this.PLAZOPAGOX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.PLAZOPAGOX.DataPropertyName = "PLAZOPAGO";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "00 Días";
-            this.PLAZOPAGOX.DefaultCellStyle = dataGridViewCellStyle4;
-            this.PLAZOPAGOX.HeaderText = "Plazo Pago";
-            this.PLAZOPAGOX.MinimumWidth = 50;
-            this.PLAZOPAGOX.Name = "PLAZOPAGOX";
-            this.PLAZOPAGOX.ReadOnly = true;
-            this.PLAZOPAGOX.Width = 55;
-            // 
-            // xTipoper
-            // 
-            this.xTipoper.DataPropertyName = "tipoper";
-            this.xTipoper.HeaderText = "Tipoper";
-            this.xTipoper.Name = "xTipoper";
-            this.xTipoper.ReadOnly = true;
-            this.xTipoper.Visible = false;
-            this.xTipoper.Width = 70;
-            // 
-            // xctasoles
-            // 
-            this.xctasoles.DataPropertyName = "ctasoles";
-            this.xctasoles.HeaderText = "ctasoles";
-            this.xctasoles.Name = "xctasoles";
-            this.xctasoles.ReadOnly = true;
-            this.xctasoles.Visible = false;
-            this.xctasoles.Width = 72;
-            // 
-            // xctadolares
-            // 
-            this.xctadolares.DataPropertyName = "ctadolares";
-            this.xctadolares.HeaderText = "ctadolares";
-            this.xctadolares.Name = "xctadolares";
-            this.xctadolares.ReadOnly = true;
-            this.xctadolares.Visible = false;
-            this.xctadolares.Width = 84;
-            // 
-            // xEstado
-            // 
-            this.xEstado.DataPropertyName = "ESTADO";
-            this.xEstado.HeaderText = "ESTADO";
-            this.xEstado.Name = "xEstado";
-            this.xEstado.ReadOnly = true;
-            this.xEstado.Visible = false;
-            this.xEstado.Width = 71;
-            // 
-            // xAFECTONVORUS
-            // 
-            this.xAFECTONVORUS.DataPropertyName = "AFECTONVORUS";
-            this.xAFECTONVORUS.HeaderText = "AFECTONVORUS";
-            this.xAFECTONVORUS.Name = "xAFECTONVORUS";
-            this.xAFECTONVORUS.ReadOnly = true;
-            this.xAFECTONVORUS.Visible = false;
-            this.xAFECTONVORUS.Width = 115;
-            // 
-            // xBUENCONTRIB
-            // 
-            this.xBUENCONTRIB.DataPropertyName = "BUENCONTRIB";
-            this.xBUENCONTRIB.HeaderText = "BUENCONTRIB";
-            this.xBUENCONTRIB.Name = "xBUENCONTRIB";
-            this.xBUENCONTRIB.ReadOnly = true;
-            this.xBUENCONTRIB.Visible = false;
-            this.xBUENCONTRIB.Width = 106;
-            // 
-            // xAGENTERETENCION
-            // 
-            this.xAGENTERETENCION.DataPropertyName = "AGENTERETENCION";
-            this.xAGENTERETENCION.HeaderText = "AGENTERETENCION";
-            this.xAGENTERETENCION.Name = "xAGENTERETENCION";
-            this.xAGENTERETENCION.ReadOnly = true;
-            this.xAGENTERETENCION.Visible = false;
-            this.xAGENTERETENCION.Width = 130;
-            // 
-            // xAGENTEPERCEPVTAINT
-            // 
-            this.xAGENTEPERCEPVTAINT.DataPropertyName = "AGENTEPERCEPVTAINT";
-            this.xAGENTEPERCEPVTAINT.HeaderText = "AGENTEPERCEPVTAINT";
-            this.xAGENTEPERCEPVTAINT.Name = "xAGENTEPERCEPVTAINT";
-            this.xAGENTEPERCEPVTAINT.ReadOnly = true;
-            this.xAGENTEPERCEPVTAINT.Visible = false;
-            this.xAGENTEPERCEPVTAINT.Width = 143;
-            // 
             // separadorOre3
             // 
             this.separadorOre3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre3.Location = new System.Drawing.Point(-2, 322);
+            this.separadorOre3.Location = new System.Drawing.Point(-2, 340);
             this.separadorOre3.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre3.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre3.Name = "separadorOre3";
@@ -1414,7 +1415,7 @@ namespace HPReserger
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(443, 277);
+            this.label10.Location = new System.Drawing.Point(443, 304);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(122, 13);
             this.label10.TabIndex = 104;
@@ -1428,9 +1429,9 @@ namespace HPReserger
             this.cboestado.DisplayMember = "dfsd";
             this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboestado.FormattingEnabled = true;
-            this.cboestado.Location = new System.Drawing.Point(566, 273);
+            this.cboestado.Location = new System.Drawing.Point(566, 300);
             this.cboestado.Name = "cboestado";
-            this.cboestado.Size = new System.Drawing.Size(134, 21);
+            this.cboestado.Size = new System.Drawing.Size(222, 21);
             this.cboestado.TabIndex = 21;
             this.cboestado.TextChanged += new System.EventHandler(this.cboregimen_TextChanged);
             // 
@@ -1439,7 +1440,7 @@ namespace HPReserger
             this.chknuevorus.AutoSize = true;
             this.chknuevorus.BackColor = System.Drawing.Color.Transparent;
             this.chknuevorus.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chknuevorus.Location = new System.Drawing.Point(265, 302);
+            this.chknuevorus.Location = new System.Drawing.Point(139, 323);
             this.chknuevorus.Name = "chknuevorus";
             this.chknuevorus.Size = new System.Drawing.Size(98, 17);
             this.chknuevorus.TabIndex = 143;
@@ -1451,7 +1452,7 @@ namespace HPReserger
             this.chkbuenContribuyente.AutoSize = true;
             this.chkbuenContribuyente.BackColor = System.Drawing.Color.Transparent;
             this.chkbuenContribuyente.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkbuenContribuyente.Location = new System.Drawing.Point(371, 302);
+            this.chkbuenContribuyente.Location = new System.Drawing.Point(245, 323);
             this.chkbuenContribuyente.Name = "chkbuenContribuyente";
             this.chkbuenContribuyente.Size = new System.Drawing.Size(130, 17);
             this.chkbuenContribuyente.TabIndex = 143;
@@ -1463,7 +1464,7 @@ namespace HPReserger
             this.chkretencion.AutoSize = true;
             this.chkretencion.BackColor = System.Drawing.Color.Transparent;
             this.chkretencion.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkretencion.Location = new System.Drawing.Point(507, 302);
+            this.chkretencion.Location = new System.Drawing.Point(381, 323);
             this.chkretencion.Name = "chkretencion";
             this.chkretencion.Size = new System.Drawing.Size(118, 17);
             this.chkretencion.TabIndex = 143;
@@ -1475,7 +1476,7 @@ namespace HPReserger
             this.chkAgentePercepcion.AutoSize = true;
             this.chkAgentePercepcion.BackColor = System.Drawing.Color.Transparent;
             this.chkAgentePercepcion.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkAgentePercepcion.Location = new System.Drawing.Point(632, 302);
+            this.chkAgentePercepcion.Location = new System.Drawing.Point(506, 323);
             this.chkAgentePercepcion.Name = "chkAgentePercepcion";
             this.chkAgentePercepcion.Size = new System.Drawing.Size(156, 17);
             this.chkAgentePercepcion.TabIndex = 143;
@@ -1538,7 +1539,6 @@ namespace HPReserger
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbosectorcomercial);
             this.Controls.Add(this.cbodocumento);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -1559,7 +1559,9 @@ namespace HPReserger
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
+            this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(816, 618);
             this.Name = "frmproveedor";
             this.Nombre = "Proveedor";
             this.Text = "Proveedor";
@@ -1647,6 +1649,14 @@ namespace HPReserger
         public txtBuscar Txtbusca;
         private SeparadorOre separadorOre1;
         private SeparadorOre separadorOre2;
+        private SeparadorOre separadorOre3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cboestado;
+        private System.Windows.Forms.CheckBox chknuevorus;
+        private System.Windows.Forms.CheckBox chkbuenContribuyente;
+        private System.Windows.Forms.CheckBox chkretencion;
+        private System.Windows.Forms.CheckBox chkAgentePercepcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xtipoid;
         private System.Windows.Forms.DataGridViewTextBoxColumn RUC;
         private System.Windows.Forms.DataGridViewTextBoxColumn RAZONSOCIAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRECOMERCIAL;
@@ -1679,12 +1689,5 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn xBUENCONTRIB;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAGENTERETENCION;
         private System.Windows.Forms.DataGridViewTextBoxColumn xAGENTEPERCEPVTAINT;
-        private SeparadorOre separadorOre3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cboestado;
-        private System.Windows.Forms.CheckBox chknuevorus;
-        private System.Windows.Forms.CheckBox chkbuenContribuyente;
-        private System.Windows.Forms.CheckBox chkretencion;
-        private System.Windows.Forms.CheckBox chkAgentePercepcion;
     }
 }

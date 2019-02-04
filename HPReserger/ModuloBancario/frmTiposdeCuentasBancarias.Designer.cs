@@ -487,6 +487,7 @@
             this.txtnrocci.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnrocci.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnrocci.ForeColor = System.Drawing.Color.Black;
+            this.txtnrocci.Format = null;
             this.txtnrocci.Location = new System.Drawing.Point(598, 57);
             this.txtnrocci.MaxLength = 30;
             this.txtnrocci.Name = "txtnrocci";
@@ -508,6 +509,7 @@
             this.txtnrocuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnrocuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnrocuenta.ForeColor = System.Drawing.Color.Black;
+            this.txtnrocuenta.Format = null;
             this.txtnrocuenta.Location = new System.Drawing.Point(598, 33);
             this.txtnrocuenta.MaxLength = 30;
             this.txtnrocuenta.Name = "txtnrocuenta";
@@ -543,6 +545,8 @@
             // 
             // separadorOre1
             // 
+            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.separadorOre1.Location = new System.Drawing.Point(0, 82);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
@@ -558,6 +562,7 @@
             this.txtbusempresa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtbusempresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusempresa.ForeColor = System.Drawing.Color.Black;
+            this.txtbusempresa.Format = null;
             this.txtbusempresa.Location = new System.Drawing.Point(15, 90);
             this.txtbusempresa.MaxLength = 30;
             this.txtbusempresa.Name = "txtbusempresa";
@@ -579,6 +584,7 @@
             this.txtbusBanco.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtbusBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusBanco.ForeColor = System.Drawing.Color.Black;
+            this.txtbusBanco.Format = null;
             this.txtbusBanco.Location = new System.Drawing.Point(213, 90);
             this.txtbusBanco.MaxLength = 30;
             this.txtbusBanco.Name = "txtbusBanco";
@@ -600,6 +606,7 @@
             this.txtbusmoneda.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtbusmoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusmoneda.ForeColor = System.Drawing.Color.Black;
+            this.txtbusmoneda.Format = null;
             this.txtbusmoneda.Location = new System.Drawing.Point(401, 90);
             this.txtbusmoneda.MaxLength = 30;
             this.txtbusmoneda.Name = "txtbusmoneda";
@@ -621,6 +628,7 @@
             this.txtbusnrocuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtbusnrocuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbusnrocuenta.ForeColor = System.Drawing.Color.Black;
+            this.txtbusnrocuenta.Format = null;
             this.txtbusnrocuenta.Location = new System.Drawing.Point(541, 90);
             this.txtbusnrocuenta.MaxLength = 30;
             this.txtbusnrocuenta.Name = "txtbusnrocuenta";
@@ -642,6 +650,7 @@
             this.txtbuscci.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtbuscci.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscci.ForeColor = System.Drawing.Color.Black;
+            this.txtbuscci.Format = null;
             this.txtbuscci.Location = new System.Drawing.Point(683, 90);
             this.txtbuscci.MaxLength = 30;
             this.txtbuscci.Name = "txtbuscci";

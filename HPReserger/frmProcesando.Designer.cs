@@ -37,6 +37,7 @@
             // lblProceso
             // 
             this.lblProceso.AutoSize = true;
+            this.lblProceso.BackColor = System.Drawing.Color.White;
             this.lblProceso.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProceso.Location = new System.Drawing.Point(195, 25);
             this.lblProceso.Name = "lblProceso";
@@ -47,6 +48,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(148, 22);
             this.pictureBox1.Name = "pictureBox1";
@@ -61,6 +63,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(466, 74);
+            this.Colores = new System.Drawing.Color[0];
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblProceso);
@@ -68,7 +71,7 @@
             this.MaximumSize = new System.Drawing.Size(482, 113);
             this.MinimumSize = new System.Drawing.Size(482, 113);
             this.Name = "frmProcesando";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Nombre = "Procesando...";
             this.Text = "Procesando...";
             this.Load += new System.EventHandler(this.frmProcesando_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

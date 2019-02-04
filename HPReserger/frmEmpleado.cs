@@ -1096,7 +1096,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
         }
 
         private void pbfotoempleado_Click(object sender, EventArgs e)
@@ -1141,7 +1141,7 @@ namespace HPReserger
                     byte[] Fotito = new byte[0];
                     conviviente = Fotito = (byte[])convivientes["conviviente"];
                     MemoryStream ms = new MemoryStream(Fotito);
-                    pbconviviente.Image = Bitmap.FromStream(ms);                    
+                    pbconviviente.Image = Bitmap.FromStream(ms);
                     encontrado = 1;
                 }
                 else encontrado = 2;
@@ -1250,12 +1250,12 @@ namespace HPReserger
                 txtNHijos.Focus();
                 return;
             }
-            if (txtDireccion.Text.Length == 0)
-            {
-                MessageBox.Show("Ingrese Dirección", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtDireccion.Focus();
-                return;
-            }
+            //if (txtDireccion.Text.Length == 0)
+            //{
+            //    MessageBox.Show("Ingrese Dirección", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    txtDireccion.Focus();
+            //    return;
+            //}
             DataRow Filita = clEmpleado.CalcularEdad(dtpFecha.Value, DateTime.Now, 1);
             if (Filita != null)
             {
@@ -1274,33 +1274,33 @@ namespace HPReserger
                 txtTelefonoFijo.Focus();
                 return;
             }*/
-            if (txtTelefonoCelular.Text.Length == 0)
-            {
-                MessageBox.Show("Ingrese Teléfono Celular", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtTelefonoCelular.Focus();
-                return;
-            }
-            if (txttipo.Text != "RECIBO POR HONORARIOS")
-            {
-                if (txtAntecedentesPoliciales.Text.Length == 0)
-                {
-                    MessageBox.Show("Seleccione Imagen Antecedentes Policiales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    btnAntecedentesPoliciales.Focus();
-                    return;
-                }
-                if (txtAntecedentesPenales.Text.Length == 0)
-                {
-                    MessageBox.Show("Seleccione Imagen Antecedentes Penales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    btnAntecedentesPenales.Focus();
-                    return;
-                }
-                if (txtReciboServicio.Text.Length == 0)
-                {
-                    MessageBox.Show("Seleccione Imagen de Recibo Servicios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    btnReciboServicios.Focus();
-                    return;
-                }
-            }
+            //if (txtTelefonoCelular.Text.Length == 0)
+            //{
+            //    MessageBox.Show("Ingrese Teléfono Celular", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    txtTelefonoCelular.Focus();
+            //    return;
+            //}
+            //if (txttipo.Text != "RECIBO POR HONORARIOS")
+            //{
+            //    if (txtAntecedentesPoliciales.Text.Length == 0)
+            //    {
+            //        MessageBox.Show("Seleccione Imagen Antecedentes Policiales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //        btnAntecedentesPoliciales.Focus();
+            //        return;
+            //    }
+            //    if (txtAntecedentesPenales.Text.Length == 0)
+            //    {
+            //        MessageBox.Show("Seleccione Imagen Antecedentes Penales", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //        btnAntecedentesPenales.Focus();
+            //        return;
+            //    }
+            //    if (txtReciboServicio.Text.Length == 0)
+            //    {
+            //        MessageBox.Show("Seleccione Imagen de Recibo Servicios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //        btnReciboServicios.Focus();
+            //        return;
+            //    }
+            //}
             if (cboTipoDocumento.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione Tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -1308,70 +1308,70 @@ namespace HPReserger
                 return;
             }
 
-            if (cboDepartamento.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione Departamento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                cboDepartamento.Focus();
-                return;
-            }
+            //if (cboDepartamento.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Seleccione Departamento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    cboDepartamento.Focus();
+            //    return;
+            //}
 
-            if (cboProvincia.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione Provincia", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                cboProvincia.Focus();
-                return;
-            }
+            //if (cboProvincia.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Seleccione Provincia", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    cboProvincia.Focus();
+            //    return;
+            //}
 
-            if (cboDistrito.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione Distrito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                cboDistrito.Focus();
-                return;
-            }
+            //if (cboDistrito.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Seleccione Distrito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    cboDistrito.Focus();
+            //    return;
+            //}
 
-            if (cboSexo.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione Sexo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                cboSexo.Focus();
-                return;
-            }
+            //if (cboSexo.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Seleccione Sexo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    cboSexo.Focus();
+            //    return;
+            //}
 
-            if (cboEstadoCivil.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione Estado Civil", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                cboEstadoCivil.Focus();
-                return;
-            }
+            //if (cboEstadoCivil.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Seleccione Estado Civil", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    cboEstadoCivil.Focus();
+            //    return;
+            //}
 
-            if (cboLugarNacimiento.SelectedIndex == -1 && cbopais.Text.Trim() == "PERÚ")
-            {
-                MessageBox.Show("Seleccione Lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                cboLugarNacimiento.Focus();
-                return;
-            }
-            if (cbopais.Text.Trim() != "PERÚ" && string.IsNullOrWhiteSpace(txtlugarnacimiento.Text))
-            {
-                MessageBox.Show("Ingresé El lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtlugarnacimiento.Focus();
-                return;
-            }
-            if (cbopais.Text.Trim() != "PERÚ")
-            {
-                txtlugarnacimiento.Focus(); cboLugarNacimiento.SelectedIndex = 0;
-            }
-            if (cboProfesion.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione Profesión", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                cboProfesion.Focus();
-                return;
-            }
+            //if (cboLugarNacimiento.SelectedIndex == -1 && cbopais.Text.Trim() == "PERÚ")
+            //{
+            //    MessageBox.Show("Seleccione Lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    cboLugarNacimiento.Focus();
+            //    return;
+            //}
+            //if (cbopais.Text.Trim() != "PERÚ" && string.IsNullOrWhiteSpace(txtlugarnacimiento.Text))
+            //{
+            //    MessageBox.Show("Ingresé El lugar de Nacimiento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    txtlugarnacimiento.Focus();
+            //    return;
+            //}
+            //if (cbopais.Text.Trim() != "PERÚ")
+            //{
+            //    txtlugarnacimiento.Focus(); cboLugarNacimiento.SelectedIndex = 0;
+            //}
+            //if (cboProfesion.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Seleccione Profesión", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    cboProfesion.Focus();
+            //    return;
+            //}
 
-            if (cboGradoInstruccion.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleccione Grado de Instrucción", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                cboGradoInstruccion.Focus();
-                return;
-            }
+            //if (cboGradoInstruccion.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Seleccione Grado de Instrucción", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    cboGradoInstruccion.Focus();
+            //    return;
+            //}
 
             ExisteEmpleado = clEmpleado.CargarCualquierImagenPostulanteEmpleado("*", "TBL_Empleado", "Tipo_ID_Emp", Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), "Nro_ID_Emp", txtNumeroDocumento.Text);
             if (ExisteEmpleado != null)
@@ -1387,13 +1387,21 @@ namespace HPReserger
 
             if (NewEmpleado == true)
             {
-                clEmpleado.EmpleadoInsertar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, frmLogin.CodigoUsuario, Foto, NombreFoto, FotoFirma, txtfirma.Text);
+                clEmpleado.EmpleadoInsertar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text,
+                    txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32((cboLugarNacimiento.SelectedValue ?? 0).ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()),
+                    Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32((cboDistrito.SelectedValue ?? 0).ToString()), Convert.ToInt32((cboProvincia.SelectedValue ?? 0).ToString()),
+                    Convert.ToInt32((cboDepartamento.SelectedValue ?? 0).ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32((cboProfesion.SelectedValue ?? 0).ToString()),
+                    Convert.ToInt32((cboGradoInstruccion.SelectedValue ?? 0).ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, frmLogin.CodigoUsuario, Foto, NombreFoto, FotoFirma, txtfirma.Text);
                 MessageBox.Show("El Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se registró con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DataRow convivi = clEmpleado.EmpleadoConviviente(txtNumeroDocumento.Text, int.Parse(cboTipoDocumento.SelectedValue.ToString()), conviviente, nombreconviviente, encontrado);
             }
             else
             {
-                clEmpleado.EmpleadoModificar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, CodigoTipoDocumento, NumeroDocumento, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32(cboLugarNacimiento.SelectedValue.ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32(cboDistrito.SelectedValue.ToString()), Convert.ToInt32(cboProvincia.SelectedValue.ToString()), Convert.ToInt32(cboDepartamento.SelectedValue.ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32(cboProfesion.SelectedValue.ToString()), Convert.ToInt32(cboGradoInstruccion.SelectedValue.ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, Foto, NombreFoto, FotoFirma, txtfirma.Text);
+                clEmpleado.EmpleadoModificar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, CodigoTipoDocumento, NumeroDocumento, 
+                    txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32((cboLugarNacimiento.SelectedValue??0).ToString()), 
+                    Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32((cboDistrito.SelectedValue??0).ToString()),
+                    Convert.ToInt32((cboProvincia.SelectedValue??0).ToString()), Convert.ToInt32((cboDepartamento.SelectedValue??0).ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text,
+                    Convert.ToInt32((cboProfesion.SelectedValue??0).ToString()), Convert.ToInt32((cboGradoInstruccion.SelectedValue??0).ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, Foto, NombreFoto, FotoFirma, txtfirma.Text);
                 MessageBox.Show("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NewEmpleado = true;
 
@@ -1497,7 +1505,7 @@ namespace HPReserger
             btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
             btnfoto.Visible = true;
             FotoEmp = pbfotoempleado.Image;
-            cbopais.SelectedIndex = cbopais.FindString("PERÚ");            
+            cbopais.SelectedIndex = cbopais.FindString("PERÚ");
         }
         private void pbfotoempleado_MouseUp(object sender, MouseEventArgs e)
         {

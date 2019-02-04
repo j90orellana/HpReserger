@@ -52,6 +52,7 @@ namespace HPReserger
                 adjunto = false;
             }
         }
+        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void btnenviar_Click(object sender, EventArgs e)
         {
             cadena = "\n\n";
@@ -61,6 +62,16 @@ namespace HPReserger
                     cadena += "\n";
                 else
                     cadena += c.ToString();
+            }
+            string[] CorreoSeparados = txtcorreo.Text.Split(';');
+            foreach (string item in CorreoSeparados)
+            {
+                if (item.Length < 5)
+                {
+                    ok = false;
+                    msg("Error en el Tamaño de los Correos\nLos Correos deben ir separados por: ;");
+                    return;
+                }
             }
             ok = true;
             this.Close();

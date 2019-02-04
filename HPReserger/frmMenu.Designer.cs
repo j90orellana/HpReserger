@@ -53,6 +53,7 @@
             this.detraccionesComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detraccionesVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacionesBancariasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -227,6 +228,7 @@
             this.panelOre1 = new HpResergerUserControls.PanelOre();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -343,7 +345,9 @@
             this.seguimientoToolStripMenuItem2,
             this.pagosToolStripMenuItem,
             this.pagoDetraccionesToolStripMenuItem,
-            this.operacionesBancariasToolStripMenuItem});
+            this.operacionesBancariasToolStripMenuItem,
+            this.toolStripSeparator12,
+            this.toolStripMenuItem4});
             this.arToolStripMenuItem.Image = global::HPReserger.Properties.Resources.Orden_Pedido;
             this.arToolStripMenuItem.Name = "arToolStripMenuItem";
             this.arToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
@@ -451,6 +455,14 @@
             this.operacionesBancariasToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.operacionesBancariasToolStripMenuItem.Text = "Operaciones Bancarias";
             this.operacionesBancariasToolStripMenuItem.Click += new System.EventHandler(this.operacionesBancariasToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem4.Image")));
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(274, 22);
+            this.toolStripMenuItem4.Text = "Cobro a Clientes";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // proyectosToolStripMenuItem1
             // 
@@ -2109,6 +2121,11 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(271, 6);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2346,5 +2363,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem detraccionesComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detraccionesVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
     }
 }

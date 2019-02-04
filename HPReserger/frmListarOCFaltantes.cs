@@ -271,10 +271,12 @@ namespace HPReserger
             {
                 MailMessage email = new MailMessage();
                 //CORREO DE PROVEEDOR
-                email.To.Add(new MailAddress(mensajitox.txtcorreo.Text));
+                string[] CorreosSeparados = mensajitox.txtcorreo.Text.Split(';');
+                string CorreoJuntos = string.Join(",", CorreosSeparados);
+                email.To.Add(CorreoJuntos);
                 ///
                 email.From = new MailAddress("v90reyes@hotmail.com");
-                email.Subject = mensajitox.txtasunto.Text;
+                email.Subject = mensajitox.txtasunto.TextValido();
                 email.Priority = mensajitox.PrioridadCorreo();
                 email.Body = mensajitox.txtmsg.Text;
                 if (mensajitox.Adjunto())
@@ -296,7 +298,7 @@ namespace HPReserger
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential("v90reyes@hotmail.com", "Victor123");
                 smtp.Send(email);
-                email.Dispose();               
+                email.Dispose();
             }
             catch (Exception ex)
             {

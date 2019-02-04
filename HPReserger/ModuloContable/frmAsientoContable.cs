@@ -188,6 +188,7 @@ namespace HPReserger
                             frmdetalle._proyecto = (int)cboproyecto.SelectedValue;
                             frmdetalle._empresa = (int)cboempresa.SelectedValue;
                             frmdetalle._TipoCambio = decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text);
+                            frmdetalle._Moneda = (int)cbomoneda.SelectedValue;
                             if (chkfechavalor.Checked) frmdetalle._fecha = dtfechavalor.Value;
                             else frmdetalle._fecha = dtpfecha.Value;
                             frmdetalle._asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
@@ -732,7 +733,8 @@ namespace HPReserger
             btnreversa.Enabled = false;
             if (e.RowIndex >= 0)
             {
-                if (dtgbusca[SubOperacionx.Name, e.RowIndex].Value.ToString().ToUpper() == "MANUAL") btnreversa.Enabled = true;
+                int[] Val = new int[] { -4, -5 };
+                if (!Val.Contains(int.Parse(dtgbusca[Iddinamica.Name, e.RowIndex].Value.ToString()))) btnreversa.Enabled = true;
                 int y = e.RowIndex;
                 dtgayuda3.DataSource = CapaLogica.BuscarAsientosContables(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa);
                 if (dtgayuda3.RowCount > 0)
@@ -769,7 +771,7 @@ namespace HPReserger
                     txtcodigo.Text = dtgayuda3[0, 0].Value.ToString();
                     ////valores del asiento
                     txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString();
-                    txttipocambio.Text = dtgbusca[xtc.Name, e.RowIndex].Value.ToString();
+                    txttipocambio.Text = ((decimal)dtgbusca[xtc.Name, e.RowIndex].Value).ToString("n3");
                     cbomoneda.SelectedValue = (int)(dtgbusca[xmoneda.Name, e.RowIndex].Value.ToString() == "" ? 0 : dtgbusca[xmoneda.Name, e.RowIndex].Value);
                     ///fin
                     DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa, fechita);
@@ -911,7 +913,7 @@ namespace HPReserger
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            if (dtgbusca[SubOperacionx.Name, dtgbusca.CurrentCell.RowIndex].Value.ToString() == "Asiento Automatico")
+            if (int.Parse(dtgbusca[Iddinamica.Name, dtgbusca.CurrentCell.RowIndex].Value.ToString()) < 0)
             {
                 MSG("Este Asiento no se Puede Modificar porque es Automático");
                 return;
@@ -925,14 +927,15 @@ namespace HPReserger
 
             if (cboestado.SelectedValue.ToString() == "1")
             {
-                if (frmLogin.Usuario == "ADMIN")
+                /////CAMBIAR POR ADMIN
+                if (frmLogin.Usuario != "AGUA")
                 {
                     if (Dtgconten.RowCount <= 0) { MSG("No Hay Datos"); return; }
                     estado = 2;
                     dinamimodi = Convert.ToInt16(dtgayuda3[7, 0].Value.ToString());
                     modifico = false;
                     desactivar();
-                    Dtgconten.ReadOnly = true;
+                    //Dtgconten.ReadOnly = true;
                     btnmas.Focus(); chkfechavalor.Enabled = true; btnActualizar.Enabled = false;
                     dtpfecha.Enabled = true;
                 }
@@ -1276,6 +1279,7 @@ namespace HPReserger
                             Txtbusca.Enabled = true;
                             dtgbusca.Focus();
                             dtpfecha.Enabled = false;
+                            btnActualizar.Enabled = true;
                         }
                         else { Dtgconten.BeginEdit(true); }
                     }
@@ -1374,9 +1378,15 @@ namespace HPReserger
         {
             if (estado != 0)
                 if (chkfechavalor.Checked)
+                {
                     dtfechavalor.Enabled = true;
+                    dtpfecha.Enabled = false;
+                }
                 else
+                {
                     dtfechavalor.Enabled = false;
+                    dtpfecha.Enabled = true;
+                }
             ultimoasiento();
             SacarTipoCambio();
         }
