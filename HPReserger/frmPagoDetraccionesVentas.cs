@@ -344,7 +344,7 @@ namespace HPReserger
                                 Idcliente = item.Cells[Clientex.Name].Value.ToString();
                                 Tipoid = (int)item.Cells[tipoidx.Name].Value;
                                 CapaLogica.DetraccionesVenta(1, NroBoleta, Tipoid, Idcliente, (decimal)item.Cells[ImporteMOx.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value
-                                    , (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaContable.Value, frmLogin.CodigoUsuario);
+                                    , (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaContable.Value, frmLogin.CodigoUsuario, (int)cboempresa.SelectedValue);
                             }
                         }
                     }
@@ -355,7 +355,7 @@ namespace HPReserger
                     string CuentaContableBanco = cbocuentabanco.SelectedValue.ToString();
                     string CuentaDetracciones = txtcuentadetracciones.Text;
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesVentaCabecera(codigo, cuo, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones, CuentaContableBanco, "9559501", dtpFechaContable.Value, txtglosa.Text);
+                    CapaLogica.PagarDetracionesVentaCabecera(codigo, cuo, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones, CuentaContableBanco, "9559501", dtpFechaContable.Value, txtglosa.Text, (int)cboempresa.SelectedValue);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -369,7 +369,7 @@ namespace HPReserger
                                 CapaLogica.PagarDetracionesVentaDetalle(codigo, (int)item.Cells[tipoidx.Name].Value, item.Cells[Clientex.Name].Value.ToString(), item.Cells[razonx.Name].Value.ToString()
                                 , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value
                                 //item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value / (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value
-                                , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, dtpFechaContable.Value, "9559501", txtglosa.Text, frmLogin.CodigoUsuario);
+                                , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, dtpFechaContable.Value, "9559501", txtglosa.Text, frmLogin.CodigoUsuario, (int)cboempresa.SelectedValue);
 
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA

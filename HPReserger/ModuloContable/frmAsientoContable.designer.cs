@@ -194,6 +194,7 @@ namespace HPReserger
             // 
             this.lbldetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbldetalle.AutoSize = true;
+            this.lbldetalle.BackColor = System.Drawing.Color.Transparent;
             this.lbldetalle.Location = new System.Drawing.Point(12, 393);
             this.lbldetalle.Name = "lbldetalle";
             this.lbldetalle.Size = new System.Drawing.Size(0, 13);
@@ -1117,9 +1118,6 @@ namespace HPReserger
             this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgbusca.Size = new System.Drawing.Size(667, 153);
             this.dtgbusca.TabIndex = 148;
-            this.dtgbusca.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_CellContentClick);
-            this.dtgbusca.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_CellValidated);
-            this.dtgbusca.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_CellValueChanged);
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
             this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
             // 

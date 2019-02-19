@@ -47,10 +47,10 @@ namespace HPReserger
                 // dtgbusca.CurrentCell = dtgbusca[0, 0];
                 dtgbusca_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
             }
-            if (dtpfecha.Value == null)
+            DateTime FechaPrueba = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             {
-                fechaini.Value = dtpfecha.Value = DateTime.Today;
-                fechafin.Value = DateTime.Today.AddDays(1);
+                fechaini.Value = FechaPrueba;
+                fechafin.Value = (FechaPrueba.AddMonths(1)).AddDays(-1);
             }
         }
         public void cARgarEmpresas()
@@ -189,6 +189,7 @@ namespace HPReserger
                             frmdetalle._empresa = (int)cboempresa.SelectedValue;
                             frmdetalle._TipoCambio = decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text);
                             frmdetalle._Moneda = (int)cbomoneda.SelectedValue;
+                            frmdetalle._EsManual = _EsModificable;
                             if (chkfechavalor.Checked) frmdetalle._fecha = dtfechavalor.Value;
                             else frmdetalle._fecha = dtpfecha.Value;
                             frmdetalle._asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
@@ -682,14 +683,18 @@ namespace HPReserger
         {
 
         }
+        public void CargarDatos()
+        {
+            Txtbusca_TextChanged(new object { }, new EventArgs());
+        }
         public int tipobusca = 0;
         private void Txtbusca_TextChanged(object sender, EventArgs e)
         {
             if (fechaini.Value < fechafin.Value)
             {
-                dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechaini.Value, fechafin.Value.AddDays(1), fechacheck, _idempresa);
+                dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechaini.Value, fechafin.Value, fechacheck, _idempresa);
             }
-            else { dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechafin.Value, fechaini.Value.AddDays(1), fechacheck, _idempresa); }
+            else { dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechafin.Value, fechaini.Value, fechacheck, _idempresa); }
             msg2(dtgbusca);
             if (dtgbusca.RowCount < 1)
             {
@@ -731,6 +736,7 @@ namespace HPReserger
         private void dtgbusca_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             btnreversa.Enabled = false;
+            _EsModificable = false;
             if (e.RowIndex >= 0)
             {
                 int[] Val = new int[] { -4, -5 };
@@ -743,7 +749,8 @@ namespace HPReserger
                     dtpfecha.Value = Convert.ToDateTime(dtgbusca[Fechax.Name, e.RowIndex].Value);
                     //dtfechavalor.Value = Convert.ToDateTime(dtgbusca[8, e.RowIndex].Value.ToString() == "" ? fecha.Value : dtgbusca[8, e.RowIndex].Value);
 
-                    dinamica = Convert.ToInt32(dtgayuda3[7, 0].Value.ToString());
+                    dinamica = int.Parse(dtgbusca[Iddinamica.Name, e.RowIndex].Value.ToString());
+                    if (dinamica >= 0) _EsModificable = true;
                     cboestado.Text = dtgbusca[nameestado.Name, e.RowIndex].Value.ToString();
                     txtdinamica.Text = "DC_00" + dinamica;
 
@@ -771,7 +778,7 @@ namespace HPReserger
                     txtcodigo.Text = dtgayuda3[0, 0].Value.ToString();
                     ////valores del asiento
                     txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString();
-                    txttipocambio.Text = ((decimal)dtgbusca[xtc.Name, e.RowIndex].Value).ToString("n3");
+                    txttipocambio.Text = (dtgbusca[xtc.Name, e.RowIndex].Value.ToString() == "" ? 3.30m : (decimal)dtgbusca[xtc.Name, e.RowIndex].Value).ToString("n3");
                     cbomoneda.SelectedValue = (int)(dtgbusca[xmoneda.Name, e.RowIndex].Value.ToString() == "" ? 0 : dtgbusca[xmoneda.Name, e.RowIndex].Value);
                     ///fin
                     DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa, fechita);
@@ -899,8 +906,10 @@ namespace HPReserger
             ///limpieza de valores
             txtglosa.CargarTextoporDefecto(); cbomoneda.SelectedIndex = 0; txttipocambio.CargarTextoporDefecto();
             cbocambio.SelectedIndex = -1;
-            cbocambio.SelectedIndex = 0;
+            cbocambio.SelectedIndex = 1;
+            cboempresa.Enabled = true;
             SacarTipoCambio();
+            // cboproyecto.SelectedIndex = cboproyecto.Items.Count - 1;
         }
         public Boolean modifico;
         public int dinamimodi;
@@ -908,6 +917,7 @@ namespace HPReserger
         DateTime _FechaAModificar;
         int _CodigoModificar;
         int _ProyectoModificar;
+        Boolean _EsModificable;
         public void LimpiarParaEditar(Boolean a)
         {
         }
@@ -932,12 +942,13 @@ namespace HPReserger
                 {
                     if (Dtgconten.RowCount <= 0) { MSG("No Hay Datos"); return; }
                     estado = 2;
-                    dinamimodi = Convert.ToInt16(dtgayuda3[7, 0].Value.ToString());
+                    dinamimodi = int.Parse(dtgbusca[Iddinamica.Name, dtgbusca.CurrentRow.Index].Value.ToString());
                     modifico = false;
                     desactivar();
                     //Dtgconten.ReadOnly = true;
                     btnmas.Focus(); chkfechavalor.Enabled = true; btnActualizar.Enabled = false;
                     dtpfecha.Enabled = true;
+                    cboempresa.Enabled = false;
                 }
                 else
                 {
@@ -1228,6 +1239,7 @@ namespace HPReserger
                 }
             }
             else { }
+            cboempresa.Enabled = true;
             btnActualizar.Enabled = true;
         }
         public DialogResult msgp(string cadena)
@@ -1260,7 +1272,8 @@ namespace HPReserger
                         estado = 0;
                         activar();
                         //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
+                        //dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
+                        CargarDatos();
                         Txtbusca.Enabled = false;
                         dtgbusca.Focus(); btnActualizar.Enabled = true;
                     }
@@ -1275,7 +1288,8 @@ namespace HPReserger
                             estado = 0;
                             activar();
                             //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
-                            dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
+                            //dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
+                            CargarDatos();
                             Txtbusca.Enabled = true;
                             dtgbusca.Focus();
                             dtpfecha.Enabled = false;
@@ -1288,12 +1302,14 @@ namespace HPReserger
                         estado = 0;
                         activar();
                         //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1);
-                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
+                        //dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
+                        CargarDatos();
                         Txtbusca.Enabled = true;
                         dtgbusca.Focus(); btnActualizar.Enabled = true;
                     }
                 }
             }
+            cboempresa.Enabled = true;
         }
         private void btneliminar_Click(object sender, EventArgs e)
         {
@@ -1368,7 +1384,8 @@ namespace HPReserger
             Txtbusca.Text = "";
             Txtbusca_TextChanged(sender, e);
             /////
-            dtgbusca.CurrentCell = dtgbusca[Codidasiento.Name, pos];
+            if (dtgbusca.RowCount > pos)
+                dtgbusca.CurrentCell = dtgbusca[Codidasiento.Name, pos];
         }
         private void dtgayuda3_RowEnter(object sender, DataGridViewCellEventArgs e)
         {

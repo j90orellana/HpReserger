@@ -29,11 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.gp1 = new System.Windows.Forms.GroupBox();
+            this.rdnrodoc = new System.Windows.Forms.RadioButton();
+            this.rdid = new System.Windows.Forms.RadioButton();
+            this.rdEstadoCivil = new System.Windows.Forms.RadioButton();
+            this.rdnombre = new System.Windows.Forms.RadioButton();
+            this.txtBuscar = new HpResergerUserControls.txtBuscar();
+            this.txtocupacion = new HpResergerUserControls.TextBoxPer();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.txtemail = new HpResergerUserControls.TextBoxPer();
+            this.cbodistrito = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.cboprovincia = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.cbodepartamento = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.cbocivil = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.cbosexo = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.cbopersona = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.txtapemat = new HpResergerUserControls.TextBoxPer();
+            this.txtdireccion = new HpResergerUserControls.TextBoxPer();
+            this.txttelfijo = new HpResergerUserControls.TextBoxPer();
+            this.txttelcelular = new HpResergerUserControls.TextBoxPer();
+            this.txtapetpat = new HpResergerUserControls.TextBoxPer();
+            this.txtnombre = new HpResergerUserControls.TextBoxPer();
+            this.txtnroid = new HpResergerUserControls.TextBoxPer();
+            this.cbotipoid = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.txtcodigo = new HpResergerUserControls.TextBoxPer();
+            this.btneliminar = new System.Windows.Forms.Button();
+            this.btnmodificar = new System.Windows.Forms.Button();
+            this.btnnuevo = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
             this.Cod_Clix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo_Id_Clix = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -62,55 +91,481 @@
             this.Ocupacionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fechax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btneliminar = new System.Windows.Forms.Button();
-            this.btnmodificar = new System.Windows.Forms.Button();
-            this.btnnuevo = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.txtcodigo = new HpResergerUserControls.TextBoxPer();
-            this.txtnroid = new HpResergerUserControls.TextBoxPer();
-            this.txtnombre = new HpResergerUserControls.TextBoxPer();
-            this.txtapetpat = new HpResergerUserControls.TextBoxPer();
-            this.txtapemat = new HpResergerUserControls.TextBoxPer();
-            this.txtdireccion = new HpResergerUserControls.TextBoxPer();
-            this.txttelfijo = new HpResergerUserControls.TextBoxPer();
-            this.txttelcelular = new HpResergerUserControls.TextBoxPer();
-            this.txtemail = new HpResergerUserControls.TextBoxPer();
-            this.txtocupacion = new HpResergerUserControls.TextBoxPer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbotipoid = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbopersona = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.cbosexo = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbocivil = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cbodepartamento = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.label13 = new System.Windows.Forms.Label();
-            this.cboprovincia = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.label14 = new System.Windows.Forms.Label();
-            this.cbodistrito = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.label15 = new System.Windows.Forms.Label();
             this.Email = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtBuscar = new HpResergerUserControls.txtBuscar();
-            this.gp1 = new System.Windows.Forms.GroupBox();
-            this.rdnrodoc = new System.Windows.Forms.RadioButton();
-            this.rdid = new System.Windows.Forms.RadioButton();
-            this.rdEstadoCivil = new System.Windows.Forms.RadioButton();
-            this.rdnombre = new System.Windows.Forms.RadioButton();
-            this.lblmsg = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
+            this.label12 = new System.Windows.Forms.Label();
             this.gp1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Location = new System.Drawing.Point(12, 535);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(113, 13);
+            this.lblmsg.TabIndex = 97;
+            this.lblmsg.Text = "Total de Registros : 0";
+            // 
+            // gp1
+            // 
+            this.gp1.BackColor = System.Drawing.Color.Transparent;
+            this.gp1.Controls.Add(this.rdnrodoc);
+            this.gp1.Controls.Add(this.rdid);
+            this.gp1.Controls.Add(this.rdEstadoCivil);
+            this.gp1.Controls.Add(this.rdnombre);
+            this.gp1.Location = new System.Drawing.Point(10, 159);
+            this.gp1.Name = "gp1";
+            this.gp1.Size = new System.Drawing.Size(937, 40);
+            this.gp1.TabIndex = 96;
+            this.gp1.TabStop = false;
+            this.gp1.Text = "Opciones";
+            // 
+            // rdnrodoc
+            // 
+            this.rdnrodoc.AutoSize = true;
+            this.rdnrodoc.Location = new System.Drawing.Point(84, 17);
+            this.rdnrodoc.Name = "rdnrodoc";
+            this.rdnrodoc.Size = new System.Drawing.Size(64, 17);
+            this.rdnrodoc.TabIndex = 1;
+            this.rdnrodoc.Text = "NroDoc";
+            this.rdnrodoc.UseVisualStyleBackColor = true;
+            this.rdnrodoc.CheckedChanged += new System.EventHandler(this.rdnrodoc_CheckedChanged);
+            // 
+            // rdid
+            // 
+            this.rdid.AutoSize = true;
+            this.rdid.Checked = true;
+            this.rdid.Location = new System.Drawing.Point(12, 17);
+            this.rdid.Name = "rdid";
+            this.rdid.Size = new System.Drawing.Size(57, 17);
+            this.rdid.TabIndex = 1;
+            this.rdid.TabStop = true;
+            this.rdid.Text = "TipoId";
+            this.rdid.UseVisualStyleBackColor = true;
+            this.rdid.CheckedChanged += new System.EventHandler(this.rdid_CheckedChanged);
+            // 
+            // rdEstadoCivil
+            // 
+            this.rdEstadoCivil.AutoSize = true;
+            this.rdEstadoCivil.Location = new System.Drawing.Point(250, 17);
+            this.rdEstadoCivil.Name = "rdEstadoCivil";
+            this.rdEstadoCivil.Size = new System.Drawing.Size(81, 17);
+            this.rdEstadoCivil.TabIndex = 0;
+            this.rdEstadoCivil.Text = "EstadoCivil";
+            this.rdEstadoCivil.UseVisualStyleBackColor = true;
+            this.rdEstadoCivil.CheckedChanged += new System.EventHandler(this.rdEstadoCivil_CheckedChanged);
+            // 
+            // rdnombre
+            // 
+            this.rdnombre.AutoSize = true;
+            this.rdnombre.Location = new System.Drawing.Point(169, 17);
+            this.rdnombre.Name = "rdnombre";
+            this.rdnombre.Size = new System.Drawing.Size(71, 17);
+            this.rdnombre.TabIndex = 0;
+            this.rdnombre.Text = "Nombres";
+            this.rdnombre.UseVisualStyleBackColor = true;
+            this.rdnombre.CheckedChanged += new System.EventHandler(this.rdnombre_CheckedChanged);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtBuscar.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtBuscar.FondoBoton")));
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.ImgBotonCerrar = null;
+            this.txtBuscar.Location = new System.Drawing.Point(12, 204);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(476, 22);
+            this.txtBuscar.TabIndex = 95;
+            this.txtBuscar.BuscarClick += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
+            this.txtBuscar.BuscarTextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
+            // 
+            // txtocupacion
+            // 
+            this.txtocupacion.BackColor = System.Drawing.Color.White;
+            this.txtocupacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtocupacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtocupacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtocupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtocupacion.ForeColor = System.Drawing.Color.Black;
+            this.txtocupacion.Format = null;
+            this.txtocupacion.Location = new System.Drawing.Point(391, 133);
+            this.txtocupacion.MaxLength = 50;
+            this.txtocupacion.Name = "txtocupacion";
+            this.txtocupacion.NextControlOnEnter = this.btnaceptar;
+            this.txtocupacion.Size = new System.Drawing.Size(177, 21);
+            this.txtocupacion.TabIndex = 10;
+            this.txtocupacion.Text = "Ingrese Ocupación";
+            this.txtocupacion.TextoDefecto = "Ingrese Ocupación";
+            this.txtocupacion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtocupacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(777, 530);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
+            this.btnaceptar.TabIndex = 11;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // txtemail
+            // 
+            this.txtemail.BackColor = System.Drawing.Color.White;
+            this.txtemail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtemail.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtemail.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtemail.ForeColor = System.Drawing.Color.Black;
+            this.txtemail.Format = null;
+            this.txtemail.Location = new System.Drawing.Point(75, 133);
+            this.txtemail.MaxLength = 50;
+            this.txtemail.Name = "txtemail";
+            this.txtemail.NextControlOnEnter = this.txtocupacion;
+            this.txtemail.Size = new System.Drawing.Size(235, 21);
+            this.txtemail.TabIndex = 9;
+            this.txtemail.Text = "correo@prueba.com";
+            this.txtemail.TextoDefecto = "correo@prueba.com";
+            this.txtemail.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtemail.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // cbodistrito
+            // 
+            this.cbodistrito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbodistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbodistrito.FormattingEnabled = true;
+            this.cbodistrito.IndexText = null;
+            this.cbodistrito.Location = new System.Drawing.Point(545, 109);
+            this.cbodistrito.Name = "cbodistrito";
+            this.cbodistrito.ReadOnly = false;
+            this.cbodistrito.Size = new System.Drawing.Size(314, 21);
+            this.cbodistrito.TabIndex = 89;
+            this.cbodistrito.SelectedIndexChanged += new System.EventHandler(this.cbodistrito_SelectedIndexChanged);
+            this.cbodistrito.Click += new System.EventHandler(this.cbodistrito_Click);
+            // 
+            // cboprovincia
+            // 
+            this.cboprovincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboprovincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboprovincia.FormattingEnabled = true;
+            this.cboprovincia.IndexText = null;
+            this.cboprovincia.Location = new System.Drawing.Point(311, 109);
+            this.cboprovincia.Name = "cboprovincia";
+            this.cboprovincia.ReadOnly = false;
+            this.cboprovincia.Size = new System.Drawing.Size(177, 21);
+            this.cboprovincia.TabIndex = 89;
+            this.cboprovincia.SelectedIndexChanged += new System.EventHandler(this.cboprovincia_SelectedIndexChanged);
+            this.cboprovincia.Click += new System.EventHandler(this.cboprovincia_Click);
+            // 
+            // cbodepartamento
+            // 
+            this.cbodepartamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbodepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbodepartamento.FormattingEnabled = true;
+            this.cbodepartamento.IndexText = null;
+            this.cbodepartamento.Location = new System.Drawing.Point(75, 109);
+            this.cbodepartamento.Name = "cbodepartamento";
+            this.cbodepartamento.ReadOnly = false;
+            this.cbodepartamento.Size = new System.Drawing.Size(175, 21);
+            this.cbodepartamento.TabIndex = 89;
+            this.cbodepartamento.SelectedIndexChanged += new System.EventHandler(this.cbodepartamento_SelectedIndexChanged);
+            this.cbodepartamento.Click += new System.EventHandler(this.cbodepartamento_Click);
+            // 
+            // cbocivil
+            // 
+            this.cbocivil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbocivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbocivil.FormattingEnabled = true;
+            this.cbocivil.IndexText = null;
+            this.cbocivil.Location = new System.Drawing.Point(653, 61);
+            this.cbocivil.Name = "cbocivil";
+            this.cbocivil.ReadOnly = false;
+            this.cbocivil.Size = new System.Drawing.Size(206, 21);
+            this.cbocivil.TabIndex = 89;
+            this.cbocivil.Click += new System.EventHandler(this.cbocivil_Click);
+            // 
+            // cbosexo
+            // 
+            this.cbosexo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbosexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbosexo.FormattingEnabled = true;
+            this.cbosexo.IndexText = null;
+            this.cbosexo.Location = new System.Drawing.Point(391, 61);
+            this.cbosexo.Name = "cbosexo";
+            this.cbosexo.ReadOnly = false;
+            this.cbosexo.Size = new System.Drawing.Size(177, 21);
+            this.cbosexo.TabIndex = 89;
+            this.cbosexo.Click += new System.EventHandler(this.cbosexo_Click);
+            // 
+            // cbopersona
+            // 
+            this.cbopersona.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbopersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbopersona.FormattingEnabled = true;
+            this.cbopersona.IndexText = null;
+            this.cbopersona.Location = new System.Drawing.Point(75, 61);
+            this.cbopersona.Name = "cbopersona";
+            this.cbopersona.ReadOnly = false;
+            this.cbopersona.Size = new System.Drawing.Size(235, 21);
+            this.cbopersona.TabIndex = 89;
+            // 
+            // txtapemat
+            // 
+            this.txtapemat.BackColor = System.Drawing.Color.White;
+            this.txtapemat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtapemat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtapemat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtapemat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtapemat.ForeColor = System.Drawing.Color.Black;
+            this.txtapemat.Format = null;
+            this.txtapemat.Location = new System.Drawing.Point(653, 37);
+            this.txtapemat.MaxLength = 30;
+            this.txtapemat.Name = "txtapemat";
+            this.txtapemat.NextControlOnEnter = this.txtdireccion;
+            this.txtapemat.Size = new System.Drawing.Size(206, 21);
+            this.txtapemat.TabIndex = 5;
+            this.txtapemat.Text = "Ingrese Apellido Materno";
+            this.txtapemat.TextoDefecto = "Ingrese Apellido Materno";
+            this.txtapemat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtapemat.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // txtdireccion
+            // 
+            this.txtdireccion.BackColor = System.Drawing.Color.White;
+            this.txtdireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtdireccion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtdireccion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtdireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdireccion.ForeColor = System.Drawing.Color.Black;
+            this.txtdireccion.Format = null;
+            this.txtdireccion.Location = new System.Drawing.Point(75, 85);
+            this.txtdireccion.MaxLength = 100;
+            this.txtdireccion.Name = "txtdireccion";
+            this.txtdireccion.NextControlOnEnter = this.txttelfijo;
+            this.txtdireccion.Size = new System.Drawing.Size(413, 21);
+            this.txtdireccion.TabIndex = 6;
+            this.txtdireccion.Text = "Ingrese Dirección";
+            this.txtdireccion.TextoDefecto = "Ingrese Dirección";
+            this.txtdireccion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtdireccion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // txttelfijo
+            // 
+            this.txttelfijo.BackColor = System.Drawing.Color.White;
+            this.txttelfijo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttelfijo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttelfijo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttelfijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttelfijo.ForeColor = System.Drawing.Color.Black;
+            this.txttelfijo.Format = null;
+            this.txttelfijo.Location = new System.Drawing.Point(545, 85);
+            this.txttelfijo.MaxLength = 10;
+            this.txttelfijo.Name = "txttelfijo";
+            this.txttelfijo.NextControlOnEnter = this.txttelcelular;
+            this.txttelfijo.Size = new System.Drawing.Size(105, 21);
+            this.txttelfijo.TabIndex = 7;
+            this.txttelfijo.Text = "00000";
+            this.txttelfijo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttelfijo.TextoDefecto = "00000";
+            this.txttelfijo.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttelfijo.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // txttelcelular
+            // 
+            this.txttelcelular.BackColor = System.Drawing.Color.White;
+            this.txttelcelular.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttelcelular.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttelcelular.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttelcelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttelcelular.ForeColor = System.Drawing.Color.Black;
+            this.txttelcelular.Format = null;
+            this.txttelcelular.Location = new System.Drawing.Point(724, 85);
+            this.txttelcelular.MaxLength = 15;
+            this.txttelcelular.Name = "txttelcelular";
+            this.txttelcelular.NextControlOnEnter = this.txtemail;
+            this.txttelcelular.Size = new System.Drawing.Size(135, 21);
+            this.txttelcelular.TabIndex = 8;
+            this.txttelcelular.Text = "00000";
+            this.txttelcelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttelcelular.TextoDefecto = "00000";
+            this.txttelcelular.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttelcelular.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // txtapetpat
+            // 
+            this.txtapetpat.BackColor = System.Drawing.Color.White;
+            this.txtapetpat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtapetpat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtapetpat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtapetpat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtapetpat.ForeColor = System.Drawing.Color.Black;
+            this.txtapetpat.Format = null;
+            this.txtapetpat.Location = new System.Drawing.Point(391, 37);
+            this.txtapetpat.MaxLength = 30;
+            this.txtapetpat.Name = "txtapetpat";
+            this.txtapetpat.NextControlOnEnter = this.txtapemat;
+            this.txtapetpat.Size = new System.Drawing.Size(177, 21);
+            this.txtapetpat.TabIndex = 4;
+            this.txtapetpat.Text = "Ingrese Apellido Paterno";
+            this.txtapetpat.TextoDefecto = "Ingrese Apellido Paterno";
+            this.txtapetpat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtapetpat.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // txtnombre
+            // 
+            this.txtnombre.BackColor = System.Drawing.Color.White;
+            this.txtnombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnombre.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnombre.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnombre.ForeColor = System.Drawing.Color.Black;
+            this.txtnombre.Format = null;
+            this.txtnombre.Location = new System.Drawing.Point(75, 37);
+            this.txtnombre.MaxLength = 100;
+            this.txtnombre.Name = "txtnombre";
+            this.txtnombre.NextControlOnEnter = this.txtapetpat;
+            this.txtnombre.Size = new System.Drawing.Size(235, 21);
+            this.txtnombre.TabIndex = 3;
+            this.txtnombre.Text = "Ingrese Nombre";
+            this.txtnombre.TextoDefecto = "Ingrese Nombre";
+            this.txtnombre.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnombre.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // txtnroid
+            // 
+            this.txtnroid.BackColor = System.Drawing.Color.White;
+            this.txtnroid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnroid.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnroid.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnroid.ForeColor = System.Drawing.Color.Black;
+            this.txtnroid.Format = null;
+            this.txtnroid.Location = new System.Drawing.Point(653, 13);
+            this.txtnroid.MaxLength = 10;
+            this.txtnroid.Name = "txtnroid";
+            this.txtnroid.NextControlOnEnter = this.txtnombre;
+            this.txtnroid.Size = new System.Drawing.Size(206, 21);
+            this.txtnroid.TabIndex = 2;
+            this.txtnroid.Text = "000000";
+            this.txtnroid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnroid.TextoDefecto = "000000";
+            this.txtnroid.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumerosConCero;
+            // 
+            // cbotipoid
+            // 
+            this.cbotipoid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipoid.FormattingEnabled = true;
+            this.cbotipoid.IndexText = null;
+            this.cbotipoid.Location = new System.Drawing.Point(391, 13);
+            this.cbotipoid.Name = "cbotipoid";
+            this.cbotipoid.ReadOnly = false;
+            this.cbotipoid.Size = new System.Drawing.Size(177, 21);
+            this.cbotipoid.TabIndex = 1;
+            this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
+            this.cbotipoid.Click += new System.EventHandler(this.cbotipoid_Click);
+            // 
+            // txtcodigo
+            // 
+            this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtcodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcodigo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtcodigo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcodigo.ForeColor = System.Drawing.Color.Black;
+            this.txtcodigo.Format = null;
+            this.txtcodigo.Location = new System.Drawing.Point(75, 13);
+            this.txtcodigo.MaxLength = 100;
+            this.txtcodigo.Name = "txtcodigo";
+            this.txtcodigo.NextControlOnEnter = this.txtnroid;
+            this.txtcodigo.ReadOnly = true;
+            this.txtcodigo.Size = new System.Drawing.Size(100, 21);
+            this.txtcodigo.TabIndex = 0;
+            this.txtcodigo.Text = "0";
+            this.txtcodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtcodigo.TextoDefecto = "0";
+            this.txtcodigo.TextoDefectoColor = System.Drawing.Color.Blue;
+            this.txtcodigo.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
+            this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.Enabled = false;
+            this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
+            this.btneliminar.Location = new System.Drawing.Point(865, 60);
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.Size = new System.Drawing.Size(82, 23);
+            this.btneliminar.TabIndex = 75;
+            this.btneliminar.Text = "Eliminar";
+            this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btneliminar.UseVisualStyleBackColor = true;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
+            // 
+            // btnmodificar
+            // 
+            this.btnmodificar.Enabled = false;
+            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
+            this.btnmodificar.Location = new System.Drawing.Point(865, 36);
+            this.btnmodificar.Name = "btnmodificar";
+            this.btnmodificar.Size = new System.Drawing.Size(82, 23);
+            this.btnmodificar.TabIndex = 76;
+            this.btnmodificar.Text = "Modificar";
+            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
+            // 
+            // btnnuevo
+            // 
+            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
+            this.btnnuevo.Location = new System.Drawing.Point(865, 12);
+            this.btnnuevo.Name = "btnnuevo";
+            this.btnnuevo.Size = new System.Drawing.Size(82, 23);
+            this.btnnuevo.TabIndex = 74;
+            this.btnnuevo.Text = "Nuevo";
+            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnnuevo.UseVisualStyleBackColor = true;
+            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(865, 530);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(82, 23);
+            this.btncancelar.TabIndex = 77;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
             // 
             // dtgconten
             // 
@@ -183,7 +638,7 @@
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(935, 392);
+            this.dtgconten.Size = new System.Drawing.Size(935, 292);
             this.dtgconten.TabIndex = 0;
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
@@ -444,466 +899,15 @@
             this.Fechax.ReadOnly = true;
             this.Fechax.Visible = false;
             // 
-            // btneliminar
+            // Email
             // 
-            this.btneliminar.Enabled = false;
-            this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(865, 60);
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(82, 23);
-            this.btneliminar.TabIndex = 75;
-            this.btneliminar.Text = "Eliminar";
-            this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btneliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnmodificar
-            // 
-            this.btnmodificar.Enabled = false;
-            this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(865, 36);
-            this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(82, 23);
-            this.btnmodificar.TabIndex = 76;
-            this.btnmodificar.Text = "Modificar";
-            this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnmodificar.UseVisualStyleBackColor = true;
-            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
-            // 
-            // btnnuevo
-            // 
-            this.btnnuevo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
-            this.btnnuevo.Location = new System.Drawing.Point(865, 12);
-            this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(82, 23);
-            this.btnnuevo.TabIndex = 74;
-            this.btnnuevo.Text = "Nuevo";
-            this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnnuevo.UseVisualStyleBackColor = true;
-            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(865, 630);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(82, 23);
-            this.btncancelar.TabIndex = 77;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(777, 630);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
-            this.btnaceptar.TabIndex = 11;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // txtcodigo
-            // 
-            this.txtcodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtcodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtcodigo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtcodigo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcodigo.ForeColor = System.Drawing.Color.Black;
-            this.txtcodigo.Format = null;
-            this.txtcodigo.Location = new System.Drawing.Point(75, 13);
-            this.txtcodigo.MaxLength = 100;
-            this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.NextControlOnEnter = this.txtnroid;
-            this.txtcodigo.ReadOnly = true;
-            this.txtcodigo.Size = new System.Drawing.Size(100, 21);
-            this.txtcodigo.TabIndex = 0;
-            this.txtcodigo.Text = "0";
-            this.txtcodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtcodigo.TextoDefecto = "0";
-            this.txtcodigo.TextoDefectoColor = System.Drawing.Color.Blue;
-            this.txtcodigo.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
-            this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
-            // 
-            // txtnroid
-            // 
-            this.txtnroid.BackColor = System.Drawing.Color.White;
-            this.txtnroid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnroid.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnroid.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnroid.ForeColor = System.Drawing.Color.Black;
-            this.txtnroid.Format = null;
-            this.txtnroid.Location = new System.Drawing.Point(653, 13);
-            this.txtnroid.MaxLength = 10;
-            this.txtnroid.Name = "txtnroid";
-            this.txtnroid.NextControlOnEnter = this.txtnombre;
-            this.txtnroid.Size = new System.Drawing.Size(206, 21);
-            this.txtnroid.TabIndex = 2;
-            this.txtnroid.Text = "000000";
-            this.txtnroid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnroid.TextoDefecto = "000000";
-            this.txtnroid.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumerosConCero;
-            // 
-            // txtnombre
-            // 
-            this.txtnombre.BackColor = System.Drawing.Color.White;
-            this.txtnombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnombre.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnombre.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombre.ForeColor = System.Drawing.Color.Black;
-            this.txtnombre.Format = null;
-            this.txtnombre.Location = new System.Drawing.Point(75, 37);
-            this.txtnombre.MaxLength = 100;
-            this.txtnombre.Name = "txtnombre";
-            this.txtnombre.NextControlOnEnter = this.txtapetpat;
-            this.txtnombre.Size = new System.Drawing.Size(235, 21);
-            this.txtnombre.TabIndex = 3;
-            this.txtnombre.Text = "Ingrese Nombre";
-            this.txtnombre.TextoDefecto = "Ingrese Nombre";
-            this.txtnombre.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnombre.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // txtapetpat
-            // 
-            this.txtapetpat.BackColor = System.Drawing.Color.White;
-            this.txtapetpat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtapetpat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtapetpat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtapetpat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtapetpat.ForeColor = System.Drawing.Color.Black;
-            this.txtapetpat.Format = null;
-            this.txtapetpat.Location = new System.Drawing.Point(391, 37);
-            this.txtapetpat.MaxLength = 30;
-            this.txtapetpat.Name = "txtapetpat";
-            this.txtapetpat.NextControlOnEnter = this.txtapemat;
-            this.txtapetpat.Size = new System.Drawing.Size(177, 21);
-            this.txtapetpat.TabIndex = 4;
-            this.txtapetpat.Text = "Ingrese Apellido Paterno";
-            this.txtapetpat.TextoDefecto = "Ingrese Apellido Paterno";
-            this.txtapetpat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtapetpat.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // txtapemat
-            // 
-            this.txtapemat.BackColor = System.Drawing.Color.White;
-            this.txtapemat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtapemat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtapemat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtapemat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtapemat.ForeColor = System.Drawing.Color.Black;
-            this.txtapemat.Format = null;
-            this.txtapemat.Location = new System.Drawing.Point(653, 37);
-            this.txtapemat.MaxLength = 30;
-            this.txtapemat.Name = "txtapemat";
-            this.txtapemat.NextControlOnEnter = this.txtdireccion;
-            this.txtapemat.Size = new System.Drawing.Size(206, 21);
-            this.txtapemat.TabIndex = 5;
-            this.txtapemat.Text = "Ingrese Apellido Materno";
-            this.txtapemat.TextoDefecto = "Ingrese Apellido Materno";
-            this.txtapemat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtapemat.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // txtdireccion
-            // 
-            this.txtdireccion.BackColor = System.Drawing.Color.White;
-            this.txtdireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtdireccion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtdireccion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtdireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdireccion.ForeColor = System.Drawing.Color.Black;
-            this.txtdireccion.Format = null;
-            this.txtdireccion.Location = new System.Drawing.Point(75, 85);
-            this.txtdireccion.MaxLength = 100;
-            this.txtdireccion.Name = "txtdireccion";
-            this.txtdireccion.NextControlOnEnter = this.txttelfijo;
-            this.txtdireccion.Size = new System.Drawing.Size(413, 21);
-            this.txtdireccion.TabIndex = 6;
-            this.txtdireccion.Text = "Ingrese Dirección";
-            this.txtdireccion.TextoDefecto = "Ingrese Dirección";
-            this.txtdireccion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtdireccion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // txttelfijo
-            // 
-            this.txttelfijo.BackColor = System.Drawing.Color.White;
-            this.txttelfijo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttelfijo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txttelfijo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txttelfijo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttelfijo.ForeColor = System.Drawing.Color.Black;
-            this.txttelfijo.Format = null;
-            this.txttelfijo.Location = new System.Drawing.Point(545, 85);
-            this.txttelfijo.MaxLength = 10;
-            this.txttelfijo.Name = "txttelfijo";
-            this.txttelfijo.NextControlOnEnter = this.txttelcelular;
-            this.txttelfijo.Size = new System.Drawing.Size(105, 21);
-            this.txttelfijo.TabIndex = 7;
-            this.txttelfijo.Text = "00000";
-            this.txttelfijo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txttelfijo.TextoDefecto = "00000";
-            this.txttelfijo.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txttelfijo.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // txttelcelular
-            // 
-            this.txttelcelular.BackColor = System.Drawing.Color.White;
-            this.txttelcelular.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttelcelular.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txttelcelular.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txttelcelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttelcelular.ForeColor = System.Drawing.Color.Black;
-            this.txttelcelular.Format = null;
-            this.txttelcelular.Location = new System.Drawing.Point(724, 85);
-            this.txttelcelular.MaxLength = 15;
-            this.txttelcelular.Name = "txttelcelular";
-            this.txttelcelular.NextControlOnEnter = this.txtemail;
-            this.txttelcelular.Size = new System.Drawing.Size(135, 21);
-            this.txttelcelular.TabIndex = 8;
-            this.txttelcelular.Text = "00000";
-            this.txttelcelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txttelcelular.TextoDefecto = "00000";
-            this.txttelcelular.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txttelcelular.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // txtemail
-            // 
-            this.txtemail.BackColor = System.Drawing.Color.White;
-            this.txtemail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtemail.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtemail.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtemail.ForeColor = System.Drawing.Color.Black;
-            this.txtemail.Format = null;
-            this.txtemail.Location = new System.Drawing.Point(75, 133);
-            this.txtemail.MaxLength = 50;
-            this.txtemail.Name = "txtemail";
-            this.txtemail.NextControlOnEnter = this.txtocupacion;
-            this.txtemail.Size = new System.Drawing.Size(235, 21);
-            this.txtemail.TabIndex = 9;
-            this.txtemail.Text = "correo@prueba.com";
-            this.txtemail.TextoDefecto = "correo@prueba.com";
-            this.txtemail.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtemail.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // txtocupacion
-            // 
-            this.txtocupacion.BackColor = System.Drawing.Color.White;
-            this.txtocupacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtocupacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtocupacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtocupacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtocupacion.ForeColor = System.Drawing.Color.Black;
-            this.txtocupacion.Format = null;
-            this.txtocupacion.Location = new System.Drawing.Point(391, 133);
-            this.txtocupacion.MaxLength = 50;
-            this.txtocupacion.Name = "txtocupacion";
-            this.txtocupacion.NextControlOnEnter = this.btnaceptar;
-            this.txtocupacion.Size = new System.Drawing.Size(177, 21);
-            this.txtocupacion.TabIndex = 10;
-            this.txtocupacion.Text = "Ingrese Ocupación";
-            this.txtocupacion.TextoDefecto = "Ingrese Ocupación";
-            this.txtocupacion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtocupacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(28, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
-            this.label1.TabIndex = 80;
-            this.label1.Text = "Código:";
-            // 
-            // cbotipoid
-            // 
-            this.cbotipoid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbotipoid.FormattingEnabled = true;
-            this.cbotipoid.IndexText = null;
-            this.cbotipoid.Location = new System.Drawing.Point(391, 13);
-            this.cbotipoid.Name = "cbotipoid";
-            this.cbotipoid.ReadOnly = false;
-            this.cbotipoid.Size = new System.Drawing.Size(177, 21);
-            this.cbotipoid.TabIndex = 1;
-            this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
-            this.cbotipoid.Click += new System.EventHandler(this.cbotipoid_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(347, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 82;
-            this.label2.Text = "Tipo Id:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(612, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 84;
-            this.label3.Text = "Nro Id:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(20, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 86;
-            this.label4.Text = "Nombres:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(320, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
-            this.label5.TabIndex = 88;
-            this.label5.Text = "Apellido Pat:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(578, 41);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
-            this.label6.TabIndex = 88;
-            this.label6.Text = "Apellido Mat:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(25, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 13);
-            this.label7.TabIndex = 90;
-            this.label7.Text = "Persona:";
-            // 
-            // cbopersona
-            // 
-            this.cbopersona.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbopersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbopersona.FormattingEnabled = true;
-            this.cbopersona.IndexText = null;
-            this.cbopersona.Location = new System.Drawing.Point(75, 61);
-            this.cbopersona.Name = "cbopersona";
-            this.cbopersona.ReadOnly = false;
-            this.cbopersona.Size = new System.Drawing.Size(235, 21);
-            this.cbopersona.TabIndex = 89;
-            // 
-            // cbosexo
-            // 
-            this.cbosexo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbosexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbosexo.FormattingEnabled = true;
-            this.cbosexo.IndexText = null;
-            this.cbosexo.Location = new System.Drawing.Point(391, 61);
-            this.cbosexo.Name = "cbosexo";
-            this.cbosexo.ReadOnly = false;
-            this.cbosexo.Size = new System.Drawing.Size(177, 21);
-            this.cbosexo.TabIndex = 89;
-            this.cbosexo.Click += new System.EventHandler(this.cbosexo_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Location = new System.Drawing.Point(358, 65);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 90;
-            this.label8.Text = "Sexo:";
-            // 
-            // cbocivil
-            // 
-            this.cbocivil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbocivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbocivil.FormattingEnabled = true;
-            this.cbocivil.IndexText = null;
-            this.cbocivil.Location = new System.Drawing.Point(653, 61);
-            this.cbocivil.Name = "cbocivil";
-            this.cbocivil.ReadOnly = false;
-            this.cbocivil.Size = new System.Drawing.Size(206, 21);
-            this.cbocivil.TabIndex = 89;
-            this.cbocivil.Click += new System.EventHandler(this.cbocivil_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Location = new System.Drawing.Point(585, 65);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 13);
-            this.label9.TabIndex = 90;
-            this.label9.Text = "Estado Civil:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Location = new System.Drawing.Point(18, 89);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 13);
-            this.label10.TabIndex = 86;
-            this.label10.Text = "Dirección:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Location = new System.Drawing.Point(498, 89);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 13);
-            this.label11.TabIndex = 88;
-            this.label11.Text = "Tel. Fijo:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Location = new System.Drawing.Point(660, 89);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 13);
-            this.label12.TabIndex = 88;
-            this.label12.Text = "Tel. Celular:";
-            // 
-            // cbodepartamento
-            // 
-            this.cbodepartamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbodepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbodepartamento.FormattingEnabled = true;
-            this.cbodepartamento.IndexText = null;
-            this.cbodepartamento.Location = new System.Drawing.Point(75, 109);
-            this.cbodepartamento.Name = "cbodepartamento";
-            this.cbodepartamento.ReadOnly = false;
-            this.cbodepartamento.Size = new System.Drawing.Size(175, 21);
-            this.cbodepartamento.TabIndex = 89;
-            this.cbodepartamento.SelectedIndexChanged += new System.EventHandler(this.cbodepartamento_SelectedIndexChanged);
-            this.cbodepartamento.Click += new System.EventHandler(this.cbodepartamento_Click);
+            this.Email.AutoSize = true;
+            this.Email.BackColor = System.Drawing.Color.Transparent;
+            this.Email.Location = new System.Drawing.Point(39, 137);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(37, 13);
+            this.Email.TabIndex = 92;
+            this.Email.Text = "Email:";
             // 
             // label13
             // 
@@ -915,19 +919,105 @@
             this.label13.TabIndex = 90;
             this.label13.Text = "Departam.:";
             // 
-            // cboprovincia
+            // label7
             // 
-            this.cboprovincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboprovincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboprovincia.FormattingEnabled = true;
-            this.cboprovincia.IndexText = null;
-            this.cboprovincia.Location = new System.Drawing.Point(311, 109);
-            this.cboprovincia.Name = "cboprovincia";
-            this.cboprovincia.ReadOnly = false;
-            this.cboprovincia.Size = new System.Drawing.Size(177, 21);
-            this.cboprovincia.TabIndex = 89;
-            this.cboprovincia.SelectedIndexChanged += new System.EventHandler(this.cboprovincia_SelectedIndexChanged);
-            this.cboprovincia.Click += new System.EventHandler(this.cboprovincia_Click);
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Location = new System.Drawing.Point(25, 65);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 90;
+            this.label7.Text = "Persona:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Location = new System.Drawing.Point(18, 89);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.TabIndex = 86;
+            this.label10.Text = "Dirección:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(20, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.TabIndex = 86;
+            this.label4.Text = "Nombres:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(28, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 80;
+            this.label1.Text = "Código:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Location = new System.Drawing.Point(585, 65);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 13);
+            this.label9.TabIndex = 90;
+            this.label9.Text = "Estado Civil:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Location = new System.Drawing.Point(578, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 88;
+            this.label6.Text = "Apellido Mat:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(612, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 84;
+            this.label3.Text = "Nro Id:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(358, 65);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 90;
+            this.label8.Text = "Sexo:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Location = new System.Drawing.Point(320, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.TabIndex = 88;
+            this.label5.Text = "Apellido Pat:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(347, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 82;
+            this.label2.Text = "Tipo Id:";
             // 
             // label14
             // 
@@ -939,19 +1029,15 @@
             this.label14.TabIndex = 90;
             this.label14.Text = "Provincia:";
             // 
-            // cbodistrito
+            // label11
             // 
-            this.cbodistrito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbodistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbodistrito.FormattingEnabled = true;
-            this.cbodistrito.IndexText = null;
-            this.cbodistrito.Location = new System.Drawing.Point(545, 109);
-            this.cbodistrito.Name = "cbodistrito";
-            this.cbodistrito.ReadOnly = false;
-            this.cbodistrito.Size = new System.Drawing.Size(314, 21);
-            this.cbodistrito.TabIndex = 89;
-            this.cbodistrito.SelectedIndexChanged += new System.EventHandler(this.cbodistrito_SelectedIndexChanged);
-            this.cbodistrito.Click += new System.EventHandler(this.cbodistrito_Click);
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Location = new System.Drawing.Point(498, 89);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(48, 13);
+            this.label11.TabIndex = 88;
+            this.label11.Text = "Tel. Fijo:";
             // 
             // label15
             // 
@@ -963,16 +1049,6 @@
             this.label15.TabIndex = 90;
             this.label15.Text = "Distrito:";
             // 
-            // Email
-            // 
-            this.Email.AutoSize = true;
-            this.Email.BackColor = System.Drawing.Color.Transparent;
-            this.Email.Location = new System.Drawing.Point(39, 137);
-            this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(37, 13);
-            this.Email.TabIndex = 92;
-            this.Email.Text = "Email:";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -983,96 +1059,21 @@
             this.label16.TabIndex = 94;
             this.label16.Text = "Ocupación:";
             // 
-            // txtBuscar
+            // label12
             // 
-            this.txtBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtBuscar.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtBuscar.FondoBoton")));
-            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.ImgBotonCerrar = null;
-            this.txtBuscar.Location = new System.Drawing.Point(12, 204);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(476, 22);
-            this.txtBuscar.TabIndex = 95;
-            this.txtBuscar.BuscarClick += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
-            this.txtBuscar.BuscarTextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
-            // 
-            // gp1
-            // 
-            this.gp1.BackColor = System.Drawing.Color.Transparent;
-            this.gp1.Controls.Add(this.rdnrodoc);
-            this.gp1.Controls.Add(this.rdid);
-            this.gp1.Controls.Add(this.rdEstadoCivil);
-            this.gp1.Controls.Add(this.rdnombre);
-            this.gp1.Location = new System.Drawing.Point(10, 159);
-            this.gp1.Name = "gp1";
-            this.gp1.Size = new System.Drawing.Size(937, 40);
-            this.gp1.TabIndex = 96;
-            this.gp1.TabStop = false;
-            this.gp1.Text = "Opciones";
-            // 
-            // rdnrodoc
-            // 
-            this.rdnrodoc.AutoSize = true;
-            this.rdnrodoc.Location = new System.Drawing.Point(84, 17);
-            this.rdnrodoc.Name = "rdnrodoc";
-            this.rdnrodoc.Size = new System.Drawing.Size(64, 17);
-            this.rdnrodoc.TabIndex = 1;
-            this.rdnrodoc.Text = "NroDoc";
-            this.rdnrodoc.UseVisualStyleBackColor = true;
-            this.rdnrodoc.CheckedChanged += new System.EventHandler(this.rdnrodoc_CheckedChanged);
-            // 
-            // rdid
-            // 
-            this.rdid.AutoSize = true;
-            this.rdid.Checked = true;
-            this.rdid.Location = new System.Drawing.Point(12, 17);
-            this.rdid.Name = "rdid";
-            this.rdid.Size = new System.Drawing.Size(57, 17);
-            this.rdid.TabIndex = 1;
-            this.rdid.TabStop = true;
-            this.rdid.Text = "TipoId";
-            this.rdid.UseVisualStyleBackColor = true;
-            this.rdid.CheckedChanged += new System.EventHandler(this.rdid_CheckedChanged);
-            // 
-            // rdEstadoCivil
-            // 
-            this.rdEstadoCivil.AutoSize = true;
-            this.rdEstadoCivil.Location = new System.Drawing.Point(250, 17);
-            this.rdEstadoCivil.Name = "rdEstadoCivil";
-            this.rdEstadoCivil.Size = new System.Drawing.Size(81, 17);
-            this.rdEstadoCivil.TabIndex = 0;
-            this.rdEstadoCivil.Text = "EstadoCivil";
-            this.rdEstadoCivil.UseVisualStyleBackColor = true;
-            this.rdEstadoCivil.CheckedChanged += new System.EventHandler(this.rdEstadoCivil_CheckedChanged);
-            // 
-            // rdnombre
-            // 
-            this.rdnombre.AutoSize = true;
-            this.rdnombre.Location = new System.Drawing.Point(169, 17);
-            this.rdnombre.Name = "rdnombre";
-            this.rdnombre.Size = new System.Drawing.Size(71, 17);
-            this.rdnombre.TabIndex = 0;
-            this.rdnombre.Text = "Nombres";
-            this.rdnombre.UseVisualStyleBackColor = true;
-            this.rdnombre.CheckedChanged += new System.EventHandler(this.rdnombre_CheckedChanged);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Location = new System.Drawing.Point(12, 635);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(113, 13);
-            this.lblmsg.TabIndex = 97;
-            this.lblmsg.Text = "Total de Registros : 0";
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Location = new System.Drawing.Point(660, 89);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(65, 13);
+            this.label12.TabIndex = 88;
+            this.label12.Text = "Tel. Celular:";
             // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 661);
+            this.ClientSize = new System.Drawing.Size(959, 561);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.gp1);
             this.Controls.Add(this.txtBuscar);
@@ -1117,14 +1118,14 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label12);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(975, 700);
+            this.MinimumSize = new System.Drawing.Size(975, 600);
             this.Name = "frmClientes";
             this.Nombre = "Clientes";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.frmClientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.gp1.ResumeLayout(false);
             this.gp1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

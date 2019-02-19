@@ -58,6 +58,12 @@
     <Compile Include="ButtonPer.Designer.cs">
       <DependentUpon>ButtonPer.cs</DependentUpon>
     </Compile>
+    <Compile Include="checkboxOre.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="checkboxOre.Designer.cs">
+      <DependentUpon>checkboxOre.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComboBoxPer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -159,6 +165,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ButtonOre.resx">
       <DependentUpon>ButtonOre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="checkboxOre.resx">
+      <DependentUpon>checkboxOre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ComboMesAño.resx">
       <DependentUpon>ComboMesAño.cs</DependentUpon>

@@ -202,7 +202,6 @@ namespace HPReserger
         {
             lblmsg.Text = $"Total de Registros : {dtgconten.RowCount} Registros Seleccionados: {ListaFacturas.Count}";
         }
-
         private void dtgconten_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
@@ -230,6 +229,7 @@ namespace HPReserger
                         frmDetalleNroOp frmnroop = new frmDetalleNroOp(dtgconten[xCliente.Name, x].Value.ToString(), dtgconten[xNombres.Name, x].Value.ToString(), dtgconten[xNroComprobante.Name, x].Value.ToString(), dtgconten[xCuentaContable.Name, x].Value.ToString());
                         frmnroop.Codigo = (int)dtgconten[xId.Name, x].Value;
                         frmnroop.nrooperacion = dtgconten[xGlosa.Name, x].Value.ToString();
+                        frmnroop.Empresa = (int)cboempresa.SelectedValue;
                         //tipodet ==5 factura venta manual
                         frmnroop.Tipodet = 5;
                         frmnroop.ShowDialog();
@@ -421,7 +421,6 @@ namespace HPReserger
                     if (Cuentita == null) ListCuentas.Add(new Cuentas(item.Cells[xCuentaContable.Name].Value.ToString(), Valtipo == "8" ? -1 * (decimal)item.Cells[xpagar.Name].Value : (decimal)item.Cells[xpagar.Name].Value, Notas));
                     else
                     {
-
                         if (Valtipo == "8") { Cuentita._MOnto -= (decimal)item.Cells[xpagar.Name].Value; }
                         else { Cuentita._MOnto += (decimal)item.Cells[xpagar.Name].Value; }
                     }
@@ -530,7 +529,7 @@ namespace HPReserger
                     int opcion = 1;
                     if (Tipox == "8" || Tipox == "9") { opcion = 2; }
                     if (opcion == 2)
-                        CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2);
+                        CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2,(int)cboempresa.SelectedValue);
                     else
                         CapaLogica.FacturaVentaManualPago(opcion, (int)item.Cells[xIdComprobante.Name].Value, item.Cells[xNroComprobante.Name].Value.ToString(), txtnrooperacion.Text, (int)item.Cells[xTipoId.Name].Value,
                             item.Cells[xCliente.Name].Value.ToString(), (int)cboempresa.SelectedValue, (decimal)item.Cells[xpagar.Name].Value, (decimal)item.Cells[xTC.Name].Value, Banko,
@@ -636,6 +635,7 @@ namespace HPReserger
                     frmDetalleNroOp frmnroop = new frmDetalleNroOp(dtgconten[xCliente.Name, x].Value.ToString(), dtgconten[xNombres.Name, x].Value.ToString(), dtgconten[xNroComprobante.Name, x].Value.ToString(), dtgconten[xAbonos.Name, x].Value.ToString());
                     frmnroop.Codigo = (int)dtgconten[xId.Name, x].Value;
                     frmnroop.nrooperacion = dtgconten[xGlosa.Name, x].Value.ToString();
+                    frmnroop.Empresa = (int)cboempresa.SelectedValue;
                     //tipodet ==5 factura venta manual
                     frmnroop.Tipodet = 5;
                     frmnroop.ShowDialog();

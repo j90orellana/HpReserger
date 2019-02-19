@@ -117,6 +117,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmRegistroVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistroVentas.Designer.cs">
+      <DependentUpon>frmRegistroVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegMayorPorEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegMayorPorEmpresas.Designer.cs">
+      <DependentUpon>frmRegMayorPorEmpresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegMayorxCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegMayorxCuentas.Designer.cs">
+      <DependentUpon>frmRegMayorxCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteCompras81Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteCompras81Report.Designer.cs">
+      <DependentUpon>frmReporteCompras81Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptFormato81Compras.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptFormato81Compras.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frmDetraccionVentaPagoBancoNacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +170,12 @@
     </Compile>
     <Compile Include="frmPagoDetraccionesVentas.Designer.cs">
       <DependentUpon>frmPagoDetraccionesVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistroCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistroCompras.Designer.cs">
+      <DependentUpon>frmRegistroCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloContable\EstadoGananciaPerdidas.cs">
       <SubType>Form</SubType>
@@ -1447,6 +1483,22 @@
     <Compile Include="ModuloContable\frmTipodeCambio.Designer.cs">
       <DependentUpon>frmTipodeCambio.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmRegistroVentas.resx">
+      <DependentUpon>frmRegistroVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegMayorPorEmpresas.resx">
+      <DependentUpon>frmRegMayorPorEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegMayorxCuentas.resx">
+      <DependentUpon>frmRegMayorxCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteCompras81Report.resx">
+      <DependentUpon>frmReporteCompras81Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptFormato81Compras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptFormato81Compras.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDetraccionVentaPagoBancoNacion.resx">
       <DependentUpon>frmDetraccionVentaPagoBancoNacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -1458,6 +1510,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPagoDetraccionesVentas.resx">
       <DependentUpon>frmPagoDetraccionesVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistroCompras.resx">
+      <DependentUpon>frmRegistroCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\EstadoGananciaPerdidas.resx">
       <DependentUpon>EstadoGananciaPerdidas.cs</DependentUpon>

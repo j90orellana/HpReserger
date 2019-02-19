@@ -26,7 +26,6 @@ namespace HPReserger
             CargarMeses(cbomes);
             limpiarIngresos();
             CargarDatos();
-
         }
         public void CargarDatos()
         {
@@ -61,10 +60,18 @@ namespace HPReserger
                 txtanio.Text = dtgconten[añox.Name, x].Value.ToString();
                 cboestado.SelectedValue = dtgconten[estadox.Name, x].Value;
                 cbomes.SelectedValue = dtgconten[mesx.Name, x].Value;
+                /////
+                if (dtgconten[Estadosx.Name, x].Value.ToString() == "CERRADO")
+                {
+                    btnabriperiodo.Enabled = true;
+                }
+                else btnabriperiodo.Enabled = false;
+
             }
             else
             {
                 limpiarIngresos();
+                btnabriperiodo.Enabled = false;
             }
         }
         public void limpiarIngresos()
@@ -100,7 +107,6 @@ namespace HPReserger
         {
             HPResergerFunciones.Utilitarios.msg(cadena);
         }
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -136,10 +142,28 @@ namespace HPReserger
             if (x >= 0)
                 if (y == dtgconten.Columns[Estadosx.Name].Index)
                 {
-                    if (e.Value.ToString() == "CERRADO") { e.CellStyle.BackColor = Color.FromArgb(255, 199, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(165, 171, 209); }
-                    if (e.Value.ToString() == "ABIERTO") { e.CellStyle.BackColor = Color.FromArgb(198, 239, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(128, 197, 209); }
+                    if (e.Value.ToString() == "CERRADO") { e.CellStyle.BackColor = Color.FromArgb(255, 199, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(217, 83, 79); }
+                    if (e.Value.ToString() == "ABIERTO") { e.CellStyle.BackColor = Color.FromArgb(198, 239, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(92, 184, 92); }
+                    //if (e.Value.ToString() == "CERRADO") { e.CellStyle.BackColor = Color.FromArgb(255, 199, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(165, 171, 209); }
+                    //if (e.Value.ToString() == "ABIERTO") { e.CellStyle.BackColor = Color.FromArgb(198, 239, 206); e.CellStyle.SelectionBackColor = Color.FromArgb(128, 197, 209); }
                 }
-            
+
+        }
+        public DialogResult msgyesno(string cadena)
+        {
+            return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
+        }
+        private void btnabriperiodo_Click(object sender, EventArgs e)
+        {
+            if (msgyesno("Seguro Desea Abrir el Periodo") == DialogResult.Yes)
+            {
+                int x = dtgconten.CurrentRow.Index;
+                CapaLogica.Periodos(2, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
+                msg("Periodo Abierto!");
+                CargarDatos();
+                dtgconten.CurrentCell = dtgconten[empresax.Name, x];
+            }
+
         }
     }
 }

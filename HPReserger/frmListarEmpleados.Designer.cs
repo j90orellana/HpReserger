@@ -249,6 +249,7 @@
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(795, 459);
             this.Grid.TabIndex = 36;
+            this.Grid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.Grid_CellFormatting);
             this.Grid.DoubleClick += new System.EventHandler(this.Grid_DoubleClick);
             // 
             // CODIGOTIPO

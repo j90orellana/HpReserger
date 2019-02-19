@@ -62,17 +62,6 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnseleccion = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.txtcuentadetracciones = new HpResergerUserControls.TextBoxPer();
-            this.txtDescCuenta = new HpResergerUserControls.TextBoxPer();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dtpFechaContable = new System.Windows.Forms.DateTimePicker();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtglosa = new HpResergerUserControls.TextBoxPer();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtdiferencia = new System.Windows.Forms.TextBox();
-            this.txtredondeo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.opcionx = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.xtipocomprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrofacturax = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +84,17 @@
             this.xidComprobanteSunat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCod_Detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xPorcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtcuentadetracciones = new HpResergerUserControls.TextBoxPer();
+            this.txtDescCuenta = new HpResergerUserControls.TextBoxPer();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dtpFechaContable = new System.Windows.Forms.DateTimePicker();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtglosa = new HpResergerUserControls.TextBoxPer();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtdiferencia = new System.Windows.Forms.TextBox();
+            this.txtredondeo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -401,162 +401,6 @@
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten_EditingControlShowing);
             // 
-            // txtcuentadetracciones
-            // 
-            this.txtcuentadetracciones.BackColor = System.Drawing.Color.White;
-            this.txtcuentadetracciones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtcuentadetracciones.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtcuentadetracciones.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtcuentadetracciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcuentadetracciones.ForeColor = System.Drawing.Color.Black;
-            this.txtcuentadetracciones.Format = null;
-            this.txtcuentadetracciones.Location = new System.Drawing.Point(424, 91);
-            this.txtcuentadetracciones.MaxLength = 10;
-            this.txtcuentadetracciones.Name = "txtcuentadetracciones";
-            this.txtcuentadetracciones.NextControlOnEnter = null;
-            this.txtcuentadetracciones.Size = new System.Drawing.Size(81, 21);
-            this.txtcuentadetracciones.TabIndex = 258;
-            this.txtcuentadetracciones.Text = "1042101";
-            this.txtcuentadetracciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtcuentadetracciones.TextoDefecto = "1042101";
-            this.txtcuentadetracciones.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtcuentadetracciones.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
-            this.txtcuentadetracciones.TextChanged += new System.EventHandler(this.txtcuentadetracciones_TextChanged);
-            // 
-            // txtDescCuenta
-            // 
-            this.txtDescCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtDescCuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescCuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtDescCuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtDescCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescCuenta.ForeColor = System.Drawing.Color.Black;
-            this.txtDescCuenta.Format = null;
-            this.txtDescCuenta.Location = new System.Drawing.Point(510, 91);
-            this.txtDescCuenta.MaxLength = 100;
-            this.txtDescCuenta.Name = "txtDescCuenta";
-            this.txtDescCuenta.NextControlOnEnter = null;
-            this.txtDescCuenta.ReadOnly = true;
-            this.txtDescCuenta.Size = new System.Drawing.Size(304, 21);
-            this.txtDescCuenta.TabIndex = 257;
-            this.txtDescCuenta.Text = "Descripción De La Cuenta";
-            this.txtDescCuenta.TextoDefecto = "Descripción de la Cuenta";
-            this.txtDescCuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtDescCuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(260, 95);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(166, 13);
-            this.label10.TabIndex = 259;
-            this.label10.Text = "Cuenta Contable Detracciónes:";
-            // 
-            // dtpFechaContable
-            // 
-            this.dtpFechaContable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaContable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaContable.Location = new System.Drawing.Point(430, 59);
-            this.dtpFechaContable.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaContable.Name = "dtpFechaContable";
-            this.dtpFechaContable.Size = new System.Drawing.Size(97, 22);
-            this.dtpFechaContable.TabIndex = 320;
-            this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(340, 64);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(90, 13);
-            this.label19.TabIndex = 321;
-            this.label19.Text = "Fecha Contable:";
-            // 
-            // txtglosa
-            // 
-            this.txtglosa.BackColor = System.Drawing.Color.White;
-            this.txtglosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtglosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtglosa.ForeColor = System.Drawing.Color.Black;
-            this.txtglosa.Format = null;
-            this.txtglosa.Location = new System.Drawing.Point(584, 60);
-            this.txtglosa.MaxLength = 300;
-            this.txtglosa.Name = "txtglosa";
-            this.txtglosa.NextControlOnEnter = null;
-            this.txtglosa.Size = new System.Drawing.Size(230, 21);
-            this.txtglosa.TabIndex = 322;
-            this.txtglosa.Text = "Pago Detracciones Venta";
-            this.txtglosa.TextoDefecto = "Pago Detracciones";
-            this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(539, 64);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(39, 13);
-            this.label13.TabIndex = 323;
-            this.label13.Text = "Glosa:";
-            // 
-            // txtdiferencia
-            // 
-            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdiferencia.Enabled = false;
-            this.txtdiferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdiferencia.Location = new System.Drawing.Point(753, 517);
-            this.txtdiferencia.Name = "txtdiferencia";
-            this.txtdiferencia.Size = new System.Drawing.Size(55, 21);
-            this.txtdiferencia.TabIndex = 326;
-            this.txtdiferencia.Text = "0.00";
-            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtredondeo
-            // 
-            this.txtredondeo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtredondeo.Enabled = false;
-            this.txtredondeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtredondeo.Location = new System.Drawing.Point(674, 517);
-            this.txtredondeo.Name = "txtredondeo";
-            this.txtredondeo.Size = new System.Drawing.Size(75, 21);
-            this.txtredondeo.TabIndex = 327;
-            this.txtredondeo.Text = "0.00";
-            this.txtredondeo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(674, 502);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
-            this.label5.TabIndex = 324;
-            this.label5.Text = "T. Redondeo";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(753, 502);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 325;
-            this.label4.Text = "T.Difer.";
-            // 
             // opcionx
             // 
             this.opcionx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -774,6 +618,162 @@
             this.xPorcentaje.HeaderText = "Porcentaje";
             this.xPorcentaje.Name = "xPorcentaje";
             this.xPorcentaje.Visible = false;
+            // 
+            // txtcuentadetracciones
+            // 
+            this.txtcuentadetracciones.BackColor = System.Drawing.Color.White;
+            this.txtcuentadetracciones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcuentadetracciones.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtcuentadetracciones.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtcuentadetracciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcuentadetracciones.ForeColor = System.Drawing.Color.Black;
+            this.txtcuentadetracciones.Format = null;
+            this.txtcuentadetracciones.Location = new System.Drawing.Point(424, 91);
+            this.txtcuentadetracciones.MaxLength = 10;
+            this.txtcuentadetracciones.Name = "txtcuentadetracciones";
+            this.txtcuentadetracciones.NextControlOnEnter = null;
+            this.txtcuentadetracciones.Size = new System.Drawing.Size(81, 21);
+            this.txtcuentadetracciones.TabIndex = 258;
+            this.txtcuentadetracciones.Text = "1042101";
+            this.txtcuentadetracciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtcuentadetracciones.TextoDefecto = "1042101";
+            this.txtcuentadetracciones.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtcuentadetracciones.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
+            this.txtcuentadetracciones.TextChanged += new System.EventHandler(this.txtcuentadetracciones_TextChanged);
+            // 
+            // txtDescCuenta
+            // 
+            this.txtDescCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtDescCuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescCuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtDescCuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtDescCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescCuenta.ForeColor = System.Drawing.Color.Black;
+            this.txtDescCuenta.Format = null;
+            this.txtDescCuenta.Location = new System.Drawing.Point(510, 91);
+            this.txtDescCuenta.MaxLength = 100;
+            this.txtDescCuenta.Name = "txtDescCuenta";
+            this.txtDescCuenta.NextControlOnEnter = null;
+            this.txtDescCuenta.ReadOnly = true;
+            this.txtDescCuenta.Size = new System.Drawing.Size(304, 21);
+            this.txtDescCuenta.TabIndex = 257;
+            this.txtDescCuenta.Text = "Descripción De La Cuenta";
+            this.txtDescCuenta.TextoDefecto = "Descripción de la Cuenta";
+            this.txtDescCuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtDescCuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(260, 95);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(166, 13);
+            this.label10.TabIndex = 259;
+            this.label10.Text = "Cuenta Contable Detracciónes:";
+            // 
+            // dtpFechaContable
+            // 
+            this.dtpFechaContable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaContable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaContable.Location = new System.Drawing.Point(430, 59);
+            this.dtpFechaContable.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaContable.Name = "dtpFechaContable";
+            this.dtpFechaContable.Size = new System.Drawing.Size(97, 22);
+            this.dtpFechaContable.TabIndex = 320;
+            this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(340, 64);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(90, 13);
+            this.label19.TabIndex = 321;
+            this.label19.Text = "Fecha Contable:";
+            // 
+            // txtglosa
+            // 
+            this.txtglosa.BackColor = System.Drawing.Color.White;
+            this.txtglosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtglosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtglosa.ForeColor = System.Drawing.Color.Black;
+            this.txtglosa.Format = null;
+            this.txtglosa.Location = new System.Drawing.Point(584, 60);
+            this.txtglosa.MaxLength = 300;
+            this.txtglosa.Name = "txtglosa";
+            this.txtglosa.NextControlOnEnter = null;
+            this.txtglosa.Size = new System.Drawing.Size(230, 21);
+            this.txtglosa.TabIndex = 322;
+            this.txtglosa.Text = "Pago Detracciones Venta";
+            this.txtglosa.TextoDefecto = "Pago Detracciones Venta";
+            this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(539, 64);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(39, 13);
+            this.label13.TabIndex = 323;
+            this.label13.Text = "Glosa:";
+            // 
+            // txtdiferencia
+            // 
+            this.txtdiferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtdiferencia.Enabled = false;
+            this.txtdiferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdiferencia.Location = new System.Drawing.Point(753, 517);
+            this.txtdiferencia.Name = "txtdiferencia";
+            this.txtdiferencia.Size = new System.Drawing.Size(55, 21);
+            this.txtdiferencia.TabIndex = 326;
+            this.txtdiferencia.Text = "0.00";
+            this.txtdiferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtredondeo
+            // 
+            this.txtredondeo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtredondeo.Enabled = false;
+            this.txtredondeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtredondeo.Location = new System.Drawing.Point(674, 517);
+            this.txtredondeo.Name = "txtredondeo";
+            this.txtredondeo.Size = new System.Drawing.Size(75, 21);
+            this.txtredondeo.TabIndex = 327;
+            this.txtredondeo.Text = "0.00";
+            this.txtredondeo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(674, 502);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.TabIndex = 324;
+            this.label5.Text = "T. Redondeo";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(753, 502);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 325;
+            this.label4.Text = "T.Difer.";
             // 
             // frmPagoDetraccionesVentas
             // 

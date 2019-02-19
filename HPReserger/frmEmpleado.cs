@@ -514,19 +514,20 @@ namespace HPReserger
                 cboGradoInstruccion.Focus();
                 return;
             }
-
-            ExisteEmpleado = clEmpleado.CargarCualquierImagenPostulanteEmpleado("*", "TBL_Empleado", "Tipo_ID_Emp", Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), "Nro_ID_Emp", txtNumeroDocumento.Text);
-            if (ExisteEmpleado != null)
+            if (estadito != 2)
             {
-                NewEmpleado = false;
-                CodigoTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
-                NumeroDocumento = txtNumeroDocumento.Text;
+                ExisteEmpleado = clEmpleado.CargarCualquierImagenPostulanteEmpleado("*", "TBL_Empleado", "Tipo_ID_Emp", Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), "Nro_ID_Emp", txtNumeroDocumento.Text);
+                if (ExisteEmpleado != null)
+                {
+                    NewEmpleado = false;
+                    CodigoTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
+                    NumeroDocumento = txtNumeroDocumento.Text;
+                }
+                else
+                {
+                    NewEmpleado = true;
+                }
             }
-            else
-            {
-                NewEmpleado = true;
-            }
-
 
             if (NewEmpleado == true)
             {
@@ -626,54 +627,57 @@ namespace HPReserger
         DateTime FEchaActual;
         private void txtNumeroDocumento_TextChanged(object sender, EventArgs e)
         {
-            NewEmpleado = true;
-            if (NewEmpleado == true)
+            if (estadito != 2)
             {
-                if (cboTipoDocumento.SelectedIndex > -1)
+                NewEmpleado = true;
+                if (NewEmpleado == true)
                 {
-                    FEchaActual = DateTime.Now;
-                    DataRow DatosP = clEmpleado.DatosPostulante(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
-                    if (DatosP != null)
+                    if (cboTipoDocumento.SelectedIndex > -1)
                     {
-                        if (estadito == 1)
-                            BloquearControles(false);
-                        //MessageBox.Show(DatosP["CONTRATACION"].ToString()+" "+ DatosP["TIPO"].ToString());
-                        txtApellidoPaterno.Text = DatosP["APELLIDOPATERNO"].ToString();
-                        txtApellidoMaterno.Text = DatosP["APELLIDOMATERNO"].ToString();
-                        txtNombres.Text = DatosP["NOMBRES"].ToString();
-                        txttipo.Text = DatosP["CONTRATACION"].ToString();
-                        FEchaActual = dtpFecha.Value = (DateTime)DatosP["FechaNacimiento"];
-                        if (estadito == 1)
+                        FEchaActual = DateTime.Now;
+                        DataRow DatosP = clEmpleado.DatosPostulante(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
+                        if (DatosP != null)
                         {
-                            if (DatosP["TIPO"].ToString() == "2" || DatosP["TIPO"].ToString() == "3")
+                            if (estadito == 1)
+                                BloquearControles(false);
+                            //MessageBox.Show(DatosP["CONTRATACION"].ToString()+" "+ DatosP["TIPO"].ToString());
+                            txtApellidoPaterno.Text = DatosP["APELLIDOPATERNO"].ToString();
+                            txtApellidoMaterno.Text = DatosP["APELLIDOMATERNO"].ToString();
+                            txtNombres.Text = DatosP["NOMBRES"].ToString();
+                            txttipo.Text = DatosP["CONTRATACION"].ToString();
+                            FEchaActual = dtpFecha.Value = (DateTime)DatosP["FechaNacimiento"];
+                            if (estadito == 1)
                             {
-                                btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = true;
-                                btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
-                            }
-                            else if (DatosP["TIPO"].ToString() == "1" || DatosP["TIPO"].ToString() == "4")
+                                if (DatosP["TIPO"].ToString() == "2" || DatosP["TIPO"].ToString() == "3")
+                                {
+                                    btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = true;
+                                    btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
+                                }
+                                else if (DatosP["TIPO"].ToString() == "1" || DatosP["TIPO"].ToString() == "4")
 
-                            {
-                                btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
-                                btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
-                            }
-                            else
-                            {
-                                btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
-                                btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
+                                {
+                                    btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
+                                    btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = true;
+                                }
+                                else
+                                {
+                                    btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
+                                    btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
+                                }
                             }
                         }
+                        else
+                        {
+                            txtApellidoPaterno.Text = "";
+                            txtApellidoMaterno.Text = ""; txtcodigo.Text = "00000";
+                            txttipo.Text = "";
+                            txtNombres.Text = ""; btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
+                            btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
+                            if (estadito == 0)
+                                BloquearControles(true);
+                        }
+                        CargarDatosEmpleado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                     }
-                    else
-                    {
-                        txtApellidoPaterno.Text = "";
-                        txtApellidoMaterno.Text = ""; txtcodigo.Text = "00000";
-                        txttipo.Text = "";
-                        txtNombres.Text = ""; btnFamilia.Enabled = btnCTS.Enabled = btnPensionSeguro.Enabled = false;
-                        btnContrato.Enabled = btnHaberes.Enabled = btnRequerimiento.Enabled = false;
-                        if (estadito == 0)
-                            BloquearControles(true);
-                    }
-                    CargarDatosEmpleado(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
                 }
             }
         }
@@ -1379,16 +1383,21 @@ namespace HPReserger
                 NewEmpleado = false;
                 CodigoTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
                 NumeroDocumento = txtNumeroDocumento.Text;
+                if (int.Parse(txtcodigo.Text) != (int)ExisteEmpleado["cod_emp"])
+                {
+                    MSG("Este Número Documento ya existe");
+                    return;
+                }
             }
             else
             {
                 NewEmpleado = true;
             }
-
+            if (estadito == 2) NewEmpleado = false;
             if (NewEmpleado == true)
             {
-                clEmpleado.EmpleadoInsertar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text,
-                    txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32((cboLugarNacimiento.SelectedValue ?? 0).ToString()), Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()),
+                clEmpleado.EmpleadoInsertar(int.Parse((cbopais.SelectedValue ?? 0).ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, txtApellidoPaterno.Text,
+                    txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32((cboSexo.SelectedValue ?? 0).ToString()), dtpFecha.Value, Convert.ToInt32((cboLugarNacimiento.SelectedValue ?? 0).ToString()), Convert.ToInt32((cboEstadoCivil.SelectedValue ?? 0).ToString()),
                     Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32((cboDistrito.SelectedValue ?? 0).ToString()), Convert.ToInt32((cboProvincia.SelectedValue ?? 0).ToString()),
                     Convert.ToInt32((cboDepartamento.SelectedValue ?? 0).ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text, Convert.ToInt32((cboProfesion.SelectedValue ?? 0).ToString()),
                     Convert.ToInt32((cboGradoInstruccion.SelectedValue ?? 0).ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, frmLogin.CodigoUsuario, Foto, NombreFoto, FotoFirma, txtfirma.Text);
@@ -1397,11 +1406,12 @@ namespace HPReserger
             }
             else
             {
-                clEmpleado.EmpleadoModificar(int.Parse(cbopais.SelectedValue.ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, CodigoTipoDocumento, NumeroDocumento, 
-                    txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(cboSexo.SelectedValue.ToString()), dtpFecha.Value, Convert.ToInt32((cboLugarNacimiento.SelectedValue??0).ToString()), 
-                    Convert.ToInt32(cboEstadoCivil.SelectedValue.ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32((cboDistrito.SelectedValue??0).ToString()),
-                    Convert.ToInt32((cboProvincia.SelectedValue??0).ToString()), Convert.ToInt32((cboDepartamento.SelectedValue??0).ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text,
-                    Convert.ToInt32((cboProfesion.SelectedValue??0).ToString()), Convert.ToInt32((cboGradoInstruccion.SelectedValue??0).ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, Foto, NombreFoto, FotoFirma, txtfirma.Text);
+
+                clEmpleado.EmpleadoModificar(int.Parse((cbopais.SelectedValue ?? 0).ToString()), txtlugarnacimiento.Text, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, CodigoTipoDocumento, NumeroDocumento,
+                    txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32((cboSexo.SelectedValue ?? 0).ToString()), dtpFecha.Value, Convert.ToInt32((cboLugarNacimiento.SelectedValue ?? 0).ToString()),
+                    Convert.ToInt32((cboEstadoCivil.SelectedValue ?? 0).ToString()), Convert.ToInt32(txtNHijos.Text), txtDireccion.Text, Convert.ToInt32((cboDistrito.SelectedValue ?? 0).ToString()),
+                    Convert.ToInt32((cboProvincia.SelectedValue ?? 0).ToString()), Convert.ToInt32((cboDepartamento.SelectedValue ?? 0).ToString()), txtTelefonoFijo.Text, txtTelefonoCelular.Text,
+                    Convert.ToInt32((cboProfesion.SelectedValue ?? 0).ToString()), Convert.ToInt32((cboGradoInstruccion.SelectedValue ?? 0).ToString()), FotoAntecedentesPoliciales, txtAntecedentesPoliciales.Text, FotoAntecedentesPenales, txtAntecedentesPenales.Text, FotoReciboServicios, txtReciboServicio.Text, Foto, NombreFoto, FotoFirma, txtfirma.Text);
                 MessageBox.Show("Los datos para el Empleado con " + cboTipoDocumento.SelectedText.ToString() + " Nº " + txtNumeroDocumento.Text + " se modificaron con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NewEmpleado = true;
 
@@ -1448,11 +1458,14 @@ namespace HPReserger
         private void btnModificar_Click(object sender, EventArgs e)
         {
             FotoEmp = pbfotoempleado.Image;
-            estadito = 2;
             Iniciar(true);
             BloquearControles(false);
             txttipo.Enabled = false;
             VerificarContrato();
+            txtNumeroDocumento.Enabled = cboTipoDocumento.Enabled = true;
+            CodigoTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString());
+            NumeroDocumento = txtNumeroDocumento.Text;
+            estadito = 2;
         }
         public void Iniciar(Boolean a)
         {

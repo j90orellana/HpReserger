@@ -86,5 +86,24 @@ namespace HPReserger
                 Posemp += 10;
             txtBuscar_TextChanged(sender, e);
         }
+
+        private void Grid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            int x = e.RowIndex, y = e.ColumnIndex;
+            if (x >= 0)
+            {
+                if (Grid[areax.Name, x].Value.ToString() == "NO TIENE" || Grid[gerenciax.Name, x].Value.ToString() == "NO TIENE")
+                {
+                    Grid.Rows[x].DefaultCellStyle.ForeColor = Color.FromArgb(217, 83, 79);
+                    Grid.Rows[x].DefaultCellStyle.SelectionForeColor = Color.FromArgb(217, 83, 79);
+                }
+                else
+                {
+                    Grid.Rows[x].DefaultCellStyle.SelectionForeColor = Color.Black;
+                    Grid.Rows[x].DefaultCellStyle.ForeColor = Color.Black;
+                }
+                // Grid.Rows[x].DefaultCellStyle.SelectionBackColor = Color.FromArgb(66, 139, 202);
+            }
+        }
     }
 }

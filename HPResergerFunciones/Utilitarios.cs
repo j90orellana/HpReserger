@@ -25,7 +25,15 @@ namespace HPResergerFunciones
         public static string Cuo(int Asiento, DateTime Fecha)
         {
             string cuo = $"{Fecha.Year.ToString().Substring(2, 2) + Fecha.Month.ToString("00")}-{Asiento.ToString("00000")}";
-            return cuo;            
+            return cuo;
+        }
+        public static string ValidarCorreo(string correo)
+        {
+            try
+            {
+                return correo = new MailAddress(correo).Address;
+            }
+            catch (Exception) { return ""; }
         }
         public static DateTime DeStringDiaMesAÑoaDatetime(string cadena)
         {

@@ -87,8 +87,24 @@ namespace HPReserger
             this.btncancelar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Dtguias = new HpResergerUserControls.Dtgconten();
+            this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblmensaje = new System.Windows.Forms.Label();
+            this.txtnrocheque = new HpResergerUserControls.TextBoxPer();
+            this.btnpdf = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.rdbporPagar = new System.Windows.Forms.RadioButton();
+            this.rdbPagados = new System.Windows.Forms.RadioButton();
+            this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txttipocambio = new HpResergerUserControls.TextBoxPer();
+            this.lblcheque = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txttotaldiferencial = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xidcomprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrofactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.razon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,21 +125,6 @@ namespace HPReserger
             this.fkasientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xidmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblmensaje = new System.Windows.Forms.Label();
-            this.txtnrocheque = new HpResergerUserControls.TextBoxPer();
-            this.btnpdf = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.rdbporPagar = new System.Windows.Forms.RadioButton();
-            this.rdbPagados = new System.Windows.Forms.RadioButton();
-            this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txttipocambio = new HpResergerUserControls.TextBoxPer();
-            this.lblcheque = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txttotaldiferencial = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.SuspendLayout();
@@ -623,6 +624,7 @@ namespace HPReserger
             this.Dtguias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OK,
             this.tipodoc,
+            this.xidcomprobante,
             this.nrofactura,
             this.proveedor,
             this.razon,
@@ -674,243 +676,6 @@ namespace HPReserger
             this.Dtguias.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_RowEnter);
             this.Dtguias.RowErrorTextChanged += new System.Windows.Forms.DataGridViewRowEventHandler(this.Dtguias_RowErrorTextChanged);
             this.Dtguias.Sorted += new System.EventHandler(this.Dtguias_Sorted);
-            // 
-            // OK
-            // 
-            this.OK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.OK.DataPropertyName = "OK";
-            this.OK.FalseValue = "False";
-            this.OK.FillWeight = 126.9036F;
-            this.OK.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.OK.HeaderText = "OK";
-            this.OK.MinimumWidth = 30;
-            this.OK.Name = "OK";
-            this.OK.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.OK.TrueValue = "True";
-            this.OK.Width = 30;
-            // 
-            // tipodoc
-            // 
-            this.tipodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tipodoc.DataPropertyName = "tipo";
-            this.tipodoc.HeaderText = "T";
-            this.tipodoc.Name = "tipodoc";
-            this.tipodoc.ReadOnly = true;
-            this.tipodoc.Width = 36;
-            // 
-            // nrofactura
-            // 
-            this.nrofactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.nrofactura.DataPropertyName = "nrofactura";
-            this.nrofactura.HeaderText = "Comprobante";
-            this.nrofactura.MinimumWidth = 85;
-            this.nrofactura.Name = "nrofactura";
-            this.nrofactura.ReadOnly = true;
-            this.nrofactura.Width = 85;
-            // 
-            // proveedor
-            // 
-            this.proveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.proveedor.DataPropertyName = "proveedor";
-            this.proveedor.HeaderText = "Proveedor";
-            this.proveedor.MinimumWidth = 80;
-            this.proveedor.Name = "proveedor";
-            this.proveedor.ReadOnly = true;
-            this.proveedor.Width = 80;
-            // 
-            // razon
-            // 
-            this.razon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.razon.DataPropertyName = "razon";
-            this.razon.HeaderText = "Razón Social";
-            this.razon.MinimumWidth = 100;
-            this.razon.Name = "razon";
-            this.razon.ReadOnly = true;
-            // 
-            // monedax
-            // 
-            this.monedax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.monedax.DataPropertyName = "MON";
-            this.monedax.FillWeight = 40F;
-            this.monedax.HeaderText = "Mon";
-            this.monedax.MinimumWidth = 40;
-            this.monedax.Name = "monedax";
-            this.monedax.ReadOnly = true;
-            this.monedax.Width = 40;
-            // 
-            // xtc
-            // 
-            this.xtc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xtc.DataPropertyName = "tc";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "n3";
-            this.xtc.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xtc.HeaderText = "T.C. Reg.";
-            this.xtc.Name = "xtc";
-            this.xtc.ReadOnly = true;
-            this.xtc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.xtc.Width = 50;
-            // 
-            // subtotal
-            // 
-            this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.subtotal.DataPropertyName = "subtotal";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.subtotal.DefaultCellStyle = dataGridViewCellStyle4;
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.MinimumWidth = 70;
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 70;
-            // 
-            // Igv
-            // 
-            this.Igv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Igv.DataPropertyName = "Igv";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "n2";
-            this.Igv.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Igv.HeaderText = "Igv/Rta";
-            this.Igv.MinimumWidth = 60;
-            this.Igv.Name = "Igv";
-            this.Igv.ReadOnly = true;
-            this.Igv.Width = 60;
-            // 
-            // Total
-            // 
-            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Total.DataPropertyName = "Total";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "n2";
-            this.Total.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Total.HeaderText = "Total";
-            this.Total.MinimumWidth = 56;
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.Width = 56;
-            // 
-            // detraccion
-            // 
-            this.detraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.detraccion.DataPropertyName = "detrac";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "n2";
-            this.detraccion.DefaultCellStyle = dataGridViewCellStyle7;
-            this.detraccion.HeaderText = "Detrac.";
-            this.detraccion.MinimumWidth = 70;
-            this.detraccion.Name = "detraccion";
-            this.detraccion.ReadOnly = true;
-            this.detraccion.Width = 70;
-            // 
-            // Saldox
-            // 
-            this.Saldox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Saldox.DataPropertyName = "saldo";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "n2";
-            this.Saldox.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Saldox.HeaderText = "Saldo";
-            this.Saldox.MinimumWidth = 50;
-            this.Saldox.Name = "Saldox";
-            this.Saldox.ReadOnly = true;
-            this.Saldox.Width = 60;
-            // 
-            // Pagox
-            // 
-            this.Pagox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Pagox.DataPropertyName = "pago";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "n2";
-            this.Pagox.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Pagox.HeaderText = "Pago";
-            this.Pagox.MinimumWidth = 50;
-            this.Pagox.Name = "Pagox";
-            this.Pagox.Width = 57;
-            // 
-            // FechaEmision
-            // 
-            this.FechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.FechaEmision.DataPropertyName = "FechaEmision";
-            dataGridViewCellStyle10.Format = "g";
-            this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle10;
-            this.FechaEmision.HeaderText = "Fecha Emisión";
-            this.FechaEmision.MinimumWidth = 70;
-            this.FechaEmision.Name = "FechaEmision";
-            this.FechaEmision.ReadOnly = true;
-            this.FechaEmision.Width = 70;
-            // 
-            // fechaRecepcion
-            // 
-            this.fechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.fechaRecepcion.DataPropertyName = "fechaRecepcion";
-            dataGridViewCellStyle11.Format = "g";
-            dataGridViewCellStyle11.NullValue = null;
-            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle11;
-            this.fechaRecepcion.HeaderText = "Fecha Recepción";
-            this.fechaRecepcion.MinimumWidth = 80;
-            this.fechaRecepcion.Name = "fechaRecepcion";
-            this.fechaRecepcion.ReadOnly = true;
-            this.fechaRecepcion.Width = 80;
-            // 
-            // FechaCancelado
-            // 
-            this.FechaCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.FechaCancelado.DataPropertyName = "FechaCancelado";
-            dataGridViewCellStyle12.Format = "g";
-            this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle12;
-            this.FechaCancelado.HeaderText = "Fecha Cancelado";
-            this.FechaCancelado.MinimumWidth = 70;
-            this.FechaCancelado.Name = "FechaCancelado";
-            this.FechaCancelado.ReadOnly = true;
-            this.FechaCancelado.Width = 70;
-            // 
-            // nrofic1
-            // 
-            this.nrofic1.DataPropertyName = "nrofic";
-            this.nrofic1.HeaderText = "nrofic";
-            this.nrofic1.Name = "nrofic1";
-            this.nrofic1.Visible = false;
-            // 
-            // centrocostox
-            // 
-            this.centrocostox.DataPropertyName = "centrocosto";
-            this.centrocostox.HeaderText = "CentroCosto";
-            this.centrocostox.Name = "centrocostox";
-            this.centrocostox.Visible = false;
-            // 
-            // btnVer
-            // 
-            this.btnVer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.btnVer.DataPropertyName = "ver";
-            this.btnVer.HeaderText = "Ver";
-            this.btnVer.MinimumWidth = 55;
-            this.btnVer.Name = "btnVer";
-            this.btnVer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnVer.Text = "";
-            this.btnVer.Width = 55;
-            // 
-            // fkasientox
-            // 
-            this.fkasientox.DataPropertyName = "fkasiento";
-            this.fkasientox.HeaderText = "fkasiento";
-            this.fkasientox.Name = "fkasientox";
-            this.fkasientox.Visible = false;
-            // 
-            // xidmoneda
-            // 
-            this.xidmoneda.DataPropertyName = "idmoneda";
-            this.xidmoneda.HeaderText = "IDMONEDA";
-            this.xidmoneda.Name = "xidmoneda";
-            this.xidmoneda.Visible = false;
-            // 
-            // xCuentaContable
-            // 
-            this.xCuentaContable.DataPropertyName = "CuentaContable";
-            this.xCuentaContable.HeaderText = "CuentaContable";
-            this.xCuentaContable.Name = "xCuentaContable";
-            this.xCuentaContable.Visible = false;
             // 
             // cboempresa
             // 
@@ -1108,6 +873,251 @@ namespace HPReserger
             this.label13.TabIndex = 327;
             this.label13.Text = "Total Dif. Cambio";
             // 
+            // OK
+            // 
+            this.OK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.OK.DataPropertyName = "OK";
+            this.OK.FalseValue = "False";
+            this.OK.FillWeight = 126.9036F;
+            this.OK.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.OK.HeaderText = "OK";
+            this.OK.MinimumWidth = 30;
+            this.OK.Name = "OK";
+            this.OK.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.OK.TrueValue = "True";
+            this.OK.Width = 30;
+            // 
+            // tipodoc
+            // 
+            this.tipodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.tipodoc.DataPropertyName = "tipo";
+            this.tipodoc.HeaderText = "T";
+            this.tipodoc.MinimumWidth = 30;
+            this.tipodoc.Name = "tipodoc";
+            this.tipodoc.ReadOnly = true;
+            this.tipodoc.Width = 36;
+            // 
+            // xidcomprobante
+            // 
+            this.xidcomprobante.DataPropertyName = "idcomprobante";
+            this.xidcomprobante.HeaderText = "xidcomprobante";
+            this.xidcomprobante.Name = "xidcomprobante";
+            this.xidcomprobante.Visible = false;
+            // 
+            // nrofactura
+            // 
+            this.nrofactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.nrofactura.DataPropertyName = "nrofactura";
+            this.nrofactura.HeaderText = "Comprobante";
+            this.nrofactura.MinimumWidth = 85;
+            this.nrofactura.Name = "nrofactura";
+            this.nrofactura.ReadOnly = true;
+            this.nrofactura.Width = 85;
+            // 
+            // proveedor
+            // 
+            this.proveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.proveedor.DataPropertyName = "proveedor";
+            this.proveedor.HeaderText = "Proveedor";
+            this.proveedor.MinimumWidth = 80;
+            this.proveedor.Name = "proveedor";
+            this.proveedor.ReadOnly = true;
+            this.proveedor.Width = 80;
+            // 
+            // razon
+            // 
+            this.razon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.razon.DataPropertyName = "razon";
+            this.razon.HeaderText = "Razón Social";
+            this.razon.MinimumWidth = 100;
+            this.razon.Name = "razon";
+            this.razon.ReadOnly = true;
+            // 
+            // monedax
+            // 
+            this.monedax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.monedax.DataPropertyName = "MON";
+            this.monedax.FillWeight = 40F;
+            this.monedax.HeaderText = "Mon";
+            this.monedax.MinimumWidth = 40;
+            this.monedax.Name = "monedax";
+            this.monedax.ReadOnly = true;
+            this.monedax.Width = 40;
+            // 
+            // xtc
+            // 
+            this.xtc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xtc.DataPropertyName = "tc";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "n3";
+            this.xtc.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xtc.HeaderText = "T.C. Reg.";
+            this.xtc.Name = "xtc";
+            this.xtc.ReadOnly = true;
+            this.xtc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.xtc.Width = 56;
+            // 
+            // subtotal
+            // 
+            this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.subtotal.DataPropertyName = "subtotal";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "n2";
+            this.subtotal.DefaultCellStyle = dataGridViewCellStyle4;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.MinimumWidth = 70;
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 70;
+            // 
+            // Igv
+            // 
+            this.Igv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Igv.DataPropertyName = "Igv";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.Igv.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Igv.HeaderText = "Igv/Rta";
+            this.Igv.MinimumWidth = 60;
+            this.Igv.Name = "Igv";
+            this.Igv.ReadOnly = true;
+            this.Igv.Width = 60;
+            // 
+            // Total
+            // 
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Total.DataPropertyName = "Total";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n2";
+            this.Total.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 56;
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 56;
+            // 
+            // detraccion
+            // 
+            this.detraccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.detraccion.DataPropertyName = "detrac";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "n2";
+            this.detraccion.DefaultCellStyle = dataGridViewCellStyle7;
+            this.detraccion.HeaderText = "Detrac.";
+            this.detraccion.MinimumWidth = 70;
+            this.detraccion.Name = "detraccion";
+            this.detraccion.ReadOnly = true;
+            this.detraccion.Width = 70;
+            // 
+            // Saldox
+            // 
+            this.Saldox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Saldox.DataPropertyName = "saldo";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n2";
+            this.Saldox.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Saldox.HeaderText = "Saldo";
+            this.Saldox.MinimumWidth = 50;
+            this.Saldox.Name = "Saldox";
+            this.Saldox.ReadOnly = true;
+            this.Saldox.Width = 60;
+            // 
+            // Pagox
+            // 
+            this.Pagox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Pagox.DataPropertyName = "pago";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "n2";
+            this.Pagox.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Pagox.HeaderText = "Pago";
+            this.Pagox.MinimumWidth = 50;
+            this.Pagox.Name = "Pagox";
+            this.Pagox.Width = 57;
+            // 
+            // FechaEmision
+            // 
+            this.FechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.FechaEmision.DataPropertyName = "FechaEmision";
+            dataGridViewCellStyle10.Format = "g";
+            this.FechaEmision.DefaultCellStyle = dataGridViewCellStyle10;
+            this.FechaEmision.HeaderText = "Fecha Emisión";
+            this.FechaEmision.MinimumWidth = 70;
+            this.FechaEmision.Name = "FechaEmision";
+            this.FechaEmision.ReadOnly = true;
+            this.FechaEmision.Width = 70;
+            // 
+            // fechaRecepcion
+            // 
+            this.fechaRecepcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.fechaRecepcion.DataPropertyName = "fechaRecepcion";
+            dataGridViewCellStyle11.Format = "g";
+            dataGridViewCellStyle11.NullValue = null;
+            this.fechaRecepcion.DefaultCellStyle = dataGridViewCellStyle11;
+            this.fechaRecepcion.HeaderText = "Fecha Recepción";
+            this.fechaRecepcion.MinimumWidth = 80;
+            this.fechaRecepcion.Name = "fechaRecepcion";
+            this.fechaRecepcion.ReadOnly = true;
+            this.fechaRecepcion.Width = 80;
+            // 
+            // FechaCancelado
+            // 
+            this.FechaCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.FechaCancelado.DataPropertyName = "FechaCancelado";
+            dataGridViewCellStyle12.Format = "g";
+            this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle12;
+            this.FechaCancelado.HeaderText = "Fecha Cancelado";
+            this.FechaCancelado.MinimumWidth = 70;
+            this.FechaCancelado.Name = "FechaCancelado";
+            this.FechaCancelado.ReadOnly = true;
+            this.FechaCancelado.Width = 70;
+            // 
+            // nrofic1
+            // 
+            this.nrofic1.DataPropertyName = "nrofic";
+            this.nrofic1.HeaderText = "nrofic";
+            this.nrofic1.Name = "nrofic1";
+            this.nrofic1.Visible = false;
+            // 
+            // centrocostox
+            // 
+            this.centrocostox.DataPropertyName = "centrocosto";
+            this.centrocostox.HeaderText = "CentroCosto";
+            this.centrocostox.Name = "centrocostox";
+            this.centrocostox.Visible = false;
+            // 
+            // btnVer
+            // 
+            this.btnVer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.btnVer.DataPropertyName = "ver";
+            this.btnVer.HeaderText = "Ver";
+            this.btnVer.MinimumWidth = 55;
+            this.btnVer.Name = "btnVer";
+            this.btnVer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnVer.Text = "";
+            this.btnVer.Width = 55;
+            // 
+            // fkasientox
+            // 
+            this.fkasientox.DataPropertyName = "fkasiento";
+            this.fkasientox.HeaderText = "fkasiento";
+            this.fkasientox.Name = "fkasientox";
+            this.fkasientox.Visible = false;
+            // 
+            // xidmoneda
+            // 
+            this.xidmoneda.DataPropertyName = "idmoneda";
+            this.xidmoneda.HeaderText = "IDMONEDA";
+            this.xidmoneda.Name = "xidmoneda";
+            this.xidmoneda.Visible = false;
+            // 
+            // xCuentaContable
+            // 
+            this.xCuentaContable.DataPropertyName = "CuentaContable";
+            this.xCuentaContable.HeaderText = "CuentaContable";
+            this.xCuentaContable.Name = "xCuentaContable";
+            this.xCuentaContable.Visible = false;
+            // 
             // frmPagarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1229,6 +1239,7 @@ namespace HPReserger
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridViewCheckBoxColumn OK;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipodoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xidcomprobante;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrofactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn razon;

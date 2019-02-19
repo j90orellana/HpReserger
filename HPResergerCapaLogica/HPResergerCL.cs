@@ -420,13 +420,13 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.ListarCuentas();
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, string cuenta, int tipodoc, string numdoc, string razon, int idcomprobante, string codcomprobante, string numcomprobante, int centrocosto, string glosa
-         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime fechaasiento, int ctabancaria, int fkasi, string nroop)
+         , DateTime fechaemision, DateTime fechavence, decimal importemn, decimal importeme, decimal tipocambio, int usuario, int proyecto, DateTime fecharecepcion, int moneda, DateTime fechaasiento, int ctabancaria, string fkasi, string nroop)
         {
             return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, tipodoc, numdoc, razon, idcomprobante, codcomprobante, numcomprobante, centrocosto, glosa, fechaemision, fechavence, importemn, importeme, tipocambio, usuario, proyecto, fecharecepcion, moneda, fechaasiento, ctabancaria, fkasi, nroop);
         }
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, int proyecto, DateTime FechaAsiento)
         {
-            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now, 0, FechaAsiento, 0, 0, "");
+            return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, null, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now, 0, FechaAsiento, 0, "", "");
         }
         public DataTable DuplicarDetalle(int idaux, int idasiento, int idproyecto, int duplicar, string cuenta, DateTime _Fechas)
         {
@@ -462,9 +462,9 @@ namespace HPResergerCapaLogica
         {
             cdOrdenPedido.EliminarASiento(codigo, proyecto, fecha);
         }
-        public void EliminarAsiento(string Cuo, int Empresa, DateTime fechaContable)
+        public void EliminarAsiento(string Cuo, int Empresa, DateTime fechaContable, int reversa)
         {
-            cdOrdenPedido.EliminarASiento(Cuo, Empresa, fechaContable);
+            cdOrdenPedido.EliminarASiento(Cuo, Empresa, fechaContable, reversa);
         }
         public DataTable VerificarProveedores(string codigo, string razon)
         {
@@ -496,13 +496,21 @@ namespace HPResergerCapaLogica
              nomcon, emacon, nctasoles, ccisoles, bancosoles, nroctadolares, ccidolares, bancodolares, detrac, tipoper, ctaasoles, ctadolares, plazo,
              condicion, estado, nuevorus, retencion, buencontribuyente, percepcion);
         }
-        public void ActualizarProveedor(int tipoid, string anterior, string ruc, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
+        public DataRow ActualizarProveedor(int tipoid, int anteriortipoid, string anterior, string ruc, string razon, string nombrecomercial, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
            string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int tipoper, int ctaasoles, int ctadolares, int plazofijo
                 , int condicion, int estado, Boolean nuevorus, Boolean retencion, Boolean buencontribuyente, Boolean percepcion)
         {
-            cdOrdenPedido.ActualizarProveedor(tipoid, anterior, ruc, sector, dirofi, telofi, diralm, telalm, dirsuc, telsuc, telcon, nomcon, emacon, nctasoles, ccisoles, bancosoles,
-                nroctadolares, ccidolares, bancodolares, detrac, tipoper, ctaasoles, ctadolares, plazofijo,
-                condicion, estado, nuevorus, retencion, buencontribuyente, percepcion);
+            return cdOrdenPedido.ActualizarProveedor(tipoid, anteriortipoid, anterior, ruc, razon, nombrecomercial, sector, dirofi, telofi, diralm, telalm, dirsuc, telsuc, telcon, nomcon, emacon, nctasoles, ccisoles, bancosoles,
+                   nroctadolares, ccidolares, bancodolares, detrac, tipoper, ctaasoles, ctadolares, plazofijo,
+                   condicion, estado, nuevorus, retencion, buencontribuyente, percepcion);
+        }
+        public DataRow EliminarProveedor(int tipoid, string nrodoc)
+        {
+            return cdOrdenPedido.EliminarProveedor(tipoid, nrodoc);
+        }
+        public DataRow EliminarCliente(int tipoid, string nrodoc)
+        {
+            return cdOrdenPedido.EliminarCliente(tipoid, nrodoc);
         }
         /// </summary>
         /// <returns></returns>
@@ -1426,9 +1434,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina, fecha, fechavence, fecharecepcion, usuario, centro, tipo, proveedor, moneda, idcuenta, nropago, tc,
                 fechasiento, montodiferencial, PosicionDiferencial, TotalDiferencial);
         }
-        public DataTable ActualizarNotaCreditoDebito(string proveedor, string numdoc, int @opcion)
+        public DataTable ActualizarNotaCreditoDebito(string proveedor, string numdoc, int @opcion, int empresa)
         {
-            return cdOrdenPedido.ActualizarNotaCreditoDebito(proveedor, numdoc, @opcion);
+            return cdOrdenPedido.ActualizarNotaCreditoDebito(proveedor, numdoc, @opcion, empresa);
         }
         public DataTable ValidarChequeExiste(string banco, string cuenta, string cheque)
         {
@@ -1987,25 +1995,25 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Detracciones(@Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, importepagar, diferencia, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario);
         }
-        public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, decimal importepagado, decimal diferencia, string nropago, string banco, string nrocuenta, DateTime fechapago, int usuario)
+        public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, decimal importepagado, decimal diferencia, string nropago, string banco, string nrocuenta, DateTime fechapago, int usuario, int fkempresa)
         {
-            return cdOrdenPedido.DetraccionesVenta(opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario);
+            return cdOrdenPedido.DetraccionesVenta(opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario, fkempresa);
         }
         public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string cuentaredondeo, DateTime fechacontablem, string glosa)
         {
             return cdOrdenPedido.PagarDetracionesCabecera(asiento, cuo, empresa, montoTotal, montoredondeo, montodiferencia, ruc, nrofac, cuenta, cuentaredondeo, fechacontablem, glosa);
         }
-        public DataTable PagarDetracionesVentaCabecera(int asiento, string cuo, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string nroboleta, string cuentaContableNacion, string cuentacontablebanco, string cuentaredondeo, DateTime fechacontable, string glosa)
+        public DataTable PagarDetracionesVentaCabecera(int asiento, string cuo, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string nroboleta, string cuentaContableNacion, string cuentacontablebanco, string cuentaredondeo, DateTime fechacontable, string glosa, int fkempresa)
         {
-            return cdOrdenPedido.PagarDetracionesVentaCabecera(asiento, cuo, montoTotal, montoredondeo, montodiferencia, nroboleta, cuentaContableNacion, cuentacontablebanco, cuentaredondeo, fechacontable, glosa);
+            return cdOrdenPedido.PagarDetracionesVentaCabecera(asiento, cuo, montoTotal, montoredondeo, montodiferencia, nroboleta, cuentaContableNacion, cuentacontablebanco, cuentaredondeo, fechacontable, glosa, fkempresa);
         }
         public DataTable PagarDetracionesDetalle(int @Asiento, string @Cuo, int @Empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string @Ruc, string @Codfac, string @Numfac, decimal @Total, decimal @tc, int @Idcuenta, string @Cuentacontablebanco, string cuentaredondeo, DateTime @fechaContable, string @glosa, int @Usuario)
         {
             return cdOrdenPedido.PagarDetracionesDetalle(@Asiento, @Cuo, @Empresa, montoTotal, montoredondeo, montodiferencia, @Ruc, @Codfac, @Numfac, @Total, @tc, @Idcuenta, @Cuentacontablebanco, @cuentaredondeo, @fechaContable, @glosa, @Usuario);
         }
-        public DataTable PagarDetracionesVentaDetalle(int @Asiento, int @tipodoc, string @numdoc, string @nombreCliente, int @idcomprobante, string @Codfac, string @Numfac, string @nroBoleta, decimal montototal, decimal montoredondeo, decimal montodiferencia, decimal @tc, string @CuentaContableNacion, string @CuentaContableBanco, int @cuentaBanco, DateTime @fechaContable, string cuentaredondeo, string @glosa, int @Usuario)
+        public DataTable PagarDetracionesVentaDetalle(int @Asiento, int @tipodoc, string @numdoc, string @nombreCliente, int @idcomprobante, string @Codfac, string @Numfac, string @nroBoleta, decimal montototal, decimal montoredondeo, decimal montodiferencia, decimal @tc, string @CuentaContableNacion, string @CuentaContableBanco, int @cuentaBanco, DateTime @fechaContable, string cuentaredondeo, string @glosa, int @Usuario, int fkempresa)
         {
-            return cdOrdenPedido.PagarDetracionesVentaDetalle(@Asiento, @tipodoc, @numdoc, @nombreCliente, @idcomprobante, @Codfac, @Numfac, @nroBoleta, montototal, montoredondeo, montodiferencia, @tc, @CuentaContableNacion, @CuentaContableBanco, @cuentaBanco, cuentaredondeo, @fechaContable, @glosa, @Usuario);
+            return cdOrdenPedido.PagarDetracionesVentaDetalle(@Asiento, @tipodoc, @numdoc, @nombreCliente, @idcomprobante, @Codfac, @Numfac, @nroBoleta, montototal, montoredondeo, montodiferencia, @tc, @CuentaContableNacion, @CuentaContableBanco, @cuentaBanco, cuentaredondeo, @fechaContable, @glosa, @Usuario, fkempresa);
         }
         public DataTable ReversarAsientos(int idasiento, int proyecto, int usuario, DateTime Fecha)
         {
@@ -2055,9 +2063,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarNroOpBancaria(banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2);
         }
-        public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet)
+        public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet, int fkempresa)
         {
-            return cdOrdenPedido.ActualizarNroOperacion(codigo, valor, tipodet);
+            return cdOrdenPedido.ActualizarNroOperacion(codigo, valor, tipodet, fkempresa);
         }
         public DataTable Vendedor(int opcion, int codigo, string nrocod, int estado, int usuario)
         {
@@ -2226,66 +2234,66 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FacturaManualVentaCabecera(@opcion, @idfac, @id, @nro, @nroRef, @tipoid, @nroid, @empresa, @proyecto, @etapa, @moneda, @tc, @total, @igv, @fechaemision, @fechavence, @fechacontable, @estado, @tipopago, @nrodocpago, coddet, porcentaje, @detracion, @imgfac, @glosa, @usuario);
         }
-        public DataTable FacturaManualVentaCabecera(int idfac, byte[] imagen)
+        public DataTable FacturaManualVentaCabecera(int idfac, byte[] imagen, int idcomprobante, string tiponroid)
         {
             DateTime f = DateTime.Now;
-            return cdOrdenPedido.FacturaManualVentaCabecera(10, idfac, 0, "", "", 0, "", 0, 0, 0, 0, 0, 0, 0, f, f, f, 0, 0, "", "", 0, 0, imagen, "", 0);
+            return cdOrdenPedido.FacturaManualVentaCabecera(10, idfac, idcomprobante, "", "", 0, tiponroid, 0, 0, 0, 0, 0, 0, 0, f, f, f, 0, 0, "", "", 0, 0, imagen, "", 0);
         }
-        public DataTable FacturaManualVentaCabeceraRemover(int idfac)
+        public DataTable FacturaManualVentaCabeceraRemover(int idfac, int opcion, int idcomprobante, string tiponroid)
         {
             DateTime f = DateTime.Now;
-            return cdOrdenPedido.FacturaManualVentaCabecera(3, idfac, 0, "", "", 0, "", 0, 0, 0, 0, 0, 0, 0, f, f, f, 0, 0, "", "", 0, 0, null, "", 0);
+            return cdOrdenPedido.FacturaManualVentaCabecera(opcion, idfac, idcomprobante, "", "", 0, tiponroid, 0, 0, 0, 0, 0, 0, 0, f, f, f, 0, 0, "", "", 0, 0, null, "", 0);
         }
         public DataTable FacturaManualVentaCabecera()
         {
             DateTime F = DateTime.Now;
             return cdOrdenPedido.FacturaManualVentaCabecera(0, 0, 0, "", "", 0, "", 0, 0, 0, 0, 0, 0, 0, F, F, F, 0, 0, "", "", 0, 0, null, "", 0);
         }
-        public DataTable FacturaManualVentaCabecera(string nrodoc, int opcion)
+        public DataTable FacturaManualVentaCabecera(string nrodoc, int opcion, int Empresa, int idcomprobante)
         {
             DateTime F = DateTime.Now;
-            return cdOrdenPedido.FacturaManualVentaCabecera(5, 0, opcion, nrodoc, "", 0, "", 0, 0, 0, 0, 0, 0, 0, F, F, F, 0, 0, "", "", 0, 0, null, "", 0);
+            return cdOrdenPedido.FacturaManualVentaCabecera(5, 0, idcomprobante, nrodoc, "", 0, "", Empresa, 0, 0, 0, 0, 0, 0, F, F, F, 0, 0, "", "", 0, 0, null, "", opcion);
         }
-        public DataTable FacturaManualVentaCabecera(string nrodoc, int idfac, int opcion)
+        public DataTable FacturaManualVentaCabecera(string nrodoc, int idfac, int opcion, int Empresa, int idcomprobante)
         {
             DateTime F = DateTime.Now;
-            return cdOrdenPedido.FacturaManualVentaCabecera(6, idfac, opcion, nrodoc, "", 0, "", 0, 0, 0, 0, 0, 0, 0, F, F, F, 0, 0, "", "", 0, 0, null, "", 0);
+            return cdOrdenPedido.FacturaManualVentaCabecera(6, idfac, idcomprobante, nrodoc, "", 0, "", Empresa, 0, 0, 0, 0, 0, 0, F, F, F, 0, 0, "", "", 0, 0, null, "", opcion);
         }
         public DataTable FacturaManualDetalle(int @opcion, int @idfac, int @id, string @nro, string @ruc, string @debehaber, string @cuenta, string @ceco, int @tipoigv, decimal @importemn, decimal @importeme, string @glosa, string @cuo, int @usuario)
         {
             return cdOrdenPedido.FacturaManualDetalle(@opcion, @idfac, @id, @nro, @ruc, @debehaber, @cuenta, @ceco, @tipoigv, @importemn, @importeme, @glosa, @cuo, @usuario);
         }
-        public DataTable FacturaManualVentaDetalle(int @opcion, int @idfac, int @id, string @nro, int tipoid, string nroid, string @debehaber, string @cuenta, int @tipoigv, decimal @importemn, decimal @importeme, string @glosa, string @cuo, int @usuario)
+        public DataTable FacturaManualVentaDetalle(int @opcion, int @idfac, int @id, string @nro, int tipoid, string nroid, string @debehaber, string @cuenta, int @tipoigv, decimal @importemn, decimal @importeme, string @glosa, string @cuo, int @usuario, int fkempresa)
         {
-            return cdOrdenPedido.FacturaManualVentaDetalle(@opcion, @idfac, @id, @nro, tipoid, nroid, @debehaber, @cuenta, @tipoigv, @importemn, @importeme, @glosa, @cuo, @usuario);
+            return cdOrdenPedido.FacturaManualVentaDetalle(@opcion, @idfac, @id, @nro, tipoid, nroid, @debehaber, @cuenta, @tipoigv, @importemn, @importeme, @glosa, @cuo, @usuario, fkempresa);
         }
-        public DataTable FacturaManualDetalleRemover(string @nrofa, string @ruc, int Tipo)
+        public DataTable FacturaManualDetalleRemover(string @nrofa, string @ruc, int Tipo, int idcomprobante)
         {
-            return cdOrdenPedido.FacturaManualDetalle(Tipo, 0, 0, @nrofa, @ruc, "", "", "", 0, 0, 0, "", "", 0);
+            return cdOrdenPedido.FacturaManualDetalle(Tipo, idcomprobante, 0, @nrofa, @ruc, "", "", "", 0, 0, 0, "", "", 0);
         }
-        public DataTable FacturaManualVentaDetalleRemover(string @nrofa)
+        public DataTable FacturaManualVentaDetalleRemover(string @nrofa, int fkempresa, int @opcion, int idcomprobante, string tiponroidcliente)
         {
-            return cdOrdenPedido.FacturaManualVentaDetalle(3, 0, 0, @nrofa, 1, "", "", "", 0, 0, 0, "", "", 0);
+            return cdOrdenPedido.FacturaManualVentaDetalle(opcion, idcomprobante, 0, @nrofa, 1, tiponroidcliente, "", "", 0, 0, 0, "", "", 0, fkempresa);
         }
-        public DataTable FacturaManualBusqueda(string proveedor, string nrodoc, string empresa)
+        public DataTable FacturaManualBusqueda(string proveedor, string nrodoc, string empresa, int idcomprobante)
         {
-            return cdOrdenPedido.FacturaManualBusqueda(proveedor, nrodoc, empresa);
+            return cdOrdenPedido.FacturaManualBusqueda(proveedor, nrodoc, empresa, idcomprobante);
         }
-        public DataTable BuscarImagenFacturasCompras(string proveedor, string nrodoc, int tipo, int @opcion)
+        public DataTable BuscarImagenFacturasCompras(string proveedor, string nrodoc, int tipo, int @opcion, int fkempresa, int @idcomprobante)
         {
-            return cdOrdenPedido.BuscarImagenFacturasCompras(proveedor, nrodoc, tipo, @opcion);
+            return cdOrdenPedido.BuscarImagenFacturasCompras(proveedor, nrodoc, tipo, @opcion, fkempresa, @idcomprobante);
         }
         public DataTable FacturaManualVentaBusqueda(string proveedor, string nrodoc, string empresa)
         {
             return cdOrdenPedido.FacturaManualVentaBusqueda(proveedor, nrodoc, empresa);
         }
-        public DataTable FacturaManualDetalleBusqueda(string proveedor, string nrodoc)
+        public DataTable FacturaManualDetalleBusqueda(string proveedor, string nrodoc, int idcomprobante)
         {
-            return cdOrdenPedido.FacturaManualDetalleBusqueda(proveedor, nrodoc);
+            return cdOrdenPedido.FacturaManualDetalleBusqueda(proveedor, nrodoc, idcomprobante);
         }
-        public DataTable FacturaManualVentaDetalleBusqueda(string proveedor, string nrodoc)
+        public DataTable FacturaManualVentaDetalleBusqueda(string proveedor, string nrodoc, int fkempresa, int idcomprobante)
         {
-            return cdOrdenPedido.FacturaManualVentaDetalleBusqueda(proveedor, nrodoc);
+            return cdOrdenPedido.FacturaManualVentaDetalleBusqueda(proveedor, nrodoc, fkempresa, idcomprobante);
         }
         public DataTable VerFacturasPagadasCompras(string proveedor, string nrofac)
         {
@@ -2334,6 +2342,22 @@ namespace HPResergerCapaLogica
         public DataTable BuscarVentasManualesToNcNdDEtalle(int opcion, string ruc, int tipoid, string NumComprobante)
         {
             return cdOrdenPedido.BuscarVentasManualesToNcNdDEtalle(opcion, ruc, tipoid, NumComprobante);
+        }
+        public DataTable FormatodeCompras8_1(int empresa, int periodo, int anio)
+        {
+            return cdOrdenPedido.FormatodeCompras8_1(empresa, periodo, anio);
+        }
+        public DataTable FormatodeVentas14_1(int empresa, int periodo, int anio)
+        {
+            return cdOrdenPedido.FormatodeVentas14_1(empresa, periodo, anio);
+        }
+        public DataTable MayorCuentasxEmpresas(int empresa, int periodo, int anio)
+        {
+            return cdOrdenPedido.MayorCuentasxEmpresas(empresa, periodo, anio);
+        }
+        public DataTable MayorPorCuentas(string cuenta, int periodo, int anio)
+        {
+            return cdOrdenPedido.MayorPorCuentas(cuenta, periodo, anio);
         }
     }
 }

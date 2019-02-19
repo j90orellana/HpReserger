@@ -21,9 +21,10 @@ namespace HPReserger
         {
             public int index;
             public int tipo;
-            public Listado(int _index, int _tipo)
+            public int fkempresa;
+            public Listado(int _index, int _tipo, int _fkempresa)
             {
-                index = _index; tipo = _tipo;
+                index = _index; tipo = _tipo; fkempresa = _fkempresa;
             }
         }
         List<Listado> lista;
@@ -48,7 +49,8 @@ namespace HPReserger
             {
                 int valor = (int)item[idx.DataPropertyName];
                 int tipor = (int)item[xdet.DataPropertyName];
-                Listado lis = new Listado(valor, tipor);
+                int empresa = (int)item[xfkempresa.DataPropertyName];
+                Listado lis = new Listado(valor, tipor, empresa);
                 if (lista != null)
                     if (lista.Find(cust => cust == lis) != null)
                     {
@@ -112,8 +114,9 @@ namespace HPReserger
                         {
                             int tipo = (int)xx.Cells[xdet.Name].Value;
                             int id = (int)xx.Cells[idx.Name].Value;
-                            if (lista.Find(cust => cust.index == id && cust.tipo == tipo) == null)
-                                lista.Add(new Listado(id, tipo));
+                            int empresa = (int)xx.Cells[xfkempresa.Name].Value;
+                            if (lista.Find(cust => cust.index == id && cust.tipo == tipo && cust.fkempresa == empresa) == null)
+                                lista.Add(new Listado(id, tipo, empresa));
                             xx.Cells[okx.Name].Value = val;
                             dtgconten_CellContentClick(sender, new DataGridViewCellEventArgs(0, y));
                             y++;
@@ -144,6 +147,7 @@ namespace HPReserger
                         frmDetalleNroOp frmnroop = new frmDetalleNroOp(dtgconten[Proveedorx.Name, x].Value.ToString(), dtgconten[Razonx.Name, x].Value.ToString(), dtgconten[NroFacturax.Name, x].Value.ToString(), dtgconten[Bancox.Name, x].Value.ToString());
                         frmnroop.Codigo = (int)dtgconten[idx.Name, x].Value;
                         frmnroop.nrooperacion = dtgconten[NroOPBancox.Name, x].Value.ToString();
+                        frmnroop.Empresa = (int)dtgconten[xfkempresa.Name, x].Value;
                         frmnroop.Tipodet = (int)dtgconten[xdet.Name, x].Value;
                         frmnroop.ShowDialog();
                         CargarGrilla();
@@ -235,7 +239,7 @@ namespace HPReserger
             }
             foreach (Listado item in lista)
             {
-                CapaLogica.ActualizarNroOperacion(item.index, txtnroid.TextValido(), item.tipo);
+                CapaLogica.ActualizarNroOperacion(item.index, txtnroid.TextValido(), item.tipo, item.fkempresa);
             }
             msg("Actualizado Número de Operación");
             txtnroid.CargarTextoporDefecto();
@@ -258,22 +262,22 @@ namespace HPReserger
                 //Proceso de Cambio
                 int tipo = (int)dtgconten[xdet.Name, x].Value;
                 int id = (int)dtgconten[idx.Name, x].Value;
+                int empresa = (int)dtgconten[xfkempresa.Name, x].Value;
                 if (dtgconten[okx.Name, x].Value.ToString() == "")
                 {
-
-                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id);
+                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa);
                     lista.Remove(List);
                     dtgconten[okx.Name, x].Value = 0;
                 }
                 else if (dtgconten[okx.Name, x].Value.ToString() == "0")
                 {
-                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id);
+                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa);
                     lista.Remove(List);
                 }
                 else if ((int)dtgconten[okx.Name, x].Value == 1)
                 {
-                    if (lista.Find(cust => cust.tipo == tipo && cust.index == id) == null)
-                        lista.Add(new Listado(id, tipo));
+                    if (lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa) == null)
+                        lista.Add(new Listado(id, tipo, empresa));
                 }
             }
 

@@ -458,7 +458,7 @@ namespace HPReserger
         {
             ModoEdicion();
             estado = 2;
-            cbotipoid.Enabled = false; txtnroid.ReadOnly = true;
+            //cbotipoid.Enabled = false; txtnroid.ReadOnly = true;
             LimpiarControlesEdicion(txtdireccion, txtemail, txtnombre, txtnroid, txtocupacion, txttelcelular, txttelfijo, txtapemat, txtapetpat);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -577,15 +577,25 @@ namespace HPReserger
         }
         private void txtcodigo_TextChanged(object sender, EventArgs e)
         {
-
         }
-
         private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
             if (x >= 0)
             {
                 btnaceptar_Click(sender, new EventArgs());
+            }
+        }
+        public DialogResult msgyesno(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        private void btneliminar_Click(object sender, EventArgs e)
+        {
+            if (msgyesno("Desea Eliminar Cliente") == DialogResult.Yes)
+            {
+                DataRow Filita = CapaLogica.EliminarCliente((int)cbotipoid.SelectedValue, txtnroid.Text);
+                if ((int)Filita["Resultado"] == 0)
+                    msg("Eliminado Exitosamente");
+                else
+                    msg("No se pudo Eliminar, Cliente ya tiene Movimientos");
             }
         }
     }

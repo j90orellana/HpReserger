@@ -3274,5 +3274,94 @@ namespace HPReserger
         {
             frmabonoventa = null;
         }
+        frmRegistroCompras frmregistrocompra;
+        private void reToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmregistrocompra == null)
+            {
+                frmregistrocompra = new frmRegistroCompras();
+                frmregistrocompra.MdiParent = this;
+                frmregistrocompra.Icon = ICono;
+                frmregistrocompra.FormClosed += new FormClosedEventHandler(cerrrregistrodecompras);
+                frmregistrocompra.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmregistrocompra.Activate();
+                ValidarVentanas(frmregistrocompra);
+            }
+        }
+        private void cerrrregistrodecompras(object sender, FormClosedEventArgs e)
+        {
+            frmregistrocompra = null;
+        }
+        frmRegistroVentas frmregistroventas;
+        private void formato141RegistroDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmregistroventas == null)
+            {
+                frmregistroventas = new frmRegistroVentas();
+                frmregistroventas.MdiParent = this;
+                frmregistroventas.Icon = ICono;
+                frmregistroventas.FormClosed += new FormClosedEventHandler(cerrrregistrodeventas);
+                frmregistroventas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmregistroventas.Activate();
+                ValidarVentanas(frmregistroventas);
+            }
+        }
+
+        private void cerrrregistrodeventas(object sender, FormClosedEventArgs e)
+        {
+            frmregistroventas = null;
+        }
+        frmRegMayorPorEmpresas frmremayorempresas;
+        private void mayorPorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmremayorempresas == null)
+            {
+                frmremayorempresas = new frmRegMayorPorEmpresas();
+                frmremayorempresas.MdiParent = this;
+                frmremayorempresas.Icon = ICono;
+                frmremayorempresas.FormClosed += new FormClosedEventHandler(cerrrremayorventas);
+                frmremayorempresas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmremayorempresas.Activate();
+                ValidarVentanas(frmremayorempresas);
+            }
+        }
+        private void cerrrremayorventas(object sender, FormClosedEventArgs e)
+        {
+            frmremayorempresas = null;
+        }
+        frmRegMayorxCuentas frmregxcuentas;
+        private void mayorPorCuentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmregxcuentas == null)
+            {
+                frmregxcuentas = new frmRegMayorxCuentas();
+                frmregxcuentas.MdiParent = this;
+                frmregxcuentas.Icon = ICono;
+                frmregxcuentas.FormClosed += new FormClosedEventHandler(cerrrremayorporcuentas);
+                frmregxcuentas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmregxcuentas.Activate();
+                ValidarVentanas(frmregxcuentas);
+            }
+        }
+        private void cerrrremayorporcuentas(object sender, FormClosedEventArgs e)
+        {
+            frmregxcuentas = null;
+        }
     }
 }

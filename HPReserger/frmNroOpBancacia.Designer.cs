@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNroOpBancacia));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNroOpBancacia));
             this.txtnroid = new HpResergerUserControls.TextBoxPer();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -53,6 +53,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.btnseleccion = new System.Windows.Forms.Button();
+            this.btnclear = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnpdf = new System.Windows.Forms.Button();
             this.okx = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipox = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,13 +74,7 @@
             this.CtaBancox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NroOPBancox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.botonx = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.btnseleccion = new System.Windows.Forms.Button();
-            this.btnclear = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnpdf = new System.Windows.Forms.Button();
+            this.xfkempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -348,7 +349,8 @@
             this.Bancox,
             this.CtaBancox,
             this.NroOPBancox,
-            this.botonx});
+            this.botonx,
+            this.xfkempresa});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -371,6 +373,90 @@
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(912, 562);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(82, 23);
+            this.btncancelar.TabIndex = 137;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btnaceptar
+            // 
+            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
+            this.btnaceptar.Location = new System.Drawing.Point(825, 562);
+            this.btnaceptar.Name = "btnaceptar";
+            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
+            this.btnaceptar.TabIndex = 136;
+            this.btnaceptar.Text = "Aceptar";
+            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnaceptar.UseVisualStyleBackColor = true;
+            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Location = new System.Drawing.Point(14, 567);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(113, 13);
+            this.lblmsg.TabIndex = 138;
+            this.lblmsg.Text = "Total de Registros : 0";
+            // 
+            // btnseleccion
+            // 
+            this.btnseleccion.Image = ((System.Drawing.Image)(resources.GetObject("btnseleccion.Image")));
+            this.btnseleccion.Location = new System.Drawing.Point(17, 134);
+            this.btnseleccion.Name = "btnseleccion";
+            this.btnseleccion.Size = new System.Drawing.Size(151, 23);
+            this.btnseleccion.TabIndex = 139;
+            this.btnseleccion.Text = "Seleccionar Todos";
+            this.btnseleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnseleccion.UseVisualStyleBackColor = true;
+            this.btnseleccion.Click += new System.EventHandler(this.btnseleccion_Click);
+            // 
+            // btnclear
+            // 
+            this.btnclear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnclear.Image = ((System.Drawing.Image)(resources.GetObject("btnclear.Image")));
+            this.btnclear.Location = new System.Drawing.Point(658, 55);
+            this.btnclear.Name = "btnclear";
+            this.btnclear.Size = new System.Drawing.Size(98, 23);
+            this.btnclear.TabIndex = 140;
+            this.btnclear.Text = "Borrar Filtros";
+            this.btnclear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnclear.UseVisualStyleBackColor = true;
+            this.btnclear.Click += new System.EventHandler(this.btnclear_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // btnpdf
+            // 
+            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
+            this.btnpdf.Location = new System.Drawing.Point(462, 561);
+            this.btnpdf.Name = "btnpdf";
+            this.btnpdf.Size = new System.Drawing.Size(82, 25);
+            this.btnpdf.TabIndex = 235;
+            this.btnpdf.Text = "Excel";
+            this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnpdf.UseVisualStyleBackColor = true;
+            this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
             // 
             // okx
             // 
@@ -510,89 +596,12 @@
             this.botonx.Text = "";
             this.botonx.Width = 61;
             // 
-            // btncancelar
+            // xfkempresa
             // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(912, 562);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(82, 23);
-            this.btncancelar.TabIndex = 137;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // btnaceptar
-            // 
-            this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(825, 562);
-            this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(82, 23);
-            this.btnaceptar.TabIndex = 136;
-            this.btnaceptar.Text = "Aceptar";
-            this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnaceptar.UseVisualStyleBackColor = true;
-            this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Location = new System.Drawing.Point(14, 567);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(113, 13);
-            this.lblmsg.TabIndex = 138;
-            this.lblmsg.Text = "Total de Registros : 0";
-            // 
-            // btnseleccion
-            // 
-            this.btnseleccion.Image = ((System.Drawing.Image)(resources.GetObject("btnseleccion.Image")));
-            this.btnseleccion.Location = new System.Drawing.Point(17, 134);
-            this.btnseleccion.Name = "btnseleccion";
-            this.btnseleccion.Size = new System.Drawing.Size(151, 23);
-            this.btnseleccion.TabIndex = 139;
-            this.btnseleccion.Text = "Seleccionar Todos";
-            this.btnseleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnseleccion.UseVisualStyleBackColor = true;
-            this.btnseleccion.Click += new System.EventHandler(this.btnseleccion_Click);
-            // 
-            // btnclear
-            // 
-            this.btnclear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnclear.Image = ((System.Drawing.Image)(resources.GetObject("btnclear.Image")));
-            this.btnclear.Location = new System.Drawing.Point(658, 55);
-            this.btnclear.Name = "btnclear";
-            this.btnclear.Size = new System.Drawing.Size(98, 23);
-            this.btnclear.TabIndex = 140;
-            this.btnclear.Text = "Borrar Filtros";
-            this.btnclear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnclear.UseVisualStyleBackColor = true;
-            this.btnclear.Click += new System.EventHandler(this.btnclear_Click);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // btnpdf
-            // 
-            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
-            this.btnpdf.Location = new System.Drawing.Point(462, 561);
-            this.btnpdf.Name = "btnpdf";
-            this.btnpdf.Size = new System.Drawing.Size(82, 25);
-            this.btnpdf.TabIndex = 235;
-            this.btnpdf.Text = "Excel";
-            this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnpdf.UseVisualStyleBackColor = true;
-            this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
+            this.xfkempresa.DataPropertyName = "fkempresa";
+            this.xfkempresa.HeaderText = "fkempresa";
+            this.xfkempresa.Name = "xfkempresa";
+            this.xfkempresa.Visible = false;
             // 
             // frmNroOpBancacia
             // 
@@ -647,6 +656,8 @@
         private System.Windows.Forms.Label lblmsg;
         private System.Windows.Forms.Button btnseleccion;
         private System.Windows.Forms.Button btnclear;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btnpdf;
         private System.Windows.Forms.DataGridViewCheckBoxColumn okx;
         private System.Windows.Forms.DataGridViewTextBoxColumn idx;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipox;
@@ -661,7 +672,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CtaBancox;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroOPBancox;
         private System.Windows.Forms.DataGridViewButtonColumn botonx;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button btnpdf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xfkempresa;
     }
 }

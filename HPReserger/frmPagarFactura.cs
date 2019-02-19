@@ -491,7 +491,7 @@ namespace HPReserger
                 string facturar = "";
                 if (numasiento == 0)
                 {
-                    DataTable asientito = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
+                    DataTable asientito = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, dtpFechaPago.Value);
                     DataRow asiento = asientito.Rows[0];
                     if (asiento == null) { numasiento = 1; }
                     else
@@ -523,7 +523,7 @@ namespace HPReserger
                     else if (fac.tipo.Substring(0, 2) == "NC" || fac.tipo.Substring(0, 2) == "ND")
                     {
                         //Actualizo el estado a pagado!
-                        CapaLogica.ActualizarNotaCreditoDebito(fac.proveedor, fac.numero, 1);
+                        CapaLogica.ActualizarNotaCreditoDebito(fac.proveedor, fac.numero, 1, (int)cboempresa.SelectedValue);
                     }
                     else
                     {
@@ -576,7 +576,7 @@ namespace HPReserger
                     CapaLogica.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer, idmoneda, nroKuenta, CodigoPago == "007" ? txtnrocheque.Text : ""
                          , decimal.Parse(txttipocambio.Text), dtpFechaPago.Value, decimal.Parse(txttipocambio.Text), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text));
 
-                msg($"Documento Pagado \nGenerado su Asiento {HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, DateTime.Now)}");
+                msg($"Documento Pagado \nGenerado su Asiento {HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, dtpFechaPago.Value)}");
                 btnActualizar_Click(sender, e);
                 txttotaldetrac.Text = txttotal.Text = "0.00";
                 Comprobantes.Clear();
@@ -800,7 +800,7 @@ namespace HPReserger
                         case "True":
                             NumRegistros++;
                             if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "RH")
-                                sumatoria += (decimal)lista.Cells["total"].Value;
+                                sumatoria += (decimal)lista.Cells[Pagox.Name].Value;
                             else if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "NC") { sumatoria -= (decimal)lista.Cells["total"].Value; señal = true; }
                             else if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "ND") { sumatoria += (decimal)lista.Cells["total"].Value; señal = true; }
                             else

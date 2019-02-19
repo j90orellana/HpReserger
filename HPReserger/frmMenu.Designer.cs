@@ -53,6 +53,7 @@
             this.detraccionesComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detraccionesVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacionesBancariasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,6 +102,10 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.flujoDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mayorPorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mayorPorCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -228,7 +233,6 @@
             this.panelOre1 = new HpResergerUserControls.PanelOre();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -455,6 +459,11 @@
             this.operacionesBancariasToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.operacionesBancariasToolStripMenuItem.Text = "Operaciones Bancarias";
             this.operacionesBancariasToolStripMenuItem.Click += new System.EventHandler(this.operacionesBancariasToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(271, 6);
             // 
             // toolStripMenuItem4
             // 
@@ -882,7 +891,11 @@
             this.reportesContablesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1,
-            this.flujoDeCajaToolStripMenuItem});
+            this.flujoDeCajaToolStripMenuItem,
+            this.reToolStripMenuItem,
+            this.formato141RegistroDeVentasToolStripMenuItem,
+            this.mayorPorToolStripMenuItem,
+            this.mayorPorCuentasToolStripMenuItem});
             this.reportesContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportesContablesToolStripMenuItem.Image")));
             this.reportesContablesToolStripMenuItem.Name = "reportesContablesToolStripMenuItem";
             this.reportesContablesToolStripMenuItem.ShowShortcutKeys = false;
@@ -894,7 +907,7 @@
             // 
             this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(262, 22);
             this.toolStripMenuItem1.Tag = "20601";
             this.toolStripMenuItem1.Text = "Estado de Situación Financiera";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.balanceGeneralToolStripMenuItem_Click);
@@ -903,7 +916,7 @@
             // 
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("estadoDeGanaciasYPerdidasToolStripMenuItem1.Image")));
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Name = "estadoDeGanaciasYPerdidasToolStripMenuItem1";
-            this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Size = new System.Drawing.Size(262, 22);
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Tag = "20602";
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Text = "Estado De Resultado Integral";
             this.estadoDeGanaciasYPerdidasToolStripMenuItem1.Click += new System.EventHandler(this.estadoDeGanaciasYPerdidasToolStripMenuItem_Click);
@@ -912,10 +925,38 @@
             // 
             this.flujoDeCajaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("flujoDeCajaToolStripMenuItem.Image")));
             this.flujoDeCajaToolStripMenuItem.Name = "flujoDeCajaToolStripMenuItem";
-            this.flujoDeCajaToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.flujoDeCajaToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.flujoDeCajaToolStripMenuItem.Tag = "20603";
             this.flujoDeCajaToolStripMenuItem.Text = "Flujo de Caja";
             this.flujoDeCajaToolStripMenuItem.Click += new System.EventHandler(this.flujoDeCajaToolStripMenuItem_Click);
+            // 
+            // reToolStripMenuItem
+            // 
+            this.reToolStripMenuItem.Name = "reToolStripMenuItem";
+            this.reToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.reToolStripMenuItem.Text = "Formato 8.1: Registro De Compras";
+            this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
+            // 
+            // formato141RegistroDeVentasToolStripMenuItem
+            // 
+            this.formato141RegistroDeVentasToolStripMenuItem.Name = "formato141RegistroDeVentasToolStripMenuItem";
+            this.formato141RegistroDeVentasToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.formato141RegistroDeVentasToolStripMenuItem.Text = "Formato 14.1: Registro de Ventas";
+            this.formato141RegistroDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formato141RegistroDeVentasToolStripMenuItem_Click);
+            // 
+            // mayorPorToolStripMenuItem
+            // 
+            this.mayorPorToolStripMenuItem.Name = "mayorPorToolStripMenuItem";
+            this.mayorPorToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.mayorPorToolStripMenuItem.Text = "Mayor de Cuentas por Empresa";
+            this.mayorPorToolStripMenuItem.Click += new System.EventHandler(this.mayorPorToolStripMenuItem_Click);
+            // 
+            // mayorPorCuentasToolStripMenuItem
+            // 
+            this.mayorPorCuentasToolStripMenuItem.Name = "mayorPorCuentasToolStripMenuItem";
+            this.mayorPorCuentasToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.mayorPorCuentasToolStripMenuItem.Text = "Mayor por Cuentas";
+            this.mayorPorCuentasToolStripMenuItem.Click += new System.EventHandler(this.mayorPorCuentasToolStripMenuItem_Click);
             // 
             // periodosToolStripMenuItem
             // 
@@ -2121,11 +2162,6 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(271, 6);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2365,5 +2401,9 @@
         private System.Windows.Forms.ToolStripMenuItem detraccionesVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formato141RegistroDeVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mayorPorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mayorPorCuentasToolStripMenuItem;
     }
 }

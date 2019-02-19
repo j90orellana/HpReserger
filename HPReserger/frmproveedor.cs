@@ -42,7 +42,6 @@ namespace HPReserger
         public string nroccidolares { get; set; }
         public string nroctadetracciones { get; set; }
         public int tipobusca { get; set; }
-
         public void CargarDocumentoIdentidad()
         {
             CProveedor.TablaTipoID(cbodocumento);
@@ -52,7 +51,7 @@ namespace HPReserger
             int length = TDoc.Rows.Count;
             for (int i = 0; i < length; i++)
             {
-                if (TDoc.Rows[i]["valor"].ToString().ToUpper() == "RUC" || TDoc.Rows[i]["valor"].ToString().ToUpper() == "OTROS") { }
+                if (TDoc.Rows[i]["valor"].ToString().ToUpper() == "RUC" || TDoc.Rows[i]["valor"].ToString().ToUpper() == "OTROS" || TDoc.Rows[i]["codigo"].ToString().ToUpper() == "1") { }
                 else { TDoc.Rows.RemoveAt(i); i--; length--; }
             }
         }
@@ -77,8 +76,8 @@ namespace HPReserger
             DataTable tablita = new DataTable();
             tablita.Columns.Add("CODIGO");
             tablita.Columns.Add("DESCRIPCION");
-            tablita.Rows.Add(new object[] { "1", "HABIDO" });
-            tablita.Rows.Add(new object[] { "2", "NO HABIDO" });
+            tablita.Rows.Add(new object[] { "1", "1. HABIDO" });
+            tablita.Rows.Add(new object[] { "2", "2. NO HABIDO" });
             cbocondicion.DataSource = tablita;
             cbocondicion.DisplayMember = "DESCRIPCION";
             cbocondicion.ValueMember = "CODIGO";
@@ -87,9 +86,9 @@ namespace HPReserger
             DataTable tabla2 = new DataTable();
             tabla2.Columns.Add("CODIGO");
             tabla2.Columns.Add("DESCRIPCION");
-            tabla2.Rows.Add(new object[] { "1", "Activo" });
-            tabla2.Rows.Add(new object[] { "2", "Suspensión Temporal" });
-            tabla2.Rows.Add(new object[] { "2", "Baja De Actividades" });
+            tabla2.Rows.Add(new object[] { "1", "1. Activo" });
+            tabla2.Rows.Add(new object[] { "2", "2. Suspensión Temporal" });
+            tabla2.Rows.Add(new object[] { "3", "3. Baja De Actividades" });
             cboestado.DataSource = tabla2;
             cboestado.DisplayMember = "DESCRIPCION";
             cboestado.ValueMember = "CODIGO";
@@ -355,15 +354,16 @@ namespace HPReserger
         public void ActivarModi() { txtnumeroidentidad.ReadOnly = false; txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = true; }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            estado = 2; anterior = txtnumeroidentidad.Text.Trim();
+            estado = 2; AnteriorRuc = txtnumeroidentidad.Text.Trim();
+            AnteriorTipoId = (int)cbodocumento.SelectedValue;
             tipmsg.Show("Ingrese Dirección de Oficina", txtdireccionoficina, 700);
             Desactivar(); DesactivarModi();
             txtdireccionoficina.Focus(); Iniciar(true);
             llamada = 0;
             //cbotipo.Enabled = false; modmarca = Convert.ToInt32(cbomarca.SelectedValue.ToString());
-
         }
-        string anterior = "";
+        int AnteriorTipoId = 0;
+        string AnteriorRuc = "";
         public Boolean VerificarDatos(string DocumentoId, string RazonSocial)
         {
             Boolean aux = true;
@@ -437,15 +437,23 @@ namespace HPReserger
             string Documentoid, nombrerazon;
             Documentoid = txtnumeroidentidad.Text;
             nombrerazon = txtnombrerazonsocial.Text;
-            int plzfijo = int.Parse(txtplazofijo.Text == "" ? "0" : txtplazofijo.Text);          
+            int plzfijo = int.Parse(txtplazofijo.Text == "" ? "0" : txtplazofijo.Text);
+            if (cboestado.SelectedValue == null) { msg("Seleccione Estado Proveedor"); cboestado.Focus(); return; }
+            if (cbocondicion.SelectedValue == null) { msg("Seleccione Condición Proveedor"); cbocondicion.Focus(); return; }
             if (estado == 1 && VerificarDatos(Documentoid, nombrerazon))
             {
                 CargarValoresDeIngreso();
                 cbodocumento_SelectedIndexChanged(sender, e);
-                if (txtnumeroidentidad.MaxLength != txtnumeroidentidad.TextLength) { txtnumeroidentidad.Focus(); msg($"El Tamaño del Numero de Documento debe ser de {txtnumeroidentidad.MaxLength}"); return; }
+                if (cbodocumento.Text.ToUpper() != "OTROS")
+                {
+                    if (txtnumeroidentidad.MaxLength != txtnumeroidentidad.TextLength) { txtnumeroidentidad.Focus(); msg($"El Tamaño del Numero de Documento debe ser de {txtnumeroidentidad.MaxLength}"); return; }
+                }
+                else
+                    if (txtnumeroidentidad.MaxLength < txtnumeroidentidad.TextLength) { txtnumeroidentidad.Focus(); msg($"El Tamaño del Numero de Documento debe ser de {txtnumeroidentidad.MaxLength}"); return; }
+
                 //MensajedeDatos();               
                 //usp_insertar_proveedor
-                CProveedor.InsertarProveedor((int)cbodocumento.SelectedValue, anterior, numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
+                CProveedor.InsertarProveedor((int)cbodocumento.SelectedValue, AnteriorRuc, numeroidentidad, razonsocial, razonsocial, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                 persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, tipoper, ctasoles, ctadolares, plzfijo
                 , int.Parse(cbocondicion.SelectedValue.ToString()), int.Parse(cboestado.SelectedValue.ToString()), chknuevorus.Checked, chkretencion.Checked, chkbuenContribuyente.Checked, chkAgentePercepcion.Checked);
                 PresentarValor("");
@@ -458,15 +466,28 @@ namespace HPReserger
                 {
                     CargarValoresDeIngreso();
                     cbodocumento_SelectedIndexChanged(sender, e);
-                    if (txtnumeroidentidad.MaxLength != txtnumeroidentidad.TextLength) { txtnumeroidentidad.Focus(); msg($"El Tamaño del Numero de Documento debe ser de {txtnumeroidentidad.MaxLength}"); return; }
+                    if (cbodocumento.Text.ToUpper() != "OTROS")
+                    {
+                        if (txtnumeroidentidad.MaxLength != txtnumeroidentidad.TextLength) { txtnumeroidentidad.Focus(); msg($"El Tamaño del Numero de Documento debe ser de {txtnumeroidentidad.MaxLength}"); return; }
+                    }
+                    else
+                        if (txtnumeroidentidad.MaxLength < txtnumeroidentidad.TextLength) { txtnumeroidentidad.Focus(); msg($"El Tamaño del Numero de Documento debe ser de {txtnumeroidentidad.MaxLength}"); return; }
+
                     //MensajedeDatos();                    
                     //usp_actualizar_proveedor
-                    CProveedor.ActualizarProveedor((int)cbodocumento.SelectedValue, anterior, numeroidentidad, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
-                    persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, tipoper, ctasoles, ctadolares, plzfijo
-                      , int.Parse(cbocondicion.SelectedValue.ToString()), int.Parse(cboestado.SelectedValue.ToString()), chknuevorus.Checked, chkretencion.Checked, chkbuenContribuyente.Checked, chkAgentePercepcion.Checked);
+                    DataRow Filita = CProveedor.ActualizarProveedor((int)cbodocumento.SelectedValue, AnteriorTipoId, AnteriorRuc, numeroidentidad, txtnombrerazonsocial.Text, txtnombrecomercial.Text, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
+                     persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, tipoper, ctasoles, ctadolares, plzfijo
+                       , int.Parse(cbocondicion.SelectedValue.ToString()), int.Parse(cboestado.SelectedValue.ToString()), chknuevorus.Checked, chkretencion.Checked, chkbuenContribuyente.Checked, chkAgentePercepcion.Checked);
+                    if ((int)Filita["Resultado"] == 0)
+                        msg("Eliminado Exitosamente");
+                    else
+                    {
+                        msg("No se pudo Modificar, Proveedor ya tiene Movimientos");
+                        return;
+                    }
                     PresentarValor("");
                     Iniciar(false);
-                    MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   // MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -474,15 +495,18 @@ namespace HPReserger
                     {
                         if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrerazonsocial.Text + " Nro Documento: " + txtnumeroidentidad.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
-                            //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
-                            MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DataRow Filita = CProveedor.EliminarProveedor((int)cbodocumento.SelectedValue, txtnumeroidentidad.Text);
+                            if ((int)Filita["Resultado"] == 0)
+                                msg("Eliminado Exitosamente");
+                            else
+                                msg("No se pudo eliminar, Proveedor ya tiene Movimientos");
                             PresentarValor("");
-
                         }
                     }
                 }
             }
         }
+
         public void PresentarValor(string final)
         {
             estado = 0;
@@ -491,11 +515,13 @@ namespace HPReserger
         }
         private void txtnumeroidentidad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
+            if (cbodocumento.Text.ToUpper() != "OTROS")
+                HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
         }
 
         private void txttelefonooficina_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
         }
 
@@ -517,7 +543,8 @@ namespace HPReserger
 
         private void txtnumeroidentidad_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtnumeroidentidad, 10);
+            if (cbodocumento.Text.ToUpper() != "OTROS")
+                HPResergerFunciones.Utilitarios.Validardocumentos(e, txtnumeroidentidad, 10);
         }
 
         private void txttelefonooficina_KeyDown(object sender, KeyEventArgs e)
@@ -601,6 +628,7 @@ namespace HPReserger
             {
                 if (cbodocumento.DataSource != null)
                     txtnumeroidentidad.MaxLength = (int)((DataTable)cbodocumento.DataSource).Rows[x]["Leng"];
+
             }
             catch (Exception) { }
         }

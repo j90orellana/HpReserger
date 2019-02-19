@@ -192,8 +192,9 @@ namespace HpResergerUserControls
         {
             if (TiposDatos == ListaTipos.MayusculaCadaPalabra)
             {
+                int pos = SelectionStart;
                 this.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(this.Text);
-                SelectionStart = TextLength;
+                SelectionStart = pos;
             }
             if (Text != TextoPorDefecto)
                 ForeColor = ColorLetras;

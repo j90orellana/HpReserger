@@ -32,6 +32,8 @@ namespace HPReserger
         public Boolean CheckDuplicar { get { return ChkDuplicar.Checked; } set { ChkDuplicar.Checked = value; } }
         public decimal _TipoCambio { get; internal set; }
         public int _Moneda { get; set; }
+        public bool _EsManual { get; internal set; }
+
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
         {
@@ -153,7 +155,7 @@ namespace HPReserger
             Dtgconten.Columns[razonsocialx.Name].ReadOnly = true;
             Dtgconten.Columns[fkAsix.Name].ReadOnly = true;
             Dtgconten.Columns[fk_asisx.Name].ReadOnly = true;
-            Dtgconten.Columns[xNroOPBanco.Name].ReadOnly = true;
+            Dtgconten.Columns[xNroOPBanco.Name].ReadOnly = !_EsManual;
             btnmodificar.Enabled = false; btnaceptar.Enabled = true;
         }
         decimal SumatoriaMN = 0, SumatoriaME = 0;
@@ -173,7 +175,7 @@ namespace HPReserger
                 }
                 if (_Moneda == 1)
                 {
-                    if (SumatoriaMN > Total)
+                    if (Math.Round(SumatoriaMN, 2) > Math.Round(Total, 2))
                     {
                         msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {SumatoriaMN.ToString("n2")} ");
                         return;
@@ -181,7 +183,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    if (SumatoriaME > Total)
+                    if (Math.Round(SumatoriaME, 2) > Math.Round(Total, 2))
                     {
                         msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {SumatoriaMN.ToString("n2")} ");
                         return;
@@ -325,7 +327,7 @@ namespace HPReserger
                             CapaLogica.DetalleAsientos(1, _asiento, _idasiento, cuenta, (int)item.Cells[tipodocx.Name].Value,
                                 item.Cells[numdocx.Name].Value.ToString(), item.Cells[razonsocialx.Name].Value.ToString(), (int)item.Cells[idcomprobantex.Name].Value, item.Cells[codcomprobantex.Name].Value.ToString(), item.Cells[numcomprobantex.Name].Value.ToString(),
                                 int.Parse(item.Cells[centrocostox.Name].Value.ToString()), item.Cells[glosax.Name].Value.ToString(), (DateTime)item.Cells[fechaemisionx.Name].Value, (DateTime)item.Cells[FechaVencimientox.Name].Value, (decimal)item.Cells[importemnx.Name].Value, (decimal)item.Cells[importemex.Name].Value,
-                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, _proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, _fecha, (int)(item.Cells[xCtaBancaria.Name].Value.ToString() == "" ? 0 : item.Cells[xCtaBancaria.Name].Value), int.Parse(item.Cells[fkAsix.Name].Value.ToString() == "" ? "0" : item.Cells[fkAsix.Name].Value.ToString()), item.Cells[xNroOPBanco.Name].Value.ToString());
+                                 (decimal)item.Cells[tipocambiox.Name].Value, frmLogin.CodigoUsuario, _proyecto, (DateTime)item.Cells[FechaRecepcionx.Name].Value, (int)item.Cells[fk_Monedax.Name].Value, _fecha, (int)(item.Cells[xCtaBancaria.Name].Value.ToString() == "" ? 0 : item.Cells[xCtaBancaria.Name].Value), (item.Cells[fkAsix.Name].Value.ToString() == "" ? "0" : item.Cells[fkAsix.Name].Value.ToString()), item.Cells[xNroOPBanco.Name].Value.ToString());
                         }
                     }
                 }
@@ -747,6 +749,14 @@ namespace HPReserger
                     Dtgconten[tipocambiox.Name, x - 1].Value = _TipoCambio;
                     Dtgconten[fk_Monedax.Name, x - 1].Value = _Moneda;
                 }
+            }
+            if (x == 1)
+            {
+                if ((Dtgconten[importemnx.Name, 0].Value.ToString() == "" ? 0 : (decimal)Dtgconten[importemnx.Name, 0].Value) == 0 && (Dtgconten[importemex.Name, 0].Value.ToString() == "" ? 0 : (decimal)Dtgconten[importemex.Name, 0].Value) == 0)
+                    if (_Moneda == 1)
+                        Dtgconten[importemnx.Name, 0].Value = decimal.Parse(txttotal.Text);
+                    else
+                        Dtgconten[importemex.Name, 0].Value = decimal.Parse(txttotal.Text);
             }
             SacarTotales();
         }
