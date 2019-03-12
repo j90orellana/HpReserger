@@ -74,6 +74,7 @@ namespace HPReserger
             ///Botones
             btnCargarFoto.Enabled = btnbusproveedor.Enabled = btnAdd.Enabled = btnlimpiar.Enabled = a;
             ////checkbox
+            chkDocAnulado.Enabled = a;
             //chkCompensa.Enabled = a;
             ///datetimepicker
             dtpFechaContable.Enabled = dtpfechaemision.Enabled = dtpfechavence.Enabled = a;
@@ -470,8 +471,11 @@ namespace HPReserger
                 {
                     if (chkfac.Checked)
                     {
-                        if (txtSerieRef.Text.Length == 0) { Msg("Ingrese Serie del Documento de Referencia"); txtSerieRef.Focus(); return; }
-                        if (txtNumRef.Text.Length == 0) { Msg("Ingrese Número del Documento de Referencia"); txtNumRef.Focus(); return; }
+                        //if (Dtgconten.RowCount > 0)
+                        //{
+                        //    if (txtSerieRef.Text.Length == 0) { Msg("Ingrese Serie del Documento de Referencia"); txtSerieRef.Focus(); return; }
+                        //    if (txtNumRef.Text.Length == 0) { Msg("Ingrese Número del Documento de Referencia"); txtNumRef.Focus(); return; }
+                        //}
                     }
                     else
                     {
@@ -488,7 +492,8 @@ namespace HPReserger
                 if (cbotipoid.Items.Count == 0) { Msg("No hay Tipo Documento"); cbotipoid.Focus(); return; }
                 if (txtcodfactura.Text.Length == 0) { Msg($"Ingrese Codigo de {cbotipodoc.Text}"); txtcodfactura.Focus(); return; }
                 if (txtnrofactura.Text.Length == 0) { Msg($"Ingrese Número de {cbotipodoc.Text}"); txtnrofactura.Focus(); return; }
-                if (!txttotalfac.EstaLLeno()) { Msg("Ingrese Total del Comprobante"); txttotalfac.Focus(); return; }
+                if (!chkDocAnulado.Checked) if (!txttotalfac.EstaLLeno()) { Msg("Ingrese Total del Comprobante"); txttotalfac.Focus(); return; }
+                if (chkDocAnulado.Checked) { if (txttotalfac.EstaLLeno()) { Msg("El Total del Comprobante debe ser Cero"); txttotalfac.Focus(); return; } }
                 if (!txtdoc.EstaLLeno()) { Msg("Ingrese Nro.Doc. del Cliente"); txtdoc.Focus(); return; }
                 if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { Msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
                 //// SI TIENE DETALLE LA FACTURA
@@ -589,8 +594,8 @@ namespace HPReserger
                     if (item.Cells[xUsuario.Name].Value.ToString() != "998")
                     {
                         double vdebe = 0, vhaber = 0;
-                        if (item.Cells[xDebeHaber.Name].Value.ToString() == "D") vdebe = double.Parse(item.Cells[xImporteMN.Name].Value.ToString());
-                        if (item.Cells[xDebeHaber.Name].Value.ToString() == "H") vhaber = double.Parse(item.Cells[xImporteMN.Name].Value.ToString());
+                        if (item.Cells[xDebeHaber.Name].Value.ToString() == "D") vdebe = double.Parse(((int)cbomoneda.SelectedValue) == 1 ? item.Cells[xImporteMN.Name].Value.ToString() : item.Cells[xImporteME.Name].Value.ToString());
+                        if (item.Cells[xDebeHaber.Name].Value.ToString() == "H") vhaber = double.Parse(((int)cbomoneda.SelectedValue) == 1 ? item.Cells[xImporteMN.Name].Value.ToString() : item.Cells[xImporteME.Name].Value.ToString());
                         CapaLogica.InsertarAsiento(i, codigo, dtpfechaemision.Value, item.Cells[xCuentaContable.Name].Value.ToString(), vdebe, vhaber, -5, 1, dtpFechaContable.Value, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue, decimal.Parse(txttipocambio.Text));
                         ////DETALLE ASIENTO                        
                         CapaLogica.DetalleAsientos(1, i, codigo, item.Cells[xCuentaContable.Name].Value.ToString(), (int)cbotipoid.SelectedValue, txtdoc.Text, txtrazon.Text, (int)cbotipodoc.SelectedValue,/* OpcionBusqueda == 1 ?*/ txtcodfactura.Text/* : txtSerieRef.Text*/,/* OpcionBusqueda == 1 ?*/ txtnrofactura.Text /*: txtNumRef.Text*/,
@@ -606,7 +611,7 @@ namespace HPReserger
             if (Estado == 2)
             {
                 /////VALIDO SI YA EXISTE LA FACTURA               
-                DataTable Tprueba = CapaLogica.FacturaManualVentaCabecera(txtcodfactura.Text + "-" + txtnrofactura.Text, _idFac, OpcionBusqueda, (int)cboempresa.SelectedValue);
+                DataTable Tprueba = CapaLogica.FacturaManualVentaCabecera(txtcodfactura.Text + "-" + txtnrofactura.Text, _idFac, OpcionBusqueda, (int)cboempresa.SelectedValue, (int)cbotipodoc.SelectedValue);
                 if (Tprueba.Rows.Count > 0) { Msg("Ya Existe esta Factura Registrada"); return; }
                 //////ACTUALIZANDO LA FACTURA
                 CapaLogica.FacturaManualVentaCabecera(OpcionBusqueda == 1 ? 2 : 200, _idFac, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, (int)cbotipoid.SelectedValue, txtdoc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbomoneda.SelectedValue,
@@ -630,8 +635,8 @@ namespace HPReserger
                     {
 
                         double vdebe = 0, vhaber = 0;
-                        if (item.Cells[xDebeHaber.Name].Value.ToString() == "D") vdebe = double.Parse(item.Cells[xImporteMN.Name].Value.ToString());
-                        if (item.Cells[xDebeHaber.Name].Value.ToString() == "H") vhaber = double.Parse(item.Cells[xImporteMN.Name].Value.ToString());
+                        if (item.Cells[xDebeHaber.Name].Value.ToString() == "D") vdebe = double.Parse(((int)cbomoneda.SelectedValue) == 1 ? item.Cells[xImporteMN.Name].Value.ToString() : item.Cells[xImporteME.Name].Value.ToString());
+                        if (item.Cells[xDebeHaber.Name].Value.ToString() == "H") vhaber = double.Parse(((int)cbomoneda.SelectedValue) == 1 ? item.Cells[xImporteMN.Name].Value.ToString() : item.Cells[xImporteME.Name].Value.ToString());
                         CapaLogica.InsertarAsiento(i, codigo, dtpfechaemision.Value, item.Cells[xCuentaContable.Name].Value.ToString(), vdebe, vhaber, -5, 1, dtpFechaContable.Value, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue, decimal.Parse(txttipocambio.Text));
                         ////DETALLE ASIENTO                        
                         CapaLogica.DetalleAsientos(1, i, codigo, item.Cells[xCuentaContable.Name].Value.ToString(), (int)cbotipoid.SelectedValue, txtdoc.Text, txtrazon.Text, (int)cbotipodoc.SelectedValue, /*OpcionBusqueda == 1 ? */txtcodfactura.Text /*: txtSerieRef.Text*/, /*OpcionBusqueda == 1 ? */txtnrofactura.Text /*: txtNumRef.Text*/,
@@ -705,6 +710,7 @@ namespace HPReserger
                 cbomoneda.SelectedValue = (int)R.Cells[yfkMoneda.Name].Value;
                 txttipocambio.Text = ((decimal)R.Cells[yTC.Name].Value).ToString("n3");
                 txttotalfac.Text = ((decimal)R.Cells[yTotal.Name].Value).ToString("n2");
+                if (!txttotalfac.EstaLLeno()) chkDocAnulado.Checked = true; else chkDocAnulado.Checked = false;
                 TotalIgv = (decimal)R.Cells[yigv.Name].Value;
                 string[] CodNroFacRef;
                 string NumFacRefe = R.Cells[yNroComprobanteRef.Name].Value.ToString();
@@ -871,6 +877,7 @@ namespace HPReserger
                 string cuo = "";
                 DataTable TDatos = ((DataTable)Dtgconten.DataSource).Clone();
                 LimpiarVistaPRevia();
+                Boolean DocAnulado = chkDocAnulado.Checked;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "D") conD++;
@@ -898,14 +905,22 @@ namespace HPReserger
                     else { HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xDebeHaber.Name]); ErrorDH = true; }
                     if ((item.Cells[xImporteMN.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xImporteMN.Name].Value) <= 0)
                     {
-                        ErrorM = true;
-                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xImporteMN.Name]);
+                        item.Cells[xImporteMN.Name].Value = 0.00;
+                        if (!DocAnulado)
+                        {
+                            ErrorM = true;
+                            HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xImporteMN.Name]);
+                        }
                     }
                     else HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xImporteMN.Name]);
                     if ((item.Cells[xImporteME.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xImporteME.Name].Value) <= 0)
                     {
-                        ErrorM = true;
-                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xImporteME.Name]);
+                        item.Cells[xImporteME.Name].Value = 0.00;
+                        if (!DocAnulado)
+                        {
+                            ErrorM = true;
+                            HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xImporteME.Name]);
+                        }
                     }
                     else HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xImporteME.Name]);
                     if (_TipoDoc != 1)
@@ -915,8 +930,11 @@ namespace HPReserger
                             if (item.Cells[xDebeHaber.Name].Value.ToString() == "H")
                                 if (item.Cells[xTipoIgvg.Name].Value.ToString() == "")
                                 {
-                                    error = true;
-                                    HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xTipoIgvg.Name]);
+                                    if (!DocAnulado)
+                                    {
+                                        error = true;
+                                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xTipoIgvg.Name]);
+                                    }
                                 }
                                 else HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xTipoIgvg.Name]);
                         }
@@ -925,8 +943,11 @@ namespace HPReserger
                             if (item.Cells[xDebeHaber.Name].Value.ToString() == "D")
                                 if (item.Cells[xTipoIgvg.Name].Value.ToString() == "")
                                 {
-                                    error = true;
-                                    HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xTipoIgvg.Name]);
+                                    if (!DocAnulado)
+                                    {
+                                        error = true;
+                                        HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xTipoIgvg.Name]);
+                                    }
                                 }
                                 else HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xTipoIgvg.Name]);
                         }
@@ -940,7 +961,7 @@ namespace HPReserger
                     else cadena += "No hay Cuenta Debe (Cobrar a Terceros)\n";
                 }
                 if (conH == 0) { cadena += "No hay Cuenta Haber (Items)\n"; }
-                if (error) { cadena += "Seleccion Tipo de IGV\n"; }
+                if (error) { cadena += "Seleccione Tipo de IGV\n"; }
                 if (errord) { cadena += "Hay Errores en las Cuentas\n"; }
                 if (ErrorM) { cadena += "Hay Errores los Importe\n"; }
                 /////VALIDACION
@@ -985,59 +1006,61 @@ namespace HPReserger
                         if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "H")
                         {
                             if (_TipoDoc != 1)
-                                if ((int)item.Cells[xTipoIgvg.Name].Value == 1)
-                                {
-                                    DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                    filaIgv[xDebeHaber.DataPropertyName] = "H";
-                                    filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
-                                    filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
-                                    filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
-                                    //if (_TipoDoc == 3)
-                                    //{
-                                    //    filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value / (1 + igvs));
-                                    //    filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value / (1 + igvs));
-                                    //}
-                                    //else
-                                    //{
-                                    filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
-                                    filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
-                                    //}
-                                    filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
-                                    ///soles
-                                    //if (_TipoDoc == 3)
-                                    //{
+                                if (!DocAnulado)
+                                    if ((int)item.Cells[xTipoIgvg.Name].Value == 1)
+                                    {
+                                        DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
+                                        filaIgv[xDebeHaber.DataPropertyName] = "H";
+                                        filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
+                                        filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
+                                        filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
+                                        //if (_TipoDoc == 3)
+                                        //{
+                                        //    filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value / (1 + igvs));
+                                        //    filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value / (1 + igvs));
+                                        //}
+                                        //else
+                                        //{
+                                        filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
+                                        filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
+                                        //}
+                                        filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
+                                        ///soles
+                                        //if (_TipoDoc == 3)
+                                        //{
 
-                                    //}
-                                    //else
-                                    //{
-                                    if ((int)cbomoneda.SelectedValue == 1)
-                                        TotalIgv += Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
-                                    else TotalIgv += Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
-                                    //}
-                                    TDatos.Rows.Add(filaIgv);
-                                }
+                                        //}
+                                        //else
+                                        //{
+                                        if ((int)cbomoneda.SelectedValue == 1)
+                                            TotalIgv += Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
+                                        else TotalIgv += Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
+                                        //}
+                                        TDatos.Rows.Add(filaIgv);
+                                    }
                         }
                     }
                     if (_TipoDoc == 2)
                     {
                         if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "D")
                         {
-                            if ((int)item.Cells[xTipoIgvg.Name].Value == 1)
-                            {
-                                DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                filaIgv[xDebeHaber.DataPropertyName] = "D";
-                                filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
-                                filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
-                                filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
-                                filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
-                                filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
-                                filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
-                                ///soles
-                                if ((int)cbomoneda.SelectedValue == 1)
-                                    TotalIgv += Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
-                                else TotalIgv += Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
-                                TDatos.Rows.Add(filaIgv);
-                            }
+                            if (!DocAnulado)
+                                if ((int)item.Cells[xTipoIgvg.Name].Value == 1)
+                                {
+                                    DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
+                                    filaIgv[xDebeHaber.DataPropertyName] = "D";
+                                    filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
+                                    filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
+                                    filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
+                                    filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
+                                    filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
+                                    filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
+                                    ///soles
+                                    if ((int)cbomoneda.SelectedValue == 1)
+                                        TotalIgv += Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
+                                    else TotalIgv += Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
+                                    TDatos.Rows.Add(filaIgv);
+                                }
                         }
                     }
                 }
@@ -1061,7 +1084,7 @@ namespace HPReserger
 
                 TDatos = TDatos.Clone();
                 // Msg($"hay diferencia {conme}  :  {conmn}");
-                if (conme != 0 && conmn != 0)
+                if (conme != 0 || conmn != 0)
                 {
                     string CuentaRedondeo = "";
                     string DH = "";
@@ -1070,7 +1093,7 @@ namespace HPReserger
                     {
                         DH = "H";
                         //Tpruebass = CapaLogica.BuscarCuentas("INGRESOS POR REDONDEO", 5);
-                        Tpruebass = CapaLogica.BuscarCuentas("ajuste por redondeo", 5);
+                        Tpruebass = CapaLogica.BuscarCuentas("INGRESOS POR REDONDEO", 5);
                     }
                     if (conme < 0 || conmn < 0)
                     {
@@ -1345,6 +1368,7 @@ namespace HPReserger
             txtSerieRef.ReadOnly = txtNumRef.ReadOnly = true;
             chkfac.Enabled = false;
             //chkCompensa.Visible = true;
+            _TipoDoc = 0;
             rdbInteres.Visible = rdbDescuento.Visible = rdbAnulacion.Visible = btnaplicar.Visible = false;
             if (Estado == 1 || Estado == 2)
             {
@@ -1478,10 +1502,23 @@ namespace HPReserger
                 {
                     cbomoneda.Enabled = cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = txttipocambio.Enabled = true;
                 }
+                if (chkDocAnulado.Checked)
+                    if (Dtgconten.RowCount == 0)
+                    {
+                        ((DataTable)Dtgconten.DataSource).Rows.Add();
+                        ((DataTable)Dtgconten.DataSource).Rows.Add();
+                        Dtgconten[xDebeHaber.Name, 0].Value = "D"; Dtgconten[xDebeHaber.Name, 1].Value = "H";
+                        Dtgconten[xCuentaContable.Name, 0].Value = "1212101"; Dtgconten[xCuentaContable.Name, 1].Value = "1212101";
+                        Dtgconten[xImporteMN.Name, 0].Value = 0.00; Dtgconten[xImporteME.Name, 0].Value = 0.00;
+                        Dtgconten[xImporteMN.Name, 1].Value = 0.00; Dtgconten[xImporteME.Name, 1].Value = 0.00;
+                        btnAceptar.Enabled = true;
+                    }
             }
         }
         private void btneliminar_Click(object sender, EventArgs e)
         {
+            if (_TipoDoc == 0 || _TipoDoc == 1) OpcionBusqueda = 1;
+            if (_TipoDoc == 2 || _TipoDoc == 3) OpcionBusqueda = 2;
             if (dtgBusqueda.RowCount > 0)
             {
                 if (Dtgconten.RowCount == 0)

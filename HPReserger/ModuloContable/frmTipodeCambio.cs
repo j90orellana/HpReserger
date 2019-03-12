@@ -377,7 +377,7 @@ namespace HPReserger
         {
             if (dtgconten.RowCount > 0)
             {
-               ///* Inicio = new TimeSpan(DateTim*/e.Now.Ticks);
+                ///* Inicio = new TimeSpan(DateTim*/e.Now.Ticks);
                 dtgconten.SuspendLayout();
                 frmpro = new frmProcesando();
                 frmpro.Show(); Cursor = Cursors.WaitCursor;
@@ -409,7 +409,7 @@ namespace HPReserger
             Cursor = Cursors.Default;
             frmpro.Close();
             //Stop = new TimeSpan(DateTime.Now.Ticks);
-           // msg($"tiempos: {Stop.Subtract(Inicio).TotalMilliseconds}");
+            // msg($"tiempos: {Stop.Subtract(Inicio).TotalMilliseconds}");
             dtgconten.ResumeLayout();
         }
         frmaddtipoCambio frmaddtipo;

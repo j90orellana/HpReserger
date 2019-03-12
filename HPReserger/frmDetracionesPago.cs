@@ -29,7 +29,7 @@ namespace HPReserger
             cbotipo.SelectedIndex = 0;
             Detracion = new List<Detracciones>();
             CargarDAtos();
-            dtpFechaContable.Value = DateTime.Now;
+            dtpFechaPago.Value = dtpFechaContable.Value = DateTime.Now;
             txtcuentadetracciones_TextChanged(sender, e);
         }
         public void cargarempresas()
@@ -67,7 +67,7 @@ namespace HPReserger
                 {
                     foreach (Detracciones det in Detracion)
                     {
-                        if (item.Cells[nrofacturax.Name].Value.ToString() == det._nrodetracion && item.Cells[Proveedorx.Name].Value.ToString() == det._proveedor)
+                        if (item.Cells[nrofacturax.Name].Value.ToString() == det._nrodetracion && item.Cells[Proveedorx.Name].Value.ToString() == det._proveedor && det._idcomprobante == (int)item.Cells[xidcomprobante.Name].Value)
                         {
                             item.Cells[opcionx.Name].Value = 1;
                         }
@@ -110,11 +110,13 @@ namespace HPReserger
             public string _nrodetracion;
             public string _proveedor;
             public decimal _monto;
-            public Detracciones(string nrofactura, string proveedor, decimal monto)
+            public int _idcomprobante;
+            public Detracciones(string nrofactura, string proveedor, decimal monto, int idcomprobantes)
             {
                 _nrodetracion = nrofactura;
                 _proveedor = proveedor;
                 _monto = monto;
+                _idcomprobante = idcomprobantes;
             }
         }
         List<Detracciones> Detracion;
@@ -266,6 +268,7 @@ namespace HPReserger
                     if (Verificar) { HPResergerFunciones.Utilitarios.msg("No se Puede Pagar Valores en Cero"); return; }
                     //PROCESO DE PAGO
                     string nrofac = "", ruc = "";
+                    int idcomprobante = 0;
                     int posSelec = cbocuentabanco.SelectedIndex;
                     string NroCuenta = ((DataTable)cbocuentabanco.DataSource).Rows[posSelec]["NroCta"].ToString();
                     foreach (DataGridViewRow item in dtgconten.Rows)
@@ -277,8 +280,9 @@ namespace HPReserger
                             {
                                 nrofac = item.Cells[nrofacturax.Name].Value.ToString();
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
+                                idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
                                 CapaLogica.Detracciones(1, item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[Detraccionx.Name].Value, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xtc.Name].Value
-                                    , (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaContable.Value, frmLogin.CodigoUsuario);
+                                    , (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaPago.Value, frmLogin.CodigoUsuario, (int)item.Cells[xidcomprobante.Name].Value);
                             }
                         }
                     }
@@ -287,7 +291,7 @@ namespace HPReserger
                     string cuo = FilaDato["cuo"].ToString();
                     int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesCabecera(codigo, cuo, (int)cboempresa.SelectedValue, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac, cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, dtpFechaContable.Value, txtglosa.Text);
+                    CapaLogica.PagarDetracionesCabecera(codigo, cuo, (int)cboempresa.SelectedValue, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac, cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, dtpFechaPago.Value, dtpFechaContable.Value, txtglosa.Text, idcomprobante);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -298,8 +302,9 @@ namespace HPReserger
                                 string codfac = fac[0];
                                 string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
+                                idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
                                 CapaLogica.PagarDetracionesDetalle(codigo, cuo, (int)cboempresa.SelectedValue, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
-                                    , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, dtpFechaContable.Value, txtglosa.Text, frmLogin.CodigoUsuario);
+                                    , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, dtpFechaContable.Value, txtglosa.Text, frmLogin.CodigoUsuario, idcomprobante);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
                     HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! con Asiento {cuo}");
@@ -314,7 +319,7 @@ namespace HPReserger
             Detracion.Clear();
             foreach (DataGridViewRow item in dtgconten.Rows)
                 if ((int)item.Cells[opcionx.Name].Value == 1)
-                    Detracion.Add(new Detracciones(item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[porpagarx.Name].Value));
+                    Detracion.Add(new Detracciones(item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[porpagarx.Name].Value, (int)item.Cells[xidcomprobante.Name].Value));
             CargarDAtos();
         }
         private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -82,6 +82,10 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="HPResergerCapaDatos">
       <HintPath>..\..\Ejecutable_19052017\HPResergerCapaDatos.dll</HintPath>
@@ -92,16 +96,19 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -140,6 +147,12 @@
     </Compile>
     <Compile Include="frmReporteCompras81Report.Designer.cs">
       <DependentUpon>frmReporteCompras81Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportedeFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportedeFacturas.Designer.cs">
+      <DependentUpon>frmReportedeFacturas.cs</DependentUpon>
     </Compile>
     <Compile Include="rptFormato81Compras.cs">
       <AutoGen>True</AutoGen>
@@ -1495,6 +1508,9 @@
     <EmbeddedResource Include="frmReporteCompras81Report.resx">
       <DependentUpon>frmReporteCompras81Report.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReportedeFacturas.resx">
+      <DependentUpon>frmReportedeFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptFormato81Compras.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptFormato81Compras.cs</LastGenOutput>
@@ -2197,6 +2213,7 @@
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="HPReserger_ClaveTemporal.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

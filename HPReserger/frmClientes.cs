@@ -541,8 +541,14 @@ namespace HPReserger
                     msg("El Cliente Ya Existe");
                     return;
                 }
-                CapaLogica.Clientes(2, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
-                msg("Cliente Actualizado Exitosamente");
+                DataRow Filita = CapaLogica.Clientes(2, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now).Rows[0];
+                if ((int)Filita["Resultado"] == 0)
+                    msg("Cliente Actualizado Exitosamente");
+                else
+                {
+                    msg("No se pudo Modificar, Cliente ya tiene Movimientos");
+                    return;
+                }
             }
             estado = 0;
             if (Buscando) DialogResult = DialogResult.OK;

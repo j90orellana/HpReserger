@@ -178,6 +178,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.txtNumRef = new System.Windows.Forms.TextBox();
             this.btnaplicar = new System.Windows.Forms.Button();
+            this.btnFacturasIncompletas = new System.Windows.Forms.Button();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -1904,12 +1905,28 @@
             this.btnaplicar.UseVisualStyleBackColor = true;
             this.btnaplicar.Click += new System.EventHandler(this.btnaplicar_Click);
             // 
+            // btnFacturasIncompletas
+            // 
+            this.btnFacturasIncompletas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnFacturasIncompletas.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnFacturasIncompletas.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFacturasIncompletas.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturasIncompletas.Image")));
+            this.btnFacturasIncompletas.Location = new System.Drawing.Point(896, 473);
+            this.btnFacturasIncompletas.Name = "btnFacturasIncompletas";
+            this.btnFacturasIncompletas.Size = new System.Drawing.Size(173, 23);
+            this.btnFacturasIncompletas.TabIndex = 253;
+            this.btnFacturasIncompletas.Text = "Ver Docs. Incompletos";
+            this.btnFacturasIncompletas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFacturasIncompletas.UseVisualStyleBackColor = true;
+            this.btnFacturasIncompletas.Click += new System.EventHandler(this.btnFacturasIncompletas_Click);
+            // 
             // FrmFacturaManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
             this.Controls.Add(this.btnvistaPrevia);
+            this.Controls.Add(this.btnFacturasIncompletas);
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
@@ -2122,5 +2139,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn yFechaModifica;
         private System.Windows.Forms.DataGridViewTextBoxColumn yNroComprobanteRef;
+        private System.Windows.Forms.Button btnFacturasIncompletas;
     }
 }

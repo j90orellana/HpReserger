@@ -108,5 +108,10 @@ namespace HPReserger
                 else { frmlis.Focus(); }
             }
         }
+
+        private void btncerrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

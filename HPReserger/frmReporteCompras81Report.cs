@@ -51,7 +51,7 @@ namespace HPReserger
             iConnectionInfo.UserID = datos.USERID;
             iConnectionInfo.Password = datos.USERPASS;
             iConnectionInfo.ServerName = datos.DATASOURCE;
-            iConnectionInfo.Type = ConnectionInfoType.SQL;
+            iConnectionInfo.Type = ConnectionInfoType.OLAP;
             CrystalDecisions.CrystalReports.Engine.Tables myTables;
             myTables = Reporte.Database.Tables;
             foreach (CrystalDecisions.CrystalReports.Engine.Table mytable in myTables)

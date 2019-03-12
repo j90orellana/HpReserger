@@ -167,6 +167,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.txtNumRef = new System.Windows.Forms.TextBox();
             this.btnaplicar = new System.Windows.Forms.Button();
+            this.chkDocAnulado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBusqueda)).BeginInit();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
@@ -1737,11 +1738,25 @@
             this.btnaplicar.UseVisualStyleBackColor = true;
             this.btnaplicar.Click += new System.EventHandler(this.btnaplicar_Click);
             // 
+            // chkDocAnulado
+            // 
+            this.chkDocAnulado.AutoSize = true;
+            this.chkDocAnulado.BackColor = System.Drawing.Color.Transparent;
+            this.chkDocAnulado.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkDocAnulado.Location = new System.Drawing.Point(561, 182);
+            this.chkDocAnulado.Name = "chkDocAnulado";
+            this.chkDocAnulado.Size = new System.Drawing.Size(120, 17);
+            this.chkDocAnulado.TabIndex = 323;
+            this.chkDocAnulado.Text = "Importe Total Cero";
+            this.chkDocAnulado.UseVisualStyleBackColor = false;
+            this.chkDocAnulado.CheckedChanged += new System.EventHandler(this.chkfac_CheckedChanged);
+            // 
             // frmFacturaManualVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 661);
+            this.Controls.Add(this.chkDocAnulado);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.dtpFechaContable);
             this.Controls.Add(this.label19);
@@ -1940,5 +1955,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yFechaModifica;
         private System.Windows.Forms.DataGridViewTextBoxColumn yNroComprobanteRef;
         private System.Windows.Forms.CheckBox chkfac;
+        private System.Windows.Forms.CheckBox chkDocAnulado;
     }
 }

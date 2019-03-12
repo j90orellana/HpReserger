@@ -87,21 +87,6 @@ namespace HPReserger
             this.btncancelar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Dtguias = new HpResergerUserControls.Dtgconten();
-            this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblmensaje = new System.Windows.Forms.Label();
-            this.txtnrocheque = new HpResergerUserControls.TextBoxPer();
-            this.btnpdf = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.rdbporPagar = new System.Windows.Forms.RadioButton();
-            this.rdbPagados = new System.Windows.Forms.RadioButton();
-            this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txttipocambio = new HpResergerUserControls.TextBoxPer();
-            this.lblcheque = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txttotaldiferencial = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tipodoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xidcomprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,6 +110,23 @@ namespace HPReserger
             this.fkasientox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xidmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblmensaje = new System.Windows.Forms.Label();
+            this.txtnrocheque = new HpResergerUserControls.TextBoxPer();
+            this.btnpdf = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.rdbporPagar = new System.Windows.Forms.RadioButton();
+            this.rdbPagados = new System.Windows.Forms.RadioButton();
+            this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txttipocambio = new HpResergerUserControls.TextBoxPer();
+            this.lblcheque = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txttotaldiferencial = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dtpFechaContable = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.SuspendLayout();
@@ -238,7 +240,7 @@ namespace HPReserger
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(954, 73);
+            this.label6.Location = new System.Drawing.Point(1034, 73);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 13);
             this.label6.TabIndex = 31;
@@ -248,7 +250,7 @@ namespace HPReserger
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(954, 47);
+            this.label5.Location = new System.Drawing.Point(1034, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 32;
@@ -258,7 +260,7 @@ namespace HPReserger
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(954, 21);
+            this.label1.Location = new System.Drawing.Point(1034, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 29;
@@ -677,202 +679,6 @@ namespace HPReserger
             this.Dtguias.RowErrorTextChanged += new System.Windows.Forms.DataGridViewRowEventHandler(this.Dtguias_RowErrorTextChanged);
             this.Dtguias.Sorted += new System.EventHandler(this.Dtguias_Sorted);
             // 
-            // cboempresa
-            // 
-            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(73, 60);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(270, 21);
-            this.cboempresa.TabIndex = 79;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
-            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click_1);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(17, 64);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 13);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "Empresa:";
-            // 
-            // lblmensaje
-            // 
-            this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmensaje.AutoSize = true;
-            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
-            this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmensaje.Location = new System.Drawing.Point(12, 474);
-            this.lblmensaje.Name = "lblmensaje";
-            this.lblmensaje.Size = new System.Drawing.Size(129, 13);
-            this.lblmensaje.TabIndex = 81;
-            this.lblmensaje.Text = "Número de Registros=0";
-            // 
-            // txtnrocheque
-            // 
-            this.txtnrocheque.BackColor = System.Drawing.Color.White;
-            this.txtnrocheque.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnrocheque.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnrocheque.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnrocheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnrocheque.ForeColor = System.Drawing.Color.Black;
-            this.txtnrocheque.Format = null;
-            this.txtnrocheque.Location = new System.Drawing.Point(723, 60);
-            this.txtnrocheque.MaxLength = 20;
-            this.txtnrocheque.Name = "txtnrocheque";
-            this.txtnrocheque.NextControlOnEnter = null;
-            this.txtnrocheque.Size = new System.Drawing.Size(158, 21);
-            this.txtnrocheque.TabIndex = 82;
-            this.txtnrocheque.Text = "Ingrese Nro Cheque";
-            this.txtnrocheque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnrocheque.TextoDefecto = "Ingrese Nro Cheque";
-            this.txtnrocheque.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnrocheque.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // btnpdf
-            // 
-            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
-            this.btnpdf.Location = new System.Drawing.Point(449, 468);
-            this.btnpdf.Name = "btnpdf";
-            this.btnpdf.Size = new System.Drawing.Size(82, 25);
-            this.btnpdf.TabIndex = 236;
-            this.btnpdf.Text = "Excel";
-            this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnpdf.UseVisualStyleBackColor = true;
-            this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // rdbporPagar
-            // 
-            this.rdbporPagar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rdbporPagar.AutoSize = true;
-            this.rdbporPagar.BackColor = System.Drawing.Color.Transparent;
-            this.rdbporPagar.Checked = true;
-            this.rdbporPagar.Location = new System.Drawing.Point(468, 126);
-            this.rdbporPagar.Name = "rdbporPagar";
-            this.rdbporPagar.Size = new System.Drawing.Size(74, 17);
-            this.rdbporPagar.TabIndex = 237;
-            this.rdbporPagar.TabStop = true;
-            this.rdbporPagar.Text = "Por Pagar";
-            this.rdbporPagar.UseVisualStyleBackColor = false;
-            this.rdbporPagar.CheckedChanged += new System.EventHandler(this.rdbporPagar_CheckedChanged);
-            // 
-            // rdbPagados
-            // 
-            this.rdbPagados.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rdbPagados.AutoSize = true;
-            this.rdbPagados.BackColor = System.Drawing.Color.Transparent;
-            this.rdbPagados.Location = new System.Drawing.Point(548, 126);
-            this.rdbPagados.Name = "rdbPagados";
-            this.rdbPagados.Size = new System.Drawing.Size(69, 17);
-            this.rdbPagados.TabIndex = 237;
-            this.rdbPagados.Text = "Pagados";
-            this.rdbPagados.UseVisualStyleBackColor = false;
-            this.rdbPagados.CheckedChanged += new System.EventHandler(this.rdbporPagar_CheckedChanged);
-            // 
-            // dtpFechaPago
-            // 
-            this.dtpFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaPago.Location = new System.Drawing.Point(425, 59);
-            this.dtpFechaPago.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaPago.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaPago.Name = "dtpFechaPago";
-            this.dtpFechaPago.Size = new System.Drawing.Size(97, 22);
-            this.dtpFechaPago.TabIndex = 322;
-            this.dtpFechaPago.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            this.dtpFechaPago.ValueChanged += new System.EventHandler(this.dtpFechaPago_ValueChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(355, 64);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(69, 13);
-            this.label19.TabIndex = 323;
-            this.label19.Text = "Fecha Pago:";
-            // 
-            // txttipocambio
-            // 
-            this.txttipocambio.BackColor = System.Drawing.Color.White;
-            this.txttipocambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txttipocambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txttipocambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttipocambio.ForeColor = System.Drawing.Color.Black;
-            this.txttipocambio.Format = "n3";
-            this.txttipocambio.Location = new System.Drawing.Point(583, 60);
-            this.txttipocambio.MaxLength = 10;
-            this.txttipocambio.Name = "txttipocambio";
-            this.txttipocambio.NextControlOnEnter = null;
-            this.txttipocambio.Size = new System.Drawing.Size(64, 21);
-            this.txttipocambio.TabIndex = 324;
-            this.txttipocambio.Text = "3.300";
-            this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txttipocambio.TextoDefecto = "3.300";
-            this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
-            this.txttipocambio.TextChanged += new System.EventHandler(this.txttipocambio_TextChanged);
-            // 
-            // lblcheque
-            // 
-            this.lblcheque.AutoSize = true;
-            this.lblcheque.BackColor = System.Drawing.Color.Transparent;
-            this.lblcheque.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcheque.Location = new System.Drawing.Point(649, 64);
-            this.lblcheque.Name = "lblcheque";
-            this.lblcheque.Size = new System.Drawing.Size(75, 13);
-            this.lblcheque.TabIndex = 325;
-            this.lblcheque.Text = "Nro. Cheque:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(528, 64);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
-            this.label14.TabIndex = 325;
-            this.label14.Text = "T.C.Venta:";
-            // 
-            // txttotaldiferencial
-            // 
-            this.txttotaldiferencial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txttotaldiferencial.Enabled = false;
-            this.txttotaldiferencial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotaldiferencial.Location = new System.Drawing.Point(599, 474);
-            this.txttotaldiferencial.Name = "txttotaldiferencial";
-            this.txttotaldiferencial.Size = new System.Drawing.Size(100, 21);
-            this.txttotaldiferencial.TabIndex = 326;
-            this.txttotaldiferencial.Text = "0.00";
-            this.txttotaldiferencial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(599, 460);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 13);
-            this.label13.TabIndex = 327;
-            this.label13.Text = "Total Dif. Cambio";
-            // 
             // OK
             // 
             this.OK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -955,7 +761,7 @@ namespace HPReserger
             this.xtc.Name = "xtc";
             this.xtc.ReadOnly = true;
             this.xtc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.xtc.Width = 56;
+            this.xtc.Width = 50;
             // 
             // subtotal
             // 
@@ -1118,6 +924,226 @@ namespace HPReserger
             this.xCuentaContable.Name = "xCuentaContable";
             this.xCuentaContable.Visible = false;
             // 
+            // cboempresa
+            // 
+            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(73, 60);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(270, 21);
+            this.cboempresa.TabIndex = 79;
+            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click_1);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(17, 64);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 13);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Empresa:";
+            // 
+            // lblmensaje
+            // 
+            this.lblmensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmensaje.AutoSize = true;
+            this.lblmensaje.BackColor = System.Drawing.Color.Transparent;
+            this.lblmensaje.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmensaje.Location = new System.Drawing.Point(12, 474);
+            this.lblmensaje.Name = "lblmensaje";
+            this.lblmensaje.Size = new System.Drawing.Size(129, 13);
+            this.lblmensaje.TabIndex = 81;
+            this.lblmensaje.Text = "Número de Registros=0";
+            // 
+            // txtnrocheque
+            // 
+            this.txtnrocheque.BackColor = System.Drawing.Color.White;
+            this.txtnrocheque.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnrocheque.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnrocheque.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnrocheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnrocheque.ForeColor = System.Drawing.Color.Black;
+            this.txtnrocheque.Format = null;
+            this.txtnrocheque.Location = new System.Drawing.Point(879, 60);
+            this.txtnrocheque.MaxLength = 20;
+            this.txtnrocheque.Name = "txtnrocheque";
+            this.txtnrocheque.NextControlOnEnter = null;
+            this.txtnrocheque.Size = new System.Drawing.Size(158, 21);
+            this.txtnrocheque.TabIndex = 82;
+            this.txtnrocheque.Text = "Ingrese Nro Cheque";
+            this.txtnrocheque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnrocheque.TextoDefecto = "Ingrese Nro Cheque";
+            this.txtnrocheque.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnrocheque.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // btnpdf
+            // 
+            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
+            this.btnpdf.Location = new System.Drawing.Point(449, 468);
+            this.btnpdf.Name = "btnpdf";
+            this.btnpdf.Size = new System.Drawing.Size(82, 25);
+            this.btnpdf.TabIndex = 236;
+            this.btnpdf.Text = "Excel";
+            this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnpdf.UseVisualStyleBackColor = true;
+            this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // rdbporPagar
+            // 
+            this.rdbporPagar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rdbporPagar.AutoSize = true;
+            this.rdbporPagar.BackColor = System.Drawing.Color.Transparent;
+            this.rdbporPagar.Checked = true;
+            this.rdbporPagar.Location = new System.Drawing.Point(468, 126);
+            this.rdbporPagar.Name = "rdbporPagar";
+            this.rdbporPagar.Size = new System.Drawing.Size(74, 17);
+            this.rdbporPagar.TabIndex = 237;
+            this.rdbporPagar.TabStop = true;
+            this.rdbporPagar.Text = "Por Pagar";
+            this.rdbporPagar.UseVisualStyleBackColor = false;
+            this.rdbporPagar.CheckedChanged += new System.EventHandler(this.rdbporPagar_CheckedChanged);
+            // 
+            // rdbPagados
+            // 
+            this.rdbPagados.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rdbPagados.AutoSize = true;
+            this.rdbPagados.BackColor = System.Drawing.Color.Transparent;
+            this.rdbPagados.Location = new System.Drawing.Point(548, 126);
+            this.rdbPagados.Name = "rdbPagados";
+            this.rdbPagados.Size = new System.Drawing.Size(69, 17);
+            this.rdbPagados.TabIndex = 237;
+            this.rdbPagados.Text = "Pagados";
+            this.rdbPagados.UseVisualStyleBackColor = false;
+            this.rdbPagados.CheckedChanged += new System.EventHandler(this.rdbporPagar_CheckedChanged);
+            // 
+            // dtpFechaPago
+            // 
+            this.dtpFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaPago.Location = new System.Drawing.Point(424, 59);
+            this.dtpFechaPago.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaPago.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaPago.Name = "dtpFechaPago";
+            this.dtpFechaPago.Size = new System.Drawing.Size(93, 22);
+            this.dtpFechaPago.TabIndex = 322;
+            this.dtpFechaPago.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            this.dtpFechaPago.ValueChanged += new System.EventHandler(this.dtpFechaPago_ValueChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(355, 64);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 13);
+            this.label19.TabIndex = 323;
+            this.label19.Text = "Fecha Pago:";
+            // 
+            // txttipocambio
+            // 
+            this.txttipocambio.BackColor = System.Drawing.Color.White;
+            this.txttipocambio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttipocambio.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttipocambio.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttipocambio.ForeColor = System.Drawing.Color.Black;
+            this.txttipocambio.Format = "n3";
+            this.txttipocambio.Location = new System.Drawing.Point(754, 60);
+            this.txttipocambio.MaxLength = 10;
+            this.txttipocambio.Name = "txttipocambio";
+            this.txttipocambio.NextControlOnEnter = null;
+            this.txttipocambio.Size = new System.Drawing.Size(50, 21);
+            this.txttipocambio.TabIndex = 324;
+            this.txttipocambio.Text = "3.300";
+            this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttipocambio.TextoDefecto = "3.300";
+            this.txttipocambio.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttipocambio.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            this.txttipocambio.TextChanged += new System.EventHandler(this.txttipocambio_TextChanged);
+            // 
+            // lblcheque
+            // 
+            this.lblcheque.AutoSize = true;
+            this.lblcheque.BackColor = System.Drawing.Color.Transparent;
+            this.lblcheque.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcheque.Location = new System.Drawing.Point(804, 64);
+            this.lblcheque.Name = "lblcheque";
+            this.lblcheque.Size = new System.Drawing.Size(75, 13);
+            this.lblcheque.TabIndex = 325;
+            this.lblcheque.Text = "Nro. Cheque:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(697, 64);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 13);
+            this.label14.TabIndex = 325;
+            this.label14.Text = "T.C.Venta:";
+            // 
+            // txttotaldiferencial
+            // 
+            this.txttotaldiferencial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txttotaldiferencial.Enabled = false;
+            this.txttotaldiferencial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotaldiferencial.Location = new System.Drawing.Point(599, 474);
+            this.txttotaldiferencial.Name = "txttotaldiferencial";
+            this.txttotaldiferencial.Size = new System.Drawing.Size(100, 21);
+            this.txttotaldiferencial.TabIndex = 326;
+            this.txttotaldiferencial.Text = "0.00";
+            this.txttotaldiferencial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(599, 460);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(94, 13);
+            this.label13.TabIndex = 327;
+            this.label13.Text = "Total Dif. Cambio";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(517, 64);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(87, 13);
+            this.label15.TabIndex = 323;
+            this.label15.Text = "Fecha Contable";
+            // 
+            // dtpFechaContable
+            // 
+            this.dtpFechaContable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaContable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaContable.Location = new System.Drawing.Point(604, 59);
+            this.dtpFechaContable.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaContable.Name = "dtpFechaContable";
+            this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
+            this.dtpFechaContable.TabIndex = 322;
+            this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            this.dtpFechaContable.ValueChanged += new System.EventHandler(this.dtpFechaPago_ValueChanged);
+            // 
             // frmPagarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1126,6 +1152,8 @@ namespace HPReserger
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txttotaldiferencial);
             this.Controls.Add(this.txttipocambio);
+            this.Controls.Add(this.dtpFechaContable);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.dtpFechaPago);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.rdbPagados);
@@ -1260,5 +1288,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn fkasientox;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidmoneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker dtpFechaContable;
     }
 }

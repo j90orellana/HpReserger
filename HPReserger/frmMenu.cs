@@ -20,7 +20,7 @@ namespace HPReserger
             InitializeComponent();
             ICono = this.Icon;
         }
-        public static int Users = 6;
+        public static int Users = 8;
         public static DateTime DateLicense = new DateTime(2018, 06, 01);
         public static int DaysCaducatesLicence = 30;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
@@ -158,7 +158,8 @@ namespace HPReserger
             else Mostrado = false;
             VerFotoAdmin();
             Text = Text + $" [{frmLogin.Basedatos}]";
-            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   
+            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   +
+          
         }
         public void VerFotoAdmin()
         {
@@ -3362,6 +3363,30 @@ namespace HPReserger
         private void cerrrremayorporcuentas(object sender, FormClosedEventArgs e)
         {
             frmregxcuentas = null;
+        }
+
+        frmReportedeFacturas frmreporfactu;
+        private void reporteFacturasIncompletasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmreporfactu == null)
+            {
+                frmreporfactu = new frmReportedeFacturas();
+                frmreporfactu.MdiParent = this;
+                frmreporfactu.Icon = ICono;
+                frmreporfactu.FormClosed += new FormClosedEventHandler(cerrarfacturasincompletas);
+                frmreporfactu.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreporfactu.Activate();
+                ValidarVentanas(frmreporfactu);
+            }
+        }
+
+        private void cerrarfacturasincompletas(object sender, FormClosedEventArgs e)
+        {
+            frmreporfactu = null;
         }
     }
 }

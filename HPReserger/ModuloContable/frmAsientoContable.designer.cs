@@ -525,11 +525,11 @@ namespace HPReserger
             // txtcuo
             // 
             this.txtcuo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcuo.Enabled = false;
             this.txtcuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcuo.Location = new System.Drawing.Point(447, 6);
             this.txtcuo.MaxLength = 15;
             this.txtcuo.Name = "txtcuo";
+            this.txtcuo.ReadOnly = true;
             this.txtcuo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtcuo.Size = new System.Drawing.Size(131, 21);
             this.txtcuo.TabIndex = 141;
@@ -772,9 +772,9 @@ namespace HPReserger
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(6, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 140;
-            this.label2.Text = "FechaRegistro:";
+            this.label2.Text = "FechaEmisión:";
             // 
             // label8
             // 

@@ -22,7 +22,7 @@ namespace HPReserger
         {
             ValoresPorDefecto();
             BusquedaDatos();
-            dtpFechaPago.Value = DateTime.Now;
+            dtpFechaContable.Value = dtpFechaPago.Value = DateTime.Now;
             cbobanco_Click(sender, e);
             cargarEmpresa();
             CargarCombos();
@@ -391,24 +391,27 @@ namespace HPReserger
             CalcularDiferencial();
             ListCuentas.Clear();
             int contador = 0;
-            if (decimal.Parse(txttotal.Text) <= 0) { msg("No se Puede Abonar Cero"); return; }
-            if (!txtnrooperacion.EstaLLeno()) { msg("Ingrese Número de Operación"); txtnrooperacion.Focus(); return; }
-            if (rdbPagoBanco.Checked)
+            //if (decimal.Parse(txttotal.Text) <= 0) { msg("No se Puede Abonar Cero"); return; }
+            if (decimal.Parse(txttotal.Text) != 0)
             {
-                if (cbocuentabanco.Items.Count == 0) { msg("No hay Cuentas"); cbobanco.Focus(); return; }
-                if (cbocuentabanco.SelectedValue == null) { msg("Selecione Cuentas"); cbocuentabanco.Focus(); return; }
-                if (cbobanco.Items.Count == 0) { msg("No hay Bancos"); cboempresa.Focus(); return; }
-                if (cbobanco.SelectedValue == null) { msg("Selecione Bancos"); cbobanco.Focus(); return; }
-            }
-            if (rdbDepositoPLazo.Checked)
-            {
-                if (cbodepositoplazo.Items.Count == 0) { msg("No hay Cuentas de Deposito a Plazo"); cbodepositoplazo.Focus(); return; }
-                if (cbodepositoplazo.SelectedValue == null) { msg("Selecione Cuenta de Deposito a Plazo"); cbodepositoplazo.Focus(); return; }
-            }
-            if (rdbCertificadoBancario.Checked)
-            {
-                if (cboCertificadobancario.Items.Count == 0) { msg("No hay Cuentas de Certificado Bancario"); cboCertificadobancario.Focus(); return; }
-                if (cboCertificadobancario.SelectedValue == null) { msg("Selecione Cuenta de Certificado Bancario"); cboCertificadobancario.Focus(); return; }
+                if (!txtnrooperacion.EstaLLeno()) { msg("Ingrese Número de Operación"); txtnrooperacion.Focus(); return; }
+                if (rdbPagoBanco.Checked)
+                {
+                    if (cbocuentabanco.Items.Count == 0) { msg("El Banco Seleccionado no tiene Cuentas"); cbobanco.Focus(); return; }
+                    if (cbocuentabanco.SelectedValue == null) { msg("Selecione Cuentas Bancaria"); cbocuentabanco.Focus(); return; }
+                    if (cbobanco.Items.Count == 0) { msg("No hay Bancos"); cboempresa.Focus(); return; }
+                    if (cbobanco.SelectedValue == null) { msg("Selecione Bancos"); cbobanco.Focus(); return; }
+                }
+                if (rdbDepositoPLazo.Checked)
+                {
+                    if (cbodepositoplazo.Items.Count == 0) { msg("No hay Cuentas de Deposito a Plazo"); cbodepositoplazo.Focus(); return; }
+                    if (cbodepositoplazo.SelectedValue == null) { msg("Selecione Cuenta de Deposito a Plazo"); cbodepositoplazo.Focus(); return; }
+                }
+                if (rdbCertificadoBancario.Checked)
+                {
+                    if (cboCertificadobancario.Items.Count == 0) { msg("No hay Cuentas de Certificado Bancario"); cboCertificadobancario.Focus(); return; }
+                    if (cboCertificadobancario.SelectedValue == null) { msg("Selecione Cuenta de Certificado Bancario"); cboCertificadobancario.Focus(); return; }
+                }
             }
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
@@ -431,21 +434,23 @@ namespace HPReserger
             int numasiento = 0;
             if (numasiento == 0)
             {
-                DataTable asientito = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, dtpFechaPago.Value);
+                DataTable asientito = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                 DataRow asiento = asientito.Rows[0];
                 if (asiento == null) { numasiento = 1; }
                 else
                     numasiento = ((int)asiento["codigo"]);
-
             }
             int ContadorFilaDiferencial = contador + 2;
-            string cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaPago.Value);
+            string cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
             string CuentaBanco = "";
             string Banko = "";
             ////
-            if (rdbPagoBanco.Checked) { CuentaBanco = cbocuentabanco.SelectedValue.ToString(); nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text); Banko = cbobanco.SelectedValue.ToString(); }
-            if (rdbDepositoPLazo.Checked) { CuentaBanco = cbodepositoplazo.SelectedValue.ToString(); Banko = "-1"; }
-            if (rdbCertificadoBancario.Checked) { CuentaBanco = cboCertificadobancario.SelectedValue.ToString(); Banko = "-2"; }
+            if (decimal.Parse(txttotal.Text) != 0)
+            {
+                if (rdbPagoBanco.Checked) { CuentaBanco = cbocuentabanco.SelectedValue.ToString(); nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text); Banko = cbobanco.SelectedValue.ToString(); }
+                if (rdbDepositoPLazo.Checked) { CuentaBanco = cbodepositoplazo.SelectedValue.ToString(); Banko = "-1"; }
+                if (rdbCertificadoBancario.Checked) { CuentaBanco = cboCertificadobancario.SelectedValue.ToString(); Banko = "-2"; }
+            }
             ////
             int proyecto = 0, etapa = 0, moneda = 1;
             foreach (DataGridViewRow item in dtgconten.Rows)
@@ -454,15 +459,15 @@ namespace HPReserger
             int PosFila = 1;
             //CUENTA BANCO
             if (decimal.Parse(txttotal.Text) > 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, dtpFechaPago.Value, CuentaBanco, decimal.Parse(txttotal.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido());
+                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, decimal.Parse(txttotal.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value);
             foreach (Cuentas item in ListCuentas)
             {
                 //CUENTAS DE LAS FACTURAS
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaPago.Value, item._Cuenta, item._MOnto < 0 ? Math.Abs(item._MOnto) : 0, item._MOnto < 0 ? 0 : Math.Abs(item._MOnto), decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido());
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaContable.Value, item._Cuenta, item._MOnto < 0 ? Math.Abs(item._MOnto) : 0, item._MOnto < 0 ? 0 : Math.Abs(item._MOnto), decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value);
             }
             //CUENTA DIFERENCIA DE CAMBIO
             if (decimal.Parse(txttotaldiferencial.Text) != 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(2, ++PosFila, numasiento, dtpFechaPago.Value, "", decimal.Parse(txttotaldiferencial.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido());
+                CapaLogica.InsertarAsientoFacturaCabecera(2, ++PosFila, numasiento, dtpFechaContable.Value, "", decimal.Parse(txttotaldiferencial.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value);
             ////FIN DE LAS CABECERAS
             ////DETALLE DE LOS ASIENTOS
             PosFila = 1;
@@ -475,9 +480,9 @@ namespace HPReserger
                     DateTime fecha = DateTime.Now;
                     int Multiplicador = 1;
                     if (item.Cells[xIdComprobante.Name].Value.ToString() == "8") Multiplicador = -1;
-                    CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, dtpFechaPago.Value, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
+                    CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                         , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Multiplicador * (decimal)item.Cells[xpagar.Name].Value,
-                      Multiplicador * (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.Text, txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
+                      Multiplicador * (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
                 }
             }
             ////LISTADO DE CUENTAS
@@ -492,14 +497,15 @@ namespace HPReserger
                         {
                             string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                             DateTime fecha = DateTime.Now;
-                            CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, dtpFechaPago.Value, items._Cuenta, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
+                            CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, dtpFechaContable.Value, items._Cuenta, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                                 , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, (decimal)item.Cells[xpagar.Name].Value,
-                                 (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.Text, txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
+                                 (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
 
                         }
                     }
             }
             PosFila++;
+            /////Diferencial de Cambio
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 if ((int)item.Cells[xopcion.Name].Value == 1)
@@ -507,13 +513,14 @@ namespace HPReserger
                     if (item.Cells[xNameCorto.Name].Value.ToString() == "USD")
                     {
                         decimal Dif = ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
+                        Dif = ((int)item.Cells[xIdComprobante.Name].Value == 8 ? -1 : 1) * Dif;
                         if (Math.Abs(Dif) > 0)
                         {
                             string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                             DateTime fecha = DateTime.Now;
-                            CapaLogica.InsertarAsientoFacturaDetalle(2, PosFila, numasiento, dtpFechaPago.Value, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
+                            CapaLogica.InsertarAsientoFacturaDetalle(2, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                                 , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Dif,
-                                (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.Text, txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
+                                (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
                         }
                     }
                 }
@@ -529,7 +536,7 @@ namespace HPReserger
                     int opcion = 1;
                     if (Tipox == "8" || Tipox == "9") { opcion = 2; }
                     if (opcion == 2)
-                        CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2,(int)cboempresa.SelectedValue);
+                        CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2, (int)cboempresa.SelectedValue);
                     else
                         CapaLogica.FacturaVentaManualPago(opcion, (int)item.Cells[xIdComprobante.Name].Value, item.Cells[xNroComprobante.Name].Value.ToString(), txtnrooperacion.Text, (int)item.Cells[xTipoId.Name].Value,
                             item.Cells[xCliente.Name].Value.ToString(), (int)cboempresa.SelectedValue, (decimal)item.Cells[xpagar.Name].Value, (decimal)item.Cells[xTC.Name].Value, Banko,
@@ -549,11 +556,15 @@ namespace HPReserger
             decimal Diferencial = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
+                if (item.Cells[xopcion.Name].Value.ToString() == "") item.Cells[xopcion.Name].Value = 0;
                 if ((int)item.Cells[xopcion.Name].Value == 1)
                 {
                     if (item.Cells[xNameCorto.Name].Value.ToString() == "USD")
                     {
-                        Diferencial += ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
+                        if ((int)item.Cells[xIdComprobante.Name].Value == 8)
+                            Diferencial -= ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
+                        else
+                            Diferencial += ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
                     }
                 }
             }

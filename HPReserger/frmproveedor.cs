@@ -354,7 +354,7 @@ namespace HPReserger
         public void ActivarModi() { txtnumeroidentidad.ReadOnly = false; txtnombrerazonsocial.Enabled = btntipoidmas.Enabled = true; }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            estado = 2; AnteriorRuc = txtnumeroidentidad.Text.Trim();
+            estado = 2; AnteriorRuc = txtnumeroidentidad.Text;
             AnteriorTipoId = (int)cbodocumento.SelectedValue;
             tipmsg.Show("Ingrese Dirección de Oficina", txtdireccionoficina, 700);
             Desactivar(); DesactivarModi();
@@ -475,11 +475,12 @@ namespace HPReserger
 
                     //MensajedeDatos();                    
                     //usp_actualizar_proveedor
+                    int[] xy = HPResergerFunciones.Utilitarios.SacarPosicionActualFilaColumna(dtgconten);
                     DataRow Filita = CProveedor.ActualizarProveedor((int)cbodocumento.SelectedValue, AnteriorTipoId, AnteriorRuc, numeroidentidad, txtnombrerazonsocial.Text, txtnombrecomercial.Text, sector, diroficina, teloficina, diralmacen, telalmancen, dirsucursal, telsucursal, telefonocontacto,
                      persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, tipoper, ctasoles, ctadolares, plzfijo
                        , int.Parse(cbocondicion.SelectedValue.ToString()), int.Parse(cboestado.SelectedValue.ToString()), chknuevorus.Checked, chkretencion.Checked, chkbuenContribuyente.Checked, chkAgentePercepcion.Checked);
                     if ((int)Filita["Resultado"] == 0)
-                        msg("Eliminado Exitosamente");
+                        msg("Actualizado Exitosamente");
                     else
                     {
                         msg("No se pudo Modificar, Proveedor ya tiene Movimientos");
@@ -487,7 +488,8 @@ namespace HPReserger
                     }
                     PresentarValor("");
                     Iniciar(false);
-                   // MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dtgconten.CurrentCell = dtgconten[xy[0], xy[1]];
+                    // MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

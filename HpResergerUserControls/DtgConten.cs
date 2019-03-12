@@ -17,7 +17,6 @@ namespace HpResergerUserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-
             //AllowUserToAddRows = false;
             AllowUserToOrderColumns = false;
             AllowUserToResizeColumns = false;
@@ -63,6 +62,8 @@ namespace HpResergerUserControls
             Size = new System.Drawing.Size(400, 400);
             ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             AllowUserToOrderColumns = false;
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
     }
 }

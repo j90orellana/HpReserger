@@ -206,6 +206,7 @@ namespace HPReserger
             catch (Exception ex)
             {
                 MSG(ex.Message);
+                frmdetalle = null;
             }
         }
         frmDetalleAsientos frmdetalle;
@@ -1150,6 +1151,7 @@ namespace HPReserger
                 //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones  
                 if (estado == 1 && Dtgconten.RowCount > 1)
                 {
+                    ultimoasiento();
                     //string cadena = "";
                     if (txtdinamica.Text.Length <= 0) txtdinamica.Text = "CD_000";
                     CArgarValoresIngreso();
@@ -1173,22 +1175,31 @@ namespace HPReserger
                 {
                     if (estado == 2 && Dtgconten.RowCount > 1)
                     {
+                        DateTime FechaAsiento;
+                        if (chkfechavalor.Checked) FechaAsiento = dtfechavalor.Value; else FechaAsiento = dtpfecha.Value;
+                        if (!ValidarMismoPeriodo(_FechaAModificar, FechaAsiento)) { MSG("No se Puede Mover a Otro Periodo"); return; }
+                        ////codigo para reversar solo estado del asiento
+
+                        //CapaLogica.ReversarAsientosSoloEstado(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, _FechaAModificar);
+
                         //string cadena = "";
                         codigo = Convert.ToInt32(txtcodigo.Text.ToString());
                         CArgarValoresIngreso();
                         //MostrarValores(cadena + Detalle(), codigo);
+
+                        ////ELIMINA EL ASIENTO ANTERIOR
                         CapaLogica.Modificar2asiento(_CodigoModificar, _ProyectoModificar, _FechaAModificar);
+
                         //Mensajes("Codigo:" + codigo + " Filas;" + Dtgconten.RowCount);
                         foreach (DataGridViewRow item in Dtgconten.Rows)
                         {
                             if (item.Cells[EstadoCuen.Name].Value.ToString() != "3")
                                 item.Cells[EstadoCuen.Name].Value = cboestado.SelectedValue.ToString();
                         }
-                        ///Actualizar el cambio de id -proyecto - fechas
-                        DateTime FechaAsiento;
-                        if (chkfechavalor.Checked) FechaAsiento = dtfechavalor.Value; else FechaAsiento = dtpfecha.Value;
+                        ////Actualizar el cambio de id -proyecto - fechas                       
                         CapaLogica.ActualizarDetalleAsiento(_CodigoModificar, _ProyectoModificar, _FechaAModificar, codigo, (int)cboproyecto.SelectedValue, FechaAsiento);
-                        ///PROCESO DE GUARDADO 
+                        ////CapaLogica.ActualizarDetalleAsientoCambioPeriodo(_CodigoModificar, _ProyectoModificar, _FechaAModificar, codigo, (int)cboproyecto.SelectedValue, FechaAsiento);
+                        ////PROCESO DE GUARDADO 
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
                             if (int.Parse(cboestado.SelectedValue.ToString()) == 0)
@@ -1241,6 +1252,12 @@ namespace HPReserger
             else { }
             cboempresa.Enabled = true;
             btnActualizar.Enabled = true;
+        }
+        public Boolean ValidarMismoPeriodo(DateTime FechaOriginal, DateTime FechaFinal)
+        {
+            if (FechaOriginal.Month == FechaFinal.Month && FechaOriginal.Year == FechaOriginal.Year)
+                return true;
+            else return false;
         }
         public DialogResult msgp(string cadena)
         {
@@ -1518,12 +1535,14 @@ namespace HPReserger
         }
         private void fecha_ValueChanged(object sender, EventArgs e)
         {
-            ultimoasiento();
+            if (estado == 1)
+                ultimoasiento();
             SacarTipoCambio();
         }
         private void dtfechavalor_ValueChanged(object sender, EventArgs e)
         {
-            ultimoasiento();
+            if (estado == 1)
+                ultimoasiento();
             SacarTipoCambio();
         }
         private void cbomoneda_Click(object sender, EventArgs e)

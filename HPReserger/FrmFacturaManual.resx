@@ -394,6 +394,16 @@
         7NEIcgmGsxEYNRphgOyEhAyAishPyiBAcWZCBoSzMwMDADs0oPCqFdu0AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnFacturasIncompletas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAQBJREFUOE9j
+        oCqw8PALMnf33wLEu9HwFjMP/0CoMtwAqPDTxHVH/s/YdhYFg8SAch+hynADoKL/u+/9huNDZx7/P7dq
+        JxiXubr//+xkFgrD39xMZaHaEADdgAeV1f+/OJuB8ddA1/9fA1zg/C9OZkuh2hAA3YCH5RVwDX8uX/j/
+        59J5OP+ri9kqqDYEwGcADJBlwLe44P9/Th///+fUcTCbZAOwY/MeqDYEwDCgsur/7Y6e/3uvfwJF43+o
+        MtwA3YD9l9/C2WQZgIyJNqBnxZ7//WsOouDu5XuINuATSCEIJ1U0gzGMD8SEkzIoM5m5+620cA9YhYxB
+        YkRlJtIBAwMA+Whh+bk2GgIAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>43</value>
   </metadata>

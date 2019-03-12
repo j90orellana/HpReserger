@@ -608,14 +608,19 @@ namespace HPReserger
             btndesconectar.Enabled = btnmodificar.Enabled;
         }
         public DialogResult msgyes(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        int PosicionFila = 0;
+        int PosicionColumna = 0;
         private void btndesconectar_Click(object sender, EventArgs e)
         {
             //desconectado al usuario
             string cadeusua = GridUser[loginx.Name, GridUser.CurrentRow.Index].Value.ToString();
             if (msgyes($"Seguro desea Desconectar al Usuario: {cadeusua}") == DialogResult.Yes)
             {
+                HPResergerFunciones.Utilitarios.SacarPosicionActualFilaColumna(GridUser, out PosicionFila, out PosicionColumna);
                 Cusuario.UsuarioConectado((int)GridUser[Codigox.Name, GridUser.CurrentRow.Index].Value, "", 2);
                 Mensajes($"Usuario {cadeusua} Desconectado..");
+                BuscarUsuarios();
+                GridUser.CurrentCell = GridUser[PosicionColumna, PosicionFila];
             }
         }
     }

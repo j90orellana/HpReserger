@@ -17,29 +17,36 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        public int tipobusca { get; set; }
+        private int _tipobusca = 4;
+        public int tipobusca
+        {
+            get { return _tipobusca; }
+            set { _tipobusca = value; }
+        }
         public Boolean aceptar { get; set; }
         public string codigo { get; set; }
         HPResergerCapaLogica.HPResergerCL CcuentaContable = new HPResergerCapaLogica.HPResergerCL();
         private void frmlistarcuentas_Load(object sender, EventArgs e)
         {
-            tipobusca = 4;
             aceptar = false;
-            if (radioButton1.Checked)
-            {
-                tipobusca = 4;
-                ListarCuentasContables(Txtbusca.Text, tipobusca);
-            }
-            if (radioButton2.Checked)
-            {
-                tipobusca = 2;
-                ListarCuentasContables(Txtbusca.Text, tipobusca);
-            }
-            if (radioButton4.Checked)
-            {
-                tipobusca = 3;
-                ListarCuentasContables(Txtbusca.Text, tipobusca);
-            }
+            if (tipobusca == 4) { radioButton1.Checked = true; }
+            if (tipobusca == 2) { radioButton2.Checked = true; }
+            if (tipobusca == 3) { radioButton4.Checked = true; }
+            //if (radioButton1.Checked)
+            //{
+            //    //tipobusca = 4;
+            //    ListarCuentasContables(Txtbusca.Text, tipobusca);
+            //}
+            //if (radioButton2.Checked)
+            //{
+            //    //tipobusca = 2;
+            //    ListarCuentasContables(Txtbusca.Text, tipobusca);
+            //}
+            //if (radioButton4.Checked)
+            //{
+            //    //tipobusca = 3;
+            ListarCuentasContables(Txtbusca.Text, tipobusca);
+            //}
             msg(dtgconten);
         }
         public void msg(DataGridView conteo)

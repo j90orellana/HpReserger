@@ -755,7 +755,6 @@ namespace HPReserger
             this.txttotalme.Location = new System.Drawing.Point(887, 580);
             this.txttotalme.Name = "txttotalme";
             this.txttotalme.ReadOnly = true;
-            this.txttotalme.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txttotalme.Size = new System.Drawing.Size(111, 21);
             this.txttotalme.TabIndex = 172;
             // 
@@ -767,7 +766,6 @@ namespace HPReserger
             this.txttotalmn.Location = new System.Drawing.Point(770, 580);
             this.txttotalmn.Name = "txttotalmn";
             this.txttotalmn.ReadOnly = true;
-            this.txttotalmn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txttotalmn.Size = new System.Drawing.Size(111, 21);
             this.txttotalmn.TabIndex = 170;
             // 

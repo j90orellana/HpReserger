@@ -131,6 +131,7 @@ namespace HpResergerUserControls
                     ((Control)x).Enabled = true;
             }
         }
+
         public static void Desactivar(params object[] control)
         {
             foreach (object x in control)
@@ -142,6 +143,16 @@ namespace HpResergerUserControls
                 }
                 else
                     ((Control)x).Enabled = false;
+            }
+        }
+        public static void CargarTextoPorDefecto(params object[] control)
+        {
+            foreach (object x in control)
+            {
+                if (((Control)x).AccessibilityObject.Role == AccessibleRole.Text)
+                {
+                    ((TextBoxPer)x).CargarTextoporDefecto();
+                }
             }
         }
     }

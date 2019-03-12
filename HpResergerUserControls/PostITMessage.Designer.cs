@@ -82,7 +82,7 @@
             // 
             this.lblObservacion.AutoSize = true;
             this.lblObservacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObservacion.Location = new System.Drawing.Point(99, 53);
+            this.lblObservacion.Location = new System.Drawing.Point(96, 53);
             this.lblObservacion.Name = "lblObservacion";
             this.lblObservacion.Size = new System.Drawing.Size(51, 17);
             this.lblObservacion.TabIndex = 11;
@@ -93,7 +93,7 @@
             // 
             this.lblcargo.AutoSize = true;
             this.lblcargo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcargo.Location = new System.Drawing.Point(99, 32);
+            this.lblcargo.Location = new System.Drawing.Point(96, 32);
             this.lblcargo.Name = "lblcargo";
             this.lblcargo.Size = new System.Drawing.Size(47, 17);
             this.lblcargo.TabIndex = 10;
@@ -104,7 +104,7 @@
             // 
             this.lblnombre.AutoSize = true;
             this.lblnombre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnombre.Location = new System.Drawing.Point(99, 11);
+            this.lblnombre.Location = new System.Drawing.Point(96, 11);
             this.lblnombre.Name = "lblnombre";
             this.lblnombre.Size = new System.Drawing.Size(62, 17);
             this.lblnombre.TabIndex = 9;

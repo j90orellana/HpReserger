@@ -203,6 +203,7 @@
             this.btncerrar.Text = "Aceptar";
             this.btncerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncerrar.UseVisualStyleBackColor = true;
+            this.btncerrar.Click += new System.EventHandler(this.btncerrar_Click);
             // 
             // frmcierremensual
             // 

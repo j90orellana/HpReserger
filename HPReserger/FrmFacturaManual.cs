@@ -768,8 +768,8 @@ namespace HPReserger
             if (Estado == 1)
             {
                 /////VALIDO SI EXISTE LA FACTURA  
-                DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, OpcionBusqueda);
-                if (Tprueba.Rows.Count > 0) { Msg("Ya Existe este Documento Registrada"); return; }
+                DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
+                if (Tprueba.Rows.Count > 0) { Msg("No se puede Registrar, Este Documento Ya Existe"); return; }
                 /////INSERTANDO LA FACTURA
                 CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, chkCompensa.Checked ? 1 : 0, (int)cbomoneda.SelectedValue,
                    decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
@@ -807,8 +807,8 @@ namespace HPReserger
             {
                 /////VALIDO SI YA EXISTE LA FACTURA    
 
-                DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, _idFac, OpcionBusqueda);
-                if (Tprueba.Rows.Count > 0) { Msg("Ya Existe este Documento Registrado"); return; }
+                DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, _idFac, (int)cbotipodoc.SelectedValue, OpcionBusqueda);
+                if (Tprueba.Rows.Count > 0) { Msg("No se puede Registrar, Este Documento Ya Existe"); return; }
                 //////ACTUALIZANDO LA FACTURA
                 CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 2 : 200, _idFac, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, chkCompensa.Checked ? 1 : 0, (int)cbomoneda.SelectedValue,
                    decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
@@ -1030,6 +1030,7 @@ namespace HPReserger
             {
                 DataGridViewRow R = dtgBusqueda.Rows[x];
                 _idFac = (int)R.Cells[yid.Name].Value;
+                _idComprobante = (int)R.Cells[yIdComprobante.Name].Value;
                 /////datos de la empresa            
                 cboempresa.SelectedValue = (int)R.Cells[yfkempresa.Name].Value;
                 cboproyecto.SelectedValue = (int)R.Cells[yfkproyecto.Name].Value;
@@ -1393,20 +1394,24 @@ namespace HPReserger
                 {
                     if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "D")
                     {
-                        conme += Redondear(decimal.Parse(((decimal)item.Cells[xImporteME.Name].Value).ToString("n2")));
-                        conmn += Redondear(decimal.Parse(((decimal)item.Cells[xImporteMN.Name].Value).ToString("n2")));
+                        //conme += Redondear(decimal.Parse(((decimal)item.Cells[xImporteME.Name].Value).ToString("n2")));
+                        //conmn += Redondear(decimal.Parse(((decimal)item.Cells[xImporteMN.Name].Value).ToString("n2")));
+                        conme += Redondear((decimal)item.Cells[xImporteME.Name].Value);
+                        conmn += Redondear((decimal)item.Cells[xImporteMN.Name].Value);
 
                     }
                     if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "H")
                     {
-                        conme -= Redondear(decimal.Parse(((decimal)item.Cells[xImporteME.Name].Value).ToString("n2")));
-                        conmn -= Redondear(decimal.Parse(((decimal)item.Cells[xImporteMN.Name].Value).ToString("n2")));
+                        //conme -= Redondear(decimal.Parse(((decimal)item.Cells[xImporteME.Name].Value).ToString("n2")));
+                        //conmn -= Redondear(decimal.Parse(((decimal)item.Cells[xImporteMN.Name].Value).ToString("n2")));
+                        conme -= Redondear((decimal)item.Cells[xImporteME.Name].Value);
+                        conmn -= Redondear((decimal)item.Cells[xImporteMN.Name].Value);
                     }
                 }
 
                 TDatos = TDatos.Clone();
                 // Msg($"hay diferencia {conme}  :  {conmn}");
-                if (conme != 0 && conmn != 0)
+                if (conme != 0 || conmn != 0)
                 {
                     string CuentaRedondeo = "";
                     string DH = "";
@@ -1414,7 +1419,7 @@ namespace HPReserger
                     if (conme > 0 || conmn > 0)
                     {
                         //Tpruebass = CapaLogica.BuscarCuentas("INGRESOS POR REDONDEO", 5); ajuste por redondeo
-                        Tpruebass = CapaLogica.BuscarCuentas("ajuste por redondeo", 5);
+                        Tpruebass = CapaLogica.BuscarCuentas("INGRESOS POR REDONDEO", 5);
                         DH = "H";
                     }
                     if (conme < 0 || conmn < 0)
@@ -1510,6 +1515,8 @@ namespace HPReserger
         }
         private void btneliminar_Click(object sender, EventArgs e)
         {
+            if (_TipoDoc == 0 || _TipoDoc == 1) OpcionBusqueda = 1;
+            if (_TipoDoc == 2 || _TipoDoc == 3) OpcionBusqueda = 2;
             if (dtgBusqueda.RowCount > 0)
             {
                 if (Dtgconten.RowCount == 0)
@@ -1541,7 +1548,7 @@ namespace HPReserger
                         {
                             CapaLogica.EliminarAsiento(OldCuo, OldEmpresa, OldFechaContable, 1);
                             CapaLogica.FacturaManualCabeceraRemover((int)dtgBusqueda[yid.Name, dtgBusqueda.CurrentRow.Index].Value, OpcionBusqueda == 1 ? 3 : 300);
-                            CapaLogica.FacturaManualDetalleRemover(NumFac, txtruc.Text, OpcionBusqueda == 1 ? 3 : 300, (int)cbotipodoc.SelectedValue);
+                            CapaLogica.FacturaManualDetalleRemover(txtcodfactura.Text + "-" + txtnrofactura.Text, txtruc.Text, OpcionBusqueda == 1 ? 3 : 300, (int)cbotipodoc.SelectedValue);
                             Msg("Eliminado Con Éxito");
                             textBoxPer2_TextChanged(sender, e);
                         }
@@ -1550,7 +1557,7 @@ namespace HPReserger
             }
         }
         int _TipoDoc;
-
+        private int _idComprobante;
         private void cbomoneda_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             txttotalfac_TextChanged(sender, e);
@@ -1584,6 +1591,26 @@ namespace HPReserger
         {
             if (Encontrado == 1) btnaplicar.Enabled = true;
         }
+        frmReportedeFacturas frmreporfactu;
+        private void btnFacturasIncompletas_Click(object sender, EventArgs e)
+        {
+
+            if (frmreporfactu == null)
+            {
+                frmreporfactu = new frmReportedeFacturas();
+                frmreporfactu.MdiParent = this.MdiParent;
+                frmreporfactu.FormClosed += new FormClosedEventHandler(cerrarfacturasincompletas);
+                frmreporfactu.Show();
+            }
+            else
+            {
+                frmreporfactu.Activate();
+            }
+        }
+        private void cerrarfacturasincompletas(object sender, FormClosedEventArgs e)
+        {
+            frmreporfactu = null;
+        }
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             PanelRecibo.Visible = false;
@@ -1593,6 +1620,7 @@ namespace HPReserger
             txtSerieRef.ReadOnly = txtNumRef.ReadOnly = true;
             chkCompensa.Visible = true;
             rdbInteres.Visible = rdbDescuento.Visible = rdbAnulacion.Visible = btnaplicar.Visible = false;
+            _TipoDoc = 0;
             if (Estado == 1 || Estado == 2)
             {
                 cbomoneda.Enabled = true;
