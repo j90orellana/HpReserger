@@ -56,6 +56,8 @@ namespace HPReserger
         public string Cierre { get; set; }
         public string AjusteTraslacion { get; set; }
         public string CuentaBC { get; set; }
+        public string OldCodCuenta { get; private set; }
+
         public void RellenarCombosSiNo(ComboBox combito)
         {
             DataTable tablita = new DataTable();
@@ -63,6 +65,18 @@ namespace HPReserger
             tablita.Columns.Add("VALOR");
             tablita.Rows.Add(new object[] { "S", "SI" });
             tablita.Rows.Add(new object[] { "N", "NO" });
+            combito.DataSource = tablita;
+            combito.DisplayMember = "VALOR";
+            combito.ValueMember = "CODIGO";
+            combito.SelectedIndex = 1;
+        }
+        public void RellenarConActivo(ComboBox combito)
+        {
+            DataTable tablita = new DataTable();
+            tablita.Columns.Add("CODIGO", typeof(int));
+            tablita.Columns.Add("VALOR");
+            tablita.Rows.Add(new object[] { 1, "Activa" });
+            tablita.Rows.Add(new object[] { 0, "Inactiva" });
             combito.DataSource = tablita;
             combito.DisplayMember = "VALOR";
             combito.ValueMember = "CODIGO";
@@ -128,16 +142,17 @@ namespace HPReserger
         }
         public void ModoEdicion(Boolean a)
         {
-            txtcuentan1.Enabled = cbotipo.Enabled = cbonaturaleza.Enabled
-                = cbogenerica.Enabled = cbogrupo.Enabled = cboreflejacc.Enabled = cborefleja.Enabled = cbosolicitar.Enabled = chkcabecera.Enabled = cbocuentabc.Enabled
-                = cboreflejadebe.Enabled = cboreflejahaber.Enabled = txtcuentacierre.Enabled = cboanalitica.Enabled = cboajustemensual.Enabled = cboajustetraslacion.Enabled = cbocierre.Enabled = a;
-            txtnombrecuenta.ReadOnly = txtcodcuenta.ReadOnly = !a;
+            cbotipo.Enabled = cbonaturaleza.Enabled
+               = cbogenerica.Enabled = cbogrupo.Enabled = cboreflejacc.Enabled = cborefleja.Enabled = cbosolicitar.Enabled = chkcabecera.Enabled = cbocuentabc.Enabled =
+          cboestado.Enabled = cboreflejadebe.Enabled = cboreflejahaber.Enabled = cboanalitica.Enabled = cboajustemensual.Enabled = cboajustetraslacion.Enabled = cbocierre.Enabled = a;
+            txtcuentacierre.ReadOnly = txtcuentan1.ReadOnly = txtnombrecuenta.ReadOnly = txtcodcuenta.ReadOnly = !a;
         }
         private void frmcuentacontable_Load(object sender, EventArgs e)
-        {
+        {            
             estado = 0;
             tipobusca = 4;
             RellenarCombosSiNo(cborefleja);
+            RellenarConActivo(cboestado);
             RellenarCombosSiNo(cboreflejacc);
             RellenarCombosSiNo(cboanalitica);
             RellenarCombosSiNo(cbocuentabc);
@@ -224,6 +239,7 @@ namespace HPReserger
                     cboajustemensual.SelectedIndex = -1;
                 else
                     cboajustemensual.Text = dtgconten[15, y].Value.ToString();
+                cboestado.SelectedValue = dtgconten["Estadocta", y].Value;
 
                 cbocuentabc.SelectedValue = dtgconten[16, y].Value.ToString();
                 cbosolicitar.SelectedValue = dtgconten[17, y].Value.ToString();
@@ -247,12 +263,11 @@ namespace HPReserger
             //LLamadaDeEntradaDeDatos
             tipmsg.Show("Ingrese Código de Cuenta", txtcodcuenta, 700);
             txtcodcuenta.Focus();
-            //VaciarDatosDeCajas
-            txtcuentan1.Text = "";
-            txtcodcuenta.Text = "";
-            txtnombrecuenta.Text = "";
-            txtcuentacierre.Text = "";
-            cborefleja_SelectedIndexChanged(sender, e);
+            //VaciarDatosDeCajas           
+            txtcodcuenta.CargarTextoporDefecto();
+            //txtnombrecuenta.Text = "";
+            //txtcuentacierre.Text = "";
+            //cborefleja_SelectedIndexChanged(sender, e);
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -276,16 +291,27 @@ namespace HPReserger
                 {
                     estado = 0;
                     Activar(); ActivarModi();
+                    CodCuenta = txtcodcuenta.Text;
                     ListarCuentasContables("", 1);
                     Txtbusca.Enabled = true;
+                    PosicionandoseEnElModificado();
                 }
             }
             ModoEdicion(false);
         }
-        public void DesactivarModi() { txtcuentan1.Enabled = txtcodcuenta.Enabled = txtcodcuenta.Enabled = txtnombrecuenta.Enabled = cbotipo.Enabled = cbonaturaleza.Enabled = false; }
-        public void ActivarModi() { txtcuentan1.Enabled = txtcodcuenta.Enabled = txtcodcuenta.Enabled = txtnombrecuenta.Enabled = cbotipo.Enabled = cbonaturaleza.Enabled = true; }
+        public void DesactivarModi()
+        {
+            //txtcuentan1.Enabled = txtcodcuenta.Enabled = false; //txtnombrecuenta.Enabled = cbotipo.Enabled = cbonaturaleza.Enabled =
+            txtcuentan1.ReadOnly = txtcodcuenta.ReadOnly = true;
+        }
+        public void ActivarModi()
+        {
+            txtcuentan1.Enabled = txtcodcuenta.Enabled = true; //txtnombrecuenta.Enabled = cbotipo.Enabled = cbonaturaleza.Enabled = true;
+            txtcuentan1.ReadOnly = txtcodcuenta.ReadOnly = false;
+        }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
+            OldCodCuenta = null;
             estado = 2;
             ModoEdicion(true);
             tipmsg.Show("Seleccione Cuenta Genérica", cbogenerica, 700);
@@ -293,22 +319,31 @@ namespace HPReserger
             cbogenerica.Focus();
             cbonaturaleza.Enabled = true;
             cborefleja_SelectedIndexChanged(sender, e);
+            ////Busco si la Cuenta Tiene Asientos;
+            DataRow Fila = CapaLogica.CuentaContable_EnUso(1, txtcodcuenta.Text);
+            if (Fila == null)
+            {
+                txtcodcuenta.ReadOnly = false;
+                txtcuentan1.ReadOnly = false;
+            }
+            else { MSG("La Cuenta ya Tiene Asientos \nNo se Puede Modificar el Código"); }
+            OldCodCuenta = txtcodcuenta.Text;
         }
-        public Boolean VerificarDatos(int codigo, string nombre)
+        public Boolean VerificarDatos(string codigo, string nombre)
         {
             Boolean aux = true;
             if (!string.IsNullOrWhiteSpace(codigo.ToString()) && !string.IsNullOrWhiteSpace(nombre))
             {
                 if (CapaLogica.VerificarCuentas(codigo, nombre).Rows.Count > 0)
                 {
-                    MessageBox.Show("Ya Existe esta Cuenta: " + nombre + "; Código:" + codigo, CompanyName, MessageBoxButtons.OK);
+                    MessageBox.Show("Ya Existe esta Cuenta:\n" + nombre + "; Código:" + codigo, CompanyName, MessageBoxButtons.OK);
                     aux = false;
                 }
             }
             else
             {
                 aux = false;
-                MessageBox.Show("Código de Cuenta y Descripción de la Cuenta, No pueden estar Vacios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Código de Cuenta y Descripción de la Cuenta \nNo pueden estar Vacios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             return aux;
         }
@@ -322,9 +357,9 @@ namespace HPReserger
         }
         public void CargarValoresDeIngreso()
         {
-            CuentaN1 = txtcuentan1.Text;
-            CodCuenta = txtcodcuenta.Text;
-            DesCuentea = txtnombrecuenta.Text;
+            CuentaN1 = txtcuentan1.TextValido();
+            CodCuenta = (txtcodcuenta.TextValido()).Trim();
+            DesCuentea = txtnombrecuenta.TextValido();
             if (cbotipo.Text != "")
                 TipoCuenta = cbotipo.SelectedValue.ToString();
             else TipoCuenta = null;
@@ -388,10 +423,15 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones   
-            int codigo;
+            string codigo;
             string nombrecuenta;
-            nombrecuenta = txtnombrecuenta.Text;
-            codigo = Convert.ToInt32(txtcodcuenta.Text);
+            nombrecuenta = txtnombrecuenta.TextValido();
+            codigo = txtcodcuenta.TextValido();
+            /////validamos datos Vacios
+            if (!txtcodcuenta.EstaLLeno()) { MSG("Ingrese Número de la Cuenta "); txtcodcuenta.Focus(); return; }
+            if (!txtcodcuenta.EstaLLeno()) { MSG("Ingrese Número de Cuenta "); txtcodcuenta.Focus(); return; }
+            if (!txtcuentan1.EstaLLeno()) { MSG("Ingrese Nombre de la Cuenta N1 "); txtcuentan1.Focus(); return; }
+            ///fin de la validacion
             if (estado == 1 && VerificarDatos(codigo, nombrecuenta))
             {
                 CargarValoresDeIngreso();
@@ -399,7 +439,8 @@ namespace HPReserger
                 MessageBox.Show("Se Insertó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //usp_insertar_cuentas_contables
                 CapaLogica.InsertarCuentasContables(CuentaN1, CodCuenta, DesCuentea, TipoCuenta, NatuCuenta, CuentaGene, GrupoCuenta,
-                Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1);
+                Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1
+                , (int)cboestado.SelectedValue);
                 ActualizarReflejo();
                 PresentarValor(codigo.ToString());
             }
@@ -408,11 +449,12 @@ namespace HPReserger
                 if (estado == 2)
                 {
                     CargarValoresDeIngreso();
+                    if (OldCodCuenta != OldCodCuenta) { if (VerificarDatos(codigo, nombrecuenta)) return; }
                     //MensajedeDatos();
                     MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //usp_actualizar_cuentas_contables
-                    CapaLogica.ActualizarCuentasContables(CodCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
-                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, NatuCuenta, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1);
+                    CapaLogica.ActualizarCuentasContables(OldCodCuenta, CodCuenta, CuentaN1, DesCuentea, TipoCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
+                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, NatuCuenta, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1, (int)cboestado.SelectedValue);
                     ActualizarReflejo();
                     PresentarValor(codigo.ToString());
                 }
@@ -430,14 +472,31 @@ namespace HPReserger
                     }
                 }
             }
+            ////proceso para posicionarme en el ingresado-actualizado
+            PosicionandoseEnElModificado();
+            ////fin de la busqueda:
             ModoEdicion(false);
             if (Consulta) { Encontrado = true; this.Close(); }
+        }
+        public void PosicionandoseEnElModificado()
+        {
+            int Posfila = 0;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                if (item.Cells["CodCuenta"].Value.ToString() == CodCuenta)
+                {
+                    Posfila = item.Index;
+                    break;
+                }
+            }
+            if (Posfila != 0)
+                dtgconten.CurrentCell = dtgconten["codcuenta", Posfila];
         }
         public void PresentarValor(string final)
         {
             estado = 0;
-            dtgconten.DataSource = CapaLogica.ListarCuentasContables(final, 1);
-            Txtbusca.Text = final;
+            dtgconten.DataSource = CapaLogica.ListarCuentasContables("", 0);
+            //Txtbusca.Text = final;
             Activar(); ActivarModi();
         }
         private void cbotipo_TextChanged(object sender, EventArgs e)
@@ -495,6 +554,53 @@ namespace HPReserger
                 {
                     cboreflejadebe.Enabled = cboreflejahaber.Enabled = txtcuentacierre.Enabled = true;
                 }
+        }
+
+        private void btneliminar_Click(object sender, EventArgs e)
+        {
+            //DialogResult Result;
+            DataRow Fila = CapaLogica.CuentaContable_EnUso(1, txtcodcuenta.Text);
+            int PosFila = dtgconten.CurrentRow.Index;
+            if (Fila != null)
+            {
+                if (HPResergerFunciones.Utilitarios.msgYesNo("La Cuenta Ya tiene Asientos, ¿Desea Bloquear la Cuenta?") == DialogResult.Yes)
+                {
+                    CapaLogica.CuentaContable_EnUso(3, txtcodcuenta.Text);
+                    HPResergerFunciones.Utilitarios.msg("Cuenta contable Bloqueada");
+                }
+            }
+            else
+            {
+                if (HPResergerFunciones.Utilitarios.msgYesNo("¿Seguro Desea Eliminar la Cuenta?") == DialogResult.Yes)
+                {
+                    CapaLogica.CuentaContable_EnUso(33, txtcodcuenta.Text);
+                    HPResergerFunciones.Utilitarios.msg("Cuenta contable Eliminada");
+                }
+            }
+            ///listado de Resultados
+            ListarCuentasContables("", 0);
+            if (dtgconten.Rows.Count > PosFila)
+                dtgconten.CurrentCell = dtgconten["codcuenta", PosFila];
+
+        }
+        private void txtcuentacierre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbocierre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

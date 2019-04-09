@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,36 @@ namespace HpResergerUserControls
 {
     public class Configuraciones
     {
+        //COLORES POR DEFECTO
         public static Color ColordeEnabledReadOnly = Color.FromArgb(204, 218, 231);
+        ///COLORES DE GRILLAS
+        public static Color ColorBien = Color.FromArgb(0, 0, 192);
+        public static Color ColorPrecaucion = Color.FromArgb(192, 0, 0);
+        public static Color ColorBienSeleccionadas = Color.FromArgb(0, 0, 170);
+        public static Color ColorPrecaucionSeleccionadas = Color.FromArgb(170, 0, 0);
+        ///FIN COLORES DE GRILLAS
+        ///COLORES CON UI
+        public static Color AzulUI = Color.FromArgb(52, 152, 219);
+        public static Color AzulUISelect = Color.FromArgb(41, 128, 185);
+        public static Color VerdeUI = Color.FromArgb(26, 188, 156);
+        public static Color VerdeUISelect = Color.FromArgb(22, 160, 133);
+        public static Color MentaUI = Color.FromArgb(46, 204, 113);
+        public static Color MentaUISelect = Color.FromArgb(39, 174, 96);
+        public static Color MoradoUI = Color.FromArgb(155, 89, 182);
+        public static Color MoradoUISelect = Color.FromArgb(142, 68, 173);
+        public static Color OscuroUI = Color.FromArgb(52, 73, 94);
+        public static Color OscuroUISelect = Color.FromArgb(44, 62, 80);
+        public static Color RojoUI = Color.FromArgb(231, 76, 60);
+        public static Color RojoUISelect = Color.FromArgb(192, 57, 43);
+        public static Color BlancoUI = Color.FromArgb(236, 240, 241);
+        public static Color BlancoUISelect = Color.FromArgb(189, 195, 199);
+        public static Color GrisUI = Color.FromArgb(149, 165, 166);
+        public static Color GrisUISelect = Color.FromArgb(127, 140, 141);
+        public static Color AmarilloUI = Color.FromArgb(241, 196, 15);
+        public static Color AmarilloUISelect = Color.FromArgb(243, 156, 18);
+        public static Color MostazaUI = Color.FromArgb(230, 126, 34);
+        public static Color MostazaUISelect = Color.FromArgb(211, 84, 0);
+        ///FIN COLORES CON UI
         /// <param name="cadena">Palabra a la que vamos hacer Tipo Oración</param>
         public static string MayusculaCadaPalabra(string cadena)
         {
@@ -18,7 +48,13 @@ namespace HpResergerUserControls
         }
         /// <param name="Datagrid">Grilla con la que vamos a trabajar</param>
         /// <param name="ColumnaImporte">Columna a la que vamos a Asignar Valores</param>
-        /// <param name="MontoaRepartir">Monto que vamos a Dividir</param>    
+        /// <param name="MontoaRepartir">Monto que vamos a Dividir</param>   
+        public static decimal Redondear(decimal valor) { return Math.Round(valor, 2); }
+        public static void TiempoEjecucionMsg(Stopwatch st)
+        {
+            TimeSpan tm = st.Elapsed;
+            HPResergerFunciones.Utilitarios.msg($"La Operación Demoro {tm}");
+        }
         public static void RellenarGrillasAutomatico(Dtgconten Datagrid, DataGridViewTextBoxColumn ColumnaImporte, decimal MontoaRepartir)
         {
             Datagrid.EndEdit();
@@ -46,7 +82,7 @@ namespace HpResergerUserControls
                         if (Decimal(item.Cells[ColumnaImporte.Name].Value.ToString()) == 0)
                             item.Cells[ColumnaImporte.Name].Value = Valor;
                     if (item.Index == Datagrid.CurrentCell.RowIndex)
-                        item.Cells[ColumnaImporte.Name].Value = Valor;
+                        item.Cells[ColumnaImporte.Name].Value = Redondear(Valor);
                 }
                 Datagrid.RefreshEdit();
                 Datagrid.EndEdit();

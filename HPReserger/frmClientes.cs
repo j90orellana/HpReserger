@@ -290,7 +290,7 @@ namespace HPReserger
         {
             if (cbosexo.Items.Count > 0)
             {
-                string cadena = cbotipoid.Text;
+                string cadena = cbosexo.Text;
                 cbosexo.ValueMember = "codigo";
                 cbosexo.DisplayMember = "descripcion";
                 cbosexo.DataSource = CapaLogica.getCargoTipoContratacion("Id_Sexo", "Sexo", "TBL_Sexo");
@@ -340,11 +340,15 @@ namespace HPReserger
         {
             if (cbodistrito.Items.Count > 0)
             {
-                string cadena2 = cbodistrito.Text;
-                cbodistrito.ValueMember = "coddis";
-                cbodistrito.DisplayMember = "distrito";
-                cbodistrito.DataSource = CapaLogica.ListarDistrito((int)cbodepartamento.SelectedValue, (int)cboprovincia.SelectedValue, "");
-                cbodistrito.Text = cadena2;
+                try
+                {
+                    string cadena2 = cbodistrito.Text;
+                    cbodistrito.ValueMember = "coddis";
+                    cbodistrito.DisplayMember = "distrito";
+                    cbodistrito.DataSource = CapaLogica.ListarDistrito((int)cbodepartamento.SelectedValue, (int)cboprovincia.SelectedValue, "");
+                    cbodistrito.Text = cadena2;
+                }
+                catch (Exception) { }
             }
         }
         public void BuscarTexto()
@@ -402,6 +406,11 @@ namespace HPReserger
                     ((TextBox)x).ReadOnly = false;
                     //((TextBox)x).BackColor = Color.White;
                 }
+                else if (((Control)x).AccessibilityObject.Role == AccessibleRole.ComboBox)
+                {
+                    ((ComboBoxPer)x).ReadOnly = false;
+                    //((TextBox)x).BackColor = Color.White;
+                }
                 else
                     ((Control)x).Enabled = true;
             }
@@ -414,6 +423,11 @@ namespace HPReserger
                 {
                     ((TextBox)x).ReadOnly = true;
                     // ((TextBox)x).BackColor = Color.FromArgb(204, 218, 231);
+                }
+                else if (((Control)x).AccessibilityObject.Role == AccessibleRole.ComboBox)
+                {
+                    ((ComboBoxPer)x).ReadOnly = true;
+                    //((TextBox)x).BackColor = Color.White;
                 }
                 else
                     ((Control)x).Enabled = false;
@@ -514,6 +528,9 @@ namespace HPReserger
                 msg($"El tamaño del Nro Documento debe ser: {LengthTipoId}");
                 return;
             }
+            string ResultaCorreo = "";
+            if (txtemail.EstaLLeno())
+                if (HPResergerFunciones.Utilitarios.ValidarCorreo(txtemail.TextValido()) == "") ResultaCorreo = "Correo Invalido!\n";
             int sexo = 0, civil = 0;
             ///insertar;
             if (cbotipoid.Text.ToUpper() != "RUC")
@@ -530,7 +547,7 @@ namespace HPReserger
                     return;
                 }
                 CapaLogica.Clientes(1, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
-                msg("Cliente Agregado Exitosamente");
+                msg($"{ResultaCorreo}Cliente Agregado Exitosamente");
             }
             //actualizar
             if (estado == 2)
@@ -543,7 +560,7 @@ namespace HPReserger
                 }
                 DataRow Filita = CapaLogica.Clientes(2, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now).Rows[0];
                 if ((int)Filita["Resultado"] == 0)
-                    msg("Cliente Actualizado Exitosamente");
+                    msg($"{ResultaCorreo}Cliente Actualizado Exitosamente");
                 else
                 {
                     msg("No se pudo Modificar, Cliente ya tiene Movimientos");

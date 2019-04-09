@@ -36,9 +36,7 @@ namespace HPReserger
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtcodcuenta = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtcuentacierre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbotipo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -67,7 +65,6 @@ namespace HPReserger
             this.cbocuentabc = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtnombrecuenta = new System.Windows.Forms.TextBox();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
@@ -76,7 +73,6 @@ namespace HPReserger
             this.btncargarcuentas = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
-            this.txtcuentan1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -87,6 +83,12 @@ namespace HPReserger
             this.cbosolicitar = new System.Windows.Forms.ComboBox();
             this.Txtbusca = new HpResergerUserControls.txtBuscar();
             this.chkcabecera = new System.Windows.Forms.CheckBox();
+            this.txtnombrecuenta = new HpResergerUserControls.TextBoxPer();
+            this.txtcodcuenta = new HpResergerUserControls.TextBoxPer();
+            this.txtcuentan1 = new HpResergerUserControls.TextBoxPer();
+            this.txtcuentacierre = new HpResergerUserControls.TextBoxPer();
+            this.cboestado = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -102,49 +104,28 @@ namespace HPReserger
             this.label2.TabIndex = 94;
             this.label2.Text = "Cuenta Contable N1:";
             // 
-            // txtcodcuenta
-            // 
-            this.txtcodcuenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcodcuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcodcuenta.Location = new System.Drawing.Point(458, 12);
-            this.txtcodcuenta.MaxLength = 15;
-            this.txtcodcuenta.Name = "txtcodcuenta";
-            this.txtcodcuenta.Size = new System.Drawing.Size(172, 21);
-            this.txtcodcuenta.TabIndex = 2;
-            this.txtcodcuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtcodcuenta.TextChanged += new System.EventHandler(this.txtcodcuenta_TextChanged);
-            this.txtcodcuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcodcuenta_KeyPress);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(372, 16);
+            this.label1.Location = new System.Drawing.Point(419, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 96;
             this.label1.Text = "Código Cuenta:";
-            // 
-            // txtcuentacierre
-            // 
-            this.txtcuentacierre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtcuentacierre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcuentacierre.Location = new System.Drawing.Point(106, 174);
-            this.txtcuentacierre.Name = "txtcuentacierre";
-            this.txtcuentacierre.Size = new System.Drawing.Size(524, 20);
-            this.txtcuentacierre.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 178);
+            this.label3.Location = new System.Drawing.Point(44, 178);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 98;
             this.label3.Text = "Cuenta Cierre:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // cbotipo
             // 
@@ -153,10 +134,10 @@ namespace HPReserger
             this.cbotipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipo.FormattingEnabled = true;
-            this.cbotipo.Location = new System.Drawing.Point(106, 58);
+            this.cbotipo.Location = new System.Drawing.Point(124, 58);
             this.cbotipo.Name = "cbotipo";
-            this.cbotipo.Size = new System.Drawing.Size(291, 21);
-            this.cbotipo.TabIndex = 4;
+            this.cbotipo.Size = new System.Drawing.Size(273, 21);
+            this.cbotipo.TabIndex = 13;
             this.cbotipo.TextChanged += new System.EventHandler(this.cbotipo_TextChanged);
             // 
             // label4
@@ -164,7 +145,7 @@ namespace HPReserger
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 62);
+            this.label4.Location = new System.Drawing.Point(52, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 94;
@@ -175,7 +156,7 @@ namespace HPReserger
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(401, 62);
+            this.label5.Location = new System.Drawing.Point(402, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 13);
             this.label5.TabIndex = 100;
@@ -190,8 +171,8 @@ namespace HPReserger
             this.cbonaturaleza.FormattingEnabled = true;
             this.cbonaturaleza.Location = new System.Drawing.Point(507, 58);
             this.cbonaturaleza.Name = "cbonaturaleza";
-            this.cbonaturaleza.Size = new System.Drawing.Size(123, 21);
-            this.cbonaturaleza.TabIndex = 5;
+            this.cbonaturaleza.Size = new System.Drawing.Size(229, 21);
+            this.cbonaturaleza.TabIndex = 14;
             // 
             // cbogenerica
             // 
@@ -200,21 +181,21 @@ namespace HPReserger
             this.cbogenerica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbogenerica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbogenerica.FormattingEnabled = true;
-            this.cbogenerica.Location = new System.Drawing.Point(106, 81);
+            this.cbogenerica.Location = new System.Drawing.Point(124, 81);
             this.cbogenerica.Name = "cbogenerica";
-            this.cbogenerica.Size = new System.Drawing.Size(305, 21);
-            this.cbogenerica.TabIndex = 6;
+            this.cbogenerica.Size = new System.Drawing.Size(273, 21);
+            this.cbogenerica.TabIndex = 15;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 85);
+            this.label6.Location = new System.Drawing.Point(29, 85);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 13);
+            this.label6.Size = new System.Drawing.Size(95, 13);
             this.label6.TabIndex = 94;
-            this.label6.Text = "Cuenta Genérica";
+            this.label6.Text = "Cuenta Genérica:";
             // 
             // cbogrupo
             // 
@@ -223,28 +204,28 @@ namespace HPReserger
             this.cbogrupo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbogrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbogrupo.FormattingEnabled = true;
-            this.cbogrupo.Location = new System.Drawing.Point(458, 81);
+            this.cbogrupo.Location = new System.Drawing.Point(507, 81);
             this.cbogrupo.Name = "cbogrupo";
-            this.cbogrupo.Size = new System.Drawing.Size(172, 21);
-            this.cbogrupo.TabIndex = 7;
+            this.cbogrupo.Size = new System.Drawing.Size(229, 21);
+            this.cbogrupo.TabIndex = 16;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(416, 85);
+            this.label7.Location = new System.Drawing.Point(464, 85);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 100;
-            this.label7.Text = "Grupo";
+            this.label7.Text = "Grupo:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(205, 108);
+            this.label8.Location = new System.Drawing.Point(223, 108);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 100;
@@ -255,10 +236,10 @@ namespace HPReserger
             this.cborefleja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cborefleja.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cborefleja.FormattingEnabled = true;
-            this.cborefleja.Location = new System.Drawing.Point(263, 104);
+            this.cborefleja.Location = new System.Drawing.Point(275, 104);
             this.cborefleja.Name = "cborefleja";
-            this.cborefleja.Size = new System.Drawing.Size(97, 21);
-            this.cborefleja.TabIndex = 99;
+            this.cborefleja.Size = new System.Drawing.Size(122, 21);
+            this.cborefleja.TabIndex = 18;
             this.cborefleja.SelectedIndexChanged += new System.EventHandler(this.cborefleja_SelectedIndexChanged);
             // 
             // cboreflejacc
@@ -266,10 +247,10 @@ namespace HPReserger
             this.cboreflejacc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboreflejacc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboreflejacc.FormattingEnabled = true;
-            this.cboreflejacc.Location = new System.Drawing.Point(123, 104);
+            this.cboreflejacc.Location = new System.Drawing.Point(124, 104);
             this.cboreflejacc.Name = "cboreflejacc";
-            this.cboreflejacc.Size = new System.Drawing.Size(76, 21);
-            this.cboreflejacc.TabIndex = 8;
+            this.cboreflejacc.Size = new System.Drawing.Size(99, 21);
+            this.cboreflejacc.TabIndex = 17;
             // 
             // label10
             // 
@@ -278,26 +259,26 @@ namespace HPReserger
             this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(12, 108);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(109, 13);
+            this.label10.Size = new System.Drawing.Size(112, 13);
             this.label10.TabIndex = 100;
-            this.label10.Text = "Refleja Depende CC";
+            this.label10.Text = "Refleja Depende CC:";
             // 
             // cboreflejadebe
             // 
             this.cboreflejadebe.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboreflejadebe.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboreflejadebe.FormattingEnabled = true;
-            this.cboreflejadebe.Location = new System.Drawing.Point(106, 128);
+            this.cboreflejadebe.Location = new System.Drawing.Point(124, 128);
             this.cboreflejadebe.Name = "cboreflejadebe";
-            this.cboreflejadebe.Size = new System.Drawing.Size(524, 21);
-            this.cboreflejadebe.TabIndex = 9;
+            this.cboreflejadebe.Size = new System.Drawing.Size(612, 21);
+            this.cboreflejadebe.TabIndex = 21;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(33, 132);
+            this.label11.Location = new System.Drawing.Point(53, 132);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 94;
@@ -308,17 +289,17 @@ namespace HPReserger
             this.cboreflejahaber.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboreflejahaber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboreflejahaber.FormattingEnabled = true;
-            this.cboreflejahaber.Location = new System.Drawing.Point(106, 151);
+            this.cboreflejahaber.Location = new System.Drawing.Point(124, 151);
             this.cboreflejahaber.Name = "cboreflejahaber";
-            this.cboreflejahaber.Size = new System.Drawing.Size(524, 21);
-            this.cboreflejahaber.TabIndex = 10;
+            this.cboreflejahaber.Size = new System.Drawing.Size(612, 21);
+            this.cboreflejahaber.TabIndex = 22;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(29, 154);
+            this.label12.Location = new System.Drawing.Point(49, 154);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(75, 13);
             this.label12.TabIndex = 94;
@@ -329,17 +310,17 @@ namespace HPReserger
             this.cboanalitica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboanalitica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboanalitica.FormattingEnabled = true;
-            this.cboanalitica.Location = new System.Drawing.Point(78, 196);
+            this.cboanalitica.Location = new System.Drawing.Point(124, 197);
             this.cboanalitica.Name = "cboanalitica";
             this.cboanalitica.Size = new System.Drawing.Size(76, 21);
-            this.cboanalitica.TabIndex = 12;
+            this.cboanalitica.TabIndex = 24;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 200);
+            this.label13.Location = new System.Drawing.Point(63, 201);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(61, 13);
             this.label13.TabIndex = 100;
@@ -350,42 +331,44 @@ namespace HPReserger
             this.cboajustemensual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboajustemensual.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboajustemensual.FormattingEnabled = true;
-            this.cboajustemensual.Location = new System.Drawing.Point(346, 196);
+            this.cboajustemensual.Location = new System.Drawing.Point(386, 197);
             this.cboajustemensual.Name = "cboajustemensual";
-            this.cboajustemensual.Size = new System.Drawing.Size(185, 21);
-            this.cboajustemensual.TabIndex = 13;
+            this.cboajustemensual.Size = new System.Drawing.Size(161, 21);
+            this.cboajustemensual.TabIndex = 25;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(158, 200);
+            this.label14.Location = new System.Drawing.Point(200, 201);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(183, 13);
+            this.label14.Size = new System.Drawing.Size(186, 13);
             this.label14.TabIndex = 100;
-            this.label14.Text = "Ajuste Diferencia Cambio Mensual";
+            this.label14.Text = "Ajuste Diferencia Cambio Mensual:";
             // 
             // cbocierre
             // 
             this.cbocierre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocierre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocierre.FormattingEnabled = true;
-            this.cbocierre.Location = new System.Drawing.Point(610, 196);
+            this.cbocierre.Location = new System.Drawing.Point(598, 197);
             this.cbocierre.Name = "cbocierre";
-            this.cbocierre.Size = new System.Drawing.Size(122, 21);
-            this.cbocierre.TabIndex = 14;
+            this.cbocierre.Size = new System.Drawing.Size(138, 21);
+            this.cbocierre.TabIndex = 26;
+            this.cbocierre.SelectedIndexChanged += new System.EventHandler(this.cbocierre_SelectedIndexChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(567, 200);
+            this.label15.Location = new System.Drawing.Point(558, 201);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(40, 13);
             this.label15.TabIndex = 100;
             this.label15.Text = "Cierre:";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // cboajustetraslacion
             // 
@@ -395,18 +378,18 @@ namespace HPReserger
             this.cboajustetraslacion.Location = new System.Drawing.Point(125, 220);
             this.cboajustetraslacion.Name = "cboajustetraslacion";
             this.cboajustetraslacion.Size = new System.Drawing.Size(208, 21);
-            this.cboajustetraslacion.TabIndex = 15;
+            this.cboajustetraslacion.TabIndex = 27;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(12, 224);
+            this.label17.Location = new System.Drawing.Point(8, 224);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(113, 13);
+            this.label17.Size = new System.Drawing.Size(116, 13);
             this.label17.TabIndex = 100;
-            this.label17.Text = "Ajuste por Traslación";
+            this.label17.Text = "Ajuste por Traslación:";
             // 
             // cbocuentabc
             // 
@@ -415,19 +398,19 @@ namespace HPReserger
             this.cbocuentabc.FormattingEnabled = true;
             this.cbocuentabc.Location = new System.Drawing.Point(470, 220);
             this.cbocuentabc.Name = "cbocuentabc";
-            this.cbocuentabc.Size = new System.Drawing.Size(61, 21);
-            this.cbocuentabc.TabIndex = 16;
+            this.cbocuentabc.Size = new System.Drawing.Size(77, 21);
+            this.cbocuentabc.TabIndex = 28;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(339, 224);
+            this.label16.Location = new System.Drawing.Point(348, 224);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(119, 13);
+            this.label16.Size = new System.Drawing.Size(122, 13);
             this.label16.TabIndex = 100;
-            this.label16.Text = "Cuenta Declarante BC";
+            this.label16.Text = "Cuenta Declarante BC:";
             // 
             // label18
             // 
@@ -440,33 +423,25 @@ namespace HPReserger
             this.label18.TabIndex = 98;
             this.label18.Text = "Cuenta Contable Descripción:";
             // 
-            // txtnombrecuenta
-            // 
-            this.txtnombrecuenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtnombrecuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombrecuenta.Location = new System.Drawing.Point(178, 35);
-            this.txtnombrecuenta.Name = "txtnombrecuenta";
-            this.txtnombrecuenta.Size = new System.Drawing.Size(452, 21);
-            this.txtnombrecuenta.TabIndex = 3;
-            // 
             // btneliminar
             // 
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(636, 57);
+            this.btneliminar.Location = new System.Drawing.Point(740, 57);
             this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(96, 23);
-            this.btneliminar.TabIndex = 21;
+            this.btneliminar.Size = new System.Drawing.Size(82, 23);
+            this.btneliminar.TabIndex = 3;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btneliminar.UseVisualStyleBackColor = true;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // btnmodificar
             // 
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(636, 34);
+            this.btnmodificar.Location = new System.Drawing.Point(740, 34);
             this.btnmodificar.Name = "btnmodificar";
-            this.btnmodificar.Size = new System.Drawing.Size(96, 23);
-            this.btnmodificar.TabIndex = 20;
+            this.btnmodificar.Size = new System.Drawing.Size(82, 23);
+            this.btnmodificar.TabIndex = 2;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
@@ -475,10 +450,10 @@ namespace HPReserger
             // btnnuevo
             // 
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
-            this.btnnuevo.Location = new System.Drawing.Point(636, 11);
+            this.btnnuevo.Location = new System.Drawing.Point(740, 11);
             this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(96, 23);
-            this.btnnuevo.TabIndex = 19;
+            this.btnnuevo.Size = new System.Drawing.Size(82, 23);
+            this.btnnuevo.TabIndex = 1;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -504,7 +479,7 @@ namespace HPReserger
             // 
             this.btncargarcuentas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btncargarcuentas.Image = ((System.Drawing.Image)(resources.GetObject("btncargarcuentas.Image")));
-            this.btncargarcuentas.Location = new System.Drawing.Point(319, 545);
+            this.btncargarcuentas.Location = new System.Drawing.Point(363, 545);
             this.btncargarcuentas.Name = "btncargarcuentas";
             this.btncargarcuentas.Size = new System.Drawing.Size(109, 24);
             this.btncargarcuentas.TabIndex = 137;
@@ -518,10 +493,10 @@ namespace HPReserger
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(650, 545);
+            this.btncancelar.Location = new System.Drawing.Point(740, 545);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 24);
-            this.btncancelar.TabIndex = 23;
+            this.btncancelar.TabIndex = 51;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -531,23 +506,14 @@ namespace HPReserger
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(565, 545);
+            this.btnaceptar.Location = new System.Drawing.Point(654, 545);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 24);
-            this.btnaceptar.TabIndex = 22;
+            this.btnaceptar.TabIndex = 50;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
             this.btnaceptar.Click += new System.EventHandler(this.btnaceptar_Click);
-            // 
-            // txtcuentan1
-            // 
-            this.txtcuentan1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtcuentan1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcuentan1.Location = new System.Drawing.Point(132, 12);
-            this.txtcuentan1.Name = "txtcuentan1";
-            this.txtcuentan1.Size = new System.Drawing.Size(210, 21);
-            this.txtcuentan1.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -557,7 +523,7 @@ namespace HPReserger
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(15, 269);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(717, 28);
+            this.groupBox1.Size = new System.Drawing.Size(807, 28);
             this.groupBox1.TabIndex = 133;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -571,7 +537,7 @@ namespace HPReserger
             this.radioButton4.Location = new System.Drawing.Point(119, 10);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(85, 18);
-            this.radioButton4.TabIndex = 130;
+            this.radioButton4.TabIndex = 41;
             this.radioButton4.Text = "Cuenta N1";
             this.radioButton4.UseVisualStyleBackColor = false;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
@@ -585,7 +551,7 @@ namespace HPReserger
             this.radioButton2.Location = new System.Drawing.Point(211, 10);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(118, 18);
-            this.radioButton2.TabIndex = 130;
+            this.radioButton2.TabIndex = 42;
             this.radioButton2.Text = "Cuenta Contable";
             this.radioButton2.UseVisualStyleBackColor = false;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
@@ -600,7 +566,7 @@ namespace HPReserger
             this.radioButton1.Location = new System.Drawing.Point(18, 10);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(109, 18);
-            this.radioButton1.TabIndex = 130;
+            this.radioButton1.TabIndex = 40;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Código Cuenta";
             this.radioButton1.UseVisualStyleBackColor = false;
@@ -654,7 +620,7 @@ namespace HPReserger
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 16;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(715, 240);
+            this.dtgconten.Size = new System.Drawing.Size(805, 240);
             this.dtgconten.TabIndex = 132;
             this.dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentDoubleClick);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
@@ -664,21 +630,21 @@ namespace HPReserger
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(366, 108);
+            this.label9.Location = new System.Drawing.Point(412, 108);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 13);
+            this.label9.Size = new System.Drawing.Size(95, 13);
             this.label9.TabIndex = 138;
-            this.label9.Text = "Solicitar Detalle?";
+            this.label9.Text = "Solicitar Detalle?:";
             // 
             // cbosolicitar
             // 
             this.cbosolicitar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbosolicitar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbosolicitar.FormattingEnabled = true;
-            this.cbosolicitar.Location = new System.Drawing.Point(458, 104);
+            this.cbosolicitar.Location = new System.Drawing.Point(507, 104);
             this.cbosolicitar.Name = "cbosolicitar";
-            this.cbosolicitar.Size = new System.Drawing.Size(61, 21);
-            this.cbosolicitar.TabIndex = 139;
+            this.cbosolicitar.Size = new System.Drawing.Size(150, 21);
+            this.cbosolicitar.TabIndex = 19;
             // 
             // Txtbusca
             // 
@@ -689,8 +655,8 @@ namespace HPReserger
             this.Txtbusca.ImgBotonCerrar = null;
             this.Txtbusca.Location = new System.Drawing.Point(17, 245);
             this.Txtbusca.Name = "Txtbusca";
-            this.Txtbusca.Size = new System.Drawing.Size(715, 22);
-            this.Txtbusca.TabIndex = 140;
+            this.Txtbusca.Size = new System.Drawing.Size(805, 22);
+            this.Txtbusca.TabIndex = 43;
             this.Txtbusca.BuscarClick += new System.EventHandler(this.Txtbusca_TextChanged);
             this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
             this.Txtbusca.Load += new System.EventHandler(this.Txtbusca_Load);
@@ -700,26 +666,140 @@ namespace HPReserger
             this.chkcabecera.AutoSize = true;
             this.chkcabecera.BackColor = System.Drawing.Color.Transparent;
             this.chkcabecera.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkcabecera.Location = new System.Drawing.Point(557, 106);
+            this.chkcabecera.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkcabecera.Location = new System.Drawing.Point(663, 106);
             this.chkcabecera.Name = "chkcabecera";
             this.chkcabecera.Size = new System.Drawing.Size(73, 17);
-            this.chkcabecera.TabIndex = 141;
+            this.chkcabecera.TabIndex = 20;
             this.chkcabecera.Text = "Cabecera";
-            this.chkcabecera.UseVisualStyleBackColor = false;
+            this.chkcabecera.UseVisualStyleBackColor = true;
+            // 
+            // txtnombrecuenta
+            // 
+            this.txtnombrecuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtnombrecuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnombrecuenta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtnombrecuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnombrecuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnombrecuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnombrecuenta.ForeColor = System.Drawing.Color.Black;
+            this.txtnombrecuenta.Format = null;
+            this.txtnombrecuenta.Location = new System.Drawing.Point(172, 35);
+            this.txtnombrecuenta.MaxLength = 250;
+            this.txtnombrecuenta.Name = "txtnombrecuenta";
+            this.txtnombrecuenta.NextControlOnEnter = this.cbotipo;
+            this.txtnombrecuenta.ReadOnly = true;
+            this.txtnombrecuenta.Size = new System.Drawing.Size(564, 21);
+            this.txtnombrecuenta.TabIndex = 12;
+            this.txtnombrecuenta.Text = "DESCRIPCIÓN DE LA CUENTA CONTABLE";
+            this.txtnombrecuenta.TextoDefecto = "DESCRIPCIÓN DE LA CUENTA CONTABLE";
+            this.txtnombrecuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnombrecuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // txtcodcuenta
+            // 
+            this.txtcodcuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtcodcuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcodcuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtcodcuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtcodcuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcodcuenta.ForeColor = System.Drawing.Color.Black;
+            this.txtcodcuenta.Format = null;
+            this.txtcodcuenta.Location = new System.Drawing.Point(507, 12);
+            this.txtcodcuenta.MaxLength = 12;
+            this.txtcodcuenta.Name = "txtcodcuenta";
+            this.txtcodcuenta.NextControlOnEnter = this.txtnombrecuenta;
+            this.txtcodcuenta.ReadOnly = true;
+            this.txtcodcuenta.Size = new System.Drawing.Size(229, 21);
+            this.txtcodcuenta.TabIndex = 11;
+            this.txtcodcuenta.Text = "00000000";
+            this.txtcodcuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtcodcuenta.TextoDefecto = "00000000";
+            this.txtcodcuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtcodcuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumeros;
+            // 
+            // txtcuentan1
+            // 
+            this.txtcuentan1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtcuentan1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcuentan1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtcuentan1.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtcuentan1.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtcuentan1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcuentan1.ForeColor = System.Drawing.Color.Black;
+            this.txtcuentan1.Format = null;
+            this.txtcuentan1.Location = new System.Drawing.Point(126, 12);
+            this.txtcuentan1.MaxLength = 250;
+            this.txtcuentan1.Name = "txtcuentan1";
+            this.txtcuentan1.NextControlOnEnter = this.txtcodcuenta;
+            this.txtcuentan1.ReadOnly = true;
+            this.txtcuentan1.Size = new System.Drawing.Size(294, 21);
+            this.txtcuentan1.TabIndex = 10;
+            this.txtcuentan1.Text = "CUENTA CONTABLE N1";
+            this.txtcuentan1.TextoDefecto = "CUENTA CONTABLE N1";
+            this.txtcuentan1.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtcuentan1.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // txtcuentacierre
+            // 
+            this.txtcuentacierre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtcuentacierre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcuentacierre.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtcuentacierre.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtcuentacierre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcuentacierre.ForeColor = System.Drawing.Color.Black;
+            this.txtcuentacierre.Format = null;
+            this.txtcuentacierre.Location = new System.Drawing.Point(124, 174);
+            this.txtcuentacierre.MaxLength = 250;
+            this.txtcuentacierre.Name = "txtcuentacierre";
+            this.txtcuentacierre.NextControlOnEnter = this.cbotipo;
+            this.txtcuentacierre.ReadOnly = true;
+            this.txtcuentacierre.Size = new System.Drawing.Size(612, 21);
+            this.txtcuentacierre.TabIndex = 23;
+            this.txtcuentacierre.TextoDefecto = "";
+            this.txtcuentacierre.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtcuentacierre.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtcuentacierre.TextChanged += new System.EventHandler(this.txtcuentacierre_TextChanged);
+            // 
+            // cboestado
+            // 
+            this.cboestado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboestado.FormattingEnabled = true;
+            this.cboestado.Location = new System.Drawing.Point(598, 220);
+            this.cboestado.Name = "cboestado";
+            this.cboestado.Size = new System.Drawing.Size(138, 21);
+            this.cboestado.TabIndex = 29;
+            this.cboestado.SelectedIndexChanged += new System.EventHandler(this.cbocierre_SelectedIndexChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(553, 224);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 13);
+            this.label19.TabIndex = 100;
+            this.label19.Text = "Estado:";
+            this.label19.Click += new System.EventHandler(this.label15_Click);
             // 
             // frmcuentacontable
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 576);
+            this.ClientSize = new System.Drawing.Size(834, 576);
+            this.Controls.Add(this.txtcuentacierre);
+            this.Controls.Add(this.txtcuentan1);
+            this.Controls.Add(this.txtcodcuenta);
+            this.Controls.Add(this.txtnombrecuenta);
             this.Controls.Add(this.chkcabecera);
             this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.cbosolicitar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btncargarcuentas);
             this.Controls.Add(this.dtgconten);
-            this.Controls.Add(this.txtcuentan1);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnaceptar);
@@ -731,6 +811,7 @@ namespace HPReserger
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cboreflejacc);
@@ -739,15 +820,13 @@ namespace HPReserger
             this.Controls.Add(this.cboajustemensual);
             this.Controls.Add(this.cbocuentabc);
             this.Controls.Add(this.cboanalitica);
+            this.Controls.Add(this.cboestado);
             this.Controls.Add(this.cbocierre);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cborefleja);
             this.Controls.Add(this.cbogrupo);
             this.Controls.Add(this.cbonaturaleza);
-            this.Controls.Add(this.txtnombrecuenta);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.txtcuentacierre);
-            this.Controls.Add(this.txtcodcuenta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbogenerica);
             this.Controls.Add(this.cbotipo);
@@ -760,7 +839,7 @@ namespace HPReserger
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
-            this.MinimumSize = new System.Drawing.Size(763, 615);
+            this.MinimumSize = new System.Drawing.Size(850, 615);
             this.Name = "frmcuentacontable";
             this.Nombre = " Cuenta Contable";
             this.Text = " Cuenta Contable";
@@ -777,7 +856,6 @@ namespace HPReserger
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtcuentacierre;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbotipo;
         private System.Windows.Forms.Label label4;
@@ -806,26 +884,29 @@ namespace HPReserger
         private System.Windows.Forms.ComboBox cbocuentabc;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtnombrecuenta;
         private System.Windows.Forms.Button btneliminar;
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Label lblmsg;
         private System.Windows.Forms.ToolTip tipmsg;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnaceptar;
-        private System.Windows.Forms.TextBox txtcuentan1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private Dtgconten dtgconten;
         private System.Windows.Forms.Button btnnuevo;
-        public System.Windows.Forms.TextBox txtcodcuenta;
         private System.Windows.Forms.Button btncargarcuentas;
         private System.Windows.Forms.OpenFileDialog OpenFileDialog;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbosolicitar;
         public txtBuscar Txtbusca;
         private System.Windows.Forms.CheckBox chkcabecera;
+        private TextBoxPer txtnombrecuenta;
+        public TextBoxPer txtcodcuenta;
+        public TextBoxPer txtcuentan1;
+        private TextBoxPer txtcuentacierre;
+        private System.Windows.Forms.ComboBox cboestado;
+        private System.Windows.Forms.Label label19;
     }
 }

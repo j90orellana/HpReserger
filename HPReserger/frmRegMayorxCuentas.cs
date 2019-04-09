@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace HPReserger
 {
     public partial class frmRegMayorxCuentas : FormGradient
@@ -19,7 +19,7 @@ namespace HPReserger
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmRegMayorxCuentas_Load(object sender, EventArgs e)
-        {            
+        {
             Configuraciones.CargarTextoPorDefecto(txtbuscuenta, txtbusGlosa, txtbusnrodoc, txtbusrazon, txtbusruc);
             dtpfechaini.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtpfechafin.Value = new DateTime(DateTime.Now.Year, 12, 31);
@@ -42,6 +42,7 @@ namespace HPReserger
         DateTime FechaFin;
         private void btngenerar_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             FechaIni = dtpfechaini.Value;
             FechaFin = dtpfechafin.Value;
             DateTime FechaAux;
@@ -146,9 +147,13 @@ namespace HPReserger
             }
             else BuscarEmpresa = "e.Id_Empresa like '%%'";
             /////ASIGNACION DE LOS DATOS
+            //Stopwatch stopwatch = new Stopwatch();
+            //stopwatch.Start();
             dtgconten.DataSource = CapaLogica.MayorPorCuentas(FechaIni, FechaFin, Buscarcuenta, BuscarGlosa, BuscarDocumento, BuscarRuc, BuscarEmpresa, BuscarRazon);
+            //Configuraciones.TiempoEjecucionMsg(stopwatch); stopwatch.Stop();
             //dtgconten.AutoGenerateColumns = true;            
             //dtgconten.DataMember = "cuenta_contable";
+            Cursor = Cursors.Default;
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
         }
@@ -180,9 +185,10 @@ namespace HPReserger
         {
             if (dtgconten.RowCount > 0)
             {
+
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
                 _NombreHoja = "Mayor x Cuentas"; _Cabecera = "MAYOR POR CUENTAS CONTABLES";
-                _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }; _NColumna = "m";
+                _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
 
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
@@ -203,12 +209,17 @@ namespace HPReserger
                 DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
                 TableResult = dt.ToTable();
                 foreach (DataColumn item in TableResult.Columns) item.ColumnName = dtgconten.Columns["x" + item.ColumnName].HeaderText;
-                //////
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
+                //MACRO
+                int PosInicialGrilla = 5;
+                string Macro = $"Private Sub Workbook_Open()  {Environment.NewLine} " +
+                    $"Range(Cells({PosInicialGrilla}, 1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})).Select  {Environment.NewLine}" +
+                    $"Selection.Subtotal GroupBy:= 3, Function:= xlSum, TotalList:= Array(19, 20), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} End Sub";
+                ///
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, Macro);
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
-
             }
             else msg("No hay Registros en la Grilla");
+
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -281,7 +292,7 @@ namespace HPReserger
                 txtbuscuenta.SelectionStart = txtbuscuenta.TextLength;
                 opcionCuentas = frmlistacuenta.tipobusca;
             }
-            frmlistacuenta = null;            
-        }       
+            frmlistacuenta = null;
+        }
     }
 }

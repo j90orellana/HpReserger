@@ -77,6 +77,22 @@ namespace HPResergerFunciones
             }
             return P.Handled;
         }
+        public static Boolean SoloNumerosDecimalesConNegativo(KeyPressEventArgs P, string Numero)
+        {
+            string cadena = "1234567890.-" + (char)8;
+            if (!cadena.Contains(P.KeyChar))
+            {
+                P.Handled = true;
+            }
+            if ((Numero.IndexOf(".") > 0 && Convert.ToString(P.KeyChar) == ".") || (Numero.Length == 0 && Convert.ToString(P.KeyChar) == "."))
+            {
+                P.Handled = true;
+            }
+            if (P.KeyChar == '-')
+                if (Numero.Length!=0)
+                    P.Handled = true;
+            return P.Handled;
+        }
         public static void msg(string cadena)
         {
             MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -87,6 +103,10 @@ namespace HPResergerFunciones
         public static DialogResult msgYesNo(string cadena)
         {
             return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+        }
+        public static DialogResult MsgAcceptCancel(string cadena)
+        {
+            return MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
         public static DialogResult msgOkCancel(string cadena)
         {
@@ -752,6 +772,10 @@ namespace HPResergerFunciones
         }
         public static void ExportarAExcelOrdenandoColumnas(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string ruta, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas, int[] FilasNegritas, int[] ColumnaNegritas)
         {
+            ExportarAExcelOrdenandoColumnas(grd, CeldaCabecera, CeldaDefecto, ruta, nombrehoja, NombresCeldas, PosInicialGrilla, OrdendelasColumnas, FilasNegritas, ColumnaNegritas, "");
+        }
+        public static void ExportarAExcelOrdenandoColumnas(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas, int[] FilasNegritas, int[] ColumnaNegritas, string ScriptMacro)
+        {
             //int nume, numer;
             ExcelPackage Excel = new ExcelPackage();
             Excel.Workbook.Worksheets.Add(nombrehoja);
@@ -792,8 +816,10 @@ namespace HPResergerFunciones
             int Conta = grd.Rows.Count;
             //int i = 0;
             Hoja_Trabajo.Cells["a" + PosInicialGrilla].LoadFromDataTable(grd, true);
+            string Extesion = "x";
+            if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
             //Hoja_Trabajo
-            FileInfo file = new FileInfo(Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + ".xlsx");
+            FileInfo file = new FileInfo(Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{NameFile }" + $".xls{Extesion}");
             int ConCol = grd.Columns.Count;
             for (int i = 0; i < grd.Rows.Count + 1; i++)
             {
@@ -828,6 +854,14 @@ namespace HPResergerFunciones
                     Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = "#0.00";
                 if (item.DataType == typeof(DateTime))
                     Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            }
+            if (!string.IsNullOrWhiteSpace(ScriptMacro))
+            {
+                Excel.Workbook.CreateVBAProject();
+                var worksheet = Excel.Workbook.Worksheets.Add("HojaDeMacros");
+                worksheet.CodeModule.Code = ScriptMacro.ToString();
+                worksheet.CodeModule.Name = "HojaDeMacros";
+                Hoja_Trabajo.Workbook.CodeModule.Code = ScriptMacro;
             }
             if (!EstaArchivoAbierto(file.ToString()))
             {
@@ -890,7 +924,7 @@ namespace HPResergerFunciones
             }
             //if (aplicacion != null)
             //    aplicacion.Visible = true;
-            if (!string.IsNullOrWhiteSpace(ruta))
+            if (!string.IsNullOrWhiteSpace(NameFile))
             {
                 //libros_trabajo.SaveAs(ruta, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                 //libros_trabajo.Close(true);

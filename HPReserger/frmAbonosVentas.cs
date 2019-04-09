@@ -178,8 +178,8 @@ namespace HPReserger
             {
                 if ((int)item.Cells[xopcion.Name].Value == 1)
                 {
-                    if ((int)item.Cells[xIdComprobante.Name].Value == 8) { sumatorio -= (decimal)item.Cells[xpagar.Name].Value; señal = true; }
-                    else if ((int)item.Cells[xIdComprobante.Name].Value == 9) { sumatorio += (decimal)item.Cells[xpagar.Name].Value; señal = true; }
+                    if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) { sumatorio -= (decimal)item.Cells[xpagar.Name].Value; señal = true; }
+                    else if (ContenedorNotasDebito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) { sumatorio += (decimal)item.Cells[xpagar.Name].Value; señal = true; }
                     else
                         sumatorio += (decimal)item.Cells[xpagar.Name].Value;
                 }
@@ -335,6 +335,9 @@ namespace HPReserger
                 Nota = _notas;
             }
         }
+        int[] ContenedorIdNotas = { 8, 54, 58, 9, 55, 59 };
+        string[] ContenedorNotasCredito = { "8", "54", "58" };
+        string[] ContenedorNotasDebito = { "9", "55", "59" };
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             CalcularTotal();
@@ -344,7 +347,7 @@ namespace HPReserger
             {
                 string Tipos = item.Cells[xIdComprobante.Name].Value.ToString();
                 int Notas = (int)item.Cells[xIdComprobante.Name].Value;
-                if (Notas == 8 || Notas == 9) { } else { Notas = 0; }
+                if (ContenedorIdNotas.Contains(Notas)) { } else { Notas = 0; }
                 int tipoid = (int)item.Cells[xTipoId.Name].Value;
                 string Nrodoccliente = item.Cells[xTipoId.Name].Value.ToString();
                 string Nombrecliente = item.Cells[xNombres.Name].Value.ToString();
@@ -355,17 +358,17 @@ namespace HPReserger
                     NotaCreditoDebito Notita = ListadoNotas.Find(cust => cust.Tipoid == tipoid && cust.NroCLiente == Nrodoccliente && Notas == cust.Nota);
                     if (Notita == null)
                     {
-                        if (Tipos == "9")
+                        if (ContenedorNotasDebito.Contains(Tipos))// == "9")
                             ListadoNotas.Add(new NotaCreditoDebito(tipoid, Nrodoccliente, 0, Monto, Nombrecliente, Moneda, Notas));
-                        else if (Tipos == "8")
+                        else if (ContenedorNotasCredito.Contains(Tipos))// == "8")
                             ListadoNotas.Add(new NotaCreditoDebito(tipoid, Nrodoccliente, 0, -1 * Monto, Nombrecliente, Moneda, Notas));
                         else
                             ListadoNotas.Add(new NotaCreditoDebito(tipoid, Nrodoccliente, Monto, 0, Nombrecliente, Moneda, Notas));
                     }
                     else
                     {
-                        if (Tipos == "9") { Notita.MontoNotas += Monto; }
-                        else if (Tipos == "8") { Notita.MontoNotas -= Monto; }
+                        if (ContenedorNotasDebito.Contains(Tipos)) { Notita.MontoNotas += Monto; }
+                        else if (ContenedorNotasCredito.Contains(Tipos)) { Notita.MontoNotas -= Monto; }
                         else { Notita.Monto += Monto; }
                     }
                 }
@@ -418,13 +421,13 @@ namespace HPReserger
                 if ((int)item.Cells[xopcion.Name].Value == 1)
                 {
                     contador++;
-                    int Notas = (int)item.Cells[xIdComprobante.Name].Value; if (Notas == 8 || Notas == 9) { } else Notas = 0;
+                    int Notas = (int)item.Cells[xIdComprobante.Name].Value; if (ContenedorIdNotas.Contains(Notas)) { } else Notas = 0;
                     Cuentas Cuentita = ListCuentas.Find(cust => cust._Cuenta == item.Cells[xCuentaContable.Name].Value.ToString() && cust._tipo == Notas);
                     string Valtipo = item.Cells[xIdComprobante.Name].Value.ToString();
-                    if (Cuentita == null) ListCuentas.Add(new Cuentas(item.Cells[xCuentaContable.Name].Value.ToString(), Valtipo == "8" ? -1 * (decimal)item.Cells[xpagar.Name].Value : (decimal)item.Cells[xpagar.Name].Value, Notas));
+                    if (Cuentita == null) ListCuentas.Add(new Cuentas(item.Cells[xCuentaContable.Name].Value.ToString(), ContenedorNotasCredito.Contains(Valtipo) ? -1 * (decimal)item.Cells[xpagar.Name].Value : (decimal)item.Cells[xpagar.Name].Value, Notas));
                     else
                     {
-                        if (Valtipo == "8") { Cuentita._MOnto -= (decimal)item.Cells[xpagar.Name].Value; }
+                        if (ContenedorNotasCredito.Contains(Valtipo)) { Cuentita._MOnto -= (decimal)item.Cells[xpagar.Name].Value; }
                         else { Cuentita._MOnto += (decimal)item.Cells[xpagar.Name].Value; }
                     }
                 }
@@ -479,7 +482,7 @@ namespace HPReserger
                     string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                     DateTime fecha = DateTime.Now;
                     int Multiplicador = 1;
-                    if (item.Cells[xIdComprobante.Name].Value.ToString() == "8") Multiplicador = -1;
+                    if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) Multiplicador = -1;
                     CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                         , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Multiplicador * (decimal)item.Cells[xpagar.Name].Value,
                       Multiplicador * (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
@@ -492,14 +495,14 @@ namespace HPReserger
                 foreach (DataGridViewRow item in dtgconten.Rows)
                     if ((int)item.Cells[xopcion.Name].Value == 1)
                     {
-                        int Notas = (int)item.Cells[xIdComprobante.Name].Value; if (Notas == 8 || Notas == 9) { } else Notas = 0;
+                        int Notas = (int)item.Cells[xIdComprobante.Name].Value; if (ContenedorIdNotas.Contains(Notas)) { } else Notas = 0;
                         if (item.Cells[xCuentaContable.Name].Value.ToString() == items._Cuenta && items._tipo == Notas)
                         {
                             string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                             DateTime fecha = DateTime.Now;
                             CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, dtpFechaContable.Value, items._Cuenta, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                                 , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, (decimal)item.Cells[xpagar.Name].Value,
-                                 (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
+                                 (decimal)item.Cells[xTotal.Name].Value, item.Cells[xNameCorto.Name].Value.ToString() == "USD" ? (decimal)item.Cells[xTC.Name].Value : decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
 
                         }
                     }
@@ -513,14 +516,14 @@ namespace HPReserger
                     if (item.Cells[xNameCorto.Name].Value.ToString() == "USD")
                     {
                         decimal Dif = ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
-                        Dif = ((int)item.Cells[xIdComprobante.Name].Value == 8 ? -1 : 1) * Dif;
+                        Dif = (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString()) ? 1 : -1) * Dif;
                         if (Math.Abs(Dif) > 0)
                         {
                             string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                             DateTime fecha = DateTime.Now;
                             CapaLogica.InsertarAsientoFacturaDetalle(2, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                                 , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Dif,
-                                (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
+                                 decimal.Parse(txttotaldiferencial.Text), decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
                         }
                     }
                 }
@@ -534,7 +537,7 @@ namespace HPReserger
                 {
                     string Tipox = item.Cells[xIdComprobante.Name].Value.ToString();
                     int opcion = 1;
-                    if (Tipox == "8" || Tipox == "9") { opcion = 2; }
+                    if (ContenedorIdNotas.Contains(int.Parse(Tipox))) { opcion = 2; }
                     if (opcion == 2)
                         CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2, (int)cboempresa.SelectedValue);
                     else
@@ -561,7 +564,7 @@ namespace HPReserger
                 {
                     if (item.Cells[xNameCorto.Name].Value.ToString() == "USD")
                     {
-                        if ((int)item.Cells[xIdComprobante.Name].Value == 8)
+                        if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString()))
                             Diferencial -= ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
                         else
                             Diferencial += ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
@@ -585,7 +588,7 @@ namespace HPReserger
             }
             if (y == dtgconten.Columns[xpagar.Name].Index)
             {
-                if (dtgconten[xIdComprobante.Name, x].Value.ToString().ToUpper() == "8" || dtgconten[xIdComprobante.Name, x].Value.ToString().ToUpper() == "9")
+                if (ContenedorIdNotas.Contains((int)dtgconten[xIdComprobante.Name, x].Value))
                 {
                     dtgconten[y, x].ReadOnly = true;
                     dtgconten.CancelEdit();

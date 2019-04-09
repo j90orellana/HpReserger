@@ -100,6 +100,10 @@ namespace HPReserger
             {
                 MSG("No se Puede Seleccionar una cuenta de Cabecera");
             }
+            else if (dtgconten["estadocta", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
+            {
+                MSG("No se Puede Seleccionar la Cuenta esta Bloqueada");
+            }
             else
             {
                 aceptar = true;

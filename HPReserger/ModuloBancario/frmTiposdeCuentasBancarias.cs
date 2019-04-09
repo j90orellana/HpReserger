@@ -24,13 +24,11 @@ namespace HPReserger.ModuloBancario
             CargarCombos();
             CargarDatos();
             ModoEdicion(false);
+            txtbusBanco.CargarTextoporDefecto(); txtbuscci.CargarTextoporDefecto(); txtbusempresa.CargarTextoporDefecto(); txtbusmoneda.CargarTextoporDefecto(); txtbusnrocuenta.CargarTextoporDefecto();
         }
         public void ModoEdicion(Boolean a)
         {
-            cbobanco.Enabled = a;
-            cboempresa.Enabled = a;
-            cbomoneda.Enabled = a;
-            cbotipocuenta.Enabled = a;
+            cbobanco.ReadOnly = cboempresa.ReadOnly = cbomoneda.ReadOnly = cbotipocuenta.ReadOnly = !a;
             txtnrocci.ReadOnly = !a;
             txtnrocuenta.ReadOnly = !a;
             dtgconten.Enabled = !a;

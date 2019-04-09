@@ -37,9 +37,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtnumven = new HpResergerUserControls.TextBoxPer();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboestado = new HpResergerUserControls.ComboBoxPer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.cbotipoid = new HpResergerUserControls.ComboBoxPer(this.components);
             this.txtnroid = new HpResergerUserControls.TextBoxPer();
             this.label3 = new System.Windows.Forms.Label();
             this.txtnombre = new HpResergerUserControls.TextBoxPer();
@@ -72,6 +70,8 @@
             this.btnbuscar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.cboestado = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.cbotipoid = new HpResergerUserControls.ComboBoxPer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Location = new System.Drawing.Point(589, 16);
+            this.label13.Location = new System.Drawing.Point(589, 12);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 13);
             this.label13.TabIndex = 143;
@@ -93,7 +93,8 @@
             this.txtnumven.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnumven.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnumven.ForeColor = System.Drawing.Color.Black;
-            this.txtnumven.Location = new System.Drawing.Point(655, 12);
+            this.txtnumven.Format = null;
+            this.txtnumven.Location = new System.Drawing.Point(655, 8);
             this.txtnumven.MaxLength = 10;
             this.txtnumven.Name = "txtnumven";
             this.txtnumven.NextControlOnEnter = null;
@@ -110,49 +111,21 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(563, 41);
+            this.label2.Location = new System.Drawing.Point(563, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 145;
             this.label2.Text = "Estado:";
             // 
-            // cboestado
-            // 
-            this.cboestado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboestado.Enabled = false;
-            this.cboestado.FormattingEnabled = true;
-            this.cboestado.IndexText = null;
-            this.cboestado.Location = new System.Drawing.Point(613, 37);
-            this.cboestado.Name = "cboestado";
-            this.cboestado.ReadOnly = false;
-            this.cboestado.Size = new System.Drawing.Size(122, 21);
-            this.cboestado.TabIndex = 144;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(26, 41);
+            this.label1.Location = new System.Drawing.Point(26, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 149;
-            this.label1.Text = "Tipo Id";
-            // 
-            // cbotipoid
-            // 
-            this.cbotipoid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbotipoid.Enabled = false;
-            this.cbotipoid.FormattingEnabled = true;
-            this.cbotipoid.IndexText = null;
-            this.cbotipoid.Location = new System.Drawing.Point(71, 37);
-            this.cbotipoid.Name = "cbotipoid";
-            this.cbotipoid.ReadOnly = false;
-            this.cbotipoid.Size = new System.Drawing.Size(223, 21);
-            this.cbotipoid.TabIndex = 148;
-            this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
-            this.cbotipoid.Click += new System.EventHandler(this.cbotipoid_Click);
+            this.label1.Text = "Tipo Id:";
             // 
             // txtnroid
             // 
@@ -162,13 +135,14 @@
             this.txtnroid.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnroid.ForeColor = System.Drawing.Color.Black;
-            this.txtnroid.Location = new System.Drawing.Point(380, 37);
+            this.txtnroid.Format = null;
+            this.txtnroid.Location = new System.Drawing.Point(378, 32);
             this.txtnroid.MaxLength = 10;
             this.txtnroid.Name = "txtnroid";
             this.txtnroid.NextControlOnEnter = null;
             this.txtnroid.ReadOnly = true;
             this.txtnroid.Size = new System.Drawing.Size(151, 21);
-            this.txtnroid.TabIndex = 146;
+            this.txtnroid.TabIndex = 6;
             this.txtnroid.Text = "00000000";
             this.txtnroid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnroid.TextoDefecto = "00000000";
@@ -180,11 +154,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(336, 41);
+            this.label3.Location = new System.Drawing.Point(336, 36);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 147;
-            this.label3.Text = "Nro Id";
+            this.label3.Text = "Nro Id:";
             // 
             // txtnombre
             // 
@@ -194,13 +168,14 @@
             this.txtnombre.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnombre.ForeColor = System.Drawing.Color.Black;
-            this.txtnombre.Location = new System.Drawing.Point(71, 61);
+            this.txtnombre.Format = null;
+            this.txtnombre.Location = new System.Drawing.Point(71, 55);
             this.txtnombre.MaxLength = 100;
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.NextControlOnEnter = null;
             this.txtnombre.ReadOnly = true;
-            this.txtnombre.Size = new System.Drawing.Size(223, 21);
-            this.txtnombre.TabIndex = 150;
+            this.txtnombre.Size = new System.Drawing.Size(243, 21);
+            this.txtnombre.TabIndex = 8;
             this.txtnombre.Text = "Nombre Vendedor";
             this.txtnombre.TextoDefecto = "Nombre Vendedor";
             this.txtnombre.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -210,11 +185,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(17, 65);
+            this.label4.Location = new System.Drawing.Point(15, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 151;
-            this.label4.Text = "Nombres";
+            this.label4.Text = "Nombres:";
             // 
             // txtapellido
             // 
@@ -224,13 +199,14 @@
             this.txtapellido.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtapellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtapellido.ForeColor = System.Drawing.Color.Black;
-            this.txtapellido.Location = new System.Drawing.Point(380, 61);
+            this.txtapellido.Format = null;
+            this.txtapellido.Location = new System.Drawing.Point(378, 55);
             this.txtapellido.MaxLength = 100;
             this.txtapellido.Name = "txtapellido";
             this.txtapellido.NextControlOnEnter = null;
             this.txtapellido.ReadOnly = true;
-            this.txtapellido.Size = new System.Drawing.Size(355, 21);
-            this.txtapellido.TabIndex = 152;
+            this.txtapellido.Size = new System.Drawing.Size(357, 21);
+            this.txtapellido.TabIndex = 9;
             this.txtapellido.Text = "Apellidos Vendedor";
             this.txtapellido.TextoDefecto = "Apellidos Vendedor";
             this.txtapellido.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -240,11 +216,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(320, 65);
+            this.label5.Location = new System.Drawing.Point(320, 59);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 153;
-            this.label5.Text = "Apellidos";
+            this.label5.Text = "Apellidos:";
             // 
             // txtgerencia
             // 
@@ -254,13 +230,14 @@
             this.txtgerencia.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtgerencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtgerencia.ForeColor = System.Drawing.Color.Black;
-            this.txtgerencia.Location = new System.Drawing.Point(71, 84);
+            this.txtgerencia.Format = null;
+            this.txtgerencia.Location = new System.Drawing.Point(71, 78);
             this.txtgerencia.MaxLength = 100;
             this.txtgerencia.Name = "txtgerencia";
             this.txtgerencia.NextControlOnEnter = null;
             this.txtgerencia.ReadOnly = true;
             this.txtgerencia.Size = new System.Drawing.Size(183, 21);
-            this.txtgerencia.TabIndex = 154;
+            this.txtgerencia.TabIndex = 10;
             this.txtgerencia.Text = "Gerencia Vendedor";
             this.txtgerencia.TextoDefecto = "Gerencia Vendedor";
             this.txtgerencia.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -270,7 +247,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(13, 88);
+            this.label6.Location = new System.Drawing.Point(16, 82);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 13);
             this.label6.TabIndex = 155;
@@ -284,13 +261,14 @@
             this.txtarea.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtarea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtarea.ForeColor = System.Drawing.Color.Black;
-            this.txtarea.Location = new System.Drawing.Point(293, 84);
+            this.txtarea.Format = null;
+            this.txtarea.Location = new System.Drawing.Point(293, 78);
             this.txtarea.MaxLength = 100;
             this.txtarea.Name = "txtarea";
             this.txtarea.NextControlOnEnter = null;
             this.txtarea.ReadOnly = true;
             this.txtarea.Size = new System.Drawing.Size(153, 21);
-            this.txtarea.TabIndex = 156;
+            this.txtarea.TabIndex = 11;
             this.txtarea.Text = "Area Vendedor";
             this.txtarea.TextoDefecto = "Area Vendedor";
             this.txtarea.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -300,7 +278,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(260, 88);
+            this.label7.Location = new System.Drawing.Point(260, 82);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 13);
             this.label7.TabIndex = 157;
@@ -314,13 +292,14 @@
             this.txtcargo.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtcargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcargo.ForeColor = System.Drawing.Color.Black;
-            this.txtcargo.Location = new System.Drawing.Point(493, 84);
+            this.txtcargo.Format = null;
+            this.txtcargo.Location = new System.Drawing.Point(493, 78);
             this.txtcargo.MaxLength = 100;
             this.txtcargo.Name = "txtcargo";
             this.txtcargo.NextControlOnEnter = null;
             this.txtcargo.ReadOnly = true;
             this.txtcargo.Size = new System.Drawing.Size(242, 21);
-            this.txtcargo.TabIndex = 158;
+            this.txtcargo.TabIndex = 12;
             this.txtcargo.Text = "Cargo Vendedor";
             this.txtcargo.TextoDefecto = "Cargo Vendedor";
             this.txtcargo.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -330,7 +309,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Location = new System.Drawing.Point(451, 88);
+            this.label8.Location = new System.Drawing.Point(451, 82);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 13);
             this.label8.TabIndex = 159;
@@ -340,7 +319,7 @@
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre1.Location = new System.Drawing.Point(0, 108);
+            this.separadorOre1.Location = new System.Drawing.Point(0, 101);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
@@ -395,14 +374,14 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(15, 128);
+            this.dtgconten.Location = new System.Drawing.Point(12, 122);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgconten.Size = new System.Drawing.Size(808, 289);
+            this.dtgconten.Size = new System.Drawing.Size(811, 295);
             this.dtgconten.TabIndex = 161;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
@@ -518,7 +497,7 @@
             this.btncancelar.Location = new System.Drawing.Point(741, 423);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 23);
-            this.btncancelar.TabIndex = 164;
+            this.btncancelar.TabIndex = 21;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -531,10 +510,10 @@
             this.btnaceptar.Enabled = false;
             this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(654, 423);
+            this.btnaceptar.Location = new System.Drawing.Point(653, 423);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 23);
-            this.btnaceptar.TabIndex = 163;
+            this.btnaceptar.TabIndex = 20;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -549,10 +528,10 @@
             this.btnmodificar.ForeColor = System.Drawing.Color.Black;
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmodificar.Location = new System.Drawing.Point(741, 82);
+            this.btnmodificar.Location = new System.Drawing.Point(741, 76);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 24);
-            this.btnmodificar.TabIndex = 166;
+            this.btnmodificar.TabIndex = 2;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
@@ -566,10 +545,10 @@
             this.btnnuevo.ForeColor = System.Drawing.Color.Black;
             this.btnnuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnnuevo.Image")));
             this.btnnuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnnuevo.Location = new System.Drawing.Point(741, 59);
+            this.btnnuevo.Location = new System.Drawing.Point(741, 53);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 24);
-            this.btnnuevo.TabIndex = 165;
+            this.btnnuevo.TabIndex = 1;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -580,7 +559,7 @@
             this.btnbuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnbuscar.BackgroundImage")));
             this.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnbuscar.Enabled = false;
-            this.btnbuscar.Location = new System.Drawing.Point(537, 37);
+            this.btnbuscar.Location = new System.Drawing.Point(531, 32);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(21, 21);
             this.btnbuscar.TabIndex = 167;
@@ -592,7 +571,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 16);
+            this.label9.Location = new System.Drawing.Point(12, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(123, 13);
             this.label9.TabIndex = 168;
@@ -603,17 +582,45 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(12, 113);
+            this.label10.Location = new System.Drawing.Point(12, 106);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(141, 13);
             this.label10.TabIndex = 168;
             this.label10.Text = "Listado de Vendedores:";
+            // 
+            // cboestado
+            // 
+            this.cboestado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboestado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboestado.FormattingEnabled = true;
+            this.cboestado.IndexText = null;
+            this.cboestado.Location = new System.Drawing.Point(608, 32);
+            this.cboestado.Name = "cboestado";
+            this.cboestado.ReadOnly = false;
+            this.cboestado.Size = new System.Drawing.Size(127, 21);
+            this.cboestado.TabIndex = 7;
+            // 
+            // cbotipoid
+            // 
+            this.cbotipoid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbotipoid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipoid.FormattingEnabled = true;
+            this.cbotipoid.IndexText = null;
+            this.cbotipoid.Location = new System.Drawing.Point(71, 32);
+            this.cbotipoid.Name = "cbotipoid";
+            this.cbotipoid.ReadOnly = false;
+            this.cbotipoid.Size = new System.Drawing.Size(243, 21);
+            this.cbotipoid.TabIndex = 5;
+            this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
+            this.cbotipoid.Click += new System.EventHandler(this.cbotipoid_Click);
             // 
             // frmVendedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 454);
+            this.Controls.Add(this.cbotipoid);
+            this.Controls.Add(this.cboestado);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnbuscar);
@@ -632,11 +639,9 @@
             this.Controls.Add(this.txtapellido);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtnombre);
-            this.Controls.Add(this.cbotipoid);
             this.Controls.Add(this.txtnroid);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cboestado);
             this.Controls.Add(this.txtnumven);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
@@ -659,9 +664,7 @@
         private System.Windows.Forms.Label label13;
         private HpResergerUserControls.TextBoxPer txtnumven;
         private System.Windows.Forms.Label label2;
-        private HpResergerUserControls.ComboBoxPer cboestado;
         private System.Windows.Forms.Label label1;
-        private HpResergerUserControls.ComboBoxPer cbotipoid;
         private HpResergerUserControls.TextBoxPer txtnroid;
         private System.Windows.Forms.Label label3;
         private HpResergerUserControls.TextBoxPer txtnombre;
@@ -694,5 +697,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn area;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadox;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoletras;
+        private HpResergerUserControls.ComboBoxPer cboestado;
+        private HpResergerUserControls.ComboBoxPer cbotipoid;
     }
 }

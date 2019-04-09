@@ -140,10 +140,10 @@
             // rdnrodoc
             // 
             this.rdnrodoc.AutoSize = true;
-            this.rdnrodoc.Location = new System.Drawing.Point(84, 17);
+            this.rdnrodoc.Location = new System.Drawing.Point(69, 17);
             this.rdnrodoc.Name = "rdnrodoc";
             this.rdnrodoc.Size = new System.Drawing.Size(64, 17);
-            this.rdnrodoc.TabIndex = 1;
+            this.rdnrodoc.TabIndex = 31;
             this.rdnrodoc.Text = "NroDoc";
             this.rdnrodoc.UseVisualStyleBackColor = true;
             this.rdnrodoc.CheckedChanged += new System.EventHandler(this.rdnrodoc_CheckedChanged);
@@ -155,7 +155,7 @@
             this.rdid.Location = new System.Drawing.Point(12, 17);
             this.rdid.Name = "rdid";
             this.rdid.Size = new System.Drawing.Size(57, 17);
-            this.rdid.TabIndex = 1;
+            this.rdid.TabIndex = 30;
             this.rdid.TabStop = true;
             this.rdid.Text = "TipoId";
             this.rdid.UseVisualStyleBackColor = true;
@@ -164,10 +164,10 @@
             // rdEstadoCivil
             // 
             this.rdEstadoCivil.AutoSize = true;
-            this.rdEstadoCivil.Location = new System.Drawing.Point(250, 17);
+            this.rdEstadoCivil.Location = new System.Drawing.Point(204, 17);
             this.rdEstadoCivil.Name = "rdEstadoCivil";
             this.rdEstadoCivil.Size = new System.Drawing.Size(81, 17);
-            this.rdEstadoCivil.TabIndex = 0;
+            this.rdEstadoCivil.TabIndex = 33;
             this.rdEstadoCivil.Text = "EstadoCivil";
             this.rdEstadoCivil.UseVisualStyleBackColor = true;
             this.rdEstadoCivil.CheckedChanged += new System.EventHandler(this.rdEstadoCivil_CheckedChanged);
@@ -175,10 +175,10 @@
             // rdnombre
             // 
             this.rdnombre.AutoSize = true;
-            this.rdnombre.Location = new System.Drawing.Point(169, 17);
+            this.rdnombre.Location = new System.Drawing.Point(133, 17);
             this.rdnombre.Name = "rdnombre";
             this.rdnombre.Size = new System.Drawing.Size(71, 17);
-            this.rdnombre.TabIndex = 0;
+            this.rdnombre.TabIndex = 32;
             this.rdnombre.Text = "Nombres";
             this.rdnombre.UseVisualStyleBackColor = true;
             this.rdnombre.CheckedChanged += new System.EventHandler(this.rdnombre_CheckedChanged);
@@ -193,7 +193,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(12, 204);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(476, 22);
-            this.txtBuscar.TabIndex = 95;
+            this.txtBuscar.TabIndex = 34;
             this.txtBuscar.BuscarClick += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
             this.txtBuscar.BuscarTextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
             // 
@@ -211,7 +211,7 @@
             this.txtocupacion.Name = "txtocupacion";
             this.txtocupacion.NextControlOnEnter = this.btnaceptar;
             this.txtocupacion.Size = new System.Drawing.Size(177, 21);
-            this.txtocupacion.TabIndex = 10;
+            this.txtocupacion.TabIndex = 26;
             this.txtocupacion.Text = "Ingrese Ocupación";
             this.txtocupacion.TextoDefecto = "Ingrese Ocupación";
             this.txtocupacion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -225,7 +225,7 @@
             this.btnaceptar.Location = new System.Drawing.Point(777, 530);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 23);
-            this.btnaceptar.TabIndex = 11;
+            this.btnaceptar.TabIndex = 50;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -245,7 +245,7 @@
             this.txtemail.Name = "txtemail";
             this.txtemail.NextControlOnEnter = this.txtocupacion;
             this.txtemail.Size = new System.Drawing.Size(235, 21);
-            this.txtemail.TabIndex = 9;
+            this.txtemail.TabIndex = 25;
             this.txtemail.Text = "correo@prueba.com";
             this.txtemail.TextoDefecto = "correo@prueba.com";
             this.txtemail.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -261,7 +261,7 @@
             this.cbodistrito.Name = "cbodistrito";
             this.cbodistrito.ReadOnly = false;
             this.cbodistrito.Size = new System.Drawing.Size(314, 21);
-            this.cbodistrito.TabIndex = 89;
+            this.cbodistrito.TabIndex = 24;
             this.cbodistrito.SelectedIndexChanged += new System.EventHandler(this.cbodistrito_SelectedIndexChanged);
             this.cbodistrito.Click += new System.EventHandler(this.cbodistrito_Click);
             // 
@@ -275,7 +275,7 @@
             this.cboprovincia.Name = "cboprovincia";
             this.cboprovincia.ReadOnly = false;
             this.cboprovincia.Size = new System.Drawing.Size(177, 21);
-            this.cboprovincia.TabIndex = 89;
+            this.cboprovincia.TabIndex = 23;
             this.cboprovincia.SelectedIndexChanged += new System.EventHandler(this.cboprovincia_SelectedIndexChanged);
             this.cboprovincia.Click += new System.EventHandler(this.cboprovincia_Click);
             // 
@@ -289,7 +289,7 @@
             this.cbodepartamento.Name = "cbodepartamento";
             this.cbodepartamento.ReadOnly = false;
             this.cbodepartamento.Size = new System.Drawing.Size(175, 21);
-            this.cbodepartamento.TabIndex = 89;
+            this.cbodepartamento.TabIndex = 22;
             this.cbodepartamento.SelectedIndexChanged += new System.EventHandler(this.cbodepartamento_SelectedIndexChanged);
             this.cbodepartamento.Click += new System.EventHandler(this.cbodepartamento_Click);
             // 
@@ -303,7 +303,7 @@
             this.cbocivil.Name = "cbocivil";
             this.cbocivil.ReadOnly = false;
             this.cbocivil.Size = new System.Drawing.Size(206, 21);
-            this.cbocivil.TabIndex = 89;
+            this.cbocivil.TabIndex = 18;
             this.cbocivil.Click += new System.EventHandler(this.cbocivil_Click);
             // 
             // cbosexo
@@ -316,7 +316,7 @@
             this.cbosexo.Name = "cbosexo";
             this.cbosexo.ReadOnly = false;
             this.cbosexo.Size = new System.Drawing.Size(177, 21);
-            this.cbosexo.TabIndex = 89;
+            this.cbosexo.TabIndex = 17;
             this.cbosexo.Click += new System.EventHandler(this.cbosexo_Click);
             // 
             // cbopersona
@@ -329,7 +329,7 @@
             this.cbopersona.Name = "cbopersona";
             this.cbopersona.ReadOnly = false;
             this.cbopersona.Size = new System.Drawing.Size(235, 21);
-            this.cbopersona.TabIndex = 89;
+            this.cbopersona.TabIndex = 16;
             // 
             // txtapemat
             // 
@@ -345,7 +345,7 @@
             this.txtapemat.Name = "txtapemat";
             this.txtapemat.NextControlOnEnter = this.txtdireccion;
             this.txtapemat.Size = new System.Drawing.Size(206, 21);
-            this.txtapemat.TabIndex = 5;
+            this.txtapemat.TabIndex = 15;
             this.txtapemat.Text = "Ingrese Apellido Materno";
             this.txtapemat.TextoDefecto = "Ingrese Apellido Materno";
             this.txtapemat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -365,7 +365,7 @@
             this.txtdireccion.Name = "txtdireccion";
             this.txtdireccion.NextControlOnEnter = this.txttelfijo;
             this.txtdireccion.Size = new System.Drawing.Size(413, 21);
-            this.txtdireccion.TabIndex = 6;
+            this.txtdireccion.TabIndex = 19;
             this.txtdireccion.Text = "Ingrese Dirección";
             this.txtdireccion.TextoDefecto = "Ingrese Dirección";
             this.txtdireccion.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -385,7 +385,7 @@
             this.txttelfijo.Name = "txttelfijo";
             this.txttelfijo.NextControlOnEnter = this.txttelcelular;
             this.txttelfijo.Size = new System.Drawing.Size(105, 21);
-            this.txttelfijo.TabIndex = 7;
+            this.txttelfijo.TabIndex = 20;
             this.txttelfijo.Text = "00000";
             this.txttelfijo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttelfijo.TextoDefecto = "00000";
@@ -406,7 +406,7 @@
             this.txttelcelular.Name = "txttelcelular";
             this.txttelcelular.NextControlOnEnter = this.txtemail;
             this.txttelcelular.Size = new System.Drawing.Size(135, 21);
-            this.txttelcelular.TabIndex = 8;
+            this.txttelcelular.TabIndex = 21;
             this.txttelcelular.Text = "00000";
             this.txttelcelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttelcelular.TextoDefecto = "00000";
@@ -427,7 +427,7 @@
             this.txtapetpat.Name = "txtapetpat";
             this.txtapetpat.NextControlOnEnter = this.txtapemat;
             this.txtapetpat.Size = new System.Drawing.Size(177, 21);
-            this.txtapetpat.TabIndex = 4;
+            this.txtapetpat.TabIndex = 14;
             this.txtapetpat.Text = "Ingrese Apellido Paterno";
             this.txtapetpat.TextoDefecto = "Ingrese Apellido Paterno";
             this.txtapetpat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -447,7 +447,7 @@
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.NextControlOnEnter = this.txtapetpat;
             this.txtnombre.Size = new System.Drawing.Size(235, 21);
-            this.txtnombre.TabIndex = 3;
+            this.txtnombre.TabIndex = 13;
             this.txtnombre.Text = "Ingrese Nombre";
             this.txtnombre.TextoDefecto = "Ingrese Nombre";
             this.txtnombre.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -467,7 +467,7 @@
             this.txtnroid.Name = "txtnroid";
             this.txtnroid.NextControlOnEnter = this.txtnombre;
             this.txtnroid.Size = new System.Drawing.Size(206, 21);
-            this.txtnroid.TabIndex = 2;
+            this.txtnroid.TabIndex = 12;
             this.txtnroid.Text = "000000";
             this.txtnroid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnroid.TextoDefecto = "000000";
@@ -484,7 +484,7 @@
             this.cbotipoid.Name = "cbotipoid";
             this.cbotipoid.ReadOnly = false;
             this.cbotipoid.Size = new System.Drawing.Size(177, 21);
-            this.cbotipoid.TabIndex = 1;
+            this.cbotipoid.TabIndex = 11;
             this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
             this.cbotipoid.Click += new System.EventHandler(this.cbotipoid_Click);
             // 
@@ -503,7 +503,7 @@
             this.txtcodigo.NextControlOnEnter = this.txtnroid;
             this.txtcodigo.ReadOnly = true;
             this.txtcodigo.Size = new System.Drawing.Size(100, 21);
-            this.txtcodigo.TabIndex = 0;
+            this.txtcodigo.TabIndex = 10;
             this.txtcodigo.Text = "0";
             this.txtcodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtcodigo.TextoDefecto = "0";
@@ -519,7 +519,7 @@
             this.btneliminar.Location = new System.Drawing.Point(865, 60);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 23);
-            this.btneliminar.TabIndex = 75;
+            this.btneliminar.TabIndex = 3;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btneliminar.UseVisualStyleBackColor = true;
@@ -533,7 +533,7 @@
             this.btnmodificar.Location = new System.Drawing.Point(865, 36);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 23);
-            this.btnmodificar.TabIndex = 76;
+            this.btnmodificar.TabIndex = 2;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
@@ -546,7 +546,7 @@
             this.btnnuevo.Location = new System.Drawing.Point(865, 12);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 23);
-            this.btnnuevo.TabIndex = 74;
+            this.btnnuevo.TabIndex = 1;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -561,7 +561,7 @@
             this.btncancelar.Location = new System.Drawing.Point(865, 530);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 23);
-            this.btncancelar.TabIndex = 77;
+            this.btncancelar.TabIndex = 51;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;

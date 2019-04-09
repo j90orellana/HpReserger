@@ -71,14 +71,18 @@ namespace HPReserger
         string[] Tcambio = new string[3];
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (Carga == false)
+            try
             {
-                webBrowser1.Document.GetElementById("mes").SetAttribute("value", comboMesAño1.getMesNumero().ToString("00"));
-                webBrowser1.Document.GetElementById("anho").SetAttribute("value", comboMesAño1.GetAño().ToString());
-                webBrowser1.Document.GetElementById("B1").InvokeMember("click");
-                Carga = true;
-                return;
+                if (Carga == false)
+                {
+                    webBrowser1.Document.GetElementById("mes").SetAttribute("value", comboMesAño1.getMesNumero().ToString("00"));
+                    webBrowser1.Document.GetElementById("anho").SetAttribute("value", comboMesAño1.GetAño().ToString());
+                    webBrowser1.Document.GetElementById("B1").InvokeMember("click");
+                    Carga = true;
+                    return;
+                }
             }
+            catch (Exception) { MSG("No hay Conexion a Sunat"); return; }
             if (Carga == true)
             {
                 tablita.Clear();
@@ -215,7 +219,7 @@ namespace HPReserger
             }
             else
             {
-                msg("No Hay Datos para este Mes");
+                msg("No Hay Datos de Tipo de Cambio para este Mes");
             }
             //tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
             //dtgconten.DataSource = tablita;

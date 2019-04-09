@@ -1194,6 +1194,8 @@
             // 
             // cbotipodoc
             // 
+            this.cbotipodoc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbotipodoc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbotipodoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipodoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipodoc.FormattingEnabled = true;

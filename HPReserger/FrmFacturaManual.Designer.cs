@@ -171,6 +171,7 @@
             this.PanelRecibo = new System.Windows.Forms.Panel();
             this.PanelFactura = new System.Windows.Forms.Panel();
             this.PanelNotaCredito = new System.Windows.Forms.Panel();
+            this.chkfac = new System.Windows.Forms.CheckBox();
             this.rdbInteres = new System.Windows.Forms.RadioButton();
             this.rdbDescuento = new System.Windows.Forms.RadioButton();
             this.rdbAnulacion = new System.Windows.Forms.RadioButton();
@@ -621,6 +622,8 @@
             // 
             // cbotipodoc
             // 
+            this.cbotipodoc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbotipodoc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbotipodoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipodoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotipodoc.FormattingEnabled = true;
@@ -1807,6 +1810,7 @@
             // PanelNotaCredito
             // 
             this.PanelNotaCredito.BackColor = System.Drawing.Color.Transparent;
+            this.PanelNotaCredito.Controls.Add(this.chkfac);
             this.PanelNotaCredito.Controls.Add(this.rdbInteres);
             this.PanelNotaCredito.Controls.Add(this.rdbDescuento);
             this.PanelNotaCredito.Controls.Add(this.rdbAnulacion);
@@ -1818,6 +1822,18 @@
             this.PanelNotaCredito.Name = "PanelNotaCredito";
             this.PanelNotaCredito.Size = new System.Drawing.Size(567, 48);
             this.PanelNotaCredito.TabIndex = 257;
+            // 
+            // chkfac
+            // 
+            this.chkfac.AutoSize = true;
+            this.chkfac.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkfac.Location = new System.Drawing.Point(227, 4);
+            this.chkfac.Name = "chkfac";
+            this.chkfac.Size = new System.Drawing.Size(116, 17);
+            this.chkfac.TabIndex = 324;
+            this.chkfac.Text = "Doc. sin Registrar";
+            this.chkfac.UseVisualStyleBackColor = true;
+            this.chkfac.CheckedChanged += new System.EventHandler(this.chkfac_CheckedChanged);
             // 
             // rdbInteres
             // 
@@ -2140,5 +2156,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yFechaModifica;
         private System.Windows.Forms.DataGridViewTextBoxColumn yNroComprobanteRef;
         private System.Windows.Forms.Button btnFacturasIncompletas;
+        private System.Windows.Forms.CheckBox chkfac;
     }
 }

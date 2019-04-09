@@ -47,12 +47,14 @@ namespace HPReserger
         public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void btngenerar_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             FechaPeriodo = comboMesAño1.GetFechaPRimerDia();
             NombreEmpresa = cboempresa.Text;
             if (cboempresa.Items.Count == 0) { msg("No hay Empresas"); return; }
             if (cboempresa.SelectedValue == null) { msg("Seleccion una Empresa"); cboempresa.Focus(); return; }
             dtgconten.DataSource = CapaLogica.MayorCuentasxEmpresas((int)cboempresa.SelectedValue, comboMesAño1.getMesNumero(), comboMesAño1.GetFecha().Year);
             lblmensaje.Text = $"Total de Registros: {dtgconten.RowCount}";
+            Cursor = Cursors.Default;
             if (dtgconten.RowCount == 0) msg("No Hay Registros");
         }
         private void btncancelar_Click(object sender, EventArgs e)
@@ -109,7 +111,7 @@ namespace HPReserger
                 {
                     item.ColumnName = dtgconten.Columns[item.ColumnName].HeaderText;
                 }
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { }, "");
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
             }
             else msg("No hay Registros en la Grilla");

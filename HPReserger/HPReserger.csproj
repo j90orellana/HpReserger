@@ -628,10 +628,10 @@
     <Compile Include="ModuloVentas\frmlistarCotizacionesCLienteDEtalle.Designer.cs">
       <DependentUpon>frmlistarCotizacionesCLienteDEtalle.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmlistarcuentas.cs">
+    <Compile Include="ModuloContable\frmlistarcuentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmlistarcuentas.designer.cs">
+    <Compile Include="ModuloContable\frmlistarcuentas.designer.cs">
       <DependentUpon>frmlistarcuentas.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmListarCuentasParaConfigurar.cs">
@@ -1754,7 +1754,7 @@
     <EmbeddedResource Include="ModuloVentas\frmlistarCotizacionesCLienteDEtalle.resx">
       <DependentUpon>frmlistarCotizacionesCLienteDEtalle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmlistarcuentas.resx">
+    <EmbeddedResource Include="ModuloContable\frmlistarcuentas.resx">
       <DependentUpon>frmlistarcuentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListarCuentasParaConfigurar.resx">

@@ -20,7 +20,6 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
-
         public int _PlazoPago { get; set; }
         public int _idempresa { get; set; }
         public int Estado { get; set; }
@@ -34,6 +33,11 @@ namespace HPReserger
         public int OldProyecto { get; private set; }
         public DateTime OldFechaContable { get; private set; }
         public int OldId { get; private set; }
+        public string OldNumFac { get; private set; }
+        public string OldProveedor { get; private set; }
+        public int OldIdComprobante { get; private set; }
+        public int OldIdComprobanteSelect { get; private set; }
+        public int NotasEstado { get; private set; }
 
         private void FrmFacturaManual_Load(object sender, EventArgs e)
         {
@@ -103,7 +107,7 @@ namespace HPReserger
             btnmasdetracion.Enabled = !a;
             ////
             txtNumRef.ReadOnly = txtSerieRef.ReadOnly = a;
-
+            chkfac.Enabled = !a;
         }
         DataTable TDebeHaber;
         DataTable TGrava;
@@ -134,7 +138,7 @@ namespace HPReserger
         }
         public void CargarTipoComprobante()
         {
-            CapaLogica.TablaComprobantes(cbotipodoc);
+            CapaLogica.TablaComprobantesConCodigo(cbotipodoc);
         }
         private void txtcodfactura_Leave(object sender, EventArgs e)
         {
@@ -165,6 +169,10 @@ namespace HPReserger
         public void Msg(string cadena)
         {
             HPResergerFunciones.Utilitarios.msg(cadena);
+        }
+        public DialogResult MsgAceptCancel(string cadena)
+        {
+            return HPResergerFunciones.Utilitarios.MsgAcceptCancel(cadena);
         }
         private void txtnrofactura_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -351,6 +359,7 @@ namespace HPReserger
                 txtmontodetraccion.Text = "0.00";
             }
             if (Dtgconten.RowCount > 0) btnAceptar.Enabled = false;
+            txtmontodetraccion.Text = (decimal.Parse(txtmontodetraccion.Text)).ToString(txtmontodetraccion.Format);
         }
         frmdetracciones frdetracion;
         private void btnmasdetracion_Click(object sender, EventArgs e)
@@ -424,12 +433,13 @@ namespace HPReserger
                     decimal valor = resul * (numdetraccion.Value / 100);
                     if (valor < 1) detracion = 1;
                     else
-                        detracion = Math.Round(resul * (numdetraccion.Value / 100), 0);
+                        detracion = Math.Round(resul * (numdetraccion.Value / 100), 1);
                 }
                 else
                     detracion = resul * (numdetraccion.Value / 100);
-                txtmontodetraccion.Text = detracion.ToString("n2");
+                txtmontodetraccion.Text = detracion.ToString(txtmontodetraccion.Format);
             }
+            else txtDifDetra.Text = txttotalfac.Text;
             if (Dtgconten.RowCount > 0) btnAceptar.Enabled = false;
             //CalcularDiferenciaTOtalDetra();
         }
@@ -560,18 +570,29 @@ namespace HPReserger
                 {
                     if (cbomoneda.SelectedValue.ToString() == "2")
                     {
-                        decimal Valor = 0;
-                        decimal.TryParse(Dtgconten[xImporteME.Name, x].Value == null ? "0" : Dtgconten[xImporteME.Name, x].Value.ToString(), out Valor);
-                        Dtgconten[xImporteMN.Name, x].Value = Valor * decimal.Parse(txttipocambio.Text == ".000" ? "1" : txttipocambio.Text == "" ? "1" : txttipocambio.Text);
+                        if (Dtgconten[xUsuario.Name, x].Value != null)
+                            if ((Dtgconten[xUsuario.Name, x].Value.ToString() == "" ? 1 : (int)Dtgconten[xUsuario.Name, x].Value) != 999)
+                            {
+                                decimal Valor = 0;
+                                decimal.TryParse(Dtgconten[xImporteME.Name, x].Value == null ? "0" : Dtgconten[xImporteME.Name, x].Value.ToString(), out Valor);
+                                Dtgconten[xImporteMN.Name, x].Value = Redondear(Valor * decimal.Parse(txttipocambio.Text == ".000" ? "1" : txttipocambio.Text == "" ? "1" : txttipocambio.Text));
+                            }
                     }
                 }
                 else if (y == Dtgconten.Columns[xImporteMN.Name].Index)
                 {
                     if (cbomoneda.SelectedValue.ToString() == "1")
                     {
-                        decimal Valor = 0;
-                        decimal.TryParse(Dtgconten[xImporteMN.Name, x].Value == null ? "0" : Dtgconten[xImporteMN.Name, x].Value.ToString(), out Valor);
-                        Dtgconten[xImporteME.Name, x].Value = Valor / decimal.Parse(txttipocambio.Text == ".000" ? "1" : txttipocambio.Text == "" ? "1" : txttipocambio.Text);
+                        if (Dtgconten[xUsuario.Name, x].Value != null)
+                            if ((Dtgconten[xUsuario.Name, x].Value.ToString() == "" ? 1 : (int)Dtgconten[xUsuario.Name, x].Value) != 999)
+                            {
+                                decimal Valor = 0;
+                                decimal.TryParse(Dtgconten[xImporteMN.Name, x].Value == null ? "0" : Dtgconten[xImporteMN.Name, x].Value.ToString(), out Valor);
+                                decimal TC = decimal.Parse(txttipocambio.Text == ".000" ? "1" : txttipocambio.Text == "" ? "1" : txttipocambio.Text);
+                                //Para no dividir por Cero
+                                TC = TC == 0 ? 1 : TC;
+                                Dtgconten[xImporteME.Name, x].Value = Redondear(Valor / TC);
+                            }
                     }
                 }
                 else
@@ -606,6 +627,10 @@ namespace HPReserger
         public DialogResult msgyes(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
+        }
+        public DialogResult MsgYesNOCancel(string cadena)
+        {
+            return HPResergerFunciones.Utilitarios.msgYesNoCancel(cadena);
         }
         private void Dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
@@ -657,6 +682,7 @@ namespace HPReserger
             cbomoneda_SelectedValueChanged(sender, e);
         }
         int FacturaEstado = 0;
+        int[] ListaIdNotas = { 8, 9 };
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
             if (Estado == 10)
@@ -672,7 +698,21 @@ namespace HPReserger
             }
             if (Estado == 1 || Estado == 2)
             {
-                if (_TipoDoc == 3 || _TipoDoc == 2) { BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { Msg("El Documento de Referencia no se ha Encontrado"); return; } }
+                if (_TipoDoc == 3 || _TipoDoc == 2)
+                {
+                    if (chkfac.Checked)
+                    {
+                        //if (Dtgconten.RowCount > 0)
+                        //{
+                        //    if (txtSerieRef.Text.Length == 0) { Msg("Ingrese Serie del Documento de Referencia"); txtSerieRef.Focus(); return; }
+                        //    if (txtNumRef.Text.Length == 0) { Msg("Ingrese Número del Documento de Referencia"); txtNumRef.Focus(); return; }
+                        //}
+                    }
+                    else
+                    {
+                        BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { Msg("El Documento de Referencia no se ha Encontrado"); return; }
+                    }
+                }//BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { Msg("El Documento de Referencia no se ha Encontrado"); return; } }
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                 if (TPrueba2.Rows.Count == 0) { Msg("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
                 if (cboempresa.Items.Count == 0) { Msg("No hay Empresa"); cboempresa.Focus(); return; }
@@ -729,11 +769,12 @@ namespace HPReserger
                 {
                     if (OldEmpresa == (int)cboempresa.SelectedValue)
                     {
-
                         if (OldFechaContable.Month == dtpFechaContable.Value.Month && OldFechaContable.Year == dtpFechaContable.Value.Year && (OldCuo != null))
                         {
                             cuo = OldCuo;
-                            codigo = int.Parse(OldCuo.Substring(5));
+                            if (OldCuo != "")
+                                codigo = int.Parse(OldCuo.Substring(5));
+                            else CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, dtpFechaContable.Value, out codigo, out cuo);
                         }
                         else
                         {
@@ -809,12 +850,26 @@ namespace HPReserger
 
                 DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, _idFac, (int)cbotipodoc.SelectedValue, OpcionBusqueda);
                 if (Tprueba.Rows.Count > 0) { Msg("No se puede Registrar, Este Documento Ya Existe"); return; }
-                //////ACTUALIZANDO LA FACTURA
-                CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 2 : 200, _idFac, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, chkCompensa.Checked ? 1 : 0, (int)cbomoneda.SelectedValue,
-                   decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
-                  decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario);
+                //////ACTUALIZANDO LA FACTURA  
+                Boolean ResultOld = ListaIdNotas.Contains(OldIdComprobanteSelect);
+                Boolean ResultNew = ListaIdNotas.Contains((int)cbotipodoc.SelectedValue);
+                if (ResultOld != ResultNew)
+                {
+                    //Elimino la Cabecera Anterior
+                    CapaLogica.FacturaManualCabeceraRemover((int)dtgBusqueda[yid.Name, dtgBusqueda.CurrentRow.Index].Value, ResultOld ? 300 : 3);
+                    //Inserto un Nuevo Registro
+                    CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, chkCompensa.Checked ? 1 : 0, (int)cbomoneda.SelectedValue,
+                        decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, OpcionBusqueda == 1 ? FacturaEstado : NotasEstado == 2 ? 2 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
+                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario);
+                }
+                else
+                    CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 2 : 200, _idFac, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, chkCompensa.Checked ? 1 : 0, (int)cbomoneda.SelectedValue,
+                        decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, OpcionBusqueda == 1 ? FacturaEstado : NotasEstado == 2 ? 2 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
+                        decimal.Parse(txtmontodetraccion.Text), imgfactura, txtglosa.TextValido(), frmLogin.CodigoUsuario);
+
                 ///BORRAMOS LOS DATOS ANTERIOES
-                CapaLogica.FacturaManualDetalleRemover(NumFac, txtruc.Text, OpcionBusqueda == 1 ? 3 : 300, (int)cbotipodoc.SelectedValue);
+                if (OldCuo != null)
+                    CapaLogica.FacturaManualDetalleRemover(OldNumFac, OldProveedor, OpcionBusqueda == 1 ? 3 : 300, OldIdComprobanteSelect);
                 ////INSERTANDO EL DETALLE DE LA FACTURA
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
@@ -845,30 +900,34 @@ namespace HPReserger
                 if (FacturaEstado == 0) Msg($"Documento Actualizado Con Éxito"); else Msg($"Documento Actualizado \nGenerado sus Asiento : {cuo} \nCon Éxito");
             }
             btnvistaPrevia.Visible = false;
-
+            string nroFac = txtcodfactura.Text + "-" + txtnrofactura.Text;
+            int IdComprobante = (int)cbotipodoc.SelectedValue;
             ModoEdicion(false);
             btnAceptar.Enabled = false;
             Limpiar();
             CargarDatos();
             if (Estado == 2 || Estado == 10)
             {
-                if (dtgBusqueda.RowCount < _IndicadorFila)
-                    _IndicadorFila = dtgBusqueda.RowCount - 1;
-                dtgBusqueda.CurrentCell = dtgBusqueda[_IndicadorColumna, _IndicadorFila];
+                foreach (DataGridViewRow item in dtgBusqueda.Rows)
+                {
+                    if (item.Cells[yNroComprobante.Name].Value.ToString() == nroFac && (int)item.Cells[yIdComprobante.Name].Value == IdComprobante)
+                    {
+                        dtgBusqueda.CurrentCell = dtgBusqueda[_IndicadorColumna, item.Index];
+                        break;
+                    }
+                }               
             }
             if (Estado == 1)
             {
-                if (FacturaEstado == 1)
+                foreach (DataGridViewRow item in dtgBusqueda.Rows)
                 {
-                    foreach (DataGridViewRow item in dtgBusqueda.Rows)
+                    if (item.Cells[yNroComprobante.Name].Value.ToString() == nroFac && (int)item.Cells[yIdComprobante.Name].Value == IdComprobante)
                     {
-                        if ((int)item.Cells[yEstado.Name].Value == 1)
-                        {
-                            dtgBusqueda.CurrentCell = dtgBusqueda[_IndicadorColumna, item.Index];
-                            break;
-                        }
+                        dtgBusqueda.CurrentCell = dtgBusqueda[_IndicadorColumna, item.Index];
+                        break;
                     }
                 }
+
             }
             BloquearControlesExtras();
             //txtSerieRef.Text = txtNumRef.Text = "";
@@ -986,16 +1045,30 @@ namespace HPReserger
             _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
             if (Dtgconten.RowCount > 0)
             {
-                DataTable TPrueba1 = CapaLogica.VerFacturasPagadasCompras(txtruc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text);
+                DataTable TPrueba1 = CapaLogica.VerFacturasPagadasCompras(txtruc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
-                if (TPrueba1.Rows.Count > 0)
+                if (TPrueba1.Rows.Count > 0 || dtgBusqueda[ynamestado.Name, dtgBusqueda.CurrentRow.Index].Value.ToString().ToUpper() == "PAGADA")
                 {
-                    ///Actualizar solo imagen
-                    Estado = 10;
-                    ///bloquear Controles
-                    btnCargarFoto.Enabled = btnAceptar.Enabled = true;
-                    Msg("La Factura ya tiene un Pago. \nSolo se puede Actualizar la Imagen.");
-                    ModoEdicionFoto(true);
+                    DialogResult Result = MsgYesNOCancel("La Factura ya tiene un Pago. \nSolo se puede Actualizar la Imagen.");
+                    if (Result == DialogResult.Cancel) { return; }
+                    if (Result == DialogResult.Yes)
+                    {
+                        ///Actualizar solo imagen 
+                        Estado = 10;
+                        ///bloquear Controles
+                        btnCargarFoto.Enabled = btnAceptar.Enabled = true;
+                        ModoEdicionFoto(true);
+                    }
+                    if (Result == DialogResult.No)
+                    {
+                        Msg("Se Modificará el Registro de La Factura");
+                        ////lo eliminamos 
+                        ModoEdicion(true);
+                        BloquearColumnas();
+                        Estado = 2;
+                        NotasEstado = 2;
+                        ////fin eliminacion
+                    }
                 }
                 else if (TPrueba2.Rows.Count == 0)
                 {
@@ -1019,6 +1092,7 @@ namespace HPReserger
                 if (cbodetraccion.Text.ToUpper() == "SI") btnmasdetracion.Enabled = true;
                 BloquearColumnas();
             }
+            OldIdComprobanteSelect = (int)cbotipodoc.SelectedValue;
             cbomoneda_SelectedValueChanged(sender, e);
             btnAceptar.Enabled = true;
             cbotipodoc_SelectedIndexChanged(sender, e);
@@ -1110,6 +1184,9 @@ namespace HPReserger
                     OldProyecto = (int)R.Cells[yfkproyecto.Name].Value;
                     OldFechaContable = (DateTime)R.Cells[yfechacontable.Name].Value;
                     OldId = (int)R.Cells[yid.Name].Value;
+                    OldNumFac = txtcodfactura.Text + "-" + txtnrofactura.Text;
+                    OldProveedor = txtruc.Text;
+                    OldIdComprobante = (int)cbotipodoc.SelectedValue;
                 }
                 else OldCuo = null;
             }
@@ -1440,8 +1517,16 @@ namespace HPReserger
                     fila[xUsuario.DataPropertyName] = 999;///por defecto
                     fila[xGlosa.DataPropertyName] = "Redondeo en registro";
                     fila[xCentroCosto.DataPropertyName] = "9999 - 999";
-                    fila[xImporteME.DataPropertyName] = Math.Abs(conme);
-                    fila[xImporteMN.DataPropertyName] = Math.Abs(conmn);
+                    if (DH == "D")
+                    {
+                        fila[xImporteME.DataPropertyName] = (conme) * -1;
+                        fila[xImporteMN.DataPropertyName] = (conmn) * -1;
+                    }
+                    else
+                    {
+                        fila[xImporteME.DataPropertyName] = (conme);
+                        fila[xImporteMN.DataPropertyName] = (conmn);
+                    }
                     fila[xCodAsientoCtble.DataPropertyName] = cuo;
                     TDatos.Rows.Add(fila);
                 }
@@ -1451,6 +1536,7 @@ namespace HPReserger
             else
             {
                 Msg("No hay Filas");
+                btnAceptar.Enabled = true;
             }
         }
         public decimal Redondear(decimal valor) { return Math.Round(valor, 2); }
@@ -1532,7 +1618,7 @@ namespace HPReserger
                 {
                     if (msgyes("Seguro Desea Eliminar Factura con su Asiento") == DialogResult.Yes)
                     {
-                        DataTable TPrueba1 = CapaLogica.VerFacturasPagadasCompras(txtruc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text);
+                        DataTable TPrueba1 = CapaLogica.VerFacturasPagadasCompras(txtruc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
                         DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                         if (TPrueba1.Rows.Count > 0)
                         {
@@ -1611,6 +1697,32 @@ namespace HPReserger
         {
             frmreporfactu = null;
         }
+
+        private void chkfac_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Estado == 1 || Estado == 2)
+            {
+                cbomoneda.Enabled = false;
+                cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;
+                PanelNotaCredito.Visible = true; //txttipocambio.Enabled = false;
+                if (chkfac.Checked)
+                {
+                    cbomoneda.Enabled = cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = txttipocambio.Enabled = true;
+                }
+                //if (chkDocAnulado.Checked)
+                //    if (Dtgconten.RowCount == 0)
+                //    {
+                //        ((DataTable)Dtgconten.DataSource).Rows.Add();
+                //        ((DataTable)Dtgconten.DataSource).Rows.Add();
+                //        Dtgconten[xDebeHaber.Name, 0].Value = "D"; Dtgconten[xDebeHaber.Name, 1].Value = "H";
+                //        Dtgconten[xCuentaContable.Name, 0].Value = "1212101"; Dtgconten[xCuentaContable.Name, 1].Value = "1212101";
+                //        Dtgconten[xImporteMN.Name, 0].Value = 0.00; Dtgconten[xImporteME.Name, 0].Value = 0.00;
+                //        Dtgconten[xImporteMN.Name, 1].Value = 0.00; Dtgconten[xImporteME.Name, 1].Value = 0.00;
+                //        btnAceptar.Enabled = true;
+                //    }
+            }
+        }
+
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             PanelRecibo.Visible = false;
@@ -1619,6 +1731,7 @@ namespace HPReserger
             Dtgconten.Columns[xTipoIgvg.Name].Visible = true;
             txtSerieRef.ReadOnly = txtNumRef.ReadOnly = true;
             chkCompensa.Visible = true;
+            chkfac.Enabled = false;
             rdbInteres.Visible = rdbDescuento.Visible = rdbAnulacion.Visible = btnaplicar.Visible = false;
             _TipoDoc = 0;
             if (Estado == 1 || Estado == 2)
@@ -1628,7 +1741,7 @@ namespace HPReserger
                 txttipocambio.Enabled = true;
             }
             ////TIPODOC = 1 RECIBO, 0 FACTURAS-OTROS-BOLETAS,2 NOTA CREDITO,3 NOTA DEBITO
-            if (cbotipodoc.Text == "RECIBO POR HONORARIOS")
+            if (cbotipodoc.Text.Substring(3) == "RECIBO POR HONORARIOS")
             {
                 //txtrenta.Visible = true;
                 //lblrenta.Visible = true;
@@ -1638,14 +1751,14 @@ namespace HPReserger
                 PanelRecibo.Visible = true;
                 //txtglosa.Text = txtglosa.TextoDefecto = "Ingrese La Glosa del Recibo por Honorarios";
             }
-            if (cbotipodoc.Text == "FACTURA" || cbotipodoc.Text == "OTROS" || cbotipodoc.Text == "BOLETA DE VENTA")
+            if (cbotipodoc.Text.Substring(3) == "FACTURA" || cbotipodoc.Text.Substring(3) == "OTROS" || cbotipodoc.Text.Substring(3) == "BOLETA DE VENTA")
             {
                 _TipoDoc = 0;
                 btnCargarFoto.Text = "&Foto Factura";
                 PanelFactura.Visible = true;
                 // txtglosa.Text = txtglosa.TextoDefecto = "Ingrese La Glosa de la Factura";
             }
-            if (string.Compare("NOTA DE CREDITO", cbotipodoc.Text, System.Globalization.CultureInfo.CurrentCulture, System.Globalization.CompareOptions.IgnoreNonSpace) == 0)
+            if (string.Compare("NOTA DE CREDITO", cbotipodoc.Text.Substring(3), System.Globalization.CultureInfo.CurrentCulture, System.Globalization.CompareOptions.IgnoreNonSpace) == 0)
             {
                 btnCargarFoto.Text = "&Foto N.Crédit.";
                 _TipoDoc = 2;
@@ -1659,9 +1772,10 @@ namespace HPReserger
                     rdbDescuento.Visible = rdbAnulacion.Visible = btnaplicar.Visible = true;
                     rdbAnulacion.Checked = true;
                     txtSerieRef.ReadOnly = txtNumRef.ReadOnly = false;
+                    chkfac.Enabled = true;
                 }
             }
-            if (string.Compare("NOTA DE DEBITO", cbotipodoc.Text, System.Globalization.CultureInfo.CurrentCulture, System.Globalization.CompareOptions.IgnoreNonSpace) == 0)
+            if (string.Compare("NOTA DE DEBITO", cbotipodoc.Text.Substring(3), System.Globalization.CultureInfo.CurrentCulture, System.Globalization.CompareOptions.IgnoreNonSpace) == 0)
             {
                 btnCargarFoto.Text = "&Foto N.Débito";
                 _TipoDoc = 3;
@@ -1676,8 +1790,10 @@ namespace HPReserger
                     rdbInteres.Visible = btnaplicar.Visible = true;
                     rdbInteres.Checked = true;
                     txtSerieRef.ReadOnly = txtNumRef.ReadOnly = false;
+                    chkfac.Enabled = true;
                 }
             }
+            txttipocambio.Enabled = true;
             btnCargarFoto.BringToFront();
         }
     }

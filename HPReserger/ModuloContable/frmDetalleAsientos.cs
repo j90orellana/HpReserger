@@ -33,11 +33,12 @@ namespace HPReserger
         public decimal _TipoCambio { get; internal set; }
         public int _Moneda { get; set; }
         public bool _EsManual { get; internal set; }
-
+        public int Estado { get; internal set; }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmDetalleAsientos_Load(object sender, EventArgs e)
         {
             ChkDuplicar.Enabled = true; ChkDuplicar.Checked = false;
+            chkAutoConversion.Enabled = false;
             CargarDatos();
             SacarDatos();
             estado = 0;
@@ -62,7 +63,7 @@ namespace HPReserger
         DataTable Datos = new DataTable();
         public void SacarDatos()
         {
-            Dtgconten.DataSource = CapaLogica.DetalleAsientos(0, _asiento, _idasiento, _proyecto, _fecha);
+            Dtgconten.DataSource = CapaLogica.DetalleAsientos(0, _asiento, _idasiento, _proyecto, _fecha, cuenta);
             Datos = (DataTable)Dtgconten.DataSource;
             msj("");
         }
@@ -146,17 +147,23 @@ namespace HPReserger
             }
             else
                 this.Close();
+            chkAutoConversion.Enabled = false;
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
         {
-            estado = 2;
-            Dtgconten.ReadOnly = false;
-            Dtgconten.Columns[razonsocialx.Name].ReadOnly = true;
-            Dtgconten.Columns[fkAsix.Name].ReadOnly = true;
-            Dtgconten.Columns[fk_asisx.Name].ReadOnly = true;
-            Dtgconten.Columns[xNroOPBanco.Name].ReadOnly = !_EsManual;
-            btnmodificar.Enabled = false; btnaceptar.Enabled = true;
+            if (Estado != 3)
+            {
+                estado = 2;
+                chkAutoConversion.Enabled = true;
+                Dtgconten.ReadOnly = false;
+                Dtgconten.Columns[razonsocialx.Name].ReadOnly = true;
+                Dtgconten.Columns[fkAsix.Name].ReadOnly = true;
+                Dtgconten.Columns[fk_asisx.Name].ReadOnly = true;
+                Dtgconten.Columns[xNroOPBanco.Name].ReadOnly = !_EsManual;
+                btnmodificar.Enabled = false; btnaceptar.Enabled = true;
+            }
+            else { msg("No se Puede Modificar el Detalle del Reflejo"); }
         }
         decimal SumatoriaMN = 0, SumatoriaME = 0;
         private void btnaceptar_Click(object sender, EventArgs e)
@@ -168,25 +175,25 @@ namespace HPReserger
                 {
                     if (item.Cells[importemnx.Name].Value != null)
                         if (item.Cells[importemnx.Name].Value.ToString() != "")
-                            SumatoriaMN += (decimal)item.Cells[importemnx.Name].Value;
+                            SumatoriaMN += Configuraciones.Redondear((decimal)item.Cells[importemnx.Name].Value);
                     if (item.Cells[importemex.Name].Value != null)
                         if (item.Cells[importemex.Name].Value.ToString() != "")
-                            SumatoriaME += (decimal)item.Cells[importemex.Name].Value;
+                            SumatoriaME += Configuraciones.Redondear((decimal)item.Cells[importemex.Name].Value);
                 }
                 if (_Moneda == 1)
                 {
                     if (Math.Round(SumatoriaMN, 2) > Math.Round(Total, 2))
                     {
-                        msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {SumatoriaMN.ToString("n2")} ");
-                        return;
+                        msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {SumatoriaMN.ToString("n2")}\nGuardado.");
+                        //return;
                     }
                 }
                 else
                 {
                     if (Math.Round(SumatoriaME, 2) > Math.Round(Total, 2))
                     {
-                        msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {SumatoriaMN.ToString("n2")} ");
-                        return;
+                        msg($"Revise Los Montos no pueden superar el Total Del Registro: Asiento {Total.ToString("n2")} Detalle {SumatoriaMN.ToString("n2")}\nGuardado. ");
+                        //return;
                     }
                 }
                 Boolean result = true;
@@ -225,7 +232,7 @@ namespace HPReserger
                         {
                             HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[tipodocx.Name]);
                         }
-                        if (item.Cells[tipodocx.Name].Value.ToString() != "0")
+                        if (!(item.Cells[tipodocx.Name].Value.ToString() == "0" || item.Cells[tipodocx.Name].Value.ToString() == "6"))
                         {
                             int index = (int.Parse((TipoDocLength.Select($"codigo='{item.Cells[tipodocx.Name].Value.ToString()}'"))[0].ItemArray[1].ToString()));
                             if (item.Cells[numdocx.Name].Value.ToString().Length == index)
@@ -237,11 +244,15 @@ namespace HPReserger
                                 HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[numdocx.Name]);
                             }
                         }
+                        else
+                        {
+                            HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[numdocx.Name]);
+                        }
                         if (item.Cells[razonsocialx.Name].Value == null)
                         {
                             item.Cells[razonsocialx.Name].Value = "";
                         }
-                        if (item.Cells[razonsocialx.Name].Value.ToString() == "" && item.Cells[tipodocx.Name].Value.ToString() != "0")
+                        if (item.Cells[razonsocialx.Name].Value.ToString() == "" && !(item.Cells[tipodocx.Name].Value.ToString() == "0" || item.Cells[tipodocx.Name].Value.ToString() == "6"))
                         {
                             cadena += $"Proveedor no Existe: Registrelo , Fila {item.Index + 1}\n";
                             result = false;
@@ -316,7 +327,7 @@ namespace HPReserger
                     msg(cadena);
                     return;
                 }
-                CapaLogica.DetalleAsientos(10, _asiento, _idasiento, _proyecto, _fecha);
+                CapaLogica.DetalleAsientos(10, _asiento, _idasiento, _proyecto, _fecha, cuenta);
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     if (item.Cells[numdocx.Name].Value != null)
@@ -492,7 +503,7 @@ namespace HPReserger
                         Dtgconten.RefreshEdit();
                     }
                 }
-                HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txt.Text);
+                HPResergerFunciones.Utilitarios.SoloNumerosDecimalesConNegativo(e, txt.Text);
             }
             //BorrarFilasSelecionadas(e);
         }
@@ -563,7 +574,7 @@ namespace HPReserger
                     if (Dtgconten[tipocambiox.Name, x].Value != null)
                         if (Dtgconten[importemex.Name, x].Value != null)
                             if (Dtgconten[tipocambiox.Name, x].Value.ToString() != "" && Dtgconten[importemex.Name, x].Value.ToString() != "")
-                                if ((decimal.Parse(Dtgconten[tipocambiox.Name, x].Value.ToString())) > 0)
+                                if ((decimal.Parse(Dtgconten[tipocambiox.Name, x].Value.ToString())) > 0 && chkAutoConversion.Checked)
                                     Dtgconten[importemnx.Name, x].Value = (decimal)Dtgconten[importemex.Name, x].Value * (decimal)Dtgconten[tipocambiox.Name, x].Value;
                 }
                 if (y == Dtgconten.Columns[tipocambiox.Name].Index || y == Dtgconten.Columns[importemnx.Name].Index)
@@ -571,7 +582,7 @@ namespace HPReserger
                     if (Dtgconten[tipocambiox.Name, x].Value != null)
                         if (Dtgconten[importemnx.Name, x].Value != null)
                             if (Dtgconten[tipocambiox.Name, x].Value.ToString() != "" && Dtgconten[importemnx.Name, x].Value.ToString() != "")
-                                if ((decimal.Parse(Dtgconten[tipocambiox.Name, x].Value.ToString())) > 0)
+                                if ((decimal.Parse(Dtgconten[tipocambiox.Name, x].Value.ToString())) > 0 && chkAutoConversion.Checked)
                                     Dtgconten[importemex.Name, x].Value = (decimal)Dtgconten[importemnx.Name, x].Value / (decimal)Dtgconten[tipocambiox.Name, x].Value;
                 }
             }
@@ -623,19 +634,19 @@ namespace HPReserger
             {
                 if (_Moneda == 1)
                 {
-                    SumME += (item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString()));
-                    SumMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString());
-                    TotalME += (item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString())) *
-                     (item.Cells[tipocambiox.Name].Value == null ? 1 : decimal.Parse(item.Cells[tipocambiox.Name].Value.ToString() == "" ? "1" : item.Cells[tipocambiox.Name].Value.ToString()));
-                    TotalMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString());
+                    SumME += Configuraciones.Redondear((item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString())));
+                    SumMN += Configuraciones.Redondear(item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString()));
+                    TotalME += Configuraciones.Redondear((item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString())) *
+                     (item.Cells[tipocambiox.Name].Value == null ? 1 : decimal.Parse(item.Cells[tipocambiox.Name].Value.ToString() == "" ? "1" : item.Cells[tipocambiox.Name].Value.ToString())));
+                    TotalMN += Configuraciones.Redondear(item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString()));
                 }
                 else
                 {
-                    TotalME += item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString());
-                    TotalMN += (item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString())) /
-                        (item.Cells[tipocambiox.Name].Value == null ? 1 : decimal.Parse(item.Cells[tipocambiox.Name].Value.ToString() == "" ? "1" : item.Cells[tipocambiox.Name].Value.ToString()));
-                    SumME += (item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString()));
-                    SumMN += item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString());
+                    TotalME += Configuraciones.Redondear(item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString()));
+                    TotalMN += Configuraciones.Redondear((item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString())) /
+                        (item.Cells[tipocambiox.Name].Value == null ? 1 : decimal.Parse(item.Cells[tipocambiox.Name].Value.ToString() == "" ? "1" : item.Cells[tipocambiox.Name].Value.ToString())));
+                    SumME += Configuraciones.Redondear((item.Cells[importemex.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemex.Name].Value.ToString() == "" ? "0" : item.Cells[importemex.Name].Value.ToString())));
+                    SumMN += Configuraciones.Redondear(item.Cells[importemnx.Name].Value == null ? 0 : decimal.Parse(item.Cells[importemnx.Name].Value.ToString() == "" ? "0" : item.Cells[importemnx.Name].Value.ToString()));
                 }
             }
             txttotalmonextranjera.Text = Math.Abs(TotalME).ToString("n2");
@@ -727,7 +738,7 @@ namespace HPReserger
             if (Dtgconten[tipocambiox.Name, x].Value != null)
             //  if (Dtgconten[tipocambiox.Name, x].Value.ToString() != "")
             {
-
+                if (Dtgconten[tipocambiox.Name, x].Value.ToString() == "") Dtgconten[tipocambiox.Name, x].Value = _TipoCambio;
                 if ((decimal)Dtgconten[tipocambiox.Name, x].Value == 0)
                 {
                     if (x == 0)
@@ -790,16 +801,24 @@ namespace HPReserger
         }
         private void Frmprovee_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (frmprovee.llamada == 1)
+            if (frmprovee != null)
             {
-                if (fila == Dtgconten.RowCount - 1)
-                    Datos.Rows.Add();
-                if (Dtgconten[numdocx.Name, fila].Value.ToString() == frmprovee.rucito)
+                if (frmprovee.llamada == 1)
                 {
-                    Dtgconten_CellValueChanged(sender, new DataGridViewCellEventArgs(Dtgconten.Columns[numdocx.Name].Index, fila));
+                    if (fila == Dtgconten.RowCount - 1)
+                        Datos.Rows.Add();
+                    if (Dtgconten[numdocx.Name, fila].Value == null) Datos.Rows.Add();
+                    try
+                    {
+                        if (Dtgconten[numdocx.Name, fila].Value.ToString() == frmprovee.rucito)
+                        {
+                            Dtgconten_CellValueChanged(sender, new DataGridViewCellEventArgs(Dtgconten.Columns[numdocx.Name].Index, fila));
+                        }
+                        Dtgconten[numdocx.Name, fila].Value = frmprovee.rucito;
+                        Dtgconten[tipodocx.Name, fila].Value = 5;
+                    }
+                    catch (Exception) { msg("No se Pudo Agregar Porque se necesita una fila Nueva"); }
                 }
-                Dtgconten[numdocx.Name, fila].Value = frmprovee.rucito;
-                Dtgconten[tipodocx.Name, fila].Value = 5;
             }
             frmprovee = null;
         }

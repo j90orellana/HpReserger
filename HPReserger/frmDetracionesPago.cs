@@ -299,12 +299,12 @@ namespace HPReserger
                             {//si el valor a pagar es superior a cero
                                 nrofac = item.Cells[nrofacturax.Name].Value.ToString();
                                 string[] fac = nrofac.Split('-');
-                                string codfac = fac[0];
-                                string numfac = fac[1];
+                                string codfac = fac[0]; string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
                                 CapaLogica.PagarDetracionesDetalle(codigo, cuo, (int)cboempresa.SelectedValue, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
-                                    , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, dtpFechaContable.Value, txtglosa.Text, frmLogin.CodigoUsuario, idcomprobante);
+                                    , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
+                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", dtpFechaContable.Value, txtglosa.Text, frmLogin.CodigoUsuario, idcomprobante);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
                     HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! con Asiento {cuo}");
@@ -326,8 +326,15 @@ namespace HPReserger
         {
             int x = e.RowIndex, y = e.ColumnIndex;
             if (dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "0")
-                dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.FromArgb(192, 80, 77);
-            else dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.Black;
+            {
+                dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.RojoUI;
+                dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.RojoUISelect;
+            }
+            else
+            {
+                dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.OscuroUISelect;
+                dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUISelect;
+            }
         }
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {

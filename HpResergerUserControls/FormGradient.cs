@@ -17,6 +17,7 @@ namespace HpResergerUserControls
         {
             Invalidate();
             InitializeComponent();
+            DoubleBuffered = true;
         }
         public DateTime Hoy = DateTime.Now;
         Color[] _colores = new Color[] { Color.FromArgb(252, 253, 253), Color.FromArgb(224, 229, 237), Color.FromArgb(252, 253, 253) };
@@ -30,10 +31,9 @@ namespace HpResergerUserControls
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
             if (this.ClientRectangle.Height > 0 && this.ClientRectangle.Width > 0)
                 if (_colores.Length > 0)
-                {
+                {     
                     LinearGradientBrush BrochaGradienteLineal = new LinearGradientBrush(this.ClientRectangle, Color.Black, Color.Black, Angulo);
                     ColorBlend BlendColor = new ColorBlend();
                     BlendColor.Colors = _colores;
@@ -46,8 +46,10 @@ namespace HpResergerUserControls
                     BlendColor.Positions = colorea;
                     BrochaGradienteLineal.InterpolationColors = BlendColor;
                     e.Graphics.FillRectangle(BrochaGradienteLineal, this.ClientRectangle);
+                    //e.Graphics.FillRectangle(Brushes.BlanchedAlmond, this.ClientRectangle);
                 }
+            base.OnPaint(e);
+            this.ResumeLayout();
         }
-
     }
 }

@@ -14,23 +14,37 @@ namespace HpResergerUserControls
         public ComboBoxPer()
         {
             _ReadOnly = false;
+            //DropDownStyleDefecto = DropDownStyle;
             InitializeComponent();
             ValoresInicio();
         }
+        //static ComboBoxStyle DropDownStyleDefecto;
         public string IndexText { get; set; }
         protected override void OnSelectedIndexChanged(EventArgs e)
         {
-            base.OnSelectedIndexChanged(e);
+            //IndexText = Text;
             if (ReadOnly)
             {
-                Text = IndexText;
+                //Text = IndexText;
                 DropDownStyle = ComboBoxStyle.Simple;
             }
             else
             {
-                IndexText = Text;
+                //IndexText = Text;
                 DropDownStyle = ComboBoxStyle.DropDownList;
             }
+            base.OnSelectedIndexChanged(e);
+        }
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            // if (e.KeyData == Keys.Down || e.KeyData == Keys.Up)
+            if (this.ReadOnly) e.Handled = true;
+            base.OnKeyDown(e);
+        }
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            if (this.ReadOnly) e.Handled = true;
+            base.OnKeyPress(e);
         }
         protected override void OnClick(EventArgs e)
         {
@@ -50,26 +64,30 @@ namespace HpResergerUserControls
         }
         public void CambiaReadOnly()
         {
-            if (ReadOnly)
+            try
             {
-                DropDownStyle = ComboBoxStyle.Simple;
-                DroppedDown = false;               
+                if (ReadOnly)
+                {
+                    DropDownStyle = ComboBoxStyle.Simple;
+                    DroppedDown = false;
+                }
+                else
+                {
+                    DropDownStyle = ComboBoxStyle.DropDownList;
+                }
             }
-            else
-            {
-                DropDownStyle = ComboBoxStyle.DropDownList;              
-            }
+            catch (Exception) { }
         }
         public void ValoresInicio()
         {
             BackColor = System.Drawing.Color.FromArgb(204, 218, 231);
-            DropDownStyle = ComboBoxStyle.DropDownList;
+            //DropDownStyleDefecto = this.DropDownStyle;
         }
         public ComboBoxPer(IContainer container)
         {
             container.Add(this);
             InitializeComponent();
-            ValoresInicio();         
+            ValoresInicio();
         }
     }
 }

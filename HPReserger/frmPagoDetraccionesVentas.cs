@@ -184,12 +184,10 @@ namespace HPReserger
 
         private void dtgconten_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //int x = e.RowIndex, y = e.ColumnIndex;
-            //if (dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "0")
-            //    dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.FromArgb(192, 80, 77);
-            //else dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.Black;
+            int x = e.RowIndex;
+            dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.OscuroUISelect;
+            dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.AzulUI;
         }
-
         private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
@@ -374,7 +372,7 @@ namespace HPReserger
                                 CapaLogica.PagarDetracionesVentaDetalle(codigo, (int)item.Cells[tipoidx.Name].Value, item.Cells[Clientex.Name].Value.ToString(), item.Cells[razonx.Name].Value.ToString()
                                 , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value
                                 //item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value / (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value
-                                , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, dtpFechaContable.Value, "9559501", txtglosa.Text, frmLogin.CodigoUsuario, (int)cboempresa.SelectedValue);
+                                , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, dtpFechaContable.Value, decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", txtglosa.Text, frmLogin.CodigoUsuario, (int)cboempresa.SelectedValue);
 
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA

@@ -54,8 +54,9 @@
             // 
             // btnbuscar
             // 
+            this.btnbuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.btnbuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.btnbuscar.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnbuscar.FlatAppearance.BorderSize = 0;
             this.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnbuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnbuscar.Image")));
@@ -63,11 +64,13 @@
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(38, 22);
             this.btnbuscar.TabIndex = 1;
+            this.btnbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnbuscar.UseVisualStyleBackColor = false;
             // 
             // btnlimpiar
             // 
-            this.btnlimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnlimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnlimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.btnlimpiar.FlatAppearance.BorderSize = 0;
             this.btnlimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -76,12 +79,14 @@
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(32, 22);
             this.btnlimpiar.TabIndex = 2;
+            this.btnlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnlimpiar.UseVisualStyleBackColor = false;
             this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click_1);
             // 
             // txtBuscar
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Controls.Add(this.btnlimpiar);
@@ -92,6 +97,7 @@
             this.BackColorChanged += new System.EventHandler(this.txtBuscar_BackColorChanged);
             this.FontChanged += new System.EventHandler(this.txtBuscar_FontChanged);
             this.ForeColorChanged += new System.EventHandler(this.txtBuscar_ForeColorChanged);
+            this.Resize += new System.EventHandler(this.txtBuscar_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

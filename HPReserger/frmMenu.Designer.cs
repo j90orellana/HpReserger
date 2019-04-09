@@ -949,6 +949,7 @@
             this.mayorPorToolStripMenuItem.Name = "mayorPorToolStripMenuItem";
             this.mayorPorToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.mayorPorToolStripMenuItem.Text = "Mayor de Cuentas por Empresa";
+            this.mayorPorToolStripMenuItem.Visible = false;
             this.mayorPorToolStripMenuItem.Click += new System.EventHandler(this.mayorPorToolStripMenuItem_Click);
             // 
             // mayorPorCuentasToolStripMenuItem

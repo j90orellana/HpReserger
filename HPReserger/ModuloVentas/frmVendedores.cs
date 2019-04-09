@@ -25,6 +25,7 @@ namespace HPReserger
             CargarEstados();
             LimpiarTextos();
             CargarDatos();
+            ModoEdicion(false);
         }
         public void CargarDatos()
         {
@@ -57,8 +58,8 @@ namespace HPReserger
             DataTable TEstados = new DataTable();
             TEstados.Columns.Add("Valor", typeof(int));
             TEstados.Columns.Add("Codigo");
-            TEstados.Rows.Add(0, "Activo");
-            TEstados.Rows.Add(1, "Inactivo");
+            TEstados.Rows.Add(0, "ACTIVO");
+            TEstados.Rows.Add(1, "INACTIVO");
             cboestado.DisplayMember = "codigo";
             cboestado.ValueMember = "valor";
             cboestado.DataSource = TEstados;
@@ -97,15 +98,15 @@ namespace HPReserger
             btnaceptar.Enabled = a;
             btnnuevo.Enabled = btnmodificar.Enabled = !a;
             dtgconten.Enabled = !a;
-            cbotipoid.Enabled = btnbuscar.Enabled = cboestado.Enabled = a;
-            txtnroid.ReadOnly = !a;
+            btnbuscar.Enabled = a;
+            cboestado.ReadOnly = cbotipoid.ReadOnly = txtnroid.ReadOnly = !a;
             txtnroid.Focus();
         }
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             estado = 2;
             ModoEdicion(true);
-            cbotipoid.Enabled = false;
+            cbotipoid.ReadOnly = true;
             txtnroid.ReadOnly = true;
             btnbuscar.Enabled = false;
         }

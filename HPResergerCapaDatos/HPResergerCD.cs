@@ -1321,7 +1321,7 @@ namespace HPResergerCapaDatos
             object[] valor = { codigo, razon };
             return bd.DataTableFromProcedure("usp_verificar_proveedor", parametros, valor, null);
         }
-        public DataTable VerificarCuentas(int codigo, string nombre)
+        public DataTable VerificarCuentas(string codigo, string nombre)
         {
             string[] parametros = { "@codigo", "@nombre" };
             object[] valor = { codigo, nombre };
@@ -1329,7 +1329,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
        string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-       string traslacion, string bc, int soli, int cabecera)
+       string traslacion, string bc, int soli, int cabecera, int estado)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1362,19 +1362,26 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@bc", SqlDbType.VarChar, 150).Value = bc;
                     cmd.Parameters.Add("@soli", SqlDbType.Int).Value = soli;
                     cmd.Parameters.Add("@Cabecera", SqlDbType.Int).Value = cabecera;
+                    cmd.Parameters.Add("@Estado", SqlDbType.Int).Value = estado;
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
                 cn.Dispose();
             }
         }
-        public void ActualizarCuentasContables(string codcuenta, string generica, string grupo,
-     string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-     string traslacion, string bc, string naturaleza, int soli, int cabecera)
+        public void ActualizarCuentasContables(string oldcodcuenta, string codcuenta, string cuentan1, string DesCuentea, string TipoCuenta, string generica, string grupo,
+            string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
+            string traslacion, string bc, string naturaleza, int soli, int cabecera, int estado)
         {
-            string[] parametros = { "@codcuenta", "@generica", "@grupo", "@refleja", "@reflejacc", "@reflejadebe", "@reflejahaber", "@cuentacierre", "@analitica", "@mensual", "@cierre", "@traslacion", "@bc", "@naturaleza", "@soli", "@cabecera" };
-            object[] valores = { codcuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber, cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli, cabecera };
+            string[] parametros = { "@oldcodcuenta", "@codcuenta", "@cuentan1", "@DesCuentea", "@TipoCuenta", "@generica", "@grupo", "@refleja", "@reflejacc", "@reflejadebe", "@reflejahaber", "@cuentacierre", "@analitica", "@mensual", "@cierre", "@traslacion", "@bc", "@naturaleza", "@soli", "@cabecera", "@Estado" };
+            object[] valores = { oldcodcuenta, codcuenta, cuentan1, DesCuentea, TipoCuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber, cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli, cabecera, estado };
             bd.DataTableFromProcedure("usp_actualizar_cuentas_contables", parametros, valores, null);
+        }
+        public DataRow CuentaContable_EnUso(int opcion, string cuenta)
+        {
+            string[] parametros = { "@opcion", "@cuenta" };
+            object[] valores = { opcion, cuenta };
+            return bd.DatarowFromProcedure("usp_CuentaContable_EnUso", parametros, valores, null);
         }
         public void InsertarProveedor(int tipoid, string anterior, string ruc, string razon, string nombre, int sector, string dirofi, string telofi, string diralm, string telalm, string dirsuc, string telsuc, string telcon,
             string nomcon, string emacon, string nctasoles, string ccisoles, int bancosoles, string nroctadolares, string ccidolares, int bancodolares, string detrac, int tipoper, int ctaasoles, int ctadolares, int plazo,
@@ -3630,12 +3637,12 @@ namespace HPResergerCapaDatos
             object[] valores = { nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion, banco, nrocuenta, fechapago, @idcomprobante };
             return bd.DataTableFromProcedure("usp_insertarPagarfactura", parametros, valores, null);
         }
-        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor, int moneda, string idcuenta, string nropago, decimal tc, DateTime fechasiento
+        public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor, int moneda, string idcuenta, string nropago, decimal tcReg, decimal TcPago, DateTime fechasiento
             , decimal montodiferencial, int PosicionDiferencial, decimal TotalDiferencial, int IdComprobante, DateTime @FechaContable)
         {
             string[] parametros = { "@sifac", "@asiento", "@fac", "@cc", "@debe", "@haber", "@dina", "@fecha", "@fechavc", "@fecharecep", "@usuario", "@ccs", "@tipo", "@proveedor", "@fkmoneda", "@Idcuenta", "@nropago",
-                "@TipoCambioHoy", "@Fechaasiento", "@MontoDiferencial", "@PosicionDiferencial","@TotalDiferencial","@IdComprobante","@FechaContable" };
-            object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina, fecha, fechavence, fecharecepcion, usuario, centro, tipo, proveedor, moneda, idcuenta, nropago, tc, fechasiento, montodiferencial,
+               "@TCReg","@TCPago", "@Fechaasiento", "@MontoDiferencial", "@PosicionDiferencial","@TotalDiferencial","@IdComprobante","@FechaContable" };
+            object[] valores = { si, asiento, @fac, @cc, @debe, @haber, dina, fecha, fechavence, fecharecepcion, usuario, centro, tipo, proveedor, moneda, idcuenta, nropago, tcReg,TcPago, fechasiento, montodiferencial,
                 @PosicionDiferencial ,TotalDiferencial,IdComprobante,FechaContable};
             return bd.DataTableFromProcedure("usp_guardarfactura", parametros, valores, null);
         }
@@ -4512,11 +4519,17 @@ namespace HPResergerCapaDatos
             object[] valores = { proveedor, nrodoc, fkempresa, idcomprobante };
             return bd.DataTableFromProcedure("usp_FacturaManualVentaDetalleBusqueda", parametros, valores, null);
         }
-        public DataTable VerFacturasPagadasCompras(string proveedor, string nrofac)
+        public DataTable VerFacturasPagadasCompras(string proveedor, string nrofac, int @idcomprobante)
         {
-            string[] parametros = { "@proveedor", "@nrofac" };
-            object[] valores = { proveedor, nrofac };
+            string[] parametros = { "@proveedor", "@nrofac", "@idcomprobante" };
+            object[] valores = { proveedor, nrofac, @idcomprobante };
             return bd.DataTableFromProcedure("usp_VerFacturasPagadasCompras", parametros, valores, null);
+        }
+        public DataTable VerFacturasPagadasVentas(string TipoYIdCliente, string nrofac, int @idcomprobante)
+        {
+            string[] parametros = { "@Cliente", "@nrofac", "@idcomprobante" };
+            object[] valores = { TipoYIdCliente, nrofac, @idcomprobante };
+            return bd.DataTableFromProcedure("usp_VerFacturasPagadasVentas", parametros, valores, null);
         }
         public DataTable VerPeriodoAbierto(int empresa, DateTime Fecha)
         {
@@ -4614,5 +4627,24 @@ namespace HPResergerCapaDatos
             object[] valores = { fechaini, fechafin, Fecha };
             return bd.DataTableFromProcedure("usp_ReporteFacturasComprasIncompletas", parametros, valores, null);
         }
+        public DataTable VerificarCuadredeAsiento(string cuo, int proyecto)
+        {
+            string[] parametros = { "@cuo", "@proyecto" };
+            object[] valores = { cuo, proyecto };
+            return bd.DataTableFromProcedure("usp_VerificarCuardredeAsiento", parametros, valores, null);
+        }
+        public DataTable CuadrarAsiento(string cuo, int proyecto, DateTime FechaAsiento)
+        {
+            string[] parametros = { "@cuo", "@proyecto", "@fechaAsiento" };
+            object[] valores = { cuo, proyecto, FechaAsiento };
+            return bd.DataTableFromProcedure("usp_CuadraAsiento", parametros, valores, null);
+        }
+        public DataTable LimpiezaDetalleAsientos(string cuo, int proyecto)
+        {
+            string[] parametros = { "@cuo", "@proyecto" };
+            object[] valores = { cuo, proyecto };
+            return bd.DataTableFromProcedure("usp_LimpiezaDetalleAsientos", parametros, valores, null);
+        }
     }
+
 }

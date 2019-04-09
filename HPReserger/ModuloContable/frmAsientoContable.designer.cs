@@ -51,8 +51,8 @@ namespace HPReserger
             this.label17 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.lbldetalle = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelAzul = new System.Windows.Forms.Label();
+            this.labelRojo = new System.Windows.Forms.Label();
             this.cboetapa = new System.Windows.Forms.ComboBox();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
@@ -129,6 +129,9 @@ namespace HPReserger
             this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.labelAmarillo = new System.Windows.Forms.Label();
+            this.labelCuadre = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).BeginInit();
@@ -143,7 +146,7 @@ namespace HPReserger
             this.btnreversa.Enabled = false;
             this.btnreversa.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnreversa.Image = ((System.Drawing.Image)(resources.GetObject("btnreversa.Image")));
-            this.btnreversa.Location = new System.Drawing.Point(296, 647);
+            this.btnreversa.Location = new System.Drawing.Point(296, 648);
             this.btnreversa.Name = "btnreversa";
             this.btnreversa.Size = new System.Drawing.Size(92, 23);
             this.btnreversa.TabIndex = 183;
@@ -158,10 +161,10 @@ namespace HPReserger
             this.btneliminar.Enabled = false;
             this.btneliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
-            this.btneliminar.Location = new System.Drawing.Point(581, 65);
+            this.btneliminar.Location = new System.Drawing.Point(581, 64);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(92, 23);
-            this.btneliminar.TabIndex = 144;
+            this.btneliminar.TabIndex = 3;
             this.btneliminar.TabStop = false;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -173,7 +176,7 @@ namespace HPReserger
             // 
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Location = new System.Drawing.Point(525, 88);
+            this.label17.Location = new System.Drawing.Point(525, 86);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 13);
             this.label17.TabIndex = 213;
@@ -184,7 +187,7 @@ namespace HPReserger
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(9, 137);
+            this.label26.Location = new System.Drawing.Point(9, 132);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(89, 13);
             this.label26.TabIndex = 210;
@@ -195,36 +198,38 @@ namespace HPReserger
             this.lbldetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbldetalle.AutoSize = true;
             this.lbldetalle.BackColor = System.Drawing.Color.Transparent;
-            this.lbldetalle.Location = new System.Drawing.Point(12, 393);
+            this.lbldetalle.Location = new System.Drawing.Point(12, 390);
             this.lbldetalle.Name = "lbldetalle";
-            this.lbldetalle.Size = new System.Drawing.Size(0, 13);
+            this.lbldetalle.Size = new System.Drawing.Size(46, 13);
             this.lbldetalle.TabIndex = 181;
+            this.lbldetalle.Text = "Detalle:";
             // 
-            // label12
+            // labelAzul
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.ForeColor = System.Drawing.Color.Blue;
-            this.label12.Location = new System.Drawing.Point(279, 390);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(139, 13);
-            this.label12.TabIndex = 180;
-            this.label12.Text = "Azul=Asiento Con Detalle";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAzul.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labelAzul.AutoSize = true;
+            this.labelAzul.BackColor = System.Drawing.Color.Transparent;
+            this.labelAzul.ForeColor = System.Drawing.Color.Blue;
+            this.labelAzul.Location = new System.Drawing.Point(273, 390);
+            this.labelAzul.Name = "labelAzul";
+            this.labelAzul.Size = new System.Drawing.Size(139, 13);
+            this.labelAzul.TabIndex = 180;
+            this.labelAzul.Text = "Azul=Asiento Con Detalle";
+            this.labelAzul.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label11
+            // labelRojo
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(289, 377);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(117, 13);
-            this.label11.TabIndex = 180;
-            this.label11.Text = "Rojo=Asiento Reflejo";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRojo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labelRojo.AutoSize = true;
+            this.labelRojo.BackColor = System.Drawing.Color.Transparent;
+            this.labelRojo.ForeColor = System.Drawing.Color.Red;
+            this.labelRojo.Location = new System.Drawing.Point(284, 377);
+            this.labelRojo.Name = "labelRojo";
+            this.labelRojo.Size = new System.Drawing.Size(117, 13);
+            this.labelRojo.TabIndex = 180;
+            this.labelRojo.Text = "Rojo=Asiento Reflejo";
+            this.labelRojo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRojo.Click += new System.EventHandler(this.labelRojo_Click);
             // 
             // cboetapa
             // 
@@ -234,10 +239,10 @@ namespace HPReserger
             this.cboetapa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboetapa.Enabled = false;
             this.cboetapa.FormattingEnabled = true;
-            this.cboetapa.Location = new System.Drawing.Point(413, 66);
+            this.cboetapa.Location = new System.Drawing.Point(413, 65);
             this.cboetapa.Name = "cboetapa";
             this.cboetapa.Size = new System.Drawing.Size(165, 21);
-            this.cboetapa.TabIndex = 176;
+            this.cboetapa.TabIndex = 19;
             this.cboetapa.Enter += new System.EventHandler(this.cboetapa_Enter);
             // 
             // cboempresa
@@ -248,11 +253,11 @@ namespace HPReserger
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.DropDownWidth = 250;
             this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(9, 66);
+            this.cboempresa.Location = new System.Drawing.Point(9, 65);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(215, 21);
-            this.cboempresa.TabIndex = 174;
-            this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            this.cboempresa.TabIndex = 17;
+            this.cboempresa.SelectedValueChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click_1);
             // 
             // cboproyecto
@@ -263,10 +268,10 @@ namespace HPReserger
             this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboproyecto.Enabled = false;
             this.cboproyecto.FormattingEnabled = true;
-            this.cboproyecto.Location = new System.Drawing.Point(228, 66);
+            this.cboproyecto.Location = new System.Drawing.Point(228, 65);
             this.cboproyecto.Name = "cboproyecto";
             this.cboproyecto.Size = new System.Drawing.Size(181, 21);
-            this.cboproyecto.TabIndex = 175;
+            this.cboproyecto.TabIndex = 18;
             this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
             this.cboproyecto.Enter += new System.EventHandler(this.cboproyecto_Enter);
             // 
@@ -275,12 +280,12 @@ namespace HPReserger
             this.dtfechavalor.Enabled = false;
             this.dtfechavalor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtfechavalor.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtfechavalor.Location = new System.Drawing.Point(296, 29);
+            this.dtfechavalor.Location = new System.Drawing.Point(296, 28);
             this.dtfechavalor.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtfechavalor.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtfechavalor.Name = "dtfechavalor";
             this.dtfechavalor.Size = new System.Drawing.Size(97, 22);
-            this.dtfechavalor.TabIndex = 173;
+            this.dtfechavalor.TabIndex = 15;
             this.dtfechavalor.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtfechavalor.ValueChanged += new System.EventHandler(this.dtfechavalor_ValueChanged);
             // 
@@ -289,7 +294,7 @@ namespace HPReserger
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(581, 460);
+            this.btnActualizar.Location = new System.Drawing.Point(581, 461);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(92, 23);
             this.btnActualizar.TabIndex = 171;
@@ -308,7 +313,7 @@ namespace HPReserger
             this.cboestado.Location = new System.Drawing.Point(89, 6);
             this.cboestado.Name = "cboestado";
             this.cboestado.Size = new System.Drawing.Size(97, 21);
-            this.cboestado.TabIndex = 168;
+            this.cboestado.TabIndex = 10;
             this.cboestado.SelectedIndexChanged += new System.EventHandler(this.cboestado_SelectedIndexChanged);
             this.cboestado.TextChanged += new System.EventHandler(this.cboestado_TextChanged);
             // 
@@ -330,7 +335,7 @@ namespace HPReserger
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(486, 416);
+            this.label5.Location = new System.Drawing.Point(506, 416);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 165;
@@ -366,7 +371,7 @@ namespace HPReserger
             this.txttotaldebe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotaldebe.BackColor = System.Drawing.SystemColors.Window;
             this.txttotaldebe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotaldebe.Location = new System.Drawing.Point(464, 390);
+            this.txttotaldebe.Location = new System.Drawing.Point(466, 390);
             this.txttotaldebe.MaxLength = 20;
             this.txttotaldebe.Name = "txttotaldebe";
             this.txttotaldebe.ReadOnly = true;
@@ -404,7 +409,7 @@ namespace HPReserger
             this.btndina.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btndina.BackgroundImage")));
             this.btndina.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btndina.Enabled = false;
-            this.btndina.Location = new System.Drawing.Point(447, 30);
+            this.btndina.Location = new System.Drawing.Point(447, 29);
             this.btndina.Name = "btndina";
             this.btndina.Size = new System.Drawing.Size(21, 20);
             this.btndina.TabIndex = 1;
@@ -416,10 +421,10 @@ namespace HPReserger
             this.btnmas.Enabled = false;
             this.btnmas.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmas.Image = ((System.Drawing.Image)(resources.GetObject("btnmas.Image")));
-            this.btnmas.Location = new System.Drawing.Point(581, 129);
+            this.btnmas.Location = new System.Drawing.Point(581, 124);
             this.btnmas.Name = "btnmas";
             this.btnmas.Size = new System.Drawing.Size(92, 21);
-            this.btnmas.TabIndex = 156;
+            this.btnmas.TabIndex = 24;
             this.btnmas.Text = "&Cuentas";
             this.btnmas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmas.UseVisualStyleBackColor = true;
@@ -430,12 +435,12 @@ namespace HPReserger
             this.dtpfecha.Enabled = false;
             this.dtpfecha.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpfecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpfecha.Location = new System.Drawing.Point(89, 29);
+            this.dtpfecha.Location = new System.Drawing.Point(89, 28);
             this.dtpfecha.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpfecha.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpfecha.Name = "dtpfecha";
             this.dtpfecha.Size = new System.Drawing.Size(97, 22);
-            this.dtpfecha.TabIndex = 154;
+            this.dtpfecha.TabIndex = 13;
             this.dtpfecha.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpfecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
             // 
@@ -444,7 +449,7 @@ namespace HPReserger
             this.lblmsg2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg2.AutoSize = true;
             this.lblmsg2.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg2.Location = new System.Drawing.Point(9, 652);
+            this.lblmsg2.Location = new System.Drawing.Point(6, 653);
             this.lblmsg2.Name = "lblmsg2";
             this.lblmsg2.Size = new System.Drawing.Size(101, 13);
             this.lblmsg2.TabIndex = 147;
@@ -455,10 +460,10 @@ namespace HPReserger
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(581, 647);
+            this.btncancelar.Location = new System.Drawing.Point(581, 648);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(92, 23);
-            this.btncancelar.TabIndex = 146;
+            this.btncancelar.TabIndex = 51;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -469,10 +474,10 @@ namespace HPReserger
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(485, 647);
+            this.btnaceptar.Location = new System.Drawing.Point(485, 648);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(92, 23);
-            this.btnaceptar.TabIndex = 145;
+            this.btnaceptar.TabIndex = 50;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -483,10 +488,10 @@ namespace HPReserger
             this.btnmodificar.Enabled = false;
             this.btnmodificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
-            this.btnmodificar.Location = new System.Drawing.Point(581, 29);
+            this.btnmodificar.Location = new System.Drawing.Point(581, 28);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(92, 23);
-            this.btnmodificar.TabIndex = 143;
+            this.btnmodificar.TabIndex = 2;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
@@ -499,7 +504,7 @@ namespace HPReserger
             this.btnnuevo.Location = new System.Drawing.Point(581, 5);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(92, 23);
-            this.btnnuevo.TabIndex = 142;
+            this.btnnuevo.TabIndex = 1;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -510,11 +515,11 @@ namespace HPReserger
             this.txtdinamica.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtdinamica.Enabled = false;
             this.txtdinamica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdinamica.Location = new System.Drawing.Point(471, 30);
+            this.txtdinamica.Location = new System.Drawing.Point(471, 29);
             this.txtdinamica.MaxLength = 15;
             this.txtdinamica.Name = "txtdinamica";
             this.txtdinamica.Size = new System.Drawing.Size(107, 21);
-            this.txtdinamica.TabIndex = 141;
+            this.txtdinamica.TabIndex = 16;
             this.txtdinamica.Click += new System.EventHandler(this.txtdinamica_Click);
             this.txtdinamica.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             this.txtdinamica.DoubleClick += new System.EventHandler(this.txtdinamica_DoubleClick);
@@ -532,7 +537,7 @@ namespace HPReserger
             this.txtcuo.ReadOnly = true;
             this.txtcuo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtcuo.Size = new System.Drawing.Size(131, 21);
-            this.txtcuo.TabIndex = 141;
+            this.txtcuo.TabIndex = 12;
             this.txtcuo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             // 
             // txtcodigo
@@ -545,7 +550,7 @@ namespace HPReserger
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtcodigo.Size = new System.Drawing.Size(97, 21);
-            this.txtcodigo.TabIndex = 141;
+            this.txtcodigo.TabIndex = 11;
             this.txtcodigo.Visible = false;
             this.txtcodigo.TextChanged += new System.EventHandler(this.txtcodigo_TextChanged);
             // 
@@ -554,7 +559,7 @@ namespace HPReserger
             this.Dinamica.AutoSize = true;
             this.Dinamica.BackColor = System.Drawing.Color.Transparent;
             this.Dinamica.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dinamica.Location = new System.Drawing.Point(392, 34);
+            this.Dinamica.Location = new System.Drawing.Point(392, 33);
             this.Dinamica.Name = "Dinamica";
             this.Dinamica.Size = new System.Drawing.Size(57, 13);
             this.Dinamica.TabIndex = 140;
@@ -576,7 +581,7 @@ namespace HPReserger
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(238, 10);
+            this.label13.Location = new System.Drawing.Point(246, 10);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(48, 13);
             this.label13.TabIndex = 140;
@@ -602,10 +607,10 @@ namespace HPReserger
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radioButton2.Location = new System.Drawing.Point(88, 9);
+            this.radioButton2.Location = new System.Drawing.Point(87, 9);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(68, 18);
-            this.radioButton2.TabIndex = 130;
+            this.radioButton2.TabIndex = 31;
             this.radioButton2.Text = "Cuenta";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
@@ -613,24 +618,24 @@ namespace HPReserger
             // fechafin
             // 
             this.fechafin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.fechafin.Location = new System.Drawing.Point(370, 8);
+            this.fechafin.Location = new System.Drawing.Point(359, 7);
             this.fechafin.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.fechafin.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.fechafin.Name = "fechafin";
             this.fechafin.Size = new System.Drawing.Size(105, 22);
-            this.fechafin.TabIndex = 168;
+            this.fechafin.TabIndex = 34;
             this.fechafin.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.fechafin.ValueChanged += new System.EventHandler(this.fechafin_ValueChanged);
             // 
             // fechaini
             // 
             this.fechaini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.fechaini.Location = new System.Drawing.Point(250, 8);
+            this.fechaini.Location = new System.Drawing.Point(250, 7);
             this.fechaini.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.fechaini.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.fechaini.Name = "fechaini";
             this.fechaini.Size = new System.Drawing.Size(105, 22);
-            this.fechaini.TabIndex = 167;
+            this.fechaini.TabIndex = 33;
             this.fechaini.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.fechaini.ValueChanged += new System.EventHandler(this.fechaini_ValueChanged);
             // 
@@ -642,7 +647,7 @@ namespace HPReserger
             this.radioButton1.Location = new System.Drawing.Point(18, 9);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(69, 18);
-            this.radioButton1.TabIndex = 130;
+            this.radioButton1.TabIndex = 30;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Código";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -651,10 +656,10 @@ namespace HPReserger
             // chkfecha
             // 
             this.chkfecha.AutoSize = true;
-            this.chkfecha.Location = new System.Drawing.Point(159, 10);
+            this.chkfecha.Location = new System.Drawing.Point(155, 10);
             this.chkfecha.Name = "chkfecha";
             this.chkfecha.Size = new System.Drawing.Size(56, 17);
-            this.chkfecha.TabIndex = 169;
+            this.chkfecha.TabIndex = 32;
             this.chkfecha.Text = "Fecha";
             this.chkfecha.UseVisualStyleBackColor = true;
             this.chkfecha.CheckedChanged += new System.EventHandler(this.chkfecha_CheckedChanged);
@@ -664,7 +669,7 @@ namespace HPReserger
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(412, 52);
+            this.label10.Location = new System.Drawing.Point(412, 51);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(39, 13);
             this.label10.TabIndex = 179;
@@ -675,7 +680,7 @@ namespace HPReserger
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(225, 52);
+            this.label9.Location = new System.Drawing.Point(225, 51);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(54, 13);
             this.label9.TabIndex = 178;
@@ -688,10 +693,10 @@ namespace HPReserger
             this.chkfechavalor.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkfechavalor.Enabled = false;
             this.chkfechavalor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkfechavalor.Location = new System.Drawing.Point(188, 32);
+            this.chkfechavalor.Location = new System.Drawing.Point(188, 31);
             this.chkfechavalor.Name = "chkfechavalor";
             this.chkfechavalor.Size = new System.Drawing.Size(106, 17);
-            this.chkfechavalor.TabIndex = 172;
+            this.chkfechavalor.TabIndex = 14;
             this.chkfechavalor.Text = "FechaContable:";
             this.chkfechavalor.UseVisualStyleBackColor = false;
             this.chkfechavalor.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -770,7 +775,7 @@ namespace HPReserger
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 34);
+            this.label2.Location = new System.Drawing.Point(9, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 140;
@@ -781,7 +786,7 @@ namespace HPReserger
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(9, 52);
+            this.label8.Location = new System.Drawing.Point(9, 51);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 13);
             this.label8.TabIndex = 177;
@@ -797,11 +802,11 @@ namespace HPReserger
             this.cbocambio.Items.AddRange(new object[] {
             "Compra",
             "Venta"});
-            this.cbocambio.Location = new System.Drawing.Point(581, 101);
+            this.cbocambio.Location = new System.Drawing.Point(581, 99);
             this.cbocambio.Name = "cbocambio";
             this.cbocambio.ReadOnly = false;
             this.cbocambio.Size = new System.Drawing.Size(92, 21);
-            this.cbocambio.TabIndex = 214;
+            this.cbocambio.TabIndex = 23;
             this.cbocambio.SelectedIndexChanged += new System.EventHandler(this.cbocambio_SelectedIndexChanged);
             this.cbocambio.Click += new System.EventHandler(this.cbomoneda_Click);
             // 
@@ -812,11 +817,11 @@ namespace HPReserger
             this.cbomoneda.Enabled = false;
             this.cbomoneda.FormattingEnabled = true;
             this.cbomoneda.IndexText = null;
-            this.cbomoneda.Location = new System.Drawing.Point(413, 101);
+            this.cbomoneda.Location = new System.Drawing.Point(413, 99);
             this.cbomoneda.Name = "cbomoneda";
             this.cbomoneda.ReadOnly = false;
             this.cbomoneda.Size = new System.Drawing.Size(109, 21);
-            this.cbomoneda.TabIndex = 214;
+            this.cbomoneda.TabIndex = 21;
             this.cbomoneda.Click += new System.EventHandler(this.cbomoneda_Click);
             // 
             // txttipocambio
@@ -828,13 +833,13 @@ namespace HPReserger
             this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttipocambio.ForeColor = System.Drawing.Color.Black;
             this.txttipocambio.Format = "n3";
-            this.txttipocambio.Location = new System.Drawing.Point(528, 101);
+            this.txttipocambio.Location = new System.Drawing.Point(528, 99);
             this.txttipocambio.MaxLength = 10;
             this.txttipocambio.Name = "txttipocambio";
             this.txttipocambio.NextControlOnEnter = null;
             this.txttipocambio.ReadOnly = true;
             this.txttipocambio.Size = new System.Drawing.Size(50, 21);
-            this.txttipocambio.TabIndex = 212;
+            this.txttipocambio.TabIndex = 22;
             this.txttipocambio.Text = "3.300";
             this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttipocambio.TextoDefecto = "3.300";
@@ -850,13 +855,13 @@ namespace HPReserger
             this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtglosa.ForeColor = System.Drawing.Color.Black;
             this.txtglosa.Format = null;
-            this.txtglosa.Location = new System.Drawing.Point(9, 101);
+            this.txtglosa.Location = new System.Drawing.Point(9, 99);
             this.txtglosa.MaxLength = 100;
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.ReadOnly = true;
-            this.txtglosa.Size = new System.Drawing.Size(397, 21);
-            this.txtglosa.TabIndex = 211;
+            this.txtglosa.Size = new System.Drawing.Size(400, 21);
+            this.txtglosa.TabIndex = 20;
             this.txtglosa.Text = "Ingrese Glosa Del Asiento";
             this.txtglosa.TextoDefecto = "Ingrese Glosa del Asiento";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -877,7 +882,7 @@ namespace HPReserger
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre1.Location = new System.Drawing.Point(-4, 124);
+            this.separadorOre1.Location = new System.Drawing.Point(-4, 121);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
@@ -895,7 +900,7 @@ namespace HPReserger
             this.Txtbusca.Location = new System.Drawing.Point(9, 439);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(565, 22);
-            this.Txtbusca.TabIndex = 182;
+            this.Txtbusca.TabIndex = 35;
             this.Txtbusca.BuscarClick += new System.EventHandler(this.Txtbusca_TextChanged);
             this.Txtbusca.ClickLimpiarboton += new System.EventHandler(this.btnlimpiar_Click);
             this.Txtbusca.BuscarTextChanged += new System.EventHandler(this.Txtbusca_TextChanged);
@@ -946,7 +951,7 @@ namespace HPReserger
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtgconten.EnableHeadersVisualStyles = false;
             this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.Dtgconten.Location = new System.Drawing.Point(9, 153);
+            this.Dtgconten.Location = new System.Drawing.Point(9, 146);
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -955,7 +960,7 @@ namespace HPReserger
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
-            this.Dtgconten.Size = new System.Drawing.Size(664, 221);
+            this.Dtgconten.Size = new System.Drawing.Size(664, 228);
             this.Dtgconten.TabIndex = 155;
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.Dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellEndEdit);
@@ -1116,7 +1121,7 @@ namespace HPReserger
             this.dtgbusca.RowHeadersVisible = false;
             this.dtgbusca.RowTemplate.Height = 16;
             this.dtgbusca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgbusca.Size = new System.Drawing.Size(667, 153);
+            this.dtgbusca.Size = new System.Drawing.Size(667, 155);
             this.dtgbusca.TabIndex = 148;
             this.dtgbusca.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgbusca_RowEnter);
             this.dtgbusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgbusca_KeyDown);
@@ -1263,7 +1268,7 @@ namespace HPReserger
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 88);
+            this.label1.Location = new System.Drawing.Point(9, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 177;
@@ -1274,17 +1279,53 @@ namespace HPReserger
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(413, 88);
+            this.label7.Location = new System.Drawing.Point(413, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 13);
             this.label7.TabIndex = 177;
             this.label7.Text = "Moneda Asiento:";
             // 
+            // labelAmarillo
+            // 
+            this.labelAmarillo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labelAmarillo.AutoSize = true;
+            this.labelAmarillo.BackColor = System.Drawing.Color.Transparent;
+            this.labelAmarillo.ForeColor = System.Drawing.Color.Chocolate;
+            this.labelAmarillo.Location = new System.Drawing.Point(240, 403);
+            this.labelAmarillo.Name = "labelAmarillo";
+            this.labelAmarillo.Size = new System.Drawing.Size(204, 13);
+            this.labelAmarillo.TabIndex = 215;
+            this.labelAmarillo.Text = "Naranja=Error Monto Revise el Detalle";
+            this.labelAmarillo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAmarillo.Click += new System.EventHandler(this.labelAmarillo_Click);
+            // 
+            // labelCuadre
+            // 
+            this.labelCuadre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelCuadre.AutoSize = true;
+            this.labelCuadre.BackColor = System.Drawing.Color.Transparent;
+            this.labelCuadre.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelCuadre.Location = new System.Drawing.Point(12, 416);
+            this.labelCuadre.Name = "labelCuadre";
+            this.labelCuadre.Size = new System.Drawing.Size(64, 13);
+            this.labelCuadre.TabIndex = 181;
+            this.labelCuadre.Text = "Descuadre:";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Location = new System.Drawing.Point(12, 403);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(0, 13);
+            this.label11.TabIndex = 181;
+            // 
             // frmAsientoContable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(684, 675);
+            this.Controls.Add(this.labelAmarillo);
             this.Controls.Add(this.cbocambio);
             this.Controls.Add(this.cbomoneda);
             this.Controls.Add(this.txttipocambio);
@@ -1295,9 +1336,11 @@ namespace HPReserger
             this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.btnreversa);
             this.Controls.Add(this.Txtbusca);
-            this.Controls.Add(this.lbldetalle);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.labelCuadre);
             this.Controls.Add(this.label11);
+            this.Controls.Add(this.lbldetalle);
+            this.Controls.Add(this.labelAzul);
+            this.Controls.Add(this.labelRojo);
             this.Controls.Add(this.cboetapa);
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.cboproyecto);
@@ -1404,12 +1447,12 @@ namespace HPReserger
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelRojo;
         private System.Windows.Forms.Label lbldetalle;
         private txtBuscar Txtbusca;
         private System.Windows.Forms.Button btnreversa;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelAzul;
         private System.Windows.Forms.TextBox txtcuo;
         private System.Windows.Forms.Label label14;
         private SeparadorOre separadorOre1;
@@ -1445,5 +1488,8 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn xtc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelAmarillo;
+        private System.Windows.Forms.Label labelCuadre;
+        private System.Windows.Forms.Label label11;
     }
 }

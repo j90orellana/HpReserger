@@ -53,6 +53,7 @@ namespace HpResergerUserControls
         }
         private void txtbusca_Click(object sender, EventArgs e)
         {
+            if (txtbusca.Text == _text) txtbusca.Text = "";
         }
         private void txtbusca_DoubleClick(object sender, EventArgs e)
         {
@@ -63,15 +64,24 @@ namespace HpResergerUserControls
             txtbusca.Text = "";
             txtbusca.Focus();
         }
+        Font FontPrueba;
         private void txtbusca_Leave(object sender, EventArgs e)
         {
-            if (txtbusca.Text == "") txtbusca.Text = _text;
+            if (txtbusca.Text == "")
+            {
+                txtbusca.Text = _text;
+            }
         }
         public string TextoValido()
         {
             string cadena = "";
             if (EstaLLeno()) cadena = Text; else cadena = "";
             return cadena;
+        }
+
+        private void txtBuscar_Resize(object sender, EventArgs e)
+        {
+            txtbusca.Font = new Font(this.Font.FontFamily, this.Height / 2);
         }
     }
 }
