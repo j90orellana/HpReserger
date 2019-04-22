@@ -33,7 +33,7 @@ namespace HpResergerUserControls
         {
             if (this.ClientRectangle.Height > 0 && this.ClientRectangle.Width > 0)
                 if (_colores.Length > 0)
-                {     
+                {
                     LinearGradientBrush BrochaGradienteLineal = new LinearGradientBrush(this.ClientRectangle, Color.Black, Color.Black, Angulo);
                     ColorBlend BlendColor = new ColorBlend();
                     BlendColor.Colors = _colores;
@@ -50,6 +50,23 @@ namespace HpResergerUserControls
                 }
             base.OnPaint(e);
             this.ResumeLayout();
+        }
+        public Boolean CerrarAlPresionarESC { get; set; }
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            if (CerrarAlPresionarESC)
+            {
+                if (e.KeyCode == Keys.Escape) this.Close();
+            }
+        }
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            base.OnKeyPress(e);
+            if (CerrarAlPresionarESC)
+            {
+                if (e.KeyChar == (char)Keys.Escape) this.Close();
+            }
         }
     }
 }

@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.lblmsg = new System.Windows.Forms.Label();
             this.gp1 = new System.Windows.Forms.GroupBox();
-            this.rdnrodoc = new System.Windows.Forms.RadioButton();
-            this.rdid = new System.Windows.Forms.RadioButton();
-            this.rdEstadoCivil = new System.Windows.Forms.RadioButton();
-            this.rdnombre = new System.Windows.Forms.RadioButton();
-            this.txtBuscar = new HpResergerUserControls.txtBuscar();
+            this.txtbusEstadocCivil = new HpResergerUserControls.TextBoxPer();
+            this.txtbusTipoDoc = new HpResergerUserControls.TextBoxPer();
+            this.txtbusNroDoc = new HpResergerUserControls.TextBoxPer();
+            this.txtbusNombre = new HpResergerUserControls.TextBoxPer();
             this.txtocupacion = new HpResergerUserControls.TextBoxPer();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.txtemail = new HpResergerUserControls.TextBoxPer();
@@ -108,6 +107,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.btncleanfind = new System.Windows.Forms.Button();
             this.gp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -126,76 +126,109 @@
             // gp1
             // 
             this.gp1.BackColor = System.Drawing.Color.Transparent;
-            this.gp1.Controls.Add(this.rdnrodoc);
-            this.gp1.Controls.Add(this.rdid);
-            this.gp1.Controls.Add(this.rdEstadoCivil);
-            this.gp1.Controls.Add(this.rdnombre);
+            this.gp1.Controls.Add(this.btncleanfind);
+            this.gp1.Controls.Add(this.txtbusEstadocCivil);
+            this.gp1.Controls.Add(this.txtbusTipoDoc);
+            this.gp1.Controls.Add(this.txtbusNombre);
+            this.gp1.Controls.Add(this.txtbusNroDoc);
             this.gp1.Location = new System.Drawing.Point(10, 159);
             this.gp1.Name = "gp1";
-            this.gp1.Size = new System.Drawing.Size(937, 40);
+            this.gp1.Size = new System.Drawing.Size(937, 38);
             this.gp1.TabIndex = 96;
             this.gp1.TabStop = false;
             this.gp1.Text = "Opciones";
             // 
-            // rdnrodoc
+            // txtbusEstadocCivil
             // 
-            this.rdnrodoc.AutoSize = true;
-            this.rdnrodoc.Location = new System.Drawing.Point(69, 17);
-            this.rdnrodoc.Name = "rdnrodoc";
-            this.rdnrodoc.Size = new System.Drawing.Size(64, 17);
-            this.rdnrodoc.TabIndex = 31;
-            this.rdnrodoc.Text = "NroDoc";
-            this.rdnrodoc.UseVisualStyleBackColor = true;
-            this.rdnrodoc.CheckedChanged += new System.EventHandler(this.rdnrodoc_CheckedChanged);
+            this.txtbusEstadocCivil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtbusEstadocCivil.BackColor = System.Drawing.Color.White;
+            this.txtbusEstadocCivil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusEstadocCivil.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusEstadocCivil.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusEstadocCivil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusEstadocCivil.ForeColor = System.Drawing.Color.Black;
+            this.txtbusEstadocCivil.Format = null;
+            this.txtbusEstadocCivil.Location = new System.Drawing.Point(495, 13);
+            this.txtbusEstadocCivil.MaxLength = 50;
+            this.txtbusEstadocCivil.Name = "txtbusEstadocCivil";
+            this.txtbusEstadocCivil.NextControlOnEnter = null;
+            this.txtbusEstadocCivil.Size = new System.Drawing.Size(148, 21);
+            this.txtbusEstadocCivil.TabIndex = 101;
+            this.txtbusEstadocCivil.Tag = "";
+            this.txtbusEstadocCivil.Text = "Buscar Estado Civil";
+            this.txtbusEstadocCivil.TextoDefecto = "Buscar Estado Civil";
+            this.txtbusEstadocCivil.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusEstadocCivil.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusEstadocCivil.TextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
             // 
-            // rdid
+            // txtbusTipoDoc
             // 
-            this.rdid.AutoSize = true;
-            this.rdid.Checked = true;
-            this.rdid.Location = new System.Drawing.Point(12, 17);
-            this.rdid.Name = "rdid";
-            this.rdid.Size = new System.Drawing.Size(57, 17);
-            this.rdid.TabIndex = 30;
-            this.rdid.TabStop = true;
-            this.rdid.Text = "TipoId";
-            this.rdid.UseVisualStyleBackColor = true;
-            this.rdid.CheckedChanged += new System.EventHandler(this.rdid_CheckedChanged);
+            this.txtbusTipoDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtbusTipoDoc.BackColor = System.Drawing.Color.White;
+            this.txtbusTipoDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusTipoDoc.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusTipoDoc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusTipoDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusTipoDoc.ForeColor = System.Drawing.Color.Black;
+            this.txtbusTipoDoc.Format = null;
+            this.txtbusTipoDoc.Location = new System.Drawing.Point(65, 13);
+            this.txtbusTipoDoc.MaxLength = 50;
+            this.txtbusTipoDoc.Name = "txtbusTipoDoc";
+            this.txtbusTipoDoc.NextControlOnEnter = this.txtbusNroDoc;
+            this.txtbusTipoDoc.Size = new System.Drawing.Size(132, 21);
+            this.txtbusTipoDoc.TabIndex = 98;
+            this.txtbusTipoDoc.Tag = "";
+            this.txtbusTipoDoc.Text = "Buscar Tipo ID";
+            this.txtbusTipoDoc.TextoDefecto = "Buscar Tipo ID";
+            this.txtbusTipoDoc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusTipoDoc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusTipoDoc.TextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
             // 
-            // rdEstadoCivil
+            // txtbusNroDoc
             // 
-            this.rdEstadoCivil.AutoSize = true;
-            this.rdEstadoCivil.Location = new System.Drawing.Point(204, 17);
-            this.rdEstadoCivil.Name = "rdEstadoCivil";
-            this.rdEstadoCivil.Size = new System.Drawing.Size(81, 17);
-            this.rdEstadoCivil.TabIndex = 33;
-            this.rdEstadoCivil.Text = "EstadoCivil";
-            this.rdEstadoCivil.UseVisualStyleBackColor = true;
-            this.rdEstadoCivil.CheckedChanged += new System.EventHandler(this.rdEstadoCivil_CheckedChanged);
+            this.txtbusNroDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtbusNroDoc.BackColor = System.Drawing.Color.White;
+            this.txtbusNroDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusNroDoc.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusNroDoc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusNroDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusNroDoc.ForeColor = System.Drawing.Color.Black;
+            this.txtbusNroDoc.Format = null;
+            this.txtbusNroDoc.Location = new System.Drawing.Point(203, 13);
+            this.txtbusNroDoc.MaxLength = 50;
+            this.txtbusNroDoc.Name = "txtbusNroDoc";
+            this.txtbusNroDoc.NextControlOnEnter = this.txtbusNombre;
+            this.txtbusNroDoc.Size = new System.Drawing.Size(132, 21);
+            this.txtbusNroDoc.TabIndex = 99;
+            this.txtbusNroDoc.Tag = "";
+            this.txtbusNroDoc.Text = "Buscar Nro. Doc.";
+            this.txtbusNroDoc.TextoDefecto = "Buscar Nro. Doc.";
+            this.txtbusNroDoc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusNroDoc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusNroDoc.TextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
             // 
-            // rdnombre
+            // txtbusNombre
             // 
-            this.rdnombre.AutoSize = true;
-            this.rdnombre.Location = new System.Drawing.Point(133, 17);
-            this.rdnombre.Name = "rdnombre";
-            this.rdnombre.Size = new System.Drawing.Size(71, 17);
-            this.rdnombre.TabIndex = 32;
-            this.rdnombre.Text = "Nombres";
-            this.rdnombre.UseVisualStyleBackColor = true;
-            this.rdnombre.CheckedChanged += new System.EventHandler(this.rdnombre_CheckedChanged);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtBuscar.FondoBoton = ((System.Drawing.Image)(resources.GetObject("txtBuscar.FondoBoton")));
-            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.ImgBotonCerrar = null;
-            this.txtBuscar.Location = new System.Drawing.Point(12, 204);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(476, 22);
-            this.txtBuscar.TabIndex = 34;
-            this.txtBuscar.BuscarClick += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
-            this.txtBuscar.BuscarTextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
+            this.txtbusNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtbusNombre.BackColor = System.Drawing.Color.White;
+            this.txtbusNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtbusNombre.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtbusNombre.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtbusNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbusNombre.ForeColor = System.Drawing.Color.Black;
+            this.txtbusNombre.Format = null;
+            this.txtbusNombre.Location = new System.Drawing.Point(341, 13);
+            this.txtbusNombre.MaxLength = 50;
+            this.txtbusNombre.Name = "txtbusNombre";
+            this.txtbusNombre.NextControlOnEnter = this.txtbusEstadocCivil;
+            this.txtbusNombre.Size = new System.Drawing.Size(148, 21);
+            this.txtbusNombre.TabIndex = 100;
+            this.txtbusNombre.Tag = "";
+            this.txtbusNombre.Text = "Buscar Nombre Cliente";
+            this.txtbusNombre.TextoDefecto = "Buscar Nombre Cliente";
+            this.txtbusNombre.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtbusNombre.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtbusNombre.TextChanged += new System.EventHandler(this.txtBuscar_BuscarTextChanged);
             // 
             // txtocupacion
             // 
@@ -361,7 +394,7 @@
             this.txtdireccion.ForeColor = System.Drawing.Color.Black;
             this.txtdireccion.Format = null;
             this.txtdireccion.Location = new System.Drawing.Point(75, 85);
-            this.txtdireccion.MaxLength = 100;
+            this.txtdireccion.MaxLength = 80;
             this.txtdireccion.Name = "txtdireccion";
             this.txtdireccion.NextControlOnEnter = this.txttelfijo;
             this.txtdireccion.Size = new System.Drawing.Size(413, 21);
@@ -443,7 +476,7 @@
             this.txtnombre.ForeColor = System.Drawing.Color.Black;
             this.txtnombre.Format = null;
             this.txtnombre.Location = new System.Drawing.Point(75, 37);
-            this.txtnombre.MaxLength = 100;
+            this.txtnombre.MaxLength = 180;
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.NextControlOnEnter = this.txtapetpat;
             this.txtnombre.Size = new System.Drawing.Size(235, 21);
@@ -472,7 +505,7 @@
             this.txtnroid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnroid.TextoDefecto = "000000";
             this.txtnroid.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumerosConCero;
+            this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
             // cbotipoid
             // 
@@ -632,13 +665,13 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(12, 232);
+            this.dtgconten.Location = new System.Drawing.Point(12, 197);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.ReadOnly = true;
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(935, 292);
+            this.dtgconten.Size = new System.Drawing.Size(935, 327);
             this.dtgconten.TabIndex = 0;
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
@@ -1069,6 +1102,18 @@
             this.label12.TabIndex = 88;
             this.label12.Text = "Tel. Celular:";
             // 
+            // btncleanfind
+            // 
+            this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
+            this.btncleanfind.Location = new System.Drawing.Point(643, 13);
+            this.btncleanfind.Name = "btncleanfind";
+            this.btncleanfind.Size = new System.Drawing.Size(25, 21);
+            this.btncleanfind.TabIndex = 102;
+            this.btncleanfind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncleanfind.UseVisualStyleBackColor = true;
+            this.btncleanfind.Click += new System.EventHandler(this.btncleanfind_Click);
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1076,7 +1121,6 @@
             this.ClientSize = new System.Drawing.Size(959, 561);
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.gp1);
-            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.txtocupacion);
             this.Controls.Add(this.txtemail);
             this.Controls.Add(this.cbodistrito);
@@ -1173,13 +1217,8 @@
         private HpResergerUserControls.TextBoxPer txtemail;
         private System.Windows.Forms.Label label16;
         private HpResergerUserControls.TextBoxPer txtocupacion;
-        private HpResergerUserControls.txtBuscar txtBuscar;
         private System.Windows.Forms.GroupBox gp1;
-        private System.Windows.Forms.RadioButton rdid;
-        private System.Windows.Forms.RadioButton rdEstadoCivil;
-        private System.Windows.Forms.RadioButton rdnombre;
         private System.Windows.Forms.Label lblmsg;
-        public System.Windows.Forms.RadioButton rdnrodoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Clix;
         private System.Windows.Forms.DataGridViewComboBoxColumn Tipo_Id_Clix;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtipoidx;
@@ -1207,5 +1246,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ocupacionx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuariox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fechax;
+        private HpResergerUserControls.TextBoxPer txtbusTipoDoc;
+        private HpResergerUserControls.TextBoxPer txtbusNroDoc;
+        private HpResergerUserControls.TextBoxPer txtbusNombre;
+        private HpResergerUserControls.TextBoxPer txtbusEstadocCivil;
+        private System.Windows.Forms.Button btncleanfind;
     }
 }

@@ -113,6 +113,7 @@
             this.pbFotoAntecedentesPoliciales = new System.Windows.Forms.PictureBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txtcodigo = new System.Windows.Forms.TextBox();
+            this.txtedad = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbfirma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbconviviente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFotoReciboServicios)).BeginInit();
@@ -365,8 +366,9 @@
             this.dtpFecha.Location = new System.Drawing.Point(133, 155);
             this.dtpFecha.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(139, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(112, 20);
             this.dtpFecha.TabIndex = 8;
+            this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // txtDireccion
             // 
@@ -1126,12 +1128,26 @@
             this.txtcodigo.Text = "00000";
             this.txtcodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // txtedad
+            // 
+            this.txtedad.Enabled = false;
+            this.txtedad.Location = new System.Drawing.Point(246, 155);
+            this.txtedad.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.txtedad.MaxLength = 2;
+            this.txtedad.Name = "txtedad";
+            this.txtedad.Size = new System.Drawing.Size(26, 20);
+            this.txtedad.TabIndex = 125;
+            this.txtedad.Text = "0";
+            this.txtedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtedad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNHijos_KeyPress);
+            // 
             // frmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(724, 456);
+            this.Controls.Add(this.txtedad);
             this.Controls.Add(this.txtNHijos);
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.btndescargar);
@@ -1317,5 +1333,6 @@
         private System.Windows.Forms.Button btndescargar;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox txtcodigo;
+        public System.Windows.Forms.TextBox txtedad;
     }
 }

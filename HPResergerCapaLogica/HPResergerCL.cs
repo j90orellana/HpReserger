@@ -2062,6 +2062,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Clientes(3, 0, tipoid, nroid, "", "", "", 0, 0, 0, "", 0, 0, 0, "", "", "", "", 0, DateTime.Now);
         }
+        public DataTable ClientesBusqueda(string codigo, string nrodoc, string nombres, string estadocivil)
+        {
+            return cdOrdenPedido.ClientesBusqueda(codigo, nrodoc, nombres, estadocivil);
+        }
         public DataTable ClienteBuscarExiste(int codigo, int tipoid, string nroid)
         {
             return cdOrdenPedido.Clientes(5, codigo, tipoid, nroid, "", "", "", 0, 0, 0, "", 0, 0, 0, "", "", "", "", 0, DateTime.Now);

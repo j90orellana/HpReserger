@@ -235,14 +235,31 @@ namespace HPReserger
                         if (!(item.Cells[tipodocx.Name].Value.ToString() == "0" || item.Cells[tipodocx.Name].Value.ToString() == "6"))
                         {
                             int index = (int.Parse((TipoDocLength.Select($"codigo='{item.Cells[tipodocx.Name].Value.ToString()}'"))[0].ItemArray[1].ToString()));
-                            if (item.Cells[numdocx.Name].Value.ToString().Length == index)
-                                HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[numdocx.Name]);
-                            else
+                            if (item.Cells[numdocx.Name].Value.ToString().ToUpper().Contains("DNI") || item.Cells[numdocx.Name].Value.ToString().ToUpper().Contains("RUC"))
                             {
-                                cadena += $"Tamaño del Documento Incorrecto debe ser={index}, en Fila {item.Index + 1}\n";
-                                result = false;
-                                HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[numdocx.Name]);
+                                HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[numdocx.Name]);
+                                if (item.Cells[numdocx.Name].Value.ToString().Length != index)
+                                {
+                                    result = false;
+                                    cadena += $"El tamaño del Nro Documento debe ser: {index}";
+                                    HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[numdocx.Name]);
+                                }
                             }
+                            else if (item.Cells[numdocx.Name].Value.ToString().Length > index)
+                            {
+                                result = false;
+                                cadena += $"El Máximo tamaño del Nro Documento debe ser: {index}";
+                                HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[numdocx.Name]);
+
+                            }
+                            //if (item.Cells[numdocx.Name].Value.ToString().Length == index)
+                            //    HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[numdocx.Name]);
+                            //else
+                            //{
+                            //    cadena += $"Tamaño del Documento Incorrecto debe ser={index}, en Fila {item.Index + 1}\n";
+                            //    result = false;
+                            //    HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[numdocx.Name]);
+                            //}
                         }
                         else
                         {
@@ -412,19 +429,18 @@ namespace HPReserger
                     txt = e.Control as TextBox;
                     if (txt != null)
                     {
-                        txt.KeyPress -= new KeyPressEventHandler(Txt_KeyPressSoloNumeros);
-                        txt.KeyPress += new KeyPressEventHandler(Txt_KeyPressSoloNumeros);
+                        txt.KeyPress -= new KeyPressEventHandler(Txt_KeyPressSoloLetrasMayusculas);
+                        txt.KeyPress += new KeyPressEventHandler(Txt_KeyPressSoloLetrasMayusculas);
                     }
                 }
                 if (y == Dtgconten.Columns[numdocx.Name].Index)
                 {
-                    txt = e.Control as TextBox;
-                    if (txt != null)
-                    {
-                        txt.KeyDown -= new KeyEventHandler(Txt_KeyDown);
-                        txt.KeyDown += new KeyEventHandler(Txt_KeyDown);
-
-                    }
+                    //    txt = e.Control as TextBox;
+                    //    if (txt != null)
+                    //    {
+                    //        txt.KeyDown -= new KeyEventHandler(Txt_KeyDown);
+                    //        txt.KeyPress -= new KeyPressEventHandler(Txt_KeyPress);
+                    //    }
                 }
                 if (y == Dtgconten.Columns[codcomprobantex.Name].Index || y == Dtgconten.Columns[glosax.Name].Index || y == Dtgconten.Columns[numcomprobantex.Name].Index || y == Dtgconten.Columns[fechaemisionx.Name].Index || y == Dtgconten.Columns[FechaVencimientox.Name].Index || y == Dtgconten.Columns[razonsocialx.Name].Index)
                 {
@@ -512,6 +528,11 @@ namespace HPReserger
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);
             //BorrarFilasSelecionadas(e);
         }
+        private void Txt_KeyPressSoloLetrasMayusculas(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = e.KeyChar.ToString().ToUpper()[0];
+            //BorrarFilasSelecionadas(e);
+        }
         public void BorrarFilasSelecionadas(KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Delete)
@@ -589,6 +610,7 @@ namespace HPReserger
             //si se edita la columna ruc
             if (x >= 0)
             {
+
                 //cambia el index del ruc
                 int index = int.Parse((tipoDoc.Select("descripcion='ruc'"))[0].ItemArray[0].ToString());
                 if (y == Dtgconten.Columns[tipodocx.Name].Index)
@@ -598,8 +620,6 @@ namespace HPReserger
                         {
                             Dtgconten[razonsocialx.Name, x].ReadOnly = true;
                         }
-                        else
-                            Dtgconten[razonsocialx.Name, x].ReadOnly = false;
                 }
                 //se modifica el numero del ruc
                 if (y == Dtgconten.Columns[numdocx.Name].Index || y == Dtgconten.Columns[tipodocx.Name].Index)// && int.Parse(Dtgconten[tipodocx.Name, x].Value.ToString() == "" ? index.ToString() : Dtgconten[tipodocx.Name, x].Value.ToString()) == index)
@@ -610,11 +630,23 @@ namespace HPReserger
                         DataRow filita = filo.Rows[0];
                         if (filita != null)
                         {
-                            fila = x;
+                            FilaPos = x;
                             //if (x == Dtgconten.RowCount - 1) { Datos.Rows.Add(); }
+                            Dtgconten[razonsocialx.Name, x].ReadOnly = true;
                             Dtgconten[razonsocialx.Name, x].Value = filita["Nombre"].ToString();
+
                         }
-                        else Dtgconten[razonsocialx.Name, x].Value = "";
+                        else
+                        {
+                            Dtgconten[razonsocialx.Name, x].Value = "";
+                            Dtgconten[razonsocialx.Name, x].ReadOnly = false;
+                        }
+                        Dtgconten.EndEdit();
+                    }
+                    else
+                    {
+                        Dtgconten[razonsocialx.Name, x].ReadOnly = false;
+                        Dtgconten[razonsocialx.Name, x].Value = "";
                         Dtgconten.EndEdit();
                     }
                 }
@@ -794,7 +826,7 @@ namespace HPReserger
                 }
             }
         }
-        int fila = 0;
+        int FilaPos = 0;
         frmproveedor frmprovee;
         private void Dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -805,17 +837,17 @@ namespace HPReserger
             {
                 if (frmprovee.llamada == 1)
                 {
-                    if (fila == Dtgconten.RowCount - 1)
+                    if (FilaPos == Dtgconten.RowCount - 1)
                         Datos.Rows.Add();
-                    if (Dtgconten[numdocx.Name, fila].Value == null) Datos.Rows.Add();
+                    if (Dtgconten[numdocx.Name, FilaPos].Value == null) Datos.Rows.Add();
                     try
                     {
-                        if (Dtgconten[numdocx.Name, fila].Value.ToString() == frmprovee.rucito)
+                        if (Dtgconten[numdocx.Name, FilaPos].Value.ToString() == frmprovee.rucito)
                         {
-                            Dtgconten_CellValueChanged(sender, new DataGridViewCellEventArgs(Dtgconten.Columns[numdocx.Name].Index, fila));
+                            Dtgconten_CellValueChanged(sender, new DataGridViewCellEventArgs(Dtgconten.Columns[numdocx.Name].Index, FilaPos));
                         }
-                        Dtgconten[numdocx.Name, fila].Value = frmprovee.rucito;
-                        Dtgconten[tipodocx.Name, fila].Value = 5;
+                        Dtgconten[numdocx.Name, FilaPos].Value = frmprovee.rucito;
+                        Dtgconten[tipodocx.Name, FilaPos].Value = 5;
                     }
                     catch (Exception) { msg("No se Pudo Agregar Porque se necesita una fila Nueva"); }
                 }
@@ -836,23 +868,52 @@ namespace HPReserger
                     {
                         if (y == Dtgconten.Columns[razonsocialx.Name].Index || y == Dtgconten.Columns[numdocx.Name].Index)
                         {
-                            //if (frmprovee == null)
-                            //{
-                            frmprovee = new frmproveedor();
-                            frmprovee.Txtbusca.Text = Dtgconten[numdocx.Name, x].Value.ToString();
-                            fila = x;
-                            frmprovee.llamada = 1;
-                            frmprovee.Icon = Icon;
-                            frmprovee.MdiParent = ParentForm;
-                            frmprovee.FormClosed += Frmprovee_FormClosed;
-                            frmprovee.Show();
-                            //}
-                            //else frmprovee.Activate();
+                            if (frmprovee == null)
+                            {
+                                frmprovee = new frmproveedor();
+                                frmprovee.Txtbusca.Text = Dtgconten[numdocx.Name, x].Value.ToString();
+                                FilaPos = x;
+                                frmprovee.llamada = 1;
+                                frmprovee.Icon = Icon;
+                                frmprovee.MdiParent = ParentForm;
+                                frmprovee.FormClosed += Frmprovee_FormClosed;
+                                frmprovee.Show();
+                            }
+                            else frmprovee.Activate();
                         }
+                    }
+                    else
+                    {
+                        if (frmlispersonas == null)
+                        {
+                            Dtgconten.EndEdit();
+                            frmlispersonas = new frmListarSeleccionarPersonas((int)Dtgconten[tipodocx.Name, e.RowIndex].Value, Dtgconten[numdocx.Name, e.RowIndex].Value.ToString());
+                            IndexPos = e.RowIndex;
+                            frmlispersonas.FormClosed += Frmlispersonas_FormClosed;
+                            frmlispersonas.Show();
+                        }
+                        else frmlispersonas.Activate();
                     }
                 }
             }
         }
+        int IndexPos;
+        private void Frmlispersonas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (frmlispersonas.Busqueda)
+            {
+                if (Dtgconten.CurrentCell.RowIndex == Dtgconten.RowCount - 1)
+                    Datos.Rows.Add();
+                else if (Dtgconten[numdocx.Name, FilaPos].Value == null) Datos.Rows.Add();
+                ////
+                Dtgconten[tipodocx.Name, IndexPos].Value = frmlispersonas.TipoId;
+                Dtgconten[numdocx.Name, IndexPos].Value = frmlispersonas.NroDoc;
+                Dtgconten.EndEdit();
+                Dtgconten.RefreshEdit();
+            }
+            frmlispersonas = null;
+        }
+        frmListarSeleccionarPersonas frmlispersonas;
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Dtgconten.RowCount > 0)

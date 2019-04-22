@@ -167,7 +167,7 @@ namespace HPReserger
         private void btnbuscar_Click(object sender, EventArgs e)
         {
             frmClientes frmclien = new frmClientes();
-            frmclien.rdnrodoc.Checked = true;
+            //frmclien.rdnrodoc.Checked = true;
             frmclien.codigoid = (int)cbotipoid.SelectedValue;
             frmclien.CodigoDocBuscar = txtnroid.TextValido();
             frmclien.Buscando = true;

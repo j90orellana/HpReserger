@@ -154,6 +154,12 @@
     <Compile Include="frmReportedeFacturas.Designer.cs">
       <DependentUpon>frmReportedeFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListarSeleccionarPersonas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListarSeleccionarPersonas.Designer.cs">
+      <DependentUpon>frmListarSeleccionarPersonas.cs</DependentUpon>
+    </Compile>
     <Compile Include="rptFormato81Compras.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1510,6 +1516,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportedeFacturas.resx">
       <DependentUpon>frmReportedeFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListarSeleccionarPersonas.resx">
+      <DependentUpon>frmListarSeleccionarPersonas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptFormato81Compras.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

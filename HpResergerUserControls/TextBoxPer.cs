@@ -85,7 +85,7 @@ namespace HpResergerUserControls
         }
         protected override void OnCreateControl()
         {
-            ColorLetras = ForeColor;
+            //ColorLetras = ForeColor;
             ColorFondo = BackColor;
             if (!EstaLLeno())
                 this.Text = TextoPorDefecto;
@@ -198,6 +198,7 @@ namespace HpResergerUserControls
             }
             if (Text != TextoPorDefecto)
                 ForeColor = ColorLetras;
+            else ForeColor = ColorTextoDefecto;
             base.OnTextChanged(e);
         }
         protected override void OnKeyPress(KeyPressEventArgs e)

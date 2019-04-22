@@ -89,7 +89,7 @@ namespace HPResergerFunciones
                 P.Handled = true;
             }
             if (P.KeyChar == '-')
-                if (Numero.Length!=0)
+                if (Numero.Length != 0)
                     P.Handled = true;
             return P.Handled;
         }
@@ -152,6 +152,15 @@ namespace HPResergerFunciones
         public static Boolean Sololetras(KeyPressEventArgs P)
         {
             string cadena = "abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVWXYZÑñ " + (char)8;
+            if (!cadena.Contains(P.KeyChar))
+            {
+                P.Handled = true;
+            }
+            return P.Handled;
+        }
+        public static Boolean SoloLetrasMayusculas(KeyPressEventArgs P)
+        {           
+            string cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZÑñ " + (char)8;
             if (!cadena.Contains(P.KeyChar))
             {
                 P.Handled = true;
@@ -1279,5 +1288,16 @@ namespace HPResergerFunciones
             foreach (object x in control)
                 ((Control)x).Enabled = false;
         }
+        public static int Edad(DateTime Fecha)
+        {
+            Fecha = Fecha.Date;
+            return DateTime.Today.AddTicks(-Fecha.Ticks).Year - 1;
+        }
+        public static int Edad(DateTime FechaInicial, DateTime FechaFin)
+        {
+            FechaFin = FechaFin.Date;
+            return FechaInicial.AddTicks(-FechaFin.Ticks).Year - 1;
+        }
+
     }
 }

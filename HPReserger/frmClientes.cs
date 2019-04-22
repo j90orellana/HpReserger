@@ -14,8 +14,9 @@ namespace HPReserger
     public partial class frmClientes : FormGradient
     {
         public frmClientes()
-        {
+        {          
             InitializeComponent();
+            LimpiarBusquedas();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void frmClientes_Load(object sender, EventArgs e)
@@ -44,23 +45,26 @@ namespace HPReserger
         }
         public string CodigoDocBuscar
         {
-            get { return txtBuscar.Text; }
-            set
-            {
-                txtBuscar.Text = value;
-                // txtBuscar_BuscarTextChanged(new object { }, new EventArgs());               
-            }
+            get { return txtbusNroDoc.Text; }
+            set { txtbusNroDoc.Text = value; }
+        }
+        public string TipoDocBuscar
+        {
+            get { return txtbusTipoDoc.Text; }
+            set { txtbusTipoDoc.Text = value; }
         }
         public void ModoMuestra()
         {
-            Activar(gp1, dtgconten, txtBuscar, btnnuevo, btnmodificar, btneliminar);
+            Activar(dtgconten, btnnuevo, btnmodificar, btneliminar);
             Desactivar(txtdireccion, txtemail, txtnombre, txtnroid, txtocupacion, txttelcelular, txttelfijo, txtapemat, txtapetpat, cbocivil, cbodepartamento, cbodistrito, cbopersona, cboprovincia, cbosexo, cbotipoid);
+            Activar(txtbusEstadocCivil, txtbusNombre, txtbusNroDoc, txtbusTipoDoc, btncleanfind);
         }
         public void ModoEdicion()
         {
             //proceso de edicion------
             Activar(txtdireccion, txtemail, txtnombre, txtnroid, txtocupacion, txttelcelular, txttelfijo, txtapemat, txtapetpat, cbocivil, cbodepartamento, cbodistrito, cbopersona, cboprovincia, cbosexo, cbotipoid);
-            Desactivar(gp1, dtgconten, txtBuscar, btnnuevo, btnmodificar, btneliminar);
+            Desactivar(dtgconten, btnnuevo, btnmodificar, btneliminar);
+            Desactivar(txtbusEstadocCivil, txtbusNombre, txtbusNroDoc, txtbusTipoDoc, btncleanfind);
         }
         public int Opciones = 10;
         DataTable TTipoId;
@@ -257,7 +261,7 @@ namespace HPReserger
         }
         private void cbodepartamento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbodepartamento.Items.Count > 0)
+            if (cbodepartamento.Items.Count > 0 && cbodepartamento.SelectedValue != null)
             {
                 cboprovincia.ValueMember = "codprov";
                 cboprovincia.DisplayMember = "provincia";
@@ -266,7 +270,7 @@ namespace HPReserger
         }
         private void cboprovincia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboprovincia.Items.Count > 0)
+            if (cboprovincia.Items.Count > 0 && cboprovincia.SelectedValue != null)
             {
                 cbodistrito.ValueMember = "coddis";
                 cbodistrito.DisplayMember = "distrito";
@@ -357,10 +361,10 @@ namespace HPReserger
         }
         private void txtBuscar_BuscarTextChanged(object sender, EventArgs e)
         {
-            if (txtBuscar.EstaLLeno())
+            if (estado == 0)
             {
-                dtgconten.DataSource = CapaLogica.Clientes(Opciones, txtBuscar.Text);
-                if (dtgconten.RowCount == 0) LimpiarControles(cbocivil, txtcodigo, txtdireccion, txtemail, txtnombre, txtnroid, txtocupacion, txttelcelular, txttelfijo, txtapemat, txtapetpat, cbopersona, cbosexo, cbotipoid);
+                dtgconten.DataSource = CapaLogica.ClientesBusqueda(txtbusTipoDoc.TextValido(), txtbusNroDoc.TextValido(), txtbusNombre.TextValido(), txtbusEstadocCivil.TextValido());
+                if (dtgconten.RowCount == 0) LimpiarControles(cbodepartamento, cboprovincia, cbodistrito, cbocivil, txtcodigo, txtdireccion, txtemail, txtnombre, txtnroid, txtocupacion, txttelcelular, txttelfijo, txtapemat, txtapetpat, cbopersona, cbosexo, cbotipoid);
             }
             else CargarDatos();
             lblmsg.Text = $"Total de Registros : {dtgconten.RowCount}";
@@ -522,10 +526,20 @@ namespace HPReserger
                 cbodepartamento.Focus();
                 return;
             }
-            if (txtnroid.TextLength != LengthTipoId)
+            /////RUC Y DNI TAMAÑO EXACTO
+            if (cbotipoid.Text.ToUpper().Contains("DNI") || cbotipoid.Text.ToUpper().Contains("RUC"))
+            {
+                if (txtnroid.TextLength != LengthTipoId)
+                {
+                    txtnroid.Focus();
+                    msg($"El tamaño del Nro Documento debe ser: {LengthTipoId}");
+                    return;
+                }
+            }
+            else if (txtnroid.TextLength > LengthTipoId)
             {
                 txtnroid.Focus();
-                msg($"El tamaño del Nro Documento debe ser: {LengthTipoId}");
+                msg($"El Máximo tamaño del Nro Documento debe ser: {LengthTipoId}");
                 return;
             }
             string ResultaCorreo = "";
@@ -620,6 +634,17 @@ namespace HPReserger
                 else
                     msg("No se pudo Eliminar, Cliente ya tiene Movimientos");
             }
+        }
+        public void LimpiarBusquedas()
+        {
+            txtbusEstadocCivil.CargarTextoporDefecto();
+            txtbusNombre.CargarTextoporDefecto();
+            txtbusNroDoc.CargarTextoporDefecto();
+            txtbusTipoDoc.CargarTextoporDefecto();
+        }
+        private void btncleanfind_Click(object sender, EventArgs e)
+        {
+            LimpiarBusquedas();
         }
     }
 }

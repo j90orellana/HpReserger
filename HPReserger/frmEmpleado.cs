@@ -696,23 +696,23 @@ namespace HPReserger
                 txtApellidoMaterno.Text = DatosE["APELLIDOMATERNO"].ToString();
                 txtcodigo.Text = ((int)DatosE["CODIGO"]).ToString("00000");
                 txtNombres.Text = DatosE["NOMBRES"].ToString();
-                cboSexo.Text = DatosE["SEXO"].ToString();
-                cboEstadoCivil.Text = DatosE["ESTADOCIVIL"].ToString();
+                cboSexo.SelectedValue = DatosE["CODIGOSEXO"];
+                cboEstadoCivil.SelectedValue = DatosE["CODIGOESTADOCIVIL"];
                 txtNHijos.Text = DatosE["NROHIJOS"].ToString();
                 FEchaActual = dtpFecha.Value = Convert.ToDateTime(DatosE["FECHANACIMIENTO"].ToString());
                 cboLugarNacimiento.Text = DatosE["LUGARNACIMIENTO"].ToString();
                 txtDireccion.Text = DatosE["DIRECCION"].ToString();
-                cboDepartamento.Text = DatosE["DEPARTAMENTO"].ToString();
-                cboProvincia.Text = DatosE["PROVINCIA"].ToString();
-                cboDistrito.Text = DatosE["DISTRITO"].ToString();
+                cboDepartamento.SelectedValue = DatosE["CODIGODEPARTAMENTO"];
+                cboProvincia.SelectedValue = DatosE["CODIGOPROVINCIA"];
+                cboDistrito.SelectedValue = DatosE["CODIGODISTRITO"];
                 txtTelefonoFijo.Text = DatosE["TELEFONOFIJO"].ToString();
                 txtTelefonoCelular.Text = DatosE["TELEFONOCELULAR"].ToString();
-                cboProfesion.Text = DatosE["PROFESION"].ToString();
+                cboProfesion.SelectedValue = DatosE["CODIGOPROFESION"];
                 cbopais.Text = DatosE["PAIS"].ToString();
                 ///validar pais
                 if (DatosE["id_pais"].ToString() != PaisFila["id_pais"].ToString())
                     txtlugarnacimiento.Text = DatosE["LUGAR"].ToString();
-                cboGradoInstruccion.Text = DatosE["GRADOINSTRUCCION"].ToString();
+                cboGradoInstruccion.SelectedValue = DatosE["CODIGOGRADOINSTRUCCION"];
                 cboTipoDocumento.Text = DatosE["TIPODOCUMENTO"].ToString();
                 txtNumeroDocumento.Text = DatosE["NUMERODOCUMENTO"].ToString();
                 txttipo.Text = DatosE["CONTRATACION"].ToString();
@@ -1555,6 +1555,10 @@ namespace HPReserger
         private void txttipo_TextChanged(object sender, EventArgs e)
         {
             tip.SetToolTip(txttipo, txttipo.Text);
+        }
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+            txtedad.Text = HPResergerFunciones.Utilitarios.Edad(dtpFecha.Value).ToString("00");
         }
     }
 }

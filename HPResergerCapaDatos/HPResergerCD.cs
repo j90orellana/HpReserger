@@ -4320,6 +4320,12 @@ namespace HPResergerCapaDatos
             object[] valores = { Opcion, Codigo, Tipoid, Nroid, Apepat, Apemat, Nombres, Tipo, Sexo, Civil, Direcion, Distrito, Provincia, Departamento, Telfijo, Telcelular, Email, Ocupacion, Usuario, Fecha };
             return bd.DataTableFromProcedure("usp_Cliente", parametros, valores, null);
         }
+        public DataTable ClientesBusqueda(string codigo, string nrodoc, string nombres, string estadocivil)
+        {
+            string[] parametros = { "@codigo", "@NroDoc", "@Nombres", "@EstadoCivil" };
+            object[] valores = { codigo, nrodoc, nombres, estadocivil };
+            return bd.DataTableFromProcedure("usp_ClienteBusqueda", parametros, valores, null);
+        }
         public DataTable UnidadMedida(int opcion, int codigo, string descripcion, int usuario)
         {
             string[] parametros = { "@Opcion", "@Cod", "@Descripcion", "@Usuario" };

@@ -431,6 +431,7 @@ namespace HPReserger
             {
                 salida = true;
                 rucito = txtnumeroidentidad.Text;
+                tipoid = (int)(cbodocumento.SelectedValue);
                 this.Close();
             }
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones    
@@ -614,10 +615,10 @@ namespace HPReserger
             {
                 salida = true;
                 rucito = dtgconten[RUC.Name, e.RowIndex].Value.ToString();
+                tipoid = (int)dtgconten[xtipoid.Name, e.RowIndex].Value;
                 this.Close();
             }
         }
-
         private void txtnumeroidentidad_TextChanged(object sender, EventArgs e)
         {
 

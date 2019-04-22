@@ -169,8 +169,9 @@ namespace HPReserger
         private void btnbusproveedor_Click(object sender, EventArgs e)
         {
             frmClientes frmclien = new frmClientes();
-            frmclien.rdnrodoc.Checked = true;
+            //frmclien.rdnrodoc.Checked = true;
             frmclien.codigoid = TipoIdDoc;
+            frmclien.TipoDocBuscar = cbotipoid.Text;
             frmclien.CodigoDocBuscar = txtdoc.TextValido();
             frmclien.Buscando = true;
             if (frmclien.ShowDialog() == DialogResult.OK)
@@ -699,15 +700,12 @@ namespace HPReserger
             }
             if (Estado == 1)
             {
-                if (FacturaEstado == 1)
+                foreach (DataGridViewRow item in dtgBusqueda.Rows)
                 {
-                    foreach (DataGridViewRow item in dtgBusqueda.Rows)
+                    if (item.Cells[yNroComprobante.Name].Value.ToString() == nroFac && (int)item.Cells[yIdComprobante.Name].Value == IdComprobante)
                     {
-                        if (item.Cells[yNroComprobante.Name].Value.ToString() == nroFac && (int)item.Cells[yIdComprobante.Name].Value == IdComprobante)
-                        {
-                            dtgBusqueda.CurrentCell = dtgBusqueda[_IndicadorColumna, item.Index];
-                            break;
-                        }
+                        dtgBusqueda.CurrentCell = dtgBusqueda[_IndicadorColumna, item.Index];
+                        break;
                     }
                 }
             }
