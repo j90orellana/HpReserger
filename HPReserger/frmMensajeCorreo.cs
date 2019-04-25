@@ -66,10 +66,10 @@ namespace HPReserger
             string[] CorreoSeparados = txtcorreo.Text.Split(';');
             foreach (string item in CorreoSeparados)
             {
-                if (item.Length < 5)
+                if (HPResergerFunciones.Utilitarios.ValidarCorreo(item) == "")
                 {
                     ok = false;
-                    msg("Error en el Tamaño de los Correos\nLos Correos deben ir separados por: ;");
+                    msg("Error  de los Correos\nLos Correos deben ir separados por: ;");
                     return;
                 }
             }

@@ -22,13 +22,9 @@ namespace HpResergerUserControls
         public DateTime Hoy = DateTime.Now;
         Color[] _colores = new Color[] { Color.FromArgb(252, 253, 253), Color.FromArgb(224, 229, 237), Color.FromArgb(252, 253, 253) };
         int _angulo = 45;
-        public Color[] Colores { get { return _colores; } set { _colores = value; } }
-        public int Angulo { get { return _angulo; } set { _angulo = value; } }
-        public string Nombre
-        {
-            get { return Text; }
-            set { Text = value; }
-        }
+        public Color[] Colores { get { return _colores; } set { _colores = value; Invalidate(); } }
+        public int Angulo { get { return _angulo; } set { _angulo = value; Invalidate(); } }
+        public string Nombre { get { return Text; } set { Text = value; } }
         protected override void OnPaint(PaintEventArgs e)
         {
             if (this.ClientRectangle.Height > 0 && this.ClientRectangle.Width > 0)
@@ -67,6 +63,12 @@ namespace HpResergerUserControls
             {
                 if (e.KeyChar == (char)Keys.Escape) this.Close();
             }
+        }
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            ///Recarga el Fondo del control!.
+            Invalidate();
+            base.OnSizeChanged(e);
         }
     }
 }

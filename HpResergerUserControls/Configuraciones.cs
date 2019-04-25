@@ -45,16 +45,16 @@ namespace HpResergerUserControls
         public static string MayusculaCadaPalabra(string cadena)
         {
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cadena.ToLower());
-        }
-        /// <param name="Datagrid">Grilla con la que vamos a trabajar</param>
-        /// <param name="ColumnaImporte">Columna a la que vamos a Asignar Valores</param>
-        /// <param name="MontoaRepartir">Monto que vamos a Dividir</param>   
+        }         
         public static decimal Redondear(decimal valor) { return Math.Round(valor, 2); }
         public static void TiempoEjecucionMsg(Stopwatch st)
         {
             TimeSpan tm = st.Elapsed;
             HPResergerFunciones.Utilitarios.msg($"La Operación Demoro {tm}");
         }
+        /// <param name="Datagrid">Grilla con la que vamos a trabajar</param>
+        /// <param name="ColumnaImporte">Columna a la que vamos a Asignar Valores</param>
+        /// <param name="MontoaRepartir">Monto que vamos a Dividir</param> 
         public static void RellenarGrillasAutomatico(Dtgconten Datagrid, DataGridViewTextBoxColumn ColumnaImporte, decimal MontoaRepartir)
         {
             Datagrid.EndEdit();
@@ -167,7 +167,6 @@ namespace HpResergerUserControls
                     ((Control)x).Enabled = true;
             }
         }
-
         public static void Desactivar(params object[] control)
         {
             foreach (object x in control)

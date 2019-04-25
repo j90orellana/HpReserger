@@ -104,13 +104,10 @@ namespace HPReserger
                 HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                 HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
                 /////fin estilo de las celdas
-                DataTable TableResult = new DataTable();
-                DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
-                TableResult = dt.ToTable();
-                foreach (DataColumn item in TableResult.Columns)
-                {
-                    item.ColumnName = dtgconten.Columns[item.ColumnName].HeaderText;
-                }
+                DataTable TableResult = new DataTable(); DataView dt = ((DataTable)dtgconten.DataSource).AsDataView(); TableResult = dt.ToTable();
+                ///Tabla
+                foreach (DataColumn item in TableResult.Columns) { item.ColumnName = dtgconten.Columns[item.ColumnName].HeaderText; }
+                /////
                 HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { }, "");
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
             }

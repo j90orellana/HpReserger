@@ -86,6 +86,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CerrarAlPresionarESC = true;
             this.ClientSize = new System.Drawing.Size(279, 123);
+            this.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
             this.Controls.Add(this.btnEmpleado);
             this.Controls.Add(this.btnCliente);
             this.Controls.Add(this.btnProveedor);

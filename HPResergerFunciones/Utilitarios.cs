@@ -159,7 +159,7 @@ namespace HPResergerFunciones
             return P.Handled;
         }
         public static Boolean SoloLetrasMayusculas(KeyPressEventArgs P)
-        {           
+        {
             string cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZÑñ " + (char)8;
             if (!cadena.Contains(P.KeyChar))
             {
@@ -657,6 +657,17 @@ namespace HPResergerFunciones
                 aplicacion.Quit();
             }
         }
+        /// <summary>
+        /// Proceso de Exportacion de datos a Excel (Lento)
+        /// </summary>
+        /// <param name="grd"></param>
+        /// <param name="ruta"></param>
+        /// <param name="nombrehoja"></param>
+        /// <param name="NombresCeldas"></param>
+        /// <param name="PosInicialGrilla"></param>
+        /// <param name="OrdendelasColumnas"></param>
+        /// <param name="FilasNegritas"></param>
+        /// <param name="ColumnaNegritas"></param>
         public static void ExportarAExcelOrdenandoColumnas(DataGridView grd, string ruta, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas, int[] FilasNegritas, int[] ColumnaNegritas)
         {
             int nume, numer;
@@ -783,6 +794,20 @@ namespace HPResergerFunciones
         {
             ExportarAExcelOrdenandoColumnas(grd, CeldaCabecera, CeldaDefecto, ruta, nombrehoja, NombresCeldas, PosInicialGrilla, OrdendelasColumnas, FilasNegritas, ColumnaNegritas, "");
         }
+        /// <summary>
+        /// Exportar a Excel (Rapido)
+        /// </summary>
+        /// <param name="grd">Tabla con Datos a Exportar</param>
+        /// <param name="CeldaCabecera">Formato de la Celda Cabecera</param>
+        /// <param name="CeldaDefecto">Formato de la Celdas por defecto</param>
+        /// <param name="NameFile">Nombre del Archivo que se va a Guardar</param>
+        /// <param name="nombrehoja">Nombre de la Hoja de Trabajo</param>
+        /// <param name="NombresCeldas">Celdas Extras para Insertarlas</param>
+        /// <param name="PosInicialGrilla">Fila donde se va a Insertar la Tabla</param>
+        /// <param name="OrdendelasColumnas">No se Usa</param>
+        /// <param name="FilasNegritas">No se Usa</param>
+        /// <param name="ColumnaNegritas">No se Usa</param>
+        /// <param name="ScriptMacro">Codigo para ejecutar al momento de abrir el programa</param>
         public static void ExportarAExcelOrdenandoColumnas(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas, int[] FilasNegritas, int[] ColumnaNegritas, string ScriptMacro)
         {
             //int nume, numer;
@@ -860,7 +885,7 @@ namespace HPResergerFunciones
             foreach (DataColumn item in grd.Columns)
             {
                 if (item.DataType == typeof(decimal))
-                    Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = "#0.00";
+                    Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = "_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * \" - \"??_ ;_ @_ ";//Formato Contabilidad
                 if (item.DataType == typeof(DateTime))
                     Hoja_Trabajo.Cells[PosInicialGrilla, item.Ordinal + 1, CountRows, item.Ordinal + 1].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
             }
@@ -872,6 +897,13 @@ namespace HPResergerFunciones
                 worksheet.CodeModule.Name = "HojaDeMacros";
                 Hoja_Trabajo.Workbook.CodeModule.Code = ScriptMacro;
             }
+            ///Ajustamos al Texto
+            ///_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * "-"??_ ;_ @_ 
+            string Pos = $"{PosInicialGrilla}:{PosInicialGrilla}";
+            Hoja_Trabajo.Cells[Pos].Style.WrapText = true;
+            Hoja_Trabajo.Cells[Pos].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+            Hoja_Trabajo.Cells[Pos].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+            //Fin Ajuste de Texto
             if (!EstaArchivoAbierto(file.ToString()))
             {
                 Excel.SaveAs(file);
