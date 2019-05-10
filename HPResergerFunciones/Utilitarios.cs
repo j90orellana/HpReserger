@@ -853,7 +853,7 @@ namespace HPResergerFunciones
             string Extesion = "x";
             if (!string.IsNullOrWhiteSpace(ScriptMacro)) Extesion = "m";
             //Hoja_Trabajo
-            FileInfo file = new FileInfo(Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{NameFile }" + $".xls{Extesion}");
+            FileInfo file = new FileInfo(Application.CommonAppDataPath.Substring(0, Application.CommonAppDataPath.IndexOf('1')) + nombrehoja + $"{NameFile}" + $".xls{Extesion}");
             int ConCol = grd.Columns.Count;
             for (int i = 0; i < grd.Rows.Count + 1; i++)
             {
@@ -871,7 +871,6 @@ namespace HPResergerFunciones
                     Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Fill.BackgroundColor.SetColor(CeldaDefecto.ColorRelleno);
                     if (CeldaDefecto.FuenteRelleno != null)
                         Hoja_Trabajo.Cells[i + PosInicialGrilla, 1, i + PosInicialGrilla, ConCol].Style.Font.SetFromFont(CeldaDefecto.FuenteRelleno);
-
                 }
                 else
                 {
@@ -896,6 +895,7 @@ namespace HPResergerFunciones
                 worksheet.CodeModule.Code = ScriptMacro.ToString();
                 worksheet.CodeModule.Name = "HojaDeMacros";
                 Hoja_Trabajo.Workbook.CodeModule.Code = ScriptMacro;
+                Hoja_Trabajo.Workbook.Worksheets["HojaDeMacros"].Hidden = eWorkSheetHidden.Hidden;
             }
             ///Ajustamos al Texto
             ///_ * #,##0.00_ ;_ * -#,##0.00_ ;_ * "-"??_ ;_ @_ 

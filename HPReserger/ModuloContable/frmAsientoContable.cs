@@ -33,13 +33,15 @@ namespace HPReserger
             //labelAmarillo.ForeColor = Color.FromArgb(247, 125, 0);
             labelCuadre.ForeColor = Configuraciones.ColorBien;
             Cargarmoneda();
-            estado = 0; fechacheck = 0;
+            estado = 100; fechacheck = 0;
             tipobusca = 1;
             RellenarEstado(cboestado);
             System.Globalization.CultureInfo.CreateSpecificCulture("es-ES");
             cARgarEmpresas();
             DateTime fechita;
-            if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = dtpfecha.Value;
+            //if (chkfechavalor.Checked) 
+            fechita = dtpfechavalor.Value;
+            //else fechita = dtpfecha.Value;
             ///Mensajitos
             //Dtgconten.Columns[debe.Name].CellTemplate.ToolTipText = "Presione D para Rellenar";
             //Dtgconten.Columns[haber.Name].CellTemplate.ToolTipText = "Presione D para Rellenar";
@@ -53,13 +55,14 @@ namespace HPReserger
             //Dtgconten.DataSource = CapaLogica.BuscarAsientosContablesconTodo("0", 4, 1, fechita);
             //dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
 
-            //Cambio de Empresa
-            cboempresa_SelectedIndexChanged(sender, e);
+            //Cambio de Empresa        
+            estado = 0; cboempresa_SelectedIndexChanged(sender, e);
             if (dtgbusca.RowCount > 0)
             {
                 activar();
-                dtgbusca_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
+                //dtgbusca_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
             }
+
         }
         public void cARgarEmpresas()
         {
@@ -71,7 +74,8 @@ namespace HPReserger
         {
             btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled =
                 Txtbusca.Enabled = groupBox1.Enabled = btnreversa.Enabled = true;
-            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtfechavalor.Enabled = chkfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
+            //chkfechavalor.Enabled = 
+            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtpfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
                 txtdinamica.Enabled = false;
             foreach (DataGridViewColumn col in Dtgconten.Columns)
                 col.ReadOnly = true;
@@ -79,9 +83,10 @@ namespace HPReserger
         }
         public void desactivar()
         {
-            btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled = chkfechavalor.Enabled = btnreversa.Enabled =
+            btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled = btnreversa.Enabled =
                 Txtbusca.Enabled = groupBox1.Enabled = false;
-            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtfechavalor.Enabled = chkfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
+            //chkfechavalor.Enabled = 
+            btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtpfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
                 txtdinamica.Enabled = true;
             foreach (DataGridViewColumn col in Dtgconten.Columns)
                 if (col.Name == descripcion.Name || col.Name == IDASIENTOX.Name)
@@ -185,40 +190,45 @@ namespace HPReserger
                         }
                     }
                     if (Dtgconten[EstadoCuen.Name, e.RowIndex].Value == null) Dtgconten[EstadoCuen.Name, e.RowIndex].Value = cboestado.SelectedValue;
-                    if (e.RowIndex >= 0 && e.ColumnIndex == Dtgconten.Columns[descripcion.Name].Index && Dtgconten[descripcion.Name, e.RowIndex].Value.ToString() != "")// && Dtgconten[EstadoCuen.Name, e.RowIndex].Value.ToString() != "3" && estado == 0)
-                    {
-                        //cuando doy click en el detalle
-                        int y = e.RowIndex;
-                        if (frmdetalle == null)
+                    if (estado == 0)
+                        if (e.RowIndex >= 0 && e.ColumnIndex == Dtgconten.Columns[descripcion.Name].Index && Dtgconten[descripcion.Name, e.RowIndex].Value.ToString() != "")// && Dtgconten[EstadoCuen.Name, e.RowIndex].Value.ToString() != "3" && estado == 0)
                         {
-                            frmdetalle = new frmDetalleAsientos();
-                            frmdetalle.MdiParent = this.MdiParent;
-                            frmdetalle.Icon = this.Icon;
-                            frmdetalle._idasiento = int.Parse(txtcodigo.Text);
-                            frmdetalle._cuodasiento = txtcuo.Text;
-                            frmdetalle._proyecto = (int)cboproyecto.SelectedValue;
-                            frmdetalle._empresa = (int)cboempresa.SelectedValue;
-                            frmdetalle._TipoCambio = decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text);
-                            frmdetalle._Moneda = (int)cbomoneda.SelectedValue;
-                            frmdetalle._EsManual = _EsModificable;
-                            if (chkfechavalor.Checked) frmdetalle._fecha = dtfechavalor.Value;
-                            else frmdetalle._fecha = dtpfecha.Value;
-                            frmdetalle._asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
-                            frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
-                            frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
-                            frmdetalle.Total = (decimal)Dtgconten[debe.Name, y].Value + (decimal)Dtgconten[haber.Name, y].Value;
-                            frmdetalle.Estado = (int)Dtgconten[EstadoCuen.Name, e.RowIndex].Value;
-                            frmdetalle.FormClosed += new FormClosedEventHandler(Frmdetalle_FormClosed);
-                            frmdetalle.Show();
+                            //cuando doy click en el detalle
+                            int y = e.RowIndex;
+                            if (frmdetalle == null)
+                            {
+                                frmdetalle = new frmDetalleAsientos();
+                                frmMenu.AbortarCerrarPrograma = true;
+                                frmdetalle.MdiParent = this.MdiParent;
+                                frmdetalle.Icon = this.Icon;
+                                frmdetalle._idasiento = int.Parse(txtcodigo.Text);
+                                frmdetalle._cuodasiento = txtcuo.Text;
+                                frmdetalle._proyecto = (int)cboproyecto.SelectedValue;
+                                frmdetalle._empresa = (int)cboempresa.SelectedValue;
+                                frmdetalle._TipoCambio = decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text);
+                                frmdetalle._Moneda = (int)cbomoneda.SelectedValue;
+                                frmdetalle._EsManual = _EsModificable;
+                                //if (chkfechavalor.Checked) frmdetalle._fecha = dtfechavalor.Value; else
+                                frmdetalle._fecha = dtpfechavalor.Value;
+                                frmdetalle._fechaEmision = dtpfecha.Value;
+                                frmdetalle._asiento = int.Parse(Dtgconten[IDASIENTOX.Name, e.RowIndex].Value.ToString());
+                                frmdetalle.cuenta = Dtgconten[cuenta.Name, e.RowIndex].Value.ToString();
+                                frmdetalle.descripcion = Dtgconten[descripcion.Name, e.RowIndex].Value.ToString();
+                                frmdetalle.Total = (decimal)Dtgconten[debe.Name, y].Value + (decimal)Dtgconten[haber.Name, y].Value;
+                                frmdetalle.Estado = (int)Dtgconten[EstadoCuen.Name, e.RowIndex].Value;
+                                frmdetalle._dinamica = (int)dtgbusca[Iddinamica.Name, dtgbusca.CurrentCell.RowIndex].Value;
+                                frmdetalle.FormClosed += new FormClosedEventHandler(Frmdetalle_FormClosed);
+                                frmdetalle.Show();
+                            }
+                            else frmdetalle.Activate();
                         }
-                        else frmdetalle.Activate();
-                    }
                 }
             }
             catch (Exception ex)
             {
                 MSG(ex.Message);
                 frmdetalle = null;
+                frmMenu.AbortarCerrarPrograma = false;
             }
         }
         frmDetalleAsientos frmdetalle;
@@ -241,11 +251,24 @@ namespace HPReserger
             PintardeCOlores();
             dtgbusca.CurrentCell = dtgbusca[0, fit != null ? (int)fit : 0];
             frmdetalle = null;
-            RevisarSihayDescuadre();
+            //RevisarSihayDescuadre();
+            frmMenu.AbortarCerrarPrograma = false;
+        }
+        public void RefrescarAsientoSeleccionado()
+        {
+            if (dtgbusca.CurrentCell != null)
+                dtgbusca_RowEnter(new object { }, new DataGridViewCellEventArgs(dtgbusca.CurrentCell.ColumnIndex, dtgbusca.CurrentCell.RowIndex));
         }
         private void frmAsientoContable_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (frmdetalle != null) { e.Cancel = true; HPResergerFunciones.Utilitarios.msg("Primero, Cierre la Ventana de Detalle"); }
+            if (frmdetalle != null)
+            {
+                e.Cancel = true; //HPResergerFunciones.Utilitarios.msg("Primero, Cierre la Ventana de Detalle");
+                frmdetalle.WindowState = FormWindowState.Normal;
+                frmdetalle.Activate();
+                frmMenu.AbortarCerrarPrograma = true;
+            }
+            else frmMenu.AbortarCerrarPrograma = false;
         }
         public Boolean llamado = true;
         public int coddinamica { get; set; }
@@ -784,27 +807,33 @@ namespace HPReserger
 
                     if (dtgbusca[fechavalorx.Name, y].Value.ToString() == "")
                     {
-                        chkfechavalor.Checked = false;
-                        dtfechavalor.Value = (DateTime)dtgbusca[Fechax.Name, y].Value;
+                        //chkfechavalor.Checked = false;
+                        dtpfechavalor.Value = (DateTime)dtgbusca[Fechax.Name, y].Value;
                     }
-                    else { chkfechavalor.Checked = true; dtfechavalor.Value = (DateTime)dtgbusca[fechavalorx.Name, y].Value; }
+                    else
+                    { //chkfechavalor.Checked = true; 
+                        dtpfechavalor.Value = (DateTime)dtgbusca[fechavalorx.Name, y].Value;
+                    }
                     activo = pasivo = 0;
                     //int i = 0;
                     ///sacamos la fecha valor y emision del asiento
                     DateTime fechita;
-                    if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = dtpfecha.Value;
+                    //if (chkfechavalor.Checked)
+                    fechita = dtpfechavalor.Value;
+                    //else fechita = dtpfecha.Value;
                     txtcuo.Text = dtgbusca[Codidasiento.Name, y].Value.ToString();
                     txtcodigo.Text = decimal.Parse(txtcuo.Text.Substring(5)).ToString();
                     ////valores del asiento
-                    txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString();
-                    txttipocambio.Text = (dtgbusca[xtc.Name, e.RowIndex].Value.ToString() == "" ? 0.0m : (decimal)dtgbusca[xtc.Name, e.RowIndex].Value).ToString("n3");
+                    txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString();                    
                     cbomoneda.SelectedValue = (int)(dtgbusca[xmoneda.Name, e.RowIndex].Value.ToString() == "" ? 0 : dtgbusca[xmoneda.Name, e.RowIndex].Value);
                     ///fin
                     DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa, fechita);
                     Dtgconten.DataSource = Datos;
                     ///Reviso si el Asiento esta Cuadrado
-                    RevisarSihayDescuadre();
-
+                    string[] ListaEstados = { "4", "0" };
+                    if (estado == 0) { if (!ListaEstados.Contains(cboestado.SelectedValue.ToString())) RevisarSihayDescuadre(); }
+                    else labelCuadre.Text = "";
+                    txttipocambio.Text = (dtgbusca[xtc.Name, e.RowIndex].Value.ToString() == "" ? 0.0m : (decimal)dtgbusca[xtc.Name, e.RowIndex].Value).ToString("n3");
                     foreach (DataGridViewRow item in Dtgconten.Rows)
                     {
                         BusquedaCuenta = false;
@@ -841,30 +870,65 @@ namespace HPReserger
             DataTable Tdatos = CapaLogica.VerificarCuadredeAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue);
             labelCuadre.Click -= LabelCuadre_Click;
             labelCuadre.Text = "";
-
-            if (Tdatos.Rows.Count > 0)
-            {
-                if (((decimal)Tdatos.Rows[0]["pen"] + (decimal)Tdatos.Rows[0]["usd"]) != 0)
+            decimal pen = Math.Abs(((decimal)Tdatos.Rows[0]["pen"]));
+            decimal usd = Math.Abs(((decimal)Tdatos.Rows[0]["usd"]));
+            if (estado == 0 && (pen + usd) != 0)
+                if (Tdatos.Rows.Count > 0)
                 {
-                    decimal mPen = (decimal)Tdatos.Rows[0]["pen"];
-                    decimal mUsd = (decimal)Tdatos.Rows[0]["usd"];
-                    labelCuadre.Text = $"Descuadre: Soles:{mPen}, Dolares:{mUsd}, Click para Cuadrar!";
-                    labelCuadre.Click += LabelCuadre_Click;
+                    if ((usd < 1 & pen < 1) && (usd >= 0 && pen >= 0) && (usd + pen != 0))
+                    {
+                        if (estado == 0)
+                        {
+                            DateTime Fechita = dtpfechavalor.Value;
+                            CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
+                            cuo = txtcuo.Text;
+                            //btnActualizar_Click(new object { }, new EventArgs());
+                            RefrescarAsientoSeleccionado();
+                        }
+                    }
+                    else if (((decimal)Tdatos.Rows[0]["pen"] + (decimal)Tdatos.Rows[0]["usd"]) != 0)
+                    {
+                        decimal mPen = (decimal)Tdatos.Rows[0]["pen"];
+                        decimal mUsd = (decimal)Tdatos.Rows[0]["usd"];
+                        labelCuadre.Text = $"Descuadre: Soles:{mPen}, Dolares:{mUsd}, Click para Revisar!";
+                        //MSG($"Se Encontro un Descuadre\nDescuadre: Soles:{ mPen}, Dolares: { mUsd}");
+                        frmCuadreAsientos frmcuadre = new frmCuadreAsientos($"Descuadre: Soles:{ mPen}, Dolares: { mUsd}");
+                        if (frmcuadre.ShowDialog() == DialogResult.OK)
+                        {
+                            DateTime Fechita = dtpfechavalor.Value;
+                            ///ajuste por redondeo
+                            if (frmcuadre.Resultado == 1)
+                            {
+                                CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
+                                RefrescarAsientoSeleccionado();
+                                labelCuadre.Text = "";
+                            }
+                            ///ajuste por tipo de cambio
+                            if (frmcuadre.Resultado == 2)
+                            {
+                                CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 2);
+                                RefrescarAsientoSeleccionado();
+                                labelCuadre.Text = "";
+                            }
+                        }
+                        labelCuadre.Click += LabelCuadre_Click;
+                    }
                 }
-            }
         }
         private void LabelCuadre_Click(object sender, EventArgs e)
         {
             if (estado == 0)
             {
-                if (msgP("¿Desea Cuadrar El Asiento?") == DialogResult.Yes)
-                {
-                    DateTime Fechita = chkfechavalor.Checked ? dtfechavalor.Value : dtpfecha.Value;
-                    CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita);
-                    MSG("El Asiento se Cuadró!");
-                    cuo = txtcuo.Text;
-                    btnActualizar_Click(sender, e);
-                }
+                RevisarSihayDescuadre();
+                //if (msgP("¿Desea Cuadrar El Asiento?") == DialogResult.Yes)
+                //{
+                //    //DateTime Fechita = chkfechavalor.Checked ? dtfechavalor.Value : dtpfecha.Value;
+                //    DateTime Fechita = dtpfechavalor.Value;
+                //    CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
+                //    MSG("El Asiento se Cuadró!");
+                //    cuo = txtcuo.Text;
+                //    btnActualizar_Click(sender, e);
+                //}
             }
             else MSG("Cancele la Modificación para Cuadrar Asiento");
         }
@@ -933,15 +997,27 @@ namespace HPReserger
         {
             // if ((cboestado.SelectedValue==null?"0":cboestado.SelectedValue.ToString()) == "3") cboestado.SelectedIndex = -1;
         }
-        public int estado { get; set; }
+        private int _estado = 0;
+        public int estado
+        {
+            get { return _estado; }
+            set
+            {
+                _estado = value;
+                if (value != 0)
+                {
+                    labelCuadre.Text = "";
+                }
+            }
+        }
         public int codigo;
         public void ultimoasiento()
         {
             DataTable tablita = new DataTable();
             DateTime _FechaValida;
-            if (chkfechavalor.Checked)
-                _FechaValida = dtfechavalor.Value;
-            else _FechaValida = dtpfecha.Value;
+            //if (chkfechavalor.Checked)
+            _FechaValida = dtpfechavalor.Value;
+            //else _FechaValida = dtpfecha.Value;
             tablita = CapaLogica.UltimoAsiento((int)(cboempresa.SelectedValue ?? _idempresa), _FechaValida);
             DataRow filas = tablita.Rows[0];
             if (filas.ItemArray[0] != DBNull.Value)
@@ -967,8 +1043,10 @@ namespace HPReserger
             txtdinamica.Text = "";
             txtcodigo.Text = codigo + "";
             txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
-            dtpfecha.Value = DateTime.Now;
-            btnActualizar.Enabled = false; chkfechavalor.Enabled = true;
+            dtpfechavalor.Enabled = dtpfecha.Enabled = true;
+            dtpfechavalor.Value = dtpfecha.Value = DateTime.Now;
+            btnActualizar.Enabled = false;
+            //chkfechavalor.Enabled = true;
             cboestado.SelectedIndex = 0;
             ultimoasiento();
             ///limpieza de valores
@@ -1003,9 +1081,9 @@ namespace HPReserger
                 return;
             }
             /////PROCESO DE EDICION SI NO ES AUTOMATICO
-            if (chkfechavalor.Checked)
-                _FechaAModificar = dtfechavalor.Value;
-            else _FechaAModificar = dtpfecha.Value;
+            //if (chkfechavalor.Checked)
+            _FechaAModificar = dtpfechavalor.Value;
+            //else _FechaAModificar = dtpfecha.Value;
             _CodigoModificar = int.Parse(txtcodigo.Text);
             _ProyectoModificar = (int)cboproyecto.SelectedValue;
 
@@ -1020,7 +1098,9 @@ namespace HPReserger
                     modifico = false;
                     desactivar();
                     //Dtgconten.ReadOnly = true;
-                    btnmas.Focus(); chkfechavalor.Enabled = true; btnActualizar.Enabled = false;
+                    btnmas.Focus();
+                    //chkfechavalor.Enabled = true;
+                    btnActualizar.Enabled = false;
                     dtpfecha.Enabled = true;
                     cboempresa.Enabled = false;
                 }
@@ -1056,7 +1136,9 @@ namespace HPReserger
                 modifico = false;
                 desactivar();
                 Dtgconten.ReadOnly = true;
-                btnmas.Focus(); chkfechavalor.Enabled = true; btnActualizar.Enabled = false;
+                btnmas.Focus();
+                //chkfechavalor.Enabled = true;
+                btnActualizar.Enabled = false;
                 cbocambio.SelectedIndex = 0;
                 ////si esta en modificar
                 if (cboestado.SelectedValue.ToString() == "2") dtpfecha.Enabled = true;
@@ -1243,28 +1325,36 @@ namespace HPReserger
                     for (int i = 0; i < Dtgconten.RowCount; i++)
                     {
                         DateTime? fechita;
-                        if (chkfechavalor.Checked) fechita = dtfechavalor.Value;
-                        else fechita = null;
+                        //if (chkfechavalor.Checked)
+                        fechita = dtpfechavalor.Value;
+                        //else fechita = null;
                         CapaLogica.InsertarAsiento((int)Dtgconten[IDASIENTOX.Name, i].Value, codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechita, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue, decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text));
                     }
                     DateTime Feccc;
-                    if (chkfechavalor.Checked) Feccc = dtfechavalor.Value; else Feccc = dtpfecha.Value;
+                    //if (chkfechavalor.Checked)
+                    Feccc = dtpfechavalor.Value;
+                    //else Feccc = dtpfecha.Value;
                     //Limpieza de Detalle de Asientos Basura
                     CapaLogica.LimpiezaDetalleAsientos(ValorCuo(Feccc, codigo), (int)(cboproyecto.SelectedValue));
                     cuo = ValorCuo(Feccc, codigo);
                     MSG($"Se Insertó Asiento: {cuo} con Exito");
                     //Txtbusca.Text = codigo + "";
                     //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
-                    btnActualizar_Click(new object { }, new EventArgs());
+
                     activar();
                     estado = 0;
+                    btnActualizar_Click(new object { }, new EventArgs());
+                    //RefrescarAsientoSeleccionado();
                 }
                 else
                 {
+                    ///PROCESO DE MODIFICACION!
                     if (estado == 2 && Dtgconten.RowCount > 1)
                     {
                         DateTime FechaAsiento;
-                        if (chkfechavalor.Checked) FechaAsiento = dtfechavalor.Value; else FechaAsiento = dtpfecha.Value;
+                        //if (chkfechavalor.Checked) 
+                        FechaAsiento = dtpfechavalor.Value;
+                        //else FechaAsiento = dtpfecha.Value;
                         if (!ValidarMismoPeriodo(_FechaAModificar, FechaAsiento)) { MSG("No se Puede Mover a Otro Periodo"); return; }
                         ////codigo para reversar solo estado del asiento
                         //CapaLogica.ReversarAsientosSoloEstado(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, _FechaAModificar);
@@ -1294,15 +1384,18 @@ namespace HPReserger
                             else
                                 ESTADO = int.Parse(Dtgconten[EstadoCuen.Name, i].Value.ToString());
                             DateTime? fechitas;
-                            if (chkfechavalor.Checked) fechitas = dtfechavalor.Value;
-                            else fechitas = null;
+                            //if (chkfechavalor.Checked)
+                            fechitas = dtpfechavalor.Value;
+                            //else fechitas = null;
                             if (modifico)
                                 CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), DINAMICA, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue, decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text));
                             else
                                 CapaLogica.InsertarAsiento(int.Parse(Dtgconten[IDASIENTOX.Name, i].Value.ToString()), codigo, FECHA, Dtgconten[cuenta.Name, i].Value.ToString(), Convert.ToDouble(Dtgconten[debe.Name, i].Value.ToString()), Convert.ToDouble(Dtgconten[haber.Name, i].Value.ToString()), dinamimodi, ESTADO, fechitas, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, txtglosa.TextValido(), (int)cbomoneda.SelectedValue, decimal.Parse(txttipocambio.Text == "" ? txttipocambio.TextoDefecto : txttipocambio.Text));
                         }
                         DateTime Feccc;
-                        if (chkfechavalor.Checked) Feccc = dtfechavalor.Value; else Feccc = dtpfecha.Value;
+                        //if (chkfechavalor.Checked) 
+                        Feccc = dtpfechavalor.Value;
+                        //else Feccc = dtpfecha.Value;
                         //Limpieza de Detalle de Asientos Basura
                         CapaLogica.LimpiezaDetalleAsientos(ValorCuo(Feccc, codigo), (int)(cboproyecto.SelectedValue));
                         cuo = ValorCuo(Feccc, codigo);
@@ -1310,10 +1403,12 @@ namespace HPReserger
 
                         //Txtbusca.Text = codigo + "";
                         //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
-                        btnActualizar_Click(new object { }, new EventArgs());
+
                         activar();
                         estado = 0;
                         dtpfecha.Enabled = false;
+                        RefrescarAsientoSeleccionado();
+                        btnActualizar_Click(new object { }, new EventArgs());
                     }
                     else
                     {
@@ -1321,16 +1416,21 @@ namespace HPReserger
                         {
                             codigo = Convert.ToInt32(txtcodigo.Text.ToString());
                             DateTime Feccc;
-                            if (chkfechavalor.Checked) Feccc = dtfechavalor.Value; else Feccc = dtpfecha.Value;
+                            //if (chkfechavalor.Checked)
+                            Feccc = dtpfechavalor.Value;
+                            //else Feccc = dtpfecha.Value;
                             if (msgp($"Seguró Desea Eliminar; Asiento Contable: {ValorCuo(Feccc, codigo)}") == DialogResult.Yes)
                             {
                                 DateTime FechaAsiento;
-                                if (chkfechavalor.Checked) FechaAsiento = dtfechavalor.Value; else FechaAsiento = dtpfecha.Value;
+                                //if (chkfechavalor.Checked) 
+                                FechaAsiento = dtpfechavalor.Value;
+                                //else FechaAsiento = dtpfecha.Value;
                                 CapaLogica.EliminarAsiento(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, FechaAsiento);
                                 MSG($"Eliminado Exitosamente: {ValorCuo(Feccc, codigo)}");
                                 //Txtbusca.Text = "";
                                 //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
-                                btnActualizar_Click(new object { }, new EventArgs());
+                                //btnActualizar_Click(new object { }, new EventArgs());
+                                RefrescarAsientoSeleccionado();
                             }
                             estado = 0;
                         }
@@ -1427,8 +1527,11 @@ namespace HPReserger
             {
                 if (MessageBox.Show("Desea Borrar esta fila", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Dtgconten.Rows.RemoveAt(Dtgconten.CurrentCell.RowIndex);
-                    Sumatoria();
+                    if (Dtgconten.CurrentCell != null)
+                    {
+                        Dtgconten.Rows.RemoveAt(Dtgconten.CurrentCell.RowIndex);
+                        Sumatoria();
+                    }
                 }
                 else { e.Handled = true; msg(Dtgconten); }
             }
@@ -1503,21 +1606,21 @@ namespace HPReserger
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (estado == 1)
-            {
-                if (chkfechavalor.Checked)
-                {
-                    dtfechavalor.Enabled = true;
-                    dtpfecha.Enabled = false;
-                }
-                else
-                {
-                    dtfechavalor.Enabled = false;
-                    dtpfecha.Enabled = true;
-                }
-                ultimoasiento();
-                SacarTipoCambio();
-            }
+            //if (estado == 1)
+            //{
+            //    if (chkfechavalor.Checked)
+            //    {
+            //        dtfechavalor.Enabled = true;
+            //        dtpfecha.Enabled = false;
+            //    }
+            //    else
+            //    {
+            //        dtfechavalor.Enabled = false;
+            //        dtpfecha.Enabled = true;
+            //    }
+            //    ultimoasiento();
+            //    SacarTipoCambio();
+            //}
         }
         private void cboempresa_Enter(object sender, EventArgs e)
         {
@@ -1601,7 +1704,9 @@ namespace HPReserger
         {
             DataTable Tdatos = new DataTable();
             DateTime fechita;
-            if (chkfechavalor.Checked) fechita = dtfechavalor.Value; else fechita = dtpfecha.Value;
+            //if (chkfechavalor.Checked) 
+            fechita = dtpfechavalor.Value;
+            //else fechita = dtpfecha.Value;
             if (item.Cells[IDASIENTOX.Name].Value.ToString() != "")
             {
                 Tdatos = CapaLogica.DetalleAsientos(9, (int)item.Cells[IDASIENTOX.Name].Value, int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, fechita, "");
@@ -1656,7 +1761,9 @@ namespace HPReserger
             {
                 //PROCESO DE REVERSA DEL ASIENTO
                 DateTime _Fechon;
-                if (chkfechavalor.Checked) _Fechon = dtfechavalor.Value; else _Fechon = dtpfecha.Value;
+                //if (chkfechavalor.Checked)
+                _Fechon = dtpfechavalor.Value;
+                //else _Fechon = dtpfecha.Value;
                 CapaLogica.ReversarAsientos(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, _Fechon);
                 HPResergerFunciones.Utilitarios.msg($"Asiento {txtcuo.Text} Reversado!");
             }
@@ -1670,8 +1777,6 @@ namespace HPReserger
         }
         private void fecha_ValueChanged(object sender, EventArgs e)
         {
-            if (estado == 1)
-                ultimoasiento();
             if (estado == 1 || estado == 2)
                 SacarTipoCambio();
         }
@@ -1679,8 +1784,6 @@ namespace HPReserger
         {
             if (estado == 1)
                 ultimoasiento();
-            if (estado == 1 || estado == 2)
-                SacarTipoCambio();
         }
         private void cbomoneda_Click(object sender, EventArgs e)
         {
@@ -1696,7 +1799,10 @@ namespace HPReserger
             if (estado == 1 || estado == 2)
             {
                 DateTime FechaValidaBuscar;
-                if (chkfechavalor.Checked) { FechaValidaBuscar = dtfechavalor.Value; } else FechaValidaBuscar = dtpfecha.Value;
+                //if (chkfechavalor.Checked) { 
+                FechaValidaBuscar = dtpfecha.Value;
+                //} else FechaValidaBuscar = dtpfecha.Value;
+                if (cbocambio.Text == "") cbocambio.Text = "Venta";
                 txttipocambio.Text = CapaLogica.TipoCambioDia(cbocambio.Text, FechaValidaBuscar).ToString("n3");
                 if (txttipocambio.Text == "0.000")
                 {
@@ -1740,6 +1846,13 @@ namespace HPReserger
 
         }
 
+        private void frmAsientoContable_Activated(object sender, EventArgs e)
+        {
+            if (estado == 0)
+            {
+                RevisarSihayDescuadre();
+            }
+        }
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();

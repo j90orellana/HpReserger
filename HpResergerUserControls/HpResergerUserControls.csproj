@@ -89,6 +89,12 @@
     <Compile Include="DtgConten.Designer.cs">
       <DependentUpon>DtgConten.cs</DependentUpon>
     </Compile>
+    <Compile Include="FondoColorOre.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FondoColorOre.Designer.cs">
+      <DependentUpon>FondoColorOre.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGradient.cs">
       <SubType>Form</SubType>
     </Compile>

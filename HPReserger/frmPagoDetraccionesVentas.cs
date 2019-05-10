@@ -198,7 +198,7 @@ namespace HPReserger
                     /////si el valor de la detracciones es menor que 1 sol
                     if (decimal.Parse(dtgconten[xredondeo.Name, x].Value.ToString()) < 1)
                         dtgconten[xredondeo.Name, x].Value = 1;
-                    dtgconten[xdiferencia.Name, x].Value = (decimal)dtgconten[ImportePEN.Name, x].Value - decimal.Parse(dtgconten[xredondeo.Name, x].Value.ToString());
+                    dtgconten[xdiferencia.Name, x].Value = Configuraciones.Redondear((decimal)dtgconten[ImportePEN.Name, x].Value) - Configuraciones.Redondear(decimal.Parse(dtgconten[xredondeo.Name, x].Value.ToString()));
                 }
                 //if ((decimal)dtgconten[porpagarx.Name, x].Value > (decimal)dtgconten[Detraccionx.Name, x].Value)
                 //{
@@ -218,9 +218,9 @@ namespace HPReserger
                 if ((int)item.Cells[opcionx.Name].Value == 1)
                 //Valores Seleccionados
                 {
-                    sumatoria += (decimal)item.Cells[ImportePEN.Name].Value;
-                    SumDiferencia += (decimal)item.Cells[xdiferencia.Name].Value;
-                    SumRedondeo += (decimal)item.Cells[xredondeo.Name].Value;
+                    sumatoria += Redondear((decimal)item.Cells[ImportePEN.Name].Value);
+                    SumDiferencia += Redondear((decimal)item.Cells[xdiferencia.Name].Value);
+                    SumRedondeo += Redondear((decimal)item.Cells[xredondeo.Name].Value);
                     Seleccionados++;
                 }
             }
@@ -230,6 +230,7 @@ namespace HPReserger
             if (Seleccionados > 0) btnaceptar.Enabled = true;
             else btnaceptar.Enabled = false;
         }
+        public decimal Redondear(decimal valor) { return Configuraciones.Redondear(valor); }
         public Boolean VerificarErrorDiferencia()
         {
             Boolean Prueba = true;

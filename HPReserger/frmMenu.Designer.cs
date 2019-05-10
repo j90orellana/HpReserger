@@ -231,8 +231,11 @@
             this.queToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.haceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelOre1 = new HpResergerUserControls.PanelOre();
+            this.lblpuntero = new System.Windows.Forms.Label();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
+            this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -311,12 +314,13 @@
             // pbesquina
             // 
             this.pbesquina.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pbesquina.BackColor = System.Drawing.SystemColors.Control;
+            this.pbesquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.pbesquina.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbesquina.ErrorImage")));
             this.pbesquina.Image = ((System.Drawing.Image)(resources.GetObject("pbesquina.Image")));
-            this.pbesquina.Location = new System.Drawing.Point(936, 268);
+            this.pbesquina.Location = new System.Drawing.Point(934, 268);
             this.pbesquina.Name = "pbesquina";
-            this.pbesquina.Size = new System.Drawing.Size(25, 25);
+            this.pbesquina.Size = new System.Drawing.Size(20, 20);
+            this.pbesquina.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbesquina.TabIndex = 0;
             this.pbesquina.TabStop = false;
             this.pbesquina.Click += new System.EventHandler(this.pbesquina_Click);
@@ -2125,6 +2129,7 @@
             // 
             this.panelOre1.AutoSize = true;
             this.panelOre1.BackColor = System.Drawing.SystemColors.Control;
+            this.panelOre1.Controls.Add(this.lblpuntero);
             this.panelOre1.Controls.Add(this.lblwelcome);
             this.panelOre1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelOre1.Location = new System.Drawing.Point(0, 24);
@@ -2133,9 +2138,24 @@
             this.panelOre1.Size = new System.Drawing.Size(1261, 40);
             this.panelOre1.TabIndex = 56;
             // 
+            // lblpuntero
+            // 
+            this.lblpuntero.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblpuntero.BackColor = System.Drawing.Color.Transparent;
+            this.lblpuntero.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.lblpuntero.Location = new System.Drawing.Point(621, 26);
+            this.lblpuntero.Name = "lblpuntero";
+            this.lblpuntero.Size = new System.Drawing.Size(16, 12);
+            this.lblpuntero.TabIndex = 22;
+            this.lblpuntero.Text = "...";
+            this.lblpuntero.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblpuntero.UseCompatibleTextRendering = true;
+            this.lblpuntero.Visible = false;
+            this.lblpuntero.Click += new System.EventHandler(this.lblwelcome_DoubleClick);
+            // 
             // lblwelcome
             // 
-            this.lblwelcome.BackColor = System.Drawing.SystemColors.Control;
+            this.lblwelcome.BackColor = System.Drawing.Color.Transparent;
             this.lblwelcome.ContextMenuStrip = this.cmenuclick;
             this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblwelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2149,9 +2169,11 @@
             this.lblwelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblwelcome.UseMnemonic = false;
             this.lblwelcome.Click += new System.EventHandler(this.lblwelcome_Click);
+            this.lblwelcome.DoubleClick += new System.EventHandler(this.lblwelcome_DoubleClick);
             // 
             // fotoCheck1
             // 
+            this.fotoCheck1.BackColor = System.Drawing.Color.Transparent;
             this.fotoCheck1.Cargo = "Cargo:";
             this.fotoCheck1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fotoCheck1.FotoPerfil = ((System.Drawing.Image)(resources.GetObject("fotoCheck1.FotoPerfil")));
@@ -2163,6 +2185,24 @@
             this.fotoCheck1.Observacion = "Detalle:";
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
+            // 
+            // fondoColorOre1
+            // 
+            this.fondoColorOre1.Angulo = 30;
+            this.fondoColorOre1.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240))))),
+        System.Drawing.Color.GhostWhite,
+        System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))))};
+            this.fondoColorOre1.control = this.FlowPanel;
+            // 
+            // fondoColorOre2
+            // 
+            this.fondoColorOre2.Angulo = 45;
+            this.fondoColorOre2.Colores = new System.Drawing.Color[] {
+        System.Drawing.SystemColors.Control,
+        System.Drawing.Color.Snow,
+        System.Drawing.SystemColors.Control};
+            this.fondoColorOre2.control = this.cmenuclick;
             // 
             // frmMenu
             // 
@@ -2407,5 +2447,8 @@
         private System.Windows.Forms.ToolStripMenuItem formato141RegistroDeVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mayorPorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mayorPorCuentasToolStripMenuItem;
+        private System.Windows.Forms.Label lblpuntero;
+        private HpResergerUserControls.FondoColorOre fondoColorOre1;
+        private HpResergerUserControls.FondoColorOre fondoColorOre2;
     }
 }

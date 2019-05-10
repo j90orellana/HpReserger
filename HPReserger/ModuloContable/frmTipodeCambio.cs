@@ -20,8 +20,17 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         DataTable TablaConsultadias;
         byte[] ImgVenta;
+        DateTime fechaactual;
         public bool BusquedaExterna { get; internal set; }
-
+        public DateTime FechaActual
+        {
+            get { return fechaactual; }
+            set
+            {
+                fechaactual = value;
+                Buscar_Click(new object(), new EventArgs());
+            }
+        }
         private void TipodeCambio_Load(object sender, EventArgs e)
         {
             ImgVenta = new byte[0];
@@ -39,10 +48,7 @@ namespace HPReserger
                 dtgconten.DataSource = tablita;
                 CargarImagenes();
             }
-            else
-            {
-                CargarTipoCambio();
-            }
+            else { CargarTipoCambio(); }
         }
         public DataTable ConsultaDia()
         {
@@ -433,6 +439,10 @@ namespace HPReserger
         {
             Buscar_Click(sender, e);
             frmaddtipo = null;
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            FechaActual = DateTime.Now;
         }
     }
 }

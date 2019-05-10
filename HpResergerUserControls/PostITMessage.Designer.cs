@@ -68,7 +68,7 @@
             // 
             // pbFoto
             // 
-            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
+            this.pbFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(213)))), ((int)(((byte)(232)))));
             this.pbFoto.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbFoto.Image = ((System.Drawing.Image)(resources.GetObject("pbFoto.Image")));
             this.pbFoto.Location = new System.Drawing.Point(0, 0);
@@ -81,6 +81,7 @@
             // lblObservacion
             // 
             this.lblObservacion.AutoSize = true;
+            this.lblObservacion.BackColor = System.Drawing.Color.Transparent;
             this.lblObservacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblObservacion.Location = new System.Drawing.Point(96, 53);
             this.lblObservacion.Name = "lblObservacion";
@@ -92,6 +93,7 @@
             // lblcargo
             // 
             this.lblcargo.AutoSize = true;
+            this.lblcargo.BackColor = System.Drawing.Color.Transparent;
             this.lblcargo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcargo.Location = new System.Drawing.Point(96, 32);
             this.lblcargo.Name = "lblcargo";
@@ -103,6 +105,7 @@
             // lblnombre
             // 
             this.lblnombre.AutoSize = true;
+            this.lblnombre.BackColor = System.Drawing.Color.Transparent;
             this.lblnombre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblnombre.Location = new System.Drawing.Point(96, 11);
             this.lblnombre.Name = "lblnombre";
@@ -115,6 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.lblObservacion);
             this.Controls.Add(this.lblcargo);
             this.Controls.Add(this.lblnombre);

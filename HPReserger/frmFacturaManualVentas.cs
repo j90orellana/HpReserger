@@ -58,6 +58,8 @@ namespace HPReserger
                 Dtgconten.DataSource = CapaLogica.FacturaManualVentaDetalleBusqueda("", "", 0, 0);
                 Limpiar();
             }
+            DataRow Filon = CapaLogica.FacturaManualVentaBusquedaContadas();
+            lblcontador.Text = $"Listado de Facturas Registradas: { dtgBusqueda.RowCount} / {Filon[0]} ";
         }
         public void LimpiarBusquedas()
         {
@@ -1154,13 +1156,25 @@ namespace HPReserger
                     string CuentaRedondeo = "";
                     string DH = "";
                     DataTable Tpruebass = new DataTable();
-                    if (conme > 0 || conmn > 0)
+                    if ((conme > 0 && (int)cbomoneda.SelectedValue == 2) || (conmn > 0 && (int)cbomoneda.SelectedValue == 1))
                     {
                         DH = "H";
                         //Tpruebass = CapaLogica.BuscarCuentas("INGRESOS POR REDONDEO", 5);
                         Tpruebass = CapaLogica.BuscarCuentas("INGRESOS POR REDONDEO", 5);
                     }
-                    if (conme < 0 || conmn < 0)
+                    else if ((conme < 0 && (int)cbomoneda.SelectedValue == 2) || (conmn < 0 && (int)cbomoneda.SelectedValue == 1))
+                    {
+                        //Tpruebass = CapaLogica.BuscarCuentas("PERDIDAS POR REDONDEO", 5);
+                        Tpruebass = CapaLogica.BuscarCuentas("ajuste por redondeo", 5);
+                        DH = "D";
+                    }
+                    else if (conme > 0 || conmn > 0)
+                    {
+                        DH = "H";
+                        //Tpruebass = CapaLogica.BuscarCuentas("INGRESOS POR REDONDEO", 5);
+                        Tpruebass = CapaLogica.BuscarCuentas("INGRESOS POR REDONDEO", 5);
+                    }
+                    else if (conme < 0 || conmn < 0)
                     {
                         //Tpruebass = CapaLogica.BuscarCuentas("PERDIDAS POR REDONDEO", 5);
                         Tpruebass = CapaLogica.BuscarCuentas("ajuste por redondeo", 5);
@@ -1398,7 +1412,7 @@ namespace HPReserger
                     if (R.Cells[xUsuario.Name].Value != null)
                         if ((R.Cells[xUsuario.Name].Value.ToString() == "" ? 0 : (int)R.Cells[xUsuario.Name].Value) >= 998)
                             Dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.FromArgb(192, 80, 77);
-                        else Dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.Black;
+                        else Dtgconten.Rows[x].DefaultCellStyle.ForeColor = Color.FromArgb(0, 0, 192);
                 }
             }
             catch (Exception) { }

@@ -56,7 +56,7 @@ namespace HPReserger
             this.cboetapa = new System.Windows.Forms.ComboBox();
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
-            this.dtfechavalor = new System.Windows.Forms.DateTimePicker();
+            this.dtpfechavalor = new System.Windows.Forms.DateTimePicker();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.cboestado = new System.Windows.Forms.ComboBox();
             this.lblmsg = new System.Windows.Forms.Label();
@@ -132,6 +132,7 @@ namespace HPReserger
             this.labelAmarillo = new System.Windows.Forms.Label();
             this.labelCuadre = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).BeginInit();
@@ -275,19 +276,19 @@ namespace HPReserger
             this.cboproyecto.SelectedIndexChanged += new System.EventHandler(this.cboproyecto_SelectedIndexChanged);
             this.cboproyecto.Enter += new System.EventHandler(this.cboproyecto_Enter);
             // 
-            // dtfechavalor
+            // dtpfechavalor
             // 
-            this.dtfechavalor.Enabled = false;
-            this.dtfechavalor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtfechavalor.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtfechavalor.Location = new System.Drawing.Point(296, 28);
-            this.dtfechavalor.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
-            this.dtfechavalor.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
-            this.dtfechavalor.Name = "dtfechavalor";
-            this.dtfechavalor.Size = new System.Drawing.Size(97, 22);
-            this.dtfechavalor.TabIndex = 15;
-            this.dtfechavalor.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
-            this.dtfechavalor.ValueChanged += new System.EventHandler(this.dtfechavalor_ValueChanged);
+            this.dtpfechavalor.Enabled = false;
+            this.dtpfechavalor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpfechavalor.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpfechavalor.Location = new System.Drawing.Point(296, 28);
+            this.dtpfechavalor.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpfechavalor.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpfechavalor.Name = "dtpfechavalor";
+            this.dtpfechavalor.Size = new System.Drawing.Size(97, 22);
+            this.dtpfechavalor.TabIndex = 15;
+            this.dtpfechavalor.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            this.dtpfechavalor.ValueChanged += new System.EventHandler(this.dtfechavalor_ValueChanged);
             // 
             // btnActualizar
             // 
@@ -693,12 +694,13 @@ namespace HPReserger
             this.chkfechavalor.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkfechavalor.Enabled = false;
             this.chkfechavalor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkfechavalor.Location = new System.Drawing.Point(188, 31);
+            this.chkfechavalor.Location = new System.Drawing.Point(96, 399);
             this.chkfechavalor.Name = "chkfechavalor";
             this.chkfechavalor.Size = new System.Drawing.Size(106, 17);
             this.chkfechavalor.TabIndex = 14;
             this.chkfechavalor.Text = "FechaContable:";
-            this.chkfechavalor.UseVisualStyleBackColor = false;
+            this.chkfechavalor.UseVisualStyleBackColor = true;
+            this.chkfechavalor.Visible = false;
             this.chkfechavalor.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // dtgayuda3
@@ -871,6 +873,7 @@ namespace HPReserger
             // 
             this.separadorOre2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre2.Location = new System.Drawing.Point(0, 434);
             this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
@@ -882,6 +885,7 @@ namespace HPReserger
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre1.Location = new System.Drawing.Point(-4, 121);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
@@ -898,6 +902,7 @@ namespace HPReserger
             this.Txtbusca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbusca.ImgBotonCerrar = null;
             this.Txtbusca.Location = new System.Drawing.Point(9, 439);
+            this.Txtbusca.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Txtbusca.Name = "Txtbusca";
             this.Txtbusca.Size = new System.Drawing.Size(565, 22);
             this.Txtbusca.TabIndex = 35;
@@ -1321,10 +1326,25 @@ namespace HPReserger
             this.label11.Size = new System.Drawing.Size(0, 13);
             this.label11.TabIndex = 181;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(204, 33);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(90, 13);
+            this.label12.TabIndex = 140;
+            this.label12.Text = "Fecha Contable:";
+            // 
             // frmAsientoContable
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(684, 675);
+            this.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
             this.Controls.Add(this.labelAmarillo);
             this.Controls.Add(this.cbocambio);
             this.Controls.Add(this.cbomoneda);
@@ -1344,7 +1364,7 @@ namespace HPReserger
             this.Controls.Add(this.cboetapa);
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.cboproyecto);
-            this.Controls.Add(this.dtfechavalor);
+            this.Controls.Add(this.dtpfechavalor);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.cboestado);
             this.Controls.Add(this.lblmsg);
@@ -1369,6 +1389,7 @@ namespace HPReserger
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.Dinamica);
             this.Controls.Add(this.label14);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dtgbusca);
             this.Controls.Add(this.groupBox1);
@@ -1388,6 +1409,7 @@ namespace HPReserger
             this.Name = "frmAsientoContable";
             this.Nombre = "Asiento Contable";
             this.Text = "Asiento Contable";
+            this.Activated += new System.EventHandler(this.frmAsientoContable_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAsientoContable_FormClosing);
             this.Load += new System.EventHandler(this.frmAsientoContable_Load);
             this.groupBox1.ResumeLayout(false);
@@ -1440,7 +1462,7 @@ namespace HPReserger
         private System.Windows.Forms.CheckBox chkfecha;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.CheckBox chkfechavalor;
-        private System.Windows.Forms.DateTimePicker dtfechavalor;
+        private System.Windows.Forms.DateTimePicker dtpfechavalor;
         private System.Windows.Forms.ComboBox cboetapa;
         private System.Windows.Forms.ComboBox cboempresa;
         private System.Windows.Forms.ComboBox cboproyecto;
@@ -1491,5 +1513,6 @@ namespace HPReserger
         private System.Windows.Forms.Label labelAmarillo;
         private System.Windows.Forms.Label labelCuadre;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -127,6 +127,8 @@ namespace HPReserger
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.dtpFechaContable = new System.Windows.Forms.DateTimePicker();
+            this.txtglosa = new HpResergerUserControls.TextBoxPer();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.SuspendLayout();
@@ -163,9 +165,9 @@ namespace HPReserger
             "007 CHEQUES CON LA CLÁUSULA DE \"NO NEGOCIABLE\", \"INTRANSFERIBLES\", \"NO A LA ORDEN" +
                 "\" U OTRA EQUIVALENTE, A QUE SE REFIERE EL INCISO G) DEL ARTICULO 5° DE LA LEY",
             "009 EFECTIVO, EN LOS DEMÁS CASOS"});
-            this.cbotipo.Location = new System.Drawing.Point(243, 13);
+            this.cbotipo.Location = new System.Drawing.Point(424, 13);
             this.cbotipo.Name = "cbotipo";
-            this.cbotipo.Size = new System.Drawing.Size(474, 21);
+            this.cbotipo.Size = new System.Drawing.Size(469, 21);
             this.cbotipo.TabIndex = 36;
             this.cbotipo.SelectedIndexChanged += new System.EventHandler(this.cbotipo_SelectedIndexChanged);
             // 
@@ -210,7 +212,7 @@ namespace HPReserger
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(207, 17);
+            this.label16.Location = new System.Drawing.Point(390, 17);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(36, 13);
             this.label16.TabIndex = 27;
@@ -283,9 +285,9 @@ namespace HPReserger
             this.cbocuentabanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocuentabanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuentabanco.FormattingEnabled = true;
-            this.cbocuentabanco.Location = new System.Drawing.Point(425, 36);
+            this.cbocuentabanco.Location = new System.Drawing.Point(424, 36);
             this.cbocuentabanco.Name = "cbocuentabanco";
-            this.cbocuentabanco.Size = new System.Drawing.Size(292, 21);
+            this.cbocuentabanco.Size = new System.Drawing.Size(380, 21);
             this.cbocuentabanco.TabIndex = 42;
             // 
             // lblguia1
@@ -304,23 +306,25 @@ namespace HPReserger
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 17);
+            this.label2.Location = new System.Drawing.Point(165, 475);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 43;
             this.label2.Text = "Nro Pago:";
+            this.label2.Visible = false;
             // 
             // txtnropago
             // 
             this.txtnropago.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtnropago.Enabled = false;
             this.txtnropago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnropago.Location = new System.Drawing.Point(73, 13);
+            this.txtnropago.Location = new System.Drawing.Point(226, 471);
             this.txtnropago.Name = "txtnropago";
             this.txtnropago.Size = new System.Drawing.Size(126, 21);
             this.txtnropago.TabIndex = 44;
             this.txtnropago.Text = "0";
             this.txtnropago.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnropago.Visible = false;
             // 
             // txttotal
             // 
@@ -528,7 +532,7 @@ namespace HPReserger
             this.btnReversar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnReversar.Enabled = false;
             this.btnReversar.Image = ((System.Drawing.Image)(resources.GetObject("btnReversar.Image")));
-            this.btnReversar.Location = new System.Drawing.Point(861, 17);
+            this.btnReversar.Location = new System.Drawing.Point(358, 469);
             this.btnReversar.Name = "btnReversar";
             this.btnReversar.Size = new System.Drawing.Size(75, 23);
             this.btnReversar.TabIndex = 52;
@@ -553,7 +557,7 @@ namespace HPReserger
             // btnActualizar
             // 
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(723, 35);
+            this.btnActualizar.Location = new System.Drawing.Point(807, 36);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(86, 23);
             this.btnActualizar.TabIndex = 48;
@@ -929,7 +933,7 @@ namespace HPReserger
             this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(73, 60);
+            this.cboempresa.Location = new System.Drawing.Point(73, 13);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(270, 21);
             this.cboempresa.TabIndex = 79;
@@ -941,7 +945,7 @@ namespace HPReserger
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(17, 64);
+            this.label12.Location = new System.Drawing.Point(17, 17);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 13);
             this.label12.TabIndex = 28;
@@ -1144,11 +1148,44 @@ namespace HPReserger
             this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpFechaContable.ValueChanged += new System.EventHandler(this.dtpFechaPago_ValueChanged);
             // 
+            // txtglosa
+            // 
+            this.txtglosa.BackColor = System.Drawing.Color.White;
+            this.txtglosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtglosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtglosa.ForeColor = System.Drawing.Color.Black;
+            this.txtglosa.Format = null;
+            this.txtglosa.Location = new System.Drawing.Point(72, 60);
+            this.txtglosa.MaxLength = 300;
+            this.txtglosa.Name = "txtglosa";
+            this.txtglosa.NextControlOnEnter = null;
+            this.txtglosa.Size = new System.Drawing.Size(271, 21);
+            this.txtglosa.TabIndex = 342;
+            this.txtglosa.Text = "Ingrese Glosa De Pago";
+            this.txtglosa.TextoDefecto = "Ingrese Glosa De Pago";
+            this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(31, 64);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(39, 13);
+            this.label17.TabIndex = 343;
+            this.label17.Text = "Glosa:";
+            // 
             // frmPagarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1085, 499);
+            this.Controls.Add(this.txtglosa);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txttotaldiferencial);
             this.Controls.Add(this.txttipocambio);
@@ -1290,5 +1327,7 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker dtpFechaContable;
+        private TextBoxPer txtglosa;
+        private System.Windows.Forms.Label label17;
     }
 }

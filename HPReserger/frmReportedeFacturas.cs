@@ -48,7 +48,7 @@ namespace HPReserger
             if (dtgconten.RowCount > 0)
             {
                 string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas;
-                _NombreHoja = "Comprobantes Incompletos"; _Cabecera = "LISTADO DE COMPROBANTES INCOMPLETOS";
+                _NombreHoja = "Comprobantes Incompletos"; _Cabecera = "LISTADO DE COMPROBANTES INCOMPLETOS DE COMPRAS";
                 _Columnas = new int[] { };//1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 };
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 Color Back = Color.FromArgb(78, 129, 189);
@@ -61,10 +61,10 @@ namespace HPReserger
                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "a2", "PERIODO:", 12, false, false, Back, Fore));
                     Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("b2", "b2", $"De: {dtpfechaini.Value.ToShortDateString() } A: {dtpfechafin.Value.ToShortDateString()}", 12, false, false, Back, Fore));
                 }
-                /////
+                ////
                 HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                 HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
-                /////fin estilo de las celdas
+                ////fin estilo de las celdas
                 DataTable TableResult = new DataTable();
                 DataView dt = ((DataTable)dtgconten.DataSource).AsDataView();
                 TableResult = dt.ToTable();

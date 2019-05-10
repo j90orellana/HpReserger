@@ -515,7 +515,7 @@ namespace HPReserger
                 {
                     if (item.Cells[xNameCorto.Name].Value.ToString() == "USD")
                     {
-                        decimal Dif = ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
+                        decimal Dif = Configuraciones.Redondear((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
                         Dif = (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString()) ? 1 : -1) * Dif;
                         if (Math.Abs(Dif) > 0)
                         {
@@ -565,9 +565,9 @@ namespace HPReserger
                     if (item.Cells[xNameCorto.Name].Value.ToString() == "USD")
                     {
                         if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString()))
-                            Diferencial -= ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
+                            Diferencial -= Configuraciones.Redondear((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
                         else
-                            Diferencial += ((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
+                            Diferencial += Configuraciones.Redondear((decimal)item.Cells[xpagar.Name].Value * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear((decimal)item.Cells[xpagar.Name].Value * (decimal)item.Cells[xTC.Name].Value);
                     }
                 }
             }

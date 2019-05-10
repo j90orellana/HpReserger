@@ -24,16 +24,16 @@ namespace HpResergerUserControls
         {
             pbFoto.Image = ListaImagenes.Images[1];
         }
-        public string Nombre { get { return lblnombre.Text; } set { lblnombre.Text = value; } }
-        public string Cargo { get { return lblcargo.Text; } set { lblcargo.Text = value; } }
+        public string Nombre { get { return lblnombre.Text; } set { lblnombre.Text = Configuraciones.MayusculaCadaPalabra(value); } }
+        public string Cargo { get { return lblcargo.Text; } set { lblcargo.Text = Configuraciones.MayusculaCadaPalabra(value); } }
         public string Observacion { get { return lblObservacion.Text; } set { lblObservacion.Text = value; } }
-        public Image FotoPerfil { get { return pbFoto.Image; } set { pbFoto.Image = value; } }
+        public Image FotoPerfil { get { return pbFoto.Image; } set { pbFoto.Image = QuitarFondo(value, Color.White); } }
         public Image ImagenCloseEncima { get { return _ImagenEncima; } set { _ImagenEncima = value; } }
         public Image _ImagenDefault;
         public Image _ImagenEncima;
         public void CambiarImagen(Image Foto)
         {
-            pbFoto.Image = Foto;    
+            pbFoto.Image = QuitarFondo(Foto, Color.White);
         }
         private void buttonOre1_Click(object sender, EventArgs e)
         {
@@ -42,7 +42,7 @@ namespace HpResergerUserControls
         private void FotoCheck_Click(object sender, EventArgs e)
         {
             //oculta al click
-            //this.Dispose();
+            this.Dispose();
         }
         private void btnclose_MouseMove(object sender, MouseEventArgs e)
         {
@@ -56,15 +56,19 @@ namespace HpResergerUserControls
         {
             this.Dispose();
         }
-
         public void FotodeHombre()
         {
-            pbFoto.Image = ListaImagenes.Images[0];
+            pbFoto.Image = QuitarFondo(ListaImagenes.Images[0], Color.White);
         }
         public void FotodeMujer()
         {
-            pbFoto.Image = ListaImagenes.Images[2];
-
+            pbFoto.Image = QuitarFondo(ListaImagenes.Images[2], Color.White);
+        }
+        public Image QuitarFondo(Image imagen, Color color)
+        {
+            Bitmap imgs = new Bitmap(imagen);
+            //imgs.MakeTransparent(color);            
+            return imgs;
         }
     }
 }

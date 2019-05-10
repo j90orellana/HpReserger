@@ -95,8 +95,10 @@ namespace HPReserger
         }
         public int ValorBusqueda = 0;
         public Boolean Busqueda = false;
+        DataTable tablita;
         private void frmdinamicaContable_Load(object sender, EventArgs e)
         {
+            RellenarDebeHaber();
             ultimadinamica();
             Codigito(codigo);
             fila = columna = 0;
@@ -109,6 +111,15 @@ namespace HPReserger
             dtgbusca.DataSource = ListarDinamicas(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", ValorBusqueda);
             msgs(dtgbusca);
             DesactivarModi();
+            Dtgconten.Columns[descripcion.Name].ReadOnly = true;
+        }
+        public void RellenarDebeHaber()
+        {
+            tablita = new DataTable();
+            tablita.Columns.Add("CODIGO");
+            tablita.Columns.Add("VALOR");
+            tablita.Rows.Add(new object[] { "H", "HABER" });
+            tablita.Rows.Add(new object[] { "D", "DEBE" });
         }
         public void RellenarCombosSiNo10(ComboBox combito)
         {
@@ -142,12 +153,7 @@ namespace HPReserger
                     else { pase = true; }
                     if (!string.IsNullOrWhiteSpace(Dtgconten[0, Dtgconten.RowCount - 1].Value.ToString()) && !string.IsNullOrWhiteSpace(Dtgconten[1, Dtgconten.RowCount - 1].Value.ToString()) && pase)
                     {
-                        Dtgconten.Rows.Add();
-                        DataTable tablita = new DataTable();
-                        tablita.Columns.Add("CODIGO");
-                        tablita.Columns.Add("VALOR");
-                        tablita.Rows.Add(new object[] { "H", "HABER" });
-                        tablita.Rows.Add(new object[] { "D", "DEBE" });
+                        ((DataTable)Dtgconten.DataSource).Rows.Add();
                         DataGridViewComboBoxColumn MarcaSColumn = Dtgconten.Columns["debehaber"] as DataGridViewComboBoxColumn;
                         MarcaSColumn.DataSource = tablita;
                         MarcaSColumn.ValueMember = "CODIGO";
@@ -165,12 +171,7 @@ namespace HPReserger
             }
             else
             {
-                Dtgconten.Rows.Add();
-                DataTable tablita = new DataTable();
-                tablita.Columns.Add("CODIGO");
-                tablita.Columns.Add("VALOR");
-                tablita.Rows.Add(new object[] { "H", "HABER" });
-                tablita.Rows.Add(new object[] { "D", "DEBE" });
+                ((DataTable)Dtgconten.DataSource).Rows.Add();
                 DataGridViewComboBoxColumn MarcaSColumn = Dtgconten.Columns["debehaber"] as DataGridViewComboBoxColumn;
                 MarcaSColumn.DataSource = tablita;
                 MarcaSColumn.ValueMember = "CODIGO";
@@ -212,17 +213,18 @@ namespace HPReserger
                     }
                 }
                 if (e.RowIndex > -1 && e.ColumnIndex == 0)
-                {//VERIFICAR QUE NO SE DUPLIQUEN CUENTAS
-                    for (int i = 0; i < Dtgconten.RowCount - 1; i++)
-                    {
+                {
+                    //VERIFICAR QUE NO SE DUPLIQUEN CUENTAS
+                    //for (int i = 0; i < Dtgconten.RowCount - 1; i++)
+                    //{
 
-                        if (Dtgconten[0, e.RowIndex].Value.ToString() == Dtgconten[0, i].Value.ToString() && i != e.RowIndex)
-                        {
-                            MessageBox.Show("No se pueden Repetir Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Dtgconten.Rows.RemoveAt(Dtgconten.CurrentRow.Index); fila--;
-                            break;
-                        }
-                    }
+                    //    if (Dtgconten[0, e.RowIndex].Value.ToString() == Dtgconten[0, i].Value.ToString() && i != e.RowIndex)
+                    //    {
+                    //        MessageBox.Show("No se pueden Repetir Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //        Dtgconten.Rows.RemoveAt(Dtgconten.CurrentRow.Index); fila--;
+                    //        break;
+                    //    }
+                    //}
                 }
             }
             catch { }
@@ -406,33 +408,28 @@ namespace HPReserger
         public int filamax;
         private void dtgbusca_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            codigo = Convert.ToInt32(dtgbusca[0, e.RowIndex].Value.ToString());
+            codigo = Convert.ToInt32(dtgbusca[codx.Name, e.RowIndex].Value.ToString());
             Codigito(codigo);
-            cboyear.Text = dtgbusca[1, e.RowIndex].Value.ToString();
-            cbooperacion.Text = dtgbusca[3, e.RowIndex].Value.ToString();
-            cbosuboperacion.Text = dtgbusca[5, e.RowIndex].Value.ToString();
-            cboestado.SelectedValue = dtgbusca[9, e.RowIndex].Value.ToString();
+            cboyear.Text = dtgbusca[Ejerciciox.Name, e.RowIndex].Value.ToString();
+            cbooperacion.Text = dtgbusca[operacionx.Name, e.RowIndex].Value.ToString();
+            cbosuboperacion.Text = dtgbusca[suboperacionx.Name, e.RowIndex].Value.ToString();
+            cboestado.SelectedValue = dtgbusca[estadox.Name, e.RowIndex].Value.ToString();
             cbosolicitar.SelectedValue = dtgbusca[solicitax.Name, e.RowIndex].Value.ToString();
-            dtgayuda2.DataSource = CDinamica.SacarDinaminas(codigo.ToString());
-            if (dtgayuda2.RowCount > 0)
-            {
-                Dtgconten.Rows.Clear(); filamax = 0;
-                for (int i = 0; i < dtgayuda2.RowCount; i++)
-                {
-                    Dtgconten.Rows.Add();
-                    DataTable tablita = new DataTable();
-                    tablita.Columns.Add("CODIGO");
-                    tablita.Columns.Add("VALOR");
-                    tablita.Rows.Add(new object[] { "H", "HABER" });
-                    tablita.Rows.Add(new object[] { "D", "DEBE" });
-                    DataGridViewComboBoxColumn MarcaSColumn = Dtgconten.Columns["debehaber"] as DataGridViewComboBoxColumn;
-                    MarcaSColumn.DataSource = tablita;
-                    MarcaSColumn.ValueMember = "CODIGO";
-                    MarcaSColumn.DisplayMember = "VALOR"; filamax++;
-                    Dtgconten[cuenta.Name, i].Value = dtgayuda2[6, i].Value;
-                    Dtgconten[debehaber.Name, i].Value = dtgayuda2[8, i].Value; fila++;
-                }
-            }
+            Dtgconten.DataSource = CDinamica.SacarDinaminas(codigo.ToString());
+            //if (dtgayuda2.RowCount > 0)
+            //{
+            //    Dtgconten.Rows.Clear(); filamax = 0;
+            //    for (int i = 0; i < dtgayuda2.RowCount; i++)
+            //    {
+            //        Dtgconten.Rows.Add();                  
+            //        DataGridViewComboBoxColumn MarcaSColumn = Dtgconten.Columns["debehaber"] as DataGridViewComboBoxColumn;
+            //        MarcaSColumn.DataSource = tablita;
+            //        MarcaSColumn.ValueMember = "CODIGO";
+            //        MarcaSColumn.DisplayMember = "VALOR"; filamax++;
+            //        Dtgconten[cuenta.Name, i].Value = dtgayuda2[6, i].Value;
+            //        Dtgconten[debehaber.Name, i].Value = dtgayuda2[8, i].Value; fila++;
+            //    }
+            //}
         }
         private void dtgayuda2_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -445,12 +442,18 @@ namespace HPReserger
         }
         private void Dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewComboBoxColumn MarcaSColumn = Dtgconten.Columns["debehaber"] as DataGridViewComboBoxColumn;
+                MarcaSColumn.DataSource = tablita;
+                MarcaSColumn.ValueMember = "CODIGO";
+                MarcaSColumn.DisplayMember = "VALOR";
+            }
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             estado = 1; Desactivar(); fila = 0;
-            Dtgconten.Rows.Clear();
+            ((DataTable)Dtgconten.DataSource).Clear();
             ultimadinamica();
             Codigito(codigo + 1); ActivarModi();
             cboestado.SelectedValue = 1;
@@ -701,6 +704,11 @@ namespace HPReserger
             string text = cbosuboperacion.Text;
             CargarSubOperacion(cbosuboperacion);
             cbosuboperacion.Text = text;
+        }
+
+        private void Dtgconten_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
     }
 }

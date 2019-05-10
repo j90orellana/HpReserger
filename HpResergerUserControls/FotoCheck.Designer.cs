@@ -42,9 +42,8 @@
             // 
             // pbFoto
             // 
-            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
-            this.pbFoto.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbFoto.Location = new System.Drawing.Point(0, 0);
+            this.pbFoto.BackColor = System.Drawing.SystemColors.Control;
+            this.pbFoto.Location = new System.Drawing.Point(21, 0);
             this.pbFoto.Name = "pbFoto";
             this.pbFoto.Size = new System.Drawing.Size(93, 82);
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -53,33 +52,39 @@
             // 
             // lblnombre
             // 
-            this.lblnombre.AutoSize = true;
-            this.lblnombre.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnombre.Location = new System.Drawing.Point(94, 17);
+            this.lblnombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblnombre.AutoEllipsis = true;
+            this.lblnombre.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.lblnombre.Location = new System.Drawing.Point(115, 28);
             this.lblnombre.Name = "lblnombre";
-            this.lblnombre.Size = new System.Drawing.Size(62, 17);
+            this.lblnombre.Size = new System.Drawing.Size(183, 14);
             this.lblnombre.TabIndex = 1;
             this.lblnombre.Text = "Nombre:";
             this.lblnombre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblcargo
             // 
-            this.lblcargo.AutoSize = true;
-            this.lblcargo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcargo.Location = new System.Drawing.Point(94, 38);
+            this.lblcargo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblcargo.AutoEllipsis = true;
+            this.lblcargo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Italic);
+            this.lblcargo.Location = new System.Drawing.Point(115, 43);
             this.lblcargo.Name = "lblcargo";
-            this.lblcargo.Size = new System.Drawing.Size(47, 17);
+            this.lblcargo.Size = new System.Drawing.Size(183, 14);
             this.lblcargo.TabIndex = 2;
             this.lblcargo.Text = "Cargo:";
             this.lblcargo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblObservacion
             // 
-            this.lblObservacion.AutoSize = true;
-            this.lblObservacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObservacion.Location = new System.Drawing.Point(94, 59);
+            this.lblObservacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblObservacion.AutoEllipsis = true;
+            this.lblObservacion.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.lblObservacion.Location = new System.Drawing.Point(115, 58);
             this.lblObservacion.Name = "lblObservacion";
-            this.lblObservacion.Size = new System.Drawing.Size(51, 17);
+            this.lblObservacion.Size = new System.Drawing.Size(183, 14);
             this.lblObservacion.TabIndex = 3;
             this.lblObservacion.Text = "Detalle:";
             this.lblObservacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -91,7 +96,7 @@
             this.btnclose.FlatAppearance.BorderSize = 0;
             this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnclose.Image = ((System.Drawing.Image)(resources.GetObject("btnclose.Image")));
-            this.btnclose.Location = new System.Drawing.Point(279, 4);
+            this.btnclose.Location = new System.Drawing.Point(282, 1);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(20, 20);
             this.btnclose.TabIndex = 4;
@@ -126,6 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.btnclose);
             this.Controls.Add(this.lblObservacion);
             this.Controls.Add(this.lblcargo);
@@ -139,7 +145,6 @@
             this.Click += new System.EventHandler(this.FotoCheck_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

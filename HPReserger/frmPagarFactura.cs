@@ -74,6 +74,7 @@ namespace HPReserger
             else txtnropago.Text = "1";
             cbotipo.SelectedIndex = 0;
             dtpFechaContable.Value = dtpFechaPago.Value = DateTime.Now;
+            txtglosa.CargarTextoporDefecto();
             //List<Persona> personas = new List<Persona>();
             //Persona person1 = new Persona(1, "jefferson", 27);
             //personas.Add(person1);
@@ -497,6 +498,7 @@ namespace HPReserger
                         numasiento = (int)asiento["codigo"];
                     numasiento--;
                 }
+                string cuoPago = HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, FechaContable); int fkEmpresa = (int)cboempresa.SelectedValue;
                 int ContadorFilaDiferencial = ListaComprobantes.Count + 2;
                 foreach (FACTURAS fac in ListaComprobantes)
                 {
@@ -509,11 +511,11 @@ namespace HPReserger
                     if (fac.tipo.Substring(0, 2) == "RH")
                     {
                         //actualizo que el recibo este pagado
-                        if (fac.Saldo == fac.aPagar) CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante);
-                        else CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante);
+                        if (fac.Saldo == fac.aPagar) CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
+                        else CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
                         //cuenta de recibo por honorarios 4241101
                         CapaLogica.guardarfactura(1, numasiento + 1, fac.numero, fac.CuentaContable != "" ? fac.CuentaContable : fac.Moneda == 1 ? "4241101" : "4241201", fac.aPagar, 0, 1, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo.Substring(0, 2), fac.proveedor, fac.Moneda, nroKuenta, ""
-                            , fac.TipoCambio, decimal.Parse(txttipocambio.Text), FechaPago, (fac.aPagar * decimal.Parse(txttipocambio.Text)) - (fac.aPagar * fac.TipoCambio), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), fac.IdComprobante, FechaContable);
+                            , fac.TipoCambio, decimal.Parse(txttipocambio.Text), FechaPago, Configuraciones.Redondear(fac.aPagar * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear(fac.aPagar * fac.TipoCambio), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), fac.IdComprobante, FechaContable, txtglosa.TextValido());
                         facturar = fac.numero;
                         proveer = fac.proveedor;
                         idmoneda = fac.Moneda;
@@ -540,11 +542,11 @@ namespace HPReserger
                         //else
                         //{
                         //actualizo que la factura esta pagada
-                        if (fac.Saldo == fac.aPagar) CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante);
-                        else CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante);
+                        if (fac.Saldo == fac.aPagar) CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
+                        else CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, int.Parse(cbotipo.Text.Substring(0, 3)), CodigoPago == "007" ? txtnrocheque.Text : "", fac.aPagar, fac.subtotal, fac.igv, fac.total, frmLogin.CodigoUsuario, 1, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
                         ///facturas por pagar 4212101
                         CapaLogica.guardarfactura(1, numasiento + 1, fac.numero, fac.CuentaContable != "" ? fac.CuentaContable : fac.Moneda == 1 ? "4212101" : "4212201", fac.aPagar, 0, 2, fac.FechaEmision, fac.fechacancelado, fac.FechaRecepcion, frmLogin.CodigoUsuario, fac.centrocosto, fac.tipo, fac.proveedor, fac.Moneda, nroKuenta, ""
-                             , fac.TipoCambio, decimal.Parse(txttipocambio.Text), FechaPago, (fac.aPagar * decimal.Parse(txttipocambio.Text)) - (fac.aPagar * fac.TipoCambio), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), fac.IdComprobante, FechaContable);
+                             , fac.TipoCambio, decimal.Parse(txttipocambio.Text), FechaPago, Configuraciones.Redondear(fac.aPagar * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear(fac.aPagar * fac.TipoCambio), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), fac.IdComprobante, FechaContable, txtglosa.TextValido());
                         facturar = fac.numero; proveer = fac.proveedor;
                         idmoneda = fac.Moneda;
                         //}
@@ -569,14 +571,15 @@ namespace HPReserger
                             ++con;
                             CapaLogica.guardarfactura(0, numasiento + 1, item.Cells[nrofactura.Name].Value.ToString(), "", tipos == "ND" ? monto : 0, tipos == "ND" ? 0 : monto, 10, f, f, f, frmLogin.CodigoUsuario,
                                 0, tipos, item.Cells[proveedor.Name].Value.ToString(), (int)item.Cells[xidmoneda.Name].Value, item.Cells[xCuentaContable.Name].Value.ToString(), "", (decimal)item.Cells[xtc.Name].Value, decimal.Parse(txttipocambio.Text),
-                                FechaPago, (((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value)) * ((int)item.Cells[xidcomprobante.Name].Value == 8 ? -1 : 1), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), (int)item.Cells[xidcomprobante.Name].Value, FechaContable);
+                                FechaPago, (Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value)) * ((int)item.Cells[xidcomprobante.Name].Value == 8 ? -1 : 1),
+                                ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), (int)item.Cells[xidcomprobante.Name].Value, FechaContable, txtglosa.TextValido());
                         }
                     }
                 }
                 ///BANCO
                 if (decimal.Parse(txttotal.Text) > 0)
                     CapaLogica.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer, idmoneda, nroKuenta, CodigoPago == "007" ? txtnrocheque.Text : ""
-                         , decimal.Parse(txttipocambio.Text), decimal.Parse(txttipocambio.Text), FechaPago, decimal.Parse(txttipocambio.Text), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), 0, FechaContable);
+                         , decimal.Parse(txttipocambio.Text), decimal.Parse(txttipocambio.Text), FechaPago, decimal.Parse(txttipocambio.Text), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), 0, FechaContable, txtglosa.TextValido());
 
                 msg($"Documento Pagado \nGenerado su Asiento {HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, FechaContable)}");
                 btnActualizar_Click(sender, e);
@@ -844,10 +847,9 @@ namespace HPReserger
                         if (item.Cells[monedax.Name].Value.ToString() == "USD")
                         {
                             if ((int)item.Cells[xidcomprobante.Name].Value == 8)
-                                Diferencial -= ((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value);
+                                Diferencial -= Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value);
                             else
-
-                                Diferencial += ((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.Text)) - ((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value);
+                                Diferencial += Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value);
                         }
                     }
             }
@@ -874,7 +876,7 @@ namespace HPReserger
                 if (rdbporPagar.Checked)
                     if (e.ColumnIndex == Dtguias.Columns[Pagox.Name].Index)
                     {
-                        if (Dtguias[tipodoc.Name, e.RowIndex].Value.ToString().ToUpper().Substring(0,2) == "NC" || Dtguias[tipodoc.Name, e.RowIndex].Value.ToString().ToUpper().Substring(0,2) == "ND")
+                        if (Dtguias[tipodoc.Name, e.RowIndex].Value.ToString().ToUpper().Substring(0, 2) == "NC" || Dtguias[tipodoc.Name, e.RowIndex].Value.ToString().ToUpper().Substring(0, 2) == "ND")
                             Dtguias[e.ColumnIndex, e.RowIndex].ReadOnly = true;
                         else
                             Dtguias[e.ColumnIndex, e.RowIndex].ReadOnly = false;

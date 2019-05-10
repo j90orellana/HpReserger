@@ -1112,7 +1112,7 @@ namespace HPReserger
         private void btnfoto_Click(object sender, EventArgs e)
         {
             var dialogoAbrirArchivoFoto = new OpenFileDialog();
-            dialogoAbrirArchivoFoto.Filter = "Jpg Files|*.jpg";
+            dialogoAbrirArchivoFoto.Filter = "Archivos jpg|*.jpg|Archivos png|*.png";
             dialogoAbrirArchivoFoto.DefaultExt = ".jpg";
             dialogoAbrirArchivoFoto.ShowDialog(this);
 
@@ -1123,7 +1123,7 @@ namespace HPReserger
                 _memoryStream.SetLength(0);
                 _memoryStream.Capacity = 0;
                 pbfotoempleado.Image = Image.FromFile(NombreFoto);
-                pbfotoempleado.Image.Save(_memoryStream, ImageFormat.Jpeg);
+                pbfotoempleado.Image.Save(_memoryStream, ImageFormat.Png);
                 Foto = File.ReadAllBytes(dialogoAbrirArchivoFoto.FileName);
             }
         }

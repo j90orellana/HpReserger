@@ -45,8 +45,8 @@ namespace HpResergerUserControls
         public static string MayusculaCadaPalabra(string cadena)
         {
             return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cadena.ToLower());
-        }         
-        public static decimal Redondear(decimal valor) { return Math.Round(valor, 2); }
+        }
+        public static decimal Redondear(decimal valor) { return Math.Round(valor, 2, MidpointRounding.AwayFromZero); }
         public static void TiempoEjecucionMsg(Stopwatch st)
         {
             TimeSpan tm = st.Elapsed;
@@ -67,15 +67,15 @@ namespace HpResergerUserControls
                     if (item.Cells[ColumnaImporte.Name].Value != null)
                     {
                         if (Decimal(item.Cells[ColumnaImporte.Name].Value.ToString()) > 0)
-                            Valor += Decimal(item.Cells[ColumnaImporte.Name].Value.ToString());
+                            Valor += Redondear(Decimal(item.Cells[ColumnaImporte.Name].Value.ToString()));
                         else contador++;
                     }
-                    else contador++;
+                    else { contador++;}
                 }
             }
             if (contador > 0)
             {
-                Valor = (MontoaRepartir - Valor) / contador;
+                Valor = Redondear((MontoaRepartir - Valor) / contador);
                 foreach (DataGridViewRow item in Datagrid.Rows)
                 {
                     if (item.Cells[ColumnaImporte.Name].Value != null)
@@ -103,17 +103,17 @@ namespace HpResergerUserControls
                     if (item.Cells[ColumnaDestino.Name].Value != null)
                     {
                         if (Decimal(item.Cells[ColumnaDestino.Name].Value.ToString()) > 0)
-                            ValorDestino += Decimal(item.Cells[ColumnaDestino.Name].Value.ToString());
+                            ValorDestino += Redondear(Decimal(item.Cells[ColumnaDestino.Name].Value.ToString()));
                     }
                     if (Decimal(item.Cells[ColumnaDestino.Name].Value.ToString()) == 0 && Decimal(item.Cells[ColumnaOrigen.Name].Value.ToString()) == 0)
                         contador++;
                 }
-                ValorOrigen += Decimal(item.Cells[ColumnaOrigen.Name].Value.ToString());
+                ValorOrigen += Redondear(Decimal(item.Cells[ColumnaOrigen.Name].Value.ToString()));
             }
             if (Decimal(Datagrid[ColumnaOrigen.Name, Datagrid.CurrentCell.RowIndex].Value.ToString()) > 0) contador--;
             if (contador > 0)
             {
-                ValorOrigen = (ValorOrigen - ValorDestino) / contador;
+                ValorOrigen = Redondear((ValorOrigen - ValorDestino) / contador);
                 if (ValorOrigen > 0)
                 {
                     foreach (DataGridViewRow item in Datagrid.Rows)

@@ -70,7 +70,7 @@ namespace HPReserger
                 frmCOT.Icon = ICono;
                 frmCOT.MdiParent = this;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmCOT.FormClosed += new FormClosedEventHandler(cerrar_cotizacion);
                 frmCOT.Show();
             }
@@ -141,13 +141,14 @@ namespace HPReserger
                 {
                     mdi = (MdiClient)ctl;
                     mdi.BackColor = Color.FromArgb(240, 240, 240);
+                    //fondoColorOre1.control = mdi;
                 }
                 catch (InvalidCastException)
                 {
                 }
             }
             cerrado = 0;
-            lblwelcome.Text = "Bienvenido: " + Nombres;
+            bienvenido = lblwelcome.Text = "Bienvenido: " + Nombres;
             ConsultarCaducarLicencia();
             ConsultarCumpleaños();
             length = FlowPanel.Width;
@@ -159,7 +160,7 @@ namespace HPReserger
             VerFotoAdmin();
             Text = Text + $" [{frmLogin.Basedatos}]";
             //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   +
-          
+
         }
         public void VerFotoAdmin()
         {
@@ -176,6 +177,7 @@ namespace HPReserger
             if (resul.Days < DaysCaducatesLicence)
             {
                 HpResergerUserControls.FotoCheck fotito = new HpResergerUserControls.FotoCheck();
+                fotito.BackColor = Color.Transparent;
                 fotito.Nombre = "Mensaje de Licencia";
                 fotito.Cargo = $"Su Licencia Caduca en";
                 fotito.Observacion = $"{resul.Days} Dias";
@@ -202,6 +204,7 @@ namespace HPReserger
                 foreach (DataRow item in Table.Rows)
                 {
                     HpResergerUserControls.FotoCheck fotito = new HpResergerUserControls.FotoCheck();
+                    fotito.BackColor = Color.Transparent;
                     fotito.Nombre = item["empleado"].ToString();
                     fotito.Cargo = item["cargo"].ToString();
                     string Extra = "";
@@ -235,7 +238,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public void ValidarVentanas(Form formulario)
         {
@@ -252,7 +255,7 @@ namespace HPReserger
         void cerrar_cotizacion(object sender, FormClosedEventArgs e)
         {
             frmCOT = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmAprobarCotizacion frmACOT;
         private void aprobaciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -263,7 +266,7 @@ namespace HPReserger
                 frmACOT.MdiParent = this;
                 frmACOT.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmACOT.FormClosed += new FormClosedEventHandler(cerrara_aprobacion);
                 frmACOT.Show();
             }
@@ -276,7 +279,7 @@ namespace HPReserger
         void cerrara_aprobacion(object sender, FormClosedEventArgs e)
         {
             frmACOT = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmOrdenCompra frmOC;
         private void ordenDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -287,7 +290,7 @@ namespace HPReserger
                 frmOC.MdiParent = this;
                 frmOC.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmOC.FormClosed += new FormClosedEventHandler(cerrar_ordencompra);
                 frmOC.Show();
             }
@@ -300,7 +303,7 @@ namespace HPReserger
         void cerrar_ordencompra(object sender, FormClosedEventArgs e)
         {
             frmOC = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmAlmacen frmArti;
         private void artículosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,7 +314,7 @@ namespace HPReserger
                 frmArti.MdiParent = this;
                 frmArti.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmArti.FormClosed += new FormClosedEventHandler(cerrar_articulos_fics);
                 frmArti.Show();
             }
@@ -324,7 +327,7 @@ namespace HPReserger
         void cerrar_articulos_fics(object sender, FormClosedEventArgs e)
         {
             frmArti = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmAlmacenServicio frmAS;
         private void serviciosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -335,7 +338,7 @@ namespace HPReserger
                 frmAS.MdiParent = this;
                 frmAS.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmAS.FormClosed += new FormClosedEventHandler(cerraralamacenservicio);
                 frmAS.Show();
             }
@@ -348,7 +351,7 @@ namespace HPReserger
         void cerraralamacenservicio(object sender, FormClosedEventArgs e)
         {
             frmAS = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmSolicitudEmpleado frmSE;
         private void solicitudEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -359,7 +362,7 @@ namespace HPReserger
                 frmSE.MdiParent = this;
                 frmSE.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmSE.FormClosed += new FormClosedEventHandler(cerrar_alamacenmservicio);
                 frmSE.Show();
             }
@@ -372,7 +375,7 @@ namespace HPReserger
         void cerrar_alamacenmservicio(object sender, FormClosedEventArgs e)
         {
             frmSE = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmPostulante frmP;
         private void postulanteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -383,7 +386,7 @@ namespace HPReserger
                 frmP.MdiParent = this;
                 frmP.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmP.FormClosed += new FormClosedEventHandler(cerrarpostulante);
                 frmP.Show();
             }
@@ -396,7 +399,7 @@ namespace HPReserger
         void cerrarpostulante(object sender, FormClosedEventArgs e)
         {
             frmP = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmEmpleado frmE;
         private void empleadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -407,7 +410,7 @@ namespace HPReserger
                 frmE.MdiParent = this;
                 frmE.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmE.FormClosed += new FormClosedEventHandler(cerrarempleado);
                 frmE.Show();
             }
@@ -420,7 +423,7 @@ namespace HPReserger
         void cerrarempleado(object sender, FormClosedEventArgs e)
         {
             frmE = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmOrdenPedido frmOP;
         private void ordenesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -431,7 +434,7 @@ namespace HPReserger
                 frmOP.MdiParent = this;
                 frmOP.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmOP.FormClosed += new FormClosedEventHandler(cerrar_orden_pedido);
                 frmOP.Show();
             }
@@ -444,7 +447,7 @@ namespace HPReserger
         void cerrar_orden_pedido(object sender, FormClosedEventArgs e)
         {
             frmOP = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmVacaciones frmVaca;
         private void vacacionesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -455,7 +458,7 @@ namespace HPReserger
                 frmVaca.MdiParent = this;
                 frmVaca.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmVaca.FormClosed += new FormClosedEventHandler(cerrarvacaciones);
                 frmVaca.Show();
             }
@@ -468,7 +471,7 @@ namespace HPReserger
         void cerrarvacaciones(object sender, FormClosedEventArgs e)
         {
             frmVaca = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmDesvinculacion frmDesv;
         private void desvinculaciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -479,7 +482,7 @@ namespace HPReserger
                 frmDesv.MdiParent = this;
                 frmDesv.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmDesv.FormClosed += new FormClosedEventHandler(cerrardesvinculacion);
                 frmDesv.Show();
             }
@@ -492,7 +495,7 @@ namespace HPReserger
         void cerrardesvinculacion(object sender, FormClosedEventArgs e)
         {
             frmDesv = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmFaltas frmF;
         private void faltasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -503,7 +506,7 @@ namespace HPReserger
                 frmF.MdiParent = this;
                 frmF.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmF.FormClosed += new FormClosedEventHandler(cerrarfaltas);
                 frmF.Show();
             }
@@ -516,7 +519,7 @@ namespace HPReserger
         void cerrarfaltas(object sender, FormClosedEventArgs e)
         {
             frmF = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmAmonestacionesPremio frmAP;
         private void amonestacionesPremiosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -527,7 +530,7 @@ namespace HPReserger
                 frmAP.MdiParent = this;
                 frmAP.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmAP.FormClosed += new FormClosedEventHandler(cerraramonestaciones);
                 frmAP.Show();
             }
@@ -540,7 +543,7 @@ namespace HPReserger
         void cerraramonestaciones(object sender, FormClosedEventArgs e)
         {
             frmAP = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmArea area;
         private void areaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -551,7 +554,7 @@ namespace HPReserger
                 area.MdiParent = this;
                 area.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 area.FormClosed += new FormClosedEventHandler(cerrarareas);
                 area.Show();
             }
@@ -564,7 +567,7 @@ namespace HPReserger
         void cerrarareas(object sender, FormClosedEventArgs e)
         {
             area = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmgerencia gere;
         private void gerenciaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -576,7 +579,7 @@ namespace HPReserger
                 gere.MdiParent = this;
                 gere.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 gere.FormClosed += new FormClosedEventHandler(cerrargerencia);
                 gere.Show();
             }
@@ -589,7 +592,7 @@ namespace HPReserger
         void cerrargerencia(object sender, FormClosedEventArgs e)
         {
             gere = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmccosto costo;
         private void centroDeCostosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -601,7 +604,7 @@ namespace HPReserger
                 costo.MdiParent = this;
                 costo.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 costo.FormClosed += new FormClosedEventHandler(cerrarcentrocc);
                 costo.Show();
             }
@@ -614,7 +617,7 @@ namespace HPReserger
         void cerrarcentrocc(object sender, FormClosedEventArgs e)
         {
             costo = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmArticuloServicio artiser;
         private void articuloServicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -625,7 +628,7 @@ namespace HPReserger
                 artiser.MdiParent = this;
                 artiser.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 artiser.FormClosed += new FormClosedEventHandler(cerrararticuloservicio);
                 artiser.Show();
             }
@@ -638,7 +641,7 @@ namespace HPReserger
         void cerrararticuloservicio(object sender, FormClosedEventArgs e)
         {
             artiser = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmmarca marca;
         private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -649,7 +652,7 @@ namespace HPReserger
                 marca.MdiParent = this;
                 marca.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 marca.FormClosed += new FormClosedEventHandler(cerrarmarcas);
                 marca.Show();
             }
@@ -662,7 +665,7 @@ namespace HPReserger
         void cerrarmarcas(object sender, FormClosedEventArgs e)
         {
             marca = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmmarcamodelo marcamodelo;
         private void marcamodeloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -673,7 +676,7 @@ namespace HPReserger
                 marcamodelo.MdiParent = this;
                 marcamodelo.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 marcamodelo.FormClosed += new FormClosedEventHandler(cerrarmarcamodelo);
                 marcamodelo.Show();
             }
@@ -686,7 +689,7 @@ namespace HPReserger
         void cerrarmarcamodelo(object sender, FormClosedEventArgs e)
         {
             marcamodelo = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmmodelo modelo;
         private void modeloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -697,7 +700,7 @@ namespace HPReserger
                 modelo.MdiParent = this;
                 modelo.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 modelo.FormClosed += new FormClosedEventHandler(cerrarmodelo);
                 modelo.Show();
             }
@@ -710,7 +713,7 @@ namespace HPReserger
         void cerrarmodelo(object sender, FormClosedEventArgs e)
         {
             modelo = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmdepartamento dep;
         private void departamentoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -721,7 +724,7 @@ namespace HPReserger
                 dep.MdiParent = this;
                 dep.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 dep.FormClosed += new FormClosedEventHandler(cerrardepartamento);
                 dep.Show();
             }
@@ -734,7 +737,7 @@ namespace HPReserger
         void cerrardepartamento(object sender, FormClosedEventArgs e)
         {
             dep = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmprovincias provin;
         private void provinciaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -745,7 +748,7 @@ namespace HPReserger
                 provin.MdiParent = this;
                 provin.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 provin.FormClosed += new FormClosedEventHandler(cerrarprovincia);
                 provin.Show();
             }
@@ -758,7 +761,7 @@ namespace HPReserger
         void cerrarprovincia(object sender, FormClosedEventArgs e)
         {
             provin = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmDistritos distritos;
         private void distritoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -769,7 +772,7 @@ namespace HPReserger
                 distritos.MdiParent = this;
                 distritos.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 distritos.FormClosed += new FormClosedEventHandler(cerrardistrito);
                 distritos.Show();
             }
@@ -782,7 +785,7 @@ namespace HPReserger
         void cerrardistrito(object sender, FormClosedEventArgs e)
         {
             distritos = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmEntiFinanciera entidad;
         private void entidadesFinancierasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -793,7 +796,7 @@ namespace HPReserger
                 entidad.MdiParent = this;
                 entidad.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 entidad.FormClosed += new FormClosedEventHandler(cerrarentidad);
                 entidad.Show();
             }
@@ -806,7 +809,7 @@ namespace HPReserger
         void cerrarentidad(object sender, FormClosedEventArgs e)
         {
             entidad = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmproveedor provee;
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -817,7 +820,7 @@ namespace HPReserger
                 provee.MdiParent = this;
                 provee.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 provee.FormClosed += new FormClosedEventHandler(cerrarproveedor);
                 provee.Show();
             }
@@ -830,7 +833,7 @@ namespace HPReserger
         void cerrarproveedor(object sender, FormClosedEventArgs e)
         {
             provee = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmTipoId tipoid;
         private void tipoIdentidadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -841,7 +844,7 @@ namespace HPReserger
                 tipoid.MdiParent = this;
                 tipoid.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 tipoid.FormClosed += new FormClosedEventHandler(cerrartipoid);
                 tipoid.Show();
             }
@@ -854,7 +857,7 @@ namespace HPReserger
         void cerrartipoid(object sender, FormClosedEventArgs e)
         {
             tipoid = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmdinamicaContable dinamica;
         private void dinamicaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -865,7 +868,7 @@ namespace HPReserger
                 dinamica.MdiParent = this;
                 dinamica.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 dinamica.FormClosed += new FormClosedEventHandler(cerrardinamicacontable);
                 dinamica.Show();
             }
@@ -878,7 +881,7 @@ namespace HPReserger
         void cerrardinamicacontable(object sender, FormClosedEventArgs e)
         {
             dinamica = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmcuentacontable cuenta;
         private void cuentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -889,7 +892,7 @@ namespace HPReserger
                 cuenta.MdiParent = this;
                 cuenta.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 cuenta.FormClosed += new FormClosedEventHandler(cerrarcuentascontanles);
                 cuenta.Show();
             }
@@ -902,7 +905,7 @@ namespace HPReserger
         void cerrarcuentascontanles(object sender, FormClosedEventArgs e)
         {
             cuenta = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmAsientoContable asiento;
         private void asientoContableToolStripMenuItem_Click(object sender, EventArgs e)
@@ -913,7 +916,7 @@ namespace HPReserger
                 asiento.MdiParent = this;
                 asiento.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 asiento.FormClosed += new FormClosedEventHandler(cerrarasientocontable);
                 asiento.Show();
             }
@@ -926,7 +929,7 @@ namespace HPReserger
         void cerrarasientocontable(object sender, FormClosedEventArgs e)
         {
             asiento = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         FrmPerfil perfil;
         private void perfilesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -937,7 +940,7 @@ namespace HPReserger
                 perfil.MdiParent = this;
                 perfil.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 perfil.FormClosed += new FormClosedEventHandler(cerrarperfil);
                 perfil.Show();
             }
@@ -950,7 +953,7 @@ namespace HPReserger
         void cerrarperfil(object sender, FormClosedEventArgs e)
         {
             perfil = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         public int usuario;
         public string nick;
@@ -965,7 +968,7 @@ namespace HPReserger
                 usua.MdiParent = this;
                 usua.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 usua.FormClosed += new FormClosedEventHandler(cerrarususaruio);
                 usua.Show();
             }
@@ -978,7 +981,7 @@ namespace HPReserger
         void cerrarususaruio(object sender, FormClosedEventArgs e)
         {
             usua = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         FrmCambioContra contra;
         private void cambioDeClaveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -991,7 +994,7 @@ namespace HPReserger
                 contra.MdiParent = this;
                 contra.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 contra.FormClosed += new FormClosedEventHandler(cerrarusuuario);
                 contra.Show();
             }
@@ -1004,31 +1007,36 @@ namespace HPReserger
         void cerrarusuuario(object sender, FormClosedEventArgs e)
         {
             contra = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         int cerrar = 0;
+        public static Boolean AbortarCerrarPrograma = false;
         private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (cerrado == 0 && cerrar == 10)
+            if (ValidacionesParaCerrar()) e.Cancel = true;
+            else
             {
-                frmLogin.DesconectarUsuario();
-                Application.Exit();
-            }
-            if (cerrar == 0)
-            {
-                if (MessageBox.Show("Seguro Desea Salir del Sistema", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (cerrado == 0 && cerrar == 10)
                 {
-                    cerrado = 0; cerrar = 10;
                     frmLogin.DesconectarUsuario();
                     Application.Exit();
                 }
-                else
-                    e.Cancel = true;
+                if (cerrar == 0)
+                {
+                    if (MessageBox.Show("Seguro Desea Salir del Sistema", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        cerrado = 0; cerrar = 10;
+                        frmLogin.DesconectarUsuario();
+                        Application.Exit();
+                    }
+                    else
+                        e.Cancel = true;
 
-            }
-            if (cerrar == 5)
-            {
-                cerrar = 10;
+                }
+                if (cerrar == 5)
+                {
+                    cerrar = 10;
+                }
             }
         }
         frmListarOCFaltantes frmlisoc;
@@ -1040,7 +1048,7 @@ namespace HPReserger
                 frmlisoc.MdiParent = this;
                 frmlisoc.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmlisoc.FormClosed += new FormClosedEventHandler(cerrarlistasoc);
                 frmlisoc.Show();
             }
@@ -1054,7 +1062,7 @@ namespace HPReserger
         void cerrarlistasoc(object sender, FormClosedEventArgs e)
         {
             frmlisoc = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         FrmFactura frmfac;
         private void facturaToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1065,7 +1073,7 @@ namespace HPReserger
                 frmfac.MdiParent = this;
                 frmfac.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmfac.FormClosed += new FormClosedEventHandler(cerrarfactura);
                 frmfac.Show();
             }
@@ -1078,7 +1086,7 @@ namespace HPReserger
         void cerrarfactura(object sender, FormClosedEventArgs e)
         {
             frmfac = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         Frmreporteop orde;
         private void ordenesPedidoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1089,7 +1097,7 @@ namespace HPReserger
                 orde.MdiParent = this;
                 orde.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 orde.FormClosed += new FormClosedEventHandler(cerrarordernesdepedido);
                 orde.Show();
             }
@@ -1102,7 +1110,7 @@ namespace HPReserger
         void cerrarordernesdepedido(object sender, FormClosedEventArgs e)
         {
             orde = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         private void seguimientoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1117,7 +1125,7 @@ namespace HPReserger
                 frmreporteoc.MdiParent = this;
                 frmreporteoc.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmreporteoc.FormClosed += new FormClosedEventHandler(cerrarodernesdecomprareporte);
                 frmreporteoc.Show();
             }
@@ -1130,7 +1138,7 @@ namespace HPReserger
         void cerrarodernesdecomprareporte(object sender, FormClosedEventArgs e)
         {
             frmreporteoc = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmreporteempleado reporemple;
         private void empleadoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1141,7 +1149,7 @@ namespace HPReserger
                 reporemple.MdiParent = this;
                 reporemple.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 reporemple.FormClosed += new FormClosedEventHandler(cerrarempleadoreporte);
                 reporemple.Show();
             }
@@ -1154,18 +1162,22 @@ namespace HPReserger
         void cerrarempleadoreporte(object sender, FormClosedEventArgs e)
         {
             reporemple = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         int cerrado = 0;
         private void cerrarSesionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro Desea Cerrar Sesión", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (!ValidacionesParaCerrar())
             {
-                cerrado = 1; cerrar = 5;
-                this.Close();
-                frmLogin logeo = new frmLogin();
-                frmLogin.DesconectarUsuario();
-                logeo.Show();
+                if (MessageBox.Show("Seguro Desea Cerrar Sesión", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+
+                {
+                    cerrado = 1; cerrar = 5;
+                    this.Close();
+                    frmLogin logeo = new frmLogin();
+                    frmLogin.DesconectarUsuario();
+                    logeo.Show();
+                }
             }
         }
         frmGenerarBoletas genbole;
@@ -1177,7 +1189,7 @@ namespace HPReserger
                 genbole.MdiParent = this;
                 genbole.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 genbole.FormClosed += new FormClosedEventHandler(cerrargeneeraboletas);
                 genbole.Show();
             }
@@ -1190,7 +1202,7 @@ namespace HPReserger
         void cerrargeneeraboletas(object sender, FormClosedEventArgs e)
         {
             genbole = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         FrmGenerarRemuneracionRenta remunrenta;
         private void generarToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1201,7 +1213,7 @@ namespace HPReserger
                 remunrenta.MdiParent = this;
                 remunrenta.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 remunrenta.FormClosed += new FormClosedEventHandler(cerrargenerarrenta);
                 remunrenta.Show();
             }
@@ -1214,7 +1226,7 @@ namespace HPReserger
         void cerrargenerarrenta(object sender, FormClosedEventArgs e)
         {
             remunrenta = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmProyectos proyectos;
         private void proyectosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1225,7 +1237,7 @@ namespace HPReserger
                 proyectos.MdiParent = this;
                 proyectos.Icon = ICono;
                 // proyectos.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 proyectos.FormClosed += new FormClosedEventHandler(presus_cerrarproyec);
                 proyectos.Show();
             }
@@ -1239,7 +1251,7 @@ namespace HPReserger
         void presus_cerrarproyec(object sender, FormClosedEventArgs e)
         {
             proyectos = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         private void axAcroPDF1_Enter(object sender, EventArgs e)
         {
@@ -1255,7 +1267,7 @@ namespace HPReserger
                 //presus.StartPosition = FormStartPosition.CenterParent;
                 presus.FormClosed += new FormClosedEventHandler(presus_cerrarpresus);
                 presus.Show();
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
             }
             else
             {
@@ -1266,7 +1278,7 @@ namespace HPReserger
         void presus_cerrarpresus(object sender, FormClosedEventArgs e)
         {
             presus = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         private void seguimientoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -1279,7 +1291,7 @@ namespace HPReserger
                 presuope = new frmReportePresupuestoOperaciones();
                 presuope.MdiParent = this;
                 presuope.Icon = ICono;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 //  presuope.StartPosition = FormStartPosition.CenterParent;
                 presuope.FormClosed += new FormClosedEventHandler(presus_cerrarpresusope);
                 presuope.Show();
@@ -1293,7 +1305,7 @@ namespace HPReserger
         void presus_cerrarpresusope(object sender, FormClosedEventArgs e)
         {
             presuope = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmReportePresupuestoCuenta presuscuenta;
         private void presupuestoOperacionesCuentaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1304,7 +1316,7 @@ namespace HPReserger
                 presuscuenta.MdiParent = this;
                 presuscuenta.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 presuscuenta.FormClosed += new FormClosedEventHandler(presus_cerrarpresusoperaciones);
                 presuscuenta.Show();
             }
@@ -1317,7 +1329,7 @@ namespace HPReserger
         void presus_cerrarpresusoperaciones(object sender, FormClosedEventArgs e)
         {
             presuscuenta = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmPagarFactura pagarfac;
         private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1328,7 +1340,7 @@ namespace HPReserger
                 pagarfac.MdiParent = this;
                 pagarfac.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 pagarfac.FormClosed += new FormClosedEventHandler(presus_cerrarpagarfactura);
                 pagarfac.Show();
             }
@@ -1341,7 +1353,7 @@ namespace HPReserger
         void presus_cerrarpagarfactura(object sender, FormClosedEventArgs e)
         {
             pagarfac = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmREciboPorHonorario recibohonorario;
         private void reciboPorHonorariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1352,7 +1364,7 @@ namespace HPReserger
                 recibohonorario.MdiParent = this;
                 recibohonorario.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 recibohonorario.FormClosed += new FormClosedEventHandler(cerrarreciboporhonorario);
                 recibohonorario.Show();
             }
@@ -1365,7 +1377,7 @@ namespace HPReserger
         void cerrarreciboporhonorario(object sender, FormClosedEventArgs e)
         {
             recibohonorario = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmFacturasPorPagar facturaporpagar;
         private void facturasSinPagarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1376,7 +1388,7 @@ namespace HPReserger
                 facturaporpagar.MdiParent = this;
                 facturaporpagar.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 facturaporpagar.FormClosed += new FormClosedEventHandler(cerrarfacturasinpagar);
                 facturaporpagar.Show();
             }
@@ -1389,7 +1401,7 @@ namespace HPReserger
         void cerrarfacturasinpagar(object sender, FormClosedEventArgs e)
         {
             facturaporpagar = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmFicSinFaactura ficsinfactura;
         private void ficSinComprobantesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1400,7 +1412,7 @@ namespace HPReserger
                 ficsinfactura.MdiParent = this;
                 ficsinfactura.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 ficsinfactura.FormClosed += new FormClosedEventHandler(cerrarfcisincomprobante);
                 ficsinfactura.Show();
             }
@@ -1413,7 +1425,7 @@ namespace HPReserger
         void cerrarfcisincomprobante(object sender, FormClosedEventArgs e)
         {
             ficsinfactura = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmListarOCFaltantes ocfaltantes;
         private void listarOCFaltantesToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -1424,7 +1436,7 @@ namespace HPReserger
                 ocfaltantes.MdiParent = this;
                 ocfaltantes.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 ocfaltantes.FormClosed += new FormClosedEventHandler(cerrarlistaroc);
                 ocfaltantes.Show();
             }
@@ -1437,7 +1449,7 @@ namespace HPReserger
         void cerrarlistaroc(object sender, FormClosedEventArgs e)
         {
             ocfaltantes = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         private void lblwelcome_Click(object sender, EventArgs e)
         {
@@ -1522,7 +1534,7 @@ namespace HPReserger
                 Cargos.MdiParent = this;
                 Cargos.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 Cargos.FormClosed += new FormClosedEventHandler(cerrarcargos);
                 Cargos.Show();
             }
@@ -1535,7 +1547,7 @@ namespace HPReserger
         void cerrarcargos(object sender, FormClosedEventArgs e)
         {
             Cargos = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmEmpresaEps frmEps;
         private void empresasEPSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1546,7 +1558,7 @@ namespace HPReserger
                 frmEps.MdiParent = this;
                 frmEps.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmEps.FormClosed += new FormClosedEventHandler(cerrarempresapes);
                 frmEps.Show();
             }
@@ -1559,7 +1571,7 @@ namespace HPReserger
         void cerrarempresapes(object sender, FormClosedEventArgs e)
         {
             frmEps = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmadicionaleps frmepsadicional;
         private void epsAdicionalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1570,7 +1582,7 @@ namespace HPReserger
                 frmepsadicional.MdiParent = this;
                 frmepsadicional.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmepsadicional.FormClosed += new FormClosedEventHandler(cerrarepsadicional);
                 frmepsadicional.Show();
             }
@@ -1583,7 +1595,7 @@ namespace HPReserger
         void cerrarepsadicional(object sender, FormClosedEventArgs e)
         {
             frmepsadicional = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmEstadoCivil EstadoCivil;
         private void estadoCivilToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1594,7 +1606,7 @@ namespace HPReserger
                 EstadoCivil.MdiParent = this;
                 EstadoCivil.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 EstadoCivil.FormClosed += new FormClosedEventHandler(cerrarestadocivil);
                 EstadoCivil.Show();
             }
@@ -1607,7 +1619,7 @@ namespace HPReserger
         void cerrarestadocivil(object sender, FormClosedEventArgs e)
         {
             EstadoCivil = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmGradoInstitucional frmGRado;
         private void gradoInstitucionalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1618,7 +1630,7 @@ namespace HPReserger
                 frmGRado.MdiParent = this;
                 frmGRado.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmGRado.FormClosed += new FormClosedEventHandler(cerrargrado);
                 frmGRado.Show();
             }
@@ -1631,7 +1643,7 @@ namespace HPReserger
         void cerrargrado(object sender, FormClosedEventArgs e)
         {
             frmGRado = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmmoneda frmmoneda;
         private void monedaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1642,7 +1654,7 @@ namespace HPReserger
                 frmmoneda.MdiParent = this;
                 frmmoneda.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmmoneda.FormClosed += new FormClosedEventHandler(cerrarmonedas);
                 frmmoneda.Show();
             }
@@ -1655,7 +1667,7 @@ namespace HPReserger
         void cerrarmonedas(object sender, FormClosedEventArgs e)
         {
             frmmoneda = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmperiodicidad periocidad;
         private void periocidadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1666,7 +1678,7 @@ namespace HPReserger
                 periocidad.MdiParent = this;
                 periocidad.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 periocidad.FormClosed += new FormClosedEventHandler(cerrarperiocidad);
                 periocidad.Show();
             }
@@ -1679,7 +1691,7 @@ namespace HPReserger
         void cerrarperiocidad(object sender, FormClosedEventArgs e)
         {
             periocidad = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmprofesion frmProfe;
         private void profesiónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1690,7 +1702,7 @@ namespace HPReserger
                 frmProfe.MdiParent = this;
                 frmProfe.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmProfe.FormClosed += new FormClosedEventHandler(cerrarprofesion);
                 frmProfe.Show();
             }
@@ -1703,7 +1715,7 @@ namespace HPReserger
         void cerrarprofesion(object sender, FormClosedEventArgs e)
         {
             frmProfe = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmSectorEmpresarial Sector;
         private void sectorEmpresarialToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1714,7 +1726,7 @@ namespace HPReserger
                 Sector.MdiParent = this;
                 Sector.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 Sector.FormClosed += new FormClosedEventHandler(cerrarsector);
                 Sector.Show();
             }
@@ -1727,7 +1739,7 @@ namespace HPReserger
         void cerrarsector(object sender, FormClosedEventArgs e)
         {
             Sector = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmcede frmcede;
         private void sedesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1738,7 +1750,7 @@ namespace HPReserger
                 frmcede.MdiParent = this;
                 frmcede.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmcede.FormClosed += new FormClosedEventHandler(cerrarsedes);
                 frmcede.Show();
             }
@@ -1751,7 +1763,7 @@ namespace HPReserger
         void cerrarsedes(object sender, FormClosedEventArgs e)
         {
             frmcede = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmSexo frmsexo;
         private void sexoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1762,7 +1774,7 @@ namespace HPReserger
                 frmsexo.MdiParent = this;
                 frmsexo.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmsexo.FormClosed += new FormClosedEventHandler(cerrarsexos);
                 frmsexo.Show();
             }
@@ -1775,7 +1787,7 @@ namespace HPReserger
         void cerrarsexos(object sender, FormClosedEventArgs e)
         {
             frmsexo = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmtipocontratacion_ contrata;
         private void tipoContrataciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1786,7 +1798,7 @@ namespace HPReserger
                 contrata.MdiParent = this;
                 contrata.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 contrata.FormClosed += new FormClosedEventHandler(cerrartipocontratacion);
                 contrata.Show();
             }
@@ -1799,7 +1811,7 @@ namespace HPReserger
         void cerrartipocontratacion(object sender, FormClosedEventArgs e)
         {
             contrata = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmtipocontrato frmcontrato;
         private void tipoDeContratoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1810,7 +1822,7 @@ namespace HPReserger
                 frmcontrato.MdiParent = this;
                 frmcontrato.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmcontrato.FormClosed += new FormClosedEventHandler(cerrartipocontrato);
                 frmcontrato.Show();
             }
@@ -1823,7 +1835,7 @@ namespace HPReserger
         void cerrartipocontrato(object sender, FormClosedEventArgs e)
         {
             frmcontrato = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmvinculacionfamiliar frmVinculo;
         private void vinculoFamiliarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1834,7 +1846,7 @@ namespace HPReserger
                 frmVinculo.MdiParent = this;
                 frmVinculo.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmVinculo.FormClosed += new FormClosedEventHandler(cerrarvinculofamiliar);
                 frmVinculo.Show();
             }
@@ -1847,7 +1859,7 @@ namespace HPReserger
         void cerrarvinculofamiliar(object sender, FormClosedEventArgs e)
         {
             frmVinculo = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmAfps frmafp;
         private void afpsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1858,7 +1870,7 @@ namespace HPReserger
                 frmafp.MdiParent = this;
                 frmafp.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmafp.FormClosed += new FormClosedEventHandler(cerrarafps);
                 frmafp.Show();
             }
@@ -1871,7 +1883,7 @@ namespace HPReserger
         void cerrarafps(object sender, FormClosedEventArgs e)
         {
             frmafp = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmInstitucionesEducativas frmedu;
         private void institucionesEducativasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1882,7 +1894,7 @@ namespace HPReserger
                 frmedu.MdiParent = this;
                 frmedu.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmedu.FormClosed += new FormClosedEventHandler(cerrareducativas);
                 frmedu.Show();
             }
@@ -1895,7 +1907,7 @@ namespace HPReserger
         void cerrareducativas(object sender, FormClosedEventArgs e)
         {
             frmedu = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmPais pais;
         private void paísToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1906,7 +1918,7 @@ namespace HPReserger
                 pais.MdiParent = this;
                 pais.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 pais.FormClosed += new FormClosedEventHandler(cerrarpais);
                 pais.Show();
             }
@@ -1919,7 +1931,7 @@ namespace HPReserger
         void cerrarpais(object sender, FormClosedEventArgs e)
         {
             pais = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmOperacion frmope;
         private void operaciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1930,7 +1942,7 @@ namespace HPReserger
                 frmope.MdiParent = this;
                 frmope.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmope.FormClosed += new FormClosedEventHandler(cerraroperaciones);
                 frmope.Show();
             }
@@ -1943,7 +1955,7 @@ namespace HPReserger
         void cerraroperaciones(object sender, FormClosedEventArgs e)
         {
             frmope = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmSubOperacion frmsub;
         private void subOperacionesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1954,7 +1966,7 @@ namespace HPReserger
                 frmsub.MdiParent = this;
                 frmsub.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmsub.FormClosed += new FormClosedEventHandler(cerrarsuboperacion);
                 frmsub.Show();
             }
@@ -1967,7 +1979,7 @@ namespace HPReserger
         void cerrarsuboperacion(object sender, FormClosedEventArgs e)
         {
             frmsub = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmEmpresas frmempre;
         private void empresaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1978,7 +1990,7 @@ namespace HPReserger
                 frmempre.MdiParent = this;
                 frmempre.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmempre.FormClosed += new FormClosedEventHandler(cerrarempresa);
                 frmempre.Show();
             }
@@ -1991,7 +2003,7 @@ namespace HPReserger
         void cerrarempresa(object sender, FormClosedEventArgs e)
         {
             frmempre = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         frmParametros frmparam;
         private void parametrosGeneralesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2002,7 +2014,7 @@ namespace HPReserger
                 frmparam.MdiParent = this;
                 frmparam.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmparam.FormClosed += new FormClosedEventHandler(cerrarparametros);
                 frmparam.Show();
             }
@@ -2015,11 +2027,16 @@ namespace HPReserger
         void cerrarparametros(object sender, FormClosedEventArgs e)
         {
             frmparam = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMenu_FormClosing(sender, new FormClosingEventArgs(CloseReason.UserClosing, false));
+        }
+        public Boolean ValidacionesParaCerrar()
+        {
+            if (AbortarCerrarPrograma) { msg("Cierre la Ventana del Detalle del Asiento"); return true; }
+            return false;
         }
         private void iconosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2079,7 +2096,7 @@ namespace HPReserger
                 frmrenta.MdiParent = this;
                 frmrenta.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmrenta.FormClosed += new FormClosedEventHandler(cerrarrenta);
                 frmrenta.Show();
             }
@@ -2092,7 +2109,7 @@ namespace HPReserger
         void cerrarrenta(object sender, FormClosedEventArgs e)
         {
             frmrenta = null;
-            pbfotoempleado.Visible = true;
+           //pbfotoempleado.Visible = false;
         }
 
         private void generalesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2614,7 +2631,7 @@ namespace HPReserger
                 frplaneseps.MdiParent = this;
                 frplaneseps.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frplaneseps.FormClosed += new FormClosedEventHandler(cerrarplaneseps);
                 frplaneseps.Show();
             }
@@ -2646,7 +2663,7 @@ namespace HPReserger
                 frmconfigsitua.MdiParent = this;
                 frmconfigsitua.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmconfigsitua.FormClosed += new FormClosedEventHandler(cerrarConfigFinanciera);
                 frmconfigsitua.Show();
             }
@@ -2669,7 +2686,7 @@ namespace HPReserger
                 frmconfigbalanganancias.MdiParent = this;
                 frmconfigbalanganancias.Icon = ICono;
                 //presus.StartPosition = FormStartPosition.CenterParent;
-                // pbfotoempleado.Visible = false;
+                ////pbfotoempleado.Visible = false;
                 frmconfigbalanganancias.FormClosed += new FormClosedEventHandler(cerrarconfigudebalanceganancias);
                 frmconfigbalanganancias.Show();
             }
@@ -3387,6 +3404,24 @@ namespace HPReserger
         private void cerrarfacturasincompletas(object sender, FormClosedEventArgs e)
         {
             frmreporfactu = null;
+        }
+        string bienvenido = "";
+        private void lblwelcome_DoubleClick(object sender, EventArgs e)
+        {
+            if (lblwelcome.Height == 12)
+            {
+                lblpuntero.Visible = false;
+                lblwelcome.Height = 40;
+                pbfotoempleado.Visible = true;
+                lblwelcome.Text = bienvenido;
+            }
+            else
+            {
+                lblwelcome.Height = 12;
+                lblpuntero.Visible = true;
+                pbfotoempleado.Visible = false;
+                lblwelcome.Text = "";
+            }
         }
     }
 }

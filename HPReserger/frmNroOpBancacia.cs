@@ -44,7 +44,11 @@ namespace HPReserger
             ///usp_ListarNroOpBancaria
             string cuenta = cbocuenta.Text.Split(' ')[0];
             if (cuenta == "NINGUNA") cuenta = "";
-            TDatos = CapaLogica.ListarNroOpBancaria(CodigoBanco, cuenta, txtruc.TextValido(), txtrazon.TextValido(), txtnrobanco.TextValido(), dtpfecha1.Value, dtpfecha2.Value);
+            int CheckEstado = 0;
+            if (chkNroop.CheckState == CheckState.Checked) CheckEstado = 1;
+            else if (chkNroop.CheckState == CheckState.Unchecked) CheckEstado = -1;
+            //
+            TDatos = CapaLogica.ListarNroOpBancaria(CodigoBanco, cuenta, txtruc.TextValido(), txtrazon.TextValido(), txtnrobanco.TextValido(), dtpfecha1.Value, dtpfecha2.Value, CheckEstado);
             foreach (DataRow item in TDatos.Rows)//id   ok
             {
                 int valor = (int)item[idx.DataPropertyName];
@@ -198,6 +202,7 @@ namespace HPReserger
             txtnrobanco.CargarTextoporDefecto();
             txtrazon.CargarTextoporDefecto();
             cbobanco.SelectedIndex = 0;
+            chkNroop.CheckState = CheckState.Indeterminate;
         }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
         private void btncancelar_Click(object sender, EventArgs e)

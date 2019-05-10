@@ -63,9 +63,6 @@ namespace HPReserger
             this.lblmsg = new System.Windows.Forms.Label();
             this.tipmsg = new System.Windows.Forms.ToolTip(this.components);
             this.Dtgconten = new HpResergerUserControls.Dtgconten();
-            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.debehaber = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnmas = new System.Windows.Forms.Button();
             this.dtgayuda = new HpResergerUserControls.Dtgconten();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -93,6 +90,9 @@ namespace HPReserger
             this.Txtbusca = new HpResergerUserControls.txtBuscar();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
             this.separadorOre2 = new HpResergerUserControls.SeparadorOre();
+            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.debehaber = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -359,36 +359,11 @@ namespace HPReserger
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.Dtgconten.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellEndEdit);
             this.Dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellValueChanged);
+            this.Dtgconten.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.Dtgconten_DataError);
             this.Dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_RowEnter);
             this.Dtgconten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dtgconten_KeyDown);
             this.Dtgconten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dtgconten_KeyPress);
             this.Dtgconten.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Dtgconten_KeyUp);
-            // 
-            // cuenta
-            // 
-            this.cuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cuenta.HeaderText = "Cuenta Contable";
-            this.cuenta.MinimumWidth = 100;
-            this.cuenta.Name = "cuenta";
-            this.cuenta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cuenta.Width = 119;
-            // 
-            // descripcion
-            // 
-            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion.HeaderText = "Descripción Contable";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // debehaber
-            // 
-            this.debehaber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.debehaber.HeaderText = "Debe/Haber";
-            this.debehaber.MinimumWidth = 80;
-            this.debehaber.Name = "debehaber";
-            this.debehaber.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.debehaber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.debehaber.Width = 94;
             // 
             // btnmas
             // 
@@ -791,6 +766,7 @@ namespace HPReserger
             // 
             // separadorOre1
             // 
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre1.Location = new System.Drawing.Point(0, 85);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
@@ -800,12 +776,42 @@ namespace HPReserger
             // 
             // separadorOre2
             // 
+            this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre2.Location = new System.Drawing.Point(0, 340);
             this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre2.Name = "separadorOre2";
             this.separadorOre2.Size = new System.Drawing.Size(692, 2);
             this.separadorOre2.TabIndex = 143;
+            // 
+            // cuenta
+            // 
+            this.cuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cuenta.DataPropertyName = "cuenta";
+            this.cuenta.HeaderText = "Cuenta Contable";
+            this.cuenta.MinimumWidth = 100;
+            this.cuenta.Name = "cuenta";
+            this.cuenta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cuenta.Width = 119;
+            // 
+            // descripcion
+            // 
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion.DataPropertyName = "descripcion";
+            this.descripcion.HeaderText = "Descripción Contable";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // debehaber
+            // 
+            this.debehaber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.debehaber.DataPropertyName = "debehaber";
+            this.debehaber.HeaderText = "Debe/Haber";
+            this.debehaber.MinimumWidth = 80;
+            this.debehaber.Name = "debehaber";
+            this.debehaber.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.debehaber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.debehaber.Width = 94;
             // 
             // frmdinamicaContable
             // 

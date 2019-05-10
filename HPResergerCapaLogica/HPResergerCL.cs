@@ -1436,15 +1436,15 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarFacturasPagadosxEmpresa(proveedor, busca, fecha, fechaini, fechafin, recepcion, fechaini1, fechafin1, estado, empresa);
         }
-        public DataTable insertarPagarfactura(string nrofactura, string proveedor, int tipo, string nropago, decimal apagar, decimal subtotal, decimal igv, decimal total, int usuario, int opcion, int banco, string nrocuenta, DateTime fechapago, int @idcomprobante)
+        public DataTable insertarPagarfactura(string nrofactura, string proveedor, int tipo, string nropago, decimal apagar, decimal subtotal, decimal igv, decimal total, int usuario, int opcion, int banco, string nrocuenta, DateTime fechapago, int @idcomprobante, int empresa, string cuo)
         {
-            return cdOrdenPedido.insertarPagarfactura(nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion, banco, nrocuenta, fechapago, @idcomprobante);
+            return cdOrdenPedido.insertarPagarfactura(nrofactura, proveedor, tipo, nropago, apagar, subtotal, igv, total, usuario, opcion, banco, nrocuenta, fechapago, @idcomprobante, empresa, cuo);
         }
         public DataTable guardarfactura(int si, int asiento, string @fac, string @cc, decimal @debe, decimal @haber, int dina, DateTime fecha, DateTime? fechavence, DateTime? fecharecepcion, int usuario, int centro, string tipo, string proveedor, int moneda, string idcuenta, string nropago
-            , decimal tcReg, decimal tcPago, DateTime fechasiento, decimal montodiferencial, int PosicionDiferencial, decimal TotalDiferencial, int IdComprobante, DateTime @FechaContable)
+            , decimal tcReg, decimal tcPago, DateTime fechasiento, decimal montodiferencial, int PosicionDiferencial, decimal TotalDiferencial, int IdComprobante, DateTime @FechaContable, string glosa)
         {
             return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina, fecha, fechavence, fecharecepcion, usuario, centro, tipo, proveedor, moneda, idcuenta, nropago, tcReg, tcPago,
-                fechasiento, montodiferencial, PosicionDiferencial, TotalDiferencial, IdComprobante, @FechaContable);
+                fechasiento, montodiferencial, PosicionDiferencial, TotalDiferencial, IdComprobante, @FechaContable, glosa);
         }
         public DataTable ActualizarNotaCreditoDebito(string proveedor, string numdoc, int @opcion, int empresa)
         {
@@ -2090,9 +2090,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarProductosVender(valor, empresa, proyecto);
         }
-        public DataTable ListarNroOpBancaria(int banco, string nrocuenta, string ruc, string razon, string nroop, DateTime fecha1, DateTime fecha2)
+        public DataTable ListarNroOpBancaria(int banco, string nrocuenta, string ruc, string razon, string nroop, DateTime fecha1, DateTime fecha2, int CheckEstados)
         {
-            return cdOrdenPedido.ListarNroOpBancaria(banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2);
+            return cdOrdenPedido.ListarNroOpBancaria(banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2, CheckEstados);
         }
         public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet, int fkempresa)
         {
@@ -2226,7 +2226,7 @@ namespace HPResergerCapaLogica
         }
         public decimal TipoCambioDia(string VentaCompra, DateTime fecha)
         {
-            if (VentaCompra == "") VentaCompra = "Compra";
+            if (VentaCompra == "") VentaCompra = "Venta";
             DataTable Ttipo = TipodeCambioxDia(fecha);
             if (Ttipo.Rows.Count > 0)
                 return (decimal)Ttipo.Rows[0][VentaCompra];
@@ -2323,6 +2323,14 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.FacturaManualDetalleBusqueda(proveedor, nrodoc, idcomprobante);
         }
+        public DataRow FacturaManualBusquedaContadas()
+        {
+            return cdOrdenPedido.FacturaManualBusquedaContadas();
+        }
+        public DataRow FacturaManualVentaBusquedaContadas()
+        {
+            return cdOrdenPedido.FacturaManualVentaBusquedaContadas();
+        }
         public DataTable FacturaManualVentaDetalleBusqueda(string proveedor, string nrodoc, int fkempresa, int idcomprobante)
         {
             return cdOrdenPedido.FacturaManualVentaDetalleBusqueda(proveedor, nrodoc, fkempresa, idcomprobante);
@@ -2403,9 +2411,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerificarCuadredeAsiento(cuo, proyecto);
         }
-        public DataTable CuadrarAsiento(string cuo, int proyecto, DateTime FechaAsiento)
+        public DataTable CuadrarAsiento(string cuo, int proyecto, DateTime FechaAsiento, int tipo)
         {
-            return cdOrdenPedido.CuadrarAsiento(cuo, proyecto, FechaAsiento);
+            return cdOrdenPedido.CuadrarAsiento(cuo, proyecto, FechaAsiento, tipo);
         }
         public DataTable LimpiezaDetalleAsientos(string cuo, int proyecto)
         {

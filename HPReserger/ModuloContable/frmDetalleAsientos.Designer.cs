@@ -326,7 +326,6 @@ namespace HPReserger
             this.txttotal.Location = new System.Drawing.Point(1069, 14);
             this.txttotal.Name = "txttotal";
             this.txttotal.ReadOnly = true;
-            this.txttotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txttotal.Size = new System.Drawing.Size(111, 21);
             this.txttotal.TabIndex = 168;
             // 
@@ -531,7 +530,6 @@ namespace HPReserger
             this.numdocx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.numdocx.DataPropertyName = "Num_Doc";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.NullValue = "0";
             this.numdocx.DefaultCellStyle = dataGridViewCellStyle3;
             this.numdocx.HeaderText = "Num. Doc.";
             this.numdocx.MaxInputLength = 14;
@@ -579,7 +577,6 @@ namespace HPReserger
             this.codcomprobantex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.codcomprobantex.DataPropertyName = "Cod_Comprobante";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.NullValue = "0";
             this.codcomprobantex.DefaultCellStyle = dataGridViewCellStyle5;
             this.codcomprobantex.FillWeight = 45F;
             this.codcomprobantex.HeaderText = "Serie C.";
@@ -594,7 +591,6 @@ namespace HPReserger
             this.numcomprobantex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.numcomprobantex.DataPropertyName = "Num_Comprobante";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.NullValue = "0";
             this.numcomprobantex.DefaultCellStyle = dataGridViewCellStyle6;
             this.numcomprobantex.FillWeight = 70F;
             this.numcomprobantex.HeaderText = "Num.Comproban.";

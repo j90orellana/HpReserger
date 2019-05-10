@@ -114,7 +114,7 @@
             this.separadorOre2 = new HpResergerUserControls.SeparadorOre();
             this.btnAdd = new System.Windows.Forms.Button();
             this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblcontador = new System.Windows.Forms.Label();
             this.dtgBusqueda = new HpResergerUserControls.Dtgconten();
             this.yIdComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -271,6 +271,7 @@
             // 
             // separadorOre1
             // 
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre1.Location = new System.Drawing.Point(0, 180);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
@@ -1060,6 +1061,7 @@
             // 
             // separadorOre2
             // 
+            this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre2.Location = new System.Drawing.Point(0, 32);
             this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
@@ -1084,6 +1086,7 @@
             // 
             this.separadorOre3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre3.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre3.Location = new System.Drawing.Point(0, 456);
             this.separadorOre3.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre3.MinimumSize = new System.Drawing.Size(0, 2);
@@ -1091,17 +1094,17 @@
             this.separadorOre3.Size = new System.Drawing.Size(1085, 2);
             this.separadorOre3.TabIndex = 244;
             // 
-            // label12
+            // lblcontador
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 459);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(173, 13);
-            this.label12.TabIndex = 245;
-            this.label12.Text = "Listado de Facturas Registradas:";
+            this.lblcontador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblcontador.AutoSize = true;
+            this.lblcontador.BackColor = System.Drawing.Color.Transparent;
+            this.lblcontador.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcontador.Location = new System.Drawing.Point(12, 459);
+            this.lblcontador.Name = "lblcontador";
+            this.lblcontador.Size = new System.Drawing.Size(173, 13);
+            this.lblcontador.TabIndex = 245;
+            this.lblcontador.Text = "Listado de Facturas Registradas:";
             // 
             // dtgBusqueda
             // 
@@ -1954,7 +1957,7 @@
             this.Controls.Add(this.txtbuscaempresa);
             this.Controls.Add(this.txtbusnrodoc);
             this.Controls.Add(this.dtgBusqueda);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblcontador);
             this.Controls.Add(this.separadorOre3);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.separadorOre2);
@@ -2073,7 +2076,7 @@
         private HpResergerUserControls.SeparadorOre separadorOre2;
         private System.Windows.Forms.Button btnAdd;
         private HpResergerUserControls.SeparadorOre separadorOre3;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblcontador;
         private HpResergerUserControls.Dtgconten dtgBusqueda;
         private HpResergerUserControls.TextBoxPer txtbusnrodoc;
         private System.Windows.Forms.Button btncleanfind;
