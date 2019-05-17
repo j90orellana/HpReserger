@@ -31,6 +31,11 @@ namespace HPReserger
             combito.ValueMember = "CODIGO";
             combito.SelectedIndex = 0;
         }
+        public int LengthTipoId
+        {
+            get { return txtid.MaxLength; }
+            set { txtid.MaxLength = value; }
+        }
         public void CargarPerfil(ComboBox combito)
         {
             combito.DataSource = Cusuario.getCargoTipoContratacion("Codgo_Perfil_User", "Desc_Perfil_User", "TBL_Perfil_User");
@@ -288,7 +293,7 @@ namespace HPReserger
             {
                 this.Close();
             }
-            if (estado == 1 || estado == 5)
+            else if (estado == 1 || estado == 5)
             {
                 btnnuevo.Enabled = true; cboperfil.Enabled = false;
                 txtlogin.Enabled = false; limpiar();
@@ -297,7 +302,7 @@ namespace HPReserger
                 txtid_TextChanged(sender, e); GridUser.Enabled = true;
                 btnnuevoTemporal.Enabled = true;
             }
-            if (estado == 2)
+            else if (estado == 2)
             {
                 cbotipoid.Enabled = true;
                 txtid.Enabled = true;
@@ -308,7 +313,7 @@ namespace HPReserger
                 cboestado.Enabled = false; btnnuevo.Enabled = true;
                 txtid_TextChanged(sender, e); GridUser.Enabled = true; btnnuevoTemporal.Enabled = true;
             }
-            if (estado == 3)
+            else if (estado == 3)
             {
                 bloqueado(true); GridUser.Enabled = true;
                 btnnuevo.Enabled = true; txtid_TextChanged(sender, e); estado = 0;
@@ -344,7 +349,22 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //verifico si el usuario es activo
-            if (txtid.TextLength != txtid.MaxLength) { Mensajes($"El Nro Documento no tiene el Tamaño: {txtid.MaxLength}"); txtid.Focus(); return; }
+            if (cbotipoid.Text.ToUpper().Contains("DNI") || cbotipoid.Text.ToUpper().Contains("RUC"))
+            {
+                if (txtid.TextLength != LengthTipoId)
+                {
+                    txtid.Focus();
+                    msg($"El tamaño del Nro Documento debe ser: {LengthTipoId}");
+                    return;
+                }
+            }
+            else if (txtid.TextLength > LengthTipoId)
+            {
+                txtid.Focus();
+                msg($"El Máximo tamaño del Nro Documento debe ser: {LengthTipoId}");
+                return;
+            }
+            if (cboestado.SelectedValue == null) { Mensajes("No se ha Seleccionado Empleado"); return; }
             if ((int)cboestado.SelectedValue == 1 || (int)cboestado.SelectedValue == 3)
             {
                 DataTable table = Cusuario.UsuarioConectado(frmLogin.CodigoUsuario, txtlogin.Text, 10);

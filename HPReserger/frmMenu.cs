@@ -20,7 +20,7 @@ namespace HPReserger
             InitializeComponent();
             ICono = this.Icon;
         }
-        public static int Users = 8;
+        public static int Users = 10;
         public static DateTime DateLicense = new DateTime(2018, 06, 01);
         public static int DaysCaducatesLicence = 30;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
@@ -177,7 +177,7 @@ namespace HPReserger
             if (resul.Days < DaysCaducatesLicence)
             {
                 HpResergerUserControls.FotoCheck fotito = new HpResergerUserControls.FotoCheck();
-                fotito.BackColor = Color.Transparent;
+                //fotito.BackColor = Color.Transparent;
                 fotito.Nombre = "Mensaje de Licencia";
                 fotito.Cargo = $"Su Licencia Caduca en";
                 fotito.Observacion = $"{resul.Days} Dias";
