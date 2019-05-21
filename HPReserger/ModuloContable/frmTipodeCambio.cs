@@ -442,7 +442,8 @@ namespace HPReserger
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            FechaActual = DateTime.Now;
+            if (DateTime.Now.Hour > 7)
+                FechaActual = DateTime.Now;
         }
     }
 }

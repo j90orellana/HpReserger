@@ -55,14 +55,15 @@ namespace HPReserger
             //Dtgconten.DataSource = CapaLogica.BuscarAsientosContablesconTodo("0", 4, 1, fechita);
             //dtgbusca.DataSource = CapaLogica.ListarAsientosContables("", 1, DateTime.Today, DateTime.Today, 0, _idempresa);
 
-            //Cambio de Empresa        
+            //Cambio de Empresa      
+            this.Activated -= frmAsientoContable_Activated;
             estado = 0; cboempresa_SelectedIndexChanged(sender, e);
             if (dtgbusca.RowCount > 0)
             {
                 activar();
                 //dtgbusca_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
             }
-
+            this.Activated += frmAsientoContable_Activated;
         }
         public void cARgarEmpresas()
         {
@@ -824,7 +825,7 @@ namespace HPReserger
                     txtcuo.Text = dtgbusca[Codidasiento.Name, y].Value.ToString();
                     txtcodigo.Text = decimal.Parse(txtcuo.Text.Substring(5)).ToString();
                     ////valores del asiento
-                    txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString();                    
+                    txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString();
                     cbomoneda.SelectedValue = (int)(dtgbusca[xmoneda.Name, e.RowIndex].Value.ToString() == "" ? 0 : dtgbusca[xmoneda.Name, e.RowIndex].Value);
                     ///fin
                     DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa, fechita);
@@ -1344,7 +1345,14 @@ namespace HPReserger
                     activar();
                     estado = 0;
                     btnActualizar_Click(new object { }, new EventArgs());
-                    //RefrescarAsientoSeleccionado();
+                    Boolean busca = false;
+                    foreach (DataGridViewRow item in dtgbusca.Rows)
+                        if (item.Cells[Codidasiento.Name].Value.ToString() == cuo)
+                        {
+                            dtgbusca.CurrentCell = dtgbusca[Codidasiento.Name, item.Index]; busca = true; break;
+                        }
+                    if (busca)
+                        RefrescarAsientoSeleccionado();
                 }
                 else
                 {
@@ -1441,6 +1449,7 @@ namespace HPReserger
             cboempresa.Enabled = true;
             btnActualizar.Enabled = true;
         }
+
         public Boolean ValidarMismoPeriodo(DateTime FechaOriginal, DateTime FechaFinal)
         {
             if (FechaOriginal.Month == FechaFinal.Month && FechaOriginal.Year == FechaOriginal.Year)

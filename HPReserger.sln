@@ -9,6 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPReserger", "HPReserger\HP
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPResergerCapaLogica", "HPResergerCapaLogica\HPResergerCapaLogica.csproj", "{71DBCB75-15D4-4DE1-B486-BB2A1190E40C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1615E15D-542B-4750-A593-7198E15CD2AD} = {1615E15D-542B-4750-A593-7198E15CD2AD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPResergerCapaDatos", "HPResergerCapaDatos\HPResergerCapaDatos.csproj", "{1615E15D-542B-4750-A593-7198E15CD2AD}"
 EndProject
