@@ -462,15 +462,15 @@ namespace HPReserger
             int PosFila = 1;
             //CUENTA BANCO
             if (decimal.Parse(txttotal.Text) > 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, decimal.Parse(txttotal.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value);
+                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, decimal.Parse(txttotal.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value,-7);
             foreach (Cuentas item in ListCuentas)
             {
                 //CUENTAS DE LAS FACTURAS
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaContable.Value, item._Cuenta, item._MOnto < 0 ? Math.Abs(item._MOnto) : 0, item._MOnto < 0 ? 0 : Math.Abs(item._MOnto), decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value);
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaContable.Value, item._Cuenta, item._MOnto < 0 ? Math.Abs(item._MOnto) : 0, item._MOnto < 0 ? 0 : Math.Abs(item._MOnto), decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value,-7);
             }
             //CUENTA DIFERENCIA DE CAMBIO
             if (decimal.Parse(txttotaldiferencial.Text) != 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(2, ++PosFila, numasiento, dtpFechaContable.Value, "", decimal.Parse(txttotaldiferencial.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value);
+                CapaLogica.InsertarAsientoFacturaCabecera(2, ++PosFila, numasiento, dtpFechaContable.Value, "", decimal.Parse(txttotaldiferencial.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value,-7);
             ////FIN DE LAS CABECERAS
             ////DETALLE DE LOS ASIENTOS
             PosFila = 1;

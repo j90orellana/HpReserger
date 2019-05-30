@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientes));
             this.lblmsg = new System.Windows.Forms.Label();
             this.gp1 = new System.Windows.Forms.GroupBox();
+            this.btncleanfind = new System.Windows.Forms.Button();
             this.txtbusEstadocCivil = new HpResergerUserControls.TextBoxPer();
             this.txtbusTipoDoc = new HpResergerUserControls.TextBoxPer();
             this.txtbusNroDoc = new HpResergerUserControls.TextBoxPer();
@@ -107,7 +108,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btncleanfind = new System.Windows.Forms.Button();
             this.gp1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -137,6 +137,18 @@
             this.gp1.TabIndex = 96;
             this.gp1.TabStop = false;
             this.gp1.Text = "Opciones";
+            // 
+            // btncleanfind
+            // 
+            this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
+            this.btncleanfind.Location = new System.Drawing.Point(643, 13);
+            this.btncleanfind.Name = "btncleanfind";
+            this.btncleanfind.Size = new System.Drawing.Size(25, 21);
+            this.btncleanfind.TabIndex = 102;
+            this.btncleanfind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncleanfind.UseVisualStyleBackColor = true;
+            this.btncleanfind.Click += new System.EventHandler(this.btncleanfind_Click);
             // 
             // txtbusEstadocCivil
             // 
@@ -368,6 +380,7 @@
             // 
             this.txtapemat.BackColor = System.Drawing.Color.White;
             this.txtapemat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtapemat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtapemat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtapemat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtapemat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -379,7 +392,7 @@
             this.txtapemat.NextControlOnEnter = this.txtdireccion;
             this.txtapemat.Size = new System.Drawing.Size(206, 21);
             this.txtapemat.TabIndex = 15;
-            this.txtapemat.Text = "Ingrese Apellido Materno";
+            this.txtapemat.Text = "INGRESE APELLIDO MATERNO";
             this.txtapemat.TextoDefecto = "Ingrese Apellido Materno";
             this.txtapemat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtapemat.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
@@ -450,6 +463,7 @@
             // 
             this.txtapetpat.BackColor = System.Drawing.Color.White;
             this.txtapetpat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtapetpat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtapetpat.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtapetpat.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtapetpat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -461,7 +475,7 @@
             this.txtapetpat.NextControlOnEnter = this.txtapemat;
             this.txtapetpat.Size = new System.Drawing.Size(177, 21);
             this.txtapetpat.TabIndex = 14;
-            this.txtapetpat.Text = "Ingrese Apellido Paterno";
+            this.txtapetpat.Text = "INGRESE APELLIDO PATERNO";
             this.txtapetpat.TextoDefecto = "Ingrese Apellido Paterno";
             this.txtapetpat.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtapetpat.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
@@ -470,6 +484,7 @@
             // 
             this.txtnombre.BackColor = System.Drawing.Color.White;
             this.txtnombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtnombre.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtnombre.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -481,7 +496,7 @@
             this.txtnombre.NextControlOnEnter = this.txtapetpat;
             this.txtnombre.Size = new System.Drawing.Size(235, 21);
             this.txtnombre.TabIndex = 13;
-            this.txtnombre.Text = "Ingrese Nombre";
+            this.txtnombre.Text = "INGRESE NOMBRE";
             this.txtnombre.TextoDefecto = "Ingrese Nombre";
             this.txtnombre.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtnombre.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
@@ -1101,18 +1116,6 @@
             this.label12.Size = new System.Drawing.Size(65, 13);
             this.label12.TabIndex = 88;
             this.label12.Text = "Tel. Celular:";
-            // 
-            // btncleanfind
-            // 
-            this.btncleanfind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
-            this.btncleanfind.Location = new System.Drawing.Point(643, 13);
-            this.btncleanfind.Name = "btncleanfind";
-            this.btncleanfind.Size = new System.Drawing.Size(25, 21);
-            this.btncleanfind.TabIndex = 102;
-            this.btncleanfind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncleanfind.UseVisualStyleBackColor = true;
-            this.btncleanfind.Click += new System.EventHandler(this.btncleanfind_Click);
             // 
             // frmClientes
             // 

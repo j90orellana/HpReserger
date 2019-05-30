@@ -148,7 +148,7 @@ namespace HPReserger
             txtcuentacierre.ReadOnly = txtcuentan1.ReadOnly = txtnombrecuenta.ReadOnly = txtcodcuenta.ReadOnly = !a;
         }
         private void frmcuentacontable_Load(object sender, EventArgs e)
-        {            
+        {
             estado = 0;
             tipobusca = 4;
             RellenarCombosSiNo(cborefleja);
@@ -601,6 +601,20 @@ namespace HPReserger
         private void cbocierre_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboreflejadebe_Click(object sender, EventArgs e)
+        {
+            string cadena = cboreflejadebe.Text;
+            CargarPorDebeHaber(cboreflejadebe, "D");
+            cboreflejadebe.Text = cadena;
+        }
+
+        private void cboreflejahaber_Click(object sender, EventArgs e)
+        {
+            string cadena = cboreflejahaber.Text;
+            CargarPorDebeHaber(cboreflejahaber, "H");
+            cboreflejahaber.Text = cadena;
         }
     }
 

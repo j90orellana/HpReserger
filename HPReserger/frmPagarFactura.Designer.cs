@@ -1152,6 +1152,7 @@ namespace HPReserger
             // 
             this.txtglosa.BackColor = System.Drawing.Color.White;
             this.txtglosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtglosa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtglosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1163,7 +1164,7 @@ namespace HPReserger
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.Size = new System.Drawing.Size(271, 21);
             this.txtglosa.TabIndex = 342;
-            this.txtglosa.Text = "Ingrese Glosa De Pago";
+            this.txtglosa.Text = "INGRESE GLOSA DE PAGO";
             this.txtglosa.TextoDefecto = "Ingrese Glosa De Pago";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;

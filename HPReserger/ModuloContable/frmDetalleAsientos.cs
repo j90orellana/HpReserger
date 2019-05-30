@@ -173,11 +173,13 @@ namespace HPReserger
             else { msg("No se Puede Modificar el Detalle del Reflejo"); }
         }
         decimal SumatoriaMN = 0, SumatoriaME = 0;
+        int _breakpoint = 0;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (estado == 2)
             {
                 SumatoriaMN = SumatoriaME = 0;
+                _breakpoint = 0;
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     if (item.Cells[importemnx.Name].Value != null)
@@ -186,6 +188,10 @@ namespace HPReserger
                     if (item.Cells[importemex.Name].Value != null)
                         if (item.Cells[importemex.Name].Value.ToString() != "")
                             SumatoriaME += Configuraciones.Redondear((decimal)item.Cells[importemex.Name].Value);
+                    if ((item.Cells[glosax.Name].Value ?? "").ToString() == "" && item.Index < Dtgconten.Rows.Count - 1)
+                    {
+                        _breakpoint++;
+                    }
                 }
                 if (_Moneda == 1)
                 {
@@ -220,6 +226,13 @@ namespace HPReserger
                         return;
                     }
                 }
+
+                if (_breakpoint > 0)
+                {
+                    msg("Ingrese las Glosa del Asiento");
+                    return;
+                }
+
                 Boolean result = true;
                 string cadena = "";
                 CargarTipodocLength();

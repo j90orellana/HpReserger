@@ -29,6 +29,7 @@ namespace HPReserger
             cboListar.SelectedIndex = 0;
             CargarTiposID("TBL_Tipo_ID");
             checkemp.Checked = checkpos.Checked = true;
+            txtDocumento.Text = NumeroDocumento;
         }
         public void CargarTiposID(string tabla)
         {
@@ -57,6 +58,7 @@ namespace HPReserger
             }
             else
             {
+                if (cboTipoDocumento.SelectedValue == null) cboTipoDocumento.SelectedIndex = 0;
                 Grid.DataSource = clListarEmpleado.ListarEmpleado(cboListar.SelectedIndex, txtBuscar.Text, txtBuscar.Text, txtBuscar.Text, (int)cboTipoDocumento.SelectedValue, txtDocumento.Text, Posemp);
             }
         }

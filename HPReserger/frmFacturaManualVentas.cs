@@ -721,6 +721,7 @@ namespace HPReserger
 
         private void txtbusproveedor_TextChanged(object sender, EventArgs e)
         {
+            txtbusnrodoc.Text = txtbusnrodoc.Text.Replace("\t", "-");
             CargarDatos();
         }
 

@@ -1310,6 +1310,13 @@ namespace HPReserger
                 cbocambio.Focus();
                 return;
             }
+            //validamos la glosa
+            if (!txtglosa.EstaLLeno())
+            {
+                MSG("Ingrese la Glosa del Asiento");
+                txtglosa.Focus();
+                return;
+            }
             btnmas_Click(sender, e);
             validar();
             aceptar = true;

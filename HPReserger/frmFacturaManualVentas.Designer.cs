@@ -866,6 +866,7 @@
             // 
             this.txtglosa.BackColor = System.Drawing.Color.White;
             this.txtglosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtglosa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtglosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -877,7 +878,7 @@
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.Size = new System.Drawing.Size(666, 21);
             this.txtglosa.TabIndex = 16;
-            this.txtglosa.Text = "Ingrese La Cabecera De La Factura";
+            this.txtglosa.Text = "INGRESE LA CABECERA DE LA FACTURA";
             this.txtglosa.TextoDefecto = "Ingrese La Cabecera De La Factura";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;

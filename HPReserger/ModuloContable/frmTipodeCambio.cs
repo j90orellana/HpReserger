@@ -377,7 +377,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         frmProcesando frmpro;
         DateTime Fechas;
@@ -402,7 +402,6 @@ namespace HPReserger
                 MSG("No hay Datos que Mostrar");
             }
         }
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -442,8 +441,12 @@ namespace HPReserger
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (DateTime.Now.Hour > 7)
+            if (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 16)
+            {
                 FechaActual = DateTime.Now;
+                //MSG("REfrescado");
+            }
+
         }
     }
 }

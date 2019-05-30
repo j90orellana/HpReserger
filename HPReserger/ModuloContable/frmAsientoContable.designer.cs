@@ -852,6 +852,7 @@ namespace HPReserger
             // 
             this.txtglosa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtglosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtglosa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtglosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtglosa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -864,7 +865,7 @@ namespace HPReserger
             this.txtglosa.ReadOnly = true;
             this.txtglosa.Size = new System.Drawing.Size(400, 21);
             this.txtglosa.TabIndex = 20;
-            this.txtglosa.Text = "Ingrese Glosa Del Asiento";
+            this.txtglosa.Text = "INGRESE GLOSA DEL ASIENTO";
             this.txtglosa.TextoDefecto = "Ingrese Glosa del Asiento";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;

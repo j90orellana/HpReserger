@@ -169,6 +169,18 @@
     <Compile Include="frmListarSeleccionarPersonas.Designer.cs">
       <DependentUpon>frmListarSeleccionarPersonas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCompensaciones\frmFondoFijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmFondoFijo.Designer.cs">
+      <DependentUpon>frmFondoFijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmReembolsoGastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmReembolsoGastos.Designer.cs">
+      <DependentUpon>frmReembolsoGastos.cs</DependentUpon>
+    </Compile>
     <Compile Include="rptFormato81Compras.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1531,6 +1543,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListarSeleccionarPersonas.resx">
       <DependentUpon>frmListarSeleccionarPersonas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmFondoFijo.resx">
+      <DependentUpon>frmFondoFijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmReembolsoGastos.resx">
+      <DependentUpon>frmReembolsoGastos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="rptFormato81Compras.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
