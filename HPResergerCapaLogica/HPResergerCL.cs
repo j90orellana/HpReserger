@@ -362,6 +362,12 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarProveedores(busca, opcion);
         }
+        public void TablaProveedores(ComboBox combo)
+        {
+            combo.DisplayMember = "proveedor";
+            combo.ValueMember = "TipoidNumDoc";
+            combo.DataSource = ListarProveedoresCompensaciones();
+        }
         public DataTable ListarCuentasContables(string busca, int opcion)
         {
             return cdOrdenPedido.ListarCuentasContables(busca, opcion);
@@ -369,7 +375,12 @@ namespace HPResergerCapaLogica
         public DataTable BuscarCuentas(string buscar, int opcion)
         {
             //// Cuenta_Contable Cuenta_Contable_Naturaleza SolicitaDetalle
-            return cdOrdenPedido.BuscarCuenta(buscar, opcion);
+            return cdOrdenPedido.BuscarCuenta(buscar, opcion, "");
+        }
+        public DataTable BuscarCuentas(string buscar, int opcion, string naturaleza)
+        {
+            //// Cuenta_Contable Cuenta_Contable_Naturaleza SolicitaDetalle
+            return cdOrdenPedido.BuscarCuenta(buscar, opcion, naturaleza);
         }
         public DataTable ListarDinamicas(string busca, int opcion)
         {
@@ -1666,6 +1677,10 @@ namespace HPResergerCapaLogica
             combo.ValueMember = "codigo";
             combo.DataSource = Empresa();
         }
+        public DataTable TablaEmpresa()
+        {
+            return Empresa();
+        }
         private void ComboEmpresa_Click(object sender, EventArgs e)
         {
             ComboBox combo = (ComboBox)sender;
@@ -2425,6 +2440,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarFacturasCompensaciones(idempleado, empresa);
         }
+        public DataTable ListarFacturasAnticipos(string ruc, int empresa)
+        {
+            return cdOrdenPedido.ListarFacturasAnticipos(ruc, empresa);
+        }
         public DataTable ListarEmpleadosCompensaciones(int empresa)
         {
             return cdOrdenPedido.ListarEmpleadosCompensaciones(empresa);
@@ -2432,6 +2451,31 @@ namespace HPResergerCapaLogica
         public DataTable ActualizaEstadoFacturas(int id, int estado, DateTime Fechacompensa)
         {
             return cdOrdenPedido.ActualizaEstadoFacturas(id, estado, Fechacompensa);
+        }
+        public DataTable ListarCompensaciones(int empresa, int tipo, int tipoid, string numdoc)
+        {
+            //--Todos==10
+            return cdOrdenPedido.ListarCompensaciones(empresa, tipo, tipoid, numdoc, 10);
+        }
+        public DataTable ListarCompensaciones(int empresa, int tipo, int tipoid, string numdoc, int Estado)
+        {
+            return cdOrdenPedido.ListarCompensaciones(empresa, tipo, tipoid, numdoc, Estado);
+        }
+        public DataTable InsertarCompensaciones(int @empresa, int @tipo, int @tipoid, string @numdoc, decimal @montomn, decimal @montome, string @cuo, string cuopago, string @numpago, DateTime @fechacompensa, int @estado, string cuentacontable)
+        {
+            return cdOrdenPedido.InsertarCompensaciones(@empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, @numpago, @fechacompensa, @estado, cuentacontable, cuopago);
+        }
+        public DataTable ActualizarCompensaciones(int @empresa, int @tipo, int id, int @estado, string cuopago)
+        {
+            return cdOrdenPedido.ActualizarCompensaciones(@empresa, @tipo, id, @estado, cuopago);
+        }
+        public DataTable ListarProveedoresCompensaciones()
+        {
+            return cdOrdenPedido.ListarProveedoresCompensaciones();
+        }
+        public DataTable PlanContable()
+        {
+            return cdOrdenPedido.PlanContable();
         }
     }
 }

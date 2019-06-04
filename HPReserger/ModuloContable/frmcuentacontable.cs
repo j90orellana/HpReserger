@@ -616,6 +616,57 @@ namespace HPReserger
             CargarPorDebeHaber(cboreflejahaber, "H");
             cboreflejahaber.Text = cadena;
         }
+        frmProcesando frmproce;
+        DataTable TableCuentas;
+        private void btnExportarPlan_Click(object sender, EventArgs e)
+        {
+            TableCuentas = CapaLogica.PlanContable();
+            if (TableCuentas.Rows.Count > 0)
+            {
+                Cursor = Cursors.WaitCursor;
+                frmproce = new HPReserger.frmProcesando();
+                frmproce.Show();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                msg("No hay Datos que Exportar");
+            }
+        }
+        public void msg(string cadena)
+        {
+            HPResergerFunciones.Utilitarios.msg(cadena);
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (dtgconten.RowCount > 0)
+            {
+                string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
+                _NombreHoja = "PLAN CONTABLE"; _Cabecera = "Plan Contable";
+                _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
+                //
+                List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+                Color Back = Color.FromArgb(78, 129, 189);
+                Color Fore = Color.FromArgb(255, 255, 255);
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", _Cabecera.ToUpper(), 16, true, false, Back, Fore));
+                //
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                int PosInicialGrilla = 3;
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableCuentas, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, "");
+            }
+            else msg("No hay datos que Exportar");
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
+            dtgconten.ResumeLayout();
+        }
     }
 
 }

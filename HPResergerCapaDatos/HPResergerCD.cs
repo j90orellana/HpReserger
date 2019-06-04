@@ -1309,10 +1309,10 @@ namespace HPResergerCapaDatos
             object[] valores = { Cuo, empresa, fechacontable, Reversa };
             bd.DataTableFromProcedure("usp_EliminarAsientoxCuo", parametros, valores, null);
         }
-        public DataTable BuscarCuenta(string buscar, int opcion)
+        public DataTable BuscarCuenta(string buscar, int opcion, string Naturaleza)
         {
-            string[] parametros = { "@buscar", "@opcion" };
-            object[] valores = { buscar, opcion };
+            string[] parametros = { "@buscar", "@opcion", "@natu" };
+            object[] valores = { buscar, opcion, Naturaleza };
             return bd.DataTableFromProcedure("usp_buscar_cuenta", parametros, valores, null);
         }
         public DataTable VerificarProveedores(string codigo, string razon)
@@ -4665,6 +4665,12 @@ namespace HPResergerCapaDatos
             object[] valores = { idempleado, empresa };
             return bd.DataTableFromProcedure("usp_ListarFacturasCompensaciones", parametros, valores, null);
         }
+        public DataTable ListarFacturasAnticipos(string ruc, int empresa)
+        {
+            string[] parametros = { "@ruc", "@empresa" };
+            object[] valores = { ruc, empresa };
+            return bd.DataTableFromProcedure("usp_ListarFacturasAnticipos", parametros, valores, null);
+        }
         public DataTable ListarEmpleadosCompensaciones(int empresa)
         {
             string[] parametros = { "@empresa" };
@@ -4677,6 +4683,31 @@ namespace HPResergerCapaDatos
             object[] valores = { id, estado, Fechacompensa };
             return bd.DataTableFromProcedure("usp_ActualizaEstadoFacturas", parametros, valores, null);
         }
+        public DataTable ListarCompensaciones(int empresa, int tipo, int Tipoid, string numdoc, int Estado)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@tipoid", "@numdoc", "@Estado" };
+            object[] valores = { empresa, tipo, Tipoid, numdoc, Estado };
+            return bd.DataTableFromProcedure("usp_ListarCompensaciones", parametros, valores, null);
+        }
+        public DataTable InsertarCompensaciones(int @empresa, int @tipo, int @tipoid, string @numdoc, decimal @montomn, decimal @montome, string @cuo, string @numpago, DateTime @fechacompensa, int @estado, string cuentacontable, string cuopago)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@tipoid", "@numdoc", "@montomn", "@montome", "@cuo", "@numpago", "@fechacompensa", "@estado", "@cuentacontabla", "@cuoPago" };
+            object[] valores = { @empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, @numpago, @fechacompensa, @estado, cuentacontable, cuopago };
+            return bd.DataTableFromProcedure("usp_InsertarCompensaciones", parametros, valores, null);
+        }
+        public DataTable ActualizarCompensaciones(int @empresa, int @tipo, int id, int @estado, string cuopago)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@id", "@estado", "@cuoPago" };
+            object[] valores = { @empresa, @tipo, id, @estado, cuopago };
+            return bd.DataTableFromProcedure("usp_ActualizarCompensaciones", parametros, valores, null);
+        }
+        public DataTable ListarProveedoresCompensaciones()
+        {
+            return bd.DataTableFromProcedure("usp_ListarProveedoresCompensaciones", null, null, null);
+        }
+        public DataTable PlanContable()
+        {
+            return bd.DataTableFromProcedure("usp_PlanContable", null, null, null);
+        }
     }
-
 }

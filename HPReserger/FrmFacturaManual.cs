@@ -61,7 +61,7 @@ namespace HPReserger
             //ListCompensaciones.Rows.Add(1, "Fondo Fijo");
             ListCompensaciones.Rows.Add(2, "Reembolso Gasto");
             //ListCompensaciones.Rows.Add(3, "Entregas a Rendir");
-            //ListCompensaciones.Rows.Add(4, "Anticipo Proveedor");
+            ListCompensaciones.Rows.Add(4, "Anticipo Proveedor");
             cbocompensa.ValueMember = "codigo";
             cbocompensa.DisplayMember = "descripcion";
             cbocompensa.DataSource = ListCompensaciones;

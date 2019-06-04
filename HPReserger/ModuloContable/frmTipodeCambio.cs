@@ -28,7 +28,7 @@ namespace HPReserger
             set
             {
                 fechaactual = value;
-                Buscar_Click(new object(), new EventArgs());
+                CargarTipoCambio();
             }
         }
         private void TipodeCambio_Load(object sender, EventArgs e)
@@ -444,7 +444,8 @@ namespace HPReserger
             if (DateTime.Now.Hour > 7 && DateTime.Now.Hour < 16)
             {
                 FechaActual = DateTime.Now;
-                //MSG("REfrescado");
+                comboMesAño1.ActualizarMesAÑo(FechaActual.Month, FechaActual.Year);
+                MSG("REfrescado");
             }
 
         }

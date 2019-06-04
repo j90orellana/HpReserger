@@ -255,7 +255,7 @@ namespace HPReserger
         void cerrar_cotizacion(object sender, FormClosedEventArgs e)
         {
             frmCOT = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmAprobarCotizacion frmACOT;
         private void aprobaciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -279,7 +279,7 @@ namespace HPReserger
         void cerrara_aprobacion(object sender, FormClosedEventArgs e)
         {
             frmACOT = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmOrdenCompra frmOC;
         private void ordenDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -303,7 +303,7 @@ namespace HPReserger
         void cerrar_ordencompra(object sender, FormClosedEventArgs e)
         {
             frmOC = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmAlmacen frmArti;
         private void artículosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -327,7 +327,7 @@ namespace HPReserger
         void cerrar_articulos_fics(object sender, FormClosedEventArgs e)
         {
             frmArti = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmAlmacenServicio frmAS;
         private void serviciosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -351,7 +351,7 @@ namespace HPReserger
         void cerraralamacenservicio(object sender, FormClosedEventArgs e)
         {
             frmAS = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmSolicitudEmpleado frmSE;
         private void solicitudEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -375,7 +375,7 @@ namespace HPReserger
         void cerrar_alamacenmservicio(object sender, FormClosedEventArgs e)
         {
             frmSE = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmPostulante frmP;
         private void postulanteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -399,7 +399,7 @@ namespace HPReserger
         void cerrarpostulante(object sender, FormClosedEventArgs e)
         {
             frmP = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmEmpleado frmE;
         private void empleadoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -423,7 +423,7 @@ namespace HPReserger
         void cerrarempleado(object sender, FormClosedEventArgs e)
         {
             frmE = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmOrdenPedido frmOP;
         private void ordenesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -447,7 +447,7 @@ namespace HPReserger
         void cerrar_orden_pedido(object sender, FormClosedEventArgs e)
         {
             frmOP = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmVacaciones frmVaca;
         private void vacacionesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -471,7 +471,7 @@ namespace HPReserger
         void cerrarvacaciones(object sender, FormClosedEventArgs e)
         {
             frmVaca = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmDesvinculacion frmDesv;
         private void desvinculaciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -495,7 +495,7 @@ namespace HPReserger
         void cerrardesvinculacion(object sender, FormClosedEventArgs e)
         {
             frmDesv = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmFaltas frmF;
         private void faltasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -519,7 +519,7 @@ namespace HPReserger
         void cerrarfaltas(object sender, FormClosedEventArgs e)
         {
             frmF = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmAmonestacionesPremio frmAP;
         private void amonestacionesPremiosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -543,7 +543,7 @@ namespace HPReserger
         void cerraramonestaciones(object sender, FormClosedEventArgs e)
         {
             frmAP = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmArea area;
         private void areaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -567,7 +567,7 @@ namespace HPReserger
         void cerrarareas(object sender, FormClosedEventArgs e)
         {
             area = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmgerencia gere;
         private void gerenciaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -592,7 +592,7 @@ namespace HPReserger
         void cerrargerencia(object sender, FormClosedEventArgs e)
         {
             gere = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmccosto costo;
         private void centroDeCostosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -617,7 +617,7 @@ namespace HPReserger
         void cerrarcentrocc(object sender, FormClosedEventArgs e)
         {
             costo = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmArticuloServicio artiser;
         private void articuloServicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -641,7 +641,7 @@ namespace HPReserger
         void cerrararticuloservicio(object sender, FormClosedEventArgs e)
         {
             artiser = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmmarca marca;
         private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -665,7 +665,7 @@ namespace HPReserger
         void cerrarmarcas(object sender, FormClosedEventArgs e)
         {
             marca = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmmarcamodelo marcamodelo;
         private void marcamodeloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -689,7 +689,7 @@ namespace HPReserger
         void cerrarmarcamodelo(object sender, FormClosedEventArgs e)
         {
             marcamodelo = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmmodelo modelo;
         private void modeloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -713,7 +713,7 @@ namespace HPReserger
         void cerrarmodelo(object sender, FormClosedEventArgs e)
         {
             modelo = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmdepartamento dep;
         private void departamentoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -737,7 +737,7 @@ namespace HPReserger
         void cerrardepartamento(object sender, FormClosedEventArgs e)
         {
             dep = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmprovincias provin;
         private void provinciaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -761,7 +761,7 @@ namespace HPReserger
         void cerrarprovincia(object sender, FormClosedEventArgs e)
         {
             provin = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmDistritos distritos;
         private void distritoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -785,7 +785,7 @@ namespace HPReserger
         void cerrardistrito(object sender, FormClosedEventArgs e)
         {
             distritos = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmEntiFinanciera entidad;
         private void entidadesFinancierasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -809,7 +809,7 @@ namespace HPReserger
         void cerrarentidad(object sender, FormClosedEventArgs e)
         {
             entidad = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmproveedor provee;
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -833,7 +833,7 @@ namespace HPReserger
         void cerrarproveedor(object sender, FormClosedEventArgs e)
         {
             provee = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmTipoId tipoid;
         private void tipoIdentidadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -857,7 +857,7 @@ namespace HPReserger
         void cerrartipoid(object sender, FormClosedEventArgs e)
         {
             tipoid = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmdinamicaContable dinamica;
         private void dinamicaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -881,7 +881,7 @@ namespace HPReserger
         void cerrardinamicacontable(object sender, FormClosedEventArgs e)
         {
             dinamica = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmcuentacontable cuenta;
         private void cuentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -905,7 +905,7 @@ namespace HPReserger
         void cerrarcuentascontanles(object sender, FormClosedEventArgs e)
         {
             cuenta = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmAsientoContable asiento;
         private void asientoContableToolStripMenuItem_Click(object sender, EventArgs e)
@@ -929,7 +929,7 @@ namespace HPReserger
         void cerrarasientocontable(object sender, FormClosedEventArgs e)
         {
             asiento = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         FrmPerfil perfil;
         private void perfilesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -953,7 +953,7 @@ namespace HPReserger
         void cerrarperfil(object sender, FormClosedEventArgs e)
         {
             perfil = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         public int usuario;
         public string nick;
@@ -981,7 +981,7 @@ namespace HPReserger
         void cerrarususaruio(object sender, FormClosedEventArgs e)
         {
             usua = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         FrmCambioContra contra;
         private void cambioDeClaveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1007,7 +1007,7 @@ namespace HPReserger
         void cerrarusuuario(object sender, FormClosedEventArgs e)
         {
             contra = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         int cerrar = 0;
         public static Boolean AbortarCerrarPrograma = false;
@@ -1062,7 +1062,7 @@ namespace HPReserger
         void cerrarlistasoc(object sender, FormClosedEventArgs e)
         {
             frmlisoc = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         FrmFactura frmfac;
         private void facturaToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1086,7 +1086,7 @@ namespace HPReserger
         void cerrarfactura(object sender, FormClosedEventArgs e)
         {
             frmfac = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         Frmreporteop orde;
         private void ordenesPedidoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1110,7 +1110,7 @@ namespace HPReserger
         void cerrarordernesdepedido(object sender, FormClosedEventArgs e)
         {
             orde = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         private void seguimientoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1138,7 +1138,7 @@ namespace HPReserger
         void cerrarodernesdecomprareporte(object sender, FormClosedEventArgs e)
         {
             frmreporteoc = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmreporteempleado reporemple;
         private void empleadoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1162,7 +1162,7 @@ namespace HPReserger
         void cerrarempleadoreporte(object sender, FormClosedEventArgs e)
         {
             reporemple = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         int cerrado = 0;
         private void cerrarSesionToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1202,7 +1202,7 @@ namespace HPReserger
         void cerrargeneeraboletas(object sender, FormClosedEventArgs e)
         {
             genbole = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         FrmGenerarRemuneracionRenta remunrenta;
         private void generarToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1226,7 +1226,7 @@ namespace HPReserger
         void cerrargenerarrenta(object sender, FormClosedEventArgs e)
         {
             remunrenta = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmProyectos proyectos;
         private void proyectosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1251,7 +1251,7 @@ namespace HPReserger
         void presus_cerrarproyec(object sender, FormClosedEventArgs e)
         {
             proyectos = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         private void axAcroPDF1_Enter(object sender, EventArgs e)
         {
@@ -1278,7 +1278,7 @@ namespace HPReserger
         void presus_cerrarpresus(object sender, FormClosedEventArgs e)
         {
             presus = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         private void seguimientoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -1305,7 +1305,7 @@ namespace HPReserger
         void presus_cerrarpresusope(object sender, FormClosedEventArgs e)
         {
             presuope = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmReportePresupuestoCuenta presuscuenta;
         private void presupuestoOperacionesCuentaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1329,7 +1329,7 @@ namespace HPReserger
         void presus_cerrarpresusoperaciones(object sender, FormClosedEventArgs e)
         {
             presuscuenta = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmPagarFactura pagarfac;
         private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1353,7 +1353,7 @@ namespace HPReserger
         void presus_cerrarpagarfactura(object sender, FormClosedEventArgs e)
         {
             pagarfac = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmREciboPorHonorario recibohonorario;
         private void reciboPorHonorariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1377,7 +1377,7 @@ namespace HPReserger
         void cerrarreciboporhonorario(object sender, FormClosedEventArgs e)
         {
             recibohonorario = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmFacturasPorPagar facturaporpagar;
         private void facturasSinPagarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1401,7 +1401,7 @@ namespace HPReserger
         void cerrarfacturasinpagar(object sender, FormClosedEventArgs e)
         {
             facturaporpagar = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmFicSinFaactura ficsinfactura;
         private void ficSinComprobantesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1425,7 +1425,7 @@ namespace HPReserger
         void cerrarfcisincomprobante(object sender, FormClosedEventArgs e)
         {
             ficsinfactura = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmListarOCFaltantes ocfaltantes;
         private void listarOCFaltantesToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -1449,7 +1449,7 @@ namespace HPReserger
         void cerrarlistaroc(object sender, FormClosedEventArgs e)
         {
             ocfaltantes = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         private void lblwelcome_Click(object sender, EventArgs e)
         {
@@ -1547,7 +1547,7 @@ namespace HPReserger
         void cerrarcargos(object sender, FormClosedEventArgs e)
         {
             Cargos = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmEmpresaEps frmEps;
         private void empresasEPSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1571,7 +1571,7 @@ namespace HPReserger
         void cerrarempresapes(object sender, FormClosedEventArgs e)
         {
             frmEps = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmadicionaleps frmepsadicional;
         private void epsAdicionalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1595,7 +1595,7 @@ namespace HPReserger
         void cerrarepsadicional(object sender, FormClosedEventArgs e)
         {
             frmepsadicional = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmEstadoCivil EstadoCivil;
         private void estadoCivilToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1619,7 +1619,7 @@ namespace HPReserger
         void cerrarestadocivil(object sender, FormClosedEventArgs e)
         {
             EstadoCivil = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmGradoInstitucional frmGRado;
         private void gradoInstitucionalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1643,7 +1643,7 @@ namespace HPReserger
         void cerrargrado(object sender, FormClosedEventArgs e)
         {
             frmGRado = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmmoneda frmmoneda;
         private void monedaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1667,7 +1667,7 @@ namespace HPReserger
         void cerrarmonedas(object sender, FormClosedEventArgs e)
         {
             frmmoneda = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmperiodicidad periocidad;
         private void periocidadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1691,7 +1691,7 @@ namespace HPReserger
         void cerrarperiocidad(object sender, FormClosedEventArgs e)
         {
             periocidad = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmprofesion frmProfe;
         private void profesiónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1715,7 +1715,7 @@ namespace HPReserger
         void cerrarprofesion(object sender, FormClosedEventArgs e)
         {
             frmProfe = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmSectorEmpresarial Sector;
         private void sectorEmpresarialToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1739,7 +1739,7 @@ namespace HPReserger
         void cerrarsector(object sender, FormClosedEventArgs e)
         {
             Sector = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmcede frmcede;
         private void sedesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1763,7 +1763,7 @@ namespace HPReserger
         void cerrarsedes(object sender, FormClosedEventArgs e)
         {
             frmcede = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmSexo frmsexo;
         private void sexoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1787,7 +1787,7 @@ namespace HPReserger
         void cerrarsexos(object sender, FormClosedEventArgs e)
         {
             frmsexo = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmtipocontratacion_ contrata;
         private void tipoContrataciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1811,7 +1811,7 @@ namespace HPReserger
         void cerrartipocontratacion(object sender, FormClosedEventArgs e)
         {
             contrata = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmtipocontrato frmcontrato;
         private void tipoDeContratoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1835,7 +1835,7 @@ namespace HPReserger
         void cerrartipocontrato(object sender, FormClosedEventArgs e)
         {
             frmcontrato = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmvinculacionfamiliar frmVinculo;
         private void vinculoFamiliarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1859,7 +1859,7 @@ namespace HPReserger
         void cerrarvinculofamiliar(object sender, FormClosedEventArgs e)
         {
             frmVinculo = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmAfps frmafp;
         private void afpsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1883,7 +1883,7 @@ namespace HPReserger
         void cerrarafps(object sender, FormClosedEventArgs e)
         {
             frmafp = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmInstitucionesEducativas frmedu;
         private void institucionesEducativasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1907,7 +1907,7 @@ namespace HPReserger
         void cerrareducativas(object sender, FormClosedEventArgs e)
         {
             frmedu = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmPais pais;
         private void paísToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1931,7 +1931,7 @@ namespace HPReserger
         void cerrarpais(object sender, FormClosedEventArgs e)
         {
             pais = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmOperacion frmope;
         private void operaciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1955,7 +1955,7 @@ namespace HPReserger
         void cerraroperaciones(object sender, FormClosedEventArgs e)
         {
             frmope = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmSubOperacion frmsub;
         private void subOperacionesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1979,7 +1979,7 @@ namespace HPReserger
         void cerrarsuboperacion(object sender, FormClosedEventArgs e)
         {
             frmsub = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmEmpresas frmempre;
         private void empresaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2003,7 +2003,7 @@ namespace HPReserger
         void cerrarempresa(object sender, FormClosedEventArgs e)
         {
             frmempre = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         frmParametros frmparam;
         private void parametrosGeneralesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2027,7 +2027,7 @@ namespace HPReserger
         void cerrarparametros(object sender, FormClosedEventArgs e)
         {
             frmparam = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2109,7 +2109,7 @@ namespace HPReserger
         void cerrarrenta(object sender, FormClosedEventArgs e)
         {
             frmrenta = null;
-           //pbfotoempleado.Visible = false;
+            //pbfotoempleado.Visible = false;
         }
 
         private void generalesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3456,6 +3456,50 @@ namespace HPReserger
         private void compensacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+        ModuloCompensaciones.frmAnticipoProveedores frmanticipo;
+        private void anticipoProveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmanticipo == null)
+            {
+                frmanticipo = new ModuloCompensaciones.frmAnticipoProveedores();
+                frmanticipo.MdiParent = this;
+                frmanticipo.Icon = ICono;
+                frmanticipo.FormClosed += new FormClosedEventHandler(cerraranticipoproveedores);
+                frmanticipo.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmanticipo.Activate();
+                ValidarVentanas(frmanticipo);
+            }
+        }
+
+        private void cerraranticipoproveedores(object sender, FormClosedEventArgs e)
+        {
+            frmanticipo = null;
+        }
+        ModuloCompensaciones.frmListarCompensaciones listcompensa;
+        private void Listcompensa_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            listcompensa = null;
+        }
+        private void listadoCompensacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listcompensa == null)
+            {
+                listcompensa = new ModuloCompensaciones.frmListarCompensaciones();
+                listcompensa.MdiParent = this;
+                listcompensa.FormClosed += Listcompensa_FormClosed;
+                listcompensa.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                listcompensa.Activate();
+                ValidarVentanas(listcompensa);
+            }
         }
     }
 }

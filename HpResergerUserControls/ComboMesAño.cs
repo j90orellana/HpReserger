@@ -50,6 +50,11 @@ namespace HpResergerUserControls
             combomes.SelectedValue = mes;
             comboaño.SelectedValue = año;
         }
+        public void ActualizarMesAÑo(int mes, int año)
+        {
+            combomes.SelectedValue = mes;
+            comboaño.SelectedValue = año;
+        }
         public void Fecha(DateTime fecha)
         {
             comboaño.SelectedValue = fecha.Year;
@@ -158,6 +163,6 @@ namespace HpResergerUserControls
         {
             if (CambioFechas != null)
                 CambioFechas(this, e);
-        }        
+        }
     }
 }

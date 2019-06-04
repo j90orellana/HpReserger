@@ -169,11 +169,29 @@
     <Compile Include="frmListarSeleccionarPersonas.Designer.cs">
       <DependentUpon>frmListarSeleccionarPersonas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCompensaciones\frmAnticipoProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmAnticipoProveedores.Designer.cs">
+      <DependentUpon>frmAnticipoProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloCompensaciones\frmFondoFijo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloCompensaciones\frmFondoFijo.Designer.cs">
       <DependentUpon>frmFondoFijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmListarCompensaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmListarCompensaciones.Designer.cs">
+      <DependentUpon>frmListarCompensaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmListarCompensacionesAnticipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmListarCompensacionesAnticipo.Designer.cs">
+      <DependentUpon>frmListarCompensacionesAnticipo.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloCompensaciones\frmReembolsoGastos.cs">
       <SubType>Form</SubType>
@@ -1544,8 +1562,17 @@
     <EmbeddedResource Include="frmListarSeleccionarPersonas.resx">
       <DependentUpon>frmListarSeleccionarPersonas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmAnticipoProveedores.resx">
+      <DependentUpon>frmAnticipoProveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmFondoFijo.resx">
       <DependentUpon>frmFondoFijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmListarCompensaciones.resx">
+      <DependentUpon>frmListarCompensaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmListarCompensacionesAnticipo.resx">
+      <DependentUpon>frmListarCompensacionesAnticipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmReembolsoGastos.resx">
       <DependentUpon>frmReembolsoGastos.cs</DependentUpon>
