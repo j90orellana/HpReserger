@@ -102,6 +102,7 @@
             this.reembolsoGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entregasARendirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anticipoProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoCompensacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.reportesContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -243,7 +244,6 @@
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.listadoCompensacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -937,6 +937,14 @@
             this.anticipoProveedoresToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.anticipoProveedoresToolStripMenuItem.Text = "Anticipo Proveedores";
             this.anticipoProveedoresToolStripMenuItem.Click += new System.EventHandler(this.anticipoProveedoresToolStripMenuItem_Click);
+            // 
+            // listadoCompensacionesToolStripMenuItem
+            // 
+            this.listadoCompensacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("listadoCompensacionesToolStripMenuItem.Image")));
+            this.listadoCompensacionesToolStripMenuItem.Name = "listadoCompensacionesToolStripMenuItem";
+            this.listadoCompensacionesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.listadoCompensacionesToolStripMenuItem.Text = "Listado Compensaciones";
+            this.listadoCompensacionesToolStripMenuItem.Click += new System.EventHandler(this.listadoCompensacionesToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
@@ -2272,14 +2280,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // listadoCompensacionesToolStripMenuItem
-            // 
-            this.listadoCompensacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("listadoCompensacionesToolStripMenuItem.Image")));
-            this.listadoCompensacionesToolStripMenuItem.Name = "listadoCompensacionesToolStripMenuItem";
-            this.listadoCompensacionesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.listadoCompensacionesToolStripMenuItem.Text = "Listado Compensaciones";
-            this.listadoCompensacionesToolStripMenuItem.Click += new System.EventHandler(this.listadoCompensacionesToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

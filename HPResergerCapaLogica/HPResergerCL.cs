@@ -2448,9 +2448,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarEmpleadosCompensaciones(empresa);
         }
-        public DataTable ActualizaEstadoFacturas(int id, int estado, DateTime Fechacompensa)
+        public DataTable ActualizaEstadoFacturas(int id, int estado, DateTime Fechacompensa, int tipopago, string nropago)
         {
-            return cdOrdenPedido.ActualizaEstadoFacturas(id, estado, Fechacompensa);
+            return cdOrdenPedido.ActualizaEstadoFacturas(id, estado, Fechacompensa, tipopago, nropago);
         }
         public DataTable ListarCompensaciones(int empresa, int tipo, int tipoid, string numdoc)
         {
@@ -2461,9 +2461,17 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarCompensaciones(empresa, tipo, tipoid, numdoc, Estado);
         }
+        public DataTable ListarCompensacionesxPagar(int empresa, int tipo, int tipoid, string numdoc, int Estado)
+        {
+            return cdOrdenPedido.ListarCompensacionesxPagar(empresa, tipo, tipoid, numdoc, Estado);
+        }
         public DataTable InsertarCompensaciones(int @empresa, int @tipo, int @tipoid, string @numdoc, decimal @montomn, decimal @montome, string @cuo, string cuopago, string @numpago, DateTime @fechacompensa, int @estado, string cuentacontable)
         {
             return cdOrdenPedido.InsertarCompensaciones(@empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, @numpago, @fechacompensa, @estado, cuentacontable, cuopago);
+        }
+        public DataTable InsertarCompensacionesDetalle(int pkid, int @empresa, int @tipo, decimal @montomn, decimal @montome, string @numpago, DateTime @fechacompensa, int @estado, string cuopago)
+        {
+            return cdOrdenPedido.InsertarCompensacionesDetalle(pkid, @empresa, @tipo, @montomn, @montome, @numpago, @fechacompensa, @estado, cuopago);
         }
         public DataTable ActualizarCompensaciones(int @empresa, int @tipo, int id, int @estado, string cuopago)
         {

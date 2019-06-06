@@ -1491,14 +1491,14 @@ namespace HPReserger
                                 if (filita["reflejadebe"].ToString() != "")
                                 {
                                     DataRow fila = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                    fila[xDebeHaber.DataPropertyName] = "D";
+                                    fila[xDebeHaber.DataPropertyName] = "H";
                                     fila[xCuentaContable.DataPropertyName] = filita["reflejadebe"].ToString();
                                     fila[xdescripcion.DataPropertyName] = filita["Namedebe"].ToString();
                                     fila[xUsuario.DataPropertyName] = 998;///por defecto
                                     fila[xCodAsientoCtble.DataPropertyName] = cuo;
                                     TDatos.Rows.Add(fila);
                                     DataRow xfila = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                    xfila[xDebeHaber.DataPropertyName] = "H";
+                                    xfila[xDebeHaber.DataPropertyName] = "D";
                                     xfila[xCuentaContable.DataPropertyName] = filita["reflejahaber"].ToString();
                                     xfila[xdescripcion.DataPropertyName] = filita["Namehaber"].ToString();
                                     xfila[xUsuario.DataPropertyName] = 998;///por defecto
@@ -1837,7 +1837,7 @@ namespace HPReserger
             PanelNotaCredito.Visible = false;
             Dtgconten.Columns[xTipoIgvg.Name].Visible = true;
             txtSerieRef.ReadOnly = txtNumRef.ReadOnly = true;
-            cbocompensa.Visible = true;
+            lblcompensacion.Visible = cbocompensa.Visible = true;
             chkfac.Enabled = false;
             rdbInteres.Visible = rdbDescuento.Visible = rdbAnulacion.Visible = btnaplicar.Visible = false;
             _TipoDoc = 0;
@@ -1869,7 +1869,7 @@ namespace HPReserger
             {
                 btnCargarFoto.Text = "&Foto N.Crédit.";
                 _TipoDoc = 2;
-                cbocompensa.Visible = false;
+                lblcompensacion.Visible = cbocompensa.Visible = false;
                 cbomoneda.Enabled = false;
                 //txtglosa.Text = txtglosa.TextoDefecto = "Ingrese La Glosa de la Nota de Crédito";
                 cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;
@@ -1886,7 +1886,7 @@ namespace HPReserger
             {
                 btnCargarFoto.Text = "&Foto N.Débito";
                 _TipoDoc = 3;
-                cbocompensa.Visible = false;
+                lblcompensacion.Visible = cbocompensa.Visible = false;
                 cbomoneda.Enabled = false;
                 // txtglosa.Text = txtglosa.TextoDefecto = "Ingrese La Glosa de la Nota de Débito";
                 cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;

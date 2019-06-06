@@ -382,7 +382,7 @@ namespace HPReserger.ModuloCompensaciones
                         , item.Cells[xrazon_social.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha, montoSoles,
                         montodolares, (decimal)item.Cells[xTcReg.Name].Value, moneda, "", "", item.Cells[xGlosa.Name].Value.ToString(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario);
                         //Actualizar su Estado y Fecha de Compensacion
-                        CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, 3, dtpFechaCompensa.Value);
+                        CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, 3, dtpFechaCompensa.Value, 3, "");
                     }
                 }
                 //Diferencial
@@ -445,7 +445,8 @@ namespace HPReserger.ModuloCompensaciones
                 string[] UserCompensa = cboempleado.SelectedValue.ToString().Split('-');
                 DateTime fechac = dtpFechaCompensa.Value;
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, cbocuentaxpagar.SelectedValue.ToString(), proyecto, int.Parse(UserCompensa[0]), UserCompensa[1]
-                   , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2), 0, "0", "0", 0, fechac, fechac, fechac, decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalMN.Text)
+                   , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2), 0, "0", $"{dtpFechaCompensa.Value.ToString("d MMM yyyy")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
+                   , 0, fechac, fechac, fechac, decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalMN.Text)
                    , decimal.Parse(txttipocambio.Text), moneda, "", "", txtglosa.TextValido(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario);
                 //salida del banco 
                 string nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
@@ -459,11 +460,15 @@ namespace HPReserger.ModuloCompensaciones
                      0, decimal.Parse(txttotalMN.Text), decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, txtglosa.TextValido(), dtpFechaCompensa.Value, -8);
                 //detalle del pago del banco
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, int.Parse(UserCompensa[0]), UserCompensa[1]
-                  , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2), 0, "0", "0", 0, fechac, fechac, fechac, decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalMN.Text)
+                  , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2), 0, "0", $"{dtpFechaCompensa.Value.ToString("d MMM yyyy")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}"
+                  , 0, fechac, fechac, fechac, decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalMN.Text)
                   , decimal.Parse(txttipocambio.Text), moneda, nroKuenta, "", txtglosa.TextValido(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario);
                 //Inserto compensaciones!
-                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 2, int.Parse(UserCompensa[0]), UserCompensa[1], decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalME.Text), CuoReg, Cuo, $"{Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))} {dtpFechaCompensa.Value.ToString("d MMM yyyy")}", dtpFechaCompensa.Value, 1, cbocuentaxpagar.SelectedValue.ToString());
-                //
+                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 2, int.Parse(UserCompensa[0]), UserCompensa[1], decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalME.Text), CuoReg, Cuo,
+                    $"{dtpFechaCompensa.Value.ToString("d MMM yyyy")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}", dtpFechaCompensa.Value, 1, cbocuentaxpagar.SelectedValue.ToString());
+                //Cuadre Asiento
+                CapaLogica.CuadrarAsiento(Cuo, proyecto, dtpFechaContable.Value, 2);
+                //Fin Cuadre
                 msg(mensaje + $"\nSe hizo el pago con cuo {Cuo}");
                 cboempleado_SelectedIndexChanged(sender, e);
                 CalcularTotal();

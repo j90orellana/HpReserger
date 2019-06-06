@@ -1053,15 +1053,17 @@ namespace HPReserger
                         DataRow filita = Tprueba.Rows[0];
                         if (filita["reflejadebe"].ToString() != "")
                         {
+                            string debe = item.Cells[xDebeHaber.Name].Value.ToString();
+                            string haber = debe == "D" ? "H" : "D";
                             DataRow fila = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                            fila[xDebeHaber.DataPropertyName] = "D";
+                            fila[xDebeHaber.DataPropertyName] = debe; //"D";
                             fila[xCuentaContable.DataPropertyName] = filita["reflejadebe"].ToString();
                             fila[xdescripcion.DataPropertyName] = filita["Namedebe"].ToString();
                             fila[xUsuario.DataPropertyName] = 998;///por defecto
                             fila[xCodAsientoCtble.DataPropertyName] = cuo;
                             TDatos.Rows.Add(fila);
                             DataRow xfila = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                            xfila[xDebeHaber.DataPropertyName] = "H";
+                            xfila[xDebeHaber.DataPropertyName] = haber;//"H";
                             xfila[xCuentaContable.DataPropertyName] = filita["reflejahaber"].ToString();
                             xfila[xdescripcion.DataPropertyName] = filita["Namehaber"].ToString();
                             xfila[xUsuario.DataPropertyName] = 998;///por defecto

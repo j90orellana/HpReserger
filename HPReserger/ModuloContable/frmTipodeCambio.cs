@@ -445,7 +445,7 @@ namespace HPReserger
             {
                 FechaActual = DateTime.Now;
                 comboMesAño1.ActualizarMesAÑo(FechaActual.Month, FechaActual.Year);
-                MSG("REfrescado");
+                //MSG("REfrescado");
             }
 
         }
