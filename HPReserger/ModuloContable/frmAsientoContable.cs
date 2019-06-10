@@ -1780,8 +1780,16 @@ namespace HPReserger
                 //if (chkfechavalor.Checked)
                 _Fechon = dtpfechavalor.Value;
                 //else _Fechon = dtpfecha.Value;
-                CapaLogica.ReversarAsientos(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, _Fechon);
-                HPResergerFunciones.Utilitarios.msg($"Asiento {txtcuo.Text} Reversado!");
+                DataRow Filita = CapaLogica.ReversarAsientos(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, _Fechon).Rows[0];
+                if (Filita[0].ToString() == "")
+                {
+                    HPResergerFunciones.Utilitarios.msg($"Asiento {txtcuo.Text} Reversado!");
+                }
+                else
+                {
+                    HPResergerFunciones.Utilitarios.msg("Error \n" + Filita[0].ToString());
+                    return;
+                }
             }
             btnActualizar_Click(sender, e);
             //else

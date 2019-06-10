@@ -246,14 +246,14 @@ namespace HPReserger.ModuloCompensaciones
                     proyecto, 0, cuo, moneda, glosa, dtpFechaCompensa.Value, -9);
                 //Detalle del asiento
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaAnticipo, proyecto, TipoIdProveedor, RucProveedor
-                    , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario);
+                    , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
                 //Haber
                 //Asiento del salida del Banco
                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, 0, moneda == 1 ? MontoSoles : MontoDolares, tc,
                     proyecto, 0, cuo, moneda, glosa, dtpFechaCompensa.Value, -9);
                 //Detalle del asiento
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoIdProveedor, RucProveedor
-                    , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, "", glosa, FechaCompensa, frmLogin.CodigoUsuario);
+                    , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
                 //Inserto compensaciones!
                 CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 4, TipoIdProveedor, RucProveedor, MontoSoles, MontoDolares, cuo, "", $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d MMM yyyy")}", dtpFechaCompensa.Value, 2, CuentaAnticipo);
                 //
@@ -365,6 +365,23 @@ namespace HPReserger.ModuloCompensaciones
         private void FrmliscompensaAnticipo_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmliscompensaAnticipo = null;
+            cboempleado_SelectedIndexChanged(sender, e);
+        }
+
+        private void btnbusproveedor_Click(object sender, EventArgs e)
+        {
+            frmproveedor provee = new frmproveedor();
+            string[] proveedor = "0-0".Split();
+            if (cboproveedor.SelectedValue != null)
+                proveedor = cboproveedor.SelectedValue.ToString().Split('-');
+            provee.txtnumeroidentidad.Text = proveedor[0];
+            provee.Txtbusca.Text = proveedor[1];
+            provee.radioButton2.Checked = true;
+            provee.Txtbusca_TextChanged(sender, e);
+            provee.llamada = 10;
+            provee.ShowDialog();
+            if (provee.llamada != 100)
+                cboproveedor.SelectedValue = provee.tipoid + "-" + provee.rucito;
         }
     }
 }

@@ -462,15 +462,15 @@ namespace HPReserger
             int PosFila = 1;
             //CUENTA BANCO
             if (decimal.Parse(txttotal.Text) > 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, decimal.Parse(txttotal.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value,-7);
+                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, decimal.Parse(txttotal.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value, -7);
             foreach (Cuentas item in ListCuentas)
             {
                 //CUENTAS DE LAS FACTURAS
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaContable.Value, item._Cuenta, item._MOnto < 0 ? Math.Abs(item._MOnto) : 0, item._MOnto < 0 ? 0 : Math.Abs(item._MOnto), decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value,-7);
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaContable.Value, item._Cuenta, item._MOnto < 0 ? Math.Abs(item._MOnto) : 0, item._MOnto < 0 ? 0 : Math.Abs(item._MOnto), decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value, -7);
             }
             //CUENTA DIFERENCIA DE CAMBIO
             if (decimal.Parse(txttotaldiferencial.Text) != 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(2, ++PosFila, numasiento, dtpFechaContable.Value, "", decimal.Parse(txttotaldiferencial.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value,-7);
+                CapaLogica.InsertarAsientoFacturaCabecera(2, ++PosFila, numasiento, dtpFechaContable.Value, "", decimal.Parse(txttotaldiferencial.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value, -7);
             ////FIN DE LAS CABECERAS
             ////DETALLE DE LOS ASIENTOS
             PosFila = 1;
@@ -485,7 +485,8 @@ namespace HPReserger
                     if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) Multiplicador = -1;
                     CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                         , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Multiplicador * (decimal)item.Cells[xpagar.Name].Value,
-                      Multiplicador * (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
+                      Multiplicador * (decimal)item.Cells[xTotal.Name].Value, decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(),
+                      dtpFechaPago.Value, frmLogin.CodigoUsuario, "");
                 }
             }
             ////LISTADO DE CUENTAS
@@ -502,7 +503,8 @@ namespace HPReserger
                             DateTime fecha = DateTime.Now;
                             CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, dtpFechaContable.Value, items._Cuenta, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                                 , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, (decimal)item.Cells[xpagar.Name].Value,
-                                 (decimal)item.Cells[xTotal.Name].Value, item.Cells[xNameCorto.Name].Value.ToString() == "USD" ? (decimal)item.Cells[xTC.Name].Value : decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
+                                 (decimal)item.Cells[xTotal.Name].Value, item.Cells[xNameCorto.Name].Value.ToString() == "USD" ? (decimal)item.Cells[xTC.Name].Value : decimal.Parse(txttipocambio.Text),
+                                 (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario, "");
 
                         }
                     }
@@ -523,7 +525,8 @@ namespace HPReserger
                             DateTime fecha = DateTime.Now;
                             CapaLogica.InsertarAsientoFacturaDetalle(2, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
                                 , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Dif,
-                                 decimal.Parse(txttotaldiferencial.Text), decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta, txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario);
+                                 decimal.Parse(txttotaldiferencial.Text), decimal.Parse(txttipocambio.Text), (int)item.Cells[xMoneda.Name].Value, nroKuenta,
+                                 txtnrooperacion.TextValido(), txtglosa.TextValido(), dtpFechaPago.Value, frmLogin.CodigoUsuario, "");
                         }
                     }
                 }

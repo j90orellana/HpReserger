@@ -611,7 +611,7 @@ namespace HPReserger
         public void Mensaje(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (llamada == 1)
+            if (llamada == 10)
             {
                 salida = true;
                 rucito = dtgconten[RUC.Name, e.RowIndex].Value.ToString();
@@ -634,6 +634,17 @@ namespace HPReserger
 
             }
             catch (Exception) { }
+        }
+
+        private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (llamada == 10)
+            {
+                salida = true;
+                rucito = dtgconten[RUC.Name, e.RowIndex].Value.ToString();
+                tipoid = (int)dtgconten[xtipoid.Name, e.RowIndex].Value;
+                this.Close();
+            }
         }
         private void txtpersonacontacto_KeyDown(object sender, KeyEventArgs e)
         {

@@ -186,6 +186,7 @@
             this.txtnumdocompensa = new HpResergerUserControls.TextBoxPer();
             this.lblcompensa = new System.Windows.Forms.Label();
             this.btnbususuacompesa = new HpResergerUserControls.ButtonPer();
+            this.txtNombreUsuarioCompensa = new HpResergerUserControls.TextBoxPer();
             this.cmsImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numdetraccion)).BeginInit();
@@ -232,7 +233,7 @@
             this.frmimagen.Name = "frmimagen";
             this.frmimagen.Nombre = "Factura Manual";
             this.frmimagen.Padre = null;
-            this.frmimagen.Size = new System.Drawing.Size(200, 193);
+            this.frmimagen.Size = new System.Drawing.Size(200, 218);
             this.frmimagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.frmimagen.TabIndex = 236;
             this.frmimagen.DragDrop += new System.Windows.Forms.DragEventHandler(this.frmimagen_DragDrop);
@@ -279,7 +280,7 @@
             // separadorOre1
             // 
             this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 180);
+            this.separadorOre1.Location = new System.Drawing.Point(0, 201);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
@@ -356,7 +357,7 @@
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtgconten.EnableHeadersVisualStyles = false;
             this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.Dtgconten.Location = new System.Drawing.Point(12, 205);
+            this.Dtgconten.Location = new System.Drawing.Point(15, 230);
             this.Dtgconten.Name = "Dtgconten";
             this.Dtgconten.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -365,7 +366,7 @@
             this.Dtgconten.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Dtgconten.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtgconten.ShowRowErrors = false;
-            this.Dtgconten.Size = new System.Drawing.Size(1057, 226);
+            this.Dtgconten.Size = new System.Drawing.Size(1057, 200);
             this.Dtgconten.TabIndex = 231;
             this.Dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.Dtgconten.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.Dtgconten_CellFormatting);
@@ -796,7 +797,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(12, 189);
+            this.label11.Location = new System.Drawing.Point(12, 214);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(115, 13);
             this.label11.TabIndex = 215;
@@ -1065,7 +1066,7 @@
             // btnAdd
             // 
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(672, 179);
+            this.btnAdd.Location = new System.Drawing.Point(672, 204);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(95, 23);
             this.btnAdd.TabIndex = 24;
@@ -1977,7 +1978,7 @@
             this.cbotipoidcompensa.Name = "cbotipoidcompensa";
             this.cbotipoidcompensa.Size = new System.Drawing.Size(97, 21);
             this.cbotipoidcompensa.TabIndex = 3;
-            this.cbotipoidcompensa.SelectedIndexChanged += new System.EventHandler(this.cbocompensa_SelectedIndexChanged);
+            this.cbotipoidcompensa.SelectedIndexChanged += new System.EventHandler(this.cbotipoidcompensa_SelectedIndexChanged);
             // 
             // txtnumdocompensa
             // 
@@ -2000,7 +2001,7 @@
             this.txtnumdocompensa.TextoDefecto = "0000000";
             this.txtnumdocompensa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtnumdocompensa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloNumerosConCero;
-            this.txtnumdocompensa.TextChanged += new System.EventHandler(this.txtruc_TextChanged);
+            this.txtnumdocompensa.TextChanged += new System.EventHandler(this.txtnumdocompensa_TextChanged);
             // 
             // lblcompensa
             // 
@@ -2021,13 +2022,34 @@
             this.btnbususuacompesa.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnbususuacompesa.ForeColor = System.Drawing.Color.White;
             this.btnbususuacompesa.Image = ((System.Drawing.Image)(resources.GetObject("btnbususuacompesa.Image")));
-            this.btnbususuacompesa.Location = new System.Drawing.Point(469, 181);
+            this.btnbususuacompesa.Location = new System.Drawing.Point(469, 180);
             this.btnbususuacompesa.Name = "btnbususuacompesa";
             this.btnbususuacompesa.Size = new System.Drawing.Size(21, 21);
             this.btnbususuacompesa.TabIndex = 5;
             this.btnbususuacompesa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnbususuacompesa.UseVisualStyleBackColor = false;
             this.btnbususuacompesa.Click += new System.EventHandler(this.btnbususuacompesa_Click);
+            // 
+            // txtNombreUsuarioCompensa
+            // 
+            this.txtNombreUsuarioCompensa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtNombreUsuarioCompensa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombreUsuarioCompensa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtNombreUsuarioCompensa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtNombreUsuarioCompensa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreUsuarioCompensa.ForeColor = System.Drawing.Color.Black;
+            this.txtNombreUsuarioCompensa.Format = null;
+            this.txtNombreUsuarioCompensa.Location = new System.Drawing.Point(493, 179);
+            this.txtNombreUsuarioCompensa.MaxLength = 300;
+            this.txtNombreUsuarioCompensa.Name = "txtNombreUsuarioCompensa";
+            this.txtNombreUsuarioCompensa.NextControlOnEnter = null;
+            this.txtNombreUsuarioCompensa.ReadOnly = true;
+            this.txtNombreUsuarioCompensa.Size = new System.Drawing.Size(274, 21);
+            this.txtNombreUsuarioCompensa.TabIndex = 22;
+            this.txtNombreUsuarioCompensa.Text = "Nombre Del Empleado";
+            this.txtNombreUsuarioCompensa.TextoDefecto = "Nombre Del Empleado";
+            this.txtNombreUsuarioCompensa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtNombreUsuarioCompensa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             // 
             // FrmFacturaManual
             // 
@@ -2058,6 +2080,7 @@
             this.Controls.Add(this.cboproyecto);
             this.Controls.Add(this.btnCargarFoto);
             this.Controls.Add(this.frmimagen);
+            this.Controls.Add(this.txtNombreUsuarioCompensa);
             this.Controls.Add(this.txtglosa);
             this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.btnbususuacompesa);
@@ -2261,5 +2284,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn yFechaModifica;
         private System.Windows.Forms.DataGridViewTextBoxColumn yNroComprobanteRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn xusuarioCompensa;
+        private HpResergerUserControls.TextBoxPer txtNombreUsuarioCompensa;
     }
 }

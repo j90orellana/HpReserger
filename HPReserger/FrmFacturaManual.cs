@@ -1806,11 +1806,11 @@ namespace HPReserger
 
         private void cbocompensa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbotipoidcompensa.Visible = txtnumdocompensa.Visible = lblcompensa.Visible = btnbususuacompesa.Visible = false;
+            txtNombreUsuarioCompensa.Visible = cbotipoidcompensa.Visible = txtnumdocompensa.Visible = lblcompensa.Visible = btnbususuacompesa.Visible = false;
             if (cbocompensa.SelectedValue != null)
                 if ((int)cbocompensa.SelectedValue == 2)
                 {
-                    cbotipoidcompensa.Visible = txtnumdocompensa.Visible = lblcompensa.Visible = btnbususuacompesa.Visible = true;
+                    txtNombreUsuarioCompensa.Visible = cbotipoidcompensa.Visible = txtnumdocompensa.Visible = lblcompensa.Visible = btnbususuacompesa.Visible = true;
                     //frmListarEmpleados frmlistar = new frmListarEmpleados();
                     //frmlistar.Text = "Seleccione Empleado para el Reembolso";
                     //frmlistar.ShowDialog();
@@ -1829,6 +1829,26 @@ namespace HPReserger
                 cbotipoidcompensa.SelectedValue = frmlisempleado.TipoDocumento;
                 txtnumdocompensa.Text = frmlisempleado.NumeroDocumento;
             }
+        }
+        public void BuscarEmpleado()
+        {
+            txtNombreUsuarioCompensa.Text = "";
+            if (cbotipoidcompensa.SelectedValue != null)
+            {
+                DataRow Filita = CapaLogica.DatosEmpleado((int)cbotipoidcompensa.SelectedValue, txtnumdocompensa.Text);
+                if (Filita != null)
+                {
+                    txtNombreUsuarioCompensa.Text = Configuraciones.MayusculaCadaPalabra($"{Filita["NOMBRES"]} {Filita["APELLIDOPATERNO"]} {Filita["APELLIDOMATERNO"]} ");
+                }
+            }
+        }
+        private void txtnumdocompensa_TextChanged(object sender, EventArgs e)
+        {
+            BuscarEmpleado();
+        }
+        private void cbotipoidcompensa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BuscarEmpleado();
         }
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {

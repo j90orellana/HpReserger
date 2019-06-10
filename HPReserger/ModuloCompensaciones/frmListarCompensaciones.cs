@@ -74,6 +74,23 @@ namespace HPReserger.ModuloCompensaciones
             if (cbocompensa.SelectedValue == null) return;
             dtgconten.DataSource = CapaLogica.ListarCompensaciones(IdEmpresa, (int)cbocompensa.SelectedValue, (int)cbotipoid.SelectedValue, txtbuscarnombre.TextValido());
             lbltotalregistros.Text = $"Total de Registros {dtgconten.RowCount}";
+            decimal Soles = 0, Dolares = 0;
+            decimal RegSoles = 0, RegDolares = 0;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                if ((int)item.Cells[xEstado.Name].Value == 2)
+                {
+                    Soles += (decimal)item.Cells[xMontoMN.Name].Value;
+                    Dolares += (decimal)item.Cells[xMontoME.Name].Value;
+                }
+                if ((int)item.Cells[xEstado.Name].Value == 1)
+                {
+                    RegSoles += (decimal)item.Cells[xMontoMN.Name].Value;
+                    RegDolares += (decimal)item.Cells[xMontoME.Name].Value;
+                }
+            }
+            txtMontoMN.Text = Soles.ToString("n2"); txtMontoME.Text = Dolares.ToString("n2");
+            txtRegularMN.Text = RegSoles.ToString("n2"); txtRegularME.Text = RegDolares.ToString("n2");
         }
         private void txtbuscarnombre_TextChanged(object sender, EventArgs e)
         {
