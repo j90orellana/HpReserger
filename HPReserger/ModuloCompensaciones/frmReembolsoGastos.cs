@@ -30,7 +30,7 @@ namespace HPReserger.ModuloCompensaciones
             }
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
-        public void CargarEmpresa() { CapaLogica.TablaEmpresas(cboempresa); }
+        public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         int Estado; DataTable Table;
         private void frmReembolsoGastos_Load(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace HPReserger.ModuloCompensaciones
             CargarEmpresa();
             CargarMoneda();
             btnaceptar.Enabled = false;
+            cbopago.SelectedIndex = 0;
         }
         public DataTable CargarCuentasxPagar()
         {
@@ -200,20 +201,22 @@ namespace HPReserger.ModuloCompensaciones
                             sumatoriaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value);
                             //Extranjero
                             sumatoriaME += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
-                            diferenciaME += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value) -
-                                Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
+                            if ((int)cbomoneda.SelectedValue != 1)
+                                diferenciaME += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value) -
+                                    Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
 
                         }
                         else if ((int)item.Cells[xidMoneda.Name].Value == 2)
                         {
                             //Nacional
                             sumatoriaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
-                            diferenciaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value) -
+                            sumatoriaME += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value);
+                            if ((int)cbomoneda.SelectedValue != 2)
+                                diferenciaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value) -
                                 Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
                             //diferenciaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value) -
                             //    Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
                             //Extranjero
-                            sumatoriaME += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value);
 
                         }
                     }
@@ -326,6 +329,11 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Seleccione el Banco");
                 cbobanco.Focus(); return;
             }
+            if (cbopago.SelectedIndex < 0)
+            {
+                msg("Seleccione el Pago");
+                cbopago.Focus(); return;
+            }
             if (cbocuentabanco.SelectedValue == null)
             {
                 msg("Seleccione la cuenta del Abono");
@@ -371,38 +379,43 @@ namespace HPReserger.ModuloCompensaciones
                     {
                         string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                         DateTime fecha = dtpFechaCompensa.Value;
-                        decimal montoSoles = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
-                        decimal montodolares = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
+                        //cabeceras
+                        decimal MontoSolesOri = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
+                        decimal MontoDolaresOri = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
+                        //Detalle
+                        decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
+                        decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
                         //Cabecera Facturas
                         CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaContable.Value, item.Cells[xcuenta.Name].Value.ToString(),
-                           moneda == 1 ? montoSoles : montodolares, 0, decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, txtglosa.TextValido(), dtpFechaCompensa.Value, -8);
+                           moneda == 1 ? MontoSolesOri : MontoDolaresOri, 0, decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, txtglosa.TextValido(), dtpFechaCompensa.Value, -8);
                         //Detalle del asiento
                         //
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, item.Cells[xcuenta.Name].Value.ToString(), proyecto, 5, item.Cells[xProveedor.Name].Value.ToString()
-                            , item.Cells[xrazon_social.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha, montoSoles,
-                            montodolares, (decimal)item.Cells[xTcReg.Name].Value, moneda, "", "", item.Cells[xGlosa.Name].Value.ToString(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario, "");
+                            , item.Cells[xrazon_social.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
+                            moneda == 1 ? MontoSolesOri : MontoSolesReg, moneda == 2 ? MontoDolaresOri : MontoDolaresReg, moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
+                            (int)item.Cells[xidMoneda.Name].Value, "", "", item.Cells[xGlosa.Name].Value.ToString(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario, "");
                         //Actualizar su Estado y Fecha de Compensacion
                         CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, 3, dtpFechaCompensa.Value, 3, "");
                     }
                 }
                 //Diferencial
-                if (decimal.Parse(txttotaldifMN.Text) > 0)
+                if (Math.Abs(decimal.Parse(txttotaldifMN.Text) + decimal.Parse(txttotaldifME.Text)) > 0)
                 {
                     //cabecera
                     string CtaPerdida = CapaLogica.BuscarCuentas("perdida%cambio", 5).Rows[1]["idcuenta"].ToString();
                     string CtaGanacia = CapaLogica.BuscarCuentas("ganancia%cambio", 5).Rows[0]["idcuenta"].ToString();
                     DateTime fecha = dtpFechaCompensa.Value;
-                    decimal diferencial = moneda == 1 ? decimal.Parse(txttotaldifMN.Text) : decimal.Parse(txttotaldifME.Text);
+                    decimal diferencial = (moneda == 1 ? decimal.Parse(txttotaldifMN.Text) : decimal.Parse(txttotaldifME.Text));
                     decimal Tc = decimal.Parse(txttipocambio.Text);
                     //Cabecera Diferencial
-                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaContable.Value, decimal.Parse(txttotaldifMN.Text) > 0 ? CtaPerdida : CtaGanacia,
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, dtpFechaContable.Value, (moneda == 1 ? decimal.Parse(txttotaldifME.Text) : decimal.Parse(txttotaldifMN.Text)) > 0 ? CtaPerdida : CtaGanacia,
                         Math.Abs((moneda == 1 ? decimal.Parse(txttotaldifMN.Text) > 0 ? decimal.Parse(txttotaldifMN.Text) : 0 : decimal.Parse(txttotaldifME.Text) > 0 ? decimal.Parse(txttotaldifME.Text) : 0)),
                         Math.Abs((moneda == 1 ? decimal.Parse(txttotaldifMN.Text) < 0 ? decimal.Parse(txttotaldifMN.Text) : 0 : decimal.Parse(txttotaldifME.Text) < 0 ? decimal.Parse(txttotaldifME.Text) : 0)),
                         decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, txtglosa.TextValido(), dtpFechaCompensa.Value, -8);
                     //Detalle Diferencial
-                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, decimal.Parse(txttotaldifMN.Text) > 0 ? CtaPerdida : CtaGanacia, proyecto,
-                        0, "0", "", 0, "0", "0", 0, fecha, fecha, fecha, (diferencial < 0 ? -1 : 1) * decimal.Parse(txttotaldifMN.Text),
-                        (diferencial < 0 ? -1 : 1) * decimal.Parse(txttotaldifME.Text), Tc, moneda, "", "", txtglosa.TextValido(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario, "");
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, (moneda == 1 ? decimal.Parse(txttotaldifME.Text) : decimal.Parse(txttotaldifMN.Text)) > 0 ? CtaPerdida : CtaGanacia, proyecto,
+                        0, "0", "", 0, "0", "0", 0, fecha, fecha, fecha, ((diferencial < 0 ? -1 : 1) * decimal.Parse(txttotaldifMN.Text)),
+                    ((diferencial < 0 ? -1 : 1) * decimal.Parse(txttotaldifME.Text)), Tc, moneda, "", "", txtglosa.TextValido(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario, "");
                 }
                 //Otras Cuentas x Pagar Terceros
                 //cabecera otras cuentas
@@ -416,12 +429,24 @@ namespace HPReserger.ModuloCompensaciones
                         //Detalle del asiento
                         string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                         DateTime fecha = dtpFechaCompensa.Value;
-                        decimal montoSoles = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
-                        decimal montodolares = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
-                        ///
+                        //Tipo de Cambio Registro
+                        decimal MontoSolesOri = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
+                        decimal MontoDolaresOri = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
+                        //Tipo de Cambio Original
+                        decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
+                        decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
+                        //
+
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, cbocuentaxpagar.SelectedValue.ToString(), proyecto, 5, item.Cells[xProveedor.Name].Value.ToString()
                             , item.Cells[xrazon_social.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha,
-                            fecha, montoSoles, montodolares, (decimal)item.Cells[xTcReg.Name].Value, moneda, "", "", cboempleado.SelectedValue.ToString() + " " + item.Cells[xGlosa.Name].Value.ToString(),
+                            fecha,
+                          //moneda == 1 ? MontoSolesOri   :
+                          moneda == 1 ? MontoSolesReg : moneda == (int)item.Cells[xidMoneda.Name].Value ? MontoSolesReg : MontoSolesOri,
+                           //moneda == 2 ? MontoDolaresOri : 
+                           moneda == 2 ? MontoDolaresReg : moneda == (int)item.Cells[xidMoneda.Name].Value ? MontoDolaresReg : MontoDolaresOri,
+
+                            moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
+                            (int)item.Cells[xidMoneda.Name].Value, "", "", cboempleado.SelectedValue.ToString() + " " + item.Cells[xGlosa.Name].Value.ToString(),
                             dtpFechaCompensa.Value, frmLogin.CodigoUsuario, "");
                     }
                 }
@@ -466,8 +491,9 @@ namespace HPReserger.ModuloCompensaciones
                   , 0, fechac, fechac, fechac, decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalME.Text)
                   , decimal.Parse(txttipocambio.Text), moneda, nroKuenta, "", txtglosa.TextValido(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario, Cuo);
                 //Inserto compensaciones!
-                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 2, int.Parse(UserCompensa[0]), UserCompensa[1], decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalME.Text), CuoReg, CuoNext,
-                    $"{dtpFechaCompensa.Value.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}", dtpFechaCompensa.Value, 1, cbocuentaxpagar.SelectedValue.ToString());
+                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 2, int.Parse(UserCompensa[0]), UserCompensa[1], decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalME.Text), CuoReg,
+                    cbopago.SelectedIndex == 0 ? 3 : 7, nroKuenta, txtnrocheque.TextValido(), $"{dtpFechaCompensa.Value.ToString("d")} {Configuraciones.MayusculaCadaPalabra(cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2))}",
+                    dtpFechaCompensa.Value, 1, cbocuentaxpagar.SelectedValue.ToString(), CuoNext);
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(CuoNext, proyecto, dtpFechaContable.Value, 2);
                 //Fin Cuadre
@@ -506,6 +532,15 @@ namespace HPReserger.ModuloCompensaciones
         private void cbocuentaxpagar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboempresa_Click(object sender, EventArgs e)
+        {
+            string cadena = cboempresa.Text;
+            DataTable Table = CapaLogica.Empresa();
+            if (cboempresa.Items.Count != Table.Rows.Count)
+                cboempresa.DataSource = Table;
+            cboempresa.Text = cadena;
         }
     }
 }

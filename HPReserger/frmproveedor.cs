@@ -631,7 +631,6 @@ namespace HPReserger
             {
                 if (cbodocumento.DataSource != null)
                     txtnumeroidentidad.MaxLength = (int)((DataTable)cbodocumento.DataSource).Rows[x]["Leng"];
-
             }
             catch (Exception) { }
         }

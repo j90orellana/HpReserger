@@ -31,10 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarCompensaciones));
             this.cboempresa = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -91,6 +92,7 @@
             this.cboempresa.Size = new System.Drawing.Size(344, 21);
             this.cboempresa.TabIndex = 225;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
+            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
             // 
             // label18
             // 
@@ -145,14 +147,14 @@
             this.xNameEstado,
             this.xEstado,
             this.xcuentacontable});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(12, 103);
@@ -260,6 +262,8 @@
             // 
             this.xCuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xCuo.DataPropertyName = "Cuo";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xCuo.DefaultCellStyle = dataGridViewCellStyle5;
             this.xCuo.HeaderText = "Cuo Reg.";
             this.xCuo.Name = "xCuo";
             this.xCuo.ReadOnly = true;
@@ -278,8 +282,8 @@
             // 
             this.xFechaCompensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xFechaCompensa.DataPropertyName = "FechaCompensa";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xFechaCompensa.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xFechaCompensa.DefaultCellStyle = dataGridViewCellStyle6;
             this.xFechaCompensa.HeaderText = "F.Cmpsa.";
             this.xFechaCompensa.Name = "xFechaCompensa";
             this.xFechaCompensa.ReadOnly = true;
@@ -442,7 +446,7 @@
             // txtMontoMN
             // 
             this.txtMontoMN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMontoMN.BackColor = System.Drawing.Color.White;
+            this.txtMontoMN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtMontoMN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMontoMN.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtMontoMN.ColorFondoMousePresionado = System.Drawing.Color.Empty;
@@ -453,6 +457,7 @@
             this.txtMontoMN.MaxLength = 20;
             this.txtMontoMN.Name = "txtMontoMN";
             this.txtMontoMN.NextControlOnEnter = null;
+            this.txtMontoMN.ReadOnly = true;
             this.txtMontoMN.Size = new System.Drawing.Size(85, 21);
             this.txtMontoMN.TabIndex = 395;
             this.txtMontoMN.Text = "0.00";
@@ -488,7 +493,7 @@
             // txtMontoME
             // 
             this.txtMontoME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMontoME.BackColor = System.Drawing.Color.White;
+            this.txtMontoME.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtMontoME.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMontoME.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtMontoME.ColorFondoMousePresionado = System.Drawing.Color.Empty;
@@ -499,6 +504,7 @@
             this.txtMontoME.MaxLength = 20;
             this.txtMontoME.Name = "txtMontoME";
             this.txtMontoME.NextControlOnEnter = null;
+            this.txtMontoME.ReadOnly = true;
             this.txtMontoME.Size = new System.Drawing.Size(85, 21);
             this.txtMontoME.TabIndex = 395;
             this.txtMontoME.Text = "0.00";
@@ -548,7 +554,7 @@
             // txtRegularMN
             // 
             this.txtRegularMN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRegularMN.BackColor = System.Drawing.Color.White;
+            this.txtRegularMN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtRegularMN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRegularMN.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtRegularMN.ColorFondoMousePresionado = System.Drawing.Color.Empty;
@@ -559,6 +565,7 @@
             this.txtRegularMN.MaxLength = 20;
             this.txtRegularMN.Name = "txtRegularMN";
             this.txtRegularMN.NextControlOnEnter = null;
+            this.txtRegularMN.ReadOnly = true;
             this.txtRegularMN.Size = new System.Drawing.Size(85, 21);
             this.txtRegularMN.TabIndex = 395;
             this.txtRegularMN.Text = "0.00";
@@ -582,7 +589,7 @@
             // txtRegularME
             // 
             this.txtRegularME.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRegularME.BackColor = System.Drawing.Color.White;
+            this.txtRegularME.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.txtRegularME.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRegularME.ColorFondoMouseEncima = System.Drawing.Color.Empty;
             this.txtRegularME.ColorFondoMousePresionado = System.Drawing.Color.Empty;
@@ -593,6 +600,7 @@
             this.txtRegularME.MaxLength = 20;
             this.txtRegularME.Name = "txtRegularME";
             this.txtRegularME.NextControlOnEnter = null;
+            this.txtRegularME.ReadOnly = true;
             this.txtRegularME.Size = new System.Drawing.Size(85, 21);
             this.txtRegularME.TabIndex = 395;
             this.txtRegularME.Text = "0.00";
@@ -655,6 +663,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbocompensa;
         private System.Windows.Forms.Label label12;
+        private HpResergerUserControls.TextBoxPer txtMontoMN;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label3;
+        private HpResergerUserControls.TextBoxPer txtMontoME;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private HpResergerUserControls.TextBoxPer txtRegularMN;
+        private System.Windows.Forms.Label label7;
+        private HpResergerUserControls.TextBoxPer txtRegularME;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFkEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNameTipo;
@@ -671,15 +689,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xNameEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuentacontable;
-        private HpResergerUserControls.TextBoxPer txtMontoMN;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label3;
-        private HpResergerUserControls.TextBoxPer txtMontoME;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private HpResergerUserControls.TextBoxPer txtRegularMN;
-        private System.Windows.Forms.Label label7;
-        private HpResergerUserControls.TextBoxPer txtRegularME;
     }
 }

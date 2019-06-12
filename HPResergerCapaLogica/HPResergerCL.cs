@@ -362,11 +362,11 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarProveedores(busca, opcion);
         }
-        public void TablaProveedores(ComboBox combo)
+        public void TablaProveedores(ComboBox combo, int empresa)
         {
             combo.DisplayMember = "proveedor";
             combo.ValueMember = "TipoidNumDoc";
-            combo.DataSource = ListarProveedoresCompensaciones();
+            combo.DataSource = ListarProveedoresCompensaciones(empresa);
         }
         public DataTable ListarCuentasContables(string busca, int opcion)
         {
@@ -2448,6 +2448,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarEmpleadosCompensaciones(empresa);
         }
+        public DataTable ListarEmpleadosCompensacionesTodos()
+        {
+            return cdOrdenPedido.ListarEmpleadosCompensacionesTodos();
+        }
         public DataTable ActualizaEstadoFacturas(int id, int estado, DateTime Fechacompensa, int tipopago, string nropago)
         {
             return cdOrdenPedido.ActualizaEstadoFacturas(id, estado, Fechacompensa, tipopago, nropago);
@@ -2465,25 +2469,29 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarCompensacionesxPagar(empresa, tipo, tipoid, numdoc, Estado);
         }
-        public DataTable InsertarCompensaciones(int @empresa, int @tipo, int @tipoid, string @numdoc, decimal @montomn, decimal @montome, string @cuo, string cuopago, string @numpago, DateTime @fechacompensa, int @estado, string cuentacontable)
+        public DataTable InsertarCompensaciones(int @empresa, int @tipo, int @tipoid, string @numdoc, decimal @montomn, decimal @montome, string @cuo, int tipopago, string cuentabanco, string nrooperacion, string @numpago, DateTime @fechacompensa, int @estado, string cuentacontable, string cuopago)
         {
-            return cdOrdenPedido.InsertarCompensaciones(@empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, @numpago, @fechacompensa, @estado, cuentacontable, cuopago);
+            return cdOrdenPedido.InsertarCompensaciones(@empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, tipopago, cuentabanco, nrooperacion, @numpago, @fechacompensa, @estado, cuentacontable, cuopago);
         }
-        public DataTable InsertarCompensacionesDetalle(int pkid, int @empresa, int @tipo, decimal @montomn, decimal @montome, string @numpago, DateTime @fechacompensa, int @estado, string cuopago)
+        public DataTable InsertarCompensacionesDetalle(int pkid, int @empresa, int @tipo, decimal @montomn, decimal @montome, int tipopago, string cuentabanco, string nrooperacion, string @numpago, DateTime @fechacompensa, int @estado, string cuopago)
         {
-            return cdOrdenPedido.InsertarCompensacionesDetalle(pkid, @empresa, @tipo, @montomn, @montome, @numpago, @fechacompensa, @estado, cuopago);
+            return cdOrdenPedido.InsertarCompensacionesDetalle(pkid, @empresa, @tipo, @montomn, @montome, tipopago, cuentabanco, nrooperacion, @numpago, @fechacompensa, @estado, cuopago);
         }
-        public DataTable ActualizarCompensaciones(int @empresa, int @tipo, int id, int @estado, string cuopago)
+        public DataTable ActualizarCompensaciones(int @empresa, int @tipo, int id, int @estado, int tipopago, string cuentabanco, string nrooperacion, string cuopago)
         {
-            return cdOrdenPedido.ActualizarCompensaciones(@empresa, @tipo, id, @estado, cuopago);
+            return cdOrdenPedido.ActualizarCompensaciones(@empresa, @tipo, id, @estado, tipopago, cuentabanco, nrooperacion, cuopago);
         }
-        public DataTable ListarProveedoresCompensaciones()
+        public DataTable ListarProveedoresCompensaciones(int empresa)
         {
-            return cdOrdenPedido.ListarProveedoresCompensaciones();
+            return cdOrdenPedido.ListarProveedoresCompensaciones(empresa);
         }
         public DataTable PlanContable()
         {
             return cdOrdenPedido.PlanContable();
+        }
+        public DataTable PlanContable2Col()
+        {
+            return cdOrdenPedido.PlanContable2Col();
         }
     }
 }

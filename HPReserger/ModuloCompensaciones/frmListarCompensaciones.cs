@@ -104,5 +104,13 @@ namespace HPReserger.ModuloCompensaciones
         {
             SacarDatos();
         }
+        private void cboempresa_Click(object sender, EventArgs e)
+        {
+            string cadena = cboempresa.Text;
+            DataTable Table = CapaLogica.Empresa();
+            if (cboempresa.Items.Count != Table.Rows.Count)
+                cboempresa.DataSource = Table;
+            cboempresa.Text = cadena;
+        }
     }
 }

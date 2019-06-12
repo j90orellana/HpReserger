@@ -618,9 +618,30 @@ namespace HPReserger
         }
         frmProcesando frmproce;
         DataTable TableCuentas;
+        string NombreArchivo = "";
         private void btnExportarPlan_Click(object sender, EventArgs e)
         {
             TableCuentas = CapaLogica.PlanContable();
+            NombreArchivo = "";
+            if (TableCuentas.Rows.Count > 0)
+            {
+                Cursor = Cursors.WaitCursor;
+                frmproce = new HPReserger.frmProcesando();
+                frmproce.Show();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                msg("No hay Datos que Exportar");
+            }
+        }
+        private void btnExportarPLan2Col_Click(object sender, EventArgs e)
+        {
+            TableCuentas = CapaLogica.PlanContable2Col();
+            NombreArchivo = " a 2 Columnas";
             if (TableCuentas.Rows.Count > 0)
             {
                 Cursor = Cursors.WaitCursor;
@@ -656,7 +677,7 @@ namespace HPReserger
                 HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                 HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
                 int PosInicialGrilla = 3;
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableCuentas, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, "");
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableCuentas, CeldaCabecera, CeldaDefault, NombreArchivo, _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, "");
             }
             else msg("No hay datos que Exportar");
         }
@@ -667,6 +688,7 @@ namespace HPReserger
             frmproce.Close();
             dtgconten.ResumeLayout();
         }
+
     }
 
 }

@@ -25,6 +25,7 @@ namespace HPReserger.ModuloCompensaciones
             CargarMoneda();
             CargarEmpresa();
             CargarProveedores();
+            cbopago.SelectedIndex = 0;
         }
         int _idempresa;
         private string _NameEmpresa;
@@ -41,7 +42,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         public void CargarEmpresa() { CapaLogica.TablaEmpresas(cboempresa); }
-        public void CargarProveedores() { CapaLogica.TablaProveedores(cboproveedor); }
+        public void CargarProveedores() { CapaLogica.TablaProveedores(cboproveedor, 0); }
 
         private void cboempresa_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -176,6 +177,16 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Seleccione el Banco");
                 cbobanco.Focus(); return;
             }
+            if (cbopago.SelectedIndex < 0)
+            {
+                msg("Seleccione el Pago");
+                cbopago.Focus(); return;
+            }
+            if (!txtnrocheque.EstaLLeno())
+            {
+                msg("Ingrese Nro Operación-Cheque");
+                txtnrocheque.Focus(); return;
+            }
             if (cbocuentabanco.SelectedValue == null)
             {
                 msg("Seleccione la cuenta del Abono");
@@ -191,11 +202,7 @@ namespace HPReserger.ModuloCompensaciones
                 msg("El monto del Tipo de Cambio no debe ser Cero");
                 txttipocambio.Focus(); return;
             }
-            if (!txtglosa.EstaLLeno())
-            {
-                msg("Ingrese Glosa");
-                txtglosa.Focus(); return;
-            }
+
             if (msgOk("¿Seguro Desea Hacer el Anticipo?") == DialogResult.OK)
             {
                 //Asientos
@@ -255,7 +262,8 @@ namespace HPReserger.ModuloCompensaciones
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoIdProveedor, RucProveedor
                     , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
                 //Inserto compensaciones!
-                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 4, TipoIdProveedor, RucProveedor, MontoSoles, MontoDolares, cuo, "", $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d MMM yyyy")}", dtpFechaCompensa.Value, 2, CuentaAnticipo);
+                CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 4, TipoIdProveedor, RucProveedor, MontoSoles, MontoDolares, cuo, cbopago.SelectedIndex == 0 ? 3 : 7, nroKuenta, txtnrocheque.TextValido(),
+                    $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d MMM yyyy")}", dtpFechaCompensa.Value, 2, CuentaAnticipo, "");
                 //
                 msg($"Se Generó el Anticipo con cuo {cuo}");
                 cboempleado_SelectedIndexChanged(sender, e);
@@ -382,6 +390,15 @@ namespace HPReserger.ModuloCompensaciones
             provee.ShowDialog();
             if (provee.llamada != 100)
                 cboproveedor.SelectedValue = provee.tipoid + "-" + provee.rucito;
+        }
+
+        private void cboempresa_Click(object sender, EventArgs e)
+        {
+            string cadena = cboempresa.Text;
+            DataTable Table = CapaLogica.Empresa();
+            if (cboempresa.Items.Count != Table.Rows.Count)
+                cboempresa.DataSource = Table;
+            cboempresa.Text = cadena;
         }
     }
 }

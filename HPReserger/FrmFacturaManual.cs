@@ -1828,6 +1828,7 @@ namespace HPReserger
             {
                 cbotipoidcompensa.SelectedValue = frmlisempleado.TipoDocumento;
                 txtnumdocompensa.Text = frmlisempleado.NumeroDocumento;
+                BuscarEmpleado();
             }
         }
         public void BuscarEmpleado()

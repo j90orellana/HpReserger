@@ -382,8 +382,11 @@ namespace HPReserger
         private void cboempresa_Click(object sender, EventArgs e)
         {
             string cadena = cboempresa.Text;
-            CapaLogica.TablaEmpresa(cboempresa);
-            cboempresa.Text = cadena;
+            if (cboempresa.Items.Count != CapaLogica.TablaEmpresa().Rows.Count)
+            {
+                CapaLogica.TablaEmpresa(cboempresa);
+                cboempresa.Text = cadena;
+            }
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {

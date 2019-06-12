@@ -49,7 +49,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
-        public void CargarProveedores() { CapaLogica.TablaProveedores(cboproveedor); }
+        public void CargarProveedores() { CapaLogica.TablaProveedores(cboproveedor, fkEmpresa); }
         private void frmListarCompensacionesReembolso_Load(object sender, EventArgs e)
         {
 
@@ -68,7 +68,7 @@ namespace HPReserger.ModuloCompensaciones
                     cboproyecto.DisplayMember = "proyecto";
                     cboproyecto.ValueMember = "id_proyecto";
                     //busqueda de Asientos
-                    _idempresa = (int)cboempresa.SelectedValue;
+                    fkEmpresa = _idempresa = (int)cboempresa.SelectedValue;
                     //if (estado == 0)
                     //{
                     //    txtcodigo.Text = "0";
@@ -81,22 +81,26 @@ namespace HPReserger.ModuloCompensaciones
                     //    txtcodigo.Text = (codigo).ToString();
                     //}    
                     cbobanco_SelectedIndexChanged(sender, e);
-                    cboproveedor_SelectedIndexChanged(sender, e);
+                    CargarProveedores();
+                    //cboproveedor_SelectedIndexChanged(sender, e);
                 }
             }
         }
+        int fkEmpresa = 99;
         public DataTable TablaProveedores()
         {
+            fkEmpresa = 99;
             //combo.DisplayMember = "proveedor";
             //combo.ValueMember = "TipoidNumDoc";
-            return CapaLogica.ListarProveedoresCompensaciones();
+            if (cboempresa.SelectedValue != null) fkEmpresa = (int)cboempresa.SelectedValue;
+            return CapaLogica.ListarProveedoresCompensaciones(fkEmpresa);
         }
-        public DataTable TablaEmpresa()
-        {
-            //combo.DisplayMember = "proveedor";
-            //combo.ValueMember = "TipoidNumDoc";
-            return CapaLogica.ListarProveedoresCompensaciones();
-        }
+        //public DataTable TablaEmpresa()
+        //{
+        //    //combo.DisplayMember = "proveedor";
+        //    //combo.ValueMember = "TipoidNumDoc";
+        //    //return CapaLogica.ListarProveedoresCompensaciones();
+        //}
         private void cboempresa_Click(object sender, EventArgs e)
         {
             string cadena = cboempresa.Text;
@@ -112,17 +116,20 @@ namespace HPReserger.ModuloCompensaciones
             if (cboproveedor.Items.Count != Table.Rows.Count)
                 cboproveedor.DataSource = Table;
             cboproveedor.Text = cadena;
-            string[] valor = cboproveedor.SelectedValue.ToString().Split('-');
-            DataTable Table1 = CapaLogica.ListarCompensacionesxPagar(_idempresa, 4, int.Parse(valor[0]), valor[1], 2);
-            if (DtgcontenAnticipos.RowCount != Table1.Rows.Count)
+            if (cboproveedor.SelectedValue != null)
             {
-                cboproveedor_SelectedIndexChanged(sender, e); return;
-            }
-            Table1 = CapaLogica.ListarFacturasAnticipos(valor[1], (int)cboempresa.SelectedValue);
-            if (DtgcontenFacturas.RowCount != Table1.Rows.Count)
-            {
-                cboproveedor_SelectedIndexChanged(sender, e);
-                return;
+                string[] valor = cboproveedor.SelectedValue.ToString().Split('-');
+                DataTable Table1 = CapaLogica.ListarCompensacionesxPagar(_idempresa, 4, int.Parse(valor[0]), valor[1], 2);
+                if (DtgcontenAnticipos.RowCount != Table1.Rows.Count)
+                {
+                    cboproveedor_SelectedIndexChanged(sender, e); return;
+                }
+                Table1 = CapaLogica.ListarFacturasAnticipos(valor[1], (int)cboempresa.SelectedValue);
+                if (DtgcontenFacturas.RowCount != Table1.Rows.Count)
+                {
+                    cboproveedor_SelectedIndexChanged(sender, e);
+                    return;
+                }
             }
         }
         public DataTable CargarCuentasxPagar()
@@ -636,19 +643,22 @@ namespace HPReserger.ModuloCompensaciones
                                 //CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1, Cuo);
                                 if (AcumuladoFacturas == 0)
                                 {
-                                    CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1, Cuo);
+                                    CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
+                                         TipoPago, HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(), Cuo);
                                     break;
                                 }
                                 else if (AcumuladoFacturas < 0)
                                 {
                                     //Parcial
                                     CapaLogica.InsertarCompensacionesDetalle((int)item.Cells[xpkid.Name].Value, (int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value,
-                                        ParcialSoles, ParcialDolares, NroPago, FechaCompensa, 1, Cuo);
+                                        ParcialSoles, ParcialDolares, TipoPago, HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(),
+                                        $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d MMM yyyy")}", FechaCompensa, 1, Cuo);
                                     break;
                                 }
                                 else if (AcumuladoFacturas > 0)
                                 {
-                                    CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1, Cuo);
+                                    CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
+                                         TipoPago, HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(), Cuo);
                                     //Continua..
                                 }
                             }
@@ -677,7 +687,8 @@ namespace HPReserger.ModuloCompensaciones
                                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, item.Cells[xcuentacontable.Name].Value.ToString(), proyecto, TipoIdProveedor, RucProveedor
                                     , NameProveedor, 0, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, TC, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
                                 ///Actualizo el Estado del Anticipo(Compensacion)
-                                CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1, Cuo);
+                                CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
+                                     TipoPago, HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(), Cuo);
                             }
                         }
                     }
