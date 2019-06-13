@@ -21,6 +21,7 @@ namespace HPReserger.ModuloCompensaciones
         private void frmAnticipoProveedores_Load(object sender, EventArgs e)
         {
             txtglosa.CargarTextoporDefecto(); txtImporteTotal.CargarTextoporDefecto();
+            txtnrocheque.CargarTextoporDefecto();
             dtpFechaContable.Value = dtpFechaCompensa.Value = DateTime.Now;
             CargarMoneda();
             CargarEmpresa();
@@ -263,8 +264,11 @@ namespace HPReserger.ModuloCompensaciones
                     , NameProveedor, 0, "0", "0", 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
                 //Inserto compensaciones!
                 CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 4, TipoIdProveedor, RucProveedor, MontoSoles, MontoDolares, cuo, cbopago.SelectedIndex == 0 ? 3 : 7, nroKuenta, txtnrocheque.TextValido(),
-                    $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d MMM yyyy")}", dtpFechaCompensa.Value, 2, CuentaAnticipo, "");
+                    $"{Configuraciones.MayusculaCadaPalabra(cboproveedor.Text)} {dtpFechaCompensa.Value.ToString("d")}", dtpFechaCompensa.Value, 2, CuentaAnticipo, "");
                 //
+                //Cuadre Asiento
+                CapaLogica.CuadrarAsiento(cuo, proyecto, dtpFechaContable.Value, 2);
+                //Fin Cuadre
                 msg($"Se Generó el Anticipo con cuo {cuo}");
                 cboempleado_SelectedIndexChanged(sender, e);
             }
