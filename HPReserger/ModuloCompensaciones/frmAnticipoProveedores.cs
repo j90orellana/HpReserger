@@ -44,7 +44,6 @@ namespace HPReserger.ModuloCompensaciones
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         public void CargarEmpresa() { CapaLogica.TablaEmpresas(cboempresa); }
         public void CargarProveedores() { CapaLogica.TablaProveedores(cboproveedor, 0); }
-
         private void cboempresa_SelectedValueChanged(object sender, EventArgs e)
         {
             //btnaceptar.Enabled = true;

@@ -902,7 +902,7 @@
             this.txtnrocheque.TabIndex = 415;
             this.txtnrocheque.Text = "INGRESE NRO OPERACIÓN";
             this.txtnrocheque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnrocheque.TextoDefecto = "Ingrese Nro operación";
+            this.txtnrocheque.TextoDefecto = "INGRESE NRO OPERACIÓN";
             this.txtnrocheque.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtnrocheque.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
