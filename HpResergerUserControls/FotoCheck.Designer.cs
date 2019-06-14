@@ -42,7 +42,7 @@
             // 
             // pbFoto
             // 
-            this.pbFoto.BackColor = System.Drawing.SystemColors.Control;
+            this.pbFoto.BackColor = System.Drawing.Color.Transparent;
             this.pbFoto.Location = new System.Drawing.Point(21, 0);
             this.pbFoto.Name = "pbFoto";
             this.pbFoto.Size = new System.Drawing.Size(93, 82);
@@ -56,6 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblnombre.AutoEllipsis = true;
             this.lblnombre.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.lblnombre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblnombre.Location = new System.Drawing.Point(115, 28);
             this.lblnombre.Name = "lblnombre";
             this.lblnombre.Size = new System.Drawing.Size(183, 14);
@@ -69,6 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblcargo.AutoEllipsis = true;
             this.lblcargo.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Italic);
+            this.lblcargo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblcargo.Location = new System.Drawing.Point(115, 43);
             this.lblcargo.Name = "lblcargo";
             this.lblcargo.Size = new System.Drawing.Size(183, 14);
@@ -82,6 +84,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblObservacion.AutoEllipsis = true;
             this.lblObservacion.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.lblObservacion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblObservacion.Location = new System.Drawing.Point(115, 58);
             this.lblObservacion.Name = "lblObservacion";
             this.lblObservacion.Size = new System.Drawing.Size(183, 14);
@@ -124,7 +127,7 @@
             this.ListaImagenes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ListaImagenes.ImageStream")));
             this.ListaImagenes.TransparentColor = System.Drawing.Color.Transparent;
             this.ListaImagenes.Images.SetKeyName(0, "icons8_User_100px.png");
-            this.ListaImagenes.Images.SetKeyName(1, "icons8_Curriculum_100px.png");
+            this.ListaImagenes.Images.SetKeyName(1, "icons8_overtime_100px.png");
             this.ListaImagenes.Images.SetKeyName(2, "icons8_Person_Female_100px.png");
             // 
             // FotoCheck

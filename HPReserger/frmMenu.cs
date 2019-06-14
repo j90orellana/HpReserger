@@ -204,7 +204,7 @@ namespace HPReserger
                 foreach (DataRow item in Table.Rows)
                 {
                     HpResergerUserControls.FotoCheck fotito = new HpResergerUserControls.FotoCheck();
-                    fotito.BackColor = Color.Transparent;
+                    //fotito.BackColor = Color.Transparent;
                     fotito.Nombre = item["empleado"].ToString();
                     fotito.Cargo = item["cargo"].ToString();
                     string Extra = "";

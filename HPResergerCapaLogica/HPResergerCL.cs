@@ -2452,9 +2452,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarEmpleadosCompensacionesTodos();
         }
-        public DataTable ActualizaEstadoFacturas(int id, int estado, DateTime Fechacompensa, int tipopago, string nropago)
+        public DataTable ActualizaEstadoFacturas(int id, int @idcomprobante, int estado, DateTime Fechacompensa, int tipopago, string nropago)
         {
-            return cdOrdenPedido.ActualizaEstadoFacturas(id, estado, Fechacompensa, tipopago, nropago);
+            return cdOrdenPedido.ActualizaEstadoFacturas(id, @idcomprobante, estado, Fechacompensa, tipopago, nropago);
         }
         public DataTable ListarCompensaciones(int empresa, int tipo, int tipoid, string numdoc)
         {

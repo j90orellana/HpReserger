@@ -4681,10 +4681,10 @@ namespace HPResergerCapaDatos
         {
             return bd.DataTableFromProcedure("usp_ListarEmpleadosCompensacionesTodos", null, null, null);
         }
-        public DataTable ActualizaEstadoFacturas(int id, int estado, DateTime Fechacompensa, int @tipopago, string @nropago)
+        public DataTable ActualizaEstadoFacturas(int id, int idcomprobante, int estado, DateTime Fechacompensa, int @tipopago, string @nropago)
         {
-            string[] parametros = { "@id", "@estado", "@fechaCompensa", "@tipopago", "@nropago" };
-            object[] valores = { id, estado, Fechacompensa, tipopago, nropago };
+            string[] parametros = { "@id", "@idcomprobante", "@estado", "@fechaCompensa", "@tipopago", "@nropago" };
+            object[] valores = { id, @idcomprobante, estado, Fechacompensa, tipopago, nropago };
             return bd.DataTableFromProcedure("usp_ActualizaEstadoFacturas", parametros, valores, null);
         }
         public DataTable ListarCompensaciones(int empresa, int tipo, int Tipoid, string numdoc, int Estado)

@@ -74,7 +74,7 @@
             this.cbocuentabanco = new System.Windows.Forms.ComboBox();
             this.lblmsgsalida = new System.Windows.Forms.Label();
             this.cbobanco = new System.Windows.Forms.ComboBox();
-            this.lblguia = new System.Windows.Forms.Label();
+            this.lblbanco = new System.Windows.Forms.Label();
             this.DtgcontenAnticipos = new HpResergerUserControls.Dtgconten();
             this.yOk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -479,16 +479,16 @@
             this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
             this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
             // 
-            // lblguia
+            // lblbanco
             // 
-            this.lblguia.AutoSize = true;
-            this.lblguia.BackColor = System.Drawing.Color.Transparent;
-            this.lblguia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblguia.Location = new System.Drawing.Point(242, 104);
-            this.lblguia.Name = "lblguia";
-            this.lblguia.Size = new System.Drawing.Size(42, 13);
-            this.lblguia.TabIndex = 399;
-            this.lblguia.Text = "Banco:";
+            this.lblbanco.AutoSize = true;
+            this.lblbanco.BackColor = System.Drawing.Color.Transparent;
+            this.lblbanco.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblbanco.Location = new System.Drawing.Point(242, 104);
+            this.lblbanco.Name = "lblbanco";
+            this.lblbanco.Size = new System.Drawing.Size(42, 13);
+            this.lblbanco.TabIndex = 399;
+            this.lblbanco.Text = "Banco:";
             // 
             // DtgcontenAnticipos
             // 
@@ -1035,7 +1035,7 @@
             this.cbopago.Enabled = false;
             this.cbopago.FormattingEnabled = true;
             this.cbopago.Items.AddRange(new object[] {
-            "000 Compensar Otras Fac.",
+            "000 Ninguno.",
             "003 Transferencias Fondos",
             "007 Cheque."});
             this.cbopago.Location = new System.Drawing.Point(79, 100);
@@ -1117,7 +1117,7 @@
             this.Controls.Add(this.cbocuentabanco);
             this.Controls.Add(this.lblmsgsalida);
             this.Controls.Add(this.cbobanco);
-            this.Controls.Add(this.lblguia);
+            this.Controls.Add(this.lblbanco);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPorAbonar);
@@ -1170,7 +1170,7 @@
         private System.Windows.Forms.ComboBox cbocuentabanco;
         private System.Windows.Forms.Label lblmsgsalida;
         private System.Windows.Forms.ComboBox cbobanco;
-        private System.Windows.Forms.Label lblguia;
+        private System.Windows.Forms.Label lblbanco;
         private HpResergerUserControls.Dtgconten DtgcontenAnticipos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

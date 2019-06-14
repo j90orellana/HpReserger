@@ -1890,7 +1890,7 @@ namespace HPReserger
             {
                 btnCargarFoto.Text = "&Foto N.Crédit.";
                 _TipoDoc = 2;
-                lblcompensacion.Visible = cbocompensa.Visible = false;
+                //lblcompensacion.Visible = cbocompensa.Visible = false;
                 cbomoneda.Enabled = false;
                 //txtglosa.Text = txtglosa.TextoDefecto = "Ingrese La Glosa de la Nota de Crédito";
                 cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;
@@ -1907,7 +1907,7 @@ namespace HPReserger
             {
                 btnCargarFoto.Text = "&Foto N.Débito";
                 _TipoDoc = 3;
-                lblcompensacion.Visible = cbocompensa.Visible = false;
+                //lblcompensacion.Visible = cbocompensa.Visible = false;
                 cbomoneda.Enabled = false;
                 // txtglosa.Text = txtglosa.TextoDefecto = "Ingrese La Glosa de la Nota de Débito";
                 cboempresa.Enabled = cboproyecto.Enabled = cboetapa.Enabled = false;
