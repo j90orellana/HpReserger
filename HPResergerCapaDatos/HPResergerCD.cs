@@ -4665,16 +4665,22 @@ namespace HPResergerCapaDatos
             object[] valores = { idempleado, empresa };
             return bd.DataTableFromProcedure("usp_ListarFacturasCompensaciones", parametros, valores, null);
         }
+        public DataTable ListarFacturasCompensaciones(string idempleado, int empresa, int tipo)
+        {
+            string[] parametros = { "@idEmpleado", "@empresa", "@tipo" };
+            object[] valores = { idempleado, empresa, tipo };
+            return bd.DataTableFromProcedure("usp_ListarFacturasCompensacionesxTipo", parametros, valores, null);
+        }
         public DataTable ListarFacturasAnticipos(string ruc, int empresa)
         {
             string[] parametros = { "@ruc", "@empresa" };
             object[] valores = { ruc, empresa };
             return bd.DataTableFromProcedure("usp_ListarFacturasAnticipos", parametros, valores, null);
         }
-        public DataTable ListarEmpleadosCompensaciones(int empresa)
+        public DataTable ListarEmpleadosCompensaciones(int empresa, int tipo)
         {
-            string[] parametros = { "@empresa" };
-            object[] valores = { empresa };
+            string[] parametros = { "@empresa", "@tipo" };
+            object[] valores = { empresa, tipo };
             return bd.DataTableFromProcedure("usp_ListarEmpleadosCompensaciones", parametros, valores, null);
         }
         public DataTable ListarEmpleadosCompensacionesTodos()
@@ -4730,6 +4736,24 @@ namespace HPResergerCapaDatos
         public DataTable PlanContable2Col()
         {
             return bd.DataTableFromProcedure("usp_PlanContable2Columnas", null, null, null);
+        }
+        public DataTable FondoFijoVeriricarExistencia(int empresa, int tipo, string numdoc, string cuenta)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@nundoc", "@cuenta" };
+            object[] valores = { @empresa, tipo, numdoc, cuenta };
+            return bd.DataTableFromProcedure("usp_FondoFijoVeriricarExistencia", parametros, valores, null);
+        }
+        public DataTable SiguienteIDCompensaciones(int empresa, int tipo)
+        {
+            string[] parametros = { "@empresa", "@tipo" };
+            object[] valores = { @empresa, tipo };
+            return bd.DataTableFromProcedure("usp_SiguienteIDCompensaciones", parametros, valores, null);
+        }
+        public DataTable FondoFijoCuentasEmpleado(int empresa, int tipo, int tipoid, string numdoc, string moneda)
+        {
+            string[] parametros = { "@empresa", "@tipo", "@tipoid", "@nundoc", "@moneda" };
+            object[] valores = { @empresa, tipo, tipoid, numdoc, moneda };
+            return bd.DataTableFromProcedure("usp_FondoFijoCuentasEmpleado", parametros, valores, null);
         }
     }
 }

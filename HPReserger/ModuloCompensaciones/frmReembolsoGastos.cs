@@ -100,7 +100,7 @@ namespace HPReserger.ModuloCompensaciones
         {
             if (cboempresa.SelectedValue != null)
             {
-                cboempleado.DataSource = CapaLogica.ListarEmpleadosCompensaciones((int)cboempresa.SelectedValue);
+                cboempleado.DataSource = CapaLogica.ListarEmpleadosCompensaciones((int)cboempresa.SelectedValue, 2);
                 if (cboempleado.Items.Count == 0)
                     if (Dtgconten.DataSource != null)
                     {
@@ -220,7 +220,6 @@ namespace HPReserger.ModuloCompensaciones
                             //diferenciaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value) -
                             //    Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
                             //Extranjero
-
                         }
                     }
                 }
@@ -266,7 +265,7 @@ namespace HPReserger.ModuloCompensaciones
             {
                 Dtgconten[xok.Name, x].Value = ((int)Dtgconten[xok.Name, x].Value) == 1 ? 0 : 1;
             }
-            else if (e.ColumnIndex == Dtgconten.Columns[xok.Name].Index && e.ColumnIndex > 0)
+            else if (e.ColumnIndex == Dtgconten.Columns[xok.Name].Index && e.ColumnIndex == 0)
             {
                 if (Dtgconten.RowCount > 0)
                 {
@@ -282,10 +281,14 @@ namespace HPReserger.ModuloCompensaciones
         private void cbobanco_Click(object sender, EventArgs e)
         {
             string cadenar = cbobanco.Text;
-            cbobanco.ValueMember = "codigo";
-            cbobanco.DisplayMember = "descripcion";
-            cbobanco.DataSource = CapaLogica.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
-            cbobanco.Text = cadenar;
+            DataTable TableBancos = CapaLogica.TablaBanco();
+            if (TableBancos.Rows.Count != cbobanco.Items.Count)
+            {
+                cbobanco.ValueMember = "codigo";
+                cbobanco.DisplayMember = "descripcion";
+                cbobanco.DataSource = TableBancos;
+                cbobanco.Text = cadenar;
+            }
         }
         private void cbobanco_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -387,6 +390,10 @@ namespace HPReserger.ModuloCompensaciones
                 string mensaje = "";
                 string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
                 mensaje += $"Se ha Reembolsado Abono con cuo {Cuo}";
+                int TipoPago = 0;
+                if (cbopago.Text == "003 Transferencias Fondos") TipoPago = 3;
+                else if (cbopago.Text == "007 Cheque.") TipoPago = 7;
+                string NroPago = txtnrocheque.TextValido();
                 string CuoReg = Cuo;
                 int moneda = (int)cbomoneda.SelectedValue;
                 int proyecto = (int)cboproyecto.SelectedValue;
@@ -415,7 +422,7 @@ namespace HPReserger.ModuloCompensaciones
                             (int)item.Cells[xidMoneda.Name].Value, "", "", item.Cells[xGlosa.Name].Value.ToString(), dtpFechaCompensa.Value, frmLogin.CodigoUsuario, "");
                         //Actualizar su Estado y Fecha de Compensacion
                         if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
-                            CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, dtpFechaCompensa.Value, 3, "");
+                            CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, dtpFechaCompensa.Value, TipoPago, NroPago);
                     }
                 }
                 //Diferencial
@@ -563,7 +570,7 @@ namespace HPReserger.ModuloCompensaciones
         {
             if (cboempresa.SelectedValue != null)
             {
-                DataTable Tablita = CapaLogica.ListarEmpleadosCompensaciones((int)cboempresa.SelectedValue);
+                DataTable Tablita = CapaLogica.ListarEmpleadosCompensaciones((int)cboempresa.SelectedValue, 2);
                 if (Dtgconten.RowCount != Tablita.Rows.Count)
                 {
                     BuscarEmpleadoCompensaciones();

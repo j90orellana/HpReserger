@@ -21,7 +21,7 @@ namespace HPReserger
             ICono = this.Icon;
         }
         public static int Users = 10;
-        public static DateTime DateLicense = new DateTime(2018, 07, 01);
+        public static DateTime DateLicense = new DateTime(2018, 07, 15);
         public static int DaysCaducatesLicence = 30;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public static Icon ICono;
@@ -3429,6 +3429,7 @@ namespace HPReserger
         }
         private void fondoFijoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
         }
         ModuloCompensaciones.frmReembolsoGastos frmreembolso;
         private void reembolsoGastosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3500,6 +3501,48 @@ namespace HPReserger
                 listcompensa.Activate();
                 ValidarVentanas(listcompensa);
             }
+        }
+        ModuloCompensaciones.frmFondoFijo frmfondoFijoCrear;
+        private void crearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmfondoFijoCrear == null)
+            {
+                frmfondoFijoCrear = new ModuloCompensaciones.frmFondoFijo();
+                frmfondoFijoCrear.MdiParent = this;
+                frmfondoFijoCrear.FormClosed += FrmfondoFijoCrear_FormClosed;
+                frmfondoFijoCrear.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmfondoFijoCrear.Activate();
+                ValidarVentanas(frmfondoFijoCrear);
+            }
+        }
+        private void FrmfondoFijoCrear_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmfondoFijoCrear = null;
+        }
+        ModuloCompensaciones.frmFondoFijoPago frmfondofijoCompensar;
+        private void compensarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmfondofijoCompensar == null)
+            {
+                frmfondofijoCompensar = new ModuloCompensaciones.frmFondoFijoPago();
+                frmfondofijoCompensar.MdiParent = this;
+                frmfondofijoCompensar.FormClosed += FrmfondofijoCompensar_FormClosed; ;
+                frmfondofijoCompensar.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmfondofijoCompensar.Activate();
+                ValidarVentanas(frmfondofijoCompensar);
+            }
+        }
+        private void FrmfondofijoCompensar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmfondofijoCompensar = null;
         }
     }
 }

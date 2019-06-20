@@ -872,7 +872,6 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.CargarImagenSolicitudEmpleado(Numero);
         }
-
         public DataTable ListarComboSE(int Usuario)
         {
             return cdOrdenPedido.ListarComboSE(Usuario);
@@ -881,7 +880,6 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarSEPostulantes(Usuario);
         }
-
         public void PostulanteInsertar(int Tipo_ID_Postulante, string Nro_ID_Postulante, string Apepat_Postulante, string Apemat_Postulante, string Nombres_Postulante, int ID_Puesto_Postulante, byte[] Foto, string NombreFoto, int OC, int SE, int Usuario, DateTime fecha)
         {
             cdOrdenPedido.PostulanteInsertar(Tipo_ID_Postulante, Nro_ID_Postulante, Apepat_Postulante, Apemat_Postulante, Nombres_Postulante, ID_Puesto_Postulante, Foto, NombreFoto, OC, SE, Usuario, fecha);
@@ -1736,6 +1734,14 @@ namespace HPResergerCapaLogica
             combo.DataSource = EntidadFinanciera();
             combo.Click += ComboBancos_Click;
         }
+        public DataTable TablaBanco()
+        {
+            return cdOrdenPedido.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
+        }
+        public DataTable TablaBancos()
+        {
+            return EntidadFinanciera();
+        }
         private void ComboBancos_Click(object sender, EventArgs e)
         {
             ComboBox combo = (ComboBox)sender;
@@ -2436,6 +2442,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.LimpiezaDetalleAsientos(cuo, proyecto);
         }
+        public DataTable ListarFacturasCompensaciones(string idempleado, int empresa, int tipo)
+        {
+            return cdOrdenPedido.ListarFacturasCompensaciones(idempleado, empresa, tipo);
+        }
         public DataTable ListarFacturasCompensaciones(string idempleado, int empresa)
         {
             return cdOrdenPedido.ListarFacturasCompensaciones(idempleado, empresa);
@@ -2444,9 +2454,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarFacturasAnticipos(ruc, empresa);
         }
-        public DataTable ListarEmpleadosCompensaciones(int empresa)
+        public DataTable ListarEmpleadosCompensaciones(int empresa, int tipo)
         {
-            return cdOrdenPedido.ListarEmpleadosCompensaciones(empresa);
+            return cdOrdenPedido.ListarEmpleadosCompensaciones(empresa, tipo);
         }
         public DataTable ListarEmpleadosCompensacionesTodos()
         {
@@ -2492,6 +2502,19 @@ namespace HPResergerCapaLogica
         public DataTable PlanContable2Col()
         {
             return cdOrdenPedido.PlanContable2Col();
+        }
+        public DataTable FondoFijoVeriricarExistencia(int empresa, int tipo, string numdoc, string cuenta)
+        {
+            return cdOrdenPedido.FondoFijoVeriricarExistencia(@empresa, tipo, numdoc, cuenta);
+        }
+        public DataTable SiguienteIDCompensaciones(int empresa, int tipo)
+        {
+            return cdOrdenPedido.SiguienteIDCompensaciones(@empresa, tipo);
+        }
+        public DataTable FondoFijoCuentasEmpleado(int empresa, int tipo, int tipoid, string numdoc, string moneda)
+        {
+            return cdOrdenPedido.FondoFijoCuentasEmpleado(@empresa, tipo, tipoid, numdoc, moneda);
+
         }
     }
 }

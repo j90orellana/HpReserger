@@ -36,7 +36,7 @@ namespace HPReserger.ModuloCompensaciones
         {
 
         }
-        public void CargarEmpresa() { CapaLogica.TablaEmpresas(cboempresa); }
+        public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
         public void CargarTipoid()
         {
             CapaLogica.TablaTipoID(cbotipoid);
@@ -109,8 +109,10 @@ namespace HPReserger.ModuloCompensaciones
             string cadena = cboempresa.Text;
             DataTable Table = CapaLogica.Empresa();
             if (cboempresa.Items.Count != Table.Rows.Count)
+            {
                 cboempresa.DataSource = Table;
-            cboempresa.Text = cadena;
+                cboempresa.Text = cadena;
+            }
         }
     }
 }

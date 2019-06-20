@@ -186,10 +186,14 @@ namespace HPReserger.ModuloCompensaciones
         private void cbobanco_Click(object sender, EventArgs e)
         {
             string cadenar = cbobanco.Text;
-            cbobanco.ValueMember = "codigo";
-            cbobanco.DisplayMember = "descripcion";
-            cbobanco.DataSource = CapaLogica.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
+            DataTable TableBancos = CapaLogica.TablaBanco();            
+            if (TableBancos.Rows.Count != cbobanco.Items.Count)
+            {
+                cbobanco.ValueMember = "codigo";
+                cbobanco.DisplayMember = "descripcion";
+                cbobanco.DataSource = TableBancos;
             cbobanco.Text = cadenar;
+            }
         }
         public void CargarCuentasBancos()
         {
@@ -390,6 +394,7 @@ namespace HPReserger.ModuloCompensaciones
 
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+       
             //Validaciones
             if (cboempresa.SelectedValue == null)
             {

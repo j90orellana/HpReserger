@@ -99,6 +99,8 @@
             this.notaDébitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compensacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fondoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compensarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reembolsoGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entregasARendirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anticipoProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -907,12 +909,30 @@
             // 
             // fondoFijoToolStripMenuItem
             // 
+            this.fondoFijoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearToolStripMenuItem,
+            this.compensarToolStripMenuItem});
             this.fondoFijoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("fondoFijoToolStripMenuItem.Image")));
             this.fondoFijoToolStripMenuItem.Name = "fondoFijoToolStripMenuItem";
             this.fondoFijoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.fondoFijoToolStripMenuItem.Text = "Fondo Fijo";
-            this.fondoFijoToolStripMenuItem.Visible = false;
             this.fondoFijoToolStripMenuItem.Click += new System.EventHandler(this.fondoFijoToolStripMenuItem_Click);
+            // 
+            // crearToolStripMenuItem
+            // 
+            this.crearToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("crearToolStripMenuItem.Image")));
+            this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
+            this.crearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.crearToolStripMenuItem.Text = "Apertura";
+            this.crearToolStripMenuItem.Click += new System.EventHandler(this.crearToolStripMenuItem_Click);
+            // 
+            // compensarToolStripMenuItem
+            // 
+            this.compensarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compensarToolStripMenuItem.Image")));
+            this.compensarToolStripMenuItem.Name = "compensarToolStripMenuItem";
+            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.compensarToolStripMenuItem.Text = "Compensar";
+            this.compensarToolStripMenuItem.Click += new System.EventHandler(this.compensarToolStripMenuItem_Click);
             // 
             // reembolsoGastosToolStripMenuItem
             // 
@@ -2535,5 +2555,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem listadoCompensacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compensarToolStripMenuItem;
     }
 }

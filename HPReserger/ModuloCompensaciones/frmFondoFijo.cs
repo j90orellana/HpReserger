@@ -22,12 +22,14 @@ namespace HPReserger.ModuloCompensaciones
         {
             txtglosa.CargarTextoporDefecto();
             txtImporteTotal.CargarTextoporDefecto();
+            txtnrocheque.CargarTextoporDefecto();
             dtpFechaContable.Value = dtpFechaCompensa.Value = DateTime.Now;
             Estado = 0;
             ModoEdicion(false);
             CargarEmpresa();
             CargarEmpleado();
             CargarMoneda();
+            cbopago.SelectedIndex = 0;
             //btnaceptar.Enabled = false;
         }
         int Estado = 0;
@@ -79,11 +81,6 @@ namespace HPReserger.ModuloCompensaciones
         public void CargarEmpresa() { CapaLogica.TablaEmpresas(cboempresa); }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //btnaceptar.Enabled = true;
-
-            //cboempleado.DisplayMember = "empleado";
-            //cboempleado.ValueMember = "UsuarioCompensacion";
-
             NameEmpresa = cboempresa.Text;
             if (cboempresa.Items.Count > 0)
             {
@@ -94,7 +91,6 @@ namespace HPReserger.ModuloCompensaciones
                     cboproyecto.ValueMember = "id_proyecto";
                     //busqueda de Asientos
                     _idempresa = (int)cboempresa.SelectedValue;
-
                     cbobanco_SelectedIndexChanged(sender, e);
                     CargarDatos();
                 }
@@ -105,7 +101,6 @@ namespace HPReserger.ModuloCompensaciones
             dtgconten.DataSource = CapaLogica.ListarCompensaciones(_idempresa, 1, 0, "");
             lbltotalregistros.Text = $"Total de Registros {dtgconten.RowCount}";
         }
-
         public void SacarTipoCambio()
         {
             DateTime FechaValidaBuscar = dtpFechaCompensa.Value;
@@ -161,12 +156,15 @@ namespace HPReserger.ModuloCompensaciones
         private void cbobanco_Click(object sender, EventArgs e)
         {
             string cadenar = cbobanco.Text;
-            cbobanco.ValueMember = "codigo";
-            cbobanco.DisplayMember = "descripcion";
-            cbobanco.DataSource = CapaLogica.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
-            cbobanco.Text = cadenar;
+            DataTable TableBancos = CapaLogica.TablaBanco();
+            if (TableBancos.Rows.Count != cbobanco.Items.Count)
+            {
+                cbobanco.ValueMember = "codigo";
+                cbobanco.DisplayMember = "descripcion";
+                cbobanco.DataSource = TableBancos;
+                cbobanco.Text = cadenar;
+            }
         }
-
         private void cboempleado_Click(object sender, EventArgs e)
         {
             string cadena = cboempleado.Text;
@@ -240,14 +238,19 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Seleccione la cuenta el Fondo Fijo");
                 cbocuentabanco.Focus(); return;
             }
-            if (decimal.Parse(txtImporteTotal.Text) < 0)
+            if (!txtnrocheque.EstaLLeno())
             {
-                msg("El monto del Fondo Fijo debe ser mayor a Cero");
+                msg("Ingrese Nro Operacion/Cheque");
+                txtnrocheque.Focus(); return;
+            }
+            if (decimal.Parse(txtImporteTotal.Text) <= 0)
+            {
+                msg("El Monto del Fondo Fijo debe ser mayor a Cero");
                 txtImporteTotal.Focus(); return;
             }
             if (decimal.Parse(txttipocambio.Text) == 0)
             {
-                msg("El monto del Tipo de Cambio no debe ser Cero");
+                msg("El Monto del Tipo de Cambio no debe ser Cero");
                 txttipocambio.Focus(); return;
             }
             if (!txtglosa.EstaLLeno())
@@ -255,15 +258,86 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Ingrese Glosa");
                 txtglosa.Focus(); return;
             }
+            string CuentaFondoFijo = cbocuentaxpagar.SelectedValue.ToString();
+            if (cboempleado.SelectedValue == null) { msg("Seleccione un Empleado"); cboempleado.Focus(); return; }
+            string[] empleado = cboempleado.SelectedValue.ToString().Split('-');
+            DataTable Filita = CapaLogica.FondoFijoVeriricarExistencia(_idempresa, int.Parse(empleado[0]), empleado[1], CuentaFondoFijo);
+            if (Filita.Rows.Count > 0)
+            {
+                msg("Este Empleado Ya tiene un Fondo Fijo Activo");
+                return;
+            }
             if (msgOk("¿Seguro Desea Crear el Fondo Fijo?") == DialogResult.OK)
             {
-                string Cuo = "";
-
+                int numasiento = 0;
+                if (numasiento == 0)
+                {
+                    DataTable asientito = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, dtpFechaContable.Value);
+                    DataRow asiento = asientito.Rows[0];
+                    if (asiento == null) { numasiento = 1; }
+                    else
+                        numasiento = ((int)asiento["codigo"]);
+                }
+                int PosFila = 0;
+                string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
+                int moneda = (int)cbomoneda.SelectedValue;
+                int proyecto = (int)cboproyecto.SelectedValue;
+                int TipoId = int.Parse(empleado[0]);
+                string Numdoc = empleado[1];
+                string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2);
+                decimal MontoSoles = 0, MontoDolares = 0;
+                decimal ImporteTotal = decimal.Parse(txtImporteTotal.Text);
+                decimal tc = decimal.Parse(txttipocambio.Text);
+                string glosa = txtglosa.TextValido();
+                //Saco Importe Moneda
+                if ((int)cbomoneda.SelectedValue == 1)
+                {
+                    MontoSoles = ImporteTotal;
+                    MontoDolares = Configuraciones.Redondear(ImporteTotal / tc);
+                }
+                else
+                {
+                    MontoSoles = Configuraciones.Redondear(ImporteTotal * tc);
+                    MontoDolares = ImporteTotal;
+                }
+                //Fin Saco Importe Moneda
+                string BanCuenta; int idTipocuenta;
+                string nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
+                if (cbocuentabanco.SelectedValue == null) BanCuenta = "";
+                else BanCuenta = cbocuentabanco.SelectedValue.ToString();
+                idTipocuenta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
+                DateTime FechaCompensa = dtpFechaCompensa.Value;
+                DateTime FechaContable = dtpFechaContable.Value;
+                DateTime FechaVence = dtpFechaCompensa.Value.AddMonths(1);
+                string NumID = (CapaLogica.SiguienteIDCompensaciones(_idempresa, 1).Rows[0]["valor"].ToString()); //1= Fondo Fijo
+                //Debe
+                //Asiento del Anticipo
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, moneda == 1 ? MontoSoles : MontoDolares, 0, tc,
+                    proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -12);
+                //Detalle del asiento
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaFondoFijo, proyecto, TipoId, Numdoc
+                    , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                //Haber
+                //Asiento del salida del Banco
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, 0, moneda == 1 ? MontoSoles : MontoDolares, tc,
+                    proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -12);
+                //Detalle del asiento
+                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoId, Numdoc
+                    , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, MontoSoles, MontoDolares, tc, moneda, nroKuenta, txtnrocheque.Text, glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                //Inserto compensaciones!
+                CapaLogica.InsertarCompensaciones(_idempresa, 1, TipoId, Numdoc, MontoSoles, MontoDolares, Cuo, cbopago.SelectedIndex == 0 ? 7 : 3, nroKuenta, txtnrocheque.TextValido(),
+                    $"{dtpFechaCompensa.Value.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}", dtpFechaCompensa.Value, 2, CuentaFondoFijo, "");
+                //
                 //Cuadre Asiento
-                //CapaLogica.CuadrarAsiento(CuoNext, proyecto, dtpFechaContable.Value, 2);
-                //Fin Cuadre
-                msg($"Se Creo El Fondo Fijo con Cuo {Cuo}");
+                CapaLogica.CuadrarAsiento(Cuo, proyecto, dtpFechaContable.Value, 2);
+                //Fin Cuadre              
+                msg($"Se Creó El Fondo Fijo con Cuo {Cuo}");
+                CargarDatos();
             }
+        }
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

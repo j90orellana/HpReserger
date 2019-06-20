@@ -805,7 +805,7 @@ namespace HPReserger
             this.btnExportarPlan.Name = "btnExportarPlan";
             this.btnExportarPlan.Size = new System.Drawing.Size(82, 23);
             this.btnExportarPlan.TabIndex = 3;
-            this.btnExportarPlan.Text = "Plan Full";
+            this.btnExportarPlan.Text = "Plan 1";
             this.btnExportarPlan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportarPlan.UseVisualStyleBackColor = true;
             this.btnExportarPlan.Click += new System.EventHandler(this.btnExportarPlan_Click);
@@ -824,7 +824,7 @@ namespace HPReserger
             this.btnExportarPLan2Col.Name = "btnExportarPLan2Col";
             this.btnExportarPLan2Col.Size = new System.Drawing.Size(82, 23);
             this.btnExportarPLan2Col.TabIndex = 3;
-            this.btnExportarPLan2Col.Text = "Plan 2 Col.";
+            this.btnExportarPLan2Col.Text = "Plan 2";
             this.btnExportarPLan2Col.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportarPLan2Col.UseVisualStyleBackColor = true;
             this.btnExportarPLan2Col.Click += new System.EventHandler(this.btnExportarPLan2Col_Click);

@@ -38,6 +38,7 @@ namespace HPReserger
         public int OldIdComprobante { get; private set; }
         public int OldIdComprobanteSelect { get; private set; }
         public int NotasEstado { get; private set; }
+        public decimal igvs { get; private set; }
 
         private void FrmFacturaManual_Load(object sender, EventArgs e)
         {
@@ -58,7 +59,7 @@ namespace HPReserger
             ListCompensaciones.Columns.Add("codigo", typeof(int));
             ListCompensaciones.Columns.Add("descripcion");
             ListCompensaciones.Rows.Add(0, "Ninguno");
-            //ListCompensaciones.Rows.Add(1, "Fondo Fijo");
+            ListCompensaciones.Rows.Add(1, "Fondo Fijo");
             ListCompensaciones.Rows.Add(2, "Reembolso Gasto");
             //ListCompensaciones.Rows.Add(3, "Entregas a Rendir");
             ListCompensaciones.Rows.Add(4, "Anticipo Proveedor");
@@ -280,6 +281,7 @@ namespace HPReserger
             if (_TipoDoc != 2 && _TipoDoc != 3)
                 SacarTipoCambio();
             if (Dtgconten.RowCount > 0) btnAceptar.Enabled = false;
+            igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
         }
         public byte[] imgfactura;
         MemoryStream _memoryStream = new MemoryStream();
@@ -757,7 +759,7 @@ namespace HPReserger
                 if (_TipoDoc == 0) if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { Msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
                 ///valido compensacion
                 DatosCompensacion = "";
-                if ((int)cbocompensa.SelectedValue == 2)
+                if ((new int[] { 1, 2 }).Contains((int)cbocompensa.SelectedValue))
                 {
                     if (cbotipoidcompensa.SelectedValue == null || txtnumdocompensa.Text.Length == 0)
                     {
@@ -1419,7 +1421,7 @@ namespace HPReserger
                         TDatos.Rows.Add(fila);
                     }
                 } //////VAMOS CON EL IGV
-                decimal igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
+                igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
                 string CuentaIgv = "4011101";
                 DataTable Tpruebas = CapaLogica.BuscarCuentas("IGV % COM", 5);
                 if (Tpruebas.Rows.Count > 0)
@@ -1808,7 +1810,7 @@ namespace HPReserger
         {
             txtNombreUsuarioCompensa.Visible = cbotipoidcompensa.Visible = txtnumdocompensa.Visible = lblcompensa.Visible = btnbususuacompesa.Visible = false;
             if (cbocompensa.SelectedValue != null)
-                if ((int)cbocompensa.SelectedValue == 2)
+                if ((new int[] { 1, 2 }).Contains((int)cbocompensa.SelectedValue))
                 {
                     txtNombreUsuarioCompensa.Visible = cbotipoidcompensa.Visible = txtnumdocompensa.Visible = lblcompensa.Visible = btnbususuacompesa.Visible = true;
                     //frmListarEmpleados frmlistar = new frmListarEmpleados();
@@ -1816,7 +1818,6 @@ namespace HPReserger
                     //frmlistar.ShowDialog();
                 }
         }
-
         private void btnbususuacompesa_Click(object sender, EventArgs e)
         {
             frmListarEmpleados frmlisempleado = new frmListarEmpleados();
@@ -1839,7 +1840,7 @@ namespace HPReserger
                 DataRow Filita = CapaLogica.DatosEmpleado((int)cbotipoidcompensa.SelectedValue, txtnumdocompensa.Text);
                 if (Filita != null)
                 {
-                    txtNombreUsuarioCompensa.Text = Configuraciones.MayusculaCadaPalabra($"{Filita["NOMBRES"]} {Filita["APELLIDOPATERNO"]} {Filita["APELLIDOMATERNO"]} ");
+                    txtNombreUsuarioCompensa.Text = Configuraciones.MayusculaCadaPalabra($"{Filita["NOMBRES"]} {Filita["APELLIDOPATERNO"]} {Filita["APELLIDOMATERNO"]}").Trim();
                 }
             }
         }
@@ -1850,6 +1851,25 @@ namespace HPReserger
         private void cbotipoidcompensa_SelectedIndexChanged(object sender, EventArgs e)
         {
             BuscarEmpleado();
+        }
+
+        private void copiarIgvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            decimal calculoigv = 0;
+            decimal.TryParse(txttotalfac.Text, out calculoigv);
+            calculoigv = calculoigv / (1 + igvs);
+            Clipboard.SetText(calculoigv.ToString("n2"));
+        }
+        private void copiarIgvToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            decimal calculoigv = 0;
+            decimal.TryParse(txttotalfac.Text, out calculoigv);
+            calculoigv = calculoigv / (1 + igvs) * igvs;
+            Clipboard.SetText(calculoigv.ToString("n2"));
+        }
+        private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txttotalfac.Text);
         }
         private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
         {

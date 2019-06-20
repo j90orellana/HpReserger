@@ -181,6 +181,12 @@
     <Compile Include="ModuloCompensaciones\frmFondoFijo.Designer.cs">
       <DependentUpon>frmFondoFijo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCompensaciones\frmFondoFijoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmFondoFijoPago.Designer.cs">
+      <DependentUpon>frmFondoFijoPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloCompensaciones\frmListarCompensaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1567,6 +1573,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmFondoFijo.resx">
       <DependentUpon>frmFondoFijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmFondoFijoPago.resx">
+      <DependentUpon>frmFondoFijoPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmListarCompensaciones.resx">
       <DependentUpon>frmListarCompensaciones.cs</DependentUpon>
