@@ -4711,6 +4711,12 @@ namespace HPResergerCapaDatos
             object[] valores = { @empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, tipopago, cuentabanco, nrooperacion, @numpago, @fechacompensa, @estado, cuentacontable, cuopago };
             return bd.DataTableFromProcedure("usp_InsertarCompensaciones", parametros, valores, null);
         }
+        public DataTable CompensacionesActualizar(int pkid, int @empresa, int @tipo, int @tipoid, string @numdoc, decimal @montomn, decimal @montome, string @cuo, int tipopago, string cuentabanco, string nrooperacion, string @numpago, DateTime @fechacompensa, int @estado, string cuentacontable, string cuopago)
+        {
+            string[] parametros = { "@pkid", "@empresa", "@tipo", "@tipoid", "@numdoc", "@montomn", "@montome", "@cuo", "@tipopago", "@CuentaBanco", "@NroOperacion", "@numpago", "@fechacompensa", "@estado", "@cuentacontabla", "@cuoPago" };
+            object[] valores = { pkid, @empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, tipopago, cuentabanco, nrooperacion, @numpago, @fechacompensa, @estado, cuentacontable, cuopago };
+            return bd.DataTableFromProcedure("usp_Compensaciones_Actualizar", parametros, valores, null);
+        }
         public DataTable InsertarCompensacionesDetalle(int pkid, int @empresa, int @tipo, decimal @montomn, decimal @montome, int tipopago, string cuentabanco, string nrooperacion, string @numpago, DateTime @fechacompensa, int @estado, string cuopago)
         {
             string[] parametros = { "@PkId", "@empresa", "@tipo", "@montomn", "@montome", "@tipopago", "@CuentaBanco", "@NroOperacion", "@numpago", "@fechacompensa", "@estado", "@cuoPago" };
@@ -4737,10 +4743,10 @@ namespace HPResergerCapaDatos
         {
             return bd.DataTableFromProcedure("usp_PlanContable2Columnas", null, null, null);
         }
-        public DataTable FondoFijoVeriricarExistencia(int empresa, int tipo, string numdoc, string cuenta)
+        public DataTable FondoFijoVeriricarExistencia(int empresa, int tipo, string numdoc, string cuenta, int pkid)
         {
-            string[] parametros = { "@empresa", "@tipo", "@nundoc", "@cuenta" };
-            object[] valores = { @empresa, tipo, numdoc, cuenta };
+            string[] parametros = { "@empresa", "@tipo", "@nundoc", "@cuenta", "@pkid" };
+            object[] valores = { @empresa, tipo, numdoc, cuenta, pkid };
             return bd.DataTableFromProcedure("usp_FondoFijoVeriricarExistencia", parametros, valores, null);
         }
         public DataTable SiguienteIDCompensaciones(int empresa, int tipo)

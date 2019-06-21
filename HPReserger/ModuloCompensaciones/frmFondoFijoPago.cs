@@ -192,7 +192,7 @@ namespace HPReserger.ModuloCompensaciones
         int moneda = 0;
         public void CalcularTotal()
         {
-            int ContadorFacturas = 0;
+            ContadorFacturas = 0;
             btnaceptar.Enabled = false;
             cboempleado.Enabled = cboproyecto.Enabled = cboempresa.Enabled = true;
             txttotalME.Text = txttotaldifME.Text = txttotalMN.Text = txttotaldifMN.Text = "0.00";
@@ -566,7 +566,7 @@ namespace HPReserger.ModuloCompensaciones
                 //detalle de otras cuentas x pagar a terceros                               
                 ////Detalle Facturas
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, cbocuentaxpagar.SelectedValue.ToString(), proyecto, int.Parse(Empleado[0]), Empleado[1]
-                   , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2), 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
+                   , NameEmpleado, 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
                    , 0, FechaCompensa, FechaCompensa, FechaCompensa, decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text)
                    , tc, moneda, "", "", glosa, FechaCompensa, IdUsuario, Cuo);
                 //salida del banco 
@@ -582,11 +582,11 @@ namespace HPReserger.ModuloCompensaciones
                      tc, proyecto, 0, CuoNext, moneda, glosa, FechaCompensa, -13);
                 //detalle del pago del banco
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(Empleado[0]), Empleado[1]
-                  , cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2), 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
+                  , NameEmpleado, 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
                   , 0, FechaCompensa, FechaCompensa, FechaCompensa, decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text)
                   , tc, moneda, nroKuenta, "", glosa, FechaCompensa, IdUsuario, Cuo);
                 //Inserto compensaciones!
-                CapaLogica.InsertarCompensacionesDetalle(pkIdTipo, (int)cboempresa.SelectedValue, 2,
+                CapaLogica.InsertarCompensacionesDetalle(pkIdTipo, (int)cboempresa.SelectedValue, 1,
                         decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text),
                         TipoPago, cbopago.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), NroPago,
                         $"{Configuraciones.MayusculaCadaPalabra(NameEmpleado)} {dtpFechaCompensa.Value.ToString("d")}", FechaCompensa, 1, Cuo);

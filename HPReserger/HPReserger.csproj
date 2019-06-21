@@ -175,6 +175,12 @@
     <Compile Include="ModuloCompensaciones\frmAnticipoProveedores.Designer.cs">
       <DependentUpon>frmAnticipoProveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCompensaciones\frmEntregaRendir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCompensaciones\frmEntregaRendir.Designer.cs">
+      <DependentUpon>frmEntregaRendir.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloCompensaciones\frmFondoFijo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1570,6 +1576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmAnticipoProveedores.resx">
       <DependentUpon>frmAnticipoProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCompensaciones\frmEntregaRendir.resx">
+      <DependentUpon>frmEntregaRendir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloCompensaciones\frmFondoFijo.resx">
       <DependentUpon>frmFondoFijo.cs</DependentUpon>

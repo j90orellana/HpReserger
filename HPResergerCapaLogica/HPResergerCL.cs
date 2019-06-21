@@ -2483,6 +2483,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.InsertarCompensaciones(@empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, tipopago, cuentabanco, nrooperacion, @numpago, @fechacompensa, @estado, cuentacontable, cuopago);
         }
+        public DataTable CompensacionesActualizar(int pkid, int @empresa, int @tipo, int @tipoid, string @numdoc, decimal @montomn, decimal @montome, string @cuo, int tipopago, string cuentabanco, string nrooperacion, string @numpago, DateTime @fechacompensa, int @estado, string cuentacontable, string cuopago)
+        {
+            return cdOrdenPedido.CompensacionesActualizar(pkid, @empresa, @tipo, @tipoid, @numdoc, @montomn, @montome, @cuo, tipopago, cuentabanco, nrooperacion, @numpago, @fechacompensa, @estado, cuentacontable, cuopago);
+        }
         public DataTable InsertarCompensacionesDetalle(int pkid, int @empresa, int @tipo, decimal @montomn, decimal @montome, int tipopago, string cuentabanco, string nrooperacion, string @numpago, DateTime @fechacompensa, int @estado, string cuopago)
         {
             return cdOrdenPedido.InsertarCompensacionesDetalle(pkid, @empresa, @tipo, @montomn, @montome, tipopago, cuentabanco, nrooperacion, @numpago, @fechacompensa, @estado, cuopago);
@@ -2505,7 +2509,11 @@ namespace HPResergerCapaLogica
         }
         public DataTable FondoFijoVeriricarExistencia(int empresa, int tipo, string numdoc, string cuenta)
         {
-            return cdOrdenPedido.FondoFijoVeriricarExistencia(@empresa, tipo, numdoc, cuenta);
+            return cdOrdenPedido.FondoFijoVeriricarExistencia(@empresa, tipo, numdoc, cuenta, 0);
+        }
+        public DataTable FondoFijoVeriricarExistencia(int empresa, int tipo, string numdoc, string cuenta, int pkid)
+        {
+            return cdOrdenPedido.FondoFijoVeriricarExistencia(@empresa, tipo, numdoc, cuenta, pkid);
         }
         public DataTable SiguienteIDCompensaciones(int empresa, int tipo)
         {
