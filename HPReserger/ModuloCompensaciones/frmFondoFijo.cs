@@ -98,6 +98,12 @@ namespace HPReserger.ModuloCompensaciones
             dtgconten.DataSource = CapaLogica.ListarCompensaciones(_idempresa, 1, 0, "");
             lbltotalregistros.Text = $"Total de Registros {dtgconten.RowCount}";
             if (dtgconten.RowCount > 0) btnmodificar.Enabled = true; else btnmodificar.Enabled = false;
+            PasarTipoOracion(xcliente);
+        }
+        public void PasarTipoOracion(DataGridViewColumn col)
+        {
+            foreach (DataGridViewRow item in dtgconten.Rows)
+                item.Cells[col.Name].Value = Configuraciones.MayusculaCadaPalabra(item.Cells[col.Name].Value.ToString());
         }
         public void SacarTipoCambio()
         {
@@ -257,7 +263,8 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Ingrese Glosa");
                 txtglosa.Focus(); return;
             }
-            string NumID = dtgconten[xpkid.Name, dtgconten.CurrentCell.RowIndex].Value.ToString();
+            string NumID = "0";
+            if (dtgconten.CurrentCell != null) NumID = dtgconten[xpkid.Name, dtgconten.CurrentCell.RowIndex].Value.ToString();
             string CuentaFondoFijo = cbocuentaxpagar.SelectedValue.ToString();
             if (cboempleado.SelectedValue == null) { msg("Seleccione un Empleado"); cboempleado.Focus(); return; }
             string[] empleado = cboempleado.SelectedValue.ToString().Split('-');

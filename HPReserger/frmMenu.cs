@@ -3530,7 +3530,7 @@ namespace HPReserger
             {
                 frmfondofijoCompensar = new ModuloCompensaciones.frmFondoFijoPago();
                 frmfondofijoCompensar.MdiParent = this;
-                frmfondofijoCompensar.FormClosed += FrmfondofijoCompensar_FormClosed; ;
+                frmfondofijoCompensar.FormClosed += FrmfondofijoCompensar_FormClosed;
                 frmfondofijoCompensar.Show();
                 frmMenu_SizeChanged(sender, new EventArgs());
             }
@@ -3543,6 +3543,48 @@ namespace HPReserger
         private void FrmfondofijoCompensar_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmfondofijoCompensar = null;
+        }
+        ModuloCompensaciones.frmEntregaRendir frmEntregasRendirCrear;
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            if (frmEntregasRendirCrear == null)
+            {
+                frmEntregasRendirCrear = new ModuloCompensaciones.frmEntregaRendir();
+                frmEntregasRendirCrear.MdiParent = this;
+                frmEntregasRendirCrear.FormClosed += FrmEntregasRendirCrear_FormClosed;
+                frmEntregasRendirCrear.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmEntregasRendirCrear.Activate();
+                ValidarVentanas(frmEntregasRendirCrear);
+            }
+        }
+        private void FrmEntregasRendirCrear_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmEntregasRendirCrear = null;
+        }
+        ModuloCompensaciones.frmEntregaRendirPago frmEntregasRendirPago;
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            if (frmEntregasRendirPago == null)
+            {
+                frmEntregasRendirPago = new ModuloCompensaciones.frmEntregaRendirPago();
+                frmEntregasRendirPago.MdiParent = this;
+                frmEntregasRendirPago.FormClosed += FrmEntregasRendirPago_FormClosed; ;
+                frmEntregasRendirPago.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmEntregasRendirPago.Activate();
+                ValidarVentanas(frmEntregasRendirPago);
+            }
+        }
+        private void FrmEntregasRendirPago_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmEntregasRendirPago = null;
         }
     }
 }

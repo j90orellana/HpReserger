@@ -101,8 +101,10 @@
             this.fondoFijoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compensarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reembolsoGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entregasARendirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reembolsoGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anticipoProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoCompensacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
@@ -897,8 +899,8 @@
             // 
             this.compensacionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fondoFijoToolStripMenuItem,
-            this.reembolsoGastosToolStripMenuItem,
             this.entregasARendirToolStripMenuItem,
+            this.reembolsoGastosToolStripMenuItem,
             this.anticipoProveedoresToolStripMenuItem,
             this.listadoCompensacionesToolStripMenuItem});
             this.compensacionesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compensacionesToolStripMenuItem.Image")));
@@ -934,6 +936,32 @@
             this.compensarToolStripMenuItem.Text = "Compensar";
             this.compensarToolStripMenuItem.Click += new System.EventHandler(this.compensarToolStripMenuItem_Click);
             // 
+            // entregasARendirToolStripMenuItem
+            // 
+            this.entregasARendirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem7});
+            this.entregasARendirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("entregasARendirToolStripMenuItem.Image")));
+            this.entregasARendirToolStripMenuItem.Name = "entregasARendirToolStripMenuItem";
+            this.entregasARendirToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.entregasARendirToolStripMenuItem.Text = "Entregas a Rendir";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem5.Text = "Apertura";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem7.Image")));
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem7.Text = "Compensar";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            // 
             // reembolsoGastosToolStripMenuItem
             // 
             this.reembolsoGastosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reembolsoGastosToolStripMenuItem.Image")));
@@ -941,14 +969,6 @@
             this.reembolsoGastosToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.reembolsoGastosToolStripMenuItem.Text = "Reembolso Gastos";
             this.reembolsoGastosToolStripMenuItem.Click += new System.EventHandler(this.reembolsoGastosToolStripMenuItem_Click);
-            // 
-            // entregasARendirToolStripMenuItem
-            // 
-            this.entregasARendirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("entregasARendirToolStripMenuItem.Image")));
-            this.entregasARendirToolStripMenuItem.Name = "entregasARendirToolStripMenuItem";
-            this.entregasARendirToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.entregasARendirToolStripMenuItem.Text = "Entregas a Rendir";
-            this.entregasARendirToolStripMenuItem.Visible = false;
             // 
             // anticipoProveedoresToolStripMenuItem
             // 
@@ -2557,5 +2577,7 @@
         private System.Windows.Forms.ToolStripMenuItem listadoCompensacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compensarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
     }
 }

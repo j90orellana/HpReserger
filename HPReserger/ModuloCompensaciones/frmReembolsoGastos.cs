@@ -117,7 +117,6 @@ namespace HPReserger.ModuloCompensaciones
         public void ModoEdicion(Boolean a)
         {
             //btnaceptar.Enabled = a;
-
         }
         private void cboempleado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -129,6 +128,12 @@ namespace HPReserger.ModuloCompensaciones
                 txttotalME.Text = txttotaldifME.Text = txttotalMN.Text = txttotaldifMN.Text = "0.00";
             }
             ContarRegistros();
+            PasarTipoOracion(xrazon_social);
+        }
+        public void PasarTipoOracion(DataGridViewColumn col)
+        {
+            foreach (DataGridViewRow item in Dtgconten.Rows)
+                item.Cells[col.Name].Value = Configuraciones.MayusculaCadaPalabra(item.Cells[col.Name].Value.ToString());
         }
         public void SacarTipoCambio()
         {

@@ -61,7 +61,7 @@ namespace HPReserger
             ListCompensaciones.Rows.Add(0, "Ninguno");
             ListCompensaciones.Rows.Add(1, "Fondo Fijo");
             ListCompensaciones.Rows.Add(2, "Reembolso Gasto");
-            //ListCompensaciones.Rows.Add(3, "Entregas a Rendir");
+            ListCompensaciones.Rows.Add(3, "Entregas a Rendir");
             ListCompensaciones.Rows.Add(4, "Anticipo Proveedor");
             cbocompensa.ValueMember = "codigo";
             cbocompensa.DisplayMember = "descripcion";
@@ -759,7 +759,7 @@ namespace HPReserger
                 if (_TipoDoc == 0) if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { Msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
                 ///valido compensacion
                 DatosCompensacion = "";
-                if ((new int[] { 1, 2 }).Contains((int)cbocompensa.SelectedValue))
+                if ((new int[] { 1, 2, 3 }).Contains((int)cbocompensa.SelectedValue))
                 {
                     if (cbotipoidcompensa.SelectedValue == null || txtnumdocompensa.Text.Length == 0)
                     {
@@ -1810,7 +1810,7 @@ namespace HPReserger
         {
             txtNombreUsuarioCompensa.Visible = cbotipoidcompensa.Visible = txtnumdocompensa.Visible = lblcompensa.Visible = btnbususuacompesa.Visible = false;
             if (cbocompensa.SelectedValue != null)
-                if ((new int[] { 1, 2 }).Contains((int)cbocompensa.SelectedValue))
+                if ((new int[] { 1, 2, 3 }).Contains((int)cbocompensa.SelectedValue))
                 {
                     txtNombreUsuarioCompensa.Visible = cbotipoidcompensa.Visible = txtnumdocompensa.Visible = lblcompensa.Visible = btnbususuacompesa.Visible = true;
                     //frmListarEmpleados frmlistar = new frmListarEmpleados();

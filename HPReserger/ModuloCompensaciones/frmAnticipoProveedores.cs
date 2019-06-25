@@ -130,6 +130,12 @@ namespace HPReserger.ModuloCompensaciones
                 dtgconten.DataSource = Table;
             }
             ContarRegistros();
+            //PasarTipoOracion(xcliente);
+        }
+        public void PasarTipoOracion(DataGridViewColumn col)
+        {
+            foreach (DataGridViewRow item in dtgconten.Rows)
+                item.Cells[col.Name].Value = Configuraciones.MayusculaCadaPalabra(item.Cells[col.Name].Value.ToString());
         }
         public DataTable CargarCuentasxPagar()
         {
