@@ -576,9 +576,14 @@ namespace HPReserger.ModuloCompensaciones
             if (cboempresa.SelectedValue != null)
             {
                 DataTable Tablita = CapaLogica.ListarEmpleadosCompensaciones((int)cboempresa.SelectedValue, 2);
-                if (Dtgconten.RowCount != Tablita.Rows.Count)
+                DataTable Table = CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue);           
+                if (cboempleado.Items.Count != Tablita.Rows.Count)
                 {
                     BuscarEmpleadoCompensaciones();
+                }
+                if (Dtgconten.RowCount != Table.Rows.Count)
+                {
+                    Dtgconten.DataSource = Table;                  
                 }
             }
         }

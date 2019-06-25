@@ -496,17 +496,27 @@ namespace HPReserger.ModuloCompensaciones
                     {
                         //Asiento de las facturas al debe
                         string CuentaContable = item.Cells[xcuenta.Name].Value.ToString();
-                        decimal MontoSoles = (decimal)item.Cells[xTotal.Name].Value;
-                        decimal MontoDolares = Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
                         decimal TC = (decimal)item.Cells[xTcReg.Name].Value;
-                        string[] NumFac = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                         int idfac = (int)item.Cells[xIdComprobante.Name].Value;
+                        string[] NumFac = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
+                        int idUsuario = frmLogin.CodigoUsuario;
+                        DateTime fecha = dtpFechaCompensa.Value;
+                        //cabeceras
+                        decimal MontoSolesOri = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
+                        decimal MontoDolaresOri = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
+                        //Detalle
+                        decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
+                        decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
+                        //Cabecera Facturas
                         CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable,
-                      Math.Abs(MontoSoles > 0 ? moneda == 1 ? MontoSoles : MontoDolares : 0), Math.Abs(MontoSoles < 0 ? moneda == 1 ? MontoSoles : MontoDolares : 0),
-                             decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -11);
+                            Math.Abs(MontoSolesOri > 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0), Math.Abs(MontoSolesOri < 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0),
+                            tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -11);
                         //Detalle del asiento
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, item.Cells[xcuenta.Name].Value.ToString(), proyecto, TipoIdProveedor, RucProveedor
-                            , NameProveedor, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), TC, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaCompensa, CuentaContable, proyecto, TipoIdProveedor, RucProveedor,
+                            NameProveedor, idfac, NumFac[0], NumFac[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
+                            Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
+                            moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
+                            (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaCompensa, idUsuario, "");
                         ///Actualizo las Facturas a Pagadas
                         if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
                             CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, dtpFechaCompensa.Value, TipoPago, NroPago);

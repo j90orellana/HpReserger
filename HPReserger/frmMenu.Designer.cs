@@ -246,7 +246,6 @@
             this.lblpuntero = new System.Windows.Forms.Label();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
-            this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
@@ -2303,15 +2302,6 @@
             this.fotoCheck1.Size = new System.Drawing.Size(314, 82);
             this.fotoCheck1.TabIndex = 0;
             // 
-            // fondoColorOre1
-            // 
-            this.fondoColorOre1.Angulo = 30;
-            this.fondoColorOre1.Colores = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240))))),
-        System.Drawing.Color.GhostWhite,
-        System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))))};
-            this.fondoColorOre1.control = this.FlowPanel;
-            // 
             // fondoColorOre2
             // 
             this.fondoColorOre2.Angulo = 45;
@@ -2565,7 +2555,6 @@
         private System.Windows.Forms.ToolStripMenuItem mayorPorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mayorPorCuentasToolStripMenuItem;
         private System.Windows.Forms.Label lblpuntero;
-        private HpResergerUserControls.FondoColorOre fondoColorOre1;
         private HpResergerUserControls.FondoColorOre fondoColorOre2;
         private System.Windows.Forms.ToolStripMenuItem compensacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fondoFijoToolStripMenuItem;
