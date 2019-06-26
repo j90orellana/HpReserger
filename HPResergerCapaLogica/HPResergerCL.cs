@@ -2522,7 +2522,15 @@ namespace HPResergerCapaLogica
         public DataTable FondoFijoCuentasEmpleado(int empresa, int tipo, int tipoid, string numdoc, string moneda)
         {
             return cdOrdenPedido.FondoFijoCuentasEmpleado(@empresa, tipo, tipoid, numdoc, moneda);
+        }
+        public Boolean VerificarPeriodoAbierto(int Empresa, DateTime FechaContable)
+        {            
+            //Periodo Cerrado
+            if (cdOrdenPedido.VerPeriodoAbierto(Empresa, FechaContable).Rows.Count == 0) return false;
+            //Periodo Abierto
+            return true;
 
         }
     }
+
 }

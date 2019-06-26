@@ -1278,6 +1278,10 @@ namespace HPReserger
             }
             return cadena;
         }
+        public void msg(string cadena)
+        {
+            HPResergerFunciones.Utilitarios.msg(cadena);
+        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (cboempresa.SelectedIndex < 0)
@@ -1316,6 +1320,10 @@ namespace HPReserger
                 MSG("Ingrese la Glosa del Asiento");
                 txtglosa.Focus();
                 return;
+            }
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpfechavalor.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpfechavalor.Focus(); return;
             }
             btnmas_Click(sender, e);
             validar();

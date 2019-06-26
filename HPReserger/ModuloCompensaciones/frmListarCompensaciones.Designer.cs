@@ -76,6 +76,8 @@
             this.txtRegularMN = new HpResergerUserControls.TextBoxPer();
             this.label7 = new System.Windows.Forms.Label();
             this.txtRegularME = new HpResergerUserControls.TextBoxPer();
+            this.btnExportarPlan = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -609,11 +611,31 @@
             this.txtRegularME.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtRegularME.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
             // 
+            // btnExportarPlan
+            // 
+            this.btnExportarPlan.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExportarPlan.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarPlan.Image = ((System.Drawing.Image)(resources.GetObject("btnExportarPlan.Image")));
+            this.btnExportarPlan.Location = new System.Drawing.Point(847, 77);
+            this.btnExportarPlan.Name = "btnExportarPlan";
+            this.btnExportarPlan.Size = new System.Drawing.Size(75, 23);
+            this.btnExportarPlan.TabIndex = 397;
+            this.btnExportarPlan.Text = "Excel";
+            this.btnExportarPlan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportarPlan.UseVisualStyleBackColor = true;
+            this.btnExportarPlan.Click += new System.EventHandler(this.btnExportarPlan_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // frmListarCompensaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 493);
+            this.Controls.Add(this.btnExportarPlan);
             this.Controls.Add(this.txtRegularME);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtMontoME);
@@ -689,5 +711,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xNameEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuentacontable;
+        private System.Windows.Forms.Button btnExportarPlan;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

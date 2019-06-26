@@ -394,7 +394,6 @@ namespace HPReserger.ModuloCompensaciones
 
         private void btnaceptar_Click(object sender, EventArgs e)
         {
-
             //Validaciones
             if (cboempresa.SelectedValue == null)
             {
@@ -459,6 +458,10 @@ namespace HPReserger.ModuloCompensaciones
             {
                 msg("No se ha Seleccionado Facturas ni Anticipos");
                 return;
+            }
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }
             if (msgOk("¿Seguro Desea Aplicar el Anticipo?") == DialogResult.OK)
             {

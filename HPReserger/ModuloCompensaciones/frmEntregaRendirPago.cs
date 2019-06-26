@@ -654,6 +654,10 @@ namespace HPReserger.ModuloCompensaciones
                 msg("No se ha Seleccionado Facturas ni Anticipos");
                 return;
             }
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             if (msgOk("¿Seguro Desea Aplicar las Entregas a Rendir?") == DialogResult.OK)
             {
                 //Asientos
@@ -681,7 +685,7 @@ namespace HPReserger.ModuloCompensaciones
                 int TipoPago = 0;
                 if (cbopago.Text == "003 Transferencias Fondos") TipoPago = 3;
                 else if (cbopago.Text == "007 Cheque.") TipoPago = 7;
-                string NroPago = txtnrocheque.TextValido();
+                string NroPago = txtnrocheque.Text;
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 ///
@@ -759,7 +763,7 @@ namespace HPReserger.ModuloCompensaciones
                                 , NameEmpleado, 0, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, TC, moneda, "", "", glosa, FechaCompensa, idUsuario, "");
                             ///Actualizo el Estado del Anticipo(Compensacion)
                             CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
-                                 TipoPago, decimal.Parse(txtImporteTotal.Text) == 0 ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(), Cuo);
+                                 TipoPago, decimal.Parse(txtImporteTotal.Text) == 0 ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), NroPago, Cuo);
                         }
                     }
                 }
@@ -813,6 +817,7 @@ namespace HPReserger.ModuloCompensaciones
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
                 //Fin Cuadre
+                string cadena = "";
                 if (ImporteTotal > 0)
                 {
                     numasiento = 0;
@@ -849,7 +854,7 @@ namespace HPReserger.ModuloCompensaciones
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, OtrasCuentas
                            , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                            , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
-                           , tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -15);
+                           , tc, proyecto, 0, CuoNext, moneda, glosa, FechaCompensa, -15);
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, OtrasCuentas, proyecto, TipoIdProveedor, NumDocEmpleado
                         , NameEmpleado, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(AbonarSoles), Math.Abs(AbonarDolares), TC, moneda, ""
@@ -859,16 +864,17 @@ namespace HPReserger.ModuloCompensaciones
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaCtaBanco
                            , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                            , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
-                           , tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -15);
+                           , tc, proyecto, 0, CuoNext, moneda, glosa, FechaCompensa, -15);
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaCtaBanco, proyecto, TipoIdProveedor, NumDocEmpleado
                         , NameEmpleado, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(AbonarSoles), Math.Abs(AbonarDolares), TC, moneda, nroKuenta
                         , NroPago, glosa, FechaCompensa, idUsuario, Cuo);
                     //Cuadre Asiento
                     CapaLogica.CuadrarAsiento(CuoNext, proyecto, FechaContable, 2);
+                    cadena = $"\nSe Aplico el Pago con Cuo{ CuoNext}";
                     //Fin Cuadre                 
                 }
-                msg($"Se Aplicó la Entrega a Rendir con Cuo {Cuo}");
+                msg($"Se Aplicó la Entrega a Rendir con Cuo {Cuo} {(cadena != "" ? cadena : "")}");
                 cbopago.Text = "003 Transferencias Fondos";
                 cboempleado_SelectedIndexChanged(sender, e);
             }

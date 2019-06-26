@@ -212,7 +212,10 @@ namespace HPReserger.ModuloCompensaciones
                 msg("El monto del Tipo de Cambio no debe ser Cero");
                 txttipocambio.Focus(); return;
             }
-
+            if(!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             if (msgOk("¿Seguro Desea Hacer el Anticipo?") == DialogResult.OK)
             {
                 //Asientos

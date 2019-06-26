@@ -55,6 +55,32 @@ namespace HpResergerUserControls
             combomes.SelectedValue = mes;
             comboaño.SelectedValue = año;
         }
+        Boolean _VerAño = true;
+        public Boolean VerAño
+        {
+            get { return _VerAño; }
+            set
+            {
+                _VerAño = value;
+                var val = AutoSize;
+                AutoSize = false;
+                lbl2.Visible = comboaño.Visible = _VerAño;
+                AutoSize = val;
+            }
+        }
+        Boolean _VerMes = true;
+        public Boolean VerMes
+        {
+            get { return _VerMes; }
+            set
+            {
+                _VerMes = value;
+                var val = AutoSize;
+                AutoSize = false;
+                lbl1.Visible = combomes.Visible = _VerMes;
+                AutoSize = val;
+            }
+        }
         public void Fecha(DateTime fecha)
         {
             comboaño.SelectedValue = fecha.Year;

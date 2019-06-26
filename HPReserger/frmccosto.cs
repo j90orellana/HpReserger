@@ -305,10 +305,9 @@ namespace HPReserger
                 ConsulCodi = (int)dtgconten[idcodigo.Name, x].Value;
                 ConsulCodigo = dtgconten[Descripcion.Name, x].Value.ToString();
                 CodigoCentro = dtgconten[codigos.Name, x].Value.ToString();
-                this.Close();
+                DialogResult = DialogResult.OK;
             }
         }
-
         private void chkcodigo_CheckedChanged(object sender, EventArgs e)
         {
 

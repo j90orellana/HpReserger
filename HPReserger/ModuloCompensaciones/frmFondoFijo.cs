@@ -263,6 +263,10 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Ingrese Glosa");
                 txtglosa.Focus(); return;
             }
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             string NumID = "0";
             if (dtgconten.CurrentCell != null) NumID = dtgconten[xpkid.Name, dtgconten.CurrentCell.RowIndex].Value.ToString();
             string CuentaFondoFijo = cbocuentaxpagar.SelectedValue.ToString();

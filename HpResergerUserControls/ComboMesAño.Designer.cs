@@ -47,7 +47,6 @@
             // 
             // comboaño
             // 
-            this.comboaño.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboaño.BackColor = System.Drawing.Color.White;
             this.comboaño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboaño.FormattingEnabled = true;
@@ -81,10 +80,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.lbl2);
-            this.Controls.Add(this.lbl1);
             this.Controls.Add(this.comboaño);
             this.Controls.Add(this.combomes);
+            this.Controls.Add(this.lbl2);
+            this.Controls.Add(this.lbl1);
             this.Name = "ComboMesAño";
             this.Size = new System.Drawing.Size(197, 24);
             this.Load += new System.EventHandler(this.ComboMesAño_Load);

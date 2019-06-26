@@ -380,6 +380,10 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Ingrese Glosa");
                 txtglosa.Focus(); return;
             }
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             if (msgOk("¿Seguro Desea Hacer el Abono?") == DialogResult.OK)
             {
                 int numasiento = 0;
@@ -576,14 +580,14 @@ namespace HPReserger.ModuloCompensaciones
             if (cboempresa.SelectedValue != null)
             {
                 DataTable Tablita = CapaLogica.ListarEmpleadosCompensaciones((int)cboempresa.SelectedValue, 2);
-                DataTable Table = CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue);           
+                DataTable Table = CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
                 if (cboempleado.Items.Count != Tablita.Rows.Count)
                 {
                     BuscarEmpleadoCompensaciones();
                 }
                 if (Dtgconten.RowCount != Table.Rows.Count)
                 {
-                    Dtgconten.DataSource = Table;                  
+                    Dtgconten.DataSource = Table;
                 }
             }
         }
