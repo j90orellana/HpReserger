@@ -20,7 +20,6 @@ namespace HPReserger.ModuloCompensaciones
             CargarMoneda();
             CargarEmpresa();
             txtglosa.CargarTextoporDefecto(); txtnrocheque.CargarTextoporDefecto();
-            //CargarProveedores();
         }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
