@@ -54,7 +54,6 @@ namespace HPReserger.ModuloCompensaciones
                 {
                     DtgcontenFacturas.DataSource = ((DataTable)DtgcontenFacturas.DataSource).Clone();
                     DtgcontenEntregas.DataSource = ((DataTable)DtgcontenEntregas.DataSource).Clone();
-                    //btnaceptar.Enabled = false;
                     ContarRegistros();
                 }
             }
