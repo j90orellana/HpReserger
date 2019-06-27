@@ -46,14 +46,16 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2018, 12, 5, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2018, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 6, 26, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 6, 30, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 6, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboMesAño1.Location = new System.Drawing.Point(12, 18);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(203, 24);
             this.comboMesAño1.TabIndex = 0;
+            this.comboMesAño1.VerAño = true;
+            this.comboMesAño1.VerMes = true;
             // 
             // label1
             // 
@@ -74,6 +76,7 @@
             this.txtdia.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtdia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdia.ForeColor = System.Drawing.Color.Black;
+            this.txtdia.Format = null;
             this.txtdia.Location = new System.Drawing.Point(246, 20);
             this.txtdia.MaxLength = 100;
             this.txtdia.Name = "txtdia";
@@ -94,6 +97,7 @@
             this.txtcompra.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtcompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcompra.ForeColor = System.Drawing.Color.Black;
+            this.txtcompra.Format = null;
             this.txtcompra.Location = new System.Drawing.Point(356, 20);
             this.txtcompra.MaxLength = 100;
             this.txtcompra.Name = "txtcompra";
@@ -114,6 +118,7 @@
             this.txtventa.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtventa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtventa.ForeColor = System.Drawing.Color.Black;
+            this.txtventa.Format = null;
             this.txtventa.Location = new System.Drawing.Point(460, 20);
             this.txtventa.MaxLength = 100;
             this.txtventa.Name = "txtventa";

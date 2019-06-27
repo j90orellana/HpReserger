@@ -47,6 +47,7 @@
             // 
             // comboaño
             // 
+            this.comboaño.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboaño.BackColor = System.Drawing.Color.White;
             this.comboaño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboaño.FormattingEnabled = true;
@@ -67,6 +68,7 @@
             // 
             // lbl2
             // 
+            this.lbl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl2.AutoSize = true;
             this.lbl2.Location = new System.Drawing.Point(116, 4);
             this.lbl2.Name = "lbl2";

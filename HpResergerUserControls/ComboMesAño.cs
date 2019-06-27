@@ -63,9 +63,12 @@ namespace HpResergerUserControls
             {
                 _VerAño = value;
                 var val = AutoSize;
-                AutoSize = false;
+                var medidas = Size;
+                AutoSize = false;                
                 lbl2.Visible = comboaño.Visible = _VerAño;
+                Size = medidas;
                 AutoSize = val;
+                Invalidate();                
             }
         }
         Boolean _VerMes = true;
@@ -76,9 +79,12 @@ namespace HpResergerUserControls
             {
                 _VerMes = value;
                 var val = AutoSize;
+                var medidas = Size;
                 AutoSize = false;
                 lbl1.Visible = combomes.Visible = _VerMes;
+                Size = medidas;
                 AutoSize = val;
+                Invalidate();
             }
         }
         public void Fecha(DateTime fecha)

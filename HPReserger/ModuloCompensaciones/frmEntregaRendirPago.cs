@@ -16,10 +16,10 @@ namespace HPReserger.ModuloCompensaciones
         public frmEntregaRendirPago()
         {
             InitializeComponent();
-            txtglosa.CargarTextoporDefecto(); txtnrocheque.CargarTextoporDefecto();
             dtpFechaContable.Value = dtpFechaCompensa.Value = DateTime.Now;
             CargarMoneda();
             CargarEmpresa();
+            txtglosa.CargarTextoporDefecto(); txtnrocheque.CargarTextoporDefecto();
             //CargarProveedores();
         }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
@@ -52,12 +52,12 @@ namespace HPReserger.ModuloCompensaciones
             {
                 cboempleado.DataSource = EmpleadosCompensaciones();
                 if (cboempleado.Items.Count == 0)
-                    if (DtgcontenFacturas.DataSource != null)
-                    {
-                        DtgcontenFacturas.DataSource = ((DataTable)DtgcontenFacturas.DataSource).Clone();
-                        //btnaceptar.Enabled = false;
-                        ContarRegistros();
-                    }
+                {
+                    DtgcontenFacturas.DataSource = ((DataTable)DtgcontenFacturas.DataSource).Clone();
+                    DtgcontenEntregas.DataSource = ((DataTable)DtgcontenEntregas.DataSource).Clone();
+                    //btnaceptar.Enabled = false;
+                    ContarRegistros();
+                }
             }
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -372,13 +372,19 @@ namespace HPReserger.ModuloCompensaciones
             if (cbopago.Text == "003 Transferencias Fondos")
             {
                 if (!txtnrocheque.EstaLLeno())
-                    txtnrocheque.Text = txtnrocheque.TextoDefecto = "Ingrese Nro Operación";
+                {
+                    txtnrocheque.Text = txtnrocheque.TextoDefecto = "Ingrese Nro Operación".ToUpper();
+                    txtnrocheque.CargarTextoporDefecto();
+                }
             }
             //Cheques
             else if (cbopago.Text == "007 Cheque.")
             {
                 if (!txtnrocheque.EstaLLeno())
-                    txtnrocheque.Text = txtnrocheque.TextoDefecto = "Ingrese Nro Cheque";
+                {
+                    txtnrocheque.Text = txtnrocheque.TextoDefecto = "Ingrese Nro Cheque".ToUpper();
+                    txtnrocheque.CargarTextoporDefecto();
+                }
             }
             else if (cbopago.Text == "000 Ninguno.")
             {
@@ -488,12 +494,12 @@ namespace HPReserger.ModuloCompensaciones
                             //Nacional
                             sumatoriaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
                             sumatoriaME += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value);
+                            //Extranjero
                             if ((int)cbomoneda.SelectedValue != 2)
                                 diferenciaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value) -
-                                Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
+                                                Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
                             //diferenciaMN += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value) -
                             //    Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
-                            //Extranjero
                         }
                     }
                 }
@@ -539,12 +545,12 @@ namespace HPReserger.ModuloCompensaciones
                     if ((int)item.Cells[xidMoneda.Name].Value == 1)
                     {
                         FacturasSoles += (decimal)item.Cells[xTotal.Name].Value;
-                        //se soles a dolares Divido
+                        //de soles a dolares Divido
                         FacturasDolares += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
                     }
                     else
                     {
-                        //se soles a dolares Multiplico
+                        //de soles a dolares Multiplico
                         FacturasSoles += Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
                         FacturasDolares += (decimal)item.Cells[xTotal.Name].Value;
                     }
@@ -564,7 +570,7 @@ namespace HPReserger.ModuloCompensaciones
                 frmlisempleado.TipoDocumento = int.Parse(empleado[0]);
                 frmlisempleado.NumeroDocumento = empleado[1];
             }
-            frmlisempleado.Text = "Seleccione Empleado para El Fondo Fijo";
+            frmlisempleado.Text = "Seleccione Empleado para la Entrega a Rendir";
             if (frmlisempleado.ShowDialog() == DialogResult.OK)
             {
                 cboempleado.SelectedValue = frmlisempleado.TipoDocumento + "-" + frmlisempleado.NumeroDocumento;
@@ -649,9 +655,14 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Ingrese Glosa");
                 txtglosa.Focus(); return;
             }
-            if ((ContarEntregas + ContaFacturas) <= 0)
+            if (ContarEntregas <= 0)
             {
-                msg("No se ha Seleccionado Facturas ni Anticipos");
+                msg("No se ha Seleccionado Entregas");
+                return;
+            }
+            if (ContaFacturas <= 0)
+            {
+                msg("No se ha Seleccionado Facturas");
                 return;
             }
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
@@ -715,7 +726,8 @@ namespace HPReserger.ModuloCompensaciones
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaCompensa, CuentaContable, proyecto, 5, item.Cells[xProveedor.Name].Value.ToString(),
                             item.Cells[xrazon_social.Name].Value.ToString(), idfac, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
                             Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
-                            moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
+                            //moneda == (int)item.Cells[xidMoneda.Name].Value ? 
+                            (decimal)item.Cells[xTCOri.Name].Value,// : (decimal)item.Cells[xTcReg.Name].Value,
                             (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaCompensa, idUsuario, "");
                         //Actualizar su Estado y Fecha de Compensacion
                         if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
