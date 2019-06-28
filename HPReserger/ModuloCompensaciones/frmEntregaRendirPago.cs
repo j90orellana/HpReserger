@@ -203,7 +203,7 @@ namespace HPReserger.ModuloCompensaciones
                     tipomoneda = "me";
                 }
             }
-            DataTable TablePagar = CapaLogica.BuscarCuentas($"%otras cuentas por pagar%{tipomoneda}", 5, "D");
+            DataTable TablePagar = CapaLogica.BuscarCuentas($"%46%otras cuentas por pagar%{tipomoneda}", 5, "D");
             return TablePagar;
         }
         public void ContarRegistros()

@@ -923,7 +923,7 @@
             // 
             this.crearToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("crearToolStripMenuItem.Image")));
             this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
-            this.crearToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.crearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.crearToolStripMenuItem.Text = "Apertura";
             this.crearToolStripMenuItem.Click += new System.EventHandler(this.crearToolStripMenuItem_Click);
             // 
@@ -931,7 +931,7 @@
             // 
             this.compensarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compensarToolStripMenuItem.Image")));
             this.compensarToolStripMenuItem.Name = "compensarToolStripMenuItem";
-            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.compensarToolStripMenuItem.Text = "Compensar";
             this.compensarToolStripMenuItem.Click += new System.EventHandler(this.compensarToolStripMenuItem_Click);
             // 

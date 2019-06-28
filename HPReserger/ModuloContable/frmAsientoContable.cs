@@ -1795,7 +1795,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    HPResergerFunciones.Utilitarios.msg("Error \n" + Filita[0].ToString());
+                    HPResergerFunciones.Utilitarios.msg("Mensaje de Error: \n" + Filita[0].ToString());
                     return;
                 }
             }

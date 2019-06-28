@@ -95,9 +95,12 @@ namespace HPReserger.ModuloCompensaciones
         }
         private void CargarDatos()
         {
+            btnDarBaja.Enabled = false;
             dtgconten.DataSource = CapaLogica.ListarCompensaciones(_idempresa, 1, 0, "");
             lbltotalregistros.Text = $"Total de Registros {dtgconten.RowCount}";
-            if (dtgconten.RowCount > 0) btnmodificar.Enabled = true; else btnmodificar.Enabled = false;
+            if (dtgconten.RowCount > 0)
+            { btnmodificar.Enabled = true; }
+            else { btnmodificar.Enabled = false; }
             PasarTipoOracion(xcliente);
         }
         public void PasarTipoOracion(DataGridViewColumn col)
@@ -361,7 +364,75 @@ namespace HPReserger.ModuloCompensaciones
                     Estado = 0;
                     CargarDatos();
                 }
-
+            }
+            else if (Estado == 10)
+            {
+                //Proceso para Actualizar
+                int numasiento = 0;
+                if (numasiento == 0)
+                {
+                    DataTable asientito = CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, dtpFechaContable.Value);
+                    DataRow asiento = asientito.Rows[0];
+                    if (asiento == null) { numasiento = 1; }
+                    else
+                        numasiento = ((int)asiento["codigo"]);
+                }
+                if (msgOk("¿Seguro Desea Dar de Baja el Fondo Fijo?") == DialogResult.OK)
+                {
+                    int PosFila = 0;
+                    string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
+                    int moneda = (int)cbomoneda.SelectedValue;
+                    int proyecto = (int)cboproyecto.SelectedValue;
+                    int TipoId = int.Parse(empleado[0]);
+                    string Numdoc = empleado[1];
+                    string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2);
+                    decimal MontoSoles = 0, MontoDolares = 0;
+                    decimal ImporteTotal = decimal.Parse(txtImporteTotal.Text);
+                    decimal tc = decimal.Parse(txttipocambio.Text);
+                    string glosa = txtglosa.TextValido();
+                    string nroOperacion = txtnrocheque.TextValido();
+                    ////
+                    string BanCuenta; int idTipocuenta;
+                    string nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
+                    if (cbocuentabanco.SelectedValue == null) BanCuenta = "";
+                    else BanCuenta = cbocuentabanco.SelectedValue.ToString();
+                    idTipocuenta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
+                    DateTime FechaCompensa = dtpFechaCompensa.Value;
+                    DateTime FechaContable = dtpFechaContable.Value;
+                    DateTime FechaVence = dtpFechaCompensa.Value.AddMonths(1);
+                    //     
+                    int pos = dtgconten.CurrentCell.RowIndex;
+                    MontoSoles = (decimal)dtgconten[xMontoMN.Name, pos].Value;
+                    MontoDolares = (decimal)dtgconten[xMontoME.Name, pos].Value;
+                    //debe
+                    //Asiento del salida del Banco
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, BanCuenta, Math.Abs(moneda == 1 ? MontoSoles : MontoDolares),
+                         0, tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -16);
+                    //Detalle del asiento
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, BanCuenta, proyecto, TipoId, Numdoc
+                        , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, nroKuenta, nroOperacion, glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                    //haber
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaFondoFijo, 0,
+                        Math.Abs(moneda == 1 ? MontoSoles : MontoDolares), tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -16);
+                    //Detalle del asiento
+                    CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaFondoFijo, proyecto, TipoId, Numdoc
+                        , NameEmpleado, 0, FechaCompensa.ToString("yyyyMMdd"), NumID, 0, FechaContable, FechaVence, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), tc, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                    //Inserto compensaciones!
+                    CapaLogica.InsertarCompensacionesDetalle(int.Parse(NumID), _idempresa, 1, MontoSoles, MontoDolares, cbopago.SelectedIndex == 0 ? 7 : 3, nroKuenta, nroOperacion,
+                        $"{NameEmpleado} {FechaCompensa.ToString()}", FechaCompensa, 1, Cuo);
+                    CapaLogica.ActualizarCompensaciones(_idempresa, 1, int.Parse(NumID), 1, cbopago.SelectedIndex == 0 ? 7 : 3, nroKuenta, nroOperacion, Cuo);
+                    //
+                    //Cuadre Asiento
+                    CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
+                    //Fin Cuadre              
+                    msg($"Se Dio de Baja El Fondo Fijo con Cuo {Cuo}");
+                    lblabonar.Visible = txtPorAbonar.Visible = true;
+                    txtImporteTotal.Enabled = txtPorAbonar.Enabled = true;
+                    ModoEdicion(false);
+                    BloquearPago(false);
+                    Estado = 0;
+                    CargarDatos();
+                }
             }
             else if (msgOk("¿Seguro Desea Crear el Fondo Fijo?") == DialogResult.OK)
             {
@@ -440,6 +511,15 @@ namespace HPReserger.ModuloCompensaciones
                 Estado = 0;
                 CargarDatos();
             }
+            else if (Estado == 10)
+            {
+                lblabonar.Visible = txtPorAbonar.Visible = true;
+                txtImporteTotal.Enabled = txtPorAbonar.Enabled = true;
+                ModoEdicion(false);
+                BloquearPago(false);
+                Estado = 0;
+                CargarDatos();
+            }
             else if (Estado == 0)
                 this.Close();
         }
@@ -456,6 +536,17 @@ namespace HPReserger.ModuloCompensaciones
                 cbocuentaxpagar.SelectedValue = R.Cells[xcuentacontable.Name].Value.ToString();
                 txtImporteTotal.Text = (moneda == 1 ? (decimal)R.Cells[xMontoMN.Name].Value : (decimal)R.Cells[xMontoME.Name].Value).ToString("n2");
                 dtpFechaCompensa.Value = (DateTime)R.Cells[xFechaCompensa.Name].Value;
+                btnmodificar.Enabled = true;
+                btnDarBaja.Enabled = false;
+
+                if (R.Cells[xNameEstado.Name].Value.ToString() == "Por Regularizar")
+                {
+                    btnDarBaja.Enabled = true;
+                }
+                if (R.Cells[xNameEstado.Name].Value.ToString() == "Regularizado")
+                {
+                    btnmodificar.Enabled = false;
+                }
             }
         }
 
@@ -470,7 +561,7 @@ namespace HPReserger.ModuloCompensaciones
         public void ModoEdicion(Boolean a)
         {
             ImporteDelFondo = decimal.Parse(txtImporteTotal.Text);
-            cboempleado.Enabled = cboempresa.Enabled = btnbusEmpleado.Enabled = cboproyecto.Enabled = !a;
+            btnDarBaja.Enabled = cboempleado.Enabled = cboempresa.Enabled = btnbusEmpleado.Enabled = cboproyecto.Enabled = !a;
             cbomoneda.Enabled = cbocuentaxpagar.Enabled = !a;
             txtPorAbonar.Visible = a; lblabonar.Visible = a;
             dtgconten.Enabled = !a;
@@ -483,7 +574,7 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void ImporteTotalCambio()
         {
-            if (Estado == 2)
+            if (new int[] { 2 }.Contains(Estado))
             {
                 BloquearPago(false);
                 decimal ImporteTotal = 0;
@@ -497,10 +588,24 @@ namespace HPReserger.ModuloCompensaciones
                 else
                     lblmsgsalida.Text = "Salida Dinero:";
             }
+            else if (Estado == 10)
+            {
+                lblmsgsalida.Text = "Entrada Dinero:";
+                lblabonar.Visible = txtPorAbonar.Visible = false;
+                txtImporteTotal.Enabled = txtPorAbonar.Enabled = false;
+            }
             txtPorAbonar.Text = (ImporteDelFondo - decimal.Parse(txtImporteTotal.Text)).ToString("n2");
         }
         private void txtImporteTotal_TextChanged(object sender, EventArgs e)
         {
+            ImporteTotalCambio();
+        }
+        private void btnDarBaja_Click(object sender, EventArgs e)
+        {
+            //Dar de Abaja
+            Estado = 10;
+            btnmodificar.Enabled = false;
+            ModoEdicion(true);
             ImporteTotalCambio();
         }
     }

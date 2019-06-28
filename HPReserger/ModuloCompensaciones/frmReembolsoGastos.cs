@@ -40,10 +40,10 @@ namespace HPReserger.ModuloCompensaciones
             dtpFechaContable.Value = dtpFechaCompensa.Value = DateTime.Now;
             Estado = 0;
             ModoEdicion(false);
-            CargarEmpresa();
             CargarMoneda();
             btnaceptar.Enabled = false;
             cbopago.SelectedIndex = 0;
+            CargarEmpresa();
         }
         public DataTable CargarCuentasxPagar()
         {
@@ -93,6 +93,7 @@ namespace HPReserger.ModuloCompensaciones
                     //    txtcodigo.Text = (codigo).ToString();
                     //}
                     cbobanco_SelectedIndexChanged(sender, e);
+                    BuscarEmpleadoCompensaciones();
                 }
             }
         }
@@ -580,11 +581,15 @@ namespace HPReserger.ModuloCompensaciones
             if (cboempresa.SelectedValue != null)
             {
                 DataTable Tablita = CapaLogica.ListarEmpleadosCompensaciones((int)cboempresa.SelectedValue, 2);
-                DataTable Table = CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
                 if (cboempleado.Items.Count != Tablita.Rows.Count)
                 {
                     BuscarEmpleadoCompensaciones();
                 }
+            }
+            if (cboempleado.SelectedValue != null)
+            {
+                DataTable Table = CapaLogica.ListarFacturasCompensaciones(cboempleado.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
+
                 if (Dtgconten.RowCount != Table.Rows.Count)
                 {
                     Dtgconten.DataSource = Table;
