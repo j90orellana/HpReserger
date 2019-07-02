@@ -1468,12 +1468,12 @@ namespace HPReserger
                                     filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
                                     filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
                                     filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
-                                    filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
-                                    filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
+                                    filaIgv[xImporteME.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                    filaIgv[xImporteMN.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                     ///soles
                                     if ((int)cbomoneda.SelectedValue == 1)
-                                        TotalIgv += Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
-                                    else TotalIgv += Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
+                                        TotalIgv += Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                    else TotalIgv += Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                     filaIgv[xCentroCosto.DataPropertyName] = "";
                                     filaIgv[xCentroCostoDesc.DataPropertyName] = "";
                                     filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
@@ -1516,12 +1516,12 @@ namespace HPReserger
                                 filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
                                 filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
                                 filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
-                                filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
-                                filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
+                                filaIgv[xImporteME.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                filaIgv[xImporteMN.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                 ///soles
                                 if ((int)cbomoneda.SelectedValue == 1)
-                                    TotalIgv += Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
-                                else TotalIgv += Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
+                                    TotalIgv += Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                else TotalIgv += Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                 filaIgv[xCentroCosto.DataPropertyName] = "";
                                 filaIgv[xCentroCostoDesc.DataPropertyName] = "";
                                 filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;

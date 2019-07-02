@@ -1202,6 +1202,7 @@ namespace HPReserger
             // lklcontrato
             // 
             this.lklcontrato.AutoSize = true;
+            this.lklcontrato.BackColor = System.Drawing.Color.Transparent;
             this.lklcontrato.Location = new System.Drawing.Point(639, 254);
             this.lklcontrato.Name = "lklcontrato";
             this.lklcontrato.Size = new System.Drawing.Size(42, 13);
@@ -1213,6 +1214,7 @@ namespace HPReserger
             // lklanexo
             // 
             this.lklanexo.AutoSize = true;
+            this.lklanexo.BackColor = System.Drawing.Color.Transparent;
             this.lklanexo.Location = new System.Drawing.Point(639, 278);
             this.lklanexo.Name = "lklanexo";
             this.lklanexo.Size = new System.Drawing.Size(61, 13);
@@ -1224,6 +1226,7 @@ namespace HPReserger
             // lklpracticas
             // 
             this.lklpracticas.AutoSize = true;
+            this.lklpracticas.BackColor = System.Drawing.Color.Transparent;
             this.lklpracticas.Location = new System.Drawing.Point(639, 302);
             this.lklpracticas.Name = "lklpracticas";
             this.lklpracticas.Size = new System.Drawing.Size(61, 13);
@@ -1235,6 +1238,7 @@ namespace HPReserger
             // lklotros
             // 
             this.lklotros.AutoSize = true;
+            this.lklotros.BackColor = System.Drawing.Color.Transparent;
             this.lklotros.Location = new System.Drawing.Point(639, 326);
             this.lklotros.Name = "lklotros";
             this.lklotros.Size = new System.Drawing.Size(61, 13);

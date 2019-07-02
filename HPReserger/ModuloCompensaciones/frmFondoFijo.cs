@@ -594,7 +594,9 @@ namespace HPReserger.ModuloCompensaciones
                 lblabonar.Visible = txtPorAbonar.Visible = false;
                 txtImporteTotal.Enabled = txtPorAbonar.Enabled = false;
             }
-            txtPorAbonar.Text = (ImporteDelFondo - decimal.Parse(txtImporteTotal.Text)).ToString("n2");
+            decimal ImporteTotal1 = 0;
+            decimal.TryParse(txtImporteTotal.Text, out ImporteTotal1);
+            txtPorAbonar.Text = (ImporteDelFondo - ImporteTotal1).ToString("n2");
         }
         private void txtImporteTotal_TextChanged(object sender, EventArgs e)
         {

@@ -319,7 +319,8 @@ namespace HPResergerFunciones
             }
             if (e.Control && e.KeyCode == Keys.C && !string.IsNullOrWhiteSpace(cajita.Text))
             {
-                Clipboard.SetText(cajita.SelectedText);
+                if (cajita.SelectedText != "")
+                    Clipboard.SetText(cajita.SelectedText);
             }
         }
         public static string ReversaCadena(string campo)

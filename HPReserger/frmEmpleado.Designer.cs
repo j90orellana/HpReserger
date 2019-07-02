@@ -762,6 +762,7 @@
             // lklpoliciales
             // 
             this.lklpoliciales.AutoSize = true;
+            this.lklpoliciales.BackColor = System.Drawing.Color.Transparent;
             this.lklpoliciales.Location = new System.Drawing.Point(657, 304);
             this.lklpoliciales.Margin = new System.Windows.Forms.Padding(0);
             this.lklpoliciales.Name = "lklpoliciales";
@@ -774,6 +775,7 @@
             // lklpenales
             // 
             this.lklpenales.AutoSize = true;
+            this.lklpenales.BackColor = System.Drawing.Color.Transparent;
             this.lklpenales.Location = new System.Drawing.Point(657, 328);
             this.lklpenales.Margin = new System.Windows.Forms.Padding(0);
             this.lklpenales.Name = "lklpenales";
@@ -786,6 +788,7 @@
             // lklservicios
             // 
             this.lklservicios.AutoSize = true;
+            this.lklservicios.BackColor = System.Drawing.Color.Transparent;
             this.lklservicios.Location = new System.Drawing.Point(657, 352);
             this.lklservicios.Margin = new System.Windows.Forms.Padding(0);
             this.lklservicios.Name = "lklservicios";
@@ -908,6 +911,7 @@
             // lklconviviente
             // 
             this.lklconviviente.AutoSize = true;
+            this.lklconviviente.BackColor = System.Drawing.Color.Transparent;
             this.lklconviviente.Location = new System.Drawing.Point(657, 376);
             this.lklconviviente.Margin = new System.Windows.Forms.Padding(0);
             this.lklconviviente.Name = "lklconviviente";
@@ -921,6 +925,7 @@
             // lklfirma
             // 
             this.lklfirma.AutoSize = true;
+            this.lklfirma.BackColor = System.Drawing.Color.Transparent;
             this.lklfirma.Location = new System.Drawing.Point(657, 280);
             this.lklfirma.Margin = new System.Windows.Forms.Padding(0);
             this.lklfirma.Name = "lklfirma";

@@ -1088,23 +1088,14 @@ namespace HPReserger
                                         //{
                                         //    filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value / (1 + igvs));
                                         //    filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value / (1 + igvs));
-                                        //}
-                                        //else
-                                        //{
-                                        filaIgv[xImporteME.DataPropertyName] = Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
-                                        filaIgv[xImporteMN.DataPropertyName] = Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
-                                        //}
-                                        filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
-                                        ///soles
-                                        //if (_TipoDoc == 3)
-                                        //{
-
-                                        //}
-                                        //else
-                                        //{
+                                        //}                                                                           
+                                        filaIgv[xImporteME.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                        filaIgv[xImporteMN.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                        ///soles                                        
                                         if ((int)cbomoneda.SelectedValue == 1)
                                             TotalIgv += Redondear((decimal)item.Cells[xImporteMN.Name].Value * igvs);
                                         else TotalIgv += Redondear((decimal)item.Cells[xImporteME.Name].Value * igvs);
+                                        filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
                                         //}
                                         TDatos.Rows.Add(filaIgv);
                                     }
