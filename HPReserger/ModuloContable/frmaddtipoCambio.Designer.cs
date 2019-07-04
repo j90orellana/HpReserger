@@ -46,9 +46,9 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 6, 26, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 6, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 6, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 7, 4, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 7, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 7, 1, 0, 0, 0, 0);
             this.comboMesAño1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboMesAño1.Location = new System.Drawing.Point(12, 18);
             this.comboMesAño1.Name = "comboMesAño1";
@@ -171,7 +171,7 @@
             // 
             this.lblmsg.AutoSize = true;
             this.lblmsg.ForeColor = System.Drawing.Color.Red;
-            this.lblmsg.Location = new System.Drawing.Point(12, 39);
+            this.lblmsg.Location = new System.Drawing.Point(12, 42);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(0, 13);
             this.lblmsg.TabIndex = 44;

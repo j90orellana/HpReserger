@@ -588,12 +588,12 @@ namespace HPReserger.ModuloCompensaciones
                 CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, BanCuenta, proyecto, int.Parse(Empleado[0]), Empleado[1]
                   , NameEmpleado, 0, "0", $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}"
                   , 0, FechaCompensa, FechaCompensa, FechaCompensa, decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text)
-                  , tc, moneda, nroKuenta, "", glosa, FechaCompensa, IdUsuario, Cuo);
+                  , tc, moneda, nroKuenta, NroPago, glosa, FechaCompensa, IdUsuario, Cuo);
                 //Inserto compensaciones!
                 CapaLogica.InsertarCompensacionesDetalle(pkIdTipo, (int)cboempresa.SelectedValue, 1,
                         decimal.Parse(txttotalMN.Text) + (decimal.Parse(txttotaldifMN.Text)), decimal.Parse(txttotalME.Text) + decimal.Parse(txttotaldifME.Text),
                         TipoPago, cbopago.Text == "000 Ninguno." ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), NroPago,
-                        $"{Configuraciones.MayusculaCadaPalabra(NameEmpleado)} {dtpFechaCompensa.Value.ToString("d")}", FechaCompensa, 1, Cuo);
+                        $"{Configuraciones.MayusculaCadaPalabra(NameEmpleado)} {dtpFechaCompensa.Value.ToString("d")}", FechaCompensa, 2, Cuo);
                 //
                 //CapaLogica.InsertarCompensaciones((int)cboempresa.SelectedValue, 2, int.Parse(Empleado[0]), Empleado[1], decimal.Parse(txttotalMN.Text), decimal.Parse(txttotalME.Text), CuoReg,
                 //    cbopago.SelectedIndex == 0 ? 3 : 7, nroKuenta, txtnrocheque.TextValido(), $"{FechaCompensa.ToString("d")} {Configuraciones.MayusculaCadaPalabra(NameEmpleado)}",
@@ -610,6 +610,17 @@ namespace HPReserger.ModuloCompensaciones
         private void cbomoneda_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (ContadorFacturas <= 0)
+            {
+                if (cboempleado.SelectedValue != null)
+                {
+                    cboempleado_Click(sender, e);
+                }
+            }
         }
     }
 }

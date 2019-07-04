@@ -492,7 +492,7 @@ namespace HPReserger
             this.btncargarcuentas.Name = "btncargarcuentas";
             this.btncargarcuentas.Size = new System.Drawing.Size(82, 23);
             this.btncargarcuentas.TabIndex = 137;
-            this.btncargarcuentas.Text = "Cargar Cuentas";
+            this.btncargarcuentas.Text = "Cuentas";
             this.btncargarcuentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.tipmsg.SetToolTip(this.btncargarcuentas, "Cargar Cuentas por Excel");
             this.btncargarcuentas.UseVisualStyleBackColor = true;
@@ -663,6 +663,7 @@ namespace HPReserger
             this.Txtbusca.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Txtbusca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.Txtbusca.FondoBoton = ((System.Drawing.Image)(resources.GetObject("Txtbusca.FondoBoton")));
+            this.Txtbusca.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txtbusca.ForeColor = System.Drawing.Color.Black;
             this.Txtbusca.ImgBotonCerrar = null;
             this.Txtbusca.Location = new System.Drawing.Point(17, 245);

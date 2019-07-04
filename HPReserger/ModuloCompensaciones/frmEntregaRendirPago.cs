@@ -77,7 +77,7 @@ namespace HPReserger.ModuloCompensaciones
                 }
             }
         }
-        int fkEmpresa = 99;
+        //int fkEmpresa = 99;
         private void cboempleado_SelectedIndexChanged(object sender, EventArgs e)
         {
             ContaFacturas = ContarEntregas = 0;
@@ -586,6 +586,15 @@ namespace HPReserger.ModuloCompensaciones
         {
             lblbanco.Visible = lblmsgsalida.Visible = cbobanco.Visible = cbocuentabanco.Visible = txtnrocheque.Visible = !a;
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (ContaFacturas + ContarEntregas <= 0)
+            {
+                cboempleado_Click(sender, e);
+            }
+        }
+
         public DialogResult msgOk(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
@@ -797,7 +806,7 @@ namespace HPReserger.ModuloCompensaciones
                     decimal AbonarSoles = Configuraciones.Redondear(moneda == 1 ? ImporteAbonar : ImporteAbonar * Factor);
                     decimal AbonarDolares = Configuraciones.Redondear(moneda == 2 ? ImporteAbonar : ImporteAbonar / Factor);
                     //Salida de Dinero
-                    if (ImporteTotal > 0)
+                    if (ImporteTotal < 0)
                     {
                         string OtrasCuentas = cbocuentaxpagar.SelectedValue.ToString();
                         //Asiento Cabecera
@@ -811,7 +820,7 @@ namespace HPReserger.ModuloCompensaciones
                             , "", glosa, FechaCompensa, idUsuario, "");
                     }
                     //Entrada de Dinero                   
-                    else if (ImporteTotal < 0)
+                    else if (ImporteTotal > 0)
                     {
                         //Asiento Cabecera
                         CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaCtaBanco

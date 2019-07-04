@@ -283,7 +283,7 @@ namespace HPReserger
         }
         public DialogResult MSG(string cadena)
         {
-            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         private void Limpiar()
         {
@@ -364,12 +364,12 @@ namespace HPReserger
         }
         private void cboarea_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboarea.SelectedIndex >= 0)
+            if (cboarea.SelectedIndex >= 0 && cboarea.SelectedValue != null)
             {
                 cboCargoPuesto.DataSource = null;
                 cboCargoPuesto.ValueMember = "fk_idcargo";
                 cboCargoPuesto.DisplayMember = "cargo";
-                cboCargoPuesto.DataSource = clSolicitudEmpleado.CargosAreas(10, 0, (int)cboarea.SelectedValue,"");
+                cboCargoPuesto.DataSource = clSolicitudEmpleado.CargosAreas(10, 0, (int)cboarea.SelectedValue, "");
                 cboCargoPuesto.SelectedIndex = -1;
             }
             else

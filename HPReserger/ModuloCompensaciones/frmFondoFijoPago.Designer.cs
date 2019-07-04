@@ -100,6 +100,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtImporteTotal = new HpResergerUserControls.TextBoxPer();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.separadorOre2 = new HpResergerUserControls.SeparadorOre();
             ((System.ComponentModel.ISupportInitialize)(this.DtgcontenFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -585,7 +587,7 @@
             this.DtgcontenFacturas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgcontenFacturas.EnableHeadersVisualStyles = false;
             this.DtgcontenFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.DtgcontenFacturas.Location = new System.Drawing.Point(12, 157);
+            this.DtgcontenFacturas.Location = new System.Drawing.Point(12, 167);
             this.DtgcontenFacturas.Name = "DtgcontenFacturas";
             this.DtgcontenFacturas.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.DtgcontenFacturas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -593,7 +595,7 @@
             this.DtgcontenFacturas.RowTemplate.Height = 18;
             this.DtgcontenFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DtgcontenFacturas.ShowRowErrors = false;
-            this.DtgcontenFacturas.Size = new System.Drawing.Size(910, 301);
+            this.DtgcontenFacturas.Size = new System.Drawing.Size(910, 290);
             this.DtgcontenFacturas.TabIndex = 426;
             this.DtgcontenFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentClick);
             this.DtgcontenFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
@@ -854,7 +856,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 142);
+            this.label2.Location = new System.Drawing.Point(12, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 13);
             this.label2.TabIndex = 422;
@@ -930,11 +932,35 @@
             this.label12.TabIndex = 458;
             this.label12.Text = "Total Reembolso:";
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
+            this.btnActualizar.Location = new System.Drawing.Point(836, 142);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(86, 23);
+            this.btnActualizar.TabIndex = 460;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // separadorOre2
+            // 
+            this.separadorOre2.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre2.Location = new System.Drawing.Point(-8, 143);
+            this.separadorOre2.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre2.Name = "separadorOre2";
+            this.separadorOre2.Size = new System.Drawing.Size(841, 2);
+            this.separadorOre2.TabIndex = 459;
+            // 
             // frmFondoFijoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 493);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.separadorOre2);
             this.Controls.Add(this.cbomoneda);
             this.Controls.Add(this.txtImporteTotal);
             this.Controls.Add(this.label12);
@@ -1051,5 +1077,7 @@
         private System.Windows.Forms.Label label18;
         private HpResergerUserControls.TextBoxPer txtImporteTotal;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnActualizar;
+        private HpResergerUserControls.SeparadorOre separadorOre2;
     }
 }
