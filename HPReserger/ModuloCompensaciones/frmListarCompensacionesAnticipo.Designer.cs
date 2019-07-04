@@ -133,7 +133,7 @@
             this.btnaceptar.Location = new System.Drawing.Point(763, 463);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(79, 24);
-            this.btnaceptar.TabIndex = 372;
+            this.btnaceptar.TabIndex = 14;
             this.btnaceptar.Text = "Aplicar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -146,7 +146,7 @@
             this.btncancelar.Location = new System.Drawing.Point(844, 463);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(79, 24);
-            this.btncancelar.TabIndex = 373;
+            this.btncancelar.TabIndex = 15;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@
             this.lbltotalregistros.Location = new System.Drawing.Point(12, 469);
             this.lbltotalregistros.Name = "lbltotalregistros";
             this.lbltotalregistros.Size = new System.Drawing.Size(104, 13);
-            this.lbltotalregistros.TabIndex = 371;
+            this.lbltotalregistros.TabIndex = 23;
             this.lbltotalregistros.Text = "Total de Registros: ";
             // 
             // DtgcontenFacturas
@@ -231,7 +231,7 @@
             this.DtgcontenFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DtgcontenFacturas.ShowRowErrors = false;
             this.DtgcontenFacturas.Size = new System.Drawing.Size(905, 144);
-            this.DtgcontenFacturas.TabIndex = 370;
+            this.DtgcontenFacturas.TabIndex = 1;
             this.DtgcontenFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenFacturas_CellContentClick);
             this.DtgcontenFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenFacturas_CellDoubleClick);
             this.DtgcontenFacturas.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenFacturas_CellValueChanged);
@@ -430,7 +430,7 @@
             this.label2.Location = new System.Drawing.Point(3, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 13);
-            this.label2.TabIndex = 369;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Listado de Facturas Presentadas:";
             // 
             // cbomoneda
@@ -441,7 +441,7 @@
             this.cbomoneda.Location = new System.Drawing.Point(79, 76);
             this.cbomoneda.Name = "cbomoneda";
             this.cbomoneda.Size = new System.Drawing.Size(85, 21);
-            this.cbomoneda.TabIndex = 395;
+            this.cbomoneda.TabIndex = 3;
             this.cbomoneda.SelectedIndexChanged += new System.EventHandler(this.cbomoneda_SelectedIndexChanged);
             // 
             // cbocuentabanco
@@ -453,7 +453,7 @@
             this.cbocuentabanco.Location = new System.Drawing.Point(516, 100);
             this.cbocuentabanco.Name = "cbocuentabanco";
             this.cbocuentabanco.Size = new System.Drawing.Size(244, 21);
-            this.cbocuentabanco.TabIndex = 402;
+            this.cbocuentabanco.TabIndex = 12;
             // 
             // lblmsgsalida
             // 
@@ -463,7 +463,7 @@
             this.lblmsgsalida.Location = new System.Drawing.Point(427, 104);
             this.lblmsgsalida.Name = "lblmsgsalida";
             this.lblmsgsalida.Size = new System.Drawing.Size(90, 13);
-            this.lblmsgsalida.TabIndex = 401;
+            this.lblmsgsalida.TabIndex = 31;
             this.lblmsgsalida.Text = "Salida del Pago:";
             // 
             // cbobanco
@@ -475,7 +475,7 @@
             this.cbobanco.Location = new System.Drawing.Point(283, 100);
             this.cbobanco.Name = "cbobanco";
             this.cbobanco.Size = new System.Drawing.Size(140, 21);
-            this.cbobanco.TabIndex = 400;
+            this.cbobanco.TabIndex = 11;
             this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
             this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
             // 
@@ -487,7 +487,7 @@
             this.lblbanco.Location = new System.Drawing.Point(242, 104);
             this.lblbanco.Name = "lblbanco";
             this.lblbanco.Size = new System.Drawing.Size(42, 13);
-            this.lblbanco.TabIndex = 399;
+            this.lblbanco.TabIndex = 26;
             this.lblbanco.Text = "Banco:";
             // 
             // DtgcontenAnticipos
@@ -549,7 +549,7 @@
             this.DtgcontenAnticipos.RowHeadersVisible = false;
             this.DtgcontenAnticipos.RowTemplate.Height = 18;
             this.DtgcontenAnticipos.Size = new System.Drawing.Size(905, 144);
-            this.DtgcontenAnticipos.TabIndex = 398;
+            this.DtgcontenAnticipos.TabIndex = 0;
             this.DtgcontenAnticipos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellContentClick);
             this.DtgcontenAnticipos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellDoubleClick);
             this.DtgcontenAnticipos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellValueChanged);
@@ -715,7 +715,7 @@
             this.label3.Location = new System.Drawing.Point(3, 2);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(128, 13);
-            this.label3.TabIndex = 397;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Anticipos al Proveedor:";
             // 
             // label4
@@ -726,7 +726,7 @@
             this.label4.Location = new System.Drawing.Point(27, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 396;
+            this.label4.TabIndex = 20;
             this.label4.Text = "Moneda:";
             // 
             // txttipocambio
@@ -743,7 +743,7 @@
             this.txttipocambio.Name = "txttipocambio";
             this.txttipocambio.NextControlOnEnter = null;
             this.txttipocambio.Size = new System.Drawing.Size(50, 21);
-            this.txttipocambio.TabIndex = 393;
+            this.txttipocambio.TabIndex = 7;
             this.txttipocambio.Text = "3.300";
             this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttipocambio.TextoDefecto = "3.300";
@@ -759,7 +759,7 @@
             this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaContable.Name = "dtpFechaContable";
             this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaContable.TabIndex = 389;
+            this.dtpFechaContable.TabIndex = 9;
             this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             // 
             // label15
@@ -770,7 +770,7 @@
             this.label15.Location = new System.Drawing.Point(742, 80);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(90, 13);
-            this.label15.TabIndex = 391;
+            this.label15.TabIndex = 33;
             this.label15.Text = "Fecha Contable:";
             // 
             // dtpFechaCompensa
@@ -782,7 +782,7 @@
             this.dtpFechaCompensa.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaCompensa.Name = "dtpFechaCompensa";
             this.dtpFechaCompensa.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaCompensa.TabIndex = 390;
+            this.dtpFechaCompensa.TabIndex = 8;
             this.dtpFechaCompensa.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpFechaCompensa.ValueChanged += new System.EventHandler(this.dtpFechaCompensa_ValueChanged);
             // 
@@ -794,7 +794,7 @@
             this.label6.Location = new System.Drawing.Point(450, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 394;
+            this.label6.TabIndex = 30;
             this.label6.Text = "T.C.:";
             // 
             // label19
@@ -805,7 +805,7 @@
             this.label19.Location = new System.Drawing.Point(542, 80);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(96, 13);
-            this.label19.TabIndex = 392;
+            this.label19.TabIndex = 32;
             this.label19.Text = "Fecha Aplicación:";
             // 
             // txtglosa
@@ -823,7 +823,7 @@
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.Size = new System.Drawing.Size(445, 21);
-            this.txtglosa.TabIndex = 387;
+            this.txtglosa.TabIndex = 6;
             this.txtglosa.Text = "INGRESE LA GLOSA DEL ANTICIPO";
             this.txtglosa.TextoDefecto = "INGRESE LA GLOSA DEL ANTICIPO";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -837,7 +837,7 @@
             this.label8.Location = new System.Drawing.Point(437, 56);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(39, 13);
-            this.label8.TabIndex = 388;
+            this.label8.TabIndex = 29;
             this.label8.Text = "Glosa:";
             // 
             // cboproveedor
@@ -851,7 +851,7 @@
             this.cboproveedor.Location = new System.Drawing.Point(79, 52);
             this.cboproveedor.Name = "cboproveedor";
             this.cboproveedor.Size = new System.Drawing.Size(320, 21);
-            this.cboproveedor.TabIndex = 385;
+            this.cboproveedor.TabIndex = 2;
             this.cboproveedor.SelectedIndexChanged += new System.EventHandler(this.cboproveedor_SelectedIndexChanged);
             this.cboproveedor.Click += new System.EventHandler(this.cboproveedor_Click);
             // 
@@ -863,7 +863,7 @@
             this.label5.Location = new System.Drawing.Point(18, 55);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
-            this.label5.TabIndex = 386;
+            this.label5.TabIndex = 19;
             this.label5.Text = "Proveedor:";
             // 
             // label7
@@ -874,7 +874,7 @@
             this.label7.Location = new System.Drawing.Point(11, 36);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(209, 13);
-            this.label7.TabIndex = 384;
+            this.label7.TabIndex = 17;
             this.label7.Text = "Opciones para el Anticipo al Proveedor";
             // 
             // cboproyecto
@@ -887,7 +887,7 @@
             this.cboproyecto.Location = new System.Drawing.Point(478, 9);
             this.cboproyecto.Name = "cboproyecto";
             this.cboproyecto.Size = new System.Drawing.Size(253, 21);
-            this.cboproyecto.TabIndex = 382;
+            this.cboproyecto.TabIndex = 1;
             // 
             // label16
             // 
@@ -897,7 +897,7 @@
             this.label16.Location = new System.Drawing.Point(424, 13);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(54, 13);
-            this.label16.TabIndex = 383;
+            this.label16.TabIndex = 28;
             this.label16.Text = "Proyecto:";
             // 
             // separadorOre2
@@ -910,7 +910,7 @@
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre2.Name = "separadorOre2";
             this.separadorOre2.Size = new System.Drawing.Size(945, 2);
-            this.separadorOre2.TabIndex = 381;
+            this.separadorOre2.TabIndex = 22;
             // 
             // separadorOre1
             // 
@@ -922,7 +922,7 @@
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
             this.separadorOre1.Size = new System.Drawing.Size(945, 2);
-            this.separadorOre1.TabIndex = 380;
+            this.separadorOre1.TabIndex = 18;
             // 
             // cboempresa
             // 
@@ -935,7 +935,7 @@
             this.cboempresa.Location = new System.Drawing.Point(79, 9);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(344, 21);
-            this.cboempresa.TabIndex = 378;
+            this.cboempresa.TabIndex = 0;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
             // 
@@ -947,7 +947,7 @@
             this.label18.Location = new System.Drawing.Point(27, 12);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(53, 13);
-            this.label18.TabIndex = 379;
+            this.label18.TabIndex = 16;
             this.label18.Text = "Empresa:";
             // 
             // tableLayoutPanel1
@@ -970,7 +970,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(911, 330);
-            this.tableLayoutPanel1.TabIndex = 407;
+            this.tableLayoutPanel1.TabIndex = 34;
             // 
             // label1
             // 
@@ -980,7 +980,7 @@
             this.label1.Location = new System.Drawing.Point(167, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 394;
+            this.label1.TabIndex = 24;
             this.label1.Text = "Total:";
             // 
             // txtImporteTotal
@@ -998,7 +998,7 @@
             this.txtImporteTotal.NextControlOnEnter = null;
             this.txtImporteTotal.ReadOnly = true;
             this.txtImporteTotal.Size = new System.Drawing.Size(85, 21);
-            this.txtImporteTotal.TabIndex = 393;
+            this.txtImporteTotal.TabIndex = 4;
             this.txtImporteTotal.Text = "0.00";
             this.txtImporteTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtImporteTotal.TextoDefecto = "0.00";
@@ -1021,7 +1021,7 @@
             this.txtnrocheque.Name = "txtnrocheque";
             this.txtnrocheque.NextControlOnEnter = null;
             this.txtnrocheque.Size = new System.Drawing.Size(160, 21);
-            this.txtnrocheque.TabIndex = 408;
+            this.txtnrocheque.TabIndex = 13;
             this.txtnrocheque.Text = "INGRESE NRO OPERACIÓN";
             this.txtnrocheque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrocheque.TextoDefecto = "INGRESE NRO OPERACIÓN";
@@ -1041,7 +1041,7 @@
             this.cbopago.Location = new System.Drawing.Point(79, 100);
             this.cbopago.Name = "cbopago";
             this.cbopago.Size = new System.Drawing.Size(163, 21);
-            this.cbopago.TabIndex = 395;
+            this.cbopago.TabIndex = 10;
             this.cbopago.SelectedIndexChanged += new System.EventHandler(this.cbopago_SelectedIndexChanged);
             // 
             // label9
@@ -1052,7 +1052,7 @@
             this.label9.Location = new System.Drawing.Point(19, 104);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 13);
-            this.label9.TabIndex = 396;
+            this.label9.TabIndex = 21;
             this.label9.Text = "Tipo Pago:";
             // 
             // label10
@@ -1063,7 +1063,7 @@
             this.label10.Location = new System.Drawing.Point(292, 80);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 13);
-            this.label10.TabIndex = 394;
+            this.label10.TabIndex = 25;
             this.label10.Text = "Abonar:";
             // 
             // txtPorAbonar
@@ -1080,7 +1080,7 @@
             this.txtPorAbonar.Name = "txtPorAbonar";
             this.txtPorAbonar.NextControlOnEnter = null;
             this.txtPorAbonar.Size = new System.Drawing.Size(85, 21);
-            this.txtPorAbonar.TabIndex = 393;
+            this.txtPorAbonar.TabIndex = 5;
             this.txtPorAbonar.Text = "0.00";
             this.txtPorAbonar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPorAbonar.TextoDefecto = "0.00";
@@ -1099,7 +1099,7 @@
             this.btnbusproveedor.Location = new System.Drawing.Point(402, 52);
             this.btnbusproveedor.Name = "btnbusproveedor";
             this.btnbusproveedor.Size = new System.Drawing.Size(21, 21);
-            this.btnbusproveedor.TabIndex = 409;
+            this.btnbusproveedor.TabIndex = 27;
             this.btnbusproveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnbusproveedor.UseVisualStyleBackColor = false;
             this.btnbusproveedor.Click += new System.EventHandler(this.btnbusproveedor_Click);

@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFondoFijoPago));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbobanco = new System.Windows.Forms.ComboBox();
             this.lblmsgsalida = new System.Windows.Forms.Label();
             this.txtnrocheque = new HpResergerUserControls.TextBoxPer();
@@ -113,7 +113,7 @@
             this.cbobanco.Location = new System.Drawing.Point(284, 118);
             this.cbobanco.Name = "cbobanco";
             this.cbobanco.Size = new System.Drawing.Size(140, 21);
-            this.cbobanco.TabIndex = 447;
+            this.cbobanco.TabIndex = 11;
             this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
             this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
             // 
@@ -125,7 +125,7 @@
             this.lblmsgsalida.Location = new System.Drawing.Point(424, 122);
             this.lblmsgsalida.Name = "lblmsgsalida";
             this.lblmsgsalida.Size = new System.Drawing.Size(90, 13);
-            this.lblmsgsalida.TabIndex = 456;
+            this.lblmsgsalida.TabIndex = 40;
             this.lblmsgsalida.Text = "Salida del Pago:";
             // 
             // txtnrocheque
@@ -143,7 +143,7 @@
             this.txtnrocheque.Name = "txtnrocheque";
             this.txtnrocheque.NextControlOnEnter = null;
             this.txtnrocheque.Size = new System.Drawing.Size(160, 21);
-            this.txtnrocheque.TabIndex = 455;
+            this.txtnrocheque.TabIndex = 13;
             this.txtnrocheque.Text = "INGRESE NRO OPERACIÓN";
             this.txtnrocheque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrocheque.TextoDefecto = "INGRESE NRO OPERACIÓN";
@@ -161,7 +161,7 @@
             this.cbopago.Location = new System.Drawing.Point(80, 118);
             this.cbopago.Name = "cbopago";
             this.cbopago.Size = new System.Drawing.Size(163, 21);
-            this.cbopago.TabIndex = 453;
+            this.cbopago.TabIndex = 10;
             // 
             // label11
             // 
@@ -171,7 +171,7 @@
             this.label11.Location = new System.Drawing.Point(19, 122);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(61, 13);
-            this.label11.TabIndex = 454;
+            this.label11.TabIndex = 34;
             this.label11.Text = "Tipo Pago:";
             // 
             // cboproyecto
@@ -184,7 +184,7 @@
             this.cboproyecto.Location = new System.Drawing.Point(479, 8);
             this.cboproyecto.Name = "cboproyecto";
             this.cboproyecto.Size = new System.Drawing.Size(253, 21);
-            this.cboproyecto.TabIndex = 451;
+            this.cboproyecto.TabIndex = 1;
             // 
             // label16
             // 
@@ -194,7 +194,7 @@
             this.label16.Location = new System.Drawing.Point(425, 12);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(54, 13);
-            this.label16.TabIndex = 452;
+            this.label16.TabIndex = 43;
             this.label16.Text = "Proyecto:";
             // 
             // txtglosa
@@ -212,7 +212,7 @@
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.Size = new System.Drawing.Size(443, 21);
-            this.txtglosa.TabIndex = 449;
+            this.txtglosa.TabIndex = 5;
             this.txtglosa.Text = "INGRESE LA GLOSA DEL FONDO FIJO";
             this.txtglosa.TextoDefecto = "INGRESE LA GLOSA DEL FONDO FIJO";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -226,7 +226,7 @@
             this.label8.Location = new System.Drawing.Point(438, 50);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(39, 13);
-            this.label8.TabIndex = 450;
+            this.label8.TabIndex = 42;
             this.label8.Text = "Glosa:";
             // 
             // cbocuentabanco
@@ -237,7 +237,7 @@
             this.cbocuentabanco.Location = new System.Drawing.Point(513, 118);
             this.cbocuentabanco.Name = "cbocuentabanco";
             this.cbocuentabanco.Size = new System.Drawing.Size(244, 21);
-            this.cbocuentabanco.TabIndex = 448;
+            this.cbocuentabanco.TabIndex = 12;
             // 
             // lblguia
             // 
@@ -247,7 +247,7 @@
             this.lblguia.Location = new System.Drawing.Point(243, 122);
             this.lblguia.Name = "lblguia";
             this.lblguia.Size = new System.Drawing.Size(42, 13);
-            this.lblguia.TabIndex = 446;
+            this.lblguia.TabIndex = 39;
             this.lblguia.Text = "Banco:";
             // 
             // cbomoneda
@@ -258,7 +258,7 @@
             this.cbomoneda.Location = new System.Drawing.Point(80, 70);
             this.cbomoneda.Name = "cbomoneda";
             this.cbomoneda.Size = new System.Drawing.Size(163, 21);
-            this.cbomoneda.TabIndex = 444;
+            this.cbomoneda.TabIndex = 3;
             this.cbomoneda.SelectedIndexChanged += new System.EventHandler(this.cbomoneda_SelectedIndexChanged);
             this.cbomoneda.Click += new System.EventHandler(this.cbomoneda_Click);
             // 
@@ -270,7 +270,7 @@
             this.label4.Location = new System.Drawing.Point(28, 74);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 445;
+            this.label4.TabIndex = 33;
             this.label4.Text = "Moneda:";
             // 
             // btnaceptar
@@ -280,7 +280,7 @@
             this.btnaceptar.Location = new System.Drawing.Point(766, 463);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnaceptar.TabIndex = 442;
+            this.btnaceptar.TabIndex = 14;
             this.btnaceptar.Text = "Pagar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -293,7 +293,7 @@
             this.btncancelar.Location = new System.Drawing.Point(847, 463);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 443;
+            this.btncancelar.TabIndex = 15;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -315,7 +315,7 @@
             this.txttotaldifME.NextControlOnEnter = null;
             this.txttotaldifME.ReadOnly = true;
             this.txttotaldifME.Size = new System.Drawing.Size(61, 21);
-            this.txttotaldifME.TabIndex = 435;
+            this.txttotaldifME.TabIndex = 26;
             this.txttotaldifME.Text = "0.00";
             this.txttotaldifME.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttotaldifME.TextoDefecto = "0.00";
@@ -338,7 +338,7 @@
             this.txttotaldifMN.NextControlOnEnter = null;
             this.txttotaldifMN.ReadOnly = true;
             this.txttotaldifMN.Size = new System.Drawing.Size(61, 21);
-            this.txttotaldifMN.TabIndex = 436;
+            this.txttotaldifMN.TabIndex = 24;
             this.txttotaldifMN.Text = "0.00";
             this.txttotaldifMN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttotaldifMN.TextoDefecto = "0.00";
@@ -359,7 +359,7 @@
             this.txttipocambio.Name = "txttipocambio";
             this.txttipocambio.NextControlOnEnter = null;
             this.txttipocambio.Size = new System.Drawing.Size(59, 21);
-            this.txttipocambio.TabIndex = 433;
+            this.txttipocambio.TabIndex = 8;
             this.txttipocambio.Text = "3.300";
             this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttipocambio.TextoDefecto = "3.300";
@@ -382,7 +382,7 @@
             this.txttotalME.NextControlOnEnter = null;
             this.txttotalME.ReadOnly = true;
             this.txttotalME.Size = new System.Drawing.Size(98, 21);
-            this.txttotalME.TabIndex = 432;
+            this.txttotalME.TabIndex = 18;
             this.txttotalME.Text = "0.00";
             this.txttotalME.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttotalME.TextoDefecto = "0.00";
@@ -405,7 +405,7 @@
             this.txttotalMN.NextControlOnEnter = null;
             this.txttotalMN.ReadOnly = true;
             this.txttotalMN.Size = new System.Drawing.Size(98, 21);
-            this.txttotalMN.TabIndex = 434;
+            this.txttotalMN.TabIndex = 20;
             this.txttotalMN.Text = "0.00";
             this.txttotalMN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttotalMN.TextoDefecto = "0.00";
@@ -421,7 +421,7 @@
             this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaContable.Name = "dtpFechaContable";
             this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaContable.TabIndex = 428;
+            this.dtpFechaContable.TabIndex = 6;
             this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             // 
             // label15
@@ -432,7 +432,7 @@
             this.label15.Location = new System.Drawing.Point(447, 74);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(90, 13);
-            this.label15.TabIndex = 430;
+            this.label15.TabIndex = 41;
             this.label15.Text = "Fecha Contable:";
             // 
             // label10
@@ -444,7 +444,7 @@
             this.label10.Location = new System.Drawing.Point(236, 468);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(51, 13);
-            this.label10.TabIndex = 441;
+            this.label10.TabIndex = 27;
             this.label10.Text = "Dif.C.ME";
             // 
             // dtpFechaCompensa
@@ -456,7 +456,7 @@
             this.dtpFechaCompensa.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaCompensa.Name = "dtpFechaCompensa";
             this.dtpFechaCompensa.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaCompensa.TabIndex = 429;
+            this.dtpFechaCompensa.TabIndex = 7;
             this.dtpFechaCompensa.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpFechaCompensa.ValueChanged += new System.EventHandler(this.dtpFechaCompensa_ValueChanged);
             // 
@@ -469,7 +469,7 @@
             this.label5.Location = new System.Drawing.Point(348, 468);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
-            this.label5.TabIndex = 439;
+            this.label5.TabIndex = 25;
             this.label5.Text = "Dif.C.MN";
             // 
             // label6
@@ -480,7 +480,7 @@
             this.label6.Location = new System.Drawing.Point(829, 74);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 438;
+            this.label6.TabIndex = 1;
             this.label6.Text = "T.C.:";
             // 
             // label9
@@ -492,7 +492,7 @@
             this.label9.Location = new System.Drawing.Point(462, 468);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 437;
+            this.label9.TabIndex = 22;
             this.label9.Text = "Total ME:";
             // 
             // label19
@@ -503,7 +503,7 @@
             this.label19.Location = new System.Drawing.Point(628, 74);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(97, 13);
-            this.label19.TabIndex = 431;
+            this.label19.TabIndex = 0;
             this.label19.Text = "Fecha Compensa:";
             // 
             // label14
@@ -515,7 +515,7 @@
             this.label14.Location = new System.Drawing.Point(613, 468);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(52, 13);
-            this.label14.TabIndex = 440;
+            this.label14.TabIndex = 21;
             this.label14.Text = "TotalMN:";
             // 
             // separadorOre1
@@ -528,7 +528,7 @@
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
             this.separadorOre1.Size = new System.Drawing.Size(948, 2);
-            this.separadorOre1.TabIndex = 427;
+            this.separadorOre1.TabIndex = 30;
             // 
             // DtgcontenFacturas
             // 
@@ -536,9 +536,9 @@
             this.DtgcontenFacturas.AllowUserToDeleteRows = false;
             this.DtgcontenFacturas.AllowUserToResizeColumns = false;
             this.DtgcontenFacturas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.DtgcontenFacturas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.DtgcontenFacturas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DtgcontenFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -547,14 +547,14 @@
             this.DtgcontenFacturas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DtgcontenFacturas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.DtgcontenFacturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DtgcontenFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DtgcontenFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DtgcontenFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DtgcontenFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xok,
@@ -576,14 +576,14 @@
             this.xEstado,
             this.xGlosa,
             this.xcuenta});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DtgcontenFacturas.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DtgcontenFacturas.DefaultCellStyle = dataGridViewCellStyle10;
             this.DtgcontenFacturas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DtgcontenFacturas.EnableHeadersVisualStyles = false;
             this.DtgcontenFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -596,7 +596,7 @@
             this.DtgcontenFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DtgcontenFacturas.ShowRowErrors = false;
             this.DtgcontenFacturas.Size = new System.Drawing.Size(910, 290);
-            this.DtgcontenFacturas.TabIndex = 426;
+            this.DtgcontenFacturas.TabIndex = 17;
             this.DtgcontenFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellContentClick);
             this.DtgcontenFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellDoubleClick);
             this.DtgcontenFacturas.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtgconten_CellValueChanged);
@@ -605,8 +605,8 @@
             // 
             this.xok.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xok.DataPropertyName = "opcion";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.xok.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.xok.DefaultCellStyle = dataGridViewCellStyle3;
             this.xok.FalseValue = "0";
             this.xok.HeaderText = "Ok";
             this.xok.Name = "xok";
@@ -691,8 +691,8 @@
             // 
             this.xnamemoneda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xnamemoneda.DataPropertyName = "namemoneda";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xnamemoneda.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xnamemoneda.DefaultCellStyle = dataGridViewCellStyle4;
             this.xnamemoneda.HeaderText = "Mon.";
             this.xnamemoneda.MinimumWidth = 40;
             this.xnamemoneda.Name = "xnamemoneda";
@@ -703,9 +703,9 @@
             // 
             this.xTcReg.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xTcReg.DataPropertyName = "TcReg";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "n3";
-            this.xTcReg.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n3";
+            this.xTcReg.DefaultCellStyle = dataGridViewCellStyle5;
             this.xTcReg.HeaderText = "Tc.Reg";
             this.xTcReg.MinimumWidth = 40;
             this.xTcReg.Name = "xTcReg";
@@ -716,9 +716,9 @@
             // 
             this.xTCOri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xTCOri.DataPropertyName = "TCOri";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "n3";
-            this.xTCOri.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "n3";
+            this.xTCOri.DefaultCellStyle = dataGridViewCellStyle6;
             this.xTCOri.HeaderText = "Tc.Ori";
             this.xTCOri.MinimumWidth = 40;
             this.xTCOri.Name = "xTCOri";
@@ -729,9 +729,9 @@
             // 
             this.xIgv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xIgv.DataPropertyName = "Igv";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "n2";
-            this.xIgv.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "n2";
+            this.xIgv.DefaultCellStyle = dataGridViewCellStyle7;
             this.xIgv.HeaderText = "Igv";
             this.xIgv.MinimumWidth = 40;
             this.xIgv.Name = "xIgv";
@@ -742,9 +742,9 @@
             // 
             this.xTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xTotal.DataPropertyName = "Total";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "n2";
-            this.xTotal.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "n2";
+            this.xTotal.DefaultCellStyle = dataGridViewCellStyle8;
             this.xTotal.HeaderText = "Total";
             this.xTotal.Name = "xTotal";
             this.xTotal.ReadOnly = true;
@@ -754,9 +754,9 @@
             // 
             this.xFechaEmision.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xFechaEmision.DataPropertyName = "FechaEmision";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "d";
-            this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "d";
+            this.xFechaEmision.DefaultCellStyle = dataGridViewCellStyle9;
             this.xFechaEmision.HeaderText = "Fec.Emis.";
             this.xFechaEmision.MinimumWidth = 65;
             this.xFechaEmision.Name = "xFechaEmision";
@@ -797,7 +797,7 @@
             this.cbocuentaxpagar.Location = new System.Drawing.Point(80, 94);
             this.cbocuentaxpagar.Name = "cbocuentaxpagar";
             this.cbocuentaxpagar.Size = new System.Drawing.Size(548, 21);
-            this.cbocuentaxpagar.TabIndex = 418;
+            this.cbocuentaxpagar.TabIndex = 9;
             this.cbocuentaxpagar.Click += new System.EventHandler(this.cbocuentaxpagar_Click);
             // 
             // cboempleado
@@ -811,7 +811,7 @@
             this.cboempleado.Location = new System.Drawing.Point(80, 46);
             this.cboempleado.Name = "cboempleado";
             this.cboempleado.Size = new System.Drawing.Size(344, 21);
-            this.cboempleado.TabIndex = 417;
+            this.cboempleado.TabIndex = 2;
             this.cboempleado.SelectedIndexChanged += new System.EventHandler(this.cboempleado_SelectedIndexChanged);
             this.cboempleado.Click += new System.EventHandler(this.cboempleado_Click);
             // 
@@ -825,7 +825,7 @@
             this.lbltotalregistros.Location = new System.Drawing.Point(12, 468);
             this.lbltotalregistros.Name = "lbltotalregistros";
             this.lbltotalregistros.Size = new System.Drawing.Size(104, 13);
-            this.lbltotalregistros.TabIndex = 425;
+            this.lbltotalregistros.TabIndex = 28;
             this.lbltotalregistros.Text = "Total de Registros: ";
             // 
             // label3
@@ -837,7 +837,7 @@
             this.label3.Location = new System.Drawing.Point(2, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
-            this.label3.TabIndex = 424;
+            this.label3.TabIndex = 37;
             this.label3.Text = "Cuenta Pagar:";
             // 
             // label7
@@ -848,7 +848,7 @@
             this.label7.Location = new System.Drawing.Point(12, 32);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(155, 13);
-            this.label7.TabIndex = 423;
+            this.label7.TabIndex = 31;
             this.label7.Text = "Opciones Para el Fondo Fijo:";
             // 
             // label2
@@ -859,7 +859,7 @@
             this.label2.Location = new System.Drawing.Point(12, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 13);
-            this.label2.TabIndex = 422;
+            this.label2.TabIndex = 36;
             this.label2.Text = "Listado de Facturas Presentadas:";
             // 
             // label1
@@ -870,7 +870,7 @@
             this.label1.Location = new System.Drawing.Point(20, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 421;
+            this.label1.TabIndex = 32;
             this.label1.Text = "Empleado:";
             // 
             // cboempresa
@@ -884,7 +884,7 @@
             this.cboempresa.Location = new System.Drawing.Point(80, 8);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(344, 21);
-            this.cboempresa.TabIndex = 419;
+            this.cboempresa.TabIndex = 0;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
             // 
@@ -896,7 +896,7 @@
             this.label18.Location = new System.Drawing.Point(27, 12);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(53, 13);
-            this.label18.TabIndex = 420;
+            this.label18.TabIndex = 29;
             this.label18.Text = "Empresa:";
             // 
             // txtImporteTotal
@@ -914,7 +914,7 @@
             this.txtImporteTotal.NextControlOnEnter = null;
             this.txtImporteTotal.ReadOnly = true;
             this.txtImporteTotal.Size = new System.Drawing.Size(90, 21);
-            this.txtImporteTotal.TabIndex = 457;
+            this.txtImporteTotal.TabIndex = 4;
             this.txtImporteTotal.Text = "0.00";
             this.txtImporteTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtImporteTotal.TextoDefecto = "0.00";
@@ -929,7 +929,7 @@
             this.label12.Location = new System.Drawing.Point(242, 74);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(94, 13);
-            this.label12.TabIndex = 458;
+            this.label12.TabIndex = 38;
             this.label12.Text = "Total Reembolso:";
             // 
             // btnActualizar
@@ -938,7 +938,7 @@
             this.btnActualizar.Location = new System.Drawing.Point(836, 142);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(86, 23);
-            this.btnActualizar.TabIndex = 460;
+            this.btnActualizar.TabIndex = 16;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -952,7 +952,7 @@
             this.separadorOre2.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre2.Name = "separadorOre2";
             this.separadorOre2.Size = new System.Drawing.Size(841, 2);
-            this.separadorOre2.TabIndex = 459;
+            this.separadorOre2.TabIndex = 35;
             // 
             // frmFondoFijoPago
             // 

@@ -92,7 +92,7 @@
             this.cboempresa.Location = new System.Drawing.Point(70, 12);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(344, 21);
-            this.cboempresa.TabIndex = 225;
+            this.cboempresa.TabIndex = 0;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
             // 
@@ -104,7 +104,7 @@
             this.label18.Location = new System.Drawing.Point(14, 15);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(53, 13);
-            this.label18.TabIndex = 226;
+            this.label18.TabIndex = 0;
             this.label18.Text = "Empresa:";
             // 
             // dtgconten
@@ -166,7 +166,7 @@
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
             this.dtgconten.Size = new System.Drawing.Size(910, 355);
-            this.dtgconten.TabIndex = 227;
+            this.dtgconten.TabIndex = 6;
             // 
             // xpkid
             // 
@@ -323,7 +323,7 @@
             this.btncancelar.Location = new System.Drawing.Point(847, 464);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 334;
+            this.btncancelar.TabIndex = 5;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -339,7 +339,7 @@
             this.lbltotalregistros.Location = new System.Drawing.Point(12, 469);
             this.lbltotalregistros.Name = "lbltotalregistros";
             this.lbltotalregistros.Size = new System.Drawing.Size(104, 13);
-            this.lbltotalregistros.TabIndex = 335;
+            this.lbltotalregistros.TabIndex = 19;
             this.lbltotalregistros.Text = "Total de Registros: ";
             // 
             // txtbuscarnombre
@@ -356,7 +356,7 @@
             this.txtbuscarnombre.Name = "txtbuscarnombre";
             this.txtbuscarnombre.NextControlOnEnter = null;
             this.txtbuscarnombre.Size = new System.Drawing.Size(344, 21);
-            this.txtbuscarnombre.TabIndex = 343;
+            this.txtbuscarnombre.TabIndex = 1;
             this.txtbuscarnombre.Text = "Buscar Numdoc - Nombres";
             this.txtbuscarnombre.TextoDefecto = "Buscar Numdoc - Nombres";
             this.txtbuscarnombre.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -371,7 +371,7 @@
             this.label1.Location = new System.Drawing.Point(13, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 226;
+            this.label1.TabIndex = 22;
             this.label1.Text = "NumDoc:";
             // 
             // cbotipoid
@@ -385,7 +385,7 @@
             this.cbotipoid.Name = "cbotipoid";
             this.cbotipoid.ReadOnly = false;
             this.cbotipoid.Size = new System.Drawing.Size(344, 21);
-            this.cbotipoid.TabIndex = 344;
+            this.cbotipoid.TabIndex = 2;
             this.cbotipoid.SelectedIndexChanged += new System.EventHandler(this.cbotipoid_SelectedIndexChanged);
             // 
             // label22
@@ -396,7 +396,7 @@
             this.label22.Location = new System.Drawing.Point(12, 67);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(55, 13);
-            this.label22.TabIndex = 345;
+            this.label22.TabIndex = 21;
             this.label22.Text = "Tipo Doc:";
             // 
             // separadorOre1
@@ -409,7 +409,7 @@
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
             this.separadorOre1.Size = new System.Drawing.Size(938, 2);
-            this.separadorOre1.TabIndex = 346;
+            this.separadorOre1.TabIndex = 23;
             // 
             // label2
             // 
@@ -419,7 +419,7 @@
             this.label2.Location = new System.Drawing.Point(12, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 13);
-            this.label2.TabIndex = 345;
+            this.label2.TabIndex = 20;
             this.label2.Text = "Listado de Compensaciones:";
             // 
             // cbocompensa
@@ -432,7 +432,7 @@
             this.cbocompensa.Location = new System.Drawing.Point(504, 63);
             this.cbocompensa.Name = "cbocompensa";
             this.cbocompensa.Size = new System.Drawing.Size(150, 21);
-            this.cbocompensa.TabIndex = 347;
+            this.cbocompensa.TabIndex = 3;
             this.cbocompensa.SelectedIndexChanged += new System.EventHandler(this.cbocompensa_SelectedIndexChanged);
             // 
             // label12
@@ -443,7 +443,7 @@
             this.label12.Location = new System.Drawing.Point(419, 67);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(86, 13);
-            this.label12.TabIndex = 348;
+            this.label12.TabIndex = 1;
             this.label12.Text = "Compensación:";
             // 
             // txtMontoMN
@@ -462,7 +462,7 @@
             this.txtMontoMN.NextControlOnEnter = null;
             this.txtMontoMN.ReadOnly = true;
             this.txtMontoMN.Size = new System.Drawing.Size(85, 21);
-            this.txtMontoMN.TabIndex = 395;
+            this.txtMontoMN.TabIndex = 10;
             this.txtMontoMN.Text = "0.00";
             this.txtMontoMN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMontoMN.TextoDefecto = "0.00";
@@ -478,7 +478,7 @@
             this.label10.Location = new System.Drawing.Point(617, 474);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 13);
-            this.label10.TabIndex = 396;
+            this.label10.TabIndex = 12;
             this.label10.Text = "MN:";
             // 
             // label3
@@ -490,7 +490,7 @@
             this.label3.Location = new System.Drawing.Point(730, 474);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
-            this.label3.TabIndex = 396;
+            this.label3.TabIndex = 9;
             this.label3.Text = "ME:";
             // 
             // txtMontoME
@@ -509,7 +509,7 @@
             this.txtMontoME.NextControlOnEnter = null;
             this.txtMontoME.ReadOnly = true;
             this.txtMontoME.Size = new System.Drawing.Size(85, 21);
-            this.txtMontoME.TabIndex = 395;
+            this.txtMontoME.TabIndex = 8;
             this.txtMontoME.Text = "0.00";
             this.txtMontoME.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMontoME.TextoDefecto = "0.00";
@@ -526,7 +526,7 @@
             this.label4.Location = new System.Drawing.Point(673, 458);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(123, 13);
-            this.label4.TabIndex = 335;
+            this.label4.TabIndex = 11;
             this.label4.Text = "Totales Por Regularizar";
             // 
             // label5
@@ -539,7 +539,7 @@
             this.label5.Location = new System.Drawing.Point(457, 458);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 13);
-            this.label5.TabIndex = 335;
+            this.label5.TabIndex = 15;
             this.label5.Text = "Total Regularizados";
             // 
             // label6
@@ -551,7 +551,7 @@
             this.label6.Location = new System.Drawing.Point(387, 474);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 396;
+            this.label6.TabIndex = 17;
             this.label6.Text = "MN:";
             // 
             // txtRegularMN
@@ -570,7 +570,7 @@
             this.txtRegularMN.NextControlOnEnter = null;
             this.txtRegularMN.ReadOnly = true;
             this.txtRegularMN.Size = new System.Drawing.Size(85, 21);
-            this.txtRegularMN.TabIndex = 395;
+            this.txtRegularMN.TabIndex = 16;
             this.txtRegularMN.Text = "0.00";
             this.txtRegularMN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtRegularMN.TextoDefecto = "0.00";
@@ -586,7 +586,7 @@
             this.label7.Location = new System.Drawing.Point(500, 474);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 13);
-            this.label7.TabIndex = 396;
+            this.label7.TabIndex = 14;
             this.label7.Text = "ME:";
             // 
             // txtRegularME
@@ -605,7 +605,7 @@
             this.txtRegularME.NextControlOnEnter = null;
             this.txtRegularME.ReadOnly = true;
             this.txtRegularME.Size = new System.Drawing.Size(85, 21);
-            this.txtRegularME.TabIndex = 395;
+            this.txtRegularME.TabIndex = 13;
             this.txtRegularME.Text = "0.00";
             this.txtRegularME.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtRegularME.TextoDefecto = "0.00";
@@ -620,7 +620,7 @@
             this.btnExportarPlan.Location = new System.Drawing.Point(847, 77);
             this.btnExportarPlan.Name = "btnExportarPlan";
             this.btnExportarPlan.Size = new System.Drawing.Size(75, 23);
-            this.btnExportarPlan.TabIndex = 397;
+            this.btnExportarPlan.TabIndex = 4;
             this.btnExportarPlan.Text = "Excel";
             this.btnExportarPlan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportarPlan.UseVisualStyleBackColor = true;
