@@ -18,6 +18,7 @@ namespace HpResergerUserControls
             pbFoto.Image = ListaImagenes.Images[0];
             _ImagenDefault = btnclose.Image;
             _ImagenEncima = btnprueba.Image;
+            this.DoubleBuffered = true;
             Invalidate();
         }
         public void ImagenLicencia()

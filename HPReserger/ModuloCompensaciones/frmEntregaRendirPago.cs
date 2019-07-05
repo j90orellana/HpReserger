@@ -806,7 +806,7 @@ namespace HPReserger.ModuloCompensaciones
                     decimal AbonarSoles = Configuraciones.Redondear(moneda == 1 ? ImporteAbonar : ImporteAbonar * Factor);
                     decimal AbonarDolares = Configuraciones.Redondear(moneda == 2 ? ImporteAbonar : ImporteAbonar / Factor);
                     //Salida de Dinero
-                    if (ImporteTotal < 0)
+                    if (ImporteTotal > 0)
                     {
                         string OtrasCuentas = cbocuentaxpagar.SelectedValue.ToString();
                         //Asiento Cabecera
@@ -820,7 +820,7 @@ namespace HPReserger.ModuloCompensaciones
                             , "", glosa, FechaCompensa, idUsuario, "");
                     }
                     //Entrada de Dinero                   
-                    else if (ImporteTotal > 0)
+                    else if (ImporteTotal < 0)
                     {
                         //Asiento Cabecera
                         CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaCtaBanco
@@ -871,8 +871,8 @@ namespace HPReserger.ModuloCompensaciones
                     //DEBE
                     //Asiento Cabecera 
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, OtrasCuentas
-                           , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                            , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
+                           , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                            , tc, proyecto, 0, CuoNext, moneda, glosa, FechaCompensa, -15);
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, OtrasCuentas, proyecto, TipoIdProveedor, NumDocEmpleado
@@ -881,8 +881,8 @@ namespace HPReserger.ModuloCompensaciones
                     //HABER
                     //Asiento Cabecera
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaCtaBanco
-                           , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                            , Math.Abs(ImporteTotal < 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
+                           , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                            , tc, proyecto, 0, CuoNext, moneda, glosa, FechaCompensa, -15);
                     //Detalle del asiento
                     CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaCtaBanco, proyecto, TipoIdProveedor, NumDocEmpleado

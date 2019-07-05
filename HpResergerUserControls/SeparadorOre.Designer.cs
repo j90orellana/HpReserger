@@ -32,6 +32,7 @@
             // 
             // SeparadorOre
             // 
+            this.DoubleBuffered = true;
             this.Name = "SeparadorOre";
             this.Size = new System.Drawing.Size(231, 80);
             this.ResumeLayout(false);

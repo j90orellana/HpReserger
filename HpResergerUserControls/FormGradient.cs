@@ -70,5 +70,20 @@ namespace HpResergerUserControls
             Invalidate();
             base.OnSizeChanged(e);
         }
+        //Para Quitar Parpadeo en los Formularios
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                //cp.ExStyle = cp.ExStyle | 0x2000000;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        private void FormGradient_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

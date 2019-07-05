@@ -59,10 +59,10 @@
             this.xtipodesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNumDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNumPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMontoMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMontoME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNumPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaCompensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNameEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -233,10 +233,10 @@
             this.xtipodesc,
             this.xNumDoc,
             this.xcliente,
+            this.xNumPago,
             this.xMontoMN,
             this.xMontoME,
             this.xCuo,
-            this.xNumPago,
             this.xFechaCompensa,
             this.xNameEstado,
             this.dataGridViewTextBoxColumn1,
@@ -328,6 +328,7 @@
             this.xNumDoc.DataPropertyName = "NumDoc";
             this.xNumDoc.HeaderText = "NumDoc";
             this.xNumDoc.Name = "xNumDoc";
+            this.xNumDoc.ReadOnly = true;
             this.xNumDoc.Width = 75;
             // 
             // xcliente
@@ -338,6 +339,16 @@
             this.xcliente.MinimumWidth = 100;
             this.xcliente.Name = "xcliente";
             this.xcliente.ReadOnly = true;
+            // 
+            // xNumPago
+            // 
+            this.xNumPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xNumPago.DataPropertyName = "NumPago";
+            this.xNumPago.HeaderText = "Mon";
+            this.xNumPago.MinimumWidth = 40;
+            this.xNumPago.Name = "xNumPago";
+            this.xNumPago.ReadOnly = true;
+            this.xNumPago.Width = 40;
             // 
             // xMontoMN
             // 
@@ -372,14 +383,6 @@
             this.xCuo.ReadOnly = true;
             this.xCuo.Width = 52;
             // 
-            // xNumPago
-            // 
-            this.xNumPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNumPago.DataPropertyName = "NumPago";
-            this.xNumPago.HeaderText = "NumPago";
-            this.xNumPago.Name = "xNumPago";
-            this.xNumPago.Visible = false;
-            // 
             // xFechaCompensa
             // 
             this.xFechaCompensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -397,6 +400,7 @@
             this.xNameEstado.DataPropertyName = "NameEstado";
             this.xNameEstado.HeaderText = "Estado";
             this.xNameEstado.Name = "xNameEstado";
+            this.xNameEstado.ReadOnly = true;
             this.xNameEstado.Width = 66;
             // 
             // dataGridViewTextBoxColumn1
@@ -409,9 +413,11 @@
             // 
             // xcuentacontable
             // 
+            this.xcuentacontable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.xcuentacontable.DataPropertyName = "cuentacontable";
-            this.xcuentacontable.HeaderText = "Cuentacontable";
+            this.xcuentacontable.HeaderText = "CuentaContable";
             this.xcuentacontable.Name = "xcuentacontable";
+            this.xcuentacontable.ReadOnly = true;
             this.xcuentacontable.Visible = false;
             // 
             // label3
@@ -1377,23 +1383,6 @@
         private HpResergerUserControls.TextBoxPer txtnrocheque;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private HpResergerUserControls.Dtgconten DtgcontenEntregas;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn yOk;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xFkEmpresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNameTipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xtipodesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNumDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xcliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xMontoMN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xMontoME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xCuo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNumPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaCompensa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNameEstado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xcuentacontable;
         private System.Windows.Forms.Label label3;
         private HpResergerUserControls.Dtgconten DtgcontenFacturas;
         private System.Windows.Forms.DataGridViewCheckBoxColumn xok;
@@ -1460,5 +1449,22 @@
         private System.Windows.Forms.Label lblcuentasxpagar;
         private System.Windows.Forms.Button btnActualizar;
         private HpResergerUserControls.SeparadorOre separadorOre2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn yOk;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFkEmpresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNameTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xtipodesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNumDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xcliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNumPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xMontoMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xMontoME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCuo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaCompensa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNameEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xcuentacontable;
     }
 }

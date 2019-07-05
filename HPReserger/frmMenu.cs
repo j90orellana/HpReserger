@@ -2575,11 +2575,12 @@ namespace HPReserger
 
         private void FlowPanel_ControlRemoved_1(object sender, ControlEventArgs e)
         {
+            FlowPanel.SuspendLayout();
             if (FlowPanel.Controls.Count <= 0)
             {
                 Mostrado = true;
                 pbesquina_Click(sender, e);
-                // FlowPanel.Visible = false;
+                // FlowPanel.Visible = false;               
                 //  pbesquina.Visible = false;
             }
             else
@@ -2587,8 +2588,10 @@ namespace HPReserger
                 Mostrado = false;
                 //pbesquina_Click(sender, e);
                 //  FlowPanel.Visible = true;
+
                 // pbesquina.Visible = true;
             }
+            FlowPanel.ResumeLayout();
         }
         public Boolean Mostrado = true;
         int length;
@@ -2597,19 +2600,22 @@ namespace HPReserger
         {
             if (Mostrado)
             {
+                FlowPanel.SuspendLayout();
                 //Oculto
-                for (int i = length; i > 20; i -= 2)
+                for (int i = length; i > 20; i -= 10)
                 {
                     FlowPanel.Width = i;
                     pbesquina.Left = FlowPanel.Left;
                 }
-                FlowPanel.Width -= 2;
-                pbesquina.Left += 2;
+                FlowPanel.Width -= 10;
+                pbesquina.Left += 10;
                 pbesquina.Image = pbesquina.ErrorImage;
                 Mostrado = false;
+                FlowPanel.ResumeLayout();
             }
             else
             {
+                FlowPanel.SuspendLayout();
                 //Muestra
                 for (int i = 20; i < length; i += 10)
                 {
@@ -2620,6 +2626,7 @@ namespace HPReserger
                 pbesquina.Left -= 10;
                 pbesquina.Image = ImagenDefault;
                 Mostrado = true;
+                FlowPanel.ResumeLayout();
             }
         }
         frmPLanesEPS frplaneseps;
@@ -3461,20 +3468,7 @@ namespace HPReserger
         ModuloCompensaciones.frmAnticipoProveedores frmanticipo;
         private void anticipoProveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmanticipo == null)
-            {
-                frmanticipo = new ModuloCompensaciones.frmAnticipoProveedores();
-                frmanticipo.MdiParent = this;
-                frmanticipo.Icon = ICono;
-                frmanticipo.FormClosed += new FormClosedEventHandler(cerraranticipoproveedores);
-                frmanticipo.Show();
-                frmMenu_SizeChanged(sender, new EventArgs());
-            }
-            else
-            {
-                frmanticipo.Activate();
-                ValidarVentanas(frmanticipo);
-            }
+
         }
 
         private void cerraranticipoproveedores(object sender, FormClosedEventArgs e)
@@ -3585,6 +3579,43 @@ namespace HPReserger
         private void FrmEntregasRendirPago_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmEntregasRendirPago = null;
+        }
+
+        private void registroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmanticipo == null)
+            {
+                frmanticipo = new ModuloCompensaciones.frmAnticipoProveedores();
+                frmanticipo.MdiParent = this;
+                frmanticipo.Icon = ICono;
+                frmanticipo.FormClosed += new FormClosedEventHandler(cerraranticipoproveedores);
+                frmanticipo.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmanticipo.Activate();
+                ValidarVentanas(frmanticipo);
+            }
+        }
+        private void FrmliscompensaAnticipo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmliscompensaAnticipo = null;
+        }
+        ModuloCompensaciones.frmListarCompensacionesAnticipo frmliscompensaAnticipo;
+        private void aplicaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmliscompensaAnticipo == null)
+            {
+                frmliscompensaAnticipo = new ModuloCompensaciones.frmListarCompensacionesAnticipo();
+                frmliscompensaAnticipo.FormClosed += FrmliscompensaAnticipo_FormClosed;
+                frmliscompensaAnticipo.MdiParent = this;
+                frmliscompensaAnticipo.Show();
+            }
+            else
+            {
+                frmliscompensaAnticipo.Activate();
+            }
         }
     }
 }

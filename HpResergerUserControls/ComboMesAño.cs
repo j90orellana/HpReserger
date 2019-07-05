@@ -15,6 +15,7 @@ namespace HpResergerUserControls
         public ComboMesAño()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         DataTable meses = null;

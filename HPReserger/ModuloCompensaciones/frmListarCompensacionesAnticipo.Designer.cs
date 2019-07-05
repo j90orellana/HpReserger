@@ -76,23 +76,6 @@
             this.cbobanco = new System.Windows.Forms.ComboBox();
             this.lblbanco = new System.Windows.Forms.Label();
             this.DtgcontenAnticipos = new HpResergerUserControls.Dtgconten();
-            this.yOk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFkEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNameTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTipoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xtipodesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNumDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMontoMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMontoME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xCuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNumPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xFechaCompensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xNameEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xcuentacontable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txttipocambio = new HpResergerUserControls.TextBoxPer();
@@ -121,6 +104,23 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtPorAbonar = new HpResergerUserControls.TextBoxPer();
             this.btnbusproveedor = new HpResergerUserControls.ButtonPer();
+            this.yOk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFkEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNameTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTipoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xtipodesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNumDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMontoMN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMontoME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xCuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNumPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xFechaCompensa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xNameEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xcuentacontable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DtgcontenFacturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgcontenAnticipos)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -554,158 +554,6 @@
             this.DtgcontenAnticipos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellDoubleClick);
             this.DtgcontenAnticipos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgcontenAnticipos_CellValueChanged);
             // 
-            // yOk
-            // 
-            this.yOk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.yOk.DataPropertyName = "ok";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.yOk.DefaultCellStyle = dataGridViewCellStyle13;
-            this.yOk.FalseValue = "0";
-            this.yOk.HeaderText = "Ok";
-            this.yOk.Name = "yOk";
-            this.yOk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.yOk.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.yOk.TrueValue = "1";
-            this.yOk.Width = 46;
-            // 
-            // xpkid
-            // 
-            this.xpkid.DataPropertyName = "PkId";
-            this.xpkid.HeaderText = "pkid";
-            this.xpkid.Name = "xpkid";
-            this.xpkid.Visible = false;
-            // 
-            // xFkEmpresa
-            // 
-            this.xFkEmpresa.DataPropertyName = "FkEmpresa";
-            this.xFkEmpresa.HeaderText = "[FkEmpresa]";
-            this.xFkEmpresa.Name = "xFkEmpresa";
-            this.xFkEmpresa.Visible = false;
-            // 
-            // xNameTipo
-            // 
-            this.xNameTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNameTipo.DataPropertyName = "NameTipo";
-            this.xNameTipo.HeaderText = "Tipo";
-            this.xNameTipo.Name = "xNameTipo";
-            this.xNameTipo.ReadOnly = true;
-            this.xNameTipo.Width = 53;
-            // 
-            // xTipo
-            // 
-            this.xTipo.DataPropertyName = "Tipo";
-            this.xTipo.HeaderText = "[Tipo]";
-            this.xTipo.Name = "xTipo";
-            this.xTipo.Visible = false;
-            // 
-            // xTipoID
-            // 
-            this.xTipoID.DataPropertyName = "TipoID";
-            this.xTipoID.HeaderText = "[TipoID]";
-            this.xTipoID.Name = "xTipoID";
-            this.xTipoID.Visible = false;
-            // 
-            // xtipodesc
-            // 
-            this.xtipodesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xtipodesc.DataPropertyName = "tipodesc";
-            this.xtipodesc.HeaderText = "TipoDoc";
-            this.xtipodesc.Name = "xtipodesc";
-            this.xtipodesc.ReadOnly = true;
-            this.xtipodesc.Width = 73;
-            // 
-            // xNumDoc
-            // 
-            this.xNumDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNumDoc.DataPropertyName = "NumDoc";
-            this.xNumDoc.HeaderText = "NumDoc";
-            this.xNumDoc.Name = "xNumDoc";
-            this.xNumDoc.Width = 75;
-            // 
-            // xcliente
-            // 
-            this.xcliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xcliente.DataPropertyName = "cliente";
-            this.xcliente.HeaderText = "Nombres";
-            this.xcliente.MinimumWidth = 100;
-            this.xcliente.Name = "xcliente";
-            this.xcliente.ReadOnly = true;
-            // 
-            // xMontoMN
-            // 
-            this.xMontoMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xMontoMN.DataPropertyName = "MontoMN";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "n2";
-            this.xMontoMN.DefaultCellStyle = dataGridViewCellStyle14;
-            this.xMontoMN.HeaderText = "MontoMN";
-            this.xMontoMN.Name = "xMontoMN";
-            this.xMontoMN.ReadOnly = true;
-            this.xMontoMN.Width = 84;
-            // 
-            // xMontoME
-            // 
-            this.xMontoME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xMontoME.DataPropertyName = "MontoME";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "n2";
-            this.xMontoME.DefaultCellStyle = dataGridViewCellStyle15;
-            this.xMontoME.HeaderText = "MontoME";
-            this.xMontoME.Name = "xMontoME";
-            this.xMontoME.ReadOnly = true;
-            this.xMontoME.Width = 82;
-            // 
-            // xCuo
-            // 
-            this.xCuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xCuo.DataPropertyName = "Cuo";
-            this.xCuo.HeaderText = "Cuo";
-            this.xCuo.Name = "xCuo";
-            this.xCuo.ReadOnly = true;
-            this.xCuo.Width = 52;
-            // 
-            // xNumPago
-            // 
-            this.xNumPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNumPago.DataPropertyName = "NumPago";
-            this.xNumPago.HeaderText = "NumPago";
-            this.xNumPago.Name = "xNumPago";
-            this.xNumPago.Visible = false;
-            // 
-            // xFechaCompensa
-            // 
-            this.xFechaCompensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xFechaCompensa.DataPropertyName = "FechaCompensa";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xFechaCompensa.DefaultCellStyle = dataGridViewCellStyle16;
-            this.xFechaCompensa.HeaderText = "F.Cmpsa.";
-            this.xFechaCompensa.Name = "xFechaCompensa";
-            this.xFechaCompensa.ReadOnly = true;
-            this.xFechaCompensa.Width = 77;
-            // 
-            // xNameEstado
-            // 
-            this.xNameEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xNameEstado.DataPropertyName = "NameEstado";
-            this.xNameEstado.HeaderText = "Estado";
-            this.xNameEstado.Name = "xNameEstado";
-            this.xNameEstado.Width = 66;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Estado";
-            this.dataGridViewTextBoxColumn1.HeaderText = "[Estado]";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // xcuentacontable
-            // 
-            this.xcuentacontable.DataPropertyName = "cuentacontable";
-            this.xcuentacontable.HeaderText = "Cuentacontable";
-            this.xcuentacontable.Name = "xcuentacontable";
-            this.xcuentacontable.Visible = false;
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1104,6 +952,161 @@
             this.btnbusproveedor.UseVisualStyleBackColor = false;
             this.btnbusproveedor.Click += new System.EventHandler(this.btnbusproveedor_Click);
             // 
+            // yOk
+            // 
+            this.yOk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.yOk.DataPropertyName = "ok";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.yOk.DefaultCellStyle = dataGridViewCellStyle13;
+            this.yOk.FalseValue = "0";
+            this.yOk.HeaderText = "Ok";
+            this.yOk.Name = "yOk";
+            this.yOk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.yOk.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.yOk.TrueValue = "1";
+            this.yOk.Width = 46;
+            // 
+            // xpkid
+            // 
+            this.xpkid.DataPropertyName = "PkId";
+            this.xpkid.HeaderText = "pkid";
+            this.xpkid.Name = "xpkid";
+            this.xpkid.Visible = false;
+            // 
+            // xFkEmpresa
+            // 
+            this.xFkEmpresa.DataPropertyName = "FkEmpresa";
+            this.xFkEmpresa.HeaderText = "[FkEmpresa]";
+            this.xFkEmpresa.Name = "xFkEmpresa";
+            this.xFkEmpresa.Visible = false;
+            // 
+            // xNameTipo
+            // 
+            this.xNameTipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNameTipo.DataPropertyName = "NameTipo";
+            this.xNameTipo.HeaderText = "Tipo";
+            this.xNameTipo.Name = "xNameTipo";
+            this.xNameTipo.ReadOnly = true;
+            this.xNameTipo.Width = 53;
+            // 
+            // xTipo
+            // 
+            this.xTipo.DataPropertyName = "Tipo";
+            this.xTipo.HeaderText = "[Tipo]";
+            this.xTipo.Name = "xTipo";
+            this.xTipo.Visible = false;
+            // 
+            // xTipoID
+            // 
+            this.xTipoID.DataPropertyName = "TipoID";
+            this.xTipoID.HeaderText = "[TipoID]";
+            this.xTipoID.Name = "xTipoID";
+            this.xTipoID.Visible = false;
+            // 
+            // xtipodesc
+            // 
+            this.xtipodesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xtipodesc.DataPropertyName = "tipodesc";
+            this.xtipodesc.HeaderText = "TipoDoc";
+            this.xtipodesc.Name = "xtipodesc";
+            this.xtipodesc.ReadOnly = true;
+            this.xtipodesc.Width = 73;
+            // 
+            // xNumDoc
+            // 
+            this.xNumDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNumDoc.DataPropertyName = "NumDoc";
+            this.xNumDoc.HeaderText = "NumDoc";
+            this.xNumDoc.Name = "xNumDoc";
+            this.xNumDoc.ReadOnly = true;
+            this.xNumDoc.Width = 75;
+            // 
+            // xcliente
+            // 
+            this.xcliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xcliente.DataPropertyName = "cliente";
+            this.xcliente.HeaderText = "Nombres";
+            this.xcliente.MinimumWidth = 100;
+            this.xcliente.Name = "xcliente";
+            this.xcliente.ReadOnly = true;
+            // 
+            // xMontoMN
+            // 
+            this.xMontoMN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xMontoMN.DataPropertyName = "MontoMN";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "n2";
+            this.xMontoMN.DefaultCellStyle = dataGridViewCellStyle14;
+            this.xMontoMN.HeaderText = "MontoMN";
+            this.xMontoMN.Name = "xMontoMN";
+            this.xMontoMN.ReadOnly = true;
+            this.xMontoMN.Width = 84;
+            // 
+            // xMontoME
+            // 
+            this.xMontoME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xMontoME.DataPropertyName = "MontoME";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "n2";
+            this.xMontoME.DefaultCellStyle = dataGridViewCellStyle15;
+            this.xMontoME.HeaderText = "MontoME";
+            this.xMontoME.Name = "xMontoME";
+            this.xMontoME.ReadOnly = true;
+            this.xMontoME.Width = 82;
+            // 
+            // xCuo
+            // 
+            this.xCuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xCuo.DataPropertyName = "Cuo";
+            this.xCuo.HeaderText = "Cuo";
+            this.xCuo.Name = "xCuo";
+            this.xCuo.ReadOnly = true;
+            this.xCuo.Width = 52;
+            // 
+            // xNumPago
+            // 
+            this.xNumPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNumPago.DataPropertyName = "NumPago";
+            this.xNumPago.HeaderText = "NumPago";
+            this.xNumPago.Name = "xNumPago";
+            this.xNumPago.Visible = false;
+            this.xNumPago.Width = 81;
+            // 
+            // xFechaCompensa
+            // 
+            this.xFechaCompensa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xFechaCompensa.DataPropertyName = "FechaCompensa";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xFechaCompensa.DefaultCellStyle = dataGridViewCellStyle16;
+            this.xFechaCompensa.HeaderText = "F.Cmpsa.";
+            this.xFechaCompensa.Name = "xFechaCompensa";
+            this.xFechaCompensa.ReadOnly = true;
+            this.xFechaCompensa.Width = 77;
+            // 
+            // xNameEstado
+            // 
+            this.xNameEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xNameEstado.DataPropertyName = "NameEstado";
+            this.xNameEstado.HeaderText = "Estado";
+            this.xNameEstado.Name = "xNameEstado";
+            this.xNameEstado.ReadOnly = true;
+            this.xNameEstado.Width = 66;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Estado";
+            this.dataGridViewTextBoxColumn1.HeaderText = "[Estado]";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // xcuentacontable
+            // 
+            this.xcuentacontable.DataPropertyName = "cuentacontable";
+            this.xcuentacontable.HeaderText = "Cuentacontable";
+            this.xcuentacontable.Name = "xcuentacontable";
+            this.xcuentacontable.Visible = false;
+            // 
             // frmListarCompensacionesAnticipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1192,23 +1195,6 @@
         private System.Windows.Forms.ComboBox cboempresa;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn yOk;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xFkEmpresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNameTipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xtipodesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNumDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xcliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xMontoMN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xMontoME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xCuo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNumPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaCompensa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xNameEstado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xcuentacontable;
         private System.Windows.Forms.Label label1;
         private HpResergerUserControls.TextBoxPer txtImporteTotal;
         private HpResergerUserControls.TextBoxPer txtnrocheque;
@@ -1236,5 +1222,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xGlosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuenta;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn yOk;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFkEmpresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNameTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xtipodesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNumDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xcliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xMontoMN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xMontoME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xCuo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNumPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xFechaCompensa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xNameEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xcuentacontable;
     }
 }

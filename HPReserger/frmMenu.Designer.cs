@@ -247,6 +247,8 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -313,6 +315,7 @@
             // 
             // FlowPanel
             // 
+            this.FlowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.FlowPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.FlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.FlowPanel.Location = new System.Drawing.Point(934, 64);
@@ -325,7 +328,7 @@
             // pbesquina
             // 
             this.pbesquina.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pbesquina.BackColor = System.Drawing.SystemColors.Control;
+            this.pbesquina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.pbesquina.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbesquina.ErrorImage")));
             this.pbesquina.Image = ((System.Drawing.Image)(resources.GetObject("pbesquina.Image")));
             this.pbesquina.Location = new System.Drawing.Point(934, 268);
@@ -345,6 +348,7 @@
             // pbfotoempleado
             // 
             this.pbfotoempleado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbfotoempleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.pbfotoempleado.ContextMenuStrip = this.cmenuclick;
             this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
             this.pbfotoempleado.Location = new System.Drawing.Point(1111, 0);
@@ -923,7 +927,7 @@
             // 
             this.crearToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("crearToolStripMenuItem.Image")));
             this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
-            this.crearToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.crearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.crearToolStripMenuItem.Text = "Apertura";
             this.crearToolStripMenuItem.Click += new System.EventHandler(this.crearToolStripMenuItem_Click);
             // 
@@ -931,7 +935,7 @@
             // 
             this.compensarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compensarToolStripMenuItem.Image")));
             this.compensarToolStripMenuItem.Name = "compensarToolStripMenuItem";
-            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.compensarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.compensarToolStripMenuItem.Text = "Compensar";
             this.compensarToolStripMenuItem.Click += new System.EventHandler(this.compensarToolStripMenuItem_Click);
             // 
@@ -949,7 +953,7 @@
             // 
             this.toolStripMenuItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem5.Image")));
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(134, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem5.Text = "Apertura";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
@@ -957,7 +961,7 @@
             // 
             this.toolStripMenuItem7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem7.Image")));
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(134, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem7.Text = "Compensar";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
@@ -971,6 +975,9 @@
             // 
             // anticipoProveedoresToolStripMenuItem
             // 
+            this.anticipoProveedoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registroToolStripMenuItem,
+            this.aplicaciónToolStripMenuItem});
             this.anticipoProveedoresToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("anticipoProveedoresToolStripMenuItem.Image")));
             this.anticipoProveedoresToolStripMenuItem.Name = "anticipoProveedoresToolStripMenuItem";
             this.anticipoProveedoresToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
@@ -2203,7 +2210,7 @@
             // menuStrip2
             // 
             this.menuStrip2.AutoSize = false;
-            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.menuStrip2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menuStrip2.ContextMenuStrip = this.cmenuclick;
             this.menuStrip2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2257,7 +2264,7 @@
             // lblpuntero
             // 
             this.lblpuntero.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblpuntero.BackColor = System.Drawing.Color.Transparent;
+            this.lblpuntero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblpuntero.Font = new System.Drawing.Font("Tahoma", 9F);
             this.lblpuntero.Location = new System.Drawing.Point(621, 26);
             this.lblpuntero.Name = "lblpuntero";
@@ -2271,7 +2278,7 @@
             // 
             // lblwelcome
             // 
-            this.lblwelcome.BackColor = System.Drawing.Color.Transparent;
+            this.lblwelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblwelcome.ContextMenuStrip = this.cmenuclick;
             this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblwelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2310,6 +2317,22 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
+            // 
+            // registroToolStripMenuItem
+            // 
+            this.registroToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registroToolStripMenuItem.Image")));
+            this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
+            this.registroToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.registroToolStripMenuItem.Text = "Registro";
+            this.registroToolStripMenuItem.Click += new System.EventHandler(this.registroToolStripMenuItem_Click);
+            // 
+            // aplicaciónToolStripMenuItem
+            // 
+            this.aplicaciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aplicaciónToolStripMenuItem.Image")));
+            this.aplicaciónToolStripMenuItem.Name = "aplicaciónToolStripMenuItem";
+            this.aplicaciónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aplicaciónToolStripMenuItem.Text = "Aplicación";
+            this.aplicaciónToolStripMenuItem.Click += new System.EventHandler(this.aplicaciónToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -2568,5 +2591,7 @@
         private System.Windows.Forms.ToolStripMenuItem compensarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aplicaciónToolStripMenuItem;
     }
 }

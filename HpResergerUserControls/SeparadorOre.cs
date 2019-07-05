@@ -20,6 +20,7 @@ namespace HpResergerUserControls
             this.MaximumSize = new Size(2000, 4);
             this.MinimumSize = new Size(0, 4);
             this.Width = 350;
+            this.DoubleBuffered = true;
             this.Anchor = (AnchorStyles)(AnchorStyles.Top | AnchorStyles.Left);
         }
         //private Pen _primario = Pens.Black;
@@ -32,7 +33,7 @@ namespace HpResergerUserControls
             g.DrawLine(Pens.DimGray, new Point(0, 1), new Point(this.Width, 1));
             g.DrawLine(Pens.Gray, new Point(0, 2), new Point(this.Width, 2));
             g.DrawLine(Pens.Black, new Point(0, 3), new Point(this.Width, 3));
-            //g.DrawLine(Pens.Blue, new Point(0, 4), new Point(this.Width, 4));
+            //g.DrawLine(Pens.Blue, new Point(0, 4), new Point(this.Width, 4));         
         }
     }
 }

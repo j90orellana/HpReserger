@@ -702,6 +702,7 @@
             this.btn.Text = "Aplicar Anticipo";
             this.btn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn.UseVisualStyleBackColor = false;
+            this.btn.Visible = false;
             this.btn.Click += new System.EventHandler(this.btn_Click);
             // 
             // btnbusproveedor
