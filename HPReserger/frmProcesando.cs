@@ -17,6 +17,11 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public frmProcesando(string cadena)
+        {
+            InitializeComponent();
+            this.Text = cadena;
+        }
         private void frmProcesando_Load(object sender, EventArgs e)
         {
 

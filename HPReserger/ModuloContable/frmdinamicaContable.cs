@@ -98,6 +98,7 @@ namespace HPReserger
         DataTable tablita;
         private void frmdinamicaContable_Load(object sender, EventArgs e)
         {
+            txtglosa.CargarTextoporDefecto();
             RellenarDebeHaber();
             ultimadinamica();
             Codigito(codigo);
@@ -172,11 +173,12 @@ namespace HPReserger
             else
             {
                 ((DataTable)Dtgconten.DataSource).Rows.Add();
+
                 DataGridViewComboBoxColumn MarcaSColumn = Dtgconten.Columns["debehaber"] as DataGridViewComboBoxColumn;
                 MarcaSColumn.DataSource = tablita;
                 MarcaSColumn.ValueMember = "CODIGO";
                 MarcaSColumn.DisplayMember = "VALOR";
-                Dtgconten.BeginEdit(true);
+                //Dtgconten.BeginEdit(true);
                 fila++; filamax++;
             }
 
@@ -371,11 +373,11 @@ namespace HPReserger
         }
         public void Activar()
         {
-            groupBox1.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgbusca.Enabled = true;
+            txtglosa.ReadOnly = groupBox1.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgbusca.Enabled = true;
         }
         public void Desactivar()
         {
-            groupBox1.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgbusca.Enabled = false;
+            txtglosa.ReadOnly = groupBox1.Enabled = Txtbusca.Enabled = btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgbusca.Enabled = false;
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -415,6 +417,7 @@ namespace HPReserger
             cbosuboperacion.Text = dtgbusca[suboperacionx.Name, e.RowIndex].Value.ToString();
             cboestado.SelectedValue = dtgbusca[estadox.Name, e.RowIndex].Value.ToString();
             cbosolicitar.SelectedValue = dtgbusca[solicitax.Name, e.RowIndex].Value.ToString();
+            txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString();
             Dtgconten.DataSource = CDinamica.SacarDinaminas(codigo.ToString());
             //if (dtgayuda2.RowCount > 0)
             //{
@@ -453,7 +456,10 @@ namespace HPReserger
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             estado = 1; Desactivar(); fila = 0;
-            ((DataTable)Dtgconten.DataSource).Clear();
+            if (Dtgconten.DataSource != null)
+                ((DataTable)Dtgconten.DataSource).Clear();
+            else
+                Dtgconten.DataSource = CDinamica.SacarDinaminas("0").Clone();
             ultimadinamica();
             Codigito(codigo + 1); ActivarModi();
             cboestado.SelectedValue = 1;
@@ -551,7 +557,7 @@ namespace HPReserger
                     estado = 0;
                     for (int i = 0; i < fila; i++)
                     {
-                        CDinamica.InsertarDinamica(codigo + 1, ejercicio, codope, codsub, (Dtgconten[0, i].Value.ToString()), Dtgconten[2, i].Value.ToString(), activo, int.Parse(cbosolicitar.SelectedValue.ToString()));
+                        CDinamica.InsertarDinamica(codigo + 1, ejercicio, codope, codsub, (Dtgconten[0, i].Value.ToString()), Dtgconten[2, i].Value.ToString(), activo, int.Parse(cbosolicitar.SelectedValue.ToString()), txtglosa.TextValido());
                     }
                     Mensajes("Se Agregó con éxito");
                     //INGRESO DE REVERSA
@@ -572,7 +578,7 @@ namespace HPReserger
                         CDinamica.Modificar2Dinamica(codigo);
                         for (int i = 0; i < Dtgconten.RowCount; i++)
                         {
-                            CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Dtgconten[0, i].Value.ToString(), Dtgconten[2, i].Value.ToString(), activo, int.Parse(cbosolicitar.SelectedValue.ToString()));
+                            CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Dtgconten[0, i].Value.ToString(), Dtgconten[2, i].Value.ToString(), activo, int.Parse(cbosolicitar.SelectedValue.ToString()), txtglosa.TextValido());
                         }
                         Mensajes("Se Modificó con Exito");
                         //MODIFICAR DE REVERSA

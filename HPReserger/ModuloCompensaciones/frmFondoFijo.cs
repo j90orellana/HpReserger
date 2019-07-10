@@ -146,11 +146,11 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void CargarCuentasBancos()
         {
-            if (cboempresa.SelectedValue != null)
+            if (cboempresa.SelectedValue != null && cbobanco.SelectedValue != null)
             {
                 cbocuentabanco.ValueMember = "Id_Cuenta_Contable";
                 cbocuentabanco.DisplayMember = "banco";
-                cbocuentabanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
+                cbocuentabanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue, (int)cbomoneda.SelectedValue);
             }
         }
 
@@ -160,6 +160,7 @@ namespace HPReserger.ModuloCompensaciones
             cbocuentaxpagar.DisplayMember = "Cuenta_contable";
             cbocuentaxpagar.DataSource = CargarCuentasxPagar();
             moneda = (int)cbomoneda.SelectedValue;
+            CargarCuentasBancos();
         }
         private void cbobanco_Click(object sender, EventArgs e)
         {
@@ -616,9 +617,9 @@ namespace HPReserger.ModuloCompensaciones
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if(Estado == 0)
+            if (Estado == 0)
             {
-                if(cboempresa.SelectedValue != null)
+                if (cboempresa.SelectedValue != null)
                 {
                     CargarDatos();
                 }

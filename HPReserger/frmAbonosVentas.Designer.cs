@@ -188,12 +188,12 @@
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(16, 199);
+            this.dtgconten.Location = new System.Drawing.Point(16, 155);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(1123, 346);
+            this.dtgconten.Size = new System.Drawing.Size(1104, 310);
             this.dtgconten.TabIndex = 97;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentDoubleClick);
@@ -455,7 +455,7 @@
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
-            this.btnaceptar.Location = new System.Drawing.Point(962, 550);
+            this.btnaceptar.Location = new System.Drawing.Point(943, 470);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(85, 23);
             this.btnaceptar.TabIndex = 99;
@@ -469,7 +469,7 @@
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(1050, 550);
+            this.btncancelar.Location = new System.Drawing.Point(1031, 470);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(85, 23);
             this.btncancelar.TabIndex = 100;
@@ -511,9 +511,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 34);
+            this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(635, 72);
+            this.groupBox1.Size = new System.Drawing.Size(894, 37);
             this.groupBox1.TabIndex = 112;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar Por:";
@@ -527,7 +527,7 @@
             this.txtrazon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtrazon.ForeColor = System.Drawing.Color.Black;
             this.txtrazon.Format = null;
-            this.txtrazon.Location = new System.Drawing.Point(390, 21);
+            this.txtrazon.Location = new System.Drawing.Point(391, 13);
             this.txtrazon.MaxLength = 100;
             this.txtrazon.Name = "txtrazon";
             this.txtrazon.NextControlOnEnter = null;
@@ -549,7 +549,7 @@
             this.txtnumdoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnumdoc.ForeColor = System.Drawing.Color.Black;
             this.txtnumdoc.Format = null;
-            this.txtnumdoc.Location = new System.Drawing.Point(116, 21);
+            this.txtnumdoc.Location = new System.Drawing.Point(117, 13);
             this.txtnumdoc.MaxLength = 30;
             this.txtnumdoc.Name = "txtnumdoc";
             this.txtnumdoc.NextControlOnEnter = null;
@@ -566,7 +566,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(10, 25);
+            this.label4.Location = new System.Drawing.Point(10, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 13);
             this.label4.TabIndex = 117;
@@ -577,7 +577,7 @@
             this.dtpfecha2.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.dtpfecha2.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.dtpfecha2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfecha2.Location = new System.Drawing.Point(215, 45);
+            this.dtpfecha2.Location = new System.Drawing.Point(797, 12);
             this.dtpfecha2.Name = "dtpfecha2";
             this.dtpfecha2.Size = new System.Drawing.Size(93, 22);
             this.dtpfecha2.TabIndex = 5;
@@ -588,7 +588,7 @@
             this.dtpfecha1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.dtpfecha1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.dtpfecha1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfecha1.Location = new System.Drawing.Point(116, 45);
+            this.dtpfecha1.Location = new System.Drawing.Point(702, 12);
             this.dtpfecha1.Name = "dtpfecha1";
             this.dtpfecha1.Size = new System.Drawing.Size(93, 22);
             this.dtpfecha1.TabIndex = 4;
@@ -598,7 +598,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(45, 50);
+            this.label2.Location = new System.Drawing.Point(630, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 113;
@@ -608,7 +608,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(309, 25);
+            this.label5.Location = new System.Drawing.Point(309, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 118;
@@ -617,7 +617,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(655, 81);
+            this.btnActualizar.Location = new System.Drawing.Point(1018, 44);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(98, 23);
             this.btnActualizar.TabIndex = 113;
@@ -630,7 +630,7 @@
             // 
             this.btnclear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnclear.Image = ((System.Drawing.Image)(resources.GetObject("btnclear.Image")));
-            this.btnclear.Location = new System.Drawing.Point(655, 55);
+            this.btnclear.Location = new System.Drawing.Point(917, 44);
             this.btnclear.Name = "btnclear";
             this.btnclear.Size = new System.Drawing.Size(98, 23);
             this.btnclear.TabIndex = 141;
@@ -644,7 +644,7 @@
             this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblmsg.AutoSize = true;
             this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Location = new System.Drawing.Point(12, 555);
+            this.lblmsg.Location = new System.Drawing.Point(12, 475);
             this.lblmsg.Name = "lblmsg";
             this.lblmsg.Size = new System.Drawing.Size(113, 13);
             this.lblmsg.TabIndex = 142;
@@ -655,11 +655,11 @@
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 107);
+            this.separadorOre1.Location = new System.Drawing.Point(0, 68);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(1153, 2);
+            this.separadorOre1.Size = new System.Drawing.Size(1134, 2);
             this.separadorOre1.TabIndex = 143;
             // 
             // txttotal
@@ -667,7 +667,7 @@
             this.txttotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotal.Enabled = false;
             this.txttotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotal.Location = new System.Drawing.Point(857, 551);
+            this.txttotal.Location = new System.Drawing.Point(838, 471);
             this.txttotal.Name = "txttotal";
             this.txttotal.Size = new System.Drawing.Size(99, 21);
             this.txttotal.TabIndex = 145;
@@ -680,7 +680,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(765, 555);
+            this.label3.Location = new System.Drawing.Point(746, 475);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 144;
@@ -695,7 +695,7 @@
             this.txttipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttipocambio.ForeColor = System.Drawing.Color.Black;
             this.txttipocambio.Format = "n3";
-            this.txttipocambio.Location = new System.Drawing.Point(942, 133);
+            this.txttipocambio.Location = new System.Drawing.Point(943, 93);
             this.txttipocambio.MaxLength = 10;
             this.txttipocambio.Name = "txttipocambio";
             this.txttipocambio.NextControlOnEnter = null;
@@ -712,7 +712,7 @@
             // 
             this.dtpFechaPago.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaPago.Location = new System.Drawing.Point(786, 132);
+            this.dtpFechaPago.Location = new System.Drawing.Point(786, 92);
             this.dtpFechaPago.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpFechaPago.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaPago.Name = "dtpFechaPago";
@@ -726,7 +726,7 @@
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(711, 137);
+            this.label19.Location = new System.Drawing.Point(711, 97);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(75, 13);
             this.label19.TabIndex = 329;
@@ -759,7 +759,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(883, 137);
+            this.label14.Location = new System.Drawing.Point(883, 97);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 13);
             this.label14.TabIndex = 331;
@@ -796,7 +796,7 @@
             this.txtnrooperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnrooperacion.ForeColor = System.Drawing.Color.Black;
             this.txtnrooperacion.Format = null;
-            this.txtnrooperacion.Location = new System.Drawing.Point(111, 156);
+            this.txtnrooperacion.Location = new System.Drawing.Point(111, 116);
             this.txtnrooperacion.MaxLength = 20;
             this.txtnrooperacion.Name = "txtnrooperacion";
             this.txtnrooperacion.NextControlOnEnter = null;
@@ -812,7 +812,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(16, 160);
+            this.label1.Location = new System.Drawing.Point(16, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 335;
@@ -852,7 +852,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(575, 555);
+            this.label13.Location = new System.Drawing.Point(556, 475);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(90, 13);
             this.label13.TabIndex = 339;
@@ -863,7 +863,7 @@
             this.txttotaldiferencial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txttotaldiferencial.Enabled = false;
             this.txttotaldiferencial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttotaldiferencial.Location = new System.Drawing.Point(663, 551);
+            this.txttotaldiferencial.Location = new System.Drawing.Point(644, 471);
             this.txttotaldiferencial.Name = "txttotaldiferencial";
             this.txttotaldiferencial.Size = new System.Drawing.Size(100, 21);
             this.txttotaldiferencial.TabIndex = 338;
@@ -880,7 +880,7 @@
             this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtglosa.ForeColor = System.Drawing.Color.Black;
             this.txtglosa.Format = null;
-            this.txtglosa.Location = new System.Drawing.Point(416, 156);
+            this.txtglosa.Location = new System.Drawing.Point(416, 116);
             this.txtglosa.MaxLength = 300;
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.NextControlOnEnter = null;
@@ -896,7 +896,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(375, 160);
+            this.label6.Location = new System.Drawing.Point(375, 120);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 13);
             this.label6.TabIndex = 341;
@@ -913,7 +913,7 @@
             this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
-            this.btnpdf.Location = new System.Drawing.Point(436, 549);
+            this.btnpdf.Location = new System.Drawing.Point(427, 469);
             this.btnpdf.Name = "btnpdf";
             this.btnpdf.Size = new System.Drawing.Size(82, 25);
             this.btnpdf.TabIndex = 342;
@@ -927,7 +927,7 @@
             this.rdbPagoBanco.AutoSize = true;
             this.rdbPagoBanco.BackColor = System.Drawing.Color.Transparent;
             this.rdbPagoBanco.Checked = true;
-            this.rdbPagoBanco.Location = new System.Drawing.Point(104, 112);
+            this.rdbPagoBanco.Location = new System.Drawing.Point(104, 73);
             this.rdbPagoBanco.Name = "rdbPagoBanco";
             this.rdbPagoBanco.Size = new System.Drawing.Size(123, 17);
             this.rdbPagoBanco.TabIndex = 343;
@@ -940,7 +940,7 @@
             // 
             this.rdbDepositoPLazo.AutoSize = true;
             this.rdbDepositoPLazo.BackColor = System.Drawing.Color.Transparent;
-            this.rdbDepositoPLazo.Location = new System.Drawing.Point(227, 112);
+            this.rdbDepositoPLazo.Location = new System.Drawing.Point(227, 73);
             this.rdbDepositoPLazo.Name = "rdbDepositoPLazo";
             this.rdbDepositoPLazo.Size = new System.Drawing.Size(111, 17);
             this.rdbDepositoPLazo.TabIndex = 343;
@@ -952,7 +952,7 @@
             // 
             this.rdbCertificadoBancario.AutoSize = true;
             this.rdbCertificadoBancario.BackColor = System.Drawing.Color.Transparent;
-            this.rdbCertificadoBancario.Location = new System.Drawing.Point(338, 112);
+            this.rdbCertificadoBancario.Location = new System.Drawing.Point(338, 73);
             this.rdbCertificadoBancario.Name = "rdbCertificadoBancario";
             this.rdbCertificadoBancario.Size = new System.Drawing.Size(129, 17);
             this.rdbCertificadoBancario.TabIndex = 343;
@@ -965,7 +965,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 114);
+            this.label7.Location = new System.Drawing.Point(16, 75);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 13);
             this.label7.TabIndex = 332;
@@ -978,7 +978,7 @@
             this.PanelDepositoBanco.Controls.Add(this.lblguia);
             this.PanelDepositoBanco.Controls.Add(this.lblguia1);
             this.PanelDepositoBanco.Controls.Add(this.cbobanco);
-            this.PanelDepositoBanco.Location = new System.Drawing.Point(0, 133);
+            this.PanelDepositoBanco.Location = new System.Drawing.Point(0, 93);
             this.PanelDepositoBanco.Name = "PanelDepositoBanco";
             this.PanelDepositoBanco.Size = new System.Drawing.Size(708, 23);
             this.PanelDepositoBanco.TabIndex = 344;
@@ -988,7 +988,7 @@
             this.PanelDepositoPlazo.BackColor = System.Drawing.Color.Transparent;
             this.PanelDepositoPlazo.Controls.Add(this.cbodepositoplazo);
             this.PanelDepositoPlazo.Controls.Add(this.label8);
-            this.PanelDepositoPlazo.Location = new System.Drawing.Point(0, 133);
+            this.PanelDepositoPlazo.Location = new System.Drawing.Point(0, 93);
             this.PanelDepositoPlazo.Name = "PanelDepositoPlazo";
             this.PanelDepositoPlazo.Size = new System.Drawing.Size(708, 23);
             this.PanelDepositoPlazo.TabIndex = 345;
@@ -1020,7 +1020,7 @@
             this.PanelCertificadoBancario.BackColor = System.Drawing.Color.Transparent;
             this.PanelCertificadoBancario.Controls.Add(this.cboCertificadobancario);
             this.PanelCertificadoBancario.Controls.Add(this.label10);
-            this.PanelCertificadoBancario.Location = new System.Drawing.Point(0, 133);
+            this.PanelCertificadoBancario.Location = new System.Drawing.Point(0, 93);
             this.PanelCertificadoBancario.Name = "PanelCertificadoBancario";
             this.PanelCertificadoBancario.Size = new System.Drawing.Size(708, 23);
             this.PanelCertificadoBancario.TabIndex = 345;
@@ -1049,11 +1049,12 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.rdbAbonados);
             this.panel1.Controls.Add(this.rdbporAbonar);
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(473, 175);
+            this.panel1.Location = new System.Drawing.Point(464, 134);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 22);
             this.panel1.TabIndex = 346;
@@ -1062,7 +1063,7 @@
             // 
             this.dtpFechaContable.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFechaContable.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaContable.Location = new System.Drawing.Point(913, 155);
+            this.dtpFechaContable.Location = new System.Drawing.Point(914, 115);
             this.dtpFechaContable.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaContable.Name = "dtpFechaContable";
@@ -1075,7 +1076,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(826, 160);
+            this.label15.Location = new System.Drawing.Point(826, 120);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(87, 13);
             this.label15.TabIndex = 348;
@@ -1085,14 +1086,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1147, 581);
+            this.ClientSize = new System.Drawing.Size(1128, 499);
+            this.Controls.Add(this.txtglosa);
+            this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.dtpFechaContable);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.rdbCertificadoBancario);
             this.Controls.Add(this.rdbDepositoPLazo);
             this.Controls.Add(this.rdbPagoBanco);
             this.Controls.Add(this.btnpdf);
-            this.Controls.Add(this.txtglosa);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txttotaldiferencial);
             this.Controls.Add(this.txtnrooperacion);
@@ -1108,7 +1110,6 @@
             this.Controls.Add(this.btnclear);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnaceptar);
             this.Controls.Add(this.btncancelar);
@@ -1120,7 +1121,7 @@
             this.Controls.Add(this.PanelDepositoPlazo);
             this.Controls.Add(this.PanelCertificadoBancario);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(1163, 620);
+            this.MinimumSize = new System.Drawing.Size(1144, 538);
             this.Name = "frmAbonosVentas";
             this.Nombre = "Abono de las Ventas";
             this.Text = "Abono de las Ventas";

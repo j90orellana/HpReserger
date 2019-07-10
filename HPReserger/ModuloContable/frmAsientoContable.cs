@@ -352,6 +352,8 @@ namespace HPReserger
                     filita["id"] = Dtgconten.RowCount + 1;
                     filita[debe.Name] = 0.00m;
                     filita[haber.Name] = 0.00m;
+                    txtglosa.Text = dtgayuda["glosa", i].Value.ToString();
+
                     aux.Rows.Add(filita);
                 }
                 txttotaldebe.Text = txttotalhaber.Text = txtdiferencia.Text = "0.00";
@@ -363,7 +365,7 @@ namespace HPReserger
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 coddinamica = HPResergerFunciones.Utilitarios.ExtraeEnterodeCadena(txtdinamica.Text);
-                dtgayuda.DataSource = CapaLogica.ListarDinamicas(coddinamica + "", 1);
+                dtgayuda.DataSource = CapaLogica.ListarDinamicas(coddinamica + "", 10);
                 CargaDinamicas();
                 btndina.Focus();
             }

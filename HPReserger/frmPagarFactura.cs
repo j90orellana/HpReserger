@@ -16,7 +16,19 @@ namespace HPReserger
     {
         public frmPagarFactura()
         {
+            CartelDeEspera("Cargando...");
+            Application.DoEvents();
             InitializeComponent();
+        }
+        public void CartelDeEspera(string Texto)
+        {
+            frmproce = new frmProcesando(Texto);
+            frmproce.Show();
+        }
+        public void CartelDeEspera()
+        {
+            frmproce = new frmProcesando("Cargando...");
+            frmproce.Show();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private string _NameEmpresa;
@@ -30,44 +42,50 @@ namespace HPReserger
                 _NameEmpresa = value;
             }
         }
+        DataTable TablaPagados;
+        DataTable TablaPorPagar;
         private void txtruc_TextChanged(object sender, EventArgs e)
         {
-            if (txtruc.Text.Length > 9)
-            {
-                cbotipo.Enabled = true; cbobanco.Enabled = true; cbocuentabanco.Enabled = true;
-                cbotipo.SelectedIndex = 0; txtnropago.Enabled = true;
-            }
-            else
-            {
-                cbotipo.Enabled = false; cbobanco.Enabled = false; cbocuentabanco.Enabled = false; txtnropago.Enabled = false; txtnropago.Text = "";
-            }
-            DataRow razonsocial = CapaLogica.RUCProveedor(txtruc.Text);
-            if (razonsocial != null)
-            {
-                txtRazonSocial.Text = razonsocial["razon_social"].ToString();
-                txtdireccion.Text = razonsocial["direccion_oficina"].ToString();
-                txtTelefono.Text = razonsocial["telefono_oficina"].ToString();
-                //cargarguias(txtguia);//txtguia_TextChanged(sender, e);
-                Dtguias.DataSource = CapaLogica.ListarFacturasPorPagarxEmpresa(0, "", 0, DateTime.Now, DateTime.Now, 0, DateTime.Now, DateTime.Now, 0, (int)cboempresa.SelectedValue);
-            }
-            else
-            {
-                txtRazonSocial.Text = txtdireccion.Text = txtTelefono.Text = "";
-                // chlbx.Items.Clear();
-                //Dtguias.Refresh();
-                // DtgConten.Refresh();
-            }
+            //if (txtruc.Text.Length > 9)
+            //{
+            //    cbotipo.Enabled = true; cbobanco.Enabled = true; cbocuentabanco.Enabled = true;
+            //    cbotipo.SelectedIndex = 0; txtnropago.Enabled = true;
+            //}
+            //else
+            //{
+            //    cbotipo.Enabled = false; cbobanco.Enabled = false; cbocuentabanco.Enabled = false; txtnropago.Enabled = false; txtnropago.Text = "";
+            //}
+            //DataRow razonsocial = CapaLogica.RUCProveedor(txtruc.Text);
+            //if (razonsocial != null)
+            //{
+            //    //txtRazonSocial.Text = razonsocial["razon_social"].ToString();
+            //    //txtdireccion.Text = razonsocial["direccion_oficina"].ToString();
+            //    //txtTelefono.Text = razonsocial["telefono_oficina"].ToString();
+            //    //cargarguias(txtguia);//txtguia_TextChanged(sender, e);
+            //    Dtguias.DataSource = CapaLogica.ListarFacturasPorPagarxEmpresa(0, "", 0, DateTime.Now, DateTime.Now, 0, DateTime.Now, DateTime.Now, 0, (int)cboempresa.SelectedValue);
+            //}
+            //else
+            //{
+            //    txtRazonSocial.Text = txtdireccion.Text = txtTelefono.Text = "";
+            //    // chlbx.Items.Clear();
+            //    //Dtguias.Refresh();
+            //    // DtgConten.Refresh();
+            //}
+        }
+        public void ActualizarTablas()
+        {
+            TablaPorPagar = CapaLogica.ListarFacturasPorPagarxEmpresa(0, txtbuscar.Text, 0, dtinicio.Value, dtfin.Value, 0, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+            TablaPagados = CapaLogica.ListarFacturasPagadosxEmpresa(0, txtbuscar.Text, 0, dtinicio.Value, dtfin.Value, 0, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+            if (rdbporPagar.Checked)
+                Dtguias.DataSource = TablaPorPagar;
+            else if (rdbPagados.Checked)
+                Dtguias.DataSource = TablaPagados;
+            ContarRegistros();
+            frmproce.Close();
         }
         private void frmPagarFactura_Load(object sender, EventArgs e)
         {
-            txtruc_TextChanged(sender, e);
-            //ESTO DAÑADA LA PRESENTACION DE LA FECHA MODIFICA DE 21/07/2017 A 07/21/2017 POR EL CAMBIO DE CULTURA
-            //Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("EN-US");
-            // txtruc.Text = "0701046971";
-            //    radioButton1.Checked = true;
             cboempresa_Click_1(sender, e);
-            txtbuscar_TextChanged(sender, e);
-
             DataRow Filita = CapaLogica.VerUltimoIdentificador("TBL_Factura", "Nro_DocPago");
             if (Filita != null)
                 txtnropago.Text = (decimal.Parse(Filita["ultimo"].ToString()) + 1).ToString();
@@ -75,6 +93,9 @@ namespace HPReserger
             cbotipo.SelectedIndex = 0;
             dtpFechaContable.Value = dtpFechaPago.Value = DateTime.Now;
             txtglosa.CargarTextoporDefecto();
+            ActualizarTablas();
+            ContarRegistros();
+            frmproce.Close();
             //List<Persona> personas = new List<Persona>();
             //Persona person1 = new Persona(1, "jefferson", 27);
             //personas.Add(person1);
@@ -186,17 +207,19 @@ namespace HPReserger
             if (cbobanco.SelectedValue != null)
             {
                 CargarCuentasBancos();
-                txtbuscar_TextChanged(sender, e);
                 NameEmpresa = cboempresa.Text;
+                CartelDeEspera("Cargando...");
+                Application.DoEvents();
+                ActualizarTablas();
             }
         }
         public void CargarCuentasBancos()
         {
-            if (cboempresa.SelectedValue != null)
+            if (cboempresa.SelectedValue != null && cbobanco.SelectedValue != null)
             {
                 cbocuentabanco.ValueMember = "Id_Cuenta_Contable";
                 cbocuentabanco.DisplayMember = "banco";
-                cbocuentabanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
+                cbocuentabanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue, 0);
             }
         }
         private void cbobanco_Click(object sender, EventArgs e)
@@ -217,7 +240,7 @@ namespace HPReserger
         }
         private void txtruc_KeyDown(object sender, KeyEventArgs e)
         {
-            HPResergerFunciones.Utilitarios.Validardocumentos(e, txtruc, 11);
+            //HPResergerFunciones.Utilitarios.Validardocumentos(e, txtruc, 11);
         }
         public void msg(string cadena)
         {
@@ -315,7 +338,7 @@ namespace HPReserger
                 }
             Boolean ErrorNotas = false, ErrorTotales = false;
             string Resultado = "Seleccione una Factura o Recibo para:";
-            string Resultado2 = "El Monto abonarse debe ser mayot a Cero para:";
+            string Resultado2 = "El Monto abonarse debe ser mayor a Cero para:";
             foreach (NotaCreditoDebito item in ListadoNotas)
             {
                 if (item.Monto == 0)
@@ -885,15 +908,10 @@ namespace HPReserger
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            if (txtruc.Text.Length > 8)
+            if (msgOkCancel("¿Desea Salir?") == DialogResult.OK)
             {
-                if (MessageBox.Show("¿Desea Salir?", CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    this.Close();
-                }
-            }
-            else
                 this.Close();
+            }
         }
         int[] columnas = { 0 };
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -903,19 +921,26 @@ namespace HPReserger
         int prove = 0;
         private void chkprove_CheckedChanged(object sender, EventArgs e)
         {
+            txtbuscar.ReadOnly = true;
             if (chkprove.Checked)
+            {
                 prove = 1;
+                txtbuscar.ReadOnly = false;
+            }
             else
                 prove = 0;
             txtbuscar_TextChanged(sender, e);
-
         }
         int fecha = 0;
         private void chkfecha_CheckedChanged(object sender, EventArgs e)
         {
+            dtinicio.Enabled = dtfin.Enabled = false;
+            fecha = 0;
             if (chkfecha.Checked)
+            {
                 fecha = 1;
-            else fecha = 0;
+                dtinicio.Enabled = dtfin.Enabled = true;
+            }
             txtbuscar_TextChanged(sender, e);
         }
         DateTime auxtmp;
@@ -937,15 +962,55 @@ namespace HPReserger
             {
                 if (rdbporPagar.Checked)
                 {
-                    Dtguias.DataSource = CapaLogica.ListarFacturasPorPagarxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+                    SacarDatosFiltrados();
+                    //Dtguias.DataSource = CapaLogica.ListarFacturasPorPagarxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
                     //cbotipo.SelectedIndex = 0;
                     txttotaldetrac.Text = txttotal.Text = "0.00";
                     btnaceptar.Enabled = false;
                     FacturasSeleccionas();
                     CalcularTotal();
                 }
-                else Dtguias.DataSource = CapaLogica.ListarFacturasPagadosxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+                else SacarDatosFiltrados();
+                //Dtguias.DataSource = CapaLogica.ListarFacturasPagadosxEmpresa(prove, txtbuscar.Text, fecha, dtinicio.Value, dtfin.Value, recepcion, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
             }
+            ContarRegistros();
+        }
+        public void SacarDatosFiltrados()
+        {
+            string filter = "";
+            if (prove == 1)
+            {
+                filter = $"(proveedor like '%{txtbuscar.Text }%' or razon like '%{txtbuscar.Text}%')";
+            }
+            if (fecha == 1)
+            {
+                filter += $" {(prove == 1 ? "and" : "")} fechacancelado >= '{Configuraciones.ToFechaSql(dtinicio.Value)}' and fechacancelado <= '{Configuraciones.ToFechaSql(dtfin.Value)}'";
+            }
+            if (recepcion == 1)
+            {
+                filter += $" {(prove == 1 || fecha == 1 ? "and" : "")} fecharecepcion >= '{Configuraciones.ToFechaSql(dtpini.Value)}' and fecharecepcion <= '{Configuraciones.ToFechaSql(dtpfin.Value)}'";
+            }
+            DataTable TableFiltrada;
+            if (rdbporPagar.Checked)
+            {
+                DataView dv = TablaPorPagar.DefaultView;
+                dv.RowFilter = filter;
+                //Datos Filtrados
+                TableFiltrada = dv.ToTable();
+                Dtguias.DataSource = TableFiltrada;
+            }
+            else if (rdbPagados.Checked)
+            {
+                DataView dv = TablaPagados.DefaultView;
+                dv.RowFilter = filter;
+                //Datos Filtrados
+                TableFiltrada = dv.ToTable();
+                Dtguias.DataSource = TableFiltrada;
+            }
+        }
+        public void ContarRegistros()
+        {
+            lblmensaje.Text = $"Total Registros: {Dtguias.RowCount}";
         }
         public void FacturasSeleccionas()
         {
@@ -972,8 +1037,12 @@ namespace HPReserger
         int recepcion = 0;
         private void chkrecepcion_CheckedChanged(object sender, EventArgs e)
         {
+            dtpini.Enabled = dtpfin.Enabled = false;
             if (chkrecepcion.Checked)
+            {
                 recepcion = 1;
+                dtpini.Enabled = dtpfin.Enabled = true;
+            }
             else recepcion = 0;
             txtbuscar_TextChanged(sender, e);
         }
@@ -1163,8 +1232,12 @@ namespace HPReserger
         private void cboempresa_Click_1(object sender, EventArgs e)
         {
             string cadena = cboempresa.Text;
-            CapaLogica.TablaEmpresa(cboempresa);
-            cboempresa.Text = cadena;
+            DataTable Table = CapaLogica.TablaEmpresa();
+            if (Table.Rows.Count != cboempresa.Items.Count)
+            {
+                CapaLogica.TablaEmpresa(cboempresa);
+                cboempresa.Text = cadena;
+            }
         }
         private void cboempresa_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -1218,9 +1291,27 @@ namespace HPReserger
                 Color Fore = Color.FromArgb(255, 255, 255);
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", $"{_NColumna}1", _Cabecera.ToUpper(), 16, true, true, Back, Fore));
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", $"{_NColumna}2", NameEmpresa, 12, false, true, Back, Fore));
-
+                //
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(Dtguias.AlternatingRowsDefaultCellStyle.BackColor, Dtguias.AlternatingRowsDefaultCellStyle.Font, Dtguias.AlternatingRowsDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(Dtguias.ColumnHeadersDefaultCellStyle.BackColor, Dtguias.ColumnHeadersDefaultCellStyle.Font, Dtguias.ColumnHeadersDefaultCellStyle.ForeColor);
+                int PosInicialGrilla = 3;
                 //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "Nombre Vendedor:", 11));
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(Dtguias, "", _NombreHoja, Celdas, 2, _Columnas, new int[] { }, new int[] { });
+                //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(Dtguias, "", _NombreHoja, Celdas, 2, _Columnas, new int[] { }, new int[] { });
+
+                DataTable TableResuk = new DataTable();
+                TableResuk = ((DataTable)Dtguias.DataSource).Copy();
+                if (rdbPagados.Checked)
+                {
+                    TableResuk.Columns[FechaCancelado.Name].ColumnName = "Fecha Pagado";
+                    TableResuk.Columns["pago"].ColumnName = "Pagado";
+                }
+                else
+                {
+                    TableResuk.Columns[FechaCancelado.Name].ColumnName = "Fecha Cancelado";
+                    TableResuk.Columns["Pago"].ColumnName = "Pago";
+                }
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResuk, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, "");
+
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
             }
             else msg("No hay Registros en la Grilla");
@@ -1297,6 +1388,15 @@ namespace HPReserger
         {
             CalcularDiferencial();
         }
-
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            CartelDeEspera();
+            Application.DoEvents();
+            Cursor = Cursors.WaitCursor;
+            ActualizarTablas();
+            Cursor = Cursors.Default;
+            frmproce.Close();
+            btnRefrescar.Enabled = true;
+        }
     }
 }

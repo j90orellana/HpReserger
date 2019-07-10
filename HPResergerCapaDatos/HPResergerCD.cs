@@ -1075,7 +1075,7 @@ namespace HPResergerCapaDatos
             return bd.DataTableFromProcedure("usp_ultima_dinamica", null, null, null);
         }
 
-        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita)
+        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita, string glosa)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1094,6 +1094,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@debe", SqlDbType.VarChar, 150).Value = debe;
                     cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
                     cmd.Parameters.Add("@solicita", SqlDbType.Int).Value = solicita;
+                    cmd.Parameters.Add("@glosa", SqlDbType.VarChar, 300).Value = glosa;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -1101,7 +1102,7 @@ namespace HPResergerCapaDatos
                 cn.Dispose();
             }
         }
-        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita)
+        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita, string glosa)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1120,6 +1121,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@debe", SqlDbType.VarChar, 150).Value = debe;
                     cmd.Parameters.Add("@estado", SqlDbType.Int).Value = estado;
                     cmd.Parameters.Add("@solicita", SqlDbType.Int).Value = solicita;
+                    cmd.Parameters.Add("@glosa", SqlDbType.VarChar, 300).Value = glosa;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -3599,10 +3601,10 @@ namespace HPResergerCapaDatos
             object[] valores = { banco };
             return bd.DataTableFromProcedure("usp_ListarBancosTiposdePago", parametros, valores, null);
         }
-        public DataTable ListarBancosTiposdePagoxEmpresa(string banco, int empresa)
+        public DataTable ListarBancosTiposdePagoxEmpresa(string banco, int empresa, int moneda)
         {
-            string[] parametros = { "@banco", "@Empresa" };
-            object[] valores = { banco, empresa };
+            string[] parametros = { "@banco", "@Empresa", "@moneda" };
+            object[] valores = { banco, empresa, moneda };
             return bd.DataTableFromProcedure("usp_ListarBancosTiposdePagoxEmpresa", parametros, valores, null);
         }
         public DataTable DepositoaPlazo()

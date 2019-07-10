@@ -92,11 +92,11 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void CargarCuentasBancos()
         {
-            if (cboempresa.SelectedValue != null)
+            if (cboempresa.SelectedValue != null && cbobanco.SelectedValue != null)
             {
                 cbocuentabanco.ValueMember = "Id_Cuenta_Contable";
                 cbocuentabanco.DisplayMember = "banco";
-                cbocuentabanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
+                cbocuentabanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue, (int)cbomoneda.SelectedValue);
             }
         }
         private void cbobanco_Click(object sender, EventArgs e)
@@ -212,7 +212,7 @@ namespace HPReserger.ModuloCompensaciones
                 msg("El monto del Tipo de Cambio no debe ser Cero");
                 txttipocambio.Focus(); return;
             }
-            if(!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
             }
@@ -298,6 +298,7 @@ namespace HPReserger.ModuloCompensaciones
             cbocuentaxpagar.ValueMember = "idcuenta";
             cbocuentaxpagar.DisplayMember = "Cuenta_contable";
             cbocuentaxpagar.DataSource = CargarCuentasxPagar();
+            CargarCuentasBancos();
         }
         public void SacarTipoCambio()
         {

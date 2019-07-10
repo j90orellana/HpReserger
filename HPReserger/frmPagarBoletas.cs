@@ -142,11 +142,11 @@ namespace HPReserger
         }
         public void CargarCuentasBancos()
         {
-            if (cbobanco.SelectedValue != null)
+            if (cbobanco.SelectedValue != null && cbobanco.SelectedValue != null)
             {
                 cbocuentabanco.ValueMember = "Id_Cuenta_Contable";
                 cbocuentabanco.DisplayMember = "banco";
-                cbocuentabanco.DataSource = Capalogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue);
+                cbocuentabanco.DataSource = Capalogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue, 0);
             }
         }
         private void btnActualizar_Click(object sender, EventArgs e)

@@ -394,13 +394,13 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.SacarDinamicas(busca);
         }
-        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita)
+        public void InsertarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita, string glosa)
         {
-            cdOrdenPedido.InsertarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado, solicita);
+            cdOrdenPedido.InsertarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado, solicita, glosa);
         }
-        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita)
+        public void ModificarDinamica(int codigo, int ejercicio, int codope, int codsub, string cuenta, string debe, int estado, int solicita, string glosa)
         {
-            cdOrdenPedido.ModificarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado, solicita);
+            cdOrdenPedido.ModificarDinamica(codigo, ejercicio, codope, codsub, cuenta, debe, estado, solicita, glosa);
         }
         public void Modificar2Dinamica(int codigo)
         {
@@ -1421,9 +1421,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarBancosTiposdePago(banco);
         }
-        public DataTable ListarBancosTiposdePagoxEmpresa(string banco, int empresa)
+        public DataTable ListarBancosTiposdePagoxEmpresa(string banco, int empresa, int moneda)
         {
-            return cdOrdenPedido.ListarBancosTiposdePagoxEmpresa(banco, empresa);
+            return cdOrdenPedido.ListarBancosTiposdePagoxEmpresa(banco, empresa, moneda);
         }
         public DataTable DepositoaPlazo()
         {
@@ -2524,7 +2524,7 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.FondoFijoCuentasEmpleado(@empresa, tipo, tipoid, numdoc, moneda);
         }
         public Boolean VerificarPeriodoAbierto(int Empresa, DateTime FechaContable)
-        {            
+        {
             //Periodo Cerrado
             if (cdOrdenPedido.VerPeriodoAbierto(Empresa, FechaContable).Rows.Count == 0) return false;
             //Periodo Abierto
