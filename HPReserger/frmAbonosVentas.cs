@@ -86,8 +86,7 @@ namespace HPReserger
                 if (ListaFacturas.Contains((int)item.Cells[xId.Name].Value))
                 {
                     item.Cells[xopcion.Name].Value = 1;
-                    //y que dice
-                    int i = 0;
+                    //y que dice                   
                 }
         }
         public void cargarEmpresa()
