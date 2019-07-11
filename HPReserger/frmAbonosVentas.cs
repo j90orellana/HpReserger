@@ -29,6 +29,12 @@ namespace HPReserger
             txtglosa.CargarTextoporDefecto();
             txtnrooperacion.CargarTextoporDefecto();
         }
+        private int IdEmpresa;
+        public int _IdEmpresa
+        {
+            get { return (int)cboempresa.SelectedValue; }
+            set { IdEmpresa = value; }
+        }
         public void CargarCombos()
         {
             CargarDepositoAPlazo();
@@ -78,8 +84,11 @@ namespace HPReserger
         {
             foreach (DataGridViewRow item in dtgconten.Rows)
                 if (ListaFacturas.Contains((int)item.Cells[xId.Name].Value))
+                {
                     item.Cells[xopcion.Name].Value = 1;
-
+                    //y que dice
+                    int i = 0;
+                }
         }
         public void cargarEmpresa()
         {
@@ -107,7 +116,8 @@ namespace HPReserger
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListaFacturas.Clear();
+            if (_IdEmpresa != (int)cboempresa.SelectedValue)
+                ListaFacturas.Clear();
             ContarRegistros();
             BusquedaDatos();
             if (cbobanco.SelectedValue != null)
@@ -152,7 +162,7 @@ namespace HPReserger
                 int valor = (int)item.Cells[xId.Name].Value;
                 ////si es valor es mayor o menor a cero
                 if (dtgconten.Columns[xpagar.Name].Index == y)
-                    if ((decimal)item.Cells[xpagar.Name].Value <= 0 || (decimal)item.Cells[xpagar.Name].Value > (decimal)item.Cells[xTotal.Name].Value)
+                    if ((decimal)item.Cells[xpagar.Name].Value <= 0)//|| (decimal)item.Cells[xpagar.Name].Value > (decimal)item.Cells[xTotal.Name].Value)
                         item.Cells[xpagar.Name].Value = (decimal)item.Cells[xTotal.Name].Value;
                 ////cada que cambia el valor de la opcion
                 if (item.Cells[xopcion.Name].Value.ToString() == "") item.Cells[xopcion.Name].Value = 0;

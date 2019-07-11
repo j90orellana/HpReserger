@@ -1022,6 +1022,7 @@ namespace HPReserger
                     if (Dtguias["nrofactura", i].Value.ToString().TrimStart().TrimEnd() == fac.numero && Dtguias["proveedor", i].Value.ToString().TrimStart().TrimEnd() == fac.proveedor && fac.centrocosto == (Dtguias[centrocostox.Name, i].Value.ToString() == "" ? 0 : (int)Dtguias[centrocostox.Name, i].Value) && fac.tipo == Dtguias[tipodoc.Name, i].Value.ToString())
                     {
                         Dtguias["ok", i].Value = true;
+                        Dtguias[Pagox.Name, i].Value = fac.aPagar;
                     }
                 }
             }
@@ -1210,10 +1211,10 @@ namespace HPReserger
                     }
                     else
                     {
-                        if (decimal.Parse(Dtguias[Pagox.Name, x].Value.ToString()) > decimal.Parse(Dtguias[Saldox.Name, x].Value.ToString()))
-                        {
-                            Dtguias[Pagox.Name, x].Value = Dtguias[Saldox.Name, x].Value;
-                        }
+                        //if (decimal.Parse(Dtguias[Pagox.Name, x].Value.ToString()) > decimal.Parse(Dtguias[Saldox.Name, x].Value.ToString()))
+                        //{
+                        //    Dtguias[Pagox.Name, x].Value = Dtguias[Saldox.Name, x].Value;
+                        //}
                     }
                 }
             CalcularTotal();
@@ -1397,6 +1398,7 @@ namespace HPReserger
             Cursor = Cursors.Default;
             frmproce.Close();
             btnRefrescar.Enabled = true;
+            FacturasSeleccionas();
         }
     }
 }
