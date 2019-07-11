@@ -82,6 +82,8 @@ namespace HPReserger
                 Dtguias.DataSource = TablaPagados;
             ContarRegistros();
             frmproce.Close();
+            //Filtros
+            txtbuscar_TextChanged(new object(), new EventArgs());
         }
         private void frmPagarFactura_Load(object sender, EventArgs e)
         {
@@ -211,6 +213,17 @@ namespace HPReserger
                 CartelDeEspera("Cargando...");
                 Application.DoEvents();
                 ActualizarTablas();
+                //btnaceptar.Enabled = true;                
+                NameEmpresa = cboempresa.Text;
+                if (cboempresa.Items.Count > 0)
+                {
+                    if (cboempresa.SelectedValue != null)
+                    {
+                        cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
+                        cboproyecto.DisplayMember = "proyecto";
+                        cboproyecto.ValueMember = "id_proyecto";
+                    }
+                }
             }
         }
         public void CargarCuentasBancos()
@@ -282,15 +295,21 @@ namespace HPReserger
                 cbobanco.Focus();
                 return;
             }
-            if (cbocuentabanco.Items.Count == 0)
+            if (cboproyecto.SelectedValue == null)
             {
-                msg("El Banco Seleccionado No tiene Cuenta");
-                cbobanco.Focus();
-                //if (MSG("Desea Continuar el Proceso de pago") != DialogResult.OK)
-                //{
+                msg("Seleccione Proyecto"); cboproyecto.Focus();
                 return;
-                //}
             }
+            if (txttotal.Text != "0.00")
+                if (cbocuentabanco.Items.Count == 0)
+                {
+                    msg("El Banco Seleccionado No tiene Cuenta");
+                    cbobanco.Focus();
+                    //if (MSG("Desea Continuar el Proceso de pago") != DialogResult.OK)
+                    //{
+                    return;
+                    //}
+                }
             ////LISTADO DE NOTAS
             List<NotaCreditoDebito> ListadoNotas = new List<NotaCreditoDebito>();
             foreach (DataGridViewRow item in Dtguias.Rows)
@@ -504,7 +523,9 @@ namespace HPReserger
             ///////////////////////
             ///Dinamica Contable///
             /////////////////////// 
-            string nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
+            string nroKuenta = "";
+            if (txttotal.Text != "0.00")
+                HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
             ////return;
             DateTime FechaPago = dtpFechaPago.Value;
             DateTime FechaContable = dtpFechaContable.Value;
@@ -603,12 +624,16 @@ namespace HPReserger
                 if (decimal.Parse(txttotal.Text) > 0)
                     CapaLogica.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, decimal.Parse(txttotal.Text), 5, DateTime.Now, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer, idmoneda, nroKuenta, CodigoPago == "007" ? txtnrocheque.Text : ""
                          , decimal.Parse(txttipocambio.Text), decimal.Parse(txttipocambio.Text), FechaPago, decimal.Parse(txttipocambio.Text), ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), 0, FechaContable, txtglosa.TextValido());
-
-                msg($"Documento Pagado \nGenerado su Asiento {HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, FechaContable)}");
-                btnActualizar_Click(sender, e);
+                string cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, FechaContable);
+                msg($"Documento Pagado \nGenerado su Asiento {cuo}");
+                //btnActualizar_Click(sender, e);
+                #region   Cuadrar Asiento
+                CapaLogica.CuadrarAsiento(cuo, (int)cboproyecto.SelectedValue, FechaContable, 2);
+                #endregion Fin Cuadrar Asiento
                 txttotaldetrac.Text = txttotal.Text = "0.00";
                 Comprobantes.Clear();
                 txtnrocheque.CargarTextoporDefecto();
+                btnRefrescar_Click(sender, e);
             }
         }
         public Boolean PasoFactura = false;
@@ -870,9 +895,9 @@ namespace HPReserger
                         if (item.Cells[monedax.Name].Value.ToString() == "USD")
                         {
                             if ((int)item.Cells[xidcomprobante.Name].Value == 8)
-                                Diferencial -= Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value);
+                                Diferencial -= Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.TextValido())) - Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value);
                             else
-                                Diferencial += Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.Text)) - Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value);
+                                Diferencial += Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * decimal.Parse(txttipocambio.TextValido())) - Configuraciones.Redondear((decimal)item.Cells[Pagox.Name].Value * (decimal)item.Cells[xtc.Name].Value);
                         }
                     }
             }

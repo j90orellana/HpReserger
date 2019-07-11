@@ -78,16 +78,24 @@ namespace HPReserger
                 }
             }
             ContarRegistros();
-
         }
         public void FacturasSeleccionadasRecargar()
         {
             foreach (DataGridViewRow item in dtgconten.Rows)
-                if (ListaFacturas.Contains((int)item.Cells[xId.Name].Value))
+            {
+                //if (ListaFacturas.Contains((int)item.Cells[xId.Name].Value))
+                //    item.Cells[xopcion.Name].Value = 1;
+                //Opcion de Lista
+                int valor = (int)item.Cells[xId.Name].Value; decimal monto = (decimal)item.Cells[xpagar.Name].Value;
+                int tipodoc = (int)item.Cells[xTipoId.Name].Value; int tipocomprobante = (int)item.Cells[xIdComprobante.Name].Value;
+                string nrodoc = item.Cells[xCliente.Name].Value.ToString(); string nrocomprobante = item.Cells[xNroComprobante.Name].Value.ToString();
+                Facturas FacturaF = ListaFacturax.Find(find => find.Tipodoc == tipodoc && find.NroDoc == nrodoc && find.TipoComprobante == tipocomprobante && find.NroComprobante == nrocomprobante);
+                if (FacturaF != null)
                 {
+                    item.Cells[xpagar.Name].Value = FacturaF.Monto;
                     item.Cells[xopcion.Name].Value = 1;
-                    //y que dice                   
                 }
+            }
         }
         public void cargarEmpresa()
         {
@@ -150,7 +158,33 @@ namespace HPReserger
         {
             BusquedaDatos();
         }
+        List<Facturas> ListaFacturax = new List<Facturas>();
         List<int> ListaFacturas = new List<int>();
+        public class Facturas
+        {
+            public int Id;
+            public string NroComprobante;
+            public int TipoComprobante;
+            public int Tipodoc;
+            public string NroDoc;
+            public decimal Monto;
+            public Facturas(int _tipodoc, string _nrodoc, int _tipocomprobante, string _nrocomprobante)
+            {
+                Tipodoc = _tipodoc;
+                NroDoc = _nrodoc;
+                TipoComprobante = _tipocomprobante;
+                NroComprobante = _nrocomprobante;
+            }
+            public Facturas(int _id, int _tipodoc, string _nrodoc, int _tipocomprobante, string _nrocomprobante, decimal _monto)
+            {
+                Id = _id;
+                Tipodoc = _tipodoc;
+                NroDoc = _nrodoc;
+                TipoComprobante = _tipocomprobante;
+                NroComprobante = _nrocomprobante;
+                Monto = _monto;
+            }
+        }
         private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex;
@@ -159,20 +193,35 @@ namespace HPReserger
             {
                 DataGridViewRow item = dtgconten.Rows[x];
                 int valor = (int)item.Cells[xId.Name].Value;
+                decimal monto = (decimal)item.Cells[xpagar.Name].Value;
                 ////si es valor es mayor o menor a cero
                 if (dtgconten.Columns[xpagar.Name].Index == y)
                     if ((decimal)item.Cells[xpagar.Name].Value <= 0)//|| (decimal)item.Cells[xpagar.Name].Value > (decimal)item.Cells[xTotal.Name].Value)
                         item.Cells[xpagar.Name].Value = (decimal)item.Cells[xTotal.Name].Value;
                 ////cada que cambia el valor de la opcion
                 if (item.Cells[xopcion.Name].Value.ToString() == "") item.Cells[xopcion.Name].Value = 0;
+                //Proceso para El Listado de Las Facturas
+                int tipodoc = (int)item.Cells[xTipoId.Name].Value; int tipocomprobante = (int)item.Cells[xIdComprobante.Name].Value;
+                string nrodoc = item.Cells[xCliente.Name].Value.ToString(); string nrocomprobante = item.Cells[xNroComprobante.Name].Value.ToString();
+                Facturas FacturaF = ListaFacturax.Find(find => find.Tipodoc == tipodoc && find.NroDoc == nrodoc && find.TipoComprobante == tipocomprobante && find.NroComprobante == nrocomprobante);
                 if ((int)item.Cells[xopcion.Name].Value == 1)
                 {
+                    //Agregamos la Factura a la Lista!
+                    if (FacturaF == null)
+                    {
+                        ListaFacturax.Add(new Facturas(valor, tipodoc, nrodoc, tipocomprobante, nrocomprobante, monto));
+                    }
+                    else FacturaF.Monto = monto;
                     if (!ListaFacturas.Contains(valor))
                     {
                         ListaFacturas.Add(valor);
                     }
                 }
-                else ListaFacturas.Remove(valor);
+                else
+                {
+                    ListaFacturas.Remove(valor);
+                    ListaFacturax.Remove(FacturaF);
+                }
             }
             if (ListaFacturas.Count > 0) btnaceptar.Enabled = true; else btnaceptar.Enabled = false;
             ContarRegistros();
@@ -181,27 +230,45 @@ namespace HPReserger
         }
         public void CalcularTotal()
         {
-            decimal sumatorio = 0;
+            decimal SumaTotalPagada = 0;
+            decimal SumaTotalPagar = 0;
             Boolean señal = false;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 if ((int)item.Cells[xopcion.Name].Value == 1)
                 {
-                    if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) { sumatorio -= (decimal)item.Cells[xpagar.Name].Value; señal = true; }
-                    else if (ContenedorNotasDebito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) { sumatorio += (decimal)item.Cells[xpagar.Name].Value; señal = true; }
+                    decimal Valor = (decimal)item.Cells[xpagar.Name].Value;
+                    if ((decimal)item.Cells[xpagar.Name].Value > (decimal)item.Cells[xTotal.Name].Value)
+                    {
+                        Valor = (decimal)item.Cells[xTotal.Name].Value;
+                    }
+                    if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString()))
+                    {
+                        SumaTotalPagada -= (decimal)item.Cells[xpagar.Name].Value; señal = true;
+                        SumaTotalPagar -= Valor;
+                    }
+                    else if (ContenedorNotasDebito.Contains(item.Cells[xIdComprobante.Name].Value.ToString()))
+                    {
+                        SumaTotalPagada += (decimal)item.Cells[xpagar.Name].Value; señal = true;
+                        SumaTotalPagar += Valor;
+                    }
                     else
-                        sumatorio += (decimal)item.Cells[xpagar.Name].Value;
+                    {
+                        SumaTotalPagada += (decimal)item.Cells[xpagar.Name].Value;
+                        SumaTotalPagar += Valor;
+                    }
                 }
             }
-            txttotal.Text = sumatorio.ToString("n2");
+            txttotalAbonado.Text = SumaTotalPagada.ToString("n2");
+            txtTotalPagar.Text = SumaTotalPagar.ToString("n2");
             if (!señal)
             {
-                if (sumatorio == 0)
+                if (SumaTotalPagada == 0)
                     btnaceptar.Enabled = false;
                 else
                     btnaceptar.Enabled = true;
             }
-            else if (sumatorio >= 0)
+            else if (SumaTotalPagada >= 0)
             {
                 btnaceptar.Enabled = true;
             }
@@ -383,9 +450,9 @@ namespace HPReserger
                 }
             }
             if (ListadoNotas.Count == 0)
-                if (txttotal.Text.Length > 0)
+                if (txttotalAbonado.Text.Length > 0)
                 {
-                    if (decimal.Parse(txttotal.Text) == 0)
+                    if (decimal.Parse(txttotalAbonado.Text) == 0)
                     {
                         msg("El total a pagar no puede ser Cero");
                         dtgconten.Focus();
@@ -404,7 +471,7 @@ namespace HPReserger
             ListCuentas.Clear();
             int contador = 0;
             //if (decimal.Parse(txttotal.Text) <= 0) { msg("No se Puede Abonar Cero"); return; }
-            if (decimal.Parse(txttotal.Text) != 0)
+            if (decimal.Parse(txttotalAbonado.Text) != 0)
             {
                 if (!txtnrooperacion.EstaLLeno()) { msg("Ingrese Número de Operación"); txtnrooperacion.Focus(); return; }
                 if (rdbPagoBanco.Checked)
@@ -457,7 +524,7 @@ namespace HPReserger
             string CuentaBanco = "";
             string Banko = "";
             ////
-            if (decimal.Parse(txttotal.Text) != 0)
+            if (decimal.Parse(txttotalAbonado.Text) != 0)
             {
                 if (rdbPagoBanco.Checked) { CuentaBanco = cbocuentabanco.SelectedValue.ToString(); nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text); Banko = cbobanco.SelectedValue.ToString(); }
                 if (rdbDepositoPLazo.Checked) { CuentaBanco = cbodepositoplazo.SelectedValue.ToString(); Banko = "-1"; }
@@ -470,8 +537,8 @@ namespace HPReserger
             ////CABECERA DE LOS ASIENTOS
             int PosFila = 1;
             //CUENTA BANCO
-            if (decimal.Parse(txttotal.Text) > 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, decimal.Parse(txttotal.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value, -7);
+            if (decimal.Parse(txttotalAbonado.Text) > 0)
+                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, dtpFechaContable.Value, CuentaBanco, decimal.Parse(txttotalAbonado.Text), 0, decimal.Parse(txttipocambio.Text), proyecto, etapa, cuo, moneda, txtglosa.TextValido(), dtpFechaPago.Value, -7);
             foreach (Cuentas item in ListCuentas)
             {
                 //CUENTAS DE LAS FACTURAS
@@ -558,10 +625,11 @@ namespace HPReserger
                             nroKuenta, dtpFechaPago.Value, cuo, frmLogin.CodigoUsuario);
                 }
             }
-
-
+            //#region   Cuadrar Asiento
+            //CapaLogica.CuadrarAsiento(cuo, proyecto, dtpFechaPago.Value, 2);
+            //#endregion Fin Cuadrar Asiento
             msg($"Facturas Abonadas\nCon Asiento {cuo}");
-            txttotal.Text = txttotaldiferencial.Text = "0.00";
+            txttotalAbonado.Text = txttotaldiferencial.Text = "0.00";
             ////txtnrooperacion.CargarTextoporDefecto();txtglosa.CargarTextoporDefecto();
             ListaFacturas.Clear();
             BusquedaDatos();
@@ -648,7 +716,7 @@ namespace HPReserger
             dtgconten.Columns[xpagar.Name].Visible = a;
             dtgconten.Columns[xCuentaContable.Name].Visible = !a;
             BusquedaDatos();
-            if (!a) txttotal.Text = txttotaldiferencial.Text = "0.00";
+            if (!a) txttotalAbonado.Text = txttotaldiferencial.Text = "0.00";
         }
 
         private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -757,6 +825,20 @@ namespace HPReserger
             string cade = cboCertificadobancario.Text;
             CargarDepositoAPlazo();
             cboCertificadobancario.Text = cade;
+        }
+
+        private void txtTotalPagar_TextChanged(object sender, EventArgs e)
+        {
+            decimal ValorPagar = 0, ValorPagado = 0;
+            decimal.TryParse(txtTotalPagar.Text, out ValorPagar);
+            decimal.TryParse(txttotalAbonado.Text, out ValorPagado);
+            //
+            cboCuentaExceso.Enabled = false;
+            if (ValorPagado > ValorPagar)
+            {
+                cboCuentaExceso.Enabled = true;
+            }
+
         }
     }
 }
