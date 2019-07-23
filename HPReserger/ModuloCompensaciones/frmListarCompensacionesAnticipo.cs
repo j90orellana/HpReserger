@@ -516,11 +516,11 @@ namespace HPReserger.ModuloCompensaciones
                             Math.Abs(MontoSolesOri > 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0), Math.Abs(MontoSolesOri < 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0),
                             tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -11);
                         //Detalle del asiento
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaCompensa, CuentaContable, proyecto, TipoIdProveedor, RucProveedor,
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor,
                             NameProveedor, idfac, NumFac[0], NumFac[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
                             Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
                             moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
-                            (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaCompensa, idUsuario, "");
+                            (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaContable, idUsuario, "");
                         ///Actualizo las Facturas a Pagadas
                         if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
                             CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, dtpFechaCompensa.Value, TipoPago, NroPago);
@@ -547,9 +547,9 @@ namespace HPReserger.ModuloCompensaciones
                                , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? MontoSoles : MontoDolares : 0)
                                , decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -11);
                         //Detalle del asiento
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaContable, proyecto, TipoIdProveedor, RucProveedor
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor
                             , NameProveedor, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(MontoSoles), Math.Abs(MontoDolares), TC, moneda, nroKuenta
-                            , NroPago, glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                            , NroPago, glosa, FechaContable, frmLogin.CodigoUsuario, "");
                     }
                     //si se Abona una Parte del Anticipo               
                     else
@@ -564,9 +564,9 @@ namespace HPReserger.ModuloCompensaciones
                                , Math.Abs(ImporteTotal > 0 ? moneda == 1 ? AbonarSoles : AbonarDolares : 0)
                                , decimal.Parse(txttipocambio.Text), proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -11);
                         //Detalle del asiento
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, CuentaContable, proyecto, TipoIdProveedor, RucProveedor
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor
                             , NameProveedor, idfac, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, Math.Abs(AbonarSoles), Math.Abs(AbonarDolares), TC, moneda, nroKuenta
-                            , NroPago, glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                            , NroPago, glosa, FechaContable, frmLogin.CodigoUsuario, "");
                         ////anticipos por partes
                         //decimal ImporteAbonar = decimal.Parse(txtPorAbonar.Text);
                         //decimal SumatoriaFacturas = (moneda == 1 ? FacturasSoles : FacturasDolares) + Math.Abs(ImporteTotal) + ImporteAbonar;
@@ -677,9 +677,9 @@ namespace HPReserger.ModuloCompensaciones
                                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable
                                     , 0, AcumuladoFacturas < 0 ? moneda == 1 ? ParcialSoles : ParcialDolares : moneda == 1 ? MontoSoles : MontoDolares, TC, proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -11);
                                 //Detalle del asiento
-                                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, item.Cells[xcuentacontable.Name].Value.ToString(), proyecto, TipoIdProveedor, RucProveedor
+                                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, item.Cells[xcuentacontable.Name].Value.ToString(), proyecto, TipoIdProveedor, RucProveedor
                                     , NameProveedor, 0, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, AcumuladoFacturas < 0 ? ParcialSoles : MontoSoles, AcumuladoFacturas < 0 ? ParcialDolares : MontoDolares,
-                                    TC, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                                    TC, moneda, "", "", glosa, FechaContable, frmLogin.CodigoUsuario, "");
                                 ///Actualizo el Estado del Anticipo(Compensacion)
                                 //CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1, Cuo);
                                 if (AcumuladoFacturas == 0)
@@ -725,8 +725,8 @@ namespace HPReserger.ModuloCompensaciones
                                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable
                                     , 0, moneda == 1 ? MontoSoles : MontoDolares, TC, proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -11);
                                 //Detalle del asiento
-                                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, item.Cells[xcuentacontable.Name].Value.ToString(), proyecto, TipoIdProveedor, RucProveedor
-                                    , NameProveedor, 0, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, TC, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
+                                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, item.Cells[xcuentacontable.Name].Value.ToString(), proyecto, TipoIdProveedor, RucProveedor
+                                    , NameProveedor, 0, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, MontoSoles, MontoDolares, TC, moneda, "", "", glosa, FechaContable, frmLogin.CodigoUsuario, "");
                                 ///Actualizo el Estado del Anticipo(Compensacion)
                                 CapaLogica.ActualizarCompensaciones((int)cboempresa.SelectedValue, (int)item.Cells[xTipo.Name].Value, (int)item.Cells[xpkid.Name].Value, 1,
                                      TipoPago, decimal.Parse(txtPorAbonar.Text) == 0 ? "" : HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text), txtnrocheque.TextValido(), Cuo);

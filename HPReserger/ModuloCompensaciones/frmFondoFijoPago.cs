@@ -461,7 +461,7 @@ namespace HPReserger.ModuloCompensaciones
                 string[] Empleado = cboempleado.SelectedValue.ToString().Split('-');
                 int TipoIdProveedor = int.Parse(Empleado[0]);
                 string RucProveedor = Empleado[1];
-                string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2);
+                string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper();
                 decimal ImporteTotal = decimal.Parse(txtImporteTotal.Text);
                 decimal tc = decimal.Parse(txttipocambio.Text);
                 string glosa = txtglosa.TextValido();

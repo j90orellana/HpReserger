@@ -370,7 +370,7 @@ namespace HPReserger.ModuloCompensaciones
                     int proyecto = (int)cboproyecto.SelectedValue;
                     int TipoId = int.Parse(empleado[0]);
                     string Numdoc = empleado[1];
-                    string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2);
+                    string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper();
                     decimal MontoSoles = 0, MontoDolares = 0;
                     decimal MontoSolesNew = 0, MontoDolaresNew = 0;
                     decimal ImporteTotal = decimal.Parse(txtImporteTotal.Text);
@@ -447,7 +447,7 @@ namespace HPReserger.ModuloCompensaciones
                 int proyecto = (int)cboproyecto.SelectedValue;
                 int TipoId = int.Parse(empleado[0]);
                 string Numdoc = empleado[1];
-                string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2);
+                string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper();
                 decimal MontoSoles = 0, MontoDolares = 0;
                 decimal ImporteTotal = decimal.Parse(txtImporteTotal.Text);
                 decimal tc = decimal.Parse(txttipocambio.Text);
