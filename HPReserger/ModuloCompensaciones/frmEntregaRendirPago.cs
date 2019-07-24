@@ -52,8 +52,10 @@ namespace HPReserger.ModuloCompensaciones
                 cboempleado.DataSource = EmpleadosCompensaciones();
                 if (cboempleado.Items.Count == 0)
                 {
-                    DtgcontenFacturas.DataSource = ((DataTable)DtgcontenFacturas.DataSource).Clone();
-                    DtgcontenEntregas.DataSource = ((DataTable)DtgcontenEntregas.DataSource).Clone();
+                    if (DtgcontenFacturas.DataSource != null)
+                        DtgcontenFacturas.DataSource = ((DataTable)DtgcontenFacturas.DataSource).Clone();
+                    if (DtgcontenEntregas.DataSource != null)
+                        DtgcontenEntregas.DataSource = ((DataTable)DtgcontenEntregas.DataSource).Clone();
                     ContarRegistros();
                 }
             }
@@ -709,7 +711,7 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 ///
-                string CuentaCtaBanco = (cbocuentabanco.SelectedValue??"").ToString();
+                string CuentaCtaBanco = (cbocuentabanco.SelectedValue ?? "").ToString();
                 //Facturas al Debe      -- xok
                 foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
                 {

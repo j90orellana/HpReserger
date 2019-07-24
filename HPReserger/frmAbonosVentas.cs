@@ -632,6 +632,7 @@ namespace HPReserger
             txttotalAbonado.Text = txttotaldiferencial.Text = "0.00";
             ////txtnrooperacion.CargarTextoporDefecto();txtglosa.CargarTextoporDefecto();
             ListaFacturas.Clear();
+            cboCuentaExceso.Enabled = false;
             BusquedaDatos();
         }
         public void CalcularDiferencial()

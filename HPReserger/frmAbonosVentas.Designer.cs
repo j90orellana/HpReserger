@@ -680,6 +680,7 @@
             this.txttotalAbonado.TabIndex = 145;
             this.txttotalAbonado.Text = "0.00";
             this.txttotalAbonado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttotalAbonado.TextChanged += new System.EventHandler(this.txtTotalPagar_TextChanged);
             // 
             // label3
             // 
@@ -1131,6 +1132,7 @@
             // 
             this.cboCuentaExceso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboCuentaExceso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCuentaExceso.Enabled = false;
             this.cboCuentaExceso.FormattingEnabled = true;
             this.cboCuentaExceso.Location = new System.Drawing.Point(111, 139);
             this.cboCuentaExceso.Name = "cboCuentaExceso";
