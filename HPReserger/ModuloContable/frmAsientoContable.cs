@@ -884,7 +884,7 @@ namespace HPReserger
                         {
                             DateTime Fechita = dtpfechavalor.Value;
                             CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
-                            cuo = txtcuo.Text;
+                            CuoSelec = txtcuo.Text;
                             //btnActualizar_Click(new object { }, new EventArgs());
                             RefrescarAsientoSeleccionado();
                         }
@@ -1354,8 +1354,8 @@ namespace HPReserger
                     //else Feccc = dtpfecha.Value;
                     //Limpieza de Detalle de Asientos Basura
                     CapaLogica.LimpiezaDetalleAsientos(ValorCuo(Feccc, codigo), (int)(cboproyecto.SelectedValue));
-                    cuo = ValorCuo(Feccc, codigo);
-                    MSG($"Se Insertó Asiento: {cuo} con Exito");
+                    CuoSelec = ValorCuo(Feccc, codigo);
+                    MSG($"Se Insertó Asiento: {CuoSelec} con Exito");
                     //Txtbusca.Text = codigo + "";
                     //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
 
@@ -1364,7 +1364,7 @@ namespace HPReserger
                     btnActualizar_Click(new object { }, new EventArgs());
                     Boolean busca = false;
                     foreach (DataGridViewRow item in dtgbusca.Rows)
-                        if (item.Cells[Codidasiento.Name].Value.ToString() == cuo)
+                        if (item.Cells[Codidasiento.Name].Value.ToString() == CuoSelec)
                         {
                             dtgbusca.CurrentCell = dtgbusca[Codidasiento.Name, item.Index]; busca = true; break;
                         }
@@ -1423,8 +1423,8 @@ namespace HPReserger
                         //else Feccc = dtpfecha.Value;
                         //Limpieza de Detalle de Asientos Basura
                         CapaLogica.LimpiezaDetalleAsientos(ValorCuo(Feccc, codigo), (int)(cboproyecto.SelectedValue));
-                        cuo = ValorCuo(Feccc, codigo);
-                        MSG($"Se Modificó Asiento: {cuo} con Exito");
+                        CuoSelec = ValorCuo(Feccc, codigo);
+                        MSG($"Se Modificó Asiento: {CuoSelec} con Exito");
 
                         //Txtbusca.Text = codigo + "";
                         //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
@@ -1613,7 +1613,7 @@ namespace HPReserger
         }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            string cuoI = cuo;
+            string cuoI = CuoSelec;
             int pos = 0;
             //if (dtgbusca.RowCount > 0) pos = dtgbusca.CurrentRow.Index;
             //Txtbusca.Text = "";
@@ -1826,8 +1826,7 @@ namespace HPReserger
             cbomoneda.Text = cade;
         }
         frmTipodeCambio frmtipo;
-        private string cuo;
-
+        private string CuoSelec;
         public void SacarTipoCambio()
         {
             if (estado == 1 || estado == 2)

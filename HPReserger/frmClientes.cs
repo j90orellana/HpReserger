@@ -14,7 +14,7 @@ namespace HPReserger
     public partial class frmClientes : FormGradient
     {
         public frmClientes()
-        {          
+        {
             InitializeComponent();
             LimpiarBusquedas();
         }
@@ -560,7 +560,7 @@ namespace HPReserger
                     msg("El Cliente Ya Existe");
                     return;
                 }
-                CapaLogica.Clientes(1, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
+                CapaLogica.Clientes(1, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido().Trim(), txtapemat.TextValido().Trim(), txtnombre.TextValido().Trim(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
                 msg($"{ResultaCorreo}Cliente Agregado Exitosamente");
             }
             //actualizar
@@ -572,7 +572,7 @@ namespace HPReserger
                     msg("El Cliente Ya Existe");
                     return;
                 }
-                DataRow Filita = CapaLogica.Clientes(2, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido(), txtapemat.TextValido(), txtnombre.TextValido(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now).Rows[0];
+                DataRow Filita = CapaLogica.Clientes(2, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido().Trim(), txtapemat.TextValido().Trim(), txtnombre.TextValido().Trim(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now).Rows[0];
                 if ((int)Filita["Resultado"] == 0)
                     msg($"{ResultaCorreo}Cliente Actualizado Exitosamente");
                 else

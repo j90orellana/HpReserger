@@ -306,7 +306,7 @@ namespace HPReserger
                                     , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
                                    decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", dtpFechaContable.Value, txtglosa.Text, frmLogin.CodigoUsuario, idcomprobante);
                             }
-                    ////FIN DE LA DINAMICA DE LA CABECERA
+                    ////FIN DE LA DINAMICA DE LA CABECERA                
                     HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! con Asiento {cuo}");
                     btnActualizar_Click(sender, e);
                 }

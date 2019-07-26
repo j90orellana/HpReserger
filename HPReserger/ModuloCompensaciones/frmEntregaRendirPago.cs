@@ -734,7 +734,7 @@ namespace HPReserger.ModuloCompensaciones
                             Math.Abs(MontoSolesOri > 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0), Math.Abs(MontoSolesOri < 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0),
                             tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -15);
                         //Detalle del asiento
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaCompensa, CuentaContable, proyecto, 5, item.Cells[xProveedor.Name].Value.ToString(),
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, 5, item.Cells[xProveedor.Name].Value.ToString(),
                             item.Cells[xrazon_social.Name].Value.ToString(), idfac, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
                             Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
                             //moneda == (int)item.Cells[xidMoneda.Name].Value ? 
@@ -834,7 +834,7 @@ namespace HPReserger.ModuloCompensaciones
                                 CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable
                                     , 0, AcumuladoFacturas < 0 ? moneda == 1 ? ParcialSoles : ParcialDolares : moneda == 1 ? MontoSoles : MontoDolares, TC, proyecto, 0, Cuo, moneda, glosa, dtpFechaCompensa.Value, -15);
                                 //Detalle del asiento
-                                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, item.Cells[xcuentacontable.Name].Value.ToString(), proyecto, TipoIdProveedor, NumDocEmpleado
+                                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, item.Cells[xcuentacontable.Name].Value.ToString(), proyecto, TipoIdProveedor, NumDocEmpleado
                                     , NameEmpleado, 0, NumFac[0], NumFac[1], 0, FechaContable, FechaCompensa, FechaCompensa, AcumuladoFacturas < 0 ? ParcialSoles : MontoSoles, AcumuladoFacturas < 0 ? ParcialDolares : MontoDolares,
                                     TC, moneda, "", "", glosa, FechaCompensa, frmLogin.CodigoUsuario, "");
                                 ///Actualizo el Estado del Anticipo(Compensacion)
