@@ -118,11 +118,16 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalPagar = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblCuentaExceso = new System.Windows.Forms.Label();
             this.btnbuscarCuentas = new System.Windows.Forms.Button();
             this.txtDescripcionCuentaExceso = new HpResergerUserControls.TextBoxPer();
             this.txtCuentaExceso = new HpResergerUserControls.TextBoxPer();
             this.separadorOre2 = new HpResergerUserControls.SeparadorOre();
+            this.chkPenalidad = new HpResergerUserControls.checkboxOre();
+            this.lblmontoPenalidad = new System.Windows.Forms.Label();
+            this.txtMontoPenalidad = new HpResergerUserControls.TextBoxPer();
+            this.cboproyecto = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.PanelDepositoBanco.SuspendLayout();
@@ -467,7 +472,7 @@
             this.btnaceptar.Location = new System.Drawing.Point(943, 470);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(85, 23);
-            this.btnaceptar.TabIndex = 99;
+            this.btnaceptar.TabIndex = 11;
             this.btnaceptar.Text = "Abonar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = true;
@@ -481,7 +486,7 @@
             this.btncancelar.Location = new System.Drawing.Point(1031, 470);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(85, 23);
-            this.btncancelar.TabIndex = 100;
+            this.btncancelar.TabIndex = 12;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -495,7 +500,7 @@
             this.cboempresa.Location = new System.Drawing.Point(71, 10);
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.Size = new System.Drawing.Size(270, 21);
-            this.cboempresa.TabIndex = 102;
+            this.cboempresa.TabIndex = 0;
             this.cboempresa.SelectedIndexChanged += new System.EventHandler(this.cboempresa_SelectedIndexChanged);
             // 
             // label12
@@ -541,7 +546,7 @@
             this.txtrazon.Name = "txtrazon";
             this.txtrazon.NextControlOnEnter = null;
             this.txtrazon.Size = new System.Drawing.Size(239, 21);
-            this.txtrazon.TabIndex = 3;
+            this.txtrazon.TabIndex = 1;
             this.txtrazon.Text = "Ingrese Razón Social/Cliente";
             this.txtrazon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtrazon.TextoDefecto = "Ingrese Razón Social/Cliente";
@@ -563,7 +568,7 @@
             this.txtnumdoc.Name = "txtnumdoc";
             this.txtnumdoc.NextControlOnEnter = null;
             this.txtnumdoc.Size = new System.Drawing.Size(192, 21);
-            this.txtnumdoc.TabIndex = 2;
+            this.txtnumdoc.TabIndex = 0;
             this.txtnumdoc.Text = "000000";
             this.txtnumdoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnumdoc.TextoDefecto = "000000";
@@ -589,7 +594,7 @@
             this.dtpfecha2.Location = new System.Drawing.Point(797, 12);
             this.dtpfecha2.Name = "dtpfecha2";
             this.dtpfecha2.Size = new System.Drawing.Size(93, 22);
-            this.dtpfecha2.TabIndex = 5;
+            this.dtpfecha2.TabIndex = 3;
             this.dtpfecha2.ValueChanged += new System.EventHandler(this.dtpfecha2_ValueChanged);
             // 
             // dtpfecha1
@@ -600,7 +605,7 @@
             this.dtpfecha1.Location = new System.Drawing.Point(702, 12);
             this.dtpfecha1.Name = "dtpfecha1";
             this.dtpfecha1.Size = new System.Drawing.Size(93, 22);
-            this.dtpfecha1.TabIndex = 4;
+            this.dtpfecha1.TabIndex = 2;
             this.dtpfecha1.ValueChanged += new System.EventHandler(this.dtpfecha1_ValueChanged);
             // 
             // label2
@@ -629,7 +634,7 @@
             this.btnActualizar.Location = new System.Drawing.Point(1018, 44);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(98, 23);
-            this.btnActualizar.TabIndex = 113;
+            this.btnActualizar.TabIndex = 3;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -642,7 +647,7 @@
             this.btnclear.Location = new System.Drawing.Point(917, 44);
             this.btnclear.Name = "btnclear";
             this.btnclear.Size = new System.Drawing.Size(98, 23);
-            this.btnclear.TabIndex = 141;
+            this.btnclear.TabIndex = 2;
             this.btnclear.Text = "Borrar Filtros";
             this.btnclear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnclear.UseVisualStyleBackColor = true;
@@ -711,7 +716,7 @@
             this.txttipocambio.Name = "txttipocambio";
             this.txttipocambio.NextControlOnEnter = null;
             this.txttipocambio.Size = new System.Drawing.Size(64, 21);
-            this.txttipocambio.TabIndex = 330;
+            this.txttipocambio.TabIndex = 5;
             this.txttipocambio.Text = "3.300";
             this.txttipocambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txttipocambio.TextoDefecto = "3.300";
@@ -728,7 +733,7 @@
             this.dtpFechaPago.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(97, 22);
-            this.dtpFechaPago.TabIndex = 328;
+            this.dtpFechaPago.TabIndex = 4;
             this.dtpFechaPago.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             this.dtpFechaPago.ValueChanged += new System.EventHandler(this.dtpFechaPago_ValueChanged);
             // 
@@ -751,7 +756,7 @@
             this.cbocuentabanco.Location = new System.Drawing.Point(416, 0);
             this.cbocuentabanco.Name = "cbocuentabanco";
             this.cbocuentabanco.Size = new System.Drawing.Size(292, 21);
-            this.cbocuentabanco.TabIndex = 327;
+            this.cbocuentabanco.TabIndex = 1;
             // 
             // cbobanco
             // 
@@ -761,7 +766,7 @@
             this.cbobanco.Location = new System.Drawing.Point(64, 0);
             this.cbobanco.Name = "cbobanco";
             this.cbobanco.Size = new System.Drawing.Size(270, 21);
-            this.cbobanco.TabIndex = 326;
+            this.cbobanco.TabIndex = 0;
             this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
             this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
             // 
@@ -812,7 +817,7 @@
             this.txtnrooperacion.Name = "txtnrooperacion";
             this.txtnrooperacion.NextControlOnEnter = null;
             this.txtnrooperacion.Size = new System.Drawing.Size(223, 21);
-            this.txtnrooperacion.TabIndex = 334;
+            this.txtnrooperacion.TabIndex = 6;
             this.txtnrooperacion.Text = "Ingrese Nro Operación";
             this.txtnrooperacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrooperacion.TextoDefecto = "Ingrese Nro Operación";
@@ -897,7 +902,7 @@
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.NextControlOnEnter = null;
             this.txtglosa.Size = new System.Drawing.Size(404, 21);
-            this.txtglosa.TabIndex = 340;
+            this.txtglosa.TabIndex = 7;
             this.txtglosa.Text = "INGRESE LA GLOSA DEL ABONO";
             this.txtglosa.TextoDefecto = "INGRESE LA GLOSA DEL ABONO";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -1080,7 +1085,7 @@
             this.dtpFechaContable.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
             this.dtpFechaContable.Name = "dtpFechaContable";
             this.dtpFechaContable.Size = new System.Drawing.Size(93, 22);
-            this.dtpFechaContable.TabIndex = 347;
+            this.dtpFechaContable.TabIndex = 8;
             this.dtpFechaContable.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
             // 
             // label15
@@ -1120,16 +1125,16 @@
             this.txtTotalPagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalPagar.TextChanged += new System.EventHandler(this.txtTotalPagar_TextChanged);
             // 
-            // label11
+            // lblCuentaExceso
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(11, 143);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 13);
-            this.label11.TabIndex = 101;
-            this.label11.Text = "Cuenta de Exceso:";
+            this.lblCuentaExceso.AutoSize = true;
+            this.lblCuentaExceso.BackColor = System.Drawing.Color.Transparent;
+            this.lblCuentaExceso.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCuentaExceso.Location = new System.Drawing.Point(11, 143);
+            this.lblCuentaExceso.Name = "lblCuentaExceso";
+            this.lblCuentaExceso.Size = new System.Drawing.Size(100, 13);
+            this.lblCuentaExceso.TabIndex = 101;
+            this.lblCuentaExceso.Text = "Cuenta de Exceso:";
             // 
             // btnbuscarCuentas
             // 
@@ -1137,7 +1142,7 @@
             this.btnbuscarCuentas.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnbuscarCuentas.Image = ((System.Drawing.Image)(resources.GetObject("btnbuscarCuentas.Image")));
             this.btnbuscarCuentas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnbuscarCuentas.Location = new System.Drawing.Point(658, 138);
+            this.btnbuscarCuentas.Location = new System.Drawing.Point(565, 138);
             this.btnbuscarCuentas.Name = "btnbuscarCuentas";
             this.btnbuscarCuentas.Size = new System.Drawing.Size(24, 22);
             this.btnbuscarCuentas.TabIndex = 351;
@@ -1159,7 +1164,7 @@
             this.txtDescripcionCuentaExceso.Name = "txtDescripcionCuentaExceso";
             this.txtDescripcionCuentaExceso.NextControlOnEnter = null;
             this.txtDescripcionCuentaExceso.ReadOnly = true;
-            this.txtDescripcionCuentaExceso.Size = new System.Drawing.Size(469, 21);
+            this.txtDescripcionCuentaExceso.Size = new System.Drawing.Size(378, 21);
             this.txtDescripcionCuentaExceso.TabIndex = 349;
             this.txtDescripcionCuentaExceso.Text = "Descripción de la Cuenta";
             this.txtDescripcionCuentaExceso.TextoDefecto = "Descripción de la Cuenta";
@@ -1181,7 +1186,7 @@
             this.txtCuentaExceso.NextControlOnEnter = null;
             this.txtCuentaExceso.ReadOnly = true;
             this.txtCuentaExceso.Size = new System.Drawing.Size(74, 21);
-            this.txtCuentaExceso.TabIndex = 350;
+            this.txtCuentaExceso.TabIndex = 9;
             this.txtCuentaExceso.Text = "4699111";
             this.txtCuentaExceso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCuentaExceso.TextoDefecto = "4699111";
@@ -1203,11 +1208,86 @@
             this.separadorOre2.Size = new System.Drawing.Size(1134, 2);
             this.separadorOre2.TabIndex = 352;
             // 
+            // chkPenalidad
+            // 
+            this.chkPenalidad.AutoSize = true;
+            this.chkPenalidad.BackColor = System.Drawing.Color.Transparent;
+            this.chkPenalidad.Checked = true;
+            this.chkPenalidad.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPenalidad.ColorChecked = System.Drawing.Color.Empty;
+            this.chkPenalidad.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkPenalidad.Location = new System.Drawing.Point(469, 74);
+            this.chkPenalidad.Name = "chkPenalidad";
+            this.chkPenalidad.Size = new System.Drawing.Size(77, 17);
+            this.chkPenalidad.TabIndex = 353;
+            this.chkPenalidad.Text = "Penalidad";
+            this.chkPenalidad.UseVisualStyleBackColor = false;
+            this.chkPenalidad.CheckedChanged += new System.EventHandler(this.chkPenalidad_CheckedChanged);
+            // 
+            // lblmontoPenalidad
+            // 
+            this.lblmontoPenalidad.AutoSize = true;
+            this.lblmontoPenalidad.BackColor = System.Drawing.Color.Transparent;
+            this.lblmontoPenalidad.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmontoPenalidad.Location = new System.Drawing.Point(590, 143);
+            this.lblmontoPenalidad.Name = "lblmontoPenalidad";
+            this.lblmontoPenalidad.Size = new System.Drawing.Size(99, 13);
+            this.lblmontoPenalidad.TabIndex = 331;
+            this.lblmontoPenalidad.Text = "Monto Penalidad:";
+            // 
+            // txtMontoPenalidad
+            // 
+            this.txtMontoPenalidad.BackColor = System.Drawing.Color.White;
+            this.txtMontoPenalidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMontoPenalidad.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtMontoPenalidad.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtMontoPenalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMontoPenalidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtMontoPenalidad.Format = "n2";
+            this.txtMontoPenalidad.Location = new System.Drawing.Point(689, 139);
+            this.txtMontoPenalidad.MaxLength = 10;
+            this.txtMontoPenalidad.Name = "txtMontoPenalidad";
+            this.txtMontoPenalidad.NextControlOnEnter = null;
+            this.txtMontoPenalidad.Size = new System.Drawing.Size(83, 21);
+            this.txtMontoPenalidad.TabIndex = 10;
+            this.txtMontoPenalidad.Text = "0.00";
+            this.txtMontoPenalidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMontoPenalidad.TextoDefecto = "0.00";
+            this.txtMontoPenalidad.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtMontoPenalidad.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.SoloDinero;
+            this.txtMontoPenalidad.TextChanged += new System.EventHandler(this.txtMontoPenalidad_TextChanged);
+            // 
+            // cboproyecto
+            // 
+            this.cboproyecto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboproyecto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboproyecto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboproyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboproyecto.FormattingEnabled = true;
+            this.cboproyecto.Location = new System.Drawing.Point(395, 10);
+            this.cboproyecto.Name = "cboproyecto";
+            this.cboproyecto.Size = new System.Drawing.Size(253, 21);
+            this.cboproyecto.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(341, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 13);
+            this.label11.TabIndex = 355;
+            this.label11.Text = "Proyecto:";
+            // 
             // frmAbonosVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1128, 499);
+            this.Controls.Add(this.cboproyecto);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.chkPenalidad);
             this.Controls.Add(this.separadorOre2);
             this.Controls.Add(this.btnbuscarCuentas);
             this.Controls.Add(this.txtDescripcionCuentaExceso);
@@ -1224,8 +1304,10 @@
             this.Controls.Add(this.txttotaldiferencial);
             this.Controls.Add(this.txtnrooperacion);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtMontoPenalidad);
             this.Controls.Add(this.txttipocambio);
             this.Controls.Add(this.dtpFechaPago);
+            this.Controls.Add(this.lblmontoPenalidad);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtTotalPagar);
@@ -1236,7 +1318,7 @@
             this.Controls.Add(this.lblmsg);
             this.Controls.Add(this.btnclear);
             this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblCuentaExceso);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnaceptar);
@@ -1352,10 +1434,15 @@
         private System.Windows.Forms.DataGridViewButtonColumn xAbonos;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTotalPagar;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblCuentaExceso;
         private System.Windows.Forms.Button btnbuscarCuentas;
         private HpResergerUserControls.TextBoxPer txtDescripcionCuentaExceso;
         private HpResergerUserControls.TextBoxPer txtCuentaExceso;
         private HpResergerUserControls.SeparadorOre separadorOre2;
+        private HpResergerUserControls.checkboxOre chkPenalidad;
+        private System.Windows.Forms.Label lblmontoPenalidad;
+        private HpResergerUserControls.TextBoxPer txtMontoPenalidad;
+        private System.Windows.Forms.ComboBox cboproyecto;
+        private System.Windows.Forms.Label label11;
     }
 }

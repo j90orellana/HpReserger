@@ -75,6 +75,9 @@ namespace HPReserger
         public void ActualizarTablas()
         {
             TablaPorPagar = CapaLogica.ListarFacturasPorPagarxEmpresa(0, txtbuscar.Text, 0, dtinicio.Value, dtfin.Value, 0, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
+            DataColumn ColumnaOk = new DataColumn("ok", typeof(int));
+            ColumnaOk.DefaultValue = 0;
+            TablaPorPagar.Columns.Add(ColumnaOk);
             //TablaPagados = CapaLogica.ListarFacturasPagadosxEmpresa(0, txtbuscar.Text, 0, dtinicio.Value, dtfin.Value, 0, dtpini.Value, dtpfin.Value, 0, (int)cboempresa.SelectedValue);
             if (rdbporPagar.Checked)
                 Dtguias.DataSource = TablaPorPagar;
@@ -100,6 +103,7 @@ namespace HPReserger
             frmproce.Close();
             txtCuentaExceso.Text = "";
             txtCuentaExceso.CargarTextoporDefecto();
+            CargarProyecto();
             //List<Persona> personas = new List<Persona>();
             //Persona person1 = new Persona(1, "jefferson", 27);
             //personas.Add(person1);
@@ -206,6 +210,15 @@ namespace HPReserger
                 CargarCuentasBancos();
             }
         }
+        public void CargarProyecto()
+        {
+            if (cboempresa.SelectedValue != null)
+            {
+                cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
+                cboproyecto.DisplayMember = "proyecto";
+                cboproyecto.ValueMember = "id_proyecto";
+            }
+        }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbobanco.SelectedValue != null)
@@ -219,12 +232,7 @@ namespace HPReserger
                 NameEmpresa = cboempresa.Text;
                 if (cboempresa.Items.Count > 0)
                 {
-                    if (cboempresa.SelectedValue != null)
-                    {
-                        cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
-                        cboproyecto.DisplayMember = "proyecto";
-                        cboproyecto.ValueMember = "id_proyecto";
-                    }
+                    CargarProyecto();
                 }
             }
         }
@@ -331,7 +339,7 @@ namespace HPReserger
                 string RazonSocial = item.Cells[razon.Name].Value.ToString();
                 decimal Monto = (decimal)item.Cells[Pagox.Name].Value;
                 int Moneda = (int)item.Cells[xidmoneda.Name].Value;
-                if (item.Cells[OK.Name].Value.ToString().ToUpper() == "TRUE")
+                if ((int)item.Cells[OK.Name].Value == 1)
                 {
                     NotaCreditoDebito Notita = ListadoNotas.Find(cust => cust.Proveedor == Proveedor);
                     if (Notita == null)
@@ -367,24 +375,22 @@ namespace HPReserger
                     Dtguias.Focus();
                     return;
                 }
-            Boolean ErrorNotas = false, ErrorTotales = false;
-            string Resultado = "Seleccione una Factura o Recibo para:";
-            string Resultado2 = "El Monto abonarse debe ser mayor a Cero para:";
-            foreach (NotaCreditoDebito item in ListadoNotas)
-            {
-                if (item.Monto == 0)
-                {
-                    ErrorNotas = true;
-                    Resultado += $"\n{item.RazonSocial}";
-                }
-                if (item.Monto + item.MontoNotas < 0)
-                {
-                    ErrorNotas = true;
-                    Resultado += $"\n{item.RazonSocial}";
-                }
-            }
-            if (ErrorNotas) { msg(Resultado); return; }
-            if (ErrorTotales) { msg(Resultado2); return; }
+            //Boolean ErrorNotas = false, ErrorTotales = false;
+            //string Resultado = "Seleccione una Factura o Recibo para:";
+            //string Resultado2 = "El Monto abonarse debe ser mayor a Cero para:";
+            //foreach (NotaCreditoDebito item in ListadoNotas)
+            //{
+            //    if (item.Monto == 0)
+            //    {
+            //        ErrorNotas = true; Resultado += $"\n{item.RazonSocial}";
+            //    }
+            //    //if (item.Monto + item.MontoNotas < 0)
+            //    //{
+            //    //    ErrorTotales = true; Resultado += $"\n{item.RazonSocial}";
+            //    //}
+            //}
+            //if (ErrorNotas) { msg(Resultado); return; }
+            //if (ErrorTotales) { msg(Resultado2); return; }
 
             //  return;
             if (CodigoPago == "007")
@@ -631,7 +637,7 @@ namespace HPReserger
                 int con = 0;
                 foreach (DataGridViewRow item in Dtguias.Rows)
                 {
-                    if (item.Cells[OK.Name].Value.ToString().ToUpper() == "TRUE")
+                    if ((int)item.Cells[OK.Name].Value == 1)
                     {
                         string tipos = item.Cells[tipodoc.Name].Value.ToString();
                         decimal aPagar = (decimal)item.Cells[Pagox.Name].Value;
@@ -656,18 +662,27 @@ namespace HPReserger
                 string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento + 1, FechaContable);
                 string glosa = txtglosa.TextValido();
                 int idUsuario = frmLogin.CodigoUsuario;
-                if (decimal.Parse(txttotal.Text) > 0)
+                //Buscamos la Moneda
+                foreach (DataGridViewRow item in Dtguias.Rows)
+                {
+                    if ((int)item.Cells[OK.Name].Value == 1)
+                    {
+                        idmoneda = item.Cells[monedax.Name].Value.ToString() == "USD" ? 2 : 1;
+                    }
+                }
+                //fin de busqueda de moneda
+                if (decimal.Parse(txttotal.Text) != 0)
                 {
                     //CapaLogica.guardarfactura(0, numasiento + 1, facturar, BanCuenta, 0, Abonado, 5, FechaPago, DateTime.Now, DateTime.Now, frmLogin.CodigoUsuario, 1, "", proveer
                     //    , idmoneda, nroKuenta, CodigoPago == "007" ? txtnrocheque.Text : "", decimal.Parse(txttipocambio.Text), decimal.Parse(txttipocambio.Text), FechaPago, decimal.Parse(txttipocambio.Text)
                     //    , ContadorFilaDiferencial, decimal.Parse(txttotaldiferencial.Text), 0, FechaContable, txtglosa.TextValido());
                     ///Cabecera
-                    CapaLogica.InsertarAsientoFacturaCabecera(1, ContadorFilaDiferencial, numasiento + 1, FechaContable, BanCuenta, 0, Abonado, tc, proyecto, 0, Cuo, idmoneda
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ContadorFilaDiferencial, numasiento + 1, FechaContable, BanCuenta, Abonado < 0 ? Math.Abs(Abonado) : 0, Abonado > 0 ? Math.Abs(Abonado) : 0, tc, proyecto, 0, Cuo, idmoneda
                         , glosa, FechaPago, -3);
                     foreach (DataGridViewRow item in Dtguias.Rows)
                     {
                         //Detalle del asiento
-                        if (item.Cells[OK.Name].Value.ToString().ToUpper() == "TRUE")
+                        if ((int)item.Cells[OK.Name].Value == 1)
                         {
                             decimal aPagar = (decimal)item.Cells[Pagox.Name].Value;
                             decimal saldo = (decimal)item.Cells[Saldox.Name].Value;
@@ -690,7 +705,7 @@ namespace HPReserger
                 foreach (DataGridViewRow item in Dtguias.Rows)
                 {
                     ///validamos que el monto sea mayor
-                    if (item.Cells[OK.Name].Value.ToString().ToUpper() == "TRUE")
+                    if ((int)item.Cells[OK.Name].Value == 1)
                     {
                         decimal aPagar = (decimal)item.Cells[Pagox.Name].Value;
                         decimal saldo = (decimal)item.Cells[Saldox.Name].Value;
@@ -862,9 +877,9 @@ namespace HPReserger
             Dtguias.EndEdit();
             try
             {
-                if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+                if (e.RowIndex >= 0 && Dtguias.Columns[OK.Name].Index == e.ColumnIndex)
                 {
-                    if (Dtguias["ok", e.RowIndex].Value.ToString() == "True")
+                    if ((int)Dtguias["ok", e.RowIndex].Value == 1)
                     {
                         //msg("Contains= " + Comprobantes.Contains(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd())));
                         Boolean Busqueda = false;
@@ -876,6 +891,8 @@ namespace HPReserger
                         if (!Busqueda)
                             Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value, (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (decimal)Dtguias[Saldox.Name, e.RowIndex].Value, (decimal)Dtguias[Pagox.Name, e.RowIndex].Value, (DateTime)Dtguias["fechacancelado", e.RowIndex].Value, (int)(Dtguias[centrocostox.Name, e.RowIndex].Value.ToString() == "" ? 0 : Dtguias[centrocostox.Name, e.RowIndex].Value), (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value, (DateTime)Dtguias[fechaRecepcion.Name, e.RowIndex].Value, (int)Dtguias[xidmoneda.Name, e.RowIndex].Value, Dtguias[xCuentaContable.Name, e.RowIndex].Value.ToString()
                                 , decimal.Parse(Dtguias[xtc.Name, e.RowIndex].Value.ToString()), (int)Dtguias[xidcomprobante.Name, e.RowIndex].Value));
+                        //
+                        Dtguias.RefreshEdit();
                     }
                     else
                     {
@@ -897,7 +914,7 @@ namespace HPReserger
                 }
                 //else
             }
-            catch (Exception ex) { msg(ex.Message); }
+            catch (Exception ex) { msg(ex.Message); Dtguias.RefreshEdit(); }
             if (e.RowIndex >= 0)
             {
                 if (e.ColumnIndex == Dtguias.Columns[btnVer.Name].Index)
@@ -935,15 +952,15 @@ namespace HPReserger
                 // btnaceptar.Enabled = true;                
                 foreach (DataGridViewRow lista in Dtguias.Rows)
                 {
-                    DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
-                    ch1 = (DataGridViewCheckBoxCell)lista.Cells["ok"];
-                    if (ch1.Value == null)
-                        ch1.Value = false;
-                    if (lista.Cells["OK"].Value == null)
-                        lista.Cells["OK"].Value = false;
-                    switch (lista.Cells["OK"].Value.ToString())
+                    //DataGridViewCheckBoxCell ch1 = new DataGridViewCheckBoxCell();
+                    //ch1 = (DataGridViewCheckBoxCell)lista.Cells["ok"];
+                    //if (ch1.Value == null)
+                    //    ch1.Value = false;
+                    //if (lista.Cells["OK"].Value == null)
+                    //    lista.Cells["OK"].Value = false;
+                    switch ((int)lista.Cells["OK"].Value)
                     {
-                        case "True":
+                        case 1:
                             NumRegistros++;
                             decimal Valor = (decimal)lista.Cells[Pagox.Name].Value;
                             if ((decimal)lista.Cells[Pagox.Name].Value > (decimal)lista.Cells[Saldox.Name].Value)
@@ -973,7 +990,7 @@ namespace HPReserger
                                 detrac += (decimal)lista.Cells["detraccion"].Value;
                             }
                             break;
-                        case "False":
+                        case 0:
                             break;
                     }
                 }
@@ -982,18 +999,20 @@ namespace HPReserger
                 txttotal.Text = sumatoria.ToString("n2");
                 CalcularDiferencial();
             }
-            if (!señal)
-            {
-                if (sumatoria == 0)
-                    btnaceptar.Enabled = false;
-                else
-                    btnaceptar.Enabled = true;
-            }
-            else if (sumatoria >= 0)
-            {
-                btnaceptar.Enabled = true;
-            }
-            else btnaceptar.Enabled = false;
+            //if (!señal)
+            //{
+            //    if (sumatoria == 0)
+            //        btnaceptar.Enabled = false;
+            //    else
+            //        btnaceptar.Enabled = true;
+            //}
+            //else if (sumatoria >= 0)
+            //{
+            //    btnaceptar.Enabled = true;
+            //}
+            //else btnaceptar.Enabled = false;
+            if (NumRegistros > 0) btnaceptar.Enabled = true; else btnaceptar.Enabled = false;
+
             lblmensaje.Text = $"Número de Registros: { NumRegistros}/{Dtguias.RowCount} ";
         }
         public void CalcularDiferencial()
@@ -1002,7 +1021,8 @@ namespace HPReserger
             foreach (DataGridViewRow item in Dtguias.Rows)
             {
                 if (item.Cells[OK.Name].Value != null)
-                    if (Boolean.Parse(item.Cells[OK.Name].Value.ToString()) == true)
+                    //if (Boolean.Parse(item.Cells[OK.Name].Value.ToString()) == true)
+                    if ((int)item.Cells[OK.Name].Value == 1)
                     {
                         if (item.Cells[monedax.Name].Value.ToString() == "USD")
                         {
@@ -1158,7 +1178,7 @@ namespace HPReserger
                 {
                     if (Dtguias["nrofactura", i].Value.ToString().TrimStart().TrimEnd() == fac.numero && Dtguias["proveedor", i].Value.ToString().TrimStart().TrimEnd() == fac.proveedor && fac.centrocosto == (Dtguias[centrocostox.Name, i].Value.ToString() == "" ? 0 : (int)Dtguias[centrocostox.Name, i].Value) && fac.tipo == Dtguias[tipodoc.Name, i].Value.ToString())
                     {
-                        Dtguias["ok", i].Value = true;
+                        Dtguias["ok", i].Value = 1;
                         Dtguias[Pagox.Name, i].Value = fac.aPagar;
                     }
                 }
@@ -1209,15 +1229,15 @@ namespace HPReserger
             {
                 if (Dtguias.Columns["ok"].Index == e.ColumnIndex)
                 {
-                    Boolean estado = false;
+                    int estado = 0;
                     if (Dtguias["ok", 0].Value == null)
-                        estado = false;
+                        estado = 0;
                     else
-                        estado = Boolean.Parse(Dtguias["ok", 0].Value.ToString());
+                        estado = (int)Dtguias["ok", 0].Value;
                     int y = 0;
                     foreach (DataGridViewRow xx in Dtguias.Rows)
                     {
-                        xx.Cells["ok"].Value = !estado;
+                        xx.Cells["ok"].Value = estado == 0 ? 1 : 0;
                         Dtguias_CellContentClick(sender, new DataGridViewCellEventArgs(0, y));
                         y++;
                     }
@@ -1229,19 +1249,19 @@ namespace HPReserger
             Dtguias.EndEdit();
             if (Dtguias.RowCount > 0)
             {
-                Boolean estado = false;
+                int estado = 0;
                 if (Dtguias["ok", 0].Value == null)
-                    estado = false;
+                    estado = 0;
                 else
-                    estado = Boolean.Parse(Dtguias["ok", 0].Value.ToString());
+                    estado = (int)Dtguias["ok", 0].Value;
                 int y = 0;
                 foreach (DataGridViewRow xx in Dtguias.Rows)
                 {
-                    xx.Cells["ok"].Value = !estado;
+                    xx.Cells["ok"].Value = estado == 0 ? 1 : 0;
                     Dtguias_CellContentClick(sender, new DataGridViewCellEventArgs(0, y));
                     y++;
                 }
-                if (!estado)
+                if (estado == 0)
                     btnseleccion.Text = "Deseleccionar  Todos";
                 else
                     btnseleccion.Text = "Seleccionar Todos";
@@ -1371,6 +1391,11 @@ namespace HPReserger
                         Dtguias.RefreshEdit();
                     }
                 }
+            if (y == Dtguias.Columns[OK.Name].Index)
+            {
+                //Dtguias.EndEdit();
+                Dtguias.RefreshEdit();
+            }
         }
         private void cboempresa_Click_1(object sender, EventArgs e)
         {

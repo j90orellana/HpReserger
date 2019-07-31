@@ -30,6 +30,7 @@ namespace HPReserger
             txtCuentaExceso.Text = "";
             txtCuentaExceso.CargarTextoporDefecto();
             txtnrooperacion.CargarTextoporDefecto();
+            chkPenalidad.Checked = false;
         }
         private int IdEmpresa;
         public int _IdEmpresa
@@ -123,6 +124,15 @@ namespace HPReserger
             ValoresPorDefecto();
             FacturasSeleccionadasRecargar();
         }
+        public void CargarProyecto()
+        {
+            if (cboempresa.SelectedValue != null)
+            {
+                cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
+                cboproyecto.DisplayMember = "proyecto";
+                cboproyecto.ValueMember = "id_proyecto";
+            }
+        }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_IdEmpresa != (int)cboempresa.SelectedValue)
@@ -134,6 +144,7 @@ namespace HPReserger
                 CargarCuentasBancos();
                 NameEmpresa = cboempresa.Text;
             }
+            CargarProyecto();
         }
         public void CargarCuentasBancos()
         {
@@ -197,6 +208,7 @@ namespace HPReserger
                 int valor = (int)item.Cells[xId.Name].Value;
                 decimal monto = 0;
                 decimal.TryParse(item.Cells[xpagar.Name].Value.ToString(), out monto);
+                item.Cells[xpagar.Name].Value = monto;
                 ////si es valor es mayor o menor a cero
                 if (dtgconten.Columns[xpagar.Name].Index == y)
                     if ((decimal)item.Cells[xpagar.Name].Value <= 0)//|| (decimal)item.Cells[xpagar.Name].Value > (decimal)item.Cells[xTotal.Name].Value)
@@ -280,7 +292,7 @@ namespace HPReserger
                 else
                     btnaceptar.Enabled = true;
             }
-            else if (SumaTotalPagada >= 0)
+            else if (ListaFacturax.Count > 0)
             {
                 btnaceptar.Enabled = true;
             }
@@ -434,12 +446,43 @@ namespace HPReserger
         {
             CalcularTotal();
             //Valido Cuenta en Exceso
-            if (!txtCuentaExceso.ReadOnly)
+            if (!txtCuentaExceso.ReadOnly && !chkPenalidad.Checked)
                 if (!txtDescripcionCuentaExceso.EstaLLeno())
                 {
                     msg("Ingrese La Cuenta Contable para El Exceso");
                     txtCuentaExceso.Focus(); return;
                 }
+            if (chkPenalidad.Checked)
+            {
+                decimal Penalidad = 0; decimal.TryParse(txtMontoPenalidad.Text, out Penalidad);
+                decimal Abonado = 0; decimal.TryParse(txttotalAbonado.Text, out Abonado);
+                decimal Pagar = 0; decimal.TryParse(txtTotalPagar.Text, out Pagar);
+                if (Penalidad <= 0)
+                {
+                    msg("El monto de la penalidad debe ser mayor a cero."); txtMontoPenalidad.Focus(); return;
+                }
+                if (Pagar - Abonado < 0)
+                {
+                    msg("No se puede abonar más de lo que hay que pagar."); return;
+                }
+                if (Abonado - Penalidad < 0)
+                {
+                    msg("El monto de la penalidad no puede ser mayor a la factura."); txtMontoPenalidad.Focus(); return;
+                }
+                if (ListaFacturas.Count != 1)
+                {
+                    msg("Solo debe haber una factura seleccionada."); return;
+                }
+                ////validacion para proceder;
+                if (msgyes("¿Seguro desea aplicar la penalidad?") != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+            if (cboproyecto.SelectedValue == null)
+            {
+                msg("Seleccione un Proyecto"); cboproyecto.Focus(); return;
+            }
             ////LISTADO DE NOTAS
             List<NotaCreditoDebito> ListadoNotas = new List<NotaCreditoDebito>();
             foreach (DataGridViewRow item in dtgconten.Rows)
@@ -565,7 +608,12 @@ namespace HPReserger
                 else
                     numasiento = ((int)asiento["codigo"]);
             }
-            string cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable);
+            string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable);
+            string CuoReg = "";
+            string Mensaje = "";
+            int proyecto = 0, etapa = 0, moneda = 1;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+                if ((int)item.Cells[xopcion.Name].Value == 1) { proyecto = (int)cboproyecto.SelectedValue; etapa = (int)item.Cells[xfketapa.Name].Value; moneda = (int)item.Cells[xMoneda.Name].Value; break; }
             ///Fin de Declaracion;
             if (TotalAbonado != 0)
             {
@@ -573,15 +621,72 @@ namespace HPReserger
                 if (rdbDepositoPLazo.Checked) { CuentaBanco = cbodepositoplazo.SelectedValue.ToString(); Banko = "-1"; }
                 if (rdbCertificadoBancario.Checked) { CuentaBanco = cboCertificadobancario.SelectedValue.ToString(); Banko = "-2"; }
             }
-            ////
-            int proyecto = 0, etapa = 0, moneda = 1;
-            foreach (DataGridViewRow item in dtgconten.Rows)
-                if ((int)item.Cells[xopcion.Name].Value == 1) { proyecto = (int)item.Cells[xfkproyecto.Name].Value; etapa = (int)item.Cells[xfketapa.Name].Value; moneda = (int)item.Cells[xMoneda.Name].Value; break; }
-            ////CABECERA DE LOS ASIENTOS
-            int PosFila = 1;
+            ////Aplicacion de la Penalidad//
+            int PosFila = 0;
+            decimal MontoPenalidad = 0;
+            if (chkPenalidad.Checked)
+            {
+                decimal.TryParse(txtMontoPenalidad.Text, out MontoPenalidad);
+                //Cabecera de Penalidad
+                //Cuenta de Facturas
+                foreach (Cuentas item in ListCuentas)
+                {
+                    //Declaracion de VAriables para el Proceso
+                    decimal Abonado = item._Exceso > item._Total ? item._Total : item._Exceso;
+                    decimal Exceso = item._Exceso;
+                    //CUENTAS DE LAS FACTURAS
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, item._Cuenta, (item._Abonado > 0 ? Math.Abs(MontoPenalidad) : 0), item._Abonado > 0 ? 0 : Math.Abs(MontoPenalidad), tc
+                        , proyecto, etapa, Cuo, moneda, Glosa, FechaPago, -7);
+                }
+                //Cuenta de Penalidad
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, txtCuentaExceso.Text, 0, MontoPenalidad, tc, proyecto, etapa, Cuo, moneda, Glosa, FechaPago, -7);
+                //Fin de Cabecera de Penalidad
+                //Detalle de la Penalidad
+                //Detalle Cuentas
+                PosFila = 0;
+                foreach (Cuentas items in ListCuentas)
+                {
+                    PosFila++;
+                    foreach (DataGridViewRow item in dtgconten.Rows)
+                        if ((int)item.Cells[xopcion.Name].Value == 1)
+                        {
+                            int Notas = (int)item.Cells[xIdComprobante.Name].Value; if (ContenedorIdNotas.Contains(Notas)) { } else Notas = 0;
+                            if (item.Cells[xCuentaContable.Name].Value.ToString() == items._Cuenta && items._tipo == Notas)
+                            {
+                                //Declaracion de VAriables para el Proceso
+                                string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
+                                DateTime fecha = DateTime.Now;
+                                //Detalle de las Facturas
+                                CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, FechaContable, items._Cuenta, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
+                                    , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, FechaPago, fecha, fecha, MontoPenalidad,// (decimal)item.Cells[xpagar.Name].Value,
+                                    MontoPenalidad, item.Cells[xNameCorto.Name].Value.ToString() == "USD" ? (decimal)item.Cells[xTC.Name].Value : tc,
+                                    (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, "");
+                                //Detalle Cuenta Penalidad
+                                DateTime fechaa = DateTime.Now;
+                                CapaLogica.InsertarAsientoFacturaDetalle(10, ++PosFila, numasiento, FechaContable, txtCuentaExceso.Text, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
+                                    , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, FechaPago, fechaa, fechaa, moneda == 1 ? MontoPenalidad : MontoPenalidad * tc
+                                    , moneda == 2 ? MontoPenalidad : MontoPenalidad / tc, tc, moneda, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, "");
+                                //Fin Detalle de la Penalidad                            
+                            }
+                        }
+                }
+                CuoReg = Cuo;
+                Mensaje += $"Penalidad Abonada en cuo: {CuoReg} \n";
+                ///Sacamos el Nuevo Cuo
+                DataTable asientito = CapaLogica.UltimoAsiento(IdEmpresa, FechaContable);
+                DataRow asiento = asientito.Rows[0];
+                if (asiento == null) { numasiento = 1; }
+                else numasiento = ((int)asiento["codigo"]);
+                Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, FechaContable);
+                //Fin de Busqueda del Nuevo Cuo
+            }
+            //Fin de la Penalidad
+            ////////CABECERA DE LOS ASIENTOS
+            PosFila = 1;
             //CUENTA BANCO
-            if (TotalAbonado > 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, FechaContable, CuentaBanco, TotalAbonado, 0, tc, proyecto, etapa, cuo, moneda, Glosa, FechaPago, -7);
+            if (TotalAbonado != 0)
+                CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila, numasiento, FechaContable, CuentaBanco, TotalAbonado > 0 ? TotalAbonado - MontoPenalidad : 0, TotalAbonado < 0 ? Math.Abs(TotalAbonado) - MontoPenalidad : 0, tc, proyecto
+                    , etapa, Cuo, moneda, Glosa, FechaPago, -7);
             //CUENTAS DE LAS FACTURAS Y EL EXCESO EN ABONO
             foreach (Cuentas item in ListCuentas)
             {
@@ -589,16 +694,18 @@ namespace HPReserger
                 decimal Abonado = item._Exceso > item._Total ? item._Total : item._Exceso;
                 decimal Exceso = item._Exceso;
                 //CUENTAS DE LAS FACTURAS
-                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, item._Cuenta, item._Abonado < 0 ? Math.Abs(item._Abonado) : 0, item._Abonado < 0 ? 0 : Math.Abs(item._Abonado), tc, proyecto, etapa, cuo, moneda, Glosa, FechaPago, -7);
+                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, item._Cuenta, item._Abonado < 0 ? Math.Abs(item._Abonado) - MontoPenalidad : 0, item._Abonado < 0 ? 0 : Math.Abs(item._Abonado) - MontoPenalidad
+                    , tc, proyecto, etapa, Cuo, moneda, Glosa, FechaPago, -7);
                 //CABECERA DE EXCESO EN ABONO
                 if (Exceso > 0)
                 {
-                    CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila + ListCuentas.Count, numasiento, FechaContable, CuentaExceso, item._Abonado < 0 ? Math.Abs(Exceso) : 0, item._Abonado < 0 ? 0 : Math.Abs(Exceso), tc, proyecto, etapa, cuo, moneda, Glosa, FechaPago, -7);
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, PosFila + ListCuentas.Count, numasiento, FechaContable, CuentaExceso, item._Abonado < 0 ? Math.Abs(Exceso) : 0, item._Abonado < 0 ? 0 : Math.Abs(Exceso)
+                        , tc, proyecto, etapa, Cuo, moneda, Glosa, FechaPago, -7);
                 }
             }
             //CUENTA DIFERENCIA DE CAMBIO
             if (decimal.Parse(txttotaldiferencial.Text) != 0)
-                CapaLogica.InsertarAsientoFacturaCabecera(2, ++PosFila, numasiento, FechaContable, "", decimal.Parse(txttotaldiferencial.Text), 0, tc, proyecto, etapa, cuo, moneda, Glosa, FechaPago, -7);
+                CapaLogica.InsertarAsientoFacturaCabecera(2, ++PosFila, numasiento, FechaContable, "", decimal.Parse(txttotaldiferencial.Text), 0, tc, proyecto, etapa, Cuo, moneda, Glosa, FechaPago, -7);
             ////FIN DE LAS CABECERAS
             ////DETALLE DE LOS ASIENTOS
             PosFila = 1;
@@ -612,9 +719,9 @@ namespace HPReserger
                     int Multiplicador = 1;
                     if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) Multiplicador = -1;
                     CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, FechaContable, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
-                        , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Multiplicador * (decimal)item.Cells[xpagar.Name].Value,
-                      Multiplicador * (decimal)item.Cells[xTotal.Name].Value, tc, (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa,
-                      FechaPago, IdUsuario, "");
+                        , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, FechaPago, fecha, fecha, -MontoPenalidad + Multiplicador * (decimal)item.Cells[xpagar.Name].Value,
+                      -MontoPenalidad + Multiplicador * (decimal)item.Cells[xTotal.Name].Value, tc, (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa,
+                      FechaPago, IdUsuario, CuoReg);
                 }
             }
             ////LISTADO DE CUENTAS
@@ -629,21 +736,23 @@ namespace HPReserger
                         {
                             //Declaracion de VAriables para el Proceso
                             decimal Abonado = (decimal)item.Cells[xpagar.Name].Value > (decimal)item.Cells[xTotal.Name].Value ? (decimal)item.Cells[xTotal.Name].Value : (decimal)item.Cells[xpagar.Name].Value;
+                            //Resto de la Penalidad
+                            Abonado -= MontoPenalidad;
                             decimal Exceso = (decimal)item.Cells[xpagar.Name].Value > (decimal)item.Cells[xTotal.Name].Value ? (decimal)item.Cells[xpagar.Name].Value - (decimal)item.Cells[xTotal.Name].Value : 0;
                             string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                             DateTime fecha = DateTime.Now;
                             //Detalle de las Facturas
                             CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, FechaContable, items._Cuenta, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
-                                , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Abonado,// (decimal)item.Cells[xpagar.Name].Value,
+                                , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, FechaPago, fecha, fecha, Abonado,// (decimal)item.Cells[xpagar.Name].Value,
                                 (decimal)item.Cells[xTotal.Name].Value, item.Cells[xNameCorto.Name].Value.ToString() == "USD" ? (decimal)item.Cells[xTC.Name].Value : tc,
-                                (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, "");
+                                (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, CuoReg);
                             //Detalle del Exceso
                             if (Exceso > 0)
                             {
                                 CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila + ListCuentas.Count, numasiento, FechaContable, CuentaExceso, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
-                                    , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Exceso,// (decimal)item.Cells[xpagar.Name].Value,
+                                    , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, FechaPago, fecha, fecha, Exceso,// (decimal)item.Cells[xpagar.Name].Value,
                                     (decimal)item.Cells[xTotal.Name].Value, item.Cells[xNameCorto.Name].Value.ToString() == "USD" ? (decimal)item.Cells[xTC.Name].Value : tc,
-                                    (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, "");
+                                    (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa, FechaPago, IdUsuario, CuoReg);
                             }
                         }
                     }
@@ -663,9 +772,9 @@ namespace HPReserger
                             string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                             DateTime fecha = DateTime.Now;
                             CapaLogica.InsertarAsientoFacturaDetalle(2, PosFila, numasiento, FechaContable, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
-                                , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, fecha, fecha, fecha, Dif,
+                                , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, FechaPago, fecha, fecha, Dif,
                                  decimal.Parse(txttotaldiferencial.Text), tc, (int)item.Cells[xMoneda.Name].Value, nroKuenta,
-                                 NroOperacion, Glosa, FechaPago, IdUsuario, "");
+                                 NroOperacion, Glosa, FechaPago, IdUsuario, CuoReg);
                         }
                     }
                 }
@@ -685,14 +794,14 @@ namespace HPReserger
                     else
                         CapaLogica.FacturaVentaManualPago(opcion, (int)item.Cells[xIdComprobante.Name].Value, item.Cells[xNroComprobante.Name].Value.ToString(), txtnrooperacion.Text, (int)item.Cells[xTipoId.Name].Value,
                             item.Cells[xCliente.Name].Value.ToString(), (int)cboempresa.SelectedValue, (decimal)item.Cells[xpagar.Name].Value, (decimal)item.Cells[xTC.Name].Value, Banko,
-                            nroKuenta, FechaPago, cuo, IdUsuario);
+                            nroKuenta, FechaPago, Cuo, IdUsuario);
                 }
             }
             //#region   Cuadrar Asiento
             //CapaLogica.CuadrarAsiento(cuo, proyecto, FechaPago, 2);
             //#endregion Fin Cuadrar Asiento
-            msg($"Facturas Abonadas\nCon Asiento {cuo}");
-            txttotalAbonado.Text = txttotaldiferencial.Text = "0.00";
+            msg($"{Mensaje}Facturas  Abonadas en cuo: {Cuo}");
+            txtTotalPagar.Text = txttotalAbonado.Text = txttotaldiferencial.Text = "0.00";
             ////txtnrooperacion.CargarTextoporDefecto();txtglosa.CargarTextoporDefecto();
             ListaFacturax.Clear();
             txtCuentaExceso.ReadOnly = true;
@@ -898,7 +1007,7 @@ namespace HPReserger
             decimal.TryParse(txttotalAbonado.Text, out ValorPagado);
             //
             txtCuentaExceso.ReadOnly = true;
-            if (ValorPagado > ValorPagar)
+            if (ValorPagado > ValorPagar || chkPenalidad.Checked)
             {
                 txtCuentaExceso.ReadOnly = false;
             }
@@ -938,6 +1047,38 @@ namespace HPReserger
         private void txtCuentaExceso_ReadOnlyChanged(object sender, EventArgs e)
         {
             btnbuscarCuentas.Enabled = !txtCuentaExceso.ReadOnly;
+        }
+        string _CuentaExceso = "4699111"; string _CuentaPenalidad = "7599101";
+        private void chkPenalidad_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkPenalidad.Checked)
+            {
+                lblCuentaExceso.Text = "Cuenta Penalidad:";
+                if (!txtCuentaExceso.EstaLLeno()) txtCuentaExceso.Text = _CuentaPenalidad;
+                txtCuentaExceso.TextoDefecto = _CuentaPenalidad;
+                txtCuentaExceso.ReadOnly = false;
+                lblmontoPenalidad.Visible = txtMontoPenalidad.Visible = true;
+            }
+            else
+            {
+                lblCuentaExceso.Text = "Cuenta de Exceso:";
+                if (!txtCuentaExceso.EstaLLeno()) txtCuentaExceso.Text = _CuentaExceso;
+                txtCuentaExceso.TextoDefecto = _CuentaExceso;
+                txtCuentaExceso.ReadOnly = decimal.Parse(txttotalAbonado.Text) > decimal.Parse(txtTotalPagar.Text) ? false : true;
+                lblmontoPenalidad.Visible = txtMontoPenalidad.Visible = false;
+            }
+        }
+        private void txtMontoPenalidad_TextChanged(object sender, EventArgs e)
+        {
+            decimal pruebaAbonado = 0;
+            decimal pruebaPenalidad = 0;
+            decimal.TryParse(txttotalAbonado.Text, out pruebaAbonado);
+            decimal.TryParse(txtMontoPenalidad.Text, out pruebaPenalidad);
+            //txtMontoPenalidad.Text = pruebaPenalidad.ToString("n2");
+            if (pruebaPenalidad > pruebaAbonado)
+            {
+                txtMontoPenalidad.Text = pruebaAbonado.ToString("n2");
+            }
         }
     }
 }
