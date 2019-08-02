@@ -779,7 +779,6 @@ namespace HPReserger
                     }
                 }
             }
-
             ////FIN DETALE DE LOS ASIENTOS
             ////ACTUALIZADO LOS ABONOS  
             foreach (DataGridViewRow item in dtgconten.Rows)
@@ -790,11 +789,20 @@ namespace HPReserger
                     int opcion = 1;
                     if (ContenedorIdNotas.Contains(int.Parse(Tipox))) { opcion = 2; }
                     if (opcion == 2)
-                        CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2, (int)cboempresa.SelectedValue);
+                    {
+                        //Agrego el Pago
+                        CapaLogica.FacturaVentaManualPago(opcion, (int)item.Cells[xIdComprobante.Name].Value, item.Cells[xNroComprobante.Name].Value.ToString(), txtnrooperacion.Text, (int)item.Cells[xTipoId.Name].Value
+                         , item.Cells[xCliente.Name].Value.ToString(), (int)cboempresa.SelectedValue, (decimal)item.Cells[xpagar.Name].Value, (decimal)item.Cells[xTC.Name].Value, Banko
+                         , nroKuenta, FechaPago, Cuo, IdUsuario);
+                        //Actualizar notas de credito- Cambia a pagada!
+                        if ((decimal)item.Cells[xpagar.Name].Value >= (decimal)item.Cells[xTotal.Name].Value)
+                            CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2, (int)cboempresa.SelectedValue);
+
+                    }
                     else
-                        CapaLogica.FacturaVentaManualPago(opcion, (int)item.Cells[xIdComprobante.Name].Value, item.Cells[xNroComprobante.Name].Value.ToString(), txtnrooperacion.Text, (int)item.Cells[xTipoId.Name].Value,
-                            item.Cells[xCliente.Name].Value.ToString(), (int)cboempresa.SelectedValue, (decimal)item.Cells[xpagar.Name].Value, (decimal)item.Cells[xTC.Name].Value, Banko,
-                            nroKuenta, FechaPago, Cuo, IdUsuario);
+                        CapaLogica.FacturaVentaManualPago(opcion, (int)item.Cells[xIdComprobante.Name].Value, item.Cells[xNroComprobante.Name].Value.ToString(), txtnrooperacion.Text, (int)item.Cells[xTipoId.Name].Value
+                            , item.Cells[xCliente.Name].Value.ToString(), (int)cboempresa.SelectedValue, (decimal)item.Cells[xpagar.Name].Value, (decimal)item.Cells[xTC.Name].Value, Banko
+                            , nroKuenta, FechaPago, Cuo, IdUsuario);
                 }
             }
             //#region   Cuadrar Asiento
