@@ -30,6 +30,8 @@ namespace HPReserger
             Detracion = new List<Detracciones>();
             CargarDAtos();
             dtpFechaPago.Value = dtpFechaContable.Value = DateTime.Now;
+            txtglosa.CargarTextoporDefecto();
+            txtcuentadetracciones.CargarTextoporDefecto();
         }
         public void cargarempresas()
         {

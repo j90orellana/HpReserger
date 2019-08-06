@@ -1323,6 +1323,7 @@ namespace HPReserger
                 txtglosa.Focus();
                 return;
             }
+            if (decimal.Parse(txttipocambio.TextValido()) == 0) { msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpfechavalor.Value))
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpfechavalor.Focus(); return;
@@ -1824,38 +1825,31 @@ namespace HPReserger
             string cade = cbomoneda.Text;
             Cargarmoneda();
             cbomoneda.Text = cade;
-        }
-        frmTipodeCambio frmtipo;
+        }      
         private string CuoSelec;
+        frmTipodeCambio frmtipo;
         public void SacarTipoCambio()
         {
-            if (estado == 1 || estado == 2)
+            DateTime FechaValidaBuscar = dtpfecha.Value;
+            txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n3");
+            if (decimal.Parse(txttipocambio.Text) == 0)
             {
-                DateTime FechaValidaBuscar;
-                //if (chkfechavalor.Checked) { 
-                FechaValidaBuscar = dtpfecha.Value;
-                //} else FechaValidaBuscar = dtpfecha.Value;
-                if (cbocambio.Text == "") cbocambio.Text = "Venta";
-                txttipocambio.Text = CapaLogica.TipoCambioDia(cbocambio.Text, FechaValidaBuscar).ToString("n3");
-                if (txttipocambio.Text == "0.000")
+                if (frmtipo == null)
                 {
-                    if (frmtipo == null)
-                    {
-                        frmtipo = new frmTipodeCambio();
-                        frmtipo.Show();
-                        frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());
-                        frmtipo.Buscar_Click(new object(), new EventArgs());
-                        frmtipo.BusquedaExterna = false;
-                        frmtipo.Hide();
-                        if (frmtipo.BusquedaExterna)
-                        {
-                            frmtipo.Close();
-                            frmtipo = null;
-                            SacarTipoCambio();
-                        }
-                    }
+                    frmtipo = new frmTipodeCambio();
+                    frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
+                    frmtipo.Show();
+                    frmtipo.Hide();
+                    frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());
+                    frmtipo.Buscar_Click(new object(), new EventArgs());
                 }
             }
+        }
+        private void Frmtipo_ActualizoTipoCambio(object sender, EventArgs e)
+        {
+            frmtipo.Close();
+            frmtipo = null;
+            SacarTipoCambio();
         }
         private void cbocambio_SelectedIndexChanged(object sender, EventArgs e)
         {

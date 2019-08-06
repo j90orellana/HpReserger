@@ -104,6 +104,7 @@ namespace HPReserger
             txtCuentaExceso.Text = "";
             txtCuentaExceso.CargarTextoporDefecto();
             CargarProyecto();
+            //if (decimal.Parse(txttipocambio.Text) == 0) SacarTipoCambio();
             //List<Persona> personas = new List<Persona>();
             //Persona person1 = new Persona(1, "jefferson", 27);
             //personas.Add(person1);
@@ -1659,26 +1660,25 @@ namespace HPReserger
         {
             DateTime FechaValidaBuscar = dtpFechaPago.Value;
             txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n3");
-            if (txttipocambio.Text == "0.000")
+            if (decimal.Parse(txttipocambio.Text) == 0)
             {
                 if (frmtipo == null)
                 {
                     frmtipo = new frmTipodeCambio();
+                    frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
                     frmtipo.Show();
+                    frmtipo.Hide();
                     frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());
                     frmtipo.Buscar_Click(new object(), new EventArgs());
-                    frmtipo.BusquedaExterna = false;
-                    frmtipo.Hide();
-                    if (frmtipo.BusquedaExterna)
-                    {
-                        frmtipo.Close();
-                        frmtipo = null;
-                        SacarTipoCambio();
-                    }
                 }
             }
         }
-
+        private void Frmtipo_ActualizoTipoCambio(object sender, EventArgs e)
+        {
+            frmtipo.Close();
+            frmtipo = null;
+            SacarTipoCambio();
+        }
         private void txttipocambio_TextChanged(object sender, EventArgs e)
         {
             CalcularTotal();

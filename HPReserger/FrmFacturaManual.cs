@@ -257,24 +257,24 @@ namespace HPReserger
         {
             DateTime FechaValidaBuscar = dtpfechaemision.Value;
             txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n3");
-            if (txttipocambio.Text == "0.000")
+            if (decimal.Parse(txttipocambio.Text) == 0)
             {
                 if (frmtipo == null)
                 {
                     frmtipo = new frmTipodeCambio();
+                    frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
                     frmtipo.Show();
+                    frmtipo.Hide();
                     frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());
                     frmtipo.Buscar_Click(new object(), new EventArgs());
-                    frmtipo.BusquedaExterna = false;
-                    frmtipo.Hide();
-                    if (frmtipo.BusquedaExterna)
-                    {
-                        frmtipo.Close();
-                        frmtipo = null;
-                        SacarTipoCambio();
-                    }
                 }
             }
+        }
+        private void Frmtipo_ActualizoTipoCambio(object sender, EventArgs e)
+        {
+            frmtipo.Close();
+            frmtipo = null;
+            SacarTipoCambio();
         }
         private void dtpfechaemision_ValueChanged(object sender, EventArgs e)
         {
@@ -755,6 +755,7 @@ namespace HPReserger
                 if (txtcodfactura.Text.Length == 0) { Msg($"Ingrese Codigo de {cbotipodoc.Text}"); txtcodfactura.Focus(); return; }
                 if (txtnrofactura.Text.Length == 0) { Msg($"Ingrese Número de {cbotipodoc.Text}"); txtnrofactura.Focus(); return; }
                 if (!txttotalfac.EstaLLeno()) { Msg("Ingrese Total del Comprobante"); txttotalfac.Focus(); return; }
+                if (decimal.Parse(txttipocambio.TextValido()) == 0) { Msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
                 if (!txtruc.EstaLLeno()) { Msg("Ingrese RUC del Comprobante"); txtruc.Focus(); return; }
                 if (_TipoDoc == 0) if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { Msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
                 ///valido compensacion

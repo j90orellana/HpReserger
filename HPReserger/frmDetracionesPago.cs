@@ -31,6 +31,8 @@ namespace HPReserger
             CargarDAtos();
             dtpFechaPago.Value = dtpFechaContable.Value = DateTime.Now;
             txtcuentadetracciones_TextChanged(sender, e);
+            txtglosa.CargarTextoporDefecto();
+            txtcuentaredondeo.CargarTextoporDefecto();
         }
         public void cargarempresas()
         {

@@ -31,7 +31,7 @@ namespace HpResergerUserControls
         public static Color OscuroUI = Color.FromArgb(52, 73, 94);
         public static Color OscuroUISelect = Color.FromArgb(44, 62, 80);
         public static Color RojoUI = Color.FromArgb(231, 76, 60);
-        public static Color RojoUISelect = Color.FromArgb(192, 57, 43);
+        public static Color RojoUISelect = Color.FromArgb(240, 150, 141);//Color.FromArgb(192, 57, 43)
         public static Color BlancoUI = Color.FromArgb(236, 240, 241);
         public static Color BlancoUISelect = Color.FromArgb(189, 195, 199);
         public static Color GrisUI = Color.FromArgb(149, 165, 166);

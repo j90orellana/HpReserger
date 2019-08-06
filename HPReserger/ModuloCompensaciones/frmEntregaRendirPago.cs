@@ -271,30 +271,30 @@ namespace HPReserger.ModuloCompensaciones
             }
             DtgcontenEntregas.EndEdit(); DtgcontenEntregas.RefreshEdit();
         }
+        frmTipodeCambio frmtipo;
         public void SacarTipoCambio()
         {
             DateTime FechaValidaBuscar = dtpFechaCompensa.Value;
             txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n3");
-            if (txttipocambio.Text == "0.000")
+            if (decimal.Parse(txttipocambio.Text) == 0)
             {
                 if (frmtipo == null)
                 {
                     frmtipo = new frmTipodeCambio();
+                    frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
                     frmtipo.Show();
+                    frmtipo.Hide();
                     frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());
                     frmtipo.Buscar_Click(new object(), new EventArgs());
-                    frmtipo.BusquedaExterna = false;
-                    frmtipo.Hide();
-                    if (frmtipo.BusquedaExterna)
-                    {
-                        frmtipo.Close();
-                        frmtipo = null;
-                        SacarTipoCambio();
-                    }
                 }
             }
         }
-        frmTipodeCambio frmtipo;
+        private void Frmtipo_ActualizoTipoCambio(object sender, EventArgs e)
+        {
+            frmtipo.Close();
+            frmtipo = null;
+            SacarTipoCambio();
+        }
         private void dtpFechaCompensa_ValueChanged(object sender, EventArgs e)
         {
             SacarTipoCambio();

@@ -191,6 +191,7 @@
             this.xtipo.HeaderText = "Tipo";
             this.xtipo.MinimumWidth = 35;
             this.xtipo.Name = "xtipo";
+            this.xtipo.ReadOnly = true;
             this.xtipo.Width = 35;
             // 
             // nrofacturax
@@ -624,7 +625,7 @@
             this.txtglosa.Size = new System.Drawing.Size(326, 21);
             this.txtglosa.TabIndex = 326;
             this.txtglosa.Text = "PAGO DETRACCIONES COMPRA";
-            this.txtglosa.TextoDefecto = "Pago Detracciones Compra";
+            this.txtglosa.TextoDefecto = "PAGO DETRACCIONES COMPRA";
             this.txtglosa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             this.txtglosa.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
             // 

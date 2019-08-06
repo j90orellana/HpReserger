@@ -337,37 +337,36 @@ namespace HPReserger
                     }
                 }
             }
-        }
-        frmTipodeCambio frmtipo;
+        }      
         private void Frmdetallepago_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmdetallepago = null;
         }
         frmDetallePagoFactura frmdetallepago;
         public string NameEmpresa { get; private set; }
-
+        frmTipodeCambio frmtipo;
         public void SacarTipoCambio()
         {
             DateTime FechaValidaBuscar = dtpFechaPago.Value;
             txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n3");
-            if (txttipocambio.Text == "0.000")
+            if (decimal.Parse(txttipocambio.Text) == 0)
             {
                 if (frmtipo == null)
                 {
                     frmtipo = new frmTipodeCambio();
+                    frmtipo.ActualizoTipoCambio += Frmtipo_ActualizoTipoCambio;
                     frmtipo.Show();
+                    frmtipo.Hide();
                     frmtipo.comboMesAño1.ActualizarMesAÑo(FechaValidaBuscar.Month.ToString(), FechaValidaBuscar.Year.ToString());
                     frmtipo.Buscar_Click(new object(), new EventArgs());
-                    frmtipo.BusquedaExterna = false;
-                    frmtipo.Hide();
-                    if (frmtipo.BusquedaExterna)
-                    {
-                        frmtipo.Close();
-                        frmtipo = null;
-                        SacarTipoCambio();
-                    }
                 }
             }
+        }
+        private void Frmtipo_ActualizoTipoCambio(object sender, EventArgs e)
+        {
+            frmtipo.Close();
+            frmtipo = null;
+            SacarTipoCambio();
         }
         private void dtpFechaPago_ValueChanged(object sender, EventArgs e)
         {
@@ -710,20 +709,21 @@ namespace HPReserger
             ////DETALLE DE LOS ASIENTOS
             PosFila = 1;
             ////LOS BANCOS
-            foreach (DataGridViewRow item in dtgconten.Rows)
-            {
-                if ((int)item.Cells[xopcion.Name].Value == 1)
+            if (TotalAbonado != 0)
+                foreach (DataGridViewRow item in dtgconten.Rows)
                 {
-                    string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
-                    DateTime fecha = DateTime.Now;
-                    int Multiplicador = 1;
-                    if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) Multiplicador = -1;
-                    CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, FechaContable, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
-                        , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, FechaPago, fecha, fecha, -MontoPenalidad + Multiplicador * (decimal)item.Cells[xpagar.Name].Value,
-                      -MontoPenalidad + Multiplicador * (decimal)item.Cells[xTotal.Name].Value, tc, (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa,
-                      FechaPago, IdUsuario, CuoReg);
+                    if ((int)item.Cells[xopcion.Name].Value == 1)
+                    {
+                        string[] valor = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
+                        DateTime fecha = DateTime.Now;
+                        int Multiplicador = 1;
+                        if (ContenedorNotasCredito.Contains(item.Cells[xIdComprobante.Name].Value.ToString())) Multiplicador = -1;
+                        CapaLogica.InsertarAsientoFacturaDetalle(1, PosFila, numasiento, FechaContable, CuentaBanco, proyecto, (int)item.Cells[xTipoId.Name].Value, item.Cells[xCliente.Name].Value.ToString()
+                            , item.Cells[xNombres.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, FechaPago, fecha, fecha, -MontoPenalidad + Multiplicador * (decimal)item.Cells[xpagar.Name].Value,
+                          -MontoPenalidad + Multiplicador * (decimal)item.Cells[xTotal.Name].Value, tc, (int)item.Cells[xMoneda.Name].Value, nroKuenta, NroOperacion, Glosa,
+                          FechaPago, IdUsuario, CuoReg);
+                    }
                 }
-            }
             ////LISTADO DE CUENTAS
             foreach (Cuentas items in ListCuentas)
             {

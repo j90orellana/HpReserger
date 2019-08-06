@@ -222,6 +222,7 @@ namespace HPReserger
                 tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
                 dtgconten.DataSource = tablita;
                 CargarImagenes();
+                OnActualizoTipoCambio(e);
             }
             else
             {
@@ -231,6 +232,12 @@ namespace HPReserger
             //dtgconten.DataSource = tablita;
             //CargarImagenes();
             BusquedaExterna = true;
+        }
+        public event EventHandler ActualizoTipoCambio;
+        protected virtual void OnActualizoTipoCambio(EventArgs e)
+        {
+            if (ActualizoTipoCambio != null)
+                ActualizoTipoCambio(this, e);
         }
         private void Btncancelar_Click(object sender, EventArgs e)
         {
@@ -322,11 +329,11 @@ namespace HPReserger
                 {
                     Carga = false;
                     webBrowser1.Navigate("http://www.sunat.gob.pe/cl-at-ittipcam/tcS01Alias");
-                    webBrowser1.Document.GetElementById("mes").SetAttribute("value", comboMesAño1.getMesNumero().ToString("00"));
-                    webBrowser1.Document.GetElementById("anho").SetAttribute("value", comboMesAño1.GetAño().ToString());
-                    webBrowser1.Document.GetElementById("B1").InvokeMember("click");
+                    //webBrowser1.Document.GetElementById("mes").SetAttribute("value", comboMesAño1.getMesNumero().ToString("00"));
+                    //webBrowser1.Document.GetElementById("anho").SetAttribute("value", comboMesAño1.GetAño().ToString());
+                    //webBrowser1.Document.GetElementById("B1").InvokeMember("click");
                 }
-                catch
+                catch (Exception ex)
                 {
                     //MSG("No Hay Información para este Mes");
                     //tablita = CapaLogica.TipodeCambio(0, comboMesAño1.GetFecha().Year, comboMesAño1.GetFecha().Month, 1, 0, 0, ImgVenta);
