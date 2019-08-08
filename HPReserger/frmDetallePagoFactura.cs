@@ -17,13 +17,15 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        public frmDetallePagoFactura(int opcion, string numero, int tipoid, string proveedors)
+        public frmDetallePagoFactura(int opcion, string numero, int tipoid, string proveedors, int idcomprobante, int empresa)
         {
             InitializeComponent();
             numfac = numero;
             proveedor = proveedors;
             Opcion = opcion;
             Tipoid = tipoid;
+            Idcomprobante = idcomprobante;
+            Empresa = empresa;
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void btncancelar_Click(object sender, EventArgs e)
@@ -32,29 +34,17 @@ namespace HPReserger
         }
         private string _numfac;
         private int _tipoid;
-
-        public string numfac
-        {
-            get { return _numfac; }
-            set { _numfac = value; }
-        }
-
-        public int Tipoid
-        {
-            get { return _tipoid; }
-            set { _tipoid = value; }
-        }
+        private int _idcomprobante;
+        public int Idcomprobante { get { return _idcomprobante; } set { _idcomprobante = value; } }
+        public string numfac { get { return _numfac; } set { _numfac = value; } }
+        public int Tipoid { get { return _tipoid; } set { _tipoid = value; } }
         private string _proveedor;
         public int Opcion;
-
-        public string proveedor
-        {
-            get { return _proveedor; }
-            set { _proveedor = value; txtproveedor.Text = _proveedor; }
-        }
+        public int Empresa;
+        public string proveedor { get { return _proveedor; } set { _proveedor = value; txtproveedor.Text = _proveedor; } }
         private void frmDetallePagoFactura_Load(object sender, EventArgs e)
         {
-            dtgconten1.DataSource = CapaLogica.ListarAbonosFacturas(Opcion, _numfac, _tipoid, _proveedor);
+            dtgconten1.DataSource = CapaLogica.ListarAbonosFacturas(Opcion, _numfac, _tipoid, _proveedor, _idcomprobante, Empresa);
             if (Opcion != 1)
             {
                 label2.Text = "Cliente";

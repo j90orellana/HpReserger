@@ -4243,10 +4243,10 @@ namespace HPResergerCapaDatos
             object[] valores = { cod, anexo, desc };
             return bd.DataTableFromProcedure("usp_DetraccionesFiltrar", parametros, valores, null);
         }
-        public DataTable ListarAbonosFacturas(int opcion, string numfac, int tipoid, string proveedor)
+        public DataTable ListarAbonosFacturas(int opcion, string numfac, int tipoid, string proveedor, int idcomprobante, int empresa)
         {
-            string[] parametros = { "@opcion", "@numfac", "@tipoid", "@proveedor" };
-            object[] valores = { opcion, numfac, tipoid, proveedor };
+            string[] parametros = { "@opcion", "@numfac", "@tipoid", "@proveedor", "@IdComprobante", "@empresa" };
+            object[] valores = { opcion, numfac, tipoid, proveedor, idcomprobante, empresa };
             return bd.DataTableFromProcedure("usp_ListarAbonosFacturas", parametros, valores, null);
         }
         public DataTable ComprobanteDePago(int opcion, int id, string descripcion, int usuario, int codigosunat, DateTime fechas)
@@ -4267,16 +4267,18 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa };
             return bd.DataTableFromProcedure("usp_ListarDetraccionesPorPagarVentas", parametros, valores, null);
         }
-        public DataTable Detracciones(int @Opcion, string @Nrofac, string @Proveedor, decimal @ImporteMo, decimal @ImportePEN, decimal @tc, decimal importepagar, decimal diferencia, string @nroopbanco, string @banco, string @ctabanco, DateTime @fechapago, int @Usuario, int @idComprobante)
+        public DataTable Detracciones(int @Opcion, string @Nrofac, string @Proveedor, decimal @ImporteMo, decimal @ImportePEN, decimal @tc, decimal importepagar, decimal diferencia, string @nroopbanco
+            , string @banco, string @ctabanco, DateTime @fechapago, int @Usuario, int @idComprobante, int idempresa, string cuopago)
         {
-            string[] parametros = { "@Opcion", "@Nrofac", "@Proveedor", "@ImporteMo", "@ImportePEN", "@tc", "@ImportePagado", "@diferencia", "@nroopbanco", "@banco", "@ctabanco", "@fechapago", "@Usuario", "@idComprobante" };
-            object[] valores = { @Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, importepagar, diferencia, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario, @idComprobante };
+            string[] parametros = { "@Opcion", "@Nrofac", "@Proveedor", "@ImporteMo", "@ImportePEN", "@tc", "@ImportePagado", "@diferencia", "@nroopbanco", "@banco", "@ctabanco", "@fechapago", "@Usuario", "@idComprobante", "@idempresa", "@cuopago" };
+            object[] valores = { @Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, importepagar, diferencia, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario, @idComprobante, idempresa, cuopago };
             return bd.DataTableFromProcedure("usp_DetraccionPago", parametros, valores, null);
         }
-        public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, decimal importepagado, decimal diferencia, string nropago, string banco, string nrocuenta, DateTime fechapago, int usuario, int fkempresa, int idcomprobante)
+        public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, decimal importepagado, decimal diferencia, string nropago
+            , string banco, string nrocuenta, DateTime fechapago, int usuario, int fkempresa, int idcomprobante, string cuo)
         {
-            string[] parametros = { "@Opcion", "@nroboleta", "@tipo", "@idcliente", "@ImporteMo", "@ImportePEN", "@TC", "@ImportePagado", "@diferencia", "@nropago", "@banco", "@ctabanco", "@fechapago", "@Usuario", "@empresa", "@idcomprobante" };
-            object[] valores = { opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario, fkempresa, idcomprobante };
+            string[] parametros = { "@Opcion", "@nroboleta", "@tipo", "@idcliente", "@ImporteMo", "@ImportePEN", "@TC", "@ImportePagado", "@diferencia", "@nropago", "@banco", "@ctabanco", "@fechapago", "@Usuario", "@empresa", "@idcomprobante", "cuopago" };
+            object[] valores = { opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario, fkempresa, idcomprobante, cuo };
             return bd.DataTableFromProcedure("usp_DetraccionPagoVenta", parametros, valores, null);
         }
         public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string CuentaRedondeo, DateTime @fechapago, DateTime Fechacontable, string glosa, int idcomprobante)
@@ -4346,10 +4348,10 @@ namespace HPResergerCapaDatos
             object[] valores = { banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2, checkestados };
             return bd.DataTableFromProcedure("usp_ListarNroOpBancaria", parametros, valores, null);
         }
-        public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet, int fkempresa)
+        public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet, int fkempresa, string cuo)
         {
-            string[] parametros = { "@Codigo", "@Nroop", "@TipoDet", "@fkempresa" };
-            object[] valores = { codigo, valor, tipodet, fkempresa };
+            string[] parametros = { "@Codigo", "@Nroop", "@TipoDet", "@fkempresa", "@cuo" };
+            object[] valores = { codigo, valor, tipodet, fkempresa, cuo };
             return bd.DataTableFromProcedure("[usp_ActualizarNroOperacion]", parametros, valores, null);
         }
         public DataTable Vendedor(int cod, int opcion, int codigo, string nrocod, int estado, int usuario)

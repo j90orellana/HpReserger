@@ -689,6 +689,7 @@ namespace HPReserger
                             string[] valor = item.Cells[nrofactura.Name].Value.ToString().Split('-');
                             decimal tcReg = (decimal)item.Cells[xtc.Name].Value;
                             //Calculo del Exceso 
+                            if (aPagar > saldo) aPagar = saldo;
                             int Multiplicador = 1;
                             if (ContenedorNotasCredito.Contains(item.Cells[xidcomprobante.Name].Value.ToString())) Multiplicador = -1;
                             decimal ExcesoMN = (idMoneda == 1 ? aPagar : (aPagar) * tcReg) * Multiplicador;
@@ -700,7 +701,7 @@ namespace HPReserger
                                 , AbonoCabecera < 0 ? Math.Abs(AbonoCabecera) : 0, tc, proyecto, 0, Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
                             //Detalle de las facturas
                             CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContablesFacturas, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0]
-                                , valor[1], 0, FechaPago, FechaContable, FechaContable, Math.Abs(ExcesoMN), Math.Abs(ExcesoME), tcReg, idMoneda, "", "", glosa, FechaPago, idUsuario, "");
+                                , valor[1], 0, FechaPago, FechaContable, FechaContable, (AbonoCabecera < 0 ? -1 : 1) * (ExcesoMN), (AbonoCabecera < 0 ? -1 : 1) * (ExcesoME), tcReg, idMoneda, "", "", glosa, FechaPago, idUsuario, "");
                         }
                     }
                 }
@@ -732,6 +733,7 @@ namespace HPReserger
                             int idComprobante = (int)item.Cells[xidcomprobante.Name].Value;
                             string[] valor = item.Cells[nrofactura.Name].Value.ToString().Split('-');
                             //Calculo del Exceso 
+                            if (aPagar > saldo) aPagar = saldo;
                             int Multiplicador = 1;
                             if (ContenedorNotasCredito.Contains(item.Cells[xidcomprobante.Name].Value.ToString())) Multiplicador = -1;
                             decimal ExcesoMN = (idMoneda == 1 ? aPagar : (aPagar) * tc) * Multiplicador;
@@ -781,11 +783,13 @@ namespace HPReserger
                             decimal ExcesoME = (idMoneda == 2 ? aPagar : (aPagar) / tc) * Multiplicador;
                             //
                             CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, BanCuenta, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
-                            FechaPago, FechaContable, FechaContable, ExcesoMN, ExcesoME, tc, idMoneda, nroKuenta, "", glosa, FechaPago, idUsuario, "");
+                            FechaPago, FechaContable, FechaContable, (Abonado < 0 ? -1 : 1) * ExcesoMN, (Abonado < 0 ? -1 : 1) * ExcesoME, tc, idMoneda, nroKuenta, "", glosa, FechaPago, idUsuario, "");
                         }
                     }
                 }
                 //ABONO EN EXCESO //    
+                ++ContadorFacturas;
+                decimal totalExcesoMN = 0, totalExcesoME = 0;
                 foreach (DataGridViewRow item in Dtguias.Rows)
                 {
                     ///validamos que el monto sea mayor
@@ -801,19 +805,23 @@ namespace HPReserger
                         string[] valor = item.Cells[nrofactura.Name].Value.ToString().Split('-');
                         //Calculo del Exceso
                         decimal ExcesoMN = (idMoneda == 1 ? aPagar - saldo : (aPagar - saldo) * tc);
-                        decimal ExcesoME = (idMoneda == 2 ? aPagar - saldo : (aPagar - saldo) / tc);
+                        decimal ExcesoME = (idMoneda == 2 ? aPagar - saldo : (aPagar - saldo) / tc);                        
                         if (aPagar > saldo)
                         {
                             //Procedemos a guardar el Exceso!
-                            //Cabecera Facturas
-                            CapaLogica.InsertarAsientoFacturaCabecera(1, ++ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, IdMonedaAsiento == 1 ? ExcesoMN : ExcesoME, 0, tc, proyecto, 0
-                                , Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
-                            //Detalle del asiento
+                            totalExcesoMN += ExcesoMN;
+                            totalExcesoME += ExcesoME;
+                            //Detalle del asiento en exceso
                             CapaLogica.InsertarAsientoFacturaDetalle(10, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, proyecto, 5, ruc, RazonSocial, idComprobante, valor[0], valor[1], 0,
                                 FechaPago, FechaContable, FechaContable, ExcesoMN, ExcesoME, tc, idMoneda, "", "", glosa, FechaPago, idUsuario, "");
                         }
                     }
                 }
+                //Cabecera Facturas en exceso
+                if (totalExcesoME > 0)
+                    CapaLogica.InsertarAsientoFacturaCabecera(1, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, IdMonedaAsiento == 1 ? totalExcesoMN : totalExcesoME, 0, tc, proyecto, 0
+                        , Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
+                //fin de cabecera en exceso
                 msg($"Documento Pagado \nGenerado su Asiento {Cuo}");
                 //btnActualizar_Click(sender, e);
                 //Cuadrar Asiento
@@ -1012,7 +1020,7 @@ namespace HPReserger
                     {
                         if (frmdetallepago == null)
                         {
-                            frmdetallepago = new frmDetallePagoFactura(1, Dtguias[nrofactura.Name, e.RowIndex].Value.ToString(), 0, Dtguias[proveedor.Name, e.RowIndex].Value.ToString());
+                            frmdetallepago = new frmDetallePagoFactura(1, Dtguias[nrofactura.Name, e.RowIndex].Value.ToString(), 0, Dtguias[proveedor.Name, e.RowIndex].Value.ToString(), (int)Dtguias[xidcomprobante.Name, e.RowIndex].Value, (int)cboempresa.SelectedValue);
                             frmdetallepago.FormClosed += Frmdetallepago_FormClosed;
                             frmdetallepago.MdiParent = MdiParent;
                             frmdetallepago.Show();
@@ -1061,7 +1069,8 @@ namespace HPReserger
                             }
                             var moneda = lista.Cells[monedax.Name].Value.ToString();
                             int idmoneda = (moneda == "SOL" ? 1 : moneda == "USD" ? 2 : 0);
-                            decimal tc = decimal.Parse(txttipocambio.Text);
+                            decimal tc = decimal.Parse(txttipocambio.TextValido());
+                            if (tc == 0) tc = 3;
                             //Procesando
                             if (lista.Cells["tipodoc"].Value.ToString().Substring(0, 2) == "RH")
                             {

@@ -268,6 +268,17 @@ namespace HPReserger
                     }
                     if (!VerificarErrorDiferencia()) return;
                     if (Verificar) { HPResergerFunciones.Utilitarios.msg("No se Puede Pagar Valores en Cero"); return; }
+                    ///DECLARACION DE LAS VARIABLES
+                    DateTime FechaPago = dtpFechaPago.Value;
+                    DateTime FechaContable = dtpFechaContable.Value;
+                    int IdEmpresa = (int)cboempresa.SelectedValue;
+                    DataRow FilaDato = (CapaLogica.UltimoAsiento(IdEmpresa, FechaContable)).Rows[0];
+                    int codigo = (int)FilaDato["codigo"];
+                    string CuoPago = FilaDato["cuo"].ToString();
+                    int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
+                    int IdUsuario = frmLogin.CodigoUsuario;
+                    string glosa = txtglosa.TextValido();
+                    ///FIN DECLARACION DE VARIABLES
                     //PROCESO DE PAGO
                     string nrofac = "", ruc = "";
                     int idcomprobante = 0;
@@ -283,17 +294,15 @@ namespace HPReserger
                                 nrofac = item.Cells[nrofacturax.Name].Value.ToString();
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
-                                CapaLogica.Detracciones(1, item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[Detraccionx.Name].Value, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xtc.Name].Value
-                                    , (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaPago.Value, frmLogin.CodigoUsuario, (int)item.Cells[xidcomprobante.Name].Value);
+                                CapaLogica.Detracciones(1, item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[Detraccionx.Name].Value
+                                    , (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value, ""
+                                    , cbobanco.SelectedValue.ToString(), NroCuenta, FechaPago, IdUsuario, (int)item.Cells[xidcomprobante.Name].Value, IdEmpresa, CuoPago);
                             }
                         }
                     }
-                    DataRow FilaDato = (CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, dtpFechaContable.Value)).Rows[0];
-                    int codigo = (int)FilaDato["codigo"];
-                    string cuo = FilaDato["cuo"].ToString();
-                    int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesCabecera(codigo, cuo, (int)cboempresa.SelectedValue, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac, cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, dtpFechaPago.Value, dtpFechaContable.Value, txtglosa.Text, idcomprobante);
+                    CapaLogica.PagarDetracionesCabecera(codigo, CuoPago, IdEmpresa, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac
+                        , cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -304,12 +313,12 @@ namespace HPReserger
                                 string codfac = fac[0]; string numfac = fac[1];
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
-                                CapaLogica.PagarDetracionesDetalle(codigo, cuo, (int)cboempresa.SelectedValue, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
+                                CapaLogica.PagarDetracionesDetalle(codigo, CuoPago, IdEmpresa, (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
                                     , ruc, codfac, numfac, (decimal)item.Cells[xtotal.Name].Value, (decimal)item.Cells[xtc.Name].Value, idCta, cbocuentabanco.SelectedValue.ToString(),
-                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", dtpFechaContable.Value, txtglosa.Text, frmLogin.CodigoUsuario, idcomprobante);
+                                   decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA                
-                    HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! con Asiento {cuo}");
+                    HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! con Asiento {CuoPago}");
                     btnActualizar_Click(sender, e);
                 }
                 else HPResergerFunciones.Utilitarios.msg("Total de Detracciones en Cero");

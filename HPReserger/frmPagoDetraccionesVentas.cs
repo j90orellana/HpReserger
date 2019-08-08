@@ -332,6 +332,20 @@ namespace HPReserger
                         if (frmpagoventa.ShowDialog() != DialogResult.Yes) return;
                     }
                     //PROCESO DE PAGO
+                    ///DECLARACION DE VARIABLES
+                    DateTime FechaContable = dtpFechaContable.Value;
+                    DateTime FechaPago = dtpFechaPago.Value;
+                    int IdEmpresa = (int)cboempresa.SelectedValue;
+                    int IdUsuario = frmLogin.CodigoUsuario;
+                    string glosa = txtglosa.TextValido();
+                    //
+                    DataRow FilaDato = (CapaLogica.UltimoAsiento(IdEmpresa, FechaContable)).Rows[0];
+                    int codigo = (int)FilaDato["codigo"];
+                    string CuopPago = FilaDato["cuo"].ToString();
+                    int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
+                    string CuentaContableBanco = cbocuentabanco.SelectedValue.ToString();
+                    string CuentaDetracciones = txtcuentadetracciones.Text;
+                    ///FIN DECLARACION DE VARIABLES
                     string NroBoleta = "", Idcliente = "";
                     int idcomprobante = 0;
                     int Tipoid = 0;
@@ -349,18 +363,14 @@ namespace HPReserger
                                 Tipoid = (int)item.Cells[tipoidx.Name].Value;
                                 idcomprobante = (int)item.Cells[xtipocomprobante.Name].Value;
                                 CapaLogica.DetraccionesVenta(1, NroBoleta, Tipoid, Idcliente, (decimal)item.Cells[ImporteMOx.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value
-                                    , (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta, dtpFechaPago.Value, frmLogin.CodigoUsuario, (int)cboempresa.SelectedValue, idcomprobante);
+                                    , (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value, "", cbobanco.SelectedValue.ToString(), NroCuenta
+                                    , FechaPago, IdUsuario, IdEmpresa, idcomprobante, CuopPago);
                             }
                         }
                     }
-                    DataRow FilaDato = (CapaLogica.UltimoAsiento((int)cboempresa.SelectedValue, dtpFechaContable.Value)).Rows[0];
-                    int codigo = (int)FilaDato["codigo"];
-                    string cuo = FilaDato["cuo"].ToString();
-                    int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
-                    string CuentaContableBanco = cbocuentabanco.SelectedValue.ToString();
-                    string CuentaDetracciones = txtcuentadetracciones.Text;
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
-                    CapaLogica.PagarDetracionesVentaCabecera(codigo, cuo, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones, CuentaContableBanco, "9559501", dtpFechaContable.Value, txtglosa.Text, (int)cboempresa.SelectedValue, dtpFechaPago.Value, idcomprobante);
+                    CapaLogica.PagarDetracionesVentaCabecera(codigo, CuopPago, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones
+                        , CuentaContableBanco, "9559501", FechaContable, glosa, IdEmpresa, FechaPago, idcomprobante);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -373,16 +383,16 @@ namespace HPReserger
                                 Idcliente = item.Cells[Clientex.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xtipocomprobante.Name].Value;
                                 CapaLogica.PagarDetracionesVentaDetalle(codigo, (int)item.Cells[tipoidx.Name].Value, item.Cells[Clientex.Name].Value.ToString(), item.Cells[razonx.Name].Value.ToString()
-                                , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value, (decimal)item.Cells[xdiferencia.Name].Value
+                                , (int)item.Cells[xtipocomprobante.Name].Value, codfac, numfac, NroBoleta, (decimal)item.Cells[xredondeo.Name].Value, (decimal)item.Cells[ImportePEN.Name].Value
+                                , (decimal)item.Cells[xdiferencia.Name].Value
                                 //item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value / (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value
-                                , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, dtpFechaContable.Value, decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", txtglosa.Text, frmLogin.CodigoUsuario, (int)cboempresa.SelectedValue);
-
+                                , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, FechaContable, decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103"
+                                , glosa, IdUsuario, IdEmpresa);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
-                    HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! \nCon Asiento {cuo}");
+                    HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! \nCon Asiento {CuopPago}");
                     btnActualizar_Click(sender, e);
                     txttotal.Text = txtdiferencia.Text = txtredondeo.Text = "0.00";
-
                 }
                 else HPResergerFunciones.Utilitarios.msg("Total de Detracciones en Cero");
             }

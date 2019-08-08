@@ -50,11 +50,12 @@
             this.Entidad_Financiera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CtaBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xcuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuariox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Banco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xcuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfkempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xidcomprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,11 +97,12 @@
             this.Entidad_Financiera,
             this.CtaBanco,
             this.FechaPago,
+            this.xcuo,
             this.usuariox,
             this.fecha,
             this.Banco,
-            this.xcuo,
-            this.xfkempresa});
+            this.xfkempresa,
+            this.xidcomprobante});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,14 +119,14 @@
             this.dtgconten1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten1.RowHeadersVisible = false;
             this.dtgconten1.RowTemplate.Height = 18;
-            this.dtgconten1.Size = new System.Drawing.Size(1002, 320);
+            this.dtgconten1.Size = new System.Drawing.Size(913, 245);
             this.dtgconten1.TabIndex = 0;
             // 
             // btncancelar
             // 
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(939, 365);
+            this.btncancelar.Location = new System.Drawing.Point(850, 290);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 35;
@@ -186,7 +188,7 @@
             this.proveedorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.proveedorx.DataPropertyName = "proveedor";
             this.proveedorx.HeaderText = "Proveedor";
-            this.proveedorx.MinimumWidth = 80;
+            this.proveedorx.MinimumWidth = 60;
             this.proveedorx.Name = "proveedorx";
             this.proveedorx.ReadOnly = true;
             this.proveedorx.Width = 83;
@@ -208,10 +210,10 @@
             dataGridViewCellStyle3.Format = "n2";
             this.subtotalx.DefaultCellStyle = dataGridViewCellStyle3;
             this.subtotalx.HeaderText = "Subtotal";
-            this.subtotalx.MinimumWidth = 80;
+            this.subtotalx.MinimumWidth = 60;
             this.subtotalx.Name = "subtotalx";
             this.subtotalx.ReadOnly = true;
-            this.subtotalx.Width = 80;
+            this.subtotalx.Width = 75;
             // 
             // igvx
             // 
@@ -221,10 +223,10 @@
             dataGridViewCellStyle4.Format = "n2";
             this.igvx.DefaultCellStyle = dataGridViewCellStyle4;
             this.igvx.HeaderText = "Igv";
-            this.igvx.MinimumWidth = 80;
+            this.igvx.MinimumWidth = 60;
             this.igvx.Name = "igvx";
             this.igvx.ReadOnly = true;
-            this.igvx.Width = 80;
+            this.igvx.Width = 60;
             // 
             // totalx
             // 
@@ -234,10 +236,10 @@
             dataGridViewCellStyle5.Format = "n2";
             this.totalx.DefaultCellStyle = dataGridViewCellStyle5;
             this.totalx.HeaderText = "Total";
-            this.totalx.MinimumWidth = 80;
+            this.totalx.MinimumWidth = 60;
             this.totalx.Name = "totalx";
             this.totalx.ReadOnly = true;
-            this.totalx.Width = 80;
+            this.totalx.Width = 60;
             // 
             // Entidad_Financiera
             // 
@@ -254,7 +256,7 @@
             this.CtaBanco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.CtaBanco.DataPropertyName = "CtaBanco";
             this.CtaBanco.HeaderText = "CtaBanco";
-            this.CtaBanco.MinimumWidth = 70;
+            this.CtaBanco.MinimumWidth = 60;
             this.CtaBanco.Name = "CtaBanco";
             this.CtaBanco.ReadOnly = true;
             this.CtaBanco.Width = 80;
@@ -264,10 +266,20 @@
             this.FechaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.FechaPago.DataPropertyName = "FechaPago";
             this.FechaPago.HeaderText = "FechaPago";
-            this.FechaPago.MinimumWidth = 70;
+            this.FechaPago.MinimumWidth = 60;
             this.FechaPago.Name = "FechaPago";
             this.FechaPago.ReadOnly = true;
             this.FechaPago.Width = 87;
+            // 
+            // xcuo
+            // 
+            this.xcuo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xcuo.DataPropertyName = "cuo";
+            this.xcuo.HeaderText = "Cuo";
+            this.xcuo.MinimumWidth = 60;
+            this.xcuo.Name = "xcuo";
+            this.xcuo.ReadOnly = true;
+            this.xcuo.Width = 60;
             // 
             // usuariox
             // 
@@ -296,14 +308,6 @@
             this.Banco.ReadOnly = true;
             this.Banco.Visible = false;
             // 
-            // xcuo
-            // 
-            this.xcuo.DataPropertyName = "cuo";
-            this.xcuo.HeaderText = "Cuo";
-            this.xcuo.Name = "xcuo";
-            this.xcuo.ReadOnly = true;
-            this.xcuo.Visible = false;
-            // 
             // xfkempresa
             // 
             this.xfkempresa.DataPropertyName = "fkempresa";
@@ -312,16 +316,25 @@
             this.xfkempresa.ReadOnly = true;
             this.xfkempresa.Visible = false;
             // 
+            // xidcomprobante
+            // 
+            this.xidcomprobante.DataPropertyName = "id_comprobante";
+            this.xidcomprobante.HeaderText = "idcomprobante";
+            this.xidcomprobante.Name = "xidcomprobante";
+            this.xidcomprobante.ReadOnly = true;
+            this.xidcomprobante.Visible = false;
+            // 
             // frmDetallePagoFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 394);
+            this.ClientSize = new System.Drawing.Size(937, 319);
             this.Controls.Add(this.txtproveedor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.dtgconten1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(953, 358);
             this.Name = "frmDetallePagoFactura";
             this.Nombre = "Detalle de Abono de Facturas";
             this.Text = "Detalle de Abono de Facturas";
@@ -349,10 +362,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Entidad_Financiera;
         private System.Windows.Forms.DataGridViewTextBoxColumn CtaBanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xcuo;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuariox;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Banco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xcuo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkempresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xidcomprobante;
     }
 }

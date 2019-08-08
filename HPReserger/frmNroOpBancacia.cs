@@ -22,9 +22,11 @@ namespace HPReserger
             public int index;
             public int tipo;
             public int fkempresa;
-            public Listado(int _index, int _tipo, int _fkempresa)
+            public string cuo;
+            public Listado(int _index, int _tipo, int _fkempresa, string _cuo)
             {
                 index = _index; tipo = _tipo; fkempresa = _fkempresa;
+                cuo = _cuo;
             }
         }
         List<Listado> lista;
@@ -54,9 +56,10 @@ namespace HPReserger
                 int valor = (int)item[idx.DataPropertyName];
                 int tipor = (int)item[xdet.DataPropertyName];
                 int empresa = (int)item[xfkempresa.DataPropertyName];
-                Listado lis = new Listado(valor, tipor, empresa);
+                string cuo = item["cuo"].ToString();
+                //Listado lis = new Listado(valor, tipor, empresa, cuo);
                 if (lista != null)
-                    if (lista.Find(cust => cust == lis) != null)
+                    if (lista.Find(cust => cust.cuo == cuo && cust.fkempresa == empresa && cust.tipo == tipor && cust.index == valor) != null)
                     {
                         c++;
                         item["ok"] = 1;
@@ -111,7 +114,8 @@ namespace HPReserger
                         {
                             int tipo = (int)xx.Cells[xdet.Name].Value;
                             int id = (int)xx.Cells[idx.Name].Value;
-                            Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id);
+                            string cuo = xx.Cells[xcuo.Name].Value.ToString();
+                            Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.cuo == cuo);
                             lista.Remove(List);
                         }
                         else
@@ -119,8 +123,9 @@ namespace HPReserger
                             int tipo = (int)xx.Cells[xdet.Name].Value;
                             int id = (int)xx.Cells[idx.Name].Value;
                             int empresa = (int)xx.Cells[xfkempresa.Name].Value;
-                            if (lista.Find(cust => cust.index == id && cust.tipo == tipo && cust.fkempresa == empresa) == null)
-                                lista.Add(new Listado(id, tipo, empresa));
+                            string cuo = xx.Cells[xcuo.Name].Value.ToString();
+                            if (lista.Find(cust => cust.index == id && cust.tipo == tipo && cust.fkempresa == empresa && cust.cuo == cuo) == null)
+                                lista.Add(new Listado(id, tipo, empresa, cuo));
                             xx.Cells[okx.Name].Value = val;
                             dtgconten_CellContentClick(sender, new DataGridViewCellEventArgs(0, y));
                             y++;
@@ -148,7 +153,8 @@ namespace HPReserger
                 {
                     if (dtgconten[y, x].Value.ToString() == "Editar")
                     {
-                        frmDetalleNroOp frmnroop = new frmDetalleNroOp(dtgconten[Proveedorx.Name, x].Value.ToString(), dtgconten[Razonx.Name, x].Value.ToString(), dtgconten[NroFacturax.Name, x].Value.ToString(), dtgconten[Bancox.Name, x].Value.ToString());
+                        frmDetalleNroOp frmnroop = new frmDetalleNroOp(dtgconten[Proveedorx.Name, x].Value.ToString(), dtgconten[Razonx.Name, x].Value.ToString(), dtgconten[NroFacturax.Name, x].Value.ToString(), dtgconten[Bancox.Name, x].Value.ToString()
+                            , dtgconten[xcuo.Name, x].Value.ToString());
                         frmnroop.Codigo = (int)dtgconten[idx.Name, x].Value;
                         frmnroop.nrooperacion = dtgconten[NroOPBancox.Name, x].Value.ToString();
                         frmnroop.Empresa = (int)dtgconten[xfkempresa.Name, x].Value;
@@ -244,7 +250,7 @@ namespace HPReserger
             }
             foreach (Listado item in lista)
             {
-                CapaLogica.ActualizarNroOperacion(item.index, txtnroid.TextValido(), item.tipo, item.fkempresa);
+                CapaLogica.ActualizarNroOperacion(item.index, txtnroid.TextValido(), item.tipo, item.fkempresa, item.cuo);
             }
             msg("Actualizado Número de Operación");
             txtnroid.CargarTextoporDefecto();
@@ -268,21 +274,22 @@ namespace HPReserger
                 int tipo = (int)dtgconten[xdet.Name, x].Value;
                 int id = (int)dtgconten[idx.Name, x].Value;
                 int empresa = (int)dtgconten[xfkempresa.Name, x].Value;
+                string cuo = dtgconten[xcuo.Name, x].Value.ToString();
                 if (dtgconten[okx.Name, x].Value.ToString() == "")
                 {
-                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa);
+                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa && cust.cuo == cuo);
                     lista.Remove(List);
                     dtgconten[okx.Name, x].Value = 0;
                 }
                 else if (dtgconten[okx.Name, x].Value.ToString() == "0")
                 {
-                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa);
+                    Listado List = lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa && cust.cuo == cuo);
                     lista.Remove(List);
                 }
                 else if ((int)dtgconten[okx.Name, x].Value == 1)
                 {
-                    if (lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa) == null)
-                        lista.Add(new Listado(id, tipo, empresa));
+                    if (lista.Find(cust => cust.tipo == tipo && cust.index == id && cust.fkempresa == empresa && cust.cuo == cuo) == null)
+                        lista.Add(new Listado(id, tipo, empresa, cuo));
                 }
             }
 

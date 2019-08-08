@@ -2011,10 +2011,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.Detraciones(opcion, 0, "", "", "", 0, 0, DateTime.Now);
         }
-        public DataTable ListarAbonosFacturas(int opcion, string numfac, int tipoid, string proveedor)
+        public DataTable ListarAbonosFacturas(int opcion, string numfac, int tipoid, string proveedor, int idcomprobante, int empresa)
 
         {
-            return cdOrdenPedido.ListarAbonosFacturas(opcion, numfac, tipoid, proveedor);
+            return cdOrdenPedido.ListarAbonosFacturas(opcion, numfac, tipoid, proveedor, idcomprobante, empresa);
         }
         public DataTable ComprobanteDePago(int opcion, int id, string descripcion, int usuario, int codigosunat, DateTime fechas)
         {
@@ -2036,13 +2036,15 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.DetraccionesPorPAgarVentas(empresa);
         }
-        public DataTable Detracciones(int @Opcion, string @Nrofac, string @Proveedor, decimal @ImporteMo, decimal @ImportePEN, decimal @tc, decimal importepagar, decimal diferencia, string @nroopbanco, string @banco, string @ctabanco, DateTime @fechapago, int @Usuario, int @idComprobante)
+        public DataTable Detracciones(int @Opcion, string @Nrofac, string @Proveedor, decimal @ImporteMo, decimal @ImportePEN, decimal @tc, decimal importepagar, decimal diferencia, string @nroopbanco, string @banco
+            , string @ctabanco, DateTime @fechapago, int @Usuario, int @idComprobante, int idempresa, string cuopago)
         {
-            return cdOrdenPedido.Detracciones(@Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, importepagar, diferencia, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario, @idComprobante);
+            return cdOrdenPedido.Detracciones(@Opcion, @Nrofac, @Proveedor, @ImporteMo, @ImportePEN, @tc, importepagar, diferencia, @nroopbanco, @banco, @ctabanco, @fechapago, @Usuario, @idComprobante, idempresa, cuopago);
         }
-        public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, decimal importepagado, decimal diferencia, string nropago, string banco, string nrocuenta, DateTime fechapago, int usuario, int fkempresa, int idcomprobante)
+        public DataTable DetraccionesVenta(int opcion, string nroboleta, int tipo, string idcliente, decimal importemo, decimal importepen, decimal tc, decimal importepagado, decimal diferencia, string nropago
+            , string banco, string nrocuenta, DateTime fechapago, int usuario, int fkempresa, int idcomprobante, string cuo)
         {
-            return cdOrdenPedido.DetraccionesVenta(opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario, fkempresa, idcomprobante);
+            return cdOrdenPedido.DetraccionesVenta(opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario, fkempresa, idcomprobante, cuo);
         }
         public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string cuentaredondeo, DateTime fechapago, DateTime fechacontablem, string glosa, int idcomprobante)
         {
@@ -2117,9 +2119,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarNroOpBancaria(banco, nrocuenta, ruc, razon, nroop, fecha1, fecha2, CheckEstados);
         }
-        public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet, int fkempresa)
+        public DataTable ActualizarNroOperacion(int codigo, string valor, int tipodet, int fkempresa, string cuo)
         {
-            return cdOrdenPedido.ActualizarNroOperacion(codigo, valor, tipodet, fkempresa);
+            return cdOrdenPedido.ActualizarNroOperacion(codigo, valor, tipodet, fkempresa, cuo);
         }
         public DataTable Vendedor(int opcion, int codigo, string nrocod, int estado, int usuario)
         {

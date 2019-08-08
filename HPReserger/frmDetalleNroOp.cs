@@ -28,13 +28,14 @@ namespace HPReserger
             txtnrobanco.Text = nrooperacion;
             txtnrobanco.Focus();
         }
-        public frmDetalleNroOp(string ruc, string razon, string nrocomp, string banco)
+        public frmDetalleNroOp(string ruc, string razon, string nrocomp, string banco, string cuo)
         {
             InitializeComponent();
             Ruc = ruc;
             Razon = razon;
             NroComprobante = nrocomp;
             Banco = banco;
+            Cuo = cuo;
         }
         public string Banco
         {
@@ -57,6 +58,8 @@ namespace HPReserger
             set { txtruc.Text = value; }
         }
         private int empresa;
+        private string Cuo;
+
         public int Empresa
         {
             get { return empresa; }
@@ -70,13 +73,15 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (Tipodet == 1)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa);
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
             if (Tipodet == 2)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa);
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
             if (Tipodet == 3)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa);
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
             if (Tipodet == 5)
-                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa);
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+            if (Tipodet == 10)
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
             this.Close();
         }
         private void frmDetalleNroOp_MouseMove(object sender, MouseEventArgs e)

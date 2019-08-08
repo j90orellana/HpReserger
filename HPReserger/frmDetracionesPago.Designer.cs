@@ -507,6 +507,7 @@
             // 
             this.cbocuentabanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocuentabanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbocuentabanco.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cbocuentabanco.FormattingEnabled = true;
             this.cbocuentabanco.Location = new System.Drawing.Point(431, 38);
             this.cbocuentabanco.Name = "cbocuentabanco";
@@ -528,6 +529,7 @@
             // 
             this.cbobanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbobanco.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cbobanco.FormattingEnabled = true;
             this.cbobanco.Location = new System.Drawing.Point(73, 38);
             this.cbobanco.Name = "cbobanco";
@@ -539,6 +541,7 @@
             // 
             this.cbotipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbotipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipo.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cbotipo.FormattingEnabled = true;
             this.cbotipo.Items.AddRange(new object[] {
             "003 TRANSFERENCIA DE FONDOS",
@@ -577,6 +580,7 @@
             // 
             this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cboempresa.FormattingEnabled = true;
             this.cboempresa.Location = new System.Drawing.Point(73, 62);
             this.cboempresa.Name = "cboempresa";

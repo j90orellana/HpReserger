@@ -954,7 +954,7 @@ namespace HPReserger
             // 
             // btnpdf
             // 
-            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnpdf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnpdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
