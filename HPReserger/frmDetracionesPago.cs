@@ -295,8 +295,8 @@ namespace HPReserger
                                 ruc = item.Cells[Proveedorx.Name].Value.ToString();
                                 idcomprobante = (int)item.Cells[xidcomprobante.Name].Value;
                                 CapaLogica.Detracciones(1, item.Cells[nrofacturax.Name].Value.ToString(), item.Cells[Proveedorx.Name].Value.ToString(), (decimal)item.Cells[Detraccionx.Name].Value
-                                    , (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value, ""
-                                    , cbobanco.SelectedValue.ToString(), NroCuenta, FechaPago, IdUsuario, (int)item.Cells[xidcomprobante.Name].Value, IdEmpresa, CuoPago);
+                                    , (decimal)item.Cells[porpagarx.Name].Value, (decimal)item.Cells[xtc.Name].Value, (decimal)item.Cells[xRedondeo.Name].Value, (decimal)item.Cells[xDiferencia.Name].Value
+                                    , "", cbobanco.SelectedValue.ToString(), NroCuenta, FechaPago, IdUsuario, (int)item.Cells[xidcomprobante.Name].Value, IdEmpresa, CuoPago);
                             }
                         }
                     }
@@ -338,8 +338,8 @@ namespace HPReserger
             int x = e.RowIndex, y = e.ColumnIndex;
             if (dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "" || dtgconten[nrodetraccionesx.Name, x].Value.ToString() == "0")
             {
-                dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.RojoUI;
-                dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.RojoUISelect;
+                dtgconten.Rows[x].DefaultCellStyle.ForeColor = Configuraciones.RojoUISelect;
+                dtgconten.Rows[x].DefaultCellStyle.SelectionBackColor = Configuraciones.RojoUI;
             }
             else
             {

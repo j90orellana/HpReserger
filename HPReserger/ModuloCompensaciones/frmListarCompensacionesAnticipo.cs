@@ -49,7 +49,17 @@ namespace HPReserger.ModuloCompensaciones
         }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
-        public void CargarProveedores() { CapaLogica.TablaProveedores(cboproveedor, fkEmpresa); }
+        public void CargarProveedores()
+        {
+            CapaLogica.TablaProveedores(cboproveedor, fkEmpresa);
+            if (cboproveedor.Items.Count == 0)
+            {
+                ///
+                DtgcontenAnticipos.DataSource = ((DataTable)DtgcontenAnticipos.DataSource).Clone() ?? new DataTable();
+                ///
+                DtgcontenFacturas.DataSource = ((DataTable)DtgcontenFacturas.DataSource).Clone() ?? new DataTable();
+            }
+        }
         private void frmListarCompensacionesReembolso_Load(object sender, EventArgs e)
         {
 
@@ -493,6 +503,11 @@ namespace HPReserger.ModuloCompensaciones
                 string NroPago = txtnrocheque.TextValido();
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
+                ///
+                string IdBanco = cbobanco.SelectedValue.ToString();
+                string nroKuenta = "";
+                if (cbocuentabanco.SelectedValue != null)
+                    nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
                 //Facturas al Debe      -- xok
                 foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
                 {
@@ -501,7 +516,7 @@ namespace HPReserger.ModuloCompensaciones
                         //Asiento de las facturas al debe
                         string CuentaContable = item.Cells[xcuenta.Name].Value.ToString();
                         decimal TC = (decimal)item.Cells[xTcReg.Name].Value;
-                        int idfac = (int)item.Cells[xIdComprobante.Name].Value;
+                        int IdComprobante = (int)item.Cells[xIdComprobante.Name].Value;
                         string[] NumFac = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                         int idUsuario = frmLogin.CodigoUsuario;
                         DateTime fecha = dtpFechaCompensa.Value;
@@ -517,22 +532,25 @@ namespace HPReserger.ModuloCompensaciones
                             tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -11);
                         //Detalle del asiento
                         CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, idfac, NumFac[0], NumFac[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
+                            NameProveedor, IdComprobante, NumFac[0], NumFac[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
                             Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
                             moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
                             (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaContable, idUsuario, "");
                         ///Actualizo las Facturas a Pagadas
                         if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
                             CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, dtpFechaCompensa.Value, TipoPago, NroPago);
+                        else
+                        {
+                            decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
+                            CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, MontoSolesOri, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario, IdComprobante, _idempresa, Cuo);
+                        }
                     }
                 }
                 //Entrada Salida de Dinero(Bancos)
                 if (ImporteTotal != 0 && cbopago.Text != "000 Ninguno.")
                 {
-                    string CuentaContable = ""; string nroKuenta = "";
+                    string CuentaContable = "";
                     if (cbocuentabanco.SelectedValue == null) CuentaContable = ""; else CuentaContable = cbocuentabanco.SelectedValue.ToString();
-                    if (cbocuentabanco.SelectedValue != null)
-                        nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
                     decimal MontoSoles = Configuraciones.Redondear(moneda == 1 ? ImporteTotal : ImporteTotal * tc);
                     decimal MontoDolares = Configuraciones.Redondear(moneda == 2 ? ImporteTotal : ImporteTotal / tc);
                     decimal TC = tc;
@@ -773,17 +791,17 @@ namespace HPReserger.ModuloCompensaciones
         //FACTURAS
         public void SelecionarFacturaDetraccion(int _x)
         {
-            DtgcontenFacturas.SuspendLayout();
-            int x = _x;
-            foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
-            {
-                if (item.Index != _x)
-                    if (item.Cells[xProveedor.Name].Value.ToString() == DtgcontenFacturas[xProveedor.Name, x].Value.ToString() && item.Cells[xNroComprobante.Name].Value.ToString() == DtgcontenFacturas[xNroComprobante.Name, x].Value.ToString())
-                    {
-                        item.Cells[xok.Name].Value = ((int)DtgcontenFacturas[xok.Name, x].Value) == 1 ? 1 : 0;
-                    }
-            }
-            DtgcontenFacturas.ResumeLayout();
+            //DtgcontenFacturas.SuspendLayout();
+            //int x = _x;
+            //foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
+            //{
+            //    if (item.Index != _x)
+            //        if (item.Cells[xProveedor.Name].Value.ToString() == DtgcontenFacturas[xProveedor.Name, x].Value.ToString() && item.Cells[xNroComprobante.Name].Value.ToString() == DtgcontenFacturas[xNroComprobante.Name, x].Value.ToString())
+            //        {
+            //            item.Cells[xok.Name].Value = ((int)DtgcontenFacturas[xok.Name, x].Value) == 1 ? 1 : 0;
+            //        }
+            //}
+            //DtgcontenFacturas.ResumeLayout();
         }
         private void DtgcontenFacturas_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
