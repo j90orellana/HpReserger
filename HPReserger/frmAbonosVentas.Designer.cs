@@ -119,9 +119,9 @@
             this.xNameCorto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xDetraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xIgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xpagar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xIgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaEmision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xFechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCod_Detraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -182,9 +182,9 @@
             this.xNameCorto,
             this.xTC,
             this.xDetraccion,
+            this.xIgv,
             this.xTotal,
             this.xpagar,
-            this.xIgv,
             this.xFechaEmision,
             this.xFechaVencimiento,
             this.xCod_Detraccion,
@@ -1201,6 +1201,13 @@
             this.xDetraccion.Visible = false;
             this.xDetraccion.Width = 52;
             // 
+            // xIgv
+            // 
+            this.xIgv.DataPropertyName = "Igv";
+            this.xIgv.HeaderText = "Igv";
+            this.xIgv.Name = "xIgv";
+            this.xIgv.Visible = false;
+            // 
             // xTotal
             // 
             this.xTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -1225,13 +1232,6 @@
             this.xpagar.MinimumWidth = 90;
             this.xpagar.Name = "xpagar";
             this.xpagar.Width = 90;
-            // 
-            // xIgv
-            // 
-            this.xIgv.DataPropertyName = "Igv";
-            this.xIgv.HeaderText = "Igv";
-            this.xIgv.Name = "xIgv";
-            this.xIgv.Visible = false;
             // 
             // xFechaEmision
             // 
@@ -1471,9 +1471,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xNameCorto;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTC;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDetraccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xIgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpagar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xIgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaEmision;
         private System.Windows.Forms.DataGridViewTextBoxColumn xFechaVencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCod_Detraccion;

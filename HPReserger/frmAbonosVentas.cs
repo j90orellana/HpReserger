@@ -547,6 +547,7 @@ namespace HPReserger
                     dtgconten.Focus();
                     return;
                 }
+            //Sí el monto abonado es menor que la penalidad
             if (chkPenalidadTodo.Checked)
             {
                 if (Math.Abs(decimal.Parse(txttotalAbonado.Text)) <= decimal.Parse(txtMontoPenalidad.Text))
@@ -1017,13 +1018,37 @@ namespace HPReserger
                 Color Fore = Color.FromArgb(255, 255, 255);
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", $"{_NColumna}1", _Cabecera.ToUpper(), 16, true, true, Back, Fore));
                 Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", $"{_NColumna}2", NameEmpresa, 12, false, true, Back, Fore));
-                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "Nombre Vendedor:", 11));
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 2, _Columnas, new int[] { }, new int[] { });
-                //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
+                //
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                int PosInicialGrilla = 3;
+                DataTable TableResuk = new DataTable();
+                TableResuk = ((DataTable)dtgconten.DataSource).Copy();
+                ///
+                if (rdbAbonados.Checked)
+                {
+                    string[] Columnitas = { "opcion", "Abonos", "det" };
+                    foreach (string item in Columnitas)
+                    {
+                        TableResuk.Columns.Remove(item);
+                    }
+                    //Cambio de Etiquetas de las Columnas
+                    TableResuk.Columns["glosa"].ColumnName = "Nro Operación";
+                    TableResuk.Columns["CuentaContable"].ColumnName = "Banco";
+                    TableResuk.Columns["pagar"].ColumnName = "Pagado";
+                }
+                else
+                {
+                    string[] Columnitas = { "opcion", "Abonos", "cuo", "det" };
+                    foreach (string item in Columnitas)
+                    {
+                        TableResuk.Columns.Remove(item);
+                    }
+                }
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResuk, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, "");
             }
             else msg("No hay Registros en la Grilla");
         }
-
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Cursor = Cursors.Default;
