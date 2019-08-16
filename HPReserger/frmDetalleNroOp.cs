@@ -66,6 +66,8 @@ namespace HPReserger
             set { empresa = value; }
         }
         public int Tipodet { get; set; }
+        public int IdComprobante { get; internal set; }
+
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -78,9 +80,12 @@ namespace HPReserger
                 CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
             if (Tipodet == 3)
                 CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+            //Documentos de las Ventas
             if (Tipodet == 5)
                 CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
             if (Tipodet == 10)
+                CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
+            if (Tipodet == 15)
                 CapaLogica.ActualizarNroOperacion(Codigo, txtnrobanco.TextValido(), Tipodet, empresa, Cuo);
             this.Close();
         }

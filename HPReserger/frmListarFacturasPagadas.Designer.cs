@@ -331,12 +331,11 @@
             this.Dtguias.EnableHeadersVisualStyles = false;
             this.Dtguias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.Dtguias.Location = new System.Drawing.Point(12, 91);
-            this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             this.Dtguias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.RowTemplate.Height = 20;
-            this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Dtguias.Size = new System.Drawing.Size(1077, 341);
             this.Dtguias.TabIndex = 345;
             this.Dtguias.TabStop = false;
@@ -498,11 +497,11 @@
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.Format = "n3";
             this.xtc.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xtc.HeaderText = "T.C. Reg.";
+            this.xtc.HeaderText = "T.C. R.";
             this.xtc.Name = "xtc";
             this.xtc.ReadOnly = true;
             this.xtc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.xtc.Width = 56;
+            this.xtc.Width = 43;
             // 
             // subtotal
             // 
@@ -567,6 +566,7 @@
             this.Saldox.MinimumWidth = 50;
             this.Saldox.Name = "Saldox";
             this.Saldox.ReadOnly = true;
+            this.Saldox.Visible = false;
             this.Saldox.Width = 60;
             // 
             // Pagox
@@ -576,10 +576,11 @@
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle9.Format = "n2";
             this.Pagox.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Pagox.HeaderText = "Pago";
+            this.Pagox.HeaderText = "Pagado";
             this.Pagox.MinimumWidth = 50;
             this.Pagox.Name = "Pagox";
-            this.Pagox.Width = 57;
+            this.Pagox.ReadOnly = true;
+            this.Pagox.Width = 70;
             // 
             // FechaEmision
             // 
@@ -612,7 +613,7 @@
             this.FechaCancelado.DataPropertyName = "FechaCancelado";
             dataGridViewCellStyle12.Format = "g";
             this.FechaCancelado.DefaultCellStyle = dataGridViewCellStyle12;
-            this.FechaCancelado.HeaderText = "Fecha Cancelado";
+            this.FechaCancelado.HeaderText = "Fecha Pagado";
             this.FechaCancelado.MinimumWidth = 70;
             this.FechaCancelado.Name = "FechaCancelado";
             this.FechaCancelado.ReadOnly = true;
@@ -642,14 +643,19 @@
             this.btnVer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.btnVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.btnVer.Text = "";
+            this.btnVer.Visible = false;
             this.btnVer.Width = 55;
             // 
             // fkasientox
             // 
+            this.fkasientox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.fkasientox.DataPropertyName = "fkasiento";
-            this.fkasientox.HeaderText = "fkasiento";
+            this.fkasientox.HeaderText = "Cuo Pago";
+            this.fkasientox.MinimumWidth = 60;
             this.fkasientox.Name = "fkasientox";
+            this.fkasientox.ReadOnly = true;
             this.fkasientox.Visible = false;
+            this.fkasientox.Width = 75;
             // 
             // xidmoneda
             // 

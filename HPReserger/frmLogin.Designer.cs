@@ -41,6 +41,7 @@
             this.pbclose = new System.Windows.Forms.PictureBox();
             this.pbfoto = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblmsg = new System.Windows.Forms.Label();
             this.moveControl1 = new HpResergerUserControls.MoveControl(this.components);
             this.panel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -126,6 +127,7 @@
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panel.Controls.Add(this.lblmsg);
             this.panel.Controls.Add(this.cboBase);
             this.panel.Controls.Add(this.panel1);
             this.panel.Controls.Add(this.txtUsuario);
@@ -210,6 +212,16 @@
             this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.label4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
             // 
+            // lblmsg
+            // 
+            this.lblmsg.ForeColor = System.Drawing.Color.White;
+            this.lblmsg.Location = new System.Drawing.Point(16, 197);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblmsg.Size = new System.Drawing.Size(309, 19);
+            this.lblmsg.TabIndex = 6;
+            this.lblmsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // moveControl1
             // 
             this.moveControl1.Control = this.panel1;
@@ -256,5 +268,6 @@
         private HpResergerUserControls.MoveControl moveControl1;
         private System.Windows.Forms.PictureBox pbfoto;
         private System.Windows.Forms.ComboBox cboBase;
+        private System.Windows.Forms.Label lblmsg;
     }
 }

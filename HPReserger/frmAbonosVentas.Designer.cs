@@ -101,14 +101,15 @@
             this.txtMontoPenalidad = new HpResergerUserControls.TextBoxPer();
             this.cboproyecto = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.chkPenalidadTodo = new HpResergerUserControls.checkboxOre();
             this.xopcion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.xdesctipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xTipoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xdesctipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xIdComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNroComprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfkproyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,6 +130,7 @@
             this.xCuentaContable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xAbonos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.xcuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xdet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.PanelDepositoBanco.SuspendLayout();
@@ -164,13 +166,13 @@
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xopcion,
-            this.xdesctipo,
             this.xTipoId,
+            this.xTipo,
+            this.xdesctipo,
             this.xCliente,
             this.xNombres,
             this.xId,
             this.xIdComprobante,
-            this.xTipo,
             this.xNroComprobante,
             this.xEmpresa,
             this.xfkproyecto,
@@ -190,7 +192,8 @@
             this.xGlosa,
             this.xCuentaContable,
             this.xAbonos,
-            this.xcuo});
+            this.xcuo,
+            this.xdet});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -213,6 +216,7 @@
             this.dtgconten.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentDoubleClick);
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
             this.dtgconten.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgconten_EditingControlShowing);
+            this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
             // btnaceptar
             // 
@@ -966,7 +970,7 @@
             this.chkPenalidad.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPenalidad.ColorChecked = System.Drawing.Color.Empty;
             this.chkPenalidad.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkPenalidad.Location = new System.Drawing.Point(469, 74);
+            this.chkPenalidad.Location = new System.Drawing.Point(469, 73);
             this.chkPenalidad.Name = "chkPenalidad";
             this.chkPenalidad.Size = new System.Drawing.Size(77, 17);
             this.chkPenalidad.TabIndex = 353;
@@ -1031,6 +1035,20 @@
             this.label11.TabIndex = 355;
             this.label11.Text = "Proyecto:";
             // 
+            // chkPenalidadTodo
+            // 
+            this.chkPenalidadTodo.AutoSize = true;
+            this.chkPenalidadTodo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPenalidadTodo.ColorChecked = System.Drawing.Color.Empty;
+            this.chkPenalidadTodo.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkPenalidadTodo.Location = new System.Drawing.Point(552, 73);
+            this.chkPenalidadTodo.Name = "chkPenalidadTodo";
+            this.chkPenalidadTodo.Size = new System.Drawing.Size(126, 17);
+            this.chkPenalidadTodo.TabIndex = 353;
+            this.chkPenalidadTodo.Text = "Penalidad + Abono";
+            this.chkPenalidadTodo.UseVisualStyleBackColor = false;
+            this.chkPenalidadTodo.CheckedChanged += new System.EventHandler(this.chkPenalidadTodo_CheckedChanged);
+            // 
             // xopcion
             // 
             this.xopcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -1043,6 +1061,21 @@
             this.xopcion.TrueValue = "1";
             this.xopcion.Width = 46;
             // 
+            // xTipoId
+            // 
+            this.xTipoId.DataPropertyName = "TipoId";
+            this.xTipoId.HeaderText = "TipoId";
+            this.xTipoId.Name = "xTipoId";
+            this.xTipoId.Visible = false;
+            // 
+            // xTipo
+            // 
+            this.xTipo.DataPropertyName = "Tipo";
+            this.xTipo.HeaderText = "Tipo";
+            this.xTipo.MinimumWidth = 35;
+            this.xTipo.Name = "xTipo";
+            this.xTipo.ReadOnly = true;
+            // 
             // xdesctipo
             // 
             this.xdesctipo.DataPropertyName = "desctipo";
@@ -1051,13 +1084,6 @@
             this.xdesctipo.MinimumWidth = 50;
             this.xdesctipo.Name = "xdesctipo";
             this.xdesctipo.ReadOnly = true;
-            // 
-            // xTipoId
-            // 
-            this.xTipoId.DataPropertyName = "TipoId";
-            this.xTipoId.HeaderText = "TipoId";
-            this.xTipoId.Name = "xTipoId";
-            this.xTipoId.Visible = false;
             // 
             // xCliente
             // 
@@ -1092,14 +1118,6 @@
             this.xIdComprobante.HeaderText = "IdComprobante";
             this.xIdComprobante.Name = "xIdComprobante";
             this.xIdComprobante.Visible = false;
-            // 
-            // xTipo
-            // 
-            this.xTipo.DataPropertyName = "Tipo";
-            this.xTipo.HeaderText = "Tipo";
-            this.xTipo.MinimumWidth = 35;
-            this.xTipo.Name = "xTipo";
-            this.xTipo.ReadOnly = true;
             // 
             // xNroComprobante
             // 
@@ -1198,14 +1216,15 @@
             // 
             // xpagar
             // 
-            this.xpagar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xpagar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.xpagar.DataPropertyName = "pagar";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle6.Format = "n2";
             this.xpagar.DefaultCellStyle = dataGridViewCellStyle6;
-            this.xpagar.HeaderText = "Abonado";
+            this.xpagar.HeaderText = "Abonado (Inc.Penalidad)";
+            this.xpagar.MinimumWidth = 90;
             this.xpagar.Name = "xpagar";
-            this.xpagar.Width = 79;
+            this.xpagar.Width = 90;
             // 
             // xIgv
             // 
@@ -1289,6 +1308,13 @@
             this.xcuo.Name = "xcuo";
             this.xcuo.Visible = false;
             // 
+            // xdet
+            // 
+            this.xdet.DataPropertyName = "det";
+            this.xdet.HeaderText = "det";
+            this.xdet.Name = "xdet";
+            this.xdet.Visible = false;
+            // 
             // frmAbonosVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1296,6 +1322,7 @@
             this.ClientSize = new System.Drawing.Size(1128, 499);
             this.Controls.Add(this.cboproyecto);
             this.Controls.Add(this.label11);
+            this.Controls.Add(this.chkPenalidadTodo);
             this.Controls.Add(this.chkPenalidad);
             this.Controls.Add(this.separadorOre2);
             this.Controls.Add(this.btnbuscarCuentas);
@@ -1426,14 +1453,15 @@
         private HpResergerUserControls.TextBoxPer txtMontoPenalidad;
         private System.Windows.Forms.ComboBox cboproyecto;
         private System.Windows.Forms.Label label11;
+        private HpResergerUserControls.checkboxOre chkPenalidadTodo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn xopcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xdesctipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xTipoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xdesctipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn xId;
         private System.Windows.Forms.DataGridViewTextBoxColumn xIdComprobante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xTipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNroComprobante;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEmpresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkproyecto;
@@ -1454,5 +1482,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xCuentaContable;
         private System.Windows.Forms.DataGridViewButtonColumn xAbonos;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xdet;
     }
 }

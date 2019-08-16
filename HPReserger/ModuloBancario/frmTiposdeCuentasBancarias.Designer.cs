@@ -95,7 +95,7 @@
             this.btnaceptar.Location = new System.Drawing.Point(759, 493);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 25);
-            this.btnaceptar.TabIndex = 25;
+            this.btnaceptar.TabIndex = 11;
             this.btnaceptar.Text = "Aceptar";
             this.btnaceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnaceptar.UseVisualStyleBackColor = false;
@@ -110,7 +110,7 @@
             this.btncancelar.Location = new System.Drawing.Point(847, 493);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 25);
-            this.btncancelar.TabIndex = 26;
+            this.btncancelar.TabIndex = 12;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btncancelar.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@
             this.btneliminar.Location = new System.Drawing.Point(847, 56);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 24);
-            this.btneliminar.TabIndex = 3;
+            this.btneliminar.TabIndex = 9;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btneliminar.UseVisualStyleBackColor = true;
@@ -141,7 +141,7 @@
             this.btnmodificar.Location = new System.Drawing.Point(847, 31);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 24);
-            this.btnmodificar.TabIndex = 2;
+            this.btnmodificar.TabIndex = 8;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnmodificar.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             this.btnnuevo.Location = new System.Drawing.Point(847, 7);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(82, 24);
-            this.btnnuevo.TabIndex = 1;
+            this.btnnuevo.TabIndex = 7;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnnuevo.UseVisualStyleBackColor = true;
@@ -386,7 +386,7 @@
             this.cbomoneda.Name = "cbomoneda";
             this.cbomoneda.ReadOnly = false;
             this.cbomoneda.Size = new System.Drawing.Size(133, 21);
-            this.cbomoneda.TabIndex = 11;
+            this.cbomoneda.TabIndex = 1;
             this.cbomoneda.Click += new System.EventHandler(this.cbomoneda_Click);
             // 
             // cbotipocuenta
@@ -399,7 +399,7 @@
             this.cbotipocuenta.Name = "cbotipocuenta";
             this.cbotipocuenta.ReadOnly = false;
             this.cbotipocuenta.Size = new System.Drawing.Size(189, 21);
-            this.cbotipocuenta.TabIndex = 14;
+            this.cbotipocuenta.TabIndex = 3;
             this.cbotipocuenta.Click += new System.EventHandler(this.cbotipocuenta_Click);
             // 
             // label2
@@ -443,7 +443,7 @@
             this.cbobanco.Name = "cbobanco";
             this.cbobanco.ReadOnly = false;
             this.cbobanco.Size = new System.Drawing.Size(189, 21);
-            this.cbobanco.TabIndex = 13;
+            this.cbobanco.TabIndex = 2;
             this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
             // 
             // cboempresa
@@ -456,7 +456,7 @@
             this.cboempresa.Name = "cboempresa";
             this.cboempresa.ReadOnly = false;
             this.cboempresa.Size = new System.Drawing.Size(262, 21);
-            this.cboempresa.TabIndex = 10;
+            this.cboempresa.TabIndex = 0;
             this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
             // 
             // label1
@@ -494,7 +494,7 @@
             this.txtnrocci.NextControlOnEnter = this.btnaceptar;
             this.txtnrocci.ReadOnly = true;
             this.txtnrocci.Size = new System.Drawing.Size(243, 21);
-            this.txtnrocci.TabIndex = 15;
+            this.txtnrocci.TabIndex = 1;
             this.txtnrocci.Text = "0000000000";
             this.txtnrocci.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrocci.TextoDefecto = "0000000000";
@@ -516,7 +516,7 @@
             this.txtnrocuenta.NextControlOnEnter = this.txtnrocci;
             this.txtnrocuenta.ReadOnly = true;
             this.txtnrocuenta.Size = new System.Drawing.Size(243, 21);
-            this.txtnrocuenta.TabIndex = 12;
+            this.txtnrocuenta.TabIndex = 0;
             this.txtnrocuenta.Text = "0000000000";
             this.txtnrocuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtnrocuenta.TextoDefecto = "0000000000";
@@ -547,6 +547,7 @@
             // 
             this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre1.Location = new System.Drawing.Point(0, 82);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
@@ -569,7 +570,7 @@
             this.txtbusempresa.NextControlOnEnter = this.txtbusBanco;
             this.txtbusempresa.ReadOnly = true;
             this.txtbusempresa.Size = new System.Drawing.Size(192, 21);
-            this.txtbusempresa.TabIndex = 16;
+            this.txtbusempresa.TabIndex = 2;
             this.txtbusempresa.Text = "Buscar Empresa";
             this.txtbusempresa.TextoDefecto = "Buscar Empresa";
             this.txtbusempresa.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -591,7 +592,7 @@
             this.txtbusBanco.NextControlOnEnter = this.txtbusmoneda;
             this.txtbusBanco.ReadOnly = true;
             this.txtbusBanco.Size = new System.Drawing.Size(182, 21);
-            this.txtbusBanco.TabIndex = 17;
+            this.txtbusBanco.TabIndex = 3;
             this.txtbusBanco.Text = "Buscar Banco";
             this.txtbusBanco.TextoDefecto = "Buscar Banco";
             this.txtbusBanco.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -613,7 +614,7 @@
             this.txtbusmoneda.NextControlOnEnter = this.txtbusnrocuenta;
             this.txtbusmoneda.ReadOnly = true;
             this.txtbusmoneda.Size = new System.Drawing.Size(134, 21);
-            this.txtbusmoneda.TabIndex = 8;
+            this.txtbusmoneda.TabIndex = 4;
             this.txtbusmoneda.Text = "Buscar Moneda";
             this.txtbusmoneda.TextoDefecto = "Buscar Moneda";
             this.txtbusmoneda.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -635,7 +636,7 @@
             this.txtbusnrocuenta.NextControlOnEnter = this.txtbuscci;
             this.txtbusnrocuenta.ReadOnly = true;
             this.txtbusnrocuenta.Size = new System.Drawing.Size(136, 21);
-            this.txtbusnrocuenta.TabIndex = 19;
+            this.txtbusnrocuenta.TabIndex = 5;
             this.txtbusnrocuenta.Text = "Buscar Número Cuenta";
             this.txtbusnrocuenta.TextoDefecto = "Buscar Número Cuenta";
             this.txtbusnrocuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -657,7 +658,7 @@
             this.txtbuscci.NextControlOnEnter = this.btnlimpiar;
             this.txtbuscci.ReadOnly = true;
             this.txtbuscci.Size = new System.Drawing.Size(158, 21);
-            this.txtbuscci.TabIndex = 20;
+            this.txtbuscci.TabIndex = 6;
             this.txtbuscci.Text = "Buscar Número CCI";
             this.txtbuscci.TextoDefecto = "Buscar Número CCI";
             this.txtbuscci.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -673,7 +674,7 @@
             this.btnlimpiar.Location = new System.Drawing.Point(847, 87);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(82, 24);
-            this.btnlimpiar.TabIndex = 4;
+            this.btnlimpiar.TabIndex = 10;
             this.btnlimpiar.Text = "Limpiar";
             this.btnlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnlimpiar.UseVisualStyleBackColor = true;

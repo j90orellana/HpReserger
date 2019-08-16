@@ -97,6 +97,7 @@ namespace HPReserger
             else txtnropago.Text = "1";
             cbotipo.SelectedIndex = 0;
             dtpFechaContable.Value = dtpFechaPago.Value = DateTime.Now;
+            //dtpini.Value = dtinicio.Value = DateTime.Now.AddMonths(-1);
             txtglosa.CargarTextoporDefecto();
             ActualizarTablas();
             ContarRegistros();
@@ -642,7 +643,7 @@ namespace HPReserger
                         //else
                         //{
                         //actualizo que la factura esta pagada
-                        if (fac.Saldo >= fac.aPagar)
+                        if (fac.Saldo <= fac.aPagar)
                             CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, TipoPago, Nropago, fac.aPagar > fac.Saldo ? fac.Saldo : fac.aPagar
                                 , fac.subtotal, fac.igv, fac.total, IdUsuario, 0, banko, nroKuenta, FechaPago, fac.IdComprobante, fkEmpresa, cuoPago);
                         else
@@ -805,7 +806,7 @@ namespace HPReserger
                         string[] valor = item.Cells[nrofactura.Name].Value.ToString().Split('-');
                         //Calculo del Exceso
                         decimal ExcesoMN = (idMoneda == 1 ? aPagar - saldo : (aPagar - saldo) * tc);
-                        decimal ExcesoME = (idMoneda == 2 ? aPagar - saldo : (aPagar - saldo) / tc);                        
+                        decimal ExcesoME = (idMoneda == 2 ? aPagar - saldo : (aPagar - saldo) / tc);
                         if (aPagar > saldo)
                         {
                             //Procedemos a guardar el Exceso!

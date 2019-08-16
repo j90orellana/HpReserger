@@ -23,6 +23,7 @@ namespace HPReserger
         private void frmListarFacturasPagadas_Load(object sender, EventArgs e)
         {
             cboempresa_Click(sender, e);
+            dtpini.Value = dtinicio.Value = DateTime.Now.AddMonths(-1);
         }
         public void ListarPagados()
         {

@@ -41,6 +41,18 @@ namespace HPReserger
             this.Cuentax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Grid = new HpResergerUserControls.Dtgconten();
+            this.btnaddselected = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.btnaddgroup = new System.Windows.Forms.Button();
+            this.lblmensaje2 = new System.Windows.Forms.Label();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.Txtbusca = new HpResergerUserControls.txtBuscar();
+            this.button1 = new System.Windows.Forms.Button();
             this.codcuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUENTAN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUENTACONTABLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,18 +71,9 @@ namespace HPReserger
             this.AJUSTECUENTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SolicitaDetallex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnaddselected = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.btnaddgroup = new System.Windows.Forms.Button();
-            this.lblmensaje2 = new System.Windows.Forms.Label();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.Txtbusca = new HpResergerUserControls.txtBuscar();
-            this.button1 = new System.Windows.Forms.Button();
+            this.xctadetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xestadocta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xnestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgConten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -191,7 +194,10 @@ namespace HPReserger
             this.AJUSTEPOR,
             this.AJUSTECUENTA,
             this.BC,
-            this.SolicitaDetallex});
+            this.SolicitaDetallex,
+            this.xctadetalle,
+            this.xestadocta,
+            this.xnestado});
             this.Grid.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
@@ -213,138 +219,6 @@ namespace HPReserger
             this.Grid.Size = new System.Drawing.Size(738, 197);
             this.Grid.TabIndex = 138;
             this.Grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellDoubleClick);
-            // 
-            // codcuenta
-            // 
-            this.codcuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.codcuenta.DataPropertyName = "CODCUENTA";
-            this.codcuenta.HeaderText = "CUENTA";
-            this.codcuenta.MinimumWidth = 70;
-            this.codcuenta.Name = "codcuenta";
-            this.codcuenta.Width = 76;
-            // 
-            // CUENTAN1
-            // 
-            this.CUENTAN1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CUENTAN1.DataPropertyName = "CUENTA N1";
-            this.CUENTAN1.HeaderText = "CUENTA N1";
-            this.CUENTAN1.MinimumWidth = 100;
-            this.CUENTAN1.Name = "CUENTAN1";
-            // 
-            // CUENTACONTABLE
-            // 
-            this.CUENTACONTABLE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CUENTACONTABLE.DataPropertyName = "CUENTA CONTABLE";
-            this.CUENTACONTABLE.HeaderText = "CUENTA CONTABLE";
-            this.CUENTACONTABLE.MinimumWidth = 150;
-            this.CUENTACONTABLE.Name = "CUENTACONTABLE";
-            // 
-            // TIPOCUENTA
-            // 
-            this.TIPOCUENTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TIPOCUENTA.DataPropertyName = "TIPO CUENTA";
-            this.TIPOCUENTA.HeaderText = "TIPO CUENTA";
-            this.TIPOCUENTA.MinimumWidth = 100;
-            this.TIPOCUENTA.Name = "TIPOCUENTA";
-            this.TIPOCUENTA.Width = 105;
-            // 
-            // NATURALEZA
-            // 
-            this.NATURALEZA.DataPropertyName = "NATURALEZA CUENTA";
-            this.NATURALEZA.HeaderText = "NATURALEZA ";
-            this.NATURALEZA.Name = "NATURALEZA";
-            this.NATURALEZA.Visible = false;
-            // 
-            // CUENTAGENERICA
-            // 
-            this.CUENTAGENERICA.DataPropertyName = "CUENTA GENERICA";
-            this.CUENTAGENERICA.HeaderText = "CUENTA GENERICA";
-            this.CUENTAGENERICA.Name = "CUENTAGENERICA";
-            this.CUENTAGENERICA.Visible = false;
-            // 
-            // GRUPOCUENTA
-            // 
-            this.GRUPOCUENTA.DataPropertyName = "GRUPO CUENTA";
-            this.GRUPOCUENTA.HeaderText = "GRUPOCUENTA";
-            this.GRUPOCUENTA.Name = "GRUPOCUENTA";
-            this.GRUPOCUENTA.Visible = false;
-            // 
-            // REFLEJA
-            // 
-            this.REFLEJA.DataPropertyName = "REFLEJA";
-            this.REFLEJA.HeaderText = "REFLEJA";
-            this.REFLEJA.Name = "REFLEJA";
-            this.REFLEJA.Visible = false;
-            // 
-            // REFLEJADEPENDE
-            // 
-            this.REFLEJADEPENDE.DataPropertyName = "REFLEJA DEPENDE";
-            this.REFLEJADEPENDE.HeaderText = "REFLEJA DEPENDE";
-            this.REFLEJADEPENDE.Name = "REFLEJADEPENDE";
-            this.REFLEJADEPENDE.Visible = false;
-            // 
-            // CUENTAREFLEJA
-            // 
-            this.CUENTAREFLEJA.DataPropertyName = "CUENTA REFLEJA DEBE";
-            this.CUENTAREFLEJA.HeaderText = "CUENTA REFLEJA";
-            this.CUENTAREFLEJA.Name = "CUENTAREFLEJA";
-            this.CUENTAREFLEJA.Visible = false;
-            // 
-            // CUENTAREFLEJA2
-            // 
-            this.CUENTAREFLEJA2.DataPropertyName = "CUENTA REFLEJA HABER";
-            this.CUENTAREFLEJA2.HeaderText = "CUENTA REFLEJA 2";
-            this.CUENTAREFLEJA2.Name = "CUENTAREFLEJA2";
-            this.CUENTAREFLEJA2.Visible = false;
-            // 
-            // CUENTACIERRE
-            // 
-            this.CUENTACIERRE.DataPropertyName = "CUENTA CIERRE";
-            this.CUENTACIERRE.HeaderText = "CUENTA CIERRE";
-            this.CUENTACIERRE.Name = "CUENTACIERRE";
-            this.CUENTACIERRE.Visible = false;
-            // 
-            // CIERRE
-            // 
-            this.CIERRE.DataPropertyName = "CIERRE";
-            this.CIERRE.HeaderText = "CIERRE";
-            this.CIERRE.Name = "CIERRE";
-            this.CIERRE.Visible = false;
-            // 
-            // ANALITICA
-            // 
-            this.ANALITICA.DataPropertyName = "ANALITICA";
-            this.ANALITICA.HeaderText = "ANALITICA";
-            this.ANALITICA.Name = "ANALITICA";
-            this.ANALITICA.Visible = false;
-            // 
-            // AJUSTEPOR
-            // 
-            this.AJUSTEPOR.DataPropertyName = "AJUSTE POR TRASLACION";
-            this.AJUSTEPOR.HeaderText = "AJUSTE POR";
-            this.AJUSTEPOR.Name = "AJUSTEPOR";
-            this.AJUSTEPOR.Visible = false;
-            // 
-            // AJUSTECUENTA
-            // 
-            this.AJUSTECUENTA.DataPropertyName = "AJUSTE CAMBIO MENSUAL";
-            this.AJUSTECUENTA.HeaderText = "AJUSTE CUENTA";
-            this.AJUSTECUENTA.Name = "AJUSTECUENTA";
-            this.AJUSTECUENTA.Visible = false;
-            // 
-            // BC
-            // 
-            this.BC.DataPropertyName = "BC";
-            this.BC.HeaderText = "BC";
-            this.BC.Name = "BC";
-            this.BC.Visible = false;
-            // 
-            // SolicitaDetallex
-            // 
-            this.SolicitaDetallex.DataPropertyName = "solicitar";
-            this.SolicitaDetallex.HeaderText = "SolicitaDetalle";
-            this.SolicitaDetallex.Name = "SolicitaDetallex";
-            this.SolicitaDetallex.Visible = false;
             // 
             // btnaddselected
             // 
@@ -505,6 +379,160 @@ namespace HPReserger
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // codcuenta
+            // 
+            this.codcuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.codcuenta.DataPropertyName = "CODCUENTA";
+            this.codcuenta.HeaderText = "Cuenta";
+            this.codcuenta.MinimumWidth = 70;
+            this.codcuenta.Name = "codcuenta";
+            this.codcuenta.Width = 70;
+            // 
+            // CUENTAN1
+            // 
+            this.CUENTAN1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CUENTAN1.DataPropertyName = "CUENTA N1";
+            this.CUENTAN1.HeaderText = "Cuenta N1";
+            this.CUENTAN1.MinimumWidth = 100;
+            this.CUENTAN1.Name = "CUENTAN1";
+            // 
+            // CUENTACONTABLE
+            // 
+            this.CUENTACONTABLE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CUENTACONTABLE.DataPropertyName = "CUENTA CONTABLE";
+            this.CUENTACONTABLE.HeaderText = "Cuenta Contable";
+            this.CUENTACONTABLE.MinimumWidth = 150;
+            this.CUENTACONTABLE.Name = "CUENTACONTABLE";
+            // 
+            // TIPOCUENTA
+            // 
+            this.TIPOCUENTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TIPOCUENTA.DataPropertyName = "TIPO CUENTA";
+            this.TIPOCUENTA.HeaderText = "Tipo Cuenta";
+            this.TIPOCUENTA.MinimumWidth = 100;
+            this.TIPOCUENTA.Name = "TIPOCUENTA";
+            // 
+            // NATURALEZA
+            // 
+            this.NATURALEZA.DataPropertyName = "NATURALEZA CUENTA";
+            this.NATURALEZA.HeaderText = "NATURALEZA ";
+            this.NATURALEZA.Name = "NATURALEZA";
+            this.NATURALEZA.Visible = false;
+            // 
+            // CUENTAGENERICA
+            // 
+            this.CUENTAGENERICA.DataPropertyName = "CUENTA GENERICA";
+            this.CUENTAGENERICA.HeaderText = "CUENTA GENERICA";
+            this.CUENTAGENERICA.Name = "CUENTAGENERICA";
+            this.CUENTAGENERICA.Visible = false;
+            // 
+            // GRUPOCUENTA
+            // 
+            this.GRUPOCUENTA.DataPropertyName = "GRUPO CUENTA";
+            this.GRUPOCUENTA.HeaderText = "GRUPOCUENTA";
+            this.GRUPOCUENTA.Name = "GRUPOCUENTA";
+            this.GRUPOCUENTA.Visible = false;
+            // 
+            // REFLEJA
+            // 
+            this.REFLEJA.DataPropertyName = "REFLEJA";
+            this.REFLEJA.HeaderText = "REFLEJA";
+            this.REFLEJA.Name = "REFLEJA";
+            this.REFLEJA.Visible = false;
+            // 
+            // REFLEJADEPENDE
+            // 
+            this.REFLEJADEPENDE.DataPropertyName = "REFLEJA DEPENDE";
+            this.REFLEJADEPENDE.HeaderText = "REFLEJA DEPENDE";
+            this.REFLEJADEPENDE.Name = "REFLEJADEPENDE";
+            this.REFLEJADEPENDE.Visible = false;
+            // 
+            // CUENTAREFLEJA
+            // 
+            this.CUENTAREFLEJA.DataPropertyName = "CUENTA REFLEJA DEBE";
+            this.CUENTAREFLEJA.HeaderText = "CUENTA REFLEJA";
+            this.CUENTAREFLEJA.Name = "CUENTAREFLEJA";
+            this.CUENTAREFLEJA.Visible = false;
+            // 
+            // CUENTAREFLEJA2
+            // 
+            this.CUENTAREFLEJA2.DataPropertyName = "CUENTA REFLEJA HABER";
+            this.CUENTAREFLEJA2.HeaderText = "CUENTA REFLEJA 2";
+            this.CUENTAREFLEJA2.Name = "CUENTAREFLEJA2";
+            this.CUENTAREFLEJA2.Visible = false;
+            // 
+            // CUENTACIERRE
+            // 
+            this.CUENTACIERRE.DataPropertyName = "CUENTA CIERRE";
+            this.CUENTACIERRE.HeaderText = "CUENTA CIERRE";
+            this.CUENTACIERRE.Name = "CUENTACIERRE";
+            this.CUENTACIERRE.Visible = false;
+            // 
+            // CIERRE
+            // 
+            this.CIERRE.DataPropertyName = "CIERRE";
+            this.CIERRE.HeaderText = "CIERRE";
+            this.CIERRE.Name = "CIERRE";
+            this.CIERRE.Visible = false;
+            // 
+            // ANALITICA
+            // 
+            this.ANALITICA.DataPropertyName = "ANALITICA";
+            this.ANALITICA.HeaderText = "ANALITICA";
+            this.ANALITICA.Name = "ANALITICA";
+            this.ANALITICA.Visible = false;
+            // 
+            // AJUSTEPOR
+            // 
+            this.AJUSTEPOR.DataPropertyName = "AJUSTE POR TRASLACION";
+            this.AJUSTEPOR.HeaderText = "AJUSTE POR";
+            this.AJUSTEPOR.Name = "AJUSTEPOR";
+            this.AJUSTEPOR.Visible = false;
+            // 
+            // AJUSTECUENTA
+            // 
+            this.AJUSTECUENTA.DataPropertyName = "AJUSTE CAMBIO MENSUAL";
+            this.AJUSTECUENTA.HeaderText = "AJUSTE CUENTA";
+            this.AJUSTECUENTA.Name = "AJUSTECUENTA";
+            this.AJUSTECUENTA.Visible = false;
+            // 
+            // BC
+            // 
+            this.BC.DataPropertyName = "BC";
+            this.BC.HeaderText = "BC";
+            this.BC.Name = "BC";
+            this.BC.Visible = false;
+            // 
+            // SolicitaDetallex
+            // 
+            this.SolicitaDetallex.DataPropertyName = "solicitar";
+            this.SolicitaDetallex.HeaderText = "SolicitaDetalle";
+            this.SolicitaDetallex.Name = "SolicitaDetallex";
+            this.SolicitaDetallex.Visible = false;
+            // 
+            // xctadetalle
+            // 
+            this.xctadetalle.DataPropertyName = "ctadetalle";
+            this.xctadetalle.HeaderText = "ctadetalle";
+            this.xctadetalle.Name = "xctadetalle";
+            this.xctadetalle.Visible = false;
+            // 
+            // xestadocta
+            // 
+            this.xestadocta.DataPropertyName = "estadocta";
+            this.xestadocta.HeaderText = "estadocuenta";
+            this.xestadocta.Name = "xestadocta";
+            this.xestadocta.Visible = false;
+            // 
+            // xnestado
+            // 
+            this.xnestado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xnestado.DataPropertyName = "nestado";
+            this.xnestado.HeaderText = "Estado";
+            this.xnestado.MinimumWidth = 55;
+            this.xnestado.Name = "xnestado";
+            this.xnestado.Width = 66;
+            // 
             // FrmListarCuentasParaConfigurar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,6 +580,7 @@ namespace HPReserger
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnaceptar;
         private txtBuscar Txtbusca;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codcuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn CUENTAN1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CUENTACONTABLE;
@@ -570,6 +599,8 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn AJUSTECUENTA;
         private System.Windows.Forms.DataGridViewTextBoxColumn BC;
         private System.Windows.Forms.DataGridViewTextBoxColumn SolicitaDetallex;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xctadetalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xestadocta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xnestado;
     }
 }

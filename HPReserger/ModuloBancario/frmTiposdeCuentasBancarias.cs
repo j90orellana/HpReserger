@@ -88,7 +88,8 @@ namespace HPReserger.ModuloBancario
                 {
                     btnlimpiar.Enabled = false;
                     BloquearBusqueda(true);
-                    Limpiar();
+                    if (value != 2)
+                        Limpiar();
                 }
                 else
                 {
@@ -189,6 +190,7 @@ namespace HPReserger.ModuloBancario
             BloquearControles(false);
             btnaceptar.Enabled = false;
             CargarDatos();
+            txtbusempresa_TextChanged(sender, e);
         }
         public void BloquearBusqueda(Boolean a)
         {

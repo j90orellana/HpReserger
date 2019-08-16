@@ -2805,20 +2805,24 @@ namespace HPResergerCapaDatos
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand())
+                try
                 {
-                    cmd.Connection = cn;
-                    cmd.CommandText = sStoredProcedureName;
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = cn;
+                        cmd.CommandText = sStoredProcedureName;
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@Login_User", SqlDbType.VarChar, 10).Value = Login_User;
-                    cmd.Parameters.Add("@Opcion", SqlDbType.Int).Value = Opcion;
+                        cmd.Parameters.Add("@Login_User", SqlDbType.VarChar, 10).Value = Login_User;
+                        cmd.Parameters.Add("@Opcion", SqlDbType.Int).Value = Opcion;
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
+                    cn.Close();
+                    cn.Dispose();
                 }
-                cn.Close();
-                cn.Dispose();
+                catch (Exception) { }
             }
         }
 
@@ -2844,9 +2848,17 @@ namespace HPResergerCapaDatos
         }
         public DataTable UsuarioConectado(int codigo, string user, int opcion)
         {
-            string[] parametros = { "@codigo", "@user", "@opcion" };
-            object[] valores = { codigo, user, opcion };
-            return bd.DataTableFromProcedure("usp_UsuariosConectados", parametros, valores, null);
+            try
+            {
+                string[] parametros = { "@codigo", "@user", "@opcion" };
+                object[] valores = { codigo, user, opcion };
+                return bd.DataTableFromProcedure("usp_UsuariosConectados", parametros, valores, null);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No Hay Conexión a la Base de datos", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         public DataTable ListarAreasUsuario(int Usuario)

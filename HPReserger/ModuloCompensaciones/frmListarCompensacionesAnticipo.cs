@@ -542,7 +542,8 @@ namespace HPReserger.ModuloCompensaciones
                         else
                         {
                             decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
-                            CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, MontoSolesOri, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario, IdComprobante, _idempresa, Cuo);
+                            CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, MontoSolesOri, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario
+                                , IdComprobante, _idempresa, Cuo);
                         }
                     }
                 }

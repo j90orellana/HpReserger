@@ -349,17 +349,26 @@ namespace HPReserger
         {
             if (dtgconten.RowCount > 0)
             {
-                string _NombreHoja = "Comprobantes Pagados";
+                string _NombreHoja = "Nro de Operaciones"; string _Cabecera = "Listado de Documentos Pagados"; int[] _Columnas = new int[] { }; string _NColumna = "f";
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 //HPResergerFunciones.Utilitarios.RangoCelda Celda1 = new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", "Cronograma de Pagos", 14);
                 Color Back = Color.FromArgb(78, 129, 189);
                 Color Fore = Color.FromArgb(255, 255, 255);
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "j1", "Comprobantes Pagados".ToUpper(), 16, true, true, Back, Fore));
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "j2", $"Fecha de Pago: de {dtpfecha1.Value.ToShortDateString()} a {dtpfecha2.Value.ToShortDateString()}", 12, false, true, Back, Fore));
-                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", "b2", "Nombre Vendedor:", 11));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", $"{_NColumna}1", _Cabecera.ToUpper(), 16, true, true, Back, Fore));
+                //Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a2", $"{_NColumna}2", NameEmpresa, 12, false, true, Back, Fore));
+                //
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                int PosInicialGrilla = 3;
 
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 2, new int[] { 3, 5, 6, 7, 8, 9, 10, 11, 12, 13 }, new int[] { }, new int[] { });
-                //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
+                DataTable TableResuk = new DataTable();
+                TableResuk = ((DataTable)dtgconten.DataSource).Copy();
+                ///Remuevo Columnas inservibles
+                TableResuk.Columns.RemoveAt(13);
+                TableResuk.Columns.RemoveAt(3);
+                TableResuk.Columns.RemoveAt(0);
+                ///
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResuk, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, "");
             }
             else msg("No hay Registros en la Grilla");
         }

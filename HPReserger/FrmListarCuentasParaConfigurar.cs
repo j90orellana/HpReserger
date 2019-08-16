@@ -123,7 +123,7 @@ namespace HPReserger
             foreach (DataGridViewRow item in Grid.SelectedRows)
             {
                 string cadena = item.Cells[codcuenta.Name].Value.ToString();
-                if (cadena.Substring(cadena.Length - 1, 1) != "0")
+                if ((int)item.Cells[xestadocta.Name].Value == 1 && (int)item.Cells[xctadetalle.Name].Value == 1)
                 {
                     if (!ListaCuentas.Exists(cust => cust == cadena))
                     {
@@ -169,7 +169,7 @@ namespace HPReserger
             foreach (DataGridViewRow item in Grid.Rows)
             {
                 string CadeAux = item.Cells[codcuenta.Name].Value.ToString();
-                if (CadeAux.Substring(CadeAux.Length - 1, 1) != "0")
+                if ((int)item.Cells[xestadocta.Name].Value == 1 && (int)item.Cells[xctadetalle.Name].Value == 1)
                 {
                     if (!ListaCuentas.Exists(cust => cust == CadeAux))
                     {
@@ -213,7 +213,7 @@ namespace HPReserger
             List<string> Lista = new List<string>();
             foreach (DataGridViewRow item in dtgConten.Rows)
             {
-                Lista.Add(item.Cells[Cuentax.Name].Value.ToString());
+                Lista.Add(item.Cells[Cuentax.Name].Value.ToString().Trim());
             }
             Cuentas = string.Join(",", (ListaCuentas.ToArray()));
             Cuentas = string.Join(",", (Lista.ToArray()));

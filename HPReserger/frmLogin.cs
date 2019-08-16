@@ -93,6 +93,7 @@ namespace HPReserger
                 frmmensa.Caducado();
                 frmmensa.ShowDialog();
                 frmLogin.DesconectarUsuario();
+                lblmsg.Text = "Caducó Licencia";
                 return;
             }
             //Asignacion de la base de datos estatica
@@ -113,7 +114,14 @@ namespace HPReserger
                 return;
             }
             //VALIDAR SI YA ESTA LOGEADO EL USARIO
+            //frmProcesando frmproce = new frmProcesando("Conectado a la Base");            
+            //frmproce.Show();
+            lblmsg.Text = "Conectando a la Base de Datos";
             DataTable TablaAcceso = clLogueo.UsuarioConectado(frmLogin.CodigoUsuario, txtUsuario.Text, 0);
+            //Regresa si no hay conexion a la Base de Datos;
+            if (TablaAcceso == null) { lblmsg.Text = "No se Encontró la Base de Datos"; return; }
+            //frmproce.Close();
+            lblmsg.Text = "";
             if (TablaAcceso.Rows.Count > 0)
             {
                 DataRow filitaAcceso = TablaAcceso.Rows[0];
@@ -161,7 +169,6 @@ namespace HPReserger
                 menusito.nick = "Usuario Prueba";
                 menusito.Show();
                 Prueba = true;
-
             }
             if (Prueba)
                 return;

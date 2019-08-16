@@ -63,10 +63,9 @@ namespace HPReserger
                 /////
                 if (dtgconten[Estadosx.Name, x].Value.ToString() == "CERRADO")
                 {
-                    btnabriperiodo.Enabled = true;
+                    btnabriperiodo.Text = "Abrir";
                 }
-                else btnabriperiodo.Enabled = false;
-
+                else btnabriperiodo.Text = "Cerrar";
             }
             else
             {
@@ -155,15 +154,29 @@ namespace HPReserger
         }
         private void btnabriperiodo_Click(object sender, EventArgs e)
         {
-            if (msgyesno("Seguro Desea Abrir el Periodo") == DialogResult.Yes)
-            {
-                int x = dtgconten.CurrentRow.Index;
-                CapaLogica.Periodos(2, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
-                msg("Periodo Abierto!");
-                CargarDatos();
-                dtgconten.CurrentCell = dtgconten[empresax.Name, x];
-            }
-
+            if (dtgconten.RowCount > 0)
+                if (btnabriperiodo.Text == "Abrir")
+                {
+                    if (msgyesno("Seguro Desea Abrir el Periodo") == DialogResult.Yes)
+                    {
+                        int x = dtgconten.CurrentRow.Index;
+                        CapaLogica.Periodos(2, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
+                        msg("Periodo Abierto!");
+                        CargarDatos();
+                        dtgconten.CurrentCell = dtgconten[empresax.Name, x];
+                    }
+                }
+                else
+                {
+                    if (msgyesno("Seguro Desea Cerrar el Periodo") == DialogResult.Yes)
+                    {
+                        int x = dtgconten.CurrentRow.Index;
+                        CapaLogica.Periodos(3, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
+                        msg("Periodo Cerrado!");
+                        CargarDatos();
+                        dtgconten.CurrentCell = dtgconten[empresax.Name, x];
+                    }
+                }
         }
     }
 }
