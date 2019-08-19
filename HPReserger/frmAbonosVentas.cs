@@ -142,9 +142,9 @@ namespace HPReserger
         {
             if (cboempresa.SelectedValue != null)
             {
-                cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
                 cboproyecto.DisplayMember = "proyecto";
                 cboproyecto.ValueMember = "id_proyecto";
+                cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
             }
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -1228,6 +1228,9 @@ namespace HPReserger
             }
         }
 
+        private void txtDescripcionCuentaExceso_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

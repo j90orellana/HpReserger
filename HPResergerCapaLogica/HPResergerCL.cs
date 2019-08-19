@@ -2531,8 +2531,18 @@ namespace HPResergerCapaLogica
             if (cdOrdenPedido.VerPeriodoAbierto(Empresa, FechaContable).Rows.Count == 0) return false;
             //Periodo Abierto
             return true;
-
+        }
+        public int SiguienteAsiento(int idEmpresa, DateTime FechaContable)
+        {
+            int numasiento = 0;
+            if (numasiento == 0)
+            {
+                DataTable asientito = UltimoAsiento(idEmpresa, FechaContable);
+                if (asientito == null) { numasiento = 1; }
+                else
+                    numasiento = ((int)asientito.Rows[0]["codigo"]);
+            }
+            return numasiento;
         }
     }
-
 }
