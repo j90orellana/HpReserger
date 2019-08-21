@@ -168,13 +168,12 @@ namespace HPReserger.ModuloCompensaciones
             DataTable TableBancos = CapaLogica.TablaBanco();
             if (TableBancos.Rows.Count != cbobanco.Items.Count)
             {
-                cbobanco.ValueMember = "codigo";
+                cbobanco.ValueMember = "sufijo";
                 cbobanco.DisplayMember = "descripcion";
                 cbobanco.DataSource = TableBancos;
                 cbobanco.Text = cadenar;
             }
         }
-
         private void cboempleado_Click(object sender, EventArgs e)
         {
             string cadena = cboempleado.Text;

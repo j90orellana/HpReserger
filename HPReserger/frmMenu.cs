@@ -3617,5 +3617,24 @@ namespace HPReserger
                 frmliscompensaAnticipo.Activate();
             }
         }
+        frmPrestamoInterEmpresas frmprestamointer;
+        private void prestamoInterEmpresasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmprestamointer == null)
+            {
+                frmprestamointer = new frmPrestamoInterEmpresas();
+                frmprestamointer.FormClosed += Frmprestamointer_FormClosed;
+                frmprestamointer.MdiParent = this;
+                frmprestamointer.Show();
+            }
+            else
+            {
+                frmprestamointer.Activate();
+            }
+        }
+        private void Frmprestamointer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmprestamointer = null;
+        }
     }
 }

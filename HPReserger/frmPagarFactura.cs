@@ -305,6 +305,10 @@ namespace HPReserger
                 msg("Seleccione Comprobantes");
                 return;
             }
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             string TotalAux = txttotalMN.Text;
             chkprove.Checked = chkfecha.Checked = chkrecepcion.Checked = false;
             CalcularTotal();
@@ -1021,7 +1025,8 @@ namespace HPReserger
                     {
                         if (frmdetallepago == null)
                         {
-                            frmdetallepago = new frmDetallePagoFactura(1, Dtguias[nrofactura.Name, e.RowIndex].Value.ToString(), 0, Dtguias[proveedor.Name, e.RowIndex].Value.ToString(), (int)Dtguias[xidcomprobante.Name, e.RowIndex].Value, (int)cboempresa.SelectedValue);
+                            frmdetallepago = new frmDetallePagoFactura(1, Dtguias[nrofactura.Name, e.RowIndex].Value.ToString(), 0, Dtguias[proveedor.Name, e.RowIndex].Value.ToString(), (int)Dtguias[xidcomprobante.Name, e.RowIndex].Value, (int)cboempresa.SelectedValue
+                                , Dtguias[xglosa.Name, e.RowIndex].Value.ToString());
                             frmdetallepago.FormClosed += Frmdetallepago_FormClosed;
                             frmdetallepago.MdiParent = MdiParent;
                             frmdetallepago.Show();

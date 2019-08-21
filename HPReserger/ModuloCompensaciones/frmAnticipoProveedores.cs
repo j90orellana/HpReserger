@@ -103,9 +103,9 @@ namespace HPReserger.ModuloCompensaciones
         {
             string cadenar = cbobanco.Text;
             DataTable TableBancos = CapaLogica.TablaBanco();
-            if (TableBancos.Rows.Count != cbobanco.Items.Count)
+                if (TableBancos.Rows.Count != cbobanco.Items.Count)
             {
-                cbobanco.ValueMember = "codigo";
+                cbobanco.ValueMember = "sufijo";
                 cbobanco.DisplayMember = "descripcion";
                 cbobanco.DataSource = TableBancos;
                 cbobanco.Text = cadenar;

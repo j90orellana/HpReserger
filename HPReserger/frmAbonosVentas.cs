@@ -331,7 +331,8 @@ namespace HPReserger
                     {
                         if (frmdetallepago == null)
                         {
-                            frmdetallepago = new frmDetallePagoFactura(2, dtgconten[xNroComprobante.Name, e.RowIndex].Value.ToString(), (int)dtgconten[xTipoId.Name, e.RowIndex].Value, dtgconten[xCliente.Name, e.RowIndex].Value.ToString(), (int)dtgconten[xIdComprobante.Name, e.RowIndex].Value, (int)cboempresa.SelectedValue);
+                            frmdetallepago = new frmDetallePagoFactura(2, dtgconten[xNroComprobante.Name, e.RowIndex].Value.ToString(), (int)dtgconten[xTipoId.Name, e.RowIndex].Value, dtgconten[xCliente.Name, e.RowIndex].Value.ToString(), (int)dtgconten[xIdComprobante.Name, e.RowIndex].Value, (int)cboempresa.SelectedValue
+                                , dtgconten[xGlosa.Name, e.RowIndex].Value.ToString());
                             frmdetallepago.FormClosed += Frmdetallepago_FormClosed;
                             frmdetallepago.MdiParent = MdiParent;
                             frmdetallepago.Show();
@@ -461,6 +462,10 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             CalcularTotal();
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpFechaContable.Focus(); return;
+            }
             //Valido Cuenta en Exceso
             if (!txtCuentaExceso.ReadOnly && !chkPenalidad.Checked && !chkPenalidadTodo.Checked)
                 if (!txtDescripcionCuentaExceso.EstaLLeno())

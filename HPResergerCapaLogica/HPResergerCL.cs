@@ -1736,7 +1736,8 @@ namespace HPResergerCapaLogica
         }
         public DataTable TablaBanco()
         {
-            return cdOrdenPedido.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");
+            //return cdOrdenPedido.getCargoTipoContratacion("Sufijo", "Entidad_Financiera", "TBL_Entidad_Financiera");22
+            return EntidadFinanciera();
         }
         public DataTable TablaBancos()
         {
@@ -2012,7 +2013,6 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.Detraciones(opcion, 0, "", "", "", 0, 0, DateTime.Now);
         }
         public DataTable ListarAbonosFacturas(int opcion, string numfac, int tipoid, string proveedor, int idcomprobante, int empresa)
-
         {
             return cdOrdenPedido.ListarAbonosFacturas(opcion, numfac, tipoid, proveedor, idcomprobante, empresa);
         }
@@ -2543,6 +2543,16 @@ namespace HPResergerCapaLogica
                     numasiento = ((int)asientito.Rows[0]["codigo"]);
             }
             return numasiento;
+        }
+        public DataTable PrestamosInterEmpresa(int @opcion, int @empresaori, int @proyectoori, int @etapaori, int @bancoori, int @ctaori, string @cuoori, string @ctaContableori, int @empresades, int @proyectodes
+            , int @etapades, int @bancodes, int @ctades, string @cuodes, string @ctacontabledes, int @idmoneda, decimal @montoprestado, DateTime @fechacontable, DateTime @fechaprestado, decimal @tc, string @glosa, int @estado)
+        {
+            return cdOrdenPedido.PrestamosInterEmpresa(@opcion, @empresaori, @proyectoori, @etapaori, @bancoori, @ctaori, @cuoori, @ctaContableori, @empresades, @proyectodes, @etapades, @bancodes, @ctades, @cuodes
+                , @ctacontabledes, @idmoneda, @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado);
+        }
+        public DataTable PrestamosInterEmpresa(int @opcion, string empresaorigen, string empresadestino, string moneda, DateTime fec1, DateTime fec2)
+        {
+            return cdOrdenPedido.PrestamosInterEmpresa(@opcion, 0, 0, 0, 0, 0, empresaorigen, empresadestino, 0, 0, 0, 0, 0, "", "", 0, 0, fec1, fec2, 0, moneda, 0);
         }
     }
 }

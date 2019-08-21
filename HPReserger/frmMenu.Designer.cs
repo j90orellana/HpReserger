@@ -55,6 +55,7 @@
             this.operacionesBancariasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.prestamoInterEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -370,7 +371,8 @@
             this.pagoDetraccionesToolStripMenuItem,
             this.operacionesBancariasToolStripMenuItem,
             this.toolStripSeparator12,
-            this.toolStripMenuItem4});
+            this.toolStripMenuItem4,
+            this.prestamoInterEmpresasToolStripMenuItem});
             this.arToolStripMenuItem.Image = global::HPReserger.Properties.Resources.Orden_Pedido;
             this.arToolStripMenuItem.Name = "arToolStripMenuItem";
             this.arToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
@@ -491,6 +493,14 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(274, 22);
             this.toolStripMenuItem4.Text = "Cobro a Clientes";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // prestamoInterEmpresasToolStripMenuItem
+            // 
+            this.prestamoInterEmpresasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("prestamoInterEmpresasToolStripMenuItem.Image")));
+            this.prestamoInterEmpresasToolStripMenuItem.Name = "prestamoInterEmpresasToolStripMenuItem";
+            this.prestamoInterEmpresasToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.prestamoInterEmpresasToolStripMenuItem.Text = "Prestamo InterEmpresas";
+            this.prestamoInterEmpresasToolStripMenuItem.Click += new System.EventHandler(this.prestamoInterEmpresasToolStripMenuItem_Click);
             // 
             // proyectosToolStripMenuItem1
             // 
@@ -2593,5 +2603,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aplicaciónToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem prestamoInterEmpresasToolStripMenuItem;
     }
 }

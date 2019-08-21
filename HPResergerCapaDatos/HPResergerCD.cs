@@ -4778,5 +4778,14 @@ namespace HPResergerCapaDatos
             object[] valores = { @empresa, tipo, tipoid, numdoc, moneda };
             return bd.DataTableFromProcedure("usp_FondoFijoCuentasEmpleado", parametros, valores, null);
         }
+        public DataTable PrestamosInterEmpresa(int @opcion, int @empresaori, int @proyectoori, int @etapaori, int @bancoori, int @ctaori, string @cuoori, string @ctaContableori, int @empresades, int @proyectodes
+            , int @etapades, int @bancodes, int @ctades, string @cuodes, string @ctacontabledes, int @idmoneda, decimal @montoprestado, DateTime @fechacontable, DateTime @fechaprestado, decimal @tc, string @glosa, int @estado)
+        {
+            string[] parametros = { "@opcion", "@empresaori", "@proyectoori", "@etapaori", "@bancoori", "@ctaori", "@cuoori", "@ctaContableori", "@empresades", "@proyectodes", "@etapades", "@bancodes", "@ctades",
+                    "@cuodes", "@ctacontabledes", "@idmoneda", "@montoprestado", "@fechacontable", "@fechaprestado", "@tc", "@glosa", "@estado" };
+            object[] valores = { @opcion, @empresaori, @proyectoori, @etapaori, @bancoori, @ctaori, @cuoori, @ctaContableori, @empresades, @proyectodes, @etapades, @bancodes, @ctades,@cuodes, @ctacontabledes, @idmoneda
+                    , @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado };
+            return bd.DataTableFromProcedure("usp_PrestamosInterbancarios", parametros, valores, null);
+        }
     }
 }

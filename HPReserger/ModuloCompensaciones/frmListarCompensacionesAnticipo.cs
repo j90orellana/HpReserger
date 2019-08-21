@@ -55,9 +55,9 @@ namespace HPReserger.ModuloCompensaciones
             if (cboproveedor.Items.Count == 0)
             {
                 ///
-                DtgcontenAnticipos.DataSource = ((DataTable)DtgcontenAnticipos.DataSource).Clone() ?? new DataTable();
+                DtgcontenAnticipos.DataSource = ((DataTable)DtgcontenAnticipos.DataSource ?? new DataTable()).Clone();
                 ///
-                DtgcontenFacturas.DataSource = ((DataTable)DtgcontenFacturas.DataSource).Clone() ?? new DataTable();
+                DtgcontenFacturas.DataSource = ((DataTable)DtgcontenFacturas.DataSource ?? new DataTable()).Clone();
             }
         }
         private void frmListarCompensacionesReembolso_Load(object sender, EventArgs e)
@@ -200,7 +200,7 @@ namespace HPReserger.ModuloCompensaciones
             DataTable TableBancos = CapaLogica.TablaBanco();
             if (TableBancos.Rows.Count != cbobanco.Items.Count)
             {
-                cbobanco.ValueMember = "codigo";
+                cbobanco.ValueMember = "sufijo";
                 cbobanco.DisplayMember = "descripcion";
                 cbobanco.DataSource = TableBancos;
                 cbobanco.Text = cadenar;

@@ -17,7 +17,7 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-        public frmDetallePagoFactura(int opcion, string numero, int tipoid, string proveedors, int idcomprobante, int empresa)
+        public frmDetallePagoFactura(int opcion, string numero, int tipoid, string proveedors, int idcomprobante, int empresa,string glosa)
         {
             InitializeComponent();
             numfac = numero;
@@ -26,6 +26,7 @@ namespace HPReserger
             Tipoid = tipoid;
             Idcomprobante = idcomprobante;
             Empresa = empresa;
+            Glosa = glosa;
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void btncancelar_Click(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace HPReserger
         private int _idcomprobante;
         public int Idcomprobante { get { return _idcomprobante; } set { _idcomprobante = value; } }
         public string numfac { get { return _numfac; } set { _numfac = value; } }
+        public string Glosa { get { return txtglosa.Text; } set { txtglosa.Text = value; } }
         public int Tipoid { get { return _tipoid; } set { _tipoid = value; } }
         private string _proveedor;
         public int Opcion;
@@ -54,6 +56,7 @@ namespace HPReserger
                 dtgconten1.Columns[subtotalx.Name].Visible = false;
                 dtgconten1.Columns[igvx.Name].Visible = false;
             }
+            lblmsg.Text = $"Total Registros: {dtgconten1.RowCount}";
         }
     }
 }

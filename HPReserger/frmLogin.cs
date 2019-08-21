@@ -56,7 +56,7 @@ namespace HPReserger
         {            
             cboBase.Items.Add("Actual");
             cboBase.Items.Add("SiGE");
-            cboBase.Items.Add("Actual_Beta");
+            cboBase.Items.Add("Actual_Beta");      
             cboBase.SelectedIndex = 0;
             clLogueo.CambiarBase(Basedatos);
             HPResergerCapaDatos.HPResergerCD.BASEDEDATOS = Basedatos;

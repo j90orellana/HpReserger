@@ -31,14 +31,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetallePagoFactura));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetallePagoFactura));
             this.dtgconten1 = new HpResergerUserControls.Dtgconten();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtproveedor = new System.Windows.Forms.TextBox();
             this.nrofacturadetx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nrofacturax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NroOPBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +53,12 @@
             this.Banco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfkempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xidcomprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtproveedor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtglosa = new System.Windows.Forms.TextBox();
+            this.lblmsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,40 +124,6 @@
             this.dtgconten1.RowTemplate.Height = 18;
             this.dtgconten1.Size = new System.Drawing.Size(913, 245);
             this.dtgconten1.TabIndex = 0;
-            // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(850, 290);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 35;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(12, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "Proveedor:";
-            // 
-            // txtproveedor
-            // 
-            this.txtproveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.txtproveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtproveedor.Location = new System.Drawing.Point(77, 13);
-            this.txtproveedor.Name = "txtproveedor";
-            this.txtproveedor.ReadOnly = true;
-            this.txtproveedor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtproveedor.Size = new System.Drawing.Size(213, 21);
-            this.txtproveedor.TabIndex = 39;
             // 
             // nrofacturadetx
             // 
@@ -298,7 +267,6 @@
             this.fecha.Name = "fecha";
             this.fecha.ReadOnly = true;
             this.fecha.Visible = false;
-            this.fecha.Width = 80;
             // 
             // Banco
             // 
@@ -324,11 +292,80 @@
             this.xidcomprobante.ReadOnly = true;
             this.xidcomprobante.Visible = false;
             // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(850, 290);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(75, 23);
+            this.btncancelar.TabIndex = 35;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(12, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Proveedor:";
+            // 
+            // txtproveedor
+            // 
+            this.txtproveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtproveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtproveedor.Location = new System.Drawing.Point(74, 15);
+            this.txtproveedor.Name = "txtproveedor";
+            this.txtproveedor.ReadOnly = true;
+            this.txtproveedor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtproveedor.Size = new System.Drawing.Size(213, 21);
+            this.txtproveedor.TabIndex = 39;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(287, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Glosa:";
+            // 
+            // txtglosa
+            // 
+            this.txtglosa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtglosa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtglosa.Location = new System.Drawing.Point(326, 15);
+            this.txtglosa.Name = "txtglosa";
+            this.txtglosa.ReadOnly = true;
+            this.txtglosa.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtglosa.Size = new System.Drawing.Size(599, 21);
+            this.txtglosa.TabIndex = 39;
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Location = new System.Drawing.Point(12, 295);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(113, 13);
+            this.lblmsg.TabIndex = 143;
+            this.lblmsg.Text = "Total de Registros : 0";
+            // 
             // frmDetallePagoFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 319);
+            this.Controls.Add(this.lblmsg);
+            this.Controls.Add(this.txtglosa);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtproveedor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btncancelar);
@@ -368,5 +405,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Banco;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkempresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xidcomprobante;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtglosa;
+        private System.Windows.Forms.Label lblmsg;
     }
 }
