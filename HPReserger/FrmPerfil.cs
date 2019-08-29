@@ -22,7 +22,6 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
         private void FrmPerfil_Load(object sender, EventArgs e)
         {
             estado = 0;
@@ -273,7 +272,7 @@ namespace HPReserger
         {
             if (cboperfiles.Items.Count > 0)
             {
-                txtcodigo.Text = cboperfiles.SelectedValue.ToString(); ;
+                txtcodigo.Text = cboperfiles.SelectedValue.ToString(); 
                 txtdes.Text = cboperfiles.Text;
                 CargarDAtosalTRee(int.Parse(cboperfiles.SelectedValue.ToString()), 0, 0);
             }

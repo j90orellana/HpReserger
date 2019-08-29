@@ -224,7 +224,6 @@ namespace HPReserger
                             frmM.Show();
                         }
                         else msg("Usuario No esta Activo");
-
                     }
                     else
                     {

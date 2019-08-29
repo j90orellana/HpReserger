@@ -42,6 +42,7 @@ namespace HPReserger
         DateTime FechaFin;
         private void btngenerar_Click(object sender, EventArgs e)
         {
+            if (Configuraciones.ValidarSQLInyect(txtbuscuenta, txtbusGlosa, txtbusnrodoc, txtbusrazon, txtbusruc)) { msg("Se Encontro Codigo Malisioso en las Cajas de Textos"); return; }
             Cursor = Cursors.WaitCursor;
             FechaIni = dtpfechaini.Value;
             FechaFin = dtpfechafin.Value;
@@ -229,7 +230,6 @@ namespace HPReserger
         DateTime FechaPeriodo; string NombreEmpresa = "";
         public DateTime año = DateTime.Now.AddMonths(-1);
         public int empresa = 2;
-
         private void chklist_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (e.Index == 0)

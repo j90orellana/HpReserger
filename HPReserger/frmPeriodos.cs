@@ -57,15 +57,20 @@ namespace HPReserger
             int x = e.RowIndex, y = e.ColumnIndex;
             if (x >= 0)
             {
+                btnabriperiodo.Enabled = false;
                 txtanio.Text = dtgconten[añox.Name, x].Value.ToString();
                 cboestado.SelectedValue = dtgconten[estadox.Name, x].Value;
                 cbomes.SelectedValue = dtgconten[mesx.Name, x].Value;
                 /////
-                if (dtgconten[Estadosx.Name, x].Value.ToString() == "CERRADO")
-                {
-                    btnabriperiodo.Text = "Abrir";
-                }
-                else btnabriperiodo.Text = "Cerrar";
+                //if ((new int[] { 0, 1, 2 }).Contains(frmLogin.CodigoUsuario))//Luego se lo cambia por el perfil
+                //{
+                    btnabriperiodo.Enabled = true;
+                    if (dtgconten[Estadosx.Name, x].Value.ToString() == "CERRADO")
+                    {
+                        btnabriperiodo.Text = "Abrir";
+                    }
+                    else btnabriperiodo.Text = "Cerrar";
+                //}
             }
             else
             {

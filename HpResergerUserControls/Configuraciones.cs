@@ -52,6 +52,18 @@ namespace HpResergerUserControls
             TimeSpan tm = st.Elapsed;
             HPResergerFunciones.Utilitarios.msg($"La Operación Demoro {tm}");
         }
+        public static Boolean ValidarSQLInyect(params object[] txt)
+        {
+            Boolean Prueba = false;
+            string Text1 = "DELETE ";
+            string Text2 = "DROP ";
+            foreach (TextBox Textos in txt)
+            {
+                if (Textos.Text.ToUpper().Contains(Text1)) Prueba = true;
+                if (Textos.Text.ToUpper().Contains(Text2)) Prueba = true;
+            }
+            return Prueba;
+        }
         /// <param name="Datagrid">Grilla con la que vamos a trabajar</param>
         /// <param name="ColumnaImporte">Columna a la que vamos a Asignar Valores</param>
         /// <param name="MontoaRepartir">Monto que vamos a Dividir</param> 
@@ -70,7 +82,7 @@ namespace HpResergerUserControls
                             Valor += Redondear(Decimal(item.Cells[ColumnaImporte.Name].Value.ToString()));
                         else contador++;
                     }
-                    else { contador++;}
+                    else { contador++; }
                 }
             }
             if (contador > 0)

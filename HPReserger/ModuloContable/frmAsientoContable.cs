@@ -27,6 +27,11 @@ namespace HPReserger
         }
         private void frmAsientoContable_Load(object sender, EventArgs e)
         {
+            //cargar TExtos por defecto
+            txtbuscuo.CargarTextoporDefecto(); txtbusGlosa.CargarTextoporDefecto(); txtbusSuboperacion.CargarTextoporDefecto(); txtbuscuenta.CargarTextoporDefecto();
+            dtpfechaini.Value = new DateTime(DateTime.Now.Year, 1, 1);
+            dtpfechafin.Value = new DateTime(DateTime.Now.Year, 12, 31);
+            //
             labelAzul.ForeColor = Configuraciones.ColorBien;
             labelRojo.ForeColor = Configuraciones.RojoUI;
             labelAmarillo.ForeColor = Color.Chocolate;
@@ -74,7 +79,9 @@ namespace HPReserger
         public void activar()
         {
             btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled =
-                Txtbusca.Enabled = groupBox1.Enabled = btnreversa.Enabled = true;
+                Txtbusca.Enabled = btnreversa.Enabled = true;
+            radioButton1.Enabled = radioButton2.Enabled = chkfecha.Enabled = fechaini.Enabled = fechafin.Enabled = true;
+            btncleanfind.Enabled = txtbuscuenta.Enabled = txtbuscuo.Enabled = txtbusGlosa.Enabled = txtbusSuboperacion.Enabled = dtpfechaini.Enabled = dtpfechafin.Enabled = true;
             //chkfechavalor.Enabled = 
             btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtpfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
                 txtdinamica.Enabled = false;
@@ -85,7 +92,10 @@ namespace HPReserger
         public void desactivar()
         {
             btnnuevo.Enabled = btnmodificar.Enabled = btneliminar.Enabled = dtgbusca.Enabled = btnreversa.Enabled =
-                Txtbusca.Enabled = groupBox1.Enabled = false;
+                Txtbusca.Enabled = false;
+            btncleanfind.Enabled = radioButton1.Enabled = radioButton2.Enabled = chkfecha.Enabled = fechaini.Enabled = fechafin.Enabled = false;
+            txtbuscuo.Enabled = txtbuscuenta.Enabled = txtbusGlosa.Enabled = txtbusSuboperacion.Enabled = dtpfechaini.Enabled = dtpfechafin.Enabled = false;
+
             //chkfechavalor.Enabled = 
             btnmas.Enabled = cboestado.Enabled = btndina.Enabled = dtpfechavalor.Enabled = cboproyecto.Enabled = cboetapa.Enabled =
                 txtdinamica.Enabled = true;
@@ -735,9 +745,24 @@ namespace HPReserger
             {
                 if (fechaini.Value < fechafin.Value)
                 {
-                    dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechaini.Value, fechafin.Value, fechacheck, _idempresa);
+                    if (!chkPulser.Checked)
+                    {
+                        //Forma Normal
+                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechaini.Value, fechafin.Value, fechacheck, _idempresa);
+                    }
+                    else dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
+                       txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido());
                 }
-                else { dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechafin.Value, fechaini.Value, fechacheck, _idempresa); }
+                else
+                {
+                    if (!chkPulser.Checked)
+                    {
+                        //Forma Normal
+                        dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechafin.Value, fechaini.Value, fechacheck, _idempresa);
+                    }
+                    else dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
+                        txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido());
+                }
                 msg2(dtgbusca);
                 if (dtgbusca.RowCount < 1)
                 {
@@ -1825,7 +1850,7 @@ namespace HPReserger
             string cade = cbomoneda.Text;
             Cargarmoneda();
             cbomoneda.Text = cade;
-        }      
+        }
         private string CuoSelec;
         frmTipodeCambio frmtipo;
         public void SacarTipoCambio()
@@ -1880,6 +1905,63 @@ namespace HPReserger
                 RevisarSihayDescuadre();
             }
         }
+
+        private void Txtbusca_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkPulser_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkPulser.Checked)
+            {
+                Txtbusca.Visible = false;
+                radioButton1.Visible = radioButton2.Visible = chkfecha.Visible = fechaini.Visible = fechafin.Visible = false;
+                txtbuscuenta.Visible = txtbuscuo.Visible = txtbusGlosa.Visible = txtbusSuboperacion.Visible = dtpfechaini.Visible = dtpfechafin.Visible = true;
+                btncleanfind.Visible = lbl1.Visible = lbl2.Visible = true;
+            }
+            else
+            {
+                Txtbusca.Visible = true;
+                radioButton1.Visible = radioButton2.Visible = chkfecha.Visible = fechaini.Visible = fechafin.Visible = true;
+                txtbuscuenta.Visible = txtbuscuo.Visible = txtbusGlosa.Visible = txtbusSuboperacion.Visible = dtpfechaini.Visible = dtpfechafin.Visible = false;
+                btncleanfind.Visible = lbl1.Visible = lbl2.Visible = false;
+
+            }
+        }
+
+        private void btncleanfind_Click(object sender, EventArgs e)
+        {
+            txtbuscuo.CargarTextoporDefecto(); txtbusGlosa.CargarTextoporDefecto(); txtbusSuboperacion.CargarTextoporDefecto(); txtbuscuenta.CargarTextoporDefecto();
+            dtpfechaini.Value = new DateTime(DateTime.Now.Year, 1, 1);
+            dtpfechafin.Value = new DateTime(DateTime.Now.Year, 12, 31);
+        }
+
+        private void txtbusSuboperacion_TextChanged(object sender, EventArgs e)
+        {
+            Txtbusca_TextChanged(sender, e);
+        }
+
+        private void txtbusGlosa_TextChanged(object sender, EventArgs e)
+        {
+            Txtbusca_TextChanged(sender, e);
+        }
+
+        private void txtbuscuo_TextChanged(object sender, EventArgs e)
+        {
+            Txtbusca_TextChanged(sender, e);
+        }
+
+        private void dtpfechaini_ValueChanged(object sender, EventArgs e)
+        {
+            Txtbusca_TextChanged(sender, e);
+        }
+
+        private void dtpfechafin_ValueChanged(object sender, EventArgs e)
+        {
+            Txtbusca_TextChanged(sender, e);
+        }
+
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();

@@ -1171,6 +1171,12 @@ namespace HPResergerCapaDatos
             object[] valor = { busca, opcion, fechaini, fechafin, fecha, empresa };
             return bd.DataTableFromProcedure("usp_listar_asientos", parametros, valor, null);
         }
+        public DataTable ListarAsientosFiltrados(int empresa, DateTime Fechaini, DateTime Fechafin, string cuo, string cuenta, string glosa, string suboperacion)
+        {
+            string[] parametros = { "@empresa", "@fechaini", "@fechafin", "@cuo", "@cuenta", "@glosa", "@SubOperacion" };
+            object[] valor = { empresa, Fechaini, Fechafin, cuo, cuenta, glosa, suboperacion };
+            return bd.DataTableFromProcedure("usp_ListarAsientosFiltrados", parametros, valor, null);
+        }
         public DataTable UltimoAsiento(int empresan, DateTime _Fecha)
         {
             string[] parametros = { "@empresa", "@Fecha" };
@@ -3660,10 +3666,10 @@ namespace HPResergerCapaDatos
                 @PosicionDiferencial ,TotalDiferencial,IdComprobante,FechaContable,glosa};
             return bd.DataTableFromProcedure("usp_guardarfactura", parametros, valores, null);
         }
-        public DataTable ActualizarNotaCreditoDebito(string proveedor, string numdoc, int @opcion, int empresa)
+        public DataTable ActualizarNotaCreditoDebito(int IdComprobante, string proveedor, string numdoc, int @opcion, int empresa)
         {
-            string[] parametros = { "@proveedor", "@numdoc", "@opcion", "@empresa" };
-            object[] valores = { proveedor, numdoc, @opcion, empresa };
+            string[] parametros = { "@idcomprobante", "@proveedor", "@numdoc", "@opcion", "@empresa" };
+            object[] valores = { IdComprobante, proveedor, numdoc, @opcion, empresa };
             return bd.DataTableFromProcedure("usp_ActualizarNotaCreditoDebito", parametros, valores, null);
         }
         public DataTable ValidarChequeExiste(string banco, string cuenta, string cheque)
@@ -4650,7 +4656,12 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial" };
             object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon };
             return bd.DataTableFromProcedure("usp_MayorPorCuentas", parametros, valores, null);
-
+        }
+        public DataTable ReporteAnalitico(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
+        {
+            string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial" };
+            object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon };
+            return bd.DataTableFromProcedure("usp_ReporteAnalitico", parametros, valores, null);
         }
         public DataTable ReporteFacturasComprasIncompletas(DateTime fechaini, DateTime fechafin, int Fecha)
         {

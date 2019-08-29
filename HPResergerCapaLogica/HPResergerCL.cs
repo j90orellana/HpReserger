@@ -414,6 +414,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarAsientosContables(busca, opcion, fechaini, fechafin, fecha, empresa);
         }
+        public DataTable ListarAsientosFiltrados(int empresa, DateTime Fechaini, DateTime Fechafin, string cuo, string cuenta, string glosa, string suboperacion)
+        {
+            return cdOrdenPedido.ListarAsientosFiltrados(empresa, Fechaini, Fechafin, cuo, cuenta, glosa, suboperacion);
+        }
         public void Modificar2asiento(int codigo, int proyecto, DateTime Fechas)
         {
             cdOrdenPedido.Modificar2asiento(codigo, proyecto, Fechas);
@@ -1455,9 +1459,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.guardarfactura(si, asiento, fac, @cc, @debe, @haber, dina, fecha, fechavence, fecharecepcion, usuario, centro, tipo, proveedor, moneda, idcuenta, nropago, tcReg, tcPago,
                 fechasiento, montodiferencial, PosicionDiferencial, TotalDiferencial, IdComprobante, @FechaContable, glosa);
         }
-        public DataTable ActualizarNotaCreditoDebito(string proveedor, string numdoc, int @opcion, int empresa)
+        public DataTable ActualizarNotaCreditoDebito(int IdComprobante, string proveedor, string numdoc, int @opcion, int empresa)
         {
-            return cdOrdenPedido.ActualizarNotaCreditoDebito(proveedor, numdoc, @opcion, empresa);
+            return cdOrdenPedido.ActualizarNotaCreditoDebito(IdComprobante, proveedor, numdoc, @opcion, empresa);
         }
         public DataTable ValidarChequeExiste(string banco, string cuenta, string cheque)
         {
@@ -2427,6 +2431,10 @@ namespace HPResergerCapaLogica
         public DataTable MayorPorCuentas(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {
             return cdOrdenPedido.MayorPorCuentas(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
+        }
+        public DataTable ReporteAnalitico(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
+        {
+            return cdOrdenPedido.ReporteAnalitico(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
         }
         public DataTable ReporteFacturasComprasIncompletas(DateTime fechaini, DateTime fechafin, int Fecha)
         {

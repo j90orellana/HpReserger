@@ -66,7 +66,7 @@
             this.txtcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.Location = new System.Drawing.Point(86, 14);
             this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(236, 21);
+            this.txtcodigo.Size = new System.Drawing.Size(238, 21);
             this.txtcodigo.TabIndex = 2;
             // 
             // label2
@@ -74,7 +74,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 43);
+            this.label2.Location = new System.Drawing.Point(17, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 0;
@@ -85,9 +85,9 @@
             this.txtdes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtdes.Enabled = false;
             this.txtdes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdes.Location = new System.Drawing.Point(86, 39);
+            this.txtdes.Location = new System.Drawing.Point(86, 38);
             this.txtdes.Name = "txtdes";
-            this.txtdes.Size = new System.Drawing.Size(236, 21);
+            this.txtdes.Size = new System.Drawing.Size(238, 21);
             this.txtdes.TabIndex = 3;
             // 
             // btnnuevo
@@ -109,7 +109,7 @@
             this.btnmodificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnmodificar.Image = ((System.Drawing.Image)(resources.GetObject("btnmodificar.Image")));
             this.btnmodificar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmodificar.Location = new System.Drawing.Point(328, 37);
+            this.btnmodificar.Location = new System.Drawing.Point(328, 36);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(82, 24);
             this.btnmodificar.TabIndex = 3;
@@ -123,7 +123,7 @@
             this.btneliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btneliminar.Image = ((System.Drawing.Image)(resources.GetObject("btneliminar.Image")));
             this.btneliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btneliminar.Location = new System.Drawing.Point(328, 63);
+            this.btneliminar.Location = new System.Drawing.Point(328, 60);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 24);
             this.btneliminar.TabIndex = 3;
@@ -137,7 +137,7 @@
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnaceptar.Image")));
             this.btnaceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnaceptar.Location = new System.Drawing.Point(240, 373);
+            this.btnaceptar.Location = new System.Drawing.Point(242, 376);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(82, 24);
             this.btnaceptar.TabIndex = 2;
@@ -151,7 +151,7 @@
             this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
             this.btncancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btncancelar.Location = new System.Drawing.Point(328, 373);
+            this.btncancelar.Location = new System.Drawing.Point(328, 376);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(82, 24);
             this.btncancelar.TabIndex = 2;
@@ -192,9 +192,9 @@
             // 
             this.cboperfiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboperfiles.FormattingEnabled = true;
-            this.cboperfiles.Location = new System.Drawing.Point(86, 65);
+            this.cboperfiles.Location = new System.Drawing.Point(86, 62);
             this.cboperfiles.Name = "cboperfiles";
-            this.cboperfiles.Size = new System.Drawing.Size(236, 21);
+            this.cboperfiles.Size = new System.Drawing.Size(238, 21);
             this.cboperfiles.TabIndex = 4;
             this.cboperfiles.SelectedIndexChanged += new System.EventHandler(this.cboperfiles_SelectedIndexChanged);
             // 
@@ -203,7 +203,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(36, 69);
+            this.label3.Location = new System.Drawing.Point(36, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 5;
@@ -215,9 +215,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treePerfiles.CheckBoxes = true;
-            this.treePerfiles.Location = new System.Drawing.Point(12, 93);
+            this.treePerfiles.Location = new System.Drawing.Point(12, 87);
             this.treePerfiles.Name = "treePerfiles";
-            this.treePerfiles.Size = new System.Drawing.Size(398, 274);
+            this.treePerfiles.Size = new System.Drawing.Size(398, 283);
             this.treePerfiles.TabIndex = 6;
             this.treePerfiles.BeforeCheck += new System.Windows.Forms.TreeViewCancelEventHandler(this.treePerfiles_BeforeCheck);
             this.treePerfiles.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treePerfiles_AfterCheck);
@@ -228,7 +228,7 @@
             this.btnampliar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnampliar.Image = ((System.Drawing.Image)(resources.GetObject("btnampliar.Image")));
             this.btnampliar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnampliar.Location = new System.Drawing.Point(12, 373);
+            this.btnampliar.Location = new System.Drawing.Point(12, 376);
             this.btnampliar.Name = "btnampliar";
             this.btnampliar.Size = new System.Drawing.Size(118, 24);
             this.btnampliar.TabIndex = 7;
@@ -241,7 +241,7 @@
             // 
             this.btnocultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnocultar.Image = ((System.Drawing.Image)(resources.GetObject("btnocultar.Image")));
-            this.btnocultar.Location = new System.Drawing.Point(12, 373);
+            this.btnocultar.Location = new System.Drawing.Point(12, 376);
             this.btnocultar.Name = "btnocultar";
             this.btnocultar.Size = new System.Drawing.Size(118, 24);
             this.btnocultar.TabIndex = 8;
@@ -255,6 +255,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 405);
+            this.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
             this.Controls.Add(this.btnampliar);
             this.Controls.Add(this.treePerfiles);
             this.Controls.Add(this.label3);

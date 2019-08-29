@@ -163,6 +163,12 @@
     <Compile Include="frmRegMayorxCuentas.Designer.cs">
       <DependentUpon>frmRegMayorxCuentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloReportes\frmReporteAnalitico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\frmReporteAnalitico.Designer.cs">
+      <DependentUpon>frmReporteAnalitico.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteCompras81Report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1589,6 +1595,9 @@
     <EmbeddedResource Include="frmRegMayorxCuentas.resx">
       <DependentUpon>frmRegMayorxCuentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\frmReporteAnalitico.resx">
+      <DependentUpon>frmReporteAnalitico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReporteCompras81Report.resx">
       <DependentUpon>frmReporteCompras81Report.cs</DependentUpon>
     </EmbeddedResource>
@@ -2620,6 +2629,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

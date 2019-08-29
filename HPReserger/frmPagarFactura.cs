@@ -620,14 +620,15 @@ namespace HPReserger
                     else if ((fac.tipo.Substring(0, 2) == "NC" || fac.tipo.Substring(0, 2) == "ND"))// && fac.tipo.Substring(fac.tipo.Length - 1, 1) != "e")
                     {
                         //Actualizo el estado a pagado!
-                        if (fac.tipo.Substring(fac.tipo.Length - 1, 1) != "e")
+                        if (fac.tipo.Substring(fac.tipo.Length - 1, 1) != "x")
                         {
                             //registramos el ingreso del abono (5: Opcion pago)
                             CapaLogica.insertarPagarfactura(fac.numero, fac.proveedor, 0, txtnrocheque.TextValido(), fac.aPagar, fac.subtotal, fac.igv, fac.aPagar, IdUsuario, 5, banko, nroKuenta, FechaPago, fac.IdComprobante
                                 , fkEmpresa, cuoPago);
                             if (fac.aPagar >= fac.Saldo)
                                 //Actualizacion de notas de credito 
-                                CapaLogica.ActualizarNotaCreditoDebito(fac.proveedor, fac.numero, 1, (int)cboempresa.SelectedValue);
+                                //fac.IdComprobante --+--
+                                CapaLogica.ActualizarNotaCreditoDebito(fac.IdComprobante, fac.proveedor, fac.numero, 1, (int)cboempresa.SelectedValue);
                         }
                     }
                     else
@@ -682,7 +683,7 @@ namespace HPReserger
                 {
                     if ((int)item.Cells[OK.Name].Value == 1)
                     {
-                        if (item.Cells[tipodoc.Name].Value.ToString().Substring(0, 2) != "ND" && item.Cells[tipodoc.Name].Value.ToString() != "NC")
+                        if (item.Cells[tipodoc.Name].Value.ToString().Substring(0, 2) != "ND" && item.Cells[tipodoc.Name].Value.ToString().Substring(0, 2) != "NC")
                         {
                             decimal aPagar = (decimal)item.Cells[Pagox.Name].Value;
                             decimal saldo = (decimal)item.Cells[Saldox.Name].Value;

@@ -312,6 +312,7 @@
             // btnabriperiodo
             // 
             this.btnabriperiodo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnabriperiodo.Enabled = false;
             this.btnabriperiodo.Image = ((System.Drawing.Image)(resources.GetObject("btnabriperiodo.Image")));
             this.btnabriperiodo.Location = new System.Drawing.Point(492, 11);
             this.btnabriperiodo.Name = "btnabriperiodo";

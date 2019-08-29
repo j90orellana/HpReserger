@@ -86,13 +86,16 @@ namespace HPReserger
         }
         public void RecargarMenu()
         {
+            menuStrip2.SuspendLayout();
             DataTable datos = new DataTable();
             DataRow filita;
             datos = CapaLogica.usuarios(frmLogin.LoginUser, 1, 10);
             if (datos.Rows.Count > 0)
             {
                 filita = datos.Rows[0];
+                //Saco los menus de los perfiles
                 datos = CapaLogica.ListarPerfiles((int)filita["CODIGOPERFIL"], 99, 0, 1, DateTime.Now);
+                //Paso todo a Invisibles!
                 foreach (ToolStripMenuItem x in menuStrip2.Items)
                 {
                     foreach (ToolStripItem xx in x.DropDownItems)
@@ -107,11 +110,13 @@ namespace HPReserger
                         x.Visible = false;
                     }
                 }
+                //Creo una lista con los Menus que voy a Mostrar
                 List<string> Lista = new List<string>();
                 foreach (DataRow a in datos.Rows)
                 {
                     Lista.Add(a["titulo"].ToString());
                 }
+                //Muestro los Menus de la lista que le Pertecen al perfil!
                 foreach (ToolStripMenuItem x in menuStrip2.Items)
                 {
                     Boolean prueba = false;
@@ -122,12 +127,16 @@ namespace HPReserger
                             xx.Visible = true; prueba = true;
                         }
                     }
+                    //Sí se Muestra un SubMenu, se Muestra El Menu!
                     if (prueba)
                     {
                         x.Visible = true;
                     }
                 }
             }
+            menuStrip2.ResumeLayout();
+            //Prioridad por Usuario!
+            ControlPerfilPrioritario();
         }
         private void frmMenu_Load(object sender, EventArgs e)
         {
@@ -159,8 +168,15 @@ namespace HPReserger
             else Mostrado = false;
             VerFotoAdmin();
             Text = Text + $" [{frmLogin.Basedatos}]";
-            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   +
-
+            //FlowPanel.Paint += new PaintEventHandler(FrmMenu_Paint); ---Gradiente Lineal de varios colores de fondo de control   +            
+        }
+        public void ControlPerfilPrioritario()
+        {
+            periodosToolStripMenuItem.Visible = false;
+            if ((new int[] { 0, 1, 2 }).Contains(frmLogin.CodigoUsuario))//Luego se lo cambia por el perfil
+            {
+                periodosToolStripMenuItem.Visible = true;
+            }
         }
         public void VerFotoAdmin()
         {
@@ -1471,10 +1487,6 @@ namespace HPReserger
 
         }
 
-        private void arToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void valorizacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2379,9 +2391,6 @@ namespace HPReserger
         {
             frmareacargo = null;
         }
-        private void verToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
         public void ValidarFormularios()
         {
             //  ventanasToolStripMenuItem.DropDownItems.Clear();
@@ -2427,7 +2436,7 @@ namespace HPReserger
         }
         private void ventanasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // OnMdiChildActivate(e);
+            RecargarMenu();
         }
 
         private void frmMenu_Validated(object sender, EventArgs e)
@@ -3431,9 +3440,6 @@ namespace HPReserger
             }
         }
 
-        private void contabilidadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
         private void fondoFijoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -3635,6 +3641,61 @@ namespace HPReserger
         private void Frmprestamointer_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmprestamointer = null;
+        }
+        private void arToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecargarMenu();
+        }
+        private void proyectosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RecargarMenu();
+        }
+        private void ventasToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            RecargarMenu();
+        }
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecargarMenu();
+        }
+        private void contabilidadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecargarMenu();
+        }
+        private void planillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecargarMenu();
+        }
+        private void seguridadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecargarMenu();
+        }
+        private void mantenimientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecargarMenu();
+        }
+        frmReporteAnalitico frmReporteAnalitico;
+        private void reporteAnalíticoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmReporteAnalitico == null)
+            {
+                frmReporteAnalitico = new frmReporteAnalitico();
+                frmReporteAnalitico.MdiParent = this;
+                frmReporteAnalitico.Icon = ICono;
+                frmReporteAnalitico.FormClosed += FrmReporteAnalitico_FormClosed;
+                frmReporteAnalitico.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmReporteAnalitico.Activate();
+                ValidarVentanas(frmReporteAnalitico);
+            }
+        }
+
+        private void FrmReporteAnalitico_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmReporteAnalitico = null;
         }
     }
 }

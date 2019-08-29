@@ -855,12 +855,12 @@ namespace HPReserger
                         if (chkPenalidad.Checked)
                         {
                             if (MontoPenalidad >= (decimal)item.Cells[xTotal.Name].Value)
-                                CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2, (int)cboempresa.SelectedValue);
+                                CapaLogica.ActualizarNotaCreditoDebito((int)item.Cells[xIdComprobante.Name].Value, item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2, (int)cboempresa.SelectedValue);
                         }
                         else
                         {
                             if ((decimal)item.Cells[xpagar.Name].Value >= (decimal)item.Cells[xTotal.Name].Value)
-                                CapaLogica.ActualizarNotaCreditoDebito(item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2, (int)cboempresa.SelectedValue);
+                                CapaLogica.ActualizarNotaCreditoDebito((int)item.Cells[xIdComprobante.Name].Value, item.Cells[xTipoId.Name].Value.ToString() + item.Cells[xCliente.Name].Value.ToString(), item.Cells[xNroComprobante.Name].Value.ToString(), 2, (int)cboempresa.SelectedValue);
                         }
                     }
                     else

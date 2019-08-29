@@ -119,6 +119,8 @@
             this.formato141RegistroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mayorPorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mayorPorCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.reporteAnalíticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -319,9 +321,9 @@
             this.FlowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.FlowPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.FlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.FlowPanel.Location = new System.Drawing.Point(934, 64);
+            this.FlowPanel.Location = new System.Drawing.Point(934, 54);
             this.FlowPanel.Name = "FlowPanel";
-            this.FlowPanel.Size = new System.Drawing.Size(327, 497);
+            this.FlowPanel.Size = new System.Drawing.Size(327, 507);
             this.FlowPanel.TabIndex = 58;
             this.FlowPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.FlowPanel_ControlAdded);
             this.FlowPanel.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.FlowPanel_ControlRemoved_1);
@@ -352,9 +354,9 @@
             this.pbfotoempleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.pbfotoempleado.ContextMenuStrip = this.cmenuclick;
             this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
-            this.pbfotoempleado.Location = new System.Drawing.Point(1111, 0);
+            this.pbfotoempleado.Location = new System.Drawing.Point(1110, 0);
             this.pbfotoempleado.Name = "pbfotoempleado";
-            this.pbfotoempleado.Size = new System.Drawing.Size(74, 63);
+            this.pbfotoempleado.Size = new System.Drawing.Size(62, 54);
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfotoempleado.TabIndex = 54;
             this.pbfotoempleado.TabStop = false;
@@ -500,6 +502,7 @@
             this.prestamoInterEmpresasToolStripMenuItem.Name = "prestamoInterEmpresasToolStripMenuItem";
             this.prestamoInterEmpresasToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.prestamoInterEmpresasToolStripMenuItem.Text = "Prestamo InterEmpresas";
+            this.prestamoInterEmpresasToolStripMenuItem.Visible = false;
             this.prestamoInterEmpresasToolStripMenuItem.Click += new System.EventHandler(this.prestamoInterEmpresasToolStripMenuItem_Click);
             // 
             // proyectosToolStripMenuItem1
@@ -510,6 +513,7 @@
             this.proyectosToolStripMenuItem1.Size = new System.Drawing.Size(73, 20);
             this.proyectosToolStripMenuItem1.Tag = "5";
             this.proyectosToolStripMenuItem1.Text = "Pro&yectos";
+            this.proyectosToolStripMenuItem1.Click += new System.EventHandler(this.proyectosToolStripMenuItem1_Click);
             // 
             // proyectosToolStripMenuItem
             // 
@@ -538,6 +542,7 @@
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.ventasToolStripMenuItem.Tag = "8";
             this.ventasToolStripMenuItem.Text = "Ventas";
+            this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click_1);
             // 
             // cargaRegistroVentasToolStripMenuItem
             // 
@@ -1032,7 +1037,9 @@
             this.reToolStripMenuItem,
             this.formato141RegistroDeVentasToolStripMenuItem,
             this.mayorPorToolStripMenuItem,
-            this.mayorPorCuentasToolStripMenuItem});
+            this.mayorPorCuentasToolStripMenuItem,
+            this.toolStripSeparator15,
+            this.reporteAnalíticoToolStripMenuItem});
             this.reportesContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportesContablesToolStripMenuItem.Image")));
             this.reportesContablesToolStripMenuItem.Name = "reportesContablesToolStripMenuItem";
             this.reportesContablesToolStripMenuItem.ShowShortcutKeys = false;
@@ -1096,6 +1103,18 @@
             this.mayorPorCuentasToolStripMenuItem.Text = "Mayor por Cuentas";
             this.mayorPorCuentasToolStripMenuItem.Click += new System.EventHandler(this.mayorPorCuentasToolStripMenuItem_Click);
             // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            this.toolStripSeparator15.Size = new System.Drawing.Size(259, 6);
+            // 
+            // reporteAnalíticoToolStripMenuItem
+            // 
+            this.reporteAnalíticoToolStripMenuItem.Name = "reporteAnalíticoToolStripMenuItem";
+            this.reporteAnalíticoToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.reporteAnalíticoToolStripMenuItem.Text = "Reporte Analítico";
+            this.reporteAnalíticoToolStripMenuItem.Click += new System.EventHandler(this.reporteAnalíticoToolStripMenuItem_Click);
+            // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
@@ -1106,7 +1125,7 @@
             this.periodosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("periodosToolStripMenuItem.Image")));
             this.periodosToolStripMenuItem.Name = "periodosToolStripMenuItem";
             this.periodosToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.periodosToolStripMenuItem.Tag = "207";
+            this.periodosToolStripMenuItem.Tag = "2078";
             this.periodosToolStripMenuItem.Text = "Periodos";
             this.periodosToolStripMenuItem.Click += new System.EventHandler(this.periodosToolStripMenuItem_Click);
             // 
@@ -1149,6 +1168,7 @@
             this.planillaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.planillaToolStripMenuItem.Tag = "1";
             this.planillaToolStripMenuItem.Text = "&Planilla";
+            this.planillaToolStripMenuItem.Click += new System.EventHandler(this.planillaToolStripMenuItem_Click);
             // 
             // solicitudEmpleadoToolStripMenuItem
             // 
@@ -1379,6 +1399,7 @@
             this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.seguridadToolStripMenuItem.Tag = "6";
             this.seguridadToolStripMenuItem.Text = "&Seguridad";
+            this.seguridadToolStripMenuItem.Click += new System.EventHandler(this.seguridadToolStripMenuItem_Click);
             // 
             // cambioDeClaveToolStripMenuItem
             // 
@@ -1435,6 +1456,7 @@
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.mantenimientoToolStripMenuItem.Tag = "7";
             this.mantenimientoToolStripMenuItem.Text = "&Mantenimiento";
+            this.mantenimientoToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoToolStripMenuItem_Click);
             // 
             // generalesToolStripMenuItem
             // 
@@ -2284,7 +2306,7 @@
             this.panelOre1.Location = new System.Drawing.Point(0, 24);
             this.panelOre1.Movible = false;
             this.panelOre1.Name = "panelOre1";
-            this.panelOre1.Size = new System.Drawing.Size(1261, 40);
+            this.panelOre1.Size = new System.Drawing.Size(1261, 30);
             this.panelOre1.TabIndex = 56;
             // 
             // lblpuntero
@@ -2292,7 +2314,7 @@
             this.lblpuntero.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblpuntero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblpuntero.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.lblpuntero.Location = new System.Drawing.Point(621, 26);
+            this.lblpuntero.Location = new System.Drawing.Point(621, 16);
             this.lblpuntero.Name = "lblpuntero";
             this.lblpuntero.Size = new System.Drawing.Size(16, 12);
             this.lblpuntero.TabIndex = 22;
@@ -2307,12 +2329,12 @@
             this.lblwelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblwelcome.ContextMenuStrip = this.cmenuclick;
             this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblwelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblwelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblwelcome.ImageIndex = 0;
             this.lblwelcome.Location = new System.Drawing.Point(0, 0);
             this.lblwelcome.Name = "lblwelcome";
             this.lblwelcome.Padding = new System.Windows.Forms.Padding(0, 0, 150, 0);
-            this.lblwelcome.Size = new System.Drawing.Size(1261, 40);
+            this.lblwelcome.Size = new System.Drawing.Size(1261, 30);
             this.lblwelcome.TabIndex = 20;
             this.lblwelcome.Text = "Bienvenidos";
             this.lblwelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2604,5 +2626,7 @@
         private System.Windows.Forms.ToolStripMenuItem registroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aplicaciónToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem prestamoInterEmpresasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripMenuItem reporteAnalíticoToolStripMenuItem;
     }
 }

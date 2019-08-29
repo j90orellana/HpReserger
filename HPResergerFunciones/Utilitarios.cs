@@ -142,7 +142,7 @@ namespace HPResergerFunciones
         {
             int a;
             string matriz = "1234567890" + (char)8;
-            string resul = "";
+            string resul = "0";
             foreach (char item in cadena)
                 if (matriz.Contains(item))
                     resul += item;

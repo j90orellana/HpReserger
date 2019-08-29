@@ -504,7 +504,7 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 ///
-                string IdBanco = cbobanco.SelectedValue.ToString();
+                string IdBanco = (cbobanco.SelectedValue ?? "").ToString();
                 string nroKuenta = "";
                 if (cbocuentabanco.SelectedValue != null)
                     nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
