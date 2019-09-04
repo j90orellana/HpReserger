@@ -1323,11 +1323,21 @@ namespace HPResergerCapaDatos
             object[] valores = { buscar, opcion, Naturaleza };
             return bd.DataTableFromProcedure("usp_buscar_cuenta", parametros, valores, null);
         }
+        public DataTable BuscarcuentasInterEmpresas()
+        {
+            return bd.DataTableFromProcedure("usp_ListarCuentasInterEmpresas", null, null, null);
+        }
         public DataTable VerificarProveedores(string codigo, string razon)
         {
             string[] parametros = { "@codigo", "@razon" };
             object[] valor = { codigo, razon };
             return bd.DataTableFromProcedure("usp_verificar_proveedor", parametros, valor, null);
+        }
+        public DataTable SiguienteIdPrestamoInterEmpresa(int fkEmpresa)
+        {
+            string[] parametros = { "@empresa" };
+            object[] valor = {  fkEmpresa };
+            return bd.DataTableFromProcedure("usp_SiguienteIdPrestamoInterEmpresa", parametros, valor, null);
         }
         public DataTable VerificarCuentas(string codigo, string nombre)
         {
@@ -1337,7 +1347,7 @@ namespace HPResergerCapaDatos
         }
         public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
        string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-       string traslacion, string bc, int soli, int cabecera, int estado)
+       string traslacion, string bc, int soli, int cabecera, int estado, int @interempresa)
         {
             using (SqlConnection cn = new SqlConnection("data source =" + DATASOURCE + "; initial catalog = " + BASEDEDATOS + "; user id = " + USERID + "; password = " + USERPASS + ""))
             {
@@ -1371,6 +1381,7 @@ namespace HPResergerCapaDatos
                     cmd.Parameters.Add("@soli", SqlDbType.Int).Value = soli;
                     cmd.Parameters.Add("@Cabecera", SqlDbType.Int).Value = cabecera;
                     cmd.Parameters.Add("@Estado", SqlDbType.Int).Value = estado;
+                    cmd.Parameters.Add("@interempresa", SqlDbType.Int).Value = @interempresa;
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
@@ -1379,10 +1390,10 @@ namespace HPResergerCapaDatos
         }
         public void ActualizarCuentasContables(string oldcodcuenta, string codcuenta, string cuentan1, string DesCuentea, string TipoCuenta, string generica, string grupo,
             string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-            string traslacion, string bc, string naturaleza, int soli, int cabecera, int estado)
+            string traslacion, string bc, string naturaleza, int soli, int cabecera, int estado, int @interempresa)
         {
-            string[] parametros = { "@oldcodcuenta", "@codcuenta", "@cuentan1", "@DesCuentea", "@TipoCuenta", "@generica", "@grupo", "@refleja", "@reflejacc", "@reflejadebe", "@reflejahaber", "@cuentacierre", "@analitica", "@mensual", "@cierre", "@traslacion", "@bc", "@naturaleza", "@soli", "@cabecera", "@Estado" };
-            object[] valores = { oldcodcuenta, codcuenta, cuentan1, DesCuentea, TipoCuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber, cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli, cabecera, estado };
+            string[] parametros = { "@oldcodcuenta", "@codcuenta", "@cuentan1", "@DesCuentea", "@TipoCuenta", "@generica", "@grupo", "@refleja", "@reflejacc", "@reflejadebe", "@reflejahaber", "@cuentacierre", "@analitica", "@mensual", "@cierre", "@traslacion", "@bc", "@naturaleza", "@soli", "@cabecera", "@Estado", "@interempresa" };
+            object[] valores = { oldcodcuenta, codcuenta, cuentan1, DesCuentea, TipoCuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber, cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli, cabecera, estado, @interempresa };
             bd.DataTableFromProcedure("usp_actualizar_cuentas_contables", parametros, valores, null);
         }
         public DataRow CuentaContable_EnUso(int opcion, string cuenta)
@@ -2195,6 +2206,10 @@ namespace HPResergerCapaDatos
         public DataTable ConsultaRCumples()
         {
             return bd.DataTableFromProcedure("uspConsultarCumpleanos", null, null, null);
+        }
+        public DataTable ListadodeEmpresas()
+        {
+            return bd.DataTableFromProcedure("usp_ListadodeEmpresas", null, null, null);
         }
         public DataTable ListarOS(int Usuario)
         {

@@ -104,9 +104,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtbusca;
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Button btnlimpiar;
+        public System.Windows.Forms.TextBox txtbusca;
     }
 }

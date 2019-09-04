@@ -183,6 +183,7 @@ namespace HPReserger
             // 
             // txtbusGlosa
             // 
+            this.txtbusGlosa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtbusGlosa.BackColor = System.Drawing.Color.White;
             this.txtbusGlosa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtbusGlosa.ColorFondoMouseEncima = System.Drawing.Color.Empty;
@@ -623,6 +624,7 @@ namespace HPReserger
             // 
             // radioButton2
             // 
+            this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radioButton2.AutoSize = true;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioButton2.Location = new System.Drawing.Point(78, 399);
@@ -635,6 +637,7 @@ namespace HPReserger
             // 
             // fechafin
             // 
+            this.fechafin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.fechafin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechafin.Location = new System.Drawing.Point(310, 397);
             this.fechafin.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
@@ -647,6 +650,7 @@ namespace HPReserger
             // 
             // fechaini
             // 
+            this.fechaini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.fechaini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechaini.Location = new System.Drawing.Point(202, 397);
             this.fechaini.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
@@ -659,6 +663,7 @@ namespace HPReserger
             // 
             // radioButton1
             // 
+            this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -673,6 +678,7 @@ namespace HPReserger
             // 
             // chkfecha
             // 
+            this.chkfecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkfecha.AutoSize = true;
             this.chkfecha.Location = new System.Drawing.Point(146, 400);
             this.chkfecha.Name = "chkfecha";
@@ -1358,6 +1364,7 @@ namespace HPReserger
             // 
             // chkPulser
             // 
+            this.chkPulser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkPulser.AutoSize = true;
             this.chkPulser.BackColor = System.Drawing.Color.Transparent;
             this.chkPulser.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1373,6 +1380,7 @@ namespace HPReserger
             // 
             // txtbusSuboperacion
             // 
+            this.txtbusSuboperacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtbusSuboperacion.BackColor = System.Drawing.Color.White;
             this.txtbusSuboperacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtbusSuboperacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
@@ -1396,6 +1404,7 @@ namespace HPReserger
             // 
             // txtbuscuo
             // 
+            this.txtbuscuo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtbuscuo.BackColor = System.Drawing.Color.White;
             this.txtbuscuo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtbuscuo.ColorFondoMouseEncima = System.Drawing.Color.Empty;
@@ -1419,6 +1428,7 @@ namespace HPReserger
             // 
             // dtpfechafin
             // 
+            this.dtpfechafin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpfechafin.CalendarForeColor = System.Drawing.Color.Fuchsia;
             this.dtpfechafin.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.dtpfechafin.CalendarTitleBackColor = System.Drawing.Color.Blue;
@@ -1434,6 +1444,7 @@ namespace HPReserger
             // 
             // dtpfechaini
             // 
+            this.dtpfechaini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpfechaini.CalendarForeColor = System.Drawing.Color.Fuchsia;
             this.dtpfechaini.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.dtpfechaini.CalendarTitleBackColor = System.Drawing.Color.Blue;
@@ -1491,6 +1502,7 @@ namespace HPReserger
             // 
             // txtbuscuenta
             // 
+            this.txtbuscuenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtbuscuenta.BackColor = System.Drawing.Color.White;
             this.txtbuscuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtbuscuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;

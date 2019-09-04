@@ -92,6 +92,7 @@ namespace HPReserger
             this.btnExportarPlan = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnExportarPLan2Col = new System.Windows.Forms.Button();
+            this.chkInterEmpresa = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
@@ -382,7 +383,7 @@ namespace HPReserger
             this.cboajustetraslacion.FormattingEnabled = true;
             this.cboajustetraslacion.Location = new System.Drawing.Point(125, 220);
             this.cboajustetraslacion.Name = "cboajustetraslacion";
-            this.cboajustetraslacion.Size = new System.Drawing.Size(208, 21);
+            this.cboajustetraslacion.Size = new System.Drawing.Size(122, 21);
             this.cboajustetraslacion.TabIndex = 27;
             // 
             // label17
@@ -401,7 +402,7 @@ namespace HPReserger
             this.cbocuentabc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
             this.cbocuentabc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocuentabc.FormattingEnabled = true;
-            this.cbocuentabc.Location = new System.Drawing.Point(470, 220);
+            this.cbocuentabc.Location = new System.Drawing.Point(369, 220);
             this.cbocuentabc.Name = "cbocuentabc";
             this.cbocuentabc.Size = new System.Drawing.Size(77, 21);
             this.cbocuentabc.TabIndex = 28;
@@ -411,7 +412,7 @@ namespace HPReserger
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(348, 224);
+            this.label16.Location = new System.Drawing.Point(247, 224);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(122, 13);
             this.label16.TabIndex = 100;
@@ -830,6 +831,19 @@ namespace HPReserger
             this.btnExportarPLan2Col.UseVisualStyleBackColor = true;
             this.btnExportarPLan2Col.Click += new System.EventHandler(this.btnExportarPLan2Col_Click);
             // 
+            // chkInterEmpresa
+            // 
+            this.chkInterEmpresa.AutoSize = true;
+            this.chkInterEmpresa.BackColor = System.Drawing.Color.Transparent;
+            this.chkInterEmpresa.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkInterEmpresa.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkInterEmpresa.Location = new System.Drawing.Point(460, 222);
+            this.chkInterEmpresa.Name = "chkInterEmpresa";
+            this.chkInterEmpresa.Size = new System.Drawing.Size(93, 17);
+            this.chkInterEmpresa.TabIndex = 20;
+            this.chkInterEmpresa.Text = "InterEmpresa";
+            this.chkInterEmpresa.UseVisualStyleBackColor = true;
+            // 
             // frmcuentacontable
             // 
             this.AllowDrop = true;
@@ -840,6 +854,7 @@ namespace HPReserger
             this.Controls.Add(this.txtcuentan1);
             this.Controls.Add(this.txtcodcuenta);
             this.Controls.Add(this.txtnombrecuenta);
+            this.Controls.Add(this.chkInterEmpresa);
             this.Controls.Add(this.chkcabecera);
             this.Controls.Add(this.Txtbusca);
             this.Controls.Add(this.cbosolicitar);
@@ -960,5 +975,6 @@ namespace HPReserger
         private System.Windows.Forms.Button btnExportarPlan;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnExportarPLan2Col;
+        private System.Windows.Forms.CheckBox chkInterEmpresa;
     }
 }

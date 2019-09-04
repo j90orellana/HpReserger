@@ -818,7 +818,7 @@ namespace HPReserger
                     //dtfechavalor.Value = Convert.ToDateTime(dtgbusca[8, e.RowIndex].Value.ToString() == "" ? fecha.Value : dtgbusca[8, e.RowIndex].Value);
 
                     dinamica = int.Parse(dtgbusca[Iddinamica.Name, e.RowIndex].Value.ToString());
-                    if (dinamica >= 0) _EsModificable = true;
+                    if (dinamica >= 0 || dinamica == -21) _EsModificable = true;
                     cboestado.Text = dtgbusca[nameestado.Name, e.RowIndex].Value.ToString();
                     txtdinamica.Text = "DC_00" + dinamica;
                     ////selecciono la empresa

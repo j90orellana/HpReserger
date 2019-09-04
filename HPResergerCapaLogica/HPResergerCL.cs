@@ -382,6 +382,10 @@ namespace HPResergerCapaLogica
             //// Cuenta_Contable Cuenta_Contable_Naturaleza SolicitaDetalle
             return cdOrdenPedido.BuscarCuenta(buscar, opcion, naturaleza);
         }
+        public DataTable BuscarcuentasInterEmpresas()
+        {
+            return cdOrdenPedido.BuscarcuentasInterEmpresas();
+        }
         public DataTable ListarDinamicas(string busca, int opcion)
         {
             return cdOrdenPedido.ListarDinamicaContable(busca, opcion);
@@ -493,23 +497,27 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.VerificarProveedores(codigo, razon);
         }
+        public DataTable SiguienteIdPrestamoInterEmpresa(int fkEmpresa)
+        {
+            return cdOrdenPedido.SiguienteIdPrestamoInterEmpresa(fkEmpresa);
+        }
         public DataTable VerificarCuentas(string codigo, string nombre)
         {
             return cdOrdenPedido.VerificarCuentas(codigo, nombre);
         }
         public void InsertarCuentasContables(string cuentan1, string codcuenta, string nombre, string tipo, string natu, string generica, string grupo,
            string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-           string traslacion, string bc, int soli, int cabecera, int estado)
+           string traslacion, string bc, int soli, int cabecera, int estado, int @interempresa)
         {
             cdOrdenPedido.InsertarCuentasContables(cuentan1, codcuenta, nombre, tipo, natu, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
-                cuentacierre, analitica, mensual, cierre, traslacion, bc, soli, cabecera, estado);
+                cuentacierre, analitica, mensual, cierre, traslacion, bc, soli, cabecera, estado, @interempresa);
         }
         public void ActualizarCuentasContables(string oldCodCuenta, string codcuenta, string cuentan1, string DesCuentea, string TipoCuenta, string generica, string grupo,
           string refleja, string reflejacc, string reflejadebe, string reflejahaber, string cuentacierre, string analitica, string mensual, string cierre,
-          string traslacion, string bc, string naturaleza, int soli, int cabecera, int estado)
+          string traslacion, string bc, string naturaleza, int soli, int cabecera, int estado, int @interempresa)
         {
             cdOrdenPedido.ActualizarCuentasContables(oldCodCuenta, codcuenta, cuentan1, DesCuentea, TipoCuenta, generica, grupo, refleja, reflejacc, reflejadebe, reflejahaber,
-                cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli, cabecera, estado);
+                cuentacierre, analitica, mensual, cierre, traslacion, bc, naturaleza, soli, cabecera, estado, @interempresa);
         }
         public DataRow CuentaContable_EnUso(int opcion, string cuenta)
         {
@@ -1800,7 +1808,7 @@ namespace HPResergerCapaLogica
         }
         public DataTable Empresa()
         {
-            return cdOrdenPedido.getCargoTipoContratacion("id_empresa", "empresa", "TBL_Empresa");
+            return cdOrdenPedido.ListadodeEmpresas();
         }
         public DataTable BuscarEmpleadoActivo()
         {
@@ -2558,9 +2566,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.PrestamosInterEmpresa(@opcion, @empresaori, @proyectoori, @etapaori, @bancoori, @ctaori, @cuoori, @ctaContableori, @empresades, @proyectodes, @etapades, @bancodes, @ctades, @cuodes
                 , @ctacontabledes, @idmoneda, @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado);
         }
-        public DataTable PrestamosInterEmpresa(int @opcion, string empresaorigen, string empresadestino, string moneda, DateTime fec1, DateTime fec2)
+        public DataTable PrestamosInterEmpresa(int @opcion, string empresaorigen, string empresadestino, string moneda, DateTime fec1, DateTime fec2, int Estado)
         {
-            return cdOrdenPedido.PrestamosInterEmpresa(@opcion, 0, 0, 0, 0, 0, empresaorigen, empresadestino, 0, 0, 0, 0, 0, "", "", 0, 0, fec1, fec2, 0, moneda, 0);
+            return cdOrdenPedido.PrestamosInterEmpresa(@opcion, 0, 0, 0, 0, 0, empresaorigen, empresadestino, 0, 0, 0, 0, 0, "", "", 0, 0, fec1, fec2, 0, moneda, Estado);
         }
     }
 }

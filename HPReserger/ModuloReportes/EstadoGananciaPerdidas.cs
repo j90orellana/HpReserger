@@ -68,7 +68,7 @@ namespace HPReserger
         DataTable Reportes;
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-
+            Cursor = Cursors.WaitCursor;
             DataTable Datitos = CapaLogica.Periodos(5, (int)cboempresas.SelectedValue, comboMesAño.GetFecha());
             if (Datitos.Rows.Count == 0)
             {
@@ -96,6 +96,7 @@ namespace HPReserger
                 PintarNegroTotales(dtgconten);
             }
             else { msg("no Hay Empresas"); }
+            Cursor = Cursors.Default;
         }
         public void msg(string cadena)
         {

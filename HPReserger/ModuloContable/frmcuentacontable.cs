@@ -142,7 +142,7 @@ namespace HPReserger
         }
         public void ModoEdicion(Boolean a)
         {
-            cbotipo.Enabled = cbonaturaleza.Enabled
+            cbotipo.Enabled = cbonaturaleza.Enabled = chkInterEmpresa.Enabled
                = cbogenerica.Enabled = cbogrupo.Enabled = cboreflejacc.Enabled = cborefleja.Enabled = cbosolicitar.Enabled = chkcabecera.Enabled = cbocuentabc.Enabled =
           cboestado.Enabled = cboreflejadebe.Enabled = cboreflejahaber.Enabled = cboanalitica.Enabled = cboajustemensual.Enabled = cboajustetraslacion.Enabled = cbocierre.Enabled = a;
             txtcuentacierre.ReadOnly = txtcuentan1.ReadOnly = txtnombrecuenta.ReadOnly = txtcodcuenta.ReadOnly = !a;
@@ -177,7 +177,7 @@ namespace HPReserger
         }
         public void Txtbusca_TextChanged(object sender, EventArgs e)
         {
-            //if (Txtbusca.EstaLLeno())
+            if (Configuraciones.ValidarSQLInyect(Txtbusca.txtbusca)) { msg("Codigo Malicioso Detectado"); return; }
             dtgconten.DataSource = CapaLogica.ListarCuentasContables(Txtbusca.TextoValido(), tipobusca);
             msg(dtgconten);
         }
@@ -244,6 +244,7 @@ namespace HPReserger
                 cbocuentabc.SelectedValue = dtgconten[16, y].Value.ToString();
                 cbosolicitar.SelectedValue = dtgconten[17, y].Value.ToString();
                 chkcabecera.Checked = dtgconten["CtaDetalle", y].Value.ToString() == "1" ? false : true;
+                chkInterEmpresa.Checked = dtgconten["interempresa", y].Value.ToString() == "0" ? false : true;
             }
         }
         public void Activar()
@@ -440,7 +441,7 @@ namespace HPReserger
                 //usp_insertar_cuentas_contables
                 CapaLogica.InsertarCuentasContables(CuentaN1, CodCuenta, DesCuentea, TipoCuenta, NatuCuenta, CuentaGene, GrupoCuenta,
                 Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1
-                , (int)cboestado.SelectedValue);
+                , (int)cboestado.SelectedValue, chkInterEmpresa.Checked ? 1 : 0);
                 ActualizarReflejo();
                 PresentarValor(codigo.ToString());
             }
@@ -454,7 +455,7 @@ namespace HPReserger
                     MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //usp_actualizar_cuentas_contables
                     CapaLogica.ActualizarCuentasContables(OldCodCuenta, CodCuenta, CuentaN1, DesCuentea, TipoCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
-                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, NatuCuenta, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1, (int)cboestado.SelectedValue);
+                        Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, NatuCuenta, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1, (int)cboestado.SelectedValue, chkInterEmpresa.Checked ? 1 : 0);
                     ActualizarReflejo();
                     PresentarValor(codigo.ToString());
                 }

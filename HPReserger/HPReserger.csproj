@@ -271,10 +271,10 @@
     <Compile Include="frmRegistroCompras.Designer.cs">
       <DependentUpon>frmRegistroCompras.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModuloContable\EstadoGananciaPerdidas.cs">
+    <Compile Include="ModuloReportes\EstadoGananciaPerdidas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModuloContable\EstadoGananciaPerdidas.Designer.cs">
+    <Compile Include="ModuloReportes\EstadoGananciaPerdidas.Designer.cs">
       <DependentUpon>EstadoGananciaPerdidas.cs</DependentUpon>
     </Compile>
     <Compile Include="fmReporteRemuneracionRenta.cs">
@@ -1039,10 +1039,10 @@
     <Compile Include="frmReporteEstadoPerdidas.Designer.cs">
       <DependentUpon>frmReporteEstadoPerdidas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReporteGeneral.cs">
+    <Compile Include="ModuloReportes\frmReporteGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReporteGeneral.Designer.cs">
+    <Compile Include="ModuloReportes\frmReporteGeneral.Designer.cs">
       <DependentUpon>frmReporteGeneral.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReporteGratificacion.cs">
@@ -1650,7 +1650,7 @@
     <EmbeddedResource Include="frmRegistroCompras.resx">
       <DependentUpon>frmRegistroCompras.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModuloContable\EstadoGananciaPerdidas.resx">
+    <EmbeddedResource Include="ModuloReportes\EstadoGananciaPerdidas.resx">
       <DependentUpon>EstadoGananciaPerdidas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmReporteRemuneracionRenta.resx">
@@ -2039,7 +2039,7 @@
     <EmbeddedResource Include="frmReporteEstadoPerdidas.resx">
       <DependentUpon>frmReporteEstadoPerdidas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReporteGeneral.resx">
+    <EmbeddedResource Include="ModuloReportes\frmReporteGeneral.resx">
       <DependentUpon>frmReporteGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteGratificacion.resx">

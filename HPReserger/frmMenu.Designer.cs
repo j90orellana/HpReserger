@@ -502,7 +502,6 @@
             this.prestamoInterEmpresasToolStripMenuItem.Name = "prestamoInterEmpresasToolStripMenuItem";
             this.prestamoInterEmpresasToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.prestamoInterEmpresasToolStripMenuItem.Text = "Prestamo InterEmpresas";
-            this.prestamoInterEmpresasToolStripMenuItem.Visible = false;
             this.prestamoInterEmpresasToolStripMenuItem.Click += new System.EventHandler(this.prestamoInterEmpresasToolStripMenuItem_Click);
             // 
             // proyectosToolStripMenuItem1

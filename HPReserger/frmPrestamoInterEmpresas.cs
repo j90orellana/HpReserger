@@ -20,13 +20,29 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public void CargarEmpresaOri() { CapaLogica.TablaEmpresa(cboOriEmpresa); }
         public void CargarEmpresaDes() { CapaLogica.TablaEmpresa(cboDesEmpresa); }
+        public void CargarCuentaOrigen()
+        {
+            DataTable Tablita = CapaLogica.BuscarcuentasInterEmpresas();
+            cboOriCuentaContable.DisplayMember = "descripcion";
+            cboOriCuentaContable.ValueMember = "codigo";
+            cboOriCuentaContable.DataSource = Tablita;
+            //por defecto la 17
+        }
+        public void CargarCuentaDestino()
+        {
+            DataTable Tablita = CapaLogica.BuscarcuentasInterEmpresas();
+            cboDesCuentaContable.DisplayMember = "descripcion";
+            cboDesCuentaContable.ValueMember = "codigo";
+            cboDesCuentaContable.DataSource = Tablita;
+            //por defecto la 47
+        }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         private void frmPrestamoInterEmpresas_Load(object sender, EventArgs e)
         {
             //Carga Datos Principales
             txtGlosa.CargarTextoporDefecto(); txtMontoPrestamo.CargarTextoporDefecto(); txtTipoCambio.CargarTextoporDefecto();
-            txtOriCuentaContable.Text = txtDesCuentaContable.Text = "101";
-            txtOriCuentaContable.CargarTextoporDefecto(); txtDesCuentaContable.CargarTextoporDefecto();
+            //txtOriCuentaContable.Text = txtDesCuentaContable.Text = "101";
+            //txtOriCuentaContable.CargarTextoporDefecto(); txtDesCuentaContable.CargarTextoporDefecto();
             //
             txtbusMoneda.CargarTextoporDefecto(); txtbusempresaorigen.CargarTextoporDefecto(); txtbusempresadestino.CargarTextoporDefecto();
             dtpFechaContable.Value = dtpFechaPrestamo.Value = DateTime.Now;
@@ -34,12 +50,30 @@ namespace HPReserger
             //Empresas
             CargarEmpresaOri();
             CargarEmpresaDes();
+            //Cuentas Contables 
+            CargarCuentaDestino();
+            CargarCuentaOrigen();
             //Bancos
             cboOriBanco_Click(sender, e);
             cboDesBanco_Click(sender, e);
             //Periodo Anual para la Busqueda
             dtpfechabus1.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtpfechabus2.Value = new DateTime(DateTime.Now.Year, 12, 31);
+            ModoEdicion(false);
+        }
+        public void ModoEdicion(Boolean a)
+        {
+            //Combos
+            cboOriBanco.Enabled = cboOriCuentaBanco.Enabled = cboOriCuentaContable.Enabled = cboOriEmpresa.Enabled = cboOriProyecto.Enabled = cboOriEtapa.Enabled =
+            cboDesBanco.Enabled = cboDesCuentaBanco.Enabled = cboDesCuentaContable.Enabled = cboDesEmpresa.Enabled = cboDesEtapa.Enabled = cboDesProyecto.Enabled = cbomoneda.Enabled = a;
+            //textbox
+            txtMontoPrestamo.Enabled = txtTipoCambio.Enabled = txtGlosa.Enabled = dtpFechaPrestamo.Enabled = dtpFechaContable.Enabled = a;
+            //Textbox Busquedas
+            chkbusEstados.Enabled = txtbusempresadestino.Enabled = txtbusempresaorigen.Enabled = txtbusMoneda.Enabled = dtpfechabus1.Enabled = dtpfechabus2.Enabled = !a;
+            //datagrid
+            dtgconten.Enabled = !a;
+            //Botones
+            btnCambiar.Enabled = btnActualizar.Enabled = btncleanfind.Enabled = !a;
         }
         public void CargaDatos()
         {
@@ -51,12 +85,38 @@ namespace HPReserger
                 fecha1 = fecha2;
                 fecha2 = fechaaux;
             }
-            dtgconten.DataSource = CapaLogica.PrestamosInterEmpresa(0, txtbusempresaorigen.TextValido(), txtbusempresadestino.TextValido(), txtbusMoneda.TextValido(), fecha1, fecha2);
+            dtgconten.DataSource = CapaLogica.PrestamosInterEmpresa(0, txtbusempresaorigen.TextValido(), txtbusempresadestino.TextValido(), txtbusMoneda.TextValido(), fecha1, fecha2, chkbusEstados.CheckState == CheckState.Checked ? 1 : chkbusEstados.CheckState == CheckState.Unchecked ? 0 : -1);
             lblmensaje.Text = $"Total de Registros {dtgconten.RowCount}";
+            //Sacamos Los Totales;
+            Totales();
+        }
+        public void Totales()
+        {
+            decimal SumatoriaMN = 0, SumatoriaME = 0;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                if ((int)item.Cells[xEstado.Name].Value == 1)
+                    if (item.Cells[xmon.Name].Value.ToString() == "SOL")
+                        SumatoriaMN += (decimal)item.Cells[ximporte.Name].Value;
+                    else
+                        SumatoriaME += (decimal)item.Cells[ximporte.Name].Value;
+            }
+            txtMN.Text = SumatoriaMN.ToString("n2");
+            txtME.Text = SumatoriaME.ToString("n2");
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (Estado == 0)
+            {
+                this.Close();
+            }
+            else
+            {
+                Estado = 0;
+                ModoEdicion(false);
+                btnaceptar.Enabled = false;
+                btnNuevo.Enabled = true;
+            }
         }
         private void msg(string v)
         {
@@ -301,8 +361,8 @@ namespace HPReserger
             if (cboDesBanco.SelectedValue == null) { cboDesBanco.Focus(); msg("Seleccione Banco Destino"); return; }
             if (cboOriCuentaBanco.SelectedValue == null) { cboOriCuentaBanco.Focus(); msg("Seleccione Cuenta Banco Origen"); return; }
             if (cboDesCuentaBanco.SelectedValue == null) { cboDesCuentaBanco.Focus(); msg("Seleccione Cuenta Banco Destino"); return; }
-            if (!txtOriNombreCuenta.EstaLLeno()) { txtOriCuentaContable.Focus(); msg("Ingrese Cuenta Contable del Origen"); return; }
-            if (!txtDesNombreCuenta.EstaLLeno()) { txtDesCuentaContable.Focus(); msg("Ingrese Cuenta Contable del Destino"); return; }
+            if (cboDesCuentaContable.SelectedValue == null) { cboDesCuentaContable.Focus(); msg("Seleccione Cuenta Contable Destino"); return; }
+            if (cboOriCuentaContable.SelectedValue == null) { cboOriCuentaContable.Focus(); msg("Ingrese Cuenta Contable del Origen"); return; }
             ///Validaciones de Combos Separados
             if (cbomoneda.SelectedValue == null) { cbomoneda.Focus(); msg("Seleccione Moneda"); return; }
             //Programacion de la Logica          
@@ -319,33 +379,39 @@ namespace HPReserger
                 ///Asiento Empresa Origen y Destino
                 ///Asientos Cabeceras
                 ///Empresa Origen
-                CapaLogica.InsertarAsientoFacturaCabecera(1, 1, IdAsientoOri, FechaContable, txtOriCuentaContable.Text, MontoPrestado, 0, ValorTC, IdProyectoOri, IdEtapaOri, CuoOri, IdMoneda, Glosa
+                CapaLogica.InsertarAsientoFacturaCabecera(1, 1, IdAsientoOri, FechaContable, cboOriCuentaContable.SelectedValue.ToString(), MontoPrestado, 0, ValorTC, IdProyectoOri, IdEtapaOri, CuoOri, IdMoneda, Glosa
                     , FechaPrestamo, -21);
                 CapaLogica.InsertarAsientoFacturaCabecera(1, 2, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), 0, MontoPrestado, ValorTC, IdProyectoOri, IdEtapaOri, CuoOri
                     , IdMoneda, Glosa, FechaPrestamo, -21);
                 ///Empresa Destino
                 CapaLogica.InsertarAsientoFacturaCabecera(1, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), MontoPrestado, 0, ValorTC, IdProyectoDes, IdEtapaDes, CuoDes
                     , IdMoneda, Glosa, FechaPrestamo, -21);
-                CapaLogica.InsertarAsientoFacturaCabecera(1, 2, IdAsientoDes, FechaContable, txtDesCuentaContable.Text, 0, MontoPrestado, ValorTC, IdProyectoDes, IdEtapaDes, CuoDes, IdMoneda, Glosa
+                CapaLogica.InsertarAsientoFacturaCabecera(1, 2, IdAsientoDes, FechaContable, cboDesCuentaContable.SelectedValue.ToString(), 0, MontoPrestado, ValorTC, IdProyectoDes, IdEtapaDes, CuoDes, IdMoneda, Glosa
                     , FechaPrestamo, -21);
                 ///Fin de las Cabeceras
                 ///Detalle de los Asientos
                 string NroKuentaOri = HPResergerFunciones.Utilitarios.ExtraerCuenta(cboOriCuentaBanco.Text);
                 string NroKuentaDes = HPResergerFunciones.Utilitarios.ExtraerCuenta(cboDesCuentaBanco.Text);
+                // Siguiente idpk
+                int SiguientePkId = (int)CapaLogica.SiguienteIdPrestamoInterEmpresa(IdEmpresaOri).Rows[0]["SiguientePkid"];
+                string NumComprobante = "Pr." + SiguientePkId + "-" + FechaPrestamo.ToShortDateString();
+                //Sacamos el Ruc de la Empresa Origen y DEstino
+                string RucOrigen = ((DataRowView)cboOriEmpresa.SelectedItem)["ruc"].ToString();
+                string RucDestrino = ((DataRowView)cboDesEmpresa.SelectedItem)["ruc"].ToString();
                 ///Detalle en la Empresa Origen
-                CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoOri, FechaContable, txtOriCuentaContable.Text, IdProyectoOri, 0, "0"
-                   , "", 0, "0", "0", 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
-                   IdMoneda, " ", "", Glosa, FechaContable, IdUsuario, " ");
-                CapaLogica.InsertarAsientoFacturaDetalle(10, 2, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), IdProyectoOri, 0, "0"
-                   , "", 0, "0", "0", 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
-                   IdMoneda, NroKuentaOri, "", Glosa, FechaContable, IdUsuario, " ");
+                CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoOri, FechaContable, cboOriCuentaContable.SelectedValue.ToString(), IdProyectoOri, 5, RucDestrino
+                   , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
+                   IdMoneda, " ", NumComprobante, Glosa, FechaContable, IdUsuario, " ");
+                CapaLogica.InsertarAsientoFacturaDetalle(10, 2, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), IdProyectoOri, 5, RucDestrino
+                   , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
+                   IdMoneda, NroKuentaOri, NumComprobante, Glosa, FechaContable, IdUsuario, " ");
                 ///Detalle en la Empresa Destino
-                CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), IdProyectoDes, 0, "0"
-                   , "", 0, "0", "0", 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
-                   IdMoneda, NroKuentaDes, "", Glosa, FechaContable, IdUsuario, " ");
-                CapaLogica.InsertarAsientoFacturaDetalle(10, 2, IdAsientoDes, FechaContable, txtDesCuentaContable.Text, IdProyectoDes, 0, "0"
-                   , "", 0, "0", "0", 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
-                   IdMoneda, " ", "", Glosa, FechaContable, IdUsuario, " ");
+                CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
+                   , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
+                   IdMoneda, NroKuentaDes, NumComprobante, Glosa, FechaContable, IdUsuario, " ");
+                CapaLogica.InsertarAsientoFacturaDetalle(10, 2, IdAsientoDes, FechaContable, cboDesCuentaContable.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
+                   , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoPrestado : MontoPrestado * ValorTC, IdMoneda == 2 ? MontoPrestado : MontoPrestado / ValorTC, ValorTC,
+                   IdMoneda, " ", NumComprobante, Glosa, FechaContable, IdUsuario, " ");
                 ///Fin detalle de los asientos
                 ///Proceso de Cuadre de Asientos
                 CapaLogica.CuadrarAsiento(CuoOri, IdProyectoOri, FechaContable, 2);
@@ -353,30 +419,27 @@ namespace HPReserger
                 ///Inserto el Registro del Prestamo InterEmpresa
                 ///En Banco Enviamos el ID de la Cta para en el asientoo Buscar el Banco
                 CapaLogica.PrestamosInterEmpresa(1, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
-                    , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], CuoOri, txtOriCuentaContable.Text, IdEmpresaDes, IdProyectoDes
+                    , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], CuoOri, cboOriCuentaContable.SelectedValue.ToString(), IdEmpresaDes, IdProyectoDes
                     , IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
-                    , CuoDes, txtDesCuentaContable.Text, IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1);
+                    , CuoDes, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1);
                 ///Proceso Finalizado;
                 msg($"Se Grabó Exitosamente\nEn la Empresa Origen cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");
                 CargaDatos();
+                ///****************///
+                ModoEdicion(false);
+                btnaceptar.Enabled = false;
+                btnNuevo.Enabled = true;
+                Estado = 0;
             }
             else { msg("Cancelado por el Usuario"); }
         }
         private void txtOriCuentaContable_TextChanged(object sender, EventArgs e)
         {
-            DataTable Table = CapaLogica.BuscarCuentas(txtOriCuentaContable.Text, 1);
-            if (Table.Rows.Count > 0)
-                txtOriNombreCuenta.Text = Configuraciones.MayusculaCadaPalabra((Table.Rows[0][0].ToString()));
-            else
-                txtOriNombreCuenta.CargarTextoporDefecto();
+
         }
         private void txtDesCuentaContable_TextChanged(object sender, EventArgs e)
         {
-            DataTable Table = CapaLogica.BuscarCuentas(txtDesCuentaContable.Text, 1);
-            if (Table.Rows.Count > 0)
-                txtDesNombreCuenta.Text = Configuraciones.MayusculaCadaPalabra((Table.Rows[0][0].ToString()));
-            else
-                txtDesNombreCuenta.CargarTextoporDefecto();
+
         }
         private void btnOriBuscarCuenta_Click(object sender, EventArgs e)
         {
@@ -388,15 +451,15 @@ namespace HPReserger
         }
         public void BuscarCuentas(int i)
         {
-            frmlistarcuentas cuentitas = new frmlistarcuentas();
-            cuentitas.Txtbusca.Text = i == 1 ? txtOriCuentaContable.Text : txtDesCuentaContable.Text;
-            cuentitas.radioButton1.Checked = true;
-            cuentitas.ShowDialog();
-            if (cuentitas.aceptar)
-            {
-                if (i == 1) txtOriCuentaContable.Text = cuentitas.codigo;
-                else txtDesCuentaContable.Text = cuentitas.codigo;
-            }
+            //frmlistarcuentas cuentitas = new frmlistarcuentas();
+            //cuentitas.Txtbusca.Text = i == 1 ? txtOriCuentaContable.Text : txtDesCuentaContable.Text;
+            //cuentitas.radioButton1.Checked = true;
+            //cuentitas.ShowDialog();
+            //if (cuentitas.aceptar)
+            //{
+            //    if (i == 1) txtOriCuentaContable.Text = cuentitas.codigo;
+            //    else txtDesCuentaContable.Text = cuentitas.codigo;
+            //}
         }
 
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -419,8 +482,8 @@ namespace HPReserger
                 //
                 dtpFechaContable.Value = (DateTime)item.Cells[xFechaContable.Name].Value;
                 dtpFechaPrestamo.Value = (DateTime)item.Cells[xfechaprestamo.Name].Value;
-                txtOriCuentaContable.Text = item.Cells[xCtaContableOri.Name].Value.ToString();
-                txtDesCuentaContable.Text = item.Cells[xCtaContableDes.Name].Value.ToString();
+                cboOriCuentaContable.SelectedValue = item.Cells[xCtaContableOri.Name].Value.ToString();
+                cboDesCuentaContable.SelectedValue = item.Cells[xCtaContableDes.Name].Value.ToString();
                 txtTipoCambio.Text = ((decimal)item.Cells[xtc.Name].Value).ToString("n3");
                 //
                 cboOriBanco.SelectedValue = item.Cells[xsufijoori.Name].Value.ToString();
@@ -473,6 +536,133 @@ namespace HPReserger
             txtbusMoneda.CargarTextoporDefecto();
             dtpfechabus1.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtpfechabus2.Value = new DateTime(DateTime.Now.Year, 12, 31);
+        }
+
+        private void btnCambiar_Move(object sender, EventArgs e)
+        {
+            //btnCambiar.Location = new Point(182, 258);
+            //btnCambiar.Height = 22;
+            //btnCambiar.Width = 22;
+        }
+
+        private void btnCambiar_MouseLeave(object sender, EventArgs e)
+        {
+            //btnCambiar.Location = new Point(185, 262);
+            //btnCambiar.Height = 20;
+            //btnCambiar.Width = 20;
+        }
+
+        private void btnCambiar_Click(object sender, EventArgs e)
+        {
+            string cadena = txtbusempresadestino.TextValido();
+            txtbusempresadestino.Text = txtbusempresaorigen.TextValido() == "" ? txtbusempresadestino.TextoPorDefecto : txtbusempresaorigen.TextValido();
+            txtbusempresaorigen.Text = cadena == "" ? txtbusempresaorigen.TextoPorDefecto : cadena;
+        }
+
+        private void cboOriCuentaContable_Click(object sender, EventArgs e)
+        {
+            DataTable Table = CapaLogica.BuscarcuentasInterEmpresas();
+            if (cboOriCuentaContable.Items.Count != Table.Rows.Count)
+            {
+                string cadena = (cboOriCuentaContable.SelectedValue ?? "").ToString();
+                cboOriCuentaContable.DataSource = Table;
+                cboOriCuentaContable.SelectedValue = cadena;
+            }
+        }
+
+        private void cboDesCuentaContable_Click(object sender, EventArgs e)
+        {
+            DataTable Table = CapaLogica.BuscarcuentasInterEmpresas();
+            if (cboDesCuentaContable.Items.Count != Table.Rows.Count)
+            {
+                string cadena = (cboDesCuentaContable.SelectedValue ?? "").ToString();
+                cboDesCuentaContable.DataSource = Table;
+                cboDesCuentaContable.SelectedValue = cadena;
+            }
+        }
+        frmProcesando frmproce;
+        private void btnExportarPLan2Col_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.Rows.Count > 0)
+            {
+                Cursor = Cursors.WaitCursor;
+                frmproce = new HPReserger.frmProcesando();
+                frmproce.Show();
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                msg("No hay Datos que Exportar");
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (dtgconten.RowCount > 0)
+            {
+                string _NombreHoja = ""; string _Cabecera = ""; int[] _Columnas; string _NColumna = "";
+                _NombreHoja = "Prestamos InterEmpresa"; _Cabecera = "Listado de Prestamos InterEmpresa";
+                _Columnas = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; _NColumna = "m";
+                //
+                List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
+                Color Back = Color.FromArgb(78, 129, 189);
+                Color Fore = Color.FromArgb(255, 255, 255);
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", _Cabecera.ToUpper(), 16, true, false, Back, Fore));
+                //
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
+                HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
+                int PosInicialGrilla = 2;
+                DataTable TablaExportar = new DataTable();
+                TablaExportar = ((DataTable)dtgconten.DataSource).Copy();
+                ///Remuevo Columnas inservibles
+                TablaExportar.Columns.RemoveAt(30);
+                TablaExportar.Columns.RemoveAt(23);
+                TablaExportar.Columns.RemoveAt(19);
+                TablaExportar.Columns.RemoveAt(18);
+                TablaExportar.Columns.RemoveAt(16);
+                TablaExportar.Columns.RemoveAt(15);
+                TablaExportar.Columns.RemoveAt(14);
+                TablaExportar.Columns.RemoveAt(12);
+                TablaExportar.Columns.RemoveAt(8);
+                TablaExportar.Columns.RemoveAt(7);
+                TablaExportar.Columns.RemoveAt(5);
+                TablaExportar.Columns.RemoveAt(4);
+                TablaExportar.Columns.RemoveAt(3);
+                TablaExportar.Columns.RemoveAt(1);
+                //TablaExportar.Columns.RemoveAt(0);
+                ///
+                ///
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, _NombreHoja, _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, "");
+            }
+            else msg("No hay datos que Exportar");
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            frmproce.Close();
+            dtgconten.ResumeLayout();
+        }
+        int Estado = 0;
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Estado = 1;
+            btnNuevo.Enabled = false;
+            ModoEdicion(true);
+            btnaceptar.Enabled = true;
+        }
+
+        private void chkbusEstados_CheckedChanged(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void chkbusEstados_CheckStateChanged(object sender, EventArgs e)
+        {
+            CargaDatos();
         }
     }
 }
