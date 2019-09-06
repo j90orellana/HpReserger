@@ -157,10 +157,28 @@
     <Compile Include="frmRegMayorPorEmpresas.Designer.cs">
       <DependentUpon>frmRegMayorPorEmpresas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRegMayorxCuentas.cs">
+    <Compile Include="ModuloContable\frmListadoAsientosContables.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRegMayorxCuentas.Designer.cs">
+    <Compile Include="ModuloContable\frmListadoAsientosContables.Designer.cs">
+      <DependentUpon>frmListadoAsientosContables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCrystalReport\frmReporteListadoAsientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCrystalReport\frmReporteListadoAsientos.Designer.cs">
+      <DependentUpon>frmReporteListadoAsientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCrystalReport\rptListadodeAsientos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptListadodeAsientos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\frmRegMayorxCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloReportes\frmRegMayorxCuentas.Designer.cs">
       <DependentUpon>frmRegMayorxCuentas.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloReportes\frmReporteAnalitico.cs">
@@ -1592,7 +1610,17 @@
     <EmbeddedResource Include="frmRegMayorPorEmpresas.resx">
       <DependentUpon>frmRegMayorPorEmpresas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRegMayorxCuentas.resx">
+    <EmbeddedResource Include="ModuloContable\frmListadoAsientosContables.resx">
+      <DependentUpon>frmListadoAsientosContables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\frmReporteListadoAsientos.resx">
+      <DependentUpon>frmReporteListadoAsientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCrystalReport\rptListadodeAsientos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptListadodeAsientos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloReportes\frmRegMayorxCuentas.resx">
       <DependentUpon>frmRegMayorxCuentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmReporteAnalitico.resx">

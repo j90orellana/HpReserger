@@ -1962,6 +1962,16 @@ namespace HPReserger
             Txtbusca_TextChanged(sender, e);
         }
 
+        private void btnpdf_Click(object sender, EventArgs e)
+        {
+            if (dtgbusca.RowCount > 0)
+            {
+                ModuloCrystalReport.frmReporteListadoAsientos frmReportito = new ModuloCrystalReport.frmReporteListadoAsientos((int)cboempresa.SelectedValue, dtpfechaini.Value, dtpfechafin.Value, txtcuo.Text, txtbuscuenta.TextValido(),
+               txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido(), -1);
+                frmReportito.MdiParent = this.MdiParent;
+                frmReportito.Show();
+            }
+        }
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();

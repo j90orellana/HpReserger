@@ -142,6 +142,7 @@ namespace HPReserger
             this.lbl2 = new System.Windows.Forms.Label();
             this.btncleanfind = new System.Windows.Forms.Button();
             this.txtbuscuenta = new HpResergerUserControls.TextBoxPer();
+            this.btnpdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
@@ -155,7 +156,7 @@ namespace HPReserger
             this.btnreversa.Enabled = false;
             this.btnreversa.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnreversa.Image = ((System.Drawing.Image)(resources.GetObject("btnreversa.Image")));
-            this.btnreversa.Location = new System.Drawing.Point(296, 578);
+            this.btnreversa.Location = new System.Drawing.Point(146, 581);
             this.btnreversa.Name = "btnreversa";
             this.btnreversa.Size = new System.Drawing.Size(92, 23);
             this.btnreversa.TabIndex = 183;
@@ -1524,6 +1525,20 @@ namespace HPReserger
             this.txtbuscuenta.Visible = false;
             this.txtbuscuenta.TextChanged += new System.EventHandler(this.txtbuscuo_TextChanged);
             // 
+            // btnpdf
+            // 
+            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
+            this.btnpdf.Location = new System.Drawing.Point(296, 578);
+            this.btnpdf.Name = "btnpdf";
+            this.btnpdf.Size = new System.Drawing.Size(92, 23);
+            this.btnpdf.TabIndex = 431;
+            this.btnpdf.Text = "Pdf";
+            this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnpdf.UseVisualStyleBackColor = true;
+            this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
+            // 
             // frmAsientoContable
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1532,6 +1547,7 @@ namespace HPReserger
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
+            this.Controls.Add(this.btnpdf);
             this.Controls.Add(this.txtbuscuenta);
             this.Controls.Add(this.btncleanfind);
             this.Controls.Add(this.dtpfechaini);
@@ -1721,5 +1737,6 @@ namespace HPReserger
         private System.Windows.Forms.Label lbl2;
         private System.Windows.Forms.Button btncleanfind;
         private TextBoxPer txtbuscuenta;
+        private System.Windows.Forms.Button btnpdf;
     }
 }

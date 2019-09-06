@@ -1177,6 +1177,12 @@ namespace HPResergerCapaDatos
             object[] valor = { empresa, Fechaini, Fechafin, cuo, cuenta, glosa, suboperacion };
             return bd.DataTableFromProcedure("usp_ListarAsientosFiltrados", parametros, valor, null);
         }
+        public DataTable ListarAsientosFiltradosAvanzado(int empresa, DateTime Fechaini, DateTime Fechafin, string cuo, string cuenta, string glosa, string suboperacion, int Estado)
+        {
+            string[] parametros = { "@empresa", "@fechaini", "@fechafin", "@cuo", "@cuenta", "@glosa", "@SubOperacion", "@estado" };
+            object[] valor = { empresa, Fechaini, Fechafin, cuo, cuenta, glosa, suboperacion, Estado };
+            return bd.DataTableFromProcedure("usp_ListarAsientosFiltradosAvanzado", parametros, valor, null);
+        }
         public DataTable UltimoAsiento(int empresan, DateTime _Fecha)
         {
             string[] parametros = { "@empresa", "@Fecha" };
@@ -1336,7 +1342,7 @@ namespace HPResergerCapaDatos
         public DataTable SiguienteIdPrestamoInterEmpresa(int fkEmpresa)
         {
             string[] parametros = { "@empresa" };
-            object[] valor = {  fkEmpresa };
+            object[] valor = { fkEmpresa };
             return bd.DataTableFromProcedure("usp_SiguienteIdPrestamoInterEmpresa", parametros, valor, null);
         }
         public DataTable VerificarCuentas(string codigo, string nombre)

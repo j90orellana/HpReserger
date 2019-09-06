@@ -422,6 +422,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarAsientosFiltrados(empresa, Fechaini, Fechafin, cuo, cuenta, glosa, suboperacion);
         }
+        public DataTable ListarAsientosFiltradosAvanzado(int empresa, DateTime Fechaini, DateTime Fechafin, string cuo, string cuenta, string glosa, string suboperacion, int Estado)
+        {
+            return cdOrdenPedido.ListarAsientosFiltradosAvanzado(empresa, Fechaini, Fechafin, cuo, cuenta, glosa, suboperacion, Estado);
+        }
         public void Modificar2asiento(int codigo, int proyecto, DateTime Fechas)
         {
             cdOrdenPedido.Modificar2asiento(codigo, proyecto, Fechas);

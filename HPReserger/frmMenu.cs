@@ -3692,10 +3692,31 @@ namespace HPReserger
                 ValidarVentanas(frmReporteAnalitico);
             }
         }
-
         private void FrmReporteAnalitico_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmReporteAnalitico = null;
+        }
+        ModuloContable.frmListadoAsientosContables frmreporteasiento;
+        private void vouchersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmreporteasiento == null)
+            {
+                frmreporteasiento = new ModuloContable.frmListadoAsientosContables();
+                frmreporteasiento.MdiParent = this;
+                frmreporteasiento.Icon = ICono;
+                frmreporteasiento.FormClosed += Frmreporteasiento_FormClosed;
+                frmreporteasiento.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmreporteasiento.Activate();
+                ValidarVentanas(frmreporteasiento);
+            }
+        }
+        private void Frmreporteasiento_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmreporteasiento = null;
         }
     }
 }

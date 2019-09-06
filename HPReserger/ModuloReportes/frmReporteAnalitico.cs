@@ -140,29 +140,58 @@ namespace HPReserger
                 foreach (DataColumn item in TableResult.Columns) item.ColumnName = dtgconten.Columns["x" + item.ColumnName].HeaderText;
                 //MACRO
                 int PosInicialGrilla = 5;
-                string Macro = $"Private Sub Workbook_Open()  {Environment.NewLine} " +
-                    $"Range(Cells({PosInicialGrilla},1),Cells({PosInicialGrilla},1)).Select {Environment.NewLine} " +
-                    $"Range(Selection, Selection.End(xlToRight)).Select {Environment.NewLine} " +
-                    $"Range(Selection, Selection.End(xlDown)).Select {Environment.NewLine} " +
-                    $"ActiveWindow.SmallScroll Down:= -36 {Environment.NewLine} " +
-                    $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Clear {Environment.NewLine} " +
-                    $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},12), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},12)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                    $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},10), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},10)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                    $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},9), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},9)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                    $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},8), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},8)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
-                    $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},1)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortTextAsNumbers {Environment.NewLine} " +
-                    $"With ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort {Environment.NewLine} " +
-                    $".SetRange Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})) {Environment.NewLine} " +
-                    $".Header = xlYes {Environment.NewLine} " +
-                    $".MatchCase = False {Environment.NewLine} " +
-                    $".Orientation = xlTopToBottom {Environment.NewLine} " +
-                    $".SortMethod = xlPinYin {Environment.NewLine} " +
-                    $".Apply {Environment.NewLine} " +
-                    $"End With {Environment.NewLine} " +
-                    $"Selection.Subtotal GroupBy:= 12, Function:= xlSum, TotalList:= Array(15, 16), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
-                    $"End Sub";
+                string Macro = "";
+                if (chksubtotales.Checked)
+                {
+                    Macro = $"Private Sub Workbook_Open()  {Environment.NewLine} " +
+                        $"Range(Cells({PosInicialGrilla},1),Cells({PosInicialGrilla},1)).Select {Environment.NewLine} " +
+                        $"Range(Selection, Selection.End(xlToRight)).Select {Environment.NewLine} " +
+                        $"Range(Selection, Selection.End(xlDown)).Select {Environment.NewLine} " +
+                        $"ActiveWindow.SmallScroll Down:= -36 {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Clear {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},2), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},2)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},12), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},12)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},10), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},10)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},9), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},9)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},8), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},8)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},1)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortTextAsNumbers {Environment.NewLine} " +
+                        $"With ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort {Environment.NewLine} " +
+                        $".SetRange Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})) {Environment.NewLine} " +
+                        $".Header = xlYes {Environment.NewLine} " +
+                        $".MatchCase = False {Environment.NewLine} " +
+                        $".Orientation = xlTopToBottom {Environment.NewLine} " +
+                        $".SortMethod = xlPinYin {Environment.NewLine} " +
+                        $".Apply {Environment.NewLine} " +
+                        $"End With {Environment.NewLine} " +
+                        $"Selection.Subtotal GroupBy:= 12, Function:= xlSum, TotalList:= Array(15, 16), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
+                        $"End Sub";
+                }
+                if (chkAgruparCuentas.Checked)
+                {
+                    Macro = $"Private Sub Workbook_Open()  {Environment.NewLine} " +
+                        $"Range(Cells({PosInicialGrilla},1),Cells({PosInicialGrilla},1)).Select {Environment.NewLine} " +
+                        $"Range(Selection, Selection.End(xlToRight)).Select {Environment.NewLine} " +
+                        $"Range(Selection, Selection.End(xlDown)).Select {Environment.NewLine} " +
+                        $"ActiveWindow.SmallScroll Down:= -36 {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Clear {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},2), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},2)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},3), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},3)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortTextAsNumbers {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},12), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},12)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},9), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},9)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort.SortFields.Add Key:= Range(Cells({PosInicialGrilla},8), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},8)), SortOn:= xlSortOnValues, Order:= xlAscending, DataOption:= xlSortNormal {Environment.NewLine} " +
+                        $"With ActiveWorkbook.Worksheets(\"Reporte Analítico\").Sort {Environment.NewLine} " +
+                        $".SetRange Range(Cells({PosInicialGrilla},1), Cells({TableResult.Rows.Count + PosInicialGrilla + 1},{ TableResult.Columns.Count})) {Environment.NewLine} " +
+                        $".Header = xlYes {Environment.NewLine} " +
+                        $".MatchCase = False {Environment.NewLine} " +
+                        $".Orientation = xlTopToBottom {Environment.NewLine} " +
+                        $".SortMethod = xlPinYin {Environment.NewLine} " +
+                        $".Apply {Environment.NewLine} " +
+                        $"End With {Environment.NewLine} " +
+                        $"Selection.Subtotal GroupBy:= 4, Function:= xlSum, TotalList:= Array(15, 16), Replace:= True, PageBreaks:= False, SummaryBelowData:= True   {Environment.NewLine} " +
+                        $"End Sub";
+                }
                 ///
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, chksubtotales.Checked ? Macro : "");
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, Macro);
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
             }
             else msg("No hay Registros en la Grilla");
@@ -174,6 +203,15 @@ namespace HPReserger
             dtgconten.ResumeLayout();
         }
         DateTime FechaIni, FechaFin;
+
+        private void chksubtotales_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chksubtotales.Checked) chkAgruparCuentas.Checked = false;
+        }
+        private void chkAgruparCuentas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAgruparCuentas.Checked) chksubtotales.Checked = false;
+        }
         private void btngenerar_Click(object sender, EventArgs e)
         {
             if (Configuraciones.ValidarSQLInyect(txtbuscuenta, txtbusGlosa, txtbusnrodoc, txtbusrazon, txtbusruc)) { msg("Se Encontro Codigo Malisioso en las Cajas de Textos"); return; }
@@ -204,11 +242,11 @@ namespace HPReserger
                     if (Cuenta.Length == 2)
                     {
                         if (string.CompareOrdinal(Cuenta[1], Cuenta[0]) > 1)
-                            Buscarcuenta += $" a.Cuenta_Contable  between '{Cuenta[0]}' and '{Cuenta[1]}9' or ";
+                            Buscarcuenta += $" a.Cuenta_Contable  between '{Cuenta[0].Trim()}' and '{Cuenta[1].Trim()}9' or ";
 
-                        else Buscarcuenta += $" a.Cuenta_Contable  between '{Cuenta[1]}' and '{Cuenta[0]}9' or ";
+                        else Buscarcuenta += $" a.Cuenta_Contable  between '{Cuenta[1].Trim()}' and '{Cuenta[0].Trim()}9' or ";
                     }
-                    if (Cuenta.Length == 1) { Buscarcuenta += $" a.Cuenta_Contable  like '{Cuenta[0]}%' or "; }
+                    if (Cuenta.Length == 1) { Buscarcuenta += $" a.Cuenta_Contable  like '{Cuenta[0].Trim()}%' or "; }
                 }
                 if (Buscarcuenta.Length > 3) Buscarcuenta = Buscarcuenta.Substring(0, Buscarcuenta.Length - 3);
                 else Buscarcuenta = "(0=0";
@@ -224,7 +262,7 @@ namespace HPReserger
                 foreach (string Razoncita in Razones)
                 {
                     string[] Razon = Razoncita.Split('-');
-                    if (Razon.Length >= 1) { BuscarRazon += $" isnull(Razon_Social,'') like '%{Razon[0]}%' or "; }
+                    if (Razon.Length >= 1) { BuscarRazon += $" isnull(Razon_Social,'') like '%{Razon[0].Trim()}%' or "; }
                 }
                 if (BuscarRuc.Length > 3) BuscarRazon = BuscarRazon.Substring(0, BuscarRazon.Length - 3);
                 else BuscarRuc = "(0=0";
@@ -238,7 +276,7 @@ namespace HPReserger
                 foreach (string Rucito in Rucs)
                 {
                     string[] Ruc = Rucito.Split('-');
-                    if (Ruc.Length >= 1) { BuscarRuc += $"isnull(Num_Doc,'') like  '%{Ruc[0]}%' or "; }
+                    if (Ruc.Length >= 1) { BuscarRuc += $"isnull(Num_Doc,'') like  '%{Ruc[0].Trim()}%' or "; }
                 }
                 if (BuscarRuc.Length > 3) BuscarRuc = BuscarRuc.Substring(0, BuscarRuc.Length - 3);
                 else BuscarRuc = "(0=0";
@@ -252,7 +290,7 @@ namespace HPReserger
                 foreach (string Doc in Documentos)
                 {
                     string[] Docito = Doc.Split('-');
-                    if (Docito.Length >= 1) { BuscarDocumento += $"concat(isnull(ax.Cod_Comprobante,''),'-',(isnull(ax.Num_Comprobante,'')))like  '%{Docito[0]}%' or "; }
+                    if (Docito.Length >= 1) { BuscarDocumento += $"concat(isnull(ax.Cod_Comprobante,''),'-',(isnull(ax.Num_Comprobante,'')))like  '%{Docito[0].Trim()}%' or "; }
                 }
                 if (BuscarDocumento.Length > 3) BuscarDocumento = BuscarDocumento.Substring(0, BuscarDocumento.Length - 3);
                 else BuscarDocumento = "(0=0";
