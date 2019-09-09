@@ -41,7 +41,7 @@ namespace HPReserger.ModuloCrystalReport
         public int Estado = 1;
         private void frmReporteListadoAsientos_Load(object sender, EventArgs e)
         {
-            ModuloCrystalReport.rptListadodeAsientos Reporte = new rptListadodeAsientos();
+            rptListadodeAsientos Reporte = new rptListadodeAsientos();
             Reporte.SetDatabaseLogon(datos.USERID, datos.USERPASS);
             Reporte.SetParameterValue(0, empresa);
             Reporte.SetParameterValue(1, Fechaini);

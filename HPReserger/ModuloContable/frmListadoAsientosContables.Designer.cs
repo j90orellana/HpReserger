@@ -45,6 +45,16 @@
             this.txtbuscuo = new HpResergerUserControls.TextBoxPer();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
+            this.cboempresa = new System.Windows.Forms.ComboBox();
+            this.btnpdf = new System.Windows.Forms.Button();
+            this.rbActivo = new System.Windows.Forms.RadioButton();
+            this.rbReversado = new System.Windows.Forms.RadioButton();
+            this.rbTodos = new System.Windows.Forms.RadioButton();
             this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codidasiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xperiodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,14 +71,6 @@
             this.xglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.lblmsg = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
-            this.cboempresa = new System.Windows.Forms.ComboBox();
-            this.chkAvanzado = new HpResergerUserControls.checkboxOre();
-            this.btnpdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +87,7 @@
             this.txtbuscuenta.MaxLength = 100;
             this.txtbuscuenta.Name = "txtbuscuenta";
             this.txtbuscuenta.NextControlOnEnter = null;
-            this.txtbuscuenta.Size = new System.Drawing.Size(176, 21);
+            this.txtbuscuenta.Size = new System.Drawing.Size(142, 21);
             this.txtbuscuenta.TabIndex = 423;
             this.txtbuscuenta.Text = "Buscar Cuenta";
             this.txtbuscuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -97,7 +99,7 @@
             // 
             this.btncleanfind.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncleanfind.Image = ((System.Drawing.Image)(resources.GetObject("btncleanfind.Image")));
-            this.btncleanfind.Location = new System.Drawing.Point(652, 46);
+            this.btncleanfind.Location = new System.Drawing.Point(705, 46);
             this.btncleanfind.Name = "btncleanfind";
             this.btncleanfind.Size = new System.Drawing.Size(25, 23);
             this.btncleanfind.TabIndex = 429;
@@ -113,7 +115,7 @@
             this.dtpfechaini.CalendarTitleForeColor = System.Drawing.Color.Red;
             this.dtpfechaini.CalendarTrailingForeColor = System.Drawing.Color.Lime;
             this.dtpfechaini.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechaini.Location = new System.Drawing.Point(275, 46);
+            this.dtpfechaini.Location = new System.Drawing.Point(240, 46);
             this.dtpfechaini.Name = "dtpfechaini";
             this.dtpfechaini.Size = new System.Drawing.Size(93, 22);
             this.dtpfechaini.TabIndex = 427;
@@ -124,7 +126,7 @@
             this.lbl2.BackColor = System.Drawing.Color.Transparent;
             this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lbl2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.lbl2.Location = new System.Drawing.Point(379, 50);
+            this.lbl2.Location = new System.Drawing.Point(333, 50);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(79, 15);
             this.lbl2.TabIndex = 420;
@@ -136,7 +138,7 @@
             this.lbl1.BackColor = System.Drawing.Color.Transparent;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lbl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.lbl1.Location = new System.Drawing.Point(192, 50);
+            this.lbl1.Location = new System.Drawing.Point(157, 50);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(83, 15);
             this.lbl1.TabIndex = 421;
@@ -150,7 +152,7 @@
             this.dtpfechafin.CalendarTitleForeColor = System.Drawing.Color.Red;
             this.dtpfechafin.CalendarTrailingForeColor = System.Drawing.Color.Lime;
             this.dtpfechafin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechafin.Location = new System.Drawing.Point(463, 46);
+            this.dtpfechafin.Location = new System.Drawing.Point(412, 46);
             this.dtpfechafin.Name = "dtpfechafin";
             this.dtpfechafin.Size = new System.Drawing.Size(93, 22);
             this.dtpfechafin.TabIndex = 428;
@@ -222,7 +224,7 @@
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(680, 46);
+            this.btnBuscar.Location = new System.Drawing.Point(730, 46);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(92, 23);
             this.btnBuscar.TabIndex = 422;
@@ -297,6 +299,132 @@
             this.dtgconten.Size = new System.Drawing.Size(810, 338);
             this.dtgconten.TabIndex = 419;
             // 
+            // btncancelar
+            // 
+            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
+            this.btncancelar.Location = new System.Drawing.Point(730, 433);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(92, 23);
+            this.btncancelar.TabIndex = 430;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmsg.Location = new System.Drawing.Point(12, 438);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(88, 13);
+            this.lblmsg.TabIndex = 431;
+            this.lblmsg.Text = "Total Registros: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 13);
+            this.label1.TabIndex = 431;
+            this.label1.Text = "Listado de Asientos";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.TabIndex = 431;
+            this.label2.Text = "Opciones de Filtrado:";
+            // 
+            // separadorOre1
+            // 
+            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre1.Location = new System.Drawing.Point(0, 70);
+            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre1.Name = "separadorOre1";
+            this.separadorOre1.Size = new System.Drawing.Size(850, 2);
+            this.separadorOre1.TabIndex = 432;
+            // 
+            // cboempresa
+            // 
+            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboempresa.DropDownWidth = 250;
+            this.cboempresa.FormattingEnabled = true;
+            this.cboempresa.Location = new System.Drawing.Point(15, 22);
+            this.cboempresa.Name = "cboempresa";
+            this.cboempresa.Size = new System.Drawing.Size(254, 21);
+            this.cboempresa.TabIndex = 433;
+            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
+            // 
+            // btnpdf
+            // 
+            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnpdf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.btnpdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpdf.ForeColor = System.Drawing.Color.White;
+            this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
+            this.btnpdf.Location = new System.Drawing.Point(371, 432);
+            this.btnpdf.Name = "btnpdf";
+            this.btnpdf.Size = new System.Drawing.Size(92, 25);
+            this.btnpdf.TabIndex = 430;
+            this.btnpdf.Text = "Crear Pdf";
+            this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnpdf.UseVisualStyleBackColor = false;
+            this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
+            // 
+            // rbActivo
+            // 
+            this.rbActivo.AutoSize = true;
+            this.rbActivo.BackColor = System.Drawing.Color.Transparent;
+            this.rbActivo.Checked = true;
+            this.rbActivo.Location = new System.Drawing.Point(516, 49);
+            this.rbActivo.Name = "rbActivo";
+            this.rbActivo.Size = new System.Drawing.Size(56, 17);
+            this.rbActivo.TabIndex = 434;
+            this.rbActivo.TabStop = true;
+            this.rbActivo.Text = "Activo";
+            this.rbActivo.UseVisualStyleBackColor = false;
+            // 
+            // rbReversado
+            // 
+            this.rbReversado.AutoSize = true;
+            this.rbReversado.BackColor = System.Drawing.Color.Transparent;
+            this.rbReversado.Location = new System.Drawing.Point(572, 49);
+            this.rbReversado.Name = "rbReversado";
+            this.rbReversado.Size = new System.Drawing.Size(78, 17);
+            this.rbReversado.TabIndex = 434;
+            this.rbReversado.Text = "Reversado";
+            this.rbReversado.UseVisualStyleBackColor = false;
+            // 
+            // rbTodos
+            // 
+            this.rbTodos.AutoSize = true;
+            this.rbTodos.BackColor = System.Drawing.Color.Transparent;
+            this.rbTodos.Location = new System.Drawing.Point(650, 49);
+            this.rbTodos.Name = "rbTodos";
+            this.rbTodos.Size = new System.Drawing.Size(55, 17);
+            this.rbTodos.TabIndex = 434;
+            this.rbTodos.Text = "Todos";
+            this.rbTodos.UseVisualStyleBackColor = false;
+            // 
             // idx
             // 
             this.idx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
@@ -325,6 +453,7 @@
             this.xperiodo.HeaderText = "Periodo";
             this.xperiodo.Name = "xperiodo";
             this.xperiodo.ReadOnly = true;
+            this.xperiodo.Visible = false;
             this.xperiodo.Width = 70;
             // 
             // Fechax
@@ -443,115 +572,14 @@
             this.xtc.ReadOnly = true;
             this.xtc.Visible = false;
             // 
-            // btncancelar
-            // 
-            this.btncancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancelar.Image = ((System.Drawing.Image)(resources.GetObject("btncancelar.Image")));
-            this.btncancelar.Location = new System.Drawing.Point(730, 433);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(92, 23);
-            this.btncancelar.TabIndex = 430;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
-            // 
-            // lblmsg
-            // 
-            this.lblmsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblmsg.AutoSize = true;
-            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
-            this.lblmsg.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmsg.Location = new System.Drawing.Point(12, 438);
-            this.lblmsg.Name = "lblmsg";
-            this.lblmsg.Size = new System.Drawing.Size(88, 13);
-            this.lblmsg.TabIndex = 431;
-            this.lblmsg.Text = "Total Registros: ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 13);
-            this.label1.TabIndex = 431;
-            this.label1.Text = "Listado de Asientos";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 431;
-            this.label2.Text = "Opciones de Filtrado:";
-            // 
-            // separadorOre1
-            // 
-            this.separadorOre1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre1.Location = new System.Drawing.Point(0, 70);
-            this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
-            this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
-            this.separadorOre1.Name = "separadorOre1";
-            this.separadorOre1.Size = new System.Drawing.Size(850, 2);
-            this.separadorOre1.TabIndex = 432;
-            // 
-            // cboempresa
-            // 
-            this.cboempresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboempresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboempresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cboempresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboempresa.DropDownWidth = 250;
-            this.cboempresa.FormattingEnabled = true;
-            this.cboempresa.Location = new System.Drawing.Point(15, 22);
-            this.cboempresa.Name = "cboempresa";
-            this.cboempresa.Size = new System.Drawing.Size(254, 21);
-            this.cboempresa.TabIndex = 433;
-            this.cboempresa.Click += new System.EventHandler(this.cboempresa_Click);
-            // 
-            // chkAvanzado
-            // 
-            this.chkAvanzado.AutoSize = true;
-            this.chkAvanzado.BackColor = System.Drawing.Color.Transparent;
-            this.chkAvanzado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkAvanzado.ColorChecked = System.Drawing.Color.Empty;
-            this.chkAvanzado.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkAvanzado.Location = new System.Drawing.Point(562, 49);
-            this.chkAvanzado.Name = "chkAvanzado";
-            this.chkAvanzado.Size = new System.Drawing.Size(79, 17);
-            this.chkAvanzado.TabIndex = 434;
-            this.chkAvanzado.Text = "Reversado";
-            this.chkAvanzado.ThreeState = true;
-            this.chkAvanzado.UseVisualStyleBackColor = false;
-            // 
-            // btnpdf
-            // 
-            this.btnpdf.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnpdf.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnpdf.Image = ((System.Drawing.Image)(resources.GetObject("btnpdf.Image")));
-            this.btnpdf.Location = new System.Drawing.Point(371, 433);
-            this.btnpdf.Name = "btnpdf";
-            this.btnpdf.Size = new System.Drawing.Size(92, 23);
-            this.btnpdf.TabIndex = 430;
-            this.btnpdf.Text = "Pdf";
-            this.btnpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnpdf.UseVisualStyleBackColor = true;
-            this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
-            // 
             // frmListadoAsientosContables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 461);
-            this.Controls.Add(this.chkAvanzado);
+            this.Controls.Add(this.rbReversado);
+            this.Controls.Add(this.rbTodos);
+            this.Controls.Add(this.rbActivo);
             this.Controls.Add(this.cboempresa);
             this.Controls.Add(this.separadorOre1);
             this.Controls.Add(this.label2);
@@ -601,8 +629,10 @@
         private System.Windows.Forms.Label label2;
         private HpResergerUserControls.SeparadorOre separadorOre1;
         private System.Windows.Forms.ComboBox cboempresa;
-        private HpResergerUserControls.checkboxOre chkAvanzado;
         private System.Windows.Forms.Button btnpdf;
+        private System.Windows.Forms.RadioButton rbActivo;
+        private System.Windows.Forms.RadioButton rbReversado;
+        private System.Windows.Forms.RadioButton rbTodos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idx;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codidasiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn xperiodo;

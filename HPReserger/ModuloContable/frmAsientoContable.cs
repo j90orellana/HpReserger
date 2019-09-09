@@ -1966,8 +1966,9 @@ namespace HPReserger
         {
             if (dtgbusca.RowCount > 0)
             {
-                ModuloCrystalReport.frmReporteListadoAsientos frmReportito = new ModuloCrystalReport.frmReporteListadoAsientos((int)cboempresa.SelectedValue, dtpfechaini.Value, dtpfechafin.Value, txtcuo.Text, txtbuscuenta.TextValido(),
-               txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido(), -1);
+                // ModuloCrystalReport.frmReporteListadoAsientos frmReportito = new ModuloCrystalReport.frmReporteListadoAsientos((int)cboempresa.SelectedValue, dtpfechaini.Value, dtpfechafin.Value, txtcuo.Text, txtbuscuenta.TextValido(),
+                //txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido(), -1);
+                ModuloContable.frmListadoAsientosContables frmReportito = new ModuloContable.frmListadoAsientosContables((int)cboempresa.SelectedValue, txtcuo.Text, dtpfechavalor.Value);
                 frmReportito.MdiParent = this.MdiParent;
                 frmReportito.Show();
             }
