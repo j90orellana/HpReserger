@@ -66,7 +66,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.chkAgruparCuentas = new HpResergerUserControls.checkboxOre();
             this.xRUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +86,7 @@
             this.xtotalme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xusuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkAgruparCuentas = new HpResergerUserControls.checkboxOre();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -248,7 +248,7 @@
             this.txtbuscuenta.NextControlOnEnter = null;
             this.txtbuscuenta.Size = new System.Drawing.Size(215, 21);
             this.txtbuscuenta.TabIndex = 2;
-            this.txtbuscuenta.Text = "12;13;14;16;17;18;37;42;43;44;45;46\r\n";
+            this.txtbuscuenta.Text = "12;42";
             this.txtbuscuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtbuscuenta.TextoDefecto = "";
             this.txtbuscuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
@@ -507,21 +507,6 @@
             this.dtgconten.Size = new System.Drawing.Size(1201, 396);
             this.dtgconten.TabIndex = 10;
             // 
-            // chkAgruparCuentas
-            // 
-            this.chkAgruparCuentas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkAgruparCuentas.AutoSize = true;
-            this.chkAgruparCuentas.BackColor = System.Drawing.Color.Transparent;
-            this.chkAgruparCuentas.ColorChecked = System.Drawing.Color.Empty;
-            this.chkAgruparCuentas.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkAgruparCuentas.Location = new System.Drawing.Point(703, 543);
-            this.chkAgruparCuentas.Name = "chkAgruparCuentas";
-            this.chkAgruparCuentas.Size = new System.Drawing.Size(113, 17);
-            this.chkAgruparCuentas.TabIndex = 417;
-            this.chkAgruparCuentas.Text = "Agrupar Cuentas";
-            this.chkAgruparCuentas.UseVisualStyleBackColor = false;
-            this.chkAgruparCuentas.CheckedChanged += new System.EventHandler(this.chkAgruparCuentas_CheckedChanged);
-            // 
             // xRUC
             // 
             this.xRUC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -719,6 +704,21 @@
             this.xusuario.Name = "xusuario";
             this.xusuario.ReadOnly = true;
             this.xusuario.Width = 71;
+            // 
+            // chkAgruparCuentas
+            // 
+            this.chkAgruparCuentas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chkAgruparCuentas.AutoSize = true;
+            this.chkAgruparCuentas.BackColor = System.Drawing.Color.Transparent;
+            this.chkAgruparCuentas.ColorChecked = System.Drawing.Color.Empty;
+            this.chkAgruparCuentas.ColorUnChecked = System.Drawing.Color.Empty;
+            this.chkAgruparCuentas.Location = new System.Drawing.Point(703, 543);
+            this.chkAgruparCuentas.Name = "chkAgruparCuentas";
+            this.chkAgruparCuentas.Size = new System.Drawing.Size(113, 17);
+            this.chkAgruparCuentas.TabIndex = 417;
+            this.chkAgruparCuentas.Text = "Agrupar Cuentas";
+            this.chkAgruparCuentas.UseVisualStyleBackColor = false;
+            this.chkAgruparCuentas.CheckedChanged += new System.EventHandler(this.chkAgruparCuentas_CheckedChanged);
             // 
             // frmReporteAnalitico
             // 

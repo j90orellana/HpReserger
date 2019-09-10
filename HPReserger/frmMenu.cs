@@ -3718,5 +3718,27 @@ namespace HPReserger
         {
             frmreporteasiento = null;
         }
+        frmReporteAnalitico2 frmReporteAnalitico2;
+        private void reporteAnalíticoToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (frmreporteasiento == null)
+            {
+                frmReporteAnalitico2 = new frmReporteAnalitico2();
+                frmReporteAnalitico2.MdiParent = this;
+                frmReporteAnalitico2.Icon = ICono;
+                frmReporteAnalitico2.FormClosed += FrmReporteAnalitico2_FormClosed;
+                frmReporteAnalitico2.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmReporteAnalitico.Activate();
+                ValidarVentanas(frmReporteAnalitico2);
+            }
+        }
+        private void FrmReporteAnalitico2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmReporteAnalitico2 = null;
+        }
     }
 }

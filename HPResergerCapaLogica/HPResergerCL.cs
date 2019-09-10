@@ -2448,6 +2448,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ReporteAnalitico(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
         }
+        public DataTable ReporteAnalitico2(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
+        {
+            return cdOrdenPedido.ReporteAnalitico2(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
+        }
         public DataTable ReporteFacturasComprasIncompletas(DateTime fechaini, DateTime fechafin, int Fecha)
         {
             return cdOrdenPedido.ReporteFacturasComprasIncompletas(fechaini, fechafin, Fecha);
