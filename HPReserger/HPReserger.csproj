@@ -182,6 +182,18 @@
     <Compile Include="ModuloFinanzas\frmCobroPrestamosInterEmpresa.Designer.cs">
       <DependentUpon>frmCobroPrestamosInterEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoPrestamosInterEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoPrestamosInterEmpresa.Designer.cs">
+      <DependentUpon>frmListadoPrestamosInterEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmPrestamosInterEmpresaListadoAbonados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmPrestamosInterEmpresaListadoAbonados.Designer.cs">
+      <DependentUpon>frmPrestamosInterEmpresaListadoAbonados.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloReportes\frmRegMayorxCuentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1641,6 +1653,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmCobroPrestamosInterEmpresa.resx">
       <DependentUpon>frmCobroPrestamosInterEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmListadoPrestamosInterEmpresa.resx">
+      <DependentUpon>frmListadoPrestamosInterEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmPrestamosInterEmpresaListadoAbonados.resx">
+      <DependentUpon>frmPrestamosInterEmpresaListadoAbonados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloReportes\frmRegMayorxCuentas.resx">
       <DependentUpon>frmRegMayorxCuentas.cs</DependentUpon>

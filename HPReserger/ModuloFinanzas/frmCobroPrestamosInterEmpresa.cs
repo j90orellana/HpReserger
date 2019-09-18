@@ -66,6 +66,8 @@ namespace HPReserger.ModuloFinanzas
             {
                 IdEmpresaOri = (int)cboOriEmpresa.SelectedValue;
                 CargarProyecto();
+                EmpresaFind = 0;
+                MonedaFind = 0;
                 CargarDatos();
             }
             //    ListaFacturas.Clear();
@@ -160,7 +162,7 @@ namespace HPReserger.ModuloFinanzas
                     if ((decimal)item.Cells[xPagar.Name].Value <= 0 || (decimal)item.Cells[xPagar.Name].Value > (decimal)item.Cells[xSaldo.Name].Value)
                         item.Cells[xPagar.Name].Value = (decimal)item.Cells[xSaldo.Name].Value;
                 ////////
-                if (y == dtgconten.Columns[xok.Name].Index)
+                if (y == dtgconten.Columns[xok.Name].Index || y == dtgconten.Columns[xPagar.Name].Index)
                 {
                     CalcularTotal();
                 }
@@ -342,14 +344,33 @@ namespace HPReserger.ModuloFinanzas
                 if (EmpresaFind == 0)
                 {
                     ///Para No hacer la cargada de datos
-                    Cargado = false;
-                    MonedaFind = (int)dtgconten[xidmoneda.Name, x].Value;
-                    cbomoneda.SelectedValue = MonedaFind;
-                    EmpresaFind = (int)dtgconten[xfkEmpresaDes.Name, x].Value;
-                    cboDesEmpresa.SelectedValue = EmpresaFind;
-                    //para hacer la carga de datos con los datos nuevos
-                    Cargado = true;
-                    CargarDatos();
+                    if (y == dtgconten.Columns[xok.Name].Index)
+                    {
+                        Cargado = false;
+                        MonedaFind = (int)dtgconten[xidmoneda.Name, x].Value;
+                        cbomoneda.SelectedValue = MonedaFind;
+                        EmpresaFind = (int)dtgconten[xfkEmpresaDes.Name, x].Value;
+                        cboDesEmpresa.SelectedValue = EmpresaFind;
+                        //para hacer la carga de datos con los datos nuevos
+                        Cargado = true;
+                        CargarDatos();
+                    }
+                    if (y == dtgconten.Columns[xAbono.Name].Index)
+                    {
+                        if (dtgconten[y, x].Value.ToString() != "" && cboOriEmpresa.SelectedValue != null)
+                        {
+                            int _empresa, _fkid;
+                            _empresa = (int)cboOriEmpresa.SelectedValue;
+                            _fkid = (int)dtgconten[xpkid.Name, x].Value;
+                            ModuloFinanzas.frmListadoPrestamosInterEmpresa frmlistadoPrestamos = new frmListadoPrestamosInterEmpresa(_empresa, _fkid);
+                            frmlistadoPrestamos.Glosa = dtgconten[xGlosa.Name, x].Value.ToString();
+                            frmlistadoPrestamos.EmpresaOrigen = cboOriEmpresa.Text;
+                            frmlistadoPrestamos.EmpresaDestino = dtgconten[xEmpresaDes.Name, x].Value.ToString();
+                            //--+--
+                            frmlistadoPrestamos.MdiParent = this.MdiParent;
+                            frmlistadoPrestamos.Show();
+                        }
+                    }
                 }
             }
         }
@@ -553,6 +574,13 @@ namespace HPReserger.ModuloFinanzas
             {
                 msg("Cancelado por el Usuario");
             }
+        }
+
+        private void btnAbonados_Click(object sender, EventArgs e)
+        {
+            ModuloFinanzas.frmPrestamosInterEmpresaListadoAbonados frmlistadoAbonadosPRestamos = new frmPrestamosInterEmpresaListadoAbonados();
+            frmlistadoAbonadosPRestamos.MdiParent = this.MdiParent;
+            frmlistadoAbonadosPRestamos.Show();
         }
     }
 }

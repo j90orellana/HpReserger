@@ -4853,5 +4853,17 @@ namespace HPResergerCapaDatos
                 @CuoAbonoOri, @CuoAbonoDes, @FechaContable, @FechaAbono, @FkMoneda, @Monto, @TC, @TipoPago, @NroOperacion, @FechaModifica,glosa, @Usuario, @Estado };
             return bd.DataTableFromProcedure("usp_PrestamosInterbancarios_Detalle", parametros, valores, null);
         }
+        public DataTable PrestamoInterEmpresa_Filtrar(int empresa, int fkid)
+        {
+            string[] parametros = { "@empresa", "@fkid" };
+            object[] valores = { @empresa, fkid };
+            return bd.DataTableFromProcedure("usp_PrestamoInterEmpresa_Filtrar", parametros, valores, null);
+        }
+        public DataTable PrestamoInterEmpresa_Listado()
+        {
+            string[] parametros = null; //{ "@empresa", "@fkid" };
+            object[] valores = null; //{ @empresa, fkid };
+            return bd.DataTableFromProcedure("usp_PrestamoInterEmpresa_Listado", parametros, valores, null);
+        }
     }
 }

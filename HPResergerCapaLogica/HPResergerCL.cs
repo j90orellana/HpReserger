@@ -2597,5 +2597,13 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.PrestamosInterEmpresaDetalle(@opcion, @fkid, @fkEmpresaOri, @fkProyectoOri, @fkEtapaOri, @fkBancoOri, @fkCtaBancoOri, @fkEmpresaDes, @fkProyectoDes, @fkEtapaDes, @fkBancoDes, @fkCtaBancoDes,
                 @CuoAbonoOri, @CuoAbonoDes, @FechaContable, @FechaAbono, @FkMoneda, @Monto, @TC, @TipoPago, @NroOperacion, @FechaModifica, @Usuario, @Estado, glosa);
         }
+        public DataTable PrestamoInterEmpresa_Filtrar(int empresa, int fkid)
+        {
+            return cdOrdenPedido.PrestamoInterEmpresa_Filtrar(@empresa, fkid);
+        }
+        public DataTable PrestamoInterEmpresa_Listado()
+        {
+            return cdOrdenPedido.PrestamoInterEmpresa_Listado();
+        }
     }
 }
