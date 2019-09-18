@@ -807,25 +807,18 @@ namespace HPResergerFunciones
         /// <param name="PosInicialGrilla">Fila donde se va a Insertar la Tabla</param>
         /// <param name="OrdendelasColumnas">No se Usa</param>
         /// <param name="FilasNegritas">No se Usa</param>
-        /// <param name="ColumnaNegritas">No se Usa</param>
+        /// <param name="AutoAjustarColumnas">No se Usa</param>
         /// <param name="ScriptMacro">Codigo para ejecutar al momento de abrir el programa</param>
-        public static void ExportarAExcelOrdenandoColumnas(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas, int[] FilasNegritas, int[] ColumnaNegritas, string ScriptMacro)
+        public static void ExportarAExcelOrdenandoColumnas(DataTable grd, EstiloCelda CeldaCabecera, EstiloCelda CeldaDefecto, string NameFile, string nombrehoja, List<RangoCelda> NombresCeldas, int PosInicialGrilla, int[] OrdendelasColumnas
+            , int[] FilasNegritas, int[] AutoAjustarColumnas, string ScriptMacro)
         {
-            //int nume, numer;
             ExcelPackage Excel = new ExcelPackage();
             Excel.Workbook.Worksheets.Add(nombrehoja);
             ExcelWorksheet Hoja_Trabajo = Excel.Workbook.Worksheets[1];
-            //if (/string.IsNullOrWhiteSpace(ruta))
-            ///.Visible = false;
-            //else
-            //   aplicacion.Visible = false;           
-            //Hoja_Trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
             Hoja_Trabajo.Name = nombrehoja;
             ///Ponemos Nombre a las Celdas      
             foreach (RangoCelda Nombres in NombresCeldas)
             {
-                //hoja_trabajo.Cells[Nombres.columna, Nombres.fila] = Nombres.Nombre;
-
                 Hoja_Trabajo.Cells[Nombres.fila].Value = Nombres.Nombre;
                 Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                 Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
@@ -834,8 +827,6 @@ namespace HPResergerFunciones
                     Hoja_Trabajo.Cells[Nombres.fila + ":" + Nombres.columna].Style.Font.Size = Nombres.TamañoFuente;
                 if (!Nombres._Centrar)
                 {
-                    //.HorizontalAlignment = xlLeft
-                    //.VerticalAlignment = xlBottom
                     Hoja_Trabajo.Cells[Nombres.fila /*+ ":" + Nombres.columna*/].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
                     Hoja_Trabajo.Cells[Nombres.fila/* + ":" + Nombres.columna*/].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Bottom;
                 }
@@ -904,6 +895,11 @@ namespace HPResergerFunciones
             Hoja_Trabajo.Cells[Pos].Style.WrapText = true;
             Hoja_Trabajo.Cells[Pos].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
             Hoja_Trabajo.Cells[Pos].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+            //AutoAjustarColumnas
+            foreach (int i in AutoAjustarColumnas)
+            {
+                Hoja_Trabajo.Column(i).AutoFit();
+            }
             //Fin Ajuste de Texto
             if (!EstaArchivoAbierto(file.ToString()))
             {
@@ -914,7 +910,6 @@ namespace HPResergerFunciones
                 }
                 else msg("Excel No Instalado");
             }
-
             //foreach (DataGridViewRow item in grd.Rows)
             //{
             //    nume = 0;
@@ -960,7 +955,7 @@ namespace HPResergerFunciones
             {
                 //   Hoja_Trabajo.Rows[fila + PosInicialGrilla].Font.Bold = true;
             }
-            foreach (int fila in ColumnaNegritas)
+            foreach (int fila in AutoAjustarColumnas)
             {
                 //    Hoja_Trabajo.Columns[fila].Font.Bold = true;
             }

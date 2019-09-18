@@ -16,7 +16,7 @@ namespace HPReserger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ModuloContable.frmListadoAsientosContables());
+            //Application.Run(new ModuloFinanzas.frmCobroPrestamosInterEmpresa());
             Application.Run(new frmLogin());
         }
     }

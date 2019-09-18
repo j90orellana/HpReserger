@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrestamoInterEmpresas));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,6 +78,31 @@
             this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
             this.label20 = new System.Windows.Forms.Label();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.lblmensaje = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btncleanfind = new System.Windows.Forms.Button();
+            this.txtbusempresaorigen = new HpResergerUserControls.TextBoxPer();
+            this.txtbusempresadestino = new HpResergerUserControls.TextBoxPer();
+            this.txtbusMoneda = new HpResergerUserControls.TextBoxPer();
+            this.label23 = new System.Windows.Forms.Label();
+            this.dtpfechabus1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpfechabus2 = new System.Windows.Forms.DateTimePicker();
+            this.btnCambiar = new System.Windows.Forms.Button();
+            this.txtME = new HpResergerUserControls.TextBoxPer();
+            this.txtMN = new HpResergerUserControls.TextBoxPer();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cboOriCuentaContable = new System.Windows.Forms.ComboBox();
+            this.cboDesCuentaContable = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.chkbusEstados = new HpResergerUserControls.checkboxOre();
             this.xpkid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xfkEmpresaOri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,31 +135,6 @@
             this.xglosa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xNEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.lblmensaje = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btncleanfind = new System.Windows.Forms.Button();
-            this.txtbusempresaorigen = new HpResergerUserControls.TextBoxPer();
-            this.txtbusempresadestino = new HpResergerUserControls.TextBoxPer();
-            this.txtbusMoneda = new HpResergerUserControls.TextBoxPer();
-            this.label23 = new System.Windows.Forms.Label();
-            this.dtpfechabus1 = new System.Windows.Forms.DateTimePicker();
-            this.dtpfechabus2 = new System.Windows.Forms.DateTimePicker();
-            this.btnCambiar = new System.Windows.Forms.Button();
-            this.txtME = new HpResergerUserControls.TextBoxPer();
-            this.txtMN = new HpResergerUserControls.TextBoxPer();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cboOriCuentaContable = new System.Windows.Forms.ComboBox();
-            this.cboDesCuentaContable = new System.Windows.Forms.ComboBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnExportarExcel = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.chkbusEstados = new HpResergerUserControls.checkboxOre();
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.SuspendLayout();
             // 
@@ -612,9 +613,9 @@
             this.dtgconten.AllowUserToAddRows = false;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -623,14 +624,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.xpkid,
@@ -665,14 +666,14 @@
             this.xglosa,
             this.xEstado,
             this.xNEstado});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
             this.dtgconten.Location = new System.Drawing.Point(8, 286);
@@ -684,292 +685,6 @@
             this.dtgconten.Size = new System.Drawing.Size(964, 143);
             this.dtgconten.TabIndex = 29;
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
-            // 
-            // xpkid
-            // 
-            this.xpkid.DataPropertyName = "pkid";
-            this.xpkid.HeaderText = "pkid";
-            this.xpkid.Name = "xpkid";
-            this.xpkid.ReadOnly = true;
-            this.xpkid.Visible = false;
-            // 
-            // xfkEmpresaOri
-            // 
-            this.xfkEmpresaOri.DataPropertyName = "fkEmpresaOri";
-            this.xfkEmpresaOri.HeaderText = "fkEmpresaOri";
-            this.xfkEmpresaOri.Name = "xfkEmpresaOri";
-            this.xfkEmpresaOri.ReadOnly = true;
-            this.xfkEmpresaOri.Visible = false;
-            // 
-            // xempresa
-            // 
-            this.xempresa.DataPropertyName = "EmpresaOri";
-            this.xempresa.HeaderText = "Empresa Origen";
-            this.xempresa.MinimumWidth = 120;
-            this.xempresa.Name = "xempresa";
-            this.xempresa.ReadOnly = true;
-            // 
-            // xfkidProyectoOri
-            // 
-            this.xfkidProyectoOri.DataPropertyName = "fkidProyectoOri";
-            this.xfkidProyectoOri.HeaderText = "fkidProyectoOri";
-            this.xfkidProyectoOri.Name = "xfkidProyectoOri";
-            this.xfkidProyectoOri.ReadOnly = true;
-            this.xfkidProyectoOri.Visible = false;
-            // 
-            // xfkidEtapaOri
-            // 
-            this.xfkidEtapaOri.DataPropertyName = "fkidEtapaOri";
-            this.xfkidEtapaOri.HeaderText = "fkidEtapaOri";
-            this.xfkidEtapaOri.Name = "xfkidEtapaOri";
-            this.xfkidEtapaOri.ReadOnly = true;
-            this.xfkidEtapaOri.Visible = false;
-            // 
-            // xidBancoOri
-            // 
-            this.xidBancoOri.DataPropertyName = "idBancoOri";
-            this.xidBancoOri.HeaderText = "idBancoOri";
-            this.xidBancoOri.Name = "xidBancoOri";
-            this.xidBancoOri.ReadOnly = true;
-            this.xidBancoOri.Visible = false;
-            // 
-            // xbancoOri
-            // 
-            this.xbancoOri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xbancoOri.DataPropertyName = "BancoOri";
-            this.xbancoOri.HeaderText = "Banco Origen";
-            this.xbancoOri.MinimumWidth = 70;
-            this.xbancoOri.Name = "xbancoOri";
-            this.xbancoOri.ReadOnly = true;
-            this.xbancoOri.Width = 95;
-            // 
-            // xsufijoori
-            // 
-            this.xsufijoori.DataPropertyName = "sufijoori";
-            this.xsufijoori.HeaderText = "xsufijoori";
-            this.xsufijoori.Name = "xsufijoori";
-            this.xsufijoori.ReadOnly = true;
-            this.xsufijoori.Visible = false;
-            // 
-            // xidCtaOri
-            // 
-            this.xidCtaOri.DataPropertyName = "idCtaOri";
-            this.xidCtaOri.HeaderText = "idCtaOri";
-            this.xidCtaOri.Name = "xidCtaOri";
-            this.xidCtaOri.ReadOnly = true;
-            this.xidCtaOri.Visible = false;
-            // 
-            // xCtaOrigen
-            // 
-            this.xCtaOrigen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xCtaOrigen.DataPropertyName = "NroCtaOri";
-            this.xCtaOrigen.HeaderText = "Cta Origen";
-            this.xCtaOrigen.MinimumWidth = 80;
-            this.xCtaOrigen.Name = "xCtaOrigen";
-            this.xCtaOrigen.ReadOnly = true;
-            this.xCtaOrigen.Width = 81;
-            // 
-            // xCuoOri
-            // 
-            this.xCuoOri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.xCuoOri.DataPropertyName = "CuoOri";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xCuoOri.DefaultCellStyle = dataGridViewCellStyle10;
-            this.xCuoOri.HeaderText = "Cuo Origen";
-            this.xCuoOri.MinimumWidth = 70;
-            this.xCuoOri.Name = "xCuoOri";
-            this.xCuoOri.ReadOnly = true;
-            this.xCuoOri.Width = 70;
-            // 
-            // xCtaContableOri
-            // 
-            this.xCtaContableOri.DataPropertyName = "CtaContableOri";
-            this.xCtaContableOri.HeaderText = "CtaContableOri";
-            this.xCtaContableOri.Name = "xCtaContableOri";
-            this.xCtaContableOri.ReadOnly = true;
-            this.xCtaContableOri.Visible = false;
-            // 
-            // xfkEmpresaDes
-            // 
-            this.xfkEmpresaDes.DataPropertyName = "fkEmpresaDes";
-            this.xfkEmpresaDes.HeaderText = "fkEmpresaDes";
-            this.xfkEmpresaDes.Name = "xfkEmpresaDes";
-            this.xfkEmpresaDes.ReadOnly = true;
-            this.xfkEmpresaDes.Visible = false;
-            // 
-            // xEmpresaDestino
-            // 
-            this.xEmpresaDestino.DataPropertyName = "EmpresaDes";
-            this.xEmpresaDestino.HeaderText = "Empresa Destino";
-            this.xEmpresaDestino.MinimumWidth = 120;
-            this.xEmpresaDestino.Name = "xEmpresaDestino";
-            this.xEmpresaDestino.ReadOnly = true;
-            // 
-            // xfkidProyectoDes
-            // 
-            this.xfkidProyectoDes.DataPropertyName = "fkidProyectoDes";
-            this.xfkidProyectoDes.HeaderText = "fkidProyectoDes";
-            this.xfkidProyectoDes.Name = "xfkidProyectoDes";
-            this.xfkidProyectoDes.ReadOnly = true;
-            this.xfkidProyectoDes.Visible = false;
-            // 
-            // xfkidEtapaDes
-            // 
-            this.xfkidEtapaDes.DataPropertyName = "fkidEtapaDes";
-            this.xfkidEtapaDes.HeaderText = "fkidEtapaDes";
-            this.xfkidEtapaDes.Name = "xfkidEtapaDes";
-            this.xfkidEtapaDes.ReadOnly = true;
-            this.xfkidEtapaDes.Visible = false;
-            // 
-            // xidBancoDes
-            // 
-            this.xidBancoDes.DataPropertyName = "idBancoDes";
-            this.xidBancoDes.HeaderText = "idBancoDes";
-            this.xidBancoDes.Name = "xidBancoDes";
-            this.xidBancoDes.ReadOnly = true;
-            this.xidBancoDes.Visible = false;
-            // 
-            // xBancodes
-            // 
-            this.xBancodes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xBancodes.DataPropertyName = "BancoDes";
-            this.xBancodes.HeaderText = "Banco Destino";
-            this.xBancodes.MinimumWidth = 70;
-            this.xBancodes.Name = "xBancodes";
-            this.xBancodes.ReadOnly = true;
-            this.xBancodes.Width = 98;
-            // 
-            // xsufijodes
-            // 
-            this.xsufijodes.DataPropertyName = "sufijodes";
-            this.xsufijodes.HeaderText = "xsufijodes";
-            this.xsufijodes.Name = "xsufijodes";
-            this.xsufijodes.ReadOnly = true;
-            this.xsufijodes.Visible = false;
-            // 
-            // xidCtaDes
-            // 
-            this.xidCtaDes.DataPropertyName = "idCtaDes";
-            this.xidCtaDes.HeaderText = "idCtaDes";
-            this.xidCtaDes.Name = "xidCtaDes";
-            this.xidCtaDes.ReadOnly = true;
-            this.xidCtaDes.Visible = false;
-            // 
-            // xCtaDes
-            // 
-            this.xCtaDes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.xCtaDes.DataPropertyName = "NroCtaDes";
-            this.xCtaDes.HeaderText = "Cta Destino";
-            this.xCtaDes.MinimumWidth = 80;
-            this.xCtaDes.Name = "xCtaDes";
-            this.xCtaDes.ReadOnly = true;
-            this.xCtaDes.Width = 85;
-            // 
-            // xCuoDes
-            // 
-            this.xCuoDes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.xCuoDes.DataPropertyName = "CuoDes";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.xCuoDes.DefaultCellStyle = dataGridViewCellStyle11;
-            this.xCuoDes.HeaderText = "Cuo Destino";
-            this.xCuoDes.MinimumWidth = 70;
-            this.xCuoDes.Name = "xCuoDes";
-            this.xCuoDes.ReadOnly = true;
-            this.xCuoDes.Width = 70;
-            // 
-            // xCtaContableDes
-            // 
-            this.xCtaContableDes.DataPropertyName = "CtaContableDes";
-            this.xCtaContableDes.HeaderText = "CtaContableDes";
-            this.xCtaContableDes.Name = "xCtaContableDes";
-            this.xCtaContableDes.ReadOnly = true;
-            this.xCtaContableDes.Visible = false;
-            // 
-            // xidMoneda
-            // 
-            this.xidMoneda.DataPropertyName = "idMoneda";
-            this.xidMoneda.HeaderText = "idMoneda";
-            this.xidMoneda.Name = "xidMoneda";
-            this.xidMoneda.ReadOnly = true;
-            this.xidMoneda.Visible = false;
-            // 
-            // xmon
-            // 
-            this.xmon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.xmon.DataPropertyName = "moneda";
-            this.xmon.HeaderText = "Mon";
-            this.xmon.MinimumWidth = 40;
-            this.xmon.Name = "xmon";
-            this.xmon.ReadOnly = true;
-            this.xmon.Width = 40;
-            // 
-            // ximporte
-            // 
-            this.ximporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ximporte.DataPropertyName = "montoPrestado";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "n2";
-            this.ximporte.DefaultCellStyle = dataGridViewCellStyle12;
-            this.ximporte.HeaderText = "Monto";
-            this.ximporte.MinimumWidth = 50;
-            this.ximporte.Name = "ximporte";
-            this.ximporte.ReadOnly = true;
-            this.ximporte.Width = 50;
-            // 
-            // xfechaprestamo
-            // 
-            this.xfechaprestamo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.xfechaprestamo.DataPropertyName = "FechaPrestado";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "d";
-            this.xfechaprestamo.DefaultCellStyle = dataGridViewCellStyle13;
-            this.xfechaprestamo.HeaderText = "Fecha Prestamo";
-            this.xfechaprestamo.MinimumWidth = 80;
-            this.xfechaprestamo.Name = "xfechaprestamo";
-            this.xfechaprestamo.ReadOnly = true;
-            this.xfechaprestamo.Width = 80;
-            // 
-            // xFechaContable
-            // 
-            this.xFechaContable.DataPropertyName = "FechaContable";
-            this.xFechaContable.HeaderText = "FechaContable";
-            this.xFechaContable.Name = "xFechaContable";
-            this.xFechaContable.ReadOnly = true;
-            this.xFechaContable.Visible = false;
-            // 
-            // xtc
-            // 
-            this.xtc.DataPropertyName = "tc";
-            this.xtc.HeaderText = "tc";
-            this.xtc.Name = "xtc";
-            this.xtc.ReadOnly = true;
-            this.xtc.Visible = false;
-            // 
-            // xglosa
-            // 
-            this.xglosa.DataPropertyName = "glosa";
-            this.xglosa.HeaderText = "Glosa";
-            this.xglosa.MinimumWidth = 100;
-            this.xglosa.Name = "xglosa";
-            this.xglosa.ReadOnly = true;
-            // 
-            // xEstado
-            // 
-            this.xEstado.DataPropertyName = "Estado";
-            this.xEstado.HeaderText = "Estado";
-            this.xEstado.Name = "xEstado";
-            this.xEstado.ReadOnly = true;
-            this.xEstado.Visible = false;
-            // 
-            // xNEstado
-            // 
-            this.xNEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.xNEstado.DataPropertyName = "nestado";
-            this.xNEstado.HeaderText = "Estado";
-            this.xNEstado.MinimumWidth = 50;
-            this.xNEstado.Name = "xNEstado";
-            this.xNEstado.ReadOnly = true;
-            this.xNEstado.Width = 50;
             // 
             // btnaceptar
             // 
@@ -1329,6 +1044,294 @@
             this.chkbusEstados.UseVisualStyleBackColor = false;
             this.chkbusEstados.CheckStateChanged += new System.EventHandler(this.chkbusEstados_CheckStateChanged);
             // 
+            // xpkid
+            // 
+            this.xpkid.DataPropertyName = "pkid";
+            this.xpkid.HeaderText = "pkid";
+            this.xpkid.Name = "xpkid";
+            this.xpkid.ReadOnly = true;
+            this.xpkid.Visible = false;
+            // 
+            // xfkEmpresaOri
+            // 
+            this.xfkEmpresaOri.DataPropertyName = "fkEmpresaOri";
+            this.xfkEmpresaOri.HeaderText = "fkEmpresaOri";
+            this.xfkEmpresaOri.Name = "xfkEmpresaOri";
+            this.xfkEmpresaOri.ReadOnly = true;
+            this.xfkEmpresaOri.Visible = false;
+            // 
+            // xempresa
+            // 
+            this.xempresa.DataPropertyName = "EmpresaOri";
+            this.xempresa.HeaderText = "Empresa Origen";
+            this.xempresa.MinimumWidth = 120;
+            this.xempresa.Name = "xempresa";
+            this.xempresa.ReadOnly = true;
+            // 
+            // xfkidProyectoOri
+            // 
+            this.xfkidProyectoOri.DataPropertyName = "fkidProyectoOri";
+            this.xfkidProyectoOri.HeaderText = "fkidProyectoOri";
+            this.xfkidProyectoOri.Name = "xfkidProyectoOri";
+            this.xfkidProyectoOri.ReadOnly = true;
+            this.xfkidProyectoOri.Visible = false;
+            // 
+            // xfkidEtapaOri
+            // 
+            this.xfkidEtapaOri.DataPropertyName = "fkidEtapaOri";
+            this.xfkidEtapaOri.HeaderText = "fkidEtapaOri";
+            this.xfkidEtapaOri.Name = "xfkidEtapaOri";
+            this.xfkidEtapaOri.ReadOnly = true;
+            this.xfkidEtapaOri.Visible = false;
+            // 
+            // xidBancoOri
+            // 
+            this.xidBancoOri.DataPropertyName = "idBancoOri";
+            this.xidBancoOri.HeaderText = "idBancoOri";
+            this.xidBancoOri.Name = "xidBancoOri";
+            this.xidBancoOri.ReadOnly = true;
+            this.xidBancoOri.Visible = false;
+            // 
+            // xbancoOri
+            // 
+            this.xbancoOri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xbancoOri.DataPropertyName = "BancoOri";
+            this.xbancoOri.HeaderText = "Banco Origen";
+            this.xbancoOri.MinimumWidth = 70;
+            this.xbancoOri.Name = "xbancoOri";
+            this.xbancoOri.ReadOnly = true;
+            this.xbancoOri.Width = 103;
+            // 
+            // xsufijoori
+            // 
+            this.xsufijoori.DataPropertyName = "sufijoori";
+            this.xsufijoori.HeaderText = "xsufijoori";
+            this.xsufijoori.Name = "xsufijoori";
+            this.xsufijoori.ReadOnly = true;
+            this.xsufijoori.Visible = false;
+            // 
+            // xidCtaOri
+            // 
+            this.xidCtaOri.DataPropertyName = "idCtaOri";
+            this.xidCtaOri.HeaderText = "idCtaOri";
+            this.xidCtaOri.Name = "xidCtaOri";
+            this.xidCtaOri.ReadOnly = true;
+            this.xidCtaOri.Visible = false;
+            // 
+            // xCtaOrigen
+            // 
+            this.xCtaOrigen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xCtaOrigen.DataPropertyName = "NroCtaOri";
+            this.xCtaOrigen.HeaderText = "Cta Origen";
+            this.xCtaOrigen.MinimumWidth = 80;
+            this.xCtaOrigen.Name = "xCtaOrigen";
+            this.xCtaOrigen.ReadOnly = true;
+            this.xCtaOrigen.Width = 88;
+            // 
+            // xCuoOri
+            // 
+            this.xCuoOri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xCuoOri.DataPropertyName = "CuoOri";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xCuoOri.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xCuoOri.HeaderText = "Cuo Origen";
+            this.xCuoOri.MinimumWidth = 70;
+            this.xCuoOri.Name = "xCuoOri";
+            this.xCuoOri.ReadOnly = true;
+            this.xCuoOri.Width = 70;
+            // 
+            // xCtaContableOri
+            // 
+            this.xCtaContableOri.DataPropertyName = "CtaContableOri";
+            this.xCtaContableOri.HeaderText = "CtaContableOri";
+            this.xCtaContableOri.Name = "xCtaContableOri";
+            this.xCtaContableOri.ReadOnly = true;
+            this.xCtaContableOri.Visible = false;
+            // 
+            // xfkEmpresaDes
+            // 
+            this.xfkEmpresaDes.DataPropertyName = "fkEmpresaDes";
+            this.xfkEmpresaDes.HeaderText = "fkEmpresaDes";
+            this.xfkEmpresaDes.Name = "xfkEmpresaDes";
+            this.xfkEmpresaDes.ReadOnly = true;
+            this.xfkEmpresaDes.Visible = false;
+            // 
+            // xEmpresaDestino
+            // 
+            this.xEmpresaDestino.DataPropertyName = "EmpresaDes";
+            this.xEmpresaDestino.HeaderText = "Empresa Destino";
+            this.xEmpresaDestino.MinimumWidth = 120;
+            this.xEmpresaDestino.Name = "xEmpresaDestino";
+            this.xEmpresaDestino.ReadOnly = true;
+            // 
+            // xfkidProyectoDes
+            // 
+            this.xfkidProyectoDes.DataPropertyName = "fkidProyectoDes";
+            this.xfkidProyectoDes.HeaderText = "fkidProyectoDes";
+            this.xfkidProyectoDes.Name = "xfkidProyectoDes";
+            this.xfkidProyectoDes.ReadOnly = true;
+            this.xfkidProyectoDes.Visible = false;
+            // 
+            // xfkidEtapaDes
+            // 
+            this.xfkidEtapaDes.DataPropertyName = "fkidEtapaDes";
+            this.xfkidEtapaDes.HeaderText = "fkidEtapaDes";
+            this.xfkidEtapaDes.Name = "xfkidEtapaDes";
+            this.xfkidEtapaDes.ReadOnly = true;
+            this.xfkidEtapaDes.Visible = false;
+            // 
+            // xidBancoDes
+            // 
+            this.xidBancoDes.DataPropertyName = "idBancoDes";
+            this.xidBancoDes.HeaderText = "idBancoDes";
+            this.xidBancoDes.Name = "xidBancoDes";
+            this.xidBancoDes.ReadOnly = true;
+            this.xidBancoDes.Visible = false;
+            // 
+            // xBancodes
+            // 
+            this.xBancodes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xBancodes.DataPropertyName = "BancoDes";
+            this.xBancodes.HeaderText = "Banco Destino";
+            this.xBancodes.MinimumWidth = 70;
+            this.xBancodes.Name = "xBancodes";
+            this.xBancodes.ReadOnly = true;
+            this.xBancodes.Width = 98;
+            // 
+            // xsufijodes
+            // 
+            this.xsufijodes.DataPropertyName = "sufijodes";
+            this.xsufijodes.HeaderText = "xsufijodes";
+            this.xsufijodes.Name = "xsufijodes";
+            this.xsufijodes.ReadOnly = true;
+            this.xsufijodes.Visible = false;
+            // 
+            // xidCtaDes
+            // 
+            this.xidCtaDes.DataPropertyName = "idCtaDes";
+            this.xidCtaDes.HeaderText = "idCtaDes";
+            this.xidCtaDes.Name = "xidCtaDes";
+            this.xidCtaDes.ReadOnly = true;
+            this.xidCtaDes.Visible = false;
+            // 
+            // xCtaDes
+            // 
+            this.xCtaDes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xCtaDes.DataPropertyName = "NroCtaDes";
+            this.xCtaDes.HeaderText = "Cta Destino";
+            this.xCtaDes.MinimumWidth = 80;
+            this.xCtaDes.Name = "xCtaDes";
+            this.xCtaDes.ReadOnly = true;
+            this.xCtaDes.Width = 85;
+            // 
+            // xCuoDes
+            // 
+            this.xCuoDes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xCuoDes.DataPropertyName = "CuoDes";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xCuoDes.DefaultCellStyle = dataGridViewCellStyle4;
+            this.xCuoDes.HeaderText = "Cuo Destino";
+            this.xCuoDes.MinimumWidth = 70;
+            this.xCuoDes.Name = "xCuoDes";
+            this.xCuoDes.ReadOnly = true;
+            this.xCuoDes.Width = 70;
+            // 
+            // xCtaContableDes
+            // 
+            this.xCtaContableDes.DataPropertyName = "CtaContableDes";
+            this.xCtaContableDes.HeaderText = "CtaContableDes";
+            this.xCtaContableDes.Name = "xCtaContableDes";
+            this.xCtaContableDes.ReadOnly = true;
+            this.xCtaContableDes.Visible = false;
+            // 
+            // xidMoneda
+            // 
+            this.xidMoneda.DataPropertyName = "idMoneda";
+            this.xidMoneda.HeaderText = "idMoneda";
+            this.xidMoneda.Name = "xidMoneda";
+            this.xidMoneda.ReadOnly = true;
+            this.xidMoneda.Visible = false;
+            // 
+            // xmon
+            // 
+            this.xmon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xmon.DataPropertyName = "moneda";
+            this.xmon.HeaderText = "Mon";
+            this.xmon.MinimumWidth = 40;
+            this.xmon.Name = "xmon";
+            this.xmon.ReadOnly = true;
+            this.xmon.Width = 40;
+            // 
+            // ximporte
+            // 
+            this.ximporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ximporte.DataPropertyName = "montoPrestado";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "n2";
+            this.ximporte.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ximporte.HeaderText = "Monto";
+            this.ximporte.MinimumWidth = 50;
+            this.ximporte.Name = "ximporte";
+            this.ximporte.ReadOnly = true;
+            this.ximporte.Width = 50;
+            // 
+            // xfechaprestamo
+            // 
+            this.xfechaprestamo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xfechaprestamo.DataPropertyName = "FechaPrestado";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "d";
+            this.xfechaprestamo.DefaultCellStyle = dataGridViewCellStyle6;
+            this.xfechaprestamo.HeaderText = "Fecha Prestamo";
+            this.xfechaprestamo.MinimumWidth = 80;
+            this.xfechaprestamo.Name = "xfechaprestamo";
+            this.xfechaprestamo.ReadOnly = true;
+            this.xfechaprestamo.Width = 80;
+            // 
+            // xFechaContable
+            // 
+            this.xFechaContable.DataPropertyName = "FechaContable";
+            this.xFechaContable.HeaderText = "FechaContable";
+            this.xFechaContable.Name = "xFechaContable";
+            this.xFechaContable.ReadOnly = true;
+            this.xFechaContable.Visible = false;
+            // 
+            // xtc
+            // 
+            this.xtc.DataPropertyName = "tc";
+            this.xtc.HeaderText = "tc";
+            this.xtc.Name = "xtc";
+            this.xtc.ReadOnly = true;
+            this.xtc.Visible = false;
+            // 
+            // xglosa
+            // 
+            this.xglosa.DataPropertyName = "glosa";
+            this.xglosa.HeaderText = "Glosa";
+            this.xglosa.MinimumWidth = 100;
+            this.xglosa.Name = "xglosa";
+            this.xglosa.ReadOnly = true;
+            // 
+            // xEstado
+            // 
+            this.xEstado.DataPropertyName = "Estado";
+            this.xEstado.HeaderText = "Estado";
+            this.xEstado.Name = "xEstado";
+            this.xEstado.ReadOnly = true;
+            this.xEstado.Visible = false;
+            // 
+            // xNEstado
+            // 
+            this.xNEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.xNEstado.DataPropertyName = "nestado";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.xNEstado.DefaultCellStyle = dataGridViewCellStyle7;
+            this.xNEstado.HeaderText = "Estado";
+            this.xNEstado.MinimumWidth = 50;
+            this.xNEstado.Name = "xNEstado";
+            this.xNEstado.ReadOnly = true;
+            this.xNEstado.Width = 50;
+            // 
             // frmPrestamoInterEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1473,6 +1476,8 @@
         private System.Windows.Forms.ComboBox cboDesCuentaContable;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnExportarExcel;
+        private System.Windows.Forms.Button btnNuevo;
+        private HpResergerUserControls.checkboxOre chkbusEstados;
         private System.Windows.Forms.DataGridViewTextBoxColumn xpkid;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkEmpresaOri;
         private System.Windows.Forms.DataGridViewTextBoxColumn xempresa;
@@ -1505,7 +1510,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn xglosa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn xNEstado;
-        private System.Windows.Forms.Button btnNuevo;
-        private HpResergerUserControls.checkboxOre chkbusEstados;
     }
 }

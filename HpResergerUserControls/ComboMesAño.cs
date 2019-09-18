@@ -65,11 +65,11 @@ namespace HpResergerUserControls
                 _VerAño = value;
                 var val = AutoSize;
                 var medidas = Size;
-                AutoSize = false;                
+                AutoSize = false;
                 lbl2.Visible = comboaño.Visible = _VerAño;
                 Size = medidas;
                 AutoSize = val;
-                Invalidate();                
+                Invalidate();
             }
         }
         Boolean _VerMes = true;
@@ -142,6 +142,11 @@ namespace HpResergerUserControls
                 timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, DateTime.Now.Day);
             }
             catch (ArgumentOutOfRangeException)
+            {
+                timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
+                timeaux = timeaux.AddMonths(1).AddDays(-1);
+            }
+            catch (NullReferenceException)
             {
                 timeaux = new DateTime((int)comboaño.SelectedValue, (int)combomes.SelectedValue, 1);
                 timeaux = timeaux.AddMonths(1).AddDays(-1);

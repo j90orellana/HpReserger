@@ -3740,5 +3740,49 @@ namespace HPReserger
         {
             frmReporteAnalitico2 = null;
         }
+        ModuloReportes.frmReporteSaldosContables FrmReporteSaldos;
+        private void reporteSaldosContablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (FrmReporteSaldos == null)
+            {
+                FrmReporteSaldos = new ModuloReportes.frmReporteSaldosContables();
+                FrmReporteSaldos.MdiParent = this;
+                FrmReporteSaldos.Icon = ICono;
+                FrmReporteSaldos.FormClosed += FrmReporteSaldos_FormClosed;
+                FrmReporteSaldos.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                FrmReporteSaldos.Activate();
+                ValidarVentanas(FrmReporteSaldos);
+            }
+        }
+        private void FrmReporteSaldos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmReporteSaldos = null;
+        }
+        ModuloFinanzas.frmCobroPrestamosInterEmpresa frmcobrointerempresas;
+        private void cobroInterEmpresasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmcobrointerempresas == null)
+            {
+                frmcobrointerempresas = new ModuloFinanzas.frmCobroPrestamosInterEmpresa();
+                frmcobrointerempresas.MdiParent = this;
+                frmcobrointerempresas.Icon = ICono;
+                frmcobrointerempresas.FormClosed += Frmcobrointerempresas_FormClosed;
+                frmcobrointerempresas.Show();
+                frmMenu_SizeChanged(sender, new EventArgs());
+            }
+            else
+            {
+                frmcobrointerempresas.Activate();
+                ValidarVentanas(frmcobrointerempresas);
+            }
+        }
+        private void Frmcobrointerempresas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmcobrointerempresas = null;
+        }
     }
 }

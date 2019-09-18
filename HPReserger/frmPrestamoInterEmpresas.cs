@@ -423,7 +423,7 @@ namespace HPReserger
                     , IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
                     , CuoDes, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1);
                 ///Proceso Finalizado;
-                msg($"Se Grabó Exitosamente\nEn la Empresa Origen cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");
+                msg($"Se Grabó Exitosamente\nEn la Empresa Origen  cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");
                 CargaDatos();
                 ///****************///
                 ModoEdicion(false);

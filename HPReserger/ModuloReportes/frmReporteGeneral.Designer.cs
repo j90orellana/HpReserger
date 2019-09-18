@@ -112,6 +112,7 @@
             this.btnexportarpdf.Text = "Pdf";
             this.btnexportarpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexportarpdf.UseVisualStyleBackColor = true;
+            this.btnexportarpdf.Visible = false;
             this.btnexportarpdf.Click += new System.EventHandler(this.btnexportarpdf_Click);
             // 
             // label2
@@ -355,13 +356,15 @@
             this.comboMesAño.AutoSize = true;
             this.comboMesAño.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2018, 12, 5, 0, 0, 0, 0);
-            this.comboMesAño.FechaFinMes = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
-            this.comboMesAño.FechaInicioMes = new System.DateTime(2018, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2019, 9, 12, 0, 0, 0, 0);
+            this.comboMesAño.FechaFinMes = new System.DateTime(2019, 9, 30, 0, 0, 0, 0);
+            this.comboMesAño.FechaInicioMes = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(325, 63);
             this.comboMesAño.Name = "comboMesAño";
             this.comboMesAño.Size = new System.Drawing.Size(197, 24);
             this.comboMesAño.TabIndex = 88;
+            this.comboMesAño.VerAño = true;
+            this.comboMesAño.VerMes = true;
             this.comboMesAño.CambioFechas += new System.EventHandler(this.comboMesAño_CambioFechas);
             // 
             // label4

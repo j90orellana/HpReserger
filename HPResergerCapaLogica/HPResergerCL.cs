@@ -2396,6 +2396,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.BusquedaVentasManuales(empresa, fecha1, fecha2, cliente, nroboleta);
         }
+        public DataTable ListarCobrarInterEmpresas(int empresa, int @empresaDes, int moneda, DateTime fecha1, DateTime fecha2, string cliente, string nroboleta)
+        {
+            return cdOrdenPedido.ListarCobrarInterEmpresas(empresa, @empresaDes, moneda, fecha1, fecha2, cliente, nroboleta);
+        }
         public DataTable BusquedaVentasManualesAbonados(int empresa, DateTime fecha1, DateTime fecha2, string cliente, string nroboleta)
         {
             return cdOrdenPedido.BusquedaVentasManualesAbonados(empresa, fecha1, fecha2, cliente, nroboleta);
@@ -2451,6 +2455,14 @@ namespace HPResergerCapaLogica
         public DataTable ReporteAnalitico2(DateTime fechaini, DateTime fechafin, string cuentas, string glosas, string nrodoc, string ruc, string empresa, string razon)
         {
             return cdOrdenPedido.ReporteAnalitico2(fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon);
+        }
+        public DataTable ReporteSaldosContables(int empresa, DateTime FechaInicioAnio, DateTime FechaFinMes)
+        {
+            return cdOrdenPedido.ReporteSaldosContables(empresa, FechaInicioAnio, FechaFinMes);
+        }
+        public DataTable ReporteSaldosContables2(int empresa, DateTime FechaInicioAnio, DateTime FechaFinMes)
+        {
+            return cdOrdenPedido.ReporteSaldosContables2(empresa, FechaInicioAnio, FechaFinMes);
         }
         public DataTable ReporteFacturasComprasIncompletas(DateTime fechaini, DateTime fechafin, int Fecha)
         {
@@ -2577,6 +2589,13 @@ namespace HPResergerCapaLogica
         public DataTable PrestamosInterEmpresa(int @opcion, string empresaorigen, string empresadestino, string moneda, DateTime fec1, DateTime fec2, int Estado)
         {
             return cdOrdenPedido.PrestamosInterEmpresa(@opcion, 0, 0, 0, 0, 0, empresaorigen, empresadestino, 0, 0, 0, 0, 0, "", "", 0, 0, fec1, fec2, 0, moneda, Estado);
+        }
+        public DataTable PrestamosInterEmpresaDetalle(int @opcion, int @fkid, int @fkEmpresaOri, int @fkProyectoOri, int @fkEtapaOri, int @fkBancoOri, int @fkCtaBancoOri, int @fkEmpresaDes, int @fkProyectoDes,
+           int @fkEtapaDes, int @fkBancoDes, int @fkCtaBancoDes, string @CuoAbonoOri, string @CuoAbonoDes, DateTime @FechaContable, DateTime @FechaAbono, int @FkMoneda, decimal @Monto, decimal @TC,
+           int @TipoPago, string @NroOperacion, DateTime @FechaModifica, int @Usuario, int @Estado, string glosa)
+        {
+            return cdOrdenPedido.PrestamosInterEmpresaDetalle(@opcion, @fkid, @fkEmpresaOri, @fkProyectoOri, @fkEtapaOri, @fkBancoOri, @fkCtaBancoOri, @fkEmpresaDes, @fkProyectoDes, @fkEtapaDes, @fkBancoDes, @fkCtaBancoDes,
+                @CuoAbonoOri, @CuoAbonoDes, @FechaContable, @FechaAbono, @FkMoneda, @Monto, @TC, @TipoPago, @NroOperacion, @FechaModifica, @Usuario, @Estado, glosa);
         }
     }
 }

@@ -73,6 +73,7 @@
             // 
             this.lblfechasReporte.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblfechasReporte.AutoSize = true;
+            this.lblfechasReporte.BackColor = System.Drawing.Color.Transparent;
             this.lblfechasReporte.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfechasReporte.Location = new System.Drawing.Point(145, 67);
             this.lblfechasReporte.Name = "lblfechasReporte";
@@ -226,6 +227,7 @@
             this.btnexportarpdf.Text = "Pdf";
             this.btnexportarpdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexportarpdf.UseVisualStyleBackColor = true;
+            this.btnexportarpdf.Visible = false;
             this.btnexportarpdf.Click += new System.EventHandler(this.btnexportarpdf_Click);
             // 
             // lblconteo
@@ -300,13 +302,15 @@
             this.comboMesAño.AutoSize = true;
             this.comboMesAño.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2018, 12, 3, 0, 0, 0, 0);
-            this.comboMesAño.FechaFinMes = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
-            this.comboMesAño.FechaInicioMes = new System.DateTime(2018, 12, 1, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2019, 9, 12, 0, 0, 0, 0);
+            this.comboMesAño.FechaFinMes = new System.DateTime(2019, 9, 30, 0, 0, 0, 0);
+            this.comboMesAño.FechaInicioMes = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(173, 63);
             this.comboMesAño.Name = "comboMesAño";
             this.comboMesAño.Size = new System.Drawing.Size(197, 24);
             this.comboMesAño.TabIndex = 90;
+            this.comboMesAño.VerAño = true;
+            this.comboMesAño.VerMes = true;
             this.comboMesAño.CambioFechas += new System.EventHandler(this.comboMesAño_CambioFechas);
             // 
             // backgroundWorker1
@@ -332,7 +336,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblfechasReporte);
             this.Controls.Add(this.label1);
-            this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(530, 598);
             this.Name = "EstadoGananciaPerdidas";
             this.Nombre = "Estado De Resultado Integral";

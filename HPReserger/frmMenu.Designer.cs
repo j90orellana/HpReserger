@@ -122,6 +122,7 @@
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteAnalíticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteSaldosContablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.periodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asientosAbiertosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -254,6 +255,8 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
+            this.cobroInterEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -376,7 +379,9 @@
             this.operacionesBancariasToolStripMenuItem,
             this.toolStripSeparator12,
             this.toolStripMenuItem4,
-            this.prestamoInterEmpresasToolStripMenuItem});
+            this.toolStripSeparator16,
+            this.prestamoInterEmpresasToolStripMenuItem,
+            this.cobroInterEmpresasToolStripMenuItem});
             this.arToolStripMenuItem.Image = global::HPReserger.Properties.Resources.Orden_Pedido;
             this.arToolStripMenuItem.Name = "arToolStripMenuItem";
             this.arToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
@@ -1042,7 +1047,8 @@
             this.mayorPorCuentasToolStripMenuItem,
             this.toolStripSeparator15,
             this.toolStripMenuItem6,
-            this.reporteAnalíticoToolStripMenuItem});
+            this.reporteAnalíticoToolStripMenuItem,
+            this.reporteSaldosContablesToolStripMenuItem});
             this.reportesContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportesContablesToolStripMenuItem.Image")));
             this.reportesContablesToolStripMenuItem.Name = "reportesContablesToolStripMenuItem";
             this.reportesContablesToolStripMenuItem.ShowShortcutKeys = false;
@@ -1128,6 +1134,14 @@
             this.reporteAnalíticoToolStripMenuItem.Text = "Reporte Analítico 2";
             this.reporteAnalíticoToolStripMenuItem.Click += new System.EventHandler(this.reporteAnalíticoToolStripMenuItem_Click_1);
             // 
+            // reporteSaldosContablesToolStripMenuItem
+            // 
+            this.reporteSaldosContablesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reporteSaldosContablesToolStripMenuItem.Image")));
+            this.reporteSaldosContablesToolStripMenuItem.Name = "reporteSaldosContablesToolStripMenuItem";
+            this.reporteSaldosContablesToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.reporteSaldosContablesToolStripMenuItem.Text = "Reporte Saldos Contables";
+            this.reporteSaldosContablesToolStripMenuItem.Click += new System.EventHandler(this.reporteSaldosContablesToolStripMenuItem_Click);
+            // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
@@ -1167,6 +1181,7 @@
             this.vouchersToolStripMenuItem.Name = "vouchersToolStripMenuItem";
             this.vouchersToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.vouchersToolStripMenuItem.Text = "Vouchers";
+            this.vouchersToolStripMenuItem.Visible = false;
             this.vouchersToolStripMenuItem.Click += new System.EventHandler(this.vouchersToolStripMenuItem_Click);
             // 
             // planillaToolStripMenuItem
@@ -2386,6 +2401,19 @@
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
             // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(254, 6);
+            // 
+            // cobroInterEmpresasToolStripMenuItem
+            // 
+            this.cobroInterEmpresasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cobroInterEmpresasToolStripMenuItem.Image")));
+            this.cobroInterEmpresasToolStripMenuItem.Name = "cobroInterEmpresasToolStripMenuItem";
+            this.cobroInterEmpresasToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.cobroInterEmpresasToolStripMenuItem.Text = "Cobro InterEmpresas";
+            this.cobroInterEmpresasToolStripMenuItem.Click += new System.EventHandler(this.cobroInterEmpresasToolStripMenuItem_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2650,5 +2678,8 @@
         private System.Windows.Forms.ToolStripMenuItem reporteAnalíticoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vouchersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem reporteSaldosContablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
+        private System.Windows.Forms.ToolStripMenuItem cobroInterEmpresasToolStripMenuItem;
     }
 }

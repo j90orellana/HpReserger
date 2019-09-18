@@ -4606,6 +4606,12 @@ namespace HPResergerCapaDatos
             object[] valores = { empresa, fecha1, fecha2, cliente, nroboleta };
             return bd.DataTableFromProcedure("usp_BusquedaVentasManuales", parametros, valores, null);
         }
+        public DataTable ListarCobrarInterEmpresas(int empresa, int @empresaDes, int moneda, DateTime fecha1, DateTime fecha2, string cliente, string nroboleta)
+        {
+            string[] parametros = { "@empresa", "@empresaDes", "@moneda", "@fecha1", "@fecha2", "@Cliente", "@nroBoleta" };
+            object[] valores = { empresa, @empresaDes, moneda, fecha1, fecha2, cliente, nroboleta };
+            return bd.DataTableFromProcedure("usp_ListarCobrarInterEmpresas", parametros, valores, null);
+        }
         public DataTable BusquedaVentasManualesAbonados(int empresa, DateTime fecha1, DateTime fecha2, string cliente, string nroboleta)
         {
             string[] parametros = { "@empresa", "@fecha1", "@fecha2", "@Cliente", "@nroBoleta" };
@@ -4689,6 +4695,18 @@ namespace HPResergerCapaDatos
             string[] parametros = { "@Fechaini", "@FechaFin", "@cuentas", "@Glosas", "@NroDoc", "@Ruc", "@Empresa", "@RazonSocial" };
             object[] valores = { fechaini, fechafin, cuentas, glosas, nrodoc, ruc, empresa, razon };
             return bd.DataTableFromProcedure("usp_ReporteAnalitico2", parametros, valores, null);
+        }
+        public DataTable ReporteSaldosContables(int empresa, DateTime fechaini, DateTime fechafin)
+        {
+            string[] parametros = { "@empresa", "@FechaInicial", "@Fecha" };
+            object[] valores = { empresa, fechaini, fechafin };
+            return bd.DataTableFromProcedure("usp_ReporteSaldosContables", parametros, valores, null);
+        }
+        public DataTable ReporteSaldosContables2(int empresa, DateTime fechaini, DateTime fechafin)
+        {
+            string[] parametros = { "@empresa", "@FechaInicial", "@Fecha" };
+            object[] valores = { empresa, fechaini, fechafin };
+            return bd.DataTableFromProcedure("usp_ReporteSaldosContables2", parametros, valores, null);
         }
         public DataTable ReporteFacturasComprasIncompletas(DateTime fechaini, DateTime fechafin, int Fecha)
         {
@@ -4824,6 +4842,16 @@ namespace HPResergerCapaDatos
             object[] valores = { @opcion, @empresaori, @proyectoori, @etapaori, @bancoori, @ctaori, @cuoori, @ctaContableori, @empresades, @proyectodes, @etapades, @bancodes, @ctades,@cuodes, @ctacontabledes, @idmoneda
                     , @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado };
             return bd.DataTableFromProcedure("usp_PrestamosInterbancarios", parametros, valores, null);
+        }
+        public DataTable PrestamosInterEmpresaDetalle(int @opcion, int @fkid, int @fkEmpresaOri, int @fkProyectoOri, int @fkEtapaOri, int @fkBancoOri, int @fkCtaBancoOri, int @fkEmpresaDes, int @fkProyectoDes,
+            int @fkEtapaDes, int @fkBancoDes, int @fkCtaBancoDes, string @CuoAbonoOri, string @CuoAbonoDes, DateTime @FechaContable, DateTime @FechaAbono, int @FkMoneda, decimal @Monto, decimal @TC,
+            int @TipoPago, string @NroOperacion, DateTime @FechaModifica, int @Usuario, int @Estado, string glosa)
+        {
+            string[] parametros = { "@opcion", "@fkid", "@fkEmpresaOri", "@fkProyectoOri", "@fkEtapaOri", "@BancoOri", "@fkCtaBancoOri", "@fkEmpresaDes", "@fkProyectoDes", "@fkEtapaDes", "@BancoDes",
+                "@fkCtaBancoDes", "@CuoAbonoOri", "@CuoAbonoDes", "@FechaContable", "@FechaAbono", "@FkMoneda", "@Monto", "@TC", "@TipoPago", "@NroOperacion", "@FechaModifica","@glosa", "@Usuario", "@Estado" };
+            object[] valores = { @opcion, @fkid, @fkEmpresaOri, @fkProyectoOri, @fkEtapaOri, @fkBancoOri, @fkCtaBancoOri, @fkEmpresaDes, @fkProyectoDes, @fkEtapaDes, @fkBancoDes, @fkCtaBancoDes,
+                @CuoAbonoOri, @CuoAbonoDes, @FechaContable, @FechaAbono, @FkMoneda, @Monto, @TC, @TipoPago, @NroOperacion, @FechaModifica,glosa, @Usuario, @Estado };
+            return bd.DataTableFromProcedure("usp_PrestamosInterbancarios_Detalle", parametros, valores, null);
         }
     }
 }
