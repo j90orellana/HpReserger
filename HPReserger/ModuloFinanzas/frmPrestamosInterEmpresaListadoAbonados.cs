@@ -21,14 +21,31 @@ namespace HPReserger.ModuloFinanzas
 
         private void frmPrestamosInterEmpresaListadoAbonados_Load(object sender, EventArgs e)
         {
+            //Carga Datos Principales 
+            Busqueda = false;
+            //Periodo Anual para la Busqueda
+            dtpfechabus1.Value = new DateTime(DateTime.Now.Year, 1, 1);
+            dtpfechabus2.Value = new DateTime(DateTime.Now.Year, 12, 31);
+            txtbusMoneda.CargarTextoporDefecto(); txtbusempresaorigen.CargarTextoporDefecto(); txtbusempresadestino.CargarTextoporDefecto();
+            Busqueda = true;
             SacarDatos();
         }
         public void SacarDatos()
         {
-            dtgconten.DataSource = CapaLogica.PrestamoInterEmpresa_Listado();
-            lblmsg.Text = $"Total de Registros : {dtgconten.RowCount}";
+            if (Busqueda)
+            {
+                DateTime fechaaux = dtpfechabus1.Value;
+                DateTime fecha1 = dtpfechabus1.Value;
+                DateTime fecha2 = dtpfechabus2.Value;
+                if (fecha1 > fecha2)
+                {
+                    fecha1 = fecha2;
+                    fecha2 = fechaaux;
+                }
+                dtgconten.DataSource = CapaLogica.PrestamoInterEmpresa_Listado(txtbusempresaorigen.TextValido(), txtbusempresadestino.TextValido(), txtbusMoneda.TextValido(), fecha1, fecha2);
+                lblmsg.Text = $"Total de Registros : {dtgconten.RowCount}";
+            }
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             SacarDatos();
@@ -83,6 +100,8 @@ namespace HPReserger.ModuloFinanzas
             dtgconten.ResumeLayout();
         }
         frmProcesando frmproce;
+        private bool Busqueda;
+
         public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void btnexcel_Click(object sender, EventArgs e)
         {
@@ -101,6 +120,57 @@ namespace HPReserger.ModuloFinanzas
             {
                 msg("No hay Datos que Exportar");
             }
+        }
+
+        private void btnCambiar_Click(object sender, EventArgs e)
+        {
+            Busqueda = false;
+            string cadena = txtbusempresadestino.TextValido();
+            txtbusempresadestino.Text = txtbusempresaorigen.TextValido() == "" ? txtbusempresadestino.TextoPorDefecto : txtbusempresaorigen.TextValido();
+            txtbusempresaorigen.Text = cadena == "" ? txtbusempresaorigen.TextoPorDefecto : cadena;
+            Busqueda = true;
+            SacarDatos();
+        }
+        private void btncleanfind_Click(object sender, EventArgs e)
+        {
+            Busqueda = false;
+            txtbusempresadestino.CargarTextoporDefecto();
+            txtbusMoneda.CargarTextoporDefecto();
+            txtbusempresaorigen.CargarTextoporDefecto();
+            dtpfechabus1.Value = new DateTime(DateTime.Now.Year, 1, 1);
+            dtpfechabus2.Value = new DateTime(DateTime.Now.Year, 12, 31);
+            Busqueda = true;
+            SacarDatos();
+            //dtpfechabus1.Value = new DateTime(DateTime.Now.Year, 1, 1);
+            //dtpfechabus2.Value = new DateTime(DateTime.Now.Year, 12, 31);
+            //chkAnulado.Checked = false; chkCancelado.Checked = false;
+        }
+        private void txtbusMoneda_TextChanged(object sender, EventArgs e)
+        {
+            SacarDatos();
+        }
+        private void txtbusempresadestino_TextChanged(object sender, EventArgs e)
+        {
+            SacarDatos();
+        }
+        private void txtbusempresaorigen_TextChanged(object sender, EventArgs e)
+        {
+            SacarDatos();
+        }
+
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dtpfechabus1_ValueChanged(object sender, EventArgs e)
+        {
+            SacarDatos();
+        }
+
+        private void dtpfechabus2_ValueChanged(object sender, EventArgs e)
+        {
+            SacarDatos();
         }
     }
 }

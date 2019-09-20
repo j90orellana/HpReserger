@@ -417,8 +417,8 @@ namespace HPReserger
                     , FechaPrestamo, -21);
                 ///Fin de las Cabeceras
                 ///Detalle de los Asientos
-                string NroKuentaOri = HPResergerFunciones.Utilitarios.ExtraerCuenta(cboOriCuentaBanco.Text);
-                string NroKuentaDes = HPResergerFunciones.Utilitarios.ExtraerCuenta(cboDesCuentaBanco.Text);
+                string NroKuentaOri = HPResergerFunciones.Utilitarios.ExtraerCuenta(cboOriCuentaBanco.Text).Trim();
+                string NroKuentaDes = HPResergerFunciones.Utilitarios.ExtraerCuenta(cboDesCuentaBanco.Text).Trim();
                 // Siguiente idpk
                 int SiguientePkId = (int)CapaLogica.SiguienteIdPrestamoInterEmpresa(IdEmpresaOri).Rows[0]["SiguientePkid"];
                 string NumComprobante = "";
@@ -457,8 +457,9 @@ namespace HPReserger
                 else if (Estado == 2)
                 {
                     CapaLogica.PrestamosInterEmpresa(2, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
-                                        , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], _CuoOrigen, cboOriCuentaContable.SelectedValue.ToString(), IdEmpresaDes, IdProyectoDes
-                                        , IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
+                                        , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], _CuoOrigen, cboOriCuentaContable.SelectedValue.ToString(),
+                                        IdEmpresaDes, IdProyectoDes, IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], 
+                                        (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
                                         , _CuoDestino, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, _FkId);
                 }
                 ///Proceso Finalizado;

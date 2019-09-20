@@ -2605,9 +2605,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.PrestamoInterEmpresa_Filtrar(@empresa, fkid);
         }
-        public DataTable PrestamoInterEmpresa_Listado()
+        public DataTable PrestamoInterEmpresa_Listado(string empresaorigen, string empresadestino, string moneda, DateTime fecha1, DateTime fecha2)
         {
-            return cdOrdenPedido.PrestamoInterEmpresa_Listado();
+            return cdOrdenPedido.PrestamoInterEmpresa_Listado(empresaorigen, empresadestino, moneda, fecha1, fecha2);
         }
     }
 }

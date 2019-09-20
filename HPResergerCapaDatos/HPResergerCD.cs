@@ -4859,10 +4859,10 @@ namespace HPResergerCapaDatos
             object[] valores = { @empresa, fkid };
             return bd.DataTableFromProcedure("usp_PrestamoInterEmpresa_Filtrar", parametros, valores, null);
         }
-        public DataTable PrestamoInterEmpresa_Listado()
+        public DataTable PrestamoInterEmpresa_Listado(string empresaorigen, string empresadestino, string moneda, DateTime fecha1, DateTime fecha2)
         {
-            string[] parametros = null; //{ "@empresa", "@fkid" };
-            object[] valores = null; //{ @empresa, fkid };
+            string[] parametros = { "@empresaorigen", "@empresadestino", "@moneda", "fecha1", "@fecha2" };
+            object[] valores = { empresaorigen, empresadestino, moneda, fecha1, fecha2 };
             return bd.DataTableFromProcedure("usp_PrestamoInterEmpresa_Listado", parametros, valores, null);
         }
     }

@@ -158,10 +158,18 @@ namespace HPReserger.ModuloBancario
             if (cboempresa.SelectedIndex < 0) { cboempresa.Focus(); msg("Seleccione Banco"); return; }
             if (cbomoneda.SelectedIndex < 0) { cbomoneda.Focus(); msg("Seleccione Moneda"); return; }
             if (cbotipocuenta.SelectedIndex < 0) { cbotipocuenta.Focus(); msg("Seleccione Tipo Cuenta"); return; }
+            //Carga de Variables
+            string NroKuenta = txtnrocuenta.TextValido().Trim();
+            string NroKuentaCCi = txtnrocci.TextValido().Trim();
+            int fkEmpresa = (int)cboempresa.SelectedValue;
+            int fkBanco = (int)cbobanco.SelectedValue;
+            int fkMoneda = (int)cbomoneda.SelectedValue;
+            int fkTipoCuenta = (int)cbotipocuenta.SelectedValue;
+            int IdLogin = frmLogin.CodigoUsuario;
             if (estado == 1)
             {
                 /////validar si ya existe
-                DataTable Tdatos = CapaLogica.CuentaBancaria(5, 0, (int)cboempresa.SelectedValue, (int)cbobanco.SelectedValue, (int)cbomoneda.SelectedValue, (int)cbotipocuenta.SelectedValue, txtnrocuenta.TextValido(), txtnrocci.TextValido(), frmLogin.CodigoUsuario);
+                DataTable Tdatos = CapaLogica.CuentaBancaria(5, 0,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
                 if (Tdatos.Rows.Count > 0)
                 {
                     txtnrocuenta.Focus();
@@ -169,20 +177,20 @@ namespace HPReserger.ModuloBancario
                     return;
                 }
                 /////insertando el registro
-                CapaLogica.CuentaBancaria(1, 0, (int)cboempresa.SelectedValue, (int)cbobanco.SelectedValue, (int)cbomoneda.SelectedValue, (int)cbotipocuenta.SelectedValue, txtnrocuenta.TextValido(), txtnrocci.TextValido(), frmLogin.CodigoUsuario);
+                CapaLogica.CuentaBancaria(1, 0,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
                 msg("Número de Cuenta Agregado");
             }
             if (estado == 2)
             {
                 ///validar si no se duplicar
-                DataTable Tdatos = CapaLogica.CuentaBancaria(6, _idcuenta, (int)cboempresa.SelectedValue, (int)cbobanco.SelectedValue, (int)cbomoneda.SelectedValue, (int)cbotipocuenta.SelectedValue, txtnrocuenta.TextValido(), txtnrocci.TextValido(), frmLogin.CodigoUsuario);
+                DataTable Tdatos = CapaLogica.CuentaBancaria(6, _idcuenta,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
                 if (Tdatos.Rows.Count > 0)
                 {
                     txtnrocuenta.Focus();
                     msg("Número de Cuenta YA Existe");
                     return;
                 }
-                CapaLogica.CuentaBancaria(2, _idcuenta, (int)cboempresa.SelectedValue, (int)cbobanco.SelectedValue, (int)cbomoneda.SelectedValue, (int)cbotipocuenta.SelectedValue, txtnrocuenta.TextValido(), txtnrocci.TextValido(), frmLogin.CodigoUsuario);
+                CapaLogica.CuentaBancaria(2, _idcuenta,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
                 msg("Número de Cuenta Actualizado");
             }
             Estado = 0;
