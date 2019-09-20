@@ -426,7 +426,7 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ListarAsientosFiltradosAvanzado(empresa, Fechaini, Fechafin, cuo, cuenta, glosa, suboperacion, Estado);
         }
-        public void Modificar2asiento(int codigo, int proyecto, DateTime Fechas)
+        public void AsientoContableEliminar(int codigo, int proyecto, DateTime Fechas)
         {
             cdOrdenPedido.Modificar2asiento(codigo, proyecto, Fechas);
         }
@@ -450,6 +450,10 @@ namespace HPResergerCapaLogica
         public DataTable DetalleAsientos(int opcion, int idaux, int idasiento, int proyecto, DateTime FechaAsiento, string cuenta)
         {
             return cdOrdenPedido.DetalleAsientos(opcion, idaux, idasiento, cuenta, 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now, 0, FechaAsiento, 0, "", "");
+        }
+        public DataTable DetalleAsientosEliminarTodo(int idasiento, int proyecto, DateTime FechaAsiento)
+        {
+            return cdOrdenPedido.DetalleAsientos(99, 0, idasiento, "", 0, null, null, 0, null, null, 0, null, DateTime.Now, DateTime.Now, 0, 0, 0, 0, proyecto, DateTime.Now, 0, FechaAsiento, 0, "", "");
         }
         public DataTable DetalleAsientosMontos(int idaux, int idasiento, int proyecto, DateTime FechaAsiento, string cuenta)
         {
@@ -2586,9 +2590,9 @@ namespace HPResergerCapaLogica
             return cdOrdenPedido.PrestamosInterEmpresa(@opcion, @empresaori, @proyectoori, @etapaori, @bancoori, @ctaori, @cuoori, @ctaContableori, @empresades, @proyectodes, @etapades, @bancodes, @ctades, @cuodes
                 , @ctacontabledes, @idmoneda, @montoprestado, @fechacontable, @fechaprestado, @tc, @glosa, @estado);
         }
-        public DataTable PrestamosInterEmpresa(int @opcion, string empresaorigen, string empresadestino, string moneda, DateTime fec1, DateTime fec2, int Estado)
+        public DataTable PrestamosInterEmpresa(int @opcion, string empresaorigen, string empresadestino, string moneda, DateTime fec1, DateTime fec2, int Activo, int Cancelado, int Anulado)
         {
-            return cdOrdenPedido.PrestamosInterEmpresa(@opcion, 0, 0, 0, 0, 0, empresaorigen, empresadestino, 0, 0, 0, 0, 0, "", "", 0, 0, fec1, fec2, 0, moneda, Estado);
+            return cdOrdenPedido.PrestamosInterEmpresa(@opcion, Activo, Cancelado, Anulado, 0, 0, empresaorigen, empresadestino, 0, 0, 0, 0, 0, "", "", 0, 0, fec1, fec2, 0, moneda, 0);
         }
         public DataTable PrestamosInterEmpresaDetalle(int @opcion, int @fkid, int @fkEmpresaOri, int @fkProyectoOri, int @fkEtapaOri, int @fkBancoOri, int @fkCtaBancoOri, int @fkEmpresaDes, int @fkProyectoDes,
            int @fkEtapaDes, int @fkBancoDes, int @fkCtaBancoDes, string @CuoAbonoOri, string @CuoAbonoDes, DateTime @FechaContable, DateTime @FechaAbono, int @FkMoneda, decimal @Monto, decimal @TC,

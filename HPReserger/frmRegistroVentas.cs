@@ -110,7 +110,7 @@ namespace HPReserger
                 /////
                 ////Anterior
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { });
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, $" { NombreEmpresa} {FechaPeriodo.ToString("MMMM yyyy").ToUpper()}", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { }, "");
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, $" { NombreEmpresa} {FechaPeriodo.ToString("MMMM yyyy").ToUpper()}", _NombreHoja, Celdas, 5, _Columnas, new int[] { }, new int[] { 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 }, "");
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
             }
             else msg("No hay Registros en la Grilla");

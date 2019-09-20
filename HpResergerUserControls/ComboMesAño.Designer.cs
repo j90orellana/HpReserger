@@ -36,10 +36,11 @@
             // 
             // combomes
             // 
+            this.combomes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.combomes.BackColor = System.Drawing.Color.White;
             this.combomes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combomes.FormattingEnabled = true;
-            this.combomes.Location = new System.Drawing.Point(31, 0);
+            this.combomes.Location = new System.Drawing.Point(31, 3);
             this.combomes.Name = "combomes";
             this.combomes.Size = new System.Drawing.Size(79, 21);
             this.combomes.TabIndex = 0;
@@ -47,11 +48,11 @@
             // 
             // comboaño
             // 
-            this.comboaño.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboaño.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.comboaño.BackColor = System.Drawing.Color.White;
             this.comboaño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboaño.FormattingEnabled = true;
-            this.comboaño.Location = new System.Drawing.Point(142, 0);
+            this.comboaño.Location = new System.Drawing.Point(142, 3);
             this.comboaño.Name = "comboaño";
             this.comboaño.Size = new System.Drawing.Size(52, 21);
             this.comboaño.TabIndex = 1;
@@ -59,8 +60,9 @@
             // 
             // lbl1
             // 
+            this.lbl1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(3, 4);
+            this.lbl1.Location = new System.Drawing.Point(3, 7);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(27, 13);
             this.lbl1.TabIndex = 2;
@@ -68,9 +70,9 @@
             // 
             // lbl2
             // 
-            this.lbl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(116, 4);
+            this.lbl2.Location = new System.Drawing.Point(116, 7);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(26, 13);
             this.lbl2.TabIndex = 3;
@@ -80,14 +82,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.comboaño);
             this.Controls.Add(this.combomes);
             this.Controls.Add(this.lbl2);
             this.Controls.Add(this.lbl1);
             this.Name = "ComboMesAño";
-            this.Size = new System.Drawing.Size(197, 24);
+            this.Size = new System.Drawing.Size(197, 26);
             this.Load += new System.EventHandler(this.ComboMesAño_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

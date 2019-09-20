@@ -140,10 +140,10 @@
     <Compile Include="frmListarFacturasPagadas.Designer.cs">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrestamoInterEmpresas.cs">
+    <Compile Include="ModuloFinanzas\frmPrestamoInterEmpresas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrestamoInterEmpresas.Designer.cs">
+    <Compile Include="ModuloFinanzas\frmPrestamoInterEmpresas.Designer.cs">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRegistroVentas.cs">
@@ -181,6 +181,12 @@
     </Compile>
     <Compile Include="ModuloFinanzas\frmCobroPrestamosInterEmpresa.Designer.cs">
       <DependentUpon>frmCobroPrestamosInterEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoPrestamosCancelados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFinanzas\frmListadoPrestamosCancelados.Designer.cs">
+      <DependentUpon>frmListadoPrestamosCancelados.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloFinanzas\frmListadoPrestamosInterEmpresa.cs">
       <SubType>Form</SubType>
@@ -1632,7 +1638,7 @@
     <EmbeddedResource Include="frmListarFacturasPagadas.resx">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrestamoInterEmpresas.resx">
+    <EmbeddedResource Include="ModuloFinanzas\frmPrestamoInterEmpresas.resx">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistroVentas.resx">
@@ -1653,6 +1659,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmCobroPrestamosInterEmpresa.resx">
       <DependentUpon>frmCobroPrestamosInterEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFinanzas\frmListadoPrestamosCancelados.resx">
+      <DependentUpon>frmListadoPrestamosCancelados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmListadoPrestamosInterEmpresa.resx">
       <DependentUpon>frmListadoPrestamosInterEmpresa.cs</DependentUpon>

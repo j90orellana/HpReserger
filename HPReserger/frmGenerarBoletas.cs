@@ -108,30 +108,33 @@ namespace HPReserger
                         //cuando no hay boletas 
                         CReporteboleta.GenerarBoletasMensuales(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
                         //Generar Asiento de Boletas Generadas
-                        DataTable Tablita = new DataTable();
-                        //filtrar por lo que ya esta generado
-                        Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero,1, inicial, final, frmLogin.CodigoUsuario);
-                        if (Tablita.Rows.Count > 0)
+                        if (chkGAsientos.Checked)
                         {
-                            DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
-                            int ultimo = 1 + (int)Ultimo["ultimo"];
-                            DataRow Filita = Tablita.Rows[0];
-                            DataTable Ultimox = CReporteboleta.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
-                            Ultimo = Ultimox.Rows[0];
-                            ultimo = ((int)Ultimo["codigo"]);
-                            foreach (DataColumn col in Tablita.Columns)
+                            DataTable Tablita = new DataTable();
+                            //filtrar por lo que ya esta generado
+                            Tablita = CReporteboleta.GenerarAsientodeBoletasGeneradas(empresa, tipo, numero, 1, inicial, final, frmLogin.CodigoUsuario);
+                            if (Tablita.Rows.Count > 0)
                             {
-                                CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
+                                DataRow Ultimo = CReporteboleta.VerUltimoIdentificador("TBL_Asiento_Contable", "Id_Asiento_Contable");
+                                int ultimo = 1 + (int)Ultimo["ultimo"];
+                                DataRow Filita = Tablita.Rows[0];
+                                DataTable Ultimox = CReporteboleta.UltimoAsiento((int)cboempresa.SelectedValue, DateTime.Now);
+                                Ultimo = Ultimox.Rows[0];
+                                ultimo = ((int)Ultimo["codigo"]);
+                                foreach (DataColumn col in Tablita.Columns)
+                                {
+                                    CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, decimal.Parse(Filita[col.ColumnName].ToString() == "" ? "0" : Filita[col.ColumnName].ToString()));
+                                }
+                                //cuentas de Reflejo
+                                //DataTable Cuentas = new DataTable();
+                                //Cuentas = CReporteboleta.CuentasReflejo(ultimo, (int)cboempresa.SelectedValue, DateTime.Now.Date);
+                                //if (Cuentas.Rows.Count > 0)
+                                //{
+                                //    DataRow Fila0 = Cuentas.Rows[0];
+                                //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
+                                //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
+                                //}
                             }
-                            //cuentas de Reflejo
-                                                //DataTable Cuentas = new DataTable();
-                                                //Cuentas = CReporteboleta.CuentasReflejo(ultimo, (int)cboempresa.SelectedValue, DateTime.Now.Date);
-                                                //if (Cuentas.Rows.Count > 0)
-                                                //{
-                                                //    DataRow Fila0 = Cuentas.Rows[0];
-                                                //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
-                                                //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
-                                                //}
                         }
                         //fin de Asientos DE boletas Generadas
                     }
@@ -197,14 +200,14 @@ namespace HPReserger
                                 CReporteboleta.InsertarAsientosdeBoletas((int)cboempresa.SelectedValue, col.ColumnName, ultimo, (decimal)Filita[col.ColumnName]);
                             }
                             //cuentas de Reflejo
-                                            //DataTable Cuentas = new DataTable();
-                                            //Cuentas = CReporteboleta.CuentasReflejo(ultimo, (int)cboempresa.SelectedValue, DateTime.Now.Date);
-                                            //if (Cuentas.Rows.Count > 0)
-                                            //{
-                                            //    DataRow Fila0 = Cuentas.Rows[0];
-                                            //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
-                                            //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
-                                            //}
+                            //DataTable Cuentas = new DataTable();
+                            //Cuentas = CReporteboleta.CuentasReflejo(ultimo, (int)cboempresa.SelectedValue, DateTime.Now.Date);
+                            //if (Cuentas.Rows.Count > 0)
+                            //{
+                            //    DataRow Fila0 = Cuentas.Rows[0];
+                            //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Haber"].ToString(), (decimal)Fila0["Deberes"], "H");
+                            //    CReporteboleta.InsertarCuentasReflejo(ultimo + 1, empresa, Fila0["Debe"].ToString(), (decimal)Fila0["Haberes"], "D");
+                            //}
                         }
                     //fin de Asientos DE boletas Generadas
                 }

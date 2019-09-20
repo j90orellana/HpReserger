@@ -268,7 +268,10 @@ namespace HPReserger
         public void RefrescarAsientoSeleccionado()
         {
             if (dtgbusca.CurrentCell != null)
+            {
+                Busqueda = !Busqueda;
                 dtgbusca_RowEnter(new object { }, new DataGridViewCellEventArgs(dtgbusca.CurrentCell.ColumnIndex, dtgbusca.CurrentCell.RowIndex));
+            }
         }
         private void frmAsientoContable_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -1414,7 +1417,7 @@ namespace HPReserger
                         CArgarValoresIngreso();
                         //MostrarValores(cadena + Detalle(), codigo);
                         ////ELIMINA EL ASIENTO ANTERIOR
-                        CapaLogica.Modificar2asiento(_CodigoModificar, _ProyectoModificar, _FechaAModificar);
+                        CapaLogica.AsientoContableEliminar(_CodigoModificar, _ProyectoModificar, _FechaAModificar);
                         //Mensajes("Codigo:" + codigo + " Filas;" + Dtgconten.RowCount);
                         foreach (DataGridViewRow item in Dtgconten.Rows)
                         {
@@ -1853,6 +1856,8 @@ namespace HPReserger
         }
         private string CuoSelec;
         frmTipodeCambio frmtipo;
+        private bool Busqueda;
+
         public void SacarTipoCambio()
         {
             DateTime FechaValidaBuscar = dtpfecha.Value;

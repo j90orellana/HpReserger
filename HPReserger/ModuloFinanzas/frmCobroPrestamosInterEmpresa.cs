@@ -582,5 +582,12 @@ namespace HPReserger.ModuloFinanzas
             frmlistadoAbonadosPRestamos.MdiParent = this.MdiParent;
             frmlistadoAbonadosPRestamos.Show();
         }
+
+        private void btnCancelados_Click(object sender, EventArgs e)
+        {
+            ModuloFinanzas.frmListadoPrestamosCancelados frmListadodePrestamosCancelados = new frmListadoPrestamosCancelados();
+            frmListadodePrestamosCancelados.MdiParent = this.MdiParent;
+            frmListadodePrestamosCancelados.Show();
+        }
     }
 }

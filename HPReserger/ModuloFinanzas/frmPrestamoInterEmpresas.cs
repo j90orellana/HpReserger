@@ -60,6 +60,7 @@ namespace HPReserger
             dtpfechabus1.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtpfechabus2.Value = new DateTime(DateTime.Now.Year, 12, 31);
             ModoEdicion(false);
+            CargaDatos();
         }
         public void ModoEdicion(Boolean a)
         {
@@ -69,33 +70,38 @@ namespace HPReserger
             //textbox
             txtMontoPrestamo.Enabled = txtTipoCambio.Enabled = txtGlosa.Enabled = dtpFechaPrestamo.Enabled = dtpFechaContable.Enabled = a;
             //Textbox Busquedas
-            chkbusEstados.Enabled = txtbusempresadestino.Enabled = txtbusempresaorigen.Enabled = txtbusMoneda.Enabled = dtpfechabus1.Enabled = dtpfechabus2.Enabled = !a;
+            chkAnulado.Enabled = chkCancelado.Enabled = chkbusEstados.Enabled = txtbusempresadestino.Enabled = txtbusempresaorigen.Enabled = txtbusMoneda.Enabled = dtpfechabus1.Enabled = dtpfechabus2.Enabled = !a;
             //datagrid
             dtgconten.Enabled = !a;
             //Botones
             btnCambiar.Enabled = btnActualizar.Enabled = btncleanfind.Enabled = !a;
+            //Filtros Activada
+            Busqueda = !a;
         }
         public void CargaDatos()
         {
-            DateTime fechaaux = dtpfechabus1.Value;
-            DateTime fecha1 = dtpfechabus1.Value;
-            DateTime fecha2 = dtpfechabus2.Value;
-            if (fecha1 > fecha2)
+            if (Busqueda && Estado == 0)
             {
-                fecha1 = fecha2;
-                fecha2 = fechaaux;
+                DateTime fechaaux = dtpfechabus1.Value;
+                DateTime fecha1 = dtpfechabus1.Value;
+                DateTime fecha2 = dtpfechabus2.Value;
+                if (fecha1 > fecha2)
+                {
+                    fecha1 = fecha2;
+                    fecha2 = fechaaux;
+                }
+                dtgconten.DataSource = CapaLogica.PrestamosInterEmpresa(0, txtbusempresaorigen.TextValido(), txtbusempresadestino.TextValido(), txtbusMoneda.TextValido(), fecha1, fecha2, chkbusEstados.Checked ? 1 : -1, chkCancelado.Checked ? 3 : -1, chkAnulado.Checked ? 0 : -1);
+                lblmensaje.Text = $"Total de Registros {dtgconten.RowCount}";
+                //Sacamos Los Totales;
+                Totales();
             }
-            dtgconten.DataSource = CapaLogica.PrestamosInterEmpresa(0, txtbusempresaorigen.TextValido(), txtbusempresadestino.TextValido(), txtbusMoneda.TextValido(), fecha1, fecha2, chkbusEstados.CheckState == CheckState.Checked ? 1 : chkbusEstados.CheckState == CheckState.Unchecked ? 0 : -1);
-            lblmensaje.Text = $"Total de Registros {dtgconten.RowCount}";
-            //Sacamos Los Totales;
-            Totales();
         }
         public void Totales()
         {
             decimal SumatoriaMN = 0, SumatoriaME = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
-                if ((int)item.Cells[xEstado.Name].Value == 1)
+                if ((int)item.Cells[xEstado.Name].Value == 1 || (int)item.Cells[xEstado.Name].Value == 2)
                     if (item.Cells[xmon.Name].Value.ToString() == "SOL")
                         SumatoriaMN += (decimal)item.Cells[ximporte.Name].Value;
                     else
@@ -116,6 +122,7 @@ namespace HPReserger
                 ModoEdicion(false);
                 btnaceptar.Enabled = false;
                 btnNuevo.Enabled = true;
+                VerificarParaModificar(dtgconten.CurrentRow.Index);
             }
         }
         private void msg(string v)
@@ -129,7 +136,8 @@ namespace HPReserger
         private void txtTipoCambio_Leave(object sender, EventArgs e)
         {
             decimal valor = 0;
-            if (decimal.TryParse(txtTipoCambio.Text, out valor) || valor == 0) { txtTipoCambio.Text = txtTipoCambio.TextoDefecto; }
+            if (decimal.TryParse(txtTipoCambio.Text, out valor))
+                if (valor == 0) { txtTipoCambio.Text = txtTipoCambio.TextoDefecto; }
         }
         frmTipodeCambio frmtipo;
         private int IdEmpresaOri;
@@ -374,8 +382,27 @@ namespace HPReserger
             int IdProyectoDes = (int)(cboDesProyecto.SelectedValue);
             int IdEtapaOri = (int)(cboOriEtapa.SelectedValue);
             int IdEtapaDes = (int)(cboDesEtapa.SelectedValue);
-            if (msgYesNo("Seguro Desea Proceder con el Préstamo") == DialogResult.Yes)
+            //Modificar Cartel Consulta
+            string CartelPregunta = Estado == 1 ? "Seguro Desea Proceder con el Préstamo" : "Seguro Desea Proceder con la Modificación";
+            //Procedemos
+            if (msgYesNo(CartelPregunta) == DialogResult.Yes)
             {
+                //Sí es Modificación Debemos Eliminar Asiento y su Detalle 
+                if (Estado == 2)
+                {
+                    //Eliminacion Asiento y su Detalle
+                    //ELiminacion Detalles
+                    CapaLogica.DetalleAsientosEliminarTodo(_IdAsientoOrigen, (int)cboOriProyecto.SelectedValue, FechaContable);
+                    CapaLogica.DetalleAsientosEliminarTodo(_IdAsientoDestino, (int)cboDesProyecto.SelectedValue, FechaContable);
+                    //Eliminacion Cabecera 
+                    CapaLogica.AsientoContableEliminar(_IdAsientoOrigen, (int)cboOriProyecto.SelectedValue, FechaContable);
+                    CapaLogica.AsientoContableEliminar(_IdAsientoDestino, (int)cboDesProyecto.SelectedValue, FechaContable);
+                    //Cambiamos los Datos de Cuo e idAsiento
+                    IdAsientoOri = _IdAsientoOrigen;
+                    IdAsientoDes = _IdAsientoDestino;
+                    CuoOri = _CuoOrigen;
+                    CuoDes = _CuoDestino;
+                }
                 ///Asiento Empresa Origen y Destino
                 ///Asientos Cabeceras
                 ///Empresa Origen
@@ -394,7 +421,11 @@ namespace HPReserger
                 string NroKuentaDes = HPResergerFunciones.Utilitarios.ExtraerCuenta(cboDesCuentaBanco.Text);
                 // Siguiente idpk
                 int SiguientePkId = (int)CapaLogica.SiguienteIdPrestamoInterEmpresa(IdEmpresaOri).Rows[0]["SiguientePkid"];
-                string NumComprobante = "Pr." + SiguientePkId + "-" + FechaPrestamo.ToShortDateString();
+                string NumComprobante = "";
+                if (Estado == 1)
+                    NumComprobante = "Pr." + SiguientePkId + "-" + FechaPrestamo.ToShortDateString();
+                if (Estado == 2)
+                    NumComprobante = "Pr." + _FkId + "-" + FechaPrestamo.ToShortDateString();
                 //Sacamos el Ruc de la Empresa Origen y DEstino
                 string RucOrigen = ((DataRowView)cboOriEmpresa.SelectedItem)["ruc"].ToString();
                 string RucDestrino = ((DataRowView)cboDesEmpresa.SelectedItem)["ruc"].ToString();
@@ -418,18 +449,26 @@ namespace HPReserger
                 CapaLogica.CuadrarAsiento(CuoDes, IdProyectoDes, FechaContable, 2);
                 ///Inserto el Registro del Prestamo InterEmpresa
                 ///En Banco Enviamos el ID de la Cta para en el asientoo Buscar el Banco
-                CapaLogica.PrestamosInterEmpresa(1, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
-                    , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], CuoOri, cboOriCuentaContable.SelectedValue.ToString(), IdEmpresaDes, IdProyectoDes
-                    , IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
-                    , CuoDes, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1);
+                if (Estado == 1)
+                    CapaLogica.PrestamosInterEmpresa(1, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
+                        , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], CuoOri, cboOriCuentaContable.SelectedValue.ToString(), IdEmpresaDes, IdProyectoDes
+                        , IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
+                        , CuoDes, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, 1);
+                else if (Estado == 2)
+                {
+                    CapaLogica.PrestamosInterEmpresa(2, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
+                                        , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], _CuoOrigen, cboOriCuentaContable.SelectedValue.ToString(), IdEmpresaDes, IdProyectoDes
+                                        , IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
+                                        , _CuoDestino, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, _FkId);
+                }
                 ///Proceso Finalizado;
                 msg($"Se Grabó Exitosamente\nEn la Empresa Origen  cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");
-                CargaDatos();
                 ///****************///
                 ModoEdicion(false);
                 btnaceptar.Enabled = false;
                 btnNuevo.Enabled = true;
                 Estado = 0;
+                CargaDatos();
             }
             else { msg("Cancelado por el Usuario"); }
         }
@@ -495,10 +534,19 @@ namespace HPReserger
                 cboDesCuentaBanco.SelectedValue = (int)item.Cells[xidCtaDes.Name].Value;
                 cboOriCuentaBanco.ValueMember = "Id_Cuenta_Contable";
                 cboDesCuentaBanco.ValueMember = "Id_Cuenta_Contable";
-                //
+                //Valido para Mostrar el Boton Modificar
+                VerificarParaModificar(e.RowIndex);
             }
         }
-
+        public void VerificarParaModificar(int x)
+        {
+            //if (dtgconten.CurrentCell != null)
+            if ((int)dtgconten[xEstado.Name, x].Value == 1 && Estado == 0)
+            {
+                btnModificar.Enabled = true;
+            }
+            else btnModificar.Enabled = false;
+        }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             CargaDatos();
@@ -536,6 +584,7 @@ namespace HPReserger
             txtbusMoneda.CargarTextoporDefecto();
             dtpfechabus1.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtpfechabus2.Value = new DateTime(DateTime.Now.Year, 12, 31);
+            chkAnulado.Checked = false; chkCancelado.Checked = false;
         }
 
         private void btnCambiar_Move(object sender, EventArgs e)
@@ -610,7 +659,7 @@ namespace HPReserger
                 List<HPResergerFunciones.Utilitarios.RangoCelda> Celdas = new List<HPResergerFunciones.Utilitarios.RangoCelda>();
                 Color Back = Color.FromArgb(78, 129, 189);
                 Color Fore = Color.FromArgb(255, 255, 255);
-                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("a1", "b1", _Cabecera.ToUpper(), 16, true, false, Back, Fore));
+                Celdas.Add(new HPResergerFunciones.Utilitarios.RangoCelda("d1", "d1", _Cabecera.ToUpper(), 16, true, false, Back, Fore));
                 //
                 HPResergerFunciones.Utilitarios.EstiloCelda CeldaDefault = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.AlternatingRowsDefaultCellStyle.BackColor, dtgconten.AlternatingRowsDefaultCellStyle.Font, dtgconten.AlternatingRowsDefaultCellStyle.ForeColor);
                 HPResergerFunciones.Utilitarios.EstiloCelda CeldaCabecera = new HPResergerFunciones.Utilitarios.EstiloCelda(dtgconten.ColumnHeadersDefaultCellStyle.BackColor, dtgconten.ColumnHeadersDefaultCellStyle.Font, dtgconten.ColumnHeadersDefaultCellStyle.ForeColor);
@@ -635,7 +684,7 @@ namespace HPReserger
                 //TablaExportar.Columns.RemoveAt(0);
                 ///
                 ///
-                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, _NombreHoja, _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { }, "");
+                HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TablaExportar, CeldaCabecera, CeldaDefault, _NombreHoja, _NombreHoja, Celdas, PosInicialGrilla, _Columnas, new int[] { }, new int[] { 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 18 }, "");
             }
             else msg("No hay datos que Exportar");
         }
@@ -647,22 +696,56 @@ namespace HPReserger
             dtgconten.ResumeLayout();
         }
         int Estado = 0;
+        private bool Busqueda;
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             Estado = 1;
             btnNuevo.Enabled = false;
+            btnModificar.Enabled = false;
             ModoEdicion(true);
             btnaceptar.Enabled = true;
         }
 
         private void chkbusEstados_CheckedChanged(object sender, EventArgs e)
         {
-         
+
         }
 
         private void chkbusEstados_CheckStateChanged(object sender, EventArgs e)
         {
             CargaDatos();
+        }
+
+        private void chkbusEstados_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+        string _CuoOrigen;
+        string _CuoDestino;
+        int _IdAsientoOrigen;
+        int _IdAsientoDestino;
+        int _FkId;
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Estado = 2;
+            btnNuevo.Enabled = false;
+            btnModificar.Enabled = false;
+            ModoEdicion(true);
+            ///Desactivo Opciones que no tienes que ir!
+            cboOriEmpresa.Enabled = cboOriProyecto.Enabled = cboOriEtapa.Enabled = cboDesEmpresa.Enabled = cboDesProyecto.Enabled = cboDesEtapa.Enabled = false;
+            cbomoneda.Enabled = txtMontoPrestamo.Enabled = dtpFechaContable.Enabled = false;
+            btnaceptar.Enabled = true;
+            //Datos del Cuo Moficable
+            int x = dtgconten.CurrentRow.Index;
+            _CuoOrigen = dtgconten[xCuoOri.Name, x].Value.ToString();
+            _CuoDestino = dtgconten[xCuoDes.Name, x].Value.ToString();
+            _IdAsientoOrigen = int.Parse(_CuoOrigen.Substring(5));
+            _IdAsientoDestino = int.Parse(_CuoDestino.Substring(5));
+            _FkId = (int)dtgconten[xpkid.Name, x].Value;
+        }
+        private void fontDialog1_Apply(object sender, EventArgs e)
+        {
         }
     }
 }
