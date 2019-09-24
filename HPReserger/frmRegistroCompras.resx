@@ -192,6 +192,9 @@
   <metadata name="xFechaDet.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="xMoneda.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="xTC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -252,4 +255,18 @@
         70gj0oD6SIjCQ1v//9+3/v//quD//1dPhWomZABReHgaQB5gYAAAOP2VHHmkaTQAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnGenerarTXT.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAJFJREFUOE+1
+        jMEKg0AQQ/eze1J6LqjFq5XFs36H4q1fY3vplkCWWXV1LMUHgTCTxHgut8rtKSnsyGgchLbAL3u07lo2
+        A+NrtIHp9XZ53bm0sE9W5mgDACNZ3X6Su+1ZE7SBpVgTcDzK+QPwMXngWRPCgIY6AB9qCW6sCbHgFuoA
+        fEweeNaEMKBx3sAvYu1fjPkCDCtRjlNqY6QAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="fondoColorOre1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>181, 17</value>
+  </metadata>
+  <metadata name="SaveFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>321, 17</value>
+  </metadata>
 </root>

@@ -39,10 +39,10 @@
             this.btnaceptar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
             this.pnlconten = new System.Windows.Forms.Panel();
-            this.cboBanco = new System.Windows.Forms.ComboBox();
-            this.cboMoneda = new System.Windows.Forms.ComboBox();
             this.txtCuentaCCI = new HpResergerUserControls.TextBoxPer();
             this.txtCuenta = new HpResergerUserControls.TextBoxPer();
+            this.cboBanco = new System.Windows.Forms.ComboBox();
+            this.cboMoneda = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlconten.SuspendLayout();
             this.SuspendLayout();
@@ -155,6 +155,49 @@
             this.pnlconten.Size = new System.Drawing.Size(351, 115);
             this.pnlconten.TabIndex = 20;
             // 
+            // txtCuentaCCI
+            // 
+            this.txtCuentaCCI.BackColor = System.Drawing.Color.White;
+            this.txtCuentaCCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCuentaCCI.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtCuentaCCI.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtCuentaCCI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCuentaCCI.ForeColor = System.Drawing.Color.Black;
+            this.txtCuentaCCI.Format = null;
+            this.txtCuentaCCI.Location = new System.Drawing.Point(127, 89);
+            this.txtCuentaCCI.MaxLength = 20;
+            this.txtCuentaCCI.Name = "txtCuentaCCI";
+            this.txtCuentaCCI.NextControlOnEnter = this.btnaceptar;
+            this.txtCuentaCCI.Size = new System.Drawing.Size(209, 21);
+            this.txtCuentaCCI.TabIndex = 237;
+            this.txtCuentaCCI.Text = "0";
+            this.txtCuentaCCI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCuentaCCI.TextoDefecto = "0";
+            this.txtCuentaCCI.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtCuentaCCI.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.toolTip1.SetToolTip(this.txtCuentaCCI, "Tamaño 20 Digitos\r\npor defecto \"0\"");
+            // 
+            // txtCuenta
+            // 
+            this.txtCuenta.BackColor = System.Drawing.Color.White;
+            this.txtCuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtCuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCuenta.ForeColor = System.Drawing.Color.Black;
+            this.txtCuenta.Format = null;
+            this.txtCuenta.Location = new System.Drawing.Point(127, 63);
+            this.txtCuenta.MaxLength = 10;
+            this.txtCuenta.Name = "txtCuenta";
+            this.txtCuenta.NextControlOnEnter = this.txtCuentaCCI;
+            this.txtCuenta.Size = new System.Drawing.Size(209, 21);
+            this.txtCuenta.TabIndex = 238;
+            this.txtCuenta.Text = "0";
+            this.txtCuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCuenta.TextoDefecto = "0";
+            this.txtCuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtCuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
             // cboBanco
             // 
             this.cboBanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
@@ -174,47 +217,6 @@
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Size = new System.Drawing.Size(209, 21);
             this.cboMoneda.TabIndex = 11;
-            // 
-            // txtCuentaCCI
-            // 
-            this.txtCuentaCCI.BackColor = System.Drawing.Color.White;
-            this.txtCuentaCCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCuentaCCI.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtCuentaCCI.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtCuentaCCI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCuentaCCI.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtCuentaCCI.Location = new System.Drawing.Point(127, 89);
-            this.txtCuentaCCI.MaxLength = 10;
-            this.txtCuentaCCI.Name = "txtCuentaCCI";
-            this.txtCuentaCCI.NextControlOnEnter = this.btnaceptar;
-            this.txtCuentaCCI.Size = new System.Drawing.Size(209, 21);
-            this.txtCuentaCCI.TabIndex = 237;
-            this.txtCuentaCCI.Text = "0";
-            this.txtCuentaCCI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtCuentaCCI.TextoDefecto = "0";
-            this.txtCuentaCCI.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtCuentaCCI.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            this.toolTip1.SetToolTip(this.txtCuentaCCI, "Tamaño 20 Digitos\r\npor defecto \"0\"");
-            // 
-            // txtCuenta
-            // 
-            this.txtCuenta.BackColor = System.Drawing.Color.White;
-            this.txtCuenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCuenta.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtCuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCuenta.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtCuenta.Location = new System.Drawing.Point(127, 63);
-            this.txtCuenta.MaxLength = 10;
-            this.txtCuenta.Name = "txtCuenta";
-            this.txtCuenta.NextControlOnEnter = this.txtCuentaCCI;
-            this.txtCuenta.Size = new System.Drawing.Size(209, 21);
-            this.txtCuenta.TabIndex = 238;
-            this.txtCuenta.Text = "0";
-            this.txtCuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtCuenta.TextoDefecto = "0";
-            this.txtCuenta.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtCuenta.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
             // frmEmpleadoPagoHaberes
             // 

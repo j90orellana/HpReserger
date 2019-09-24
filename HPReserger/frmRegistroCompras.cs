@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,10 @@ namespace HPReserger
             cboempresa.DisplayMember = "empresa";
             cboempresa.Text = name;
         }
+        public void CerrarPanelTxt()
+        {
+            PanelTxt.Visible = false;
+        }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             int x = 0;
@@ -39,6 +44,7 @@ namespace HPReserger
                 x = cboempresa.SelectedIndex;
                 DataRow Fila = ((DataTable)cboempresa.DataSource).Rows[x];
                 txtruc.Text = Fila["ruc"].ToString();
+                txtRucDeudor.Text = txtruc.Text;
             }
             else
             {
@@ -48,6 +54,8 @@ namespace HPReserger
         public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void btngenerar_Click(object sender, EventArgs e)
         {
+            CerrarPanelTxt();
+
             FechaPeriodo = comboMesAño1.GetFechaPRimerDia();
             NombreEmpresa = cboempresa.Text;
             if (cboempresa.Items.Count == 0) { msg("No hay Empresas"); return; }
@@ -63,6 +71,8 @@ namespace HPReserger
         frmProcesando frmproce;
         private void btnexcel_Click(object sender, EventArgs e)
         {
+            CerrarPanelTxt();
+
             if (dtgconten.RowCount > 0)
             {
                 dtgconten.SuspendLayout();
@@ -126,6 +136,8 @@ namespace HPReserger
         frmReporteCompras81Report frmreport;
         private void button1_Click(object sender, EventArgs e)
         {
+            CerrarPanelTxt();
+
             if (frmreport == null)
             {
                 Cursor = Cursors.WaitCursor;
@@ -145,6 +157,138 @@ namespace HPReserger
         private void Frmreport_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmreport = null;
+        }
+
+        private void btnGenerarTXT_Click(object sender, EventArgs e)
+        {
+            PanelTxt.BringToFront();
+            txtaño.Text = comboMesAño1.FechaConDiaActual.Year.ToString("0000");
+            txtmes.Text = comboMesAño1.FechaConDiaActual.Month.ToString("00");
+            PanelTxt.Visible = true;
+        }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
+        }
+
+        private void comboMesAño1_Enter(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
+
+        }
+
+        private void cboempresa_Click(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
+
+        }
+
+        private void dtgconten_Click(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
+
+        }
+        public DialogResult msgYesNo(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+        private void btnTxt_Click(object sender, EventArgs e)
+        {
+            if (dtgconten.RowCount == 0)
+            {
+                var Result = msgYesNo("No hay Datos en la Grilla, Igual Desea Generar?");
+                if (Result != DialogResult.Yes)
+                {
+                    msg("Cancelado por el Usuario");
+                    return;
+                }
+            }
+            //Avanza para Generar el TXT
+            string[] campo = new string[33];
+            string cadenatxt = "";
+            int ValorPrueba = 0;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+            {
+                ValorPrueba = 0;
+                campo[0] = $"{txtaño.Text}{txtmes.Text}00";
+                campo[1] = (int.Parse(item.Cells[xix.Name].Value.ToString())).ToString("000");
+                campo[2] = ((DateTime)item.Cells[xFechaEmision.Name].Value).ToString("dd/MM/yyyy");
+                campo[3] = "";
+                campo[4] = ((int)item.Cells[xidC.Name].Value).ToString();
+                campo[5] = item.Cells[xSerieCom.Name].Value.ToString().Trim();
+                int.TryParse(item.Cells[xAñoDua.Name].Value.ToString(), out ValorPrueba);
+                campo[6] = ValorPrueba.ToString();
+                campo[7] = item.Cells[xNumCom.Name].Value.ToString().Trim();
+                //En caso de optar por anotar el importe total de las operaciones diarias que no otorguen derecho a crédito fiscal en forma consolidada, registrar el número inicial
+                campo[8] = "0";
+                campo[9] = (int.Parse(item.Cells[xTipoIdPro.Name].Value.ToString())).ToString();
+                campo[10] = item.Cells[xNumpro.Name].Value.ToString().Trim();
+                string Cadena = item.Cells[xNombrePro.Name].Value.ToString().ToUpper().Trim();
+                campo[11] = Cadena.Substring(0, Cadena.Length > 60 ? 60 : Cadena.Length);
+                //Parte de los IGV
+                campo[12] = ((decimal)item.Cells[ximporteIGV.Name].Value).ToString("0.00");
+                campo[13] = ((decimal)item.Cells[xigvIGV.Name].Value).ToString("0.00");
+                //Partes de los GNG
+                campo[14] = ((decimal)item.Cells[ximporteGNG.Name].Value).ToString("0.00");
+                campo[15] = ((decimal)item.Cells[xigvGNG.Name].Value).ToString("0.00");
+                //Partes de los ONG
+                campo[16] = ((decimal)item.Cells[ximporteONG.Name].Value).ToString("0.00");
+                campo[17] = ((decimal)item.Cells[xigvONG.Name].Value).ToString("0.00");
+                //Partes de NGR
+                campo[18] = ((decimal)item.Cells[xisc.Name].Value).ToString("0.00");
+                campo[19] = ((decimal)item.Cells[xOtrosTributos.Name].Value).ToString("0.00");
+                campo[20] = ((decimal)item.Cells[ximporteNGR.Name].Value).ToString("0.00");
+                //Validar Moneda
+                campo[21] = ((decimal)item.Cells[xImporteTotal.Name].Value).ToString("0.00");
+                if (item.Cells[xMoneda.Name].Value.ToString() == "USD")
+                    campo[22] = ((decimal)item.Cells[xTC.Name].Value).ToString("0.000");
+                else campo[22] = "0.000";
+                campo[23] = item.Cells[xFechaDocRef.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDocRef.Name].Value).ToString("dd/MM/yyyy");
+                int.TryParse(item.Cells[xTipoDocRef.Name].Value.ToString(), out ValorPrueba);
+                campo[24] = ValorPrueba.ToString();
+                //Datos del Documento que Modifica
+                campo[25] = item.Cells[xSerieDocRef.Name].ToString() == "" ? "-" : item.Cells[xSerieDocRef.Name].Value.ToString().Trim();
+                campo[26] = item.Cells[xNumDocRef.Name].ToString() == "" ? "-" : item.Cells[xNumDocRef.Name].Value.ToString().Trim();
+                //Número del comprobante de pago emitido por sujeto no domiciliado
+                campo[27] = "-";
+                //Fecha de emisión de la Constancia de Depósito de Detracción 
+                campo[28] = item.Cells[xFechaDet.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDet.Name].Value).ToString("dd/MM/yyyy");
+                //Número de la Constancia de Depósito de Detracción
+                campo[29] = item.Cells[xNumDet.Name].Value.ToString() == "" ? "0" : item.Cells[xNumDet.Name].Value.ToString().Trim();
+                //Marca del comprobante de pago sujeto a retención
+                //-"1. Obligatorio 
+                //-2.Si identifica el comprobante sujeto a retención consignar '1', caso contrario '0'"
+                campo[30] = "0";
+                //Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
+                //"1. Obligatorio
+                //2.Registrar '1' cuando se anota el Comprobante de Pago o documento en el periodo que se emitió o que se pagó el impuesto, según corresponda.
+                //3.Registrar '6' cuando la fecha de emisión del Comprobante de Pago o de pago del impuesto es anterior al periodo de anotación y esta se produce dentro de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
+                //4.Registrar '7' cuando la fecha de emisión del Comprobante de Pago o pago del impuesto es anterior al periodo de anotación y esta se produce luego de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
+                //5.Registrar '9' cuando se realice un ajuste en la anotación de la información de una operación registrada en un periodo anterior."
+                campo[31] = "1";
+                //Uniendo por pipes
+                cadenatxt += string.Join("|", campo) + "\n";
+                //Limpiamos el Campo
+                //campo = null;
+            }
+            SaveFile.FileName = $"LE{txtRucDeudor.Text}{txtaño.Text}{txtmes.Text}00080100001111";
+            if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
+            {
+                string path = SaveFile.FileName;
+                st = File.CreateText(path);
+                st.Write(cadenatxt);
+                st.Close();
+                msg("Generado TXT con Éxito");
+                PanelTxt.Visible = false;
+            }
+        }
+        private StreamWriter st;
+        private void comboMesAño1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboMesAño1_Click(object sender, EventArgs e)
+        {
+            CerrarPanelTxt();
         }
     }
 }

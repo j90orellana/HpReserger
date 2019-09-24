@@ -179,8 +179,9 @@
             this.txtCuentaCCI.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtCuentaCCI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCuentaCCI.ForeColor = System.Drawing.Color.Black;
+            this.txtCuentaCCI.Format = null;
             this.txtCuentaCCI.Location = new System.Drawing.Point(3, 112);
-            this.txtCuentaCCI.MaxLength = 10;
+            this.txtCuentaCCI.MaxLength = 20;
             this.txtCuentaCCI.Name = "txtCuentaCCI";
             this.txtCuentaCCI.NextControlOnEnter = this.btnaceptar;
             this.txtCuentaCCI.Size = new System.Drawing.Size(210, 21);
@@ -200,6 +201,7 @@
             this.txtCuenta.ColorFondoMousePresionado = System.Drawing.Color.Empty;
             this.txtCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCuenta.ForeColor = System.Drawing.Color.Black;
+            this.txtCuenta.Format = null;
             this.txtCuenta.Location = new System.Drawing.Point(3, 80);
             this.txtCuenta.MaxLength = 10;
             this.txtCuenta.Name = "txtCuenta";

@@ -17,6 +17,7 @@ namespace HPReserger.ModuloCrystalReport
         public frmReporteListadoAsientos()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
         public frmReporteListadoAsientos(int _empresa, DateTime _Fechaini, DateTime _Fechafin, string _cuo, string _cuenta, string _glosa, string _suboperacion, int _Estado)
         {
@@ -29,6 +30,7 @@ namespace HPReserger.ModuloCrystalReport
             Glosa = _glosa;
             SubOperacion = _suboperacion;
             Estado = _Estado;
+            this.WindowState = FormWindowState.Maximized;
         }
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         public int empresa = 1;
@@ -76,7 +78,7 @@ namespace HPReserger.ModuloCrystalReport
                 //myTable.ApplyLogOnInfo(myTableLogonInfo)
             }
             crvReporte.AllowedExportFormats = (int)(ExportFormatType.PortableDocFormat | ExportFormatType.Excel | ExportFormatType.ExcelWorkbook);
-            crvReporte.Zoom(1);
+            //crvReporte.Zoom(1);
             crvReporte.ReportSource = Reporte;
         }
         private void crystalReportViewer2_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
