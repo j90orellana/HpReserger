@@ -362,7 +362,7 @@ namespace HPReserger.ModuloCompensaciones
         {
             cbobanco.Enabled = cbocuentabanco.Enabled = cbopago.Enabled = txtnrocheque.Enabled = true;
             string cadena = cbopago.Text;
-            string valorCompensa = "000 Ninguno.";
+            //string valorCompensa = "000 Ninguno.";
             if (ImporteTotal == 0)
             {
                 cbobanco.Enabled = cbocuentabanco.Enabled = cbopago.Enabled = txtnrocheque.Enabled = false;
@@ -370,18 +370,18 @@ namespace HPReserger.ModuloCompensaciones
             else if (ImporteTotal > 0)
             {
                 lblmsgsalida.Text = "Salida Dinero:";
-                cbopago.Items.Remove(valorCompensa);
+                //cbopago.Items.Remove(valorCompensa);
             }
             else
             {
                 lblmsgsalida.Text = "Entrada Dinero:";
                 if (ContaFacturas > 0)
                 {
-                    cbopago.Items.Remove(valorCompensa);
-                    cbopago.Items.Insert(0, valorCompensa);
+                    //cbopago.Items.Remove(valorCompensa);
+                    //cbopago.Items.Insert(0, valorCompensa);
                 }
-                else
-                    cbopago.Items.Remove(valorCompensa);
+                //else
+                //cbopago.Items.Remove(valorCompensa);
             }
             cbopago.Text = cadena;
         }
@@ -411,6 +411,7 @@ namespace HPReserger.ModuloCompensaciones
                 msg("Seleccione la Empresa");
                 cboempresa.Focus(); return;
             }
+            //return;
             if (cboproyecto.SelectedValue == null)
             {
                 msg("Seleccione el Proyecto");
@@ -508,6 +509,8 @@ namespace HPReserger.ModuloCompensaciones
                 string nroKuenta = "";
                 if (cbocuentabanco.SelectedValue != null)
                     nroKuenta = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
+                //
+                decimal AcumuladoAnticipos = moneda == 1 ? AnticipoSoles : AnticipoDolares;
                 //Facturas al Debe      -- xok
                 foreach (DataGridViewRow item in DtgcontenFacturas.Rows)
                 {
@@ -520,30 +523,102 @@ namespace HPReserger.ModuloCompensaciones
                         string[] NumFac = item.Cells[xNroComprobante.Name].Value.ToString().Split('-');
                         int idUsuario = frmLogin.CodigoUsuario;
                         DateTime fecha = dtpFechaCompensa.Value;
-                        //cabeceras
-                        decimal MontoSolesOri = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
-                        decimal MontoDolaresOri = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
-                        //Detalle
-                        decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
-                        decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
-                        //Cabecera Facturas
-                        CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable,
-                            Math.Abs(MontoSolesOri > 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0), Math.Abs(MontoSolesOri < 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0),
-                            tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -11);
-                        //Detalle del asiento
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor,
-                            NameProveedor, IdComprobante, NumFac[0], NumFac[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
-                            Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
-                            moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
-                            (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaContable, idUsuario, "");
                         ///Actualizo las Facturas a Pagadas
-                        if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
-                            CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, dtpFechaCompensa.Value, TipoPago, NroPago);
+                        if (cbopago.Text == "000 Ninguno." && FacturasSoles > AnticipoSoles && AcumuladoAnticipos > 0)
+                        {
+                            decimal MontoFacturita = (decimal)item.Cells[xTotal.Name].Value;
+                            if (AcumuladoAnticipos >= MontoFacturita)
+                            {
+                                //Pago de Totalidades
+                                //cabeceras
+                                decimal MontoSolesOri = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
+                                decimal MontoDolaresOri = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
+                                //Detalle
+                                decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
+                                decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
+                                //Cabecera Facturas
+                                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable,
+                                    Math.Abs(MontoSolesOri > 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0), Math.Abs(MontoSolesOri < 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0),
+                                    tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -11);
+                                //Detalle del asiento
+                                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor,
+                                    NameProveedor, IdComprobante, NumFac[0], NumFac[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
+                                    Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
+                                    moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
+                                    (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaContable, idUsuario, "");
+                                ///
+                                if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
+                                    CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, fecha, TipoPago, NroPago);
+                                else
+                                {
+                                    decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
+                                    CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, MontoFacturita, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario
+                                        , IdComprobante, _idempresa, Cuo);
+                                }
+                            }
+                            else
+                            {
+                                //Pago Parciales
+                                //cabeceras
+                                decimal MontoSolesOri = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? AcumuladoAnticipos : Configuraciones.Redondear(AcumuladoAnticipos * (decimal)item.Cells[xTCOri.Name].Value);
+                                decimal MontoDolaresOri = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? AcumuladoAnticipos : Configuraciones.Redondear(AcumuladoAnticipos / (decimal)item.Cells[xTCOri.Name].Value);
+                                //Detalle
+                                decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? AcumuladoAnticipos : Configuraciones.Redondear(AcumuladoAnticipos * (decimal)item.Cells[xTcReg.Name].Value);
+                                decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? AcumuladoAnticipos : Configuraciones.Redondear(AcumuladoAnticipos / (decimal)item.Cells[xTcReg.Name].Value);
+                                //Cabecera Facturas
+                                CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable,
+                                    Math.Abs(MontoSolesOri > 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0), Math.Abs(MontoSolesOri < 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0),
+                                    tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -11);
+                                //Detalle del asiento
+                                CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor,
+                                    NameProveedor, IdComprobante, NumFac[0], NumFac[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
+                                    Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
+                                    moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
+                                    (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaContable, idUsuario, "");
+
+
+
+                                if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
+                                    CapaLogica.insertarPagarfactura(string.Join("-", NumFac), RucProveedor, TipoPago, "", AcumuladoAnticipos, (decimal)item.Cells[xTotal.Name].Value - (decimal)item.Cells[xIgv.Name].Value,
+                                        (decimal)item.Cells[xIgv.Name].Value, AcumuladoAnticipos, idUsuario, 1, 0, nroKuenta, FechaCompensa, (int)item.Cells[xIdComprobante.Name].Value, fkEmpresa, Cuo);
+                                else
+                                {
+                                    decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
+                                    CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, AcumuladoAnticipos, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario
+                                        , IdComprobante, _idempresa, Cuo);
+                                }
+                            }
+                            //Resto de las Facturas a los Anticipos
+                            AcumuladoAnticipos -= MontoFacturita;
+                        }
                         else
                         {
-                            decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
-                            CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, MontoSolesOri, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario
-                                , IdComprobante, _idempresa, Cuo);
+                            //Pago Totales de las FActuras
+                            //cabeceras
+                            decimal MontoSolesOri = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTCOri.Name].Value);
+                            decimal MontoDolaresOri = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTCOri.Name].Value);
+                            //Detalle
+                            decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
+                            decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
+                            //Cabecera Facturas
+                            CapaLogica.InsertarAsientoFacturaCabecera(1, ++PosFila, numasiento, FechaContable, CuentaContable,
+                                Math.Abs(MontoSolesOri > 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0), Math.Abs(MontoSolesOri < 0 ? (moneda == 1 ? MontoSolesOri : MontoDolaresOri) : 0),
+                                tc, proyecto, 0, Cuo, moneda, glosa, FechaCompensa, -11);
+                            //Detalle del asiento
+                            CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, CuentaContable, proyecto, TipoIdProveedor, RucProveedor,
+                                NameProveedor, IdComprobante, NumFac[0], NumFac[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
+                                Math.Abs(moneda == 1 ? MontoSolesOri : MontoSolesReg), Math.Abs(moneda == 2 ? MontoDolaresOri : MontoDolaresReg),
+                                moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,
+                                (int)item.Cells[xidMoneda.Name].Value, "", "", glosa, FechaContable, idUsuario, "");
+                            ////
+                            if (item.Cells[xnameComprobante.Name].Value.ToString() != "DET")
+                                CapaLogica.ActualizaEstadoFacturas((int)item.Cells[xId.Name].Value, (int)item.Cells[xIdComprobante.Name].Value, 3, fecha, TipoPago, NroPago);
+                            else
+                            {
+                                decimal TotalDetracion = (decimal)item.Cells[xTotal.Name].Value;
+                                CapaLogica.Detracciones(1, string.Join("-", NumFac), RucProveedor, TotalDetracion, MontoSolesOri, tc, TotalDetracion, 0, NroPago, IdBanco, nroKuenta, FechaCompensa, idUsuario
+                                    , IdComprobante, _idempresa, Cuo);
+                            }
                         }
                     }
                 }

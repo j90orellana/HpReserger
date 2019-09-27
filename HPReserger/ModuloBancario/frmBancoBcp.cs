@@ -520,7 +520,7 @@ namespace HPReserger
                         }
                 }
                 //msg(cadenatxt);
-                SaveFile.FileName = "BCP " + DateTime.Now.ToLongDateString();
+                SaveFile.FileName = $"BCP - {txtreferenciaplanilla.Text} - {txtmontototal.Text} - {DateTime.Now.ToLongDateString()}";
                 if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
                 {
                     string path = SaveFile.FileName;

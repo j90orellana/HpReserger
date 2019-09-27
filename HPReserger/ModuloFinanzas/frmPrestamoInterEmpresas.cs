@@ -122,7 +122,8 @@ namespace HPReserger
                 ModoEdicion(false);
                 btnaceptar.Enabled = false;
                 btnNuevo.Enabled = true;
-                VerificarParaModificar(dtgconten.CurrentRow.Index);
+                if (dtgconten.CurrentRow != null)
+                    VerificarParaModificar(dtgconten.CurrentRow.Index);
             }
         }
         private void msg(string v)
@@ -458,7 +459,7 @@ namespace HPReserger
                 {
                     CapaLogica.PrestamosInterEmpresa(2, IdEmpresaOri, IdProyectoOri, IdEtapaOri, (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"]
                                         , (int)((DataTable)cboOriCuentaBanco.DataSource).Rows[cboOriCuentaBanco.SelectedIndex]["idtipocta"], _CuoOrigen, cboOriCuentaContable.SelectedValue.ToString(),
-                                        IdEmpresaDes, IdProyectoDes, IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"], 
+                                        IdEmpresaDes, IdProyectoDes, IdEtapaDes, (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"],
                                         (int)((DataTable)cboDesCuentaBanco.DataSource).Rows[cboDesCuentaBanco.SelectedIndex]["idtipocta"]
                                         , _CuoDestino, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, _FkId);
                 }

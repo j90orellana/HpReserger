@@ -1866,9 +1866,9 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ActualizarBoletas(tipo, doc, fecha, estado);
         }
-        public DataTable BuscarCuentasBancoPagar(string banco, string cuenta)
+        public DataTable BuscarCuentasBancoPagar(string banco, string cuenta, string cuentaBancaria)
         {
-            return cdOrdenPedido.BuscarCuentasBancoPagar(banco, cuenta);
+            return cdOrdenPedido.BuscarCuentasBancoPagar(banco, cuenta, cuentaBancaria);
         }
         public DataTable BuscarCuentasBancoPagarBoletas(string banco, string cuenta)
         {

@@ -420,7 +420,7 @@ namespace HPReserger
                 GenerarTxt = false;
                 ///Verificar si el esta el Generador de txt de ese banco 
                 string bancox = cbobanco.SelectedValue.ToString().Trim();
-                if (bancox == "CREDITO" || bancox == "INTERBANK" || bancox == "BIF")
+                if (bancox == "CREDITO" || bancox == "INTERBANK" || bancox == "BIF" || bancox == "SCOTIABANK")
                 {
                     //bancos que generan el txt bcp ibk bif
                     GenerarTxt = true;
@@ -500,6 +500,7 @@ namespace HPReserger
                 frmcargardatosproveedor.banco = cbobanco.SelectedValue.ToString();
                 frmcargardatosproveedor.txtbanco.Text = cbobanco.Text;
                 frmcargardatosproveedor.cuenta = cbocuentabanco.Text;
+                frmcargardatosproveedor.CuentaBancaria = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
                 if (frmcargardatosproveedor.ShowDialog() == DialogResult.Cancel || frmcargardatosproveedor.Resultado == DialogResult.Cancel)
                     return;
                 //msg("vamos a pagar la factura");
@@ -517,6 +518,20 @@ namespace HPReserger
                     bancobcp.Comprobantes = Comprobantes;
                     bancobcp.ShowDialog();
                     PAsoBanco = bancobcp.DialogResult;
+                }
+                if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "SCOTIABANK")
+                {
+                    //Abrimos eL formulario del banco de credito
+                    //msg("FORMULARIO DEL BCP");
+                    ModuloBancario.frmBancoScotiaBank BancoScotiaBank = new ModuloBancario.frmBancoScotiaBank();
+                    BancoScotiaBank.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
+                    //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
+                    //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
+                    BancoScotiaBank.txtcuentapago.Text = frmcargardatosproveedor.txtcuenta.Text;
+                    BancoScotiaBank.Icon = Icon;
+                    BancoScotiaBank.Comprobantes = Comprobantes;
+                    BancoScotiaBank.ShowDialog();
+                    PAsoBanco = BancoScotiaBank.DialogResult;
                 }
                 if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "INTERBANK")
                 {

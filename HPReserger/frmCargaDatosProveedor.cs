@@ -37,14 +37,17 @@ namespace HPReserger
             //if (Proveedores.Count >= 1)
             consulta = string.Join(",", Proveedores);
             cuenta = txtcuenta.Text = HPResergerFunciones.Utilitarios.ExtraerCuenta(cuenta);
-           // msg(cadenas + "\nConsulta=" + consulta + "\nBanco=" + banco);
-            Dtguias.DataSource = CapaLogica.BuscarCuentasBancoPagar(banco, consulta);
+            // msg(cadenas + "\nConsulta=" + consulta + "\nBanco=" + banco);
+            Dtguias.DataSource = CapaLogica.BuscarCuentasBancoPagar(banco, consulta, CuentaBancaria);
         }
         public DialogResult msg(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
         }
         public DataTable TablaProvedoresBancos;
+
+        public string CuentaBancaria { get; internal set; }
+
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (Dtguias.RowCount > 0)
@@ -52,7 +55,7 @@ namespace HPReserger
                 Resultado = DialogResult.OK;
                 foreach (DataGridViewRow caja in Dtguias.Rows)
                 {
-                    if (string.IsNullOrWhiteSpace(caja.Cells["cuentaseleccionada"].Value.ToString()))
+                    if (string.IsNullOrWhiteSpace(caja.Cells["cuentaseleccionada"].Value.ToString()) || caja.Cells["cuentaseleccionada"].Value.ToString() == "-")
                     {
                         msg($"El Proveedor {caja.Cells["RAZONSOCIAL"].Value}, No se le ha Registrado El Nro. de Cuenta");
                         Resultado = DialogResult.Cancel;

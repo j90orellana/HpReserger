@@ -140,6 +140,18 @@
     <Compile Include="frmListarFacturasPagadas.Designer.cs">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloBancario\frmBancoBBVA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloBancario\frmBancoBBVA.Designer.cs">
+      <DependentUpon>frmBancoBBVA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloBancario\frmBancoScotiaBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloBancario\frmBancoScotiaBank.Designer.cs">
+      <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloFinanzas\frmPrestamoInterEmpresas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1637,6 +1649,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListarFacturasPagadas.resx">
       <DependentUpon>frmListarFacturasPagadas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloBancario\frmBancoBBVA.resx">
+      <DependentUpon>frmBancoBBVA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloBancario\frmBancoScotiaBank.resx">
+      <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloFinanzas\frmPrestamoInterEmpresas.resx">
       <DependentUpon>frmPrestamoInterEmpresas.cs</DependentUpon>

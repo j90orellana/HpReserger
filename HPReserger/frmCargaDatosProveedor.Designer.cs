@@ -36,6 +36,14 @@ namespace HPReserger
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargaDatosProveedor));
             this.label1 = new System.Windows.Forms.Label();
             this.Dtguias = new HpResergerUserControls.Dtgconten();
+            this.btnaceptar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtbanco = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtcuenta = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
             this.Ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RAZONSOCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRECOMERCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,14 +56,7 @@ namespace HPReserger
             this.CUENTASOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUENTACCISOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BANCOCUENTASOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnaceptar = new System.Windows.Forms.Button();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtbanco = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtcuenta = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
+            this.xEMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,7 +110,8 @@ namespace HPReserger
             this.TIPOCUENTA,
             this.CUENTASOLES,
             this.CUENTACCISOLES,
-            this.BANCOCUENTASOLES});
+            this.BANCOCUENTASOLES,
+            this.xEMAIL});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -131,110 +133,6 @@ namespace HPReserger
             this.Dtguias.Size = new System.Drawing.Size(998, 244);
             this.Dtguias.TabIndex = 41;
             this.Dtguias.TabStop = false;
-            // 
-            // Ruc
-            // 
-            this.Ruc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Ruc.DataPropertyName = "ruc";
-            this.Ruc.HeaderText = "RUC";
-            this.Ruc.MinimumWidth = 40;
-            this.Ruc.Name = "Ruc";
-            this.Ruc.ReadOnly = true;
-            this.Ruc.Width = 54;
-            // 
-            // RAZONSOCIAL
-            // 
-            this.RAZONSOCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RAZONSOCIAL.DataPropertyName = "razon_social";
-            this.RAZONSOCIAL.HeaderText = "Razón Social";
-            this.RAZONSOCIAL.Name = "RAZONSOCIAL";
-            this.RAZONSOCIAL.ReadOnly = true;
-            // 
-            // NOMBRECOMERCIAL
-            // 
-            this.NOMBRECOMERCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBRECOMERCIAL.DataPropertyName = "nombre_comercial";
-            this.NOMBRECOMERCIAL.HeaderText = "Nombre Comercial";
-            this.NOMBRECOMERCIAL.Name = "NOMBRECOMERCIAL";
-            this.NOMBRECOMERCIAL.ReadOnly = true;
-            // 
-            // TIPOPERSONA
-            // 
-            this.TIPOPERSONA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TIPOPERSONA.DataPropertyName = "TIPO_PERSONA";
-            this.TIPOPERSONA.HeaderText = "Tipo Persona";
-            this.TIPOPERSONA.Name = "TIPOPERSONA";
-            this.TIPOPERSONA.Visible = false;
-            // 
-            // PERSONATIPO
-            // 
-            this.PERSONATIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PERSONATIPO.DataPropertyName = "PERSONA_TIPO";
-            this.PERSONATIPO.HeaderText = "Tipo Persona";
-            this.PERSONATIPO.Name = "PERSONATIPO";
-            this.PERSONATIPO.ReadOnly = true;
-            this.PERSONATIPO.Width = 92;
-            // 
-            // BANCOSOLES
-            // 
-            this.BANCOSOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BANCOSOLES.DataPropertyName = "banco_cta_soles";
-            this.BANCOSOLES.HeaderText = "Banco Soles";
-            this.BANCOSOLES.Name = "BANCOSOLES";
-            this.BANCOSOLES.Visible = false;
-            // 
-            // ENTIDADFINANCIERA
-            // 
-            this.ENTIDADFINANCIERA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ENTIDADFINANCIERA.DataPropertyName = "ENTIDAD_FINANCIERA";
-            this.ENTIDADFINANCIERA.HeaderText = "Banco Soles";
-            this.ENTIDADFINANCIERA.Name = "ENTIDADFINANCIERA";
-            this.ENTIDADFINANCIERA.ReadOnly = true;
-            this.ENTIDADFINANCIERA.Width = 86;
-            // 
-            // CUENTASELECCIONADA
-            // 
-            this.CUENTASELECCIONADA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CUENTASELECCIONADA.DataPropertyName = "CTASELECCIONADA";
-            this.CUENTASELECCIONADA.HeaderText = "Cta Seleccionada";
-            this.CUENTASELECCIONADA.Name = "CUENTASELECCIONADA";
-            this.CUENTASELECCIONADA.ReadOnly = true;
-            this.CUENTASELECCIONADA.Width = 111;
-            // 
-            // TIPOCUENTA
-            // 
-            this.TIPOCUENTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPOCUENTA.DataPropertyName = "TIPOCUENTA";
-            this.TIPOCUENTA.HeaderText = "Tipo Cuenta";
-            this.TIPOCUENTA.MinimumWidth = 70;
-            this.TIPOCUENTA.Name = "TIPOCUENTA";
-            this.TIPOCUENTA.Width = 70;
-            // 
-            // CUENTASOLES
-            // 
-            this.CUENTASOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CUENTASOLES.DataPropertyName = "NRO_CTA_SOLES";
-            this.CUENTASOLES.HeaderText = "Cuenta Soles";
-            this.CUENTASOLES.Name = "CUENTASOLES";
-            this.CUENTASOLES.ReadOnly = true;
-            this.CUENTASOLES.Width = 91;
-            // 
-            // CUENTACCISOLES
-            // 
-            this.CUENTACCISOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CUENTACCISOLES.DataPropertyName = "nro_cta_cci_soles";
-            this.CUENTACCISOLES.HeaderText = "Cta Cci Soles";
-            this.CUENTACCISOLES.Name = "CUENTACCISOLES";
-            this.CUENTACCISOLES.ReadOnly = true;
-            this.CUENTACCISOLES.Width = 91;
-            // 
-            // BANCOCUENTASOLES
-            // 
-            this.BANCOCUENTASOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.BANCOCUENTASOLES.DataPropertyName = "BANCO_CTA_SOLES";
-            this.BANCOCUENTASOLES.HeaderText = "BancoCuentaSoles";
-            this.BANCOCUENTASOLES.Name = "BANCOCUENTASOLES";
-            this.BANCOCUENTASOLES.Visible = false;
             // 
             // btnaceptar
             // 
@@ -322,12 +220,128 @@ namespace HPReserger
             // 
             // separadorOre1
             // 
+            this.separadorOre1.BackColor = System.Drawing.Color.Transparent;
             this.separadorOre1.Location = new System.Drawing.Point(0, 48);
             this.separadorOre1.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre1.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre1.Name = "separadorOre1";
             this.separadorOre1.Size = new System.Drawing.Size(1028, 2);
             this.separadorOre1.TabIndex = 48;
+            // 
+            // Ruc
+            // 
+            this.Ruc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Ruc.DataPropertyName = "ruc";
+            this.Ruc.HeaderText = "RUC";
+            this.Ruc.MinimumWidth = 40;
+            this.Ruc.Name = "Ruc";
+            this.Ruc.ReadOnly = true;
+            this.Ruc.Width = 54;
+            // 
+            // RAZONSOCIAL
+            // 
+            this.RAZONSOCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RAZONSOCIAL.DataPropertyName = "razon_social";
+            this.RAZONSOCIAL.HeaderText = "Razón Social";
+            this.RAZONSOCIAL.MinimumWidth = 80;
+            this.RAZONSOCIAL.Name = "RAZONSOCIAL";
+            this.RAZONSOCIAL.ReadOnly = true;
+            // 
+            // NOMBRECOMERCIAL
+            // 
+            this.NOMBRECOMERCIAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBRECOMERCIAL.DataPropertyName = "nombre_comercial";
+            this.NOMBRECOMERCIAL.HeaderText = "Nombre Comercial";
+            this.NOMBRECOMERCIAL.MinimumWidth = 80;
+            this.NOMBRECOMERCIAL.Name = "NOMBRECOMERCIAL";
+            this.NOMBRECOMERCIAL.ReadOnly = true;
+            // 
+            // TIPOPERSONA
+            // 
+            this.TIPOPERSONA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TIPOPERSONA.DataPropertyName = "TIPO_PERSONA";
+            this.TIPOPERSONA.HeaderText = "Tipo Persona";
+            this.TIPOPERSONA.Name = "TIPOPERSONA";
+            this.TIPOPERSONA.Visible = false;
+            // 
+            // PERSONATIPO
+            // 
+            this.PERSONATIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PERSONATIPO.DataPropertyName = "PERSONA_TIPO";
+            this.PERSONATIPO.HeaderText = "Tipo Persona";
+            this.PERSONATIPO.Name = "PERSONATIPO";
+            this.PERSONATIPO.ReadOnly = true;
+            // 
+            // BANCOSOLES
+            // 
+            this.BANCOSOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BANCOSOLES.DataPropertyName = "banco_cta_soles";
+            this.BANCOSOLES.HeaderText = "Banco Soles";
+            this.BANCOSOLES.Name = "BANCOSOLES";
+            this.BANCOSOLES.Visible = false;
+            this.BANCOSOLES.Width = 94;
+            // 
+            // ENTIDADFINANCIERA
+            // 
+            this.ENTIDADFINANCIERA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ENTIDADFINANCIERA.DataPropertyName = "ENTIDAD_FINANCIERA";
+            this.ENTIDADFINANCIERA.HeaderText = "Banco Soles";
+            this.ENTIDADFINANCIERA.Name = "ENTIDADFINANCIERA";
+            this.ENTIDADFINANCIERA.ReadOnly = true;
+            this.ENTIDADFINANCIERA.Width = 94;
+            // 
+            // CUENTASELECCIONADA
+            // 
+            this.CUENTASELECCIONADA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CUENTASELECCIONADA.DataPropertyName = "CTASELECCIONADA";
+            this.CUENTASELECCIONADA.HeaderText = "Cta Seleccionada";
+            this.CUENTASELECCIONADA.Name = "CUENTASELECCIONADA";
+            this.CUENTASELECCIONADA.ReadOnly = true;
+            this.CUENTASELECCIONADA.Width = 111;
+            // 
+            // TIPOCUENTA
+            // 
+            this.TIPOCUENTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPOCUENTA.DataPropertyName = "TIPOCUENTA";
+            this.TIPOCUENTA.HeaderText = "Tipo Cuenta";
+            this.TIPOCUENTA.MinimumWidth = 70;
+            this.TIPOCUENTA.Name = "TIPOCUENTA";
+            this.TIPOCUENTA.Width = 70;
+            // 
+            // CUENTASOLES
+            // 
+            this.CUENTASOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CUENTASOLES.DataPropertyName = "NRO_CTA_SOLES";
+            this.CUENTASOLES.HeaderText = "Cuenta-Mon";
+            this.CUENTASOLES.Name = "CUENTASOLES";
+            this.CUENTASOLES.ReadOnly = true;
+            this.CUENTASOLES.Width = 99;
+            // 
+            // CUENTACCISOLES
+            // 
+            this.CUENTACCISOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.CUENTACCISOLES.DataPropertyName = "nro_cta_cci_soles";
+            this.CUENTACCISOLES.HeaderText = "CtaCci-Mon";
+            this.CUENTACCISOLES.Name = "CUENTACCISOLES";
+            this.CUENTACCISOLES.ReadOnly = true;
+            this.CUENTACCISOLES.Width = 96;
+            // 
+            // BANCOCUENTASOLES
+            // 
+            this.BANCOCUENTASOLES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.BANCOCUENTASOLES.DataPropertyName = "BANCO_CTA_SOLES";
+            this.BANCOCUENTASOLES.HeaderText = "BancoCuentaSoles";
+            this.BANCOCUENTASOLES.Name = "BANCOCUENTASOLES";
+            this.BANCOCUENTASOLES.Visible = false;
+            this.BANCOCUENTASOLES.Width = 129;
+            // 
+            // xEMAIL
+            // 
+            this.xEMAIL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.xEMAIL.DataPropertyName = "email";
+            this.xEMAIL.HeaderText = "Email";
+            this.xEMAIL.Name = "xEMAIL";
+            this.xEMAIL.Width = 60;
             // 
             // frmCargaDatosProveedor
             // 
@@ -364,6 +378,8 @@ namespace HPReserger
         public System.Windows.Forms.TextBox txtbanco;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox txtcuenta;
+        private System.Windows.Forms.Label label4;
+        private SeparadorOre separadorOre1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ruc;
         private System.Windows.Forms.DataGridViewTextBoxColumn RAZONSOCIAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRECOMERCIAL;
@@ -376,7 +392,6 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn CUENTASOLES;
         private System.Windows.Forms.DataGridViewTextBoxColumn CUENTACCISOLES;
         private System.Windows.Forms.DataGridViewTextBoxColumn BANCOCUENTASOLES;
-        private System.Windows.Forms.Label label4;
-        private SeparadorOre separadorOre1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xEMAIL;
     }
 }

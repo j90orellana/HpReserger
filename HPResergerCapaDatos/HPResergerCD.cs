@@ -4049,10 +4049,10 @@ namespace HPResergerCapaDatos
         {
             return bd.DataTableFromProcedure("usp_ListarEmpleadosDesvinculados", null, null, null);
         }
-        public DataTable BuscarCuentasBancoPagar(string banco, string cuenta)
+        public DataTable BuscarCuentasBancoPagar(string banco, string cuenta, string CuentaBancaria)
         {
-            string[] parametros = { "@banco", "@cadena" };
-            object[] valores = { banco, cuenta };
+            string[] parametros = { "@banco", "@cadena", "@CuentaBancaria" };
+            object[] valores = { banco, cuenta, CuentaBancaria };
             return bd.DataTableFromProcedure("usp_BuscarCuentasBancoPagar", parametros, valores, null);
         }
         public DataTable BuscarCuentasBancoPagarBoletas(string banco, string cuenta)
