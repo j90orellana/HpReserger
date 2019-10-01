@@ -202,70 +202,87 @@ namespace HPReserger
                 }
             }
             //Avanza para Generar el TXT
-            string[] campo = new string[33];
+            string[] campo = new string[42];
             string cadenatxt = "";
             int ValorPrueba = 0;
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 ValorPrueba = 0;
-                campo[0] = $"{txtaño.Text}{txtmes.Text}00";
-                campo[1] = (int.Parse(item.Cells[xix.Name].Value.ToString())).ToString("000");
-                campo[2] = ((DateTime)item.Cells[xFechaEmision.Name].Value).ToString("dd/MM/yyyy");
-                campo[3] = "";
-                campo[4] = ((int)item.Cells[xidC.Name].Value).ToString();
-                campo[5] = item.Cells[xSerieCom.Name].Value.ToString().Trim();
+                int c = 0;
+                campo[c++] = $"{txtaño.Text}{txtmes.Text}00";
+                campo[c++] = ((item.Cells[xcuo.Name].Value.ToString())).ToString();
+                campo[c++] = "M";
+                campo[c++] = ((DateTime)item.Cells[xFechaEmision.Name].Value).ToString("dd/MM/yyyy");
+                campo[c++] = "";
+                campo[c++] = ((int)item.Cells[xidC.Name].Value).ToString();
+                campo[c++] = item.Cells[xSerieCom.Name].Value.ToString().Trim();
                 int.TryParse(item.Cells[xAñoDua.Name].Value.ToString(), out ValorPrueba);
-                campo[6] = ValorPrueba.ToString();
-                campo[7] = item.Cells[xNumCom.Name].Value.ToString().Trim();
+                campo[c++] = ValorPrueba.ToString();
+                campo[c++] = item.Cells[xNumCom.Name].Value.ToString().Trim();
                 //En caso de optar por anotar el importe total de las operaciones diarias que no otorguen derecho a crédito fiscal en forma consolidada, registrar el número inicial
-                campo[8] = "0";
-                campo[9] = (int.Parse(item.Cells[xTipoIdPro.Name].Value.ToString())).ToString();
-                campo[10] = item.Cells[xNumpro.Name].Value.ToString().Trim();
+                campo[c++] = "";
+                campo[c++] = (int.Parse(item.Cells[xTipoIdPro.Name].Value.ToString())).ToString();
+                campo[c++] = item.Cells[xNumpro.Name].Value.ToString().Trim();
                 string Cadena = item.Cells[xNombrePro.Name].Value.ToString().ToUpper().Trim();
-                campo[11] = Cadena.Substring(0, Cadena.Length > 60 ? 60 : Cadena.Length);
+                campo[c++] = Cadena.Substring(0, Cadena.Length > 60 ? 60 : Cadena.Length);
                 //Parte de los IGV
-                campo[12] = ((decimal)item.Cells[ximporteIGV.Name].Value).ToString("0.00");
-                campo[13] = ((decimal)item.Cells[xigvIGV.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[ximporteIGV.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[xigvIGV.Name].Value).ToString("0.00");
                 //Partes de los GNG
-                campo[14] = ((decimal)item.Cells[ximporteGNG.Name].Value).ToString("0.00");
-                campo[15] = ((decimal)item.Cells[xigvGNG.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[ximporteGNG.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[xigvGNG.Name].Value).ToString("0.00");
                 //Partes de los ONG
-                campo[16] = ((decimal)item.Cells[ximporteONG.Name].Value).ToString("0.00");
-                campo[17] = ((decimal)item.Cells[xigvONG.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[ximporteONG.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[xigvONG.Name].Value).ToString("0.00");
                 //Partes de NGR
-                campo[18] = ((decimal)item.Cells[xisc.Name].Value).ToString("0.00");
-                campo[19] = ((decimal)item.Cells[xOtrosTributos.Name].Value).ToString("0.00");
-                campo[20] = ((decimal)item.Cells[ximporteNGR.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[ximporteNGR.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[xisc.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[xOtrosTributos.Name].Value).ToString("0.00");
                 //Validar Moneda
-                campo[21] = ((decimal)item.Cells[xImporteTotal.Name].Value).ToString("0.00");
+                campo[c++] = ((decimal)item.Cells[xImporteTotal.Name].Value).ToString("0.00");
                 if (item.Cells[xMoneda.Name].Value.ToString() == "USD")
-                    campo[22] = ((decimal)item.Cells[xTC.Name].Value).ToString("0.000");
-                else campo[22] = "0.000";
-                campo[23] = item.Cells[xFechaDocRef.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDocRef.Name].Value).ToString("dd/MM/yyyy");
+                {
+                    campo[c++] = "USD";
+                    campo[c++] = ((decimal)item.Cells[xTC.Name].Value).ToString("0.000");
+                }
+                else
+                {
+                    campo[c++] = "PEN";
+                    campo[c++] = "0.000";
+                }
+                campo[c++] = item.Cells[xFechaDocRef.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDocRef.Name].Value).ToString("dd/MM/yyyy");
                 int.TryParse(item.Cells[xTipoDocRef.Name].Value.ToString(), out ValorPrueba);
-                campo[24] = ValorPrueba.ToString();
+                campo[c++] = ValorPrueba.ToString();
                 //Datos del Documento que Modifica
-                campo[25] = item.Cells[xSerieDocRef.Name].ToString() == "" ? "-" : item.Cells[xSerieDocRef.Name].Value.ToString().Trim();
-                campo[26] = item.Cells[xNumDocRef.Name].ToString() == "" ? "-" : item.Cells[xNumDocRef.Name].Value.ToString().Trim();
+                campo[c++] = item.Cells[xSerieDocRef.Name].ToString() == "" ? "-" : item.Cells[xSerieDocRef.Name].Value.ToString().Trim();
+                campo[c++] = item.Cells[xNumDocRef.Name].ToString() == "" ? "-" : item.Cells[xNumDocRef.Name].Value.ToString().Trim();
                 //Número del comprobante de pago emitido por sujeto no domiciliado
-                campo[27] = "-";
+                campo[c++] = "-";
                 //Fecha de emisión de la Constancia de Depósito de Detracción 
-                campo[28] = item.Cells[xFechaDet.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDet.Name].Value).ToString("dd/MM/yyyy");
+                campo[c++] = item.Cells[xFechaDet.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDet.Name].Value).ToString("dd/MM/yyyy");
                 //Número de la Constancia de Depósito de Detracción
-                campo[29] = item.Cells[xNumDet.Name].Value.ToString() == "" ? "0" : item.Cells[xNumDet.Name].Value.ToString().Trim();
+                campo[c++] = item.Cells[xNumDet.Name].Value.ToString() == "" ? "0" : item.Cells[xNumDet.Name].Value.ToString().Trim();
                 //Marca del comprobante de pago sujeto a retención
                 //-"1. Obligatorio 
                 //-2.Si identifica el comprobante sujeto a retención consignar '1', caso contrario '0'"
-                campo[30] = "0";
+                campo[c++] = "0";
                 //Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
                 //"1. Obligatorio
                 //2.Registrar '1' cuando se anota el Comprobante de Pago o documento en el periodo que se emitió o que se pagó el impuesto, según corresponda.
                 //3.Registrar '6' cuando la fecha de emisión del Comprobante de Pago o de pago del impuesto es anterior al periodo de anotación y esta se produce dentro de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
                 //4.Registrar '7' cuando la fecha de emisión del Comprobante de Pago o pago del impuesto es anterior al periodo de anotación y esta se produce luego de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
                 //5.Registrar '9' cuando se realice un ajuste en la anotación de la información de una operación registrada en un periodo anterior."
-                campo[31] = "1";
+                campo[c++] = "1";
+                //7 Extras
+                campo[c++] = "";
+                campo[c++] = "";
+                campo[c++] = "";
+                campo[c++] = "";
+                campo[c++] = "";
+                campo[c++] = "";
+                campo[c++] = "1";
                 //Uniendo por pipes
-                cadenatxt += string.Join("|", campo) + "\n";
+                cadenatxt += string.Join("|", campo) + $"{Environment.NewLine}";
                 //Limpiamos el Campo
                 //campo = null;
             }

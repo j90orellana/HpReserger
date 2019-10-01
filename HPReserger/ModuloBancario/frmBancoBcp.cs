@@ -208,7 +208,7 @@ namespace HPReserger
                 {
                     if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
                         tipo = "F";
-                    if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
+                    if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
                         tipocuenta = "B";
                     else if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
                         tipocuenta = "C";
@@ -496,7 +496,7 @@ namespace HPReserger
                             campo[10] = mone;
                             campo[11] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[MONTOABONO.Name.ToString(), i].Value.ToString(), '0', 17, HPResergerFunciones.Utilitarios.Direccion.derecha);
                             campo[12] = Dtguias[VALIDACIONIDC.Name.ToString(), i].Value.ToString();
-                            cadenatxt += string.Join("", campo) + "\n";
+                            cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                             ////limpiamos el campo
                             campo = null;
                             if (int.Parse(Dtguias[CANTIDADDOCUMENTOS.Name.ToString(), i].Value.ToString()) != 0)
@@ -506,7 +506,7 @@ namespace HPReserger
                                 campo[1] = Dtguias[TIPODOC.Name.ToString(), i].Value.ToString();
                                 campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[NRODOCUMENTO.Name.ToString(), i].Value.ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                                 campo[3] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[MONTODOC.Name.ToString(), i].Value.ToString(), '0', 17, HPResergerFunciones.Utilitarios.Direccion.derecha);
-                                cadenatxt += string.Join("", campo) + "\n";
+                                cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                             }
                         }
                         else
@@ -516,7 +516,7 @@ namespace HPReserger
                             campo[1] = Dtguias[TIPODOC.Name.ToString(), i].Value.ToString();
                             campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[NRODOCUMENTO.Name.ToString(), i].Value.ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                             campo[3] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[MONTODOC.Name.ToString(), i].Value.ToString(), '0', 17, HPResergerFunciones.Utilitarios.Direccion.derecha);
-                            cadenatxt += string.Join("", campo) + "\n";
+                            cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                         }
                 }
                 //msg(cadenatxt);

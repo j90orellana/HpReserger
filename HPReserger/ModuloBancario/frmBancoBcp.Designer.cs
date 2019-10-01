@@ -806,10 +806,10 @@
             // btnaceptar
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnaceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(124)))), ((int)(((byte)(46)))));
+            this.btnaceptar.BackColor = System.Drawing.Color.White;
             this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnaceptar.ForeColor = System.Drawing.Color.White;
+            this.btnaceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(124)))), ((int)(((byte)(46)))));
             this.btnaceptar.Location = new System.Drawing.Point(1376, 632);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);

@@ -324,7 +324,7 @@ namespace HPReserger.ModuloBancario
                         campo[11] = item.Cells[xFactoring.Name].Value.ToString();
                         campo[12] = item.Cells[xFechaVencimiento.Name].Value.ToString() == "" ? "        " : ((DateTime)item.Cells[xFechaVencimiento.Name].Value).ToString("yyyyMMdd");
                         campo[13] = item.Cells[xTransExterior.Name].Value.ToString();
-                        cadenatxt += string.Join("", campo) + "\n";
+                        cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                     }
                     //msg(cadenatxt);
                     SaveFile.FileName = "Proveedores ScotiaBank " + DateTime.Now.ToLongDateString();

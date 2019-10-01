@@ -168,7 +168,7 @@ namespace HPReserger
                 campo[11] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xserie.Name].Value.ToString(), '0', 4, HPResergerFunciones.Utilitarios.Direccion.derecha);
                 campo[12] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xnumero.Name].Value.ToString(), '0', 8, HPResergerFunciones.Utilitarios.Direccion.derecha);
 
-                cadenatxt += string.Join("", campo) + "\n";
+                cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
             }
             cadenatxt = cabecera + cadenatxt;
             string NameFile = $"D{txtRuc.Text}{txtaño.Text.Substring(2)}{txtlote.Text}";

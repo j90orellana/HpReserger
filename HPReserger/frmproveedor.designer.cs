@@ -438,7 +438,7 @@ namespace HPReserger
             this.txtcuentasoles.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtcuentasoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcuentasoles.Location = new System.Drawing.Point(115, 224);
-            this.txtcuentasoles.MaxLength = 16;
+            this.txtcuentasoles.MaxLength = 20;
             this.txtcuentasoles.Name = "txtcuentasoles";
             this.txtcuentasoles.Size = new System.Drawing.Size(111, 21);
             this.txtcuentasoles.TabIndex = 14;
@@ -462,7 +462,7 @@ namespace HPReserger
             this.txtcuentadolares.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtcuentadolares.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcuentadolares.Location = new System.Drawing.Point(115, 248);
-            this.txtcuentadolares.MaxLength = 16;
+            this.txtcuentadolares.MaxLength = 20;
             this.txtcuentadolares.Name = "txtcuentadolares";
             this.txtcuentadolares.Size = new System.Drawing.Size(111, 21);
             this.txtcuentadolares.TabIndex = 17;

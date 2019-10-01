@@ -172,7 +172,7 @@ namespace HPReserger
                 {
                     if (x.tipo.ToString().Trim().ToUpper() == "RH" || x.tipo.ToString().Trim().ToUpper() == "FT")
                         tipo = "F";
-                    if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
+                    if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
                         banco = "xx";
                     else banco = "x";
                     if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
@@ -410,7 +410,7 @@ namespace HPReserger
                     campo[16] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias["NOMBRECLIENTE", i].Value.ToString(), ' ', 60, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                     campo[17] = HPResergerFunciones.Utilitarios.AddCaracter("0", '0', 15, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                     //campo[18] = HPResergerFunciones.Utilitarios.AddCaracter("", ' ', 8, HPResergerFunciones.Utilitarios.Direccion.izquierda); --nose si vale
-                    cadenatxt += string.Join("", campo) + "\n";
+                    cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                 }
                 //msg(cadenatxt);
                 SaveFile.FileName = "BancoInterbank " + DateTime.Now.ToLongDateString();

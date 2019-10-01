@@ -116,7 +116,7 @@ namespace HPReserger
                         tipo = "1";
                     if (x.tipo.ToString().Trim().ToUpper() == "RH")
                         tipo = "3";
-                    if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
+                    if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
                         banco = "4";
                     else banco = "2";
                     int xd = 0; DataRow Val = null;
@@ -376,7 +376,7 @@ namespace HPReserger
                     campo[15] = Dtguias["FORMADEPAGOPROVEEDOR", i].Value.ToString();
 
                     //campo[18] = HPResergerFunciones.Utilitarios.AddCaracter("", ' ', 8, HPResergerFunciones.Utilitarios.Direccion.izquierda); --nose si vale
-                    cadenatxt += string.Join("", campo) + "\n";
+                    cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                 }
                 //msg(cadenatxt);
                 SaveFile.FileName = "BanBif " + DateTime.Now.ToLongDateString();

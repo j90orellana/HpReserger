@@ -420,7 +420,7 @@ namespace HPReserger
                 GenerarTxt = false;
                 ///Verificar si el esta el Generador de txt de ese banco 
                 string bancox = cbobanco.SelectedValue.ToString().Trim();
-                if (bancox == "CREDITO" || bancox == "INTERBANK" || bancox == "BIF" || bancox == "SCOTIABANK")
+                if (bancox == "CREDITO" || bancox == "INTERBANK" || bancox == "BIF" || bancox == "SCOTIABANK" || bancox == "CONTINENTAL")
                 {
                     //bancos que generan el txt bcp ibk bif
                     GenerarTxt = true;
@@ -493,7 +493,6 @@ namespace HPReserger
                 {
                     Proveedores.Add(cadena.proveedor);
                 }
-
                 //ventanas de seleccion para generar txt
                 frmCargaDatosProveedor frmcargardatosproveedor = new frmCargaDatosProveedor();
                 frmcargardatosproveedor.Proveedores = Proveedores.Distinct().ToList<string>();
@@ -519,7 +518,7 @@ namespace HPReserger
                     bancobcp.ShowDialog();
                     PAsoBanco = bancobcp.DialogResult;
                 }
-                if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "SCOTIABANK")
+                else if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "SCOTIABANK")
                 {
                     //Abrimos eL formulario del banco de credito
                     //msg("FORMULARIO DEL BCP");
@@ -533,7 +532,24 @@ namespace HPReserger
                     BancoScotiaBank.ShowDialog();
                     PAsoBanco = BancoScotiaBank.DialogResult;
                 }
-                if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "INTERBANK")
+                else if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "CONTINENTAL")
+                {
+                    //Abrimos eL formulario del banco de credito
+                    //msg("FORMULARIO DEL BCP");
+                    ModuloBancario.frmBancoBBVA BancoBBVA = new ModuloBancario.frmBancoBBVA();
+                    BancoBBVA.TablaProveedorBanco = frmcargardatosproveedor.TablaProvedoresBancos;
+                    //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
+                    //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
+                    BancoBBVA.NroCuenta = frmcargardatosproveedor.txtcuenta.Text;
+                    BancoBBVA.Icon = Icon;
+                    BancoBBVA.Comprobantes = Comprobantes;
+                    BancoBBVA.Glosa = txtglosa.Text;
+                    //
+                    BancoBBVA.PkMoneda = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["pkmoneda"];
+                    BancoBBVA.ShowDialog();
+                    PAsoBanco = BancoBBVA.DialogResult;
+                }
+                else if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "INTERBANK")
                 {
                     //abrimos el formulario del banco interbank
                     // msg("FORMULARIO DEL IBK");
@@ -547,7 +563,7 @@ namespace HPReserger
                     bancointerbank.ShowDialog();
                     PAsoBanco = bancointerbank.DialogResult;
                 }
-                if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "BIF")
+                else if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "BIF")
                 {
                     //abrimso el formulario del banco interarmericano de finanzas
                     //  msg("FORMULARIO DEL BIF");

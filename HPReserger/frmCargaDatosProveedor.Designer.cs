@@ -44,6 +44,7 @@ namespace HPReserger
             this.txtcuenta = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.separadorOre1 = new HpResergerUserControls.SeparadorOre();
+            this.xTipId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RAZONSOCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRECOMERCIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +100,7 @@ namespace HPReserger
             this.Dtguias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Dtguias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtguias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.xTipId,
             this.Ruc,
             this.RAZONSOCIAL,
             this.NOMBRECOMERCIAL,
@@ -227,6 +229,13 @@ namespace HPReserger
             this.separadorOre1.Name = "separadorOre1";
             this.separadorOre1.Size = new System.Drawing.Size(1028, 2);
             this.separadorOre1.TabIndex = 48;
+            // 
+            // xTipId
+            // 
+            this.xTipId.DataPropertyName = "tipoid";
+            this.xTipId.HeaderText = "TipoId";
+            this.xTipId.Name = "xTipId";
+            this.xTipId.Visible = false;
             // 
             // Ruc
             // 
@@ -380,6 +389,7 @@ namespace HPReserger
         public System.Windows.Forms.TextBox txtcuenta;
         private System.Windows.Forms.Label label4;
         private SeparadorOre separadorOre1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTipId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ruc;
         private System.Windows.Forms.DataGridViewTextBoxColumn RAZONSOCIAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRECOMERCIAL;
