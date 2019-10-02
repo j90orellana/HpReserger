@@ -103,7 +103,7 @@
             this.panelzquierdo = new HpResergerUserControls.PanelOre();
             this.textBoxPer11 = new HpResergerUserControls.TextBoxPer();
             this.textBoxPer10 = new HpResergerUserControls.TextBoxPer();
-            this.textBoxPer9 = new HpResergerUserControls.TextBoxPer();
+            this.txtinformacion = new HpResergerUserControls.TextBoxPer();
             this.textBoxPer8 = new HpResergerUserControls.TextBoxPer();
             this.textBoxPer7 = new HpResergerUserControls.TextBoxPer();
             this.textBoxPer6 = new HpResergerUserControls.TextBoxPer();
@@ -581,9 +581,9 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 9, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 9, 30, 0, 0, 0, 0);
-            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 10, 2, 0, 0, 0, 0);
+            this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 10, 31, 0, 0, 0, 0);
+            this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 10, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(70, 29);
             this.comboMesAño1.Name = "comboMesAño1";
             this.comboMesAño1.Size = new System.Drawing.Size(218, 27);
@@ -726,7 +726,7 @@
             this.PanelTxt.Controls.Add(this.panelzquierdo);
             this.PanelTxt.Controls.Add(this.textBoxPer11);
             this.PanelTxt.Controls.Add(this.textBoxPer10);
-            this.PanelTxt.Controls.Add(this.textBoxPer9);
+            this.PanelTxt.Controls.Add(this.txtinformacion);
             this.PanelTxt.Controls.Add(this.textBoxPer8);
             this.PanelTxt.Controls.Add(this.textBoxPer7);
             this.PanelTxt.Controls.Add(this.textBoxPer6);
@@ -764,22 +764,22 @@
             // 
             // PanelAbajo
             // 
-            this.PanelAbajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(132)))), ((int)(((byte)(130)))));
+            this.PanelAbajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
             this.PanelAbajo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PanelAbajo.Location = new System.Drawing.Point(4, 490);
             this.PanelAbajo.Movible = false;
             this.PanelAbajo.Name = "PanelAbajo";
-            this.PanelAbajo.Size = new System.Drawing.Size(445, 3);
+            this.PanelAbajo.Size = new System.Drawing.Size(446, 3);
             this.PanelAbajo.TabIndex = 7;
             // 
             // panelDerecho
             // 
-            this.panelDerecho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(132)))), ((int)(((byte)(130)))));
+            this.panelDerecho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
             this.panelDerecho.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelDerecho.Location = new System.Drawing.Point(449, 0);
+            this.panelDerecho.Location = new System.Drawing.Point(450, 0);
             this.panelDerecho.Movible = false;
             this.panelDerecho.Name = "panelDerecho";
-            this.panelDerecho.Size = new System.Drawing.Size(4, 493);
+            this.panelDerecho.Size = new System.Drawing.Size(3, 493);
             this.panelDerecho.TabIndex = 6;
             // 
             // panelzquierdo
@@ -836,27 +836,27 @@
             this.textBoxPer10.TextoDefectoColor = System.Drawing.Color.White;
             this.textBoxPer10.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
-            // textBoxPer9
+            // txtinformacion
             // 
-            this.textBoxPer9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.textBoxPer9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxPer9.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.textBoxPer9.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.textBoxPer9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPer9.ForeColor = System.Drawing.Color.Black;
-            this.textBoxPer9.Format = null;
-            this.textBoxPer9.Location = new System.Drawing.Point(345, 348);
-            this.textBoxPer9.MaxLength = 100;
-            this.textBoxPer9.Name = "textBoxPer9";
-            this.textBoxPer9.NextControlOnEnter = null;
-            this.textBoxPer9.ReadOnly = true;
-            this.textBoxPer9.Size = new System.Drawing.Size(90, 22);
-            this.textBoxPer9.TabIndex = 4;
-            this.textBoxPer9.Text = "1";
-            this.textBoxPer9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxPer9.TextoDefecto = "Ingrese Cadena";
-            this.textBoxPer9.TextoDefectoColor = System.Drawing.Color.White;
-            this.textBoxPer9.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtinformacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.txtinformacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtinformacion.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtinformacion.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtinformacion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtinformacion.ForeColor = System.Drawing.Color.Black;
+            this.txtinformacion.Format = null;
+            this.txtinformacion.Location = new System.Drawing.Point(345, 348);
+            this.txtinformacion.MaxLength = 100;
+            this.txtinformacion.Name = "txtinformacion";
+            this.txtinformacion.NextControlOnEnter = null;
+            this.txtinformacion.ReadOnly = true;
+            this.txtinformacion.Size = new System.Drawing.Size(90, 22);
+            this.txtinformacion.TabIndex = 4;
+            this.txtinformacion.Text = "1";
+            this.txtinformacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtinformacion.TextoDefecto = "Ingrese Cadena";
+            this.txtinformacion.TextoDefectoColor = System.Drawing.Color.White;
+            this.txtinformacion.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
             // 
             // textBoxPer8
             // 
@@ -1363,7 +1363,7 @@
         private HpResergerUserControls.TextBoxPer txtRucDeudor;
         private HpResergerUserControls.TextBoxPer textBoxPer11;
         private HpResergerUserControls.TextBoxPer textBoxPer10;
-        private HpResergerUserControls.TextBoxPer textBoxPer9;
+        private HpResergerUserControls.TextBoxPer txtinformacion;
         private HpResergerUserControls.TextBoxPer textBoxPer8;
         private HpResergerUserControls.TextBoxPer textBoxPer7;
         private HpResergerUserControls.TextBoxPer textBoxPer6;

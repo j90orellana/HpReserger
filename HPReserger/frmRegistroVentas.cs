@@ -133,6 +133,7 @@ namespace HPReserger
             PanelTxt.BringToFront();
             txtaño.Text = comboMesAño1.FechaConDiaActual.Year.ToString("0000");
             txtmes.Text = comboMesAño1.FechaConDiaActual.Month.ToString("00");
+            txtinformacion.Text = (dtgconten.RowCount > 0 ? 1 : 0).ToString();
             PanelTxt.Visible = true;
         }
         public void CerrarPanelTxt()
@@ -231,22 +232,44 @@ namespace HPReserger
                 campo[c++] = item.Cells[xSerieDocRef.Name].ToString() == "" ? "-" : item.Cells[xSerieDocRef.Name].Value.ToString().Trim();
                 campo[c++] = item.Cells[xNumDocRef.Name].ToString() == "" ? "-" : item.Cells[xNumDocRef.Name].Value.ToString().Trim();
                 //Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
-                //"1. Obligatorio
+                //1. Obligatorio
                 //2.Registrar '1' cuando la operación(ventas gravadas, exoneradas, inafectas y / o exportaciones) corresponde al periodo, así como a las Notas de Crédito y Débito emitidas en el periodo.
                 //3.Registrar '2' cuando el documento ha sido inutilizado durante el periodo previamente a ser entregado, emitido o durante su emisión.
                 //4.Registrar '8' cuando la operación(ventas gravadas, exoneradas, inafectas y / o exportaciones) corresponde a un periodo anterior y NO ha sido anotada en dicho periodo.
-                //5.Registrar '9' cuando la operación(ventas gravadas, exoneradas, inafectas y / o exportaciones) corresponde a un periodo anterior y SI ha sido anotada en dicho periodo."
+                //5.Registrar '9' cuando la operación(ventas gravadas, exoneradas, inafectas y / o exportaciones) corresponde a un periodo anterior y SI ha sido anotada en dicho periodo.
                 campo[c++] = "";
                 campo[c++] = "";
                 campo[c++] = "";
                 //CampoFinal
-                campo[c++] = "1";
+                //Validacion del Identificador de Estado!
+                int Estado = 0;
+                DateTime FechaDeclara = comboMesAño1.GetFechaPRimerDia();
+                DateTime FechaEmision = (DateTime)item.Cells[xFechaEmision.Name].Value;
+                //Mismo Mes de Declaración
+                if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
+                {
+                    if (((decimal)item.Cells[ximporteNGR.Name].Value) > 0)
+                        Estado = 0;
+                    else
+                        Estado = 1;
+                }
+                else
+                {
+                    //Calculamos la diferencia para ver cuantos meses pasaron
+                    int anio = FechaDeclara.Year - FechaEmision.Year;
+                    int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
+                    if (meses < 120)
+                        Estado = 8;
+                    else Estado = 7;
+                }
+                //Columna Final
+                campo[c++] = Estado.ToString();
                 //Uniendo por pipes
                 cadenatxt += string.Join("|", campo) + $"{Environment.NewLine }";
                 //Limpiamos el Campo
                 //campo = null;
             }
-            SaveFile.FileName = $"LE{txtRucDeudor.Text}{txtaño.Text}{txtmes.Text}00140100001111";
+            SaveFile.FileName = $"LE{txtRucDeudor.Text}{txtaño.Text}{txtmes.Text}00140100001{txtinformacion.Text}11";
             if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
             {
                 string path = SaveFile.FileName;

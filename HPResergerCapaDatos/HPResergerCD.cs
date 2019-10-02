@@ -1329,9 +1329,11 @@ namespace HPResergerCapaDatos
             object[] valores = { buscar, opcion, Naturaleza };
             return bd.DataTableFromProcedure("usp_buscar_cuenta", parametros, valores, null);
         }
-        public DataTable BuscarcuentasInterEmpresas()
+        public DataTable BuscarcuentasInterEmpresas(int Fkmoneda)
         {
-            return bd.DataTableFromProcedure("usp_ListarCuentasInterEmpresas", null, null, null);
+            string[] parametros = { "@fkmoneda" };
+            object[] valores = { Fkmoneda };
+            return bd.DataTableFromProcedure("usp_ListarCuentasInterEmpresas", parametros, valores, null);
         }
         public DataTable VerificarProveedores(string codigo, string razon)
         {

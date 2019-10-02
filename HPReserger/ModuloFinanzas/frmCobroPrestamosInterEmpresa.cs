@@ -407,6 +407,12 @@ namespace HPReserger.ModuloFinanzas
         {
             CalcularTotal();
             //Proceso de Validacion de DAtos
+            ///Validamos que solo Este Seleccionado un Prestamos
+            int C = 0;
+            foreach (DataGridViewRow item in dtgconten.Rows)
+                if ((int)item.Cells[xok.Name].Value == 1)
+                    C++;
+            if (C > 1) { msg("Seleccione solo un Prestamo"); return; }
             ///Declaraciones
             decimal ValorTC = 0, MontoAbonado = 0;
             string Glosa = "";
@@ -422,8 +428,8 @@ namespace HPReserger.ModuloFinanzas
             Glosa = txtGlosa.TextValido();
             ///VALIDACIONES
             ///Validacion de PEriodo Contable Cerrado
-            if (cboOriEmpresa.SelectedValue == null) { cboOriEmpresa.Focus(); msg("Seleccione Empresa Origen"); return; }
-            if (cboDesEmpresa.SelectedValue == null) { cboDesEmpresa.Focus(); msg("Seleccione Empresa Destino"); return; }
+            if (cboOriEmpresa.SelectedValue == null) { cboOriEmpresa.Focus(); msg("Seleccione Empresa Destino"); return; }
+            if (cboDesEmpresa.SelectedValue == null) { cboDesEmpresa.Focus(); msg("Seleccione Empresa Origen"); return; }
             ///validaciones de Logica
             if ((int)cboOriEmpresa.SelectedValue == (int)cboDesEmpresa.SelectedValue) { cboDesEmpresa.Focus(); msg("Seleccione Diferentes Empresas"); return; }
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboOriEmpresa.SelectedValue, FechaContable))
@@ -457,14 +463,14 @@ namespace HPReserger.ModuloFinanzas
             }
             if (Prueba1) { msg("El Monto Abonado no puede ser Cero, Revise Celdas"); return; }
             //Validaciones de Combos Agrupados
-            if (cboOriProyecto.SelectedValue == null) { cboOriProyecto.Focus(); msg("Seleccione Proyecto Origen"); return; }
-            if (cboDesProyecto.SelectedValue == null) { cboDesProyecto.Focus(); msg("Seleccione Proyecto Destino"); return; }
-            if (cboDesEtapa.SelectedValue == null) { cboDesEtapa.Focus(); msg("Seleccione Etapa Origen"); return; }
+            if (cboOriProyecto.SelectedValue == null) { cboOriProyecto.Focus(); msg("Seleccione Proyecto Destino"); return; }
+            if (cboDesProyecto.SelectedValue == null) { cboDesProyecto.Focus(); msg("Seleccione Proyecto Origen"); return; }
             if (cboDesEtapa.SelectedValue == null) { cboDesEtapa.Focus(); msg("Seleccione Etapa Destino"); return; }
-            if (cboOriBanco.SelectedValue == null) { cboOriBanco.Focus(); msg("Seleccione Banco Origen"); return; }
-            if (cboDesBanco.SelectedValue == null) { cboDesBanco.Focus(); msg("Seleccione Banco Destino"); return; }
-            if (cboOriCuentaBanco.SelectedValue == null) { cboOriCuentaBanco.Focus(); msg("Seleccione Cuenta Banco Origen"); return; }
-            if (cboDesCuentaBanco.SelectedValue == null) { cboDesCuentaBanco.Focus(); msg("Seleccione Cuenta Banco Destino"); return; }
+            if (cboDesEtapa.SelectedValue == null) { cboDesEtapa.Focus(); msg("Seleccione Etapa Origen"); return; }
+            if (cboOriBanco.SelectedValue == null) { cboOriBanco.Focus(); msg("Seleccione Banco Destino"); return; }
+            if (cboDesBanco.SelectedValue == null) { cboDesBanco.Focus(); msg("Seleccione Banco Origen"); return; }
+            if (cboOriCuentaBanco.SelectedValue == null) { cboOriCuentaBanco.Focus(); msg("Seleccione Cuenta Banco Destino"); return; }
+            if (cboDesCuentaBanco.SelectedValue == null) { cboDesCuentaBanco.Focus(); msg("Seleccione Cuenta Banco Origen"); return; }
             //if (cboDesCuentaContable.SelectedValue == null) { cboDesCuentaContable.Focus(); msg("Seleccione Cuenta Contable Destino"); return; }
             //if (cboOriCuentaContable.SelectedValue == null) { cboOriCuentaContable.Focus(); msg("Ingrese Cuenta Contable del Origen"); return; }
             ///Validaciones de Combos Separados
@@ -523,30 +529,31 @@ namespace HPReserger.ModuloFinanzas
                 string RucOrigen = ((DataRowView)cboOriEmpresa.SelectedItem)["ruc"].ToString();
                 string RucDestrino = ((DataRowView)cboDesEmpresa.SelectedItem)["ruc"].ToString();
                 int TipoPago = int.Parse(cbotipo.Text.Substring(0, 3));
-                ///Detalle en la Empresa Origen
-                CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), IdProyectoOri, 5, RucDestrino
-                   , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaAbono, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbonado : MontoAbonado * ValorTC,
-                   IdMoneda == 2 ? MontoAbonado : MontoAbonado / ValorTC, ValorTC, IdMoneda, NroKuentaOri, NroOpPago, Glosa, FechaContable, IdUsuario, " ");
-                ///Detalle en la Empresa Destino
-                CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
-                   , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaAbono, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbonado : MontoAbonado * ValorTC,
-                   IdMoneda == 2 ? MontoAbonado : MontoAbonado / ValorTC, ValorTC, IdMoneda, NroKuentaDes, NroOpPago, Glosa, FechaContable, IdUsuario, " ");
                 contador = 0;
                 foreach (DataGridViewRow item in dtgconten.Rows)
                 {
                     if ((int)item.Cells[xok.Name].Value == 1)
                     {
+                        decimal TcReg = (decimal)item.Cells[xtc.Name].Value;
                         string CuentaOrigen = item.Cells[xCtaContableOri.Name].Value.ToString();
                         string CuentaDestino = item.Cells[xCtaContableDes.Name].Value.ToString();
                         decimal MontoAbono = (decimal)item.Cells[xPagar.Name].Value;
                         DateTime FechaPrestamo = (DateTime)item.Cells[xFechaPrestado.Name].Value;
                         int pkid = (int)item.Cells[xpkid.Name].Value;
                         NumComprobante = "Pr." + pkid + " - " + ((DateTime)item.Cells[xFechaPrestado.Name].Value).ToShortDateString();
-                        ///Detalle en la Empresa Origen - Entrada de Dinero
+                        ///Detalle en la Empresa Origen - BANCOS
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), IdProyectoOri, 5, RucDestrino
+                           , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaAbono, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbonado : MontoAbonado * TcReg,
+                           IdMoneda == 2 ? MontoAbonado : MontoAbonado / TcReg, TcReg, IdMoneda, NroKuentaOri, NroOpPago, Glosa, FechaContable, IdUsuario, " ");
+                        ///Detalle en la Empresa Destino - BANCOS
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
+                           , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaAbono, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbonado : MontoAbonado * TcReg,
+                           IdMoneda == 2 ? MontoAbonado : MontoAbonado / TcReg, TcReg, IdMoneda, NroKuentaDes, NroOpPago, Glosa, FechaContable, IdUsuario, " ");
+                        ///Detalle en la Empresa Origen - Entrada de Dinero - CUENTAS
                         CapaLogica.InsertarAsientoFacturaDetalle(10, 2 + contador, IdAsientoOri, FechaContable, CuentaOrigen, IdProyectoOri, 5, RucDestrino
                            , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbono : MontoAbono * ValorTC, IdMoneda == 2 ? MontoAbono : MontoAbono / ValorTC, ValorTC,
                            IdMoneda, " ", "", Glosa, FechaContable, IdUsuario, item.Cells[xcuoori.Name].Value.ToString());
-                        ///Detalle en la Empresa Destino - Salida de Dinero
+                        ///Detalle en la Empresa Destino - Salida de Dinero - CUENTAS
                         CapaLogica.InsertarAsientoFacturaDetalle(10, 2 + contador, IdAsientoDes, FechaContable, CuentaDestino, IdProyectoDes, 5, RucOrigen
                            , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbono : MontoAbono * ValorTC, IdMoneda == 2 ? MontoAbono : MontoAbono / ValorTC, ValorTC,
                            IdMoneda, " ", "", Glosa, FechaContable, IdUsuario, item.Cells[xcuodes.Name].Value.ToString());
@@ -566,7 +573,7 @@ namespace HPReserger.ModuloFinanzas
                 CapaLogica.CuadrarAsiento(CuoDes, IdProyectoDes, FechaContable, 2);
                 ///Inserto el Registro del Prestamo InterEmpresa
                 //Carga de Datos Actualizados
-                msg($"Se Grabó Exitosamente\nEn la Empresa Origen  cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");
+                msg($"Se Grabó Exitosamente\nEn la Empresa Destino cuo: {CuoOri}\nEn la Empresa Origen  cuo: {CuoDes}");
                 EmpresaFind = 0; MonedaFind = 0;
                 CargarDatos();
             }

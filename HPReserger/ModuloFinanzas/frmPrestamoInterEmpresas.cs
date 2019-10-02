@@ -22,7 +22,7 @@ namespace HPReserger
         public void CargarEmpresaDes() { CapaLogica.TablaEmpresa(cboDesEmpresa); }
         public void CargarCuentaOrigen()
         {
-            DataTable Tablita = CapaLogica.BuscarcuentasInterEmpresas();
+            DataTable Tablita = CapaLogica.BuscarcuentasInterEmpresas(FkMoneda);
             cboOriCuentaContable.DisplayMember = "descripcion";
             cboOriCuentaContable.ValueMember = "codigo";
             cboOriCuentaContable.DataSource = Tablita;
@@ -30,7 +30,7 @@ namespace HPReserger
         }
         public void CargarCuentaDestino()
         {
-            DataTable Tablita = CapaLogica.BuscarcuentasInterEmpresas();
+            DataTable Tablita = CapaLogica.BuscarcuentasInterEmpresas(FkMoneda);
             cboDesCuentaContable.DisplayMember = "descripcion";
             cboDesCuentaContable.ValueMember = "codigo";
             cboDesCuentaContable.DataSource = Tablita;
@@ -190,7 +190,9 @@ namespace HPReserger
         }
         private void cbomoneda_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FkMoneda = (int)cbomoneda.SelectedValue;
             CargarCuentasBancosOri(); CargarCuentasBancosDes();
+            CargarCuentaOrigen(); CargarCuentaDestino();
         }
         private void cboOriEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -612,7 +614,7 @@ namespace HPReserger
 
         private void cboOriCuentaContable_Click(object sender, EventArgs e)
         {
-            DataTable Table = CapaLogica.BuscarcuentasInterEmpresas();
+            DataTable Table = CapaLogica.BuscarcuentasInterEmpresas(FkMoneda);
             if (cboOriCuentaContable.Items.Count != Table.Rows.Count)
             {
                 string cadena = (cboOriCuentaContable.SelectedValue ?? "").ToString();
@@ -623,7 +625,7 @@ namespace HPReserger
 
         private void cboDesCuentaContable_Click(object sender, EventArgs e)
         {
-            DataTable Table = CapaLogica.BuscarcuentasInterEmpresas();
+            DataTable Table = CapaLogica.BuscarcuentasInterEmpresas(FkMoneda);
             if (cboDesCuentaContable.Items.Count != Table.Rows.Count)
             {
                 string cadena = (cboDesCuentaContable.SelectedValue ?? "").ToString();
@@ -728,6 +730,9 @@ namespace HPReserger
         int _IdAsientoOrigen;
         int _IdAsientoDestino;
         int _FkId;
+
+        public int FkMoneda { get; private set; }
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Estado = 2;

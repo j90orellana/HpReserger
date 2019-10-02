@@ -164,6 +164,7 @@ namespace HPReserger
             PanelTxt.BringToFront();
             txtaño.Text = comboMesAño1.FechaConDiaActual.Year.ToString("0000");
             txtmes.Text = comboMesAño1.FechaConDiaActual.Month.ToString("00");
+            txtinformacion.Text = (dtgconten.RowCount > 0 ? 1 : 0).ToString();
             PanelTxt.Visible = true;
         }
 
@@ -211,7 +212,7 @@ namespace HPReserger
                 int c = 0;
                 campo[c++] = $"{txtaño.Text}{txtmes.Text}00";
                 campo[c++] = ((item.Cells[xcuo.Name].Value.ToString())).ToString();
-                campo[c++] = "M";
+                campo[c++] = "M2";
                 campo[c++] = ((DateTime)item.Cells[xFechaEmision.Name].Value).ToString("dd/MM/yyyy");
                 campo[c++] = "";
                 campo[c++] = ((int)item.Cells[xidC.Name].Value).ToString();
@@ -263,15 +264,15 @@ namespace HPReserger
                 //Número de la Constancia de Depósito de Detracción
                 campo[c++] = item.Cells[xNumDet.Name].Value.ToString() == "" ? "0" : item.Cells[xNumDet.Name].Value.ToString().Trim();
                 //Marca del comprobante de pago sujeto a retención
-                //-"1. Obligatorio 
-                //-2.Si identifica el comprobante sujeto a retención consignar '1', caso contrario '0'"
+                //1. Obligatorio 
+                //2.Si identifica el comprobante sujeto a retención consignar '1', caso contrario '0'
                 campo[c++] = "0";
                 //Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
-                //"1. Obligatorio
+                //1. Obligatorio
                 //2.Registrar '1' cuando se anota el Comprobante de Pago o documento en el periodo que se emitió o que se pagó el impuesto, según corresponda.
                 //3.Registrar '6' cuando la fecha de emisión del Comprobante de Pago o de pago del impuesto es anterior al periodo de anotación y esta se produce dentro de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
                 //4.Registrar '7' cuando la fecha de emisión del Comprobante de Pago o pago del impuesto es anterior al periodo de anotación y esta se produce luego de los doce meses siguientes a la emisión o pago del impuesto, según corresponda.
-                //5.Registrar '9' cuando se realice un ajuste en la anotación de la información de una operación registrada en un periodo anterior."
+                //5.Registrar '9' cuando se realice un ajuste en la anotación de la información de una operación registrada en un periodo anterior.
                 campo[c++] = "1";
                 //7 Extras
                 campo[c++] = "";
@@ -280,18 +281,53 @@ namespace HPReserger
                 campo[c++] = "";
                 campo[c++] = "";
                 campo[c++] = "";
-                campo[c++] = "1";
+                //CampoFinal
+                //Validacion del Identificador de Estado!
+                int Estado = 0;
+                DateTime FechaDeclara = comboMesAño1.GetFechaPRimerDia();
+                DateTime FechaEmision = (DateTime)item.Cells[xFechaEmision.Name].Value;
+                //Mismo Mes de Declaración
+                if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
+                {
+                    if (((decimal)item.Cells[ximporteNGR.Name].Value) > 0)
+                        Estado = 0;
+                    else
+                        Estado = 1;
+                }
+                else
+                {
+                    //Calculamos la diferencia para ver cuantos meses pasaron
+                    int anio = FechaDeclara.Year - FechaEmision.Year;
+                    int meses = (FechaDeclara.Month + (anio * 12)) - FechaEmision.Month;
+                    if (meses < 12)
+                        Estado = 6;
+                    else Estado = 7;
+                }
+                //Columna Final
+                campo[c++] = Estado.ToString();
                 //Uniendo por pipes
                 cadenatxt += string.Join("|", campo) + $"{Environment.NewLine}";
                 //Limpiamos el Campo
                 //campo = null;
             }
-            SaveFile.FileName = $"LE{txtRucDeudor.Text}{txtaño.Text}{txtmes.Text}00080100001111";
+            //Formato 8.1
+            SaveFile.FileName = $"LE{txtRucDeudor.Text}{txtaño.Text}{txtmes.Text}00080100001{txtinformacion.Text}11";
             if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
             {
                 string path = SaveFile.FileName;
                 st = File.CreateText(path);
                 st.Write(cadenatxt);
+                st.Close();
+                //msg("Generado TXT con Éxito");
+                PanelTxt.Visible = false;
+            }
+            //Formato 8.2 - Esta Vacio aun
+            SaveFile.FileName = $"LE{txtRucDeudor.Text}{txtaño.Text}{txtmes.Text}00080200001011";
+            if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
+            {
+                string path = SaveFile.FileName;
+                st = File.CreateText(path);
+                st.Write("");
                 st.Close();
                 msg("Generado TXT con Éxito");
                 PanelTxt.Visible = false;

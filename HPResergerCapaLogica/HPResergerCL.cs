@@ -382,9 +382,9 @@ namespace HPResergerCapaLogica
             //// Cuenta_Contable Cuenta_Contable_Naturaleza SolicitaDetalle
             return cdOrdenPedido.BuscarCuenta(buscar, opcion, naturaleza);
         }
-        public DataTable BuscarcuentasInterEmpresas()
+        public DataTable BuscarcuentasInterEmpresas(int fkMoneda)
         {
-            return cdOrdenPedido.BuscarcuentasInterEmpresas();
+            return cdOrdenPedido.BuscarcuentasInterEmpresas(fkMoneda);
         }
         public DataTable ListarDinamicas(string busca, int opcion)
         {
