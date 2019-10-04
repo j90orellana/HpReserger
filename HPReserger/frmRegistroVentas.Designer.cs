@@ -239,7 +239,7 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 10, 2, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 10, 3, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 10, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 10, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(70, 28);
@@ -691,10 +691,10 @@
             // 
             this.PanelAbajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
             this.PanelAbajo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelAbajo.Location = new System.Drawing.Point(4, 490);
+            this.PanelAbajo.Location = new System.Drawing.Point(2, 490);
             this.PanelAbajo.Movible = false;
             this.PanelAbajo.Name = "PanelAbajo";
-            this.PanelAbajo.Size = new System.Drawing.Size(446, 3);
+            this.PanelAbajo.Size = new System.Drawing.Size(448, 3);
             this.PanelAbajo.TabIndex = 7;
             // 
             // panelDerecho
@@ -714,7 +714,7 @@
             this.panelzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelzquierdo.Movible = false;
             this.panelzquierdo.Name = "panelzquierdo";
-            this.panelzquierdo.Size = new System.Drawing.Size(4, 493);
+            this.panelzquierdo.Size = new System.Drawing.Size(2, 493);
             this.panelzquierdo.TabIndex = 5;
             // 
             // textBoxPer11

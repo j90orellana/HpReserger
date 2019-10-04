@@ -210,17 +210,20 @@ namespace HPReserger
             {
                 ValorPrueba = 0;
                 int c = 0;
+                //1
                 campo[c++] = $"{txtaño.Text}{txtmes.Text}00";
                 campo[c++] = ((item.Cells[xcuo.Name].Value.ToString())).ToString();
                 campo[c++] = "M2";
                 campo[c++] = ((DateTime)item.Cells[xFechaEmision.Name].Value).ToString("dd/MM/yyyy");
-                campo[c++] = "";
-                campo[c++] = ((int)item.Cells[xidC.Name].Value).ToString();
-                campo[c++] = item.Cells[xSerieCom.Name].Value.ToString().Trim();
+                //5
+                campo[c++] = (int)item.Cells[xidC.Name].Value != 14 ? "" : ((DateTime)item.Cells[xFechaVencimiento.Name].Value).ToString("dd/MM/yyyy");
+                campo[c++] = ((int)item.Cells[xidC.Name].Value).ToString("00");
+                campo[c++] = item.Cells[xSerieCom.Name].Value.ToString();
                 int.TryParse(item.Cells[xAñoDua.Name].Value.ToString(), out ValorPrueba);
                 campo[c++] = ValorPrueba.ToString();
                 campo[c++] = item.Cells[xNumCom.Name].Value.ToString().Trim();
                 //En caso de optar por anotar el importe total de las operaciones diarias que no otorguen derecho a crédito fiscal en forma consolidada, registrar el número inicial
+                //10
                 campo[c++] = "";
                 campo[c++] = (int.Parse(item.Cells[xTipoIdPro.Name].Value.ToString())).ToString();
                 campo[c++] = item.Cells[xNumpro.Name].Value.ToString().Trim();
@@ -236,6 +239,7 @@ namespace HPReserger
                 campo[c++] = ((decimal)item.Cells[ximporteONG.Name].Value).ToString("0.00");
                 campo[c++] = ((decimal)item.Cells[xigvONG.Name].Value).ToString("0.00");
                 //Partes de NGR
+                //20
                 campo[c++] = ((decimal)item.Cells[ximporteNGR.Name].Value).ToString("0.00");
                 campo[c++] = ((decimal)item.Cells[xisc.Name].Value).ToString("0.00");
                 campo[c++] = ((decimal)item.Cells[xOtrosTributos.Name].Value).ToString("0.00");
@@ -253,20 +257,21 @@ namespace HPReserger
                 }
                 campo[c++] = item.Cells[xFechaDocRef.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDocRef.Name].Value).ToString("dd/MM/yyyy");
                 int.TryParse(item.Cells[xTipoDocRef.Name].Value.ToString(), out ValorPrueba);
-                campo[c++] = ValorPrueba.ToString();
+                campo[c++] = ValorPrueba.ToString("00");
                 //Datos del Documento que Modifica
                 campo[c++] = item.Cells[xSerieDocRef.Name].ToString() == "" ? "-" : item.Cells[xSerieDocRef.Name].Value.ToString().Trim();
                 campo[c++] = item.Cells[xNumDocRef.Name].ToString() == "" ? "-" : item.Cells[xNumDocRef.Name].Value.ToString().Trim();
                 //Número del comprobante de pago emitido por sujeto no domiciliado
+                //30
                 campo[c++] = "-";
                 //Fecha de emisión de la Constancia de Depósito de Detracción 
                 campo[c++] = item.Cells[xFechaDet.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDet.Name].Value).ToString("dd/MM/yyyy");
-                //Número de la Constancia de Depósito de Detracción
+                //Número de la Constancia de Depósito de Detracción               
                 campo[c++] = item.Cells[xNumDet.Name].Value.ToString() == "" ? "0" : item.Cells[xNumDet.Name].Value.ToString().Trim();
                 //Marca del comprobante de pago sujeto a retención
                 //1. Obligatorio 
                 //2.Si identifica el comprobante sujeto a retención consignar '1', caso contrario '0'
-                campo[c++] = "0";
+                campo[c++] = "";
                 //Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
                 //1. Obligatorio
                 //2.Registrar '1' cuando se anota el Comprobante de Pago o documento en el periodo que se emitió o que se pagó el impuesto, según corresponda.

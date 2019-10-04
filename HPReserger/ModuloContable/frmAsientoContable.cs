@@ -262,7 +262,8 @@ namespace HPReserger
             PintardeCOlores();
             dtgbusca.CurrentCell = dtgbusca[0, fit != null ? (int)fit : 0];
             frmdetalle = null;
-            //RevisarSihayDescuadre();
+            estado = -1;
+            RevisarSihayDescuadre();
             frmMenu.AbortarCerrarPrograma = false;
         }
         public void RefrescarAsientoSeleccionado()
@@ -805,6 +806,7 @@ namespace HPReserger
         public int dinamica { get; set; }
         public decimal activo, pasivo;
         Boolean BusquedaCuenta = true;
+
         private void dtgbusca_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             btnreversa.Enabled = false;
@@ -862,7 +864,7 @@ namespace HPReserger
                     Dtgconten.DataSource = Datos;
                     ///Reviso si el Asiento esta Cuadrado
                     string[] ListaEstados = { "4", "0" };
-                    if (estado == 0) { if (!ListaEstados.Contains(cboestado.SelectedValue.ToString())) RevisarSihayDescuadre(); }
+                    if (estado == -1) { if (!ListaEstados.Contains(cboestado.SelectedValue.ToString())) RevisarSihayDescuadre(); }
                     else labelCuadre.Text = "";
                     txttipocambio.Text = (dtgbusca[xtc.Name, e.RowIndex].Value.ToString() == "" ? 0.0m : (decimal)dtgbusca[xtc.Name, e.RowIndex].Value).ToString("n3");
                     foreach (DataGridViewRow item in Dtgconten.Rows)
@@ -903,12 +905,12 @@ namespace HPReserger
             labelCuadre.Text = "";
             decimal pen = Math.Abs(((decimal)Tdatos.Rows[0]["pen"]));
             decimal usd = Math.Abs(((decimal)Tdatos.Rows[0]["usd"]));
-            if (estado == 0 && (pen + usd) != 0)
+            if (estado == -1 && (pen + usd) != 0)
                 if (Tdatos.Rows.Count > 0)
                 {
                     if ((usd < 1 & pen < 1) && (usd >= 0 && pen >= 0) && (usd + pen != 0))
                     {
-                        if (estado == 0)
+                        if (estado == -1)
                         {
                             DateTime Fechita = dtpfechavalor.Value;
                             CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
@@ -945,6 +947,7 @@ namespace HPReserger
                         labelCuadre.Click += LabelCuadre_Click;
                     }
                 }
+            estado = 0;
         }
         private void LabelCuadre_Click(object sender, EventArgs e)
         {
@@ -1806,12 +1809,29 @@ namespace HPReserger
         {
             PintardeCOlores();
         }
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            PanelReversa.Hide();
+        }
+        private void btnTxt_Click(object sender, EventArgs e)
+        {
+            MSG("Se va a Reversar");
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            //No se Pueden reversar Asientos Reversados
             if (dtgbusca[nameestado.Name, dtgbusca.CurrentRow.Index].Value.ToString().ToUpper() == "REVERSADO")
             {
                 HPResergerFunciones.Utilitarios.msg($"Asiento No se Puede Reversar!"); return;
             }
+            //Verificio si el Periodo esta Abierto para Proceder con la Anulacion - REversa
+            if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpfechavalor.Value))
+            {
+                msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpfechavalor.Focus(); return;
+            }
+            //PanelReversa.BringToFront();
+            //PanelReversa.Show();
+            //Proceso de la Reversa
             if (HPResergerFunciones.Utilitarios.msgYesNo($"Seguro Desea Reversar Este Asiento Nro {txtcuo.Text}") == DialogResult.Yes)
             {
                 //PROCESO DE REVERSA DEL ASIENTO
@@ -1978,6 +1998,7 @@ namespace HPReserger
                 frmReportito.Show();
             }
         }
+
         private void Dtgconten_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //Sumatoria();

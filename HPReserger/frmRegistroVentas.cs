@@ -182,16 +182,18 @@ namespace HPReserger
             {
                 ValorPrueba = 0;
                 int c = 0;
+                //1
                 campo[c++] = $"{txtaño.Text}{txtmes.Text}00";
                 campo[c++] = (int.Parse(item.Cells[xix.Name].Value.ToString())).ToString("000");
                 campo[c++] = "M2";
                 campo[c++] = ((DateTime)item.Cells[xFechaEmision.Name].Value).ToString("dd/MM/yyyy");
                 campo[c++] = "01/01/0001";
-                campo[c++] = ((int)item.Cells[xidC.Name].Value).ToString();
+                campo[c++] = ((int)item.Cells[xidC.Name].Value).ToString("00");
                 campo[c++] = item.Cells[xSerieCom.Name].Value.ToString().Trim();
                 campo[c++] = item.Cells[xNumCom.Name].Value.ToString().Trim();
                 //En caso de optar por anotar el importe total de las operaciones realizadas diariamente, registrar el número final. 
-                campo[c++] = "0";
+                campo[c++] = "";
+                //10
                 campo[c++] = (int.Parse(item.Cells[xTipoIdPro.Name].Value.ToString())).ToString();
                 campo[c++] = item.Cells[xNumpro.Name].ToString() == "" ? "-" : item.Cells[xNumpro.Name].Value.ToString().Trim();
                 string Cadena = item.Cells[xNombrePro.Name].Value.ToString().ToUpper().Trim();
@@ -207,6 +209,7 @@ namespace HPReserger
                 campo[c++] = ((decimal)item.Cells[xExonerado.Name].Value).ToString("0.00");
                 //Partes de los GNG
                 campo[c++] = ((decimal)item.Cells[ximporteNGR.Name].Value).ToString("0.00");
+                //20
                 campo[c++] = ((decimal)item.Cells[xisc.Name].Value).ToString("0.00");
                 //IVAP = Arroz Pilado y su Impuesto
                 campo[c++] = "0";
@@ -223,14 +226,16 @@ namespace HPReserger
                 else
                 {
                     campo[c++] = "PEN";
-                    campo[c++] = "0.000";
+                    campo[c++] = ((decimal)item.Cells[xTC.Name].Value).ToString("0.000");
+
                 }
                 campo[c++] = item.Cells[xFechaDocRef.Name].Value.ToString() == "" ? "01/01/0001" : ((DateTime)item.Cells[xFechaDocRef.Name].Value).ToString("dd/MM/yyyy");
                 int.TryParse(item.Cells[xTipoDocRef.Name].Value.ToString(), out ValorPrueba);
-                campo[c++] = ValorPrueba.ToString();
+                campo[c++] = ValorPrueba > 0 ? ValorPrueba.ToString("00") : "";
                 //Datos del Documento que Modifica
-                campo[c++] = item.Cells[xSerieDocRef.Name].ToString() == "" ? "-" : item.Cells[xSerieDocRef.Name].Value.ToString().Trim();
-                campo[c++] = item.Cells[xNumDocRef.Name].ToString() == "" ? "-" : item.Cells[xNumDocRef.Name].Value.ToString().Trim();
+                campo[c++] = item.Cells[xSerieDocRef.Name].ToString() == "" ? "" : item.Cells[xSerieDocRef.Name].Value.ToString().Trim();
+                //30
+                campo[c++] = item.Cells[xNumDocRef.Name].ToString() == "" ? "" : item.Cells[xNumDocRef.Name].Value.ToString().Trim();
                 //Indica el estado del comprobante de pago y a la incidencia en la base imponible  en relación al periodo tributario correspondiente
                 //1. Obligatorio
                 //2.Registrar '1' cuando la operación(ventas gravadas, exoneradas, inafectas y / o exportaciones) corresponde al periodo, así como a las Notas de Crédito y Débito emitidas en el periodo.
@@ -249,7 +254,7 @@ namespace HPReserger
                 if (FechaDeclara.Month == FechaEmision.Month && FechaEmision.Year == FechaDeclara.Year)
                 {
                     if (((decimal)item.Cells[ximporteNGR.Name].Value) > 0)
-                        Estado = 0;
+                        Estado = 1;
                     else
                         Estado = 1;
                 }

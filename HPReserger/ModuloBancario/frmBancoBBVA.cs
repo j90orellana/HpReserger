@@ -51,13 +51,14 @@ namespace HPReserger.ModuloBancario
             //Tabla de Tipo de Id del Proveedor
             TTipoId.Columns.Add("codigo", typeof(int));
             TTipoId.Columns.Add("valor", typeof(string));
+            TTipoId.Columns.Add("Des", typeof(string));
             //L E R M P
             //1   L.E / DNI -2   CARNET EXT.- 3   PASAPORTE -5   RUC -6   OTROS -7   P.NAC. -8   CARNET DE IDENTIDAD            
-            TTipoId.Rows.Add(1, "DNI");//L
-            TTipoId.Rows.Add(2, "C.Ext");//E
-            TTipoId.Rows.Add(3, "PAS");//P
-            TTipoId.Rows.Add(5, "RUC");//R
-            TTipoId.Rows.Add(6, "RUC");//R
+            TTipoId.Rows.Add(1, "DNI", "L");//L
+            TTipoId.Rows.Add(2, "C.Ext", "E");//E
+            TTipoId.Rows.Add(3, "PAS", "P");//P
+            TTipoId.Rows.Add(5, "RUC", "R");//R
+            TTipoId.Rows.Add(6, "RUC", "R");//R
             //Tabla Tipos de Pagos
             TTipoPago.Columns.Add("codigo", typeof(string));
             TTipoPago.Columns.Add("valor", typeof(string));
@@ -261,6 +262,10 @@ namespace HPReserger.ModuloBancario
         {
             if (ValidarDatosLlenados())
             {
+                combo = dtgconten.Columns[xDoi.Name] as DataGridViewComboBoxColumn;
+                combo.ValueMember = "des";
+                combo.DataSource = TTipoId;
+                //dtgconten.RefreshEdit();
                 PAgoFactura = false;
                 int con = dtgconten.RowCount;
                 if (con > 0)
@@ -285,7 +290,9 @@ namespace HPReserger.ModuloBancario
                     foreach (DataGridViewRow item in dtgconten.Rows)
                     {
                         campo[0] = "002";
-                        campo[1] = item.Cells[xDoi.Name].Value.ToString().Trim().ToUpper();
+                        string doi = item.Cells[xDoi.Name].Value.ToString().Trim().ToUpper();
+                        doi = doi == "1" ? "L" : doi == "2" ? "E" : doi == "3" ? "P" : doi == "5" ? "R" : "R";
+                        campo[1] = doi.ToUpper();
                         campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xDoiNumero.Name].Value.ToString().Trim().ToUpper(), ' ', 12, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                         campo[3] = item.Cells[xTipoAbono.Name].Value.ToString().Trim().ToUpper();
                         campo[4] = item.Cells[xCuentaAbonar.Name].Value.ToString().Trim().ToUpper();
@@ -295,8 +302,9 @@ namespace HPReserger.ModuloBancario
                         campo[8] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xNroDocumento.Name].Value.ToString().Trim().ToUpper(), ' ', 12, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                         campo[9] = item.Cells[xAbono.Name].Value.ToString().Trim().ToUpper();
                         campo[10] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xReferencia.Name].Value.ToString().Trim().ToUpper(), ' ', 40, HPResergerFunciones.Utilitarios.Direccion.izquierda);
-                        campo[11] = item.Cells[xIndicadorAviso.Name].Value.ToString();
                         string indicador = item.Cells[xIndicadorAviso.Name].Value.ToString();
+                        indicador = item.Cells[xMedioAviso.Name].Value.ToString().Trim().ToUpper().Length == 0 ? " " : indicador;
+                        campo[11] = indicador;
                         campo[12] = HPResergerFunciones.Utilitarios.AddCaracter(indicador == " " ? " " : item.Cells[xMedioAviso.Name].Value.ToString().Trim().ToUpper(), ' ', 50, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                         campo[13] = HPResergerFunciones.Utilitarios.AddCaracter(item.Cells[xPersonaContacto.Name].Value.ToString().Trim().ToUpper(), ' ', 30, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                         campo[14] = HPResergerFunciones.Utilitarios.AddCaracter("", '0', 32, HPResergerFunciones.Utilitarios.Direccion.izquierda);
@@ -304,7 +312,7 @@ namespace HPReserger.ModuloBancario
                         cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                     }
                     //msg(cadenatxt);
-                    SaveFile.FileName = $"Proveedores BBVA {txtTotal.Text} " + DateTime.Now.ToLongDateString();
+                    SaveFile.FileName = $"Proveedores BBVA {txtTotal.Text} " + DateTime.Now.ToLongDateString();                   
                     if (SaveFile.FileName != string.Empty && SaveFile.ShowDialog() == DialogResult.OK)
                     {
                         string path = SaveFile.FileName;

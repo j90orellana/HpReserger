@@ -104,6 +104,7 @@ namespace HPReserger
         }
         private void frmBancoBcp_Load(object sender, EventArgs e)
         {
+            txtcuentapago.Text = HPResergerFunciones.Utilitarios.QuitarCaracterCuenta(txtcuentapago.Text, '-');
             CargarColores();
             //ABONOS EN CUENTAS
             Dtguias.Columns[TIPODOC.Name.ToString()].HeaderCell.Style.BackColor = Naranja;
@@ -470,9 +471,9 @@ namespace HPReserger
                 else mone = "1001";
                 DateTime FechaAux = dtpFechaProceso.Value;
 
-                cadenatxt = "1" + txtcantidaabono.Text + FechaAux.Year + FechaAux.Month.ToString("00") + FechaAux.Day.ToString("00") + cbotipocuenta.SelectedValue.ToString() + mone + HPResergerFunciones.Utilitarios.AddCaracter(cuent, ' ', 20, HPResergerFunciones.Utilitarios.Direccion.izquierda)
+                cadenatxt = $"1" + txtcantidaabono.Text + FechaAux.Year + FechaAux.Month.ToString("00") + FechaAux.Day.ToString("00") + cbotipocuenta.SelectedValue.ToString() + mone + HPResergerFunciones.Utilitarios.AddCaracter(cuent, ' ', 20, HPResergerFunciones.Utilitarios.Direccion.izquierda)
                     + HPResergerFunciones.Utilitarios.AddCaracter(decimal.Parse(txtmontototal.Text).ToString("000000.00"), '0', 17, HPResergerFunciones.Utilitarios.Direccion.derecha) + HPResergerFunciones.Utilitarios.AddCaracter(txtreferenciaplanilla.Text, ' ', 40, HPResergerFunciones.Utilitarios.Direccion.izquierda)
-                    + cboitf.SelectedValue.ToString() + HPResergerFunciones.Utilitarios.AddCaracter(ObtenerControlTotal(cuent).ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha) + "\n";
+                    + cboitf.SelectedValue.ToString() + HPResergerFunciones.Utilitarios.AddCaracter(ObtenerControlTotal(cuent).ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha) + $"{Environment.NewLine}";
                 //detalles
                 string[] campo = new string[16];
                 for (int i = 0; i < con; i++)
@@ -490,10 +491,11 @@ namespace HPReserger
                             campo[7] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[NOMBREPROVEEDOR.Name.ToString(), i].Value.ToString(), ' ', 75, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                             campo[8] = HPResergerFunciones.Utilitarios.AddCaracter("Referencia Beneficiario " + Dtguias[NUMDOCIDE.Name.ToString(), i].Value.ToString(), ' ', 40, HPResergerFunciones.Utilitarios.Direccion.izquierda);
                             campo[9] = HPResergerFunciones.Utilitarios.AddCaracter("Ref Emp " + Dtguias[NUMDOCIDE.Name.ToString(), i].Value.ToString(), ' ', 20, HPResergerFunciones.Utilitarios.Direccion.izquierda);
-                            if (Dtguias[MONEDAABONO.Name.ToString(), i].Value.ToString().Trim().ToUpper() == "S")
-                                mone = "0001";
-                            else mone = "1001";
-                            campo[10] = mone;
+                            //if (Dtguias[MONEDAABONO.Name.ToString(), i].Value.ToString().Trim().ToUpper() == "S")
+                            //    mone = "0001";
+                            //else mone = "1001";
+                            //campo[10] = mone;
+                            campo[10] = Dtguias[MONEDAABONO.Name.ToString(), i].Value.ToString().Trim().ToUpper();
                             campo[11] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[MONTOABONO.Name.ToString(), i].Value.ToString(), '0', 17, HPResergerFunciones.Utilitarios.Direccion.derecha);
                             campo[12] = Dtguias[VALIDACIONIDC.Name.ToString(), i].Value.ToString();
                             cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
@@ -504,7 +506,17 @@ namespace HPReserger
                                 campo = new string[16];
                                 campo[0] = "3";
                                 campo[1] = Dtguias[TIPODOC.Name.ToString(), i].Value.ToString();
-                                campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[NRODOCUMENTO.Name.ToString(), i].Value.ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
+                                string cadena = Dtguias[NRODOCUMENTO.Name.ToString(), i].Value.ToString().Trim();
+                                string resul = "";
+                                foreach (char c in cadena)
+                                {
+                                    if (c == '-')
+                                    {
+                                        resul += " ";
+                                    }
+                                    else resul += c;
+                                }
+                                campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(resul, '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                                 campo[3] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[MONTODOC.Name.ToString(), i].Value.ToString(), '0', 17, HPResergerFunciones.Utilitarios.Direccion.derecha);
                                 cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                             }
@@ -514,7 +526,17 @@ namespace HPReserger
                             campo = null; campo = new string[16];
                             campo[0] = "3";
                             campo[1] = Dtguias[TIPODOC.Name.ToString(), i].Value.ToString();
-                            campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[NRODOCUMENTO.Name.ToString(), i].Value.ToString(), '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
+                            string cadena = Dtguias[NRODOCUMENTO.Name.ToString(), i].Value.ToString().Trim();
+                            string resul = "";
+                            foreach (char c in cadena)
+                            {
+                                if (c == '-')
+                                {
+                                    resul += " ";
+                                }
+                                else resul += c;
+                            }
+                            campo[2] = HPResergerFunciones.Utilitarios.AddCaracter(resul, '0', 15, HPResergerFunciones.Utilitarios.Direccion.derecha);
                             campo[3] = HPResergerFunciones.Utilitarios.AddCaracter(Dtguias[MONTODOC.Name.ToString(), i].Value.ToString(), '0', 17, HPResergerFunciones.Utilitarios.Direccion.derecha);
                             cadenatxt += string.Join("", campo) + $"{Environment.NewLine}";
                         }
@@ -527,10 +549,12 @@ namespace HPReserger
                     st = File.CreateText(path);
                     st.Write(cadenatxt);
                     st.Close();
-                    msg("Generado TXT con Éxito");
-                    PAgoFactura = true;
-                    DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (msgYesNO("Generado TXT con Éxito, Desea Continuar.") == DialogResult.Yes)//Cambiamos a Yes Cuando ya este!
+                    {
+                        PAgoFactura = true;
+                        DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -555,10 +579,9 @@ namespace HPReserger
             }
             return Control;
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
+        public DialogResult msg(string cadena) { return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information); }
+        public DialogResult msgYesNO(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
+
         public void CalcularTotales()
         {
             int cont1 = 0, cont2 = 0, registros = 0;

@@ -32,19 +32,19 @@ namespace HPReserger
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsientoContable));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnreversa = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
@@ -143,11 +143,32 @@ namespace HPReserger
             this.btncleanfind = new System.Windows.Forms.Button();
             this.txtbuscuenta = new HpResergerUserControls.TextBoxPer();
             this.btnpdf = new System.Windows.Forms.Button();
+            this.PanelReversa = new HpResergerUserControls.PanelOre();
+            this.PanelOtraReversa = new System.Windows.Forms.Panel();
+            this.textBoxPer1 = new HpResergerUserControls.TextBoxPer();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dtpFechaContableReversa = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaEmisionReversa = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rbdReversar = new System.Windows.Forms.RadioButton();
+            this.PanelAbajo = new HpResergerUserControls.PanelOre();
+            this.panelDerecho = new HpResergerUserControls.PanelOre();
+            this.panelzquierdo = new HpResergerUserControls.PanelOre();
+            this.textBoxPer11 = new HpResergerUserControls.TextBoxPer();
+            this.separadorOre3 = new HpResergerUserControls.SeparadorOre();
+            this.label31 = new System.Windows.Forms.Label();
+            this.btnTxt = new HpResergerUserControls.ButtonPer();
+            this.BtnCerrar = new HpResergerUserControls.ButtonPer();
+            this.fondoColorOre1 = new HpResergerUserControls.FondoColorOre(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).BeginInit();
+            this.PanelReversa.SuspendLayout();
+            this.PanelOtraReversa.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnreversa
@@ -942,9 +963,9 @@ namespace HPReserger
             this.Dtgconten.AllowUserToDeleteRows = false;
             this.Dtgconten.AllowUserToResizeColumns = false;
             this.Dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.Dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
             this.Dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -953,14 +974,14 @@ namespace HPReserger
             this.Dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.Dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDASIENTOX,
@@ -971,14 +992,14 @@ namespace HPReserger
             this.EstadoCuen,
             this.detallex,
             this.SolicitaDetallex});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dtgconten.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dtgconten.DefaultCellStyle = dataGridViewCellStyle21;
             this.Dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtgconten.EnableHeadersVisualStyles = false;
             this.Dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -1009,8 +1030,8 @@ namespace HPReserger
             // 
             this.IDASIENTOX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.IDASIENTOX.DataPropertyName = "id";
-            dataGridViewCellStyle3.Format = "000";
-            this.IDASIENTOX.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle16.Format = "000";
+            this.IDASIENTOX.DefaultCellStyle = dataGridViewCellStyle16;
             this.IDASIENTOX.HeaderText = "Sec";
             this.IDASIENTOX.Name = "IDASIENTOX";
             this.IDASIENTOX.ReadOnly = true;
@@ -1040,9 +1061,9 @@ namespace HPReserger
             // 
             this.debe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.debe.DataPropertyName = "debe";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            this.debe.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N2";
+            this.debe.DefaultCellStyle = dataGridViewCellStyle17;
             this.debe.HeaderText = "Debe";
             this.debe.MaxInputLength = 30;
             this.debe.MinimumWidth = 100;
@@ -1053,10 +1074,10 @@ namespace HPReserger
             // 
             this.haber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.haber.DataPropertyName = "haber";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = " ";
-            this.haber.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N2";
+            dataGridViewCellStyle18.NullValue = " ";
+            this.haber.DefaultCellStyle = dataGridViewCellStyle18;
             this.haber.HeaderText = "Haber";
             this.haber.MaxInputLength = 30;
             this.haber.MinimumWidth = 100;
@@ -1065,8 +1086,8 @@ namespace HPReserger
             // EstadoCuen
             // 
             this.EstadoCuen.DataPropertyName = "estado";
-            dataGridViewCellStyle6.NullValue = "1";
-            this.EstadoCuen.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle19.NullValue = "1";
+            this.EstadoCuen.DefaultCellStyle = dataGridViewCellStyle19;
             this.EstadoCuen.HeaderText = "estadocuen";
             this.EstadoCuen.Name = "EstadoCuen";
             this.EstadoCuen.Visible = false;
@@ -1074,10 +1095,10 @@ namespace HPReserger
             // detallex
             // 
             this.detallex.DataPropertyName = "detalle";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Format = "0";
-            dataGridViewCellStyle7.NullValue = "0";
-            this.detallex.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Format = "0";
+            dataGridViewCellStyle20.NullValue = "0";
+            this.detallex.DefaultCellStyle = dataGridViewCellStyle20;
             this.detallex.HeaderText = "D";
             this.detallex.MinimumWidth = 20;
             this.detallex.Name = "detallex";
@@ -1097,9 +1118,9 @@ namespace HPReserger
             this.dtgbusca.AllowUserToDeleteRows = false;
             this.dtgbusca.AllowUserToResizeColumns = false;
             this.dtgbusca.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgbusca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgbusca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
             this.dtgbusca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgbusca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -1107,14 +1128,14 @@ namespace HPReserger
             this.dtgbusca.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgbusca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgbusca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgbusca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgbusca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dtgbusca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgbusca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idx,
@@ -1133,14 +1154,14 @@ namespace HPReserger
             this.xmoneda,
             this.xtc});
             this.dtgbusca.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgbusca.DefaultCellStyle = dataGridViewCellStyle26;
             this.dtgbusca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtgbusca.EnableHeadersVisualStyles = false;
             this.dtgbusca.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
@@ -1161,8 +1182,8 @@ namespace HPReserger
             // 
             this.idx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
             this.idx.DataPropertyName = "id";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.idx.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.idx.DefaultCellStyle = dataGridViewCellStyle24;
             this.idx.HeaderText = "Num";
             this.idx.MinimumWidth = 40;
             this.idx.Name = "idx";
@@ -1191,9 +1212,9 @@ namespace HPReserger
             // 
             this.fechavalorx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fechavalorx.DataPropertyName = "fechavalor";
-            dataGridViewCellStyle12.Format = "d";
-            dataGridViewCellStyle12.NullValue = null;
-            this.fechavalorx.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle25.Format = "d";
+            dataGridViewCellStyle25.NullValue = null;
+            this.fechavalorx.DefaultCellStyle = dataGridViewCellStyle25;
             this.fechavalorx.FillWeight = 70F;
             this.fechavalorx.HeaderText = "Fec.Valor";
             this.fechavalorx.MinimumWidth = 70;
@@ -1542,6 +1563,268 @@ namespace HPReserger
             this.btnpdf.UseVisualStyleBackColor = false;
             this.btnpdf.Click += new System.EventHandler(this.btnpdf_Click);
             // 
+            // PanelReversa
+            // 
+            this.PanelReversa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))), ((int)(((byte)(71)))));
+            this.PanelReversa.Controls.Add(this.PanelOtraReversa);
+            this.PanelReversa.Controls.Add(this.radioButton3);
+            this.PanelReversa.Controls.Add(this.rbdReversar);
+            this.PanelReversa.Controls.Add(this.PanelAbajo);
+            this.PanelReversa.Controls.Add(this.panelDerecho);
+            this.PanelReversa.Controls.Add(this.panelzquierdo);
+            this.PanelReversa.Controls.Add(this.textBoxPer11);
+            this.PanelReversa.Controls.Add(this.separadorOre3);
+            this.PanelReversa.Controls.Add(this.label31);
+            this.PanelReversa.Controls.Add(this.btnTxt);
+            this.PanelReversa.Controls.Add(this.BtnCerrar);
+            this.PanelReversa.Location = new System.Drawing.Point(0, 1);
+            this.PanelReversa.MinimumSize = new System.Drawing.Size(453, 377);
+            this.PanelReversa.Movible = false;
+            this.PanelReversa.Name = "PanelReversa";
+            this.PanelReversa.Size = new System.Drawing.Size(453, 377);
+            this.PanelReversa.TabIndex = 432;
+            this.PanelReversa.Visible = false;
+            // 
+            // PanelOtraReversa
+            // 
+            this.PanelOtraReversa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PanelOtraReversa.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PanelOtraReversa.Controls.Add(this.textBoxPer1);
+            this.PanelOtraReversa.Controls.Add(this.label18);
+            this.PanelOtraReversa.Controls.Add(this.dtpFechaContableReversa);
+            this.PanelOtraReversa.Controls.Add(this.dtpFechaEmisionReversa);
+            this.PanelOtraReversa.Controls.Add(this.label15);
+            this.PanelOtraReversa.Controls.Add(this.label16);
+            this.PanelOtraReversa.Location = new System.Drawing.Point(26, 61);
+            this.PanelOtraReversa.Name = "PanelOtraReversa";
+            this.PanelOtraReversa.Size = new System.Drawing.Size(418, 220);
+            this.PanelOtraReversa.TabIndex = 9;
+            // 
+            // textBoxPer1
+            // 
+            this.textBoxPer1.BackColor = System.Drawing.Color.White;
+            this.textBoxPer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPer1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.textBoxPer1.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.textBoxPer1.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.textBoxPer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPer1.ForeColor = System.Drawing.Color.Black;
+            this.textBoxPer1.Format = null;
+            this.textBoxPer1.Location = new System.Drawing.Point(8, 99);
+            this.textBoxPer1.MaxLength = 100;
+            this.textBoxPer1.Name = "textBoxPer1";
+            this.textBoxPer1.NextControlOnEnter = null;
+            this.textBoxPer1.Size = new System.Drawing.Size(400, 21);
+            this.textBoxPer1.TabIndex = 178;
+            this.textBoxPer1.Text = "INGRESE GLOSA DEL ASIENTO";
+            this.textBoxPer1.TextoDefecto = "INGRESE GLOSA DEL ASIENTO";
+            this.textBoxPer1.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.textBoxPer1.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(3, 83);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 13);
+            this.label18.TabIndex = 179;
+            this.label18.Text = "Glosa del Asiento:";
+            // 
+            // dtpFechaContableReversa
+            // 
+            this.dtpFechaContableReversa.Enabled = false;
+            this.dtpFechaContableReversa.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaContableReversa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaContableReversa.Location = new System.Drawing.Point(101, 58);
+            this.dtpFechaContableReversa.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaContableReversa.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaContableReversa.Name = "dtpFechaContableReversa";
+            this.dtpFechaContableReversa.Size = new System.Drawing.Size(97, 22);
+            this.dtpFechaContableReversa.TabIndex = 142;
+            this.dtpFechaContableReversa.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            // 
+            // dtpFechaEmisionReversa
+            // 
+            this.dtpFechaEmisionReversa.Enabled = false;
+            this.dtpFechaEmisionReversa.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaEmisionReversa.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaEmisionReversa.Location = new System.Drawing.Point(101, 30);
+            this.dtpFechaEmisionReversa.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaEmisionReversa.MinDate = new System.DateTime(1950, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaEmisionReversa.Name = "dtpFechaEmisionReversa";
+            this.dtpFechaEmisionReversa.Size = new System.Drawing.Size(97, 22);
+            this.dtpFechaEmisionReversa.TabIndex = 141;
+            this.dtpFechaEmisionReversa.Value = new System.DateTime(2017, 4, 27, 9, 44, 35, 0);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(11, 63);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(90, 13);
+            this.label15.TabIndex = 143;
+            this.label15.Text = "Fecha Contable:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(21, 35);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(80, 13);
+            this.label16.TabIndex = 144;
+            this.label16.Text = "FechaEmisión:";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton3.Location = new System.Drawing.Point(26, 40);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(154, 17);
+            this.radioButton3.TabIndex = 8;
+            this.radioButton3.Text = "Reversar en Otro Periodo";
+            this.radioButton3.UseVisualStyleBackColor = false;
+            // 
+            // rbdReversar
+            // 
+            this.rbdReversar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbdReversar.AutoSize = true;
+            this.rbdReversar.BackColor = System.Drawing.Color.Transparent;
+            this.rbdReversar.Checked = true;
+            this.rbdReversar.Location = new System.Drawing.Point(26, 289);
+            this.rbdReversar.Name = "rbdReversar";
+            this.rbdReversar.Size = new System.Drawing.Size(94, 17);
+            this.rbdReversar.TabIndex = 8;
+            this.rbdReversar.TabStop = true;
+            this.rbdReversar.Text = "Solo Reversar";
+            this.rbdReversar.UseVisualStyleBackColor = false;
+            // 
+            // PanelAbajo
+            // 
+            this.PanelAbajo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.PanelAbajo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PanelAbajo.Location = new System.Drawing.Point(2, 376);
+            this.PanelAbajo.Movible = false;
+            this.PanelAbajo.Name = "PanelAbajo";
+            this.PanelAbajo.Size = new System.Drawing.Size(450, 1);
+            this.PanelAbajo.TabIndex = 7;
+            // 
+            // panelDerecho
+            // 
+            this.panelDerecho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(82)))));
+            this.panelDerecho.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelDerecho.Location = new System.Drawing.Point(452, 0);
+            this.panelDerecho.Movible = false;
+            this.panelDerecho.Name = "panelDerecho";
+            this.panelDerecho.Size = new System.Drawing.Size(1, 377);
+            this.panelDerecho.TabIndex = 6;
+            // 
+            // panelzquierdo
+            // 
+            this.panelzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))), ((int)(((byte)(71)))));
+            this.panelzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelzquierdo.Location = new System.Drawing.Point(0, 0);
+            this.panelzquierdo.Movible = false;
+            this.panelzquierdo.Name = "panelzquierdo";
+            this.panelzquierdo.Size = new System.Drawing.Size(2, 377);
+            this.panelzquierdo.TabIndex = 5;
+            // 
+            // textBoxPer11
+            // 
+            this.textBoxPer11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxPer11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.textBoxPer11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPer11.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.textBoxPer11.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.textBoxPer11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPer11.ForeColor = System.Drawing.Color.Black;
+            this.textBoxPer11.Format = null;
+            this.textBoxPer11.Location = new System.Drawing.Point(354, 289);
+            this.textBoxPer11.MaxLength = 100;
+            this.textBoxPer11.Name = "textBoxPer11";
+            this.textBoxPer11.NextControlOnEnter = null;
+            this.textBoxPer11.ReadOnly = true;
+            this.textBoxPer11.Size = new System.Drawing.Size(90, 22);
+            this.textBoxPer11.TabIndex = 4;
+            this.textBoxPer11.Text = "1";
+            this.textBoxPer11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPer11.TextoDefecto = "Ingrese Cadena";
+            this.textBoxPer11.TextoDefectoColor = System.Drawing.Color.White;
+            this.textBoxPer11.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // separadorOre3
+            // 
+            this.separadorOre3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.separadorOre3.BackColor = System.Drawing.Color.Transparent;
+            this.separadorOre3.Location = new System.Drawing.Point(100, 32);
+            this.separadorOre3.MaximumSize = new System.Drawing.Size(2000, 2);
+            this.separadorOre3.MinimumSize = new System.Drawing.Size(0, 2);
+            this.separadorOre3.Name = "separadorOre3";
+            this.separadorOre3.Size = new System.Drawing.Size(253, 2);
+            this.separadorOre3.TabIndex = 2;
+            // 
+            // label31
+            // 
+            this.label31.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(103, 12);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(246, 17);
+            this.label31.TabIndex = 1;
+            this.label31.Text = "REVERSA DE ASIENTOS";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnTxt
+            // 
+            this.btnTxt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnTxt.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnTxt.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
+            this.btnTxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTxt.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTxt.ForeColor = System.Drawing.Color.White;
+            this.btnTxt.Location = new System.Drawing.Point(273, 343);
+            this.btnTxt.Name = "btnTxt";
+            this.btnTxt.Size = new System.Drawing.Size(83, 23);
+            this.btnTxt.TabIndex = 0;
+            this.btnTxt.Text = "Procesar";
+            this.btnTxt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTxt.UseVisualStyleBackColor = false;
+            this.btnTxt.Click += new System.EventHandler(this.btnTxt_Click);
+            // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnCerrar.BackColor = System.Drawing.Color.Crimson;
+            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCerrar.ForeColor = System.Drawing.Color.White;
+            this.BtnCerrar.Location = new System.Drawing.Point(361, 343);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(83, 23);
+            this.BtnCerrar.TabIndex = 0;
+            this.BtnCerrar.Text = "Cancelar";
+            this.BtnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            // 
+            // fondoColorOre1
+            // 
+            this.fondoColorOre1.Angulo = 135;
+            this.fondoColorOre1.Colores = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(229)))), ((int)(((byte)(237))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))))};
+            this.fondoColorOre1.control = this.PanelReversa;
+            // 
             // frmAsientoContable
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1624,6 +1907,7 @@ namespace HPReserger
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtgbusca);
+            this.Controls.Add(this.PanelReversa);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(700, 644);
             this.Name = "frmAsientoContable";
@@ -1637,6 +1921,10 @@ namespace HPReserger
             ((System.ComponentModel.ISupportInitialize)(this.dtgayuda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtgconten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgbusca)).EndInit();
+            this.PanelReversa.ResumeLayout(false);
+            this.PanelReversa.PerformLayout();
+            this.PanelOtraReversa.ResumeLayout(false);
+            this.PanelOtraReversa.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1741,5 +2029,24 @@ namespace HPReserger
         private System.Windows.Forms.Button btncleanfind;
         private TextBoxPer txtbuscuenta;
         private System.Windows.Forms.Button btnpdf;
+        private PanelOre PanelReversa;
+        private PanelOre PanelAbajo;
+        private PanelOre panelDerecho;
+        private PanelOre panelzquierdo;
+        private TextBoxPer textBoxPer11;
+        private SeparadorOre separadorOre3;
+        private System.Windows.Forms.Label label31;
+        private ButtonPer btnTxt;
+        private ButtonPer BtnCerrar;
+        private FondoColorOre fondoColorOre1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rbdReversar;
+        private System.Windows.Forms.Panel PanelOtraReversa;
+        private System.Windows.Forms.DateTimePicker dtpFechaContableReversa;
+        private System.Windows.Forms.DateTimePicker dtpFechaEmisionReversa;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private TextBoxPer textBoxPer1;
+        private System.Windows.Forms.Label label18;
     }
 }

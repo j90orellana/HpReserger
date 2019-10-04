@@ -19,7 +19,7 @@ namespace HPReserger
         {
             InitializeComponent();
         }
-
+        public decimal igvs { get; private set; }
         public int _PlazoPago { get; set; }
         public int _idempresa { get; set; }
         public int Estado { get; set; }
@@ -256,6 +256,7 @@ namespace HPReserger
         private void dtpfechaemision_ValueChanged(object sender, EventArgs e)
         {
             SacarTipoCambio();
+            igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
         }
         frmTipodeCambio frmtipo;
         public void SacarTipoCambio()
@@ -1036,7 +1037,7 @@ namespace HPReserger
                 /////VALIDACION
                 if (conD == 0 || conH == 0 || error || errord || ErrorM || ErrorDH) { Msg(cadena); return; }
                 //////VAMOS CON EL IGV
-                decimal igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
+                igvs = (decimal)(CapaLogica.ValorIGVactual(dtpfechaemision.Value))["Valor"];
                 string CuentaIgv = "4011102";
                 DataTable Tpruebas = CapaLogica.BuscarCuentas("IGV %VENT", 5);
                 if (Tpruebas.Rows.Count > 0)
@@ -1609,6 +1610,24 @@ namespace HPReserger
                         btnAceptar.Enabled = true;
                     }
             }
+        }
+        private void copiarIgvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            decimal calculoigv = 0;
+            decimal.TryParse(txttotalfac.Text, out calculoigv);
+            calculoigv = calculoigv / (1 + igvs);
+            Clipboard.SetText(calculoigv.ToString("n2"));
+        }
+        private void copiarIgvToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            decimal calculoigv = 0;
+            decimal.TryParse(txttotalfac.Text, out calculoigv);
+            calculoigv = calculoigv / (1 + igvs) * igvs;
+            Clipboard.SetText(calculoigv.ToString("n2"));
+        }
+        private void copiarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txttotalfac.Text);
         }
         private void btneliminar_Click(object sender, EventArgs e)
         {

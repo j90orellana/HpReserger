@@ -55,7 +55,7 @@ namespace HPReserger
         private void frmLogin_Load(object sender, EventArgs e)
         {            
             cboBase.Items.Add("Actual");
-            cboBase.Items.Add("SiGE");
+            //cboBase.Items.Add("SiGE");
             cboBase.Items.Add("Actual_Beta");      
             cboBase.SelectedIndex = 0;
             clLogueo.CambiarBase(Basedatos);

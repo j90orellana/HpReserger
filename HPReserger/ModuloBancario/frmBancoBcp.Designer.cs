@@ -34,17 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -56,6 +45,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ptb = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,22 +79,6 @@
             this.txtreferenciaplanilla = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Dtguias = new System.Windows.Forms.DataGridView();
-            this.TIPOREGISTRO1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.TIPOABONO = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.CUENTAABONO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPODOCUMENTO1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NUMDOCIDE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CORRELATIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBREPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MONEDAABONO = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.MONTOABONO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VALIDACIONIDC = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.CANTIDADDOCUMENTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPODOC = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.NRODOCUMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MONEDAPAGO = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.MONTODOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
             this.dtgcheques = new System.Windows.Forms.DataGridView();
             this.TIPOREGISTRO2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -116,6 +100,22 @@
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.label14 = new System.Windows.Forms.Label();
             this.cboitf = new System.Windows.Forms.ComboBox();
+            this.TIPOREGISTRO1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.TIPOABONO = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CUENTAABONO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPODOCUMENTO1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NUMDOCIDE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CORRELATIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBREPROVEEDOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MONEDAABONO = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.MONTOABONO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VALIDACIONIDC = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CANTIDADDOCUMENTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPODOC = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NRODOCUMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MONEDAPAGO = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.MONTODOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ptb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgcheques)).BeginInit();
@@ -446,7 +446,7 @@
             this.Dtguias.RowHeadersVisible = false;
             this.Dtguias.RowTemplate.Height = 18;
             this.Dtguias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.Dtguias.Size = new System.Drawing.Size(1523, 306);
+            this.Dtguias.Size = new System.Drawing.Size(1515, 306);
             this.Dtguias.TabIndex = 79;
             this.Dtguias.TabStop = false;
             this.Dtguias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_CellClick);
@@ -455,158 +455,6 @@
             this.Dtguias.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.Dtguias_EditingControlShowing);
             this.Dtguias.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtguias_RowEnter);
             this.Dtguias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dtguias_KeyDown);
-            // 
-            // TIPOREGISTRO1
-            // 
-            this.TIPOREGISTRO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPOREGISTRO1.DataPropertyName = "codigo";
-            this.TIPOREGISTRO1.HeaderText = "Tipo de Registro";
-            this.TIPOREGISTRO1.Name = "TIPOREGISTRO1";
-            // 
-            // TIPOABONO
-            // 
-            this.TIPOABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPOABONO.DataPropertyName = "tipocuenta";
-            dataGridViewCellStyle3.NullValue = " ";
-            this.TIPOABONO.DefaultCellStyle = dataGridViewCellStyle3;
-            this.TIPOABONO.HeaderText = "Tipo de Cuenta de Abono";
-            this.TIPOABONO.Name = "TIPOABONO";
-            // 
-            // CUENTAABONO
-            // 
-            this.CUENTAABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CUENTAABONO.DataPropertyName = "nrocuenta";
-            this.CUENTAABONO.HeaderText = "Cuenta de Abono";
-            this.CUENTAABONO.Name = "CUENTAABONO";
-            this.CUENTAABONO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // TIPODOCUMENTO1
-            // 
-            this.TIPODOCUMENTO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPODOCUMENTO1.DataPropertyName = "tipodoc";
-            dataGridViewCellStyle4.NullValue = " ";
-            this.TIPODOCUMENTO1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.TIPODOCUMENTO1.HeaderText = "Tipo de Documento de Identidad";
-            this.TIPODOCUMENTO1.Name = "TIPODOCUMENTO1";
-            // 
-            // NUMDOCIDE
-            // 
-            this.NUMDOCIDE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NUMDOCIDE.DataPropertyName = "nrodoc";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.NUMDOCIDE.DefaultCellStyle = dataGridViewCellStyle5;
-            this.NUMDOCIDE.HeaderText = "Número de Documento de Identidad";
-            this.NUMDOCIDE.MaxInputLength = 12;
-            this.NUMDOCIDE.Name = "NUMDOCIDE";
-            // 
-            // CORRELATIVO
-            // 
-            this.CORRELATIVO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CORRELATIVO.DataPropertyName = "correlativo";
-            this.CORRELATIVO.HeaderText = "Correlativo de Documento de Identidad";
-            this.CORRELATIVO.MaxInputLength = 3;
-            this.CORRELATIVO.Name = "CORRELATIVO";
-            this.CORRELATIVO.ReadOnly = true;
-            // 
-            // NOMBREPROVEEDOR
-            // 
-            this.NOMBREPROVEEDOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOMBREPROVEEDOR.DataPropertyName = "razon";
-            this.NOMBREPROVEEDOR.HeaderText = "Nombre del proveedor";
-            this.NOMBREPROVEEDOR.MaxInputLength = 75;
-            this.NOMBREPROVEEDOR.MinimumWidth = 85;
-            this.NOMBREPROVEEDOR.Name = "NOMBREPROVEEDOR";
-            this.NOMBREPROVEEDOR.ReadOnly = true;
-            // 
-            // MONEDAABONO
-            // 
-            this.MONEDAABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MONEDAABONO.DataPropertyName = "monedaabono";
-            dataGridViewCellStyle6.NullValue = " ";
-            this.MONEDAABONO.DefaultCellStyle = dataGridViewCellStyle6;
-            this.MONEDAABONO.HeaderText = "Tipo de Moneda de Abono";
-            this.MONEDAABONO.MaxDropDownItems = 2;
-            this.MONEDAABONO.Name = "MONEDAABONO";
-            // 
-            // MONTOABONO
-            // 
-            this.MONTOABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MONTOABONO.DataPropertyName = "neto";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            this.MONTOABONO.DefaultCellStyle = dataGridViewCellStyle7;
-            this.MONTOABONO.HeaderText = "Monto del Abono";
-            this.MONTOABONO.Name = "MONTOABONO";
-            // 
-            // VALIDACIONIDC
-            // 
-            this.VALIDACIONIDC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.VALIDACIONIDC.DataPropertyName = "validacion";
-            dataGridViewCellStyle8.NullValue = " ";
-            this.VALIDACIONIDC.DefaultCellStyle = dataGridViewCellStyle8;
-            this.VALIDACIONIDC.HeaderText = "Validación IDC del proveedor vs Cuenta";
-            this.VALIDACIONIDC.MaxDropDownItems = 2;
-            this.VALIDACIONIDC.Name = "VALIDACIONIDC";
-            // 
-            // CANTIDADDOCUMENTOS
-            // 
-            this.CANTIDADDOCUMENTOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CANTIDADDOCUMENTOS.DataPropertyName = "cantidad";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "0000";
-            this.CANTIDADDOCUMENTOS.DefaultCellStyle = dataGridViewCellStyle9;
-            this.CANTIDADDOCUMENTOS.HeaderText = "Cantidad Documentos \nrelacionados al Abono";
-            this.CANTIDADDOCUMENTOS.MaxInputLength = 4;
-            this.CANTIDADDOCUMENTOS.Name = "CANTIDADDOCUMENTOS";
-            // 
-            // TIPODOC
-            // 
-            this.TIPODOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPODOC.DataPropertyName = "tipoop";
-            dataGridViewCellStyle10.NullValue = " ";
-            this.TIPODOC.DefaultCellStyle = dataGridViewCellStyle10;
-            this.TIPODOC.HeaderText = "Tipo de Documento a pagar";
-            this.TIPODOC.Name = "TIPODOC";
-            this.TIPODOC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TIPODOC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // NRODOCUMENTO
-            // 
-            this.NRODOCUMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NRODOCUMENTO.DataPropertyName = "nrofac";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.NRODOCUMENTO.DefaultCellStyle = dataGridViewCellStyle11;
-            this.NRODOCUMENTO.HeaderText = "Nro. del Documento";
-            this.NRODOCUMENTO.MaxInputLength = 15;
-            this.NRODOCUMENTO.Name = "NRODOCUMENTO";
-            // 
-            // MONEDAPAGO
-            // 
-            this.MONEDAPAGO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MONEDAPAGO.DataPropertyName = "monedacuenta";
-            dataGridViewCellStyle12.NullValue = " ";
-            this.MONEDAPAGO.DefaultCellStyle = dataGridViewCellStyle12;
-            this.MONEDAPAGO.HeaderText = "Moneda Documento";
-            this.MONEDAPAGO.MaxDropDownItems = 2;
-            this.MONEDAPAGO.Name = "MONEDAPAGO";
-            // 
-            // MONTODOC
-            // 
-            this.MONTODOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MONTODOC.DataPropertyName = "neto";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "N2";
-            this.MONTODOC.DefaultCellStyle = dataGridViewCellStyle13;
-            this.MONTODOC.HeaderText = "Monto del Documento";
-            this.MONTODOC.MaxInputLength = 17;
-            this.MONTODOC.Name = "MONTODOC";
-            // 
-            // fecha
-            // 
-            this.fecha.DataPropertyName = "fecha";
-            this.fecha.HeaderText = "Fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.Visible = false;
             // 
             // label13
             // 
@@ -680,7 +528,7 @@
             this.dtgcheques.RowHeadersVisible = false;
             this.dtgcheques.RowTemplate.Height = 18;
             this.dtgcheques.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dtgcheques.Size = new System.Drawing.Size(1523, 171);
+            this.dtgcheques.Size = new System.Drawing.Size(1515, 171);
             this.dtgcheques.TabIndex = 80;
             this.dtgcheques.TabStop = false;
             this.dtgcheques.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgcheques_RowEnter);
@@ -794,7 +642,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(124)))), ((int)(((byte)(46)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1460, 101);
+            this.button1.Location = new System.Drawing.Point(1452, 101);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 24);
             this.button1.TabIndex = 81;
@@ -807,10 +655,9 @@
             // 
             this.btnaceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnaceptar.BackColor = System.Drawing.Color.White;
-            this.btnaceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnaceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(124)))), ((int)(((byte)(46)))));
-            this.btnaceptar.Location = new System.Drawing.Point(1376, 632);
+            this.btnaceptar.Location = new System.Drawing.Point(1368, 632);
             this.btnaceptar.Name = "btnaceptar";
             this.btnaceptar.Size = new System.Drawing.Size(75, 23);
             this.btnaceptar.TabIndex = 82;
@@ -825,7 +672,7 @@
             this.btncancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btncancelar.ForeColor = System.Drawing.Color.White;
-            this.btncancelar.Location = new System.Drawing.Point(1457, 632);
+            this.btncancelar.Location = new System.Drawing.Point(1449, 632);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Size = new System.Drawing.Size(75, 23);
             this.btncancelar.TabIndex = 83;
@@ -870,12 +717,170 @@
             this.cboitf.Size = new System.Drawing.Size(71, 21);
             this.cboitf.TabIndex = 85;
             // 
+            // TIPOREGISTRO1
+            // 
+            this.TIPOREGISTRO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPOREGISTRO1.DataPropertyName = "codigo";
+            this.TIPOREGISTRO1.HeaderText = "Tipo de Registro";
+            this.TIPOREGISTRO1.Name = "TIPOREGISTRO1";
+            // 
+            // TIPOABONO
+            // 
+            this.TIPOABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPOABONO.DataPropertyName = "tipocuenta";
+            dataGridViewCellStyle3.NullValue = " ";
+            this.TIPOABONO.DefaultCellStyle = dataGridViewCellStyle3;
+            this.TIPOABONO.HeaderText = "Tipo de Cuenta de Abono";
+            this.TIPOABONO.Name = "TIPOABONO";
+            // 
+            // CUENTAABONO
+            // 
+            this.CUENTAABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CUENTAABONO.DataPropertyName = "nrocuenta";
+            this.CUENTAABONO.HeaderText = "Cuenta de Abono";
+            this.CUENTAABONO.Name = "CUENTAABONO";
+            this.CUENTAABONO.ReadOnly = true;
+            this.CUENTAABONO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // TIPODOCUMENTO1
+            // 
+            this.TIPODOCUMENTO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPODOCUMENTO1.DataPropertyName = "tipodoc";
+            dataGridViewCellStyle4.NullValue = " ";
+            this.TIPODOCUMENTO1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.TIPODOCUMENTO1.HeaderText = "Tipo de Documento de Identidad";
+            this.TIPODOCUMENTO1.Name = "TIPODOCUMENTO1";
+            // 
+            // NUMDOCIDE
+            // 
+            this.NUMDOCIDE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NUMDOCIDE.DataPropertyName = "nrodoc";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NUMDOCIDE.DefaultCellStyle = dataGridViewCellStyle5;
+            this.NUMDOCIDE.HeaderText = "Número de Documento de Identidad";
+            this.NUMDOCIDE.MaxInputLength = 12;
+            this.NUMDOCIDE.Name = "NUMDOCIDE";
+            this.NUMDOCIDE.ReadOnly = true;
+            // 
+            // CORRELATIVO
+            // 
+            this.CORRELATIVO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CORRELATIVO.DataPropertyName = "correlativo";
+            this.CORRELATIVO.HeaderText = "Correlativo de Documento de Identidad";
+            this.CORRELATIVO.MaxInputLength = 3;
+            this.CORRELATIVO.Name = "CORRELATIVO";
+            this.CORRELATIVO.ReadOnly = true;
+            // 
+            // NOMBREPROVEEDOR
+            // 
+            this.NOMBREPROVEEDOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NOMBREPROVEEDOR.DataPropertyName = "razon";
+            this.NOMBREPROVEEDOR.HeaderText = "Nombre del proveedor";
+            this.NOMBREPROVEEDOR.MaxInputLength = 75;
+            this.NOMBREPROVEEDOR.MinimumWidth = 85;
+            this.NOMBREPROVEEDOR.Name = "NOMBREPROVEEDOR";
+            this.NOMBREPROVEEDOR.ReadOnly = true;
+            // 
+            // MONEDAABONO
+            // 
+            this.MONEDAABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MONEDAABONO.DataPropertyName = "monedaabono";
+            dataGridViewCellStyle6.NullValue = " ";
+            this.MONEDAABONO.DefaultCellStyle = dataGridViewCellStyle6;
+            this.MONEDAABONO.HeaderText = "Tipo de Moneda de Abono";
+            this.MONEDAABONO.MaxDropDownItems = 2;
+            this.MONEDAABONO.Name = "MONEDAABONO";
+            // 
+            // MONTOABONO
+            // 
+            this.MONTOABONO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MONTOABONO.DataPropertyName = "neto";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            this.MONTOABONO.DefaultCellStyle = dataGridViewCellStyle7;
+            this.MONTOABONO.HeaderText = "Monto del Abono";
+            this.MONTOABONO.Name = "MONTOABONO";
+            this.MONTOABONO.ReadOnly = true;
+            // 
+            // VALIDACIONIDC
+            // 
+            this.VALIDACIONIDC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.VALIDACIONIDC.DataPropertyName = "validacion";
+            dataGridViewCellStyle8.NullValue = " ";
+            this.VALIDACIONIDC.DefaultCellStyle = dataGridViewCellStyle8;
+            this.VALIDACIONIDC.HeaderText = "Validación IDC del proveedor vs Cuenta";
+            this.VALIDACIONIDC.MaxDropDownItems = 2;
+            this.VALIDACIONIDC.Name = "VALIDACIONIDC";
+            // 
+            // CANTIDADDOCUMENTOS
+            // 
+            this.CANTIDADDOCUMENTOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CANTIDADDOCUMENTOS.DataPropertyName = "cantidad";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "0000";
+            this.CANTIDADDOCUMENTOS.DefaultCellStyle = dataGridViewCellStyle9;
+            this.CANTIDADDOCUMENTOS.HeaderText = "Cantidad Documentos \nrelacionados al Abono";
+            this.CANTIDADDOCUMENTOS.MaxInputLength = 4;
+            this.CANTIDADDOCUMENTOS.Name = "CANTIDADDOCUMENTOS";
+            // 
+            // TIPODOC
+            // 
+            this.TIPODOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPODOC.DataPropertyName = "tipoop";
+            dataGridViewCellStyle10.NullValue = " ";
+            this.TIPODOC.DefaultCellStyle = dataGridViewCellStyle10;
+            this.TIPODOC.HeaderText = "Tipo de Documento a pagar";
+            this.TIPODOC.Name = "TIPODOC";
+            this.TIPODOC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TIPODOC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // NRODOCUMENTO
+            // 
+            this.NRODOCUMENTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NRODOCUMENTO.DataPropertyName = "nrofac";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NRODOCUMENTO.DefaultCellStyle = dataGridViewCellStyle11;
+            this.NRODOCUMENTO.HeaderText = "Nro. del Documento";
+            this.NRODOCUMENTO.MaxInputLength = 15;
+            this.NRODOCUMENTO.Name = "NRODOCUMENTO";
+            this.NRODOCUMENTO.ReadOnly = true;
+            // 
+            // MONEDAPAGO
+            // 
+            this.MONEDAPAGO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MONEDAPAGO.DataPropertyName = "monedacuenta";
+            dataGridViewCellStyle12.NullValue = " ";
+            this.MONEDAPAGO.DefaultCellStyle = dataGridViewCellStyle12;
+            this.MONEDAPAGO.HeaderText = "Moneda Documento";
+            this.MONEDAPAGO.MaxDropDownItems = 2;
+            this.MONEDAPAGO.Name = "MONEDAPAGO";
+            this.MONEDAPAGO.ReadOnly = true;
+            // 
+            // MONTODOC
+            // 
+            this.MONTODOC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MONTODOC.DataPropertyName = "neto";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            this.MONTODOC.DefaultCellStyle = dataGridViewCellStyle13;
+            this.MONTODOC.HeaderText = "Monto del Documento";
+            this.MONTODOC.MaxInputLength = 17;
+            this.MONTODOC.Name = "MONTODOC";
+            this.MONTODOC.ReadOnly = true;
+            // 
+            // fecha
+            // 
+            this.fecha.DataPropertyName = "fecha";
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.Visible = false;
+            // 
             // frmBancoBcp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1547, 664);
+            this.ClientSize = new System.Drawing.Size(1539, 664);
             this.Controls.Add(this.cboitf);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btnaceptar);
