@@ -433,7 +433,6 @@
             this.Dtguias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.Dtguias.EnableHeadersVisualStyles = false;
             this.Dtguias.Location = new System.Drawing.Point(12, 131);
-            this.Dtguias.MultiSelect = false;
             this.Dtguias.Name = "Dtguias";
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
@@ -854,7 +853,6 @@
             this.MONEDAPAGO.HeaderText = "Moneda Documento";
             this.MONEDAPAGO.MaxDropDownItems = 2;
             this.MONEDAPAGO.Name = "MONEDAPAGO";
-            this.MONEDAPAGO.ReadOnly = true;
             // 
             // MONTODOC
             // 

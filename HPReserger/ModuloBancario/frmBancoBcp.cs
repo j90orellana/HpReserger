@@ -184,7 +184,8 @@ namespace HPReserger
                                  total = decimal.Parse(tblcomprobante["total"].ToString()),
                                  fechacancelado = tblcomprobante["fechacancelado"],
                                  banco = tblproveedor["Entidad_Financiera"],
-                                 tipocuenta = tblproveedor["tipocuenta"]
+                                 tipocuenta = tblproveedor["tipocuenta"],
+                                 moneda = tblproveedor["moneda"]
                              };
                 TablaConsulta.Columns.Add("codigo", typeof(string));
                 TablaConsulta.Columns.Add("tipocuenta", typeof(string));
@@ -203,12 +204,15 @@ namespace HPReserger
                 TablaConsulta.Columns.Add("monedacuenta", typeof(string));
                 TablaConsulta.Columns.Add("validacion", typeof(string));
                 //paso para la configuracion de la tabla
-                string tipo = "F", soles = "0001", tipodoc = "6", tipocuenta = "";
+                string tipo = "F", SolesFacturas = "0001", SolesAbono = "0001", tipodoc = "6", tipocuenta = "";
+                string M = "";
                 decimal total = 0;
                 foreach (var x in cargas)
                 {
+                    if (x.moneda.ToString().Trim() == "1") { SolesAbono = "0001"; M = "S"; } else SolesAbono = "1001"; M = "D";
                     if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
                         tipo = "F";
+                    if(x.cuentaccisoles.ToString().Length==20)
                     if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
                         tipocuenta = "B";
                     else if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
@@ -216,7 +220,7 @@ namespace HPReserger
                     else tipocuenta = "A";
 
                     total = decimal.Parse(x.total.ToString());
-                    TablaConsulta.Rows.Add("A", tipocuenta, soles, total, x.ctaseleccionada, tipodoc, x.proveedor, x.razonsocial, "", 1, tipo, x.nro, soles, "S");
+                    TablaConsulta.Rows.Add("A", tipocuenta, SolesAbono, total, x.ctaseleccionada, tipodoc, x.proveedor, x.razonsocial, "", 1, tipo, x.nro, SolesAbono, M);
                 }
                 Dtguias.DataSource = TablaConsulta;
                 Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
@@ -239,7 +243,8 @@ namespace HPReserger
                                  total = decimal.Parse(tblcomprobante["neto"].ToString()),
                                  fechacancelado = (DateTime)tblcomprobante["fechacancelado"],
                                  banco = tblproveedor["Entidad_Financiera"],
-                                 tipocuenta = tblproveedor["tipocuenta"]
+                                 tipocuenta = tblproveedor["tipocuenta"],
+                                 moneda = tblproveedor["moneda"]
                              };
                 //creacion de la tabla de consulta
                 TablaConsulta.Columns.Add("codigo", typeof(string));
@@ -260,10 +265,12 @@ namespace HPReserger
                 TablaConsulta.Columns.Add("validacion", typeof(string));
                 TablaConsulta.Columns.Add("fecha", typeof(DateTime));
                 ///paso de configuracion para guardar
-                string tipo = "F", soles = "0001", tipodoc = "1", tipocuenta = "";
+                string tipo = "F", SolesFacturas = "0001", SolesAbono = "0001", tipodoc = "1", tipocuenta = "";
+                string M = "";
                 decimal total = 0;
                 foreach (var x in cargas)
                 {
+                    if (x.moneda.ToString().Trim() == "1") { SolesAbono = "0001"; M = "S"; } else SolesAbono = "1001"; M = "D";
                     if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
                         tipo = "F";
                     if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
@@ -273,7 +280,7 @@ namespace HPReserger
                     else tipocuenta = "A";
 
                     total = decimal.Parse(x.total.ToString());
-                    TablaConsulta.Rows.Add("A", tipocuenta, soles, total, x.ctaseleccionada, tipodoc, x.nro, x.razonsocial, "", 1, tipo, x.nro, soles, "S", x.fechacancelado);
+                    TablaConsulta.Rows.Add("A", tipocuenta, SolesAbono, total, x.ctaseleccionada, tipodoc, x.nro, x.razonsocial, "", 1, tipo, x.nro, SolesAbono, M, x.fechacancelado);
                 }
                 Dtguias.DataSource = TablaConsulta;
                 Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
@@ -458,6 +465,25 @@ namespace HPReserger
         private StreamWriter st;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
+            //Validaciones
+            foreach (DataGridViewRow item in Dtguias.Rows)
+            {
+                string Valor = ""; string valor2 = item.Cells[CUENTAABONO.Name].Value.ToString();
+                Valor = item.Cells[TIPOABONO.Name].Value.ToString().Trim();
+                if ((Valor == "M" || Valor == "C") && valor2.Length == 13)
+                    HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[CUENTAABONO.Name]);
+                else if (Valor == "B" && valor2.Length == 20)
+                    HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[CUENTAABONO.Name]);
+                else if (Valor == "A" && valor2.Length == 14)
+                    HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[CUENTAABONO.Name]);
+                else
+                {
+                    HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[CUENTAABONO.Name]);
+                    return;
+                }
+
+            }
+            //Fin Validaciones
             PAgoFactura = false;
             int con = Dtguias.RowCount;
             if (con > 0)

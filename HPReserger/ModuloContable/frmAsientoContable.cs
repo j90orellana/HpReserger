@@ -866,7 +866,7 @@ namespace HPReserger
                     string[] ListaEstados = { "4", "0" };
                     if (estado == -1) { if (!ListaEstados.Contains(cboestado.SelectedValue.ToString())) RevisarSihayDescuadre(); }
                     else labelCuadre.Text = "";
-                    txttipocambio.Text = (dtgbusca[xtc.Name, e.RowIndex].Value.ToString() == "" ? 0.0m : (decimal)dtgbusca[xtc.Name, e.RowIndex].Value).ToString("n3");
+                    txttipocambio.Text = (dtgbusca[xtc.Name, e.RowIndex].Value.ToString() == "" ? 0.0m : (decimal)dtgbusca[xtc.Name, e.RowIndex].Value).ToString("n4");
                     foreach (DataGridViewRow item in Dtgconten.Rows)
                     {
                         BusquedaCuenta = false;
@@ -1809,10 +1809,6 @@ namespace HPReserger
         {
             PintardeCOlores();
         }
-        private void BtnCerrar_Click(object sender, EventArgs e)
-        {
-            PanelReversa.Hide();
-        }
         private void btnTxt_Click(object sender, EventArgs e)
         {
             MSG("Se va a Reversar");
@@ -1829,30 +1825,41 @@ namespace HPReserger
             {
                 msg("El Periodo Esta Cerrado, Cambie Fecha Contable"); dtpfechavalor.Focus(); return;
             }
-            //PanelReversa.BringToFront();
-            //PanelReversa.Show();
-            //Proceso de la Reversa
-            if (HPResergerFunciones.Utilitarios.msgYesNo($"Seguro Desea Reversar Este Asiento Nro {txtcuo.Text}") == DialogResult.Yes)
+            if (1 != 1)
             {
-                //PROCESO DE REVERSA DEL ASIENTO
-                DateTime _Fechon;
-                //if (chkfechavalor.Checked)
-                _Fechon = dtpfechavalor.Value;
-                //else _Fechon = dtpfecha.Value;
-                DataRow Filita = CapaLogica.ReversarAsientos(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, _Fechon).Rows[0];
-                if (Filita[0].ToString() == "")
+                //Proceso de la Reversa
+                if (HPResergerFunciones.Utilitarios.msgYesNo($"Seguro Desea Reversar Este Asiento Nro {txtcuo.Text}") == DialogResult.Yes)
                 {
-                    HPResergerFunciones.Utilitarios.msg($"Asiento {txtcuo.Text} Reversado!");
+                    //Proceso Reversa del Asiento               
+                    DataRow Filita = CapaLogica.ReversarAsientos((int.Parse(txtcodigo.Text)), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, dtpfechavalor.Value).Rows[0];
+                    if (Filita[0].ToString() == "")
+                    {
+                        HPResergerFunciones.Utilitarios.msg($"Asiento {txtcuo} Reversado!");
+                    }
+                    else
+                    {
+                        HPResergerFunciones.Utilitarios.msg("Mensaje de Error: \n" + Filita[0].ToString());
+                        return;
+                    }
                 }
-                else
-                {
-                    HPResergerFunciones.Utilitarios.msg("Mensaje de Error: \n" + Filita[0].ToString());
-                    return;
-                }
+                btnActualizar_Click(sender, e);
             }
-            btnActualizar_Click(sender, e);
-            //else
-            //HPResergerFunciones.Utilitarios.msg("Ahorita no joven");
+            else
+            {
+                ModuloContable.frmRevesarAsientos frmReversita = new ModuloContable.frmRevesarAsientos();
+                //Paso de Variables
+                frmReversita.Glosa = txtglosa.Text;
+                frmReversita.Cuo = txtcuo.Text;
+                frmReversita.FechaValor = dtpfechavalor.Value;
+                frmReversita.FechaEmisionDes = dtpfecha.Value;
+                frmReversita.FechaValorDes = dtpfechavalor.Value;
+                frmReversita.Codigo = int.Parse(txtcodigo.Text);
+                frmReversita.IdEmpresa = (int)cboempresa.SelectedValue;
+                frmReversita.IdProyecto = (int)(cboproyecto.SelectedValue);
+                //Fin de Paso de Variables
+                if (frmReversita.ShowDialog() == DialogResult.OK)
+                    btnActualizar_Click(sender, e);
+            }
         }
         private void cboestado_TextChanged(object sender, EventArgs e)
         {
@@ -1881,7 +1888,7 @@ namespace HPReserger
         public void SacarTipoCambio()
         {
             DateTime FechaValidaBuscar = dtpfecha.Value;
-            txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n3");
+            txttipocambio.Text = CapaLogica.TipoCambioDia("Venta", FechaValidaBuscar).ToString("n4");
             if (decimal.Parse(txttipocambio.Text) == 0)
             {
                 if (frmtipo == null)

@@ -18,10 +18,10 @@ namespace HPResergerCapaDatos
     {
         abcBaseDatos.Database bd;
         //public string DATASOURCE = "HPLAPTOP";   
-        public static string BASEDEDATOS = "Actual";
-        public string DATASOURCE = @"192.168.1.6\SQLEXPRESS";
-        //public string DATASOURCE = "192.168.0.102";
-        //public static string BASEDEDATOS = "sige";
+        //public static string BASEDEDATOS = "Actual";
+        //public string DATASOURCE = @"192.168.1.6\SQLEXPRESS";
+        public string DATASOURCE = "192.168.0.102";
+        public static string BASEDEDATOS = "sige";
         public string USERID = "jorellana";
         public string USERPASS = "Ore456";
         public HPResergerCD()

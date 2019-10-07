@@ -58,6 +58,7 @@ namespace HPReserger
             this.CUENTACCISOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BANCOCUENTASOLES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xEMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xmoneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Dtguias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +114,8 @@ namespace HPReserger
             this.CUENTASOLES,
             this.CUENTACCISOLES,
             this.BANCOCUENTASOLES,
-            this.xEMAIL});
+            this.xEMAIL,
+            this.xmoneda});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -352,6 +354,13 @@ namespace HPReserger
             this.xEMAIL.Name = "xEMAIL";
             this.xEMAIL.Width = 60;
             // 
+            // xmoneda
+            // 
+            this.xmoneda.DataPropertyName = "moneda";
+            this.xmoneda.HeaderText = "moneda";
+            this.xmoneda.Name = "xmoneda";
+            this.xmoneda.Visible = false;
+            // 
             // frmCargaDatosProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,5 +412,6 @@ namespace HPReserger
         private System.Windows.Forms.DataGridViewTextBoxColumn CUENTACCISOLES;
         private System.Windows.Forms.DataGridViewTextBoxColumn BANCOCUENTASOLES;
         private System.Windows.Forms.DataGridViewTextBoxColumn xEMAIL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xmoneda;
     }
 }
