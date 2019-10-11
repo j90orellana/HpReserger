@@ -1816,7 +1816,7 @@ namespace HPReserger
         private void button1_Click(object sender, EventArgs e)
         {
             //No se Pueden reversar Asientos Reversados
-            if (dtgbusca[nameestado.Name, dtgbusca.CurrentRow.Index].Value.ToString().ToUpper() == "REVERSADO")
+            if (dtgbusca[nameestado.Name, dtgbusca.CurrentRow.Index].Value.ToString().ToUpper() == "REVERSADO" || ((int)dtgbusca[Iddinamica.Name, dtgbusca.CurrentRow.Index].Value) == -10)
             {
                 HPResergerFunciones.Utilitarios.msg($"Asiento No se Puede Reversar!"); return;
             }
@@ -1852,7 +1852,7 @@ namespace HPReserger
                 frmReversita.Cuo = txtcuo.Text;
                 frmReversita.FechaValor = dtpfechavalor.Value;
                 frmReversita.FechaEmisionDes = dtpfecha.Value;
-                frmReversita.FechaValorDes = dtpfechavalor.Value;
+                frmReversita.FechaContableDes = dtpfechavalor.Value;
                 frmReversita.Codigo = int.Parse(txtcodigo.Text);
                 frmReversita.IdEmpresa = (int)cboempresa.SelectedValue;
                 frmReversita.IdProyecto = (int)(cboproyecto.SelectedValue);

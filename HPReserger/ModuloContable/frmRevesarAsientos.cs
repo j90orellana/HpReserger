@@ -22,7 +22,7 @@ namespace HPReserger.ModuloContable
 
         public DateTime FechaValor { get; internal set; }
         public DateTime FechaEmisionDes { get { return dtpFechaEmisionReversa.Value; } set { dtpFechaEmisionReversa.Value = value; } }
-        public DateTime FechaValorDes { get { return dtpFechaContableReversa.Value; } set { dtpFechaContableReversa.Value = value; } }
+        public DateTime FechaContableDes { get { return dtpFechaContableReversa.Value; } set { dtpFechaContableReversa.Value = value; } }
         public string Cuo { get; internal set; }
         public int Codigo { get; internal set; }
         public int IdProyecto { get; internal set; }
@@ -71,6 +71,11 @@ namespace HPReserger.ModuloContable
             //Reversar en Otro Periodo
             else
             {
+                if (FechaValor.Month == FechaContableDes.Month && FechaValor.Year == FechaContableDes.Year)
+                {
+                    msg("Cambie de Periodo");
+                    return;
+                }
                 //Verificio si el Periodo esta Abierto para Proceder con la Anulacion - REversa
                 if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValor))
                 {
@@ -82,7 +87,7 @@ namespace HPReserger.ModuloContable
                     else return;
                 }
                 //Verificio si el Periodo Destino Esta Abierto
-                if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaValorDes))
+                if (!CapaLogica.VerificarPeriodoAbierto(IdEmpresa, FechaContableDes))
                 {
                     if (msgYesNo("El Periodo Esta Cerrado, Cambie Fecha Contable, Desea Continuar") != DialogResult.Yes)
                     {
@@ -96,13 +101,20 @@ namespace HPReserger.ModuloContable
                     }
                 }
                 //Proceso de Verificar sin tienes documentos Pagados o Abonos!
-
-
-
-                //Resultado Afirmatido para Resultado.
-                DialogResult = DialogResult.OK;
-                this.Close();
+                DataRow Filita = CapaLogica.AnularAsientos(Codigo, IdProyecto, frmLogin.CodigoUsuario, FechaValor, FechaEmisionDes, FechaContableDes, txtGlosa.Text).Rows[0];
+                if (Filita[0].ToString() == "")
+                {
+                    HPResergerFunciones.Utilitarios.msg($"Asiento {Cuo} Reversado!");
+                }
+                else
+                {
+                    HPResergerFunciones.Utilitarios.msg("Mensaje de Error: \n" + Filita[0].ToString());
+                    return;
+                }
             }
+            //Resultado Afirmatido para Resultado.
+            DialogResult = DialogResult.OK;
+            this.Close();
         }
         private void rbReversarPeriodo_CheckedChanged(object sender, EventArgs e)
         {

@@ -303,6 +303,16 @@ namespace HPReserger {
             
             private global::System.Data.DataColumn columnEstado;
             
+            private global::System.Data.DataColumn columnCuenta_Contable1;
+            
+            private global::System.Data.DataColumn columnCod_Asiento_Contable;
+            
+            private global::System.Data.DataColumn columnMoneda;
+            
+            private global::System.Data.DataColumn columnTC;
+            
+            private global::System.Data.DataColumn columnGlosa;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TBL_Asiento_ContableDataTable() {
@@ -434,6 +444,46 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Cuenta_Contable1Column {
+                get {
+                    return this.columnCuenta_Contable1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Cod_Asiento_ContableColumn {
+                get {
+                    return this.columnCod_Asiento_Contable;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MonedaColumn {
+                get {
+                    return this.columnMoneda;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TCColumn {
+                get {
+                    return this.columnTC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GlosaColumn {
+                get {
+                    return this.columnGlosa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -469,7 +519,24 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TBL_Asiento_ContableRow AddTBL_Asiento_ContableRow(int id_Asiento, int Id_Asiento_Contable, System.DateTime Fecha_Asiento, System.DateTime Fecha_Asiento_Valor, int Cuenta_Contable, decimal Saldo_Debe, decimal Saldo_Haber, int Id_Dinamica_Contable, int id_proyecto, int fk_id_Etapa, string Nro_Documento, int Estado) {
+            public TBL_Asiento_ContableRow AddTBL_Asiento_ContableRow(
+                        int id_Asiento, 
+                        int Id_Asiento_Contable, 
+                        System.DateTime Fecha_Asiento, 
+                        System.DateTime Fecha_Asiento_Valor, 
+                        int Cuenta_Contable, 
+                        decimal Saldo_Debe, 
+                        decimal Saldo_Haber, 
+                        int Id_Dinamica_Contable, 
+                        int id_proyecto, 
+                        int fk_id_Etapa, 
+                        string Nro_Documento, 
+                        int Estado, 
+                        string Cuenta_Contable1, 
+                        string Cod_Asiento_Contable, 
+                        int Moneda, 
+                        decimal TC, 
+                        string Glosa) {
                 TBL_Asiento_ContableRow rowTBL_Asiento_ContableRow = ((TBL_Asiento_ContableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id_Asiento,
@@ -483,7 +550,12 @@ namespace HPReserger {
                         id_proyecto,
                         fk_id_Etapa,
                         Nro_Documento,
-                        Estado};
+                        Estado,
+                        Cuenta_Contable1,
+                        Cod_Asiento_Contable,
+                        Moneda,
+                        TC,
+                        Glosa};
                 rowTBL_Asiento_ContableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTBL_Asiento_ContableRow);
                 return rowTBL_Asiento_ContableRow;
@@ -518,6 +590,11 @@ namespace HPReserger {
                 this.columnfk_id_Etapa = base.Columns["fk_id_Etapa"];
                 this.columnNro_Documento = base.Columns["Nro_Documento"];
                 this.columnEstado = base.Columns["Estado"];
+                this.columnCuenta_Contable1 = base.Columns["Cuenta_Contable1"];
+                this.columnCod_Asiento_Contable = base.Columns["Cod_Asiento_Contable"];
+                this.columnMoneda = base.Columns["Moneda"];
+                this.columnTC = base.Columns["TC"];
+                this.columnGlosa = base.Columns["Glosa"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -547,6 +624,16 @@ namespace HPReserger {
                 base.Columns.Add(this.columnNro_Documento);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
+                this.columnCuenta_Contable1 = new global::System.Data.DataColumn("Cuenta_Contable1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCuenta_Contable1);
+                this.columnCod_Asiento_Contable = new global::System.Data.DataColumn("Cod_Asiento_Contable", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCod_Asiento_Contable);
+                this.columnMoneda = new global::System.Data.DataColumn("Moneda", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMoneda);
+                this.columnTC = new global::System.Data.DataColumn("TC", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTC);
+                this.columnGlosa = new global::System.Data.DataColumn("Glosa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGlosa);
                 this.columnid_Asiento.AllowDBNull = false;
                 this.columnId_Asiento_Contable.AllowDBNull = false;
                 this.columnFecha_Asiento.AllowDBNull = false;
@@ -558,6 +645,11 @@ namespace HPReserger {
                 this.columnfk_id_Etapa.AllowDBNull = false;
                 this.columnNro_Documento.MaxLength = 30;
                 this.columnEstado.AllowDBNull = false;
+                this.columnCuenta_Contable1.AllowDBNull = false;
+                this.columnCuenta_Contable1.Caption = "Cuenta_Contable";
+                this.columnCuenta_Contable1.MaxLength = 12;
+                this.columnCod_Asiento_Contable.MaxLength = 10;
+                this.columnGlosa.MaxLength = 300;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -844,6 +936,82 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Cuenta_Contable1 {
+                get {
+                    return ((string)(this[this.tableTBL_Asiento_Contable.Cuenta_Contable1Column]));
+                }
+                set {
+                    this[this.tableTBL_Asiento_Contable.Cuenta_Contable1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Cod_Asiento_Contable {
+                get {
+                    try {
+                        return ((string)(this[this.tableTBL_Asiento_Contable.Cod_Asiento_ContableColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cod_Asiento_Contable\' de la tabla \'TBL_Asiento_Contable\' " +
+                                "es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTBL_Asiento_Contable.Cod_Asiento_ContableColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Moneda {
+                get {
+                    try {
+                        return ((int)(this[this.tableTBL_Asiento_Contable.MonedaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Moneda\' de la tabla \'TBL_Asiento_Contable\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTBL_Asiento_Contable.MonedaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal TC {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableTBL_Asiento_Contable.TCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TC\' de la tabla \'TBL_Asiento_Contable\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTBL_Asiento_Contable.TCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Glosa {
+                get {
+                    try {
+                        return ((string)(this[this.tableTBL_Asiento_Contable.GlosaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Glosa\' de la tabla \'TBL_Asiento_Contable\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTBL_Asiento_Contable.GlosaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFecha_Asiento_ValorNull() {
                 return this.IsNull(this.tableTBL_Asiento_Contable.Fecha_Asiento_ValorColumn);
             }
@@ -864,6 +1032,54 @@ namespace HPReserger {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNro_DocumentoNull() {
                 this[this.tableTBL_Asiento_Contable.Nro_DocumentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCod_Asiento_ContableNull() {
+                return this.IsNull(this.tableTBL_Asiento_Contable.Cod_Asiento_ContableColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCod_Asiento_ContableNull() {
+                this[this.tableTBL_Asiento_Contable.Cod_Asiento_ContableColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMonedaNull() {
+                return this.IsNull(this.tableTBL_Asiento_Contable.MonedaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMonedaNull() {
+                this[this.tableTBL_Asiento_Contable.MonedaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTCNull() {
+                return this.IsNull(this.tableTBL_Asiento_Contable.TCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTCNull() {
+                this[this.tableTBL_Asiento_Contable.TCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGlosaNull() {
+                return this.IsNull(this.tableTBL_Asiento_Contable.GlosaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGlosaNull() {
+                this[this.tableTBL_Asiento_Contable.GlosaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1030,7 +1246,6 @@ namespace HPReserger.SiGeDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Id_Asiento_Contable", "Id_Asiento_Contable");
             tableMapping.ColumnMappings.Add("Fecha_Asiento", "Fecha_Asiento");
             tableMapping.ColumnMappings.Add("Fecha_Asiento_Valor", "Fecha_Asiento_Valor");
-            tableMapping.ColumnMappings.Add("Cuenta_Contable", "Cuenta_Contable");
             tableMapping.ColumnMappings.Add("Saldo_Debe", "Saldo_Debe");
             tableMapping.ColumnMappings.Add("Saldo_Haber", "Saldo_Haber");
             tableMapping.ColumnMappings.Add("Id_Dinamica_Contable", "Id_Dinamica_Contable");
@@ -1038,16 +1253,21 @@ namespace HPReserger.SiGeDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("fk_id_Etapa", "fk_id_Etapa");
             tableMapping.ColumnMappings.Add("Nro_Documento", "Nro_Documento");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
+            tableMapping.ColumnMappings.Add("Cuenta_Contable", "Cuenta_Contable1");
+            tableMapping.ColumnMappings.Add("Cod_Asiento_Contable", "Cod_Asiento_Contable");
+            tableMapping.ColumnMappings.Add("Moneda", "Moneda");
+            tableMapping.ColumnMappings.Add("TC", "TC");
+            tableMapping.ColumnMappings.Add("Glosa", "Glosa");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TBL_Asiento_Contable] ([id_Asiento], [Id_Asiento_Contable], [Fecha_Asiento], [Fecha_Asiento_Valor], [Cuenta_Contable], [Saldo_Debe], [Saldo_Haber], [Id_Dinamica_Contable], [id_proyecto], [fk_id_Etapa], [Nro_Documento], [Estado]) VALUES (@id_Asiento, @Id_Asiento_Contable, @Fecha_Asiento, @Fecha_Asiento_Valor, @Cuenta_Contable, @Saldo_Debe, @Saldo_Haber, @Id_Dinamica_Contable, @id_proyecto, @fk_id_Etapa, @Nro_Documento, @Estado)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [TBL_Asiento_Contable] ([id_Asiento], [Id_Asiento_Contable], [Fecha_Asiento], [Fecha_Asiento_Valor], [Cuenta_Contable], [Saldo_Debe], [Saldo_Haber], [Id_Dinamica_Contable], [id_proyecto], [fk_id_Etapa], [Nro_Documento], [Estado], [Cod_Asiento_Contable], [Moneda], [TC], [Glosa]) VALUES (@id_Asiento, @Id_Asiento_Contable, @Fecha_Asiento, @Fecha_Asiento_Valor, @Cuenta_Contable, @Saldo_Debe, @Saldo_Haber, @Id_Dinamica_Contable, @id_proyecto, @fk_id_Etapa, @Nro_Documento, @Estado, @Cod_Asiento_Contable, @Moneda, @TC, @Glosa)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_Asiento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_Asiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_Asiento_Contable", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Asiento_Contable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha_Asiento", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha_Asiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha_Asiento_Valor", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Fecha_Asiento_Valor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cuenta_Contable", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cuenta_Contable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cuenta_Contable", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cuenta_Contable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Saldo_Debe", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 15, 2, "Saldo_Debe", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Saldo_Haber", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 15, 2, "Saldo_Haber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_Dinamica_Contable", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id_Dinamica_Contable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1055,6 +1275,10 @@ namespace HPReserger.SiGeDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fk_id_Etapa", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fk_id_Etapa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nro_Documento", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nro_Documento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cod_Asiento_Contable", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cod_Asiento_Contable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Moneda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Moneda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TC", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 15, 4, "TC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Glosa", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Glosa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1070,9 +1294,7 @@ namespace HPReserger.SiGeDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id_Asiento, Id_Asiento_Contable, Fecha_Asiento, Fecha_Asiento_Valor, Cuent" +
-                "a_Contable, Saldo_Debe, Saldo_Haber, Id_Dinamica_Contable, id_proyecto, fk_id_Et" +
-                "apa, Nro_Documento, Estado FROM dbo.TBL_Asiento_Contable";
+            this._commandCollection[0].CommandText = "SELECT        *\r\nFROM            TBL_Asiento_Contable";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1133,7 +1355,23 @@ namespace HPReserger.SiGeDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int id_Asiento, int Id_Asiento_Contable, System.DateTime Fecha_Asiento, global::System.Nullable<global::System.DateTime> Fecha_Asiento_Valor, int Cuenta_Contable, decimal Saldo_Debe, decimal Saldo_Haber, int Id_Dinamica_Contable, int id_proyecto, int fk_id_Etapa, string Nro_Documento, int Estado) {
+        public virtual int Insert(
+                    int id_Asiento, 
+                    int Id_Asiento_Contable, 
+                    System.DateTime Fecha_Asiento, 
+                    global::System.Nullable<global::System.DateTime> Fecha_Asiento_Valor, 
+                    string Cuenta_Contable, 
+                    decimal Saldo_Debe, 
+                    decimal Saldo_Haber, 
+                    int Id_Dinamica_Contable, 
+                    int id_proyecto, 
+                    int fk_id_Etapa, 
+                    string Nro_Documento, 
+                    int Estado, 
+                    string Cod_Asiento_Contable, 
+                    global::System.Nullable<int> Moneda, 
+                    global::System.Nullable<decimal> TC, 
+                    string Glosa) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id_Asiento));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Id_Asiento_Contable));
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(Fecha_Asiento));
@@ -1143,7 +1381,12 @@ namespace HPReserger.SiGeDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Cuenta_Contable));
+            if ((Cuenta_Contable == null)) {
+                throw new global::System.ArgumentNullException("Cuenta_Contable");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Cuenta_Contable));
+            }
             this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(Saldo_Debe));
             this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(Saldo_Haber));
             this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Id_Dinamica_Contable));
@@ -1156,6 +1399,30 @@ namespace HPReserger.SiGeDataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Nro_Documento));
             }
             this.Adapter.InsertCommand.Parameters[11].Value = ((int)(Estado));
+            if ((Cod_Asiento_Contable == null)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Cod_Asiento_Contable));
+            }
+            if ((Moneda.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(Moneda.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((TC.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((decimal)(TC.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Glosa == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(Glosa));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

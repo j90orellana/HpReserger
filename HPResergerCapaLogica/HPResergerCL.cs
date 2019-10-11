@@ -2086,6 +2086,10 @@ namespace HPResergerCapaLogica
         {
             return cdOrdenPedido.ReversarAsientos(idasiento, proyecto, usuario, Fecha);
         }
+        public DataTable AnularAsientos(int idasiento, int proyecto, int usuario, DateTime Fecha, DateTime FechaEmision, DateTime FechaContable, string glosa)
+        {
+            return cdOrdenPedido.AnularAsientos(idasiento, proyecto, usuario, Fecha, FechaEmision, FechaContable, glosa);
+        }
         public DataTable ReversarAsientosSoloEstado(int idasiento, int proyecto, DateTime Fecha)
         {
             return cdOrdenPedido.ReversarAsientosSoloEstado(idasiento, proyecto, Fecha);

@@ -4353,6 +4353,12 @@ namespace HPResergerCapaDatos
             object[] valores = { idasiento, proyecto, usuario, Fecha };
             return bd.DataTableFromProcedure("usp_ReversarAsientos", parametros, valores, null);
         }
+        public DataTable AnularAsientos(int idasiento, int proyecto, int usuario, DateTime Fecha, DateTime FechaEmision, DateTime FechaContable, string glosa)
+        {
+            string[] parametros = { "@Idasiento", "@Proyecto", "@Idusuario", "@fecha", "FechaEmision", "@FechaContable", "@Glosa" };
+            object[] valores = { idasiento, proyecto, usuario, Fecha, FechaEmision, FechaContable, glosa };
+            return bd.DataTableFromProcedure("usp_AnularAsientos", parametros, valores, null);
+        }
         public DataTable ReversarAsientosSoloEstado(int idasiento, int proyecto, DateTime Fecha)
         {
             string[] parametros = { "@Idasiento", "@Proyecto", "@fecha" };

@@ -212,15 +212,17 @@ namespace HPReserger
                     if (x.moneda.ToString().Trim() == "1") { SolesAbono = "0001"; M = "S"; } else SolesAbono = "1001"; M = "D";
                     if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
                         tipo = "F";
-                    if(x.cuentaccisoles.ToString().Length==20)
-                    if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
-                        tipocuenta = "B";
+                    if (x.cuentaccisoles.ToString().Length == 20)
+                    {
+                        if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
+                            tipocuenta = "B";
+                    }
                     else if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
                         tipocuenta = "C";
                     else tipocuenta = "A";
 
                     total = decimal.Parse(x.total.ToString());
-                    TablaConsulta.Rows.Add("A", tipocuenta, SolesAbono, total, x.ctaseleccionada, tipodoc, x.proveedor, x.razonsocial, "", 1, tipo, x.nro, SolesAbono, M);
+                    TablaConsulta.Rows.Add("A", tipocuenta, SolesAbono, total, x.ctaseleccionada, tipodoc, x.proveedor, x.razonsocial, "", 1, tipo, x.nro, SolesAbono, "S");
                 }
                 Dtguias.DataSource = TablaConsulta;
                 Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
@@ -273,14 +275,17 @@ namespace HPReserger
                     if (x.moneda.ToString().Trim() == "1") { SolesAbono = "0001"; M = "S"; } else SolesAbono = "1001"; M = "D";
                     if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
                         tipo = "F";
-                    if (x.ctaseleccionada.ToString().Trim() == x.cuentaccisoles.ToString().Trim())
-                        tipocuenta = "B";
+                    if (x.cuentaccisoles.ToString().Length == 20)
+                    {
+                        if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
+                            tipocuenta = "B";
+                    }
                     else if (x.tipocuenta.ToString().Trim().ToUpper() == "CORRIENTE")
                         tipocuenta = "C";
                     else tipocuenta = "A";
 
                     total = decimal.Parse(x.total.ToString());
-                    TablaConsulta.Rows.Add("A", tipocuenta, SolesAbono, total, x.ctaseleccionada, tipodoc, x.nro, x.razonsocial, "", 1, tipo, x.nro, SolesAbono, M, x.fechacancelado);
+                    TablaConsulta.Rows.Add("A", tipocuenta, SolesAbono, total, x.ctaseleccionada, tipodoc, x.nro, x.razonsocial, "", 1, tipo, x.nro, SolesAbono, "S", x.fechacancelado);
                 }
                 Dtguias.DataSource = TablaConsulta;
                 Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
@@ -481,7 +486,6 @@ namespace HPReserger
                     HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[CUENTAABONO.Name]);
                     return;
                 }
-
             }
             //Fin Validaciones
             PAgoFactura = false;
@@ -597,10 +601,11 @@ namespace HPReserger
             int pos = 0;
             foreach (DataGridViewRow fila in Dtguias.Rows)
             {
+                string cadenita = fila.Cells[CUENTAABONO.Name.ToString()].Value.ToString();
                 if (fila.Cells[TIPOREGISTRO1.Name.ToString()].Value.ToString().Trim().ToUpper() == "A")
                     if (fila.Cells[TIPOABONO.Name.ToString()].Value.ToString().Trim().ToUpper() == "B")
-                        Control += decimal.Parse(fila.Cells[CUENTAABONO.Name.ToString()].Value.ToString().Substring(10, fila.Cells[CUENTAABONO.Name.ToString()].Value.ToString().Length - 10));
-                    else Control += decimal.Parse(fila.Cells[CUENTAABONO.Name.ToString()].Value.ToString().Substring(3, fila.Cells[CUENTAABONO.Name.ToString()].Value.ToString().Length - 3));
+                        Control += decimal.Parse(cadenita.Substring(10, cadenita.Length - 10));
+                    else Control += decimal.Parse(cadenita.Substring(3, cadenita.Length - 3));
                 pos++;
             }
             return Control;

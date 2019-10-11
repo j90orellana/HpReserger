@@ -1435,7 +1435,8 @@ namespace HPReserger
                 {
                     if (_TipoDoc == 0 || _TipoDoc == 3 || _TipoDoc == 1)
                     {
-                        if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "D")
+                        string CuentaContableAgregada = item.Cells[xCuentaContable.Name].Value.ToString();
+                        if (item.Cells[xDebeHaber.Name].Value.ToString().ToUpper() == "D" || CuentaContableAgregada == "4221201")
                         {
                             //REFLEJOS
                             DataTable Tprueba = CapaLogica.CuentasReflejo(item.Cells[xCuentaContable.Name].Value.ToString());
@@ -1465,7 +1466,7 @@ namespace HPReserger
                                 if ((int)item.Cells[xTipoIgvg.Name].Value != 4)
                                 {
                                     DataRow filaIgv = CLonarCOlumnas(Dtgconten.Rows[item.Index], TDatos);
-                                    filaIgv[xDebeHaber.DataPropertyName] = "D";
+                                    filaIgv[xDebeHaber.DataPropertyName] = item.Cells[xDebeHaber.Name].Value.ToString();
                                     filaIgv[xCuentaContable.DataPropertyName] = CuentaIgv.Substring(0, 7);
                                     filaIgv[xdescripcion.DataPropertyName] = CuentaIgv;
                                     filaIgv[xUsuario.DataPropertyName] = 999;///por defecto
@@ -1473,8 +1474,8 @@ namespace HPReserger
                                     filaIgv[xImporteMN.DataPropertyName] = Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                     ///soles
                                     if ((int)cbomoneda.SelectedValue == 1)
-                                        TotalIgv += Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
-                                    else TotalIgv += Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                        TotalIgv += (CuentaContableAgregada == "4221201" ? -1 : 1) * Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                    else TotalIgv += (CuentaContableAgregada == "4221201" ? -1 : 1 )* Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                     filaIgv[xCentroCosto.DataPropertyName] = "";
                                     filaIgv[xCentroCostoDesc.DataPropertyName] = "";
                                     filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;

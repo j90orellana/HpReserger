@@ -525,6 +525,7 @@ namespace HPReserger.ModuloFinanzas
                 // Siguiente idpk
                 //int SiguientePkId = (int)CapaLogica.SiguienteIdPrestamoInterEmpresa(IdEmpresaOri).Rows[0]["SiguientePkid"];
                 string NumComprobante = "";// "Pr." + SiguientePkId + "-" + FechaPrestamo.ToShortDateString();
+                int idTipoDocProveedor = 0;
                 //Sacamos el Ruc de la Empresa Origen y DEstino
                 string RucOrigen = ((DataRowView)cboOriEmpresa.SelectedItem)["ruc"].ToString();
                 string RucDestrino = ((DataRowView)cboDesEmpresa.SelectedItem)["ruc"].ToString();
@@ -537,25 +538,33 @@ namespace HPReserger.ModuloFinanzas
                         decimal TcReg = (decimal)item.Cells[xtc.Name].Value;
                         string CuentaOrigen = item.Cells[xCtaContableOri.Name].Value.ToString();
                         string CuentaDestino = item.Cells[xCtaContableDes.Name].Value.ToString();
+                        string CuoOrigenValue = item.Cells[xcuoori.Name].Value.ToString();
                         decimal MontoAbono = (decimal)item.Cells[xPagar.Name].Value;
                         DateTime FechaPrestamo = (DateTime)item.Cells[xFechaPrestado.Name].Value;
                         int pkid = (int)item.Cells[xpkid.Name].Value;
-                        NumComprobante = "Pr." + pkid + " - " + ((DateTime)item.Cells[xFechaPrestado.Name].Value).ToShortDateString();
+                        //
+                        NumComprobante = "PRESTAMO"; idTipoDocProveedor = 6;
+                        //
+                        if (int.Parse(CuoOrigenValue.Substring(5)) != 0)
+                        {
+                            NumComprobante = "Pr." + pkid + " - " + ((DateTime)item.Cells[xFechaPrestado.Name].Value).ToShortDateString();
+                            idTipoDocProveedor = 5;
+                        }
                         ///Detalle en la Empresa Origen - BANCOS
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), IdProyectoOri, 5, RucDestrino
-                           , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaAbono, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbonado : MontoAbonado * TcReg,
-                           IdMoneda == 2 ? MontoAbonado : MontoAbonado / TcReg, TcReg, IdMoneda, NroKuentaOri, NroOpPago, Glosa, FechaContable, IdUsuario, " ");
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoOri, FechaContable, cboOriCuentaBanco.SelectedValue.ToString(), IdProyectoOri, idTipoDocProveedor, RucDestrino
+                           , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaAbono, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbonado : MontoAbonado * ValorTC,
+                           IdMoneda == 2 ? MontoAbonado : MontoAbonado / ValorTC, ValorTC, IdMoneda, NroKuentaOri, NroOpPago, Glosa, FechaContable, IdUsuario, " ");
                         ///Detalle en la Empresa Destino - BANCOS
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), IdProyectoDes, 5, RucOrigen
-                           , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaAbono, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbonado : MontoAbonado * TcReg,
-                           IdMoneda == 2 ? MontoAbonado : MontoAbonado / TcReg, TcReg, IdMoneda, NroKuentaDes, NroOpPago, Glosa, FechaContable, IdUsuario, " ");
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, 1, IdAsientoDes, FechaContable, cboDesCuentaBanco.SelectedValue.ToString(), IdProyectoDes, idTipoDocProveedor, RucOrigen
+                           , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaAbono, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbonado : MontoAbonado * ValorTC,
+                           IdMoneda == 2 ? MontoAbonado : MontoAbonado / ValorTC, ValorTC, IdMoneda, NroKuentaDes, NroOpPago, Glosa, FechaContable, IdUsuario, " ");
                         ///Detalle en la Empresa Origen - Entrada de Dinero - CUENTAS
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, 2 + contador, IdAsientoOri, FechaContable, CuentaOrigen, IdProyectoOri, 5, RucDestrino
-                           , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbono : MontoAbono * ValorTC, IdMoneda == 2 ? MontoAbono : MontoAbono / ValorTC, ValorTC,
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, 2 + contador, IdAsientoOri, FechaContable, CuentaOrigen, IdProyectoOri, idTipoDocProveedor, RucDestrino
+                           , cboDesEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbono : MontoAbono * TcReg, IdMoneda == 2 ? MontoAbono : MontoAbono / TcReg, TcReg,
                            IdMoneda, " ", "", Glosa, FechaContable, IdUsuario, item.Cells[xcuoori.Name].Value.ToString());
                         ///Detalle en la Empresa Destino - Salida de Dinero - CUENTAS
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, 2 + contador, IdAsientoDes, FechaContable, CuentaDestino, IdProyectoDes, 5, RucOrigen
-                           , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbono : MontoAbono * ValorTC, IdMoneda == 2 ? MontoAbono : MontoAbono / ValorTC, ValorTC,
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, 2 + contador, IdAsientoDes, FechaContable, CuentaDestino, IdProyectoDes, idTipoDocProveedor, RucOrigen
+                           , cboOriEmpresa.Text, 1, "0", NumComprobante, 0, FechaPrestamo, FechaContable, FechaContable, IdMoneda == 1 ? MontoAbono : MontoAbono * TcReg, IdMoneda == 2 ? MontoAbono : MontoAbono / TcReg, TcReg,
                            IdMoneda, " ", "", Glosa, FechaContable, IdUsuario, item.Cells[xcuodes.Name].Value.ToString());
                         contador++;
                         ///Inserto el Registro del Abono InterEmpresa

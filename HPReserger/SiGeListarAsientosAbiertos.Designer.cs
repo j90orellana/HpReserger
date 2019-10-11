@@ -279,87 +279,15 @@ namespace HPReserger {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class usp_ListarAsientosAbiertosDataTable : global::System.Data.TypedTableBase<usp_ListarAsientosAbiertosRow> {
             
-            private global::System.Data.DataColumn columnid_Asiento;
+            private global::System.Data.DataColumn columnId_Empresa;
             
             private global::System.Data.DataColumn columnId_Asiento_Contable;
             
-            private global::System.Data.DataColumn columnFecha_Asiento;
+            private global::System.Data.DataColumn columnimporte;
             
-            private global::System.Data.DataColumn columnFecha_Asiento_Valor;
+            private global::System.Data.DataColumn columnEmpresa;
             
-            private global::System.Data.DataColumn columnCuenta_Contable;
-            
-            private global::System.Data.DataColumn columnSaldo_Debe;
-            
-            private global::System.Data.DataColumn columnSaldo_Haber;
-            
-            private global::System.Data.DataColumn columnId_Dinamica_Contable;
-            
-            private global::System.Data.DataColumn columnid_proyecto;
-            
-            private global::System.Data.DataColumn columnfk_id_Etapa;
-            
-            private global::System.Data.DataColumn columnNro_Documento;
-            
-            private global::System.Data.DataColumn columnEstado;
-            
-            private global::System.Data.DataColumn columnId_Proyecto1;
-            
-            private global::System.Data.DataColumn columnProyecto;
-            
-            private global::System.Data.DataColumn columnId_Empresa;
-            
-            private global::System.Data.DataColumn columnUbicacion;
-            
-            private global::System.Data.DataColumn columnmoneda;
-            
-            private global::System.Data.DataColumn columnAreaBruta;
-            
-            private global::System.Data.DataColumn columnPrecioxMetro;
-            
-            private global::System.Data.DataColumn columnPrecioTotal;
-            
-            private global::System.Data.DataColumn columnAutoavaluo;
-            
-            private global::System.Data.DataColumn columnRevaluacionTerrero;
-            
-            private global::System.Data.DataColumn columnVigilancia;
-            
-            private global::System.Data.DataColumn columnMarketing;
-            
-            private global::System.Data.DataColumn columnVentas;
-            
-            private global::System.Data.DataColumn columnAdministracionObra;
-            
-            private global::System.Data.DataColumn columnGerenciamiento;
-            
-            private global::System.Data.DataColumn columnCDAP;
-            
-            private global::System.Data.DataColumn columnFinderFee;
-            
-            private global::System.Data.DataColumn columnCostoSupervision;
-            
-            private global::System.Data.DataColumn columnComision;
-            
-            private global::System.Data.DataColumn columnComisionExt;
-            
-            private global::System.Data.DataColumn columnCeremonia;
-            
-            private global::System.Data.DataColumn columnRegalosxDepartamento;
-            
-            private global::System.Data.DataColumn columnMantenimientoMensual;
-            
-            private global::System.Data.DataColumn columnAtencion;
-            
-            private global::System.Data.DataColumn columnCostoPrevio;
-            
-            private global::System.Data.DataColumn columnGestionComunitaria;
-            
-            private global::System.Data.DataColumn columnPorcentajeCredito;
-            
-            private global::System.Data.DataColumn columnCostoFianzas;
-            
-            private global::System.Data.DataColumn columnImprevistos;
+            private global::System.Data.DataColumn columnfechon;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -396,9 +324,9 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_AsientoColumn {
+            public global::System.Data.DataColumn Id_EmpresaColumn {
                 get {
-                    return this.columnid_Asiento;
+                    return this.columnId_Empresa;
                 }
             }
             
@@ -412,313 +340,25 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Fecha_AsientoColumn {
+            public global::System.Data.DataColumn importeColumn {
                 get {
-                    return this.columnFecha_Asiento;
+                    return this.columnimporte;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Fecha_Asiento_ValorColumn {
+            public global::System.Data.DataColumn EmpresaColumn {
                 get {
-                    return this.columnFecha_Asiento_Valor;
+                    return this.columnEmpresa;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Cuenta_ContableColumn {
+            public global::System.Data.DataColumn fechonColumn {
                 get {
-                    return this.columnCuenta_Contable;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Saldo_DebeColumn {
-                get {
-                    return this.columnSaldo_Debe;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Saldo_HaberColumn {
-                get {
-                    return this.columnSaldo_Haber;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Id_Dinamica_ContableColumn {
-                get {
-                    return this.columnId_Dinamica_Contable;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn id_proyectoColumn {
-                get {
-                    return this.columnid_proyecto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn fk_id_EtapaColumn {
-                get {
-                    return this.columnfk_id_Etapa;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Nro_DocumentoColumn {
-                get {
-                    return this.columnNro_Documento;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EstadoColumn {
-                get {
-                    return this.columnEstado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Id_Proyecto1Column {
-                get {
-                    return this.columnId_Proyecto1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ProyectoColumn {
-                get {
-                    return this.columnProyecto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Id_EmpresaColumn {
-                get {
-                    return this.columnId_Empresa;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UbicacionColumn {
-                get {
-                    return this.columnUbicacion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn monedaColumn {
-                get {
-                    return this.columnmoneda;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AreaBrutaColumn {
-                get {
-                    return this.columnAreaBruta;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PrecioxMetroColumn {
-                get {
-                    return this.columnPrecioxMetro;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PrecioTotalColumn {
-                get {
-                    return this.columnPrecioTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AutoavaluoColumn {
-                get {
-                    return this.columnAutoavaluo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RevaluacionTerreroColumn {
-                get {
-                    return this.columnRevaluacionTerrero;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VigilanciaColumn {
-                get {
-                    return this.columnVigilancia;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MarketingColumn {
-                get {
-                    return this.columnMarketing;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VentasColumn {
-                get {
-                    return this.columnVentas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AdministracionObraColumn {
-                get {
-                    return this.columnAdministracionObra;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GerenciamientoColumn {
-                get {
-                    return this.columnGerenciamiento;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CDAPColumn {
-                get {
-                    return this.columnCDAP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FinderFeeColumn {
-                get {
-                    return this.columnFinderFee;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CostoSupervisionColumn {
-                get {
-                    return this.columnCostoSupervision;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ComisionColumn {
-                get {
-                    return this.columnComision;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ComisionExtColumn {
-                get {
-                    return this.columnComisionExt;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CeremoniaColumn {
-                get {
-                    return this.columnCeremonia;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RegalosxDepartamentoColumn {
-                get {
-                    return this.columnRegalosxDepartamento;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MantenimientoMensualColumn {
-                get {
-                    return this.columnMantenimientoMensual;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AtencionColumn {
-                get {
-                    return this.columnAtencion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CostoPrevioColumn {
-                get {
-                    return this.columnCostoPrevio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GestionComunitariaColumn {
-                get {
-                    return this.columnGestionComunitaria;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PorcentajeCreditoColumn {
-                get {
-                    return this.columnPorcentajeCredito;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CostoFianzasColumn {
-                get {
-                    return this.columnCostoFianzas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ImprevistosColumn {
-                get {
-                    return this.columnImprevistos;
+                    return this.columnfechon;
                 }
             }
             
@@ -759,90 +399,14 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public usp_ListarAsientosAbiertosRow Addusp_ListarAsientosAbiertosRow(
-                        int id_Asiento, 
-                        int Id_Asiento_Contable, 
-                        System.DateTime Fecha_Asiento, 
-                        System.DateTime Fecha_Asiento_Valor, 
-                        int Cuenta_Contable, 
-                        decimal Saldo_Debe, 
-                        decimal Saldo_Haber, 
-                        int Id_Dinamica_Contable, 
-                        int id_proyecto, 
-                        int fk_id_Etapa, 
-                        string Nro_Documento, 
-                        int Estado, 
-                        string Proyecto, 
-                        int Id_Empresa, 
-                        string Ubicacion, 
-                        int moneda, 
-                        decimal AreaBruta, 
-                        decimal PrecioxMetro, 
-                        decimal PrecioTotal, 
-                        decimal Autoavaluo, 
-                        decimal RevaluacionTerrero, 
-                        decimal Vigilancia, 
-                        decimal Marketing, 
-                        decimal Ventas, 
-                        decimal AdministracionObra, 
-                        decimal Gerenciamiento, 
-                        decimal CDAP, 
-                        decimal FinderFee, 
-                        decimal CostoSupervision, 
-                        decimal Comision, 
-                        decimal ComisionExt, 
-                        decimal Ceremonia, 
-                        decimal RegalosxDepartamento, 
-                        decimal MantenimientoMensual, 
-                        decimal Atencion, 
-                        decimal CostoPrevio, 
-                        decimal GestionComunitaria, 
-                        decimal PorcentajeCredito, 
-                        decimal CostoFianzas, 
-                        decimal Imprevistos) {
+            public usp_ListarAsientosAbiertosRow Addusp_ListarAsientosAbiertosRow(int Id_Empresa, string Id_Asiento_Contable, decimal importe, string Empresa, System.DateTime fechon) {
                 usp_ListarAsientosAbiertosRow rowusp_ListarAsientosAbiertosRow = ((usp_ListarAsientosAbiertosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        id_Asiento,
-                        Id_Asiento_Contable,
-                        Fecha_Asiento,
-                        Fecha_Asiento_Valor,
-                        Cuenta_Contable,
-                        Saldo_Debe,
-                        Saldo_Haber,
-                        Id_Dinamica_Contable,
-                        id_proyecto,
-                        fk_id_Etapa,
-                        Nro_Documento,
-                        Estado,
-                        null,
-                        Proyecto,
                         Id_Empresa,
-                        Ubicacion,
-                        moneda,
-                        AreaBruta,
-                        PrecioxMetro,
-                        PrecioTotal,
-                        Autoavaluo,
-                        RevaluacionTerrero,
-                        Vigilancia,
-                        Marketing,
-                        Ventas,
-                        AdministracionObra,
-                        Gerenciamiento,
-                        CDAP,
-                        FinderFee,
-                        CostoSupervision,
-                        Comision,
-                        ComisionExt,
-                        Ceremonia,
-                        RegalosxDepartamento,
-                        MantenimientoMensual,
-                        Atencion,
-                        CostoPrevio,
-                        GestionComunitaria,
-                        PorcentajeCredito,
-                        CostoFianzas,
-                        Imprevistos};
+                        Id_Asiento_Contable,
+                        importe,
+                        Empresa,
+                        fechon};
                 rowusp_ListarAsientosAbiertosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowusp_ListarAsientosAbiertosRow);
                 return rowusp_ListarAsientosAbiertosRow;
@@ -850,9 +414,9 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public usp_ListarAsientosAbiertosRow FindById_Proyecto1(int Id_Proyecto1) {
+            public usp_ListarAsientosAbiertosRow FindById_Empresa(int Id_Empresa) {
                 return ((usp_ListarAsientosAbiertosRow)(this.Rows.Find(new object[] {
-                            Id_Proyecto1})));
+                            Id_Empresa})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -872,155 +436,35 @@ namespace HPReserger {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnid_Asiento = base.Columns["id_Asiento"];
-                this.columnId_Asiento_Contable = base.Columns["Id_Asiento_Contable"];
-                this.columnFecha_Asiento = base.Columns["Fecha_Asiento"];
-                this.columnFecha_Asiento_Valor = base.Columns["Fecha_Asiento_Valor"];
-                this.columnCuenta_Contable = base.Columns["Cuenta_Contable"];
-                this.columnSaldo_Debe = base.Columns["Saldo_Debe"];
-                this.columnSaldo_Haber = base.Columns["Saldo_Haber"];
-                this.columnId_Dinamica_Contable = base.Columns["Id_Dinamica_Contable"];
-                this.columnid_proyecto = base.Columns["id_proyecto"];
-                this.columnfk_id_Etapa = base.Columns["fk_id_Etapa"];
-                this.columnNro_Documento = base.Columns["Nro_Documento"];
-                this.columnEstado = base.Columns["Estado"];
-                this.columnId_Proyecto1 = base.Columns["Id_Proyecto1"];
-                this.columnProyecto = base.Columns["Proyecto"];
                 this.columnId_Empresa = base.Columns["Id_Empresa"];
-                this.columnUbicacion = base.Columns["Ubicacion"];
-                this.columnmoneda = base.Columns["moneda"];
-                this.columnAreaBruta = base.Columns["AreaBruta"];
-                this.columnPrecioxMetro = base.Columns["PrecioxMetro"];
-                this.columnPrecioTotal = base.Columns["PrecioTotal"];
-                this.columnAutoavaluo = base.Columns["Autoavaluo"];
-                this.columnRevaluacionTerrero = base.Columns["RevaluacionTerrero"];
-                this.columnVigilancia = base.Columns["Vigilancia"];
-                this.columnMarketing = base.Columns["Marketing"];
-                this.columnVentas = base.Columns["Ventas"];
-                this.columnAdministracionObra = base.Columns["AdministracionObra"];
-                this.columnGerenciamiento = base.Columns["Gerenciamiento"];
-                this.columnCDAP = base.Columns["CDAP"];
-                this.columnFinderFee = base.Columns["FinderFee"];
-                this.columnCostoSupervision = base.Columns["CostoSupervision"];
-                this.columnComision = base.Columns["Comision"];
-                this.columnComisionExt = base.Columns["ComisionExt"];
-                this.columnCeremonia = base.Columns["Ceremonia"];
-                this.columnRegalosxDepartamento = base.Columns["RegalosxDepartamento"];
-                this.columnMantenimientoMensual = base.Columns["MantenimientoMensual"];
-                this.columnAtencion = base.Columns["Atencion"];
-                this.columnCostoPrevio = base.Columns["CostoPrevio"];
-                this.columnGestionComunitaria = base.Columns["GestionComunitaria"];
-                this.columnPorcentajeCredito = base.Columns["PorcentajeCredito"];
-                this.columnCostoFianzas = base.Columns["CostoFianzas"];
-                this.columnImprevistos = base.Columns["Imprevistos"];
+                this.columnId_Asiento_Contable = base.Columns["Id_Asiento_Contable"];
+                this.columnimporte = base.Columns["importe"];
+                this.columnEmpresa = base.Columns["Empresa"];
+                this.columnfechon = base.Columns["fechon"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnid_Asiento = new global::System.Data.DataColumn("id_Asiento", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_Asiento);
-                this.columnId_Asiento_Contable = new global::System.Data.DataColumn("Id_Asiento_Contable", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_Asiento_Contable);
-                this.columnFecha_Asiento = new global::System.Data.DataColumn("Fecha_Asiento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFecha_Asiento);
-                this.columnFecha_Asiento_Valor = new global::System.Data.DataColumn("Fecha_Asiento_Valor", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFecha_Asiento_Valor);
-                this.columnCuenta_Contable = new global::System.Data.DataColumn("Cuenta_Contable", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCuenta_Contable);
-                this.columnSaldo_Debe = new global::System.Data.DataColumn("Saldo_Debe", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSaldo_Debe);
-                this.columnSaldo_Haber = new global::System.Data.DataColumn("Saldo_Haber", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSaldo_Haber);
-                this.columnId_Dinamica_Contable = new global::System.Data.DataColumn("Id_Dinamica_Contable", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_Dinamica_Contable);
-                this.columnid_proyecto = new global::System.Data.DataColumn("id_proyecto", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_proyecto);
-                this.columnfk_id_Etapa = new global::System.Data.DataColumn("fk_id_Etapa", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfk_id_Etapa);
-                this.columnNro_Documento = new global::System.Data.DataColumn("Nro_Documento", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNro_Documento);
-                this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEstado);
-                this.columnId_Proyecto1 = new global::System.Data.DataColumn("Id_Proyecto1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId_Proyecto1);
-                this.columnProyecto = new global::System.Data.DataColumn("Proyecto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProyecto);
                 this.columnId_Empresa = new global::System.Data.DataColumn("Id_Empresa", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId_Empresa);
-                this.columnUbicacion = new global::System.Data.DataColumn("Ubicacion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUbicacion);
-                this.columnmoneda = new global::System.Data.DataColumn("moneda", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmoneda);
-                this.columnAreaBruta = new global::System.Data.DataColumn("AreaBruta", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAreaBruta);
-                this.columnPrecioxMetro = new global::System.Data.DataColumn("PrecioxMetro", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrecioxMetro);
-                this.columnPrecioTotal = new global::System.Data.DataColumn("PrecioTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrecioTotal);
-                this.columnAutoavaluo = new global::System.Data.DataColumn("Autoavaluo", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAutoavaluo);
-                this.columnRevaluacionTerrero = new global::System.Data.DataColumn("RevaluacionTerrero", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRevaluacionTerrero);
-                this.columnVigilancia = new global::System.Data.DataColumn("Vigilancia", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVigilancia);
-                this.columnMarketing = new global::System.Data.DataColumn("Marketing", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMarketing);
-                this.columnVentas = new global::System.Data.DataColumn("Ventas", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVentas);
-                this.columnAdministracionObra = new global::System.Data.DataColumn("AdministracionObra", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAdministracionObra);
-                this.columnGerenciamiento = new global::System.Data.DataColumn("Gerenciamiento", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGerenciamiento);
-                this.columnCDAP = new global::System.Data.DataColumn("CDAP", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCDAP);
-                this.columnFinderFee = new global::System.Data.DataColumn("FinderFee", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFinderFee);
-                this.columnCostoSupervision = new global::System.Data.DataColumn("CostoSupervision", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCostoSupervision);
-                this.columnComision = new global::System.Data.DataColumn("Comision", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnComision);
-                this.columnComisionExt = new global::System.Data.DataColumn("ComisionExt", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnComisionExt);
-                this.columnCeremonia = new global::System.Data.DataColumn("Ceremonia", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCeremonia);
-                this.columnRegalosxDepartamento = new global::System.Data.DataColumn("RegalosxDepartamento", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRegalosxDepartamento);
-                this.columnMantenimientoMensual = new global::System.Data.DataColumn("MantenimientoMensual", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMantenimientoMensual);
-                this.columnAtencion = new global::System.Data.DataColumn("Atencion", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAtencion);
-                this.columnCostoPrevio = new global::System.Data.DataColumn("CostoPrevio", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCostoPrevio);
-                this.columnGestionComunitaria = new global::System.Data.DataColumn("GestionComunitaria", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGestionComunitaria);
-                this.columnPorcentajeCredito = new global::System.Data.DataColumn("PorcentajeCredito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPorcentajeCredito);
-                this.columnCostoFianzas = new global::System.Data.DataColumn("CostoFianzas", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCostoFianzas);
-                this.columnImprevistos = new global::System.Data.DataColumn("Imprevistos", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImprevistos);
+                this.columnId_Asiento_Contable = new global::System.Data.DataColumn("Id_Asiento_Contable", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId_Asiento_Contable);
+                this.columnimporte = new global::System.Data.DataColumn("importe", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimporte);
+                this.columnEmpresa = new global::System.Data.DataColumn("Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmpresa);
+                this.columnfechon = new global::System.Data.DataColumn("fechon", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfechon);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId_Proyecto1}, true));
-                this.columnid_Asiento.AllowDBNull = false;
-                this.columnId_Asiento_Contable.AllowDBNull = false;
-                this.columnFecha_Asiento.AllowDBNull = false;
-                this.columnCuenta_Contable.AllowDBNull = false;
-                this.columnSaldo_Debe.AllowDBNull = false;
-                this.columnSaldo_Haber.AllowDBNull = false;
-                this.columnId_Dinamica_Contable.AllowDBNull = false;
-                this.columnid_proyecto.AllowDBNull = false;
-                this.columnfk_id_Etapa.AllowDBNull = false;
-                this.columnNro_Documento.MaxLength = 30;
-                this.columnEstado.AllowDBNull = false;
-                this.columnId_Proyecto1.AutoIncrement = true;
-                this.columnId_Proyecto1.AllowDBNull = false;
-                this.columnId_Proyecto1.ReadOnly = true;
-                this.columnId_Proyecto1.Unique = true;
-                this.columnProyecto.AllowDBNull = false;
-                this.columnProyecto.MaxLength = 60;
-                this.columnUbicacion.MaxLength = 50;
-                this.columnmoneda.AllowDBNull = false;
+                                this.columnId_Empresa}, true));
+                this.columnId_Empresa.AllowDBNull = false;
+                this.columnId_Empresa.Unique = true;
+                this.columnId_Asiento_Contable.MaxLength = 10;
+                this.columnimporte.ReadOnly = true;
+                this.columnEmpresa.AllowDBNull = false;
+                this.columnEmpresa.MaxLength = 100;
+                this.columnfechon.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1163,181 +607,9 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_Asiento {
-                get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.id_AsientoColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.id_AsientoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id_Asiento_Contable {
-                get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.Id_Asiento_ContableColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Id_Asiento_ContableColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime Fecha_Asiento {
-                get {
-                    return ((global::System.DateTime)(this[this.tableusp_ListarAsientosAbiertos.Fecha_AsientoColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Fecha_AsientoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime Fecha_Asiento_Valor {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableusp_ListarAsientosAbiertos.Fecha_Asiento_ValorColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha_Asiento_Valor\' de la tabla \'usp_ListarAsientosAbier" +
-                                "tos\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Fecha_Asiento_ValorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Cuenta_Contable {
-                get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.Cuenta_ContableColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Cuenta_ContableColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Saldo_Debe {
-                get {
-                    return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.Saldo_DebeColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Saldo_DebeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Saldo_Haber {
-                get {
-                    return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.Saldo_HaberColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Saldo_HaberColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id_Dinamica_Contable {
-                get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.Id_Dinamica_ContableColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Id_Dinamica_ContableColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int id_proyecto {
-                get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.id_proyectoColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.id_proyectoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int fk_id_Etapa {
-                get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.fk_id_EtapaColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.fk_id_EtapaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nro_Documento {
-                get {
-                    try {
-                        return ((string)(this[this.tableusp_ListarAsientosAbiertos.Nro_DocumentoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Nro_Documento\' de la tabla \'usp_ListarAsientosAbiertos\' e" +
-                                "s DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Nro_DocumentoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Estado {
-                get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.EstadoColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.EstadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id_Proyecto1 {
-                get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.Id_Proyecto1Column]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.Id_Proyecto1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Proyecto {
-                get {
-                    return ((string)(this[this.tableusp_ListarAsientosAbiertos.ProyectoColumn]));
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.ProyectoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Id_Empresa {
                 get {
-                    try {
-                        return ((int)(this[this.tableusp_ListarAsientosAbiertos.Id_EmpresaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id_Empresa\' de la tabla \'usp_ListarAsientosAbiertos\' es D" +
-                                "BNull.", e);
-                    }
+                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.Id_EmpresaColumn]));
                 }
                 set {
                     this[this.tableusp_ListarAsientosAbiertos.Id_EmpresaColumn] = value;
@@ -1346,774 +618,100 @@ namespace HPReserger {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Ubicacion {
+            public string Id_Asiento_Contable {
                 get {
                     try {
-                        return ((string)(this[this.tableusp_ListarAsientosAbiertos.UbicacionColumn]));
+                        return ((string)(this[this.tableusp_ListarAsientosAbiertos.Id_Asiento_ContableColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ubicacion\' de la tabla \'usp_ListarAsientosAbiertos\' es DB" +
-                                "Null.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id_Asiento_Contable\' de la tabla \'usp_ListarAsientosAbier" +
+                                "tos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableusp_ListarAsientosAbiertos.UbicacionColumn] = value;
+                    this[this.tableusp_ListarAsientosAbiertos.Id_Asiento_ContableColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int moneda {
+            public decimal importe {
                 get {
-                    return ((int)(this[this.tableusp_ListarAsientosAbiertos.monedaColumn]));
+                    try {
+                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.importeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'importe\' de la tabla \'usp_ListarAsientosAbiertos\' es DBNu" +
+                                "ll.", e);
+                    }
                 }
                 set {
-                    this[this.tableusp_ListarAsientosAbiertos.monedaColumn] = value;
+                    this[this.tableusp_ListarAsientosAbiertos.importeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal AreaBruta {
+            public string Empresa {
                 get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.AreaBrutaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AreaBruta\' de la tabla \'usp_ListarAsientosAbiertos\' es DB" +
-                                "Null.", e);
-                    }
+                    return ((string)(this[this.tableusp_ListarAsientosAbiertos.EmpresaColumn]));
                 }
                 set {
-                    this[this.tableusp_ListarAsientosAbiertos.AreaBrutaColumn] = value;
+                    this[this.tableusp_ListarAsientosAbiertos.EmpresaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal PrecioxMetro {
+            public System.DateTime fechon {
                 get {
                     try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.PrecioxMetroColumn]));
+                        return ((global::System.DateTime)(this[this.tableusp_ListarAsientosAbiertos.fechonColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PrecioxMetro\' de la tabla \'usp_ListarAsientosAbiertos\' es" +
-                                " DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.PrecioxMetroColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal PrecioTotal {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.PrecioTotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PrecioTotal\' de la tabla \'usp_ListarAsientosAbiertos\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.PrecioTotalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Autoavaluo {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.AutoavaluoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Autoavaluo\' de la tabla \'usp_ListarAsientosAbiertos\' es D" +
-                                "BNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.AutoavaluoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal RevaluacionTerrero {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.RevaluacionTerreroColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RevaluacionTerrero\' de la tabla \'usp_ListarAsientosAbiert" +
-                                "os\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.RevaluacionTerreroColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Vigilancia {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.VigilanciaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Vigilancia\' de la tabla \'usp_ListarAsientosAbiertos\' es D" +
-                                "BNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.VigilanciaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Marketing {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.MarketingColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Marketing\' de la tabla \'usp_ListarAsientosAbiertos\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.MarketingColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Ventas {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.VentasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ventas\' de la tabla \'usp_ListarAsientosAbiertos\' es DBNul" +
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fechon\' de la tabla \'usp_ListarAsientosAbiertos\' es DBNul" +
                                 "l.", e);
                     }
                 }
                 set {
-                    this[this.tableusp_ListarAsientosAbiertos.VentasColumn] = value;
+                    this[this.tableusp_ListarAsientosAbiertos.fechonColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal AdministracionObra {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.AdministracionObraColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AdministracionObra\' de la tabla \'usp_ListarAsientosAbiert" +
-                                "os\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.AdministracionObraColumn] = value;
-                }
+            public bool IsId_Asiento_ContableNull() {
+                return this.IsNull(this.tableusp_ListarAsientosAbiertos.Id_Asiento_ContableColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Gerenciamiento {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.GerenciamientoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Gerenciamiento\' de la tabla \'usp_ListarAsientosAbiertos\' " +
-                                "es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.GerenciamientoColumn] = value;
-                }
+            public void SetId_Asiento_ContableNull() {
+                this[this.tableusp_ListarAsientosAbiertos.Id_Asiento_ContableColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CDAP {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.CDAPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CDAP\' de la tabla \'usp_ListarAsientosAbiertos\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.CDAPColumn] = value;
-                }
+            public bool IsimporteNull() {
+                return this.IsNull(this.tableusp_ListarAsientosAbiertos.importeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal FinderFee {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.FinderFeeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FinderFee\' de la tabla \'usp_ListarAsientosAbiertos\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.FinderFeeColumn] = value;
-                }
+            public void SetimporteNull() {
+                this[this.tableusp_ListarAsientosAbiertos.importeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CostoSupervision {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.CostoSupervisionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CostoSupervision\' de la tabla \'usp_ListarAsientosAbiertos" +
-                                "\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.CostoSupervisionColumn] = value;
-                }
+            public bool IsfechonNull() {
+                return this.IsNull(this.tableusp_ListarAsientosAbiertos.fechonColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Comision {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.ComisionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Comision\' de la tabla \'usp_ListarAsientosAbiertos\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.ComisionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal ComisionExt {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.ComisionExtColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ComisionExt\' de la tabla \'usp_ListarAsientosAbiertos\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.ComisionExtColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Ceremonia {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.CeremoniaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ceremonia\' de la tabla \'usp_ListarAsientosAbiertos\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.CeremoniaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal RegalosxDepartamento {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.RegalosxDepartamentoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RegalosxDepartamento\' de la tabla \'usp_ListarAsientosAbie" +
-                                "rtos\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.RegalosxDepartamentoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal MantenimientoMensual {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.MantenimientoMensualColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MantenimientoMensual\' de la tabla \'usp_ListarAsientosAbie" +
-                                "rtos\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.MantenimientoMensualColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Atencion {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.AtencionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Atencion\' de la tabla \'usp_ListarAsientosAbiertos\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.AtencionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CostoPrevio {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.CostoPrevioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CostoPrevio\' de la tabla \'usp_ListarAsientosAbiertos\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.CostoPrevioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal GestionComunitaria {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.GestionComunitariaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'GestionComunitaria\' de la tabla \'usp_ListarAsientosAbiert" +
-                                "os\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.GestionComunitariaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal PorcentajeCredito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.PorcentajeCreditoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PorcentajeCredito\' de la tabla \'usp_ListarAsientosAbierto" +
-                                "s\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.PorcentajeCreditoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CostoFianzas {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.CostoFianzasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CostoFianzas\' de la tabla \'usp_ListarAsientosAbiertos\' es" +
-                                " DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.CostoFianzasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Imprevistos {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableusp_ListarAsientosAbiertos.ImprevistosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Imprevistos\' de la tabla \'usp_ListarAsientosAbiertos\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusp_ListarAsientosAbiertos.ImprevistosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFecha_Asiento_ValorNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.Fecha_Asiento_ValorColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFecha_Asiento_ValorNull() {
-                this[this.tableusp_ListarAsientosAbiertos.Fecha_Asiento_ValorColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNro_DocumentoNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.Nro_DocumentoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNro_DocumentoNull() {
-                this[this.tableusp_ListarAsientosAbiertos.Nro_DocumentoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsId_EmpresaNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.Id_EmpresaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetId_EmpresaNull() {
-                this[this.tableusp_ListarAsientosAbiertos.Id_EmpresaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsUbicacionNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.UbicacionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetUbicacionNull() {
-                this[this.tableusp_ListarAsientosAbiertos.UbicacionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAreaBrutaNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.AreaBrutaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAreaBrutaNull() {
-                this[this.tableusp_ListarAsientosAbiertos.AreaBrutaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPrecioxMetroNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.PrecioxMetroColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPrecioxMetroNull() {
-                this[this.tableusp_ListarAsientosAbiertos.PrecioxMetroColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPrecioTotalNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.PrecioTotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPrecioTotalNull() {
-                this[this.tableusp_ListarAsientosAbiertos.PrecioTotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAutoavaluoNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.AutoavaluoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAutoavaluoNull() {
-                this[this.tableusp_ListarAsientosAbiertos.AutoavaluoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRevaluacionTerreroNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.RevaluacionTerreroColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRevaluacionTerreroNull() {
-                this[this.tableusp_ListarAsientosAbiertos.RevaluacionTerreroColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVigilanciaNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.VigilanciaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVigilanciaNull() {
-                this[this.tableusp_ListarAsientosAbiertos.VigilanciaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMarketingNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.MarketingColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMarketingNull() {
-                this[this.tableusp_ListarAsientosAbiertos.MarketingColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVentasNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.VentasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVentasNull() {
-                this[this.tableusp_ListarAsientosAbiertos.VentasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAdministracionObraNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.AdministracionObraColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAdministracionObraNull() {
-                this[this.tableusp_ListarAsientosAbiertos.AdministracionObraColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGerenciamientoNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.GerenciamientoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGerenciamientoNull() {
-                this[this.tableusp_ListarAsientosAbiertos.GerenciamientoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCDAPNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.CDAPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCDAPNull() {
-                this[this.tableusp_ListarAsientosAbiertos.CDAPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFinderFeeNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.FinderFeeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFinderFeeNull() {
-                this[this.tableusp_ListarAsientosAbiertos.FinderFeeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCostoSupervisionNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.CostoSupervisionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCostoSupervisionNull() {
-                this[this.tableusp_ListarAsientosAbiertos.CostoSupervisionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsComisionNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.ComisionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetComisionNull() {
-                this[this.tableusp_ListarAsientosAbiertos.ComisionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsComisionExtNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.ComisionExtColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetComisionExtNull() {
-                this[this.tableusp_ListarAsientosAbiertos.ComisionExtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCeremoniaNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.CeremoniaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCeremoniaNull() {
-                this[this.tableusp_ListarAsientosAbiertos.CeremoniaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRegalosxDepartamentoNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.RegalosxDepartamentoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRegalosxDepartamentoNull() {
-                this[this.tableusp_ListarAsientosAbiertos.RegalosxDepartamentoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMantenimientoMensualNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.MantenimientoMensualColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMantenimientoMensualNull() {
-                this[this.tableusp_ListarAsientosAbiertos.MantenimientoMensualColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAtencionNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.AtencionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAtencionNull() {
-                this[this.tableusp_ListarAsientosAbiertos.AtencionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCostoPrevioNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.CostoPrevioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCostoPrevioNull() {
-                this[this.tableusp_ListarAsientosAbiertos.CostoPrevioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGestionComunitariaNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.GestionComunitariaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGestionComunitariaNull() {
-                this[this.tableusp_ListarAsientosAbiertos.GestionComunitariaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPorcentajeCreditoNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.PorcentajeCreditoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPorcentajeCreditoNull() {
-                this[this.tableusp_ListarAsientosAbiertos.PorcentajeCreditoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCostoFianzasNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.CostoFianzasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCostoFianzasNull() {
-                this[this.tableusp_ListarAsientosAbiertos.CostoFianzasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsImprevistosNull() {
-                return this.IsNull(this.tableusp_ListarAsientosAbiertos.ImprevistosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetImprevistosNull() {
-                this[this.tableusp_ListarAsientosAbiertos.ImprevistosColumn] = global::System.Convert.DBNull;
+            public void SetfechonNull() {
+                this[this.tableusp_ListarAsientosAbiertos.fechonColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2276,47 +874,11 @@ namespace HPReserger.SiGeListarAsientosAbiertosTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "usp_ListarAsientosAbiertos";
-            tableMapping.ColumnMappings.Add("id_Asiento", "id_Asiento");
-            tableMapping.ColumnMappings.Add("Id_Asiento_Contable", "Id_Asiento_Contable");
-            tableMapping.ColumnMappings.Add("Fecha_Asiento", "Fecha_Asiento");
-            tableMapping.ColumnMappings.Add("Fecha_Asiento_Valor", "Fecha_Asiento_Valor");
-            tableMapping.ColumnMappings.Add("Cuenta_Contable", "Cuenta_Contable");
-            tableMapping.ColumnMappings.Add("Saldo_Debe", "Saldo_Debe");
-            tableMapping.ColumnMappings.Add("Saldo_Haber", "Saldo_Haber");
-            tableMapping.ColumnMappings.Add("Id_Dinamica_Contable", "Id_Dinamica_Contable");
-            tableMapping.ColumnMappings.Add("id_proyecto", "id_proyecto");
-            tableMapping.ColumnMappings.Add("fk_id_Etapa", "fk_id_Etapa");
-            tableMapping.ColumnMappings.Add("Nro_Documento", "Nro_Documento");
-            tableMapping.ColumnMappings.Add("Estado", "Estado");
-            tableMapping.ColumnMappings.Add("Id_Proyecto1", "Id_Proyecto1");
-            tableMapping.ColumnMappings.Add("Proyecto", "Proyecto");
             tableMapping.ColumnMappings.Add("Id_Empresa", "Id_Empresa");
-            tableMapping.ColumnMappings.Add("Ubicacion", "Ubicacion");
-            tableMapping.ColumnMappings.Add("moneda", "moneda");
-            tableMapping.ColumnMappings.Add("AreaBruta", "AreaBruta");
-            tableMapping.ColumnMappings.Add("PrecioxMetro", "PrecioxMetro");
-            tableMapping.ColumnMappings.Add("PrecioTotal", "PrecioTotal");
-            tableMapping.ColumnMappings.Add("Autoavaluo", "Autoavaluo");
-            tableMapping.ColumnMappings.Add("RevaluacionTerrero", "RevaluacionTerrero");
-            tableMapping.ColumnMappings.Add("Vigilancia", "Vigilancia");
-            tableMapping.ColumnMappings.Add("Marketing", "Marketing");
-            tableMapping.ColumnMappings.Add("Ventas", "Ventas");
-            tableMapping.ColumnMappings.Add("AdministracionObra", "AdministracionObra");
-            tableMapping.ColumnMappings.Add("Gerenciamiento", "Gerenciamiento");
-            tableMapping.ColumnMappings.Add("CDAP", "CDAP");
-            tableMapping.ColumnMappings.Add("FinderFee", "FinderFee");
-            tableMapping.ColumnMappings.Add("CostoSupervision", "CostoSupervision");
-            tableMapping.ColumnMappings.Add("Comision", "Comision");
-            tableMapping.ColumnMappings.Add("ComisionExt", "ComisionExt");
-            tableMapping.ColumnMappings.Add("Ceremonia", "Ceremonia");
-            tableMapping.ColumnMappings.Add("RegalosxDepartamento", "RegalosxDepartamento");
-            tableMapping.ColumnMappings.Add("MantenimientoMensual", "MantenimientoMensual");
-            tableMapping.ColumnMappings.Add("Atencion", "Atencion");
-            tableMapping.ColumnMappings.Add("CostoPrevio", "CostoPrevio");
-            tableMapping.ColumnMappings.Add("GestionComunitaria", "GestionComunitaria");
-            tableMapping.ColumnMappings.Add("PorcentajeCredito", "PorcentajeCredito");
-            tableMapping.ColumnMappings.Add("CostoFianzas", "CostoFianzas");
-            tableMapping.ColumnMappings.Add("Imprevistos", "Imprevistos");
+            tableMapping.ColumnMappings.Add("Id_Asiento_Contable", "Id_Asiento_Contable");
+            tableMapping.ColumnMappings.Add("importe", "importe");
+            tableMapping.ColumnMappings.Add("Empresa", "Empresa");
+            tableMapping.ColumnMappings.Add("fechon", "fechon");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2338,13 +900,14 @@ namespace HPReserger.SiGeListarAsientosAbiertosTableAdapters {
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Opcion", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Empresa", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Fecha", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SiGeListarAsientosAbiertos.usp_ListarAsientosAbiertosDataTable dataTable, global::System.Nullable<int> Opcion, global::System.Nullable<int> Empresa) {
+        public virtual int Fill(SiGeListarAsientosAbiertos.usp_ListarAsientosAbiertosDataTable dataTable, global::System.Nullable<int> Opcion, global::System.Nullable<int> Empresa, global::System.Nullable<global::System.DateTime> Fecha) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Opcion.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Opcion.Value));
@@ -2357,6 +920,12 @@ namespace HPReserger.SiGeListarAsientosAbiertosTableAdapters {
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Fecha.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((System.DateTime)(Fecha.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2369,7 +938,7 @@ namespace HPReserger.SiGeListarAsientosAbiertosTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SiGeListarAsientosAbiertos.usp_ListarAsientosAbiertosDataTable GetData(global::System.Nullable<int> Opcion, global::System.Nullable<int> Empresa) {
+        public virtual SiGeListarAsientosAbiertos.usp_ListarAsientosAbiertosDataTable GetData(global::System.Nullable<int> Opcion, global::System.Nullable<int> Empresa, global::System.Nullable<global::System.DateTime> Fecha) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Opcion.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Opcion.Value));
@@ -2382,6 +951,12 @@ namespace HPReserger.SiGeListarAsientosAbiertosTableAdapters {
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Fecha.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((System.DateTime)(Fecha.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             SiGeListarAsientosAbiertos.usp_ListarAsientosAbiertosDataTable dataTable = new SiGeListarAsientosAbiertos.usp_ListarAsientosAbiertosDataTable();
             this.Adapter.Fill(dataTable);
