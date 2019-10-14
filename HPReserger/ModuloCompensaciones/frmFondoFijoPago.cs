@@ -474,7 +474,12 @@ namespace HPReserger.ModuloCompensaciones
                 DateTime FechaContable = dtpFechaContable.Value;
                 DateTime FechaCompensa = dtpFechaCompensa.Value;
                 int pkIdTipo = (int)((DataTable)cbocuentaxpagar.DataSource).Rows[cbocuentaxpagar.SelectedIndex]["pkid"];
-                ////
+                //DataRow FilaData = ((DataTable)cboempleado.DataSource).Rows[cboempleado.SelectedIndex];
+                ////Datos del empleado del Reembolso
+                //int TipoIdEmpleado = (int)FilaData["Tipo_ID_Emp"];
+                //string NroEmpleado = FilaData["Nro_ID_Emp"].ToString();
+                //string NameEmpleado = ((FilaData["Empleado"].ToString()).Split('-'))[1].Trim();
+                //////
                 string mensaje = "";
                 mensaje += $"Se ha Reembolsado Fondo con Cuo {Cuo}";
                 string CuoReg = Cuo;
@@ -542,8 +547,8 @@ namespace HPReserger.ModuloCompensaciones
                         decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
                         decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
                         //
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, cbocuentaxpagar.SelectedValue.ToString(), proyecto, 5, item.Cells[xProveedor.Name].Value.ToString()
-                            , item.Cells[xrazon_social.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, FechaContable, cbocuentaxpagar.SelectedValue.ToString(), proyecto, int.Parse(Empleado[0]), Empleado[1]
+                            , NameEmpleado, (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
                             moneda == 1 ? MontoSolesReg : moneda == (int)item.Cells[xidMoneda.Name].Value ? MontoSolesReg : MontoSolesOri,
                             moneda == 2 ? MontoDolaresReg : moneda == (int)item.Cells[xidMoneda.Name].Value ? MontoDolaresReg : MontoDolaresOri,
                             moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,

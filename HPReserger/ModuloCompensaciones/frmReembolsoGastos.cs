@@ -402,6 +402,8 @@ namespace HPReserger.ModuloCompensaciones
                 string Cuo = HPResergerFunciones.Utilitarios.Cuo(numasiento, dtpFechaContable.Value);
                 mensaje += $"Se ha Reembolsado Abono con cuo {Cuo}";
                 int TipoPago = 0;
+                string[] Empleado = cboempleado.SelectedValue.ToString().Split('-');
+                string NameEmpleado = cboempleado.Text.Substring(cboempleado.Text.IndexOf('-') + 2).ToUpper();
                 if (cbopago.Text == "003 Transferencias Fondos") TipoPago = 3;
                 else if (cbopago.Text == "007 Cheque.") TipoPago = 7;
                 string NroPago = txtnrocheque.TextValido();
@@ -474,8 +476,8 @@ namespace HPReserger.ModuloCompensaciones
                         decimal MontoSolesReg = ((int)item.Cells[xidMoneda.Name].Value) == 1 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value * (decimal)item.Cells[xTcReg.Name].Value);
                         decimal MontoDolaresReg = ((int)item.Cells[xidMoneda.Name].Value) == 2 ? (decimal)item.Cells[xTotal.Name].Value : Configuraciones.Redondear((decimal)item.Cells[xTotal.Name].Value / (decimal)item.Cells[xTcReg.Name].Value);
                         //
-                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, cbocuentaxpagar.SelectedValue.ToString(), proyecto, 5, item.Cells[xProveedor.Name].Value.ToString()
-                            , item.Cells[xrazon_social.Name].Value.ToString(), (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
+                        CapaLogica.InsertarAsientoFacturaDetalle(10, PosFila, numasiento, dtpFechaContable.Value, cbocuentaxpagar.SelectedValue.ToString(), proyecto, int.Parse(Empleado[0]), Empleado[1]
+                            , NameEmpleado, (int)item.Cells[xIdComprobante.Name].Value, valor[0], valor[1], 0, (DateTime)item.Cells[xFechaEmision.Name].Value, fecha, fecha,
                             moneda == 1 ? MontoSolesReg : moneda == (int)item.Cells[xidMoneda.Name].Value ? MontoSolesReg : MontoSolesOri,
                             moneda == 2 ? MontoDolaresReg : moneda == (int)item.Cells[xidMoneda.Name].Value ? MontoDolaresReg : MontoDolaresOri,
                             moneda == (int)item.Cells[xidMoneda.Name].Value ? (decimal)item.Cells[xTCOri.Name].Value : (decimal)item.Cells[xTcReg.Name].Value,

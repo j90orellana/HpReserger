@@ -449,37 +449,59 @@ namespace HPReserger
                 ListaComprobantes.Add(new FACTURAS(i.numero, i.proveedor, i.tipo, i.subtotal, i.igv, i.total, i.detraccion, i.Saldo, i.aPagar, i.fechacancelado, i.centrocosto, i.FechaEmision, i.FechaRecepcion,
                     i.Moneda, i.CuentaContable, i.TipoCambio, i.IdComprobante));
             }
-            ///REMOVEMOS LAS NOTAS
-            for (int i = 0; i < Comprobantes.Count; i++)
+            //Listado de las comprobastes para ir al bcp
+            List<FACTURAS> ComprobantesCopia = new List<FACTURAS>();
+            foreach (DataGridViewRow Item in Dtguias.Rows)
             {
-                FACTURAS valores = Comprobantes[i];
+                if ((int)Item.Cells[OK.Name].Value != 0)
+                    ComprobantesCopia.Add(new FACTURAS(Item.Cells["nrofactura"].Value.ToString().TrimStart().TrimEnd(), Item.Cells["proveedor"].Value.ToString().TrimStart().TrimEnd()
+                                   , Item.Cells["tipodoc"].Value.ToString().TrimStart().TrimEnd(), (decimal)Item.Cells["subtotal"].Value, (decimal)Item.Cells["igv"].Value
+                                   , (decimal)Item.Cells["total"].Value, (decimal)Item.Cells["detraccion"].Value, (decimal)Item.Cells[Saldox.Name].Value, (decimal)Item.Cells[Pagox.Name].Value
+                                   , (DateTime)Item.Cells["fechacancelado"].Value, (int)(Item.Cells[centrocostox.Name].Value.ToString() == "" ? 0 : Item.Cells[centrocostox.Name].Value), (DateTime)Item.Cells[FechaEmision.Name].Value
+                                   , (DateTime)Item.Cells[fechaRecepcion.Name].Value, (int)Item.Cells[xidmoneda.Name].Value, Item.Cells[xCuentaContable.Name].Value.ToString()
+                                   , decimal.Parse(Item.Cells[xtc.Name].Value.ToString()), (int)Item.Cells[xidcomprobante.Name].Value));
+            }
+            ///REMOVEMOS LAS NOTAS
+            for (int i = 0; i < ComprobantesCopia.Count; i++)
+            {
+                FACTURAS valores = ComprobantesCopia[i];
                 string valor = valores.tipo.Substring(0, 2);
                 if (valor == "NC" || valor == "ND")
                 {
-                    Comprobantes.Remove(valores);
+                    ComprobantesCopia.Remove(valores);
                     i--;
                 }
             }
-
+            decimal Valordif = 0;
             /// bajamos el monto a las facturas
             foreach (NotaCreditoDebito item in ListadoNotas)
             {
-                decimal valor = item.MontoNotas;
+                decimal valor = item.MontoNotas - Valordif;
                 decimal dif = 0;
-                foreach (FACTURAS items in Comprobantes)
+                //foreach (FACTURAS items in ComprobantesCopia)
+                for (int i = 0; i < ComprobantesCopia.Count; i++)
                 {
-                    dif = valor + items.aPagar;
-                    if (item.Proveedor == items.proveedor)
+                    dif = valor + ComprobantesCopia[i].aPagar;
+                    if (item.Proveedor == ComprobantesCopia[i].proveedor)
                     {
                         if (dif == 0)
                         {
-                            Comprobantes.Remove(items);
+                            ComprobantesCopia.RemoveAt(i);
                             break;
                         }
-                        items.aPagar = dif;
-                        valor = dif;
-                        if (dif >= 0)
-                            break;
+                        else if (dif < 0)
+                        {
+                            valor = dif;
+                            ComprobantesCopia.RemoveAt(i);
+                            i--;
+                        }
+                        else
+                        {
+                            ComprobantesCopia[i].aPagar = dif;
+                            valor = dif;
+                            if (dif >= 0)
+                                break;
+                        }
                     }
                 }
             }
@@ -489,7 +511,7 @@ namespace HPReserger
                 Dtguias.EndEdit();
                 Proveedores.Clear();
 
-                foreach (FACTURAS cadena in Comprobantes)
+                foreach (FACTURAS cadena in ComprobantesCopia)
                 {
                     Proveedores.Add(cadena.proveedor);
                 }
@@ -514,7 +536,7 @@ namespace HPReserger
                     //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
                     bancobcp.txtcuentapago.Text = frmcargardatosproveedor.txtcuenta.Text;
                     bancobcp.Icon = Icon;
-                    bancobcp.Comprobantes = Comprobantes;
+                    bancobcp.Comprobantes = ComprobantesCopia;
                     bancobcp.ShowDialog();
                     PAsoBanco = bancobcp.DialogResult;
                 }
@@ -528,7 +550,7 @@ namespace HPReserger
                     //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
                     BancoScotiaBank.txtcuentapago.Text = frmcargardatosproveedor.txtcuenta.Text;
                     BancoScotiaBank.Icon = Icon;
-                    BancoScotiaBank.Comprobantes = Comprobantes;
+                    BancoScotiaBank.Comprobantes = ComprobantesCopia;
                     BancoScotiaBank.ShowDialog();
                     PAsoBanco = BancoScotiaBank.DialogResult;
                 }
@@ -542,7 +564,7 @@ namespace HPReserger
                     //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
                     BancoBBVA.NroCuenta = frmcargardatosproveedor.txtcuenta.Text;
                     BancoBBVA.Icon = Icon;
-                    BancoBBVA.Comprobantes = Comprobantes;
+                    BancoBBVA.Comprobantes = ComprobantesCopia;
                     BancoBBVA.Glosa = txtglosa.Text;
                     //
                     BancoBBVA.PkMoneda = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["pkmoneda"];
@@ -558,7 +580,7 @@ namespace HPReserger
                     //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
                     //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
                     bancointerbank.txtcuenta.Text = frmcargardatosproveedor.txtcuenta.Text;
-                    bancointerbank.Comprobantes = Comprobantes;
+                    bancointerbank.Comprobantes = ComprobantesCopia;
                     bancointerbank.Icon = Icon;
                     bancointerbank.ShowDialog();
                     PAsoBanco = bancointerbank.DialogResult;
@@ -572,7 +594,7 @@ namespace HPReserger
                     //bancointerbank.TablaComprobantes = ((DataTable)Dtguias.DataSource).Clone();
                     //msg("Cuenta Filas " + bancointerbank.TablaComprobantes.Rows.Count);
                     bancointeramericano.txtcuenta.Text = frmcargardatosproveedor.txtcuenta.Text;
-                    bancointeramericano.Comprobantes = Comprobantes;
+                    bancointeramericano.Comprobantes = ComprobantesCopia;
                     bancointeramericano.Icon = Icon;
                     bancointeramericano.ShowDialog();
                     PAsoBanco = bancointeramericano.DialogResult;
@@ -1002,6 +1024,7 @@ namespace HPReserger
             }
         }
         List<FACTURAS> Comprobantes = new List<FACTURAS>();
+        List<FACTURAS> ComprobantesCopia = new List<FACTURAS>();
         private void Dtguias_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Dtguias.EndEdit();
@@ -1019,12 +1042,14 @@ namespace HPReserger
                                 Busqueda = true;
                         }
                         if (!Busqueda)
+                        {
                             Comprobantes.Add(new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd()
                                 , Dtguias["tipodoc", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), (decimal)Dtguias["subtotal", e.RowIndex].Value, (decimal)Dtguias["igv", e.RowIndex].Value
                                 , (decimal)Dtguias["total", e.RowIndex].Value, (decimal)Dtguias["detraccion", e.RowIndex].Value, (decimal)Dtguias[Saldox.Name, e.RowIndex].Value, (decimal)Dtguias[Pagox.Name, e.RowIndex].Value
                                 , (DateTime)Dtguias["fechacancelado", e.RowIndex].Value, (int)(Dtguias[centrocostox.Name, e.RowIndex].Value.ToString() == "" ? 0 : Dtguias[centrocostox.Name, e.RowIndex].Value), (DateTime)Dtguias[FechaEmision.Name, e.RowIndex].Value
                                 , (DateTime)Dtguias[fechaRecepcion.Name, e.RowIndex].Value, (int)Dtguias[xidmoneda.Name, e.RowIndex].Value, Dtguias[xCuentaContable.Name, e.RowIndex].Value.ToString()
                                 , decimal.Parse(Dtguias[xtc.Name, e.RowIndex].Value.ToString()), (int)Dtguias[xidcomprobante.Name, e.RowIndex].Value));
+                        }
                         //
                         Dtguias.RefreshEdit();
                     }
@@ -1042,7 +1067,9 @@ namespace HPReserger
                         //FACTURAS cola = new FACTURAS(Dtguias["nrofactura", e.RowIndex].Value.ToString().TrimStart().TrimEnd(), Dtguias["proveedor", e.RowIndex].Value.ToString().TrimStart().TrimEnd());
                         //msg("" + Comprobantes.Exists(cust=>cust.numero==cola.numero&&cust.proveedor==cola.proveedor) + " Y=" + Y + " Contador=" + Comprobantes.Count);
                         if (Busqueda)
+                        {
                             Comprobantes.RemoveAt(Y);
+                        }
                     }
                     CalcularTotal();
                 }

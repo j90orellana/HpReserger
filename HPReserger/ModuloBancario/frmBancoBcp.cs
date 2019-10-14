@@ -212,7 +212,7 @@ namespace HPReserger
                     if (x.moneda.ToString().Trim() == "1") { SolesAbono = "0001"; M = "S"; } else SolesAbono = "1001"; M = "D";
                     if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
                         tipo = "F";
-                    if (x.cuentaccisoles.ToString().Length == 20)
+                    if (x.ctaseleccionada.ToString().Length >= 20)
                     {
                         if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
                             tipocuenta = "B";
@@ -275,7 +275,7 @@ namespace HPReserger
                     if (x.moneda.ToString().Trim() == "1") { SolesAbono = "0001"; M = "S"; } else SolesAbono = "1001"; M = "D";
                     if (x.tipo.ToString().Trim().ToUpper() == "FT" || x.tipo.ToString().Trim().ToUpper() == "RH")
                         tipo = "F";
-                    if (x.cuentaccisoles.ToString().Length == 20)
+                    if (x.ctaseleccionada.ToString().Length >= 20)
                     {
                         if (x.cuentaccisoles.ToString().Substring(0, x.cuentaccisoles.ToString().Length - 6) == x.ctaseleccionada.ToString())
                             tipocuenta = "B";
