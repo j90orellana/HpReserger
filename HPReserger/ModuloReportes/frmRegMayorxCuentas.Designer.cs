@@ -212,6 +212,7 @@
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -224,7 +225,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -257,7 +258,7 @@
             this.xUsers});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
@@ -283,7 +284,7 @@
             this.xPeriodo.Name = "xPeriodo";
             this.xPeriodo.ReadOnly = true;
             this.xPeriodo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.xPeriodo.Width = 71;
+            this.xPeriodo.Width = 67;
             // 
             // xRUC
             // 
@@ -292,7 +293,7 @@
             this.xRUC.HeaderText = "RUC";
             this.xRUC.Name = "xRUC";
             this.xRUC.ReadOnly = true;
-            this.xRUC.Width = 53;
+            this.xRUC.Width = 52;
             // 
             // xCod_Asiento_Contable
             // 
@@ -301,7 +302,7 @@
             this.xCod_Asiento_Contable.HeaderText = "CUO";
             this.xCod_Asiento_Contable.Name = "xCod_Asiento_Contable";
             this.xCod_Asiento_Contable.ReadOnly = true;
-            this.xCod_Asiento_Contable.Width = 55;
+            this.xCod_Asiento_Contable.Width = 53;
             // 
             // xEmpresa
             // 
@@ -323,7 +324,7 @@
             this.xFechaContable.HeaderText = "F.Ctble";
             this.xFechaContable.Name = "xFechaContable";
             this.xFechaContable.ReadOnly = true;
-            this.xFechaContable.Width = 67;
+            this.xFechaContable.Width = 66;
             // 
             // xFechaRegistro
             // 
@@ -334,7 +335,7 @@
             this.xFechaRegistro.HeaderText = "F.Reg.Asi.";
             this.xFechaRegistro.Name = "xFechaRegistro";
             this.xFechaRegistro.ReadOnly = true;
-            this.xFechaRegistro.Width = 81;
+            this.xFechaRegistro.Width = 82;
             // 
             // xFechaEmision
             // 
@@ -355,7 +356,7 @@
             this.xId_Comprobante.HeaderText = "IdSunat";
             this.xId_Comprobante.Name = "xId_Comprobante";
             this.xId_Comprobante.ReadOnly = true;
-            this.xId_Comprobante.Width = 71;
+            this.xId_Comprobante.Width = 69;
             // 
             // xTipoComprobante
             // 
@@ -383,7 +384,7 @@
             this.xNum_Comprobante.HeaderText = "Num.Doc.";
             this.xNum_Comprobante.Name = "xNum_Comprobante";
             this.xNum_Comprobante.ReadOnly = true;
-            this.xNum_Comprobante.Width = 81;
+            this.xNum_Comprobante.Width = 78;
             // 
             // xNum_Doc
             // 
@@ -392,7 +393,7 @@
             this.xNum_Doc.HeaderText = "Ruc-NroId";
             this.xNum_Doc.Name = "xNum_Doc";
             this.xNum_Doc.ReadOnly = true;
-            this.xNum_Doc.Width = 83;
+            this.xNum_Doc.Width = 80;
             // 
             // xRazon_Social
             // 
@@ -419,7 +420,7 @@
             this.xCuenta_Contable.HeaderText = "Cuenta";
             this.xCuenta_Contable.Name = "xCuenta_Contable";
             this.xCuenta_Contable.ReadOnly = true;
-            this.xCuenta_Contable.Width = 68;
+            this.xCuenta_Contable.Width = 66;
             // 
             // xDESCRIPCION
             // 
@@ -436,6 +437,7 @@
             this.xCuentaBanco.HeaderText = "CuentaBanco";
             this.xCuentaBanco.Name = "xCuentaBanco";
             this.xCuentaBanco.ReadOnly = true;
+            this.xCuentaBanco.Width = 95;
             // 
             // xMoneda
             // 
@@ -444,7 +446,7 @@
             this.xMoneda.HeaderText = "Moneda";
             this.xMoneda.Name = "xMoneda";
             this.xMoneda.ReadOnly = true;
-            this.xMoneda.Width = 74;
+            this.xMoneda.Width = 69;
             // 
             // xPEN
             // 
@@ -456,7 +458,7 @@
             this.xPEN.HeaderText = "PEN";
             this.xPEN.Name = "xPEN";
             this.xPEN.ReadOnly = true;
-            this.xPEN.Width = 51;
+            this.xPEN.Width = 50;
             // 
             // xUSD
             // 
@@ -468,7 +470,7 @@
             this.xUSD.HeaderText = "USD";
             this.xUSD.Name = "xUSD";
             this.xUSD.ReadOnly = true;
-            this.xUSD.Width = 53;
+            this.xUSD.Width = 51;
             // 
             // xMes
             // 
@@ -488,7 +490,7 @@
             this.xTipoCambio.HeaderText = "T.C.";
             this.xTipoCambio.Name = "xTipoCambio";
             this.xTipoCambio.ReadOnly = true;
-            this.xTipoCambio.Width = 49;
+            this.xTipoCambio.Width = 52;
             // 
             // xUsers
             // 
@@ -497,7 +499,7 @@
             this.xUsers.HeaderText = "Usuario";
             this.xUsers.Name = "xUsers";
             this.xUsers.ReadOnly = true;
-            this.xUsers.Width = 71;
+            this.xUsers.Width = 67;
             // 
             // backgroundWorker1
             // 

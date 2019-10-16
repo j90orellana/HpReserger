@@ -453,7 +453,7 @@ namespace HPReserger
             List<FACTURAS> ComprobantesCopia = new List<FACTURAS>();
             foreach (DataGridViewRow Item in Dtguias.Rows)
             {
-                if ((int)Item.Cells[OK.Name].Value != 0)
+                if ((int)Item.Cells[OK.Name].Value != 0 && (decimal)Item.Cells[Pagox.Name].Value > 0)
                     ComprobantesCopia.Add(new FACTURAS(Item.Cells["nrofactura"].Value.ToString().TrimStart().TrimEnd(), Item.Cells["proveedor"].Value.ToString().TrimStart().TrimEnd()
                                    , Item.Cells["tipodoc"].Value.ToString().TrimStart().TrimEnd(), (decimal)Item.Cells["subtotal"].Value, (decimal)Item.Cells["igv"].Value
                                    , (decimal)Item.Cells["total"].Value, (decimal)Item.Cells["detraccion"].Value, (decimal)Item.Cells[Saldox.Name].Value, (decimal)Item.Cells[Pagox.Name].Value
@@ -521,9 +521,13 @@ namespace HPReserger
                 frmcargardatosproveedor.banco = cbobanco.SelectedValue.ToString();
                 frmcargardatosproveedor.txtbanco.Text = cbobanco.Text;
                 frmcargardatosproveedor.cuenta = cbocuentabanco.Text;
-                frmcargardatosproveedor.CuentaBancaria = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
-                if (frmcargardatosproveedor.ShowDialog() == DialogResult.Cancel || frmcargardatosproveedor.Resultado == DialogResult.Cancel)
-                    return;
+                if (cbocuentabanco.Text != "")
+                {
+                    frmcargardatosproveedor.CuentaBancaria = HPResergerFunciones.Utilitarios.ExtraerCuenta(cbocuentabanco.Text);
+                    if (frmcargardatosproveedor.ShowDialog() == DialogResult.Cancel || frmcargardatosproveedor.Resultado == DialogResult.Cancel)
+                        return;
+                }
+                else return;
                 //msg("vamos a pagar la factura");
                 PasoFactura = false;
                 if (cbobanco.SelectedValue.ToString().ToUpper().Trim() == "CREDITO")

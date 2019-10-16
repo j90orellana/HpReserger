@@ -443,6 +443,7 @@
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -455,7 +456,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -482,7 +483,7 @@
             this.xtc});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
@@ -507,7 +508,7 @@
             this.xRUC.HeaderText = "RUC";
             this.xRUC.Name = "xRUC";
             this.xRUC.ReadOnly = true;
-            this.xRUC.Width = 53;
+            this.xRUC.Width = 52;
             // 
             // xEmpresa
             // 
@@ -526,7 +527,7 @@
             this.xCuenta.HeaderText = "Cuenta";
             this.xCuenta.Name = "xCuenta";
             this.xCuenta.ReadOnly = true;
-            this.xCuenta.Width = 68;
+            this.xCuenta.Width = 66;
             // 
             // xDESCRIPCION
             // 
@@ -543,7 +544,7 @@
             this.xcuo.HeaderText = "CUO";
             this.xcuo.Name = "xcuo";
             this.xcuo.ReadOnly = true;
-            this.xcuo.Width = 55;
+            this.xcuo.Width = 53;
             // 
             // xFCtble
             // 
@@ -555,7 +556,7 @@
             this.xFCtble.HeaderText = "F.Ctble";
             this.xFCtble.Name = "xFCtble";
             this.xFCtble.ReadOnly = true;
-            this.xFCtble.Width = 67;
+            this.xFCtble.Width = 66;
             // 
             // xidsunat
             // 
@@ -584,7 +585,7 @@
             this.xnumdoc.HeaderText = "Num.Doc.";
             this.xnumdoc.Name = "xnumdoc";
             this.xnumdoc.ReadOnly = true;
-            this.xnumdoc.Width = 81;
+            this.xnumdoc.Width = 78;
             // 
             // xtipoiddoc
             // 
@@ -603,7 +604,7 @@
             this.xproveedor.HeaderText = "Ruc-NroId";
             this.xproveedor.Name = "xproveedor";
             this.xproveedor.ReadOnly = true;
-            this.xproveedor.Width = 83;
+            this.xproveedor.Width = 80;
             // 
             // xRazonSocial
             // 
@@ -630,7 +631,7 @@
             this.xMoneda.HeaderText = "Moneda";
             this.xMoneda.Name = "xMoneda";
             this.xMoneda.ReadOnly = true;
-            this.xMoneda.Width = 74;
+            this.xMoneda.Width = 69;
             // 
             // xtotalmn
             // 
@@ -642,7 +643,7 @@
             this.xtotalmn.HeaderText = "PEN";
             this.xtotalmn.Name = "xtotalmn";
             this.xtotalmn.ReadOnly = true;
-            this.xtotalmn.Width = 51;
+            this.xtotalmn.Width = 50;
             // 
             // xtotalme
             // 
@@ -654,7 +655,7 @@
             this.xtotalme.HeaderText = "USD";
             this.xtotalme.Name = "xtotalme";
             this.xtotalme.ReadOnly = true;
-            this.xtotalme.Width = 53;
+            this.xtotalme.Width = 51;
             // 
             // xtc
             // 
@@ -666,7 +667,7 @@
             this.xtc.HeaderText = "T.C.";
             this.xtc.Name = "xtc";
             this.xtc.ReadOnly = true;
-            this.xtc.Width = 49;
+            this.xtc.Width = 52;
             // 
             // chkAgruparCuentas
             // 

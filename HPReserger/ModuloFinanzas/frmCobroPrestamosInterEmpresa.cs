@@ -355,23 +355,24 @@ namespace HPReserger.ModuloFinanzas
                         Cargado = true;
                         CargarDatos();
                     }
-                    if (y == dtgconten.Columns[xAbono.Name].Index)
+                }
+                if (y == dtgconten.Columns[xAbono.Name].Index)
+                {
+                    if (dtgconten[y, x].Value.ToString() != "" && cboOriEmpresa.SelectedValue != null)
                     {
-                        if (dtgconten[y, x].Value.ToString() != "" && cboOriEmpresa.SelectedValue != null)
-                        {
-                            int _empresa, _fkid;
-                            _empresa = (int)cboOriEmpresa.SelectedValue;
-                            _fkid = (int)dtgconten[xpkid.Name, x].Value;
-                            ModuloFinanzas.frmListadoPrestamosInterEmpresa frmlistadoPrestamos = new frmListadoPrestamosInterEmpresa(_empresa, _fkid);
-                            frmlistadoPrestamos.Glosa = dtgconten[xGlosa.Name, x].Value.ToString();
-                            frmlistadoPrestamos.EmpresaOrigen = cboOriEmpresa.Text;
-                            frmlistadoPrestamos.EmpresaDestino = dtgconten[xEmpresaDes.Name, x].Value.ToString();
-                            //--+--
-                            frmlistadoPrestamos.MdiParent = this.MdiParent;
-                            frmlistadoPrestamos.Show();
-                        }
+                        int _empresa, _fkid;
+                        _empresa = (int)cboOriEmpresa.SelectedValue;
+                        _fkid = (int)dtgconten[xpkid.Name, x].Value;
+                        ModuloFinanzas.frmListadoPrestamosInterEmpresa frmlistadoPrestamos = new frmListadoPrestamosInterEmpresa(_empresa, _fkid);
+                        frmlistadoPrestamos.Glosa = dtgconten[xGlosa.Name, x].Value.ToString();
+                        frmlistadoPrestamos.EmpresaOrigen = cboOriEmpresa.Text;
+                        frmlistadoPrestamos.EmpresaDestino = dtgconten[xEmpresaDes.Name, x].Value.ToString();
+                        //--+--
+                        frmlistadoPrestamos.MdiParent = this.MdiParent;
+                        frmlistadoPrestamos.Show();
                     }
                 }
+
             }
         }
         private void cbomoneda_SelectedIndexChanged(object sender, EventArgs e)
@@ -547,7 +548,7 @@ namespace HPReserger.ModuloFinanzas
                         //
                         if (int.Parse(CuoOrigenValue.Substring(5)) != 0)
                         {
-                            NumComprobante = "Pr." + pkid + " - " + ((DateTime)item.Cells[xFechaPrestado.Name].Value).ToShortDateString();
+                            NumComprobante = "Pr." + pkid + "-" + ((DateTime)item.Cells[xFechaPrestado.Name].Value).ToShortDateString();
                             idTipoDocProveedor = 5;
                         }
                         ///Detalle en la Empresa Origen - BANCOS

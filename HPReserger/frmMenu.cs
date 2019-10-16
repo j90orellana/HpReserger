@@ -21,7 +21,7 @@ namespace HPReserger
             ICono = this.Icon;
         }
         public static int Users = 10;
-        public static DateTime DateLicense = new DateTime(2018, 10, 18);//18 Octubre del 2019
+        public static DateTime DateLicense = new DateTime(2018, 11, 2);//2 Noviembre del 2019
         public static int DaysCaducatesLicence = 30;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public static Icon ICono;
@@ -190,7 +190,7 @@ namespace HPReserger
         private void ConsultarCaducarLicencia()
         {
             var resul = (frmMenu.DateLicense.AddYears(1) - DateTime.Now);
-            if (resul.Days < DaysCaducatesLicence)
+            if (resul.Days <= DaysCaducatesLicence)
             {
                 HpResergerUserControls.FotoCheck fotito = new HpResergerUserControls.FotoCheck();
                 //fotito.BackColor = Color.Transparent;

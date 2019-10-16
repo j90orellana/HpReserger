@@ -4322,16 +4322,16 @@ namespace HPResergerCapaDatos
             object[] valores = { opcion, nroboleta, tipo, idcliente, importemo, importepen, tc, importepagado, diferencia, nropago, banco, nrocuenta, fechapago, usuario, fkempresa, idcomprobante, cuo };
             return bd.DataTableFromProcedure("usp_DetraccionPagoVenta", parametros, valores, null);
         }
-        public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string CuentaRedondeo, DateTime @fechapago, DateTime Fechacontable, string glosa, int idcomprobante)
+        public DataTable PagarDetracionesCabecera(int asiento, string cuo, int empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string ruc, string nrofac, string cuenta, string CuentaRedondeo, DateTime @fechapago, DateTime Fechacontable, string glosa, int idcomprobante, decimal TC)
         {
-            string[] parametros = { "@Asiento", "@Cuo", "@Empresa", "@MontoTotal", "@MontoRedondeo", "@MontoDiferencia", "@Ruc", "@Nrofac", "@cuenta", "@CuentaRedondeo", "@fechapago", "@FechaContable", "@glosa", "@idcomprobante" };
-            object[] valores = { asiento, cuo, empresa, montoTotal, montoredondeo, montodiferencia, ruc, nrofac, cuenta, CuentaRedondeo, @fechapago, Fechacontable, glosa, idcomprobante };
+            string[] parametros = { "@Asiento", "@Cuo", "@Empresa", "@MontoTotal", "@MontoRedondeo", "@MontoDiferencia", "@Ruc", "@Nrofac", "@cuenta", "@CuentaRedondeo", "@fechapago", "@FechaContable", "@glosa", "@idcomprobante", "@tc" };
+            object[] valores = { asiento, cuo, empresa, montoTotal, montoredondeo, montodiferencia, ruc, nrofac, cuenta, CuentaRedondeo, @fechapago, Fechacontable, glosa, idcomprobante, TC };
             return bd.DataTableFromProcedure("usp_PagarDetracionesCabecera", parametros, valores, null);
         }
-        public DataTable PagarDetracionesVentaCabecera(int asiento, string cuo, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string nroboleta, string cuentaContableNacion, string cuentacontablebanco, string CuentaRedondeo, DateTime fechacontable, string glosa, int fkempresa, DateTime FechaPago, int idcomprobante)
+        public DataTable PagarDetracionesVentaCabecera(int asiento, string cuo, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string nroboleta, string cuentaContableNacion, string cuentacontablebanco, string CuentaRedondeo, DateTime fechacontable, string glosa, int fkempresa, DateTime FechaPago, int idcomprobante, decimal TC)
         {
-            string[] parametros = { "@Asiento", "@Cuo", "@MontoTotal", "@MontoRedondeo", "@MontoDiferencia", "@nroBoleta", "@CuentaContableNacion", "@CuentaContableBanco", "@CuentaRedondeo", "@fechaContable", "@glosa", "@empresa", "@FechaPago", "@IdComprobante" };
-            object[] valores = { asiento, cuo, montoTotal, montoredondeo, montodiferencia, nroboleta, cuentaContableNacion, cuentacontablebanco, CuentaRedondeo, fechacontable, glosa, fkempresa, FechaPago, idcomprobante };
+            string[] parametros = { "@Asiento", "@Cuo", "@MontoTotal", "@MontoRedondeo", "@MontoDiferencia", "@nroBoleta", "@CuentaContableNacion", "@CuentaContableBanco", "@CuentaRedondeo", "@fechaContable", "@glosa", "@empresa", "@FechaPago", "@IdComprobante", "@tc" };
+            object[] valores = { asiento, cuo, montoTotal, montoredondeo, montodiferencia, nroboleta, cuentaContableNacion, cuentacontablebanco, CuentaRedondeo, fechacontable, glosa, fkempresa, FechaPago, idcomprobante, TC };
             return bd.DataTableFromProcedure("usp_PagarDetracionesVentaCabecera", parametros, valores, null);
         }
         public DataTable PagarDetracionesDetalle(int @Asiento, string @Cuo, int @Empresa, decimal montoTotal, decimal montoredondeo, decimal montodiferencia, string @Ruc, string @Codfac, string @Numfac, decimal @Total, decimal @tc, int @Idcuenta, string @Cuentacontablebanco, string CuentaRedondeo, DateTime @fechaContable, string @glosa, int @Usuario, int @idcomprobante)

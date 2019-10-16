@@ -34,8 +34,8 @@ namespace HPReserger
             TTipoDoc = new DataTable();
             TTipoDoc.Columns.Add("Codigo", typeof(int));
             TTipoDoc.Columns.Add("valor");
-            TTipoDoc.Rows.Add(3, "Boleta");
-            TTipoDoc.Rows.Add(1, "Factura");
+            TTipoDoc.Rows.Add("3", "Boleta");
+            TTipoDoc.Rows.Add("1", "Factura");
         }
         private void frmDetraccionVentaPagoBancoNacion_Load(object sender, EventArgs e)
         {
@@ -58,13 +58,19 @@ namespace HPReserger
             TDetracciones.Columns.Remove("FechaCancelado");
             TDetracciones.Columns.Remove("BaseMO");
             TDetracciones.Columns.Remove("tipocomprobante");
+            TDetracciones.Columns.Remove("tipo");
             for (int i = 0; i < TDetracciones.Rows.Count; i++)
             {
                 if ((int)TDetracciones.Rows[i]["opcion"] != 1) { TDetracciones.Rows.RemoveAt(i); i--; }
             }
             TDetracciones.Columns.Remove("opcion");
             TDetracciones.Columns.Add("empresa");
+            TDetracciones.Columns["empresa"].SetOrdinal(0);
             TDetracciones.Columns.Add("numero");
+            TDetracciones.Columns["numero"].SetOrdinal(2);
+            //
+            TDetracciones.Columns["fechaemision"].SetOrdinal(3);
+            TDetracciones.Columns["redondeo"].SetOrdinal(12);
             foreach (DataRow item in TDetracciones.Rows)
             {
                 item["empresa"] = txtnombreempresa.Text;
@@ -100,7 +106,7 @@ namespace HPReserger
                 Combo.ValueMember = "codigo";
                 Combo.DisplayMember = "valor";
             }
-            CalcularTotales();
+            //CalcularTotales();
         }
         private void CalcularTotales()
         {

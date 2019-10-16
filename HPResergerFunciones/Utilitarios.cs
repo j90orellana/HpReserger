@@ -898,7 +898,7 @@ namespace HPResergerFunciones
             //AutoAjustarColumnas
             foreach (int i in AutoAjustarColumnas)
             {
-                Hoja_Trabajo.Column(i).AutoFit();
+                Hoja_Trabajo.Column(i).AutoFit(6);
             }
             //Fin Ajuste de Texto
             if (!EstaArchivoAbierto(file.ToString()))

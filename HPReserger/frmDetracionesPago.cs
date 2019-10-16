@@ -278,6 +278,8 @@ namespace HPReserger
                     int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                     int IdUsuario = frmLogin.CodigoUsuario;
                     string glosa = txtglosa.TextValido();
+                    decimal TC = 0;
+                    TC = CapaLogica.TipoCambioDia("Venta", FechaPago);
                     ///FIN DECLARACION DE VARIABLES
                     //PROCESO DE PAGO
                     string nrofac = "", ruc = "";
@@ -302,7 +304,7 @@ namespace HPReserger
                     }
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
                     CapaLogica.PagarDetracionesCabecera(codigo, CuoPago, IdEmpresa, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), ruc, nrofac
-                        , cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante);
+                        , cbocuentabanco.SelectedValue.ToString(), txtcuentaredondeo.Text, FechaPago, FechaContable, glosa, idcomprobante, TC);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)

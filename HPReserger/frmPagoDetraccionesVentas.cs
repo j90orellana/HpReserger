@@ -49,6 +49,8 @@ namespace HPReserger
             foreach (DataGridViewRow item in dtgconten.Rows)
             {
                 item.Cells[xredondeo.Name].Value = Math.Round((decimal)item.Cells[ImportePEN.Name].Value);
+                if (decimal.Parse(item.Cells[xredondeo.Name].Value.ToString()) < 1)
+                    item.Cells[xredondeo.Name].Value = 1;
                 //  item.Cells[xDiferencia.Name].Value = (decimal)item.Cells[porpagarx.Name].Value - (decimal)item.Cells[xRedondeo.Name].Value;
             }
         }
@@ -345,6 +347,8 @@ namespace HPReserger
                     int idCta = (int)((DataTable)cbocuentabanco.DataSource).Rows[cbocuentabanco.SelectedIndex]["idtipocta"];
                     string CuentaContableBanco = cbocuentabanco.SelectedValue.ToString();
                     string CuentaDetracciones = txtcuentadetracciones.Text;
+                    decimal TC = 0;
+                    TC = CapaLogica.TipoCambioDia("Venta", FechaPago);
                     ///FIN DECLARACION DE VARIABLES
                     string NroBoleta = "", Idcliente = "";
                     int idcomprobante = 0;
@@ -370,7 +374,7 @@ namespace HPReserger
                     }
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
                     CapaLogica.PagarDetracionesVentaCabecera(codigo, CuopPago, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones
-                        , CuentaContableBanco, "9559501", FechaContable, glosa, IdEmpresa, FechaPago, idcomprobante);
+                        , CuentaContableBanco, "9559501", FechaContable, glosa, IdEmpresa, FechaPago, idcomprobante, TC);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)

@@ -754,7 +754,7 @@ namespace HPReserger
                 if (cbotipodoc.Items.Count == 0) { Msg("No hay Tipo"); cbotipodoc.Focus(); return; }
                 if (txtcodfactura.Text.Length == 0) { Msg($"Ingrese Codigo de {cbotipodoc.Text}"); txtcodfactura.Focus(); return; }
                 if (txtnrofactura.Text.Length == 0) { Msg($"Ingrese Número de {cbotipodoc.Text}"); txtnrofactura.Focus(); return; }
-                if (!txttotalfac.EstaLLeno()) { Msg("Ingrese Total del Comprobante"); txttotalfac.Focus(); return; }
+                if (!txttotalfac.EstaLLeno()) { if (msgyes("Desea Graba el Comprobante con Total Cero.") != DialogResult.Yes) { txttotalfac.Focus(); return; } }
                 if (decimal.Parse(txttipocambio.TextValido()) == 0) { Msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
                 if (!txtruc.EstaLLeno()) { Msg("Ingrese RUC del Comprobante"); txtruc.Focus(); return; }
                 if (_TipoDoc == 0) if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { Msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
@@ -1345,13 +1345,13 @@ namespace HPReserger
                         HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xDebeHaber.Name]);
                     }
                     else { HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xDebeHaber.Name]); ErrorDH = true; }
-                    if ((item.Cells[xImporteMN.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xImporteMN.Name].Value) <= 0)
+                    if ((item.Cells[xImporteMN.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xImporteMN.Name].Value) <= 0 && decimal.Parse(txttotalfac.Text) != 0)
                     {
                         ErrorM = true;
                         HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xImporteMN.Name]);
                     }
                     else HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[xImporteMN.Name]);
-                    if ((item.Cells[xImporteME.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xImporteME.Name].Value) <= 0)
+                    if ((item.Cells[xImporteME.Name].Value.ToString() == "" ? 0 : (decimal)item.Cells[xImporteME.Name].Value) <= 0 && decimal.Parse(txttotalfac.Text) != 0)
                     {
                         ErrorM = true;
                         HPResergerFunciones.Utilitarios.ColorCeldaError(item.Cells[xImporteME.Name]);
@@ -1475,7 +1475,7 @@ namespace HPReserger
                                     ///soles
                                     if ((int)cbomoneda.SelectedValue == 1)
                                         TotalIgv += (CuentaContableAgregada == "4221201" ? -1 : 1) * Redondear(Redondear((decimal)item.Cells[xImporteMN.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
-                                    else TotalIgv += (CuentaContableAgregada == "4221201" ? -1 : 1 )* Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
+                                    else TotalIgv += (CuentaContableAgregada == "4221201" ? -1 : 1) * Redondear(Redondear((decimal)item.Cells[xImporteME.Name].Value * (1 + igvs)) / (1 + igvs) * igvs);
                                     filaIgv[xCentroCosto.DataPropertyName] = "";
                                     filaIgv[xCentroCostoDesc.DataPropertyName] = "";
                                     filaIgv[xCodAsientoCtble.DataPropertyName] = cuo;
