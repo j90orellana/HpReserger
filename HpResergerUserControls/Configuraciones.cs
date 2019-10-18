@@ -57,10 +57,14 @@ namespace HpResergerUserControls
             Boolean Prueba = false;
             string Text1 = "DELETE ";
             string Text2 = "DROP ";
+            string Text3 = " OR ";
+            string Text4 = "=";
             foreach (TextBox Textos in txt)
             {
                 if (Textos.Text.ToUpper().Contains(Text1)) Prueba = true;
                 if (Textos.Text.ToUpper().Contains(Text2)) Prueba = true;
+                if (Textos.Text.ToUpper().Contains(Text3)) Prueba = true;
+                if (Textos.Text.ToUpper().Contains(Text4)) Prueba = true;
             }
             return Prueba;
         }

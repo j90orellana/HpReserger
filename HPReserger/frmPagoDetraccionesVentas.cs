@@ -139,6 +139,15 @@ namespace HPReserger
             CapaLogica.TablaEmpresa(cboempresa);
             cboempresa.Text = cadena;
         }
+        public void CargarProyecto()
+        {
+            if (cboempresa.SelectedValue != null)
+            {
+                cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
+                cboproyecto.DisplayMember = "proyecto";
+                cboproyecto.ValueMember = "id_proyecto";
+            }
+        }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbobanco.SelectedValue != null)
@@ -147,6 +156,7 @@ namespace HPReserger
                 NameEmpresa = cboempresa.Text;
                 CargarDAtos();
             }
+            CargarProyecto();
             BuscarCuentaDetracicones();
         }
         private void cbobanco_SelectedIndexChanged(object sender, EventArgs e)
@@ -295,6 +305,10 @@ namespace HPReserger
                             return;
                         }
                     }
+                    //
+                    if (cboproyecto.SelectedValue == null) { msg("Seleccione un Proyecto"); cboproyecto.Focus(); return; }
+                    if (cboempresa.SelectedValue == null) { msg("Seleccione una Empresa"); cboempresa.Focus(); return; }
+                    //
                     if (!txtDescCuenta.EstaLLeno()) { msg("Seleccione Cuenta Contable de Detracciones"); txtcuentadetracciones.Focus(); return; }
                     DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                     if (TPrueba2.Rows.Count == 0) { msg("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
@@ -374,7 +388,7 @@ namespace HPReserger
                     }
                     ///DINAMICA DEL PROCESO DE PAGO CABECERA                   
                     CapaLogica.PagarDetracionesVentaCabecera(codigo, CuopPago, decimal.Parse(txttotal.Text), decimal.Parse(txtredondeo.Text), decimal.Parse(txtdiferencia.Text), NroBoleta, CuentaDetracciones
-                        , CuentaContableBanco, "9559501", FechaContable, glosa, IdEmpresa, FechaPago, idcomprobante, TC);
+                        , CuentaContableBanco, "9559501", FechaContable, glosa, IdEmpresa, FechaPago, idcomprobante, TC, (int)cboproyecto.SelectedValue);
                     ///DINAMICA DEL PROCESO DE PAGO DETALLE
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         if ((int)item.Cells[opcionx.Name].Value == 1)
@@ -391,9 +405,12 @@ namespace HPReserger
                                 , (decimal)item.Cells[xdiferencia.Name].Value
                                 //item.Cells[monedax.Name].Value.ToString() == "1" ? (decimal)item.Cells[ImportePEN.Name].Value / (decimal)item.Cells[xtc.Name].Value : (decimal)item.Cells[ImportePEN.Name].Value
                                 , (decimal)item.Cells[xtc.Name].Value, CuentaDetracciones, CuentaContableBanco, idCta, FechaContable, decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103"
-                                , glosa, IdUsuario, IdEmpresa);
+                                , glosa, IdUsuario, IdEmpresa, TC, (int)cboproyecto.SelectedValue);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA
+                    //Cuadrar Asiento
+                    CapaLogica.CuadrarAsiento(CuopPago, (int)cboproyecto.SelectedValue, FechaContable, 2);
+                    //Fin Cuadrar Asiento
                     HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! \nCon Asiento {CuopPago}");
                     btnActualizar_Click(sender, e);
                     txttotal.Text = txtdiferencia.Text = txtredondeo.Text = "0.00";

@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNroOpBancacia));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.chkNroop = new HpResergerUserControls.checkboxOre();
             this.btnpdf = new System.Windows.Forms.Button();
@@ -46,22 +46,6 @@
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.dtgconten = new HpResergerUserControls.Dtgconten();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtnrobanco = new HpResergerUserControls.TextBoxPer();
-            this.cbocuenta = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.txtrazon = new HpResergerUserControls.TextBoxPer();
-            this.txtruc = new HpResergerUserControls.TextBoxPer();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbobanco = new HpResergerUserControls.ComboBoxPer(this.components);
-            this.dtpfecha2 = new System.Windows.Forms.DateTimePicker();
-            this.dtpfecha1 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtnroid = new HpResergerUserControls.TextBoxPer();
-            this.label3 = new System.Windows.Forms.Label();
             this.okx = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xnameEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +63,26 @@
             this.botonx = new System.Windows.Forms.DataGridViewButtonColumn();
             this.xfkempresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xcuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtnrobanco = new HpResergerUserControls.TextBoxPer();
+            this.cbocuenta = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.txtrazon = new HpResergerUserControls.TextBoxPer();
+            this.txtruc = new HpResergerUserControls.TextBoxPer();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbobanco = new HpResergerUserControls.ComboBoxPer(this.components);
+            this.dtpfecha2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpfecha1 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtnroid = new HpResergerUserControls.TextBoxPer();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txttipodoc = new HpResergerUserControls.TextBoxPer();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboEmpresa = new HpResergerUserControls.ComboBoxPer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgconten)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +101,7 @@
             this.chkNroop.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.chkNroop.ColorChecked = System.Drawing.Color.Empty;
             this.chkNroop.ColorUnChecked = System.Drawing.Color.Empty;
-            this.chkNroop.Location = new System.Drawing.Point(604, 41);
+            this.chkNroop.Location = new System.Drawing.Point(607, 62);
             this.chkNroop.Name = "chkNroop";
             this.chkNroop.Size = new System.Drawing.Size(90, 17);
             this.chkNroop.TabIndex = 236;
@@ -137,7 +141,7 @@
             // btnseleccion
             // 
             this.btnseleccion.Image = ((System.Drawing.Image)(resources.GetObject("btnseleccion.Image")));
-            this.btnseleccion.Location = new System.Drawing.Point(17, 121);
+            this.btnseleccion.Location = new System.Drawing.Point(17, 144);
             this.btnseleccion.Name = "btnseleccion";
             this.btnseleccion.Size = new System.Drawing.Size(151, 23);
             this.btnseleccion.TabIndex = 139;
@@ -192,9 +196,9 @@
             this.dtgconten.AllowUserToOrderColumns = true;
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
-            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
+            this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -203,14 +207,14 @@
             this.dtgconten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgconten.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgconten.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dtgconten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dtgconten.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.okx,
@@ -230,265 +234,35 @@
             this.botonx,
             this.xfkempresa,
             this.xcuo});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgconten.DefaultCellStyle = dataGridViewCellStyle21;
             this.dtgconten.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dtgconten.EnableHeadersVisualStyles = false;
             this.dtgconten.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.dtgconten.Location = new System.Drawing.Point(17, 146);
+            this.dtgconten.Location = new System.Drawing.Point(17, 169);
             this.dtgconten.Name = "dtgconten";
             this.dtgconten.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgconten.RowHeadersVisible = false;
             this.dtgconten.RowTemplate.Height = 18;
-            this.dtgconten.Size = new System.Drawing.Size(979, 278);
+            this.dtgconten.Size = new System.Drawing.Size(979, 255);
             this.dtgconten.TabIndex = 112;
             this.dtgconten.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellContentClick);
             this.dtgconten.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellDoubleClick);
             this.dtgconten.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_CellValueChanged);
             this.dtgconten.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgconten_RowEnter);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.chkNroop);
-            this.groupBox1.Controls.Add(this.txtnrobanco);
-            this.groupBox1.Controls.Add(this.cbocuenta);
-            this.groupBox1.Controls.Add(this.txtrazon);
-            this.groupBox1.Controls.Add(this.txtruc);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cbobanco);
-            this.groupBox1.Controls.Add(this.dtpfecha2);
-            this.groupBox1.Controls.Add(this.dtpfecha1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(17, 35);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(715, 85);
-            this.groupBox1.TabIndex = 111;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Buscar Por:";
-            // 
-            // txtnrobanco
-            // 
-            this.txtnrobanco.BackColor = System.Drawing.Color.White;
-            this.txtnrobanco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnrobanco.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnrobanco.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnrobanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnrobanco.ForeColor = System.Drawing.Color.Black;
-            this.txtnrobanco.Format = null;
-            this.txtnrobanco.Location = new System.Drawing.Point(394, 38);
-            this.txtnrobanco.MaxLength = 100;
-            this.txtnrobanco.Name = "txtnrobanco";
-            this.txtnrobanco.NextControlOnEnter = null;
-            this.txtnrobanco.Size = new System.Drawing.Size(210, 21);
-            this.txtnrobanco.TabIndex = 6;
-            this.txtnrobanco.Text = "Ingrese Nro Op Bancaria";
-            this.txtnrobanco.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnrobanco.TextoDefecto = "Ingrese Nro Op Bancaria";
-            this.txtnrobanco.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnrobanco.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            this.txtnrobanco.TextChanged += new System.EventHandler(this.txtnrobanco_TextChanged);
-            // 
-            // cbocuenta
-            // 
-            this.cbocuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbocuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbocuenta.FormattingEnabled = true;
-            this.cbocuenta.IndexText = null;
-            this.cbocuenta.Location = new System.Drawing.Point(394, 61);
-            this.cbocuenta.Name = "cbocuenta";
-            this.cbocuenta.ReadOnly = false;
-            this.cbocuenta.Size = new System.Drawing.Size(303, 21);
-            this.cbocuenta.TabIndex = 8;
-            this.cbocuenta.SelectedIndexChanged += new System.EventHandler(this.cbocuenta_SelectedIndexChanged);
-            // 
-            // txtrazon
-            // 
-            this.txtrazon.BackColor = System.Drawing.Color.White;
-            this.txtrazon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtrazon.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtrazon.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtrazon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtrazon.ForeColor = System.Drawing.Color.Black;
-            this.txtrazon.Format = null;
-            this.txtrazon.Location = new System.Drawing.Point(394, 15);
-            this.txtrazon.MaxLength = 100;
-            this.txtrazon.Name = "txtrazon";
-            this.txtrazon.NextControlOnEnter = null;
-            this.txtrazon.Size = new System.Drawing.Size(303, 21);
-            this.txtrazon.TabIndex = 3;
-            this.txtrazon.Text = "Ingrese Razón Social/Cliente";
-            this.txtrazon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtrazon.TextoDefecto = "Ingrese Razón Social/Cliente";
-            this.txtrazon.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtrazon.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
-            this.txtrazon.TextChanged += new System.EventHandler(this.txtrazon_TextChanged);
-            // 
-            // txtruc
-            // 
-            this.txtruc.BackColor = System.Drawing.Color.White;
-            this.txtruc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtruc.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtruc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtruc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtruc.ForeColor = System.Drawing.Color.Black;
-            this.txtruc.Format = null;
-            this.txtruc.Location = new System.Drawing.Point(98, 15);
-            this.txtruc.MaxLength = 100;
-            this.txtruc.Name = "txtruc";
-            this.txtruc.NextControlOnEnter = null;
-            this.txtruc.Size = new System.Drawing.Size(192, 21);
-            this.txtruc.TabIndex = 2;
-            this.txtruc.Text = "000000";
-            this.txtruc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtruc.TextoDefecto = "000000";
-            this.txtruc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtruc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            this.txtruc.TextChanged += new System.EventHandler(this.txtruc_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(32, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
-            this.label4.TabIndex = 117;
-            this.label4.Text = "NroFactura:";
-            // 
-            // cbobanco
-            // 
-            this.cbobanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
-            this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbobanco.FormattingEnabled = true;
-            this.cbobanco.IndexText = null;
-            this.cbobanco.Location = new System.Drawing.Point(98, 61);
-            this.cbobanco.Name = "cbobanco";
-            this.cbobanco.ReadOnly = false;
-            this.cbobanco.Size = new System.Drawing.Size(192, 21);
-            this.cbobanco.TabIndex = 7;
-            this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
-            this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
-            // 
-            // dtpfecha2
-            // 
-            this.dtpfecha2.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.dtpfecha2.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.dtpfecha2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfecha2.Location = new System.Drawing.Point(197, 37);
-            this.dtpfecha2.Name = "dtpfecha2";
-            this.dtpfecha2.Size = new System.Drawing.Size(93, 22);
-            this.dtpfecha2.TabIndex = 5;
-            this.dtpfecha2.ValueChanged += new System.EventHandler(this.dtpfecha2_ValueChanged);
-            // 
-            // dtpfecha1
-            // 
-            this.dtpfecha1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.dtpfecha1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.dtpfecha1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfecha1.Location = new System.Drawing.Point(98, 37);
-            this.dtpfecha1.Name = "dtpfecha1";
-            this.dtpfecha1.Size = new System.Drawing.Size(93, 22);
-            this.dtpfecha1.TabIndex = 4;
-            this.dtpfecha1.ValueChanged += new System.EventHandler(this.dtpfecha1_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(30, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 113;
-            this.label2.Text = "Fecha Pago:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(57, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 112;
-            this.label1.Text = "Banco:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(297, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 13);
-            this.label7.TabIndex = 122;
-            this.label7.Text = "Nro Op. Bancaria:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(326, 65);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 120;
-            this.label6.Text = "Nro Cuenta:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(313, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 13);
-            this.label5.TabIndex = 118;
-            this.label5.Text = "Razon/Cliente:";
-            // 
-            // txtnroid
-            // 
-            this.txtnroid.BackColor = System.Drawing.Color.White;
-            this.txtnroid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnroid.ColorFondoMouseEncima = System.Drawing.Color.Empty;
-            this.txtnroid.ColorFondoMousePresionado = System.Drawing.Color.Empty;
-            this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnroid.ForeColor = System.Drawing.Color.Black;
-            this.txtnroid.Format = null;
-            this.txtnroid.Location = new System.Drawing.Point(115, 12);
-            this.txtnroid.MaxLength = 20;
-            this.txtnroid.Name = "txtnroid";
-            this.txtnroid.NextControlOnEnter = null;
-            this.txtnroid.Size = new System.Drawing.Size(192, 21);
-            this.txtnroid.TabIndex = 1;
-            this.txtnroid.Text = "Ingrese Valor";
-            this.txtnroid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtnroid.TextoDefecto = "Ingrese Valor";
-            this.txtnroid.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(14, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
-            this.label3.TabIndex = 110;
-            this.label3.Text = "Nro.Op.Bancaria";
-            // 
             // okx
             // 
             this.okx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.okx.DataPropertyName = "ok";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.okx.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.okx.DefaultCellStyle = dataGridViewCellStyle17;
             this.okx.FalseValue = "0";
             this.okx.HeaderText = "Ok";
             this.okx.Name = "okx";
@@ -571,9 +345,9 @@
             // 
             this.importex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.importex.DataPropertyName = "importe";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "n2";
-            this.importex.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "n2";
+            this.importex.DefaultCellStyle = dataGridViewCellStyle18;
             this.importex.HeaderText = "Importe";
             this.importex.MinimumWidth = 70;
             this.importex.Name = "importex";
@@ -584,9 +358,9 @@
             // 
             this.FechaPagox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.FechaPagox.DataPropertyName = "FechaPago";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "d";
-            this.FechaPagox.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "d";
+            this.FechaPagox.DefaultCellStyle = dataGridViewCellStyle19;
             this.FechaPagox.HeaderText = "FechaPago";
             this.FechaPagox.MinimumWidth = 70;
             this.FechaPagox.Name = "FechaPagox";
@@ -617,8 +391,8 @@
             // 
             this.NroOPBancox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.NroOPBancox.DataPropertyName = "NroOPBanco";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.NroOPBancox.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.NroOPBancox.DefaultCellStyle = dataGridViewCellStyle20;
             this.NroOPBancox.HeaderText = "NroOPBanco";
             this.NroOPBancox.MinimumWidth = 50;
             this.NroOPBancox.Name = "NroOPBancox";
@@ -648,6 +422,295 @@
             this.xcuo.HeaderText = "cuo";
             this.xcuo.Name = "xcuo";
             this.xcuo.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.chkNroop);
+            this.groupBox1.Controls.Add(this.txtnrobanco);
+            this.groupBox1.Controls.Add(this.cboEmpresa);
+            this.groupBox1.Controls.Add(this.cbocuenta);
+            this.groupBox1.Controls.Add(this.txtrazon);
+            this.groupBox1.Controls.Add(this.txttipodoc);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.txtruc);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cbobanco);
+            this.groupBox1.Controls.Add(this.dtpfecha2);
+            this.groupBox1.Controls.Add(this.dtpfecha1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(17, 35);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(709, 108);
+            this.groupBox1.TabIndex = 111;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Buscar Por:";
+            // 
+            // txtnrobanco
+            // 
+            this.txtnrobanco.BackColor = System.Drawing.Color.White;
+            this.txtnrobanco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnrobanco.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnrobanco.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnrobanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnrobanco.ForeColor = System.Drawing.Color.Black;
+            this.txtnrobanco.Format = null;
+            this.txtnrobanco.Location = new System.Drawing.Point(394, 60);
+            this.txtnrobanco.MaxLength = 100;
+            this.txtnrobanco.Name = "txtnrobanco";
+            this.txtnrobanco.NextControlOnEnter = null;
+            this.txtnrobanco.Size = new System.Drawing.Size(210, 21);
+            this.txtnrobanco.TabIndex = 6;
+            this.txtnrobanco.Text = "Ingrese Nro Op Bancaria";
+            this.txtnrobanco.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnrobanco.TextoDefecto = "Ingrese Nro Op Bancaria";
+            this.txtnrobanco.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnrobanco.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtnrobanco.TextChanged += new System.EventHandler(this.txtnrobanco_TextChanged);
+            // 
+            // cbocuenta
+            // 
+            this.cbocuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbocuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbocuenta.FormattingEnabled = true;
+            this.cbocuenta.IndexText = null;
+            this.cbocuenta.Location = new System.Drawing.Point(394, 83);
+            this.cbocuenta.Name = "cbocuenta";
+            this.cbocuenta.ReadOnly = false;
+            this.cbocuenta.Size = new System.Drawing.Size(303, 21);
+            this.cbocuenta.TabIndex = 8;
+            this.cbocuenta.SelectedIndexChanged += new System.EventHandler(this.cbocuenta_SelectedIndexChanged);
+            // 
+            // txtrazon
+            // 
+            this.txtrazon.BackColor = System.Drawing.Color.White;
+            this.txtrazon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtrazon.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtrazon.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtrazon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtrazon.ForeColor = System.Drawing.Color.Black;
+            this.txtrazon.Format = null;
+            this.txtrazon.Location = new System.Drawing.Point(394, 37);
+            this.txtrazon.MaxLength = 100;
+            this.txtrazon.Name = "txtrazon";
+            this.txtrazon.NextControlOnEnter = null;
+            this.txtrazon.Size = new System.Drawing.Size(303, 21);
+            this.txtrazon.TabIndex = 3;
+            this.txtrazon.Text = "Ingrese Razón Social/Cliente";
+            this.txtrazon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtrazon.TextoDefecto = "Ingrese Razón Social/Cliente";
+            this.txtrazon.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtrazon.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.MayusculaCadaPalabra;
+            this.txtrazon.TextChanged += new System.EventHandler(this.txtrazon_TextChanged);
+            // 
+            // txtruc
+            // 
+            this.txtruc.BackColor = System.Drawing.Color.White;
+            this.txtruc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtruc.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtruc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtruc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtruc.ForeColor = System.Drawing.Color.Black;
+            this.txtruc.Format = null;
+            this.txtruc.Location = new System.Drawing.Point(98, 37);
+            this.txtruc.MaxLength = 100;
+            this.txtruc.Name = "txtruc";
+            this.txtruc.NextControlOnEnter = null;
+            this.txtruc.Size = new System.Drawing.Size(192, 21);
+            this.txtruc.TabIndex = 2;
+            this.txtruc.Text = "000000";
+            this.txtruc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtruc.TextoDefecto = "000000";
+            this.txtruc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtruc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txtruc.TextChanged += new System.EventHandler(this.txtruc_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(32, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 117;
+            this.label4.Text = "NroFactura:";
+            // 
+            // cbobanco
+            // 
+            this.cbobanco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cbobanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbobanco.FormattingEnabled = true;
+            this.cbobanco.IndexText = null;
+            this.cbobanco.Location = new System.Drawing.Point(98, 83);
+            this.cbobanco.Name = "cbobanco";
+            this.cbobanco.ReadOnly = false;
+            this.cbobanco.Size = new System.Drawing.Size(192, 21);
+            this.cbobanco.TabIndex = 7;
+            this.cbobanco.SelectedIndexChanged += new System.EventHandler(this.cbobanco_SelectedIndexChanged);
+            this.cbobanco.Click += new System.EventHandler(this.cbobanco_Click);
+            // 
+            // dtpfecha2
+            // 
+            this.dtpfecha2.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.dtpfecha2.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.dtpfecha2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpfecha2.Location = new System.Drawing.Point(197, 59);
+            this.dtpfecha2.Name = "dtpfecha2";
+            this.dtpfecha2.Size = new System.Drawing.Size(93, 22);
+            this.dtpfecha2.TabIndex = 5;
+            this.dtpfecha2.ValueChanged += new System.EventHandler(this.dtpfecha2_ValueChanged);
+            // 
+            // dtpfecha1
+            // 
+            this.dtpfecha1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.dtpfecha1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.dtpfecha1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpfecha1.Location = new System.Drawing.Point(98, 59);
+            this.dtpfecha1.Name = "dtpfecha1";
+            this.dtpfecha1.Size = new System.Drawing.Size(93, 22);
+            this.dtpfecha1.TabIndex = 4;
+            this.dtpfecha1.ValueChanged += new System.EventHandler(this.dtpfecha1_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(30, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 113;
+            this.label2.Text = "Fecha Pago:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(57, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 112;
+            this.label1.Text = "Banco:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Location = new System.Drawing.Point(297, 64);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.TabIndex = 122;
+            this.label7.Text = "Nro Op. Bancaria:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Location = new System.Drawing.Point(326, 87);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 120;
+            this.label6.Text = "Nro Cuenta:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Location = new System.Drawing.Point(313, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.TabIndex = 118;
+            this.label5.Text = "Razon/Cliente:";
+            // 
+            // txtnroid
+            // 
+            this.txtnroid.BackColor = System.Drawing.Color.White;
+            this.txtnroid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtnroid.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txtnroid.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txtnroid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnroid.ForeColor = System.Drawing.Color.Black;
+            this.txtnroid.Format = null;
+            this.txtnroid.Location = new System.Drawing.Point(115, 12);
+            this.txtnroid.MaxLength = 20;
+            this.txtnroid.Name = "txtnroid";
+            this.txtnroid.NextControlOnEnter = null;
+            this.txtnroid.Size = new System.Drawing.Size(192, 21);
+            this.txtnroid.TabIndex = 1;
+            this.txtnroid.Text = "Ingrese Valor";
+            this.txtnroid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtnroid.TextoDefecto = "Ingrese Valor";
+            this.txtnroid.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txtnroid.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(14, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 110;
+            this.label3.Text = "Nro.Op.Bancaria";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(47, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.TabIndex = 117;
+            this.label8.Text = "Tipo Doc";
+            // 
+            // txttipodoc
+            // 
+            this.txttipodoc.BackColor = System.Drawing.Color.White;
+            this.txttipodoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txttipodoc.ColorFondoMouseEncima = System.Drawing.Color.Empty;
+            this.txttipodoc.ColorFondoMousePresionado = System.Drawing.Color.Empty;
+            this.txttipodoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttipodoc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttipodoc.Format = null;
+            this.txttipodoc.Location = new System.Drawing.Point(98, 14);
+            this.txttipodoc.MaxLength = 100;
+            this.txttipodoc.Name = "txttipodoc";
+            this.txttipodoc.NextControlOnEnter = null;
+            this.txttipodoc.Size = new System.Drawing.Size(192, 21);
+            this.txttipodoc.TabIndex = 2;
+            this.txttipodoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txttipodoc.TextoDefecto = "";
+            this.txttipodoc.TextoDefectoColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            this.txttipodoc.TiposDatos = HpResergerUserControls.TextBoxPer.ListaTipos.Todo;
+            this.txttipodoc.TextChanged += new System.EventHandler(this.txtruc_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Location = new System.Drawing.Point(342, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 120;
+            this.label9.Text = "Empresa:";
+            // 
+            // cboEmpresa
+            // 
+            this.cboEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(218)))), ((int)(((byte)(231)))));
+            this.cboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEmpresa.FormattingEnabled = true;
+            this.cboEmpresa.IndexText = null;
+            this.cboEmpresa.Location = new System.Drawing.Point(394, 14);
+            this.cboEmpresa.Name = "cboEmpresa";
+            this.cboEmpresa.ReadOnly = false;
+            this.cboEmpresa.Size = new System.Drawing.Size(303, 21);
+            this.cboEmpresa.TabIndex = 8;
+            this.cboEmpresa.SelectedIndexChanged += new System.EventHandler(this.cbocuenta_SelectedIndexChanged);
+            this.cboEmpresa.Click += new System.EventHandler(this.cboEmpresa_Click);
             // 
             // frmNroOpBancacia
             // 
@@ -722,5 +785,9 @@
         private System.Windows.Forms.DataGridViewButtonColumn botonx;
         private System.Windows.Forms.DataGridViewTextBoxColumn xfkempresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn xcuo;
+        private HpResergerUserControls.ComboBoxPer cboEmpresa;
+        private HpResergerUserControls.TextBoxPer txttipodoc;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -31,41 +31,48 @@ namespace HPReserger
         }
         List<Listado> lista;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+
         private void frmNroOpBancacia_Load(object sender, EventArgs e)
         {
+            Busqueda = false;
+            cboEmpresa_Click(sender, e);
             CodigoBanco = 0;
             CargarBancos();
             LimpiarDatos();
+            Busqueda = true;
             CargarGrilla();
             lista = new List<Listado>();
         }
         DataTable TDatos;
         public void CargarGrilla()
         {
-            int c = 0;
-            ///usp_ListarNroOpBancaria
-            string cuenta = cbocuenta.Text.Split(' ')[0];
-            if (cuenta == "NINGUNA") cuenta = "";
-            int CheckEstado = 0;
-            if (chkNroop.CheckState == CheckState.Checked) CheckEstado = 1;
-            else if (chkNroop.CheckState == CheckState.Unchecked) CheckEstado = -1;
-            //
-            TDatos = CapaLogica.ListarNroOpBancaria(CodigoBanco, cuenta, txtruc.TextValido(), txtrazon.TextValido(), txtnrobanco.TextValido(), dtpfecha1.Value, dtpfecha2.Value, CheckEstado);
-            foreach (DataRow item in TDatos.Rows)//id   ok
+            if (Busqueda)
             {
-                int valor = (int)item[idx.DataPropertyName];
-                int tipor = (int)item[xdet.DataPropertyName];
-                int empresa = (int)item[xfkempresa.DataPropertyName];
-                string cuo = item["cuo"].ToString();
-                //Listado lis = new Listado(valor, tipor, empresa, cuo);
-                if (lista != null)
-                    if (lista.Find(cust => cust.cuo == cuo && cust.fkempresa == empresa && cust.tipo == tipor && cust.index == valor) != null)
-                    {
-                        c++;
-                        item["ok"] = 1;
-                    }
+                int c = 0;
+                ///usp_ListarNroOpBancaria
+                string cuenta = cbocuenta.Text.Split(' ')[0];
+                if (cuenta == "NINGUNA") cuenta = "";
+                int CheckEstado = 0;
+                if (chkNroop.CheckState == CheckState.Checked) CheckEstado = 1;
+                else if (chkNroop.CheckState == CheckState.Unchecked) CheckEstado = -1;
+                //
+                TDatos = CapaLogica.ListarNroOpBancaria(CodigoBanco, cuenta, txtruc.TextValido(), txtrazon.TextValido(), txtnrobanco.TextValido(), dtpfecha1.Value, dtpfecha2.Value, CheckEstado, cboEmpresa.Text, txttipodoc.Text);
+                foreach (DataRow item in TDatos.Rows)//id   ok
+                {
+                    int valor = (int)item[idx.DataPropertyName];
+                    int tipor = (int)item[xdet.DataPropertyName];
+                    int empresa = (int)item[xfkempresa.DataPropertyName];
+                    string cuo = item["cuo"].ToString();
+                    //Listado lis = new Listado(valor, tipor, empresa, cuo);
+                    if (lista != null)
+                        if (lista.Find(cust => cust.cuo == cuo && cust.fkempresa == empresa && cust.tipo == tipor && cust.index == valor) != null)
+                        {
+                            c++;
+                            item["ok"] = 1;
+                        }
+                }
+                OrdernarDatos();
             }
-            OrdernarDatos();
         }
         public void OrdernarDatos()
         {
@@ -174,6 +181,8 @@ namespace HPReserger
             //CargarBancos();
         }
         public int CodigoBanco { get; set; }
+        public bool Busqueda { get; private set; }
+
         private void cbobanco_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbobanco.SelectedIndex >= 0)
@@ -377,6 +386,16 @@ namespace HPReserger
             Cursor = Cursors.Default;
             frmproce.Close();
             dtgconten.ResumeLayout();
+        }
+        private void cboEmpresa_Click(object sender, EventArgs e)
+        {
+            string cadena = cboEmpresa.Text;
+            DataTable Table = CapaLogica.TablaEmpresa();
+            if (Table.Rows.Count != cboEmpresa.Items.Count)
+            {
+                CapaLogica.TablaEmpresa(cboEmpresa);
+                cboEmpresa.Text = cadena;
+            }
         }
     }
 }
