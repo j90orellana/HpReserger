@@ -43,6 +43,7 @@ namespace HPReserger.ModuloReportes
         string NameEmpresa = "";
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             FechaInicioAnio = new DateTime(comboMesAño.FechaFinMes.Year, 1, 1);
             NameEmpresa = cboEmpresas.Text;
             FechaFinMes = comboMesAño.FechaFinMes;
@@ -61,6 +62,7 @@ namespace HPReserger.ModuloReportes
                 dtgconten.DataSource = dv.ToTable();
             }
             lblconteo.Text = $"Total Registros: {dtgconten.RowCount}";
+            this.Cursor = Cursors.Default;
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {

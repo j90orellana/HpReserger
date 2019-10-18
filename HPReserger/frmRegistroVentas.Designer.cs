@@ -239,7 +239,7 @@
             this.comboMesAño1.AutoSize = true;
             this.comboMesAño1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño1.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 10, 3, 0, 0, 0, 0);
+            this.comboMesAño1.FechaConDiaActual = new System.DateTime(2019, 10, 16, 0, 0, 0, 0);
             this.comboMesAño1.FechaFinMes = new System.DateTime(2019, 10, 31, 0, 0, 0, 0);
             this.comboMesAño1.FechaInicioMes = new System.DateTime(2019, 10, 1, 0, 0, 0, 0);
             this.comboMesAño1.Location = new System.Drawing.Point(70, 28);
@@ -310,6 +310,7 @@
             this.dtgconten.AllowUserToResizeColumns = false;
             this.dtgconten.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(191)))), ((int)(((byte)(231)))));
             this.dtgconten.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgconten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -322,7 +323,7 @@
             this.dtgconten.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -357,7 +358,7 @@
             this.xNumDocRef});
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(207)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
@@ -383,7 +384,7 @@
             this.xCodAsientoCtble.HeaderText = "Cuo";
             this.xCodAsientoCtble.Name = "xCodAsientoCtble";
             this.xCodAsientoCtble.ReadOnly = true;
-            this.xCodAsientoCtble.Width = 52;
+            this.xCodAsientoCtble.Width = 50;
             // 
             // xix
             // 
@@ -393,7 +394,7 @@
             this.xix.MinimumWidth = 50;
             this.xix.Name = "xix";
             this.xix.ReadOnly = true;
-            this.xix.Width = 87;
+            this.xix.Width = 84;
             // 
             // xFechaEmision
             // 
@@ -404,7 +405,7 @@
             this.xFechaEmision.HeaderText = "Fecha Emisíon";
             this.xFechaEmision.Name = "xFechaEmision";
             this.xFechaEmision.ReadOnly = true;
-            this.xFechaEmision.Width = 95;
+            this.xFechaEmision.Width = 90;
             // 
             // xFechaVencimiento
             // 
@@ -415,7 +416,7 @@
             this.xFechaVencimiento.HeaderText = "Fecha Vencimiento";
             this.xFechaVencimiento.Name = "xFechaVencimiento";
             this.xFechaVencimiento.ReadOnly = true;
-            this.xFechaVencimiento.Width = 116;
+            this.xFechaVencimiento.Width = 110;
             // 
             // xidC
             // 
@@ -424,7 +425,7 @@
             this.xidC.HeaderText = "Tipo Comprobante de Pago";
             this.xidC.Name = "xidC";
             this.xidC.ReadOnly = true;
-            this.xidC.Width = 108;
+            this.xidC.Width = 102;
             // 
             // xSerieCom
             // 
@@ -433,7 +434,7 @@
             this.xSerieCom.HeaderText = "Serie Comprobante de Pago";
             this.xSerieCom.Name = "xSerieCom";
             this.xSerieCom.ReadOnly = true;
-            this.xSerieCom.Width = 111;
+            this.xSerieCom.Width = 104;
             // 
             // xNumCom
             // 
@@ -442,7 +443,7 @@
             this.xNumCom.HeaderText = "Número Comprobante de Pago";
             this.xNumCom.Name = "xNumCom";
             this.xNumCom.ReadOnly = true;
-            this.xNumCom.Width = 111;
+            this.xNumCom.Width = 104;
             // 
             // xTipoIdPro
             // 
@@ -451,7 +452,7 @@
             this.xTipoIdPro.HeaderText = "Tipo Doc. Identidad";
             this.xTipoIdPro.Name = "xTipoIdPro";
             this.xTipoIdPro.ReadOnly = true;
-            this.xTipoIdPro.Width = 121;
+            this.xTipoIdPro.Width = 114;
             // 
             // xNumpro
             // 
@@ -462,7 +463,7 @@
             this.xNumpro.HeaderText = "Número Doc. Identidad";
             this.xNumpro.Name = "xNumpro";
             this.xNumpro.ReadOnly = true;
-            this.xNumpro.Width = 93;
+            this.xNumpro.Width = 88;
             // 
             // xNombrePro
             // 
@@ -485,7 +486,7 @@
             this.xImportacion.HeaderText = "Valor Facturado Exportación";
             this.xImportacion.Name = "xImportacion";
             this.xImportacion.ReadOnly = true;
-            this.xImportacion.Width = 105;
+            this.xImportacion.Width = 101;
             // 
             // ximporteIGV
             // 
@@ -497,7 +498,7 @@
             this.ximporteIGV.HeaderText = "Base Imponible Operación Gravada";
             this.ximporteIGV.Name = "ximporteIGV";
             this.ximporteIGV.ReadOnly = true;
-            this.ximporteIGV.Width = 104;
+            this.ximporteIGV.Width = 97;
             // 
             // xExonerado
             // 
@@ -509,7 +510,7 @@
             this.xExonerado.HeaderText = "Importe Total Operación Exonerada";
             this.xExonerado.Name = "xExonerado";
             this.xExonerado.ReadOnly = true;
-            this.xExonerado.Width = 93;
+            this.xExonerado.Width = 91;
             // 
             // ximporteNGR
             // 
@@ -521,7 +522,7 @@
             this.ximporteNGR.HeaderText = "Importe Total Operación Inafecta";
             this.ximporteNGR.Name = "ximporteNGR";
             this.ximporteNGR.ReadOnly = true;
-            this.ximporteNGR.Width = 93;
+            this.ximporteNGR.Width = 91;
             // 
             // xisc
             // 
@@ -533,7 +534,7 @@
             this.xisc.HeaderText = "ISC";
             this.xisc.Name = "xisc";
             this.xisc.ReadOnly = true;
-            this.xisc.Width = 47;
+            this.xisc.Width = 48;
             // 
             // xIGVyoIPM
             // 
@@ -545,7 +546,7 @@
             this.xIGVyoIPM.HeaderText = "IGV Y/O IPM";
             this.xIGVyoIPM.Name = "xIGVyoIPM";
             this.xIGVyoIPM.ReadOnly = true;
-            this.xIGVyoIPM.Width = 68;
+            this.xIGVyoIPM.Width = 49;
             // 
             // xOtrosTributos
             // 
@@ -557,7 +558,7 @@
             this.xOtrosTributos.HeaderText = "Otros Tributos";
             this.xOtrosTributos.Name = "xOtrosTributos";
             this.xOtrosTributos.ReadOnly = true;
-            this.xOtrosTributos.Width = 95;
+            this.xOtrosTributos.Width = 92;
             // 
             // xImporteTotal
             // 
@@ -569,7 +570,7 @@
             this.xImporteTotal.HeaderText = "Importe Total Comprobante";
             this.xImporteTotal.Name = "xImporteTotal";
             this.xImporteTotal.ReadOnly = true;
-            this.xImporteTotal.Width = 157;
+            this.xImporteTotal.Width = 149;
             // 
             // xMoneda
             // 
@@ -578,7 +579,7 @@
             this.xMoneda.HeaderText = "Moneda";
             this.xMoneda.Name = "xMoneda";
             this.xMoneda.ReadOnly = true;
-            this.xMoneda.Width = 74;
+            this.xMoneda.Width = 69;
             // 
             // xTC
             // 
@@ -590,7 +591,7 @@
             this.xTC.HeaderText = "Tipo Cambio";
             this.xTC.Name = "xTC";
             this.xTC.ReadOnly = true;
-            this.xTC.Width = 87;
+            this.xTC.Width = 82;
             // 
             // xFechaDocRef
             // 
@@ -601,7 +602,7 @@
             this.xFechaDocRef.HeaderText = "Fecha Doc. Referencia";
             this.xFechaDocRef.Name = "xFechaDocRef";
             this.xFechaDocRef.ReadOnly = true;
-            this.xFechaDocRef.Width = 131;
+            this.xFechaDocRef.Width = 128;
             // 
             // xTipoDocRef
             // 
@@ -612,7 +613,7 @@
             this.xTipoDocRef.HeaderText = "Tipo Doc. Referencia";
             this.xTipoDocRef.Name = "xTipoDocRef";
             this.xTipoDocRef.ReadOnly = true;
-            this.xTipoDocRef.Width = 124;
+            this.xTipoDocRef.Width = 120;
             // 
             // xSerieDocRef
             // 
@@ -623,7 +624,7 @@
             this.xSerieDocRef.HeaderText = "Serie Doc. Referencia";
             this.xSerieDocRef.Name = "xSerieDocRef";
             this.xSerieDocRef.ReadOnly = true;
-            this.xSerieDocRef.Width = 127;
+            this.xSerieDocRef.Width = 123;
             // 
             // xNumDocRef
             // 
@@ -634,7 +635,7 @@
             this.xNumDocRef.HeaderText = "Num Doc. Referencia";
             this.xNumDocRef.Name = "xNumDocRef";
             this.xNumDocRef.ReadOnly = true;
-            this.xNumDocRef.Width = 126;
+            this.xNumDocRef.Width = 121;
             // 
             // backgroundWorker1
             // 

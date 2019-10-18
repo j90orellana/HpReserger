@@ -55,7 +55,9 @@
             this.operacionesBancariasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.prestamoInterEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cobroInterEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -255,8 +257,6 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.fotoCheck1 = new HpResergerUserControls.FotoCheck();
             this.fondoColorOre2 = new HpResergerUserControls.FondoColorOre(this.components);
-            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
-            this.cobroInterEmpresasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuclick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbesquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfotoempleado)).BeginInit();
@@ -359,9 +359,9 @@
             this.pbfotoempleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.pbfotoempleado.ContextMenuStrip = this.cmenuclick;
             this.pbfotoempleado.Image = global::HPReserger.Properties.Resources.sshot_2017_07_04__18_02s_16_;
-            this.pbfotoempleado.Location = new System.Drawing.Point(1110, 0);
+            this.pbfotoempleado.Location = new System.Drawing.Point(1110, 23);
             this.pbfotoempleado.Name = "pbfotoempleado";
-            this.pbfotoempleado.Size = new System.Drawing.Size(62, 54);
+            this.pbfotoempleado.Size = new System.Drawing.Size(40, 30);
             this.pbfotoempleado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfotoempleado.TabIndex = 54;
             this.pbfotoempleado.TabStop = false;
@@ -503,6 +503,11 @@
             this.toolStripMenuItem4.Text = "Cobro a Clientes";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(254, 6);
+            // 
             // prestamoInterEmpresasToolStripMenuItem
             // 
             this.prestamoInterEmpresasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("prestamoInterEmpresasToolStripMenuItem.Image")));
@@ -510,6 +515,14 @@
             this.prestamoInterEmpresasToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.prestamoInterEmpresasToolStripMenuItem.Text = "Prestamo InterEmpresas";
             this.prestamoInterEmpresasToolStripMenuItem.Click += new System.EventHandler(this.prestamoInterEmpresasToolStripMenuItem_Click);
+            // 
+            // cobroInterEmpresasToolStripMenuItem
+            // 
+            this.cobroInterEmpresasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cobroInterEmpresasToolStripMenuItem.Image")));
+            this.cobroInterEmpresasToolStripMenuItem.Name = "cobroInterEmpresasToolStripMenuItem";
+            this.cobroInterEmpresasToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.cobroInterEmpresasToolStripMenuItem.Text = "Cobro InterEmpresas";
+            this.cobroInterEmpresasToolStripMenuItem.Click += new System.EventHandler(this.cobroInterEmpresasToolStripMenuItem_Click);
             // 
             // proyectosToolStripMenuItem1
             // 
@@ -2364,7 +2377,7 @@
             this.lblwelcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(231)))), ((int)(((byte)(238)))));
             this.lblwelcome.ContextMenuStrip = this.cmenuclick;
             this.lblwelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblwelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblwelcome.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblwelcome.ImageIndex = 0;
             this.lblwelcome.Location = new System.Drawing.Point(0, 0);
             this.lblwelcome.Name = "lblwelcome";
@@ -2400,19 +2413,6 @@
         System.Drawing.Color.Snow,
         System.Drawing.SystemColors.Control};
             this.fondoColorOre2.control = this.cmenuclick;
-            // 
-            // toolStripSeparator16
-            // 
-            this.toolStripSeparator16.Name = "toolStripSeparator16";
-            this.toolStripSeparator16.Size = new System.Drawing.Size(254, 6);
-            // 
-            // cobroInterEmpresasToolStripMenuItem
-            // 
-            this.cobroInterEmpresasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cobroInterEmpresasToolStripMenuItem.Image")));
-            this.cobroInterEmpresasToolStripMenuItem.Name = "cobroInterEmpresasToolStripMenuItem";
-            this.cobroInterEmpresasToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
-            this.cobroInterEmpresasToolStripMenuItem.Text = "Cobro InterEmpresas";
-            this.cobroInterEmpresasToolStripMenuItem.Click += new System.EventHandler(this.cobroInterEmpresasToolStripMenuItem_Click);
             // 
             // frmMenu
             // 

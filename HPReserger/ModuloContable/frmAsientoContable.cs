@@ -62,7 +62,8 @@ namespace HPReserger
 
             //Cambio de Empresa      
             this.Activated -= frmAsientoContable_Activated;
-            estado = 0; cboempresa_SelectedIndexChanged(sender, e);
+            estado = 0;
+            cboempresa_SelectedIndexChanged(sender, e);
             if (dtgbusca.RowCount > 0)
             {
                 activar();
@@ -342,7 +343,7 @@ namespace HPReserger
         }
         private void txtdinamica_Leave(object sender, EventArgs e)
         {
-            txtdinamica.Text = coddinamica.ToString("CD_0000");
+            txtdinamica.Text = coddinamica.ToString("DC_000; DC_ - 000; DC_000");
         }
         private void txtdinamica_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -745,6 +746,8 @@ namespace HPReserger
         public int tipobusca = 0;
         private void Txtbusca_TextChanged(object sender, EventArgs e)
         {
+            if (sender.GetType().FullName == "System.Windows.Forms.TextBox")
+                if (Configuraciones.ValidarSQLInyect(((TextBox)sender))) { return; }
             if (ListoParaBuscar)
             {
                 if (fechaini.Value < fechafin.Value)
@@ -754,8 +757,11 @@ namespace HPReserger
                         //Forma Normal
                         dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechaini.Value, fechafin.Value, fechacheck, _idempresa);
                     }
-                    else dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
+                    else
+                    {
+                        dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
                        txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido());
+                    }
                 }
                 else
                 {
@@ -764,8 +770,11 @@ namespace HPReserger
                         //Forma Normal
                         dtgbusca.DataSource = CapaLogica.ListarAsientosContables(Txtbusca.EstaLLeno() ? Txtbusca.Text : "", tipobusca, fechafin.Value, fechaini.Value, fechacheck, _idempresa);
                     }
-                    else dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
-                        txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido());
+                    else
+                    {
+                        dtgbusca.DataSource = CapaLogica.ListarAsientosFiltrados(_idempresa, dtpfechaini.Value > dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value, dtpfechaini.Value < dtpfechafin.Value ? dtpfechafin.Value : dtpfechaini.Value,
+                     txtbuscuo.TextValido(), txtbuscuenta.TextValido(), txtbusGlosa.TextValido(), txtbusSuboperacion.TextValido());
+                    }
                 }
                 msg2(dtgbusca);
                 if (dtgbusca.RowCount < 1)
@@ -825,7 +834,7 @@ namespace HPReserger
                     dinamica = int.Parse(dtgbusca[Iddinamica.Name, e.RowIndex].Value.ToString());
                     if (dinamica >= 0 || dinamica == -21) _EsModificable = true;
                     cboestado.Text = dtgbusca[nameestado.Name, e.RowIndex].Value.ToString();
-                    txtdinamica.Text = "DC_00" + dinamica;
+                    txtdinamica.Text = dinamica.ToString("DC_000;DC_-000;DC_000");
                     ////selecciono la empresa
                     //if (dtgbusca[empresax.Name, y].Value.ToString() != "")
                     //    cboempresa.SelectedValue = (int)dtgbusca[empresax.Name, y].Value;
@@ -857,7 +866,7 @@ namespace HPReserger
                     txtcuo.Text = dtgbusca[Codidasiento.Name, y].Value.ToString();
                     txtcodigo.Text = decimal.Parse(txtcuo.Text.Substring(5)).ToString();
                     ////valores del asiento
-                    txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString();
+                    txtglosa.Text = dtgbusca[xglosa.Name, e.RowIndex].Value.ToString().Trim();
                     cbomoneda.SelectedValue = (int)(dtgbusca[xmoneda.Name, e.RowIndex].Value.ToString() == "" ? 0 : dtgbusca[xmoneda.Name, e.RowIndex].Value);
                     ///fin
                     DataTable Datos = CapaLogica.BuscarAsientosContablesconTodo(dtgbusca[idx.Name, y].Value.ToString(), 4, _idempresa, fechita);
@@ -900,53 +909,56 @@ namespace HPReserger
         }
         public void RevisarSihayDescuadre()
         {
-            DataTable Tdatos = CapaLogica.VerificarCuadredeAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue);
-            labelCuadre.Click -= LabelCuadre_Click;
-            labelCuadre.Text = "";
-            decimal pen = Math.Abs(((decimal)Tdatos.Rows[0]["pen"]));
-            decimal usd = Math.Abs(((decimal)Tdatos.Rows[0]["usd"]));
-            if (estado == -1 && (pen + usd) != 0)
-                if (Tdatos.Rows.Count > 0)
-                {
-                    if ((usd < 1 & pen < 1) && (usd >= 0 && pen >= 0) && (usd + pen != 0))
+            if (estado == -1)
+            {
+                DataTable Tdatos = CapaLogica.VerificarCuadredeAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue);
+                labelCuadre.Click -= LabelCuadre_Click;
+                labelCuadre.Text = "";
+                decimal pen = Math.Abs(((decimal)Tdatos.Rows[0]["pen"]));
+                decimal usd = Math.Abs(((decimal)Tdatos.Rows[0]["usd"]));
+                if (estado == -1 && (pen + usd) != 0)
+                    if (Tdatos.Rows.Count > 0)
                     {
-                        if (estado == -1)
+                        if ((usd < 1 & pen < 1) && (usd >= 0 && pen >= 0) && (usd + pen != 0))
                         {
-                            DateTime Fechita = dtpfechavalor.Value;
-                            CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
-                            CuoSelec = txtcuo.Text;
-                            //btnActualizar_Click(new object { }, new EventArgs());
-                            RefrescarAsientoSeleccionado();
-                        }
-                    }
-                    else if (((decimal)Tdatos.Rows[0]["pen"] + (decimal)Tdatos.Rows[0]["usd"]) != 0)
-                    {
-                        decimal mPen = (decimal)Tdatos.Rows[0]["pen"];
-                        decimal mUsd = (decimal)Tdatos.Rows[0]["usd"];
-                        labelCuadre.Text = $"Descuadre: Soles:{mPen}, Dolares:{mUsd}, Click para Revisar!";
-                        //MSG($"Se Encontro un Descuadre\nDescuadre: Soles:{ mPen}, Dolares: { mUsd}");
-                        frmCuadreAsientos frmcuadre = new frmCuadreAsientos($"Descuadre: Soles:{ mPen}, Dolares: { mUsd}");
-                        if (frmcuadre.ShowDialog() == DialogResult.OK)
-                        {
-                            DateTime Fechita = dtpfechavalor.Value;
-                            ///ajuste por redondeo
-                            if (frmcuadre.Resultado == 1)
+                            if (estado == -1)
                             {
+                                DateTime Fechita = dtpfechavalor.Value;
                                 CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
+                                CuoSelec = txtcuo.Text;
+                                //btnActualizar_Click(new object { }, new EventArgs());
                                 RefrescarAsientoSeleccionado();
-                                labelCuadre.Text = "";
-                            }
-                            ///ajuste por tipo de cambio
-                            if (frmcuadre.Resultado == 2)
-                            {
-                                CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 2);
-                                RefrescarAsientoSeleccionado();
-                                labelCuadre.Text = "";
                             }
                         }
-                        labelCuadre.Click += LabelCuadre_Click;
+                        else if (((decimal)Tdatos.Rows[0]["pen"] + (decimal)Tdatos.Rows[0]["usd"]) != 0)
+                        {
+                            decimal mPen = (decimal)Tdatos.Rows[0]["pen"];
+                            decimal mUsd = (decimal)Tdatos.Rows[0]["usd"];
+                            labelCuadre.Text = $"Descuadre: Soles:{mPen}, Dolares:{mUsd}, Click para Revisar!";
+                            //MSG($"Se Encontro un Descuadre\nDescuadre: Soles:{ mPen}, Dolares: { mUsd}");
+                            frmCuadreAsientos frmcuadre = new frmCuadreAsientos($"Descuadre: Soles:{ mPen}, Dolares: { mUsd}");
+                            if (frmcuadre.ShowDialog() == DialogResult.OK)
+                            {
+                                DateTime Fechita = dtpfechavalor.Value;
+                                ///ajuste por redondeo
+                                if (frmcuadre.Resultado == 1)
+                                {
+                                    CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 1);
+                                    RefrescarAsientoSeleccionado();
+                                    labelCuadre.Text = "";
+                                }
+                                ///ajuste por tipo de cambio
+                                if (frmcuadre.Resultado == 2)
+                                {
+                                    CapaLogica.CuadrarAsiento(txtcuo.Text, (int)cboproyecto.SelectedValue, Fechita, 2);
+                                    RefrescarAsientoSeleccionado();
+                                    labelCuadre.Text = "";
+                                }
+                            }
+                            labelCuadre.Click += LabelCuadre_Click;
+                        }
                     }
-                }
+            }
             estado = 0;
         }
         private void LabelCuadre_Click(object sender, EventArgs e)

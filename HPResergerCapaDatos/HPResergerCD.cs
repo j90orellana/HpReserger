@@ -4590,10 +4590,10 @@ namespace HPResergerCapaDatos
             object[] valores = { proveedor, nrofac, @idcomprobante };
             return bd.DataTableFromProcedure("usp_VerFacturasPagadasCompras", parametros, valores, null);
         }
-        public DataTable VerFacturasPagadasVentas(string TipoYIdCliente, string nrofac, int @idcomprobante)
+        public DataTable VerFacturasPagadasVentas(string TipoYIdCliente, string nrofac, int @idcomprobante, int idempresa)
         {
-            string[] parametros = { "@Cliente", "@nrofac", "@idcomprobante" };
-            object[] valores = { TipoYIdCliente, nrofac, @idcomprobante };
+            string[] parametros = { "@Cliente", "@nrofac", "@idcomprobante", "@idempresa" };
+            object[] valores = { TipoYIdCliente, nrofac, @idcomprobante, idempresa };
             return bd.DataTableFromProcedure("usp_VerFacturasPagadasVentas", parametros, valores, null);
         }
         public DataTable VerPeriodoAbierto(int empresa, DateTime Fecha)

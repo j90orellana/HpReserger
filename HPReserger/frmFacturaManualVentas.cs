@@ -840,7 +840,7 @@ namespace HPReserger
             _IndicadorColumna = dtgBusqueda.CurrentCell.ColumnIndex;
             if (Dtgconten.RowCount > 0)
             {
-                DataTable TPrueba1 = CapaLogica.VerFacturasPagadasVentas((int)cbotipoid.SelectedValue + "-" + txtdoc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
+                DataTable TPrueba1 = CapaLogica.VerFacturasPagadasVentas((int)cbotipoid.SelectedValue + "-" + txtdoc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue, (int)cboempresa.SelectedValue);
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                 if (TPrueba1.Rows.Count > 0)
                 {
@@ -1648,7 +1648,7 @@ namespace HPReserger
                 {
                     if (msgyes("Seguro Desea Eliminar Factura con su Asiento") == DialogResult.Yes)
                     {
-                        DataTable TPrueba1 = CapaLogica.VerFacturasPagadasVentas((int)cbotipoid.SelectedValue + "-" + txtdoc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
+                        DataTable TPrueba1 = CapaLogica.VerFacturasPagadasVentas((int)cbotipoid.SelectedValue + "-" + txtdoc.Text, txtcodfactura.Text + '-' + txtnrofactura.Text, (int)cbotipodoc.SelectedValue, (int)cboempresa.SelectedValue);
                         DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                         if (TPrueba1.Rows.Count > 0)
                         {

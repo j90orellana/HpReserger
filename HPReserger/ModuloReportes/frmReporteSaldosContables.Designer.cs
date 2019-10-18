@@ -59,12 +59,12 @@
             this.comboMesAño.AutoSize = true;
             this.comboMesAño.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.comboMesAño.BackColor = System.Drawing.Color.Transparent;
-            this.comboMesAño.FechaConDiaActual = new System.DateTime(2019, 9, 13, 0, 0, 0, 0);
-            this.comboMesAño.FechaFinMes = new System.DateTime(2019, 9, 30, 0, 0, 0, 0);
-            this.comboMesAño.FechaInicioMes = new System.DateTime(2019, 9, 1, 0, 0, 0, 0);
+            this.comboMesAño.FechaConDiaActual = new System.DateTime(2019, 10, 17, 0, 0, 0, 0);
+            this.comboMesAño.FechaFinMes = new System.DateTime(2019, 10, 31, 0, 0, 0, 0);
+            this.comboMesAño.FechaInicioMes = new System.DateTime(2019, 10, 1, 0, 0, 0, 0);
             this.comboMesAño.Location = new System.Drawing.Point(208, 59);
             this.comboMesAño.Name = "comboMesAño";
-            this.comboMesAño.Size = new System.Drawing.Size(190, 24);
+            this.comboMesAño.Size = new System.Drawing.Size(190, 27);
             this.comboMesAño.TabIndex = 97;
             this.comboMesAño.VerAño = true;
             this.comboMesAño.VerMes = true;
