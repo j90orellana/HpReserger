@@ -22,9 +22,11 @@ namespace HpResergerUserControls
         public DateTime Hoy = DateTime.Now;
         Color[] _colores = new Color[] { Color.FromArgb(252, 253, 253), Color.FromArgb(224, 229, 237), Color.FromArgb(252, 253, 253) };
         int _angulo = 45;
+        int _Seguntos = 0;
         public Color[] Colores { get { return _colores; } set { _colores = value; Invalidate(); } }
         public int Angulo { get { return _angulo; } set { _angulo = value; Invalidate(); } }
         public string Nombre { get { return Text; } set { Text = value; } }
+        public int SegundosAparecer { get { return _Seguntos; } set { _Seguntos = value; } }
         protected override void OnPaint(PaintEventArgs e)
         {
             if (this.ClientRectangle.Height > 0 && this.ClientRectangle.Width > 0)
@@ -81,9 +83,25 @@ namespace HpResergerUserControls
         //        return cp;
         //    }
         //}
+        Timer time = new Timer();
         private void FormGradient_Load(object sender, EventArgs e)
         {
+            //if (_Seguntos > 0 && Opacity == 1)
+            //{
+            //    time.Interval = (1000 / (100 * _Seguntos));
+            //    time.Tick += Time_Tick;
+            //    Opacity = 0;
+            //    time.Start();
+            //}
+        }
 
+        private void Time_Tick(object sender, EventArgs e)
+        {
+            if (Opacity < 1)
+            {
+                Opacity += 0.1;
+            }
+            else time.Stop();
         }
     }
 }
