@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public void cargarempresas()
         {
             cboempresa.ValueMember = "codigo";
@@ -142,10 +144,6 @@ namespace HPReserger
             }
             else
                 msg("No hay Filas para Exportar");
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

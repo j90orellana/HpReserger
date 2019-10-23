@@ -20,6 +20,8 @@ namespace HPReserger
         public int estado { get; set; }
         public int codmarca { get; set; }
         HPResergerCapaLogica.HPResergerCL CModelo = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             tipmsg.Show("Ingrese Modelo", txtmodelo, 1000);
@@ -54,7 +56,6 @@ namespace HPReserger
                 Activar();
             }
         }
-
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
@@ -62,14 +63,14 @@ namespace HPReserger
             {
                 codmarca = dtgconten.RowCount + 1;
                 CModelo.InsertarModelo(txtmodelo.Text);
-                MessageBox.Show("Modelo Ingresada con Id: " + codmarca, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msgOK("Modelo Ingresada con Id: " + codmarca);
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtmodelo.Text))
                 {
                     CModelo.ActualizarModelo(Convert.ToInt32(txtcodigo.Text), txtmodelo.Text);
-                    MessageBox.Show("Modelo Actualizada con Id: " + txtcodigo.Text, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    msgOK("Modelo Actualizada con Id: " + txtcodigo.Text);
                 }
                 else
                 {
@@ -78,7 +79,7 @@ namespace HPReserger
                         if (MessageBox.Show("Seguró Desea Eliminar " + txtmodelo.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             CModelo.EliminarModelo(Convert.ToInt32(txtcodigo.Text));
-                            MessageBox.Show("Modelo Eliminada con Id: " + txtcodigo.Text, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            msgOK("Modelo Eliminada con Id: " + txtcodigo.Text);
                         }
                     }
                 }
@@ -108,14 +109,14 @@ namespace HPReserger
                     if (dtgconten[1, i].Value.ToString() == valor)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtmodelo.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        msg("Este valor:" + txtmodelo.Text + " ya Existe");
                         return Aux;
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Debe Ingresar Datos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Debe Ingresar Datos");
                 Aux = false;
             }
             return Aux;

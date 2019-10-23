@@ -218,7 +218,7 @@ namespace HPReserger
                             Celda.Style.ForeColor = Color.Black;
                         }
                     }
-                    if ((item.Cells[indez.Name].Value.ToString().Length <= 4)&& item.Cells[indez.Name].Value.ToString().Length>0)
+                    if ((item.Cells[indez.Name].Value.ToString().Length <= 4) && item.Cells[indez.Name].Value.ToString().Length > 0)
                     {
                         if (item.Cells[indez.Name].Value.ToString().Substring(item.Cells[indez.Name].Value.ToString().Length - 2, 2) == "99" || item.Cells[indez.Name].Value.ToString().Substring(item.Cells[indez.Name].Value.ToString().Length - 2, 2) == "00")
                         {
@@ -460,7 +460,8 @@ namespace HPReserger
                 }
                 catch (System.Data.SqlClient.SqlException ex)
                 {
-                    Cursor = Cursors.Default; msg($"Error: Revise la Naturaleza de las Cuentas  \n{ex.Message}");
+                    Cursor = Cursors.Default;
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Error", $"Revise la Naturaleza de las Cuentas  \n{ex.Message}");
                 }
 
                 //if (cboempresas.Items.Count > 0)

@@ -22,6 +22,8 @@ namespace HPReserger
             get { return txtnroid.MaxLength; }
             set { txtnroid.MaxLength = value; }
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         int estado = 0;
         DataTable Tproductos;
@@ -159,10 +161,6 @@ namespace HPReserger
                     ((TextBoxPer)item).CargarTextoporDefecto();
                 }
             }
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         private void btnbuscar_Click(object sender, EventArgs e)
         {
@@ -341,7 +339,7 @@ namespace HPReserger
             {
                 CapaLogica.CotizacionesCLienteCabeceraDetalle(1, numero, (int)item.Cells[idempresa.Name].Value, (int)item.Cells[idproyecto.Name].Value, item.Cells[Etapa.Name].Value.ToString(), (int)item.Cells[Producto.Name].Value, (decimal)item.Cells[Cantidad.Name].Value, (decimal)item.Cells[Precio_Base.Name].Value, decimal.Parse(txttipocambioref.Text), (int)item.Cells[TDesc.Name].Value, (decimal)item.Cells[VDesc.Name].Value, (decimal)item.Cells[P_Coti.Name].Value, (decimal)item.Cells[xsubtotal.Name].Value, (decimal)item.Cells[xigv.Name].Value, (int)item.Cells[idmoneda.Name].Value, (decimal)item.Cells[PInicial.Name].Value, (int)item.Cells[tipo_inicial.Name].Value, (decimal)item.Cells[valor_inicial.Name].Value);
             }
-            msg($"Cotización Nro: {numero.ToString("00000")}, Asociado Exitosamente ");
+            msgOK($"Cotización Nro: {numero.ToString("00000")}, Asociado Exitosamente ");
             //CIERRE
             ProcesoDeCotizar(false);
             ((DataTable)(dtgconten.DataSource)).Rows.Clear();

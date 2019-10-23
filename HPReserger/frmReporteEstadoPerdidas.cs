@@ -19,6 +19,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int empresa;
         public DateTime año;
         public string NombreEmpresa;

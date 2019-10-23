@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmlistarSeparacionVta_Load(object sender, EventArgs e)
         {
             if (Estado == 2 || Estado == 200) dtgconten.Columns[dias.Name].Visible = false;

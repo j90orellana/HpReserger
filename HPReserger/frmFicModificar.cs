@@ -60,24 +60,23 @@ namespace HPReserger
         {
             if (txtGuia.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Guía de Remisión", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Guía de Remisión");
                 txtGuia.Focus();
                 return;
             }
 
             if (txtCantFIC.Text.Length == 0 || Convert.ToInt32(txtCantFIC.Text) == 0)
             {
-                MessageBox.Show("Cantidad FIC inválida", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Cantidad FIC inválida");
                 txtCantFIC.Focus();
                 return;
             }
-
             if (Convert.ToInt32(txtGuia.Text) != Convert.ToInt32(GuiaRemision))
             {
                 DataTable dtGuiaRemisionProveedorM = clModificarFIC.OrdenCompraProveedor(Proveedor, Convert.ToInt32(txtGuia.Text), ordencompra, tipo);
                 if (dtGuiaRemisionProveedorM.Rows.Count > 0)
                 {
-                    MessageBox.Show(lblguia.Text + " ya existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg(lblguia.Text + " ya existe");
                     txtGuia.Focus();
                     return;
                 }
@@ -85,7 +84,7 @@ namespace HPReserger
 
             if (Convert.ToInt32(txtCantOC.Text) < Convert.ToInt32(txtCantFIC.Text))
             {
-                MessageBox.Show("Cantidad FIC NO puede ser mayor a Cantidad OC", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Cantidad FIC NO puede ser mayor a Cantidad OC");
                 txtCantFIC.Focus();
                 return;
             }
@@ -94,11 +93,11 @@ namespace HPReserger
             clModificarFIC.FICEliminarItemDetalle(ItemDetalle, FIC, CodigoArticulo, CodigoMarca, CodigoModelo);
             clModificarFIC.FICDetalleInsertar(FIC, CodigoArticulo, CodigoMarca, CodigoModelo, Convert.ToInt32(txtCantFIC.Text), "", tipo, ccc);
 
-            MessageBox.Show("FIC modificado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialog("FIC modificado con éxito");
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
-
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         private void txtCantFIC_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosEnteros(e);

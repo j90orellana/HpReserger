@@ -19,6 +19,9 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public int _PlazoPago { get; set; }
         public int _idempresa { get; set; }
@@ -191,10 +194,6 @@ namespace HPReserger
             //        Msg("Nro Factura ya Existe");
             //    }
             //}
-        }
-        public void Msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public DialogResult MsgAceptCancel(string cadena)
         {
@@ -431,7 +430,7 @@ namespace HPReserger
                     //}
                 }
             }
-            else Msg("No hay Empresas");
+            else msg("No hay Empresas");
         }
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -443,7 +442,7 @@ namespace HPReserger
                 cboetapa.DisplayMember = "descripcion";
                 _proyecto = (int)itemsito["id_proyecto"];
             }
-            else Msg("No Hay Proyectos");
+            else msg("No Hay Proyectos");
         }
         public void CalcularDiferenciaTOtalDetra()
         {
@@ -720,7 +719,7 @@ namespace HPReserger
             if (Estado == 10)
             {
                 CapaLogica.FacturaManualCabecera(_idFac, imgfactura);
-                Msg($"Imagen de la Factura Actualizada Con Éxito");
+                msgOK($"Imagen de la Factura Actualizada Con Éxito");
                 btnvistaPrevia.Visible = false;
                 Estado = 0;
                 btnAceptar.Enabled = btnCargarFoto.Enabled = false;
@@ -742,29 +741,29 @@ namespace HPReserger
                     }
                     else
                     {
-                        BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { Msg("El Documento de Referencia no se ha Encontrado"); return; }
+                        BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { msg("El Documento de Referencia no se ha Encontrado"); return; }
                     }
                 }//BusquedaDocReferencia(); btnaplicar.Enabled = false; if (Encontrado == 0) { Msg("El Documento de Referencia no se ha Encontrado"); return; } }
                 DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
-                if (TPrueba2.Rows.Count == 0) { Msg("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
-                if (cboempresa.Items.Count == 0) { Msg("No hay Empresa"); cboempresa.Focus(); return; }
-                if (cboproyecto.Items.Count == 0) { Msg("No hay Proyecto"); cboproyecto.Focus(); return; }
-                if (cboetapa.Items.Count == 0) { Msg("No hay Etapa"); cboetapa.Focus(); return; }
-                if (cbomoneda.Items.Count == 0) { Msg("No hay Moneda"); cbomoneda.Focus(); return; }
-                if (cbotipodoc.Items.Count == 0) { Msg("No hay Tipo"); cbotipodoc.Focus(); return; }
-                if (txtcodfactura.Text.Length == 0) { Msg($"Ingrese Codigo de {cbotipodoc.Text}"); txtcodfactura.Focus(); return; }
-                if (txtnrofactura.Text.Length == 0) { Msg($"Ingrese Número de {cbotipodoc.Text}"); txtnrofactura.Focus(); return; }
+                if (TPrueba2.Rows.Count == 0) { msg("El Periodo está Cerrado cambie la Fecha Contable"); dtpFechaContable.Focus(); return; }
+                if (cboempresa.Items.Count == 0) { msg("No hay Empresa"); cboempresa.Focus(); return; }
+                if (cboproyecto.Items.Count == 0) { msg("No hay Proyecto"); cboproyecto.Focus(); return; }
+                if (cboetapa.Items.Count == 0) { msg("No hay Etapa"); cboetapa.Focus(); return; }
+                if (cbomoneda.Items.Count == 0) { msg("No hay Moneda"); cbomoneda.Focus(); return; }
+                if (cbotipodoc.Items.Count == 0) { msg("No hay Tipo"); cbotipodoc.Focus(); return; }
+                if (txtcodfactura.Text.Length == 0) { msg($"Ingrese Codigo de {cbotipodoc.Text}"); txtcodfactura.Focus(); return; }
+                if (txtnrofactura.Text.Length == 0) { msg($"Ingrese Número de {cbotipodoc.Text}"); txtnrofactura.Focus(); return; }
                 if (!txttotalfac.EstaLLeno()) { if (msgyes("Desea Graba el Comprobante con Total Cero.") != DialogResult.Yes) { txttotalfac.Focus(); return; } }
-                if (decimal.Parse(txttipocambio.TextValido()) == 0) { Msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
-                if (!txtruc.EstaLLeno()) { Msg("Ingrese RUC del Comprobante"); txtruc.Focus(); return; }
-                if (_TipoDoc == 0) if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { Msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
+                if (decimal.Parse(txttipocambio.TextValido()) == 0) { msg("El Tipo de Cambio debe ser Mayor a Cero"); txttipocambio.Focus(); return; }
+                if (!txtruc.EstaLLeno()) { msg("Ingrese RUC del Comprobante"); txtruc.Focus(); return; }
+                if (_TipoDoc == 0) if (cbodetraccion.Text == "SI") if (!txtdescdetraccion.EstaLLeno()) { msg("Seleccione la Detracción"); cbodetraccion.Focus(); return; }
                 ///valido compensacion
                 DatosCompensacion = "";
                 if ((new int[] { 1, 2, 3 }).Contains((int)cbocompensa.SelectedValue))
                 {
                     if (cbotipoidcompensa.SelectedValue == null || txtnumdocompensa.Text.Length == 0)
                     {
-                        Msg("Seleccione Empleado de la Compensación"); btnbususuacompesa.Focus(); return;
+                        msg("Seleccione Empleado de la Compensación"); btnbususuacompesa.Focus(); return;
                     }
                     DatosCompensacion = cbotipoidcompensa.SelectedValue.ToString() + "-" + txtnumdocompensa.Text;
                 }
@@ -796,7 +795,7 @@ namespace HPReserger
                     if (errorc) { cadena += "Hay Errores en las Cuentas\n"; }
                     if (ErrorDH) { cadena += "Hay Errores en del Debe/Haber\n"; }
                     /////VALIDACION
-                    if (errorc || ErrorDH) { Msg(cadena); return; }
+                    if (errorc || ErrorDH) { msg(cadena); return; }
                 }
                 else FacturaEstado = 0;
             }
@@ -854,7 +853,7 @@ namespace HPReserger
             {
                 /////VALIDO SI EXISTE LA FACTURA  
                 DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, (int)cbotipodoc.SelectedValue);
-                if (Tprueba.Rows.Count > 0) { Msg("No se puede Registrar, Este Documento Ya Existe"); return; }
+                if (Tprueba.Rows.Count > 0) { msg("No se puede Registrar, Este Documento Ya Existe"); return; }
                 /////INSERTANDO LA FACTURA
                 CapaLogica.FacturaManualCabecera(OpcionBusqueda == 1 ? 1 : 100, 0, (int)cbotipodoc.SelectedValue, NumFac, NumFacRef, txtruc.Text, (int)cboempresa.SelectedValue, (int)cboproyecto.SelectedValue, (int)cboetapa.SelectedValue, (int)cbocompensa.SelectedValue, (int)cbomoneda.SelectedValue,
                    decimal.Parse(txttipocambio.Text), decimal.Parse(txttotalfac.Text), TotalIgv, cbograba.SelectedIndex, dtpfechaemision.Value, dtpfecharecep.Value, dtpfechavence.Value, dtpFechaContable.Value, compensada ? 3 : FacturaEstado, 0, "", cbodetraccion.Text == "NO" ? "" : coddet, numdetraccion.Value,
@@ -886,14 +885,14 @@ namespace HPReserger
                         i++;
                     }
                 }
-                if (FacturaEstado == 0) Msg($"Documento Guardado Con Éxito"); else Msg($"Documento Guardado \nGenerado sus Asiento : {cuo} \nCon Éxito");
+                if (FacturaEstado == 0) msgOK($"Documento Guardado Con Éxito"); else msgOK($"Documento Guardado \nGenerado sus Asiento : {cuo} \nCon Éxito");
             }
             //////ACTUALIZANDO
             if (Estado == 2)
             {
                 /////VALIDO SI YA EXISTE LA FACTURA  
                 DataTable Tprueba = CapaLogica.FacturaManualCabecera(txtruc.Text, txtcodfactura.Text + "-" + txtnrofactura.Text, _idFac, (int)cbotipodoc.SelectedValue, OpcionBusqueda);
-                if (Tprueba.Rows.Count > 0) { Msg("No se puede Registrar, Este Documento Ya Existe"); return; }
+                if (Tprueba.Rows.Count > 0) { msg("No se puede Registrar, Este Documento Ya Existe"); return; }
                 //////ACTUALIZANDO LA FACTURA  
                 Boolean ResultOld = ListaIdNotas.Contains(OldIdComprobanteSelect);
                 Boolean ResultNew = ListaIdNotas.Contains((int)cbotipodoc.SelectedValue);
@@ -941,7 +940,7 @@ namespace HPReserger
                     }
                 }
                 /////FIN DE LA PARTE DE LOS ASIENTOS
-                if (FacturaEstado == 0) Msg($"Documento Actualizado Con Éxito"); else Msg($"Documento Actualizado \nGenerado sus Asiento : {cuo} \nCon Éxito");
+                if (FacturaEstado == 0) msgOK($"Documento Actualizado Con Éxito"); else msgOK($"Documento Actualizado \nGenerado sus Asiento : {cuo} \nCon Éxito");
             }
             btnvistaPrevia.Visible = false;
             string nroFac = txtcodfactura.Text + "-" + txtnrofactura.Text;
@@ -1106,7 +1105,7 @@ namespace HPReserger
                     }
                     if (Result == DialogResult.No)
                     {
-                        Msg("Se Modificará el Registro de La Factura");
+                        msg("Se Modificará el Registro de La Factura");
                         ////lo eliminamos 
                         ModoEdicion(true);
                         BloquearColumnas();
@@ -1119,7 +1118,7 @@ namespace HPReserger
                 {
                     btnCargarFoto.Enabled = btnAceptar.Enabled = true;
                     Estado = 10;
-                    Msg("La Factura Pertenece a un Periodo Cerrado. \nSolo se puede Actualizar la Imagen.");
+                    msg("La Factura Pertenece a un Periodo Cerrado. \nSolo se puede Actualizar la Imagen.");
                     ModoEdicionFoto(true);
                 }
                 else if (dtgBusqueda[yEstado.Name, dtgBusqueda.CurrentRow.Index].Value.ToString() == "3")
@@ -1127,7 +1126,7 @@ namespace HPReserger
                     Estado = 2;
                     if (cbodetraccion.Text.ToUpper() == "SI") btnmasdetracion.Enabled = true;
                     BloquearColumnas();
-                    Msg("Factura ya esta Compensada");
+                    msg("Factura ya esta Compensada");
                     ModoEdicion(true);
                     compensada = true;
                 }
@@ -1393,7 +1392,7 @@ namespace HPReserger
                 if (errord) { cadena += "Hay Errores en las Cuentas\n"; }
                 if (ErrorM) { cadena += "Hay Errores los Importe\n"; }
                 /////VALIDACION
-                if (conD == 0 || conH == 0 || error || errord || ErrorM || ErrorDH) { Msg(cadena); return; }
+                if (conD == 0 || conH == 0 || error || errord || ErrorM || ErrorDH) { msg(cadena); return; }
                 ////FIN DE LAS VALIDACIONES
                 /////CALCULO DE DETRACCIONES
                 if (decimal.Parse(txtmontodetraccion.Text) > 0)
@@ -1593,7 +1592,7 @@ namespace HPReserger
                     {
                         string resultado = "";
                         resultado = DH == "H" ? "Ingreso por redondeo" : "Ajuste por Redondeo";
-                        Msg($"No se Encontro Cuenta de :{resultado}");
+                        msg($"No se Encontro Cuenta de :{resultado}");
                     }
                     DataRow filita = Tpruebass.Rows[0];
                     DataRow fila = TDatos.NewRow();
@@ -1621,7 +1620,7 @@ namespace HPReserger
             }
             else
             {
-                Msg("No hay Filas");
+                msg("No hay Filas");
                 btnAceptar.Enabled = true;
             }
         }
@@ -1696,7 +1695,7 @@ namespace HPReserger
                     if (msgyes("Seguro Desea Eliminar Factura") == DialogResult.Yes)
                     {
                         CapaLogica.FacturaManualCabeceraRemover((int)dtgBusqueda[yid.Name, dtgBusqueda.CurrentRow.Index].Value, OpcionBusqueda == 1 ? 3 : 300);
-                        Msg("Eliminado Con Éxito");
+                        msgOK("Eliminado Con Éxito");
                         textBoxPer2_TextChanged(sender, e);
                     }
                 }
@@ -1708,12 +1707,12 @@ namespace HPReserger
                         DataTable TPrueba2 = CapaLogica.VerPeriodoAbierto((int)cboempresa.SelectedValue, dtpFechaContable.Value);
                         if (TPrueba1.Rows.Count > 0)
                         {
-                            Msg("La Factura ya tiene un Pago.");
+                            msg("La Factura ya tiene un Pago.");
                             return;
                         }
                         else if (TPrueba2.Rows.Count == 0)
                         {
-                            Msg("La Factura Pertenece a un Periodo Cerrado.");
+                            msg("La Factura Pertenece a un Periodo Cerrado.");
                             return;
                         }
                         if (OldCuo != null)
@@ -1721,7 +1720,7 @@ namespace HPReserger
                             CapaLogica.EliminarAsiento(OldCuo, OldEmpresa, OldFechaContable, 1);
                             CapaLogica.FacturaManualCabeceraRemover((int)dtgBusqueda[yid.Name, dtgBusqueda.CurrentRow.Index].Value, OpcionBusqueda == 1 ? 3 : 300);
                             CapaLogica.FacturaManualDetalleRemover(txtcodfactura.Text + "-" + txtnrofactura.Text, txtruc.Text, OpcionBusqueda == 1 ? 3 : 300, (int)cbotipodoc.SelectedValue);
-                            Msg("Eliminado Con Éxito");
+                            msgOK("Eliminado Con Éxito");
                             textBoxPer2_TextChanged(sender, e);
                         }
                     }

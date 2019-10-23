@@ -132,7 +132,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MessageBox.Show("Imagen ya asociada a la Cotizaion Nº " + ExisteFoto["Numero"].ToString().Trim() + " y al Pedido Nº " + ExisteFoto["Pedido"].ToString().Trim() + "", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Imagen ya asociada a la Cotizaion Nº " + ExisteFoto["Numero"].ToString().Trim() + " y al Pedido Nº " + ExisteFoto["Pedido"].ToString().Trim());
                     return;
                 }
             }
@@ -158,18 +158,18 @@ namespace HPReserger
             }
             if (decimal.Parse(txtImporte.Text) <= 0)
             {
-                MessageBox.Show("El Importe de la Cotización No puede ser Cero", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("El Importe de la Cotización No puede ser Cero");
                 return;
             }
             if (txtProveedor.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Proveedor", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Proveedor");
                 txtRUC.Focus();
                 return;
             }
             if (pbFoto.Image == null)
             {
-                MessageBox.Show("Seleccione Imagen de Cotización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Imagen de Cotización");
                 btnBuscarPDF.Focus();
                 return;
             }
@@ -225,14 +225,14 @@ namespace HPReserger
             txtImporte.Text = "";
             pbFoto.Image = null;
 
-            MessageBox.Show("Cotización Nº " + Convert.ToString(txtCotizacion.Text) + " se actualizó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            HPResergerFunciones.frmInformativo.MostrarDialog("Cotización Nº " + Convert.ToString(txtCotizacion.Text), "Se actualizó con éxito");
+            this.DialogResult = DialogResult.OK;
             this.Close();
 
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         private void txtRUC_TextChanged(object sender, EventArgs e)
         {

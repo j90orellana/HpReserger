@@ -22,6 +22,9 @@ namespace HPReserger.ModuloCompensaciones
             CargarEmpresa();
             CargarProveedores();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public frmListarCompensacionesAnticipo(int _fkEmpresa, string _Proveedor)
         {
             InitializeComponent();
@@ -388,11 +391,7 @@ namespace HPReserger.ModuloCompensaciones
         public DialogResult msgOk(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        }      
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (ContaAnticipos + ContaFacturas > 0)
@@ -831,7 +830,7 @@ namespace HPReserger.ModuloCompensaciones
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
                 //Fin Cuadre
-                msg($"Se Aplicó el Anticipo con Cuo {Cuo}");
+                msgOK($"Se Aplicó el Anticipo con Cuo {Cuo}");
                 cbopago.Text = "003 Transferencias Fondos";
                 cboproveedor_SelectedIndexChanged(sender, e);
             }

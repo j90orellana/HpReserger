@@ -22,6 +22,9 @@ namespace HPReserger
         DataTable TTipoid;
         DataTable TTipoDoc;
         DataTable TEmpresa;
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public void CargarDatosCombos()
         {
             /////tipo id
@@ -127,7 +130,6 @@ namespace HPReserger
         {
             this.Close();
         }
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private StreamWriter st;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -185,7 +187,7 @@ namespace HPReserger
                 st = File.CreateText(path);
                 st.Write(cadenatxt);
                 st.Close();
-                msg("Generado TXT con Éxito");
+                msgOK("Generado TXT con Éxito");
                 DialogResult = DialogResult.OK;
                 this.Close();
             }

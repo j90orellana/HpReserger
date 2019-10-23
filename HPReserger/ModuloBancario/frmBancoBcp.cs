@@ -610,7 +610,7 @@ namespace HPReserger
             }
             return Control;
         }
-        public DialogResult msg(string cadena) { return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information); }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public DialogResult msgYesNO(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
 
         public void CalcularTotales()

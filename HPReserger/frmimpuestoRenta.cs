@@ -18,6 +18,9 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void ImpuestoRenta_Load(object sender, EventArgs e)
         {
             CargarDatos();
@@ -59,10 +62,6 @@ namespace HPReserger
             btnmodificar.Enabled = !a;
             dtgconten.AllowUserToAddRows = a;
             btnexportarExcel.Enabled = !a;
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -121,7 +120,7 @@ namespace HPReserger
                 else
                     CapaLogica.InsertarActualizarImpuestoRenta(1, i, dtgconten["descripcion", i].Value.ToString(), (decimal)dtgconten["minimo", i].Value, (decimal)dtgconten["maximo", i].Value, ((decimal)dtgconten["valor", i].Value), dtgconten["observacion", i].Value.ToString(), frmLogin.CodigoUsuario);
             }
-            msg("Guardado Con Exito");
+            msgOK("Guardado Con Exito");
             btncancelar_Click(sender, e);
         }
         private void btncancelar_Click(object sender, EventArgs e)
@@ -222,7 +221,7 @@ namespace HPReserger
                 ModificarPorcentaje(0.01m);
                 HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Imp. Renta", Celditas, 2, new int[] { 1 }, new int[] { 1 }, new int[] { });
                 ModificarPorcentaje(100);
-                msg("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
                 msg("No hay Filas para Exportar");

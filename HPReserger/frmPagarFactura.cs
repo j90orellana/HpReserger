@@ -31,6 +31,8 @@ namespace HPReserger
             frmproce.Show();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private string _NameEmpresa;
         public string NameEmpresa
         {
@@ -266,10 +268,6 @@ namespace HPReserger
         private void txtruc_KeyDown(object sender, KeyEventArgs e)
         {
             //HPResergerFunciones.Utilitarios.Validardocumentos(e, txtruc, 11);
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public DialogResult msgp(string cadena)
         {
@@ -885,7 +883,7 @@ namespace HPReserger
                     CapaLogica.InsertarAsientoFacturaCabecera(1, ContadorFacturas, numasiento + 1, FechaContable, CuentaContable, IdMonedaAsiento == 1 ? totalExcesoMN : totalExcesoME, 0, tc, proyecto, 0
                         , Cuo, IdMonedaAsiento, glosa, FechaPago, -3);
                 //fin de cabecera en exceso
-                msg($"Documento Pagado \nGenerado su Asiento {Cuo}");
+                msgOK($"Documento Pagado \nGenerado su Asiento {Cuo}");
                 //btnActualizar_Click(sender, e);
                 //Cuadrar Asiento
                 CapaLogica.CuadrarAsiento(Cuo, (int)cboproyecto.SelectedValue, FechaContable, 2);

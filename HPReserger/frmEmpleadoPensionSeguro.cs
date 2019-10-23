@@ -180,7 +180,7 @@ namespace HPReserger
             if (cboAFP.Text == "SI")
                 if (txtCUPSS.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Número CUPSS", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Ingrese Número CUPSS");
                     txtCUPSS.Focus();
                     return false;
                 }
@@ -276,7 +276,7 @@ namespace HPReserger
             {
                 if (GrabarEditar(1))
                 {
-                    MessageBox.Show("Seguro Pensión generado con éxito", "HP Reserger ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Seguro Pensión generado con éxito");
                     estado = 0;
                     btnaceptar.Enabled = false;
                     pnlconten.Enabled = false;
@@ -288,7 +288,7 @@ namespace HPReserger
             {
                 if (GrabarEditar(0))
                 {
-                    MessageBox.Show("Seguro Pensión actualizado con éxito", "HP Reserger ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Seguro Pensión actualizado con éxito");
                     estado = 0;
                     btnaceptar.Enabled = false;
                     pnlconten.Enabled = false;
@@ -337,7 +337,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
 
         private void numdesc_HelpRequested(object sender, HelpEventArgs hlpevent)

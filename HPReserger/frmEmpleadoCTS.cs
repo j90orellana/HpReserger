@@ -79,13 +79,13 @@ namespace HPReserger
         {
             if (txtCuenta.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº de Cuenta");
                 txtCuenta.Focus();
                 return false;
             }
             if (txtCuentaCCI.Text.Length < 20 && txtCuentaCCI.Text != "0")
             {
-                MessageBox.Show("Número de Cuenta CCI Mayor a 20 digitos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Número de Cuenta CCI Mayor a 20 digitos");
                 txtCuentaCCI.Focus();
                 return false;
             }
@@ -141,7 +141,7 @@ namespace HPReserger
             {
                 if (GrabarEditar(1))
                 {
-                    MessageBox.Show("CTS registrado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("CTS registrado con éxito");
                     estado = 0;
                     btnaceptar.Enabled = false;
                     pnlconten.Enabled = false; btnModificar.Enabled = true;
@@ -152,7 +152,7 @@ namespace HPReserger
             {
                 if (GrabarEditar(0))
                 {
-                    MessageBox.Show("CTS Modificada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("CTS Modificada con éxito");
                     clCTS.EmpleadoCTS(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboBanco.SelectedValue.ToString()), Convert.ToInt32(cboMoneda.SelectedValue.ToString()), txtCuenta.Text, txtCuentaCCI.Text, frmLogin.CodigoUsuario, 2);
                     estado = 0;
                     btnaceptar.Enabled = false;

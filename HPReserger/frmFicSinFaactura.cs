@@ -31,7 +31,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialog(cadena);
         }
 
         private void btncancelar_Click(object sender, EventArgs e)

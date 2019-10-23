@@ -22,6 +22,8 @@ namespace HPReserger
         public DateTime fecha;
         public int Tipo;
         HPResergerCapaLogica.HPResergerCL Ccampos = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmVerDetallePresuspuestoOperaciones_Load(object sender, EventArgs e)
         {
             //Msg($"etapa { etapa} cuenta { cuenta} fecha { fecha}");
@@ -47,14 +49,10 @@ namespace HPReserger
                 Celdita.fila = 1; Celdita.columna = 1; Celdita.Nombre = "Asientos";
                 Celditas.Add(Celdita);
                 HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Asientos", Celditas, 1, new int[] { }, new int[] { 1 }, new int[] { });
-                Msg("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
-                Msg("No hay Filas para Exportar");
-        }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                msg("No hay Filas para Exportar");
         }
     }
 }

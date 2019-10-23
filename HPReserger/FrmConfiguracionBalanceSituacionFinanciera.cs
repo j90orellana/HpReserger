@@ -106,7 +106,7 @@ namespace HPReserger
             if (estado == 1)
             {
                 CapaLogica.BalanceParametros(1, int.Parse(numPos.Value.ToString()), txtcodigo.Text, txtcodigo.Text, txtdescripcion.Text, txtcuentas.Text, frmLogin.CodigoUsuario);
-                msg("Agregado con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Agregado con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -123,19 +123,15 @@ namespace HPReserger
                     else
                         HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[posix.Name]);
                 }
-                if (prueba) { msg("Revise las Celdas"); return; }
+                if (prueba) { HPResergerFunciones.frmInformativo.MostrarDialogError("Revise las Celdas"); return; }
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     CapaLogica.BalanceParametros(2, (int)item.Cells[posix.Name].Value, item.Cells[codRealx.Name].Value.ToString(), item.Cells[Codigox.Name].Value.ToString(), item.Cells[descripcionx.Name].Value.ToString(), item.Cells[Cuentasx.Name].Value.ToString(), frmLogin.CodigoUsuario);
                 }
-                msg("Modificado con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Modificado con Exito");
                 btncancelar_Click(sender, e);
             }
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }       
         private void Dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex, y = e.RowIndex;
@@ -184,7 +180,7 @@ namespace HPReserger
 
         private void Dtgconten_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            msg(e.Exception.Message);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(e.Exception.Message);
         }
     }
 }

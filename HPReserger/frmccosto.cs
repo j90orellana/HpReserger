@@ -108,14 +108,14 @@ namespace HPReserger
                 if (estado == 1 && ValidarDes(txtcosto.Text) && ValidarCodigo(txtcodigo.Text))
                 {
                     Ccostos.InsertarCentroCostros(txtcodigo.Text, txtcosto.Text, cbotiene.SelectedValue.ToString(), cbotiene.Text == "SI" ? cbocuentas.SelectedValue.ToString() : "");
-                    MessageBox.Show("Centro de Costo, Ingresado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Centro de Costo Ingresado");
                 }
                 else
                 {
                     if (estado == 2 && ValidarDes(txtcosto.Text) && ValidarCodigo(txtcodigo.Text))
                     {
                         Ccostos.ActualizarCentroCostos(txtcosto.Text.ToString(), txtcodigo.Text, int.Parse(dtgconten["idcodigo", dtgconten.CurrentCell.RowIndex].Value.ToString()), cbotiene.SelectedValue.ToString(), cbotiene.Text == "SI" ? cbocuentas.SelectedValue.ToString() : "");
-                        MessageBox.Show("Centro de Costo, Actualizado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        HPResergerFunciones.frmInformativo.MostrarDialog("Centro de Costo Actualizado");
                     }
                     else
                     {
@@ -145,7 +145,7 @@ namespace HPReserger
                 Activar(); gp1.Enabled = true;
                 pnl1.Enabled = false;
             }
-            else { MessageBox.Show("Debe Rellenar el campo Descripción", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            else { HPResergerFunciones.frmInformativo.MostrarDialogError("Debe Rellenar el campo Descripción"); }
         }
         public Boolean ValidarDes(string valor)
         {
@@ -155,7 +155,7 @@ namespace HPReserger
                 if (dtgconten["descripcion", i].Value.ToString() == valor && dtgconten.CurrentCell.RowIndex != i)
                 {
                     Aux = false;
-                    MessageBox.Show("Este valor:" + txtcosto.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Este valor:" + txtcosto.Text + " ya Existe");
                     return Aux;
                 }
             }
@@ -169,7 +169,7 @@ namespace HPReserger
                 if (dtgconten["codigos", i].Value.ToString() == valor && dtgconten.CurrentCell.RowIndex != i)
                 {
                     Aux = false;
-                    MessageBox.Show("Este Código:" + txtcosto.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Este Código:" + txtcosto.Text + " ya Existe");
                     return Aux;
                 }
             }

@@ -452,7 +452,7 @@ namespace HPReserger
             catch (Exception ex)
             {
                 Verificar = false;
-                MSG("Error enviando correo electrónico: " + ex.Message);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Error enviando correo electrónico: ", ex.Message);
             }
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

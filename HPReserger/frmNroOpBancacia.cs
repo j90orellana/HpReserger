@@ -31,6 +31,8 @@ namespace HPReserger
         }
         List<Listado> lista;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         private void frmNroOpBancacia_Load(object sender, EventArgs e)
         {
@@ -172,10 +174,6 @@ namespace HPReserger
                 }
             }
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
         private void cbobanco_Click(object sender, EventArgs e)
         {
             //CargarBancos();
@@ -261,7 +259,7 @@ namespace HPReserger
             {
                 CapaLogica.ActualizarNroOperacion(item.index, txtnroid.TextValido(), item.tipo, item.fkempresa, item.cuo);
             }
-            msg("Actualizado Número de Operación");
+            msgOK("Actualizado Número de Operación");
             txtnroid.CargarTextoporDefecto();
             lista.Clear();
             LimpiarDatos();

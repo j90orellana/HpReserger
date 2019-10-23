@@ -57,11 +57,7 @@ namespace HPReserger
             }
             crvConstanciaTrabajo.ReportSource = Reporte;
             crvConstanciaTrabajo.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
-        }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, "HPRESERGER");
-        }
+        }      
         private void crvConstanciaTrabajo_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {
             e.Handled = true;

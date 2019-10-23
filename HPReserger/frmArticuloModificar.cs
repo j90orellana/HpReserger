@@ -14,6 +14,9 @@ namespace HPReserger
     public partial class frmArticuloModificar : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clModificarArticuloServicio = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public int numero { get; set; }
         public int TipoArticuloModificar { get; set; }
         public int CodigoArticuloModificar { get; set; }

@@ -17,6 +17,9 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private void label2_TextChanged(object sender, EventArgs e)
         {
@@ -73,13 +76,13 @@ namespace HPReserger
             if (Datitos.Rows.Count == 0)
             {
                 Reportes.Clear();
-                HPResergerFunciones.Utilitarios.msg("Periodo no está Creado");
+                msg("Periodo no está Creado");
                 return;
             }
             DataRow filita = Datitos.Rows[0];
             if ((int)filita["estado"] == 3)
             {
-                HPResergerFunciones.Utilitarios.msg("Periodo Cerrado");
+                msg("Periodo Cerrado");
             }
             //if (comboMesAño.GetFecha().Year >= DateTime.Now.Year && comboMesAño.GetFecha().Month >= DateTime.Now.Month)
             //{
@@ -97,11 +100,7 @@ namespace HPReserger
             }
             else { msg("no Hay Empresas"); }
             Cursor = Cursors.Default;
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }      
         private void EstadoGananciaPerdidas_Load(object sender, EventArgs e)
         {
             CapaLogica.CambiarBase(frmLogin.Basedatos);

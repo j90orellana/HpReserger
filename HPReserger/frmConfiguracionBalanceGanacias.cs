@@ -106,19 +106,15 @@ namespace HPReserger
                     else
                         HPResergerFunciones.Utilitarios.ColorCeldaDefecto(item.Cells[posix.Name]);
                 }
-                if (prueba) { msg("Revise las Celdas"); return; }
+                if (prueba) { HPResergerFunciones.frmInformativo.MostrarDialogError("Revise las Celdas"); return; }
                 foreach (DataGridViewRow item in Dtgconten.Rows)
                 {
                     CapaLogica.BalanceGananciasParametros(2, (int)item.Cells[posix.Name].Value, item.Cells[codRealx.Name].Value.ToString(), item.Cells[Codigox.Name].Value.ToString(), item.Cells[descripcionx.Name].Value.ToString(), item.Cells[Cuentasx.Name].Value.ToString(), frmLogin.CodigoUsuario, item.Cells[signox.Name].Value.ToString());
                 }
-                HPResergerFunciones.Utilitarios.msg("Modificado con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Modificado con Exito");
                 btncancelar_Click(sender, e);
             }
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }       
         private void btndetalle_Click(object sender, EventArgs e)
         {
             if (Dtgconten.RowCount > 0)
@@ -174,7 +170,7 @@ namespace HPReserger
 
         private void Dtgconten_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            msg(e.Exception.Message);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(e.Exception.Message);
         }
     }
 }

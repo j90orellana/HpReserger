@@ -30,12 +30,12 @@ namespace HPReserger
         public string nombreArchivo { get; set; }
         public DateTime FechaNac;
         HPResergerCapaLogica.HPResergerCL clPostulanteModificar = new HPResergerCapaLogica.HPResergerCL();
-
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public frmPostulanteModificar()
         {
             InitializeComponent();
         }
-
         string cadenita = "";
         DataTable TablaTipoID;
         public void CargarTiposID(string tabla)
@@ -158,7 +158,7 @@ namespace HPReserger
                 {
                     if (ExisteImagen != null)
                     {
-                        MessageBox.Show("La imagen ya esta asociado a otro Postulante", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        msg("La imagen ya esta asociado a otro Postulante");
                         return;
                     }
                 }
@@ -177,34 +177,34 @@ namespace HPReserger
         {
             if (txtDocumento.Text.Length != txtDocumento.MaxLength && cboTipoDocumento.Text != "CARNE EXTRANJERIA")
             {
-                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("No Coincide el Tamaño con el tipo de Documento");
                 txtDocumento.Focus();
                 return;
             }
             if (txtDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Nº Documento");
                 txtDocumento.Focus();
                 return;
             }
 
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Apellido Paterno", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Apellido Paterno");
                 txtApellidoPaterno.Focus();
                 return;
             }
 
             if (txtApellidoMaterno.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Apellido Materno", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Apellido Materno");
                 txtApellidoMaterno.Focus();
                 return;
             }
 
             if (txtNombres.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nombres", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Nombres");
                 txtNombres.Focus();
                 return;
             }
@@ -213,7 +213,7 @@ namespace HPReserger
             {
                 if ((int)Filita["edad"] < 18)
                 {
-                    MessageBox.Show("El Postulante Debe ser Mayor de Edad", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("El Postulante Debe ser Mayor de Edad");
                     dtpFechaNacimiento.Focus();
                     return;
                 }
@@ -221,13 +221,13 @@ namespace HPReserger
             else { return; }
             if (txtAdjuntarCV.Text.Length == 0 || pbFoto.Image == null)
             {
-                MessageBox.Show("Seleccione Imagen", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Imagen");
                 btnAdjuntarCV.Focus();
                 return;
             }
             if (Foto == null)
             {
-                MessageBox.Show("Seleccione Imagen", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Imagen");
                 btnAdjuntarCV.Focus();
                 return;
             }
@@ -241,7 +241,7 @@ namespace HPReserger
             {
                 if (ExisteCV != null)
                 {
-                    MessageBox.Show("Imagen de CV ya esta asociado a otro Postulante", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Imagen de CV ya esta asociado a otro Postulante");
                     return;
                 }
             }

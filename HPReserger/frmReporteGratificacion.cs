@@ -25,6 +25,8 @@ namespace HPReserger
         public DateTime fechainicial;
         public DateTime Fechafin;
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmReporteGratificacion_Load(object sender, EventArgs e)
         {
             rptPagoGratificacion reporte = new rptPagoGratificacion();
@@ -64,10 +66,6 @@ namespace HPReserger
 
             crvReporte.ReportSource = reporte;
             crvReporte.AllowedExportFormats = (int)(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat | CrystalDecisions.Shared.ExportFormatType.EditableRTF | CrystalDecisions.Shared.ExportFormatType.WordForWindows | CrystalDecisions.Shared.ExportFormatType.Excel);
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void crvReporte_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
         {

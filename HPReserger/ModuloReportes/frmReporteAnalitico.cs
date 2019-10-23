@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         DataTable TablaEmpresa;
         private void frmReporteAnalitico_Load(object sender, EventArgs e)
@@ -90,7 +92,6 @@ namespace HPReserger
             frmlistacuenta = null;
         }
         frmProcesando frmproce;
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void btnexcel_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)

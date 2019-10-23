@@ -202,10 +202,10 @@ namespace HPReserger
                     grilla[grilla.Columns[xx].Index, 0].Value = true;
             }
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        }
+        //public DialogResult msg(string cadena)
+        //{
+        //    return MessageBox.Showa(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //}
         private void cbodestaque_SelectedIndexChanged(object sender, EventArgs e)
         {
             //montofijo
@@ -280,7 +280,7 @@ namespace HPReserger
                     if (numcomision.Value == 0)
                     {
                         numcomision.Focus();
-                        msg("Ingresé un Porcentaje mayor a cero en la Comisión");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé un Porcentaje mayor a cero en la Comisión");
                         return;
                     }
                     con = 0;
@@ -292,7 +292,7 @@ namespace HPReserger
                     }
                     if (con == 0)
                     {
-                        msg("Seleccioné un mes minimo en la Grilla de Comisión");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccioné un mes minimo en la Grilla de Comisión");
                         return;
                     }
                 }
@@ -303,14 +303,14 @@ namespace HPReserger
                         if (decimal.Parse(txtdestaque.Num.Text) == 0)
                         {
                             txtdestaque.Num.Focus();
-                            msg("Ingresé un Monto mayor a cero en destaque");
+                            HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé un Monto mayor a cero en destaque");
                             return;
                         }
                     if (cbodestaque.Text.Trim().ToUpper() == "SUELDO")
                         if (numdestaque.Value == 0)
                         {
                             numdestaque.Focus();
-                            msg("Ingresé un Porcentaje mayor a cero en la Destaque");
+                            HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé un Porcentaje mayor a cero en la Destaque");
                             return;
                         }
                     con = 0;
@@ -322,7 +322,7 @@ namespace HPReserger
                     }
                     if (con == 0)
                     {
-                        msg("Seleccioné un mes minimo en la Grilla de Destaque");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccioné un mes minimo en la Grilla de Destaque");
                         return;
                     }
                 }
@@ -333,14 +333,14 @@ namespace HPReserger
                         if (numproduccion.Value == 0)
                         {
                             numproduccion.Focus();
-                            msg("Ingresé un Porcentaje mayor a cero de producción");
+                            HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé un Porcentaje mayor a cero de producción");
                             return;
                         }
                     if (cboproduccion.Text.Trim().ToUpper() == "MONTO FIJO")
                         if (decimal.Parse(txtproduccion.Num.Text) == 0)
                         {
                             txtproduccion.Num.Focus();
-                            msg("Ingresé un Monto mayor a cero de producción");
+                            HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé un Monto mayor a cero de producción");
                             return;
                         }
                     con = 0;
@@ -352,7 +352,7 @@ namespace HPReserger
                     }
                     if (con == 0)
                     {
-                        msg("Seleccioné un mes minimo en la Grilla de Producción");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccioné un mes minimo en la Grilla de Producción");
                         return;
                     }
                 }
@@ -362,7 +362,7 @@ namespace HPReserger
                     if (decimal.Parse(txtmovilidad.Num.Text) == 0)
                     {
                         txtmovilidad.Num.Focus();
-                        msg("Ingresé un Monto mayor a cero de Movilidad");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé un Monto mayor a cero de Movilidad");
                         return;
                     }
                     con = 0;
@@ -374,21 +374,21 @@ namespace HPReserger
                     }
                     if (con == 0)
                     {
-                        msg("Seleccioné un mes minimo en la Grilla de Movilidad");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccioné un mes minimo en la Grilla de Movilidad");
                         return;
                     }
                 }
                 if (cboregular.Text.Trim().ToUpper() != "NO")
                     if (decimal.Parse(txtregular.Num.Text) == 0)
                     {
-                        msg("Ingresé un Monto mayor a cero de Bono Regular");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé un Monto mayor a cero de Bono Regular");
                         txtregular.Num.Focus();
                         return;
                     }
             }
             else
             {
-                msg("Debe Seleccionar en el periodo del contrato un mes minimo");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Debe Seleccionar en el periodo del contrato un mes minimo");
                 return;
             }
             //eliminar los datos
@@ -397,7 +397,7 @@ namespace HPReserger
                 DelCombo(cboproduccion), DelTxt(txtproduccion), numproduccion.Value, Sacarmeses(dtgproduccion), FotoProduccion, NombreImagenProduccion, DelCombo(cboregular), decimal.Parse(txtregular.Num.Text),
                 DelCombo(cbomovilidad), DelTxt(txtmovilidad), Sacarmeses(dtgmovilidad), frmLogin.CodigoUsuario, numdestaque.Value);
             //insertar los datos
-            msg("Guardado con Exito");
+            HPResergerFunciones.frmInformativo.MostrarDialog("Guardado con Exito");
             iniciar(false);
         }
         public int DelCombo(ComboBox combito)

@@ -21,7 +21,7 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL Cdepartamento = new HPResergerCapaLogica.HPResergerCL();
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-                        tipmsg.Show("Ingrese Departamento", txtdepartamento, 1000);
+            tipmsg.Show("Ingrese Departamento", txtdepartamento, 1000);
             txtcodigo.Text = txtdepartamento.Text = "";
             estado = 1;
             Desactivar();
@@ -49,7 +49,7 @@ namespace HPReserger
                     if (dtgconten[1, i].Value.ToString() == valor)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtdepartamento.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Este valor:" + txtdepartamento.Text + " ya Existe");
                         return Aux;
                     }
                 }
@@ -92,21 +92,21 @@ namespace HPReserger
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (Acepta)
-            { this.Close();DialogResult= DialogResult.OK; }
+            { this.Close(); DialogResult = DialogResult.OK; }
             else
             {
                 //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
                 if (estado == 1 && ValidarDes(txtdepartamento.Text))
                 {
                     Cdepartamento.InsertarDepartamento(txtdepartamento.Text);
-                    MessageBox.Show("Departamento: " + txtdepartamento.Text + " Insertado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Departamento: " + txtdepartamento.Text + " Insertado");
                 }
                 else
                 {
                     if (estado == 2 && ValidarDes(txtdepartamento.Text))
                     {
                         Cdepartamento.ActualizarDepartamento(txtdepartamento.Text.ToString(), Convert.ToInt32(txtcodigo.Text));
-                        MessageBox.Show("Departamento: " + txtdepartamento.Text + " Actualizado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Departamento: " + txtdepartamento.Text + " Actualizado");
                     }
                     else
                     {

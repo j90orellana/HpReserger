@@ -74,24 +74,24 @@ namespace HPReserger
                 TitulosGrid(gridCotizacionesAsociadas, 1);
             }
         }
-
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         private void btnAprobar_Click(object sender, EventArgs e)
         {
             if (ItemAprob < 0)
             {
-                MessageBox.Show("Seleccione Cotización a Aprobar", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Cotización a Aprobar");
                 return;
             }
 
             if (pbFoto.Image == null)
             {
-                MessageBox.Show("NO existe imagen de Cotización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("NO existe imagen de Cotización");
                 return;
             }
 
             if (gridCotizacionesAsociadas.Rows.Count < 3)
             {
-                MessageBox.Show("Mínimo son 3 cotizaciones", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Mínimo son 3 cotizaciones");
                 return;
             }
 
@@ -117,7 +117,7 @@ namespace HPReserger
 
                 string Cot = gridCotizacionesAsociadas.Rows[ItemAprob].Cells[0].Value.ToString().Substring(2);
                 Mostrar(frmLogin.CodigoUsuario);
-                MessageBox.Show("Se aprobó la Cotización Nº " + Cot + " y se generó la OC Nº " + Convert.ToString(NumeroCotizacion) + "", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Se aprobó la Cotización Nº " + Cot + " y se generó la OC Nº " + Convert.ToString(NumeroCotizacion) + "");
                 pbFoto.Image = null;
             }
         }

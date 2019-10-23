@@ -48,13 +48,13 @@ namespace HPReserger
             Boolean a = true;
             if (txtCuenta.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº de Cuenta", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº de Cuenta");
                 txtCuenta.Focus();
                 a = false;
             }
             if (txtCuentaCCI.Text.Length < 20 && txtCuentaCCI.Text != "0")
             {
-                MessageBox.Show("Número de Cuenta CCI debe tener 20 digitos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Número de Cuenta CCI debe tener 20 digitos");
                 txtCuentaCCI.Focus();
                 a = false;
             }           
@@ -121,7 +121,7 @@ namespace HPReserger
             {
                 if (GrabarEditar(1))
                 {
-                    MessageBox.Show("Pago de Haberes registrado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Pago de Haberes registrado con éxito");
                     estado = 0;
                     btnaceptar.Enabled = false;
                     pnlconten.Enabled = false;
@@ -133,7 +133,7 @@ namespace HPReserger
             {
                 if (GrabarEditar(0))
                 {
-                    MessageBox.Show("Pago de Haberes actualizo con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Pago de Haberes actualizo con éxito");
                     estado = 0;
                     btnaceptar.Enabled = false;
                     pnlconten.Enabled = false; btnModificar.Enabled = true;

@@ -17,6 +17,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CLpresupuestoetapa = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int etapa;
         public string cc;
         public Boolean ok;
@@ -103,10 +105,6 @@ namespace HPReserger
         {
         }
         decimal numero = 0.00m;
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
-        }
         private void dtgconten_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.ColumnIndex, y = e.RowIndex;
@@ -150,7 +148,7 @@ namespace HPReserger
                 valor += (decimal)dtgconten[i, 0].Value;
                 valorflujo += (decimal)dtgconten1[i, 0].Value;
             }
-            msg("Guardado Con exito");
+            msgOK("Guardado Con exito");
             ok = true;
             this.Close();
         }

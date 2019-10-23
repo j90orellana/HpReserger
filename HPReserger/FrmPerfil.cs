@@ -14,7 +14,8 @@ namespace HPReserger
     public partial class FrmPerfil : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL cperfil = new HPResergerCapaLogica.HPResergerCL();
-
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int codigo { get; set; }
         public int estado { get; set; }
         public string descripcion { get; set; }
@@ -88,14 +89,14 @@ namespace HPReserger
                     if (dtgperfil[1, i].Value.ToString() == valor)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtdes.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        msg("Este valor:" + txtdes.Text + " ya Existe");
                         return Aux;
                     }
                 if (estado == 2)
                     if (dtgperfil[1, i].Value.ToString() == valor && i != cboperfiles.SelectedIndex)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtdes.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        msg("Este valor:" + txtdes.Text + " ya Existe");
                         return Aux;
                     }
             }
@@ -152,7 +153,7 @@ namespace HPReserger
                     RecorrerNodos(x, ultimo);
                 Activar(cboperfiles);
                 Desactivar(txtdes);
-                MessageBox.Show("Insertado con exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msgOK("Insertado con exito");
             }
             else
             {
@@ -164,7 +165,7 @@ namespace HPReserger
                         RecorrerNodos(x, (int)cboperfiles.SelectedValue);
                     Activar(cboperfiles);
                     Desactivar(txtdes);
-                    MessageBox.Show("Modificado con exito", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    msgOK("Modificado con exito");
                 }
                 else
                 {
@@ -183,7 +184,6 @@ namespace HPReserger
             estado = 0;
             FrmPerfil_Load(sender, e);
             btnnuevo.Enabled = btneliminar.Enabled = btnmodificar.Enabled = dtgperfil.Enabled = true;
-            //MessageBox.Show(this.Parent.Name);
             ((frmMenu)this.MdiParent).RecargarMenu();
             cboperfiles.Text = cade;
         }
@@ -222,10 +222,9 @@ namespace HPReserger
             foreach (TreeNode x in treePerfiles.Nodes)
             {
                 foreach (TreeNode xx in x.Nodes)
-                    MessageBox.Show(xx.FullPath);
+                    msgOK(xx.FullPath);
             }
         }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
 

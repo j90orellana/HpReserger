@@ -92,37 +92,37 @@ namespace HPReserger
             {
                 if (txtNumeroDocumento.Text.Length != txtNumeroDocumento.MaxLength && cboTipoDocumentoIdentidad.Text != "CARNE EXTRANJERIA")
                 {
-                    MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("No Coincide el Tamaño con el tipo de Documento");
                     txtNumeroDocumento.Focus();
                     return;
                 }
                 if (txtNumeroDocumento.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Ingrese Nº Documento");
                     txtNumeroDocumento.Focus();
                     return;
                 }
                 if (txtApellidoPaterno.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Apellido Paterno", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Ingrese Apellido Paterno");
                     txtApellidoPaterno.Focus();
                     return;
                 }
                 if (txtApellidoMaterno.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Apellido Materno", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Ingrese Apellido Materno");
                     txtApellidoMaterno.Focus();
                     return;
                 }
                 if (txtNombres.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Nombres", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Ingrese Nombres");
                     txtNombres.Focus();
                     return;
                 }
                 if (txtOcupacion.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Ocupación", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Ingrese Ocupación");
                     txtOcupacion.Focus();
                     return;
                 }
@@ -155,7 +155,7 @@ namespace HPReserger
                 if (check18.Checked) x = 1;
                 else x = 0;
                 clFamilia.EmpleadoFamilia(CodigoDocumento, NumeroDocumento, Convert.ToInt32(cboVinculoFamiliar.SelectedValue.ToString()), Convert.ToInt32(cboTipoDocumentoIdentidad.SelectedValue.ToString()), txtNumeroDocumento.Text, 0, "", txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, dtpFecha.Value, txtOcupacion.Text, frmLogin.CodigoUsuario, 1, conviviente, nombreconviviente, (int)cbosexo.SelectedValue, x);
-                MessageBox.Show("Vínculo Familiar registrado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Vínculo Familiar registrado con éxito");
                 Limpiar();
                 MostrarGrilla();
                 btnRegistrar.Text = "Registrar";
@@ -165,7 +165,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         private void Limpiar()
         {

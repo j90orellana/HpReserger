@@ -92,7 +92,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -123,7 +123,7 @@ namespace HPReserger
             if (estados == 1)
             {
                 CLEtapas.ListarEtapasdelProyecto(1, proyecto, 1, txtdescripcion.Text, int.Parse(cboestado.SelectedValue.ToString()), dtpfechainicio.Value, dtpfechafin.Value, int.Parse(txtmeses.Text), txtobserva.Text, frmLogin.CodigoUsuario);
-                msg("Etapa Ingresadá con exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Etapa Ingresada con exito");
                 Iniciar(false);
                 estados = 0;
                 int dias = dtpfechafin.Value.Year - dtpfechainicio.Value.Year;
@@ -141,7 +141,7 @@ namespace HPReserger
             if (estados == 2)
             {
                 CLEtapas.ListarEtapasdelProyecto(2, proyecto, int.Parse(Dtgconten["id_etapa", Dtgconten.CurrentCell.RowIndex].Value.ToString()), txtdescripcion.Text, int.Parse(cboestado.SelectedValue.ToString()), dtpfechainicio.Value, dtpfechafin.Value, int.Parse(txtmeses.Text), txtobserva.Text, frmLogin.CodigoUsuario);
-                msg("Etapa Modificada con exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Etapa Modificada con exito");
                 Iniciar(false);
                 int dias = dtpfechafin.Value.Year - dtpfechainicio.Value.Year;
                 int meses = ((dtpfechafin.Value.Month + (dias * 12)) - dtpfechainicio.Value.Month) + 1;

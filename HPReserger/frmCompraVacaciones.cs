@@ -94,18 +94,18 @@ namespace HPReserger
         {
             if (txtDiasComprar.Text.Length == 0 || Convert.ToInt32(txtDiasComprar.Text) <= 0)
             {
-                MessageBox.Show("Días Inválido", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Días Inválido");
                 txtDiasComprar.Focus();
                 return;
             }
             if (Convert.ToInt32(txtDiasComprar.Text) > 15)
             {
-                MessageBox.Show("Solo puedes Comprar 15 Días Como Máximo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Solo puedes Comprar 15 Días Como Máximo");
                 return;
             }
             if (Convert.ToInt32(txtDiasComprar.Text) > Convert.ToInt32(txtMaximoDias.Text))
             {
-                MessageBox.Show("Solo puedes tomar " + Convert.ToString(txtMaximoDias.Text) + " días de vacaciones como máximo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Solo puedes tomar " + Convert.ToString(txtMaximoDias.Text) + " días de vacaciones como máximo");
                 return;
             }
             DateTime FechaMaxima;
@@ -117,7 +117,7 @@ namespace HPReserger
                 int Resultado = DateTime.Compare(dtpPeriodoComprarDesde.Value.Date, FechaMaxima.Date);
                 if (Resultado <= 0)
                 {
-                    MessageBox.Show("Fecha de Inicio debe ser posterior a la última Fecha Fin aprobada", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Fecha de Inicio debe ser posterior a la última Fecha Fin aprobada");
                     return;
                 }
             }

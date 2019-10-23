@@ -103,7 +103,7 @@ namespace HPReserger.ModuloCompensaciones
         {
             string cadenar = cbobanco.Text;
             DataTable TableBancos = CapaLogica.TablaBanco();
-                if (TableBancos.Rows.Count != cbobanco.Items.Count)
+            if (TableBancos.Rows.Count != cbobanco.Items.Count)
             {
                 cbobanco.ValueMember = "sufijo";
                 cbobanco.DisplayMember = "descripcion";
@@ -281,14 +281,13 @@ namespace HPReserger.ModuloCompensaciones
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(cuo, proyecto, dtpFechaContable.Value, 2);
                 //Fin Cuadre
-                msg($"Se Generó el Anticipo con cuo {cuo}");
+                msgOK($"Se Generó el Anticipo con cuo {cuo}");
                 cboempleado_SelectedIndexChanged(sender, e);
             }
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public DialogResult msgOk(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);

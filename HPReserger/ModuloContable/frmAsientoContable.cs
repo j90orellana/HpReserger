@@ -25,6 +25,9 @@ namespace HPReserger
         {
             CapaLogica.TablaMonedas(cbomoneda);
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void frmAsientoContable_Load(object sender, EventArgs e)
         {
             //cargar TExtos por defecto
@@ -238,7 +241,7 @@ namespace HPReserger
             }
             catch (Exception ex)
             {
-                MSG(ex.Message);
+                msg(ex.Message);
                 frmdetalle = null;
                 frmMenu.AbortarCerrarPrograma = false;
             }
@@ -336,11 +339,7 @@ namespace HPReserger
             if (coddinamica != 0)
             {
             }
-        }
-        public void Mensajes(string text)
-        {
-            MessageBox.Show(text, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
-        }
+        }        
         private void txtdinamica_Leave(object sender, EventArgs e)
         {
             txtdinamica.Text = coddinamica.ToString("DC_000; DC_ - 000; DC_000");
@@ -976,7 +975,7 @@ namespace HPReserger
                 //    btnActualizar_Click(sender, e);
                 //}
             }
-            else MSG("Cancele la Modificación para Cuadrar Asiento");
+            else msg("Cancele la Modificación para Cuadrar Asiento");
         }
         public void PintardeCOlores()
         {
@@ -1123,7 +1122,7 @@ namespace HPReserger
             }
             else if (IdentificadorDinamica < 0)
             {
-                MSG("Este Asiento no se Puede Modificar\nEs Automático");
+                msg("Este Asiento no se Puede Modificar\nEs Automático");
                 return;
             }
             /////PROCESO DE EDICION SI NO ES AUTOMATICO
@@ -1138,7 +1137,7 @@ namespace HPReserger
                 /////CAMBIAR POR ADMIN
                 if (frmLogin.Usuario != "AGUA")
                 {
-                    if (Dtgconten.RowCount <= 0) { MSG("No Hay Datos"); return; }
+                    if (Dtgconten.RowCount <= 0) { msg("No Hay Datos"); return; }
                     estado = 2;
                     dinamimodi = int.Parse(dtgbusca[Iddinamica.Name, dtgbusca.CurrentRow.Index].Value.ToString());
                     modifico = false;
@@ -1168,15 +1167,15 @@ namespace HPReserger
                             //" WHERE i.Id_Asiento_Contable = @Codigo AND i.id_proyecto = @Proyecto GROUP BY Cuenta_Contable, Fecha_Asiento_Valor, Fecha_Asiento, i.id_proyecto, p.Id_Empresa) v ON x.Anio = YEAR(isnull(v.Fecha_Asiento_Valor, v.Fecha_Asiento)) " +
                             //" AND x.Mes = MONTH(isnull(v.Fecha_Asiento_Valor, v.Fecha_Asiento)) AND x.Cuenta_Contable = v.Cuenta_Contable AND x.EMPRESA = v.Id_Empresa ";
                             CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), sql, cade, 0, frmLogin.CodigoUsuario, $"Solicita Modificar el Asiento: {txtcodigo.Text} de Empresa: {cboempresa.Text} ");
-                            MSG("Se ha Enviado la Solicitud a su Jefe");
+                            msgOK("Se ha Enviado la Solicitud a su Jefe");
                         }
-                        else { MSG("No se Encontró Información de su Jefe"); }
+                        else { msg("No se Encontró Información de su Jefe"); }
                     }
                 }
             }
             else
             {
-                if (Dtgconten.RowCount <= 0) { MSG("No Hay Datos"); return; }
+                if (Dtgconten.RowCount <= 0) { msg("No Hay Datos"); return; }
                 estado = 2;
                 dinamimodi = Convert.ToInt16(dtgayuda3[7, 0].Value.ToString());
                 modifico = false;
@@ -1277,19 +1276,19 @@ namespace HPReserger
 
                 }
                 if (!salida)
-                    Mensajes(cadena);
+                    msg(cadena);
                 if (totaldebe != totalhaber && salida)
                 {
                     salida = false;
-                    Mensajes("No debe haber diferencia entre el debe y haber.");
+                    msg("No debe haber diferencia entre el debe y haber.");
                 }
                 if (totaldebe == 0 || totalhaber == 0 && salida)
                 {
                     salida = false;
-                    Mensajes("El Debe y el Haber estan en cero");
+                    msg("El Debe y el Haber estan en cero");
                 }
             }
-            catch (FormatException) { Mensajes("Hay Números Mal Ingresados"); salida = false; }
+            catch (FormatException) { msg("Hay Números Mal Ingresados"); salida = false; }
             catch { salida = false; }
         }
         public Boolean salida { get; set; }
@@ -1305,64 +1304,43 @@ namespace HPReserger
             ESTADO = Convert.ToInt32(cboestado.SelectedValue.ToString());
             FECHA = dtpfecha.Value;
             DINAMICA = coddinamica;
-        }
-        public void MostrarValores(string cadena, int codigo)
-        {
-            MessageBox.Show("DATOS:\nEstado: " + cboestado.Text + "\tCodigo: " + codigo
-                + "\nFecha: " + FECHA + "\nDinamica: " + coddinamica + "\nASIENTO CONTABLE\n" + cadena +
-                "Total Debe: " + totaldebe + "\tTotal Haber: " + totalhaber
-                , CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        public string Detalle()
-        {
-            string cadena = "";
-            for (int i = 0; i < Dtgconten.RowCount; i++)
-            {
-                cadena += "Codigo:" + Dtgconten[0, i].Value + " Cuenta:" + Dtgconten[1, i].Value + " Debe:" + Dtgconten[2, i].Value +
-                    " Haber:" + Dtgconten[3, i].Value + "\n";
-            }
-            return cadena;
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        }   
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (cboempresa.SelectedIndex < 0)
             {
-                MSG("Seleccione Empresa");
+                msg("Seleccione Empresa");
                 //cboempresa.Focus(); 
                 return;
             }
             if (cboproyecto.SelectedIndex < 0)
             {
-                MSG("Seleccione Proyecto");
+                msg("Seleccione Proyecto");
                 // cboproyecto.Focus();
                 return;
             }
             if (cboetapa.SelectedIndex < 0)
             {
-                MSG("Seleccione Etapa");
+                msg("Seleccione Etapa");
                 // cboetapa.Focus();
                 return;
             }
             if (cbomoneda.SelectedIndex < 0)
             {
-                MSG("Seleccione Moneda");
+                msg("Seleccione Moneda");
                 cbomoneda.Focus();
                 return;
             }
             if (decimal.Parse(txttipocambio.Text) == 0)
             {
-                MSG("Seleccione Tipo de Cambio\nNo se Acepta Cero");
+                msg("Seleccione Tipo de Cambio\nNo se Acepta Cero");
                 cbocambio.Focus();
                 return;
             }
             //validamos la glosa
             if (!txtglosa.EstaLLeno())
             {
-                MSG("Ingrese la Glosa del Asiento");
+                msg("Ingrese la Glosa del Asiento");
                 txtglosa.Focus();
                 return;
             }
@@ -1399,7 +1377,7 @@ namespace HPReserger
                     //Limpieza de Detalle de Asientos Basura
                     CapaLogica.LimpiezaDetalleAsientos(ValorCuo(Feccc, codigo), (int)(cboproyecto.SelectedValue));
                     CuoSelec = ValorCuo(Feccc, codigo);
-                    MSG($"Se Insertó Asiento: {CuoSelec} con Exito");
+                    msgOK($"Se Insertó Asiento: {CuoSelec} con Exito");
                     //Txtbusca.Text = codigo + "";
                     //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
 
@@ -1424,7 +1402,7 @@ namespace HPReserger
                         //if (chkfechavalor.Checked) 
                         FechaAsiento = dtpfechavalor.Value;
                         //else FechaAsiento = dtpfecha.Value;
-                        if (!ValidarMismoPeriodo(_FechaAModificar, FechaAsiento)) { MSG("No se Puede Mover a Otro Periodo"); return; }
+                        if (!ValidarMismoPeriodo(_FechaAModificar, FechaAsiento)) { msgOK("No se Puede Mover a Otro Periodo"); return; }
                         ////codigo para reversar solo estado del asiento
                         //CapaLogica.ReversarAsientosSoloEstado(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, _FechaAModificar);
                         //string cadena = "";
@@ -1468,7 +1446,7 @@ namespace HPReserger
                         //Limpieza de Detalle de Asientos Basura
                         CapaLogica.LimpiezaDetalleAsientos(ValorCuo(Feccc, codigo), (int)(cboproyecto.SelectedValue));
                         CuoSelec = ValorCuo(Feccc, codigo);
-                        MSG($"Se Modificó Asiento: {CuoSelec} con Exito");
+                        msgOK($"Se Modificó Asiento: {CuoSelec} con Exito");
 
                         //Txtbusca.Text = codigo + "";
                         //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
@@ -1495,7 +1473,7 @@ namespace HPReserger
                                 FechaAsiento = dtpfechavalor.Value;
                                 //else FechaAsiento = dtpfecha.Value;
                                 CapaLogica.EliminarAsiento(int.Parse(txtcodigo.Text), (int)cboproyecto.SelectedValue, FechaAsiento);
-                                MSG($"Eliminado Exitosamente: {ValorCuo(Feccc, codigo)}");
+                                msgOK($"Eliminado Exitosamente: {ValorCuo(Feccc, codigo)}");
                                 //Txtbusca.Text = "";
                                 //dtgbusca.DataSource = CapaLogica.BuscarAsientosContables(Txtbusca.Text, 1, _idempresa);
                                 //btnActualizar_Click(new object { }, new EventArgs());
@@ -1723,7 +1701,7 @@ namespace HPReserger
                         }
                     }
                 }
-                else MSG("No hay Empresas");
+                else msg("No hay Empresas");
             }
         }
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
@@ -1735,12 +1713,8 @@ namespace HPReserger
                 cboetapa.ValueMember = "id_etapa";
                 cboetapa.DisplayMember = "descripcion";
             }
-            else MSG("No Hay Proyectos");
-        }
-        private void MSG(string v)
-        {
-            HPResergerFunciones.Utilitarios.msg(v);
-        }
+            else msg("No Hay Proyectos");
+        }        
         private DialogResult msgP(string v)
         {
             return HPResergerFunciones.Utilitarios.msgYesNo(v);
@@ -1820,17 +1794,13 @@ namespace HPReserger
         private void Dtgconten_Sorted(object sender, EventArgs e)
         {
             PintardeCOlores();
-        }
-        private void btnTxt_Click(object sender, EventArgs e)
-        {
-            MSG("Se va a Reversar");
-        }
+        }       
         private void button1_Click(object sender, EventArgs e)
         {
             //No se Pueden reversar Asientos Reversados
             if (dtgbusca[nameestado.Name, dtgbusca.CurrentRow.Index].Value.ToString().ToUpper() == "REVERSADO" || ((int)dtgbusca[Iddinamica.Name, dtgbusca.CurrentRow.Index].Value) == -10)
             {
-                HPResergerFunciones.Utilitarios.msg($"Asiento No se Puede Reversar!"); return;
+                HPResergerFunciones.Utilitarios.msgCancel($"Asiento No se Puede Reversar!"); return;
             }
             //Verificio si el Periodo esta Abierto para Proceder con la Anulacion - REversa
             if (!CapaLogica.VerificarPeriodoAbierto((int)cboempresa.SelectedValue, dtpfechavalor.Value))
@@ -1846,11 +1816,11 @@ namespace HPReserger
                     DataRow Filita = CapaLogica.ReversarAsientos((int.Parse(txtcodigo.Text)), (int)cboproyecto.SelectedValue, frmLogin.CodigoUsuario, dtpfechavalor.Value).Rows[0];
                     if (Filita[0].ToString() == "")
                     {
-                        HPResergerFunciones.Utilitarios.msg($"Asiento {txtcuo} Reversado!");
+                        msgOK($"Asiento {txtcuo} Reversado!");
                     }
                     else
                     {
-                        HPResergerFunciones.Utilitarios.msg("Mensaje de Error: \n" + Filita[0].ToString());
+                        msg("Mensaje de Error: \n" + Filita[0].ToString());
                         return;
                     }
                 }
@@ -1868,6 +1838,8 @@ namespace HPReserger
                 frmReversita.Codigo = int.Parse(txtcodigo.Text);
                 frmReversita.IdEmpresa = (int)cboempresa.SelectedValue;
                 frmReversita.IdProyecto = (int)(cboproyecto.SelectedValue);
+                frmReversita.IdDinamica = int.Parse(txtdinamica.Text.Substring(3));
+                frmReversita.MdiParents = this.MdiParent;
                 //Fin de Paso de Variables
                 if (frmReversita.ShowDialog() == DialogResult.OK)
                     btnActualizar_Click(sender, e);

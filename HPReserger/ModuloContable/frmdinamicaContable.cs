@@ -17,6 +17,9 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         HPResergerCapaLogica.HPResergerCL CDinamica = new HPResergerCapaLogica.HPResergerCL();
         public int ejercicio { get; set; }
         public int codigo { get; set; }
@@ -134,10 +137,6 @@ namespace HPReserger
             combito.ValueMember = "CODIGO";
             combito.SelectedIndex = 0;
         }
-        public void Mensajes(string text)
-        {
-            HPResergerFunciones.Utilitarios.msg(text);
-        }
         private void button1_Click(object sender, EventArgs e)
         {
             if (Dtgconten.RowCount > 0)
@@ -168,7 +167,7 @@ namespace HPReserger
                     {
                     }
                 }
-                catch { Dtgconten.BeginEdit(true); Mensajes("Debe Ingresar Datos en la fila."); aux = false; }
+                catch { Dtgconten.BeginEdit(true); msg("Debe Ingresar Datos en la fila."); aux = false; }
             }
             else
             {
@@ -494,13 +493,6 @@ namespace HPReserger
             codope = Convert.ToInt32(cbooperacion.SelectedValue);
             codsub = Convert.ToInt32(cbosuboperacion.SelectedValue);
         }
-        public void MostrarValores(string cadena, int codigo)
-        {
-            MessageBox.Show("DATOS:\nEjercicio: " + ejercicio + "\tEstado; " + cboestado.Text + "\tCodigo CD_00" + codigo + "\nOperación: " + cbooperacion.Text
-                + "\nSubOperación: " + cbosuboperacion.Text + "\nDINAMICA CONTABLE\n" + cadena
-                , CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        }
         public string Detalle()
         {
             string cadena = "";
@@ -559,7 +551,7 @@ namespace HPReserger
                     {
                         CDinamica.InsertarDinamica(codigo + 1, ejercicio, codope, codsub, (Dtgconten[0, i].Value.ToString()), Dtgconten[2, i].Value.ToString(), activo, int.Parse(cbosolicitar.SelectedValue.ToString()), txtglosa.TextValido());
                     }
-                    Mensajes("Se Agregó con éxito");
+                    msgOK("Se Agregó con éxito");
                     //INGRESO DE REVERSA
                     //////////////////////////
                     Txtbusca.Text = (codigo + 1) + "";
@@ -580,7 +572,7 @@ namespace HPReserger
                         {
                             CDinamica.ModificarDinamica(codigo, ejercicio, codope, codsub, Dtgconten[0, i].Value.ToString(), Dtgconten[2, i].Value.ToString(), activo, int.Parse(cbosolicitar.SelectedValue.ToString()), txtglosa.TextValido());
                         }
-                        Mensajes("Se Modificó con Exito");
+                        msgOK("Se Modificó con Exito");
                         //MODIFICAR DE REVERSA
                         //////////////////////////
                         Txtbusca.Text = (codigo) + "";
@@ -594,7 +586,7 @@ namespace HPReserger
                             if (MessageBox.Show("Seguró Desea Eliminar; Dinámica Contable: DC_0" + codigo, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 CDinamica.EliminarDinamica(codigo);
-                                MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                msgOK("Eliminado Exitosamente ");
                                 Txtbusca.Text = "";
                                 dtgbusca.DataSource = ListarDinamicas(Txtbusca.Text, 1);
 
@@ -617,12 +609,12 @@ namespace HPReserger
             }
             if (d < 1)
             {
-                Mensajes("Falta Cuenta en Debe");
+                msg("Falta Cuenta en Debe");
                 return true;
             }
             if (h < 1)
             {
-                Mensajes("Falta Cuenta en Haber");
+                msg("Falta Cuenta en Haber");
                 return true;
             }
             return false;

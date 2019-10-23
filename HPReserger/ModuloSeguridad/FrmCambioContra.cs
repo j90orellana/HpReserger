@@ -20,15 +20,12 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL Ccambiocontra = new HPResergerCapaLogica.HPResergerCL();
         public int idusuario;
         public string password;
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void FrmCambioContra_Load(object sender, EventArgs e)
         {
         }
-
-        public void Mensajes(string mensaje)
-        {
-            MessageBox.Show(mensaje, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void txtactual_TextChanged(object sender, EventArgs e)
         {
 
@@ -51,12 +48,12 @@ namespace HPReserger
             if (txtnueva.Text != txtnueva2.Text)
             {
                 valido = false;
-                Mensajes("No son Iguales Las Nuevas Contraseñas"); limpiar();
+                msg("No son Iguales Las Nuevas Contraseñas"); limpiar();
             }
             if (txtnueva.Text.Length < 4)
             {
                 valido = false;
-                Mensajes("Contraseña Muy Corta, 4 Caracteres Minimo"); limpiar();
+                msg("Contraseña Muy Corta, 4 Caracteres Minimo"); limpiar();
             }
 
             if (valido)
@@ -65,12 +62,12 @@ namespace HPReserger
                 Ccambiocontra.CambioContraseña(out respuesta, password, txtactual.Text, txtnueva.Text);
                 if (respuesta == 2)
                 {
-                    Mensajes("La Nueva Clave ha sido Actualizada.");
+                    msgOK("La Nueva Clave ha sido Actualizada.");
                     this.Close();
                 }
                 else
                 {
-                    Mensajes("La Contraseña Ingresada, No es la Correcta");
+                    msg("La Contraseña Ingresada, No es la Correcta");
                     limpiar();
                 }
             }

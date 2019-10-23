@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmVendedores_Load(object sender, EventArgs e)
         {
             estado = 0;
@@ -80,10 +82,6 @@ namespace HPReserger
         {
             dtgconten.DataSource = new DataTable();
             lblmsg.Text = $"Total de Registros : {dtgconten.RowCount}";
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
@@ -199,7 +197,7 @@ namespace HPReserger
                     return;
                 }
                 CapaLogica.Vendedor(1, (int)cbotipoid.SelectedValue, txtnroid.Text, (int)cboestado.SelectedValue, frmLogin.CodigoUsuario);
-                msg("Agregado Exitosamente");
+                msgOK("Agregado Exitosamente");
             }
             //estado de modificacion
             else if (estado == 2)
@@ -209,7 +207,7 @@ namespace HPReserger
                 cbotipoid.Enabled = true;
                 txtnroid.ReadOnly = false;
                 btnbuscar.Enabled = true;
-                msg("Modificado Exitosamente");
+                msgOK("Modificado Exitosamente");
             }
             ModoEdicion(false);
             LimpiarTextos();

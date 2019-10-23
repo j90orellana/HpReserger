@@ -18,6 +18,8 @@ namespace HPReserger.ModuloFinanzas
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         public void CargarEmpresaOri() { CapaLogica.TablaEmpresa(cboOriEmpresa); }
         public void CargarEmpresaDes() { CapaLogica.TablaEmpresa(cboDesEmpresa); }
@@ -401,8 +403,7 @@ namespace HPReserger.ModuloFinanzas
                 cboDesCuentaBanco.DisplayMember = "banco";
                 cboDesCuentaBanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cboDesBanco.SelectedValue.ToString(), (int)cboDesEmpresa.SelectedValue, (int)cbomoneda.SelectedValue);
             }
-        }
-        private void msg(string v) { HPResergerFunciones.Utilitarios.msg(v); }
+        }      
         private DialogResult msgYesNo(string v) { return HPResergerFunciones.Utilitarios.msgYesNo(v); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -583,7 +584,7 @@ namespace HPReserger.ModuloFinanzas
                 CapaLogica.CuadrarAsiento(CuoDes, IdProyectoDes, FechaContable, 2);
                 ///Inserto el Registro del Prestamo InterEmpresa
                 //Carga de Datos Actualizados
-                msg($"Se Grabó Exitosamente\nEn la Empresa Destino cuo: {CuoOri}\nEn la Empresa Origen  cuo: {CuoDes}");
+                msgOK($"Se Grabó Exitosamente\nEn la Empresa Destino cuo: {CuoOri}\nEn la Empresa Origen  cuo: {CuoDes}");
                 EmpresaFind = 0; MonedaFind = 0;
                 CargarDatos();
             }

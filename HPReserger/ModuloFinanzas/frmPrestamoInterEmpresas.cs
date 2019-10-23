@@ -18,6 +18,9 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public void CargarEmpresaOri() { CapaLogica.TablaEmpresa(cboOriEmpresa); }
         public void CargarEmpresaDes() { CapaLogica.TablaEmpresa(cboDesEmpresa); }
         public void CargarCuentaOrigen()
@@ -125,10 +128,6 @@ namespace HPReserger
                 if (dtgconten.CurrentRow != null)
                     VerificarParaModificar(dtgconten.CurrentRow.Index);
             }
-        }
-        private void msg(string v)
-        {
-            HPResergerFunciones.Utilitarios.msg(v);
         }
         private DialogResult msgYesNo(string v)
         {
@@ -466,7 +465,7 @@ namespace HPReserger
                                         , _CuoDestino, cboDesCuentaContable.SelectedValue.ToString(), IdMoneda, MontoPrestado, FechaContable, FechaPrestamo, ValorTC, Glosa, _FkId);
                 }
                 ///Proceso Finalizado;
-                msg($"Se Grabó Exitosamente\nEn la Empresa Origen  cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");
+                msgOK($"Se Grabó Exitosamente\nEn la Empresa Origen  cuo: {CuoOri}\nEn la Empresa Destino cuo: {CuoDes}");
                 ///****************///
                 ModoEdicion(false);
                 btnaceptar.Enabled = false;

@@ -25,6 +25,8 @@ namespace HPReserger
             subtotal = decimal.Parse(subtotals).ToString("n2");
             igv = decimal.Parse(igvs).ToString("n2");
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int NumCot { get { return int.Parse(txtnumcot.TextValidoNumeros()); } set { txtnumcot.Text = value.ToString("00000"); } }
         private int CodVendedor;
         public int CodVen { get { return CodVendedor; } set { CodVendedor = value; } }
@@ -56,13 +58,8 @@ namespace HPReserger
             txtcodvendedor.Text = CodVen.ToString("000");
             CArgarDatos();
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
         public int estado { get; set; }
         public int Separado { get; set; }
-
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             estado = 2;
@@ -453,7 +450,7 @@ namespace HPReserger
             {
                 CapaLogica.CotizacionesCLienteCabeceraDetalle(1, NumCot, (int)item.Cells[idempresa.Name].Value, (int)item.Cells[idproyecto.Name].Value, item.Cells[Etapa.Name].Value.ToString(), (int)item.Cells[Producto.Name].Value, (decimal)item.Cells[Cantidad.Name].Value, (decimal)item.Cells[Precio_Base.Name].Value, decimal.Parse(txttipocambioref.Text), (int)item.Cells[TDesc.Name].Value, (decimal)item.Cells[VDesc.Name].Value, (decimal)item.Cells[P_Coti.Name].Value, (decimal)item.Cells[xsubtotal.Name].Value, (decimal)item.Cells[xigv.Name].Value, (int)item.Cells[idmoneda.Name].Value, (decimal)item.Cells[PInicial.Name].Value, (int)item.Cells[tipo_inicial.Name].Value, (decimal)item.Cells[valor_inicial.Name].Value);
             }
-            msg($"Cotización Nro: {NumCot.ToString("00000")}, Modificado Exitosamente ");
+            msgOK($"Cotización Nro: {NumCot.ToString("00000")}, Modificado Exitosamente ");
             //CIERRE
             //ProcesoDeCotizar(false);
             ((DataTable)(dtgconten.DataSource)).Rows.Clear();

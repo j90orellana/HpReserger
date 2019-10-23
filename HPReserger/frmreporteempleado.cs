@@ -21,6 +21,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL Creporempleado = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         DateTime fechainicio, fechafin;
         private void frmreporteempleado_Load(object sender, EventArgs e)
         {
@@ -43,11 +45,6 @@ namespace HPReserger
         {
 
         }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void btncancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -243,7 +240,7 @@ namespace HPReserger
                     //   stx.Close();
                     //ExportarExcel(dtgconten, patchxls);
 
-                    MSG("Guardando");
+                    msgOK("Guardando");
                 }
                 else
                 {
@@ -252,7 +249,7 @@ namespace HPReserger
             }
             else
             {
-                MSG("Reporte esta vacio");
+                msg("Reporte esta vacio");
             }
         }
 
@@ -282,7 +279,7 @@ namespace HPReserger
             Worksheet ws = (Worksheet)wb.Worksheets[1];
             if (ws == null)
             {
-                MSG("Hoja de Trabajo no se pudo Crear. Verifique si tiene instalado Office Excel.");
+                msg("Hoja de Trabajo no se pudo Crear. Verifique si tiene instalado Office Excel.");
                 return;
             }
             // Select the Excel cells, in the range c1 to c7 in the worksheet. 
@@ -325,7 +322,7 @@ namespace HPReserger
         private void dtgconten_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Clipboard.SetText(dtgconten[e.ColumnIndex, e.RowIndex].Value.ToString());
-            MSG("Celda Copiada");
+            msgOK("Celda Copiada");
         }
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {

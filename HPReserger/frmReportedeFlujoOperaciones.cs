@@ -17,19 +17,16 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmReportedeFlujoOperaciones_Load(object sender, EventArgs e)
         {
             cboempresa.ValueMember = "codigo";
             cboempresa.DisplayMember = "descripcion";
             cboempresa.DataSource = CapaLogica.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
             if (cboempresa.Items.Count < 1)
-                MSG("No hay Empresas");
+                msg("No hay Empresas");
         }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
-
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboempresa.SelectedIndex > -1)
@@ -38,7 +35,7 @@ namespace HPReserger
                 cbopresupuestos.ValueMember = "Id_PPresupuesto";
                 cbopresupuestos.DataSource = CapaLogica.ListarPptoEmpresas((int)cboempresa.SelectedValue);
                 if (cbopresupuestos.Items.Count < 1)
-                    MSG("No Hay Proyectos");
+                    msg("No Hay Proyectos");
             }
         }
 
@@ -48,7 +45,7 @@ namespace HPReserger
             cboproyecto.DisplayMember = "proyecto";
             cboproyecto.DataSource = CapaLogica.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString(), (int)cbopresupuestos.SelectedValue);
             if (cboproyecto.Items.Count < 1)
-                MSG("No hay Proyectos Presupuestados");
+                msg("No hay Proyectos Presupuestados");
         }
         public void contando(DataGridView grilla)
         {
@@ -73,11 +70,11 @@ namespace HPReserger
                     a++;
                 }
                 ExportarDataGridViewExcel(dtgconten);
-                MSG("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
             {
-                MSG("Debe Primero Generar un reporte");
+                msg("Debe Primero Generar un reporte");
                 btnGenerar.Focus();
             }
         }
@@ -260,7 +257,7 @@ namespace HPReserger
             contando(dtgconten);
             Sumatoria();
             if (dtgconten.RowCount <= 0)
-                MSG("No hay Etapas en el Proyecto");
+                msg("No hay Etapas en el Proyecto");
         }
     }
 }

@@ -54,11 +54,7 @@ namespace HPReserger
         public DialogResult msg(string cadena)
         {
             return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
-        public DialogResult msgx(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }       
         DataTable tablita;
         private void btngenerar_Click(object sender, EventArgs e)
         {
@@ -90,9 +86,9 @@ namespace HPReserger
                         cade = cboempresa.SelectedValue.ToString() + ",'" + comboMesAño1.FechaParaSQL() + "'";
                         CapaLogica.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarGratificacion", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Gratificación Periodo " + comboMesAño1.GetFechaPRimerDia().ToString("MMMM yyyy") + ", " + cboempresa.Text);
                     }
-                    msgx("Solicitud Enviada a su Jefe");
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Solicitud Enviada a su Jefe");
                 }
-                else msg("No se Encuentra el Código del Jefe");
+                else HPResergerFunciones.frmInformativo.MostrarDialogError("No se Encuentra el Código del Jefe");
         }
     }
 }

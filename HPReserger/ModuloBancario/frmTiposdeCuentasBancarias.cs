@@ -147,10 +147,9 @@ namespace HPReserger.ModuloBancario
             btnnuevo.Enabled = !a;
             btnmodificar.Enabled = !a;
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (!txtnrocuenta.EstaLLeno()) { txtnrocuenta.Focus(); msg("Ingrese Nro de Cuenta"); return; }
@@ -178,7 +177,7 @@ namespace HPReserger.ModuloBancario
                 }
                 /////insertando el registro
                 CapaLogica.CuentaBancaria(1, 0,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
-                msg("Número de Cuenta Agregado");
+                msgOK("Número de Cuenta Agregado");
             }
             if (estado == 2)
             {
@@ -191,7 +190,7 @@ namespace HPReserger.ModuloBancario
                     return;
                 }
                 CapaLogica.CuentaBancaria(2, _idcuenta,fkEmpresa, fkBanco, fkMoneda, fkTipoCuenta, NroKuenta, NroKuentaCCi, IdLogin);
-                msg("Número de Cuenta Actualizado");
+                msgOK("Número de Cuenta Actualizado");
             }
             Estado = 0;
             ModoEdicion(false);

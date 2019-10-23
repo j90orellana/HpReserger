@@ -152,6 +152,12 @@
     <Compile Include="ModuloBancario\frmBancoScotiaBank.Designer.cs">
       <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloContable\frmAsientosRelacionados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloContable\frmAsientosRelacionados.Designer.cs">
+      <DependentUpon>frmAsientosRelacionados.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloContable\frmRevesarAsientos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1661,6 +1667,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloBancario\frmBancoScotiaBank.resx">
       <DependentUpon>frmBancoScotiaBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloContable\frmAsientosRelacionados.resx">
+      <DependentUpon>frmAsientosRelacionados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloContable\frmRevesarAsientos.resx">
       <DependentUpon>frmRevesarAsientos.cs</DependentUpon>

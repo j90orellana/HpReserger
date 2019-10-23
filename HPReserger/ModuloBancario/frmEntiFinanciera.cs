@@ -93,7 +93,7 @@ namespace HPReserger
                 if (dtgconten[1, i].Value.ToString() == valor)
                 {
                     Aux = false;
-                    MessageBox.Show("Este valor: " + txtgerencia.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Este valor: " + txtgerencia.Text + " ya Existe");
                     return Aux;
                 }
             }
@@ -107,20 +107,14 @@ namespace HPReserger
                 if (dtgconten[1, i].Value.ToString() == valor && id != (int)dtgconten[codigox.Name, i].Value)
                 {
                     Aux = false;
-                    MessageBox.Show("Este valor: " + txtgerencia.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Este valor: " + txtgerencia.Text + " ya Existe");
                     return Aux;
                 }
             }
             return Aux;
         }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        public void MSG(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }      
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Estado 1=Nuevo. Estado 2=modificar. Estado 3=eliminar. Estado 0=SinAcciones
@@ -134,14 +128,14 @@ namespace HPReserger
             if (estado == 1 && ValidarDes(txtgerencia.Text))
             {
                 cEntiFinanciera.EntidadFinanciera(1, 0, txtgerencia.Text, txtsufijo.TextValido());
-                MSG("Insertado Exitosamente");
+                msgOK("Insertado Exitosamente");
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtgerencia.Text, (int)dtgconten[codigox.Name, dtgconten.CurrentRow.Index].Value))
                 {
                     cEntiFinanciera.EntidadFinanciera(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, txtsufijo.TextValido());
-                    MSG("Actualizado Exitosamente");
+                    msgOK("Actualizado Exitosamente");
                 }
                 else
                 {

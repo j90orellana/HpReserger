@@ -17,6 +17,9 @@ namespace HPReserger.ModuloFinanzas
         {
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public frmListadoPrestamosInterEmpresa(int empresa, int fkid)
         {
             _empresa = empresa;

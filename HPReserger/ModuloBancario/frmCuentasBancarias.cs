@@ -63,8 +63,7 @@ namespace HPReserger.ModuloBancario
                 CargarDatos();
             }
         }
-        public void msg(string cadena)
-        { HPResergerFunciones.Utilitarios.msg(cadena); }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (!txtdescripcion.EstaLLeno()) { txtdescripcion.Focus(); msg("Ingrese la Descripción"); return; }
@@ -75,7 +74,7 @@ namespace HPReserger.ModuloBancario
                 DataTable Tdatos = CapaLogica.TipoCuentaBancaria(5, 0, txtdescripcion.TextValido(), frmLogin.CodigoUsuario);
                 if (Tdatos.Rows.Count > 0) { msg("Descripción YA Existe"); return; }
                 CapaLogica.TipoCuentaBancaria(1, 0, txtdescripcion.TextValido(), frmLogin.CodigoUsuario);
-                msg("Tipo de Cuenta Agregada");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Tipo de Cuenta Agregada");
             }
             ////actualizo
             if (estado == 2)
@@ -84,7 +83,7 @@ namespace HPReserger.ModuloBancario
                 DataTable Tdatos = CapaLogica.TipoCuentaBancaria(6, (int)dtgconten[xId_Tipo_Cta.Name, dtgconten.CurrentRow.Index].Value, txtdescripcion.TextValido(), frmLogin.CodigoUsuario);
                 if (Tdatos.Rows.Count > 0) { msg("Descripción YA Existe"); return; }
                 CapaLogica.TipoCuentaBancaria(2, (int)dtgconten[xId_Tipo_Cta.Name, dtgconten.CurrentRow.Index].Value, txtdescripcion.TextValido(), frmLogin.CodigoUsuario);
-                msg("Tipo de Cuenta Actualizado");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Tipo de Cuenta Actualizado");
             }
             estado = 0;
             ModoEdicion(false);

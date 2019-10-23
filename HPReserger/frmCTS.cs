@@ -23,6 +23,9 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
         private void frmCTS_Load(object sender, EventArgs e)
         {

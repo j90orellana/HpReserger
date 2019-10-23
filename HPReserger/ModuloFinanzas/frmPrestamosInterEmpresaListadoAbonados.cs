@@ -18,6 +18,8 @@ namespace HPReserger.ModuloFinanzas
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         private void frmPrestamosInterEmpresaListadoAbonados_Load(object sender, EventArgs e)
         {
@@ -92,7 +94,6 @@ namespace HPReserger.ModuloFinanzas
             }
             else msg("No hay Registros en la Grilla");
         }
-
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Cursor = Cursors.Default;
@@ -101,8 +102,7 @@ namespace HPReserger.ModuloFinanzas
         }
         frmProcesando frmproce;
         private bool Busqueda;
-
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
+        
         private void btnexcel_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)

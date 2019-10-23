@@ -19,6 +19,8 @@ namespace HPReserger
         }
         public string empresa;
         HPResergerCapaLogica.HPResergerCL CLProyectos = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmProyectos_Load(object sender, EventArgs e)
         {
             cboempresa.ValueMember = "codigo";
@@ -58,7 +60,7 @@ namespace HPReserger
                 txtproyecto.Focus();
             }
             else
-                MSG("No hay Empresas");
+                msg("No hay Empresas");
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
@@ -71,7 +73,7 @@ namespace HPReserger
                 btnnuevo.Enabled = btnmodificar.Enabled = false;
             }
             else
-                MSG("No hay Empresas");
+                msg("No hay Empresas");
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -85,26 +87,22 @@ namespace HPReserger
             }
             else this.Close();
         }
-        public DialogResult MSG(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtproyecto.Text))
             {
-                MSG("Ingresé El nombre del Proyecto");
+                msg("Ingresé El nombre del Proyecto");
                 return;
             }
             if (estado == 1)
             {
                 CLProyectos.Proyectos(txtproyecto.Text, int.Parse(empresa), 0, 1);
-                MSG("Proyecto Agregado Existosamente");
+                msgOK("Proyecto Agregado Existosamente");
             }
             if (estado == 2)
             {
                 CLProyectos.Proyectos(txtproyecto.Text, int.Parse(empresa), int.Parse(dtgconten["idproyecto", dtgconten.CurrentCell.RowIndex].Value.ToString()), 2);
-                MSG("Proyecto Modificado Existosamente");
+                msgOK("Proyecto Modificado Existosamente");
             }
             gp1.Enabled = false;
             dtgconten.Enabled = true;
@@ -159,7 +157,7 @@ namespace HPReserger
                 dtgconten_CellDoubleClick(sender, ex);
             }
             else
-                MSG("No hay proyectos");
+                msg("No hay proyectos");
         }
     }
 }

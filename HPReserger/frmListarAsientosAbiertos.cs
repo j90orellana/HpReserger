@@ -14,6 +14,9 @@ namespace HPReserger
     public partial class frmListarAsientosAbiertos : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public frmListarAsientosAbiertos()
         {
             InitializeComponent();
@@ -40,10 +43,6 @@ namespace HPReserger
         private void btnactualizar_Click(object sender, EventArgs e)
         {
             CargarDatosAsientos();
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {

@@ -19,7 +19,6 @@ namespace HPReserger.ModuloContable
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         public string Glosa { get { return txtGlosa.Text; } set { txtGlosa.Text = value.Trim(); } }
-
         public DateTime FechaValor { get; internal set; }
         public DateTime FechaEmisionDes { get { return dtpFechaEmisionReversa.Value; } set { dtpFechaEmisionReversa.Value = value; } }
         public DateTime FechaContableDes { get { return dtpFechaContableReversa.Value; } set { dtpFechaContableReversa.Value = value; } }
@@ -27,16 +26,27 @@ namespace HPReserger.ModuloContable
         public int Codigo { get; internal set; }
         public int IdProyecto { get; internal set; }
         public int IdEmpresa { get; internal set; }
+        public int IdDinamica { get; internal set; }
+        public Form MdiParents { get; internal set; }
 
+        DataTable TablaDatos;
         private void frmRevesarAsientos_Load(object sender, EventArgs e)
         {
-
+            //Sacamos los Asientos Relacionados
+            btnAsientosRelacionados.Visible = false;
+            TablaDatos = CapaLogica.ListarAsientosRelacionasPagos(IdProyecto, FechaValor, Codigo, IdDinamica);
+            if (TablaDatos.Rows.Count > 0)
+            {
+                btnAsientosRelacionados.Visible = true;
+            }
         }
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public DialogResult msgYesNo(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
         private void btnTxt_Click(object sender, EventArgs e)
         {
@@ -59,11 +69,11 @@ namespace HPReserger.ModuloContable
                     DataRow Filita = CapaLogica.ReversarAsientos(Codigo, IdProyecto, frmLogin.CodigoUsuario, FechaValor).Rows[0];
                     if (Filita[0].ToString() == "")
                     {
-                        HPResergerFunciones.Utilitarios.msg($"Asiento {Cuo} Reversado!");
+                        msgOK($"Asiento {Cuo} Reversado!");
                     }
                     else
                     {
-                        HPResergerFunciones.Utilitarios.msg("Mensaje de Error: \n" + Filita[0].ToString());
+                        msg("Mensaje de Error: \n" + Filita[0].ToString());
                         return;
                     }
                 }
@@ -104,11 +114,11 @@ namespace HPReserger.ModuloContable
                 DataRow Filita = CapaLogica.AnularAsientos(Codigo, IdProyecto, frmLogin.CodigoUsuario, FechaValor, FechaEmisionDes, FechaContableDes, txtGlosa.Text).Rows[0];
                 if (Filita[0].ToString() == "")
                 {
-                    HPResergerFunciones.Utilitarios.msg($"Asiento {Cuo} Reversado!");
+                    msgOK($"Asiento {Cuo} Reversado!");
                 }
                 else
                 {
-                    HPResergerFunciones.Utilitarios.msg("Mensaje de Error: \n" + Filita[0].ToString());
+                    msg("Mensaje de Error: \n" + Filita[0].ToString());
                     return;
                 }
             }
@@ -124,6 +134,27 @@ namespace HPReserger.ModuloContable
             }
             else
                 PanelOtraReversa.Enabled = false;
+        }
+        frmAsientosRelacionados frmRelacionados;
+        private void btnAsientosRelacionados_Click(object sender, EventArgs e)
+        {
+            if (frmRelacionados == null)
+            {
+                frmRelacionados = new frmAsientosRelacionados();
+                frmRelacionados.FormClosed += FrmRelacionados_FormClosed;
+                frmRelacionados.TablaDatos = TablaDatos;
+                frmRelacionados.MdiParent = MdiParents;
+                frmRelacionados.Show();
+            }
+            else
+            {
+                frmRelacionados.Activate();
+            }
+        }
+
+        private void FrmRelacionados_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmRelacionados = null;
         }
     }
 }

@@ -26,6 +26,8 @@ namespace HPReserger
         public Boolean busca;
         public Boolean acepta;
         HPResergerCapaLogica.HPResergerCL locacion = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmLocacionServicio_Load(object sender, EventArgs e)
         {
             DataRow CLocacionServicio = locacion.LocacionServicios(contrato, tipo, numerodoc, 0, ocupacion, detalle);
@@ -57,10 +59,6 @@ namespace HPReserger
             acepta = false;
             this.Close();
         }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         public DialogResult Preguntar(string cadena)
         {
             return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -69,13 +67,13 @@ namespace HPReserger
         {
             if (string.IsNullOrWhiteSpace(txtdetalle.Text))
             {
-                MSG("Ingresé el Detalle del Servicio");
+                msg("Ingresé el Detalle del Servicio");
                 txtdetalle.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtocupacion.Text))
             {
-                MSG("Ingresé la Ocupación Principal");
+                msg("Ingresé la Ocupación Principal");
                 txtocupacion.Focus();
                 return;
             }
@@ -86,7 +84,7 @@ namespace HPReserger
                 locacion.LocacionServicios(contrato, tipo, numerodoc, 2, ocupacion, detalle);
             if (busca == false && estado == 2)
                 locacion.LocacionServicios(contrato, tipo, numerodoc, 1, ocupacion, detalle);
-            MSG("Guardado");
+            msgOK("Guardado");
             this.Close();
         }
     }

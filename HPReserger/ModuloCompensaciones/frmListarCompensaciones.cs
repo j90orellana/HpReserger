@@ -36,6 +36,9 @@ namespace HPReserger.ModuloCompensaciones
         {
 
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
         public void CargarTipoid()
         {
@@ -113,11 +116,7 @@ namespace HPReserger.ModuloCompensaciones
                 cboempresa.DataSource = Table;
                 cboempresa.Text = cadena;
             }
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        }       
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             if (dtgconten.RowCount > 0)

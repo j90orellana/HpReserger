@@ -18,6 +18,9 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         int estado = 0;
         string tabla = "TBL_Cargo";
         string campo = "Cargo";
@@ -34,10 +37,6 @@ namespace HPReserger
             txtnombre.Enabled = a;
             txtbuscar.Enabled = !a;
             btnborrar.Enabled = !a;
-        }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         public void CargarDatos()
         {
@@ -69,10 +68,10 @@ namespace HPReserger
                 Celdita.fila = 2; Celdita.columna = 1; Celdita.Nombre = "Listado de Instituciones Educactivas";
                 Celditas.Add(Celdita);
                 HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Instituciones Educativas", Celditas, 1, new int[] {  }, new int[] { 1 }, new int[] { });
-                Msg("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
-                Msg("No hay Filas para Exportar");
+                msg("No hay Filas para Exportar");
         }
 
         private void btncancelar_Click(object sender, EventArgs e)
@@ -93,19 +92,19 @@ namespace HPReserger
         {
             if (string.IsNullOrWhiteSpace(txtruc.Text))
             {
-                Msg("Ingresé Ruc");
+                msg("Ingresé Ruc");
                 txtruc.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtdirecion.Text))
             {
-                Msg("Ingresé Dirección");
+                msg("Ingresé Dirección");
                 txtdirecion.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtnombre.Text))
             {
-                Msg("Ingresé Nombre");
+                msg("Ingresé Nombre");
                 txtnombre.Focus();
                 return;
             }
@@ -125,14 +124,14 @@ namespace HPReserger
                 {
                     if (txtruc.Text.ToString() == valor.Cells["idedu"].Value.ToString())
                     {
-                        Msg("El Ruc ya Existe");
+                        msg("El Ruc ya Existe");
                         txtruc.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarListarInstitucionEducativa((txtruc.Text), 1, txtnombre.Text, txtdirecion.Text, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                msgOK("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -149,7 +148,7 @@ namespace HPReserger
                 {
                     if (txtruc.Text.ToString() == valor.Cells["idedu"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("El Ruc ya Existe");
+                        msg("El Ruc ya Existe");
                         txtruc.Focus();
                         return;
                     }
@@ -157,7 +156,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarListarInstitucionEducativa((dtgconten["idedu", dtgconten.CurrentCell.RowIndex].Value.ToString()), 2, txtnombre.Text, txtdirecion.Text, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

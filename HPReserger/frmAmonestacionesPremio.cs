@@ -52,12 +52,12 @@ namespace HPReserger
                         txtRuta.Text = NombreFoto;
 
                         clAmonestacionesPremio.EmpleadoMemoPremioSustento(Convert.ToInt32(Grid.CurrentRow.Cells[0].Value.ToString()), Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, tab.SelectedIndex, Foto, txtRuta.Text);
-                        MessageBox.Show("Imagen asociada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Imagen asociada con éxito");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Imagen Asociado a otro Sustento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Imagen Asociado a otro Sustento");
                     return;
                 }
             }
@@ -180,21 +180,21 @@ namespace HPReserger
             {
                 if (txtNumeroDocumento.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº Documento");
                     txtNumeroDocumento.Focus();
                     return;
                 }
 
                 if (tab.SelectedIndex == 0 && txtObservacionesMemo.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Observaciones para el Memorandum", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Observaciones para el Memorandum");
                     txtObservacionesMemo.Focus();
                     return;
                 }
 
                 if (tab.SelectedIndex == 1 && txtObservacionesPremio.Text.Length == 0)
                 {
-                    MessageBox.Show("Ingrese Observaciones para la Carta de Premio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Observaciones para la Carta de Premio");
                     txtObservacionesPremio.Focus();
                     return;
                 }
@@ -210,8 +210,7 @@ namespace HPReserger
                     clAmonestacionesPremio.EmpleadoMemoPremio(out Registrox, Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 1, txtObservacionesPremio.Text);
                     txtObservacionesPremio.Text = "";
                 }
-
-                MessageBox.Show("Se procesó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Se procesó con éxito");
             }
             else
             {
@@ -223,7 +222,7 @@ namespace HPReserger
                     caden = txtObservacionesPremio.Text;
                 Registrox = (int)Grid[Registro.Name, x].Value;
                 clAmonestacionesPremio.ActualizarMemoPremio(Registrox, (int)Grid[CODIGOTIPO.Name, x].Value, Grid[NDI.Name, x].Value.ToString(), tab.SelectedIndex, caden);
-                msg("Actualizado con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado con Exito");
                 btncancelar_Click(sender, e);
             }
             MostrarGrid(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, tab.SelectedIndex);
@@ -244,10 +243,10 @@ namespace HPReserger
         {
             Grid.DataSource = clAmonestacionesPremio.ListarMemoPremio(TipoDocumento, NumeroDocumento, Index);
         }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        //public void msg(string cadena)
+        //{
+        //    MessageBox.Showa(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //}
         private void Grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -402,13 +401,13 @@ namespace HPReserger
                         string cade = Grid[Registro.Name, x].Value.ToString() + "," + Grid[CODIGOTIPO.Name, x].Value.ToString() + ",'" + Grid[NDI.Name, x].Value.ToString() + "'," + tab.SelectedIndex;
                         clAmonestacionesPremio.TablaSolicitudes(1, int.Parse(filita["codigo"].ToString()), "usp_EliminarMemoPremio", cade, 0, frmLogin.CodigoUsuario, "Solicita Eliminar Amonestación a " + Grid["APELLIDOSNOMBRES", Grid.CurrentCell.RowIndex].Value.ToString());
 
-                        msg("Solicitud Enviada a su Jefe");
+                        HPResergerFunciones.frmInformativo.MostrarDialog("Solicitud Enviada a su Jefe");
                     }
-                    else msg("No se Encuentra el Código del Jefe");
+                    else HPResergerFunciones.frmInformativo.MostrarDialogError("No se Encuentra el Código del Jefe");
             }
             else
             {
-                msg("No hay Que Eliminar");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("No hay Que Eliminar");
             }
         }
         int ESTADO = 0; int TABINDEX = 0;
@@ -419,7 +418,7 @@ namespace HPReserger
             int x = Grid.CurrentCell.RowIndex;
             if (x < 0)
             {
-                msg("No hay que Modificar");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("No hay que Modificar");
                 return;
             }
             else

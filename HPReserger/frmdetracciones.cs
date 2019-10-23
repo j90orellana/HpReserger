@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmdetracciones_Load(object sender, EventArgs e)
         {
             LimpiarBusquedas();
@@ -74,10 +76,6 @@ namespace HPReserger
                 msg("No hay Datos que Exportar");
             }
             CArgarDatosDetraccion();
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -186,14 +184,14 @@ namespace HPReserger
             if (estado == 1)
             {
                 CapaLogica.Detraciones(1, 0, txtsunat.Text, txtAnexo.TextValido(), txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);
-                msg("Guardado Exitosamente");
+                msgOK("Guardado Exitosamente");
                 estado = 0;
             }
             //MODIFICAR
             if (estado == 2)
             {
                 CapaLogica.Detraciones(2, CodigoDet, txtsunat.Text, txtAnexo.TextValido(), txtdescripcion.Text, Convert.ToDecimal(txtporcentaje.Text), frmLogin.CodigoUsuario, dtpfecha.Value);
-                msg("Guardado Exitosamente");
+                msgOK("Guardado Exitosamente");
                 estado = 0;
             }
             if (BuscarValor)

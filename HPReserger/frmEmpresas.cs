@@ -57,9 +57,9 @@ namespace HPReserger
             combito.DisplayMember = "VALOR";
             combito.ValueMember = "CODIGO";
         }
-        private void Msg(string cadena)
+        private void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         public void CargarDatos()
         {
@@ -195,10 +195,10 @@ namespace HPReserger
                 Celditas.Add(Celdita);
                 //HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Empresas", Celditas, 1, new int[] { 1, 4, 6, 7, 8, 9, 11, 12, 13, 20 }, new int[] { 1 }, new int[] { });
                 HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Empresas", Celditas, 1, new int[] { 2, 3, 5, 19, 10, 18, 14, 15, 16, 17, 21 }, new int[] { 1 }, new int[] { });
-                Msg("Exportado con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Exportado con Exito");
             }
             else
-                Msg("No hay Filas para Exportar");
+                msg("No hay Filas para Exportar");
 
         }
 
@@ -237,31 +237,31 @@ namespace HPReserger
         {
             if (string.IsNullOrWhiteSpace(txtruc.Text))
             {
-                Msg("Ingresé Ruc");
+                msg("Ingresé Ruc");
                 txtruc.Focus();
                 return;
             }
             if (txtruc.Text.Length != 11)
             {
-                Msg("El Ruc Debe Tener 11 Digitos");
+                msg("El Ruc Debe Tener 11 Digitos");
                 txtruc.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtnombre.Text))
             {
-                Msg("Ingresé Nombre");
+                msg("Ingresé Nombre");
                 txtnombre.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtdireccion.Text))
             {
-                Msg("Ingresé Dirección");
+                msg("Ingresé Dirección");
                 txtdireccion.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtnroid.Text))
             {
-                Msg("Ingresé Id Del Representante");
+                msg("Ingresé Id Del Representante");
                 txtnroid.Focus();
                 return;
             }
@@ -273,7 +273,7 @@ namespace HPReserger
             //}
             if (cboseguro.SelectedIndex < 0)
             {
-                Msg("Seleccione Compañia de Seguro");
+                msg("Seleccione Compañia de Seguro");
                 cboseguro.Focus();
                 return;
             }
@@ -294,14 +294,14 @@ namespace HPReserger
                 {
                     if (txtruc.Text.ToString() == valor.Cells["ruc"].Value.ToString())
                     {
-                        Msg("La Empresa ya Existe");
+                        msg("La Empresa ya Existe");
                         txtruc.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CapaLogica.InsertarActualizarListarEmpresas(txtruc.Text, 1, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             int x = dtgconten.CurrentCell.RowIndex;
@@ -319,7 +319,7 @@ namespace HPReserger
                 {
                     if (txtruc.Text.ToString() == valor.Cells["ruc"].Value.ToString() && fila != x)
                     {
-                        Msg("La Empresa ya Existe");
+                        msg("La Empresa ya Existe");
                         txtruc.Focus();
                         return;
                     }
@@ -327,7 +327,7 @@ namespace HPReserger
                 }
                 //modificando
                 CapaLogica.InsertarActualizarListarEmpresas(dtgconten["ruc", x].Value.ToString(), 2, txtnombre.Text, txtruc.Text, (int)cbosector.SelectedValue, txtdireccion.Text, (int)cbodep.SelectedValue, (int)cbopro.SelectedValue, (int)cbodis.SelectedValue, (int)cbotipo.SelectedValue, txtnroid.Text, (int)cboseguro.SelectedValue, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

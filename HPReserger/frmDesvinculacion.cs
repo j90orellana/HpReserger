@@ -88,7 +88,7 @@ namespace HPReserger
                     panelliquidacion.Enabled = false; panelverimagen.Enabled = false;
                 }
                 dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text);
-                DataRow ListarDesvinculaciones = clDesvinculacion.ListarDesvinculaciones(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text,0);
+                DataRow ListarDesvinculaciones = clDesvinculacion.ListarDesvinculaciones(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtNumeroDocumento.Text, 0);
                 if (ListarDesvinculaciones != null)
                 {
                     panelverimagen.Enabled = true;
@@ -187,7 +187,7 @@ namespace HPReserger
             }
             else
             {
-                txtApellidoPaterno.Text = txtNombres.Text = "";lblcontrato.Text = "";
+                txtApellidoPaterno.Text = txtNombres.Text = ""; lblcontrato.Text = "";
                 dtgconten.DataSource = clDesvinculacion.ListarDesvinculacionContrato(1, "");
                 lklliquidacion.Enabled = lklcts.Enabled = lklrenta.Enabled = lkltrabajo.Enabled = lklpracticas.Enabled = lklsalida.Enabled = false;
             }
@@ -218,13 +218,13 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº Documento");
                 txtNumeroDocumento.Focus();
                 return;
             }
             if (!txtMotivoCese.EstaLLeno())
             {
-                MessageBox.Show("Ingrese Motivo del Cese", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Motivo del Cese");
                 txtMotivoCese.Focus();
                 return;
             }
@@ -241,7 +241,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº Documento");
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -257,7 +257,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº Documento");
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -273,7 +273,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº Documento");
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -289,7 +289,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº Documento");
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -305,7 +305,7 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nº Documento");
                 txtNumeroDocumento.Focus();
                 return;
             }
@@ -332,7 +332,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccione Empleado");
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -363,7 +363,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccione Empleado");
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -394,7 +394,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccione Empleado");
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -424,7 +424,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccione Empleado");
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -456,7 +456,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccione Empleado");
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -488,7 +488,7 @@ namespace HPReserger
         {
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccione Empleado");
                 txtApellidoPaterno.Focus();
                 return;
             }
@@ -519,7 +519,7 @@ namespace HPReserger
         int respuesta;
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         private void btnGrabar_Click(object sender, EventArgs e)
         {
@@ -546,14 +546,14 @@ namespace HPReserger
             }
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Empleado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccione Empleado");
                 txtApellidoPaterno.Focus();
                 return;
             }
 
             if (pbFoto.Image == null)
             {
-                MessageBox.Show("Seleccione Imagen", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccione Imagen");
                 return;
             }
 
@@ -588,22 +588,22 @@ namespace HPReserger
             }
             if (respuesta == 1)
             {
-                MessageBox.Show("Desvinculación Insertada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Desvinculación Insertada con éxito");
                 pbFoto.Image = null;
             }
             if (respuesta == 2)
             {
-                MessageBox.Show("Desvinculación Actualizada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Desvinculación Actualizada con éxito");
 
                 pbFoto.Image = null;
             }
             if (respuesta == 0)
             {
-                MessageBox.Show("Contrato No Encontrado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Contrato No Encontrado");
             }
             if (respuesta == 3)
             {
-                MessageBox.Show("Contrato Encontrado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Contrato No Encontrado");
             }
             txtNumeroDocumento_TextChanged(sender, e);
         }
@@ -767,13 +767,13 @@ namespace HPReserger
         {
             if (txtNumeroDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Ingrese Nº Documento");
                 txtNumeroDocumento.Focus();
                 return;
             }
             if (!txtMotivoCese.EstaLLeno())
             {
-                MessageBox.Show("Ingrese Motivo del Cese", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Ingrese Motivo del Cese");
                 txtMotivoCese.Focus();
                 return;
             }

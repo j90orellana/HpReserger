@@ -191,11 +191,11 @@ namespace HPReserger
                 DataRow Existe = clEmpleadoRequerimiento.ExisteBeneficioEmpleado(CodigoDocumento, NumeroDocumento, "usp_ExisteRequerimientoEmpleado");
                 if (Existe != null)
                 {
-                    MessageBox.Show("Empleado ya cuenta el presente Benefico, NO se puede registrar", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Empleado ya cuenta el presente Benefico, NO se puede registrar");
                     return;
                 }
                 GrabarEditar(1);
-                MessageBox.Show("Requerimiento ingresado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Requerimiento ingresado con éxito");
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false; btnModificar.Enabled = true; btnexportar.Enabled = true;
@@ -203,7 +203,7 @@ namespace HPReserger
             if (estado == 2)
             {
                 GrabarEditar(0);
-                MessageBox.Show("Requerimiento actualizado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Requerimiento Actualizado con éxito");
                 estado = 0;
                 btnaceptar.Enabled = false;
                 pnlconten.Enabled = false; btnModificar.Enabled = true; btnexportar.Enabled = true;

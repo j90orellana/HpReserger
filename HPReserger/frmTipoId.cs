@@ -19,6 +19,8 @@ namespace HPReserger
         }
         public int estado { get; set; }
         HPResergerCapaLogica.HPResergerCL cTipoId = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmTipoId_Load(object sender, EventArgs e)
         {
             estado = 0;
@@ -63,7 +65,7 @@ namespace HPReserger
                 if (dtgconten[1, i].Value.ToString() == valor && i != dtgconten.CurrentCell.RowIndex)
                 {
                     Aux = false;
-                    MessageBox.Show("Este valor:" + txtgerencia.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Este valor:" + txtgerencia.Text + " ya Existe");
                     return Aux;
                 }
             }
@@ -107,7 +109,7 @@ namespace HPReserger
                 if (estado == 2 && ValidarDes(txtgerencia.Text))
                 {
                     cTipoId.TiposID(2, Convert.ToInt32(txtcodigo.Text), txtgerencia.Text, Convert.ToInt32(numup.Value), txtcodsunat.Text);
-                    msg("Actualizado Con Exito");
+                    msgOK("Actualizado Con Exito");
                 }
                 else
                 {
@@ -116,7 +118,7 @@ namespace HPReserger
                         if (MessageBox.Show("Seguró Desea Eliminar " + txtgerencia.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             cTipoId.EliminarTipoId(Convert.ToInt32(txtcodigo.Text));
-                            msg("Eliminado Con Exito");
+                            msgOK("Eliminado Con Exito");
                         }
                     }
                 }
@@ -124,10 +126,6 @@ namespace HPReserger
             estado = 0;
             frmTipoId_Load(sender, e);
             Activar();
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         int estado = 0;
         string tabla = "TBL_Cargo";
         string campo = "Cargo";
@@ -34,10 +36,6 @@ namespace HPReserger
             txtbuscar.Enabled = !a;
             txtdirecion.Enabled = a;
             txtnombre.Enabled = a;
-        }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         public void CargarDatos()
         {
@@ -78,10 +76,10 @@ namespace HPReserger
                 Celdita.fila = 1; Celdita.columna = 1; Celdita.Nombre = "Listado de Paises";
                 Celditas.Add(Celdita);
                 HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Paises", Celditas, 1, new int[] { 1 }, new int[] { 1 }, new int[] { });
-                Msg("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
-                Msg("No hay Filas para Exportar");
+                msg("No hay Filas para Exportar");
         }
 
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -124,13 +122,13 @@ namespace HPReserger
             }
             if (string.IsNullOrWhiteSpace(txtdirecion.Text))
             {
-                Msg("Ingresé Nombre del País");
+                msg("Ingresé Nombre del País");
                 txtdirecion.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtnombre.Text))
             {
-                Msg("Ingresé Gentilicio");
+                msg("Ingresé Gentilicio");
                 txtnombre.Focus();
                 return;
             }
@@ -150,14 +148,14 @@ namespace HPReserger
                 {
                     if (txtruc.Text.ToString() == valor.Cells["codigo"].Value.ToString())
                     {
-                        Msg("El Pais ya Existe");
+                        msg("El Pais ya Existe");
                         txtruc.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarListarPais(txtruc.Text, 1, txtnombre.Text, txtdirecion.Text, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                msgOK("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -174,7 +172,7 @@ namespace HPReserger
                 {
                     if (txtruc.Text.ToString() == valor.Cells["codigo"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("El Pais ya Existe");
+                        msg("El Pais ya Existe");
                         txtruc.Focus();
                         return;
                     }
@@ -182,7 +180,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarListarPais((dtgconten["codigo", dtgconten.CurrentCell.RowIndex].Value.ToString()), 2, txtnombre.Text, txtdirecion.Text, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

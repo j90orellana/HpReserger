@@ -21,6 +21,9 @@ namespace HPReserger
         DataTable TablaConsultadias;
         byte[] ImgVenta;
         DateTime fechaactual;
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public bool BusquedaExterna { get; internal set; }
         public DateTime FechaActual
         {
@@ -88,7 +91,7 @@ namespace HPReserger
                     return;
                 }
             }
-            catch (Exception) { MSG("No hay Conexion a Sunat"); return; }
+            catch (Exception) { msg("No hay Conexion a Sunat"); return; }
             if (Carga == true)
             {
                 tablita.Clear();
@@ -236,8 +239,7 @@ namespace HPReserger
         public event EventHandler ActualizoTipoCambio;
         protected virtual void OnActualizoTipoCambio(EventArgs e)
         {
-            if (ActualizoTipoCambio != null)
-                ActualizoTipoCambio(this, e);
+            ActualizoTipoCambio?.Invoke(this, e);
         }
         private void Btncancelar_Click(object sender, EventArgs e)
         {
@@ -343,10 +345,6 @@ namespace HPReserger
             }
             BusquedaExterna = true;
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         private void dtgconten_MouseDown(object sender, MouseEventArgs e)
         {
             dtgconten.EndEdit();
@@ -381,11 +379,7 @@ namespace HPReserger
                 }
                 i++;
             }
-        }
-        public void MSG(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        }       
         frmProcesando frmpro;
         DateTime Fechas;
         //TimeSpan Stop;
@@ -406,7 +400,7 @@ namespace HPReserger
             }
             else
             {
-                MSG("No hay Datos que Mostrar");
+                msg("No hay Datos que Mostrar");
             }
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

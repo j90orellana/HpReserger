@@ -17,6 +17,9 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         //////////////////////
         private string _CodidoCuenta;
@@ -327,7 +330,7 @@ namespace HPReserger
                 txtcodcuenta.ReadOnly = false;
                 txtcuentan1.ReadOnly = false;
             }
-            else { MSG("La Cuenta ya Tiene Asientos \nNo se Puede Modificar el Código"); }
+            else { msg("La Cuenta ya Tiene Asientos \nNo se Puede Modificar el Código"); }
             OldCodCuenta = txtcodcuenta.Text;
         }
         public Boolean VerificarDatos(string codigo, string nombre)
@@ -337,14 +340,14 @@ namespace HPReserger
             {
                 if (CapaLogica.VerificarCuentas(codigo, nombre).Rows.Count > 0)
                 {
-                    MessageBox.Show("Ya Existe esta Cuenta:\n" + nombre + "; Código:" + codigo, CompanyName, MessageBoxButtons.OK);
+                    msg("Ya Existe esta Cuenta:\n" + nombre + "; Código:" + codigo);
                     aux = false;
                 }
             }
             else
             {
                 aux = false;
-                MessageBox.Show("Código de Cuenta y Descripción de la Cuenta \nNo pueden estar Vacios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Código de Cuenta y Descripción de la Cuenta \nNo pueden estar Vacios");
             }
             return aux;
         }
@@ -406,17 +409,7 @@ namespace HPReserger
             if (cbocuentabc.Text != "")
                 CuentaBC = cbocuentabc.SelectedValue.ToString();
             else CuentaBC = "";
-        }
-        public void MensajedeDatos()
-        {
-            MessageBox.Show("ACCIÓN EXITOSA \n Cuenta N1= " + CuentaN1 + "\n Código Cuenta= " + CodCuenta + "\n Descripción Cuenta= " +
-            DesCuentea + "\n Tipo de Cuenta= " + cbotipo.Text + "\n Naturaleza Cuenta=" + cbonaturaleza.Text + "\n Cuenta Genérica= " +
-            cbogenerica.Text + "\n Grupo Cuenta= " + cbogrupo.Text + "\n Refleja= " + cborefleja.Text + "\n Refleja Depende CC " +
-            cboreflejacc.Text + "\n Refleja Debe= " + cboreflejadebe.Text + "\n Refleja Haber= " + cboreflejahaber.Text + "\n Cuenta Cierra= " +
-            CuentaCierre + "\n Analitica= " + cboanalitica.Text + "\n Ajuste CAmbio Mensual=" + cboajustemensual.Text + "\n Cierre= " +
-            cbocierre.Text + "\n Ajuste Por Traslación= " + cboajustetraslacion.Text + "\n Cuenta Declarante BC= " + cbocuentabc.Text
-            , CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }       
         public void ActualizarReflejo()
         {
             CapaLogica.CreaciondeCuentasReflejo(txtcodcuenta.Text);
@@ -429,15 +422,15 @@ namespace HPReserger
             nombrecuenta = txtnombrecuenta.TextValido();
             codigo = txtcodcuenta.TextValido();
             /////validamos datos Vacios
-            if (!txtcodcuenta.EstaLLeno()) { MSG("Ingrese Número de la Cuenta "); txtcodcuenta.Focus(); return; }
-            if (!txtcodcuenta.EstaLLeno()) { MSG("Ingrese Número de Cuenta "); txtcodcuenta.Focus(); return; }
-            if (!txtcuentan1.EstaLLeno()) { MSG("Ingrese Nombre de la Cuenta N1 "); txtcuentan1.Focus(); return; }
+            if (!txtcodcuenta.EstaLLeno()) { msg("Ingrese Número de la Cuenta "); txtcodcuenta.Focus(); return; }
+            if (!txtcodcuenta.EstaLLeno()) { msg("Ingrese Número de Cuenta "); txtcodcuenta.Focus(); return; }
+            if (!txtcuentan1.EstaLLeno()) { msg("Ingrese Nombre de la Cuenta N1 "); txtcuentan1.Focus(); return; }
             ///fin de la validacion
             if (estado == 1 && VerificarDatos(codigo, nombrecuenta))
             {
                 CargarValoresDeIngreso();
                 //MensajedeDatos();
-                MessageBox.Show("Se Insertó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msgOK("Se Insertó con Exito");
                 //usp_insertar_cuentas_contables
                 CapaLogica.InsertarCuentasContables(CuentaN1, CodCuenta, DesCuentea, TipoCuenta, NatuCuenta, CuentaGene, GrupoCuenta,
                 Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre, Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1
@@ -452,7 +445,7 @@ namespace HPReserger
                     CargarValoresDeIngreso();
                     if (OldCodCuenta != OldCodCuenta) { if (VerificarDatos(codigo, nombrecuenta)) return; }
                     //MensajedeDatos();
-                    MessageBox.Show("Se Modificó con Exito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    msgOK("Se Modificó con Exito");
                     //usp_actualizar_cuentas_contables
                     CapaLogica.ActualizarCuentasContables(OldCodCuenta, CodCuenta, CuentaN1, DesCuentea, TipoCuenta, CuentaGene, GrupoCuenta, Refleja, Reflejacc, ReflejaD, ReflejaH, CuentaCierre,
                         Analitica, AjusteCambioMensual, Cierre, AjusteTraslacion, CuentaBC, NatuCuenta, int.Parse(cbosolicitar.SelectedValue.ToString()), chkcabecera.Checked ? 0 : 1, (int)cboestado.SelectedValue, chkInterEmpresa.Checked ? 1 : 0);
@@ -466,7 +459,7 @@ namespace HPReserger
                         if (MessageBox.Show("Seguró Desea Eliminar; " + txtnombrecuenta.Text + " Código Cuenta: " + txtcodcuenta.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             //CProveedor.EliminarProveedor(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));                            
-                            MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            msgOK("Eliminado Exitosamente");
                             //                            PresentarValor("");
 
                         }
@@ -518,14 +511,10 @@ namespace HPReserger
                 }
                 else
                 {
-                    MSG("No ha Seleccionado un Archivo");
+                    msg("No ha Seleccionado un Archivo");
                 }
             }
-            else MSG("No ha Seleccionado un Archivo");
-        }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else msg("No ha Seleccionado un Archivo");
         }
         private void dtgconten_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -657,11 +646,7 @@ namespace HPReserger
             {
                 msg("No hay Datos que Exportar");
             }
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        }      
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             if (dtgconten.RowCount > 0)

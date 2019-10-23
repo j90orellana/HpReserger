@@ -42,12 +42,8 @@ namespace HPReserger
             {
                 Grid.DataSource = HPResergerFunciones.Utilitarios.CargarDatosDeExcelAGrilla(Ruta, Hoja);
             }
-            else MSG("No Hay Hojas que Mostrar");
-        }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+            else HPResergerFunciones.frmInformativo.MostrarDialogError("No Hay Hojas que Mostrar");
+        }       
         public DialogResult msg(string cadena)
         {
             return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -73,7 +69,7 @@ namespace HPReserger
                 }
                 else
                 {
-                    MSG("No ha Seleccionado un Archivo");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("No ha Seleccionado un Archivo");
                 }
             }
             //else MSG("No ha Seleccionado un Archivo");

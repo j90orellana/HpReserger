@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public frmProductosProyecto(int proyecto, string nombre)
         {
             InitializeComponent();
@@ -159,10 +161,6 @@ namespace HPReserger
         {
             if (find)
                 btnbuscar_Click(new object { }, new EventArgs());
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public DialogResult msgyESnO(string cadena)
         {
@@ -328,7 +326,7 @@ namespace HPReserger
             {
                 CapaLogica.Proyecto_Productos(0, 1, codProyecto, (int)cboproducto.SelectedValue, decimal.Parse(txtcantidad.TextValido()), (int)cbounidad.SelectedValue, (int)cbomoneda.SelectedValue, Convert.ToDecimal(txtpreciopre.Text), Convert.ToDecimal(txtprecio.Text), cboetapa.Text, (int)cboestado.SelectedValue, txtobservacion.Text, frmLogin.CodigoUsuario, cbotipopago.SelectedIndex + 1, decimal.Parse(txtvinicial.Text));
                 CargarDatos();
-                msg("Producto del Proyecto Guardado");
+                msgOK("Producto del Proyecto Guardado");
                 estado = 0;
             }
             //MODIFICAR
@@ -337,7 +335,7 @@ namespace HPReserger
                 //BUSCA SI YA EXISTE               
                 CapaLogica.Proyecto_Productos(Codregistro, 2, codProyecto, (int)cboproducto.SelectedValue, decimal.Parse(txtcantidad.TextValido()), (int)cbounidad.SelectedValue, (int)cbomoneda.SelectedValue, Convert.ToDecimal(txtpreciopre.Text), Convert.ToDecimal(txtprecio.Text), cboetapa.Text, (int)cboestado.SelectedValue, txtobservacion.Text, frmLogin.CodigoUsuario, cbotipopago.SelectedIndex + 1, decimal.Parse(txtvinicial.Text));
                 CargarDatos();
-                msg("Producto del Proyecto Guardado");
+                msgOK("Producto del Proyecto Guardado");
                 estado = 0;
             }
             DesactivarEdicion();

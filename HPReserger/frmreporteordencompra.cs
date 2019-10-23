@@ -15,7 +15,8 @@ namespace HPReserger
     {
 
         HPResergerCapaLogica.HPResergerCL CReportORden = new HPResergerCapaLogica.HPResergerCL();
-        int opcion = 0;
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }        int opcion = 0;
         int articulo = 0;
         int servicio = 0;
         int fecha = 0;
@@ -317,15 +318,10 @@ namespace HPReserger
             if (dtgconten.RowCount > 0)
             {
                 ExportarDataGridViewExcel();
-                msg("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
                 msg("No hay Filas para Exportar");
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Question);
-
         }
         private void ExportarDataGridViewExcel()
         {

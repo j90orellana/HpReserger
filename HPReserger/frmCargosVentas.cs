@@ -19,6 +19,9 @@ namespace HPReserger
         }
         DataTable TCargos;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void frmCargosVentas_Load(object sender, EventArgs e)
         {
             dtgbusca.ReadOnly = dtgconten.ReadOnly = true; txtBuscar.Enabled = false; btnaceptar.Enabled = false;
@@ -101,7 +104,7 @@ namespace HPReserger
                     //21 inserta linea a linea
                     CapaLogica.InsertarActualizarCargo((int)item.Cells[idcargox.Name].Value, 21, "", 0);
                 }
-                HPResergerFunciones.Utilitarios.msg("Guardado Exitosamente");
+                msgOK("Guardado Exitosamente");
             }
             btnaddgroup.Enabled = true; btnaddselected.Enabled = true;
             estado = 0;
@@ -119,10 +122,10 @@ namespace HPReserger
                         {
                             dtgconten.Rows.Remove(item);
                         }
-                        HPResergerFunciones.Utilitarios.msg("Items Eliminados");
+                        msgOK("Items Eliminados");
                     }
                     else
-                        HPResergerFunciones.Utilitarios.msg("Cancelado Por el Usuario");
+                        msg("Cancelado Por el Usuario");
                 }
             }
         }

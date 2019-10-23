@@ -19,6 +19,9 @@ namespace HPReserger
             InitializeComponent();
         }
         int estado = 0;
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public string _cuodasiento { get { return txtnumasiento.Text; } set { txtnumasiento.Text = value; } }
         public int _idasiento;
         public int _asiento;
@@ -418,11 +421,7 @@ namespace HPReserger
         public DialogResult MSG(string cadena)
         {
             return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }       
         private void Dtgconten_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)

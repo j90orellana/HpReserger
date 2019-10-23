@@ -17,6 +17,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CLDetalle = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int cabecera; public int empresa;
         DataRow DatosMaximo;
         private void frmPresupuestodetalle_Load(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace HPReserger
                 txtmontomax.Text = DatosMaximo["diferencia"].ToString();
             txtmontomax.Enabled = false;
             if (cboproyecto.Items.Count < 1)
-                MSG("No hay Proyectos");
+                msg("No hay Proyectos");
         }
         private void txtimporte_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -43,10 +45,6 @@ namespace HPReserger
         private void txtimporte_KeyDown(object sender, KeyEventArgs e)
         {
             HPResergerFunciones.Utilitarios.ValidarDinero(e, txtimporte);
-        }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         decimal importes;
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,7 +68,7 @@ namespace HPReserger
                     }
                     contando(dtgconten);
                 }
-                else MSG("Proyecto - No Tiene Etapas");
+                else msg("Proyecto - No Tiene Etapas");
             }
         }
         public void iniciar(Boolean a)
@@ -85,7 +83,7 @@ namespace HPReserger
         {
             if (cboproyecto.Items.Count < 1)
             {
-                MSG("No hay Proyectos");
+                msg("No hay Proyectos");
                 return;
 
             }
@@ -103,20 +101,20 @@ namespace HPReserger
         {
             if (decimal.Parse(txttotal.Text) > (decimal.Parse(DatosMaximo["sumaimporte"].ToString()) + decimal.Parse(txtmontomax.Text)))
             {
-                MSG($"El Total Del Proyecto:{txttotal.Text },  No Puede ser mayor al Presupuesto { decimal.Parse(DatosMaximo["sumaimporte"].ToString()) + decimal.Parse(txtmontomax.Text)}");
+                msg($"El Total Del Proyecto:{txttotal.Text },  No Puede ser mayor al Presupuesto { decimal.Parse(DatosMaximo["sumaimporte"].ToString()) + decimal.Parse(txtmontomax.Text)}");
                 txtimporte.Focus();
                 return;
             }
 
             if (txtimporte.Text != txttotal.Text)
             {
-                MSG("Hay diferencia en el Importe");
+                msg("Hay diferencia en el Importe");
                 txtimporte.Focus();
                 return;
             }
             if (cboproyecto.SelectedIndex < 0)
             {
-                MSG("Seleccioné un Proyecto");
+                msg("Seleccioné un Proyecto");
                 cboproyecto.Focus();
                 return;
             }
@@ -128,7 +126,7 @@ namespace HPReserger
                     CLDetalle.ProyectoCentrodecostodetalle(0, 0, cabecera, int.Parse(cboproyecto.SelectedValue.ToString()), int.Parse(dtgconten["id_etapas", i].Value.ToString()), decimal.Parse(txtimporte.Text), dtgconten["CodCentroC", i].Value.ToString(), decimal.Parse(dtgconten["importe", i].Value.ToString()), decimal.Parse(dtgconten["flujos", i].Value.ToString()), frmLogin.CodigoUsuario);
                 }
             }
-            MSG("Modificación Exitosa");
+            msgOK("Modificación Exitosa");
             contando(dtgconten);
             iniciar(false);
             DatosMaximo = CLDetalle.VerMaximoPresupuesto(cabecera);

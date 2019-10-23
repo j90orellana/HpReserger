@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         public HPResergerCapaLogica.HPResergerCL CArticulo = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int estado { get; set; }
         public int modmarca { get; set; }
         public int modmodelo { get; set; }
@@ -106,7 +108,7 @@ namespace HPReserger
             Boolean aux = true;
             if (CArticulo.VerificarMarcaModelo(marca, modelo).Rows.Count > 0)
             {
-                MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + cbomodelo.Text + "=" + modelo, CompanyName, MessageBoxButtons.OK);
+                msg("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + cbomodelo.Text + "=" + modelo);
                 aux = false;
             }
             return aux;
@@ -169,14 +171,14 @@ namespace HPReserger
             if (estado == 1 && VerificarDatos(marca, modelo))
             {
                 CArticulo.InsertarMarcaModelo(marca, modelo);
-                MessageBox.Show("Relación Insertada Exitosamente "+marca+";"+modelo, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msgOK("Relación Insertada Exitosamente " + marca + " ; " + modelo);
             }
             else
             {
                 if (estado == 2 && VerificarDatos(marca, modelo))
                 {
                     CArticulo.ActualizarMarcaModelo(marca, modelo, modmarca, modmodelo);estado = 0;
-                    MessageBox.Show("Relación Modificada Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    msgOK("Relación Modificada Exitosamente");
                 }
                 else
                 {
@@ -185,7 +187,7 @@ namespace HPReserger
                         if (MessageBox.Show("Seguró Desea Eliminar; Marca: " + cbomarca.Text + " Modelo: " + cbomodelo.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             CArticulo.EliminarMarcaModelo(marca, modelo);estado = 0;
-                            MessageBox.Show("Relación Modificada Exitosamente ", CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            msgOK("Relación Modificada Exitosamente ");
 
                         }
                     }

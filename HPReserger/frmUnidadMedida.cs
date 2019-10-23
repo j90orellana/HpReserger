@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmUnidadMedida_Load(object sender, EventArgs e)
         {
             CargarDatos();
@@ -90,7 +92,7 @@ namespace HPReserger
             if (!txtnombre.EstaLLeno())
             {
                 txtnombre.Focus();
-                HPResergerFunciones.Utilitarios.msg("Ingrese Nombre Valido");
+                msg("Ingrese Nombre Valido");
                 return;
             }
             if (estado == 1)
@@ -98,22 +100,22 @@ namespace HPReserger
                 DataRow filita = (CapaLogica.UnidadMedida(6, 0, txtnombre.TextValido(), frmLogin.CodigoUsuario)).Rows[0];
                 if (filita["total"].ToString() != "0")
                 {
-                    HPResergerFunciones.Utilitarios.msg("La Unidad de Medida Ya Existe");
+                    msg("La Unidad de Medida Ya Existe");
                     return;
                 }
                 CapaLogica.UnidadMedida(1, 0, txtnombre.TextValido(), frmLogin.CodigoUsuario);
-                HPResergerFunciones.Utilitarios.msg("Agregadó Exitosamente");
+            msgOK("Agregadó Exitosamente");
             }
             if (estado == 2)
             {
                 DataRow filita = (CapaLogica.UnidadMedida(7, int.Parse(txtcodigo.TextValido()), txtnombre.TextValido(), frmLogin.CodigoUsuario)).Rows[0];
                 if (filita["total"].ToString() != "0")
                 {
-                    HPResergerFunciones.Utilitarios.msg("La Unidad de Medida Ya Existe");
+                    msg("La Unidad de Medida Ya Existe");
                     return;
                 }
                 CapaLogica.UnidadMedida(2, int.Parse(txtcodigo.TextValido()), txtnombre.TextValido(), frmLogin.CodigoUsuario);
-                HPResergerFunciones.Utilitarios.msg("Actualizadó Exitosamente");
+               msgOK("Actualizadó Exitosamente");
             }
             estado = 0;
             btnnuevo.Enabled = dtgconten.Enabled = btneliminar.Enabled = btnmodificar.Enabled = true;

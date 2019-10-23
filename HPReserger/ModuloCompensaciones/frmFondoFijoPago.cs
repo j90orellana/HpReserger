@@ -328,10 +328,9 @@ namespace HPReserger.ModuloCompensaciones
             }
             DtgcontenFacturas.EndEdit(); DtgcontenFacturas.RefreshEdit();
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public DialogResult msgOk(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
@@ -616,7 +615,7 @@ namespace HPReserger.ModuloCompensaciones
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(CuoNext, proyecto, FechaContable, 2);
                 //Fin Cuadre
-                msg(mensaje + $"\nSe hizo el pago con Cuo {CuoNext}");
+                msgOK(mensaje + $"\nSe hizo el pago con Cuo {CuoNext}");
                 cboempleado_SelectedIndexChanged(sender, e);
                 CalcularTotal();
             }

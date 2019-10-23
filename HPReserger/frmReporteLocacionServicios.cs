@@ -22,6 +22,8 @@ namespace HPReserger
         public string tipo;
         public string numero;
         HPResergerCapaDatos.HPResergerCD datos = new HPResergerCapaDatos.HPResergerCD();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmReporteLocacionServicios_Load(object sender, EventArgs e)
         {
             rptLocacionServicios reporte = new rptLocacionServicios();

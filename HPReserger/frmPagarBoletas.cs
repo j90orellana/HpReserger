@@ -14,6 +14,8 @@ namespace HPReserger
 
         }
         HPResergerCapaLogica.HPResergerCL Capalogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         private void frmPagarBoletas_Load(object sender, EventArgs e)
         {
@@ -457,7 +459,7 @@ namespace HPReserger
                         {
                             Capalogica.ActualizarBoletas(int.Parse(filita["tipodoc"].ToString()), (string)filita["nrodoc"], (DateTime)filita["fecha"], 2);
                         }
-                        msg("Boletas Pagadas!");
+                        msgOK("Boletas Pagadas!");
                     }
                 }
                 if (ResultadoDialogo == DialogResult.No)
@@ -469,7 +471,7 @@ namespace HPReserger
                         {
                             Capalogica.ActualizarBoletas(int.Parse(filita.tipo), filita.nro, filita.fecha, 2);
                         }
-                        msg("Boletas Pagadas!");
+                        msgOK("Boletas Pagadas!");
                     }
                 }
                 Comprobantes.Clear();
@@ -479,10 +481,6 @@ namespace HPReserger
             {
                 msg("Seleccioné mínimo una Boleta");
             }
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public DialogResult msgM(string cadena)
         {

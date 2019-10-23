@@ -34,9 +34,9 @@ namespace HPReserger
             // Numadicional3.Enabled = a;
             checkActivo.Enabled = a;
         }
-        private void Msg(string cadena)
+        private void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         public void CargarDatos()
         {
@@ -82,7 +82,7 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre de la Empresa");
+                    msg("Ingresé Nombre de la Empresa");
                     txtgerencia.Focus();
                     return;
                 }
@@ -90,22 +90,22 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString().ToUpper() == valor.Cells["empresaeps"].Value.ToString().ToUpper())
                     {
-                        Msg("La Empresa ya Existe");
+                        msg("La Empresa ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarEmpresaEps(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario, 0, 0, 0, 0, checkActivo.Checked);
-                Msg("Insertado Con Exito");
-                iniciar(false); 
+                HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
+                iniciar(false);
             }
             if (estado == 2)
             {
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre de la Empresa");
+                    msg("Ingresé Nombre de la Empresa");
                     txtgerencia.Focus();
                     return;
                 }
@@ -114,7 +114,7 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString().ToUpper() == valor.Cells["empresaeps"].Value.ToString().ToUpper() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("La Empresa ya Existe");
+                        msg("La Empresa ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
@@ -122,7 +122,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarEmpresaEps(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario, 0, 0, 0, 0, checkActivo.Checked);
-                Msg("Actualizado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 IEpsAdicional IFOrmAdicional = MdiParent as IEpsAdicional;
                 if (IFOrmAdicional != null)
                     IFOrmAdicional.CargarPLanes();

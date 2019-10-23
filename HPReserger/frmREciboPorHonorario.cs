@@ -20,6 +20,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL cfactura = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void txtruc_TextChanged(object sender, EventArgs e)
         {
             DataRow DatosProveedor = cfactura.RUCProveedor(txtruc.Text);
@@ -127,7 +129,7 @@ namespace HPReserger
             }
             else
             {
-                MSG("No ha Ingresado el Valor Del Imp. Renta 4ta Categoría, Ingréselo en El Siguiente Formulario");
+                msg("No ha Ingresado el Valor Del Imp. Renta 4ta Categoría, Ingréselo en El Siguiente Formulario");
                 frmParametros param = new frmParametros();
                 param.ShowDialog();
                 goto Busqueda;
@@ -229,27 +231,23 @@ namespace HPReserger
             DtgConten[e.ColumnIndex, e.RowIndex].Value = "0.00";
         }
         decimal porcentaje, subtotal, total, igv;
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         public Boolean validar()
         {
             if (string.IsNullOrWhiteSpace(txtnrofactura.Text))
             {
-                MSG("Ingresé Número del Recibo");
+                msg("Ingresé Número del Recibo");
                 txtnrofactura.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(txtcodfactura.Text))
             {
-                MSG("Ingresé Codigo del Recibo");
+                msg("Ingresé Codigo del Recibo");
                 txtcodfactura.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(txtmonto.Text))
             {
-                MSG("Ingresé Importe del Recibo");
+                msg("Ingresé Importe del Recibo");
                 return false;
             }
             if (!string.IsNullOrWhiteSpace(txtnrofactura.Text))
@@ -257,24 +255,24 @@ namespace HPReserger
                 DataRow factura = cfactura.BuscarFacturas(txtruc.Text, $"{txtcodfactura.Text}-{txtnrofactura.Text}");
                 if (factura != null)
                 {
-                    MSG("Nro de Recibo ya Existe");
+                    msg("Nro de Recibo ya Existe");
                     return false;
                 }
             }
             if ((dtfechaemision.Value > Dtfechaentregado.Value))
             {
-                MSG("La Fecha de EMISION no puede ser menor que la de ENTREGA");
+                msg("La Fecha de EMISION no puede ser menor que la de ENTREGA");
                 return false;
             }
 
             if ((Dtfechaentregado.Value < dtfechaemision.Value))
             {
-                MSG("La Fecha de ENTREGA no puede ser menor que la de EMISION");
+                msg("La Fecha de ENTREGA no puede ser menor que la de EMISION");
                 return false;
             }
             if (Convert.ToDecimal(txtmonto.Text) < 0)
             {
-                MSG("El monto no puede ser menor igual cero");
+                msg("El monto no puede ser menor igual cero");
                 return false;
             }
 
@@ -287,7 +285,7 @@ namespace HPReserger
             {
                 if (decimal.Parse(DtgConten["preciounit", i].Value.ToString()) <= 0)
                 {
-                    MSG("Ingresé Precio Unitario de la fila " + (i + 1));
+                    msg("Ingresé Precio Unitario de la fila " + (i + 1));
                     DtgConten.CurrentCell = DtgConten["preciounit", i];
                     return false;
                 }
@@ -304,7 +302,7 @@ namespace HPReserger
                 {
                     if (item.Cells[cuentax.Name].Value.ToString() == "")
                     {
-                        MSG($"El item {item.Cells[DESCRIPCION.Name].Value.ToString() } : No tiene un cuenta Asociada ");
+                        msg($"El item {item.Cells[DESCRIPCION.Name].Value.ToString() } : No tiene un cuenta Asociada ");
                         return;
                     }
                 }
@@ -330,7 +328,7 @@ namespace HPReserger
                     ///Dinamica Contable///
                     ///////////////////////  
                 }
-                MSG($"Recibo por Honorario Ingresado Exitosamente \ncon Asiento: {HPResergerFunciones.Utilitarios.Cuo(nextAsiento, DateTime.Now)}");
+                msgOK($"Recibo por Honorario Ingresado Exitosamente \ncon Asiento: {HPResergerFunciones.Utilitarios.Cuo(nextAsiento, DateTime.Now)}");
                 txtnrofactura.Text = ""; txtmonto.Text = ""; txtsubtotal.Text = txtigv.Text = txttotal.Text = ""; pbfactura.Image = null; imgfactura = null; txtfoto.Text = "";
                 txtruc.Text = ""; txtcodfactura.Text = "";
                 Dtguias.Enabled = true;
@@ -416,7 +414,7 @@ namespace HPReserger
                 DataRow factura = cfactura.BuscarFacturas(txtruc.Text, $"{txtcodfactura.Text}-{txtnrofactura.Text}");
                 if (factura != null)
                 {
-                    MSG("Recibo ya Existe");
+                    msg("Recibo ya Existe");
                 }
             }
         }

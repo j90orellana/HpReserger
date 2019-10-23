@@ -54,9 +54,9 @@
             this.lsbruc = new System.Windows.Forms.ListBox();
             this.cbotipoid = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.txthorarioprac = new System.Windows.Forms.TextBox();
-            this.msg = new System.Windows.Forms.ToolTip(this.components);
+            this.label11 = new System.Windows.Forms.Label();
+            this.msgtIP = new System.Windows.Forms.ToolTip(this.components);
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnaceptar = new System.Windows.Forms.Button();
             this.gp1.SuspendLayout();
@@ -71,7 +71,7 @@
             this.txtrazonsocialuni.Name = "txtrazonsocialuni";
             this.txtrazonsocialuni.Size = new System.Drawing.Size(306, 21);
             this.txtrazonsocialuni.TabIndex = 1;
-            this.msg.SetToolTip(this.txtrazonsocialuni, "UNI");
+            this.msgtIP.SetToolTip(this.txtrazonsocialuni, "UNI");
             this.txtrazonsocialuni.Click += new System.EventHandler(this.txtrazonsocialuni_Click);
             this.txtrazonsocialuni.TextChanged += new System.EventHandler(this.txtrazonsocialuni_TextChanged);
             this.txtrazonsocialuni.Enter += new System.EventHandler(this.txtrazonsocialuni_Enter);
@@ -102,7 +102,7 @@
             this.txtrucuni.Name = "txtrucuni";
             this.txtrucuni.Size = new System.Drawing.Size(140, 21);
             this.txtrucuni.TabIndex = 0;
-            this.msg.SetToolTip(this.txtrucuni, "0701046971");
+            this.msgtIP.SetToolTip(this.txtrucuni, "0701046971");
             this.txtrucuni.Click += new System.EventHandler(this.txtrucuni_Click);
             this.txtrucuni.TextChanged += new System.EventHandler(this.txtrucuni_TextChanged);
             this.txtrucuni.Enter += new System.EventHandler(this.txtrucuni_Enter);
@@ -169,7 +169,7 @@
             this.txtsituacionprac.Name = "txtsituacionprac";
             this.txtsituacionprac.Size = new System.Drawing.Size(337, 21);
             this.txtsituacionprac.TabIndex = 6;
-            this.msg.SetToolTip(this.txtsituacionprac, "Estudiante del 9° ciclo de la carrera de Diseño Grafico");
+            this.msgtIP.SetToolTip(this.txtsituacionprac, "Estudiante del 9° ciclo de la carrera de Diseño Grafico");
             // 
             // label7
             // 
@@ -187,7 +187,7 @@
             this.txtespecialidadprac.Name = "txtespecialidadprac";
             this.txtespecialidadprac.Size = new System.Drawing.Size(337, 21);
             this.txtespecialidadprac.TabIndex = 7;
-            this.msg.SetToolTip(this.txtespecialidadprac, "Diseño corporativo, Publicidad, Papelería");
+            this.msgtIP.SetToolTip(this.txtespecialidadprac, "Diseño corporativo, Publicidad, Papelería");
             // 
             // label8
             // 
@@ -206,7 +206,7 @@
             this.txtocupacionmateriaprac.Size = new System.Drawing.Size(288, 21);
             this.txtocupacionmateriaprac.TabIndex = 8;
             this.txtocupacionmateriaprac.Tag = "";
-            this.msg.SetToolTip(this.txtocupacionmateriaprac, "Practicante Pre-profesional en el área de Diseño");
+            this.msgtIP.SetToolTip(this.txtocupacionmateriaprac, "Practicante Pre-profesional en el área de Diseño");
             // 
             // label9
             // 
@@ -224,7 +224,7 @@
             this.txtdiasprac.Name = "txtdiasprac";
             this.txtdiasprac.Size = new System.Drawing.Size(337, 21);
             this.txtdiasprac.TabIndex = 9;
-            this.msg.SetToolTip(this.txtdiasprac, "De lunes a viernes");
+            this.msgtIP.SetToolTip(this.txtdiasprac, "De lunes a viernes");
             // 
             // label10
             // 
@@ -328,6 +328,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "El Practicante:";
             // 
+            // txthorarioprac
+            // 
+            this.txthorarioprac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txthorarioprac.Location = new System.Drawing.Point(143, 122);
+            this.txthorarioprac.Name = "txthorarioprac";
+            this.txthorarioprac.Size = new System.Drawing.Size(337, 21);
+            this.txthorarioprac.TabIndex = 10;
+            this.msgtIP.SetToolTip(this.txthorarioprac, "De lunes a viernes de 9:00 am a 16:00 pm, con una hora de refrigerio, desde las 1" +
+        "3:00 pm hasta las 14:00 pm");
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -337,23 +347,13 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "Horario de las Practicas:";
             // 
-            // txthorarioprac
+            // msgtIP
             // 
-            this.txthorarioprac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txthorarioprac.Location = new System.Drawing.Point(143, 122);
-            this.txthorarioprac.Name = "txthorarioprac";
-            this.txthorarioprac.Size = new System.Drawing.Size(337, 21);
-            this.txthorarioprac.TabIndex = 10;
-            this.msg.SetToolTip(this.txthorarioprac, "De lunes a viernes de 9:00 am a 16:00 pm, con una hora de refrigerio, desde las 1" +
-        "3:00 pm hasta las 14:00 pm");
-            // 
-            // msg
-            // 
-            this.msg.AutoPopDelay = 10000;
-            this.msg.InitialDelay = 500;
-            this.msg.IsBalloon = true;
-            this.msg.ReshowDelay = 100;
-            this.msg.ShowAlways = true;
+            this.msgtIP.AutoPopDelay = 10000;
+            this.msgtIP.InitialDelay = 500;
+            this.msgtIP.IsBalloon = true;
+            this.msgtIP.ReshowDelay = 100;
+            this.msgtIP.ShowAlways = true;
             // 
             // btncancelar
             // 
@@ -427,7 +427,7 @@
         private System.Windows.Forms.TextBox txtnrodocrepre;
         private System.Windows.Forms.GroupBox gp1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ToolTip msg;
+        private System.Windows.Forms.ToolTip msgtIP;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.Button btnaceptar;
         private System.Windows.Forms.ComboBox cbotipoid;

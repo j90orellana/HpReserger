@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         int estado = 0;
         private Boolean _BuscarValor = false;
         public Boolean BuscarValor { get { return _BuscarValor; } set { _BuscarValor = value; } }
@@ -122,13 +124,13 @@ namespace HPReserger
             if (!txtdescripcion.EstaLLeno())
             {
                 txtdescripcion.Focus();
-                HPResergerFunciones.Utilitarios.msg("Ingrese El Nombre del Comprobante");
+                msg("Ingrese El Nombre del Comprobante");
                 return;
             }
             if (!txtcodigosunat.EstaLLeno())
             {
                 txtcodigosunat.Focus();
-                HPResergerFunciones.Utilitarios.msg("Ingrese El Código de la Sunat");
+                msg("Ingrese El Código de la Sunat");
                 return;
             }
             int codigosunat = int.Parse(txtcodigosunat.Text);
@@ -142,14 +144,14 @@ namespace HPReserger
                 filita = tablita.Rows[0];
                 if ((int)filita["cantidad"] != 0)
                 {
-                    HPResergerFunciones.Utilitarios.msg("Comprobante de Pago Ya Existe");
+                    msg("Comprobante de Pago Ya Existe");
                     txtdescripcion.Focus();
                     return;
                 }
                 CapaLogica.ComprobanteDePago(1, Codigo, txtdescripcion.Text, frmLogin.CodigoUsuario, codigosunat, DateTime.Now);
                 CodigoSunat = codigosunat;
                 CargarComprobantes();
-                HPResergerFunciones.Utilitarios.msg("Comprobante de Pago Guardado");
+                msg("Comprobante de Pago Guardado");
                 estado = 0;
             }
             //MODIFICAR
@@ -160,14 +162,14 @@ namespace HPReserger
                 filita = tablita.Rows[0];
                 if ((int)filita["cantidad"] != 0)
                 {
-                    HPResergerFunciones.Utilitarios.msg("Comprobante de Pago Ya Existe");
+                    msg("Comprobante de Pago Ya Existe");
                     txtdescripcion.Focus();
                     return;
                 }
                 CapaLogica.ComprobanteDePago(2, Codigo, txtdescripcion.Text, frmLogin.CodigoUsuario, codigosunat, DateTime.Now);
                 CodigoSunat = codigosunat;
                 CargarComprobantes();
-                HPResergerFunciones.Utilitarios.msg("Comprobante de Pago Guardado");
+                msgOK("Comprobante de Pago Guardado");
                 estado = 0;
             }
             HPResergerFunciones.Utilitarios.Activar(btnmodificar, btnnuevo, dtgconten, btnactualizar, txtBuscar);

@@ -19,6 +19,9 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void frmSeparacionVta_Load(object sender, EventArgs e)
         {
             lbldias.Text = lbldato.Text = "";
@@ -190,10 +193,6 @@ namespace HPReserger
                 FotoDocpago = File.ReadAllBytes(dialogoAbrirArchivoContrato.FileName);
             }
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
         private void lkldocpago_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (FotoDocpago != null)
@@ -310,7 +309,7 @@ namespace HPReserger
                 }
                 /////proceso de guardado
                 CapaLogica.SeparacionVenta(1, NumCot, decimal.Parse(txtimporte.Text), TC, _idmoneda, FotoDocpago, txtdocpago.Text, dtpfecha.Value, frmLogin.CodigoUsuario);
-                msg("Abono Guardado");
+                msgOK("Abono Guardado");
                 ///refrescando
                 btncancelar_Click(sender, new EventArgs());
                 txtcodvendedor_TextChanged(sender, new EventArgs());

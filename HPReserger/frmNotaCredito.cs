@@ -27,6 +27,8 @@ namespace HPReserger
         string PorPagar = "0";
         public int tipo { get; set; }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmNotaCredito_Load(object sender, EventArgs e)
         {
             CargarNotas();
@@ -190,8 +192,8 @@ namespace HPReserger
         DataTable DatosDetalle;
         private void btnagregar_Click(object sender, EventArgs e)
         {
-            if (txtcodnota.Text == "") { HPResergerFunciones.Utilitarios.msg($"Ingrese Código de {this.Text}"); txtcodnota.Focus(); return; }
-            if (txtnronota.Text == "") { HPResergerFunciones.Utilitarios.msg($"Ingrese Número de {this.Text}"); txtnronota.Focus(); return; }
+            if (txtcodnota.Text == "") { msg($"Ingrese Código de {this.Text}"); txtcodnota.Focus(); return; }
+            if (txtnronota.Text == "") { msg($"Ingrese Número de {this.Text}"); txtnronota.Focus(); return; }
             if (frmnotacreditodet == null)
             {
                 frmnotacreditodet = new frmNotaCreditoDetalle();
@@ -203,7 +205,7 @@ namespace HPReserger
             }
             else
             {
-                HPResergerFunciones.Utilitarios.msg("La Ventana Ya está Abierta");
+                msg("La Ventana Ya está Abierta");
             }
         }
         private void Frmnotacreditodet_FormClosed(object sender, FormClosedEventArgs e)
@@ -262,10 +264,6 @@ namespace HPReserger
                 }
             }
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
         private void cbotiponota_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((int)cbotiponota.SelectedValue == 1)//nota crédito
@@ -304,7 +302,7 @@ namespace HPReserger
             }
             txtruc_TextChanged(sender, e);
             cbofacturas.SelectedIndex = -1;
-            msg($"Insertado con Exito, La {this.Text}: {txtcodnota.Text}-{txtnronota.Text}");
+            msgOK($"Insertado con Exito, La {this.Text}: {txtcodnota.Text}-{txtnronota.Text}");
             txtcodnota.Text = txtnronota.Text = "";
 
 

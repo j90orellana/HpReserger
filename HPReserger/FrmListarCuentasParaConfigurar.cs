@@ -19,6 +19,8 @@ namespace HPReserger
         }
         public Boolean aceptar { get; set; }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public string Cuentas;
         private void FrmListarCuentasParaConfigurar_Load(object sender, EventArgs e)
         {
@@ -79,10 +81,6 @@ namespace HPReserger
             }
             ListaCuentas = CadenaCuentas.ToList();
             dtgConten.DataSource = tablita;
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void dtgConten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {

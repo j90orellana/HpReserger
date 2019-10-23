@@ -20,6 +20,8 @@ namespace HPReserger
         public int estado { get; set; }
         public int codmarca { get; set; }
         HPResergerCapaLogica.HPResergerCL Cmarca = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             tipmsg.Show("Ingrese Marca", txtmarca, 1000);
@@ -62,14 +64,14 @@ namespace HPReserger
             {
                 codmarca = dtgconten.RowCount + 1;
                 Cmarca.InsertarMarca(txtmarca.Text);
-                MessageBox.Show("Marca Ingresada con Id: " + codmarca, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msg("Marca Ingresada con Id: ");
             }
             else
             {
                 if (estado == 2 && ValidarDes(txtmarca.Text))
                 {
                     Cmarca.ActualizarMarca(Convert.ToInt32(txtcodigo.Text), txtmarca.Text);
-                    MessageBox.Show("Marca Actualizada con Id: " + txtcodigo.Text, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    msg("Marca Actualizada con Id: " + txtcodigo.Text);
                 }
                 else
                 {
@@ -78,7 +80,7 @@ namespace HPReserger
                         if (MessageBox.Show("Seguró Desea Eliminar " + txtmarca.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             Cmarca.EliminarMarca(Convert.ToInt32(txtcodigo.Text));
-                            MessageBox.Show("Marca Eliminada con Id: " + txtcodigo.Text, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            msgOK("Marca Eliminada con Id: " + txtcodigo.Text);
                         }
                     }
                 }
@@ -108,14 +110,14 @@ namespace HPReserger
                     if (dtgconten[1, i].Value.ToString() == valor)
                     {
                         Aux = false;
-                        MessageBox.Show("Este valor:" + txtmarca.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        msg("Este valor:" + txtmarca.Text + " ya Existe");
                         return Aux;
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Debe Ingresar Datos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Debe Ingresar Datos");
                 Aux = false;
             }
             return Aux;

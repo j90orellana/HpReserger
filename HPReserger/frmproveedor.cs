@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CProveedor = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int estado { get; set; }
         public int cambios { get; set; }
         public int tipoid { get; set; }
@@ -371,14 +373,14 @@ namespace HPReserger
             {
                 if (CProveedor.VerificarProveedores(DocumentoId, RazonSocial).Rows.Count > 0)
                 {
-                    MessageBox.Show("Ya Existe este Proveedor: " + RazonSocial + "; Identificación:" + DocumentoId, CompanyName, MessageBoxButtons.OK);
+                    msg("Ya Existe este Proveedor: " + RazonSocial + "; Identificación:" + DocumentoId);
                     aux = false;
                 }
             }
             else
             {
                 aux = false;
-                MessageBox.Show("Número de Identidad y Razón Social No pueden estar Vacios", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Número de Identidad y Razón Social No pueden estar Vacios");
             }
             return aux;
         }
@@ -409,22 +411,7 @@ namespace HPReserger
             ctasoles = cboctasoles.SelectedIndex + 1;
             ctadolares = cboctadolares.SelectedIndex + 1;
         }
-
-        public void MensajedeDatos()
-        {
-            MessageBox.Show("ACCIÓN EXITOSA \n Documento Identidad=" + numeroidentidad + "\n" + "Documento Identidad = " + razonsocial + "\n" +
-                 "Sector Empresarial = " + cbosectorcomercial.Text + "\n" + "Dirección Oficina = " + diroficina + "\n" +
-                 "Teléfono Oficina = " + teloficina + "\n" + "Dirección Almacén = " + diralmacen + "\n" + "Teléfono Almacén = " + telalmancen + "\n" + "Dirección Sucursal = " + dirsucursal + "\n" +
-                 "Teléfono Sucursal = " + telsucursal + "\n" + "Persona Contacto = " + persocontacto + "\n" + "Teléfono Contacto = " + telefonocontacto + "\n" +
-                 "Email Contacto = " + emailcontacto + "\n" + "Nro Cuenta Soles = " + nrocuentasoles + "\n" + "Nro Cci Soles = " + nroccisoles + "\n" +
-                 "Banco Soles  = " + cbobancosoles.Text + "\n" + "Nro Cuenta Dólares = " + nrocuentadolares + "\n" + "Nro Cci Dólares= " + nroccidolares + "\n" +
-                 "Banco Dolares = " + cbobancodolares.Text + "\n" + "Nro CTa Detracciones = " + nroctadetracciones + "\n" + "Régimen = " + cbocondicion.Text + "\n", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         Boolean salida = false;
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (llamada != 0)
@@ -481,7 +468,7 @@ namespace HPReserger
                      persocontacto, emailcontacto, nrocuentasoles, nroccisoles, bancosoles, nrocuentadolares, nroccidolares, bancodolares, nroctadetracciones, tipoper, ctasoles, ctadolares, plzfijo
                        , int.Parse(cbocondicion.SelectedValue.ToString()), int.Parse(cboestado.SelectedValue.ToString()), chknuevorus.Checked, chkretencion.Checked, chkbuenContribuyente.Checked, chkAgentePercepcion.Checked);
                     if ((int)Filita["Resultado"] == 0)
-                        msg("Actualizado Exitosamente");
+                        msgOK("Actualizado Exitosamente");
                     else
                     {
                         msg("No se pudo Modificar, Proveedor ya tiene Movimientos");
@@ -500,7 +487,7 @@ namespace HPReserger
                         {
                             DataRow Filita = CProveedor.EliminarProveedor((int)cbodocumento.SelectedValue, txtnumeroidentidad.Text);
                             if ((int)Filita["Resultado"] == 0)
-                                msg("Eliminado Exitosamente");
+                                msgOK("Eliminado Exitosamente");
                             else
                                 msg("No se pudo eliminar, Proveedor ya tiene Movimientos");
                             PresentarValor("");

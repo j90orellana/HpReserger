@@ -34,10 +34,6 @@ namespace HPReserger
                 SacarHojasdeExcel();
             }
         }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         public void SacarHojasdeExcel()
         {
             cbohojas.Items.Clear();
@@ -64,7 +60,7 @@ namespace HPReserger
             {
                 if (!File.Exists(cajita.Text))
                 {
-                    msg("Archivo no Existe");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Archivo no Existe");
                     return false;
                 }
                 return true;
@@ -169,14 +165,14 @@ namespace HPReserger
                         {
                             CapaLogica.RegistroVentas(1, item.Cells[0].Value.ToString(), int.Parse(item.Cells[1].Value.ToString()), item.Cells[2].Value.ToString(), item.Cells[3].Value.ToString(), item.Cells[4].Value.ToString(), item.Cells[5].Value.ToString(), item.Cells[6].Value.ToString(), int.Parse(item.Cells[7].Value.ToString()), int.Parse(item.Cells[8].Value.ToString()), decimal.Parse(item.Cells[9].Value.ToString()), int.Parse(item.Cells[10].Value.ToString()), frmLogin.CodigoUsuario);
                         }
-                        msg("Insertado con Exito");
+                        HPResergerFunciones.frmInformativo.MostrarDialog("Insertado con Exito");
                     }
                     else
                     {
-                        msg("Revise Los datos No se puede Procesar la Carga de Datos");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Revise Los datos No se puede Procesar la Carga de Datos");
                     }
                 }
-                else { msg("Deben Haber 11 Columnas en el Excel"); }
+                else { HPResergerFunciones.frmInformativo.MostrarDialogError("Deben Haber 11 Columnas en el Excel"); }
             }
             else
             {
@@ -216,7 +212,7 @@ namespace HPReserger
                 if (dtgconten.ColumnCount > 4)
                     dtgconten.Sort(dtgconten.Columns[4], ListSortDirection.Ascending);
             }
-            else msg("No Hay Hojas que Mostrar");
+            else HPResergerFunciones.frmInformativo.MostrarDialogError("No Hay Hojas que Mostrar");
         }
 
         private void dtgconten_KeyDown(object sender, KeyEventArgs e)

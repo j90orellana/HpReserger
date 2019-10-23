@@ -374,31 +374,31 @@ namespace HPReserger
         {
             if (cboProyecto.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccioné Proyecto", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccioné Proyecto");
                 cboProyecto.Focus();
                 return false;
             }
             if (cboEmpresa.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccioné Empresa", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccioné Empresa");
                 cboEmpresa.Focus();
                 return false;
             }
             if (txtPeriodoLaboral.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Período Laboral", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Período Laboral");
                 txtPeriodoLaboral.Focus();
                 return false;
             }
             if (txtSalario.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Salario", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Salario");
                 txtSalario.Focus();
                 return false;
             }
             if (cboCargo.SelectedIndex < 0)
             {
-                MessageBox.Show("Seleccioné Cargo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Seleccioné Cargo");
                 cboCargo.Focus();
                 return false;
             }
@@ -775,7 +775,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(1);
-                    MessageBox.Show("Contrato generado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Contrato generado con éxito");
                     btnRegistrar.Enabled = false;
                     btnModificar.Enabled = true;
                     btncancelar_Click(sender, e);
@@ -814,7 +814,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(0);
-                    MessageBox.Show("Contrato modificado con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Contrato modificado con éxito");
                     //Limpiar();
                     btncancelar_Click(sender, e);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
@@ -862,7 +862,7 @@ namespace HPReserger
                 if (Validar())
                 {
                     GrabarEditar(3);
-                    MessageBox.Show("Adenda Agregada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Adenda Agregada con éxito");
                     btncancelar_Click(sender, e);
                     PasosAdenda(false);
                     dtgconten.DataSource = clContrato.ListarEmpleadoContrato(CodigoDocumento, NumeroDocumento);
@@ -889,9 +889,8 @@ namespace HPReserger
         }
         public void MensajeAlerta(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
-
         private void dtpFechaInicio_CloseUp(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0 && estado == 1)
@@ -988,14 +987,10 @@ namespace HPReserger
                     VerPdf.Show();
                     File.Delete(Ruta);
                 }
-                catch (Exception ex) { msg(ex.Message); }
+                catch (Exception ex) { HPResergerFunciones.frmInformativo.MostrarDialogError(ex.Message); }
 
             }
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }       
         private void lklanexo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MostrarFoto(pbFotoAnexoFunciones, $"Imagen de Anexo de Funciones");

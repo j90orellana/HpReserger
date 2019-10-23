@@ -18,8 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CLpresupuesto = new HPResergerCapaLogica.HPResergerCL();
-
-
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public void RellenarCombosSiNo(ComboBox combito)
         {
             DataTable tablita = new DataTable();
@@ -65,16 +65,12 @@ namespace HPReserger
                 {
                     if (dtgconten["ejercicio", i].Value.ToString() == PERIODO && dtgconten["id_empresa", i].Value.ToString() == EMPRESA && dtgconten["tipo_ppto", i].Value.ToString() == TIPO && i != fila)
                     {
-                        MSG("Ya Existe un Presupuesto de Administración en la Fila: " + i + 1);
+                        msg("Ya Existe un Presupuesto de Administración en la Fila: " + i + 1);
                         return false;
                     }
                 }
             }
             return true;
-        }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         int estado = 0;
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -109,37 +105,37 @@ namespace HPReserger
         {
             if (cboempresa.SelectedIndex < 0)
             {
-                MSG("Seleccioné una Empresa");
+                msg("Seleccioné una Empresa");
                 cboempresa.Focus();
                 return;
             }
             if (cbomoneda.SelectedIndex < 0)
             {
-                MSG("Seleccioné una Moneda");
+                msg("Seleccioné una Moneda");
                 cbomoneda.Focus();
                 return;
             }
             if (cbotipo.SelectedIndex < 0)
             {
-                MSG("Seleccioné un Tipo");
+                msg("Seleccioné un Tipo");
                 cbotipo.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtdescripcion.Text))
             {
-                MSG("Ingrese la Descripción del Presupuesto");
+                msg("Ingrese la Descripción del Presupuesto");
                 txtdescripcion.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtejercicio.Text))
             {
-                MSG("Ingrese la Ejercicio del Presupuesto");
+                msg("Ingrese la Ejercicio del Presupuesto");
                 txtejercicio.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtimporte.Text))
             {
-                MSG("Ingrese el Importe del Presupuesto");
+                msg("Ingrese el Importe del Presupuesto");
                 txtimporte.Focus();
                 return;
             }
@@ -148,7 +144,7 @@ namespace HPReserger
                 if (validar(-1))
                 {
                     CLpresupuesto.PresupuestoCabecera(1, 0, txtdescripcion.Text, int.Parse(txtejercicio.Text), int.Parse(cboempresa.SelectedValue.ToString()), int.Parse(cbotipo.SelectedValue.ToString()), int.Parse(cbomoneda.SelectedValue.ToString()), decimal.Parse(txtimporte.Text), frmLogin.CodigoUsuario);
-                    MSG("Presupuesto Guardado con exito"); estado = 0;
+                    msgOK("Presupuesto Guardado con exito"); estado = 0;
                     dtgconten.DataSource = CLpresupuesto.ListarPresupuestosCabecera();
                     Iniciar(false);
                 }
@@ -158,7 +154,7 @@ namespace HPReserger
                 if (validar(dtgconten.CurrentCell.RowIndex))
                 {
                     CLpresupuesto.PresupuestoCabecera(2, int.Parse(dtgconten["idppto", dtgconten.CurrentCell.RowIndex].Value.ToString()), txtdescripcion.Text, int.Parse(txtejercicio.Text), int.Parse(cboempresa.SelectedValue.ToString()), int.Parse(cbotipo.SelectedValue.ToString()), int.Parse(cbomoneda.SelectedValue.ToString()), decimal.Parse(txtimporte.Text), frmLogin.CodigoUsuario);
-                    MSG("Presupuesto Actualizado con exito"); estado = 0;
+                    msgOK("Presupuesto Actualizado con exito"); estado = 0;
                     dtgconten.DataSource = CLpresupuesto.ListarPresupuestosCabecera();
                     Iniciar(false);
                 }

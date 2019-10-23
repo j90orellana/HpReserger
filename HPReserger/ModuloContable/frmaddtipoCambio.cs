@@ -23,6 +23,9 @@ namespace HPReserger
         {
             comboMesAño1.ActualizarMesAÑo(fechatipo.Month.ToString(), fechatipo.Year.ToString());
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             string cadena = ""; lblmsg.ForeColor = Color.Red;

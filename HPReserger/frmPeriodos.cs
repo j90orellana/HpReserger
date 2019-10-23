@@ -14,6 +14,8 @@ namespace HPReserger
     public partial class frmPeriodos : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public frmPeriodos()
         {
             InitializeComponent();
@@ -64,12 +66,12 @@ namespace HPReserger
                 /////
                 //if ((new int[] { 0, 1, 2 }).Contains(frmLogin.CodigoUsuario))//Luego se lo cambia por el perfil
                 //{
-                    btnabriperiodo.Enabled = true;
-                    if (dtgconten[Estadosx.Name, x].Value.ToString() == "CERRADO")
-                    {
-                        btnabriperiodo.Text = "Abrir";
-                    }
-                    else btnabriperiodo.Text = "Cerrar";
+                btnabriperiodo.Enabled = true;
+                if (dtgconten[Estadosx.Name, x].Value.ToString() == "CERRADO")
+                {
+                    btnabriperiodo.Text = "Abrir";
+                }
+                else btnabriperiodo.Text = "Cerrar";
                 //}
             }
             else
@@ -106,10 +108,6 @@ namespace HPReserger
                 msg("No hay Datos que Exportar");
             }
             CargarDatos();
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -166,7 +164,7 @@ namespace HPReserger
                     {
                         int x = dtgconten.CurrentRow.Index;
                         CapaLogica.Periodos(2, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
-                        msg("Periodo Abierto!");
+                        msgOK("Periodo Abierto!");
                         CargarDatos();
                         dtgconten.CurrentCell = dtgconten[empresax.Name, x];
                     }
@@ -177,7 +175,7 @@ namespace HPReserger
                     {
                         int x = dtgconten.CurrentRow.Index;
                         CapaLogica.Periodos(3, (int)dtgconten[idempresax.Name, x].Value, new DateTime((int)dtgconten[añox.Name, x].Value, (int)dtgconten[mesx.Name, x].Value, 1));
-                        msg("Periodo Cerrado!");
+                        msgOK("Periodo Cerrado!");
                         CargarDatos();
                         dtgconten.CurrentCell = dtgconten[empresax.Name, x];
                     }

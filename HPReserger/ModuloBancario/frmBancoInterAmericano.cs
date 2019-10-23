@@ -205,10 +205,7 @@ namespace HPReserger
                 Dtguias_RowEnter(sender, new DataGridViewCellEventArgs(0, 0));
             }
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
         public void valoresdecarga()
         {
             tablastipoop = new DataTable();
@@ -386,7 +383,7 @@ namespace HPReserger
                     st = File.CreateText(path);
                     st.Write(cadenatxt);
                     st.Close();
-                    msg("Generado TXT con Éxito");
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Generado TXT con Éxito");
                     PAgoFactura = true;
                     DialogResult = DialogResult.OK;
                     this.Close();
@@ -396,7 +393,6 @@ namespace HPReserger
             else
                 msg("No hay Filas en la Grilla");
         }
-
         private void Dtguias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
         }

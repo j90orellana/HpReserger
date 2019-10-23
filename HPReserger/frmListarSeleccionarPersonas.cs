@@ -19,6 +19,8 @@ namespace HPReserger
             NroDoc = _nrodoc;
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public frmListarSeleccionarPersonas()
         {
             InitializeComponent();

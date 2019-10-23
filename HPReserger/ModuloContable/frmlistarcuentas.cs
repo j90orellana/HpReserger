@@ -25,6 +25,9 @@ namespace HPReserger
         }
         public Boolean aceptar { get; set; }
         public string codigo { get; set; }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         HPResergerCapaLogica.HPResergerCL CcuentaContable = new HPResergerCapaLogica.HPResergerCL();
         private void frmlistarcuentas_Load(object sender, EventArgs e)
         {
@@ -98,21 +101,17 @@ namespace HPReserger
             codigo = dtgconten[0, dtgconten.CurrentRow.Index].Value.ToString();
             if (dtgconten["CtaDetalle", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
             {
-                MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                msg("No se Puede Seleccionar una cuenta de Cabecera");
             }
             else if (dtgconten["estadocta", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
             {
-                MSG("No se Puede Seleccionar la Cuenta esta Bloqueada");
+                msg("No se Puede Seleccionar la Cuenta esta Bloqueada");
             }
             else
             {
                 aceptar = true;
                 this.Close();
             }
-        }
-        private void MSG(string v)
-        {
-            MessageBox.Show(v, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         frmcuentacontable cuentas;
         private void button1_Click(object sender, EventArgs e)
@@ -140,7 +139,7 @@ namespace HPReserger
                 codigo = dtgconten[0, dtgconten.CurrentCell.RowIndex].Value.ToString();
                 if (dtgconten["CtaDetalle", dtgconten.CurrentCell.RowIndex].Value.ToString() == "0")
                 {
-                    MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                    msg("No se Puede Seleccionar una cuenta de Cabecera");
                 }
                 else
                 {

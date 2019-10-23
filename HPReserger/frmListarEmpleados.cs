@@ -14,6 +14,8 @@ namespace HPReserger
     public partial class frmListarEmpleados : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clListarEmpleado = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         public int TipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }

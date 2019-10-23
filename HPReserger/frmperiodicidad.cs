@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         int estado = 0;
         public void iniciar(Boolean a)
         {
@@ -27,10 +29,6 @@ namespace HPReserger
             dtgconten.Enabled = !a;
             btneliminar.Enabled = !a;
             txtgerencia.Enabled = a;
-        }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         public void CargarDatos()
         {
@@ -79,7 +77,7 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Periodicidad");
+                    msg("Ingresé Periodicidad");
                     txtgerencia.Focus();
                     return;
                 }
@@ -87,14 +85,14 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString())
                     {
-                        Msg("Periocidad ya Existe");
+                        msg("Periocidad ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarPeriodicidad(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                msgOK("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -102,7 +100,7 @@ namespace HPReserger
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Periocidad");
+                    msg("Ingresé Periocidad");
                     txtgerencia.Focus();
                     return;
                 }
@@ -111,7 +109,7 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("Periocidad ya Existe");
+                        msg("Periocidad ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
@@ -119,7 +117,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarPeriodicidad(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

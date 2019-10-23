@@ -41,6 +41,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.btnTxt = new HpResergerUserControls.ButtonPer();
             this.BtnCerrar = new HpResergerUserControls.ButtonPer();
+            this.btnAsientosRelacionados = new HpResergerUserControls.ButtonPer();
             this.PanelOtraReversa.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -163,12 +164,13 @@
             // separadorOre3
             // 
             this.separadorOre3.BackColor = System.Drawing.Color.Transparent;
-            this.separadorOre3.Location = new System.Drawing.Point(95, 29);
+            this.separadorOre3.Location = new System.Drawing.Point(95, 2);
             this.separadorOre3.MaximumSize = new System.Drawing.Size(2000, 2);
             this.separadorOre3.MinimumSize = new System.Drawing.Size(0, 2);
             this.separadorOre3.Name = "separadorOre3";
             this.separadorOre3.Size = new System.Drawing.Size(253, 2);
             this.separadorOre3.TabIndex = 2;
+            this.separadorOre3.Visible = false;
             // 
             // label31
             // 
@@ -214,6 +216,22 @@
             this.BtnCerrar.UseVisualStyleBackColor = false;
             this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
+            // btnAsientosRelacionados
+            // 
+            this.btnAsientosRelacionados.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAsientosRelacionados.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
+            this.btnAsientosRelacionados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsientosRelacionados.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsientosRelacionados.ForeColor = System.Drawing.Color.White;
+            this.btnAsientosRelacionados.Location = new System.Drawing.Point(242, 34);
+            this.btnAsientosRelacionados.Name = "btnAsientosRelacionados";
+            this.btnAsientosRelacionados.Size = new System.Drawing.Size(100, 23);
+            this.btnAsientosRelacionados.TabIndex = 0;
+            this.btnAsientosRelacionados.Text = "Asientos Asoc.";
+            this.btnAsientosRelacionados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAsientosRelacionados.UseVisualStyleBackColor = false;
+            this.btnAsientosRelacionados.Click += new System.EventHandler(this.btnAsientosRelacionados_Click);
+            // 
             // frmRevesarAsientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +241,7 @@
             this.Controls.Add(this.rbReversarPeriodo);
             this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.rbReversar);
+            this.Controls.Add(this.btnAsientosRelacionados);
             this.Controls.Add(this.btnTxt);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.separadorOre3);
@@ -254,5 +273,6 @@
         private System.Windows.Forms.Label label31;
         private HpResergerUserControls.ButtonPer btnTxt;
         private HpResergerUserControls.ButtonPer BtnCerrar;
+        private HpResergerUserControls.ButtonPer btnAsientosRelacionados;
     }
 }

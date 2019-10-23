@@ -19,6 +19,9 @@ namespace HPReserger
             LimpiarBusquedas();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void frmClientes_Load(object sender, EventArgs e)
         {
             CargarCombos();
@@ -561,7 +564,7 @@ namespace HPReserger
                     return;
                 }
                 CapaLogica.Clientes(1, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido().Trim(), txtapemat.TextValido().Trim(), txtnombre.TextValido().Trim(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now);
-                msg($"{ResultaCorreo}Cliente Agregado Exitosamente");
+                msgOK($"{ResultaCorreo}Cliente Agregado Exitosamente");
             }
             //actualizar
             if (estado == 2)
@@ -574,7 +577,7 @@ namespace HPReserger
                 }
                 DataRow Filita = CapaLogica.Clientes(2, Codigo, (int)cbotipoid.SelectedValue, txtnroid.Text, txtapetpat.TextValido().Trim(), txtapemat.TextValido().Trim(), txtnombre.TextValido().Trim(), (int)cbopersona.SelectedValue, sexo, civil, txtdireccion.TextValido(), (int)cbodistrito.SelectedValue, (int)cboprovincia.SelectedValue, (int)cbodepartamento.SelectedValue, txttelfijo.TextValido(), txttelcelular.TextValido(), txtemail.TextValido(), txtocupacion.TextValido(), frmLogin.CodigoUsuario, DateTime.Now).Rows[0];
                 if ((int)Filita["Resultado"] == 0)
-                    msg($"{ResultaCorreo}Cliente Actualizado Exitosamente");
+                    msgOK($"{ResultaCorreo}Cliente Actualizado Exitosamente");
                 else
                 {
                     msg("No se pudo Modificar, Cliente ya tiene Movimientos");
@@ -589,10 +592,6 @@ namespace HPReserger
                 ModoMuestra();
             }
 
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         DataRow TiposId;
         public int LengthTipoId

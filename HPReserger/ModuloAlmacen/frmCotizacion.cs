@@ -139,7 +139,7 @@ namespace HPReserger
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         int articulo = 0; int señal = 0;
         private void btnAsociar_Click(object sender, EventArgs e)
@@ -159,20 +159,20 @@ namespace HPReserger
             }
             if (txtImporte.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Importe de la Cotización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Importe de la Cotización");
                 txtImporte.Focus();
                 return;
             }
             if (decimal.Parse(txtImporte.Text) == 0)
             {
-                MSG("El importe esta en cero");
+                msg("El importe esta en cero");
                 return;
             }
             for (int i = 0; i < dtgpedido.RowCount; i++)
             {
                 if (decimal.Parse(dtgpedido["totalx", i].Value.ToString()) == 0)
                 {
-                    MSG("El total del la línea " + (i + 1) + " esta en cero");
+                    msg("El total del la línea " + (i + 1) + " esta en cero");
                     señal = 1;
                     break;
                 }
@@ -183,7 +183,7 @@ namespace HPReserger
             }
             if (txtProveedor.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Proveedor", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Proveedor");
                 txtRUC.Focus();
                 return;
             }
@@ -191,7 +191,7 @@ namespace HPReserger
             DataRow FechaActual = clCotizacion.FechaActual();
             if (dtpFecha.Value < Convert.ToDateTime(FechaActual["FECHA"].ToString()))
             {
-                MessageBox.Show("Fecha de Entrega NO puede ser menor a Fecha Actual", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Fecha de Entrega NO puede ser menor a Fecha Actual");
                 return;
             }
 
@@ -202,19 +202,19 @@ namespace HPReserger
                 {
                     if (gridCotizacionesAsociadas.Rows[filaBuscar].Cells[CODIGOPROVEEDOR.Name].Value.ToString().Trim() == txtRUC.Text.Trim().ToString())
                     {
-                        MessageBox.Show("Proveedor ya fue Asociado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        msg("Proveedor ya fue Asociado");
                         return;
                     }
                     if (gridCotizacionesAsociadas.Rows[filaBuscar].Cells[ADJUNTO.Name].Value.ToString().Trim() == txtAdjunto.Text.Trim().ToString())
                     {
-                        MessageBox.Show("Imagen ya fue Asociada", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        msg("Imagen ya fue Asociada");
                         return;
                     }
                 }
             }
             if (pbFoto.Image == null || txtAdjunto.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen de Cotización", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Imagen de Cotización");
                 btnBuscarPDF.Focus();
                 return;
             }
@@ -259,11 +259,10 @@ namespace HPReserger
                 if (NumeroCotizacion != 0)
                 {
                     MostrarPedidosAsociados(Item);
-                    MessageBox.Show("Cotización Nº " + Convert.ToString(NumeroCotizacion) + " asociado al Pedido Nº " + gridCotizacion.Rows[Item].Cells[OP.Name].Value.ToString().Substring(2) + " se generó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Cotización Nº " + Convert.ToString(NumeroCotizacion) + " asociado al Pedido Nº " + gridCotizacion.Rows[Item].Cells[OP.Name].Value.ToString().Substring(2), "Se generó con éxito");
                 }
             }
         }
-
         private void txtImporte_KeyPress(object sender, KeyPressEventArgs e)
         {
             HPResergerFunciones.Utilitarios.SoloNumerosDecimales(e, txtImporte.Text.ToString());
@@ -780,10 +779,10 @@ namespace HPReserger
                             clCotizacion.AnularOrdenPedido(int.Parse(item.Cells[OP.Name].Value.ToString().Substring(2)));
                     }
                     btnactualizar_Click(sender, new EventArgs());
-                    MSG("Ordenes de Pedido dadas de Baja con Exito");
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Ordenes de Pedido dadas de Baja con Exito");
                 }
             }
-            else { MSG("No hay Ordenes de Pedido Selecionadas"); }
+            else { msg("No hay Ordenes de Pedido Selecionadas"); }
         }
         private void gridCotizacion_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -871,10 +870,10 @@ namespace HPReserger
                             clCotizacion.ELiminarCotizacionTotal(int.Parse(item.Cells[COT.Name].Value.ToString().Substring(2)));
                     }
                     btnactualizar_Click(sender, new EventArgs());
-                    MSG("Cotizaciones Eliminadas con Exito");
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Cotizaciones Eliminadas con Exito");
                 }
             }
-            else { MSG("No hay Cotizaciones Seleccionadas"); }
+            else { msg("No hay Cotizaciones Seleccionadas"); }
         }
         private void button2_Click(object sender, EventArgs e)
         {

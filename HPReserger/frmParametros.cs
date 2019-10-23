@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -139,14 +141,6 @@ namespace HPReserger
             }
             CargarDatos();
         }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Question);
-        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtdescripcion.Text))
@@ -213,7 +207,7 @@ namespace HPReserger
             IRentas Rentas = this.MdiParent as IRentas;
             if (Rentas != null)
                 Rentas.BuscarRenta(1, 2);
-            Msg("Guardado con Exito");
+            msgOK("Guardado con Exito");
             btncancelar_Click(sender, e);
         }
         private void txtuit_ValueChanged(object sender, EventArgs e)
@@ -318,7 +312,7 @@ namespace HPReserger
                 Celdita.fila = 1; Celdita.columna = 1; Celdita.Nombre = "Tabla de Parametros";
                 Celditas.Add(Celdita);
                 HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Parametros", Celditas, 2, new int[] { 1, 5 }, new int[] { 1 }, new int[] { });
-                msg("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
                 msg("No hay Filas para Exportar");

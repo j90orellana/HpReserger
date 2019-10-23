@@ -31,10 +31,6 @@ namespace HPReserger
             btneliminar.Enabled = !a;
             txtgerencia.Enabled = a;
         }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
-        }        
         public void CargarDatos()
         {
             dtgconten.DataSource = CCargos.getCargoTipoContratacion(id,campo, tabla);
@@ -95,7 +91,7 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre del Cargo");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Nombre del Cargo");
                     txtgerencia.Focus();
                     return;
                 }
@@ -103,14 +99,14 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString())
                     {
-                        Msg("El Cargo ya Existe");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("El Cargo ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarCargo(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -118,7 +114,7 @@ namespace HPReserger
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre del Cargo");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Nombre del Cargo");
                     txtgerencia.Focus();
                     return;
                 }
@@ -127,7 +123,7 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("El Cargo ya Existe");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("El Cargo ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
@@ -135,7 +131,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarCargo(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

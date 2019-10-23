@@ -16,6 +16,8 @@ namespace HPReserger
     public partial class frmSolicitudEmpleado : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clSolicitudEmpleado = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         MemoryStream _memoryStream = new MemoryStream();
         public byte[] Foto { get; set; }
         public string nombreArchivo { get; set; }
@@ -93,38 +95,38 @@ namespace HPReserger
         {
             if (cboBusqueda.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Tipo de Búsqueda", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Tipo de Búsqueda");
                 cboBusqueda.Focus();
                 return;
             }
             if (cboTerna.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione Terna", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Terna");
                 cboTerna.Focus();
                 return;
             }
             if (txtPuestos.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Cantidad de Puestos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Cantidad de Puestos");
                 txtPuestos.Focus();
                 return;
             }
             if (txtAdjunto.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Imagen");
                 txtAdjunto.Focus();
                 return;
             }
             DataRow ExisteImagen = clSolicitudEmpleado.ExisteImagen("NombreFoto", txtAdjunto.Text.Trim(), "TBL_SolicitaEmpleado");
             if (ExisteImagen != null)
             {
-                MessageBox.Show("La imagen del requerimiento ya esta asociadao a otra Solicitud", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("La imagen del requerimiento ya esta asociadao a otra Solicitud");
                 btnBuscarJPG.Focus();
                 return;
             }
             if (Convert.ToInt32(txtPuestos.Text) == 0)
             {
-                MessageBox.Show("Cant. Puestos NO puede ser cero", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Cant. Puestos NO puede ser cero");
                 txtPuestos.Focus();
                 return;
             }
@@ -149,14 +151,10 @@ namespace HPReserger
             {
                 clSolicitudEmpleado.SolicitudEmpleadoInsertar(Convert.ToInt32(txtSolicitud.Text.ToString()), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), (int)cboarea.SelectedValue, (int)cbogerencia.SelectedValue, Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text, frmLogin.CodigoUsuario);
             }
-            MessageBox.Show("La Solicitud de Empleado Nº " + (txtSolicitud.Text.ToString()) + " se generó con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            msgOK("La Solicitud de Empleado Nº " + (txtSolicitud.Text.ToString()) + " se generó con éxito");
             MostrarGrid(frmLogin.CodigoUsuario);
             Correlativo();
             Limpiar();
-        }
-        public void msg(string cadenar)
-        {
-            MessageBox.Show(cadenar, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void Grid1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -199,7 +197,7 @@ namespace HPReserger
             DataRow VerificaSE = clSolicitudEmpleado.VerificaEstadoSolicitudEmpleado(Solicitud);
             if (VerificaSE != null)
             {
-                MessageBox.Show("Solicitud ya tiene Postulantes vinculados", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Solicitud ya tiene Postulantes vinculados");
                 return true;
             }
             return false;
@@ -272,7 +270,7 @@ namespace HPReserger
                     }
                     else
                     {
-                        if (MSG("Solicitud YA tiene Postulantes, Desea Eliminar?") == DialogResult.OK)
+                        if (MessageBox.Show("Solicitud YA tiene Postulantes, Desea Eliminar?") == DialogResult.OK)
                         {
                             clSolicitudEmpleado.EliminarSolicitudEmpleado(Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)));
                             MostrarGrid(frmLogin.CodigoUsuario);
@@ -280,10 +278,6 @@ namespace HPReserger
                     }
                 }
             }
-        }
-        public DialogResult MSG(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         private void Limpiar()
         {

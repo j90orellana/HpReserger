@@ -18,6 +18,9 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void frmRegMayorxCuentas_Load(object sender, EventArgs e)
         {
             Configuraciones.CargarTextoPorDefecto(txtbuscuenta, txtbusGlosa, txtbusnrodoc, txtbusrazon, txtbusruc);
@@ -37,7 +40,6 @@ namespace HPReserger
             }
 
         }
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         DateTime FechaIni;
         DateTime FechaFin;
         private void btngenerar_Click(object sender, EventArgs e)

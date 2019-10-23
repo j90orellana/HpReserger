@@ -19,6 +19,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmAbonoClientes_Load(object sender, EventArgs e)
         {
             lbldato.Text = "";
@@ -153,10 +155,6 @@ namespace HPReserger
             txtimporte.ReadOnly = true; dtpabono.Enabled = false; btnimagendoc.Enabled = false;
             btnaceptar.Enabled = false;
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
         public DialogResult msgP(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgYesNo(cadena);
@@ -185,7 +183,7 @@ namespace HPReserger
                 if (msgP("Seguro desea Grabar Abono") == DialogResult.Yes)
                 {
                     CapaLogica.CronogramaVtaDetalle(1, _idCabecera, int.Parse(txtnumcot.Text), int.Parse(txtvalnrocuotas.Text), dtpabono.Value, -1 * decimal.Parse(txtimporte.Text), _moneda, dtpabono.Value, FotoDocpago, txtdocpago.Text, dtpabono.Value, frmLogin.CodigoUsuario);
-                    msg("Abono Guardado");
+                    msgOK("Abono Guardado");
                     btnlimpiarabono_Click(sender, e);
                     txtnumcot_TextChanged(sender, e);
                     estado = 0;

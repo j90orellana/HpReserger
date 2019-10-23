@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         int final = 0, fin = 0;
         public DataTable DatosDetalle { get; set; }
         DataTable Datos;
@@ -141,10 +143,6 @@ namespace HPReserger
                 msg("La Cantidad no puede ser cero, Seleccione Eliminar"); return;
             }
             this.Close();
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         TextBox txt;
         private void dtgconten_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

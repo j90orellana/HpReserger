@@ -14,6 +14,8 @@ namespace HPReserger
     public partial class frmSectorEmpresarial : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clSectorEmpresarial = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public frmSectorEmpresarial()
         {
             InitializeComponent();
@@ -32,10 +34,6 @@ namespace HPReserger
             dtgconten.Enabled = !a;
             btneliminar.Enabled = !a;
             txtgerencia.Enabled = a;
-        }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         public void CargarDatos()
         {
@@ -85,7 +83,7 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre del Sector Empresarial");
+                    msg("Ingresé Nombre del Sector Empresarial");
                     txtgerencia.Focus();
                     return;
                 }
@@ -93,14 +91,14 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString())
                     {
-                        Msg("El Sector Empresarial ya Existe");
+                        msg("El Sector Empresarial ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarSector_Empresarial(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                msgOK("Insertado Con Exito");
                 iniciar(false);
             }
             if (estado == 2)
@@ -108,7 +106,7 @@ namespace HPReserger
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre del Sector Empresarial");
+                    msg("Ingresé Nombre del Sector Empresarial");
                     txtgerencia.Focus();
                     return;
                 }
@@ -117,7 +115,7 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("El Sector Empresarial ya Existe");
+                        msg("El Sector Empresarial ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
@@ -125,7 +123,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarSector_Empresarial(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 iniciar(false);
             }
             if (estado == 0)

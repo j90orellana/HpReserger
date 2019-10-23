@@ -16,6 +16,8 @@ namespace HPReserger
     public partial class frmSolicitudEmpleadoModificar : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clModificarSE = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         MemoryStream _memoryStream = new MemoryStream();
         public byte[] Foto { get; set; }
         public string nombreArchivo { get; set; }
@@ -132,7 +134,7 @@ namespace HPReserger
                 DataRow ExisteImagen = clModificarSE.ExisteImagen("NombreFoto", nombreArchivo, "TBL_SolicitaEmpleado");
                 if (ExisteImagen != null)
                 {
-                    MessageBox.Show("La imagen ya esta asociadao a otra Solicitud", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("La imagen ya esta asociadao a otra Solicitud");
                     return;
                 }
 
@@ -168,14 +170,14 @@ namespace HPReserger
 
             if (txtPuestos.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Cant. Puestos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Cant. Puestos");
                 txtPuestos.Focus();
                 return;
             }
 
             if (Convert.ToInt32(txtPuestos.Text) == 0)
             {
-                MessageBox.Show("Cant. Puestos NO puede ser cero", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Cant. Puestos NO puede ser cero");
                 txtPuestos.Focus();
                 return;
             }
@@ -190,7 +192,7 @@ namespace HPReserger
             {
                 if (cboOS.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Seleccione Orden de Servicio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Seleccione Orden de Servicio");
                     cboOS.Focus();
                     return;
                 }
@@ -201,7 +203,7 @@ namespace HPReserger
             }
 
             clModificarSE.SolicitudEmpleadoModificar(Convert.ToInt32(txtSolicitud.Text.Substring(2)), Convert.ToInt32(cboCargoPuesto.SelectedValue.ToString()), Convert.ToInt32(cboTipoContratacion.SelectedValue.ToString()), cboBusqueda.SelectedItem.ToString(), cboTerna.SelectedItem.ToString(), Convert.ToInt32(txtPuestos.Text), OC, Foto, txtAdjunto.Text);
-            MessageBox.Show("Solicitud modificada con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            msgOK("Solicitud modificada con éxito");
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }

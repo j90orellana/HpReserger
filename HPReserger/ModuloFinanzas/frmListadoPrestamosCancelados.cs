@@ -19,6 +19,8 @@ namespace HPReserger.ModuloFinanzas
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
         private bool Busqueda;
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         private void frmListadoPrestamosCancelados_Load(object sender, EventArgs e)
         {
@@ -109,11 +111,7 @@ namespace HPReserger.ModuloFinanzas
             {
                 msg("No hay Datos que Exportar");
             }
-        }
-        private void msg(string v)
-        {
-            HPResergerFunciones.Utilitarios.msg(v);
-        }
+        }      
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             if (dtgconten.RowCount > 0)

@@ -62,7 +62,7 @@ namespace HPReserger
                 Txtbusca.Enabled = true;
             }
         }
-        public string deparment="";
+        public string deparment = "";
         public Boolean Acepta = false;
         private void btnaceptar_Click(object sender, EventArgs e)
         {
@@ -185,7 +185,7 @@ namespace HPReserger
                 {
                     if (dtgprovincias[2, i].Value.ToString() == cboprovincia.Text)
                     {
-                        MessageBox.Show("Ya existe: '" + cboprovincia.Text + " ' en Departamento:'" + cbodepartamento.Text + "'", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Ya existe: '" + cboprovincia.Text + " ' en Departamento:'" + cbodepartamento.Text + "'");
                         Txtbusca.Text = cboprovincia.Text;
                         Aux = false;
                         break;
@@ -195,7 +195,7 @@ namespace HPReserger
             else
             {
                 Aux = false;
-                MessageBox.Show("Campo de Provincia Vacio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Campo de Provincia Vacio");
             }
             return Aux;
         }

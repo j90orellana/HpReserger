@@ -20,6 +20,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmRegistroCompras_Load(object sender, EventArgs e)
         {
             cargarEmpresa();
@@ -51,7 +53,6 @@ namespace HPReserger
                 txtruc.CargarTextoporDefecto();
             }
         }
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void btngenerar_Click(object sender, EventArgs e)
         {
             CerrarPanelTxt();
@@ -334,7 +335,7 @@ namespace HPReserger
                 st = File.CreateText(path);
                 st.Write("");
                 st.Close();
-                msg("Generado TXT con Éxito");
+                msgOK("Generado TXT con Éxito");
                 PanelTxt.Visible = false;
             }
         }

@@ -101,25 +101,25 @@ namespace HPReserger
                 if (string.IsNullOrWhiteSpace(txtruc.txt.Text) && (int)cboCertificados.SelectedValue != 0)
                 {
                     txtruc.txt.Focus();
-                    msg("Ingrese Número de RUC");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Número de RUC");
                     return;
                 }
                 if (txtruc.txt.Text.Length < 10 && (int)cboCertificados.SelectedValue != 0)
                 {
                     txtruc.txt.Focus();
-                    msg("Número de RUC muy Corto");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Número de RUC muy Corto");
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(txtempresa.Text) && (int)cboCertificados.SelectedValue != 0)
                 {
                     txtempresa.Focus();
-                    msg("Ingrese Nombre de la Empresa");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nombre de la Empresa");
                     return;
                 }
                 if (txtempresa.Text.ToLower() == "-ingrese nombre de la empresa-" && (int)cboCertificados.SelectedValue != 0)
                 {
                     txtempresa.Focus();
-                    msg("Ingrese Nombre de la Empresa");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Nombre de la Empresa");
                     return;
                 }
                 if ((int)cboCertificados.SelectedValue == 1)
@@ -127,13 +127,13 @@ namespace HPReserger
                     if (decimal.Parse(numimporte.Num.Text) <= 0)
                     {
                         numimporte.Num.Focus();
-                        msg("Importe debe ser Mayor a Cero");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Importe debe ser Mayor a Cero");
                         return;
                     }
                     if (pbimagen.Image == null)
                     {
                         btnimagen.Focus();
-                        msg("Ingrese Imagen de Retención");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Ingrese Imagen de Retención");
                         return;
                     }
                 }
@@ -141,15 +141,11 @@ namespace HPReserger
                     CapaLogica.EmpresasExternas(1, NroRegsitro, CodigoEmpleado, txtruc.txt.Text, txtempresa.Text, (int)cboCertificados.SelectedValue, decimal.Parse(numimporte.Num.Text), decimal.Parse(numrenta.Num.Text), Foto, txtnombreimagen.Text, frmLogin.CodigoUsuario, comboMesAño1.GetFechaPRimerDia());
                 else
                     CapaLogica.EmpresasExternas(2, NroRegsitro, CodigoEmpleado, txtruc.txt.Text, txtempresa.Text, (int)cboCertificados.SelectedValue, decimal.Parse(numimporte.Num.Text), decimal.Parse(numrenta.Num.Text), Foto, txtnombreimagen.Text, frmLogin.CodigoUsuario, comboMesAño1.GetFechaPRimerDia());
-                msg("Guardado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Guardado Con Exito");
                 iniciar(false);
                 estado = 0;
             }
-        }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
+        }      
         private void btncancelar_Click(object sender, EventArgs e)
         {
             if (estado != 0)

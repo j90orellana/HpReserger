@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL Creporteop = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void button1_Click(object sender, EventArgs e)
         {
             txtbusca.Text = "";
@@ -152,7 +154,7 @@ namespace HPReserger
             if (dtgconten.RowCount > 0)
             {
                 ExportarDataGridViewExcel();
-                msg("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
                 msg("No hay filas para exportar");
@@ -190,7 +192,7 @@ namespace HPReserger
             {
 
                 hoja_trabajo.Cells[2, numer + 1] = dtgconten.Columns[contador].HeaderText.ToString();
-                hoja_trabajo.Columns[numer+1].AutoFit();
+                hoja_trabajo.Columns[numer + 1].AutoFit();
                 numer++;
 
             }
@@ -201,11 +203,6 @@ namespace HPReserger
             //libros_trabajo.Close(true);
             //aplicacion.Quit();
             //  }
-        }
-
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         private void dtfin_ValueChanged(object sender, EventArgs e)
         {

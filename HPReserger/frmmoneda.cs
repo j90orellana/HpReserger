@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         int estado = 0;
         public void iniciar(Boolean a)
         {
@@ -28,10 +30,6 @@ namespace HPReserger
             btneliminar.Enabled = !a;
             txtgerencia.Enabled = a;
             txtname.Enabled = a;
-        }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         public void CargarDatos()
         {
@@ -81,13 +79,13 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre de la Moneda");
+                    msg("Ingresé Nombre de la Moneda");
                     txtgerencia.Focus();
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(txtname.Text))
                 {
-                    Msg("Ingresé Moneda");
+                    msg("Ingresé Moneda");
                     txtname.Focus();
                     return;
                 }
@@ -95,14 +93,14 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString())
                     {
-                        Msg("La Moneda ya Existe");
+                        msg("La Moneda ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarMoneda(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario, txtname.Text);
-                Msg("Insertado Con Exito");
+                msgOK("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -110,13 +108,13 @@ namespace HPReserger
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre de la Moneda");
+                    msg("Ingresé Nombre de la Moneda");
                     txtgerencia.Focus();
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(txtname.Text))
                 {
-                    Msg("Ingresé Moneda");
+                    msg("Ingresé Moneda");
                     txtname.Focus();
                     return;
                 }
@@ -125,7 +123,7 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("La Moneda ya Existe");
+                        msg("La Moneda ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
@@ -133,7 +131,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarMoneda(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario, txtname.Text);
-                Msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

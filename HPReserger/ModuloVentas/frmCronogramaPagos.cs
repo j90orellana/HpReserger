@@ -19,6 +19,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmCronogramaPagos_Load(object sender, EventArgs e)
         {
             //ModoEdicion(false);
@@ -263,10 +265,6 @@ namespace HPReserger
             }
             if (Decimal(txtvalnrocuotas.Text) > 999) msg("No Puede Haber más de 1000 Cuotas");
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
             ((DataTable)(dtgconten.DataSource)).Clear();
@@ -500,7 +498,7 @@ namespace HPReserger
                     //proceso de Grabar el Cronograma de pagos detalle
                     foreach (DataGridViewRow item in dtgconten.Rows)
                         CapaLogica.CronogramaVtaDetalle(1, idCronograma, NumCot, (int)item.Cells[NroCuota.Name].Value, (DateTime)item.Cells[VencimientoPago.Name].Value, (decimal)item.Cells[importe.Name].Value, _moneda, null, null, "", DateTime.Now, frmLogin.CodigoUsuario);
-                    msg(cadena + "\nCronograma de Pagos Guardado");
+                    msgOK(cadena + "\nCronograma de Pagos Guardado");
                     ////Actualizo el numcot
                     txtnumcot_TextChanged(sender, e);
                 }

@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int CodigoEmpresa;
         int estado;
         private void frmPLanesEPS_Load(object sender, EventArgs e)
@@ -87,10 +89,6 @@ namespace HPReserger
             }
             CargarDatos();
         }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
-        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (estado == 1)
@@ -98,7 +96,7 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtplan.Text))
                 {
-                    Msg("Ingresé Nombre del Plan");
+                    msg("Ingresé Nombre del Plan");
                     txtplan.Focus();
                     return;
                 }
@@ -108,7 +106,7 @@ namespace HPReserger
                     if (Busqueda != valor.Cells[Plansx.Name].Value.ToString())
                         if (txtplan.Text.ToString().ToUpper() == valor.Cells[Plansx.Name].Value.ToString().ToUpper())
                         {
-                            Msg("El Plan ya Existe");
+                            msg("El Plan ya Existe");
                             txtplan.Focus();
                             return;
                         }
@@ -117,7 +115,7 @@ namespace HPReserger
                 //Insertando;
                 CapaLogica.PLanes(1, 0, CodigoEmpresa, txtplan.Text);
                 // CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, 0, 1, txtplan.Text, frmLogin.CodigoUsuario, NumAporte.Value, Numadicional1.Value, Numadicional2.Value, Numadicional3.Value);
-                Msg("Insertado Con Exito");
+                msgOK("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -125,7 +123,7 @@ namespace HPReserger
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtplan.Text))
                 {
-                    Msg("Ingresé Nombre del Plan");
+                    msg("Ingresé Nombre del Plan");
                     txtplan.Focus();
                     return;
                 }
@@ -147,7 +145,7 @@ namespace HPReserger
                 //modificando
                 int filax = dtgconten.CurrentCell.RowIndex;
                 //CapaLogica.InsertarActualizarEmpresaEpsPLanes(CodigoEmpresa, (int)dtgconten[id_eps_planes.Name, filax].Value, 2, txtplan.Text, frmLogin.CodigoUsuario, NumAporte.Value, Numadicional1.Value, Numadicional2.Value, Numadicional3.Value);
-                Msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

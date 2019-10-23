@@ -80,25 +80,25 @@ namespace HPReserger
                 {
                     if (comboMesAño1.GetFecha().Month != ((DateTime)dtgconten["fecha", i].Value).Month || comboMesAño1.GetFecha().Year != ((DateTime)dtgconten["fecha", i].Value).Year)
                     {
-                        msg("No Ha Recargado los datos de la grilla");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("No Ha Recargado los datos de la grilla");
                         btncargar.Focus();
                         return;
                     }
                     CapaLogica.AbonosExternos(10, comboMesAño1.GetFecha(), (int)cboempresa.SelectedValue, (int)dtgconten["codempleado", i].Value, dtgconten["Ruc_Empresa", i].Value.ToString(), (decimal)dtgconten["importeabono", i].Value, frmLogin.CodigoUsuario);
                     CapaLogica.AbonosExternos(1, comboMesAño1.GetFecha(), (int)cboempresa.SelectedValue, (int)dtgconten["codempleado", i].Value, dtgconten["Ruc_Empresa", i].Value.ToString(), (decimal)dtgconten["importeabono", i].Value, frmLogin.CodigoUsuario);
                 }
-                msg("Datos Guardados Exitosamente");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Datos Guardados Exitosamente");
                 btngrabar.Enabled = false;
             }
             else
             {
-                msg("No Hay Datos para Guardar");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("No Hay Datos para Guardar");
             }
         }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        //public void msg(string cadena)
+        //{
+        //    MessageBox.Showa(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //}
 
         private void comboMesAño1_Click(object sender, EventArgs e)
         {

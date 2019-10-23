@@ -284,7 +284,7 @@ namespace HPReserger
                     //CArticulo.InsertarArticulo(concepto, 0, tipo, txtobservacion.Text, IGV, CENTRO, cbocuenta.SelectedText, cbocentrocosto.SelectedValue.ToString());
                 }
                 CArticulo.InsertarArticuloMarca(marcas, GenerarCodigo());
-                MessageBox.Show("Insertado Exitosamente " + concepto + ";" + marcas, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
+                HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Exitosamente " + concepto + ";" + marcas);
             }
             else
             {
@@ -292,7 +292,7 @@ namespace HPReserger
                 {
                     //CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, CENTRO, cbocuenta.SelectedText, cbocentrocosto.SelectedValue.ToString());
                     CArticulo.ActualizarArticuloMarca(Convert.ToInt32(txtcodigo.Text), txtdescripcion.Text, 0, tipo, txtobservacion.Text, marcas, modmarca, IGV, int.Parse(cuentax), cuentax, cuentax, txtctacble.Text, txtcntctbleact.Text);
-                    MessageBox.Show("Modificado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Modificado Exitosamente ");
                 }
                 else
                 {
@@ -302,7 +302,7 @@ namespace HPReserger
                         {
                             CArticulo.EliminarARticuloMarca(marcas, Convert.ToInt32(txtcodigo.Text.ToString()));
                             estado = 0;
-                            MessageBox.Show("Eliminado Exitosamente ", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information); gp1.Enabled = false;
+                            HPResergerFunciones.frmInformativo.MostrarDialog("Eliminado Exitosamente ");
 
                         }
                     }
@@ -323,7 +323,7 @@ namespace HPReserger
                 {
                     if (dtgconten["descripcion", i].Value.ToString() == concepto && dtgconten["idm", i].Value.ToString() == marca.ToString() && i != dtgconten.CurrentCell.RowIndex)
                     {
-                        MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + txtdescripcion.Text, CompanyName, MessageBoxButtons.OK);
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + txtdescripcion.Text);
                         return false;
                     }
                 }
@@ -365,14 +365,14 @@ namespace HPReserger
             {
                 if (CArticulo.VerificarArticuloServicio(descripcion, marca).Rows.Count > 0)
                 {
-                    MessageBox.Show("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + descripcion, CompanyName, MessageBoxButtons.OK);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ya Existe esa Relación Id:" + cbomarca.Text + "=" + marca + " : " + descripcion);
                     aux = false;
                 }
             }
             else
             {
                 aux = false;
-                MessageBox.Show("Campo Descripción Vacio", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Campo Descripción Vacio");
             }
             return aux;
         }
@@ -425,11 +425,7 @@ namespace HPReserger
         private void txtdescripcion_TextChanged(object sender, EventArgs e)
         {
 
-        }
-        public DialogResult MSG(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }       
         frmccosto fccentro;
         private void btncentro_Click(object sender, EventArgs e)
         {
@@ -463,7 +459,7 @@ namespace HPReserger
             {
                 if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
                 {
-                    MSG("No se Puede Seleccionar una cuenta de Cabecera");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("No se Puede Seleccionar una cuenta de Cabecera");
                 }
                 else
                 {
@@ -482,11 +478,11 @@ namespace HPReserger
             {
                 //if (cuentitas.codigo.Substring(cuentitas.codigo.Length - 1, 1) == "0")
                 //{
-                    //MSG("No se Puede Seleccionar una cuenta de Cabeceras");
+                //MSG("No se Puede Seleccionar una cuenta de Cabeceras");
                 //}
                 //else
                 //{
-                    txtctacble.Text = cuentitas.codigo;
+                txtctacble.Text = cuentitas.codigo;
                 //}
             }
         }

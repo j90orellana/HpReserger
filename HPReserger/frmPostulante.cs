@@ -16,6 +16,8 @@ namespace HPReserger
     public partial class frmPostulante : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clPostulante = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
 
         public byte[] Foto { get; set; }
         MemoryStream _memoryStream = new MemoryStream();
@@ -100,31 +102,31 @@ namespace HPReserger
         {
             if (txtDocumento.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nº Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Nº Documento");
                 txtDocumento.Focus();
                 return;
             }
             if (txtDocumento.Text.Length != txtDocumento.MaxLength && cboTipoDocumento.Text != "CARNE EXTRANJERIA")
             {
-                MessageBox.Show("No Coincide el Tamaño con el tipo de Documento", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("No Coincide el Tamaño con el tipo de Documento");
                 txtDocumento.Focus();
                 return;
             }
             if (txtApellidoPaterno.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Apellido Paterno", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Apellido Paterno");
                 txtApellidoPaterno.Focus();
                 return;
             }
             if (txtApellidoMaterno.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Apellido Materno", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Apellido Materno");
                 txtApellidoMaterno.Focus();
                 return;
             }
             if (txtNombres.Text.Length == 0)
             {
-                MessageBox.Show("Ingrese Nombres", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Ingrese Nombres");
                 txtNombres.Focus();
                 return;
             }
@@ -133,7 +135,7 @@ namespace HPReserger
             {
                 if ((int)Filita["edad"] < 18)
                 {
-                    MessageBox.Show("El Postulante Debe ser Mayor de Edad", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("El Postulante Debe ser Mayor de Edad");
                     dtpFechaNacimiento.Focus();
                     return;
                 }
@@ -144,32 +146,32 @@ namespace HPReserger
             if (Filita != null)
                 if (Filita["Nro_Contrato"] != null)
                 {
-                    MessageBox.Show("El Empleado Tiene un Contrato Activo", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("El Empleado Tiene un Contrato Activo");
                     return;
                 }
 
             if (txtAdjuntarCV.Text.Length == 0)
             {
-                MessageBox.Show("Seleccione Imagen CV", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Seleccione Imagen CV");
                 txtAdjuntarCV.Focus();
                 return;
             }
             if (Convert.ToInt32(Grid2.CurrentRow.Cells[10].Value.ToString()) == 0)
             {
-                MessageBox.Show("Cantidad de Puestos en Cero", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Cantidad de Puestos en Cero");
                 return;
             }
 
             DataRow ExisteCV = clPostulante.ExisteImagen("NombreFoto", txtAdjuntarCV.Text, "TBL_Postulante");
             if (ExisteCV != null)
             {
-                MessageBox.Show("Imagen de CV ya esta asociado a otro Postulante", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                msg("Imagen de CV ya esta asociado a otro Postulante");
                 return;
             }
 
             // if (PostulanteExiste == true)
             //{
-            //MessageBox.Show("Postulante ya registrado en la base de datos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //msg("Postulante ya registrado en la base de datos", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             //return;
             //  }
 
@@ -182,12 +184,12 @@ namespace HPReserger
             fila = Grid2.CurrentCell.RowIndex;
 
             clPostulante.PostulanteInsertar(Convert.ToInt32(cboTipoDocumento.SelectedValue.ToString()), txtDocumento.Text, txtApellidoPaterno.Text, txtApellidoMaterno.Text, txtNombres.Text, Convert.ToInt32(Grid2.CurrentRow.Cells[3].Value.ToString()), Foto, txtAdjuntarCV.Text, OC, Convert.ToInt32(Grid2.CurrentRow.Cells[0].Value.ToString().Substring(2)), frmLogin.CodigoUsuario, dtpFechaNacimiento.Value);
-            MessageBox.Show("El postulante con DNI Nº " + txtDocumento.Text + " se registró con éxito", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            msg("El postulante con DNI Nº " + txtDocumento.Text + " se registró con éxito");
 
             if (Grid2["Terna", Grid2.CurrentCell.RowIndex].Value.ToString() == "NO")
             {
                 clPostulante.AprobarPostulante(Convert.ToInt32(cboTipoDocumento.SelectedValue), txtDocumento.Text, Convert.ToInt32(Grid2["SOLICITUD", Grid2.CurrentCell.RowIndex].Value.ToString().Substring(2)));
-                MessageBox.Show("El postulante con DNI Nº " + txtDocumento.Text + " se Aprobó con éxito, No Aplicó Terna", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msg("El postulante con DNI Nº " + txtDocumento.Text + " se Aprobó con éxito, No Aplicó Terna");
                 Limpiar(); Grid2.DataSource = clPostulante.ListarSEPostulantes(frmLogin.CodigoUsuario);
             }
             else
@@ -269,14 +271,6 @@ namespace HPReserger
                 btnBuscarJPG.Focus();
             }
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
-        public DialogResult msgx(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         DataTable tablita;
         private void btnAprobar_Click(object sender, EventArgs e)
         {
@@ -292,12 +286,12 @@ namespace HPReserger
                     DataRow filita = tablita.Rows[0];
                     if (Convert.ToInt32(grid3.CurrentRow.Cells[7].Value.ToString()) == 2)
                     {
-                        MessageBox.Show("Postulante ya se encuentra Aprobado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        msg("Postulante ya se encuentra Aprobado");
                         return;
                     }
                     /*if (Convert.ToInt32(grid3.CurrentRow.Cells[7].Value.ToString()) == 10)
                     {
-                        MessageBox.Show("Postulante Esperando Aprobación del Jefe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        msg("Postulante Esperando Aprobación del Jefe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }*/
                     if (Grid2[terna.Name, fila].Value.ToString() == "SI")
@@ -333,7 +327,7 @@ namespace HPReserger
                             Titulos();
                         }
                     }
-                    msgx("Solicitud Enviada a su Jefe");
+                    msgOK("Solicitud Enviada a su Jefe");
                 }
                 else msg("No se Encuentra el Código del Jefe, Posiblemente Problema con el Contrato");
             }
@@ -374,7 +368,7 @@ namespace HPReserger
                 txtAdjuntarCV.Text = ExistePostulante["NOMBREFOTO"].ToString();
                 PostulanteExiste = true;
                 //btnRegistrar.Enabled = false;
-                MessageBox.Show("Postulante ya fué registrado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                msg("Postulante ya fué registrado");
             }
             else
             {
@@ -398,7 +392,7 @@ namespace HPReserger
             {
                 if (Convert.ToInt32(grid3.CurrentRow.Cells[7].Value.ToString()) == 2)
                 {
-                    MessageBox.Show("Postulante NO se puede modificar, ya se encuentra Aprobado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Postulante NO se puede modificar, ya se encuentra Aprobado");
                     return;
                 }
 

@@ -14,6 +14,8 @@ namespace HPReserger
     public partial class frmPartidaPresupuesto : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL cpresupuesto = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public frmPartidaPresupuesto()
         {
             InitializeComponent();
@@ -79,7 +81,7 @@ namespace HPReserger
                 if (dtgconten[1, i].Value.ToString() == valor)
                 {
                     Aux = false;
-                    MessageBox.Show("Este valor:" + txtgerencia.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Este valor:" + txtgerencia.Text + " ya Existe");
                     return Aux;
                 }
             }

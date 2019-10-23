@@ -201,10 +201,9 @@ namespace HPReserger.ModuloCompensaciones
                 cboempleado.SelectedValue = frmlisempleado.TipoDocumento + "-" + frmlisempleado.NumeroDocumento;
             }
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public DialogResult msgOk(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
@@ -420,7 +419,7 @@ namespace HPReserger.ModuloCompensaciones
                     //Cuadre Asiento
                     CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
                     //Fin Cuadre              
-                    msg($"Se Actualizo la Entrega a Rendir con Cuo {Cuo}");
+                    msgOK($"Se Actualizo la Entrega a Rendir con Cuo {Cuo}");
                     ModoEdicion(false);
                     BloquearPago(false);
                     Estado = 0;
@@ -493,7 +492,7 @@ namespace HPReserger.ModuloCompensaciones
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(Cuo, proyecto, dtpFechaContable.Value, 2);
                 //Fin Cuadre              
-                msg($"Se Creó la Entrega a Rendir con Cuo {Cuo}");
+                msgOK($"Se Creó la Entrega a Rendir con Cuo {Cuo}");
                 CargarDatos();
             }
         }

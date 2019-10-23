@@ -24,6 +24,8 @@ namespace HPReserger
         public static DateTime DateLicense = new DateTime(2018, 11, 2);//2 Noviembre del 2019
         public static int DaysCaducatesLicence = 30;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public static Icon ICono;
         public void CargarEpsAdicional()
         {
@@ -251,10 +253,6 @@ namespace HPReserger
                 }
             }
 
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public void ValidarVentanas(Form formulario)
         {
@@ -2161,11 +2159,11 @@ namespace HPReserger
         }
         private void frmMenu_Scroll(object sender, ScrollEventArgs e)
         {
-            MessageBox.Show("value:" + e.NewValue);
+            msg("value:" + e.NewValue);
         }
         private void frmMenu_MouseDown(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("button:" + e.Button.ToString());
+            msg("button:" + e.Button.ToString());
         }
         frmEliminarPeriodo frmelimin;
         private void eliminarPeriodoToolStripMenuItem_Click(object sender, EventArgs e)

@@ -18,12 +18,13 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmReportedeFacturas_Load(object sender, EventArgs e)
         {
             dtpfechaini.Value = new DateTime(DateTime.Now.Year, 1, 1);
             dtpfechafin.Value = new DateTime(DateTime.Now.Year, 12, 31);
         }
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         frmProcesando frmproce;
         private void btnexcel_Click(object sender, EventArgs e)
         {
@@ -72,7 +73,6 @@ namespace HPReserger
                 ////
                 HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(TableResult, CeldaCabecera, CeldaDefault, "", _NombreHoja, Celdas, 2 + CON, _Columnas, new int[] { }, new int[] { }, "");
                 //HPResergerFunciones.Utilitarios.ExportarAExcelOrdenandoColumnas(dtgconten, "", "Cronograma de Pagos", Celdas, 2, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { }, new int[] { });
-
             }
             else msg("No hay Registros en la Grilla");
         }

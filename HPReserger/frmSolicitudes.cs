@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmSolicitudes_Load(object sender, EventArgs e)
         {
             REcargardatos();
@@ -49,14 +51,10 @@ namespace HPReserger
             {
                 int x = dtgconten.CurrentCell.RowIndex;
                 CapaLogica.TablaSolicitudes(8, frmLogin.CodigoUsuario, dtgconten["accion", x].Value.ToString(), dtgconten["valores", x].Value.ToString(), 0, 1, "");
-                msg("Solicitud Eliminada");
+                msgOK("Solicitud Eliminada");
             }
             else msg("No Hay Solicitudes");
             REcargardatos();
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnaprovar_Click(object sender, EventArgs e)
         {
@@ -64,7 +62,7 @@ namespace HPReserger
             {
                 int x = dtgconten.CurrentCell.RowIndex;
                 CapaLogica.TablaSolicitudes(10, frmLogin.CodigoUsuario, dtgconten["accion", x].Value.ToString(), dtgconten["valores", x].Value.ToString(), 0, 1, "");
-                msg("Solicitud Aprobada");
+                msgOK("Solicitud Aprobada");
             }
             else msg("No Hay Solicitudes");
             REcargardatos();

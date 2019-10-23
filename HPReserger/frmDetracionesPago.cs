@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmDetracionesPago_Load(object sender, EventArgs e)
         {
             DataRow Filita = CapaLogica.VerUltimoIdentificador("TBL_Factura", "Nro_DocPago");
@@ -174,10 +176,6 @@ namespace HPReserger
             }
             return Prueba;
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
         private void dtgconten_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex, y = e.ColumnIndex;
@@ -230,13 +228,13 @@ namespace HPReserger
                 {
                     if (cbobanco.Items.Count == 0)
                     {
-                        HPResergerFunciones.Utilitarios.msg("No hay Bancos");
+                       msg("No hay Bancos");
                         cbobanco.Focus();
                         return;
                     }
                     if (cbocuentabanco.Items.Count == 0)
                     {
-                        HPResergerFunciones.Utilitarios.msg("El Banco Seleccionado No tiene Cuenta");
+                     msg("El Banco Seleccionado No tiene Cuenta");
                         cbobanco.Focus();
                         return;
                     }
@@ -244,7 +242,7 @@ namespace HPReserger
                     {
                         if (decimal.Parse(txttotal.Text) == 0)
                         {
-                            HPResergerFunciones.Utilitarios.msg("El total a pagar no puede ser Cero");
+                    msg("El total a pagar no puede ser Cero");
                             dtgconten.Focus();
                             return;
                         }
@@ -267,7 +265,7 @@ namespace HPReserger
                         }
                     }
                     if (!VerificarErrorDiferencia()) return;
-                    if (Verificar) { HPResergerFunciones.Utilitarios.msg("No se Puede Pagar Valores en Cero"); return; }
+                    if (Verificar) { msg("No se Puede Pagar Valores en Cero"); return; }
                     ///DECLARACION DE LAS VARIABLES
                     DateTime FechaPago = dtpFechaPago.Value;
                     DateTime FechaContable = dtpFechaContable.Value;
@@ -320,12 +318,12 @@ namespace HPReserger
                                    decimal.Parse(txtdiferencia.Text) < 0 ? "9559501" : "7599103", FechaContable, glosa, IdUsuario, idcomprobante);
                             }
                     ////FIN DE LA DINAMICA DE LA CABECERA                
-                    HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! con Asiento {CuoPago}");
+                   msgOK($"Detracciones Pagadas! con Asiento {CuoPago}");
                     btnActualizar_Click(sender, e);
                 }
-                else HPResergerFunciones.Utilitarios.msg("Total de Detracciones en Cero");
+                else msg("Total de Detracciones en Cero");
             }
-            else HPResergerFunciones.Utilitarios.msg("No Hay Detracciones por Pagar");
+            else msg("No Hay Detracciones por Pagar");
         }
         private void btnActualizar_Click(object sender, EventArgs e)
         {

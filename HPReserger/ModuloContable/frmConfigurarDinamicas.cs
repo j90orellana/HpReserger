@@ -23,6 +23,9 @@ namespace HPReserger
         {
             CargarDinamicas();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public void CargarDinamicas()
         {
             dtgconten.DataSource = CapaLogica.StoreProcedures(0, 0, "0", 0);
@@ -82,17 +85,13 @@ namespace HPReserger
             }
             if (dtgconten.RowCount > 0)
             {
-                msg("Guardado con Exito");
+                msgOK("Guardado con Exito");
                 CargarDinamicas();
                 Activar(btnmodificar);
                 Desactivar(btnguardar);
                 estado = 0;
             }
-        }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        }      
         private void dtgconten_DoubleClick(object sender, EventArgs e)
         {
             if (estado == 1)

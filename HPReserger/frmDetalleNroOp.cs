@@ -21,6 +21,9 @@ namespace HPReserger
         { get; set; }
         private int _codigo;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public int Codigo
         { get { return _codigo; } set { _codigo = value; } }
         private void frmDetalleNroOp_Load(object sender, EventArgs e)

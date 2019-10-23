@@ -17,6 +17,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CLpresupuestoetapa = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int etapa;
         public string cc;
         public Boolean ok;
@@ -93,16 +95,12 @@ namespace HPReserger
             if (dtgconten.RowCount > 0)
             {
                 ExportarDataGridViewExcel();
-                MSG("Exportado con Exito");
+                msg("Exportado con Exito");
             }
             else
             {
 
             }
-        }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void ExportarDataGridViewExcel()
         {

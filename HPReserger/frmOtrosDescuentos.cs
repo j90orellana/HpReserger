@@ -25,6 +25,8 @@ namespace HPReserger
         public byte[] Foto { get; set; }
         public string numerodoc;
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int desvinculacion;
         private void frmOtrosDescuentos_Load(object sender, EventArgs e)
         {
@@ -156,10 +158,6 @@ namespace HPReserger
                 foto.ShowDialog();
             }
         }
-        public void msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (!txtmotivo.EstaLLeno())
@@ -177,7 +175,7 @@ namespace HPReserger
             if (estado == 1)
             {
                 CapaLogica.DesvinculacionOtrosDscto(1, desvinculacion, tipodoc, numerodoc, txtmotivo.Text, decimal.Parse(txtimporte.Num.Text), Foto, nombredescuento, frmLogin.CodigoUsuario);
-                msg("Agregado Con Exito");
+                msgOK("Agregado Con Exito");
                 estado = 0;
                 CargarDatos();
                 Iniciar(false);
@@ -185,7 +183,7 @@ namespace HPReserger
             if (estado == 2)
             {
                 CapaLogica.DesvinculacionOtrosDscto(2, desvinculacion, tipodoc, numerodoc, txtmotivo.Text, decimal.Parse(txtimporte.Num.Text), Foto, nombredescuento, regis);
-                msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 estado = 0;
                 CargarDatos();
                 Iniciar(false);
@@ -203,7 +201,7 @@ namespace HPReserger
                 {
                     regis = (int)dtgconten[registro.Name, dtgconten.CurrentCell.RowIndex].Value;
                     CapaLogica.DesvinculacionOtrosDscto(10, regis, tipodoc, numerodoc, "", 0, null, "", desvinculacion);
-                    msg("Eliminado Con Exito");
+                    msgOK("Eliminado Con Exito");
                     CargarDatos();
                 }
         }

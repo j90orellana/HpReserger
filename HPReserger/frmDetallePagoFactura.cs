@@ -17,6 +17,9 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public frmDetallePagoFactura(int opcion, string numero, int tipoid, string proveedors, int idcomprobante, int empresa,string glosa)
         {
             InitializeComponent();

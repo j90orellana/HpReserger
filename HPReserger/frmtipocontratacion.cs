@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CCargos = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         int estado = 0;
         string tabla = "TBL_TipoContratacion";
         string campo = "TipoContratacion";
@@ -30,10 +32,6 @@ namespace HPReserger
             dtgconten.Enabled = !a;
             btneliminar.Enabled = !a;
             txtgerencia.Enabled = a;
-        }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         public void CargarDatos()
         {
@@ -83,7 +81,7 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre del Tipo de Contratación");
+                    msg("Ingresé Nombre del Tipo de Contratación");
                     txtgerencia.Focus();
                     return;
                 }
@@ -91,14 +89,14 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString())
                     {
-                        Msg("El Tipo de Contratación ya Existe");
+                        msg("El Tipo de Contratación ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarTipoContratacion(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                msgOK("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -106,7 +104,7 @@ namespace HPReserger
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre del Tipo de Contratación");
+                    msg("Ingresé Nombre del Tipo de Contratación");
                     txtgerencia.Focus();
                     return;
                 }
@@ -115,7 +113,7 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("El Tipo de Contratación ya Existe");
+                        msg("El Tipo de Contratación ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
@@ -123,7 +121,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarTipoContratacion(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

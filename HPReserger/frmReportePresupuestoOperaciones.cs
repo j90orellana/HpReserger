@@ -18,18 +18,16 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CLPresuOpera = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int cabecera; public int empresa;
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         private void frmReportePresupuestoOperaciones_Load(object sender, EventArgs e)
         {
             cboempresa.ValueMember = "codigo";
             cboempresa.DisplayMember = "descripcion";
             cboempresa.DataSource = CLPresuOpera.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
             if (cboempresa.Items.Count < 1)
-                MSG("No hay Empresas");
+                msg("No hay Empresas");
         }
 
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,7 +45,7 @@ namespace HPReserger
                 cbopresupuestos.ValueMember = "Id_PPresupuesto";
                 cbopresupuestos.DataSource = CLPresuOpera.ListarPptoEmpresas((int)cboempresa.SelectedValue);
                 if (cbopresupuestos.Items.Count < 1)
-                    MSG("No Hay Proyectos");
+                    msg("No Hay Proyectos");
             }
         }
         public void contando(DataGridView grilla)
@@ -184,11 +182,11 @@ namespace HPReserger
                     a++;
                 }
                 ExportarDataGridViewExcel(dtgconten);
-                MSG("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
             {
-                MSG("Debe Primero Generar un reporte");
+                msg("Debe Primero Generar un reporte");
                 btnGenerar.Focus();
             }
         }
@@ -205,7 +203,7 @@ namespace HPReserger
             Worksheet ws = (Worksheet)wb.Worksheets[1];
             if (ws == null)
             {
-                MSG("Hoja de Trabajo no se pudo Crear. Verifique si tiene instalado Office Excel.");
+                msg("Hoja de Trabajo no se pudo Crear. Verifique si tiene instalado Office Excel.");
                 return;
             }
             // Select the Excel cells, in the range c1 to c7 in the worksheet. 
@@ -388,7 +386,7 @@ namespace HPReserger
             cboproyecto.DisplayMember = "proyecto";
             cboproyecto.DataSource = CLPresuOpera.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString(), (int)cbopresupuestos.SelectedValue);
             if (cboproyecto.Items.Count < 1)
-                MSG("No hay Proyectos Presupuestados");
+                msg("No hay Proyectos Presupuestados");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -414,7 +412,7 @@ namespace HPReserger
                 Sumatoria();
                 //  REvisarGrillas();
                 if (dtgconten.RowCount <= 0)
-                    MSG("No hay Etapas en el Proyecto");
+                    msg("No hay Etapas en el Proyecto");
             }//MSG("Seleccione Proyecto y Presupuesto");
         }
 

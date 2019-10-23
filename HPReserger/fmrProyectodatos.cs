@@ -319,7 +319,7 @@ namespace HPReserger
             validar(txtconfianzaanual);
             validar(txtimprevistos);
             CLProyectos.Proyectodatos(Proyecto, txtubicacion.Text, int.Parse(cbomoneda.SelectedValue.ToString()), (txtareabruta.Text), (txtpreciom2.Text), (txttotaldolar.Text), (txttotalavaluo.Text), (txtrevaluacion.Text), (txtvigilancia.Text), (txtmarketing.Text), (txtventas.Text), (txtadminobra.Text), (txtgerencia.Text), (txtcdaf.Text), (txtfindefee.Text), (txtcostosuper.Text), (txtcomision.Text), (txtcomisionsuper.Text), (txtceremonia.Text), (txtregalos.Text), (txtmantenimiento.Text), (txtatencion.Text), (txtcostoprevio.Text), (txtgestioncomuni.Text), (txtporcentacredito.Text), (txtconfianzaanual.Text), (txtimprevistos.Text));
-            MessageBox.Show("Datos del Proyecto Actualizado", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialog("Datos del Proyecto Actualizado");
         }
 
         private void txtareabruta_TextChanged(object sender, EventArgs e)
@@ -372,7 +372,7 @@ namespace HPReserger
         {
             if (frmproducs == null)
             {
-                frmproducs = new frmProductosProyecto(Proyecto,txtnombre.Text);
+                frmproducs = new frmProductosProyecto(Proyecto, txtnombre.Text);
                 frmproducs.FormClosed += Frmproducs_FormClosed;
                 frmproducs.MdiParent = this.MdiParent;
                 frmproducs.Show();
@@ -387,11 +387,11 @@ namespace HPReserger
 
         private void fmrProyectodatos_FormClosed(object sender, FormClosedEventArgs e)
         {
-           
+
         }
         public DialogResult msg(string cadena)
         {
-           return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
         }
 
         private void fmrProyectodatos_FormClosing(object sender, FormClosingEventArgs e)

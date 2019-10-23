@@ -19,6 +19,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public void cargarempresas()
         {
             cboempresa.DataSource = CapaLogica.getCargoTipoContratacion("Id_empresa", "empresa", "tbl_empresa");
@@ -77,10 +79,6 @@ namespace HPReserger
         {
             txtnumero.Text = "";
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        }
         private void btngenerar_Click(object sender, EventArgs e)
         {
             empresa = 0; tipo = 0;
@@ -121,7 +119,7 @@ namespace HPReserger
             frmcts.numero = numero;
             frmcts.fecha = 1;
             frmcts.fechainicial = inicial;
-            msg("Cts Generadas con Éxito");
+            msgOK("Cts Generadas con Éxito");
             frmcts.Fechafin = inicial;
             frmcts.Icon = Icon;
             frmcts.Show();
@@ -136,7 +134,7 @@ namespace HPReserger
             frmCartaBancos.Icon = Icon;
             frmCartaBancos.Show();
             ///Generar el TXT
-            MSG("Generando TXT del pago de la CTS");
+            msgOK("Generando TXT del pago de la CTS");
             SaveFileDialog SAvesito = new SaveFileDialog();
             if ( SAvesito.ShowDialog() == DialogResult.OK)
             {
@@ -158,10 +156,6 @@ namespace HPReserger
                 st.Write(cadenatxt);
                 st.Close();
             }
-        }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         string cadenatxt = "";
         private StreamWriter st;

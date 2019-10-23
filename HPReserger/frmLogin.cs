@@ -54,7 +54,6 @@ namespace HPReserger
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            HpResergerUserControls.frmInformativo.MostrarDialog("Cargando el sistema");
             cboBase.Items.Add("Actual");
             cboBase.Items.Add("SiGE");
             cboBase.Items.Add("Actual_Beta");      

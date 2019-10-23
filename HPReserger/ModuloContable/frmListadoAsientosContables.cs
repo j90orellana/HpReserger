@@ -26,6 +26,9 @@ namespace HPReserger.ModuloContable
             FechaIni = _FechaIni;
             Busqueda = true;
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private int fkempresa;
         private string cuo;
         private DateTime FechaIni;

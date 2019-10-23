@@ -69,7 +69,7 @@ namespace HPReserger
                 if (HPResergerFunciones.Utilitarios.ValidarCorreo(item) == "")
                 {
                     ok = false;
-                    msg("Error  de los Correos\nLos Correos deben ir separados por: ;");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Error  de los Correos", "Los Correos deben ir separados por: ;");
                     return;
                 }
             }

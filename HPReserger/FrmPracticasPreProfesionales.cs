@@ -22,6 +22,8 @@ namespace HPReserger
         public string ruc, representante, tipoidrepre, docrepre, situacion, especialidad, ocupacion, dias, horario;
         public int estado = 0;
         HPResergerCapaLogica.HPResergerCL cdatospreprofesionales = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void FrmPracticasPreProfesionales_Load(object sender, EventArgs e)
         {
             cbotipoid.DataSource = cdatospreprofesionales.getCargoTipoContratacion("Codigo_Tipo_ID", "Desc_Tipo_ID", "TBL_Tipo_ID");
@@ -55,67 +57,67 @@ namespace HPReserger
         {
             if (txtrucuni.TextLength < 10)
             {
-                MSGITO("Ruc Demasiado pequeño ");
+                msg("Ruc Demasiado pequeño");
                 txtrucuni.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtrucuni.Text))
             {
-                MSGITO("Ingrese Ruc");
+                msg("Ingrese Ruc");
                 txtrucuni.Focus();
                 return;
             }
             if (txtrazonsocialuni.TextLength < 1 || string.IsNullOrWhiteSpace(txtrazonsocialuni.Text))
             {
-                MSGITO("Ingrese Razón Social");
+                msg("Ingrese Razón Social");
                 txtrazonsocialuni.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtdireccionuni.Text))
             {
-                MSGITO("Ingresé Dirección ");
+                msg("Ingresé Dirección ");
                 txtdireccionuni.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtrepre.Text))
             {
-                MSGITO("Ingrese Representante");
+                msg("Ingrese Representante");
                 txtrepre.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtnrodocrepre.Text))
             {
-                MSGITO("Ingresé Número de documento del representante");
+                msg("Ingresé Número de documento del representante");
                 txtnrodocrepre.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtsituacionprac.Text))
             {
-                MSGITO("Ingresé Situación del Practicante");
+                msg("Ingresé Situación del Practicante");
                 txtsituacionprac.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtespecialidadprac.Text))
             {
-                MSGITO("Ingresé Especialidad del Practicante");
+                msg("Ingresé Especialidad del Practicante");
                 txtespecialidadprac.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtocupacionmateriaprac.Text))
             {
-                MSGITO("Ingresé Ocupación materia de la Capacitación");
+                msg("Ingresé Ocupación materia de la Capacitación");
                 txtocupacionmateriaprac.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtdiasprac.Text))
             {
-                MSGITO("Ingresé los Días de las Prácticas");
+                msg("Ingresé los Días de las Prácticas");
                 txtdiasprac.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txthorarioprac.Text))
             {
-                MSGITO("Ingresé Horario de Las Prácticas");
+                msg("Ingresé Horario de Las Prácticas");
                 txthorarioprac.Focus();
                 return;
             }
@@ -124,12 +126,12 @@ namespace HPReserger
                 if (MessageBox.Show("Institución Educativa no existe, Desea Guardarla ?", CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cdatospreprofesionales.InstitucionEducativa(txtrucuni.Text, txtrazonsocialuni.Text, txtdireccionuni.Text, 2, 2);
-                    MSGITO("Institución Educativa Guardada!");
+                    msgOK("Institución Educativa Guardada!");
                     BuscarInstitucion(txtrucuni.Text, null, null, 1, 5);
                 }
                 else
                 {
-                    MSGITO("Ingresé Institución Educativa");
+                    msg("Ingresé Institución Educativa");
                     txtrucuni.Focus();
                     return;
                 }
@@ -149,7 +151,7 @@ namespace HPReserger
             if (busca == false && estado == 2)
                 cdatospreprofesionales.PracticasPreProfesionales(contrato, tipo, numero, 1, ruc, representante, tipoidrepre, docrepre, situacion, especialidad, ocupacion, dias, horario);
             acepta = true;
-            MSGITO("Guardado!");
+            msgOK("Guardado!");
             this.Close();
 
         }
@@ -261,10 +263,6 @@ namespace HPReserger
                 acepta = false;
                 this.Close();
             }
-        }
-        public void MSGITO(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

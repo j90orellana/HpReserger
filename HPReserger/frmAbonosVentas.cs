@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmAbonosVentas_Load(object sender, EventArgs e)
         {
             ValoresPorDefecto();
@@ -432,7 +434,6 @@ namespace HPReserger
                 _Total = total;
             }
         }
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         List<Cuentas> ListCuentas = new List<Cuentas>();
         public class NotaCreditoDebito
         {
@@ -870,7 +871,7 @@ namespace HPReserger
 
                 }
             }
-            msg($"{Mensaje}");
+            msgOK($"{Mensaje}");
             txtTotalPagar.Text = txttotalAbonado.Text = txttotaldiferencial.Text = "0.00";
             ////txtnrooperacion.CargarTextoporDefecto();txtglosa.CargarTextoporDefecto();
             ListaFacturax.Clear();

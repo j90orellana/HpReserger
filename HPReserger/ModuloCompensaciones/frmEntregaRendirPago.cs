@@ -603,10 +603,9 @@ namespace HPReserger.ModuloCompensaciones
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //Validaciones
@@ -971,7 +970,7 @@ namespace HPReserger.ModuloCompensaciones
                     cadena = $"\nSe Aplico el Pago con Cuo{ CuoNext}";
                     //Fin Cuadre                 
                 }
-                msg($"Se Aplicó la Entrega a Rendir con Cuo {Cuo} {(cadena != "" ? cadena : "")}");
+                msgOK($"Se Aplicó la Entrega a Rendir con Cuo {Cuo} {(cadena != "" ? cadena : "")}");
                 cbopago.Text = "003 Transferencias Fondos";
                 cboempleado_SelectedIndexChanged(sender, e);
             }

@@ -22,6 +22,8 @@ namespace HPReserger
         string tabla = "TBL_Cargo";
         string campo = "Cargo";
         string id = "Id_Cargo";
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public void iniciar(Boolean a)
         {
             btnnuevo.Enabled = !a;
@@ -34,10 +36,6 @@ namespace HPReserger
             txtbuscar.Enabled = !a;
             cboestado.Enabled = a;
             txtnombre.Enabled = a;
-        }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         public void CargarDatos()
         {
@@ -87,11 +85,10 @@ namespace HPReserger
                 Celdita.fila = 1; Celdita.columna = 1; Celdita.Nombre = "Listado de Operaciones";
                 Celditas.Add(Celdita);
                 HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Operaciones", Celditas, 1, new int[] { 1, 3 }, new int[] { 1 }, new int[] { });
-                Msg("Exportado con Exito");
+                msgOK("Exportado con Exito");
             }
             else
-                Msg("No hay Filas para Exportar");
-
+                msg("No hay Filas para Exportar");
         }
         private void btncancelar_Click(object sender, EventArgs e)
         {
@@ -116,13 +113,13 @@ namespace HPReserger
             }
             if (string.IsNullOrWhiteSpace(cboestado.Text))
             {
-                Msg("Seleccione Estado");
+                msg("Seleccione Estado");
                 cboestado.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtnombre.Text))
             {
-                Msg("Ingresé Nombre");
+                msg("Ingresé Nombre");
                 txtnombre.Focus();
                 return;
             }
@@ -142,14 +139,14 @@ namespace HPReserger
                 {
                     if (txtruc.Text.ToString() == valor.Cells["codigo"].Value.ToString())
                     {
-                        Msg("La Operación ya Existe");
+                        msg("La Operación ya Existe");
                         txtruc.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarListarOperacion(txtruc.Text, 1, txtnombre.Text, cboestado.SelectedValue.ToString(), frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                msgOK("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -166,7 +163,7 @@ namespace HPReserger
                 {
                     if (txtruc.Text.ToString() == valor.Cells["codigo"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("La Operación ya Existe");
+                        msg("La Operación ya Existe");
                         txtruc.Focus();
                         return;
                     }
@@ -174,7 +171,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarListarOperacion((dtgconten["codigo", dtgconten.CurrentCell.RowIndex].Value.ToString()), 2, txtnombre.Text, cboestado.SelectedValue.ToString(), frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                msgOK("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

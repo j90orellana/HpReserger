@@ -34,10 +34,10 @@ namespace HPReserger
             txtseguro.Enabled = a;
             txtcomision.Enabled = a;
         }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
-        }
+        //private void Msg(string cadena)
+        //{
+        //    MessageBox.Showa(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
+        //}
         public void CargarDatos()
         {
             dtgconten.DataSource = CCargos.InsertarActualizarListarAfp(0, 0, "0", 0, 0, 0, 0);
@@ -82,19 +82,19 @@ namespace HPReserger
         {
             if (string.IsNullOrWhiteSpace(txtaporte.Text))
             {
-                Msg("Ingresé Aporte");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Aporte");
                 txtaporte.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtcomision.Text))
             {
-                Msg("Ingresé Comisión");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Comisión");
                 txtcomision.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtseguro.Text))
             {
-                Msg("Ingresé Seguro");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Seguro");
                 txtseguro.Focus();
                 return;
             }
@@ -106,7 +106,7 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre del Afp");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Nombre del Afp");
                     txtgerencia.Focus();
                     return;
                 }
@@ -114,14 +114,14 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["afp"].Value.ToString())
                     {
-                        Msg("El Afp ya Existe");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("El Afp ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarListarAfp(0, 1, txtgerencia.Text, aportex, segurox, comisionx, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -129,7 +129,7 @@ namespace HPReserger
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre del Afp");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Nombre del Afp");
                     txtgerencia.Focus();
                     return;
                 }
@@ -138,7 +138,7 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["afp"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("El Afp ya Existe");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("El Afp ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
@@ -146,7 +146,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarListarAfp(int.Parse(dtgconten["idafp", dtgconten.CurrentCell.RowIndex].Value.ToString()), 2, txtgerencia.Text, aportex, segurox, comisionx, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)
@@ -185,10 +185,10 @@ namespace HPReserger
                 Celdita.Nombre = "Listado de Afps";
                 Celditas.Add(Celdita);
                 HPResergerFunciones.Utilitarios.ExportarAExcel(dtgconten, "", "Afps", Celditas, 1, new int[] { 1 }, new int[] { 1 }, new int[] { });
-                Msg("Exportado con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Exportado con Exito");
             }
             else
-                Msg("No hay Filas para Exportar");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("No hay Filas para Exportar");
         }
 
         private void txtaporte_KeyPress(object sender, KeyPressEventArgs e)

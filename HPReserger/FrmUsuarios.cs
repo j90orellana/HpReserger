@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL Cusuario = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public void CargarEstado(ComboBox combito)
         {
             DataTable tablita = new DataTable();
@@ -100,10 +102,6 @@ namespace HPReserger
         }
         private void txtcontra_TextChanged(object sender, EventArgs e)
         {
-        }
-        public void Mensajes(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
         }
         public void buscar()
         {
@@ -364,7 +362,7 @@ namespace HPReserger
                 msg($"El Máximo tamaño del Nro Documento debe ser: {LengthTipoId}");
                 return;
             }
-            if (cboestado.SelectedValue == null) { Mensajes("No se ha Seleccionado Empleado"); return; }
+            if (cboestado.SelectedValue == null) { msg("No se ha Seleccionado Empleado"); return; }
             if ((int)cboestado.SelectedValue == 1 || (int)cboestado.SelectedValue == 3)
             {
                 DataTable table = Cusuario.UsuarioConectado(frmLogin.CodigoUsuario, txtlogin.Text, 10);
@@ -391,21 +389,21 @@ namespace HPReserger
             {
                 if (string.IsNullOrWhiteSpace(txtlogin.Text) || string.IsNullOrWhiteSpace(txtcontra.Text))
                 {
-                    Mensajes("El Campo Login y Password, No deben estar Vacios");
+                    msg("El Campo Login y Password, No deben estar Vacios");
                     return;
                 }
                 else
                 {
                     if (txtlogin.Text.Length < 5)
                     {
-                        Mensajes("Campo Login 5 Caracteres minimo");
+                        msg("Campo Login 5 Caracteres minimo");
                         return;
                     }
                     else
                     {
                         if (txtcontra.Text.Length < 4)
                         {
-                            Mensajes("Contraseña muy pequeña: 4 caracteres minimo");
+                            msg("Contraseña muy pequeña: 4 caracteres minimo");
                             return;
                         }
                         else
@@ -414,13 +412,13 @@ namespace HPReserger
                             Cusuario.InsertarActualizarUsuario(tipoid, nroid, login, contra, perfil, estadito, estado, frmLogin.CodigoUsuario, out respuesta);
                             if (respuesta == 1)
                             {
-                                Mensajes("Ese Login ya Existe");
+                                msg("Ese Login ya Existe");
                                 return;
                                 //txtcontra.Text = txtlogin.Text = "";txtid_TextChanged(sender, e);
                             }
                             else
                             {
-                                Mensajes("Usuario Creado Exitosamente"); bloqueado(true);
+                                msgOK("Usuario Creado Exitosamente"); bloqueado(true);
                                 estado = 0; txtid.Enabled = cbotipoid.Enabled = true; estado = 0;
                                 txtid_TextChanged(sender, e); GridUser.Enabled = true;
                             }
@@ -433,19 +431,19 @@ namespace HPReserger
             {
                 if (string.IsNullOrWhiteSpace(txtlogin.Text) || string.IsNullOrWhiteSpace(txtcontra.Text))
                 {
-                    Mensajes("El Campo Login y Password, No deben estar Vacios"); return;
+                    msg("El Campo Login y Password, No deben estar Vacios"); return;
                 }
                 else
                 {
                     if (txtlogin.Text.Length < 5)
                     {
-                        Mensajes("Campo Login 5 Caracteres minimo"); return;
+                        msg("Campo Login 5 Caracteres minimo"); return;
                     }
                     else
                     {
                         if (txtcontra.Text.Length < 4)
                         {
-                            Mensajes("Contraseña muy pequeña"); return;
+                            msg("Contraseña muy pequeña"); return;
                         }
                         else
                         {
@@ -453,12 +451,12 @@ namespace HPReserger
                             Cusuario.InsertarActualizarUsuario(tipoid, nroid, login, contra, perfil, estadito, 2, frmLogin.CodigoUsuario, out respuesta);
                             if (respuesta == 1)
                             {
-                                Mensajes("Ese Login ya Existe"); return;
+                                msg("Ese Login ya Existe"); return;
                                 //txtcontra.Text = txtlogin.Text = "";txtid_TextChanged(sender, e);
                             }
                             else
                             {
-                                Mensajes("Usuario Actualizado Exitosamente"); Activar(false);
+                                msgOK("Usuario Actualizado Exitosamente"); Activar(false);
                                 bloqueado(true); checkBox1.Checked = true; estado = 0; txtid.Enabled = cbotipoid.Enabled = true;
                                 txtid_TextChanged(sender, e); GridUser.Enabled = true;
 
@@ -472,18 +470,13 @@ namespace HPReserger
             {
                 CargarValores(); int respuesta = 0;
                 Cusuario.InsertarActualizarUsuario(Codigo, nroid, login, contra, perfil, 0, 3, frmLogin.CodigoUsuario, out respuesta);
-                Mensajes("Usuario Eliminado Exitosamente");
+                msgOK("Usuario Eliminado Exitosamente");
                 bloqueado(true); checkBox1.Checked = true; btnnuevo.Enabled = true;
                 txtid_TextChanged(sender, e); GridUser.Enabled = true;
             }
             CargarUsuarios(); ModoEdicion(true);
             txtid.Enabled = false; btnlimpiar.Enabled = true;
         }
-        public void msg(string cadena)
-        {
-            lblmensaje.Text = cadena;
-        }
-
         private void txtid_Click(object sender, EventArgs e)
         {
             //txtid.SelectAll();
@@ -638,7 +631,7 @@ namespace HPReserger
             {
                 HPResergerFunciones.Utilitarios.SacarPosicionActualFilaColumna(GridUser, out PosicionFila, out PosicionColumna);
                 Cusuario.UsuarioConectado((int)GridUser[Codigox.Name, GridUser.CurrentRow.Index].Value, "", 2);
-                Mensajes($"Usuario {cadeusua} Desconectado..");
+                msgOK($"Usuario {cadeusua} Desconectado..");
                 BuscarUsuarios();
                 GridUser.CurrentCell = GridUser[PosicionColumna, PosicionFila];
             }

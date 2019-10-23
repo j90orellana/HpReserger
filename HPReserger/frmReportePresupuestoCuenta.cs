@@ -17,18 +17,16 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CLPresuOpera = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int cabecera; public int empresa;
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         private void frmReportePresupuestoCuenta_Load(object sender, EventArgs e)
         {
             cboempresa.ValueMember = "codigo";
             cboempresa.DisplayMember = "descripcion";
             cboempresa.DataSource = CLPresuOpera.getCargoTipoContratacion("Id_Empresa", "Empresa", "TBL_Empresa");
             if (cboempresa.Items.Count < 1)
-                MSG("No hay Empresas");
+                msg("No hay Empresas");
         }
         private void cboproyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -38,7 +36,7 @@ namespace HPReserger
                 cbocuenta.DisplayMember = "Id_CtaCtble";
                 cbocuenta.DataSource = CLPresuOpera.ListarPresupuestoCentrodeCostoReporteVerCuentas(int.Parse(cboproyecto.SelectedValue.ToString()));
                 if (cbocuenta.Items.Count < 1)
-                    MSG("No hay Cuentas");
+                    msg("No hay Cuentas");
             }
 
             /* if (cboproyecto.Items.Count > 0)
@@ -86,7 +84,7 @@ namespace HPReserger
                 cboproyecto.DisplayMember = "proyecto";
                 cboproyecto.DataSource = CLPresuOpera.ListarProyectosEmpresa(cboempresa.SelectedValue.ToString());
                 if (cboproyecto.Items.Count < 1)
-                    MSG("No hay Proyectos");
+                    msg("No hay Proyectos");
             }
         }        
         public void Sumatoria()

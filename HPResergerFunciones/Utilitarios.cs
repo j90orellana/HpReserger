@@ -93,9 +93,20 @@ namespace HPResergerFunciones
                     P.Handled = true;
             return P.Handled;
         }
+        public static void msgCancel(string cabecera)
+        {
+            frmInformativo.MostrarDialogError(cabecera);
+            ////MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static void msgCancel(string cabecera, string detalle)
+        {
+            frmInformativo.MostrarDialogError(cabecera, detalle);
+            ////MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         public static void msg(string cadena)
         {
-            MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmInformativo.MostrarDialog(cadena);
+            ////MessageBox.Show(cadena, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }/// <summary>        
          /// </summary>
          /// <param name="cadena"></param>

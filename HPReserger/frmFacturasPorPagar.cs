@@ -67,7 +67,7 @@ namespace HPReserger
             if (dtgconten.RowCount > 0)
             {
                 ExportarDataGridViewExcel();
-                MSG("Exportado con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Exportado con Exito");
             }
             else
             {
@@ -116,11 +116,11 @@ namespace HPReserger
             for (int contador = 0; contador < dtgconten.ColumnCount; contador++)
             {
                 hoja_trabajo.Cells[2, numer + 1] = dtgconten.Columns[contador].HeaderText.ToString();
-                if (dtgconten.Rows[0].Cells[contador ].Value.GetType() == typeof(decimal))
+                if (dtgconten.Rows[0].Cells[contador].Value.GetType() == typeof(decimal))
                     hoja_trabajo.Columns[numer + 1].NumberFormat = "0.00";
 
-               // if (dtgconten.Rows[0].Cells[contador].Value.GetType() == typeof(DateTime))
-                 //   hoja_trabajo.Columns[numer + 1].NumberFormat = "dd/mm/aa hh:mm";
+                // if (dtgconten.Rows[0].Cells[contador].Value.GetType() == typeof(DateTime))
+                //   hoja_trabajo.Columns[numer + 1].NumberFormat = "dd/mm/aa hh:mm";
 
                 hoja_trabajo.Columns[numer + 1].AutoFit();
                 numer++;
@@ -133,11 +133,6 @@ namespace HPReserger
             //aplicacion.Quit();
             //  }
         }
-        public void MSG(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked)

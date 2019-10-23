@@ -31,11 +31,7 @@ namespace HPReserger
             btneliminar.Enabled = !a;
             txtgerencia.Enabled = a;
         }
-        private void Msg(string cadena)
-        {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Question);
-        }
-        public void CargarDatos()
+               public void CargarDatos()
         {
             dtgconten.DataSource = CCargos.getCargoTipoContratacion(id, campo, tabla);
             dtgconten.Focus();
@@ -82,7 +78,7 @@ namespace HPReserger
                 //nuevo
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre de la Sede");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Nombre de la Sede");
                     txtgerencia.Focus();
                     return;
                 }
@@ -90,14 +86,14 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString())
                     {
-                        Msg("La Sede ya Existe");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("La Sede ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
                 }
                 //Insertando;
                 CCargos.InsertarActualizarSede(0, 1, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Insertado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Insertado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 2)
@@ -105,7 +101,7 @@ namespace HPReserger
                 //Modificar
                 if (string.IsNullOrWhiteSpace(txtgerencia.Text))
                 {
-                    Msg("Ingresé Nombre de la Sede");
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ingresé Nombre de la Sede");
                     txtgerencia.Focus();
                     return;
                 }
@@ -114,7 +110,7 @@ namespace HPReserger
                 {
                     if (txtgerencia.Text.ToString() == valor.Cells["descripcion"].Value.ToString() && fila != dtgconten.CurrentCell.RowIndex)
                     {
-                        Msg("La Sede ya Existe");
+                        HPResergerFunciones.frmInformativo.MostrarDialogError("La Sede ya Existe");
                         txtgerencia.Focus();
                         return;
                     }
@@ -122,7 +118,7 @@ namespace HPReserger
                 }
                 //modificando
                 CCargos.InsertarActualizarSede(int.Parse(txtcodigo.Text), 2, txtgerencia.Text, frmLogin.CodigoUsuario);
-                Msg("Actualizado Con Exito");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Actualizado Con Exito");
                 btncancelar_Click(sender, e);
             }
             if (estado == 0)

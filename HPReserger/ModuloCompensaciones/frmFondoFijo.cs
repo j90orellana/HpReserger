@@ -201,10 +201,9 @@ namespace HPReserger.ModuloCompensaciones
                 cboempleado.SelectedValue = frmlisempleado.TipoDocumento + "-" + frmlisempleado.NumeroDocumento;
             }
         }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public DialogResult msgOk(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
@@ -362,7 +361,7 @@ namespace HPReserger.ModuloCompensaciones
                     //Cuadre Asiento
                     CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
                     //Fin Cuadre              
-                    msg($"Se Actualizo El Fondo Fijo con Cuo {Cuo}");
+                    msgOK($"Se Actualizo El Fondo Fijo con Cuo {Cuo}");
                     ModoEdicion(false);
                     BloquearPago(false);
                     Estado = 0;
@@ -429,7 +428,7 @@ namespace HPReserger.ModuloCompensaciones
                     //Cuadre Asiento
                     CapaLogica.CuadrarAsiento(Cuo, proyecto, FechaContable, 2);
                     //Fin Cuadre              
-                    msg($"Se Dio de Baja El Fondo Fijo con Cuo {Cuo}");
+                    msgOK($"Se Dio de Baja El Fondo Fijo con Cuo {Cuo}");
                     lblabonar.Visible = txtPorAbonar.Visible = true;
                     txtImporteTotal.Enabled = txtPorAbonar.Enabled = true;
                     ModoEdicion(false);
@@ -502,7 +501,7 @@ namespace HPReserger.ModuloCompensaciones
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(Cuo, proyecto, dtpFechaContable.Value, 2);
                 //Fin Cuadre              
-                msg($"Se Creó El Fondo Fijo con Cuo {Cuo}");
+                msgOK($"Se Creó El Fondo Fijo con Cuo {Cuo}");
                 CargarDatos();
             }
         }

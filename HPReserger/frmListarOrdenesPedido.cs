@@ -14,6 +14,8 @@ namespace HPReserger
     public partial class frmListarOrdenesPedido : FormGradient
     {
         HPResergerCapaLogica.HPResergerCL clListarPedido = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int ItemListar { get; set; }
         public frmListarOrdenesPedido()
         {
@@ -442,7 +444,6 @@ namespace HPReserger
                 }
             }
         }
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         public DialogResult msgp(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNo(cadena); }
         private void gridDetalle_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -484,7 +485,7 @@ namespace HPReserger
                 {
                     clListarPedido.AnularOrdenPedido(Convert.ToInt32(gridListar.CurrentRow.Cells[1].Value.ToString()));
                     MostrarPedidos(frmLogin.CodigoUsuario);
-                    msg("Pedido anulado");
+                    msgOK("Pedido anulado");
                 }
             }
         }
@@ -556,7 +557,8 @@ namespace HPReserger
                     if (msgp("Desea Eliminar Item?") == DialogResult.Yes)
                     {
                         clListarPedido.EliminarItemOrdenPedido((int)gridListar["numero", gridListar.CurrentCell.RowIndex].Value, (int)gridDetalle["codigoarticulo", gridDetalle.CurrentCell.RowIndex].Value);
-                        msg("Item Eliminado Con Exito"); MostrarPedidos(frmLogin.CodigoUsuario);
+                        msgOK("Item Eliminado Con Exito");
+                        MostrarPedidos(frmLogin.CodigoUsuario);
                         //msg(gridListar["numero", gridListar.CurrentCell.RowIndex].Value.ToString() + " " + gridDetalle["codigoarticulo", gridDetalle.CurrentCell.RowIndex].Value.ToString());
                     }
                 }

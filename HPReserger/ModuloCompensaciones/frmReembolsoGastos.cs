@@ -33,6 +33,9 @@ namespace HPReserger.ModuloCompensaciones
         public void CargarEmpresa() { CapaLogica.TablaEmpresa(cboempresa); }
         public void CargarMoneda() { CapaLogica.TablaMoneda(cbomoneda); }
         int Estado; DataTable Table;
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         private void frmReembolsoGastos_Load(object sender, EventArgs e)
         {
             txtglosa.CargarTextoporDefecto();
@@ -313,11 +316,7 @@ namespace HPReserger.ModuloCompensaciones
                 cbocuentabanco.DisplayMember = "banco";
                 cbocuentabanco.DataSource = CapaLogica.ListarBancosTiposdePagoxEmpresa(cbobanco.SelectedValue.ToString(), (int)cboempresa.SelectedValue, (int)cbomoneda.SelectedValue);
             }
-        }
-        public void msg(string cadena)
-        {
-            HPResergerFunciones.Utilitarios.msg(cadena);
-        }
+        }       
         public DialogResult msgOk(string cadena)
         {
             return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
@@ -534,7 +533,7 @@ namespace HPReserger.ModuloCompensaciones
                 //Cuadre Asiento
                 CapaLogica.CuadrarAsiento(CuoNext, proyecto, dtpFechaContable.Value, 2);
                 //Fin Cuadre
-                msg(mensaje + $"\nSe hizo el pago con Cuo {CuoNext}");
+                msgOK(mensaje + $"\nSe hizo el pago con Cuo {CuoNext}");
                 cboempleado_SelectedIndexChanged(sender, e);
                 CalcularTotal();
             }

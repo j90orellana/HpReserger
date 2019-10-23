@@ -20,6 +20,8 @@ namespace HPReserger
         public Boolean Solicita = false;
         public int estado { get; set; }
         HPResergerCapaLogica.HPResergerCL cgerencia = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmgerencia_Load(object sender, EventArgs e)
         {
             estado = 0;
@@ -43,7 +45,7 @@ namespace HPReserger
                 if (dtgconten[1, i].Value.ToString() == valor)
                 {
                     Aux = false;
-                    MessageBox.Show("Este valor:" + txtgerencia.Text + " ya Existe", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    msg("Este valor:" + txtgerencia.Text + " ya Existe");
                     return Aux;
                 }
             }

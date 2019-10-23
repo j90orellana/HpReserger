@@ -84,7 +84,7 @@ namespace HPReserger
             {
                 if (dtgdistritos[3, i].Value.ToString() == cbodistrito.Text)
                 {
-                    MessageBox.Show("Ya existe: '" + cbodistrito.Text + " '", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    HPResergerFunciones.frmInformativo.MostrarDialogError("Ya existe: '" + cbodistrito.Text + " '");
                     Aux = false;
                     break;
                 }
@@ -125,7 +125,7 @@ namespace HPReserger
                     }
                 }
                 CDistrito.insertardistrito(coddep, codpro, coddis, cbodistrito.Text);
-                MessageBox.Show("Distrito Ingresado Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                HPResergerFunciones.frmInformativo.MostrarDialog("Distrito Ingresado Exitosamente");
                 Txtbusca.Text = cbodistrito.Text; cbodistrito.DropDownStyle = ComboBoxStyle.DropDownList;
             }
             else
@@ -133,7 +133,7 @@ namespace HPReserger
                 if (estado == 2 && ValidarDes(cbodistrito.Text))
                 {
                     CDistrito.modificardistrito(coddep, codpro, coddis, cbodistrito.Text);
-                    MessageBox.Show("Distrito Modificado Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    HPResergerFunciones.frmInformativo.MostrarDialog("Distrito Modificado Exitosamente");
                     Txtbusca.Text = cbodistrito.Text; cbodistrito.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
                 else
@@ -143,7 +143,7 @@ namespace HPReserger
                         if (MessageBox.Show("Seguró Desea Eliminar: " + cbodistrito.Text, CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Question).ToString() == "Yes")
                         {
                             CDistrito.eliminardistrito(coddep, codpro, coddis);
-                            MessageBox.Show("Distrito Eliminado Exitosamente", CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            HPResergerFunciones.frmInformativo.MostrarDialog("Distrito Eliminado Exitosamente");
                             Txtbusca.Text = "";
                         }
                     }

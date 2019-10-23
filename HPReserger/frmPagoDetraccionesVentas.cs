@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmPagoDetraccionesVentas_Load(object sender, EventArgs e)
         {
             DataRow Filita = CapaLogica.VerUltimoIdentificador("TBL_Factura", "Nro_DocPago");
@@ -43,6 +45,7 @@ namespace HPReserger
             NumRegistrosdtg();
             SeleccionarDetracionesSeleccionadas();
             CalcularValoresRedondeoyDiferencia();
+            Cursor = Cursors.Default;
         }
         public void CalcularValoresRedondeoyDiferencia()
         {
@@ -136,8 +139,12 @@ namespace HPReserger
         private void cboempresa_Click(object sender, EventArgs e)
         {
             string cadena = cboempresa.Text;
-            CapaLogica.TablaEmpresa(cboempresa);
-            cboempresa.Text = cadena;
+            DataTable TAble = CapaLogica.TablaEmpresa();
+            if (NameEmpresa != cadena)
+            {
+                cboempresa.DataSource = TAble;
+                cboempresa.Text = cadena;
+            }
         }
         public void CargarProyecto()
         {
@@ -150,8 +157,9 @@ namespace HPReserger
         }
         private void cboempresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbobanco.SelectedValue != null)
+            if (cbobanco.SelectedValue != null && NameEmpresa != cboempresa.Text)
             {
+                Cursor = Cursors.WaitCursor;
                 CargarCuentasBancos();
                 NameEmpresa = cboempresa.Text;
                 CargarDAtos();
@@ -277,7 +285,6 @@ namespace HPReserger
             return Prueba;
         }
         public DialogResult msgP(string cadena) { return HPResergerFunciones.Utilitarios.msgYesNoCancel(cadena); }
-        public void msg(string cadena) { HPResergerFunciones.Utilitarios.msg(cadena); }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             if (dtgconten.RowCount > 0)
@@ -286,13 +293,13 @@ namespace HPReserger
                 {
                     if (cbobanco.Items.Count == 0)
                     {
-                        HPResergerFunciones.Utilitarios.msg("No hay Bancos");
+                        msg("No hay Bancos");
                         cbobanco.Focus();
                         return;
                     }
                     if (cbocuentabanco.Items.Count == 0)
                     {
-                        HPResergerFunciones.Utilitarios.msg("El Banco Seleccionado No tiene Cuenta");
+                        msg("El Banco Seleccionado No tiene Cuenta");
                         cbobanco.Focus();
                         return;
                     }
@@ -300,7 +307,7 @@ namespace HPReserger
                     {
                         if (decimal.Parse(txttotal.Text) == 0)
                         {
-                            HPResergerFunciones.Utilitarios.msg("El total a pagar no puede ser Cero");
+                            msg("El total a pagar no puede ser Cero");
                             dtgconten.Focus();
                             return;
                         }
@@ -328,7 +335,7 @@ namespace HPReserger
                         }
                     }
                     if (!VerificarErrorDiferencia()) return;
-                    if (Verificar) { HPResergerFunciones.Utilitarios.msg("No se Puede Pagar Valores en Cero"); return; }
+                    if (Verificar) { msg("No se Puede Pagar Valores en Cero"); return; }
                     ///PROCESO DEL TXT
                     DialogResult Result = msgP("Desea Generar el TXT de Pago");
                     if (Result == DialogResult.Cancel) return;
@@ -411,13 +418,13 @@ namespace HPReserger
                     //Cuadrar Asiento
                     CapaLogica.CuadrarAsiento(CuopPago, (int)cboproyecto.SelectedValue, FechaContable, 2);
                     //Fin Cuadrar Asiento
-                    HPResergerFunciones.Utilitarios.msg($"Detracciones Pagadas! \nCon Asiento {CuopPago}");
+                    msgOK($"Detracciones Pagadas! \nCon Asiento {CuopPago}");
                     btnActualizar_Click(sender, e);
                     txttotal.Text = txtdiferencia.Text = txtredondeo.Text = "0.00";
                 }
-                else HPResergerFunciones.Utilitarios.msg("Total de Detracciones en Cero");
+                else msg("Total de Detracciones en Cero");
             }
-            else HPResergerFunciones.Utilitarios.msg("No Hay Detracciones por Pagar");
+            else msg("No Hay Detracciones por Pagar");
         }
         public void BuscarCuentaDetracicones()
         {

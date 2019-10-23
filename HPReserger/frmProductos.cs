@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         public int CodigoProducto { get; set; }
         private void dtgconten_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -85,10 +87,6 @@ namespace HPReserger
         {
             CargarDatos();
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         private void btnaceptar_Click(object sender, EventArgs e)
         {
             //ESTADO 1= NUEVO 2=MODIFICAR
@@ -113,7 +111,7 @@ namespace HPReserger
                 }
                 CapaLogica.ProductosProyecto(0, 1, txtdescripcion.Text, frmLogin.CodigoUsuario);
                 CargarDatos();
-                msg("Producto Guardado");
+                msgOK("Producto Guardado");
                 estado = 0;
             }
             //MODIFICAR
@@ -130,7 +128,7 @@ namespace HPReserger
                 }
                 CapaLogica.ProductosProyecto(CodProducto, 2, txtdescripcion.Text, frmLogin.CodigoUsuario);
                 CargarDatos();
-                msg("Producto Guardado");
+                msgOK("Producto Guardado");
                 estado = 0;
             }
             Activar(btnmodificar, btnnuevo, btneliminar, dtgconten, btnactualizar, btnbuscar);

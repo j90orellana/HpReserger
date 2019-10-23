@@ -17,6 +17,9 @@ namespace HPReserger
         {
             InitializeComponent();
         }
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public List<string> Proveedores = new List<string>();
         public string banco;
         public string cuenta;
@@ -39,11 +42,7 @@ namespace HPReserger
             cuenta = txtcuenta.Text = HPResergerFunciones.Utilitarios.ExtraerCuenta(cuenta);
             // msg(cadenas + "\nConsulta=" + consulta + "\nBanco=" + banco);
             Dtguias.DataSource = CapaLogica.BuscarCuentasBancoPagar(banco, consulta, CuentaBancaria);
-        }
-        public DialogResult msg(string cadena)
-        {
-            return HPResergerFunciones.Utilitarios.msgOkCancel(cadena);
-        }
+        }       
         public DataTable TablaProvedoresBancos;
 
         public string CuentaBancaria { get; internal set; }

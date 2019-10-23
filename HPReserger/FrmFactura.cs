@@ -23,13 +23,13 @@ namespace HPReserger
         HPResergerCapaLogica.HPResergerCL cfactura = new HPResergerCapaLogica.HPResergerCL();
         public void BuscarIgv()
         {
-            Busqueda:
+        Busqueda:
             DataRow BuscarIgv = cfactura.BuscarParametros("igv", DateTime.Now);
             if (BuscarIgv != null)
                 numigv.Value = (decimal.Parse(BuscarIgv["valor"].ToString()) * 100);
             else
             {
-                MSG("No ha Ingresado el Valor Del IGV, Ingréselo en El Siguiente Formulario");
+                msg("No ha Ingresado el Valor Del IGV, Ingréselo en El Siguiente Formulario");
                 frmParametros param = new frmParametros();
                 param.ShowDialog();
                 goto Busqueda;
@@ -352,12 +352,12 @@ namespace HPReserger
                     if (numdetraccion.Value <= 0)
                     {
                         cbodetraccion.Focus();
-                        MSG("Seleccione Tipo de Detracción");
+                        msg("Seleccione Tipo de Detracción");
                         return;
                     }
                     if (decimal.Parse(txtdetraccion.Text) <= 0)
                     {
-                        MSG("El Monto de la Detracción esta en Cero");
+                        msg("El Monto de la Detracción esta en Cero");
                         return;
                     }
                 }
@@ -372,7 +372,7 @@ namespace HPReserger
                 {
                     if (item.Cells[cuentax.Name].Value.ToString() == "")
                     {
-                        MSG($"El item {item.Cells[DESCRIPCION.Name].Value.ToString() } : No tiene una cuenta Asociada ");
+                        msg($"El item {item.Cells[DESCRIPCION.Name].Value.ToString() } : No tiene una cuenta Asociada ");
                         return;
                     }
                 }
@@ -435,7 +435,7 @@ namespace HPReserger
                     ///Soles
                     cfactura.RegistrarDetraccion(nextAsiento, empresa, decimal.Parse(txtdetraccion.Text));
                 }
-                MSG($"Factura Ingresada Exitosamente con Asiento: {HPResergerFunciones.Utilitarios.Cuo(nextAsiento, DateTime.Now)}");
+                HPResergerFunciones.frmInformativo.MostrarDialog($"Factura Ingresada Exitosamente con Asiento: {HPResergerFunciones.Utilitarios.Cuo(nextAsiento, DateTime.Now)}");
                 button1_Click(sender, e);
                 txtnrofactura.Text = ""; txtmonto.Text = ""; txtsubtotal.Text = txtigv.Text = txttotal.Text = ""; pbfactura.Image = null; imgfactura = null;
                 txtruc.Text = ""; busqueda = 0; btnprovisionar.Enabled = false; txtcodfactura.Text = "";
@@ -448,9 +448,9 @@ namespace HPReserger
         {
             MostrarFoto(pbfactura);
         }
-        public void MSG(string cadena)
+        public void msg(string cadena)
         {
-            HPResergerFunciones.Utilitarios.msg(cadena);
+            HPResergerFunciones.frmInformativo.MostrarDialogError(cadena);
         }
         int estado = 0;
         private void btnagregar_Click(object sender, EventArgs e)
@@ -484,7 +484,7 @@ namespace HPReserger
             if (DatosFactura != null)
             {
                 cboigv.SelectedIndex = (int)DatosFactura["gravaigv"] - 1;
-                MSG($"La Orden de compra {DatosFactura["ordencompra"].ToString() } con Nro de Factura: {DatosFactura["nrofactura"].ToString()} \nya se grabó con la opción {cboigv.Text } ");
+                HPResergerFunciones.frmInformativo.MostrarDialog($"La Orden de compra {DatosFactura["ordencompra"].ToString() } con Nro de Factura: {DatosFactura["nrofactura"].ToString()} \nya se grabó con la opción {cboigv.Text } ");
                 cboigv.Enabled = false;
             }
             else
@@ -503,19 +503,19 @@ namespace HPReserger
             }
             if (string.IsNullOrWhiteSpace(txtnrofactura.Text))
             {
-                MSG("Ingresé Número de la Factura");
+                msg("Ingresé Número de la Factura");
                 txtnrofactura.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(txtcodfactura.Text))
             {
-                MSG("Ingresé Codigo de la Factura");
+                msg("Ingresé Codigo de la Factura");
                 txtcodfactura.Focus();
                 return false;
             }
             if (string.IsNullOrWhiteSpace(txtmonto.Text))
             {
-                MSG("Ingresé Importe de la Factura");
+                msg("Ingresé Importe de la Factura");
                 return false;
             }
             if (!string.IsNullOrWhiteSpace(txtnrofactura.Text))
@@ -523,31 +523,31 @@ namespace HPReserger
                 DataRow factura = cfactura.BuscarFacturas(txtruc.Text, $"{txtcodfactura.Text}-{txtnrofactura.Text}");
                 if (factura != null)
                 {
-                    MSG("Nro Factura ya Existe");
+                    msg("Nro Factura ya Existe");
                     return false;
                 }
             }
             if ((dtfechaemision.Value > Dtfechaentregado.Value))
             {
-                MSG("La Fecha de EMISION no puede ser menor que la de ENTREGA");
+                msg("La Fecha de EMISION no puede ser menor que la de ENTREGA");
                 return false;
             }
 
             if ((Dtfechaentregado.Value < dtfechaemision.Value))
             {
-                MSG("La Fecha de ENTREGA no puede ser menor que la de EMISION");
+                msg("La Fecha de ENTREGA no puede ser menor que la de EMISION");
                 return false;
             }
             if (Convert.ToDecimal(txtmonto.Text) < 0)
             {
-                MSG("El monto no puede ser menor igual cero");
+                msg("El monto no puede ser menor igual cero");
                 return false;
             }
             if (txtguia.Items.Count == chlbx.CheckedIndices.Count)
             {
                 if (primermonto != Convert.ToDecimal(txttotal.Text) && unoovarios == 1)
                 {
-                    MSG("El TOTAL debe ser igual al saldo de la orden de compra");
+                    msg("El TOTAL debe ser igual al saldo de la orden de compra");
                     return false;
                 }
             }
@@ -560,7 +560,7 @@ namespace HPReserger
             {
                 if (decimal.Parse(DtgConten["preciounit", i].Value.ToString()) <= 0)
                 {
-                    MSG("Ingresé Precio Unitario de la fila " + (i + 1));
+                    msg("Ingresé Precio Unitario de la fila " + (i + 1));
                     DtgConten.CurrentCell = DtgConten["preciounit", i];
                     return false;
                 }
@@ -717,14 +717,14 @@ namespace HPReserger
         {
             if ((dtfechaemision.Value > Dtfechaentregado.Value))
             {
-                MSG("La Fecha de EMISION no puede ser menor que la de ENTREGA");
+                msg("La Fecha de EMISION no puede ser menor que la de ENTREGA");
             }
         }
         private void Dtfechaentregado_ValueChanged(object sender, EventArgs e)
         {
             if ((Dtfechaentregado.Value < dtfechaemision.Value))
             {
-                MSG("La Fecha de ENTREGA no puede ser menor que la de EMISION");
+                msg("La Fecha de ENTREGA no puede ser menor que la de EMISION");
             }
         }
         private void txtmonto_DoubleClick(object sender, EventArgs e)
@@ -740,7 +740,7 @@ namespace HPReserger
                 DataRow factura = cfactura.BuscarFacturas(txtruc.Text, $"{txtcodfactura.Text}-{txtnrofactura.Text}");
                 if (factura != null)
                 {
-                    MSG("Nro Factura ya Existe");
+                    msg("Nro Factura ya Existe");
                 }
             }
         }
@@ -1094,13 +1094,13 @@ namespace HPReserger
             {
                 if ((decimal)DtgConten["preciounit", i].Value <= 0)
                 {
-                    MSG("El Precio Unitario es de Cero en la Fila " + (i + 1));
+                    msg("El Precio Unitario es de Cero en la Fila " + (i + 1));
                     DtgConten["preciounit", i].Selected = true;
                     return;
                 }
                 if ((int)DtgConten["provisionada", i].Value == 3)
                 {
-                    MSG($"No se Puede Provisionar, la Fic {DtgConten["numfic", i].Value.ToString() } ya esta Provisionada");
+                    msg($"No se Puede Provisionar, la Fic {DtgConten["numfic", i].Value.ToString() } ya esta Provisionada");
                     btnprovisionar.Enabled = false;
                     return;
                 }
@@ -1111,7 +1111,7 @@ namespace HPReserger
             if (DatosFactura != null)
             {
                 frmProvi.cboigv.SelectedIndex = (int)DatosFactura["gravaigv"] - 1;
-                MSG($"La Orden de compra {DatosFactura["ordencompra"].ToString() } con Nro de Factura: {DatosFactura["nrofactura"].ToString()} \nya se grabó con la opción {cboigv.Text } ");
+                msg($"La Orden de compra {DatosFactura["ordencompra"].ToString() } con Nro de Factura: {DatosFactura["nrofactura"].ToString()} \nya se grabó con la opción {cboigv.Text } ");
                 frmProvi.cboigv.Enabled = false;
             }
             else
@@ -1167,7 +1167,7 @@ namespace HPReserger
                 txtruc.Text = ""; busqueda = 0; btnprovisionar.Enabled = false;
                 txtnroconstancia.Text = ""; txtfoto.Text = ""; cbodetraccion.SelectedIndex = -1; txtdetraccion.Text = "";
                 Dtguias.Enabled = true; cbotipo.Enabled = true; btnmaspro.Enabled = true;
-                MSG("Factura Provisionada");
+                HPResergerFunciones.frmInformativo.MostrarDialog("Factura Provisionada");
                 txtruc.Text = Rux;
             }
         }

@@ -18,6 +18,8 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CReporteboleta = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
         private void frmGenerarBoletas_Load(object sender, EventArgs e)
         {
             cargarempresas();
@@ -49,10 +51,6 @@ namespace HPReserger
         private void btnrectipo_Click(object sender, EventArgs e)
         {
             cargartipoid();
-        }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
         DataTable DBoleta;
         private void btngenerar_Click(object sender, EventArgs e)
@@ -157,7 +155,7 @@ namespace HPReserger
                         boletas.Show();
                     }
                 }
-                msg("Generadas con Exito");
+                msgOK("Generadas con Exito");
             }
             else
             {

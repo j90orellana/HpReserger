@@ -230,7 +230,7 @@ namespace HPReserger
         }
         public void MSG(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            HPResergerFunciones.frmInformativo.MostrarDialog(cadena);
         }
         DataRow drCOT;
         frmMensajeCorreo mensajitox;
@@ -259,7 +259,7 @@ namespace HPReserger
                         }
                         else return;
                     }
-                    else { MSG("Cancelado"); }
+                    else { HPResergerFunciones.frmInformativo.MostrarDialogError("Cancelado"); }
                 }
             }
         }
@@ -302,7 +302,7 @@ namespace HPReserger
             }
             catch (Exception ex)
             {
-                MSG("Error enviando correo electrónico: " + ex.Source + " " + ex.Message);
+                HPResergerFunciones.frmInformativo.MostrarDialogError("Error enviando correo electrónico: ", "" + ex.Source + " " + ex.Message);
             }
         }
 
@@ -316,7 +316,7 @@ namespace HPReserger
             if (backgroundWorker1.IsBusy)
             {
                 e.Cancel = true;
-                MSG("No se Puede Cerrar, Se está Enviando el Correo …");
+                HPResergerFunciones.frmInformativo.MostrarDialogError("No se Puede Cerrar, Se está Enviando el Correo …");
             }
         }
     }

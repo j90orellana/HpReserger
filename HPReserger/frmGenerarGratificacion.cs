@@ -18,6 +18,9 @@ namespace HPReserger
             InitializeComponent();
         }
         HPResergerCapaLogica.HPResergerCL CapaLogica = new HPResergerCapaLogica.HPResergerCL();
+        public void msg(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialogError(cadena); }
+        public void msgOK(string cadena) { HPResergerFunciones.frmInformativo.MostrarDialog(cadena); }
+
         public void cargarempresas()
         {
             cboempresa.DataSource = CapaLogica.getCargoTipoContratacion("Id_empresa", "empresa", "tbl_empresa");
@@ -77,10 +80,6 @@ namespace HPReserger
         {
             txtnumero.Text = "";
         }
-        public DialogResult msg(string cadena)
-        {
-            return MessageBox.Show(cadena, CompanyName ,MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        }
         private void btngenerar_Click(object sender, EventArgs e)
         {
             empresa = 0; tipo = 0;
@@ -121,7 +120,7 @@ namespace HPReserger
             frmgratis.numero = numero;
             frmgratis.fecha = 1;
             frmgratis.fechainicial = inicial;
-            msg("Gratificaciones Generadas con Éxito");
+            msgOK("Gratificaciones Generadas con Éxito");
             frmgratis.Fechafin = inicial;
             frmgratis.Show();
         }

@@ -49,14 +49,14 @@ namespace HPReserger
                     {
                         reporte.ExportToDisk(ExportFormatType.Excel, saveFileDialog1.FileName);
                     }
-                    catch (IOException) { msg("Error: El Archivo esta Abierto o en Uso"); }
+                    catch (IOException) { HPResergerFunciones.frmInformativo.MostrarDialogError("El Archivo esta Abierto o en Uso"); }
                 }
                 msg($"Exportado Con Exito en {saveFileDialog1.FileName}");
             }
         }
         public void msg(string cadena)
         {
-            MessageBox.Show(cadena, CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HPResergerFunciones.frmInformativo.MostrarDialog(cadena);
         }
         rptFlujodeCajaNormal reporte;
         private void crvReporte_ReportRefresh(object source, CrystalDecisions.Windows.Forms.ViewerEventArgs e)
